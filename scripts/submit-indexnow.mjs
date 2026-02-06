@@ -21,7 +21,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const HOST = 'scrimbaguide.tech';
-const KEY = '432904832';
+const KEY = '04a47dc50a7a4b528f9fa0aa65c489ff';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const BATCH_SIZE = 10_000; // IndexNow max per request
 
