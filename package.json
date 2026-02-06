@@ -1,0 +1,52 @@
+{
+  "name": "scrimbaguide",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The unofficial guide to Scrimba — courses, paths, pricing, and comparisons",
+  "scripts": {
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "serve": "docusaurus serve",
+    "clear": "docusaurus clear",
+    "typecheck": "tsc",
+    "generate:data": "node scripts/build-data.mjs",
+    "generate:pages": "node scripts/generate-course-pages.mjs",
+    "generate": "npm run generate:data && npm run generate:pages",
+    "swizzle": "docusaurus swizzle",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.9.2",
+    "@docusaurus/preset-classic": "3.9.2",
+    "@mdx-js/react": "^3.0.0",
+    "@signalwire/docusaurus-plugin-llms-txt": "^1.2.2",
+    "clsx": "^2.0.0",
+    "docusaurus-plugin-cookie-consent": "^4.1.0",
+    "docusaurus-plugin-generate-llms-txt": "github:din0s/docusaurus-plugin-llms-txt",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "3.9.2",
+    "@docusaurus/tsconfig": "3.9.2",
+    "@docusaurus/types": "3.9.2",
+    "typescript": "~5.6.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=20.0"
+  }
+}
