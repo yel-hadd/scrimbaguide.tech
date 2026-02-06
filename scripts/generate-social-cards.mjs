@@ -17,7 +17,7 @@
  * Regen: node scripts/generate-social-cards.mjs --force
  */
 
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
@@ -28,6 +28,9 @@ const BLOG_DIR = join(ROOT, 'blog');
 const IMG_DIR = join(ROOT, 'static', 'img', 'blog');
 
 const FORCE = process.argv.includes('--force');
+
+// Ensure output directory exists
+mkdirSync(IMG_DIR, { recursive: true });
 
 // ---------- Design tokens ----------
 const BRAND_COLOR = '#5b3fd9';
