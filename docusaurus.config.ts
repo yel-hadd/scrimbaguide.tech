@@ -32,6 +32,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
@@ -78,6 +79,23 @@ const config: Config = {
     '@signalwire/docusaurus-plugin-llms-txt',
   ],
 
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en'],
+        indexDocs: true,
+        indexBlog: true,
+        indexPages: true,
+        docsRouteBasePath: '/docs',
+        blogRouteBasePath: '/blog',
+        searchResultLimits: 8,
+        highlightSearchTermsOnTargetPage: true,
+      },
+    ],
+  ],
+
   headTags: [
     {
       tagName: 'script',
@@ -88,12 +106,25 @@ const config: Config = {
         name: 'ScrimbAGuide',
         url: 'https://scrimbaguide.tech',
         description: 'The unofficial guide to Scrimba courses, learning paths, pricing, and more.',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: 'https://scrimbaguide.tech/search?q={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
         publisher: {
           '@type': 'Organization',
           name: 'ScrimbAGuide',
           url: 'https://scrimbaguide.tech',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://scrimbaguide.tech/img/logo.png',
+          },
         },
       }),
+    },
+    {
+      tagName: 'link',
+      attributes: { rel: 'preconnect', href: 'https://scrimba.com' },
     },
   ],
 

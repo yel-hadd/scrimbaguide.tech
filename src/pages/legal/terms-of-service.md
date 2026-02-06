@@ -1,3 +1,9 @@
+---
+title: "Terms of Service"
+description: "Terms of Service for ScrimbAGuide.tech. Rules and conditions for using our Scrimba course review and guide website."
+keywords: [scrimbaguide terms of service]
+---
+
 # Terms of Service
 
 **Last Updated: 2026-02-06**

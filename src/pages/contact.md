@@ -1,3 +1,9 @@
+---
+title: "Contact ScrimbAGuide"
+description: "Get in touch with the ScrimbAGuide team. Ask about Scrimba courses, report a bug, or suggest new content."
+keywords: [contact scrimbaguide, scrimba guide contact]
+---
+
 # Contact Us
 
 Have a question about a Scrimba course? Found a bug on our site? Just want to say hi?

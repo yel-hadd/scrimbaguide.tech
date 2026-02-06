@@ -136,11 +136,19 @@ ${links}
     `scrimba ${course.category} course`,
   ].join(', ');
 
-  // Smart truncate function
+  // Smart truncate function — also fixes already-truncated source descriptions
   const truncate = (str, n) => {
-    if (str.length <= n) return str;
-    const sub = str.substr(0, n - 1);
-    return sub.substr(0, sub.lastIndexOf(' ')) + '...';
+    let result = str;
+    if (result.length > n) {
+      result = result.substr(0, n - 1);
+    }
+    // If description doesn't end with sentence punctuation, it was likely
+    // truncated by the scraper — trim back to last complete word and add ellipsis.
+    if (result && !/[.!?]$/.test(result)) {
+      result = result.substr(0, result.lastIndexOf(' '));
+      result = result.replace(/[,;:\s]+$/, '') + '...';
+    }
+    return result;
   };
 
   const safeTitle = pageTitle.replace(/"/g, '\\"');
@@ -176,6 +184,8 @@ import CourseSchema from '@site/src/components/CourseSchema';
   url="https://scrimba.com/${course.scrimbaSlug}"
   duration="${course.duration || ''}"
   difficulty="${course.level || 'Intermediate'}"
+  access="${course.access}"
+  keywords={[${keywords.split(', ').map(k => `"${k}"`).join(', ')}]}
 />
 
 ## About This Course

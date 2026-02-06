@@ -1,3 +1,9 @@
+---
+title: "Privacy Policy"
+description: "ScrimbAGuide's privacy policy. Learn how we collect, use, and protect your personal information."
+keywords: [scrimbaguide privacy policy]
+---
+
 # Privacy Policy
 
 **Last Updated: 2026-02-06**

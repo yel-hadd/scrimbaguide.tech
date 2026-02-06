@@ -204,7 +204,7 @@ function BlogSection() {
 export default function Home(): React.ReactElement {
   return (
     <Layout
-      title="ScrimbAGuide - The Unofficial Guide to Scrimba"
+      title="The Unofficial Guide to Scrimba Courses & Learning Paths"
       description="Course reviews, learning path guides, pricing breakdowns, and honest comparisons. Everything you need to make the most of Scrimba."
     >
       <main>

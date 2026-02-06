@@ -11,6 +11,9 @@ export default function BlogListPageWrapper(props: Props): React.ReactElement {
     <>
       <Head>
         <title>Blog | ScrimbAGuide</title>
+        <meta name="description" content="Scrimba guides, reviews, and tips. Learn which courses to take, how to save money, and how to get hired as a developer." />
+        <meta property="og:title" content="Blog | ScrimbAGuide" />
+        <meta property="og:description" content="Scrimba guides, reviews, and tips. Learn which courses to take, how to save money, and how to get hired as a developer." />
       </Head>
       <BlogListPage {...props} />
     </>

@@ -1,3 +1,9 @@
+---
+title: "Affiliate Disclosure"
+description: "ScrimbAGuide's affiliate disclosure. How we earn commissions through Scrimba affiliate links and our commitment to honest reviews."
+keywords: [scrimbaguide affiliate disclosure, scrimba affiliate]
+---
+
 # Affiliate Disclosure
 
 **Last Updated: 2026-02-06**

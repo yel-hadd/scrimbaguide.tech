@@ -26,7 +26,13 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
+
+      - name: Install librsvg (for social card generation)
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
+
+      - name: Generate social card images
+        run: npm run generate:social-cards -- --force
 
       - name: Build website
         run: npm run build

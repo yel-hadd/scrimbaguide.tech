@@ -26,7 +26,7 @@ export default function AffiliateLink({
     <a
       href={url}
       target="_blank"
-      rel="noopener noreferrer nofollow"
+      rel="noopener noreferrer sponsored"
       className={`${baseClass} ${variantClass} ${className}`.trim()}
       data-affiliate="scrimba"
     >

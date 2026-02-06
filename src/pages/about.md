@@ -1,3 +1,9 @@
+---
+title: "About ScrimbAGuide - Who We Are"
+description: "ScrimbAGuide is the unofficial companion for Scrimba students. Learn about our mission, editorial standards, and the team behind the reviews."
+keywords: [scrimbaguide, about scrimbaguide, scrimba guide team]
+---
+
 # About ScrimbAGuide
 
 **ScrimbAGuide** is the unofficial, comprehensive companion for students learning to code on Scrimba.

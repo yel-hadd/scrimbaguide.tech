@@ -7,6 +7,8 @@ interface CourseSchemaProps {
   url: string;
   duration?: string;
   difficulty?: string;
+  access?: 'Free' | 'Pro';
+  keywords?: string[];
 }
 
 export default function CourseSchema({
@@ -16,7 +18,11 @@ export default function CourseSchema({
   url,
   duration,
   difficulty,
+  access,
+  keywords,
 }: CourseSchemaProps): React.ReactElement {
+  const isFree = access === 'Free';
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Course',
@@ -28,16 +34,23 @@ export default function CourseSchema({
       sameAs: 'https://scrimba.com',
     },
     url,
+    inLanguage: 'en',
     ...(difficulty && {
       educationalLevel: difficulty,
     }),
     ...(duration && {
       timeRequired: duration,
     }),
+    ...(keywords && keywords.length > 0 && {
+      teaches: keywords,
+    }),
     offers: {
       '@type': 'Offer',
-      category: 'Paid',
+      price: isFree ? '0' : undefined,
       priceCurrency: 'USD',
+      category: isFree ? 'Free' : 'Paid',
+      availability: 'https://schema.org/InStock',
+      url,
     },
     hasCourseInstance: {
       '@type': 'CourseInstance',
