@@ -70,5 +70,16 @@ jobs:
       - name: Build website
         run: npm run build
 
+      - name: Wait for GitHub Pages propagation
+        run: sleep 30
+
+      - name: Verify key file is live
+        run: |
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://scrimbaguide.tech/04a47dc50a7a4b528f9fa0aa65c489ff.txt)
+          if [ "$STATUS" != "200" ]; then
+            echo "Key file not yet available (HTTP $STATUS), waiting 30s more..."
+            sleep 30
+          fi
+
       - name: Submit URLs to IndexNow
         run: node scripts/submit-indexnow.mjs
