@@ -65,6 +65,11 @@
   box-shadow: 0 4px 12px rgba(91, 63, 217, 0.3);
 }
 
+/* ── Navbar right-side spacing ─────────────────────────────────── */
+.navbar__items--right {
+  gap: 0.5rem;
+}
+
 /* ── Navbar CTA ────────────────────────────────────────────────── */
 .navbar-cta {
   background: var(--sg-btn-bg);
@@ -78,6 +83,12 @@
 .navbar-cta:hover {
   background: var(--ifm-color-primary-darkest);
   color: #fff !important;
+}
+
+/* ── Search bar kbd shortcut hint contrast fix (WCAG 1.4.3) ──── */
+:root .navbar__search kbd,
+:root div[class*="searchBarContainer"] kbd {
+  color: var(--ifm-color-emphasis-700) !important;
 }
 
 /* ── Course card ───────────────────────────────────────────────── */
@@ -148,7 +159,7 @@
   gap: 1rem;
   margin-bottom: 1rem;
   font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-emphasis-700);
 }
 
 .course-card__cta {
@@ -190,7 +201,7 @@
 }
 
 .comparison-table__secondary-cta {
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-emphasis-700);
   text-decoration: underline;
 }
 
@@ -355,7 +366,7 @@
 }
 
 .section-card p {
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-emphasis-700);
   margin: 0;
   line-height: 1.5;
 }
@@ -465,7 +476,7 @@ article a:not(.affiliate-link):not(.hash-link):hover {
 }
 
 .home-section__subtitle {
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-emphasis-700);
   margin-bottom: 1.5rem;
 }
 
@@ -474,7 +485,7 @@ article a:not(.affiliate-link):not(.hash-link):hover {
   margin-top: 1rem;
 }
 
-.section-card__meta {
+.section-card .section-card__meta {
   font-size: 0.85rem;
   color: var(--ifm-color-primary);
   margin-bottom: 0.5rem;

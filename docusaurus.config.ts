@@ -57,6 +57,9 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        gtag: {
+          trackingID: 'G-03WS2KR7EX',
+        },
       } satisfies Preset.Options,
     ],
     [
@@ -73,6 +76,10 @@ const config: Config = {
         ],
       },
     ],
+  ],
+
+  clientModules: [
+    './src/clientModules/a11yFixes.ts',
   ],
 
   plugins: [
@@ -154,6 +161,7 @@ const config: Config = {
           label: 'Try Scrimba Pro',
           position: 'right',
           className: 'navbar-cta',
+          'aria-label': 'Try Scrimba Pro (opens in a new tab)',
         },
       ],
     },
