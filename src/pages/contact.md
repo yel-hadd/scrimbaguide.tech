@@ -21,4 +21,4 @@ We try to respond to all inquiries within 48 hours.
 
 Follow us for updates on new courses and guides:
 * [Twitter / X](https://twitter.com/scrimba) (Official Scrimba account)
-* [Discord](https://scrimba.com/discord) (Join the Scrimba community)
+* [Discord](https://scrimba.com/discord?via=u42d4986) (Join the Scrimba community)

@@ -11,6 +11,7 @@ const sidebars: SidebarsConfig = {
         'pricing/pro-vs-free',
         'pricing/student-discount',
         'pricing/refund-policy',
+        'pricing/scrimba-vs-bootcamps',
       ],
     },
     {
@@ -22,6 +23,7 @@ const sidebars: SidebarsConfig = {
         'paths/fullstack-developer-path',
         'paths/backend-developer-path',
         'paths/ai-engineer-path',
+        'paths/study-plan',
       ],
     },
     {
@@ -82,6 +84,8 @@ const sidebars: SidebarsConfig = {
         'comparisons/scrimba-vs-freecodecamp',
         'comparisons/scrimba-vs-frontendmasters',
         'comparisons/scrimba-vs-treehouse',
+        'comparisons/scrimba-vs-odin-project',
+        'comparisons/scrimba-vs-coursera',
       ],
     },
     {
@@ -92,6 +96,7 @@ const sidebars: SidebarsConfig = {
         'faq/billing',
         'faq/certificates',
         'faq/discord-community',
+        'faq/community-and-events',
         'faq/platform-issues',
       ],
     },
