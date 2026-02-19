@@ -24,6 +24,7 @@ const sidebars: SidebarsConfig = {
         'paths/backend-developer-path',
         'paths/ai-engineer-path',
         'paths/study-plan',
+        'paths/scrimba-for-cs-students',
       ],
     },
     {
@@ -86,6 +87,7 @@ const sidebars: SidebarsConfig = {
         'comparisons/scrimba-vs-treehouse',
         'comparisons/scrimba-vs-odin-project',
         'comparisons/scrimba-vs-coursera',
+        'comparisons/scrimba-vs-youtube',
       ],
     },
     {
@@ -98,6 +100,9 @@ const sidebars: SidebarsConfig = {
         'faq/discord-community',
         'faq/community-and-events',
         'faq/platform-issues',
+        'faq/how-scrims-work',
+        'faq/tutorial-hell',
+        'faq/scrimba-for-busy-professionals',
       ],
     },
   ],
