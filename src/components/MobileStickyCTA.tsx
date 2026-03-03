@@ -35,14 +35,15 @@ export default function MobileStickyCTA(): React.ReactElement | null {
   return (
     <div className="sticky-footer-cta">
       <div className="sticky-footer-cta__content">
-        <span className="sticky-footer-cta__text">Start Learning for Free</span>
-        <AffiliateLink href="https://scrimba.com/?via=u42d4986" variant="button" className="sticky-footer-cta__button">
-          Try Scrimba
+        <span className="sticky-footer-cta__text">Get 20% Off Scrimba Pro</span>
+        <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" variant="button" className="sticky-footer-cta__button">
+          Claim Discount
         </AffiliateLink>
         <button 
+          type="button"
           className="sticky-footer-cta__close" 
           onClick={() => setIsDismissed(true)}
-          aria-label="Close"
+          aria-label="Dismiss discount banner"
         >
           &times;
         </button>

@@ -20,11 +20,10 @@ export default function ReviewSchema({
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Review',
+    name: `${itemName} Review`,
     itemReviewed: {
-      '@type': 'SoftwareApplication',
+      '@type': 'Thing',
       name: itemName,
-      applicationCategory: 'EducationalApplication',
-      operatingSystem: 'Web',
     },
     reviewRating: {
       '@type': 'Rating',

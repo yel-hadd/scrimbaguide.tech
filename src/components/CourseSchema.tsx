@@ -67,20 +67,23 @@ export default function CourseSchema({
     ...(keywords && keywords.length > 0 && {
       teaches: keywords,
     }),
-    offers: {
-      '@type': 'Offer',
-      price: isFree ? '0' : undefined,
-      priceCurrency: 'USD',
-      category: isFree ? 'Free' : 'Paid',
-      availability: 'https://schema.org/InStock',
-      url,
-    },
     hasCourseInstance: {
       '@type': 'CourseInstance',
       courseMode: 'online',
       courseWorkload: duration ? toISODuration(duration) : 'PT2H',
     },
   };
+
+  if (access) {
+    schema.offers = {
+      '@type': 'Offer',
+      ...(isFree ? { price: '0' } : {}),
+      ...(isFree ? { priceCurrency: 'USD' } : {}),
+      category: isFree ? 'Free' : 'Paid',
+      availability: 'https://schema.org/InStock',
+      url,
+    };
+  }
 
   if (modules && modules.length > 0) {
     schema.hasPart = {

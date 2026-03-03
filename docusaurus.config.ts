@@ -37,7 +37,7 @@ const config: Config = {
         blog: {
           showReadingTime: true,
           blogSidebarCount: 'ALL',
-          blogSidebarTitle: 'All Guides',
+          blogSidebarTitle: 'All Blog Posts',
           postsPerPage: 10,
           feedOptions: {
             type: ['rss', 'atom'],
@@ -168,6 +168,8 @@ const config: Config = {
     metadata: [
       { name: 'keywords', content: 'scrimba, scrimba review, scrimba courses, learn to code, scrimba pro, scrimba pricing, scrimba guide' },
       { name: 'description', content: 'The unofficial guide to Scrimba courses, learning paths, pricing, and more. Find the best Scrimba course for your goals.' },
+      { property: 'og:locale', content: 'en_US' },
+      { name: 'twitter:site', content: '@scrimbaguide' },
     ],
     navbar: {
       title: 'ScrimbaGuide',
@@ -178,15 +180,15 @@ const config: Config = {
       items: [
         { to: '/docs/paths/', label: 'Learning Paths', position: 'left' },
         { to: '/docs/courses/', label: 'Courses', position: 'left' },
-        { to: '/docs/pricing/', label: 'Pricing', position: 'left' },
+        { to: '/docs/pricing/', label: 'Scrimba Pricing', position: 'left' },
         { to: '/docs/comparisons/', label: 'Comparisons', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://scrimba.com/?via=u42d4986',
-          label: 'Try Scrimba Pro',
+          label: 'Get 20% Off Pro',
           position: 'right',
           className: 'navbar-cta',
-          'aria-label': 'Try Scrimba Pro (opens in a new tab)',
+          'aria-label': 'Get 20% off Scrimba Pro (opens in a new tab)',
         },
       ],
     },
@@ -198,7 +200,7 @@ const config: Config = {
           items: [
             { label: 'All Courses', to: '/docs/courses' },
             { label: 'Learning Paths', to: '/docs/paths' },
-            { label: 'Pricing Guide', to: '/docs/pricing' },
+            { label: 'Scrimba Pricing', to: '/docs/pricing' },
             { label: 'FAQ', to: '/docs/faq/' },
             { label: 'Changelog', to: '/docs/changelog' },
           ],

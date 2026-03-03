@@ -10,7 +10,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   '/blog/scrimba-review': [
     { title: 'Is Scrimba Worth It?', href: '/blog/is-scrimba-worth-it', type: 'blog' },
     { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
-    { title: 'Scrimba Pricing Guide', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
   ],
   '/blog/is-scrimba-worth-it': [
     { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
@@ -71,7 +71,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   '/docs/comparisons/scrimba-vs-udemy': [
     { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
     { title: 'Is Scrimba Worth It?', href: '/blog/is-scrimba-worth-it', type: 'blog' },
-    { title: 'Pricing Guide', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
   ],
   '/docs/comparisons/scrimba-vs-codecademy': [
     { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
@@ -84,6 +84,11 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba for Beginners', href: '/docs/paths/scrimba-for-beginners', type: 'doc' },
   ],
   '/docs/comparisons/scrimba-vs-the-odin-project': [
+    { title: 'Scrimba for CS Students', href: '/docs/paths/scrimba-for-cs-students', type: 'doc' },
+    { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
+  ],
+  '/docs/comparisons/scrimba-vs-odin-project': [
     { title: 'Scrimba for CS Students', href: '/docs/paths/scrimba-for-cs-students', type: 'doc' },
     { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
     { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
@@ -108,7 +113,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   '/docs/paths/scrimba-for-marketers': [
     { title: 'Learn HTML & CSS', href: '/docs/courses/css/html-and-css', type: 'doc' },
     { title: 'AI Tools for Developers', href: '/blog/ai-tools-every-developer-should-know-2026', type: 'blog' },
-    { title: 'Pricing Guide', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
   ],
   '/docs/paths/scrimba-for-beginners': [
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
@@ -129,6 +134,49 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   ],
 };
 
+const sectionFallbacks: Record<string, RelatedGuide[]> = {
+  '/docs/pricing/': [
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
+    { title: 'Scrimba Discount Codes', href: '/blog/scrimba-discount-codes-2026', type: 'blog' },
+  ],
+  '/docs/courses/': [
+    { title: 'All Courses', href: '/docs/courses/', type: 'doc' },
+    { title: 'Learning Paths', href: '/docs/paths/', type: 'doc' },
+    { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
+  ],
+  '/docs/faq/': [
+    { title: 'Scrimba FAQ', href: '/docs/faq/', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
+  ],
+  '/docs/learn-react/': [
+    { title: 'Learn React Roadmap', href: '/docs/learn-react/', type: 'doc' },
+    { title: 'React Course Catalog', href: '/docs/courses/react/', type: 'doc' },
+    { title: 'Scrimba React Learning Path', href: '/blog/scrimba-react-learning-path', type: 'blog' },
+  ],
+  '/docs/learn-nextjs/': [
+    { title: 'Learn Next.js Roadmap', href: '/docs/learn-nextjs/', type: 'doc' },
+    { title: 'JavaScript Courses', href: '/docs/courses/javascript/', type: 'doc' },
+    { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+  ],
+  '/docs/practice/': [
+    { title: 'Practice Guides', href: '/docs/practice/practice-react-projects', type: 'doc' },
+    { title: 'All Courses', href: '/docs/courses/', type: 'doc' },
+    { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+  ],
+  '/roadmaps/': [
+    { title: 'Learning Paths', href: '/docs/paths/', type: 'doc' },
+    { title: 'All Courses', href: '/docs/courses/', type: 'doc' },
+    { title: 'Frontend Interview Prep', href: '/blog/frontend-interview-prep-scrimba', type: 'blog' },
+  ],
+  '/tools/': [
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba vs Bootcamps', href: '/docs/pricing/scrimba-vs-bootcamps', type: 'doc' },
+    { title: 'Is Scrimba Worth It?', href: '/blog/is-scrimba-worth-it', type: 'blog' },
+  ],
+};
+
 // Helper to get guides with fallback logic
 export function getRelatedGuides(slug: string): RelatedGuide[] {
   // 1. Direct match
@@ -138,12 +186,19 @@ export function getRelatedGuides(slug: string): RelatedGuide[] {
   const cleanSlug = slug.replace(/\/$/, '');
   if (relatedGuidesMap[cleanSlug]) return relatedGuidesMap[cleanSlug];
 
-  // 3. Fallback based on path segments
+  // 3. Section-level deterministic fallbacks
+  for (const sectionPath of Object.keys(sectionFallbacks)) {
+    if (slug.startsWith(sectionPath)) {
+      return sectionFallbacks[sectionPath];
+    }
+  }
+
+  // 4. Fallback based on path segments
   if (slug.includes('/comparisons/')) {
     return [
       { title: 'All Comparisons', href: '/docs/comparisons/', type: 'doc' },
       { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
-      { title: 'Pricing Guide', href: '/docs/pricing/', type: 'doc' },
+      { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
     ];
   }
 
@@ -168,7 +223,7 @@ export function getRelatedGuides(slug: string): RelatedGuide[] {
     return [
       { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
       { title: 'Learning Paths', href: '/docs/paths/', type: 'doc' },
-      { title: 'Pricing Guide', href: '/docs/pricing/', type: 'doc' },
+      { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
     ];
   }
 

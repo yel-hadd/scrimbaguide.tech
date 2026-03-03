@@ -3,36 +3,41 @@ import DocBreadcrumbs from '@theme-original/DocBreadcrumbs';
 import type DocBreadcrumbsType from '@theme/DocBreadcrumbs';
 import type {WrapperProps} from '@docusaurus/types';
 import Head from '@docusaurus/Head';
-import {useLocation} from '@docusaurus/router';
+import {useSidebarBreadcrumbs} from '@docusaurus/plugin-content-docs/client';
+import {useHomePageRoute} from '@docusaurus/theme-common/internal';
 
 type Props = WrapperProps<typeof DocBreadcrumbsType>;
 
 const BASE_URL = 'https://scrimbaguide.tech';
 
-function buildBreadcrumbSchema(pathname: string) {
-  // Split path into segments: /docs/courses/react/learn-react -> ["docs","courses","react","learn-react"]
-  const segments = pathname.replace(/^\/|\/$/g, '').split('/');
-  if (segments.length < 2) return null;
+function toAbsoluteUrl(path?: string): string {
+  if (!path) return BASE_URL;
+  return /^https?:\/\//i.test(path) ? path : `${BASE_URL}${path}`;
+}
 
-  const items = segments.map((segment, index) => {
-    const path = '/' + segments.slice(0, index + 1).join('/');
-    const name = segment
-      .split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
+function buildBreadcrumbSchema(
+  breadcrumbs: Array<{label: string; href?: string}>,
+  includeHome: boolean
+) {
+  if (!breadcrumbs.length) return null;
 
-    const item: Record<string, unknown> = {
+  const items: Array<Record<string, string | number>> = [];
+  if (includeHome) {
+    items.push({
       '@type': 'ListItem',
-      position: index + 1,
-      name,
-    };
+      position: 1,
+      name: 'Home',
+      item: `${BASE_URL}/`,
+    });
+  }
 
-    // Don't include "item" URL on the last breadcrumb (current page)
-    if (index < segments.length - 1) {
-      item.item = `${BASE_URL}${path}/`;
-    }
-
-    return item;
+  breadcrumbs.forEach((crumb, index) => {
+    items.push({
+      '@type': 'ListItem',
+      position: index + (includeHome ? 2 : 1),
+      name: crumb.label,
+      item: toAbsoluteUrl(crumb.href),
+    });
   });
 
   return {
@@ -43,8 +48,9 @@ function buildBreadcrumbSchema(pathname: string) {
 }
 
 export default function DocBreadcrumbsWrapper(props: Props): React.ReactElement {
-  const {pathname} = useLocation();
-  const schema = buildBreadcrumbSchema(pathname);
+  const breadcrumbs = useSidebarBreadcrumbs();
+  const homePageRoute = useHomePageRoute();
+  const schema = buildBreadcrumbSchema(breadcrumbs ?? [], Boolean(homePageRoute));
 
   return (
     <>

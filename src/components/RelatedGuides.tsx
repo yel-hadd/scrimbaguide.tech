@@ -29,7 +29,7 @@ export default function RelatedGuides({
           <Link key={i} to={guide.href} className="related-guides__card">
             <div className="related-guides__content">
               <span className={`related-guides__badge related-guides__badge--${guide.type || 'doc'}`}>
-                {guide.type === 'comparison' ? 'Comparison' : guide.type === 'blog' ? 'Guide' : 'Doc'}
+                {guide.type === 'comparison' ? 'Comparison' : guide.type === 'blog' ? 'Blog' : 'Docs'}
               </span>
               <h4 className="related-guides__card-title">{guide.title}</h4>
               {guide.description && (
