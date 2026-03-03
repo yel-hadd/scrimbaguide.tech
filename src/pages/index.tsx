@@ -19,7 +19,7 @@ function HeroSection() {
         <strong>ScrimbaGuide</strong> is the unofficial guide to <strong>Scrimba</strong>—the interactive coding platform that teaches React, JavaScript, AI, and web development. Don&apos;t just watch tutorials—<b>write code</b>. Honest reviews, learning paths, and pro tips to help you get hired.
       </p>
       <div className="hero-buttons">
-        <Link className="affiliate-link affiliate-link--button" to="/docs/paths/">
+        <Link className="cta-link cta-link--button" to="/docs/paths/">
           Find Your Career Path
         </Link>
         <AffiliateLink href="https://scrimba.com/?via=u42d4986" variant="button">
@@ -81,7 +81,7 @@ function PathsSection() {
         ))}
       </div>
       <div className="home-section__footer">
-        <Link to="/docs/paths/" className="affiliate-link affiliate-link--text">
+        <Link to="/docs/paths/" className="cta-link cta-link--text">
           Compare all learning paths &rarr;
         </Link>
       </div>
@@ -122,7 +122,7 @@ function CoursesSection() {
         ))}
       </div>
       <div className="home-section__footer">
-        <Link to="/docs/courses/" className="affiliate-link affiliate-link--text">
+        <Link to="/docs/courses/" className="cta-link cta-link--text">
           View full course catalog &rarr;
         </Link>
       </div>
@@ -168,7 +168,7 @@ function PricingSection() {
         paths, and community.
       </p>
       <div className="home-pricing__buttons">
-        <Link to="/docs/pricing/" className="affiliate-link affiliate-link--button home-pricing__outline-btn">
+        <Link to="/docs/pricing/" className="cta-link cta-link--button home-pricing__outline-btn">
           View Pricing Guide
         </Link>
         <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" variant="button">
@@ -204,7 +204,7 @@ function BlogSection() {
         </Link>
       </div>
       <div className="home-section__footer">
-        <Link to="/blog" className="affiliate-link affiliate-link--text">
+        <Link to="/blog" className="cta-link cta-link--text">
           Read all guides &rarr;
         </Link>
       </div>

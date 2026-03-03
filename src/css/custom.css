@@ -31,21 +31,21 @@
 }
 
 /* ── Affiliate link styles ─────────────────────────────────────── */
-.affiliate-link {
+.cta-link {
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
-.affiliate-link--text {
+.cta-link--text {
   color: var(--ifm-color-primary);
   font-weight: 600;
 }
 
-.affiliate-link--text:hover {
+.cta-link--text:hover {
   text-decoration: underline;
 }
 
-.affiliate-link--button {
+.cta-link--button {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   background: var(--sg-btn-bg);
@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-.affiliate-link--button:hover {
+.cta-link--button:hover {
   background: var(--ifm-color-primary-darkest);
   color: #fff;
   text-decoration: none;
@@ -400,26 +400,26 @@
 }
 
 /* ── Link distinction (WCAG 1.4.1) ────────────────────────────── */
-.theme-doc-markdown a:not(.affiliate-link):not(.hash-link),
-article a:not(.affiliate-link):not(.hash-link) {
+.theme-doc-markdown a:not(.cta-link):not(.hash-link),
+article a:not(.cta-link):not(.hash-link) {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
 }
 
-.theme-doc-markdown a:not(.affiliate-link):not(.hash-link):hover,
-article a:not(.affiliate-link):not(.hash-link):hover {
+.theme-doc-markdown a:not(.cta-link):not(.hash-link):hover,
+article a:not(.cta-link):not(.hash-link):hover {
   text-decoration-thickness: 2px;
 }
 
 /* ── Focus indicators (WCAG 2.4.7) ────────────────────────────── */
-.affiliate-link--button:focus-visible,
+.cta-link--button:focus-visible,
 .navbar-cta:focus-visible {
   outline: 3px solid var(--ifm-color-primary);
   outline-offset: 2px;
 }
 
-.affiliate-link--text:focus-visible {
+.cta-link--text:focus-visible {
   outline: 2px solid var(--ifm-color-primary);
   outline-offset: 2px;
   border-radius: 2px;
@@ -847,7 +847,7 @@ article a:not(.affiliate-link):not(.hash-link):hover {
 
 /* link-in-text-block: ensure links in blog tag pages have underlines */
 .blog-tags-post-list a,
-article a:not(.affiliate-link):not([class*="card"]):not([class*="button"]),
+article a:not(.cta-link):not([class*="card"]):not([class*="button"]),
 .blogTagsListPage a,
 a[href$="/tags"],
 a[href*="/tags/"] {
@@ -855,7 +855,7 @@ a[href*="/tags/"] {
   text-underline-offset: 2px;
 }
 
-article a:not(.affiliate-link):not([class*="card"]):not([class*="button"]):hover,
+article a:not(.cta-link):not([class*="card"]):not([class*="button"]):hover,
 .blogTagsListPage a:hover,
 a[href$="/tags"]:hover {
   text-decoration-thickness: 2px;

@@ -23,7 +23,7 @@ export default function AffiliateLink({
     : href;
   /* eslint-enable no-nested-ternary */
 
-  const baseClass = 'affiliate-link';
+  const baseClass = 'cta-link';
   const variantClass = `${baseClass}--${variant}`;
 
   return (
@@ -32,7 +32,6 @@ export default function AffiliateLink({
       target="_blank"
       rel="noopener noreferrer sponsored"
       className={`${baseClass} ${variantClass} ${className}`.trim()}
-      data-affiliate="scrimba"
     >
       {children}
       <span className="sr-only"> (opens in a new tab)</span>
