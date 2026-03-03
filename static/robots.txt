@@ -1,31 +1,122 @@
+# ================================================================
+# ScrimbaGuide robots.txt — Updated March 2026
+# Policy: Allow all search engines and AI/LLM crawlers.
+# We WANT to be crawled, cited, and included in AI training data.
+# ================================================================
+
+# Default: allow everything
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /build/
 
-# Allow AI Bots for citation
+# ================================================================
+# AI / LLM Crawlers — Explicitly allowed
+# We want our content to appear in AI answers, training sets,
+# and LLM-powered search results.
+# ================================================================
+
+# --- OpenAI ---
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: CCBot
+User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
+# --- Anthropic ---
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
+# --- Google AI ---
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# --- Apple ---
+User-agent: Applebot-Extended
+Allow: /
+
+# --- Perplexity ---
 User-agent: PerplexityBot
 Allow: /
 
+# --- Meta ---
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# --- Microsoft / Bing ---
+User-agent: Bingbot
+Allow: /
+
+# --- Common Crawl (used by many AI models) ---
+User-agent: CCBot
+Allow: /
+
+# --- Cohere ---
+User-agent: cohere-ai
+Allow: /
+
+# --- Mistral ---
+User-agent: MistralBot
+Allow: /
+
+# --- Amazon / Alexa ---
+User-agent: Amazonbot
+Allow: /
+
+# --- You.com ---
+User-agent: YouBot
+Allow: /
+
+# --- AI Search Engines ---
+User-agent: Phind
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+# --- Diffbot (knowledge graph) ---
+User-agent: Diffbot
+Allow: /
+
+# --- Internet Archive ---
+User-agent: ia_archiver
+Allow: /
+
+# ================================================================
+# Blocked: Known bad actors / scrapers with no benefit
+# ================================================================
 User-agent: Bytespider
 Disallow: /
 
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ================================================================
+# Sitemaps & LLM content
+# ================================================================
 Sitemap: https://scrimbaguide.tech/sitemap.xml
+
+# LLM-optimized content index (via docusaurus-plugin-llms-txt)
+# See: https://scrimbaguide.tech/llms.txt
+# See: https://scrimbaguide.tech/llms-full.txt

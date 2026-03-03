@@ -49,9 +49,10 @@ const config: Config = {
           onUntruncatedBlogPosts: 'warn',
         },
         sitemap: {
+          lastmod: 'date',
           changefreq: 'weekly' as const,
           priority: 0.8,
-          ignorePatterns: ['/tags/**'],
+          ignorePatterns: ['/tags/**', '/search', '/blog/page/**', '/blog/authors', '/blog/archive', '/blog/tags/**'],
           filename: 'sitemap.xml',
         },
         theme: {
