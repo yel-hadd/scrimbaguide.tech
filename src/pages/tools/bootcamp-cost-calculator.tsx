@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 
 export default function BootcampCalculator(): React.ReactElement {
@@ -12,11 +13,29 @@ export default function BootcampCalculator(): React.ReactElement {
   
   const loanTotal = bootcampCost * (1 + (loanInterest / 100));
   const savings = loanTotal - scrimbaTotal;
+  const pageTitle = 'Bootcamp Cost Calculator | ScrimbaGuide';
+  const pageDescription = 'Calculate how much you can save with Scrimba compared to a traditional coding bootcamp.';
+  const canonicalUrl = 'https://scrimbaguide.tech/tools/bootcamp-cost-calculator';
+  const socialImage = 'https://scrimbaguide.tech/img/social-card.png';
 
   return (
-    <Layout title="Bootcamp Cost Calculator" description="Calculate how much you save with Scrimba vs a traditional coding bootcamp.">
+    <Layout title={pageTitle} description={pageDescription}>
+      <Head>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content={socialImage} />
+        <meta property="og:site_name" content="ScrimbaGuide" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={socialImage} />
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
       <main>
-      <div className="container margin-vert--lg">
+      <div className="container margin-vert--lg tool-calculator">
         <h1>Bootcamp Cost Calculator</h1>
         <p>Compare the cost of a traditional coding bootcamp vs Scrimba Pro.</p>
 
@@ -25,49 +44,51 @@ export default function BootcampCalculator(): React.ReactElement {
             <div className="card padding--lg">
               <h2>Bootcamp Assumptions</h2>
               <div className="margin-bottom--md">
-                <label htmlFor="bootcamp-tuition" style={{display: 'block', fontWeight: 'bold'}}>Tuition Cost ($)</label>
+                <label htmlFor="bootcamp-tuition" className="tool-calculator__input-label">Tuition Cost ($)</label>
                 <input 
                   id="bootcamp-tuition"
                   type="number" 
                   value={bootcampCost} 
                   onChange={(e) => setBootcampCost(Number(e.target.value))}
-                  style={{width: '100%', padding: '0.5rem'}}
+                  className="tool-calculator__input"
                 />
               </div>
               <div className="margin-bottom--md">
-                <label htmlFor="bootcamp-duration" style={{display: 'block', fontWeight: 'bold'}}>Duration (Months)</label>
+                <label htmlFor="bootcamp-duration" className="tool-calculator__input-label">Duration (Months)</label>
                 <input 
                   id="bootcamp-duration"
                   type="number" 
                   value={durationMonths} 
                   onChange={(e) => setDurationMonths(Number(e.target.value))}
-                  style={{width: '100%', padding: '0.5rem'}}
+                  className="tool-calculator__input"
                 />
               </div>
               <div className="margin-bottom--md">
-                <label htmlFor="bootcamp-interest" style={{display: 'block', fontWeight: 'bold'}}>Loan Interest Rate (%)</label>
+                <label htmlFor="bootcamp-interest" className="tool-calculator__input-label">Loan Interest Rate (%)</label>
                 <input 
                   id="bootcamp-interest"
                   type="number" 
                   value={loanInterest} 
                   onChange={(e) => setLoanInterest(Number(e.target.value))}
-                  style={{width: '100%', padding: '0.5rem'}}
+                  className="tool-calculator__input"
                 />
               </div>
             </div>
           </div>
 
           <div className="col col--6">
-            <div className="card padding--lg" style={{backgroundColor: 'var(--ifm-color-emphasis-100)'}}>
+            <div className="card padding--lg tool-calculator__results">
               <h2>Your Savings</h2>
               <div className="margin-bottom--md">
                 <p>Bootcamp Total (with interest): <strong>${loanTotal.toLocaleString()}</strong></p>
                 <p>Scrimba Total: <strong>${scrimbaTotal.toLocaleString()}</strong></p>
                 <hr />
-                <h2 style={{color: 'var(--ifm-color-success)'}}>You Save: ${savings.toLocaleString()}</h2>
+                <p className="tool-calculator__savings">
+                  You Save: ${savings.toLocaleString()}
+                </p>
               </div>
               <AffiliateLink href="https://scrimba.com/pricing?via=u42d4986" variant="button">
-                Start Scrimba Pro
+                Claim 20% Off Pro
               </AffiliateLink>
             </div>
           </div>

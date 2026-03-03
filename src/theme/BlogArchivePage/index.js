@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
-import {translate} from '@docusaurus/Translate';
 import {PageMetadata} from '@docusaurus/theme-common';
+import Head from '@docusaurus/Head';
 import {useDateTimeFormat} from '@docusaurus/theme-common/internal';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
@@ -57,20 +57,30 @@ function listPostsByYears(blogPosts) {
   }));
 }
 export default function BlogArchive({archive}) {
-  const title = translate({
-    id: 'theme.blog.archive.title',
-    message: 'Archive',
-    description: 'The page & hero title of the blog archive page',
-  });
-  const description = translate({
-    id: 'theme.blog.archive.description',
-    message: 'Archive',
-    description: 'The page & hero description of the blog archive page',
-  });
+  const baseUrl = 'https://scrimbaguide.tech';
+  const canonicalUrl = `${baseUrl}/blog/archive`;
+  const title = 'Blog Archive | ScrimbaGuide';
+  const description = 'Browse all ScrimbaGuide blog posts by year.';
   const years = listPostsByYears(archive.blogPosts);
   return (
     <>
       <PageMetadata title={title} description={description} />
+      <Head>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content={`${baseUrl}/img/social-card.png`} />
+        <meta property="og:site_name" content="ScrimbaGuide" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:site" content="@scrimbaguide" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${baseUrl}/img/social-card.png`} />
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
       <Layout>
         <header className="hero hero--primary">
           <div className="container">

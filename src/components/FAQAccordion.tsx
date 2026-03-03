@@ -9,11 +9,13 @@ export interface FAQItem {
 interface FAQAccordionProps {
   items: FAQItem[];
   title?: string;
+  emitSchema?: boolean;
 }
 
 export default function FAQAccordion({
   items,
   title,
+  emitSchema = true,
 }: FAQAccordionProps): React.ReactElement {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const baseId = useId();
@@ -21,6 +23,13 @@ export default function FAQAccordion({
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  const stripMarkdown = (text: string): string =>
+    text
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      .replace(/`([^`]+)`/g, '$1')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/\*([^*]+)\*/g, '$1');
 
   // JSON-LD FAQ Schema with optional citation
   const faqSchema = {
@@ -31,18 +40,19 @@ export default function FAQAccordion({
       name: item.q,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: item.a,
-        ...(item.sourceUrl && { citation: item.sourceUrl }),
+        text: stripMarkdown(item.a),
       },
     })),
   };
 
   return (
     <div className="faq-accordion">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+      {emitSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       {title && <h2 className="faq-accordion__title">{title}</h2>}
       {items.map((item, i) => {
         const isOpen = openIndex === i;

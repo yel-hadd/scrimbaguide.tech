@@ -25,9 +25,9 @@ export default function CourseCard({
   description,
 }: CourseCardProps): React.ReactElement {
   return (
-    <div className="course-card" role="region" aria-label={title}>
+    <article className="course-card" aria-label={title}>
       <div className="course-card__header">
-        <div className="course-card__title">{title}</div>
+        <h3 className="course-card__title">{title}</h3>
         <span className={`course-card__badge course-card__badge--${access.toLowerCase()}`}>
           {access}
         </span>
@@ -38,16 +38,16 @@ export default function CourseCard({
       )}
 
       <div className="course-card__meta">
-        {duration && <span className="course-card__meta-item">&#9202; {duration}</span>}
-        {difficulty && <span className="course-card__meta-item">&#128218; {difficulty}</span>}
+        {duration && <span className="course-card__meta-item">Duration: {duration}</span>}
+        {difficulty && <span className="course-card__meta-item">Level: {difficulty}</span>}
         {modules !== undefined && <span className="course-card__meta-item">{modules} modules</span>}
         {lessons !== undefined && <span className="course-card__meta-item">{lessons} lessons</span>}
-        {instructor && <span className="course-card__meta-item">&#127891; {instructor}</span>}
+        {instructor && <span className="course-card__meta-item">Instructor: {instructor}</span>}
       </div>
 
       <AffiliateLink href={href} variant="button" className="course-card__cta">
         View on Scrimba
       </AffiliateLink>
-    </div>
+    </article>
   );
 }

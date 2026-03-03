@@ -17,13 +17,13 @@ export default function VerdictBox({
   verdict,
   pros = [],
   cons = [],
-  ctaText = 'Try Scrimba Pro',
+  ctaText = 'Claim 20% Off Scrimba Pro',
   ctaHref = 'https://scrimba.com/home?pricing&via=u42d4986',
 }: VerdictBoxProps): React.ReactElement {
   return (
     <div className="verdict-box">
       <div className="verdict-box__header">
-        <div className="verdict-box__title" role="heading" aria-level={2}>{title}</div>
+        <h2 className="verdict-box__title">{title}</h2>
         {rating && <div className="verdict-box__rating">{rating}</div>}
       </div>
       
@@ -33,7 +33,7 @@ export default function VerdictBox({
         <div className="verdict-box__lists">
           {pros.length > 0 && (
             <div className="verdict-box__list verdict-box__list--pros">
-              <div className="verdict-box__list-title" role="heading" aria-level={3}>Pros</div>
+              <h3 className="verdict-box__list-title">Pros</h3>
               <ul>
                 {pros.map((pro, i) => (
                   <li key={i}>{pro}</li>
@@ -44,7 +44,7 @@ export default function VerdictBox({
           
           {cons.length > 0 && (
             <div className="verdict-box__list verdict-box__list--cons">
-              <div className="verdict-box__list-title" role="heading" aria-level={3}>Cons</div>
+              <h3 className="verdict-box__list-title">Cons</h3>
               <ul>
                 {cons.map((con, i) => (
                   <li key={i}>{con}</li>

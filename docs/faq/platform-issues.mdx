@@ -8,7 +8,14 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 
 # Scrimba Platform Issues & Troubleshooting
 
+**Quick Answer:** Answers to common questions. See below for details.
+
+*Last reviewed: March 2026.*
+
+
+
 <FAQAccordion title="Device & Access" items={[
+  { q: "Is there a native Scrimba mobile app?", a: "No. Scrimba is web-based only. There is no native iOS or Android app. The site works in mobile browsers, but the interactive coding experience is optimized for desktop — you need a keyboard and larger screen for full functionality." },
   { q: "What devices work with Scrimba?", a: "Scrimba works best on desktop/laptop computers with modern browsers (Chrome, Firefox, Safari, Edge). Mobile and tablet support is limited — the interactive coding features are designed for desktop screens." },
   { q: "Can I watch courses offline?", a: "No. Scrimba requires an internet connection. The interactive editor needs the server to function. There is no offline mode or downloadable content." },
   { q: "Can I change the language of the lesson?", a: "Scrimba courses are in English. Some lessons have captions/subtitles, but there's no multi-language support for the actual instruction." },
@@ -16,7 +23,7 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
   { q: "How do I sign in/sign up?", a: "Visit scrimba.com and click Sign In. You can use email/password, Google, or GitHub authentication." },
 ]} />
 
-<FAQAccordion title="Lessons & Progress" items={[
+<FAQAccordion emitSchema={false} title="Lessons & Progress" items={[
   { q: "The editor is not working correctly", a: "Try refreshing the page, clearing your browser cache, or switching to Chrome. Disable browser extensions that might interfere. If the issue persists, contact help@scrimba.com." },
   { q: "My code crashes or freezes the browser", a: "This usually happens with infinite loops. Close the tab, re-open the lesson, and click the reset button to restore the original code." },
   { q: "My progress is not correct, how do I fix it?", a: "Contact Scrimba support at help@scrimba.com. Progress issues are occasionally caused by browser sync problems." },
@@ -25,7 +32,7 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
   { q: "How do I copy a scrim?", a: "Use the fork/copy button in the lesson interface to create your own copy of the scrim that you can edit freely." },
 ]} />
 
-<FAQAccordion title="Courses & Content" items={[
+<FAQAccordion emitSchema={false} title="Courses & Content" items={[
   { q: "Where can I find free courses?", a: "Browse the Scrimba home page and look for courses labeled 'Community' — these are free. We also have a list of the best free Scrimba courses." },
   { q: "Where can I find upcoming courses?", a: "Check the Scrimba roadmap page for planned courses and features." },
   { q: "What is Instant Feedback?", a: "Instant Feedback is a feature in some lessons that checks your code solution against expected results and gives immediate feedback on whether it's correct." },
@@ -33,6 +40,11 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
   { q: "I see red error lines in my TypeScript code", a: "TypeScript error highlighting in the Scrimba editor is normal — it shows type errors in your code. Fix the highlighted issues or check the lesson instructions for guidance." },
   { q: "How do I delete my account?", a: "Contact help@scrimba.com to request account deletion. Make sure to cancel any active subscription first." },
 ]} />
+
+## Who This Is For
+
+Anyone with questions about this topic.
+
 
 ## Related Pages
 

@@ -23,8 +23,14 @@ export default function ComparisonTable({
   competitorUrl,
 }: ComparisonTableProps): React.ReactElement {
   return (
-    <div className="comparison-table-wrapper">
+    <div
+      className="comparison-table-wrapper"
+      tabIndex={0}
+      role="region"
+      aria-label={`${scrimbaLabel} versus ${competitorName} feature comparison table`}
+    >
       <table className="comparison-table">
+        <caption className="sr-only">{scrimbaLabel} versus {competitorName} feature comparison</caption>
         <thead>
           <tr>
             <th>Feature</th>
@@ -44,7 +50,7 @@ export default function ComparisonTable({
       </table>
       <div className="comparison-table__cta-row">
         <AffiliateLink href={scrimbaUrl} variant="button">
-          Try Scrimba Pro
+          Claim 20% Off Pro
         </AffiliateLink>
         {competitorUrl && (
           <a href={competitorUrl} target="_blank" rel="noopener noreferrer" className="comparison-table__secondary-cta">

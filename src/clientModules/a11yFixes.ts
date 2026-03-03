@@ -38,23 +38,23 @@ function fixBlogListHeading() {
 }
 
 function fixScrollableTables() {
-  // Target all tables: docs, blog posts, and comparison tables
-  let tableIndex = 0;
+  // Prefer applying focus semantics to the scroll container instead of table itself.
+  let regionIndex = 0;
   document.querySelectorAll<HTMLElement>(
-    '.theme-doc-markdown table, .comparison-table, article table, .blog-wrapper table, .markdown table'
-  ).forEach((table) => {
-    if (table.hasAttribute('tabindex')) return;
-    // Check if table or its wrapper is scrollable
-    const wrapper = table.parentElement;
-    const isScrollable =
-      table.scrollWidth > table.clientWidth ||
-      (wrapper && wrapper.scrollWidth > wrapper.clientWidth);
+    '.theme-doc-markdown div[class*="tableWrapper"], .comparison-table-wrapper, .mdx-table-wrapper, article table'
+  ).forEach((candidate) => {
+    const region =
+      candidate.tagName.toLowerCase() === 'table'
+        ? candidate.parentElement
+        : candidate;
+    if (!region || region.hasAttribute('tabindex')) return;
+
+    const isScrollable = region.scrollWidth > region.clientWidth;
     if (isScrollable) {
-      tableIndex++;
-      table.setAttribute('tabindex', '0');
-      table.setAttribute('role', 'region');
-      // Use unique aria-labels to prevent landmark-unique violations
-      table.setAttribute('aria-label', `Data table ${tableIndex}`);
+      regionIndex++;
+      region.setAttribute('tabindex', '0');
+      region.setAttribute('role', 'region');
+      region.setAttribute('aria-label', `Scrollable data table ${regionIndex}`);
     }
   });
 }
@@ -99,6 +99,19 @@ function fixSearchPageLandmark() {
   content.appendChild(main);
 }
 
+function focusSearchInputOnDemand() {
+  if (!window.location.pathname.includes('/search')) return;
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('focus') !== '1') return;
+
+  const input = document.querySelector<HTMLInputElement>(
+    '.navbar__search-input, input[aria-label="Search"]'
+  );
+  if (input) {
+    input.focus();
+  }
+}
+
 const module: ClientModule = {
   onRouteDidUpdate() {
     setTimeout(() => {
@@ -108,6 +121,7 @@ const module: ClientModule = {
       fixTaskListCheckboxes();
       fixEmptyTableHeaders();
       fixSearchPageLandmark();
+      focusSearchInputOnDemand();
     }, 100);
   },
 };
