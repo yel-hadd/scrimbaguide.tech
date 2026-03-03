@@ -184,12 +184,14 @@ ${titleLines}
 // Parse blog posts
 import { readdirSync } from 'fs';
 
+const UPDATE_FM = process.argv.includes('--update-frontmatter');
 const blogFiles = readdirSync(BLOG_DIR).filter(f => f.endsWith('.mdx'));
 let generated = 0;
 let skipped = 0;
+let fmUpdated = 0;
 
 for (const file of blogFiles) {
-  const content = readFileSync(join(BLOG_DIR, file), 'utf8');
+  let content = readFileSync(join(BLOG_DIR, file), 'utf8');
   const fmMatch = content.match(/^---\n([\s\S]*?)\n---/);
   if (!fmMatch) continue;
 
@@ -203,6 +205,41 @@ for (const file of blogFiles) {
   const slug = slugMatch[1].trim();
   const title = titleMatch[1].trim();
   const firstTag = tagsMatch ? tagsMatch[1].split(',')[0].trim() : 'guide';
+  const categoryLabel = CATEGORY_MAP[firstTag] || 'Guide';
+
+  const imagePath = `/img/blog/${slug}.png`;
+  const altText = `${title} — ScrimbaGuide ${categoryLabel}`;
+
+  // ---- Backfill frontmatter ----
+  const hasImage = /^image:\s/m.test(fm);
+  const hasAlt = /^image_alt:\s/m.test(fm);
+  let needsWrite = false;
+
+  if (!hasImage) {
+    // Insert image: after the image line or after slug:
+    content = content.replace(
+      /^(slug:\s*.+)$/m,
+      `$1\nimage: ${imagePath}`
+    );
+    needsWrite = true;
+  }
+
+  if (!hasAlt) {
+    // Insert image_alt: after image:
+    content = content.replace(
+      /^(image:\s*.+)$/m,
+      `$1\nimage_alt: "${altText}"`
+    );
+    needsWrite = true;
+  }
+
+  if (needsWrite) {
+    writeFileSync(join(BLOG_DIR, file), content);
+    fmUpdated++;
+  }
+
+  // Skip image generation if only updating frontmatter
+  if (UPDATE_FM) continue;
 
   const svgPath = join(IMG_DIR, `${slug}.svg`);
   const pngPath = join(IMG_DIR, `${slug}.png`);
@@ -227,6 +264,9 @@ for (const file of blogFiles) {
   }
 }
 
-console.log(`✓ Generated ${generated} social card images`);
-if (skipped) console.log(`  Skipped ${skipped} (already exist, use --force to regenerate)`);
-console.log(`  Output: static/img/blog/{slug}.png`);
+if (fmUpdated) console.log(`✓ Updated frontmatter in ${fmUpdated} blog posts`);
+if (!UPDATE_FM) {
+  console.log(`✓ Generated ${generated} social card images`);
+  if (skipped) console.log(`  Skipped ${skipped} (already exist, use --force to regenerate)`);
+  console.log(`  Output: static/img/blog/{slug}.png`);
+}
