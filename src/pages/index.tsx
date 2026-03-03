@@ -373,7 +373,7 @@ function FinalCtaSection() {
 }
 
 const BASE_URL = 'https://scrimbaguide.tech';
-const HOME_TITLE = 'ScrimbaGuide: Scrimba Paths, Pricing, Reviews, and 2026 Learning Guides';
+const HOME_TITLE = 'Scrimba Paths, Pricing & Reviews (2026)';
 const HOME_DESC = 'Compare Scrimba paths, evaluate pricing, and pick the right roadmap with practical, up-to-date guidance built for real job outcomes.';
 
 export default function Home(): React.ReactElement {
