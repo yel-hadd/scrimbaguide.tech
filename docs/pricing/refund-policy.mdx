@@ -6,8 +6,12 @@ keywords: [scrimba refund, scrimba cancel subscription, scrimba money back, scri
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { freeCount } from '@site/src/utils/scrimbaFacts';
 
 # Scrimba Refund Policy
+
+<DisclosureNotice />
 
 Scrimba offers refunds under specific conditions. Here's what you need to know before subscribing — and what to do if you want your money back.
 
@@ -21,9 +25,11 @@ Scrimba offers refunds under specific conditions. Here's what you need to know b
 
 ## How to Request a Refund
 
-1. Submit a refund request through Scrimba's official form
+1. [Submit a refund request](https://form.typeform.com/to/PJFkZVF7) through Scrimba's official form
 2. If you need additional assistance, email **help@scrimba.com**
 3. Refunds are typically processed within a few business days
+
+[Scrimba Help Centre — How do I get a refund?](https://scrimba.helpscoutdocs.com/article/6-how-do-i-get-a-refund)
 
 ## What Happens After Cancellation?
 
@@ -34,7 +40,7 @@ Scrimba offers refunds under specific conditions. Here's what you need to know b
 
 ## Tips Before Subscribing
 
-1. **Try the free courses first** — Scrimba has ~20 free courses including [Learn React](/docs/courses/react/) and [Learn JavaScript](/docs/courses/javascript/)
+1. **Try the free courses first** — Scrimba has ~{freeCount} free courses including [Learn React](/docs/courses/react/) and [Learn JavaScript](/docs/courses/javascript/)
 2. **Check the [course catalog](/docs/courses/)** — make sure Scrimba covers what you want to learn
 3. **Choose annual if committed** — better value and you can still cancel within 7 days for a full refund
 
@@ -45,8 +51,8 @@ Scrimba offers refunds under specific conditions. Here's what you need to know b
 - [FAQ: Billing & Payments](/docs/faq/billing)
 
 <FAQAccordion items={[
-  { q: "How do I get a refund?", a: "Submit a refund request through Scrimba's official form or email help@scrimba.com. You must request within 7 days of your initial purchase." },
-  { q: "Can I get a refund on my renewal?", a: "No. Scrimba does not offer refunds on subscription renewals, only on the initial purchase within 7 days." },
-  { q: "Do I lose my progress if I cancel?", a: "No. Your progress is saved even after cancellation. You keep access to free courses but lose Pro-only content access." },
-  { q: "Can I pay with PayPal?", a: "Scrimba primarily accepts credit/debit cards. Contact help@scrimba.com for alternative payment options." },
+  { q: "How do I get a refund?", a: "Submit a refund request via Scrimba's official form or email help@scrimba.com. You must request within 7 days of your initial purchase.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/6-how-do-i-get-a-refund" },
+  { q: "Can I get a refund on my renewal?", a: "No. Scrimba does not offer refunds on subscription renewals, only on the initial purchase within 7 days.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/6-how-do-i-get-a-refund" },
+  { q: "Do I lose my progress if I cancel?", a: "No. Your progress is saved even after cancellation. You keep access to free courses but lose Pro-only content access.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/15-do-i-lose-my-progress-if-i-cancel-my-subscription" },
+  { q: "Can I pay with PayPal?", a: "Scrimba primarily accepts credit/debit cards. Contact help@scrimba.com for alternative payment options.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/85-can-i-pay-using-paypal-upi-or-bank-transfer" },
 ]} />

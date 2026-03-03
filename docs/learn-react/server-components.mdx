@@ -1,0 +1,83 @@
+---
+title: "React Server Components (RSC): The Future of React"
+description: "Understand React Server Components, Server Actions, and the shift to full-stack React. Learn where to start with Next.js and Scrimba."
+keywords: [react server components, rsc, next.js server components, react 19, server actions]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import CourseCard from '@site/src/components/CourseCard';
+
+# React Server Components
+
+React is moving from a client-side library to a full-stack framework architecture. **Server Components** allow you to render UI on the server, sending zero JavaScript to the client.
+
+## Key Concepts
+
+### 1. Server Components vs Client Components
+
+- **Server Components:** Render on the server. Great for fetching data, keeping secrets (API keys), and reducing bundle size. Cannot use hooks or event listeners.
+- **Client Components:** Render on the client (like traditional React). Use `'use client'` at the top of the file. Use for interactivity (`onClick`, `useState`).
+
+```jsx
+// Server Component (default)
+async function ProductPage({ id }) {
+  const product = await db.product.findUnique({ id }); // Direct DB access!
+  return <Product details={product} />;
+}
+```
+
+### 2. Server Actions
+
+Functions that run on the server, callable from the client. They replace API routes for simple mutations.
+
+```jsx
+// Server Action
+async function addToCart(formData) {
+  'use server';
+  await db.cart.add(formData.get('productId'));
+}
+
+// Client Component
+<form action={addToCart}>
+  <button type="submit">Add to Cart</button>
+</form>
+```
+
+### 3. React 19: useActionState and useOptimistic
+
+React 19 adds hooks that work with Server Actions:
+
+- **`useActionState`** — replaces the deprecated `useFormState`. Manages pending state, errors, and return values from form actions.
+- **`useOptimistic`** — shows optimistic UI updates before the server responds (e.g., "liking" a post instantly).
+- **`use()`** — lets you read promises and context inside render (including conditionally).
+
+### 4. The React Compiler
+
+The React Compiler (optional in React 19) automatically memoizes your components and values. You no longer need manual `useMemo` or `useCallback` for most cases — the compiler optimizes re-renders for you. See the [React docs on the Compiler](https://react.dev/reference/react/Compiler).
+
+## How to Learn This on Scrimba
+
+The best way to learn Server Components is through **Next.js**, the framework that pioneered them.
+
+### Recommended Path
+
+**1. The Next.js App Router Course**
+Learn how to build full-stack apps with the new App Router, which is built on RSCs.
+
+<CourseCard
+  title="The Next.js App Router"
+  duration="4 hrs"
+  difficulty="Intermediate"
+  access="Free"
+  href="https://scrimba.com/learn-next-js-app-router-c02s?via=u42d4986"
+  description="Master the modern way to build React applications with Server Components."
+/>
+
+**2. The Fullstack Developer Path**
+This career path covers the entire ecosystem: React, Next.js, Postgres, and deployment.
+
+<div style={{ textAlign: 'center', marginTop: '2rem' }}>
+  <AffiliateLink href="https://scrimba.com/fullstack-path-c0fullstack?via=u42d4986" variant="button">
+    Explore the Fullstack Path
+  </AffiliateLink>
+</div>

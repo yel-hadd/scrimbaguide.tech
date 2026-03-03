@@ -1,28 +1,29 @@
 ---
 title: "All Scrimba Courses: Complete Catalog (2026)"
-description: "Browse all 87+ Scrimba courses organized by topic. React, JavaScript, AI, CSS, Backend, Python, TypeScript, and more. Free and Pro courses included."
+description: "Browse all Scrimba courses organized by topic. React, JavaScript, AI, CSS, Backend, Python, TypeScript, and more. Free and Pro courses included."
 keywords: [scrimba courses, scrimba course list, scrimba catalog, all scrimba courses]
 slug: /courses
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
+import { totalCoursesLabel, freeCount, categoryCounts } from '@site/src/utils/scrimbaFacts';
 
 # All Scrimba Courses
 
-Scrimba offers **87+ interactive courses** across web development, AI, and programming. About 20 are free; the rest require [Scrimba Pro](/docs/pricing/).
+Scrimba offers **{totalCoursesLabel} interactive courses** across web development, AI, and programming. About {freeCount} are free; the rest require [Scrimba Pro](/docs/pricing/).
 
 ## Browse by Topic
 
 | Topic | Courses | Highlights |
 |---|---|---|
-| [React](/docs/courses/react/) | 16 courses | Learn React, Advanced React, React 19, Router |
-| [JavaScript](/docs/courses/javascript/) | 15+ courses | Beginner to advanced, interview prep, ES6+ |
-| [AI & Machine Learning](/docs/courses/ai/) | 12+ courses | Agents, RAG, LangChain, OpenAI, Claude, MCP |
-| [CSS & Design](/docs/courses/css/) | 12+ courses | Tailwind, Grid, Flexbox, animations, UI design |
-| [Backend & Databases](/docs/courses/backend/) | 10+ courses | Node.js, Express, SQL, Supabase, Firebase, NestJS |
-| [Python](/docs/courses/python/) | 1 course | Learn Python (5.6 hrs, beginner) |
-| [TypeScript](/docs/courses/typescript/) | 1 course | Learn TypeScript (4.2 hrs, intermediate) |
+| [React](/docs/courses/react/) | {(categoryCounts.react ?? 0) > 1 ? `${categoryCounts.react}+` : categoryCounts.react} courses | Learn React, Advanced React, React 19, Router |
+| [JavaScript](/docs/courses/javascript/) | {(categoryCounts.javascript ?? 0)}+ courses | Beginner to advanced, interview prep, ES6+ |
+| [AI & Machine Learning](/docs/courses/ai/) | {(categoryCounts.ai ?? 0)}+ courses | Agents, RAG, LangChain, OpenAI, Claude, MCP |
+| [CSS & Design](/docs/courses/css/) | {(categoryCounts.css ?? 0)}+ courses | Tailwind, Grid, Flexbox, animations, UI design |
+| [Backend & Databases](/docs/courses/backend/) | {(categoryCounts.backend ?? 0) > 1 ? `${categoryCounts.backend}+` : (categoryCounts.backend ?? 0)} courses | Node.js, Express, SQL, Cybersecurity, Supabase, Firebase, NestJS |
+| [Python](/docs/courses/python/) | {(categoryCounts.python ?? 0) === 1 ? '1 course' : `${categoryCounts.python ?? 0}+ courses`} | Learn Python (5.6 hrs, beginner) |
+| [TypeScript](/docs/courses/typescript/) | {(categoryCounts.typescript ?? 0) === 1 ? '1 course' : `${categoryCounts.typescript ?? 0}+ courses`} | Learn TypeScript (4.2 hrs, intermediate) |
 
 ## Career Paths
 
@@ -41,9 +42,20 @@ These courses are available without a Pro subscription:
 - Learn JavaScript (9.4 hrs)
 - Learn HTML and CSS (5.7 hrs)
 - Learn Python (5.6 hrs)
-- Intro to AI Engineering (2.4 hrs)
-- Learn Tailwind CSS
+- Learn TypeScript (4.2 hrs)
+- React 19 Tutorial (1.1 hrs)
+- Build Serverless AI Agents (Langbase)
 - And more — see [Best Free Scrimba Courses](/blog/best-free-scrimba-courses)
+
+## Practice Guides
+
+Stop reading documentation and start coding. Check out our interactive practice guides:
+
+- **[Practice CSS Grid](/docs/practice/practice-css-grid)**
+- **[Practice Flexbox](/docs/practice/practice-flexbox)**
+- **[Practice React Hooks](/docs/practice/practice-react-hooks)**
+- **[Practice JavaScript Arrays](/docs/practice/practice-javascript-arrays)**
+- **[Practice API Calls](/docs/practice/practice-api-calls)**
 
 ## Related Pages
 

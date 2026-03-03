@@ -1,7 +1,7 @@
 ---
 slug: is-scrimba-worth-it
 title: "Is Scrimba Worth It in 2026? Honest Assessment"
-description: "Is Scrimba Pro worth the money? We analyze the value proposition: 87+ courses, 4 career paths, interactive format, and compare to free alternatives."
+description: "Is Scrimba Pro worth the money? We analyze the value proposition: courses, 4 career paths, interactive format, and compare to free alternatives."
 authors: [scrimbaguide]
 tags: [review, pricing]
 keywords: [is scrimba worth it, scrimba worth it 2026, scrimba pro worth it, should i buy scrimba]
@@ -10,25 +10,61 @@ image: /img/blog/is-scrimba-worth-it.png
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
+import ReviewSchema from '@site/src/components/ReviewSchema';
+import VerdictBox from '@site/src/components/VerdictBox';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
+
+<ReviewSchema 
+  itemName="Scrimba Pro" 
+  ratingValue={4.5} 
+  bestRating={5} 
+  author="ScrimbaGuide Team" 
+  datePublished="2026-01-04"
+/>
 
 # Is Scrimba Worth It in 2026?
 
+<DisclosureNotice />
+
 The short answer: **yes, if you're serious about web development or AI engineering.** Here's the longer answer with math to back it up.
 
+<VerdictBox 
+  title="Is It Worth It?" 
+  rating="4.5/5" 
+  verdict="Yes, Scrimba Pro is worth it for the structured career paths and interactive format alone. For ~$20/month (annual), you get access to content that rivals $15k bootcamps. The main downside is the limited language selection outside of JS/Python."
+  pros={[
+    "Costs <1% of a coding bootcamp",
+    "Interactive format builds muscle memory",
+    "Includes 4 complete career paths",
+    "Active Discord community"
+  ]}
+  cons={[
+    "Subscription model (can't buy single course)",
+    "Not for C++, Java, or mobile dev"
+  ]}
+/>
+
 {/* truncate */}
+
+<div className="text-center margin-vert--lg">
+  <AffiliateLink href="https://scrimba.com/pricing?via=u42d4986" variant="button" size="lg">
+    Check Current Scrimba Pro Pricing
+  </AffiliateLink>
+</div>
 
 ## The Value Calculation
 
 With Scrimba Pro, you get access to:
 
-- **87+ courses** covering React, JavaScript, AI, CSS, Backend, Python, TypeScript
+- **{totalCoursesLabel} courses** covering React, JavaScript, AI, CSS, Backend, Python, TypeScript
 - **4 career paths** totaling 230+ hours of structured content
 - **Unlimited interactive challenges**
 - **Private Discord community** with mentors
 - **Certificates of completion** for career paths
 
 Compare that to buying equivalent content elsewhere:
-- 87 Udemy courses at $15 each = **$1,305**
+- {totalCoursesLabel} Udemy courses at $15 each = **$1,200+**
 - A coding bootcamp = **$10,000-$20,000**
 - Frontend Masters annual = ~$390/year
 

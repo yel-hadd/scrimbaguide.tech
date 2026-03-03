@@ -1,22 +1,23 @@
 ---
 title: "Affiliate Disclosure"
-description: "ScrimbAGuide's affiliate disclosure. How we earn commissions through Scrimba affiliate links and our commitment to honest reviews."
+description: "ScrimbaGuide's affiliate disclosure. How we earn commissions through Scrimba affiliate links and our commitment to honest reviews."
 keywords: [scrimbaguide affiliate disclosure, scrimba affiliate]
 ---
 
 # Affiliate Disclosure
 
-**Last Updated: 2026-02-06**
+**Last Updated: 2026-02-24**
 
-## Transparency & Affiliate Links
+## FTC Disclosure & Material Connection
 
-ScrimbAGuide.tech is a participant in the Scrimba Affiliate Program. This means that when you click on links to Scrimba.com on this site and make a purchase (such as a Scrimba Pro subscription), we may earn a small commission.
+In accordance with the Federal Trade Commission's 16 CFR Part 255 guidelines ("Guides Concerning the Use of Endorsements and Testimonials in Advertising"), ScrimbaGuide.tech discloses the following material connection:
 
-**This comes at NO additional cost to you.** In some cases, using our links may even unlock special discounts.
+**ScrimbaGuide.tech is a participant in the Scrimba Affiliate Program.** When you click affiliate links on this site and subscribe to Scrimba Pro, we earn a commission. This commission comes at **no additional cost to you** and does not influence our editorial assessments, ratings, or recommendations.
 
 ## How We Review
 
-Our goal is to provide the most comprehensive, honest, and useful guide to Scrimba courses.
+All opinions expressed are our own, based on hands-on testing of the Scrimba platform. We recommend Scrimba because we genuinely believe it is the best interactive coding platform for web development — not because of the affiliate relationship.
+
 - We have personally taken or deeply researched every course we review.
 - Our "Pros & Cons" are based on objective analysis, not marketing copy.
 - We are not employees of Scrimba. This is an unofficial fan guide.

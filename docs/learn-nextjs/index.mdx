@@ -1,0 +1,80 @@
+---
+title: "Start Here: The Next.js Learning Roadmap (2026)"
+description: "A complete guide to learning Next.js 15+ and the App Router. Map the official documentation concepts to interactive Scrimba lessons."
+keywords: [learn next.js, next.js roadmap, next.js 15, app router tutorial, scrimba next.js]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import CourseCard from '@site/src/components/CourseCard';
+import PricingCTA from '@site/src/components/PricingCTA';
+
+# Start Here: The Next.js Learning Roadmap
+
+Next.js has become the standard for building React applications. With the release of the **App Router** (Next.js 13+), the way we build web apps has fundamentally changed.
+
+This roadmap maps the [official Next.js documentation](https://nextjs.org/docs) to Scrimba's interactive **Learn Next.js** course, so you can build real projects while you learn.
+
+## 1. Getting Started
+
+**Goal:** Understand the file structure and create your first page.
+
+| Concept | Official Docs | Scrimba Lesson |
+|---|---|---|
+| **Installation** | [Docs](https://nextjs.org/docs/getting-started/installation) | [Setup & File Structure](https://scrimba.com/learn/nextjs/setup-c02?via=u42d4986) |
+| **Project Structure** | [Docs](https://nextjs.org/docs/getting-started/project-structure) | [The App Folder](https://scrimba.com/learn/nextjs/app-folder-c04?via=u42d4986) |
+| **Pages & Layouts** | [Docs](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) | [Pages & Layouts](https://scrimba.com/learn/nextjs/pages-and-layouts-c06?via=u42d4986) |
+
+<CourseCard
+  title="The Next.js App Router (Free)"
+  duration="4 hrs"
+  difficulty="Intermediate"
+  access="Free"
+  href="https://scrimba.com/learn-next-js-app-router-c02s?via=u42d4986"
+  description="Learn the absolute basics of the App Router by building a dashboard."
+/>
+
+## 2. Routing & Navigation
+
+**Goal:** Link pages together and understand dynamic routes.
+
+Next.js uses a **file-system based router**. Folders define routes.
+
+- **Linking:** `Link` component for client-side navigation.
+    - [Scrimba Lesson: The Link Component](https://scrimba.com/learn/nextjs/link-component-c08?via=u42d4986)
+- **Dynamic Routes:** `[slug]/page.js` for dynamic content.
+    - [Scrimba Lesson: Dynamic Routes](https://scrimba.com/learn/nextjs/dynamic-routes-c010?via=u42d4986)
+
+## 3. Rendering: Server vs Client
+
+**Goal:** Master the single most important concept in modern Next.js.
+
+| Type | When to use | Scrimba Lesson |
+|---|---|---|
+| **Server Components** | Data fetching, database calls, sensitive logic. (Default) | [Server Components](https://scrimba.com/learn/nextjs/server-components-c012?via=u42d4986) |
+| **Client Components** | Interactivity, `onClick`, `useState`, `useEffect`. | [Client Components](https://scrimba.com/learn/nextjs/client-components-c014?via=u42d4986) |
+
+## 4. Data Fetching
+
+**Goal:** Get data from your database to your UI.
+
+In the App Router, you can fetch data directly in your Server Components using `async/await`.
+
+- **Fetching Data:** `const data = await fetch(...)`
+    - [Scrimba Lesson: Fetching Data](https://scrimba.com/learn/nextjs/fetching-data-c016?via=u42d4986)
+- **Loading UI:** `loading.js` for instant loading states.
+    - [Scrimba Lesson: Loading UI](https://scrimba.com/learn/nextjs/loading-ui-c018?via=u42d4986)
+
+## 5. Server Actions
+
+**Goal:** Mutate data without API routes.
+
+Instead of writing a separate API endpoint (`/api/submit`), you write a function that runs on the server and call it directly from your form.
+
+-> **This is a key part of the [Fullstack Career Path](https://scrimba.com/fullstack-path-c0fullstack?via=u42d4986).**
+
+---
+
+<PricingCTA
+  title="Become a Fullstack Next.js Developer"
+  subtitle="Master Next.js, Postgres, and deployment with the comprehensive Career Path."
+/>

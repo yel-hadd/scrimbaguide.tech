@@ -1,6 +1,6 @@
-# ScrimbAGuide
+# ScrimbaGuide
 
-The unofficial guide to [Scrimba](https://scrimba.com/) — course reviews, learning path guides, pricing breakdowns, and honest comparisons. Built with [Docusaurus 3](https://docusaurus.io/) and deployed to [scrimbaguide.tech](https://scrimbaguide.tech).
+The unofficial guide to [Scrimba](https://scrimba.com/?via=u42d4986) — course reviews, learning path guides, pricing breakdowns, and honest comparisons. Built with [Docusaurus 3](https://docusaurus.io/) and deployed to [scrimbaguide.tech](https://scrimbaguide.tech).
 
 ## Project Structure
 

@@ -7,14 +7,45 @@ keywords: [scrimba vs coursera, coursera vs scrimba, best coding platform, scrim
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import ReviewSchema from '@site/src/components/ReviewSchema';
+import VerdictBox from '@site/src/components/VerdictBox';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+
+<ReviewSchema 
+  itemName="Scrimba vs Coursera" 
+  ratingValue={4.5} 
+  bestRating={5} 
+  author="ScrimbaGuide Team" 
+  datePublished="2026-01-15"
+/>
 
 # Scrimba vs Coursera: Complete Comparison (2026)
 
+<DisclosureNotice />
+
 Scrimba is a hands-on interactive coding platform. Coursera offers university-backed courses and professional certificates. They serve different needs — here's how to decide.
+
+<VerdictBox 
+  title="The Verdict" 
+  rating="Winner: Scrimba (for coding)" 
+  verdict="For learning to code specifically, Scrimba is superior. The interactive environment teaches you to write code, not just pass multiple-choice quizzes. Coursera is better if you need a university-branded certificate for your resume or want to learn academic theory."
+  pros={[
+    "Scrimba: Interactive coding (builds skills)",
+    "Scrimba: Job-ready portfolio projects",
+    "Coursera: University/Big Tech branding"
+  ]}
+  cons={[
+    "Coursera: Passive video + quiz format",
+    "Coursera: Often academic/theoretical focus",
+    "Scrimba: Certificates have less corporate brand recognition"
+  ]}
+  ctaText="Try Scrimba Free"
+  ctaHref="https://scrimba.com/?via=u42d4986"
+/>
 
 <ComparisonTable
   competitorName="Coursera"
-  scrimbaUrl="https://scrimba.com/"
+  scrimbaUrl="https://scrimba.com/?via=u42d4986"
   competitorUrl="https://www.coursera.org/"
   rows={[
     { feature: "Teaching format", scrimba: "Interactive video scrims (pause & edit code)", competitor: "Traditional video lectures + quizzes" },

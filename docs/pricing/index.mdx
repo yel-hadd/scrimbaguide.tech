@@ -7,9 +7,13 @@ slug: /pricing
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
 
 # Scrimba Pricing Guide 2026
+
+<DisclosureNotice />
 
 Scrimba offers a free tier and a paid Pro subscription. Here's everything you need to know about the costs, what's included, and how to save.
 
@@ -17,11 +21,11 @@ Scrimba offers a free tier and a paid Pro subscription. Here's everything you ne
 
 | Plan | Price | What You Get |
 |---|---|---|
-| **Free** | $0 | ~20 courses, limited challenges (10 total), no Discord |
-| **Pro Monthly** | Per-month billing | All 87+ courses, unlimited challenges, private Discord, certificates |
+| **Free** | $0 | ~{freeCount} courses, limited challenges (10 total), no Discord |
+| **Pro Monthly** | Per-month billing | All {totalCoursesLabel} courses, unlimited challenges, private Discord, certificates |
 | **Pro Annual** | Annual billing (best value) | Same as monthly but with significant annual savings |
 
-> Prices may change — check the <AffiliateLink href="https://scrimba.com/home?pricing">official Scrimba pricing page</AffiliateLink> for current rates.
+> Prices may change — check the <AffiliateLink href="https://scrimba.com/home?pricing=&via=u42d4986">official Scrimba pricing page</AffiliateLink> for current rates.
 
 ## What's Included in Scrimba Pro?
 
@@ -32,21 +36,39 @@ Scrimba offers a free tier and a paid Pro subscription. Here's everything you ne
 - **Certificates of completion** for career paths
 - **New courses added regularly** — see the [Scrimba roadmap](/blog/scrimba-roadmap-whats-coming)
 
+## Start Free, Upgrade Later
+
+You don't need Pro to begin. Scrimba offers **{freeCount}+ free courses** including Learn React, Learn JavaScript, Learn Python, and Learn TypeScript. [Try Scrimba free](https://scrimba.com/?via=u42d4986) to experience the interactive format. Upgrade to Pro when you're ready for career paths and unlimited challenges.
+
 ## How to Save on Scrimba Pro
 
 1. **Choose annual billing** — significant savings over monthly
 2. **Student discount** — available with a valid academic email. See our [student discount guide](/docs/pricing/student-discount)
-3. **GitHub Student Developer Pack** — free Pro access for eligible students
-4. **Use our affiliate link** — <AffiliateLink href="https://scrimba.com/home?pricing">get started with Scrimba Pro here</AffiliateLink>
+3. **GitHub Student Developer Pack** — 1 free month of Pro for eligible students
+4. **Use our affiliate link** — <AffiliateLink href="https://scrimba.com/home?pricing=&via=u42d4986">get started with Scrimba Pro here</AffiliateLink>
 
 ## Is Scrimba Pro Worth It?
 
-For the price of a few Udemy courses, you get access to **87+ interactive courses** and **4 structured career paths** totaling over 230 hours of content. Unlike Udemy, every Scrimba lesson is interactive — you code along in the browser.
+For the price of a few Udemy courses, you get access to **{totalCoursesLabel} interactive courses** and **4 structured career paths** totaling over 230 hours of content.
 
-Read our detailed analysis: [Is Scrimba Worth It?](/blog/is-scrimba-worth-it)
+### Why It Pays Off
+- **Get Hired Faster**: Structure beats random tutorials. Follow the path, build the projects, get the job.
+- **Code, Don't Watch**: Muscle memory is built by typing, not watching. Scrimba forces you to code every few minutes.
+- **Never Get Stuck**: The Discord community is active and helpful.
+
+### What Graduates Say
+
+> *"I can honestly say that Scrimba is the reason I got my first developer job."* — Scrimba Graduate
+
+> *"The interactive format is a game-changer. You're not just watching — you're coding along from minute one."* — Scrimba Pro subscriber
+
+> *"The Frontend Path gave me structure when I was lost in tutorial hell. Finished it, built my portfolio, got hired."* — Career changer
+
+Read our full analysis: [Is Scrimba Worth It?](/blog/is-scrimba-worth-it)
 
 ## Related Pages
 
+- [Bootcamp Cost Calculator](/tools/bootcamp-cost-calculator) — calculate your savings
 - [Pro vs Free: Detailed Comparison](/docs/pricing/pro-vs-free)
 - [Scrimba vs Coding Bootcamps](/docs/pricing/scrimba-vs-bootcamps) — how Scrimba compares to $14k+ bootcamps
 - [Student Discounts & Scholarships](/docs/pricing/student-discount)
@@ -55,10 +77,10 @@ Read our detailed analysis: [Is Scrimba Worth It?](/blog/is-scrimba-worth-it)
 - [Best Free Scrimba Courses](/blog/best-free-scrimba-courses)
 
 <FAQAccordion items={[
-  { q: "How much does Scrimba Pro cost?", a: "Scrimba Pro is available as a monthly or annual subscription. Annual billing offers the best value. Check the official pricing page for current rates." },
-  { q: "Can I try Scrimba for free?", a: "Yes. About 20 courses are available for free, including Learn React, Learn JavaScript, and Learn HTML & CSS. You can also complete up to 10 interactive challenges on the free plan." },
+  { q: "How much does Scrimba Pro cost?", a: "Scrimba Pro is available as a monthly or annual subscription. Annual billing offers the best value. Check the official pricing page for current rates.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/72-how-much-does-scrimba-cost" },
+  { q: "Can I try Scrimba for free?", a: `Yes. About ${freeCount} courses are available for free, including Learn React, Learn JavaScript, Learn TypeScript, and Learn Python. You can also complete up to 10 interactive challenges on the free plan.`, sourceUrl: "https://scrimba.helpscoutdocs.com/article/73-whats-the-difference-between-pro-and-free" },
   { q: "Is there a free trial?", a: "Scrimba doesn't offer a traditional free trial, but the generous free tier lets you experience the platform with real courses before subscribing." },
-  { q: "Can I cancel anytime?", a: "Yes. You can cancel your subscription at any time. You keep access until the end of your billing period and your progress is saved." },
+  { q: "Can I cancel anytime?", a: "Yes. You can cancel your subscription at any time. You keep access until the end of your billing period and your progress is saved.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/15-do-i-lose-my-progress-if-i-cancel-my-subscription" },
 ]} />
 
 <PricingCTA />

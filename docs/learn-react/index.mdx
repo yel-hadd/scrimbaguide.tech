@@ -1,0 +1,109 @@
+---
+title: "Start Here: The React Learning Roadmap (2026)"
+description: "A complete guide to learning React on Scrimba. Maps the official React documentation concepts to interactive Scrimba courses and lessons."
+keywords: [learn react, react roadmap, scrimba react guide, react documentation, how to learn react]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import CourseCard from '@site/src/components/CourseCard';
+import PricingCTA from '@site/src/components/PricingCTA';
+
+# Start Here: The React Learning Roadmap
+
+Welcome to the **unofficial companion guide** to the React documentation.
+
+The [official React docs](https://react.dev) are excellent for *reading* about concepts, but **Scrimba** is the best place to *practice* them. This roadmap maps the official documentation structure to Scrimba's interactive lessons, so you can read a concept and then immediately write code to master it.
+
+> **Rules of React:** Components and hooks must be **pure** (same inputs → same output). Props and state are **immutable** — never mutate them directly. See [react.dev/reference/rules](https://react.dev/reference/rules) for the full rules.
+
+## 1. Quick Start
+
+**Goal:** Build your first component, understand JSX, and handle basic state.
+
+| Concept | Official Docs | Scrimba Lesson |
+|---|---|---|
+| **Thinking in React** | [Read Docs](https://react.dev/learn/thinking-in-react) | [Intro to React](https://scrimba.com/learn/learnreact/intro-to-react-c0e?via=u42d4986) |
+| **Your First Component** | [Read Docs](https://react.dev/learn/your-first-component) | [Custom Components](https://scrimba.com/learn/learnreact/custom-components-c0b?via=u42d4986) |
+| **Import/Export** | [Read Docs](https://react.dev/learn/importing-and-exporting-components) | [Organizing Components](https://scrimba.com/learn/learnreact/organizing-components-c0d?via=u42d4986) |
+| **JSX** | [Read Docs](https://react.dev/learn/writing-markup-with-jsx) | [JSX](https://scrimba.com/learn/learnreact/jsx-c0a?via=u42d4986) |
+
+<CourseCard
+  title="Learn React (Free)"
+  duration="15.1 hrs"
+  difficulty="Intermediate"
+  access="Free"
+  href="https://scrimba.com/learn-react-c0e?via=u42d4986"
+  description="The comprehensive free course that covers all these Quick Start topics and more."
+/>
+
+## 2. Describing the UI
+
+**Goal:** Master the fundamentals of rendering.
+
+- **Props:** Learn how to pass data between components.
+    - [Scrimba Lesson: Props Part 1](https://scrimba.com/learn/learnreact/props-part-1-c0f?via=u42d4986)
+- **Conditional Rendering:** Show/hide elements based on state.
+    - [Scrimba Lesson: Conditional Rendering](https://scrimba.com/learn/learnreact/conditional-rendering-&&-c010?via=u42d4986)
+- **Rendering Lists:** Display data from arrays (using `.map()`).
+    - [Scrimba Lesson: Mapping Components](https://scrimba.com/learn/learnreact/mapping-components-c012?via=u42d4986)
+
+## 3. Adding Interactivity
+
+**Goal:** Make your app respond to user input.
+
+This is where `state` comes in--React's most important concept.
+
+| Concept | Explanation | Scrimba Lesson |
+|---|---|---|
+| **Events** | Handling clicks, form submits, etc. | [Event Listeners](https://scrimba.com/learn/learnreact/event-listeners-c014?via=u42d4986) |
+| **State** | Data that changes over time. | [useState Hook](https://scrimba.com/learn/learnreact/usestate-array-destructuring-c016?via=u42d4986) |
+| **State Updates** | Changing complex state objects. | [Complex State (Objects)](https://scrimba.com/learn/learnreact/complex-state-objects-c018?via=u42d4986) |
+
+## 4. Managing State
+
+**Goal:** Handle complex data flows across your application.
+
+As your app grows, you need better ways to manage state than just passing props down.
+
+- **Passing Data Deeply:** Avoid "prop drilling" with Context.
+    - [Scrimba Lesson: Context API](https://scrimba.com/learn/learnreact/context-provider-c020?via=u42d4986)
+- **Scaling Up:** Manage complex state logic with `useReducer`.
+    - -> **Covered in [Advanced React](https://scrimba.com/advanced-react-c02h?via=u42d4986)**
+
+## 5. Escape Hatches
+
+**Goal:** synchronize with external systems (APIs, DOM).
+
+This is primarily about `useEffect` and `useRef`.
+
+- **Effects:** Run code when components mount/update/unmount.
+    - [Scrimba Lesson: useEffect](https://scrimba.com/learn/learnreact/useeffect-syntax-c022?via=u42d4986)
+    - [Scrimba Lesson: Async / API Calls](https://scrimba.com/learn/learnreact/async-javascript-c024?via=u42d4986)
+
+<CourseCard
+  title="Advanced React (Pro)"
+  duration="13.2 hrs"
+  difficulty="Advanced"
+  access="Pro"
+  href="https://scrimba.com/advanced-react-c02h?via=u42d4986"
+  description="Master useEffect, custom hooks, and performance optimization."
+/>
+
+## 6. React 19 & The Future
+
+**Goal:** Learn the newest features like Server Components and Actions.
+
+React 19 introduces major changes to how we handle data mutations and server-client communication.
+
+- **Actions:** Handle form submissions automatically.
+- **`useActionState`:** Manage pending states easily.
+- **Server Components:** Render components on the server for performance.
+
+-> **[Start the React 19 Course](https://scrimba.com/whats-new-in-react-19-c03d?via=u42d4986)**
+
+---
+
+<PricingCTA
+  title="Master React with Scrimba Pro"
+  subtitle="Get access to Advanced React, React Router, and the full Frontend Career Path."
+/>

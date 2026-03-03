@@ -14,18 +14,42 @@ import PricingCTA from '@site/src/components/PricingCTA';
   title="Learn TypeScript"
   duration="4.2 hrs"
   difficulty="Intermediate"
-  access="Pro"
+  access="Free"
   lessons={79}
-  href="https://scrimba.com/learn-typescript-c03c"
+  href="https://scrimba.com/learn-typescript-c03c?via=u42d4986"
   description="The essential building blocks of TypeScript. Covers TS fundamentals, TS in React, TS in Express, plus a hands-on project."
 />
 
+## Why TypeScript?
+
+TypeScript is JavaScript with static types. It catches bugs at compile time instead of runtime — typos, wrong argument types, missing properties. In 2026, TypeScript is the default for new React and Next.js projects. The [official handbook](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html) puts it simply: you can't learn TypeScript without learning JavaScript, but TypeScript makes your JavaScript safer and easier to maintain.
+
 ## What You'll Learn
 
-- TypeScript fundamentals: types, interfaces, generics
-- TypeScript in React components
-- TypeScript in Express.js backends
-- Building a TypeScript-based project
+- **Type inference** — TypeScript infers types when you don't annotate
+- **Union types** — `string | number` for values that can be either
+- **Interfaces vs types** — defining object shapes and reusable types
+- **Generics** — `<T>` for reusable, type-safe functions and components
+- **Utility types** — `Partial`, `Pick`, `Omit`, and more
+
+## TypeScript + React
+
+The course covers typing React components: props interfaces, generic components, and event handlers. For example:
+
+```tsx
+interface ButtonProps {
+  label: string;
+  onClick: () => void;
+}
+
+function Button({ label, onClick }: ButtonProps) {
+  return <button onClick={onClick}>{label}</button>;
+}
+```
+
+## TypeScript + Express
+
+You'll learn how to type Express routes, request/response objects, and middleware. Critical for building type-safe backends.
 
 ## TypeScript in the Learning Paths
 
@@ -38,4 +62,8 @@ TypeScript modules appear in:
 - [JavaScript Courses](/docs/courses/javascript/) | [React Courses](/docs/courses/react/) | [Backend Courses](/docs/courses/backend/)
 - [All Courses](/docs/courses/) | [Scrimba Pricing](/docs/pricing/)
 
-<PricingCTA />
+<PricingCTA 
+  title="Start learning TypeScript for free"
+  subtitle="No credit card required. Try the course and upgrade to Pro when you're ready for the full path."
+  ctaType="free"
+/>

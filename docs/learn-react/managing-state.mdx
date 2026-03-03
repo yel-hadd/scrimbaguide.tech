@@ -1,0 +1,69 @@
+---
+title: "Managing State: Context and Reducers"
+description: "Scale your React applications by managing complex state. Learn how to share state between components using Context and manage logic with Reducers."
+keywords: [react context api, usecontext hook, usereducer hook, global state, scrimba advanced react]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import CourseCard from '@site/src/components/CourseCard';
+
+# Managing State
+
+As your application grows, simple `useState` isn't enough. You need to manage state that is shared across many components or has complex update logic.
+
+## 1. Sharing State Between Components
+
+When two components need to coordinate, you **lift state up** to their closest common parent.
+
+But what if they are far apart?
+
+## 2. Context: Passing Data Deeply
+
+Context lets you pass data through the component tree without having to pass props down manually at every level ("prop drilling").
+
+- **Create:** `const ThemeContext = createContext(null);`
+- **Provide:** `<ThemeContext.Provider value="dark">...</ThemeContext.Provider>`
+- **Consume:** `const theme = useContext(ThemeContext);`
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: Context API (Advanced React Course)](https://scrimba.com/learn/learnreact/context-provider-c020?via=u42d4986)**
+
+## 3. Extracting State Logic into a Reducer
+
+When you have many event handlers modifying state in complex ways, `useReducer` helps consolidate that logic into a single function outside your component.
+
+```jsx
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment': return { count: state.count + 1 };
+    case 'decrement': return { count: state.count - 1 };
+    default: return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+  return (
+    <>
+      <span>{state.count}</span>
+      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+    </>
+  );
+}
+```
+
+It lets you move from "set loading, then fetch, then set data" to "dispatch 'FETCH_SUCCESS'." **Choosing the State Structure**: Keep state flat when possible; group related data; avoid redundant state (derive it instead).
+
+This is covered in depth in the **Advanced React** course.
+
+---
+
+<CourseCard
+  title="Advanced React (Pro)"
+  duration="13.2 hrs"
+  difficulty="Advanced"
+  access="Pro"
+  href="https://scrimba.com/advanced-react-c02h?via=u42d4986"
+  description="Take your state management skills to the professional level with Context, Reducers, and optimization."
+/>

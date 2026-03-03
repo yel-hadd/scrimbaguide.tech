@@ -1,63 +1,65 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import AffiliateLink from '../components/AffiliateLink';
+import {
+  totalCoursesLabel,
+  freeCount,
+  freeCountLabel,
+  categoryCounts,
+  pathDurations,
+} from '../utils/scrimbaFacts';
 
 function HeroSection() {
   return (
     <section className="hero-section">
-      <h1>The Unofficial Guide to Scrimba</h1>
+      <h1>ScrimbaGuide: The Unofficial Guide to Scrimba</h1>
       <p>
-        Course reviews, learning path guides, pricing breakdowns, and honest
-        comparisons. Everything you need to make the most of Scrimba.
+        <strong>ScrimbaGuide</strong> is the unofficial guide to <strong>Scrimba</strong>—the interactive coding platform that teaches React, JavaScript, AI, and web development. Don&apos;t just watch tutorials—<b>write code</b>. Honest reviews, learning paths, and pro tips to help you get hired.
       </p>
       <div className="hero-buttons">
         <Link className="affiliate-link affiliate-link--button" to="/docs/paths/">
-          Explore Learning Paths
+          Find Your Career Path
         </Link>
-        <AffiliateLink href="https://scrimba.com/" variant="button">
-          Try Scrimba Free
+        <AffiliateLink href="https://scrimba.com/?via=u42d4986" variant="button">
+          Start Coding for Free
         </AffiliateLink>
       </div>
+      <p className="hero-section__trust">
+        <small>Rated 4.7/5 on G2 &middot; Used by developers at Google, Meta, and startups worldwide</small>
+      </p>
     </section>
   );
 }
 
+const PATH_DESCRIPTIONS: Record<string, string> = {
+  'frontend-developer-path':
+    'From zero to frontend developer. HTML, CSS, JavaScript, React, and career prep. Created with Mozilla MDN.',
+  'fullstack-developer-path':
+    'The most comprehensive path. Frontend + backend + databases + TypeScript + Next.js + AI engineering.',
+  'backend-developer-path':
+    'Node.js, Express, SQL, TypeScript, cybersecurity, DevOps. For developers adding backend skills.',
+  'ai-engineer-path':
+    'Build AI-powered apps. Agents, RAG, MCP, context engineering, Vercel AI SDK, and multimodality.',
+};
+
 function PathsSection() {
-  const paths = [
-    {
-      title: 'Frontend Developer Path',
-      duration: '81.6 hrs',
-      level: 'Beginner',
-      description:
-        'From zero to frontend developer. HTML, CSS, JavaScript, React, and career prep. Created with Mozilla MDN.',
-      link: '/docs/paths/frontend-developer-path',
-    },
-    {
-      title: 'Fullstack Developer Path',
-      duration: '108.4 hrs',
-      level: 'Beginner',
-      description:
-        'The most comprehensive path. Frontend + backend + databases + TypeScript + Next.js + AI engineering.',
-      link: '/docs/paths/fullstack-developer-path',
-    },
-    {
-      title: 'Backend Developer Path',
-      duration: '30.1 hrs',
-      level: 'Intermediate',
-      description:
-        'Node.js, Express, SQL, TypeScript, cybersecurity, DevOps. For developers adding backend skills.',
-      link: '/docs/paths/backend-developer-path',
-    },
-    {
-      title: 'AI Engineer Path',
-      duration: '11.4 hrs',
-      level: 'Intermediate',
-      description:
-        'Build AI-powered apps. Agents, RAG, MCP, context engineering, Vercel AI SDK, and multimodality.',
-      link: '/docs/paths/ai-engineer-path',
-    },
-  ];
+  const pathSlugs = [
+    'frontend-developer-path',
+    'fullstack-developer-path',
+    'backend-developer-path',
+    'ai-engineer-path',
+  ] as const;
+  const paths = pathSlugs
+    .filter((slug) => pathDurations[slug])
+    .map((slug) => ({
+      title: pathDurations[slug].name,
+      duration: pathDurations[slug].duration,
+      level: pathDurations[slug].level,
+      description: PATH_DESCRIPTIONS[slug],
+      link: `/docs/paths/${slug}`,
+    }));
 
   return (
     <section className="home-section">
@@ -87,20 +89,28 @@ function PathsSection() {
   );
 }
 
+function formatCount(n: number): string {
+  if (n <= 0) return '0 courses';
+  if (n === 1) return '1 course';
+  return `${n}+ courses`;
+}
+
 function CoursesSection() {
   const topics = [
-    { name: 'React', count: '16 courses', link: '/docs/courses/react/' },
-    { name: 'JavaScript', count: '15+ courses', link: '/docs/courses/javascript/' },
-    { name: 'AI & ML', count: '12+ courses', link: '/docs/courses/ai/' },
-    { name: 'CSS & Design', count: '12+ courses', link: '/docs/courses/css/' },
-    { name: 'Backend', count: '10+ courses', link: '/docs/courses/backend/' },
-    { name: 'TypeScript', count: '1 course', link: '/docs/courses/typescript/' },
-  ];
+    { name: 'React', category: 'react', link: '/docs/courses/react/' },
+    { name: 'JavaScript', category: 'javascript', link: '/docs/courses/javascript/' },
+    { name: 'AI & ML', category: 'ai', link: '/docs/courses/ai/' },
+    { name: 'CSS & Design', category: 'css', link: '/docs/courses/css/' },
+    { name: 'Backend', category: 'backend', link: '/docs/courses/backend/' },
+    { name: 'TypeScript', category: 'typescript', link: '/docs/courses/typescript/' },
+  ].map((t) => ({ ...t, count: formatCount(categoryCounts[t.category] ?? 0) }));
 
   return (
     <section className="home-section home-section--shaded">
-      <h2>87+ Interactive Courses</h2>
-      <p className="home-section__subtitle">Browse courses by topic. About 20 are completely free.</p>
+      <h2>{totalCoursesLabel} Interactive Courses</h2>
+      <p className="home-section__subtitle">
+        Browse courses by topic. About {freeCount} are completely free.
+      </p>
       <div className="section-grid">
         {topics.map((topic) => (
           <Link key={topic.name} to={topic.link} className="card-link">
@@ -154,13 +164,14 @@ function PricingSection() {
     <section className="pricing-cta home-pricing" aria-label="Pricing call to action">
       <h2 className="pricing-cta__title">Ready to start learning?</h2>
       <p className="pricing-cta__subtitle">
-        Try 20 free courses or go Pro for full access to 87+ courses, 4 career paths, and community.
+        Try {freeCount} free courses or go Pro for full access to {totalCoursesLabel} courses, 4 career
+        paths, and community.
       </p>
       <div className="home-pricing__buttons">
         <Link to="/docs/pricing/" className="affiliate-link affiliate-link--button home-pricing__outline-btn">
           View Pricing Guide
         </Link>
-        <AffiliateLink href="https://scrimba.com/home?pricing" variant="button">
+        <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" variant="button">
           Start Scrimba Pro
         </AffiliateLink>
       </div>
@@ -188,7 +199,7 @@ function BlogSection() {
         <Link to="/blog/best-free-scrimba-courses" className="card-link">
           <div className="section-card">
             <h3>Best Free Courses</h3>
-            <p>20 completely free courses you can take without a subscription.</p>
+            <p>{freeCountLabel} completely free courses you can take without a subscription.</p>
           </div>
         </Link>
       </div>
@@ -201,12 +212,25 @@ function BlogSection() {
   );
 }
 
+const BASE_URL = 'https://scrimbaguide.tech';
+const HOME_TITLE = 'ScrimbaGuide: The Unofficial Guide to Scrimba Courses & Learning Paths';
+const HOME_DESC = 'Course reviews, learning path guides, pricing breakdowns, and honest comparisons. Everything you need to make the most of Scrimba.';
+
 export default function Home(): React.ReactElement {
   return (
-    <Layout
-      title="The Unofficial Guide to Scrimba Courses & Learning Paths"
-      description="Course reviews, learning path guides, pricing breakdowns, and honest comparisons. Everything you need to make the most of Scrimba."
-    >
+    <Layout title={HOME_TITLE} description={HOME_DESC}>
+      <Head>
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={HOME_TITLE} />
+        <meta property="og:description" content={HOME_DESC} />
+        <meta property="og:url" content={BASE_URL} />
+        <meta property="og:image" content={`${BASE_URL}/img/social-card.png`} />
+        <meta property="og:site_name" content="ScrimbaGuide" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={HOME_TITLE} />
+        <meta name="twitter:description" content={HOME_DESC} />
+        <meta name="twitter:image" content={`${BASE_URL}/img/social-card.png`} />
+      </Head>
       <main>
         <HeroSection />
         <PathsSection />

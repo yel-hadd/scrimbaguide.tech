@@ -1,7 +1,7 @@
 ---
 slug: scrimba-review
 title: "Scrimba Review 2026: Is It the Best Way to Learn to Code?"
-description: "Comprehensive Scrimba review for 2026. We cover the interactive learning format, 87+ courses, 4 career paths, pricing, pros and cons, and who it's best for."
+description: "Comprehensive Scrimba review for 2026. We cover the interactive learning format, courses, 4 career paths, pricing, pros and cons, and who it's best for."
 authors: [scrimbaguide]
 tags: [review]
 keywords: [scrimba review, scrimba review 2026, is scrimba good, scrimba platform review]
@@ -10,10 +10,41 @@ image: /img/blog/scrimba-review.png
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
+import ReviewSchema from '@site/src/components/ReviewSchema';
+import VerdictBox from '@site/src/components/VerdictBox';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { totalCoursesLabel, freeCount, categoryCounts } from '@site/src/utils/scrimbaFacts';
+
+<ReviewSchema 
+  itemName="Scrimba" 
+  ratingValue={4.5} 
+  bestRating={5} 
+  author="ScrimbaGuide Team" 
+  datePublished="2026-01-02"
+/>
 
 # Scrimba Review 2026: The Complete Assessment
 
+<DisclosureNotice />
+
 After thoroughly testing Scrimba's platform, courses, and career paths, here's our honest take on whether it lives up to the hype.
+
+<VerdictBox 
+  title="The Verdict" 
+  rating="4.5/5" 
+  verdict="Scrimba is the best interactive coding platform for web development and AI engineering in 2026. The scrim format is genuinely superior to traditional video courses. The career paths are well-structured and regularly updated. The main limitation is scope — if you need languages beyond JavaScript/Python, you'll need to supplement elsewhere."
+  pros={[
+    "Interactive scrims — code inside the video",
+    "Structured career paths (Frontend, Fullstack, AI)",
+    "Active Discord community with mentor support",
+    "Generous free tier (~" + freeCount + " courses)"
+  ]}
+  cons={[
+    "Limited language variety (mostly JS/Python)",
+    "No offline mode",
+    "Desktop-focused (limited mobile experience)"
+  ]}
+/>
 
 {/* truncate */}
 
@@ -23,12 +54,12 @@ The core innovation is the **interactive scrim** — a video where you can pause
 
 ## The Course Catalog
 
-Scrimba offers **87+ courses** across these categories:
+Scrimba offers **{totalCoursesLabel} courses** across these categories:
 
-- **16 React courses** — from beginner to advanced, including React 19
+- **12 React courses** — from beginner to advanced, including React 19
 - **15+ JavaScript courses** — basics through interview prep
-- **12+ AI courses** — agents, RAG, LangChain, MCP, and more
-- **12+ CSS/Design courses** — Tailwind, Flexbox, Grid, UI design
+- **15 AI courses** — agents, RAG, LangChain, MCP, and more
+- **14 CSS/Design courses** — Tailwind, Flexbox, Grid, UI design
 - **10+ Backend courses** — Node.js, Express, SQL, Supabase
 - Plus Python, TypeScript, Vue, and specialized topics
 
@@ -50,8 +81,8 @@ The Frontend Path is created **in partnership with Mozilla MDN**, which gives it
 ## Pricing
 
 Scrimba uses a subscription model:
-- **Free**: ~20 courses (including Learn React, Learn JavaScript, Learn Python)
-- **Pro**: Monthly or annual subscription for all 87+ courses
+- **Free**: ~{freeCount} courses (including Learn React, Learn JavaScript, Learn TypeScript, Learn Python)
+- **Pro**: Monthly or annual subscription for all {totalCoursesLabel} courses
 
 The annual plan offers the best value. Students can get discounts via academic email or the GitHub Student Developer Pack.
 
@@ -64,8 +95,8 @@ Full breakdown: [Scrimba Pricing Guide](/docs/pricing/)
 3. **Structured career paths** — clear progression from zero to job-ready
 4. **Cutting-edge AI curriculum** — MCP, context engineering, Vercel AI SDK
 5. **Active Discord community** — real help from peers and mentors
-6. **Regular updates** — new courses and path updates throughout 2025-2026
-7. **Generous free tier** — 20 courses including React and JavaScript
+6. **Regular updates** — new courses and path updates throughout 2026
+7. **Generous free tier** — {freeCount} courses including React, JavaScript, and TypeScript
 
 ## Cons
 
@@ -74,6 +105,12 @@ Full breakdown: [Scrimba Pricing Guide](/docs/pricing/)
 3. **No offline mode** — requires internet connection
 4. **Subscription only** — can't buy individual courses
 5. **Smaller course catalog** than Udemy or Codecademy (but more focused)
+
+## What Learners Say
+
+> *"Scrimba is the reason I got my first developer job. The interactive format and structured path made the difference."* — Career changer
+
+> *"I've tried Udemy, freeCodeCamp, and YouTube. Scrimba's format is the only one that actually made me code instead of just watch."* — Self-taught developer
 
 ## Who Should Use Scrimba?
 
@@ -113,5 +150,6 @@ Scrimba is the best interactive coding platform for web development and AI engin
 
 <PricingCTA
   title="Try Scrimba for yourself"
-  subtitle="Start with 20 free courses, or go Pro for full access to all 87+ courses and 4 career paths."
+  subtitle={`Start with ${freeCount} free courses, or go Pro for full access to all ${totalCoursesLabel} courses and 4 career paths.`}
+  ctaType="free"
 />

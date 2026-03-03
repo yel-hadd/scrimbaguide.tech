@@ -7,19 +7,50 @@ keywords: [scrimba vs odin project, odin project vs scrimba, best free coding pl
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import ReviewSchema from '@site/src/components/ReviewSchema';
+import VerdictBox from '@site/src/components/VerdictBox';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { freeCount } from '@site/src/utils/scrimbaFacts';
+
+<ReviewSchema 
+  itemName="Scrimba vs The Odin Project" 
+  ratingValue={4.5} 
+  bestRating={5} 
+  author="ScrimbaGuide Team" 
+  datePublished="2026-01-15"
+/>
 
 # Scrimba vs The Odin Project: Complete Comparison (2026)
 
+<DisclosureNotice />
+
 Both Scrimba and The Odin Project are highly regarded platforms for learning web development — and both offer free content. But they take radically different approaches to teaching.
+
+<VerdictBox 
+  title="The Verdict" 
+  rating="Tie (Different Audiences)" 
+  verdict="Choose Scrimba if you want guided, interactive video instruction that holds your hand through complex topics. Choose The Odin Project if you are a disciplined self-starter who wants to learn by reading documentation and building projects from scratch (the 'hard way')."
+  pros={[
+    "Scrimba: Guided video instruction",
+    "Scrimba: Interactive coding environment (easier start)",
+    "Odin: Teaches you to read documentation"
+  ]}
+  cons={[
+    "Odin: Steep learning curve (sink or swim)",
+    "Scrimba: Less focus on setting up local environment initially"
+  ]}
+  ctaText="Try Scrimba Free"
+  ctaHref="https://scrimba.com/?via=u42d4986"
+/>
 
 <ComparisonTable
   competitorName="The Odin Project"
-  scrimbaUrl="https://scrimba.com/"
+  scrimbaUrl="https://scrimba.com/?via=u42d4986"
   competitorUrl="https://www.theodinproject.com/"
   rows={[
     { feature: "Teaching format", scrimba: "Interactive video scrims (pause & edit code)", competitor: "Curated text lessons + external resources" },
     { feature: "Price", scrimba: "Free tier + Pro subscription", competitor: "100% free, always" },
-    { feature: "Free courses", scrimba: "~20 full courses for free", competitor: "Entire curriculum is free" },
+    { feature: "Free courses", scrimba: `~${freeCount} full courses for free`, competitor: "Entire curriculum is free" },
     { feature: "Career paths", scrimba: "4 structured paths (up to 108 hrs)", competitor: "2 paths (Full Stack JS, Full Stack Ruby)" },
     { feature: "Video instruction", scrimba: "Yes, instructor-led interactive video", competitor: "No (text-based, links to external videos)" },
     { feature: "Projects", scrimba: "Built into courses + solo projects", competitor: "Extensive portfolio projects throughout" },

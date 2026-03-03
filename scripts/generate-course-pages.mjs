@@ -15,6 +15,7 @@ const DATA = join(ROOT, 'data');
 const DOCS = join(ROOT, 'docs', 'courses');
 
 const courses = JSON.parse(readFileSync(join(DATA, 'courses.json'), 'utf8'));
+const totalCoursesLabel = `${courses.length}+`;
 
 // Skip learning paths (they have dedicated hand-written pages)
 const PATH_SLUGS = new Set([
@@ -40,6 +41,43 @@ const PATH_LINKS = {
   'backend-developer-path': { label: 'Backend Developer Path', url: '/docs/paths/backend-developer-path' },
   'ai-engineer-path': { label: 'AI Engineer Path', url: '/docs/paths/ai-engineer-path' },
 };
+
+const PRACTICE_LINKS = {
+  react: [
+    { label: 'Practice React Hooks', url: '/docs/practice/practice-react-hooks' },
+    { label: 'Practice React Projects', url: '/docs/practice/practice-react-projects' },
+  ],
+  javascript: [
+    { label: 'Practice JavaScript Arrays', url: '/docs/practice/practice-javascript-arrays' },
+    { label: 'Practice API Calls', url: '/docs/practice/practice-api-calls' },
+  ],
+  css: [
+    { label: 'Practice CSS Grid', url: '/docs/practice/practice-css-grid' },
+    { label: 'Practice Flexbox', url: '/docs/practice/practice-flexbox' },
+    { label: 'Practice Tailwind CSS', url: '/docs/practice/practice-tailwind-css' },
+  ],
+  ai: [
+    { label: 'Practice AI Engineering', url: '/docs/practice/practice-ai-engineering' },
+    { label: 'Practice API Calls', url: '/docs/practice/practice-api-calls' },
+  ],
+  typescript: [
+    { label: 'Practice TypeScript', url: '/docs/practice/practice-typescript' },
+    { label: 'Practice React Hooks', url: '/docs/practice/practice-react-hooks' },
+  ],
+  backend: [
+    { label: 'Practice API Calls', url: '/docs/practice/practice-api-calls' },
+    { label: 'Practice JavaScript Arrays', url: '/docs/practice/practice-javascript-arrays' },
+  ],
+  python: [
+    { label: 'Practice API Calls', url: '/docs/practice/practice-api-calls' },
+  ],
+};
+
+const COMPARISON_LINKS = [
+  { label: 'Scrimba vs Codecademy', url: '/docs/comparisons/scrimba-vs-codecademy' },
+  { label: 'Scrimba vs Udemy', url: '/docs/comparisons/scrimba-vs-udemy' },
+  { label: 'All Comparisons', url: '/docs/comparisons/' },
+];
 
 let generated = 0;
 let skipped = 0;
@@ -130,9 +168,10 @@ ${links}
   }
 
   const categoryLabel = CATEGORY_LABELS[course.category] || course.category;
+  const sanitize = (s) => s.replace(/[\[\]]/g, '');
   const keywords = [
-    `scrimba ${cleanTitle.toLowerCase()}`,
-    `${cleanTitle.toLowerCase()} course`,
+    `scrimba ${sanitize(cleanTitle.toLowerCase())}`,
+    `${sanitize(cleanTitle.toLowerCase())} course`,
     `scrimba ${course.category} course`,
   ].join(', ');
 
@@ -153,6 +192,58 @@ ${links}
 
   const safeTitle = pageTitle.replace(/"/g, '\\"');
   const safeDesc = truncate(description.replace(/"/g, '\\"'), 160);
+
+  // Build instructor section
+  let instructorSection = '';
+  if (course.instructor) {
+    instructorSection = `
+### Instructor
+
+This course is taught by **${course.instructor}**, an experienced educator on the Scrimba platform.
+`;
+  }
+
+  // Build projects section
+  let projectsSection = '';
+  if (course.projects && course.projects.length > 0) {
+    const projectList = course.projects.map(p => `- ${p}`).join('\n');
+    projectsSection = `
+## What You'll Build
+
+${projectList}
+
+These hands-on projects reinforce what you learn and give you portfolio-ready work to show employers.
+`;
+  }
+
+  // Build prerequisites section
+  let prerequisitesSection = '';
+  const levelPrereqs = {
+    Beginner: 'No prior programming experience is required. A web browser and willingness to learn are all you need.',
+    Intermediate: `Basic knowledge of ${course.category === 'react' ? 'HTML, CSS, and JavaScript' : course.category === 'ai' ? 'JavaScript and basic API concepts' : course.category === 'backend' ? 'JavaScript fundamentals' : course.category === 'typescript' ? 'JavaScript' : 'HTML and CSS'} is recommended before starting this course.`,
+    Advanced: `Working knowledge of ${course.category === 'react' ? 'React fundamentals (components, state, props)' : course.category === 'ai' ? 'JavaScript, APIs, and basic AI/ML concepts' : course.category === 'backend' ? 'Node.js and basic server concepts' : course.category === 'typescript' ? 'TypeScript basics and JavaScript' : 'the core technology'} is expected.`,
+  };
+  prerequisitesSection = `
+## Prerequisites
+
+${levelPrereqs[course.level] || levelPrereqs['Intermediate']}
+`;
+
+  // Build varied FAQ answers
+  const freeAnswer = course.access === 'Free'
+    ? 'Yes! This course is completely free. No credit card or Scrimba Pro subscription is needed to start learning.'
+    : `This course requires a [Scrimba Pro](/docs/pricing/) subscription. Pro gives you access to ${totalCoursesLabel} courses, a certificate of completion, and access to the Discord community. Check the [pricing page](/docs/pricing/) for current rates.`;
+
+  const durationAnswer = course.duration
+    ? `The course contains ${course.duration} of interactive screencasts. Since you can pause and code along at your own pace, most learners finish in ${parseFloat(course.duration) > 10 ? '2-4 weeks' : parseFloat(course.duration) > 4 ? '1-2 weeks' : 'a few days'} of regular practice.`
+    : 'The course is self-paced, so you can complete it as quickly or slowly as you like. Most learners finish within 1-2 weeks.';
+
+  const buildAnswer = course.projects && course.projects.length > 0
+    ? `You will build real projects including: ${course.projects.slice(0, 3).join(', ')}. These projects teach you practical skills you can apply immediately.`
+    : `You will build practical projects using ${cleanTitle.split(' ').slice(0, 3).join(' ')} concepts. Scrimba's interactive format lets you modify the instructor's code directly in the browser.`;
+
+  const totalLessons = course.modules.reduce((sum, m) => sum + m.totalLessons, 0);
+  const totalLessonsStr = totalLessons > 0 ? ` across ${totalLessons} interactive screencasts` : '';
 
   const content = `---
 title: "${safeTitle}"
@@ -186,21 +277,32 @@ import CourseSchema from '@site/src/components/CourseSchema';
   difficulty="${course.level || 'Intermediate'}"
   access="${course.access}"
   keywords={[${keywords.split(', ').map(k => `"${k}"`).join(', ')}]}
+  ${course.modules.length > 0 ? `modules={${JSON.stringify(course.modules.map(m => ({ name: m.name, duration: m.duration, lessons: m.totalLessons })))}}` : ''}
 />
 
 ## About This Course
 
 ${course.description || `Learn ${cleanTitle} through Scrimba's interactive video format. Pause any lesson and edit the code directly in your browser.`}
 
+This ${course.level || 'intermediate'}-level course covers ${course.duration || 'hours'} of content${totalLessonsStr}. ${course.access === 'Free' ? 'It is available for free — no subscription required.' : 'A [Scrimba Pro](/docs/pricing/) subscription is required for full access.'}
+
 - **Duration:** ${course.duration || 'Available on Scrimba'}
 - **Level:** ${course.level || 'Intermediate'}
 - **Access:** ${course.access === 'Free' ? 'Free (no subscription required)' : '[Scrimba Pro](/docs/pricing/) required'}
-${moduleSection}
+${course.modules.length > 0 ? `- **Modules:** ${course.modules.length}` : ''}
+${totalLessons > 0 ? `- **Total Lessons:** ${totalLessons}` : ''}
+${instructorSection}${moduleSection}${projectsSection}${prerequisitesSection}
 ## Who Is This Course For?
 
-${course.level === 'Beginner' ? 'This course is designed for complete beginners. No prior experience is required.' : course.level === 'Advanced' ? 'This course is for experienced developers looking to deepen their skills. Prior knowledge of the fundamentals is recommended.' : 'This course is for developers with some experience who want to build practical skills.'}
+${course.level === 'Beginner' ? `This course is designed for complete beginners who want to learn ${cleanTitle.split(' ').slice(0, 2).join(' ')} from scratch. No prior experience is required — you will start from the very basics and build up to real projects.` : course.level === 'Advanced' ? `This course is for experienced developers looking to deepen their ${cleanTitle.split(' ').slice(0, 2).join(' ')} skills. You should already be comfortable with the fundamentals before diving in.` : `This course is ideal for developers with some experience who want to level up their ${cleanTitle.split(' ').slice(0, 2).join(' ')} skills through hands-on practice.`}
 ${pathSection}
 ${relatedSection}
+## Practice & Learn More
+
+${(PRACTICE_LINKS[course.category] || []).map(l => `- [${l.label}](${l.url})`).join('\n')}
+- [How Long Does It Take to Learn Coding?](/docs/faq/learning-speed)
+- [${COMPARISON_LINKS[0].label}](${COMPARISON_LINKS[0].url}) | [${COMPARISON_LINKS[2].label}](${COMPARISON_LINKS[2].url})
+
 ## Related Pages
 
 - [${categoryLabel} Courses](/docs/courses/${course.category}/)
@@ -209,14 +311,14 @@ ${relatedSection}
 - [Scrimba Review 2026](/blog/scrimba-review)
 
 <FAQAccordion items={[
-  { q: "Is this course free?", a: "${course.access === 'Free' ? 'Yes! This course is available for free without a Scrimba Pro subscription.' : 'No. This course requires a Scrimba Pro subscription. See our pricing guide for current rates and discounts.'}" },
-  { q: "How long does this course take?", a: "The course contains ${course.duration || 'several hours'} of interactive content. Most learners complete it in 1-2 weeks at a moderate pace." },
-  { q: "What will I be able to build?", a: "After completing this course, you will have practical experience building real projects using ${cleanTitle.split(' ').slice(0, 3).join(' ')} concepts." },
+  { q: "Is ${cleanTitle} free on Scrimba?", a: "${freeAnswer.replace(/"/g, '\\"')}" },
+  { q: "How long does ${cleanTitle} take to complete?", a: "${durationAnswer.replace(/"/g, '\\"')}" },
+  { q: "What will I build in this course?", a: "${buildAnswer.replace(/"/g, '\\"')}" },
 ]} />
 
 ${course.access === 'Pro' ? `<PricingCTA
-  title="Start this course"
-  subtitle="Get access to ${cleanTitle} and 87+ more courses with Scrimba Pro."
+  title="Start ${cleanTitle}"
+  subtitle="Get access to ${cleanTitle} and ${totalCoursesLabel} more interactive courses with Scrimba Pro."
 />` : `<AffiliateLink href="${course.scrimbaUrl}" variant="button">
   Start ${cleanTitle} for Free
 </AffiliateLink>`}

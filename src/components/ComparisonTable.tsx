@@ -19,7 +19,7 @@ export default function ComparisonTable({
   competitorName,
   scrimbaLabel = 'Scrimba',
   rows,
-  scrimbaUrl = 'https://scrimba.com/',
+  scrimbaUrl = 'https://scrimba.com/?via=u42d4986',
   competitorUrl,
 }: ComparisonTableProps): React.ReactElement {
   return (

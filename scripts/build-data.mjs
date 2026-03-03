@@ -147,45 +147,109 @@ const PATHS = {
 
 const PATH_SLUGS = new Set(Object.keys(PATHS));
 
+// ── Extract instructor from title ────────────────────────────────
+function extractInstructor(title) {
+  const patterns = [
+    /lead by ([A-Z][a-z]+ [A-Z][a-z]+)/,
+    /teacher ([A-Z][a-z]+ [A-Z][a-z]+)/,
+    /created by ([A-Z][a-z]+ [A-Z][a-z]+)/,
+    /instructor ([A-Z][a-z]+ [A-Z][a-z]+)/,
+  ];
+  for (const p of patterns) {
+    const m = title.match(p);
+    if (m) return m[1].trim();
+  }
+  return '';
+}
+
+// ── Extract better description from body text ────────────────────
+function extractDescription(frontmatter, body, title) {
+  const meta = (frontmatter.meta_description || '').replace(/^["']|["']$/g, '');
+  if (meta && meta.length > 60 && /[.!?]$/.test(meta)) return meta;
+
+  const lines = body.split('\n').map(l => l.trim()).filter(Boolean);
+  const skipPatterns = [
+    /^(Home|Courses|Paths|Topics|Teams|Extras|Sign in|SIGN IN|UPGRADE|NEW SCRIM|WIN\+ENTER|FOLLOW|START|Popular)$/i,
+    /^(AI|Algorithms|Backend|CSS|Career|Show more|JavaScript|React|Python|TypeScript|Community|Pro)$/i,
+    /^\d+(\.\d+)?\s*(hrs?|min)$/i,
+    /^(Beginner|Intermediate|Advanced|free|Pro)$/i,
+    /^\d+\/\d+$/,
+    /^Certificate of Completion$/i,
+    /^Sign in to unlock/i,
+    /^(Join|Sign up|Log in|Create account)/i,
+    /^(Certificate|Completion|Progress)/i,
+  ];
+  for (const line of lines) {
+    if (line.length < 40) continue;
+    if (skipPatterns.some(p => p.test(line))) continue;
+    if (line.startsWith('#')) continue;
+    const cleaned = line.replace(/\s+/g, ' ');
+    if (cleaned.length >= 40 && cleaned.length <= 500) return cleaned;
+  }
+  // Try extracting from the title's subtitle (after the colon)
+  const colonParts = title.split(':');
+  if (colonParts.length > 1) {
+    const subtitle = colonParts.slice(1).join(':').trim();
+    if (subtitle.length >= 30) return subtitle;
+  }
+  return meta || `Learn ${title.split(':')[0]} through Scrimba's interactive coding format on Scrimba.`;
+}
+
+// ── Extract projects from body text ──────────────────────────────
+function extractProjects(body) {
+  const projects = [];
+  const lines = body.split('\n').map(l => l.trim());
+  for (const line of lines) {
+    if (/^(Capstone|Solo|Build |Project[:\s#])/i.test(line)) {
+      const name = line
+        .replace(/^(Capstone Project\s*#?\d*\s*[-–:]\s*)/i, '')
+        .replace(/^(Solo Project\s*[-–:]\s*)/i, '')
+        .replace(/^(Build\s+)/i, '')
+        .replace(/\n.*/, '')
+        .trim();
+      if (name && name.length > 3 && name.length < 80) projects.push(name);
+    }
+  }
+  return [...new Set(projects)];
+}
+
 // ── Parse course metadata from scraped markdown ─────────────────
 function parseCourse(item) {
   const { frontmatter, body } = readContent(item);
   const slug = item.url.split('/').filter(Boolean).pop();
   const isPath = PATH_SLUGS.has(slug);
 
-  // Parse duration and level from body
   const lines = body.split('\n').map(l => l.trim()).filter(Boolean);
   let duration = '';
   let level = '';
-  let access = 'Pro'; // default
+  let access = 'Pro';
+
+  if (/^Free\s/i.test(item.title)) access = 'Free';
 
   for (const line of lines) {
     if (!duration && /^\d+(\.\d+)?\s*(hrs?|min)$/i.test(line)) duration = line;
     if (/^(Beginner|Intermediate|Advanced)$/i.test(line)) level = line;
-    if (/^(Community|Pro)$/i.test(line)) access = line === 'Community' ? 'Free' : 'Pro';
+    if (/^Community$/i.test(line)) access = 'Free';
   }
 
-  // Parse modules from headings_h2 in frontmatter or body
+  // Parse modules from YAML headings_h2 (multiline quoted strings)
   const modules = [];
-  const h2s = frontmatter.headings_h2 || '';
-  // Re-read the raw markdown to get structured headings
   const mdPath = join(OUTPUT, item.path);
   const rawText = existsSync(mdPath) ? readFileSync(mdPath, 'utf8') : '';
   const fmMatch = rawText.match(/^---\n([\s\S]*?)\n---/);
   if (fmMatch) {
-    // Parse the headings_h2 array from YAML
     const yamlBlock = fmMatch[1];
-    const h2Section = yamlBlock.match(/headings_h2:\n((?:\s+-[\s\S]*?)(?=\n\w|\nheadings_h3|\nscreenshot|$))/);
-    if (h2Section) {
-      const entries = h2Section[1].match(/- "([^"]+)"/g) || h2Section[1].match(/- (.+)/g) || [];
-      for (const entry of entries) {
-        const cleaned = entry.replace(/^-\s*"?|"?\s*$/g, '');
-        if (cleaned === 'Popular') continue;
-        // Parse "Module Name\nDuration\nLessons"
-        const parts = cleaned.split('\n').map(p => p.trim());
+    const h2Match = yamlBlock.match(/headings_h2:\n([\s\S]*?)(?=\nheadings_h3:|\nscreenshot:|\n[a-z_]+:)/);
+    if (h2Match) {
+      const rawEntries = h2Match[1].split(/\n\s+-\s+/).filter(Boolean);
+      for (const raw of rawEntries) {
+        const cleaned = raw.replace(/^\s*-\s*/, '').replace(/^"/, '').replace(/"\s*$/m, '').trim();
+        if (!cleaned || /^(Popular|\[\])$/i.test(cleaned)) continue;
+        const parts = cleaned.split('\n').map(p => p.trim()).filter(Boolean);
         const modName = parts[0];
-        const modDuration = parts[1] || '';
-        const modLessons = parts[2] || '';
+        if (!modName || modName.length < 2) continue;
+        const modDuration = parts.length > 1 ? parts[1] : '';
+        const modLessons = parts.length > 2 ? parts[2] : '';
         const lessonMatch = modLessons.match(/(\d+)\/(\d+)/);
         modules.push({
           name: modName,
@@ -198,8 +262,10 @@ function parseCourse(item) {
 
   const topics = assignTopics(slug, item.title);
   const category = primaryCategory(topics);
+  const instructor = extractInstructor(item.title);
+  const description = extractDescription(frontmatter, body, item.title);
+  const projects = extractProjects(body);
 
-  // Determine which paths this course belongs to
   const pathMembership = [];
   const titleLower = item.title.toLowerCase();
   const slugLower = slug.toLowerCase();
@@ -227,16 +293,15 @@ function parseCourse(item) {
     pathMembership.push('backend-developer-path');
   }
 
-  // Generate a URL-safe doc slug
   let docSlug = slug
     .replace(/^(learn-|intro-to-|introduction-to-|build-|the-|tutorial-)/, '')
-    .replace(/-c[0-9a-z]+$/i, '')  // remove Scrimba course ID suffix
+    .replace(/-c[0-9a-z]+$/i, '')
     .replace(/[^a-z0-9-]/gi, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
 
-  if (docSlug === 'react' && category === 'react') {
-    docSlug = 'learn-react';
+  if (docSlug === category) {
+    docSlug = `learn-${docSlug}`;
   }
 
   return {
@@ -253,7 +318,9 @@ function parseCourse(item) {
     pathInfo: isPath ? PATHS[slug] : null,
     pathMembership: [...new Set(pathMembership)],
     modules,
-    description: (frontmatter.meta_description || '').replace(/^["']|["']$/g, ''),
+    description,
+    instructor,
+    projects,
     screenshot: item.screenshot,
   };
 }

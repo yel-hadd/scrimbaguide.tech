@@ -1,0 +1,71 @@
+---
+title: "React Quick Start Guide: From Zero to Code"
+description: "A practical quick start guide for React. Learn components, JSX, and Props by writing code, not just reading about it."
+keywords: [react quick start, react tutorial, scrimba react, learn react fast]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import CourseCard from '@site/src/components/CourseCard';
+
+# React Quick Start: The Interactive Way
+
+Most "Quick Start" guides are just text. This one is interactive.
+
+We'll cover the three pillars of React: **Components**, **JSX**, and **Props**.
+
+## 1. Components: The Building Blocks
+
+React apps are made of independent, reusable pieces called components. A component is just a JavaScript function that returns UI.
+
+**Concept:**
+```jsx
+function Button() {
+  return <button>Click me</button>;
+}
+```
+
+**Practice:**
+Instead of setting up a local environment, jump straight into code:
+-> **[Build Your First Component on Scrimba](https://scrimba.com/learn/learnreact/custom-components-c0b?via=u42d4986)**
+
+## 2. JSX: Writing Markup in JavaScript
+
+JSX looks like HTML, but it's stricter. You can put it directly inside JavaScript code.
+
+**Rules of JSX:**
+1. Return a single root element (or a Fragment `<>...</>`).
+2. Close all tags (e.g., `<img />`).
+3. camelCase all attributes (e.g., `className` instead of `class`).
+
+**Practice:**
+-> **[Fix Broken JSX Challenge](https://scrimba.com/learn/learnreact/jsx-c0a?via=u42d4986)**
+
+## 3. Displaying Data
+
+Use curly braces `{}` to "escape" back into JavaScript logic from your JSX.
+
+```jsx
+const name = "Scrimba User";
+return <h1>Hello, {name}</h1>;
+```
+
+You can put *any* expression inside curly braces: math, variables, function calls.
+
+## Next Steps
+
+Once you understand these basics, you're ready to build a full project.
+
+<CourseCard
+  title="React Project: Build a React Info Site"
+  duration="2.5 hrs"
+  difficulty="Beginner"
+  access="Free"
+  href="https://scrimba.com/learn/learnreact/project-setup-c06?via=u42d4986"
+  description="Apply your new skills by building a static React page from scratch."
+/>
+
+<div style={{ textAlign: 'center', marginTop: '2rem' }}>
+  <AffiliateLink href="https://scrimba.com/learn-react-c0e?via=u42d4986" variant="button">
+    Start the Full React Course
+  </AffiliateLink>
+</div>

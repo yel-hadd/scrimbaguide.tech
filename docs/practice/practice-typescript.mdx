@@ -1,0 +1,104 @@
+---
+title: "Where to Practice TypeScript: Interactive Courses & Exercises"
+description: "Master TypeScript through hands-on practice. Interactive courses that let you write, test, and debug TypeScript code directly in the browser."
+keywords: [practice typescript, learn typescript, interactive typescript course, typescript exercises]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import PricingCTA from '@site/src/components/PricingCTA';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+
+# Where to Practice TypeScript: Interactive Courses & Exercises
+
+TypeScript is now essential for professional web development. It catches bugs before they reach production and makes large codebases manageable. The best way to learn it is by writing TypeScript — not by reading about it.
+
+## Why Practice TypeScript on Scrimba?
+
+Scrimba's interactive format is ideal for TypeScript because:
+
+1. **Pause and edit** — stop the video and modify type annotations to see what happens
+2. **Instant feedback** — see TypeScript errors in real-time as you code
+3. **Real projects** — build actual applications, not isolated exercises
+4. **No setup required** — TypeScript runs in the browser, no local toolchain needed
+
+## Top Courses to Practice TypeScript
+
+### [Learn TypeScript](/docs/courses/typescript/learn-typescript)
+**Level**: Intermediate | **Access**: Pro
+
+Master TypeScript fundamentals: types, interfaces, generics, type narrowing, and utility types. Build real applications while learning type safety.
+
+### [Learn JavaScript](/docs/courses/javascript/learn-javascript)
+**Level**: Beginner | **Duration**: 9 hrs | **Access**: Free
+
+TypeScript builds on JavaScript. If you're new to both, start here to learn the language fundamentals before adding types.
+
+### [Learn React](/docs/courses/react/learn-react)
+**Level**: Intermediate | **Duration**: 15.1 hrs | **Access**: Free
+
+Modern React projects increasingly use TypeScript. Learn React fundamentals first, then apply TypeScript to your React components.
+
+## TypeScript Practice Exercises
+
+### Exercise 1: Type a User Object
+```typescript
+// Start with this JavaScript and add types:
+const user = {
+  name: "Alice",
+  age: 30,
+  email: "alice@example.com",
+  isActive: true,
+};
+```
+Practice defining interfaces, optional properties, and readonly modifiers.
+
+### Exercise 2: Generic Functions
+```typescript
+// Make this function work with any type:
+function getFirst(items) {
+  return items[0];
+}
+```
+Generics are one of TypeScript's most powerful features. Practice using `<T>` to create flexible, type-safe functions.
+
+### Exercise 3: Union Types for API Responses
+```typescript
+// Type this API response handler:
+function handleResponse(response) {
+  if (response.status === "success") {
+    return response.data;
+  } else {
+    throw new Error(response.error);
+  }
+}
+```
+Discriminated unions teach you how TypeScript narrows types based on conditions — essential for real API work.
+
+## How to Practice Effectively
+
+1. **Start with JavaScript you know** — take existing JS code and add types incrementally
+2. **Use strict mode** — `"strict": true` in tsconfig.json forces you to handle edge cases
+3. **Read the errors** — TypeScript errors are verbose but informative. Learn to read them
+4. **Build something real** — a todo app, an API client, or a CLI tool in TypeScript
+
+## Related Practice Guides
+
+- [Practice JavaScript Arrays](/docs/practice/practice-javascript-arrays) — master JS before adding types
+- [Practice React Hooks](/docs/practice/practice-react-hooks) — apply TypeScript to React
+- [Practice API Calls](/docs/practice/practice-api-calls) — type your fetch requests
+
+## Related Pages
+
+- [TypeScript Courses](/docs/courses/typescript/) | [All Courses](/docs/courses/)
+- [Scrimba Pricing](/docs/pricing/) | [Frontend Developer Path](/docs/paths/frontend-developer-path)
+
+<FAQAccordion items={[
+  { q: "Should I learn JavaScript or TypeScript first?", a: "Learn JavaScript first. TypeScript adds types on top of JavaScript, so you need to understand the underlying language. Scrimba's free Learn JavaScript course is a great starting point." },
+  { q: "How long does it take to learn TypeScript?", a: "If you already know JavaScript, you can learn basic TypeScript in a week. Mastering advanced features like generics, mapped types, and conditional types takes 2-4 weeks of practice." },
+  { q: "Is TypeScript required for getting a job?", a: "Increasingly, yes. Most React job listings now expect TypeScript knowledge. Learning it gives you a significant competitive advantage in the job market." },
+]} />
+
+<PricingCTA
+  title="Start practicing TypeScript"
+  subtitle="Interactive courses that let you write TypeScript code directly in the browser."
+/>

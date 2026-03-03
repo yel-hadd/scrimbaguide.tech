@@ -7,17 +7,21 @@ keywords: [scrimba pro vs free, scrimba free courses, scrimba pro worth it, scri
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
 
 # Scrimba Pro vs Free: Complete Comparison
 
-Scrimba's free plan is generous — but Pro unlocks the full learning experience. Here's a detailed breakdown.
+<DisclosureNotice />
+
+Scrimba's free plan is generous — but Pro unlocks the full learning experience. Here's a detailed breakdown. Free users get [10 interactive challenges total](https://scrimba.helpscoutdocs.com/article/69-what-are-free-challenges-for-free-users); Pro includes unlimited challenges.
 
 <ComparisonTable
   competitorName="Free Plan"
-  scrimbaUrl="https://scrimba.com/home?pricing"
+  scrimbaUrl="https://scrimba.com/home?pricing=&via=u42d4986"
   rows={[
-    { feature: "Number of courses", scrimba: "All 87+ courses", competitor: "~20 courses" },
+    { feature: "Number of courses", scrimba: `All ${totalCoursesLabel} courses`, competitor: `~${freeCount} courses` },
     { feature: "Career paths", scrimba: "All 4 paths (Frontend, Fullstack, Backend, AI)", competitor: "None" },
     { feature: "Interactive challenges", scrimba: "Unlimited", competitor: "10 total" },
     { feature: "Discord community", scrimba: "Full access + private channels", competitor: "No access" },
@@ -36,7 +40,9 @@ These popular courses are available without a Pro subscription:
 - **[Learn JavaScript](/docs/courses/javascript/)** — 9.4 hours, 140+ challenges (in partnership with MDN)
 - **[Learn HTML and CSS](/docs/courses/)** — 5.7 hours, beginner-friendly (in partnership with MDN)
 - **[Learn Python](/docs/courses/python/)** — 5.6 hours, 74 lessons
-- **[Intro to AI Engineering](/docs/courses/ai/)** — 2.4 hours crash course
+- **[Learn TypeScript](/docs/courses/typescript/)** — 4.2 hours, types, interfaces, React & Express
+- **[React 19 Tutorial](/docs/courses/react/)** — 1.1 hours, new React 19 features
+- **[Build Serverless AI Agents (Langbase)](/docs/courses/ai/)** — 49 min, serverless AI agents
 
 ## What Requires Pro?
 
@@ -89,13 +95,13 @@ For a deeper look at long-term value, see [Why I Keep Renewing Scrimba Pro](/blo
 - [Why I Keep Renewing Scrimba Pro](/blog/why-i-keep-renewing-scrimba-pro) — long-term subscriber perspective
 
 <FAQAccordion items={[
-  { q: "Do I lose my progress if I cancel Pro?", a: "No. Your progress is saved even after cancellation. You just lose access to Pro-only courses and Discord channels." },
-  { q: "Can I buy a single course instead of subscribing?", a: "No. Scrimba only offers subscription plans. There is no option to purchase individual courses." },
-  { q: "Do I keep access to courses after canceling?", a: "You keep access to free courses and your saved progress, but Pro-only courses become locked until you re-subscribe." },
+  { q: "Do I lose my progress if I cancel Pro?", a: "No. Your progress is saved even after cancellation. You just lose access to Pro-only courses and Discord channels.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/15-do-i-lose-my-progress-if-i-cancel-my-subscription" },
+  { q: "Can I buy a single course instead of subscribing?", a: "No. Scrimba only offers subscription plans. There is no option to purchase individual courses.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/21-can-i-purchase-a-single-course-instead-of-subscribing" },
+  { q: "Do I keep access to courses after canceling?", a: "You keep access to free courses and your saved progress, but Pro-only courses become locked until you re-subscribe.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/22-do-i-get-to-keep-my-courses-after-i-cancel-my-subscription" },
   { q: "Does Scrimba offer location-based pricing?", a: "Yes. Scrimba automatically adjusts pricing based on your country. Users in lower cost-of-living regions may see significantly reduced subscription rates. No coupon code is needed — the discount is applied automatically." },
 ]} />
 
 <PricingCTA
-  title="Unlock all 87+ courses"
+  title={`Unlock all ${totalCoursesLabel} courses`}
   subtitle="Start your Scrimba Pro subscription and get access to every course, path, and community feature."
 />

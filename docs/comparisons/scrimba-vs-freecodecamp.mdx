@@ -7,14 +7,45 @@ keywords: [scrimba vs freecodecamp, freecodecamp vs scrimba, free coding course,
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import ReviewSchema from '@site/src/components/ReviewSchema';
+import VerdictBox from '@site/src/components/VerdictBox';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { totalCoursesLabel, freeCount, proCount } from '@site/src/utils/scrimbaFacts';
+
+<ReviewSchema 
+  itemName="Scrimba vs freeCodeCamp" 
+  ratingValue={4.5} 
+  bestRating={5} 
+  author="ScrimbaGuide Team" 
+  datePublished="2026-01-15"
+/>
 
 # Scrimba vs freeCodeCamp: Complete Comparison (2026)
 
+<DisclosureNotice />
+
 One is 100% free; the other charges for premium content. But which actually helps you learn faster?
+
+<VerdictBox 
+  title="The Verdict" 
+  rating="It Depends" 
+  verdict="If you have absolutely zero budget, freeCodeCamp is the best place to start. If you can afford a subscription, Scrimba is significantly better because of the video instruction and interactive environment, which makes complex topics (like React) much easier to grasp."
+  pros={[
+    "Scrimba: Video instruction (easier to understand)",
+    "Scrimba: Interactive editor (better UX)",
+    "freeCodeCamp: 100% Free forever"
+  ]}
+  cons={[
+    "freeCodeCamp: Text-only (can be dry/hard for beginners)",
+    "Scrimba: Pro content requires subscription"
+  ]}
+  ctaText="Try Scrimba Free Courses"
+  ctaHref="https://scrimba.com/?via=u42d4986"
+/>
 
 <ComparisonTable
   competitorName="freeCodeCamp"
-  scrimbaUrl="https://scrimba.com/"
+  scrimbaUrl="https://scrimba.com/?via=u42d4986"
   competitorUrl="https://www.freecodecamp.org/"
   rows={[
     { feature: "Price", scrimba: "Free tier + Pro subscription", competitor: "100% free" },
@@ -30,11 +61,19 @@ One is 100% free; the other charges for premium content. But which actually help
   ]}
 />
 
+## Curriculum Comparison: React
+
+**Scrimba's Learn React** (15.1 hrs, free): Instructor-led video with Bob Ziroll. Pause any moment and edit the code in-place. Covers hooks, effects, and builds a Meme Generator capstone. Created with Mozilla MDN.
+
+**freeCodeCamp's React curriculum**: Text-based lessons with a test runner. You read instructions and complete challenges. Certification requires 5 projects (e.g., Random Quote Machine, Calculator). No video; you may supplement with freeCodeCamp's YouTube channel separately.
+
+Scrimba suits learners who prefer guided video; freeCodeCamp suits those who like reading and autonomous project-building.
+
 ## When to Choose Scrimba
 
 - You prefer **video-based, instructor-led** learning
 - You want **interactive scrims** rather than text challenges
-- You're focused on **React, AI engineering, or modern JS**
+- You're focused on **React, AI engineering, modern JS, or cybersecurity** ([Learn Cybersecurity](/docs/courses/backend/cybersecurity))
 - You want a **polished, curated** learning experience
 - You can invest in a subscription
 
@@ -63,7 +102,11 @@ Many learners combine both platforms effectively:
 
 <FAQAccordion items={[
   { q: "Is Scrimba better than freeCodeCamp?", a: "Scrimba offers a superior interactive format with video instruction. freeCodeCamp is 100% free with more certifications. The best choice depends on your budget and learning style." },
-  { q: "Does Scrimba have free courses like freeCodeCamp?", a: "Yes. Scrimba offers about 20 free courses including Learn React, Learn JavaScript, and Learn Python. The Pro subscription unlocks 67+ additional courses." },
+  { q: "Does Scrimba have free courses like freeCodeCamp?", a: `Yes. Scrimba offers about ${freeCount} free courses including Learn React, Learn JavaScript, Learn TypeScript, and Learn Python. The Pro subscription unlocks ${proCount}+ additional courses.` },
 ]} />
 
-<PricingCTA />
+<PricingCTA 
+  title="Try Scrimba's free courses first"
+  subtitle={`${freeCount} free courses to test the format. No credit card required. Upgrade when you're ready.`}
+  ctaType="free"
+/>

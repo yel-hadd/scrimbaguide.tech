@@ -3,10 +3,10 @@
  *
  * Design system:
  *   - Size: 1200x630 (Open Graph standard)
- *   - Background: #5b3fd9 (ScrimbAGuide brand purple)
+ *   - Background: #5b3fd9 (ScrimbaGuide brand purple)
  *   - Accent circles: white at 5% opacity for depth
  *   - Title: white, bold, max 3 lines with word-wrap
- *   - Brand badge: "ScrimbAGuide" top-left
+ *   - Brand badge: "ScrimbaGuide" top-left
  *   - Category pill: bottom-right, white at 15% opacity
  *   - Border: rounded rect, white at 30% opacity
  *   - Font: system sans-serif stack
@@ -147,7 +147,7 @@ function generateSVG(title, category) {
         font-weight="600"
         font-size="22"
         fill="${TEXT_MUTED}">
-    ScrimbAGuide
+    ScrimbaGuide
   </text>
 
   <!-- Category pill bottom-right -->
