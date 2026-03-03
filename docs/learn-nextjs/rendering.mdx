@@ -1,0 +1,79 @@
+---
+title: "Rendering in Next.js: Server vs Client Components"
+description: "Understand the fundamental difference between Server and Client Components in Next.js. Learn when to use each for optimal performance."
+keywords: [next.js rendering, server components, client components, react server components, next.js interactive]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+
+# Rendering: Server vs. Client
+
+In the App Router, every component is a **Server Component by default**. This is the biggest mental shift from traditional React.
+
+## 1. Server Components (Default)
+
+Server Components are rendered on the server. The HTML is sent to the browser. No JavaScript is sent for that component logic.
+
+**Benefits:**
+- **Data Fetching:** Access your database directly.
+- **Security:** Keep sensitive data (API keys) on the server.
+- **Performance:** Smaller JavaScript bundles.
+
+```tsx
+// app/page.tsx
+async function Page() {
+  const data = await db.post.findMany(); // Direct DB access!
+  return <ul>{data.map(p => <li key={p.id}>{p.title}</li>)}</ul>;
+}
+```
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: Server Components](https://scrimba.com/learn/nextjs/server-components-c012?via=u42d4986)**
+
+## 2. Client Components
+
+Client Components are rendered on the client (browser). They are the "React" you are used to.
+
+**When to use them:**
+- Interactive elements (`onClick`, `onChange`).
+- Using Hooks (`useState`, `useEffect`).
+- Using browser APIs (`window`, `localStorage`).
+
+**How to use them:**
+Add `'use client'` at the very top of your file.
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+}
+```
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: Client Components](https://scrimba.com/learn/nextjs/client-components-c014?via=u42d4986)**
+
+## 3. Mixing Server and Client Components
+
+You can pass a Server Component as a child to a Client Component. But you cannot import a Server Component *into* a Client Component.
+
+Next.js handles this boundary automatically.
+
+## 4. Static vs Dynamic Rendering
+
+By default, Next.js **statically** renders routes at build time. Use `dynamic = 'force-dynamic'` or `revalidate = 0` to opt into **dynamic** rendering (computed on each request). This affects caching and when your page is revalidated.
+
+## 5. Partial Prerendering (PPR)
+
+Next.js 15 introduces **Partial Prerendering** — a single page can have a static shell with dynamic holes. The shell is prerendered instantly; dynamic parts stream in. Enable with `experimental: { ppr: true }` in `next.config.js`. This gives you the best of both worlds: fast initial load and fresh data where needed.
+
+---
+
+<div style={{ textAlign: 'center', marginTop: '2rem' }}>
+  <AffiliateLink href="https://scrimba.com/learn-next-js-app-router-c02s?via=u42d4986" variant="button">
+    Learn Client Components (Free)
+  </AffiliateLink>
+</div>

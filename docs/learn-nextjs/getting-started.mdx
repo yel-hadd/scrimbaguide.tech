@@ -1,0 +1,69 @@
+---
+title: "Getting Started with Next.js 15+"
+description: "Learn how to start a new Next.js project with the App Router. Understanding the file structure and creating your first page."
+keywords: [next.js tutorial, create-next-app, next.js file structure, app router basics]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import CourseCard from '@site/src/components/CourseCard';
+
+# Getting Started with Next.js
+
+Next.js is a framework built on top of React. It adds features like **Routing**, **Rendering**, and **Data Fetching** out of the box.
+
+## 1. Installation
+
+The easiest way to start is with `create-next-app`.
+
+```bash
+npx create-next-app@latest my-app
+```
+
+You'll be asked a few questions. We recommend:
+- **TypeScript:** Yes (Standard in 2026)
+- **ESLint:** Yes
+- **Tailwind CSS:** Yes
+- **App Router:** **YES** (This is crucial!)
+
+## 2. Project Structure
+
+If you're used to standard React (Vite/CRA), Next.js looks a bit different.
+
+- `app/`: This is where your routes live.
+- `public/`: Static assets (images, fonts).
+- `next.config.js`: Configuration file.
+
+**The `app/globals.css` file:**
+This is where your global styles live. Next.js supports CSS Modules and Tailwind out of the box.
+
+**Optimization built-in:** Use the `<Image>` component (`next/image`) for automatic image optimization (resizing, WebP, lazy loading). Use the Font Module (`next/font`) to optimize font loading and avoid layout shift. Both are in the [production checklist](https://nextjs.org/docs/app/guides/production-checklist).
+
+## 3. Your First Page
+
+Open `app/page.tsx`. This file represents the `/` (home) route.
+
+```tsx
+export default function Home() {
+  return (
+    <main>
+      <h1>Hello, Next.js!</h1>
+    </main>
+  );
+}
+```
+
+It looks just like a React component! But there's a secret: **It's running on the server.**
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: The App Folder](https://scrimba.com/learn/nextjs/app-folder-c04?via=u42d4986)**
+
+---
+
+<CourseCard
+  title="The Next.js App Router"
+  duration="4 hrs"
+  difficulty="Intermediate"
+  access="Free"
+  href="https://scrimba.com/learn-next-js-app-router-c02s?via=u42d4986"
+  description="Build your first Next.js dashboard application interactively."
+/>

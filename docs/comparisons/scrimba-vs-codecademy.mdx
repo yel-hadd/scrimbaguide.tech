@@ -7,23 +7,54 @@ keywords: [scrimba vs codecademy, codecademy vs scrimba, scrimba or codecademy, 
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import ReviewSchema from '@site/src/components/ReviewSchema';
+import VerdictBox from '@site/src/components/VerdictBox';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
+
+<ReviewSchema 
+  itemName="Scrimba vs Codecademy" 
+  ratingValue={4.5} 
+  bestRating={5} 
+  author="ScrimbaGuide Team" 
+  datePublished="2026-01-15"
+/>
 
 # Scrimba vs Codecademy: Complete Comparison (2026)
 
+<DisclosureNotice />
+
 Both Scrimba and Codecademy are popular interactive coding platforms, but they differ significantly in their teaching approach, content depth, and pricing model.
+
+<VerdictBox 
+  title="The Verdict" 
+  rating="Winner: Scrimba" 
+  verdict="Scrimba wins for web development and AI because of its superior 'interactive video' format, which builds real muscle memory. Codecademy is better if you need to learn languages Scrimba doesn't cover (like C++, Java, or Go) or prefer text-based drills."
+  pros={[
+    "Scrimba: Code inside the video (better retention)",
+    "Scrimba: Real instructor voice/guidance",
+    "Scrimba: Lower annual cost"
+  ]}
+  cons={[
+    "Codecademy: Text-based instructions can be dry",
+    "Codecademy: 'Fill in the blank' drills can feel repetitive"
+  ]}
+  ctaText="Try Scrimba Free"
+  ctaHref="https://scrimba.com/?via=u42d4986"
+/>
 
 <ComparisonTable
   competitorName="Codecademy"
-  scrimbaUrl="https://scrimba.com/"
+  scrimbaUrl="https://scrimba.com/?via=u42d4986"
   competitorUrl="https://www.codecademy.com/"
   rows={[
     { feature: "Teaching format", scrimba: "Interactive video scrims (pause & edit code)", competitor: "Text-based lessons with inline editor" },
     { feature: "Monthly price", scrimba: "Check current pricing", competitor: "~$35-$60/month" },
-    { feature: "Free tier", scrimba: "~20 full courses", competitor: "Limited intro lessons" },
-    { feature: "Number of courses", scrimba: "87+ focused courses", competitor: "300+ shorter courses" },
+    { feature: "Free tier", scrimba: `~${freeCount} full courses`, competitor: "Limited intro lessons" },
+    { feature: "Number of courses", scrimba: `${totalCoursesLabel} focused courses`, competitor: "300+ shorter courses" },
     { feature: "Career paths", scrimba: "4 paths (up to 108 hrs)", competitor: "10+ career paths" },
     { feature: "Languages covered", scrimba: "JS, Python, HTML/CSS, SQL", competitor: "15+ languages" },
-    { feature: "AI courses", scrimba: "12+ (agents, RAG, MCP)", competitor: "Limited AI coverage" },
+    { feature: "AI courses", scrimba: "15 (agents, RAG, MCP)", competitor: "Limited AI coverage" },
     { feature: "Community", scrimba: "Active Discord (Pro)", competitor: "Forum-based" },
     { feature: "Certificates", scrimba: "Career path certificates", competitor: "Course certificates" },
     { feature: "Projects", scrimba: "Built into courses", competitor: "Separate project modules" },
@@ -32,10 +63,18 @@ Both Scrimba and Codecademy are popular interactive coding platforms, but they d
   ]}
 />
 
+## Curriculum Comparison: React
+
+**Scrimba's Learn React** (15.1 hrs, free): Video-led with Bob Ziroll, created with MDN. You pause and edit code inside the lesson. Covers components, hooks, effects, and two capstone projects (Info Site, Meme Generator).
+
+**Codecademy's Learn React**: Text-based steps with an inline editor. "Fill in the blank" style for many exercises. Covers similar concepts but without instructor voice or the ability to pause-and-edit inside a video.
+
+For React specifically, Scrimba's format leads to better retention because you're coding in context rather than completing isolated drills.
+
 ## When to Choose Scrimba
 
 - You prefer **video-based interactive learning** over text
-- You want deep coverage of **React, JavaScript, and AI**
+- You want deep coverage of **React, JavaScript, AI, and cybersecurity** ([Learn Cybersecurity](/docs/courses/backend/cybersecurity))
 - You value an **active Discord community**
 - You want a **focused, curated** course catalog
 - You learn better with a **teacher guiding you** through video
@@ -62,11 +101,12 @@ Both Scrimba and Codecademy are popular interactive coding platforms, but they d
 
 <FAQAccordion items={[
   { q: "Is Scrimba better than Codecademy?", a: "For web development and AI, Scrimba's interactive video format and focused curriculum make it stronger. Codecademy offers more language variety and a mobile app." },
-  { q: "Which is cheaper, Scrimba or Codecademy?", a: "Both offer similar pricing tiers. Scrimba's free tier includes about 20 full courses, which is quite generous compared to Codecademy's limited free content." },
+  { q: "Which is cheaper, Scrimba or Codecademy?", a: `Both offer similar pricing tiers. Scrimba's free tier includes about ${freeCount} full courses, which is quite generous compared to Codecademy's limited free content.` },
   { q: "Can I use both?", a: "Yes. Many learners use Scrimba for their main curriculum and supplement with Codecademy for specific languages or topics Scrimba doesn't cover." },
 ]} />
 
 <PricingCTA
   title="Try Scrimba's interactive learning"
-  subtitle="20 free courses to start, or upgrade to Pro for full access."
+  subtitle={`${freeCount} free courses to start, or upgrade to Pro for full access.`}
+  ctaType="free"
 />

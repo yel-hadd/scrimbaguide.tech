@@ -1,5 +1,5 @@
 # ──────────────────────────────────────────────────────────────────
-# ScrimbAGuide — development workflow
+# ScrimbaGuide — development workflow
 # ──────────────────────────────────────────────────────────────────
 
 SHELL      := /bin/bash

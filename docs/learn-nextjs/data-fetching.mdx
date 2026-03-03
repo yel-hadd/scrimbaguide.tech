@@ -1,0 +1,78 @@
+---
+title: "Data Fetching in Next.js"
+description: "Learn how to fetch data in Next.js using Server Components. Master async/await, caching, and Server Actions."
+keywords: [next.js data fetching, server actions, next.js caching, async components, react suspense]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import CourseCard from '@site/src/components/CourseCard';
+
+# Data Fetching
+
+Next.js simplifies data fetching. You don't need `useEffect` + `fetch` inside your components anymore.
+
+## 1. Fetching Data on the Server
+
+In Server Components, you can just `await` your data.
+
+```tsx
+async function Page() {
+  const res = await fetch('https://api.example.com/data');
+  const data = await res.json();
+
+  return <main>{data.title}</main>;
+}
+```
+
+**Caching (Next.js 15+):** By default, `fetch` is *not* cached. Opt into caching with `{ cache: 'force-cache' }` or a positive `next: { revalidate: 60 }` (seconds). Use `revalidatePath()` or `revalidateTag()` to invalidate cached data after mutations.
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: Fetching Data](https://scrimba.com/learn/nextjs/fetching-data-c016?via=u42d4986)**
+
+## 2. Server Actions (Mutations)
+
+Server Actions allow you to run server-side code directly from your components without creating an API route. They are perfect for form submissions.
+
+```tsx
+// app/actions.ts
+'use server';
+
+export async function createPost(formData: FormData) {
+  const title = formData.get('title');
+  await db.post.create({ data: { title } });
+}
+
+// app/page.tsx
+import { createPost } from './actions';
+
+export default function Page() {
+  return (
+    <form action={createPost}>
+      <input name="title" />
+      <button type="submit">Create</button>
+    </form>
+  );
+}
+```
+
+This updates the database directly from the form!
+
+## 3. Suspense and Streaming
+
+When fetching data takes time, you don't want the user to stare at a blank screen. Use **Suspense** to show a loading UI.
+
+You can create a `loading.tsx` file in any route segment, and Next.js will automatically show it while your page loads.
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: Loading UI](https://scrimba.com/learn/nextjs/loading-ui-c018?via=u42d4986)**
+
+---
+
+<CourseCard
+  title="The Next.js App Router"
+  duration="4 hrs"
+  difficulty="Intermediate"
+  access="Free"
+  href="https://scrimba.com/learn-next-js-app-router-c02s?via=u42d4986"
+  description="Take the full free course on data fetching and server actions."
+/>

@@ -1,5 +1,25 @@
 import React from 'react';
 
+/** Converts "9.8 hrs" or "86 min" to ISO 8601 duration (e.g. PT9H48M). */
+function toISODuration(duration: string): string {
+  const hrsMatch = duration.match(/^(\d+(?:\.\d+)?)\s*hrs?$/i);
+  if (hrsMatch) {
+    const h = parseFloat(hrsMatch[1]);
+    const hours = Math.floor(h);
+    const mins = Math.round((h - hours) * 60);
+    return mins > 0 ? `PT${hours}H${mins}M` : `PT${hours}H`;
+  }
+  const minMatch = duration.match(/^(\d+)\s*min$/i);
+  if (minMatch) return `PT${minMatch[1]}M`;
+  return duration;
+}
+
+interface ModuleInfo {
+  name: string;
+  duration: string;
+  lessons: number;
+}
+
 interface CourseSchemaProps {
   name: string;
   description: string;
@@ -9,6 +29,7 @@ interface CourseSchemaProps {
   difficulty?: string;
   access?: 'Free' | 'Pro';
   keywords?: string[];
+  modules?: ModuleInfo[];
 }
 
 export default function CourseSchema({
@@ -20,18 +41,20 @@ export default function CourseSchema({
   difficulty,
   access,
   keywords,
+  modules,
 }: CourseSchemaProps): React.ReactElement {
   const isFree = access === 'Free';
 
-  const schema = {
+  const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Course',
     name,
     description,
     provider: {
-      '@type': 'Organization',
+      '@type': 'EducationalOrganization',
       name: provider,
-      sameAs: 'https://scrimba.com',
+      url: 'https://scrimba.com',
+      sameAs: ['https://scrimba.com'],
     },
     url,
     inLanguage: 'en',
@@ -39,7 +62,7 @@ export default function CourseSchema({
       educationalLevel: difficulty,
     }),
     ...(duration && {
-      timeRequired: duration,
+      timeRequired: toISODuration(duration),
     }),
     ...(keywords && keywords.length > 0 && {
       teaches: keywords,
@@ -55,9 +78,21 @@ export default function CourseSchema({
     hasCourseInstance: {
       '@type': 'CourseInstance',
       courseMode: 'online',
-      courseWorkload: duration || 'PT2H',
+      courseWorkload: duration ? toISODuration(duration) : 'PT2H',
     },
   };
+
+  if (modules && modules.length > 0) {
+    schema.hasPart = {
+      '@type': 'ItemList',
+      itemListElement: modules.map((m, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: m.name,
+        description: `${m.lessons} lessons, ${m.duration}`,
+      })),
+    };
+  }
 
   return (
     <script

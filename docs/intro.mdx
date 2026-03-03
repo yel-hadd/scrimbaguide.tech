@@ -7,6 +7,7 @@ slug: /intro
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
+import { totalCoursesLabel, freeCount, proCount } from '@site/src/utils/scrimbaFacts';
 
 # What is Scrimba?
 
@@ -16,7 +17,7 @@ import PricingCTA from '@site/src/components/PricingCTA';
 
 Scrimba's standout feature is the **interactive scrim** — a screencast where the viewer can pause at any point, edit the code, and run it. This makes learning hands-on from minute one.
 
-- **87+ courses** covering frontend, backend, fullstack, AI, and career prep
+- **{totalCoursesLabel} courses** covering frontend, backend, fullstack, AI, and career prep
 - **4 structured learning paths**: [Frontend](/docs/paths/frontend-developer-path), [Fullstack](/docs/paths/fullstack-developer-path), [Backend](/docs/paths/backend-developer-path), and [AI Engineer](/docs/paths/ai-engineer-path)
 - **Interactive challenges** throughout every course
 - **Certificates of completion** for career paths
@@ -34,7 +35,7 @@ Scrimba's standout feature is the **interactive scrim** — a screencast where t
 
 ## Free vs Pro
 
-Scrimba offers both free and paid content. About 20 courses are available for free (labeled "Community"), while 67+ Pro courses require a subscription. See our [complete pricing breakdown](/docs/pricing/) and [Pro vs Free comparison](/docs/pricing/pro-vs-free).
+Scrimba offers both free and paid content. About {freeCount} courses are available for free (labeled "Community"), while {proCount}+ Pro courses require a subscription. See our [complete pricing breakdown](/docs/pricing/) and [Pro vs Free comparison](/docs/pricing/pro-vs-free). Source: [Scrimba Help Centre](https://scrimba.helpscoutdocs.com/article/73-whats-the-difference-between-pro-and-free).
 
 ## What Topics Does Scrimba Cover?
 
@@ -60,6 +61,6 @@ Check our [FAQ section](/docs/faq/) covering [billing & payments](/docs/faq/bill
 
 <PricingCTA
   title="Ready to start learning?"
-  subtitle="Get full access to 87+ courses, 4 career paths, and a private Discord community."
+  subtitle={`Get full access to ${totalCoursesLabel} courses, 4 career paths, and a private Discord community.`}
   buttonText="Try Scrimba Pro"
 />

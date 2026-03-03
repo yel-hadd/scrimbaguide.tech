@@ -7,17 +7,23 @@ keywords: [scrimba vs coding bootcamp, cheap coding bootcamp alternative, scrimb
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import { totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
 
 # Scrimba vs Coding Bootcamps: The Real Cost Comparison
 
+<DisclosureNotice />
+
 Traditional coding bootcamps cost **$7,500 to $24,000** on average. Scrimba's Bootcamp plan costs **$750 for 3 months**. But price isn't everything — here's the full picture.
+
+> **Note:** Scrimba pricing may vary by location and change over time. Check the [official pricing page](https://scrimba.com/?via=u42d4986) for current rates.
 
 ## Cost Comparison at a Glance
 
 <ComparisonTable
   competitorName="Traditional Bootcamps"
-  scrimbaUrl="https://scrimba.com/bootcamp"
+  scrimbaUrl="https://scrimba.com/bootcamp?via=u42d4986"
   rows={[
     { feature: "Cost", scrimba: "Pro: ~$39/mo | Bootcamp: $750/3mo", competitor: "$7,500-$24,000 (avg $14,000)" },
     { feature: "Duration", scrimba: "Self-paced (3-6 months typical)", competitor: "12-28 weeks (avg 14 weeks)" },
@@ -37,7 +43,7 @@ Traditional coding bootcamps cost **$7,500 to $24,000** on average. Scrimba's Bo
 
 ### Scrimba Pro (~$39/month)
 
-- Full access to **87+ courses** and **4 career paths**
+- Full access to **{totalCoursesLabel} courses** and **4 career paths**
 - Interactive challenges and solo projects
 - Discord community access with code reviews
 - **Best for**: Self-motivated learners who want flexibility
@@ -133,5 +139,5 @@ Scrimba Bootcamp is roughly **10-30x cheaper** than traditional alternatives.
 
 <PricingCTA
   title="Start learning at a fraction of the cost"
-  subtitle="Scrimba Pro gives you access to 87+ courses and 4 career paths for less than a single bootcamp week."
+  subtitle={`Scrimba Pro gives you access to ${totalCoursesLabel} courses and 4 career paths for less than a single bootcamp week.`}
 />

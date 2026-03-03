@@ -1,0 +1,103 @@
+---
+title: "Adding Interactivity: State and Events"
+description: "Learn how to make your React components interactive. Handle events, manage state with useState, and update the UI in response to user actions."
+keywords: [react state, react events, usestate hook, react forms, scrimba react]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import CourseCard from '@site/src/components/CourseCard';
+
+# Adding Interactivity
+
+Interactivity is what turns a static page into a web app. In React, this mostly revolves around **Events** and **State**.
+
+## 1. Responding to Events
+
+React follows a simple pattern: `on[Event]={handler}`.
+
+```jsx
+function Button() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Click me
+    </button>
+  );
+}
+```
+
+Notice:
+- `onClick` is camelCase.
+- We pass `handleClick` (the function itself), NOT `handleClick()` (the result of calling it).
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: Event Listeners](https://scrimba.com/learn/learnreact/event-listeners-c014?via=u42d4986)**
+
+## 2. State: A Component's Memory
+
+Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this memory is called **state**.
+
+We use the `useState` Hook:
+
+```jsx
+import { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount(count + 1); // Updates state & triggers a re-render
+  }
+
+  return <button onClick={increment}>{count}</button>;
+}
+```
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: useState Hook](https://scrimba.com/learn/learnreact/usestate-array-destructuring-c016?via=u42d4986)**
+
+## 3. Updating Objects in State
+
+React state is immutable. You shouldn't mutate objects directly.
+
+**Wrong:**
+```js
+person.firstName = 'Bob'; // Don't do this!
+```
+
+**Right:**
+```js
+setPerson({
+  ...person, // Copy the old fields
+  firstName: 'Bob' // Override the new one
+});
+```
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: Complex State (Objects)](https://scrimba.com/learn/learnreact/complex-state-objects-c018?via=u42d4986)**
+
+## 4. Updating Arrays in State
+
+Arrays in state are also immutable. Don't use `push`, `splice`, or direct assignment.
+
+**Adding:** `setItems([...items, newItem])`  
+**Removing:** `setItems(items.filter(i => i.id !== id))`  
+**Updating:** `setItems(items.map(i => i.id === id ? { ...i, ...updates } : i))`  
+**Reordering:** Copy, then mutate the copy (e.g., swap elements) before passing to setState.
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: Complex State](https://scrimba.com/learn/learnreact/complex-state-objects-c018?via=u42d4986)** (covers objects and arrays)
+
+---
+
+<CourseCard
+  title="Project: Build a Meme Generator"
+  duration="4 hrs"
+  difficulty="Beginner"
+  access="Free"
+  href="https://scrimba.com/learn/learnreact/project-setup-c013?via=u42d4986"
+  description="Master state and events by building a meme generator app."
+/>

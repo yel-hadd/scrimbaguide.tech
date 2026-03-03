@@ -7,17 +7,47 @@ keywords: [scrimba vs youtube, youtube tutorials vs scrimba, learn coding youtub
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import ReviewSchema from '@site/src/components/ReviewSchema';
+import VerdictBox from '@site/src/components/VerdictBox';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+
+<ReviewSchema 
+  itemName="Scrimba vs YouTube" 
+  ratingValue={4.5} 
+  bestRating={5} 
+  author="ScrimbaGuide Team" 
+  datePublished="2026-01-15"
+/>
 
 # Scrimba vs YouTube Tutorials: Complete Comparison (2026)
 
+<DisclosureNotice />
+
 YouTube is the world's largest free coding resource. Scrimba is the only platform that lets you pause a lesson and edit the instructor's code. Both have passionate communities — but they serve learners very differently.
+
+<VerdictBox 
+  title="The Verdict" 
+  rating="Winner: Scrimba (for structure)" 
+  verdict="YouTube is fantastic for one-off tutorials or exploring new topics for free. But for learning to code from scratch, it often leads to 'tutorial hell' (watching without doing). Scrimba's interactive format forces you to code, building the muscle memory you need to actually get hired."
+  pros={[
+    "Scrimba: Interactive coding (builds muscle memory)",
+    "Scrimba: Structured paths (no decision fatigue)",
+    "YouTube: 100% Free forever"
+  ]}
+  cons={[
+    "YouTube: Passive watching (low retention)",
+    "YouTube: Quality varies wildly"
+  ]}
+  ctaText="Try Scrimba Free Courses"
+  ctaHref="https://scrimba.com/?via=u42d4986"
+/>
 
 <ComparisonTable
   competitorName="YouTube Tutorials"
-  scrimbaUrl="https://scrimba.com/"
+  scrimbaUrl="https://scrimba.com/?via=u42d4986"
   competitorUrl="https://www.youtube.com/"
   rows={[
-    { feature: "Price", scrimba: "Free tier + Pro ($18/mo or less)", competitor: "100% free (ad-supported)" },
+    { feature: "Price", scrimba: "Free tier + Pro subscription (check pricing)", competitor: "100% free (ad-supported)" },
     { feature: "Teaching format", scrimba: "Interactive video (pause & edit code)", competitor: "Passive video (watch only)" },
     { feature: "Code editor", scrimba: "Built into every lesson", competitor: "None — bring your own IDE" },
     { feature: "Setup required", scrimba: "None (code in browser)", competitor: "Yes (install IDE, create projects)" },

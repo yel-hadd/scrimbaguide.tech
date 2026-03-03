@@ -24,7 +24,7 @@ export default function WhyScrimba(): React.ReactElement {
         </div>
       </div>
       <div className="why-scrimba__cta">
-        <AffiliateLink href="https://scrimba.com/" variant="button">
+        <AffiliateLink href="https://scrimba.com/?via=u42d4986" variant="button">
           Try Scrimba for Free
         </AffiliateLink>
       </div>

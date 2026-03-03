@@ -1,6 +1,6 @@
 ---
-title: "Contact ScrimbAGuide"
-description: "Get in touch with the ScrimbAGuide team. Ask about Scrimba courses, report a bug, or suggest new content."
+title: "Contact ScrimbaGuide"
+description: "Get in touch with the ScrimbaGuide team. Ask about Scrimba courses, report a bug, or suggest new content."
 keywords: [contact scrimbaguide, scrimba guide contact]
 ---
 

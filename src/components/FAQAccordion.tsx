@@ -1,8 +1,9 @@
 import React, { useState, useId } from 'react';
 
-interface FAQItem {
+export interface FAQItem {
   q: string;
   a: string;
+  sourceUrl?: string;
 }
 
 interface FAQAccordionProps {
@@ -21,7 +22,7 @@ export default function FAQAccordion({
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  // JSON-LD FAQ Schema
+  // JSON-LD FAQ Schema with optional citation
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -31,6 +32,7 @@ export default function FAQAccordion({
       acceptedAnswer: {
         '@type': 'Answer',
         text: item.a,
+        ...(item.sourceUrl && { citation: item.sourceUrl }),
       },
     })),
   };
@@ -72,6 +74,14 @@ export default function FAQAccordion({
               hidden={!isOpen}
             >
               <p>{item.a}</p>
+              {item.sourceUrl && (
+                <p className="faq-accordion__source">
+                  Source:{' '}
+                  <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer">
+                    Scrimba Help Centre
+                  </a>
+                </p>
+              )}
             </div>
           </div>
         );

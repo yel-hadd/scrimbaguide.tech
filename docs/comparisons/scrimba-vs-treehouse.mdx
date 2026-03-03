@@ -7,23 +7,54 @@ keywords: [scrimba vs treehouse, treehouse vs scrimba, best interactive coding p
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import ReviewSchema from '@site/src/components/ReviewSchema';
+import VerdictBox from '@site/src/components/VerdictBox';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { freeCount } from '@site/src/utils/scrimbaFacts';
+
+<ReviewSchema 
+  itemName="Scrimba vs Treehouse" 
+  ratingValue={4.5} 
+  bestRating={5} 
+  author="ScrimbaGuide Team" 
+  datePublished="2026-01-15"
+/>
 
 # Scrimba vs Treehouse: Complete Comparison (2026)
 
+<DisclosureNotice />
+
 Both Scrimba and Treehouse focus on interactive, structured learning for aspiring developers.
+
+<VerdictBox 
+  title="The Verdict" 
+  rating="Winner: Scrimba" 
+  verdict="Scrimba feels like the modern successor to Treehouse. While Treehouse has a great legacy, Scrimba's interactive video technology is a generation ahead of Treehouse's 'video + quiz' format. Scrimba also offers a much more generous free tier."
+  pros={[
+    "Scrimba: Code inside the video (better tech)",
+    "Scrimba: Generous free tier (" + freeCount + "+ courses)",
+    "Scrimba: Modern AI engineering curriculum"
+  ]}
+  cons={[
+    "Treehouse: Traditional video + quiz format feels dated",
+    "Treehouse: No free tier (only 7-day trial)"
+  ]}
+  ctaText="Try Scrimba Free"
+  ctaHref="https://scrimba.com/?via=u42d4986"
+/>
 
 <ComparisonTable
   competitorName="Treehouse"
-  scrimbaUrl="https://scrimba.com/"
+  scrimbaUrl="https://scrimba.com/?via=u42d4986"
   competitorUrl="https://teamtreehouse.com/"
   rows={[
     { feature: "Teaching format", scrimba: "Interactive scrims (edit code in video)", competitor: "Video + quizzes + code challenges" },
     { feature: "Interactivity", scrimba: "Edit instructor's code mid-lesson", competitor: "Separate practice workspaces" },
     { feature: "Career paths", scrimba: "4 paths (up to 108 hrs)", competitor: "Techdegree programs" },
     { feature: "Topics", scrimba: "Web dev, AI, Python", competitor: "Web dev, Python, Java, C#" },
-    { feature: "AI courses", scrimba: "12+ cutting-edge AI courses", competitor: "Minimal AI coverage" },
+    { feature: "AI courses", scrimba: "15 cutting-edge AI courses", competitor: "Minimal AI coverage" },
     { feature: "Community", scrimba: "Active Discord (Pro)", competitor: "Slack community" },
-    { feature: "Free tier", scrimba: "~20 full courses", competitor: "7-day free trial only" },
+    { feature: "Free tier", scrimba: `~${freeCount} full courses`, competitor: "7-day free trial only" },
     { feature: "Content currency", scrimba: "Regularly updated (2024-2026)", competitor: "Some outdated content" },
     { feature: "Code review", scrimba: "Community via Discord", competitor: "Techdegree code reviews" },
   ]}
@@ -52,7 +83,7 @@ Both Scrimba and Treehouse focus on interactive, structured learning for aspirin
 
 <FAQAccordion items={[
   { q: "Is Treehouse better than Scrimba?", a: "Treehouse has more topic variety (Python, Java, C#), but Scrimba is far superior for web development due to its interactive code-in-video technology. If you want to learn React or JavaScript, Scrimba is the better choice." },
-  { q: "Does Treehouse have a free tier?", a: "No, Treehouse only offers a 7-day free trial. Scrimba offers ~20 full courses for free (unlimited access) without requiring a credit card." },
+  { q: "Does Treehouse have a free tier?", a: `No, Treehouse only offers a 7-day free trial. Scrimba offers ~${freeCount} full courses for free (unlimited access) without requiring a credit card.` },
   { q: "Are the certificates accredited?", a: "Neither platform offers accredited university degrees. However, both offer certificates of completion that can be added to LinkedIn to demonstrate your skills." },
 ]} />
 

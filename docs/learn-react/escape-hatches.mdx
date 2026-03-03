@@ -1,0 +1,81 @@
+---
+title: "Escape Hatches: Effects and Refs"
+description: "Learn how to 'escape' React to work with external systems. Master the useEffect hook and useRef for direct DOM manipulation."
+keywords: [react useeffect, react useref, api calls in react, side effects, scrimba]
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+
+# Escape Hatches
+
+Sometimes you need to step outside React's rendering flow to talk to "the outside world"—APIs, browser storage, or third-party widgets.
+
+## 1. References with Refs
+
+Refs let a component hold some information that isn't used for rendering, like a DOM node or a timeout ID. Unlike state, updating a ref **does not re-render your component**.
+
+Common use case: Focusing an input.
+
+```jsx
+const inputRef = useRef(null);
+
+function handleClick() {
+  inputRef.current.focus();
+}
+
+return <input ref={inputRef} />;
+```
+
+## 2. Synchronizing with Effects
+
+`useEffect` lets you run code *after* rendering so you can synchronize your component with an external system.
+
+**Common Use Cases:**
+1. Fetching data from an API.
+2. Subscribing to events (window resize, websockets).
+3. Manipulating the DOM manually.
+
+**The Syntax:**
+```jsx
+useEffect(() => {
+  // 1. Setup code (runs on mount)
+  const connection = createConnection();
+  connection.connect();
+
+  // 2. Cleanup code (runs on unmount/re-run)
+  return () => {
+    connection.disconnect();
+  };
+}, []); // 3. Dependency array (when to re-run)
+```
+
+**Learn it on Scrimba:**
+-> **[Interactive Lesson: useEffect Syntax](https://scrimba.com/learn/learnreact/useeffect-syntax-c022?via=u42d4986)**
+
+## 3. You Might Not Need an Effect
+
+Effects are powerful but easy to overuse. If you can calculate something during render, **do not use an effect**.
+
+- ❌ **Don't use effects to transform data for rendering.** Use derived state instead:
+
+```jsx
+// Wrong: effect to filter
+const [filtered, setFiltered] = useState([]);
+useEffect(() => { setFiltered(items.filter(i => i.active)); }, [items]);
+
+// Right: compute during render
+const filtered = items.filter(i => i.active);
+```
+
+- ❌ **Don't use effects to handle user events.** Click handlers are the right place. Effects run *after* render; events need immediate response.
+- ❌ **Don't use effects to sync with props.** If a value can be computed from props, derive it in render.
+
+We cover best practices and optimization in the **Advanced React** course.
+
+---
+
+<div style={{ textAlign: 'center', marginTop: '2rem' }}>
+  <AffiliateLink href="https://scrimba.com/advanced-react-c02h?via=u42d4986" variant="button">
+    Learn Advanced React Patterns
+  </AffiliateLink>
+</div>

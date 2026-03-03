@@ -10,10 +10,38 @@ image: /img/blog/why-i-keep-renewing-scrimba-pro.png
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
+import ReviewSchema from '@site/src/components/ReviewSchema';
+import VerdictBox from '@site/src/components/VerdictBox';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
+
+<ReviewSchema 
+  itemName="Scrimba Pro Subscription" 
+  ratingValue={4.5} 
+  bestRating={5} 
+  author="ScrimbaGuide Team" 
+  datePublished="2026-02-02"
+/>
 
 # Why I Keep Renewing My Scrimba Pro Subscription Every Year
 
+<DisclosureNotice />
+
 Most coding platform subscriptions follow a predictable arc: excited sign-up, 3 months of intense use, gradual fade, cancelled renewal. So why do some Scrimba users keep paying year after year?
+
+<VerdictBox 
+  title="Long-Term Value Verdict" 
+  rating="4.5/5" 
+  verdict="Scrimba Pro remains valuable after the first year because they consistently add new career-relevant courses (like the AI Engineer Path and Backend Path). It evolves from a 'bootcamp replacement' into a 'continuous professional development' tool."
+  pros={[
+    "New courses added regularly (AI, Backend, React 19)",
+    "Excellent for learning new frameworks quickly",
+    "Community access for ongoing networking"
+  ]}
+  cons={[
+    "Subscription model required to keep access"
+  ]}
+/>
 
 {/* truncate */}
 
@@ -32,7 +60,7 @@ These aren't marketing quotes. They're verified reviews from users who vote with
 For context, here's what the Pro subscription includes:
 
 - **Full access to all career paths** — Frontend (81.6 hrs), Fullstack (108.4 hrs), AI Engineering, and more
-- **150+ courses** across React, JavaScript, TypeScript, Python, CSS, AI, and backend
+- **{totalCoursesLabel} courses** across React, JavaScript, TypeScript, Python, CSS, AI, and backend
 - **Solo projects** with design specs for portfolio building
 - **Discord community access** — code reviews, study groups, career support channels, weekly Town Hall
 - **Certificates** for completed career paths
@@ -71,7 +99,7 @@ Scrimba Pro costs significantly less than alternatives:
 
 | Option | Annual Cost | What You Get |
 |---|---|---|
-| Scrimba Pro (annual) | ~$200/year | 150+ interactive courses, community, certificates |
+| Scrimba Pro (annual) | ~$200/year | {totalCoursesLabel} interactive courses, community, certificates |
 | Codecademy Pro | ~$200/year | Text-based exercises, no video instruction |
 | Frontend Masters | ~$240/year | Video courses, no interactive coding |
 | Udemy (5 courses/yr) | ~$50-100/year | Passive video, no structure |
@@ -108,5 +136,5 @@ Based on review analysis, the top reasons for long-term retention:
 
 <PricingCTA
   title="See what Pro subscribers get"
-  subtitle="Try Scrimba Pro and access 150+ interactive courses, career paths, and the Discord community."
+  subtitle={`Try Scrimba Pro and access ${totalCoursesLabel} interactive courses, career paths, and the Discord community.`}
 />

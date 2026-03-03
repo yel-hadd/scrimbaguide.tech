@@ -7,21 +7,52 @@ keywords: [scrimba vs udemy, udemy vs scrimba, scrimba or udemy, best coding pla
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import ReviewSchema from '@site/src/components/ReviewSchema';
+import VerdictBox from '@site/src/components/VerdictBox';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
+
+<ReviewSchema 
+  itemName="Scrimba vs Udemy" 
+  ratingValue={4.5} 
+  bestRating={5} 
+  author="ScrimbaGuide Team" 
+  datePublished="2026-01-15"
+/>
 
 # Scrimba vs Udemy: Complete Comparison (2026)
 
+<DisclosureNotice />
+
 Scrimba and Udemy take fundamentally different approaches to online learning. Here's how they compare.
+
+<VerdictBox 
+  title="The Verdict" 
+  rating="Winner: Scrimba (for quality)" 
+  verdict="Scrimba is the clear winner for learning effectiveness. Its interactive format beats Udemy's passive videos for retention. However, Udemy wins on variety—if you need to learn a niche topic (like Unreal Engine or Marketing), Udemy is the place to go."
+  pros={[
+    "Scrimba: Interactive coding environment",
+    "Scrimba: Consistent, curated quality",
+    "Scrimba: Structured career paths"
+  ]}
+  cons={[
+    "Udemy: Quality varies wildly by instructor",
+    "Udemy: Passive video watching (tutorial hell risk)"
+  ]}
+  ctaText="Try Scrimba Free"
+  ctaHref="https://scrimba.com/?via=u42d4986"
+/>
 
 <ComparisonTable
   competitorName="Udemy"
-  scrimbaUrl="https://scrimba.com/"
+  scrimbaUrl="https://scrimba.com/?via=u42d4986"
   competitorUrl="https://www.udemy.com/"
   rows={[
     { feature: "Teaching format", scrimba: "Interactive scrims (code in the video)", competitor: "Passive video lectures" },
     { feature: "Pricing model", scrimba: "Monthly/annual subscription", competitor: "Per-course purchase ($10-200)" },
-    { feature: "Free content", scrimba: "~20 full courses", competitor: "Some free courses, low quality varies" },
+    { feature: "Free content", scrimba: `~${freeCount} full courses`, competitor: "Some free courses, quality varies" },
     { feature: "Course quality", scrimba: "Curated, consistent quality", competitor: "Varies wildly by instructor" },
-    { feature: "Number of courses", scrimba: "87+ focused courses", competitor: "200,000+ courses" },
+    { feature: "Number of courses", scrimba: `${totalCoursesLabel} focused courses`, competitor: "200,000+ courses" },
     { feature: "Interactivity", scrimba: "Edit code inside lessons", competitor: "Watch-only, code separately" },
     { feature: "Career paths", scrimba: "4 structured paths", competitor: "No structured paths" },
     { feature: "Community", scrimba: "Active Discord", competitor: "Course-specific Q&A" },
@@ -31,10 +62,18 @@ Scrimba and Udemy take fundamentally different approaches to online learning. He
   ]}
 />
 
+## Curriculum Comparison: React
+
+**Scrimba**: Learn React (15.1 hrs, free) + Advanced React (13.2 hrs, Pro). Interactive scrims — you edit code inside the video. Bob Ziroll teaches; curriculum created with MDN. No setup: code in the browser.
+
+**Udemy**: Hundreds of React courses. Popular options (e.g., Maximilian's React course) are 40+ hours of passive video. You watch, then switch to your IDE to code. Quality varies; reviews help but don't guarantee consistency. Typically $10–15 on sale.
+
+Scrimba's format reduces "tutorial hell" because you're forced to type; Udemy's passive format often leads to watching without doing.
+
 ## When to Choose Scrimba
 
 - You want **interactive, hands-on learning** (not passive video)
-- You're focused on **web development or AI**
+- You're focused on **web development, AI, or cybersecurity** ([Learn Cybersecurity](/docs/courses/backend/cybersecurity))
 - You want **curated, quality-controlled** content
 - You prefer a **subscription** for unlimited access
 - You want a **structured career path**
@@ -60,7 +99,7 @@ Scrimba and Udemy take fundamentally different approaches to online learning. He
 
 <FAQAccordion items={[
   { q: "Is Scrimba better than Udemy for web development?", a: "For web development specifically, yes. Scrimba's interactive format and curated curriculum are more effective than Udemy's passive video approach." },
-  { q: "Is Scrimba more expensive than Udemy?", a: "Udemy courses cost $10-15 on sale, but you need to buy each separately. Scrimba Pro gives unlimited access to 87+ courses, which is better value if you plan to take multiple courses." },
+  { q: "Is Scrimba more expensive than Udemy?", a: `Udemy courses cost $10-15 on sale, but you need to buy each separately. Scrimba Pro gives unlimited access to ${totalCoursesLabel} courses, which is better value if you plan to take multiple courses.` },
 ]} />
 
 <PricingCTA />

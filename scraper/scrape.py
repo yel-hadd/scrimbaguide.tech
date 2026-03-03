@@ -60,6 +60,8 @@ SITEMAP_URL = f"{SCRIMBA_BASE}/sitemap.xml"
 # Pages to skip (private lessons, auth pages, etc.)
 PRIVATE_PATTERNS = [
     r"/learn/[^/]+/[^/]+$",       # individual lesson pages
+    r"/learn/[^/]+/[^/]+/[^/]+",  # deeper /learn/* lesson paths (3+ segments)
+    r"/~",                        # lesson fragments: /course-slug/~0232
     r"/playground",
     r"/dashboard",
     r"/settings",
@@ -67,6 +69,9 @@ PRIVATE_PATTERNS = [
     r"/login",
     r"/signup",
     r"/certificate/",
+    r"\.(jpg|png|gif|webp|svg)$",  # static assets
+    r"/embed",                    # embed widgets
+    r"/playlist/",               # playlist views (duplicate lesson content)
 ]
 
 PAGE_LOAD_TIMEOUT = 15
@@ -373,11 +378,9 @@ def main() -> None:
 
         # Classify and filter
         url_tasks: list[tuple[str, str]] = []
-        skipped = 0
         for url in all_urls:
             page_type = classify_url(url)
             if page_type is None:
-                skipped += 1
                 continue
             if args.type and page_type != args.type:
                 continue
@@ -385,9 +388,8 @@ def main() -> None:
                 continue
             url_tasks.append((url, page_type))
 
-        if args.skip_private and skipped:
-            logger.info("--skip-private: filtered %d -> %d URLs (dropped %d private lesson pages)",
-                        len(all_urls), len(url_tasks) + len(existing_urls), skipped)
+        dropped = len(all_urls) - len(url_tasks)
+        logger.info("Filtered: %d -> %d URLs (dropped %d)", len(all_urls), len(url_tasks), dropped)
 
         logger.info("Starting scraper: %d URLs, output -> %s", len(url_tasks), output_dir)
 

@@ -15,9 +15,13 @@ export default function AffiliateLink({
   className = '',
   variant = 'text',
 }: AffiliateLinkProps): React.ReactElement {
+  /* eslint-disable no-nested-ternary */
   const url = href.includes('scrimba.com')
-    ? `${href}${href.includes('?') ? '&' : '?'}${AFFILIATE_PARAM}`
+    ? href.includes('via=')
+      ? href
+      : `${href}${href.includes('?') ? '&' : '?'}${AFFILIATE_PARAM}`
     : href;
+  /* eslint-enable no-nested-ternary */
 
   const baseClass = 'affiliate-link';
   const variantClass = `${baseClass}--${variant}`;

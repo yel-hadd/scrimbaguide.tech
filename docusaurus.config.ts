@@ -3,7 +3,7 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'ScrimbAGuide',
+  title: 'ScrimbaGuide',
   tagline: 'The unofficial guide to learning on Scrimba',
   favicon: 'img/favicon.ico',
   url: 'https://scrimbaguide.tech',
@@ -41,7 +41,7 @@ const config: Config = {
           postsPerPage: 10,
           feedOptions: {
             type: ['rss', 'atom'],
-            title: 'ScrimbAGuide Blog',
+            title: 'ScrimbaGuide Blog',
             xslt: true,
           },
           onInlineTags: 'warn',
@@ -110,7 +110,8 @@ const config: Config = {
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        name: 'ScrimbAGuide',
+        '@id': 'https://scrimbaguide.tech/#website',
+        name: 'ScrimbaGuide',
         url: 'https://scrimbaguide.tech',
         description: 'The unofficial guide to Scrimba courses, learning paths, pricing, and more.',
         potentialAction: {
@@ -119,13 +120,36 @@ const config: Config = {
           'query-input': 'required name=search_term_string',
         },
         publisher: {
+          '@id': 'https://scrimbaguide.tech/#organization',
           '@type': 'Organization',
-          name: 'ScrimbAGuide',
+          name: 'ScrimbaGuide',
           url: 'https://scrimbaguide.tech',
           logo: {
             '@type': 'ImageObject',
             url: 'https://scrimbaguide.tech/img/logo.png',
           },
+        },
+      }),
+    },
+    {
+      tagName: 'script',
+      attributes: { type: 'application/ld+json' },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        '@id': 'https://scrimbaguide.tech/#organization',
+        name: 'ScrimbaGuide',
+        url: 'https://scrimbaguide.tech',
+        description: 'The unofficial guide to Scrimba — courses, learning paths, pricing, and comparisons. Written by developers who have completed 40+ Scrimba courses.',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://scrimbaguide.tech/img/logo.png',
+        },
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'customer service',
+          url: 'https://scrimbaguide.tech/about',
+          availableLanguage: 'en',
         },
       }),
     },
@@ -145,16 +169,16 @@ const config: Config = {
       { name: 'description', content: 'The unofficial guide to Scrimba courses, learning paths, pricing, and more. Find the best Scrimba course for your goals.' },
     ],
     navbar: {
-      title: 'ScrimbAGuide',
+      title: 'ScrimbaGuide',
       logo: {
-        alt: 'ScrimbAGuide logo',
+        alt: 'ScrimbaGuide logo',
         src: 'img/logo.svg',
       },
       items: [
         { to: '/docs/paths/', label: 'Learning Paths', position: 'left' },
         { to: '/docs/courses/', label: 'Courses', position: 'left' },
         { to: '/docs/pricing/', label: 'Pricing', position: 'left' },
-        { to: '/docs/comparisons/scrimba-vs-codecademy', label: 'Comparisons', position: 'left' },
+        { to: '/docs/comparisons/', label: 'Comparisons', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://scrimba.com/?via=u42d4986',
@@ -175,6 +199,7 @@ const config: Config = {
             { label: 'Learning Paths', to: '/docs/paths' },
             { label: 'Pricing Guide', to: '/docs/pricing' },
             { label: 'FAQ', to: '/docs/faq/' },
+            { label: 'Changelog', to: '/docs/changelog' },
           ],
         },
         {
@@ -194,7 +219,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} ScrimbAGuide. Not affiliated with Scrimba.`,
+      copyright: `Copyright © ${new Date().getFullYear()} ScrimbaGuide. Not affiliated with Scrimba.`,
     },
     prism: {
       theme: prismThemes.github,
