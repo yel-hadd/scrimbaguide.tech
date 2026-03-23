@@ -44,7 +44,7 @@ function shouldIncludeInSitemap(pathname: string): boolean {
 function sitemapPriority(pathname: string): number {
   if (pathname === '/') return 1.0;
 
-  if (pathname === '/tools/which-scrimba-path') return 0.9;
+  if (pathname === '/tools/which-scrimba-path') return 0.35;
   if (
     pathname.startsWith('/docs/pricing') ||
     pathname.startsWith('/docs/comparisons') ||
@@ -328,7 +328,7 @@ const config: Config = {
         { to: '/docs/pricing/', label: 'Scrimba Pricing', position: 'left' },
         { to: '/docs/comparisons/', label: 'Comparisons', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'left' },
-        { to: '/tools/which-scrimba-path', label: 'Path quiz', position: 'left' },
+        { to: '/docs/paths#path-advisor', label: 'Path advisor', position: 'left' },
         {
           href: 'https://scrimba.com/?via=u42d4986',
           label: 'Get 20% Off Pro',

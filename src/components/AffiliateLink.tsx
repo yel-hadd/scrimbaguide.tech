@@ -7,6 +7,7 @@ interface AffiliateLinkProps {
   children: React.ReactNode;
   className?: string;
   variant?: 'button' | 'text' | 'card';
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
 export default function AffiliateLink({
@@ -14,6 +15,7 @@ export default function AffiliateLink({
   children,
   className = '',
   variant = 'text',
+  onClick,
 }: AffiliateLinkProps): React.ReactElement {
   /* eslint-disable no-nested-ternary */
   const url = href.includes('scrimba.com')
@@ -32,6 +34,7 @@ export default function AffiliateLink({
       target="_blank"
       rel="noopener noreferrer"
       className={`${baseClass} ${variantClass} ${className}`.trim()}
+      onClick={onClick}
     >
       {children}
       <span className="sr-only"> (opens in a new tab)</span>
