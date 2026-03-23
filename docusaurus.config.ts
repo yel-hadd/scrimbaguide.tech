@@ -35,6 +35,12 @@ function normalizeSitemapPathname(url: string): string {
   return new URL(url).pathname.replace(/\/$/, '') || '/';
 }
 
+function normalizeCanonicalUrl(url: string): string {
+  const parsed = new URL(url);
+  const pathname = parsed.pathname === '/' ? '/' : parsed.pathname.replace(/\/+$/, '');
+  return `${parsed.origin}${pathname}${parsed.search}${parsed.hash}`;
+}
+
 function shouldIncludeInSitemap(pathname: string): boolean {
   if (SITEMAP_EXCLUDED_PATHS.has(pathname)) return false;
   if (SITEMAP_EXCLUDED_DOC_ALIASES.has(pathname)) return false;
@@ -172,7 +178,11 @@ const config: Config = {
               .filter((item) => shouldIncludeInSitemap(normalizeSitemapPathname(item.url)))
               .map((item) => {
                 const pathname = normalizeSitemapPathname(item.url);
-                return { ...item, priority: sitemapPriority(pathname) };
+                return {
+                  ...item,
+                  url: normalizeCanonicalUrl(item.url),
+                  priority: sitemapPriority(pathname),
+                };
               });
           },
         },
@@ -205,7 +215,6 @@ const config: Config = {
   ],
 
   plugins: [
-    '@signalwire/docusaurus-plugin-llms-txt',
     [
       '@docusaurus/plugin-client-redirects',
       {
