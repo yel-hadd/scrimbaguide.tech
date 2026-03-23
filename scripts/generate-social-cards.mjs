@@ -147,7 +147,7 @@ function generateSVG(title, category) {
         font-weight="600"
         font-size="22"
         fill="${TEXT_MUTED}">
-    ScrimbaGuide
+    Scrimba Guide
   </text>
 
   <!-- Category pill bottom-right -->
@@ -208,7 +208,7 @@ for (const file of blogFiles) {
   const categoryLabel = CATEGORY_MAP[firstTag] || 'Guide';
 
   const imagePath = `/img/blog/${slug}.png`;
-  const altText = `${title} — ScrimbaGuide ${categoryLabel}`;
+  const altText = `${title} — Scrimba Guide ${categoryLabel}`;
 
   // ---- Backfill frontmatter ----
   const hasImage = /^image:\s/m.test(fm);

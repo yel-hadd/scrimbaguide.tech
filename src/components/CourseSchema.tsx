@@ -30,6 +30,8 @@ interface CourseSchemaProps {
   access?: 'Free' | 'Pro';
   keywords?: string[];
   modules?: ModuleInfo[];
+  /** Course image for rich results (absolute URL recommended) */
+  imageUrl?: string;
 }
 
 export default function CourseSchema({
@@ -42,6 +44,7 @@ export default function CourseSchema({
   access,
   keywords,
   modules,
+  imageUrl = 'https://scrimbaguide.tech/img/social-card.png',
 }: CourseSchemaProps): React.ReactElement {
   const isFree = access === 'Free';
 
@@ -50,6 +53,7 @@ export default function CourseSchema({
     '@type': 'Course',
     name,
     description,
+    image: imageUrl,
     provider: {
       '@type': 'EducationalOrganization',
       name: provider,

@@ -1,6 +1,6 @@
 ---
 title: "Privacy Policy"
-description: "ScrimbaGuide's privacy policy. Learn how we collect, use, and protect your personal information."
+description: "Scrimba Guide's privacy policy. Learn how we collect, use, and protect your personal information."
 keywords: [scrimbaguide privacy policy]
 ---
 
@@ -8,12 +8,12 @@ keywords: [scrimbaguide privacy policy]
 
 **Last Updated: 2026-02-06**
 
-At ScrimbaGuide.tech, accessible from https://scrimbaguide.tech, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by ScrimbaGuide.tech and how we use it.
+At Scrimba Guide, accessible from https://scrimbaguide.tech, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Scrimba Guide and how we use it.
 
 ## Information We Collect
 
 ### Logic Files (Logs)
-Like many other Web sites, ScrimbaGuide.tech makes use of log files. These files merely log visitors to the site - usually a standard procedure for hosting companies and a part of hosting services' analytics. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and possibly the number of clicks.
+Like many other Web sites, Scrimba Guide makes use of log files. These files merely log visitors to the site - usually a standard procedure for hosting companies and a part of hosting services' analytics. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and possibly the number of clicks.
 
 ### Cookies and Web Beacons
 ScrimbaGuide.tech uses 'cookies'. These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.

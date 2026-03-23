@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import AffiliateLink from './AffiliateLink';
 import { useLocation } from '@docusaurus/router';
+import { isMoneyPagePath } from '@site/src/utils/moneyPagePaths';
 
 export default function MobileStickyCTA(): React.ReactElement | null {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const location = useLocation();
 
-  // Only show on money pages (comparisons, pricing, reviews)
-  const isMoneyPage = 
-    location.pathname.includes('/comparisons/') || 
-    location.pathname.includes('/pricing/') || 
-    location.pathname.includes('review') || 
-    location.pathname.includes('worth-it');
+  const path = location.pathname;
+  const isMoneyPage = isMoneyPagePath(path);
 
   useEffect(() => {
     if (!isMoneyPage) return;

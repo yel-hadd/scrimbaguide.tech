@@ -30,7 +30,7 @@ export default function AffiliateLink({
     <a
       href={url}
       target="_blank"
-      rel="noopener noreferrer sponsored"
+      rel="noopener noreferrer"
       className={`${baseClass} ${variantClass} ${className}`.trim()}
     >
       {children}

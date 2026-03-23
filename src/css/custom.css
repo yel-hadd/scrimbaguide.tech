@@ -46,6 +46,35 @@
   --ifm-navbar-search-input-placeholder-color: var(--ifm-color-emphasis-400);
 }
 
+/* Accessibility: hide headings that exist only for structure */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.testimonial-card p {
+  margin: 0 0 0.5rem;
+  font-style: italic;
+}
+
+.testimonial-card footer {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.testimonial-card cite {
+  font-style: normal;
+  font-weight: 600;
+}
+
 /* ── Affiliate link styles ─────────────────────────────────────── */
 .cta-link {
   text-decoration: none;
@@ -1272,6 +1301,85 @@ article a:not(.cta-link):not(.hash-link):hover {
 @media (min-width: 768px) {
   .sticky-footer-cta {
     display: none;
+  }
+}
+
+/* ── Desktop / tablet floating CTA (docs + money blog posts) ─── */
+.desktop-sticky-cta {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.5rem;
+  z-index: 90;
+  max-width: 220px;
+  animation: desktopCtaFade 0.35s ease-out;
+}
+
+@keyframes desktopCtaFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.desktop-sticky-cta__card {
+  position: relative;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  padding: 1rem 1.25rem 1rem 1rem;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+.desktop-sticky-cta__title {
+  margin: 0 0 0.35rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.25;
+}
+
+.desktop-sticky-cta__sub {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.desktop-sticky-cta__button {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: 0.85rem !important;
+  padding: 0.45rem 0.65rem !important;
+}
+
+.desktop-sticky-cta__close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  background: none;
+  border: none;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--ifm-color-emphasis-500);
+  padding: 0.15rem 0.35rem;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 6px;
+}
+
+.desktop-sticky-cta__close:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .desktop-sticky-cta {
+    display: none !important;
   }
 }
 

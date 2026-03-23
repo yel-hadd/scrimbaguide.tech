@@ -5,6 +5,18 @@ const sidebars: SidebarsConfig = {
     'intro',
     {
       type: 'category',
+      label: 'Best Udemy Courses',
+      link: { type: 'doc', id: 'udemy/index' },
+      items: [
+        'udemy/best-udemy-javascript-courses',
+        'udemy/best-udemy-react-courses',
+        'udemy/best-udemy-python-courses',
+        'udemy/best-udemy-web-development-courses',
+        'udemy/best-udemy-ai-courses',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Scrimba Pricing',
       link: { type: 'doc', id: 'pricing/index' },
       items: [
@@ -149,6 +161,8 @@ const sidebars: SidebarsConfig = {
       label: 'FAQ & Help',
       link: { type: 'doc', id: 'faq/index' },
       items: [
+        'faq/is-scrimba-free',
+        'faq/how-to-use-scrimba',
         'faq/billing',
         'faq/certificates',
         'faq/discord-community',

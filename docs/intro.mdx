@@ -7,6 +7,7 @@ slug: /intro
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 import { totalCoursesLabel, freeCount, proCount } from '@site/src/utils/scrimbaFacts';
 
 # What is Scrimba?
@@ -66,6 +67,27 @@ We've put together detailed comparisons to help you decide:
 ## Have Questions?
 
 Check our [FAQ section](/docs/faq/) covering [billing & payments](/docs/faq/billing), [certificates](/docs/faq/certificates), [Discord community](/docs/faq/discord-community), and [platform issues](/docs/faq/platform-issues).
+
+### Quick answers (PAA-style)
+
+<FAQAccordion
+  emitSchema={true}
+  title="Common questions"
+  items={[
+    {
+      q: 'What is a scrim?',
+      a: "A scrim is Scrimba's interactive lesson: you watch guidance, pause, edit the instructor's code in the same window, and run it—no separate editor setup.",
+    },
+    {
+      q: 'Is Scrimba free?',
+      a: `Partially. About ${freeCount} full courses and up to 10 challenges are free. Career paths, unlimited challenges, Discord, and path certificates require Pro. See our dedicated guide for details.`,
+    },
+    {
+      q: 'How do I cancel Scrimba?',
+      a: 'Cancel anytime from your account billing settings. You keep access until the end of the paid period and your progress is saved. For refunds, see the refund policy within seven days of first purchase.',
+    },
+  ]}
+/>
 
 <PricingCTA
   title="Ready to start learning?"

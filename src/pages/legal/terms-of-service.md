@@ -1,6 +1,6 @@
 ---
 title: "Terms of Service"
-description: "Terms of Service for ScrimbaGuide.tech. Rules and conditions for using our Scrimba course review and guide website."
+description: "Terms of Service for Scrimba Guide. Rules and conditions for using our Scrimba course review and guide website."
 keywords: [scrimbaguide terms of service]
 ---
 
@@ -8,7 +8,7 @@ keywords: [scrimbaguide terms of service]
 
 **Last Updated: 2026-02-06**
 
-Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://scrimbaguide.tech website (the "Service") operated by ScrimbaGuide ("us", "we", or "our").
+Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://scrimbaguide.tech website (the "Service") operated by Scrimba Guide ("us", "we", or "our").
 
 ## 1. Terms
 
@@ -32,7 +32,7 @@ The materials appearing on ScrimbaGuide.tech's website could include technical, 
 
 ## 6. Official Affiliation
 
-ScrimbaGuide.tech is an **unofficial** fan project and is NOT owned, operated, or endorsed by Scrimba AS. "Scrimba" is a trademark of Scrimba AS.
+Scrimba Guide is an **unofficial** fan project and is NOT owned, operated, or endorsed by Scrimba AS. "Scrimba" is a trademark of Scrimba AS.
 
 ## 7. Contact Us
 

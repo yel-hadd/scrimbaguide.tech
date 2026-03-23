@@ -160,6 +160,11 @@ const sectionFallbacks: Record<string, RelatedGuide[]> = {
     { title: 'JavaScript Courses', href: '/docs/courses/javascript/', type: 'doc' },
     { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
+  '/docs/udemy/': [
+    { title: 'Udemy picks hub', href: '/docs/udemy/', type: 'doc' },
+    { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
+    { title: 'JavaScript courses (Scrimba)', href: '/docs/courses/javascript/', type: 'doc' },
+  ],
   '/docs/practice/': [
     { title: 'Practice Guides', href: '/docs/practice/practice-react-projects', type: 'doc' },
     { title: 'All Courses', href: '/docs/courses/', type: 'doc' },

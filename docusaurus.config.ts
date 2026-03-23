@@ -2,12 +2,28 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+/** Set to `false` to show the newsletter / path-guide lead magnet (`EmailCapture`). */
+const hideNewsletterLeadMagnetDefault = true;
+
 const config: Config = {
-  title: 'ScrimbaGuide',
+  title: 'Scrimba Guide',
   tagline: 'The unofficial guide to learning on Scrimba',
   favicon: 'img/favicon.ico',
   url: 'https://scrimbaguide.tech',
   baseUrl: '/',
+
+  customFields: {
+    /** Formspree/Mailchimp/etc. POST URL — set `NEWSLETTER_FORM_ACTION` in CI or `.env` for builds */
+    newsletterFormAction: process.env.NEWSLETTER_FORM_ACTION ?? '',
+    /**
+     * When true, EmailCapture (path guide / newsletter) is not rendered.
+     * Default: hidden (`hideNewsletterLeadMagnetDefault`). Set `HIDE_NEWSLETTER_LEAD_MAGNET=false` at build time to show it.
+     */
+    hideNewsletterLeadMagnet:
+      process.env.HIDE_NEWSLETTER_LEAD_MAGNET === 'false'
+        ? false
+        : hideNewsletterLeadMagnetDefault,
+  },
 
   future: {
     v4: true,
@@ -41,7 +57,7 @@ const config: Config = {
           postsPerPage: 10,
           feedOptions: {
             type: ['rss', 'atom'],
-            title: 'ScrimbaGuide Blog',
+            title: 'Scrimba Guide Blog',
             xslt: true,
           },
           onInlineTags: 'warn',
@@ -54,6 +70,28 @@ const config: Config = {
           priority: 0.8,
           ignorePatterns: ['/tags/**', '/search', '/blog/page/**', '/blog/authors', '/blog/archive', '/blog/tags/**'],
           filename: 'sitemap.xml',
+          async createSitemapItems(params) {
+            const items = await params.defaultCreateSitemapItems(params);
+            return items.map((item) => {
+              const pathname = new URL(item.url).pathname.replace(/\/$/, '') || '/';
+              let priority = 0.7;
+              if (pathname === '/') priority = 1.0;
+              else if (
+                pathname.startsWith('/docs/pricing') ||
+                pathname.startsWith('/docs/comparisons') ||
+                pathname.startsWith('/docs/paths')
+              ) {
+                priority = 0.9;
+              } else if (pathname === '/docs/intro' || pathname === '/about' || pathname === '/blog') {
+                priority = 0.8;
+              } else if (pathname.startsWith('/blog/')) {
+                priority = 0.7;
+              } else if (pathname.startsWith('/docs/courses/')) {
+                priority = 0.6;
+              }
+              return { ...item, priority };
+            });
+          },
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -112,7 +150,7 @@ const config: Config = {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         '@id': 'https://scrimbaguide.tech/#website',
-        name: 'ScrimbaGuide',
+        name: 'Scrimba Guide',
         url: 'https://scrimbaguide.tech',
         description: 'The unofficial guide to Scrimba courses, learning paths, pricing, and more.',
         potentialAction: {
@@ -123,11 +161,11 @@ const config: Config = {
         publisher: {
           '@id': 'https://scrimbaguide.tech/#organization',
           '@type': 'Organization',
-          name: 'ScrimbaGuide',
+          name: 'Scrimba Guide',
           url: 'https://scrimbaguide.tech',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://scrimbaguide.tech/img/logo.png',
+            url: 'https://scrimbaguide.tech/img/logo.svg',
           },
         },
       }),
@@ -139,12 +177,17 @@ const config: Config = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         '@id': 'https://scrimbaguide.tech/#organization',
-        name: 'ScrimbaGuide',
+        name: 'Scrimba Guide',
         url: 'https://scrimbaguide.tech',
         description: 'The unofficial guide to Scrimba — courses, learning paths, pricing, and comparisons. Written by developers who have completed 40+ Scrimba courses.',
+        sameAs: [
+          'https://x.com/scrimbaguide',
+          'https://www.linkedin.com/in/yassine-el-haddad/',
+          'https://github.com/yel-hadd',
+        ],
         logo: {
           '@type': 'ImageObject',
-          url: 'https://scrimbaguide.tech/img/logo.png',
+          url: 'https://scrimbaguide.tech/img/logo.svg',
         },
         contactPoint: {
           '@type': 'ContactPoint',
@@ -172,9 +215,9 @@ const config: Config = {
       { name: 'twitter:site', content: '@scrimbaguide' },
     ],
     navbar: {
-      title: 'ScrimbaGuide',
+      title: 'Scrimba Guide',
       logo: {
-        alt: 'ScrimbaGuide logo',
+        alt: 'Scrimba Guide logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -183,6 +226,7 @@ const config: Config = {
         { to: '/docs/pricing/', label: 'Scrimba Pricing', position: 'left' },
         { to: '/docs/comparisons/', label: 'Comparisons', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'left' },
+        { to: '/tools/which-scrimba-path', label: 'Path quiz', position: 'left' },
         {
           href: 'https://scrimba.com/?via=u42d4986',
           label: 'Get 20% Off Pro',
@@ -222,7 +266,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} ScrimbaGuide. Not affiliated with Scrimba.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Scrimba Guide. Not affiliated with Scrimba.`,
     },
     prism: {
       theme: prismThemes.github,

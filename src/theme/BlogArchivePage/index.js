@@ -5,6 +5,7 @@ import Head from '@docusaurus/Head';
 import {useDateTimeFormat} from '@docusaurus/theme-common/internal';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 function Year({year, posts}) {
   const dateTimeFormat = useDateTimeFormat({
     day: 'numeric',
@@ -57,10 +58,11 @@ function listPostsByYears(blogPosts) {
   }));
 }
 export default function BlogArchive({archive}) {
+  const {siteConfig} = useDocusaurusContext();
   const baseUrl = 'https://scrimbaguide.tech';
   const canonicalUrl = `${baseUrl}/blog/archive`;
-  const title = 'Blog Archive | ScrimbaGuide';
-  const description = 'Browse all ScrimbaGuide blog posts by year.';
+  const title = 'Blog Archive | Scrimba Guide';
+  const description = 'Browse all Scrimba Guide blog posts by year.';
   const years = listPostsByYears(archive.blogPosts);
   return (
     <>
@@ -72,7 +74,7 @@ export default function BlogArchive({archive}) {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:image" content={`${baseUrl}/img/social-card.png`} />
-        <meta property="og:site_name" content="ScrimbaGuide" />
+        <meta property="og:site_name" content={siteConfig.title} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:site" content="@scrimbaguide" />

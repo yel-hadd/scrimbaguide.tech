@@ -1,6 +1,6 @@
 ---
 title: "Affiliate Disclosure"
-description: "ScrimbaGuide's affiliate disclosure. How we earn commissions through Scrimba affiliate links and our commitment to honest reviews."
+description: "Scrimba Guide's affiliate disclosure. How we earn commissions through Scrimba affiliate links and our commitment to honest reviews."
 keywords: [scrimbaguide affiliate disclosure, scrimba affiliate]
 ---
 
@@ -10,9 +10,9 @@ keywords: [scrimbaguide affiliate disclosure, scrimba affiliate]
 
 ## FTC Disclosure & Material Connection
 
-In accordance with the Federal Trade Commission's 16 CFR Part 255 guidelines ("Guides Concerning the Use of Endorsements and Testimonials in Advertising"), ScrimbaGuide.tech discloses the following material connection:
+In accordance with the Federal Trade Commission's 16 CFR Part 255 guidelines ("Guides Concerning the Use of Endorsements and Testimonials in Advertising"), Scrimba Guide discloses the following material connection:
 
-**ScrimbaGuide.tech is a participant in the Scrimba Affiliate Program.** When you click affiliate links on this site and subscribe to Scrimba Pro, we earn a commission. This commission comes at **no additional cost to you** and does not influence our editorial assessments, ratings, or recommendations.
+**Scrimba Guide is a participant in the Scrimba Affiliate Program.** When you click affiliate links on this site and subscribe to Scrimba Pro, we earn a commission. This commission comes at **no additional cost to you** and does not influence our editorial assessments, ratings, or recommendations.
 
 ## How We Review
 
