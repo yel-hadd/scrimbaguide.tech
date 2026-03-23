@@ -3,11 +3,13 @@ import Metadata from '@theme-original/BlogPostPage/Metadata';
 import type MetadataType from '@theme/BlogPostPage/Metadata';
 import type {WrapperProps} from '@docusaurus/types';
 import Head from '@docusaurus/Head';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
 
 type Props = WrapperProps<typeof MetadataType>;
 
 export default function MetadataWrapper(props: Props): React.ReactElement {
+  const {siteConfig} = useDocusaurusContext();
   const {metadata} = useBlogPost();
   const {title, description, date, permalink, frontMatter} = metadata;
   const metadataWithUpdate = metadata as unknown as {
@@ -35,19 +37,19 @@ export default function MetadataWrapper(props: Props): React.ReactElement {
     datePublished: date,
     dateModified: modifiedDate,
     author: {
-      '@type': 'Organization',
-      name: 'ScrimbaGuide Team',
+      '@type': 'Person',
+      name: 'Yassine El Haddad',
       url: `${baseUrl}/about`,
       knowsAbout: ['Scrimba', 'web development', 'interactive coding education', 'React', 'JavaScript'],
     },
     publisher: {
       '@id': `${baseUrl}/#organization`,
       '@type': 'Organization',
-      name: 'ScrimbaGuide',
+      name: siteConfig.title,
       url: baseUrl,
       logo: {
         '@type': 'ImageObject',
-        url: `${baseUrl}/img/logo.png`,
+        url: `${baseUrl}/img/logo.svg`,
       },
     },
     image: imageUrl,
@@ -66,8 +68,8 @@ export default function MetadataWrapper(props: Props): React.ReactElement {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:image" content={imageUrl} />
-        <meta property="og:site_name" content="ScrimbaGuide" />
-        <meta property="article:author" content="ScrimbaGuide Team" />
+        <meta property="og:site_name" content={siteConfig.title} />
+        <meta property="article:author" content="Yassine El Haddad" />
         <meta property="article:published_time" content={date} />
         <meta property="article:modified_time" content={modifiedDate} />
         <link rel="canonical" href={canonicalUrl} />

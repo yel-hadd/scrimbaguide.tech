@@ -33,7 +33,7 @@ function fixBlogListHeading() {
 
   const h1 = document.createElement('h1');
   h1.className = 'sr-only';
-  h1.textContent = 'ScrimbaGuide Blog';
+  h1.textContent = 'Scrimba Guide Blog';
   main.prepend(h1);
 }
 

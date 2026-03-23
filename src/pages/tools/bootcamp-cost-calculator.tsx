@@ -13,7 +13,8 @@ export default function BootcampCalculator(): React.ReactElement {
   
   const loanTotal = bootcampCost * (1 + (loanInterest / 100));
   const savings = loanTotal - scrimbaTotal;
-  const pageTitle = 'Bootcamp Cost Calculator | ScrimbaGuide';
+  const pageTitle = 'Bootcamp Cost Calculator';
+  const pageTitleFull = `${pageTitle} | Scrimba Guide`;
   const pageDescription = 'Calculate how much you can save with Scrimba compared to a traditional coding bootcamp.';
   const canonicalUrl = 'https://scrimbaguide.tech/tools/bootcamp-cost-calculator';
   const socialImage = 'https://scrimbaguide.tech/img/social-card.png';
@@ -22,14 +23,14 @@ export default function BootcampCalculator(): React.ReactElement {
     <Layout title={pageTitle} description={pageDescription}>
       <Head>
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={pageTitle} />
+        <meta property="og:title" content={pageTitleFull} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content={socialImage} />
-        <meta property="og:site_name" content="ScrimbaGuide" />
+        <meta property="og:site_name" content="Scrimba Guide" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={canonicalUrl} />
-        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:title" content={pageTitleFull} />
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={socialImage} />
         <link rel="canonical" href={canonicalUrl} />

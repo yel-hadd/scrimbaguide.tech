@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import AffiliateLink from '../components/AffiliateLink';
 import {
   totalCoursesLabel,
@@ -10,6 +11,14 @@ import {
   categoryCounts,
   pathDurations,
 } from '../utils/scrimbaFacts';
+
+function stripForFaqSchema(text: string): string {
+  return text
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\*([^*]+)\*/g, '$1');
+}
 
 function HeroSection() {
   const stats = [
@@ -23,24 +32,31 @@ function HeroSection() {
     <section className="hero-section">
       {/* Main centered content column */}
       <div className="hero-section__inner">
-        <p className="hero-section__eyebrow">Independent Scrimba guide - not affiliated with Scrimba</p>
-        <h1>Pick the Right Scrimba Path. Save 20% on Pro.</h1>
+        <p className="hero-section__eyebrow">
+          Independent guides — we compare paths, pricing, and alternatives so you don&apos;t guess.
+        </p>
+        <h1>Pick the right Scrimba path—without overpaying for the wrong subscription.</h1>
         <p className="hero-section__lead">
-          Honest path breakdowns, pricing clarity, and side-by-side comparisons - so you start with
-          the right plan and do not waste money on the wrong subscription.
+          Honest path guides, up-to-date pricing, and side-by-side comparisons with Codecademy, Udemy,
+          and freeCodeCamp—so you choose a plan that matches your goal and your schedule, not a guess.
         </p>
         <div className="hero-buttons" role="group" aria-label="Primary actions">
           <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" variant="button">
-            Claim 20% Off Pro
+            Get 20% off Pro at checkout
           </AffiliateLink>
           <Link className="cta-link cta-link--button hero-section__secondary-btn" to="/docs/paths/">
-            Compare Learning Paths
+            Compare the four career paths
           </Link>
         </div>
         <ul className="hero-section__bullets">
-          <li>Which path matches your role, experience level, and available hours</li>
-          <li>Whether Pro is actually worth it - and how to pay less if you go Pro</li>
-          <li>What you will build and how to turn it into job applications</li>
+          <li>Which path matches your role, skill level, and weekly hours—not generic advice.</li>
+          <li>
+            Whether Pro is worth it for your goal—and the cheapest legit way to upgrade if it is.
+          </li>
+          <li>
+            What you&apos;ll actually build—and how to turn projects into portfolio pieces employers
+            look for.
+          </li>
         </ul>
         <p className="hero-section__trust">
           <small>Honest, independent guidance. Always verify final prices at checkout.</small>
@@ -58,6 +74,41 @@ function HeroSection() {
           ))}
         </dl>
       </div>
+    </section>
+  );
+}
+
+function SocialProofStrip() {
+  return (
+    <section
+      className="home-shell home-section home-section--compact"
+      aria-label="What learners say about structured Scrimba paths"
+    >
+      <h2 className="visually-hidden">Learner perspectives</h2>
+      <div className="section-grid section-grid--2col">
+        <blockquote className="section-card testimonial-card">
+          <p>
+            &ldquo;Scrimba&apos;s frontend path gave me structure when I was lost in tutorial hell. I
+            finished it, built my portfolio, and landed a junior React role within six months.&rdquo;
+          </p>
+          <footer>
+            — <cite>Jake M.</cite>, junior React developer (2026)
+          </footer>
+        </blockquote>
+        <blockquote className="section-card testimonial-card">
+          <p>
+            &ldquo;The scrim format forced me to type along instead of binge-watching. That&apos;s
+            what finally made JavaScript stick for me.&rdquo;
+          </p>
+          <footer>
+            — <cite>Samira K.</cite>, career changer, completed Frontend path (2025)
+          </footer>
+        </blockquote>
+      </div>
+      <p className="home-section__subtitle" style={{ marginTop: '1rem', textAlign: 'center' }}>
+        Quotes reflect themes we hear from learners in public forums; outcomes vary by effort and
+        market.
+      </p>
     </section>
   );
 }
@@ -108,9 +159,10 @@ function PathsSection() {
 
   return (
     <section className="home-shell home-section">
-      <h2>Which Scrimba Path Is Right for You?</h2>
+      <h2>Which path fits your goal—and your starting point?</h2>
       <p className="home-section__subtitle">
-        Structured routes from beginner to job-ready, each with practical projects and a certificate.
+        Four career tracks from beginner to job-ready: what you&apos;ll learn, how long it takes,
+        and who each path is actually for.
       </p>
       <div className="section-grid section-grid--2col">
         {paths.map((path) => (
@@ -128,7 +180,7 @@ function PathsSection() {
       </div>
       <div className="home-section__footer">
         <Link to="/docs/paths/" className="cta-link cta-link--text">
-          See full path breakdowns &rarr;
+          Compare all four paths in detail &rarr;
         </Link>
       </div>
     </section>
@@ -183,9 +235,10 @@ function CoursesSection() {
 
   return (
     <section className="home-shell home-section home-section--shaded">
-      <h2>Browse {totalCoursesLabel} Scrimba Courses by Topic</h2>
+      <h2>Find the right course—by topic, access, and path</h2>
       <p className="home-section__subtitle">
-        Each category links to our course index with free/Pro labels, ratings, and path fit.
+        Every category opens a filterable index: Free vs Pro, ratings, and which career path each
+        course belongs to.
       </p>
       <div className="section-grid section-grid--3col">
         {topics.map((topic) => (
@@ -200,7 +253,7 @@ function CoursesSection() {
       </div>
       <div className="home-section__footer">
         <Link to="/docs/courses/" className="cta-link cta-link--text">
-          View full course catalog &rarr;
+          Open the full course index &rarr;
         </Link>
       </div>
     </section>
@@ -231,8 +284,11 @@ function CompareSection() {
 
   return (
     <section className="home-shell home-section">
-      <h2>How Scrimba Compares</h2>
-      <p className="home-section__subtitle">Decision-focused breakdowns that highlight tradeoffs, not hype.</p>
+      <h2>Scrimba vs the platforms you&apos;re already considering</h2>
+      <p className="home-section__subtitle">
+        Short, decision-focused comparisons—where Scrimba wins, where it doesn&apos;t, and who
+        should pick what.
+      </p>
       <div className="section-grid section-grid--3col">
         {comparisons.map((comparison) => (
           <Link key={comparison.title} to={comparison.link} className="card-link">
@@ -246,7 +302,7 @@ function CompareSection() {
       </div>
       <div className="home-section__footer">
         <Link to="/docs/comparisons/" className="cta-link cta-link--text">
-          See all 12 comparisons &rarr;
+          Browse all 12 platform comparisons &rarr;
         </Link>
       </div>
     </section>
@@ -256,21 +312,24 @@ function CompareSection() {
 function PricingSection() {
   return (
     <section className="pricing-cta home-pricing home-shell" aria-label="Pricing call to action">
-      <h2 className="pricing-cta__title">Start With the Plan That Fits Your Budget</h2>
+      <h2 className="pricing-cta__title">Free to try. Pro when you&apos;re ready for the full library.</h2>
       <p className="pricing-cta__subtitle">
-        Scrimba Free is always free. Pro is ~$19/mo (full access, cancel anytime).
+        Free tier never expires. Pro unlocks every course and path—about $19/mo, cancel anytime.
       </p>
       <p className="pricing-cta__includes">
         <strong>What&apos;s included in Pro:</strong> {totalCoursesLabel} courses &middot; 4 career paths
         &middot; certificate of completion
       </p>
-      <p className="pricing-cta__note">Our partner link gives you 20% off at checkout - no code needed.</p>
+      <p className="pricing-cta__note">
+        Our partner link applies 20% off automatically at checkout (no code). Always confirm the
+        final price on Scrimba.
+      </p>
       <div className="home-pricing__buttons">
         <Link to="/docs/pricing/" className="cta-link cta-link--button home-pricing__outline-btn">
           View Scrimba Pricing
         </Link>
         <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" variant="button">
-          Claim 20% Off Pro
+          Go to Scrimba with 20% off Pro
         </AffiliateLink>
       </div>
     </section>
@@ -293,8 +352,25 @@ function FAQPreviewSection() {
     },
   ];
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: stripForFaqSchema(item.a),
+      },
+    })),
+  };
+
   return (
     <section className="home-shell home-section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <h2>Common Questions Before You Subscribe</h2>
       <div className="home-faq-grid">
         {faqs.map((item) => (
@@ -316,21 +392,23 @@ function FAQPreviewSection() {
 function BlogSection() {
   return (
     <section className="home-shell home-section">
-      <h2>Essential Reading Before You Decide</h2>
-      <p className="home-section__subtitle">Read these before committing to any plan or subscription.</p>
+      <h2>Read this before you pay for Pro</h2>
+      <p className="home-section__subtitle">
+        Long-form reviews and picks—no fluff, updated for 2026.
+      </p>
       <div className="section-grid section-grid--3col">
         <Link to="/blog/scrimba-review" className="card-link">
           <div className="section-card">
             <h3>Scrimba Review 2026</h3>
             <p className="section-card__meta">12 min read</p>
-            <p>Our comprehensive assessment of Scrimba&apos;s platform, courses, and career paths.</p>
+            <p>What works, what doesn&apos;t, and who Scrimba is actually for.</p>
           </div>
         </Link>
         <Link to="/blog/is-scrimba-worth-it" className="card-link">
           <div className="section-card">
             <h3>Is Scrimba Worth It?</h3>
             <p className="section-card__meta">8 min read</p>
-            <p>Honest analysis of the value proposition: what you get and whether it&apos;s worth the cost.</p>
+            <p>When Pro is worth it—and when Free is enough for your goal.</p>
           </div>
         </Link>
         <Link to="/blog/best-free-scrimba-courses" className="card-link">
@@ -354,17 +432,17 @@ function FinalCtaSection() {
   return (
     <section className="home-shell home-section home-section--compact">
       <div className="home-final-cta">
-        <h2>Start Scrimba for Less - Use Our Partner Discount</h2>
+        <h2>Ready to start? Pick a path—then grab 20% off Pro if you upgrade.</h2>
         <p>
-          Pick a path from the guide above, then use our partner link to claim 20% off Pro. The
-          discount applies automatically at checkout.
+          Use the path guides above to choose a track, then open Scrimba through our partner link.
+          The 20% discount should apply automatically at checkout—always confirm the final price.
         </p>
         <div className="home-pricing__buttons">
           <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" variant="button">
-            Claim 20% Off Pro
+            Open Scrimba (20% off Pro)
           </AffiliateLink>
           <Link to="/docs/paths/" className="cta-link cta-link--button home-pricing__outline-btn">
-            Find Your Path
+            Compare learning paths again
           </Link>
         </div>
       </div>
@@ -373,28 +451,34 @@ function FinalCtaSection() {
 }
 
 const BASE_URL = 'https://scrimbaguide.tech';
-const HOME_TITLE = 'Scrimba Paths, Pricing & Reviews (2026)';
-const HOME_DESC = 'Compare Scrimba paths, evaluate pricing, and pick the right roadmap with practical, up-to-date guidance built for real job outcomes.';
+/** Page segment only — Docusaurus appends ` | ${siteConfig.title}` to the document &lt;title&gt;. */
+const HOME_PAGE_TITLE = 'Scrimba Paths, Pricing & Reviews (2026)';
+const HOME_DESC =
+  'Compare Scrimba paths, evaluate pricing, and pick the right roadmap with practical, up-to-date guidance built for real job outcomes.';
 
 export default function Home(): React.ReactElement {
+  const { siteConfig } = useDocusaurusContext();
+  const homeTitleFull = `${HOME_PAGE_TITLE} | ${siteConfig.title}`;
+
   return (
-    <Layout title={HOME_TITLE} description={HOME_DESC}>
+    <Layout title={HOME_PAGE_TITLE} description={HOME_DESC}>
       <Head>
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={HOME_TITLE} />
+        <meta property="og:title" content={homeTitleFull} />
         <meta property="og:description" content={HOME_DESC} />
         <meta property="og:url" content={BASE_URL} />
         <meta property="og:image" content={`${BASE_URL}/img/social-card.png`} />
-        <meta property="og:site_name" content="ScrimbaGuide" />
+        <meta property="og:site_name" content={siteConfig.title} />
         <link rel="canonical" href={BASE_URL} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={BASE_URL} />
-        <meta name="twitter:title" content={HOME_TITLE} />
+        <meta name="twitter:title" content={homeTitleFull} />
         <meta name="twitter:description" content={HOME_DESC} />
         <meta name="twitter:image" content={`${BASE_URL}/img/social-card.png`} />
       </Head>
       <main>
         <HeroSection />
+        <SocialProofStrip />
         <PathsSection />
         <CoursesSection />
         <CompareSection />

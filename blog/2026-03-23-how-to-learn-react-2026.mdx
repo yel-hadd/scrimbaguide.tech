@@ -1,0 +1,70 @@
+---
+slug: how-to-learn-react-2026
+title: "How to Learn React in 2026 (From Zero to Employable)"
+description: "Learn React in the right order: JavaScript foundations, components, hooks, data fetching, routing, testing, and deployable projects—with Scrimba and supplemental resources."
+authors: [scrimbaguide]
+tags: [react, roadmap, frontend]
+keywords: [how to learn react 2026, learn react beginner, react roadmap]
+---
+
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+
+# How to Learn React in 2026
+
+<DisclosureNotice />
+
+**Quick Answer:** Solid **JavaScript first** → **components + JSX** → **hooks** (`useState`, `useEffect`, context) → **data fetching** → **router** → **tests + deployment** while building **2 portfolio apps**. Timeline: **~3–6 months** part-time after JS basics.
+
+<!-- truncate -->
+
+## 0. Prereq check
+
+If closures and array methods feel foreign, spend 2–4 weeks on [Learn JavaScript](/docs/courses/javascript/) before React.
+
+## 1. Components & JSX
+
+- Function components, props, lists/keys
+- Styling approach (CSS modules or Tailwind—pick one)
+
+**Mini project:** static profile page with reusable components.
+
+## 2. Hooks-first React
+
+- `useState`, `useEffect`, custom hooks
+- Forms and controlled inputs
+
+**Mini project:** habit tracker or todo with persistence (`localStorage`).
+
+## 3. Data & side effects
+
+- `fetch`, error/loading states
+- Optional: TanStack Query once patterns click
+
+**Project:** dashboard hitting a public API.
+
+## 4. Routing & app shape
+
+- React Router (or framework router if you jump to Next.js later)
+
+**Project:** multi-page marketing + app shell.
+
+## 5. Ship it
+
+- Deploy to Vercel/Netlify
+- Write README + demo GIF
+- Add basic tests (Vitest + RTL) when you repeat patterns
+
+## Where Scrimba fits
+
+Scrimba’s [Learn React](/docs/courses/react/) and [Frontend path](/docs/paths/frontend-developer-path) keep you typing inside lessons—great if passive tutorials failed before.
+
+<AffiliateLink href="https://scrimba.com/?via=u42d4986">Start with free React modules</AffiliateLink>, then decide on Pro for the full path and Discord support.
+
+Need a Udemy supplement? See [best Udemy React courses](/docs/udemy/best-udemy-react-courses)—verify last-updated dates before buying.
+
+<FAQAccordion items={[
+  { q: "Next.js or React first?", a: "Learn React in Vite or CRA-style apps first unless you already know you need SSR. Next.js adds routing/data conventions—easier after component fluency." },
+  { q: "Redux required?", a: "No for beginners. Reach for context or lightweight stores first; add Redux Toolkit only when prop drilling hurts." },
+]} />
