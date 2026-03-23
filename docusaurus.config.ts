@@ -5,6 +5,102 @@ import type * as Preset from '@docusaurus/preset-classic';
 /** Set to `false` to show the newsletter / path-guide lead magnet (`EmailCapture`). */
 const hideNewsletterLeadMagnetDefault = true;
 
+/**
+ * Legacy blog URLs that only exist as client-redirect stubs — omit from sitemap (canonical = `to` targets).
+ */
+const SITEMAP_EXCLUDED_PATHS = new Set<string>([
+  '/blog/scrimba-vs-odin-project',
+  '/blog/scrimba-vs-bootcamps-cost-comparison',
+  '/blog/scrimba-for-cs-students',
+]);
+
+/**
+ * Malformed scrapes or duplicate alias URLs — canonical pages stay indexed under hyphenated slugs.
+ */
+const SITEMAP_EXCLUDED_DOC_ALIASES = new Set<string>([
+  '/docs/courses/ai/claudeai',
+  '/docs/courses/ai/deployaiwithcloudflare',
+  '/docs/courses/ai/langchainjs',
+  '/docs/courses/ai/openaiassistants',
+  '/docs/courses/javascript/javascriptdeepd',
+  '/docs/courses/javascript/alpinejs',
+  '/docs/courses/javascript/learnsvelte',
+  '/docs/courses/javascript/deploy-ai-apps-with-cloudflare',
+  '/docs/courses/css/htmlandcss',
+  '/docs/courses/css/bulma-css',
+  '/docs/courses/react/styledcomponents',
+]);
+
+function normalizeSitemapPathname(url: string): string {
+  return new URL(url).pathname.replace(/\/$/, '') || '/';
+}
+
+function shouldIncludeInSitemap(pathname: string): boolean {
+  if (SITEMAP_EXCLUDED_PATHS.has(pathname)) return false;
+  if (SITEMAP_EXCLUDED_DOC_ALIASES.has(pathname)) return false;
+  return true;
+}
+
+function sitemapPriority(pathname: string): number {
+  if (pathname === '/') return 1.0;
+
+  if (pathname === '/tools/which-scrimba-path') return 0.9;
+  if (
+    pathname.startsWith('/docs/pricing') ||
+    pathname.startsWith('/docs/comparisons') ||
+    pathname.startsWith('/docs/paths')
+  ) {
+    return 0.9;
+  }
+
+  if (
+    pathname === '/docs/intro' ||
+    pathname === '/about' ||
+    pathname === '/blog' ||
+    pathname.startsWith('/docs/udemy')
+  ) {
+    return 0.8;
+  }
+  if (
+    pathname === '/docs/faq/is-scrimba-free' ||
+    pathname === '/docs/faq/how-to-use-scrimba'
+  ) {
+    return 0.8;
+  }
+
+  if (
+    pathname.startsWith('/legal/') ||
+    pathname === '/contact' ||
+    pathname === '/docs/changelog'
+  ) {
+    return 0.35;
+  }
+
+  if (pathname.startsWith('/blog/')) return 0.7;
+
+  if (
+    pathname.startsWith('/docs/learn-react') ||
+    pathname.startsWith('/docs/learn-nextjs')
+  ) {
+    return 0.7;
+  }
+
+  if (pathname.startsWith('/docs/practice/')) return 0.7;
+
+  if (pathname.startsWith('/docs/faq')) return 0.7;
+
+  if (pathname === '/docs/courses') return 0.7;
+  if (/^\/docs\/courses\/[^/]+$/.test(pathname)) return 0.7;
+
+  if (/^\/docs\/courses\/[^/]+\/.+/.test(pathname)) return 0.6;
+
+  if (pathname.startsWith('/tools/') || pathname.startsWith('/roadmaps/')) return 0.55;
+
+  if (pathname.startsWith('/docs/')) return 0.7;
+
+  return 0.7;
+}
+
 const config: Config = {
   title: 'Scrimba Guide',
   tagline: 'The unofficial guide to learning on Scrimba',
@@ -72,25 +168,12 @@ const config: Config = {
           filename: 'sitemap.xml',
           async createSitemapItems(params) {
             const items = await params.defaultCreateSitemapItems(params);
-            return items.map((item) => {
-              const pathname = new URL(item.url).pathname.replace(/\/$/, '') || '/';
-              let priority = 0.7;
-              if (pathname === '/') priority = 1.0;
-              else if (
-                pathname.startsWith('/docs/pricing') ||
-                pathname.startsWith('/docs/comparisons') ||
-                pathname.startsWith('/docs/paths')
-              ) {
-                priority = 0.9;
-              } else if (pathname === '/docs/intro' || pathname === '/about' || pathname === '/blog') {
-                priority = 0.8;
-              } else if (pathname.startsWith('/blog/')) {
-                priority = 0.7;
-              } else if (pathname.startsWith('/docs/courses/')) {
-                priority = 0.6;
-              }
-              return { ...item, priority };
-            });
+            return items
+              .filter((item) => shouldIncludeInSitemap(normalizeSitemapPathname(item.url)))
+              .map((item) => {
+                const pathname = normalizeSitemapPathname(item.url);
+                return { ...item, priority: sitemapPriority(pathname) };
+              });
           },
         },
         theme: {
@@ -123,6 +206,25 @@ const config: Config = {
 
   plugins: [
     '@signalwire/docusaurus-plugin-llms-txt',
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/blog/scrimba-vs-odin-project',
+            to: '/docs/comparisons/scrimba-vs-odin-project',
+          },
+          {
+            from: '/blog/scrimba-vs-bootcamps-cost-comparison',
+            to: '/docs/pricing/scrimba-vs-bootcamps',
+          },
+          {
+            from: '/blog/scrimba-for-cs-students',
+            to: '/docs/paths/scrimba-for-cs-students',
+          },
+        ],
+      },
+    ],
   ],
 
   themes: [
