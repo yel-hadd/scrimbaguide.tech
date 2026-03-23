@@ -11,6 +11,16 @@ import EmailCapture from '@site/src/components/EmailCapture';
 import { useLocation } from '@docusaurus/router';
 import { getRelatedGuides } from '@site/src/content/relatedGuidesMap';
 
+/** Optional per-doc overrides for the layout affiliate block (YAML front matter). */
+type DocAffiliateFrontMatter = {
+  hideGlobalPricingCta?: boolean;
+  affiliateCtaTitle?: string;
+  affiliateCtaSubtitle?: string;
+  affiliateCtaButtonText?: string;
+  affiliateCtaType?: 'pro' | 'free';
+  affiliateCtaShowDiscountNote?: boolean;
+};
+
 function DocSeoHead(): React.ReactElement {
   const { siteConfig } = useDocusaurusContext();
   const { metadata, frontMatter } = useDoc();
@@ -76,23 +86,42 @@ function DocSeoHead(): React.ReactElement {
   );
 }
 
+function DocAffiliateCta({ pathname }: { pathname: string }): React.ReactElement | null {
+  const { frontMatter } = useDoc();
+  const fm = frontMatter as DocAffiliateFrontMatter;
+  if (pathname.startsWith('/docs/pricing/') || fm.hideGlobalPricingCta) {
+    return null;
+  }
+
+  const title = fm.affiliateCtaTitle ?? 'Ready to Upgrade Your Learning?';
+  const subtitle =
+    fm.affiliateCtaSubtitle ??
+    'Use our partner link to claim 20% off Scrimba Pro and unlock all courses and career paths.';
+  const ctaType = fm.affiliateCtaType ?? 'pro';
+
+  const pricingProps: React.ComponentProps<typeof PricingCTA> = {
+    title,
+    subtitle,
+    ctaType,
+    buttonText: fm.affiliateCtaButtonText,
+  };
+  if (typeof fm.affiliateCtaShowDiscountNote === 'boolean') {
+    pricingProps.showDiscountNote = fm.affiliateCtaShowDiscountNote;
+  }
+
+  return <PricingCTA {...pricingProps} />;
+}
+
 export default function LayoutWrapper(props: any): React.ReactElement {
   const location = useLocation();
   const guides = getRelatedGuides(location.pathname);
-  const showGlobalCta = !location.pathname.startsWith('/docs/pricing/');
 
   return (
     <Layout {...props}>
       <DocSeoHead />
       {props.children}
       {guides.length > 0 && <RelatedGuides guides={guides} />}
-      {showGlobalCta && (
-        <PricingCTA
-          title="Ready to Upgrade Your Learning?"
-          subtitle="Use our partner link to claim 20% off Scrimba Pro and unlock all courses and career paths."
-          buttonText="Claim 20% Off Scrimba Pro"
-        />
-      )}
+      <DocAffiliateCta pathname={location.pathname} />
       <div className="container margin-bottom--lg">
         <EmailCapture variant="docs" />
       </div>

@@ -1,6 +1,19 @@
 import React from 'react';
 import AffiliateLink from './AffiliateLink';
 
+/** Avoid repeating the discount line when the subtitle already states it (layout + many MDX CTAs). */
+export function subtitleMentionsPartnerOrDiscount(subtitle: string): boolean {
+  const s = subtitle.toLowerCase();
+  return (
+    s.includes('partner link') ||
+    s.includes('20%') ||
+    s.includes('discount') ||
+    s.includes('off pro') ||
+    s.includes('off scrimba pro') ||
+    (s.includes('claim') && s.includes('off'))
+  );
+}
+
 interface PricingCTAProps {
   title?: string;
   subtitle?: string;
@@ -22,13 +35,17 @@ export default function PricingCTA({
   const isFree = ctaType === 'free';
   const defaultButtonText = isFree ? 'Try Scrimba Free' : 'Claim 20% Off Scrimba Pro';
   const href = isFree ? 'https://scrimba.com/?via=u42d4986' : 'https://scrimba.com/home?pricing&via=u42d4986';
+  const showDiscountLine =
+    !isFree &&
+    showDiscountNote &&
+    !subtitleMentionsPartnerOrDiscount(subtitle);
 
   return (
     <div className={`pricing-cta pricing-cta--${variant}`}>
       <div className="pricing-cta__content">
         <h2 className="pricing-cta__title">{title}</h2>
         <p className="pricing-cta__subtitle">{subtitle}</p>
-        {!isFree && showDiscountNote && (
+        {showDiscountLine && (
           <p className="pricing-cta__note">Use our partner link to get 20% off the Pro plan.</p>
         )}
       </div>

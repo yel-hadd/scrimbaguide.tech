@@ -117,12 +117,6 @@ const BY_SLUG: Record<string, BlogCta> = {
     href: '/docs/pricing/scrimba-vs-bootcamps',
     linkLabel: 'Scrimba vs bootcamps',
   },
-  'scrimba-vs-bootcamps-cost-comparison': {
-    title: 'Full bootcamp comparison doc',
-    body: 'Structured comparison of price, format, and outcomes.',
-    href: '/docs/pricing/scrimba-vs-bootcamps',
-    linkLabel: 'Scrimba vs bootcamps',
-  },
   'scrimba-vs-coding-bootcamps-cost': {
     title: 'Bootcamp alternative math',
     body: 'See how subscription cost stacks against cohort bootcamps.',
@@ -134,12 +128,6 @@ const BY_SLUG: Record<string, BlogCta> = {
     body: 'Use paths + projects; pricing page helps you pick Pro when you’re consistent.',
     href: '/docs/pricing/',
     linkLabel: 'Scrimba pricing',
-  },
-  'scrimba-for-cs-students': {
-    title: 'Student discounts',
-    body: 'Verify academic options before paying list price.',
-    href: '/docs/pricing/student-discount',
-    linkLabel: 'Student discounts',
   },
   'scrimba-for-teams': {
     title: 'Pro features for teams',
@@ -230,12 +218,6 @@ const BY_SLUG: Record<string, BlogCta> = {
     body: 'Stack annual billing + discounts against your hourly study rate.',
     href: '/blog/scrimba-discount-codes-2026',
     linkLabel: 'Legit Scrimba deals',
-  },
-  'scrimba-vs-odin-project': {
-    title: 'Compare formats',
-    body: 'See the full Scrimba vs Odin doc for side-by-side detail.',
-    href: '/docs/comparisons/scrimba-vs-odin-project',
-    linkLabel: 'Scrimba vs Odin',
   },
   'how-to-learn-javascript-2026': {
     title: 'Start interactive JavaScript',

@@ -22,12 +22,6 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Fullstack Career Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
     { title: 'Scrimba Discount Codes', href: '/blog/scrimba-discount-codes-2026', type: 'blog' },
   ],
-  '/blog/scrimba-vs-bootcamps-cost-comparison': [
-    { title: 'Bootcamp Cost Calculator', href: '/tools/bootcamp-cost-calculator', type: 'doc' },
-    { title: 'Is Scrimba Worth It?', href: '/blog/is-scrimba-worth-it', type: 'blog' },
-    { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
-  ],
-
   // --- Blog Posts: Guides ---
   '/blog/career-change-to-coding-2026': [
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
@@ -38,11 +32,6 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'How Scrims Work', href: '/docs/faq/how-scrims-work', type: 'doc' },
     { title: 'Scrimba vs YouTube', href: '/docs/comparisons/scrimba-vs-youtube', type: 'comparison' },
     { title: 'Build a Coding Habit', href: '/blog/build-coding-habit-scrimba', type: 'blog' },
-  ],
-  '/blog/scrimba-for-cs-students': [
-    { title: 'Scrimba for CS Students (Full Guide)', href: '/docs/paths/scrimba-for-cs-students', type: 'doc' },
-    { title: 'Frontend Interview Prep', href: '/blog/frontend-interview-prep-scrimba', type: 'blog' },
-    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
   ],
   '/blog/best-free-scrimba-courses': [
     { title: 'Pro vs Free Comparison', href: '/docs/pricing/pro-vs-free', type: 'doc' },
