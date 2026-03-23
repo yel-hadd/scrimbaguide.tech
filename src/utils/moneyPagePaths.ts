@@ -7,7 +7,8 @@ export function isMoneyPagePath(path: string): boolean {
   return (
     path.includes('/comparisons/') ||
     path.includes('/pricing/') ||
-    path.includes('/docs/paths/') ||
+    path === '/docs/paths' ||
+    path.startsWith('/docs/paths/') ||
     isBlogPost ||
     path.includes('review') ||
     path.includes('worth-it')

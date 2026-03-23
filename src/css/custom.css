@@ -1760,3 +1760,481 @@ article table:focus,
 .roadmap-step__title {
   font-size: 1.25rem;
 }
+
+/* ── Scrimba paths landing hub + path advisor ─────────────────── */
+.path-landing {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+.path-landing .markdown > h1 {
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.path-landing .markdown table {
+  font-size: 0.92rem;
+}
+
+.path-landing h2#path-advisor,
+.path-landing h2[id='path-advisor'] {
+  scroll-margin-top: calc(var(--ifm-navbar-height) + 0.75rem);
+}
+
+.path-advisor {
+  margin: 2rem 0 2.5rem;
+  padding: 1.85rem 1.55rem 1.6rem;
+  border-radius: 16px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: linear-gradient(
+    145deg,
+    var(--ifm-background-surface-color) 0%,
+    var(--sg-accent-softer) 45%,
+    var(--ifm-background-surface-color) 100%
+  );
+  box-shadow: var(--sg-card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.path-advisor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--ifm-color-primary), var(--ifm-color-primary-lightest));
+  border-radius: 16px 0 0 16px;
+}
+
+.path-advisor--embedded {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.path-advisor__header {
+  position: relative;
+  padding-left: 0.75rem;
+  margin-bottom: 1.35rem;
+}
+
+.path-advisor__title {
+  font-size: 1.42rem;
+  margin: 0 0 0.45rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.path-advisor__lede {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.96rem;
+  line-height: 1.6;
+  max-width: 42rem;
+}
+
+.path-advisor__progress {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.path-advisor__progress-wrap {
+  margin-top: 1.05rem;
+}
+
+.path-advisor__progress-label {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-700);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.path-advisor__progress-dot {
+  width: 2.25rem;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--ifm-color-emphasis-300);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.path-advisor__progress-dot--active {
+  background: var(--ifm-color-primary);
+  transform: scaleY(1.4);
+}
+
+.path-advisor__card {
+  position: relative;
+  padding: 1.3rem 1.3rem 1.1rem 1.5rem;
+  border-radius: 12px;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  animation: path-advisor-fade-slide-in 180ms ease-out;
+}
+
+@keyframes path-advisor-fade-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.path-advisor__card--result {
+  padding-bottom: 1.5rem;
+}
+
+.path-advisor__step-title {
+  font-size: 1.14rem;
+  margin: 0 0 0.7rem;
+  line-height: 1.3;
+}
+
+.path-advisor__hint {
+  margin: -0.25rem 0 0.75rem;
+  font-size: 0.88rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.path-advisor__choice {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.path-advisor__choice:hover {
+  border-color: var(--ifm-color-primary);
+  background: var(--sg-accent-soft);
+  transform: translateX(2px);
+}
+
+.path-advisor__choice:active {
+  border-color: var(--ifm-color-primary-dark);
+  background: var(--sg-accent-softer);
+  transform: translateX(0);
+}
+
+.path-advisor__choice:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.path-advisor__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ifm-color-primary-dark);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.92rem;
+  transition: color 0.18s ease, opacity 0.18s ease;
+}
+
+.path-advisor__back:hover {
+  color: var(--ifm-color-primary);
+}
+
+.path-advisor__back:focus-visible {
+  outline: 2px solid var(--ifm-color-primary-light);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.path-advisor__back:active {
+  opacity: 0.82;
+}
+
+.path-advisor__restart {
+  margin-top: 1.25rem;
+}
+
+.path-advisor__result-badge {
+  margin: 0 0 0.55rem;
+  font-weight: 700;
+  font-size: 1.44rem;
+  line-height: 1.2;
+  color: var(--ifm-color-primary-darkest);
+}
+
+[data-theme='dark'] .path-advisor__result-badge {
+  color: var(--ifm-color-primary-lightest);
+}
+
+.path-advisor__result-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.path-advisor__blurb {
+  margin: 0 0 0.65rem;
+  line-height: 1.58;
+}
+
+.path-advisor__reasoning {
+  margin: 0 0 0.8rem;
+  font-size: 0.93rem;
+  color: var(--ifm-color-emphasis-800);
+  line-height: 1.5;
+}
+
+.path-advisor__pace {
+  font-size: 0.93rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0 0 0.9rem;
+  line-height: 1.5;
+}
+
+.path-advisor__reasons {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+  font-size: 0.92rem;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.path-advisor__reasons li {
+  margin-bottom: 0.35rem;
+}
+
+.path-advisor__first-week {
+  margin: 1.35rem 0 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  background: var(--ifm-color-emphasis-100);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.path-advisor__first-week-link {
+  margin: 0.35rem 0 0;
+}
+
+.path-advisor__first-week ol {
+  margin: 0.35rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.path-advisor__affiliate-note {
+  font-size: 0.88rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0.9rem 0 1rem;
+}
+
+.path-advisor__cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: center;
+  margin-top: 0.15rem;
+}
+
+.path-advisor__cta-row .button,
+.path-advisor__cta-row .cta-link--button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 46px;
+  line-height: 1.2;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.path-advisor__cta-guide.button {
+  margin: 0;
+  color: #ffffff;
+  border-color: var(--ifm-color-primary-dark);
+  background: var(--ifm-color-primary-dark);
+  box-shadow: 0 8px 18px rgba(47, 70, 220, 0.32);
+}
+
+.path-advisor__cta-guide.button:hover {
+  color: #ffffff;
+  background: var(--ifm-color-primary-darker);
+  border-color: var(--ifm-color-primary-darker);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(47, 70, 220, 0.38);
+}
+
+.path-advisor__cta-guide.button:focus-visible,
+.path-advisor__cta-row .button--secondary:focus-visible,
+.path-advisor__cta-row .cta-link--button.button--secondary:focus-visible {
+  outline: 2px solid var(--ifm-color-primary-light);
+  outline-offset: 2px;
+}
+
+.path-advisor__cta-guide.button:active {
+  background: var(--ifm-color-primary-darkest);
+  border-color: var(--ifm-color-primary-darkest);
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(47, 70, 220, 0.3);
+}
+
+.path-advisor__cta-row .button--secondary,
+.path-advisor__cta-row .cta-link--button.button--secondary {
+  color: var(--ifm-color-emphasis-900);
+  border-color: var(--ifm-color-emphasis-400);
+  background: var(--ifm-background-surface-color);
+  box-shadow: none;
+}
+
+[data-theme='dark'] .path-advisor__cta-row .button--secondary,
+[data-theme='dark'] .path-advisor__cta-row .cta-link--button.button--secondary {
+  color: var(--ifm-color-content);
+  border-color: var(--ifm-color-emphasis-500);
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 85%, #fff 15%);
+}
+
+.path-advisor__cta-row .button--secondary:hover,
+.path-advisor__cta-row .cta-link--button.button--secondary:hover {
+  color: var(--ifm-font-color-base);
+  border-color: var(--ifm-color-primary);
+  background: var(--sg-accent-soft);
+  transform: translateY(-1px);
+}
+
+.path-advisor__cta-row .button--secondary:active,
+.path-advisor__cta-row .cta-link--button.button--secondary:active {
+  border-color: var(--ifm-color-primary-dark);
+  background: var(--sg-accent-softer);
+  transform: translateY(0);
+}
+
+.path-advisor__secondary {
+  margin-top: 1.25rem;
+  font-size: 0.92rem;
+}
+
+.path-advisor__restart-button {
+  margin-top: 0.4rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.88rem;
+}
+
+.path-advisor__restart-button:hover {
+  color: var(--ifm-color-emphasis-800);
+}
+
+.path-advisor .disclosure-notice {
+  margin-top: 1.1rem;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 576px) {
+  .path-advisor {
+    margin: 1.5rem 0 2rem;
+    padding: 1.2rem 0.95rem 1.15rem;
+    border-radius: 14px;
+  }
+
+  .path-advisor__header {
+    padding-left: 0.45rem;
+    margin-bottom: 1rem;
+  }
+
+  .path-advisor__title {
+    font-size: 1.24rem;
+  }
+
+  .path-advisor__lede {
+    font-size: 0.91rem;
+    line-height: 1.56;
+  }
+
+  .path-advisor__progress-dot {
+    width: 1.9rem;
+  }
+
+  .path-advisor__card {
+    padding: 1.05rem 0.95rem 0.95rem 1rem;
+    border-radius: 11px;
+  }
+
+  .path-advisor__step-title {
+    font-size: 1.04rem;
+  }
+
+  .path-advisor__choice {
+    padding: 0.9rem 0.88rem;
+    font-size: 0.92rem;
+  }
+
+  .path-advisor__back {
+    font-size: 0.9rem;
+  }
+
+  .path-advisor__result-badge {
+    font-size: 1.24rem;
+  }
+
+  .path-advisor__pace,
+  .path-advisor__reasoning {
+    font-size: 0.9rem;
+  }
+
+  .path-advisor__first-week {
+    margin-top: 1.1rem;
+    padding: 0.75rem 0.8rem;
+    font-size: 0.87rem;
+  }
+
+  .path-advisor__affiliate-note {
+    margin-bottom: 0.85rem;
+  }
+
+  .path-advisor__cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .path-advisor__cta-row .button,
+  .path-advisor__cta-row .cta-link--button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .path-advisor__card {
+    animation: none;
+  }
+
+  .path-advisor__choice,
+  .path-advisor__progress-dot {
+    transition: none;
+  }
+}

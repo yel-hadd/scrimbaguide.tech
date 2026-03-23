@@ -40,6 +40,12 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   ],
 
   // --- Docs: Paths ---
+  '/docs/paths': [
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Frontend vs Fullstack', href: '/blog/scrimba-frontend-vs-fullstack-path', type: 'blog' },
+  ],
   '/docs/paths/frontend-developer-path': [
     { title: 'Fullstack vs Frontend Path', href: '/blog/scrimba-frontend-vs-fullstack-path', type: 'blog' },
     { title: 'Study Plan', href: '/docs/paths/study-plan', type: 'doc' },
