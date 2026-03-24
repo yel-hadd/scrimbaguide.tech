@@ -5,6 +5,7 @@ import type {WrapperProps} from '@docusaurus/types';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
+import {toSeoTitle} from '@site/src/utils/seoTitle';
 
 type Props = WrapperProps<typeof MetadataType>;
 
@@ -27,6 +28,7 @@ export default function MetadataWrapper(props: Props): React.ReactElement {
   const imageUrl = frontMatter.image
     ? toAbsoluteUrl(frontMatter.image)
     : `${baseUrl}/img/social-card.png`;
+  const seoTitle = toSeoTitle(title);
 
   const blogPostingSchema = {
     '@context': 'https://schema.org',
@@ -62,8 +64,9 @@ export default function MetadataWrapper(props: Props): React.ReactElement {
   return (
     <>
       <Head>
+        <title>{seoTitle}</title>
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:locale" content="en_US" />
@@ -77,7 +80,7 @@ export default function MetadataWrapper(props: Props): React.ReactElement {
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:site" content="@scrimbaguide" />
         <meta name="twitter:creator" content="@scrimbaguide" />
-        <meta name="twitter:title" content={title} />
+        <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={imageUrl} />
         <script type="application/ld+json">
