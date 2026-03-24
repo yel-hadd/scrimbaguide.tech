@@ -37,7 +37,9 @@ function normalizeSitemapPathname(url: string): string {
 
 function normalizeCanonicalUrl(url: string): string {
   const parsed = new URL(url);
-  const pathname = parsed.pathname === '/' ? '/' : parsed.pathname.replace(/\/+$/, '');
+  const pathname = parsed.pathname === '/'
+    ? '/'
+    : `${parsed.pathname.replace(/\/+$/, '')}/`;
   return `${parsed.origin}${pathname}${parsed.search}${parsed.hash}`;
 }
 
@@ -113,6 +115,7 @@ const config: Config = {
   favicon: 'img/favicon.ico',
   url: 'https://scrimbaguide.tech',
   baseUrl: '/',
+  trailingSlash: true,
 
   customFields: {
     /** Formspree/Mailchimp/etc. POST URL — set `NEWSLETTER_FORM_ACTION` in CI or `.env` for builds */
@@ -170,7 +173,17 @@ const config: Config = {
           lastmod: 'date',
           changefreq: 'weekly' as const,
           priority: 0.8,
-          ignorePatterns: ['/tags/**', '/search', '/blog/page/**', '/blog/authors', '/blog/archive', '/blog/tags/**'],
+          ignorePatterns: [
+            '/tags/**',
+            '/search',
+            '/search/**',
+            '/blog/page/**',
+            '/blog/authors',
+            '/blog/authors/**',
+            '/blog/archive',
+            '/blog/archive/**',
+            '/blog/tags/**',
+          ],
           filename: 'sitemap.xml',
           async createSitemapItems(params) {
             const items = await params.defaultCreateSitemapItems(params);

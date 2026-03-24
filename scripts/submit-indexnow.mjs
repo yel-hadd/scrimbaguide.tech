@@ -21,29 +21,31 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const HOST = 'scrimbaguide.tech';
-const KEY = '04a47dc50a7a4b528f9fa0aa65c489ff';
-const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
+const DEFAULT_HOST = 'scrimbaguide.tech';
+const DEFAULT_KEY = '04a47dc50a7a4b528f9fa0aa65c489ff';
+const HOST = process.env.INDEXNOW_HOST ?? DEFAULT_HOST;
+const KEY = process.env.INDEXNOW_KEY ?? DEFAULT_KEY;
+const KEY_LOCATION = process.env.INDEXNOW_KEY_LOCATION ?? `https://${HOST}/${KEY}.txt`;
 const BATCH_SIZE = 10_000;
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 10_000;
+const REQUIRE_BING = process.env.INDEXNOW_REQUIRE_BING === 'true';
+const SUBMIT_TO_ALL_ENDPOINTS = process.env.INDEXNOW_SUBMIT_ALL_ENDPOINTS !== 'false';
 
-// Endpoints to try (in order) if one fails.
-// Yandex first — Bing may reject until site is verified in Bing Webmaster Tools.
-// IndexNow is a shared protocol: submitting to any engine notifies all participants.
-const ENDPOINTS = [
-  'yandex.com',
-  'api.indexnow.org',
-  'www.bing.com',
-];
+// Endpoints to submit to.
+// Default order prioritizes the shared IndexNow endpoint and includes Bing explicitly.
+const ENDPOINTS = (process.env.INDEXNOW_ENDPOINTS ?? 'api.indexnow.org,www.bing.com,yandex.com')
+  .split(',')
+  .map((endpoint) => endpoint.trim())
+  .filter(Boolean);
 
 // Pages that don't need indexing
 const EXCLUDE_PATTERNS = [
   /\/tags(\/|$)/,
-  /\/archive$/,
-  /\/authors$/,
+  /\/archive\/?$/,
+  /\/authors\/?$/,
   /\/page\/\d+/,
-  /\/search$/,
+  /\/search\/?$/,
 ];
 
 // ── CLI args ────────────────────────────────────────────────────
@@ -55,6 +57,8 @@ const sitemapIdx = args.indexOf('--sitemap');
 const sitemapPath = sitemapIdx !== -1
   ? args[sitemapIdx + 1]
   : path.resolve(__dirname, '..', 'build', 'sitemap.xml');
+const requireUrlIdx = args.indexOf('--require-url');
+const requiredUrl = requireUrlIdx !== -1 ? args[requireUrlIdx + 1] : null;
 
 // ── Helpers ─────────────────────────────────────────────────────
 function fetchUrl(url) {
@@ -82,6 +86,10 @@ function filterUrls(urls) {
   return urls.filter((url) =>
     !EXCLUDE_PATTERNS.some((p) => p.test(url))
   );
+}
+
+function normalizeUrlForCompare(url) {
+  return url.replace(/\/+$/, '') || '/';
 }
 
 function sleep(ms) {
@@ -124,6 +132,15 @@ function submitBatch(hostname, urls) {
 
 // ── Main ────────────────────────────────────────────────────────
 async function main() {
+  if (!KEY) {
+    console.error('INDEXNOW_KEY is empty. Provide INDEXNOW_KEY in env or set a default key.');
+    process.exit(1);
+  }
+  if (ENDPOINTS.length === 0) {
+    console.error('No IndexNow endpoints configured. Set INDEXNOW_ENDPOINTS.');
+    process.exit(1);
+  }
+
   // Get sitemap XML from URL or local file
   let xml;
   if (sitemapUrlArg) {
@@ -140,9 +157,20 @@ async function main() {
   const allUrls = extractUrlsFromSitemap(xml);
   const urls = filterUrls(allUrls);
 
+  if (requiredUrl) {
+    const normalizedRequired = normalizeUrlForCompare(requiredUrl);
+    const hasRequired = urls.some((url) => normalizeUrlForCompare(url) === normalizedRequired);
+    if (!hasRequired) {
+      console.error(`Required URL is missing from IndexNow submission set: ${requiredUrl}`);
+      process.exit(1);
+    }
+  }
+
   console.log(`Found ${allUrls.length} URLs in sitemap`);
   console.log(`After filtering: ${urls.length} URLs to submit`);
   console.log(`Excluded: ${allUrls.length - urls.length} low-value pages`);
+  console.log(`Submitting to endpoints: ${ENDPOINTS.join(', ')}`);
+  console.log(`IndexNow host=${HOST} keyLocation=${KEY_LOCATION}`);
 
   if (dryRun) {
     console.log('\n[DRY RUN] URLs that would be submitted:');
@@ -155,7 +183,8 @@ async function main() {
     return;
   }
 
-  // Submit in batches, trying multiple endpoints with retries
+  // Submit in batches, trying all endpoints with retries
+  const endpointSuccesses = new Map(ENDPOINTS.map((endpoint) => [endpoint, 0]));
   for (let i = 0; i < urls.length; i += BATCH_SIZE) {
     const batch = urls.slice(i, i + BATCH_SIZE);
     const batchNum = Math.floor(i / BATCH_SIZE) + 1;
@@ -163,9 +192,10 @@ async function main() {
 
     console.log(`\nBatch ${batchNum}/${totalBatches} (${batch.length} URLs)`);
 
-    let submitted = false;
+    let submittedToAtLeastOne = false;
 
     for (const endpoint of ENDPOINTS) {
+      let endpointSucceeded = false;
       for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
         try {
           console.log(`  Trying ${endpoint} (attempt ${attempt}/${MAX_RETRIES})...`);
@@ -173,7 +203,9 @@ async function main() {
 
           if (status === 200 || status === 202) {
             console.log(`  OK (HTTP ${status} from ${endpoint})`);
-            submitted = true;
+            endpointSucceeded = true;
+            submittedToAtLeastOne = true;
+            endpointSuccesses.set(endpoint, endpointSuccesses.get(endpoint) + 1);
             break;
           } else if (status === 403) {
             console.warn(`  HTTP 403 from ${endpoint}: ${body}`);
@@ -191,13 +223,24 @@ async function main() {
         }
       }
 
-      if (submitted) break;
+      if (!SUBMIT_TO_ALL_ENDPOINTS && endpointSucceeded) break;
     }
 
-    if (!submitted) {
+    if (!submittedToAtLeastOne) {
       console.error(`\nFailed to submit batch ${batchNum} to any endpoint after all retries.`);
       process.exit(1);
     }
+  }
+
+  const bingSuccessCount = endpointSuccesses.get('www.bing.com') ?? 0;
+  if (REQUIRE_BING && bingSuccessCount === 0) {
+    console.error('INDEXNOW_REQUIRE_BING=true, but no batch was accepted by www.bing.com.');
+    process.exit(1);
+  }
+
+  console.log('\nEndpoint acceptance summary:');
+  for (const endpoint of ENDPOINTS) {
+    console.log(`  ${endpoint}: ${endpointSuccesses.get(endpoint)} accepted batch(es)`);
   }
 
   console.log(`\nDone — ${urls.length} URLs submitted to IndexNow`);

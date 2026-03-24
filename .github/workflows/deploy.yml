@@ -56,6 +56,11 @@ jobs:
   indexnow:
     runs-on: ubuntu-latest
     needs: [build, deploy]
+    env:
+      INDEXNOW_HOST: scrimbaguide.tech
+      INDEXNOW_KEY: "04a47dc50a7a4b528f9fa0aa65c489ff"
+      INDEXNOW_SUBMIT_ALL_ENDPOINTS: "true"
+      INDEXNOW_REQUIRE_BING: "true"
     steps:
       - uses: actions/checkout@v4
 
@@ -70,18 +75,26 @@ jobs:
 
       - name: Verify key file is live and correct
         run: |
-          for i in 1 2 3 4 5; do
-            CONTENT=$(curl -sf https://scrimbaguide.tech/04a47dc50a7a4b528f9fa0aa65c489ff.txt || echo "FETCH_FAILED")
+          if [ -z "$INDEXNOW_KEY" ]; then
+            echo "::error::INDEXNOW_KEY is empty"
+            exit 1
+          fi
+          KEY_URL="https://${INDEXNOW_HOST}/${INDEXNOW_KEY}.txt"
+          for i in 1 2 3 4 5 6 7 8; do
+            CONTENT=$(curl -sf "$KEY_URL" || echo "FETCH_FAILED")
             TRIMMED=$(echo "$CONTENT" | tr -d '[:space:]')
-            if [ "$TRIMMED" = "04a47dc50a7a4b528f9fa0aa65c489ff" ]; then
+            if [ "$TRIMMED" = "$INDEXNOW_KEY" ]; then
               echo "Key file verified on attempt $i"
               exit 0
             fi
             echo "Attempt $i: got '$TRIMMED', waiting 30s..."
             sleep 30
           done
-          echo "::warning::Key file verification failed after 5 attempts — skipping IndexNow"
+          echo "::error::Key file verification failed after 8 attempts"
           exit 1
 
+      - name: Assert required URL exists in live sitemap
+        run: node scripts/assert-sitemap-url.mjs --sitemap-url https://scrimbaguide.tech/sitemap.xml --require-url https://scrimbaguide.tech/docs/paths/
+
       - name: Submit URLs to IndexNow
-        run: node scripts/submit-indexnow.mjs --sitemap-url https://scrimbaguide.tech/sitemap.xml
+        run: node scripts/submit-indexnow.mjs --sitemap-url https://scrimbaguide.tech/sitemap.xml --require-url https://scrimbaguide.tech/docs/paths/

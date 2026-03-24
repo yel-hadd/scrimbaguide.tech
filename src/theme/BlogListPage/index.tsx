@@ -4,6 +4,7 @@ import type BlogListPageType from '@theme/BlogListPage';
 import type {WrapperProps} from '@docusaurus/types';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {toSeoTitle} from '@site/src/utils/seoTitle';
 
 type Props = WrapperProps<typeof BlogListPageType>;
 
@@ -21,14 +22,15 @@ export default function BlogListPageWrapper(props: Props): React.ReactElement {
   const blogTitle = props.metadata?.blogTitle ?? BLOG_TITLE;
   const blogDescription = props.metadata?.blogDescription ?? BLOG_DESC;
   const canonicalUrl = toAbsoluteUrl(permalink);
+  const seoBlogTitle = toSeoTitle(blogTitle);
 
   return (
     <>
       <Head>
-        <title>{blogTitle}</title>
+        <title>{seoBlogTitle}</title>
         <meta name="description" content={blogDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content={blogTitle} />
+        <meta property="og:title" content={seoBlogTitle} />
         <meta property="og:description" content={blogDescription} />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:locale" content="en_US" />
@@ -38,10 +40,13 @@ export default function BlogListPageWrapper(props: Props): React.ReactElement {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:site" content="@scrimbaguide" />
-        <meta name="twitter:title" content={blogTitle} />
+        <meta name="twitter:title" content={seoBlogTitle} />
         <meta name="twitter:description" content={blogDescription} />
         <meta name="twitter:image" content={`${BASE_URL}/img/social-card.png`} />
       </Head>
+      <header className="container margin-top--md margin-bottom--sm">
+        <h1>Scrimba Guide Blog</h1>
+      </header>
       <BlogListPage {...props} />
     </>
   );
