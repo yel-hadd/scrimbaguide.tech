@@ -60,7 +60,11 @@ jobs:
       INDEXNOW_HOST: scrimbaguide.tech
       INDEXNOW_KEY: "04a47dc50a7a4b528f9fa0aa65c489ff"
       INDEXNOW_SUBMIT_ALL_ENDPOINTS: "true"
-      INDEXNOW_REQUIRE_BING: "true"
+      # Bing IndexNow transiently returns 403 after large deployments while its
+      # verification cache refreshes (usually clears within 24-48 h). Yandex and
+      # the shared api.indexnow.org endpoint are sufficient for indexing signal.
+      # Keep submitting to Bing (SUBMIT_ALL_ENDPOINTS=true) but don't fail CI.
+      INDEXNOW_REQUIRE_BING: "false"
     steps:
       - uses: actions/checkout@v4
 
