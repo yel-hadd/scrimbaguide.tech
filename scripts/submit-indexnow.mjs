@@ -233,9 +233,23 @@ async function main() {
   }
 
   const bingSuccessCount = endpointSuccesses.get('www.bing.com') ?? 0;
-  if (REQUIRE_BING && bingSuccessCount === 0) {
-    console.error('INDEXNOW_REQUIRE_BING=true, but no batch was accepted by www.bing.com.');
-    process.exit(1);
+  if (bingSuccessCount === 0) {
+    // Bing can return 403 transiently after large deployments while its
+    // verification cache refreshes (typically clears in 24-48 h).
+    // Emit a GHA warning annotation so it's visible without failing the job.
+    const bingWarning = 'Bing IndexNow returned 403 for all batches. '
+      + 'This is a known transient Bing issue — resubmit after 24-48 h or '
+      + 'wait for Bing to re-crawl via the sitemap. '
+      + 'Set INDEXNOW_REQUIRE_BING=true to treat this as a hard failure.';
+    if (process.env.GITHUB_ACTIONS === 'true') {
+      console.log(`::warning::${bingWarning}`);
+    } else {
+      console.warn(`\nWARNING: ${bingWarning}`);
+    }
+    if (REQUIRE_BING) {
+      console.error('INDEXNOW_REQUIRE_BING=true, failing.');
+      process.exit(1);
+    }
   }
 
   console.log('\nEndpoint acceptance summary:');
