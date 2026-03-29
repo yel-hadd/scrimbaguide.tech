@@ -1,4 +1,4 @@
-const MAX_SEO_TITLE_LENGTH = 60;
+const MAX_SEO_TITLE_LENGTH = 44; // leaves room for " | Scrimba Guide" (16 chars) to stay under the 60-char SERP display threshold
 const SITE_SUFFIX_PATTERN = /\s\|\sScrimba Guide$/;
 
 function trimOnWordBoundary(value: string, maxLength: number): string {

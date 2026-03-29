@@ -21,6 +21,35 @@ type DocAffiliateFrontMatter = {
   affiliateCtaShowDiscountNote?: boolean;
 };
 
+/** Convert a URL path segment like "scrimba-vs-codecademy" to "Scrimba Vs Codecademy". */
+function segmentToLabel(segment: string): string {
+  return segment
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
+
+/** Build BreadcrumbList items from a permalink like /docs/comparisons/scrimba-vs-codecademy/ */
+function buildBreadcrumbs(
+  permalink: string,
+  baseUrl: string,
+): Array<{ position: number; name: string; item: string }> {
+  const segments = permalink.replace(/^\/|\/$/g, '').split('/').filter(Boolean);
+  const crumbs: Array<{ position: number; name: string; item: string }> = [
+    { position: 1, name: 'Home', item: `${baseUrl}/` },
+  ];
+  let path = '';
+  segments.forEach((segment, i) => {
+    path += `/${segment}`;
+    crumbs.push({
+      position: i + 2,
+      name: segmentToLabel(segment),
+      item: `${baseUrl}${path}/`,
+    });
+  });
+  return crumbs;
+}
+
 function DocSeoHead(): React.ReactElement {
   const { siteConfig } = useDocusaurusContext();
   const { metadata, frontMatter } = useDoc();
@@ -59,21 +88,32 @@ function DocSeoHead(): React.ReactElement {
       '@type': 'Person',
       name: 'Yassine El Haddad',
       url: 'https://scrimbaguide.tech/about',
+      knowsAbout: ['Scrimba', 'web development', 'interactive coding education', 'React', 'JavaScript'],
     },
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: buildBreadcrumbs(metadata.permalink, baseUrl).map((crumb) => ({
+      '@type': 'ListItem',
+      position: crumb.position,
+      name: crumb.name,
+      item: crumb.item,
+    })),
   };
 
   return (
     <>
       <Head>
+        {/* og:title and twitter:title are set by DocItem/Metadata with the properly truncated seoTitle */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
         <meta property="og:image" content={ogImage} />
         <meta property="og:site_name" content={siteConfig.title} />
         {dateModified && <meta property="article:modified_time" content={dateModified} />}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage} />
         <link rel="canonical" href={canonical} />
@@ -81,6 +121,10 @@ function DocSeoHead(): React.ReactElement {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
       />
     </>
   );

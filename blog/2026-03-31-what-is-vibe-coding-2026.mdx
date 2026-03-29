@@ -1,0 +1,188 @@
+---
+slug: what-is-vibe-coding-2026
+title: "What Is Vibe Coding? Collins WOTY 2025 Explained (and When It Breaks)"
+description: "What is vibe coding in 2026? Collins Dictionary Word of the Year 2025, coined by Andrej Karpathy — plus why vibe coding hell is a skills problem, not a moral one."
+authors: [scrimbaguide]
+tags: [vibe-coding, javascript]
+keywords: [what is vibe coding, vibe coding explained, vibe coding 2026, Andrej Karpathy vibe coding, Collins word of the year 2025 vibe coding]
+image: /img/blog/what-is-vibe-coding-2026.png
+image_alt: "What Is Vibe Coding? Collins WOTY 2025 Explained — Scrimba Guide Blog"
+hideFooterPricingCta: false
+last_update:
+  date: 2026-03-31
+---
+
+import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import PricingCTA from '@site/src/components/PricingCTA';
+
+<DocFaqSchema
+  questions={[
+    {
+      q: "What is vibe coding?",
+      a: "Vibe coding is a programming approach where a developer describes what they want to an AI assistant — Cursor, ChatGPT, Claude, GitHub Copilot — and the AI generates the implementation. The developer focuses on intent and direction, not syntax. Collins Dictionary named it Word of the Year for 2025; the term is associated with Andrej Karpathy’s February 2025 post on X (Twitter)."
+    },
+    {
+      q: "Who coined vibe coding?",
+      a: "The phrase is widely credited to Andrej Karpathy in February 2025 on X (formerly Twitter). Collins Dictionary highlighted the term as its Word of the Year for 2025, reflecting mainstream adoption of AI-assisted building."
+    },
+    {
+      q: "What is vibe coding hell?",
+      a: "Vibe coding hell is the moment an AI-generated codebase breaks in production and the builder cannot debug it because they never built a mental model of the logic. Common triggers include async mistakes, null access, stale React state, and type coercion bugs."
+    },
+    {
+      q: "Is vibe coding bad for learning?",
+      a: "Not automatically. It accelerates prototyping and lowers the barrier to shipping. It becomes harmful when it replaces understanding — especially for maintenance, security, and performance. The goal is vibe coding with fundamentals, not instead of them."
+    },
+    {
+      q: "How do I learn JavaScript if I mostly vibe code?",
+      a: "Use short interactive drills that force you to type and predict behavior — not just accept completions. Scrimba’s Learn JavaScript course is free and designed around in-browser practice, which builds the debugging muscle memory AI tools skip."
+    }
+  ]}
+/>
+
+# What Is Vibe Coding? Collins WOTY 2025 Explained (and When It Breaks)
+
+**Vibe coding** is a programming approach where a developer describes what they want to an AI assistant — Cursor, ChatGPT, Claude, GitHub Copilot — and the AI generates the implementation. The developer focuses on intent and direction, not syntax.
+
+**Vibe coding was named Collins Dictionary's Word of the Year 2025** — the term is widely associated with **Andrej Karpathy on Twitter/X in February 2025** (see Collins’ Word of the Year announcement and Karpathy’s post on X for primary sourcing).
+
+*Last reviewed: March 2026.*
+
+We earn a commission if you upgrade through our links, at no extra cost to you.
+
+{/* truncate */}
+
+If you want the full series in order, start at the hub: **[Vibe coding guide](/blog/vibe-coding-guide)**.
+
+## The tool landscape (same idea, different wrappers)
+
+"Vibe coding" describes a **workflow**, not a single vendor. In 2026, builders pair:
+
+| Tool type | What it optimizes | Typical gotcha |
+| --- | --- | --- |
+| Chat UIs (ChatGPT, Claude) | Reasoning + explanations | No project-wide refactor safety net |
+| IDE agents (Cursor, Copilot) | File-aware edits | Over-confident multi-file patches |
+| Local models / OSS stacks | Cost + privacy | Ops burden + evaluation |
+
+None of these remove **your** job as the person who will be paged. They move where typing happens.
+
+## Why the trend is real (and mostly good)
+
+Vibe coding is not a joke meme for everyone. For founders, designers, and experienced engineers, it is a **compression algorithm** for iteration:
+
+- You explore UI flows faster.
+- You scaffold integrations without reading five docs cover-to-cover.
+- You translate product language into code shape quickly.
+
+Communities around AI-first editors grew fast in 2025 because the **loop** — describe, generate, tweak — matches how many people already think about software when the details are fuzzy.
+
+There is a legitimate **positive** story: more people can **ship**. Shipping is how you learn what breaks.
+
+## The honest ceiling: when "intent" is not enough
+
+Software is not a vibe. It is **state**, **time**, **memory**, and **failure modes**.
+
+| Vibe coding strength | Failure mode |
+| --- | --- |
+| Fast scaffolding | Hidden assumptions in dependencies |
+| Natural-language specs | Ambiguous edge cases |
+| Copilot speed | Blind spots in security + privacy |
+| Demo-ready UI | Production logging + monitoring missing |
+
+This table is not anti-AI. It is **pro-engineering**. Tools amplify whatever process you bring. If your process is "accept and pray," production has opinions.
+
+## Vibe coding hell (the part influencers skip)
+
+**Vibe coding hell** is not moralizing. It is descriptive.
+
+It is the **2 a.m.** moment: users hit an error, Sentry lights up, and your repo reads like a foreign language because **you did not write it line-by-line**. The AI **did not "understand"** your business rules — it **pattern-matched** them.
+
+Typical triggers:
+
+- **Async** bugs that look like "random" UI flicker
+- **`undefined` access** that only happens on slow networks
+- **Stale closures** in React that make state "lie"
+- **Type coercion** that breaks only for one customer locale
+
+At that moment, the fix is not a better prompt. It is **JavaScript fundamentals**.
+
+## The bridge: free fundamentals beat expensive panic
+
+When your vibe-coded app breaks at 2am, you need **JavaScript fundamentals** — not a longer chat thread.
+
+**Scrimba’s [Learn JavaScript](/docs/courses/javascript/learn-javascript) is free**, interactive, and built around typing code inside lessons rather than watching someone else type. That difference matters for vibe coders specifically: you are re-training **prediction**, not consuming **content**.
+
+<AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986&utm_source=scrimbaguide&utm_medium=blog&utm_campaign=what-is-vibe-coding-2026&utm_content=inline">
+  Open Scrimba (free JavaScript + Pro paths)
+</AffiliateLink>
+
+We earn a commission if you upgrade through our links, at no extra cost to you.
+
+## How vibe coding connects to hiring (briefly)
+
+Employers are not allergic to AI assistance. They are allergic to **unowned code**. If you vibe code, your portfolio should show **decisions**: tradeoffs, tests, error handling, and a README that proves you can explain the system.
+
+Our [portfolio projects to get hired](/blog/portfolio-projects-get-hired-2026) post is a concrete checklist.
+
+## Vibe coding vs tutorial hell (different traps)
+
+**Tutorial hell** is passive consumption. **Vibe coding hell** is passive generation. Both skip **struggle in short loops**.
+
+Escape is the same: **smaller exercises**, **hand-written predictions**, **read error messages without autocomplete**.
+
+If Scrimba is new to you, [what makes Scrimba different](/blog/what-makes-scrimba-different) explains the interactive format in plain language.
+
+## Security and privacy (the boring slide that matters)
+
+Vibe coding encourages **pasting context** into models. That is fine for public tutorials. It is not fine for:
+
+- Customer data
+- Secrets and tokens
+- Unreleased strategy documents
+
+Treat AI tools like any other third party: **redact**, **localize**, and **rotate keys** when mistakes happen. If you are learning, use **synthetic data** in exercises — Scrimba’s interactive lessons keep practice inside a controlled environment, which helps beginners avoid accidental leaks.
+
+## Who vibe coding is for (and not for)
+
+**Strong fit:** prototyping, internal tools, personal projects, experienced engineers who can audit output quickly.
+
+**Weak fit alone:** regulated systems, performance-critical paths you cannot profile, teams without review culture.
+
+If you are career-switching, do not confuse **shipping a demo** with **passing a senior technical screen**. Demos help; fundamentals close the gap. Pair this article with [how to learn JavaScript in 2026](/blog/how-to-learn-javascript-2026) if you are still choosing a baseline stack.
+
+## Related skills: React is where vibe coding breaks loudest
+
+Many vibe-coded products are **React + Vite** stacks. React errors are readable **if** you know **state** and **effects**. If not, they feel haunted.
+
+Read [how to learn React in 2026](/blog/how-to-learn-react-2026) and keep the hub handy: **[Vibe coding guide](/blog/vibe-coding-guide)**.
+
+## Community signal (why the word crossed into mainstream)
+
+Developer communities accelerated the meme — from indie hackers shipping weekend apps to experienced engineers joking about "fully vibe-driven architecture." **Collins** naming the term **Word of the Year 2025** is less about prescriptive grammar and more about **cultural acknowledgment**: AI-assisted building is now a default workflow for many teams.
+
+That does not remove the engineering obligation. It raises the bar for **review**, **testing**, and **documentation** — the parts customers still punish when they fail.
+
+## A sane workflow: vibe first, verify always
+
+1. **Vibe** the prototype.
+2. **Freeze** a scope slice.
+3. **Rewrite** the critical path yourself — even if AI drafted it first.
+4. **Add** tests for the scary branches.
+5. **Document** the invariants you actually relied on.
+
+That is how you keep speed **without** surrendering ownership.
+
+<PricingCTA
+  title="Turn prototypes into maintainable skills"
+  subtitle="Use Scrimba’s interactive paths to backfill JavaScript and React fundamentals — the layer that keeps AI-generated apps shippable. We earn a commission if you upgrade through our links, at no extra cost to you."
+  buttonText="Explore Scrimba Pro"
+  variant="inline"
+/>
+
+## Sources and notes
+
+- **Collins Word of the Year 2025** — "vibe coding" ([Collins Dictionary](https://www.collinsdictionary.com/)).
+- **Karpathy, February 2025** — term popularization on **X** (primary source: Karpathy’s timeline / post).
+
+If you want the next article in the series: **[From vibe coder to real developer](/blog/vibe-coder-to-real-developer-2026)**.

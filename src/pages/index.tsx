@@ -33,12 +33,12 @@ function HeroSection() {
       {/* Main centered content column */}
       <div className="hero-section__inner">
         <p className="hero-section__eyebrow">
-          Independent guides — we compare paths, pricing, and alternatives so you don&apos;t guess.
+          Independent — not affiliated with Scrimba. We compare paths, pricing, and alternatives so you choose right.
         </p>
-        <h1>Pick the right Scrimba path—without overpaying for the wrong subscription.</h1>
+        <h1>{totalCoursesLabel} Scrimba courses tracked. Four career paths compared. One honest guide.</h1>
         <p className="hero-section__lead">
-          Honest path guides, up-to-date pricing, and side-by-side comparisons with Codecademy, Udemy,
-          and freeCodeCamp—so you choose a plan that matches your goal and your schedule, not a guess.
+          Up-to-date path breakdowns, real pricing, and side-by-side comparisons with Codecademy, Udemy,
+          and freeCodeCamp—so you pick the plan that matches your goal and your schedule.
         </p>
         <div className="hero-buttons" role="group" aria-label="Primary actions">
           <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" variant="button">
@@ -49,17 +49,17 @@ function HeroSection() {
           </Link>
         </div>
         <ul className="hero-section__bullets">
-          <li>Which path matches your role, skill level, and weekly hours—not generic advice.</li>
+          <li>Which path fits your role, skill level, and weekly hours—specific, not generic.</li>
           <li>
-            Whether Pro is worth it for your goal—and the cheapest legit way to upgrade if it is.
+            Whether Pro is worth paying for your goal—and the cheapest legit way to upgrade if it is.
           </li>
           <li>
-            What you&apos;ll actually build—and how to turn projects into portfolio pieces employers
-            look for.
+            What you&apos;ll actually build—and how to turn projects into portfolio pieces that get
+            you hired.
           </li>
         </ul>
         <p className="hero-section__trust">
-          <small>Honest, independent guidance. Always verify final prices at checkout.</small>
+          <small>Independent guidance. We earn a commission if you upgrade through our links, at no extra cost to you. Always verify final prices at checkout.</small>
         </p>
       </div>
 
@@ -92,7 +92,7 @@ function SocialProofStrip() {
             finished it, built my portfolio, and landed a junior React role within six months.&rdquo;
           </p>
           <footer>
-            — <cite>Jake M.</cite>, junior React developer (2026)
+            — <cite>Jake M.</cite>, junior React developer
           </footer>
         </blockquote>
         <blockquote className="section-card testimonial-card">
@@ -101,13 +101,12 @@ function SocialProofStrip() {
             what finally made JavaScript stick for me.&rdquo;
           </p>
           <footer>
-            — <cite>Samira K.</cite>, career changer, completed Frontend path (2025)
+            — <cite>Samira K.</cite>, career changer, completed the Frontend Path
           </footer>
         </blockquote>
       </div>
       <p className="home-section__subtitle" style={{ marginTop: '1rem', textAlign: 'center' }}>
-        Quotes reflect themes we hear from learners in public forums; outcomes vary by effort and
-        market.
+        Representative of experiences shared in public forums. Individual outcomes vary by effort, consistency, and market conditions.
       </p>
     </section>
   );
@@ -340,15 +339,35 @@ function FAQPreviewSection() {
   const faqs = [
     {
       q: 'Is Scrimba good for beginners in 2026?',
-      a: 'Yes, especially if you learn by doing. Start with free courses, then commit to a path when your consistency is proven.',
+      a: 'Yes, especially if you learn by doing. Scrimba\'s free tier includes 19+ courses — start there, then commit to a career path when your consistency is proven.',
     },
     {
-      q: 'Is Pro worth paying for?',
-      a: 'Usually yes for learners who want structure, all courses, and career paths. If you are uncertain, compare Pro vs Free first.',
+      q: 'How much does Scrimba Pro cost in 2026?',
+      a: 'Scrimba Pro costs approximately $19/month on an annual plan. A monthly plan is available at a higher rate. The free tier never expires and includes 19+ full courses — no credit card required.',
     },
     {
-      q: 'Can this actually help me get hired?',
-      a: 'It can improve your portfolio and interview readiness, but hiring still depends on execution, applications, and market conditions.',
+      q: 'Is Scrimba free to use?',
+      a: 'Yes. Scrimba has a permanently free tier with 19+ full courses including Learn React, Learn JavaScript, and Learn TypeScript. No credit card is needed to access free content.',
+    },
+    {
+      q: 'Is Scrimba Pro worth paying for?',
+      a: 'Usually yes for learners who want a structured career path, access to all 86+ courses, and a certificate. If you are uncertain, test with free courses first before upgrading.',
+    },
+    {
+      q: 'How does Scrimba compare to a coding bootcamp?',
+      a: 'Scrimba Pro costs roughly $200-$250 per year versus $10,000-$20,000 for a typical bootcamp. The interactive format is effective for self-motivated learners. Bootcamps offer more structure, cohort accountability, and career services.',
+    },
+    {
+      q: 'What can you learn on Scrimba?',
+      a: 'Scrimba covers web development (HTML, CSS, JavaScript, React, TypeScript, Next.js), AI engineering (agents, RAG, MCP), backend (Node.js, SQL, Express), Python, and CSS frameworks. It has 86+ courses across 4 career paths.',
+    },
+    {
+      q: 'Does Scrimba offer a certificate?',
+      a: 'Yes. Completing a Scrimba career path earns a Certificate of Completion you can add to your LinkedIn profile and resume. Individual course certificates are also available.',
+    },
+    {
+      q: 'Can Scrimba actually help me get hired as a developer?',
+      a: 'It can improve your portfolio and interview readiness significantly. Hiring depends on execution, applications, and market conditions — Scrimba\'s career paths include job-search modules, but the work of applying and networking is yours.',
     },
   ];
 
@@ -454,7 +473,7 @@ const BASE_URL = 'https://scrimbaguide.tech';
 /** Page segment only — Docusaurus appends ` | ${siteConfig.title}` to the document &lt;title&gt;. */
 const HOME_PAGE_TITLE = 'Scrimba Paths, Pricing & Reviews (2026)';
 const HOME_DESC =
-  'Compare Scrimba paths, evaluate pricing, and pick the right roadmap with practical, up-to-date guidance built for real job outcomes.';
+  'Independent guide to Scrimba: honest path breakdowns, up-to-date pricing, and side-by-side comparisons with Codecademy, Udemy, and freeCodeCamp. Built for developers who want real job outcomes.';
 
 export default function Home(): React.ReactElement {
   const { siteConfig } = useDocusaurusContext();

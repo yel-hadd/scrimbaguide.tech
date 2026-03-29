@@ -1,0 +1,344 @@
+---
+slug: vibe-coding-javascript-survival-guide-2026
+title: "Vibe Coding JavaScript Survival Guide: 10 Concepts Behind 90% of Bugs"
+description: "Vibe coding JavaScript debugging: the 10 concepts behind most AI-generated bugs — error patterns, fixes, and Scrimba courses to learn each one."
+authors: [scrimbaguide]
+tags: [vibe-coding, javascript]
+keywords: [vibe coding javascript, vibe coding debugging, javascript for vibe coders, async await bugs, react stale closure]
+image: /img/blog/vibe-coding-javascript-survival-guide-2026.png
+image_alt: "Vibe Coding JavaScript Survival Guide — Scrimba Guide Blog"
+hideFooterPricingCta: false
+last_update:
+  date: 2026-04-14
+---
+
+import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import ItemListSchema from '@site/src/components/ItemListSchema';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import PricingCTA from '@site/src/components/PricingCTA';
+
+<DocFaqSchema
+  questions={[
+    {
+      q: "What JavaScript should vibe coders learn first?",
+      a: "Start with async/await and Promises, then undefined/null and optional chaining, then array immutability and React state. Those four clusters cover the majority of production bugs in AI-generated frontends."
+    },
+    {
+      q: "Why does vibe-coded JavaScript break so often?",
+      a: "Models optimize for plausible-looking code, not your exact runtime environment. That produces missing awaits, accidental mutation, stale closures, and weak error handling — bugs that only appear under latency, concurrency, or real data."
+    },
+    {
+      q: "How do I debug vibe coding errors faster?",
+      a: "Read the stack trace literally, reproduce with the smallest input, then bisect with console logs or breakpoints. Learn the event loop and Promise timing so you do not chase ghosts in the wrong file."
+    },
+    {
+      q: "Where can I practice JavaScript interactively?",
+      a: "Scrimba’s Learn JavaScript (free) and Modern JavaScript courses are built around in-browser typing — the fastest way to rebuild intuition AI tools skip."
+    },
+    {
+      q: "Is there a printable reference for these concepts?",
+      a: "Yes — see the printable cheat sheet at scrimbaguide.tech/downloads/vibe-coding-javascript-cheat-sheet.html which covers all 10 concepts with code examples."
+    }
+  ]}
+/>
+
+<ItemListSchema
+  name="10 JavaScript concepts for vibe coding survival"
+  description="The core JavaScript ideas that explain most debugging sessions after AI-generated code ships — async, null safety, mutation, closures, event loop, references, coercion, scope, errors, and this binding."
+  items={[
+    { name: "async/await and Promises", url: "/docs/courses/javascript/modern-javascript", description: "Scheduling, awaiting, and parallel async flows" },
+    { name: "undefined vs null and optional chaining", url: "/docs/courses/javascript/tricky-parts-of-javascript", description: "Safe property access and nullish patterns" },
+    { name: "Array mutation vs new arrays", url: "/docs/courses/react/learn-react", description: "Immutable updates and React re-renders" },
+    { name: "Closures and stale state", url: "/docs/courses/javascript/javascript-deep-dive", description: "Captured variables and fresh callbacks" },
+    { name: "The event loop", url: "/docs/courses/javascript/modern-javascript", description: "Tasks, microtasks, and ordering" },
+    { name: "Object reference equality", url: "/docs/courses/javascript/learn-javascript", description: "Why {} !== {}" },
+    { name: "Type coercion", url: "/docs/courses/javascript/tricky-parts-of-javascript", description: "== vs === and truthy traps" },
+    { name: "Scope, hoisting, const vs var", url: "/docs/courses/javascript/learn-javascript", description: "Lexical scope and temporal dead zone" },
+    { name: "Error handling with try/catch", url: "/docs/courses/javascript/modern-javascript", description: "Async errors and rejections" },
+    { name: "this binding in callbacks", url: "/docs/courses/javascript/tricky-parts-of-javascript", description: "Classes, bind, and arrow functions" }
+  ]}
+/>
+
+# Vibe Coding JavaScript Survival Guide: 10 Concepts Behind 90% of Bugs
+
+**Vibe coding JavaScript** is JavaScript shipped after AI tools generate most of the lines while you steer by intent and small edits. Production still runs on the real event loop, real HTTP, and real user inputs — so **timing**, **references**, and **mutation** dominate debugging. Models optimize for plausible happy paths; users live on edge cases. This guide is a **quick-reference card**: ten concepts, the **error flavor** you will recognize, a **minimal fix**, and a **Scrimba** link to drill each skill without autopilot.
+
+*Last reviewed: April 2026.*
+
+We earn a commission if you upgrade through our links, at no extra cost to you.
+
+{/* truncate */}
+
+Read the hub first if you are new to the series: **[Vibe coding guide](/blog/vibe-coding-guide)**. For the skills gap framing, see **[from vibe coder to real developer](/blog/vibe-coder-to-real-developer-2026)**.
+
+**Download the printable cheat sheet:** [Open printable cheat sheet](pathname:///downloads/vibe-coding-javascript-cheat-sheet.html)
+
+## How to use this guide
+
+Skim the **bug** header. If it matches Sentry, jump to **fix**, then do one **Scrimba** lesson without AI assistance on the exercise bits.
+
+| Concept cluster | You will recognize it when… |
+| --- | --- |
+| Async + errors | Logs print "out of order" or promises never settle |
+| Data + identity | `useEffect` fires forever or `===` surprises you |
+| React state | UI "lags" behind what you think you set |
+| Types + `this` | Mystery `undefined` or wrong method receiver |
+
+## Combo failures (when two concepts stack)
+
+| Combo | What it feels like | First move |
+| --- | --- | --- |
+| async + mutation | Data "arrives" but UI shows ghosts | Log references before/after await; check if you mutated shared arrays |
+| React state + stale closure | Button uses yesterday’s props | Functional updates; fix effect dependency arrays |
+| coercion + optional chaining | "Works in Chrome" only | Replace `==`; normalize inputs at API boundary |
+| `this` + async | Method works until you pass it around | Bind in constructor or use arrow fields consistently |
+
+These combos are why "just ask the model to fix it" loops forever: each pass changes symptoms without touching the root pairing.
+
+## 1) async/await and Promises
+
+**The bug:** `UnhandledPromiseRejectionWarning`, `undefined` where you expected data, or a function returns before work finishes.
+
+**Why it happens:** `async` functions return Promises. If you forget `await`, callers get a Promise object — not the result. Parallelism without `Promise.all` creates accidental waterfalls.
+
+**The fix:**
+
+```javascript
+async function loadUser(id) {
+  const res = await fetch(`/api/users/${id}`);
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
+// Parallel, not sequential
+const [user, posts] = await Promise.all([
+  loadUser(1),
+  fetch(`/api/posts?userId=1`).then((r) => r.json()),
+]);
+```
+
+**Learn it:** Scrimba → [Modern JavaScript](/docs/courses/javascript/modern-javascript) and [Learn JavaScript](/docs/courses/javascript/learn-javascript)
+
+## 2) undefined vs null / optional chaining
+
+**The bug:** `TypeError: Cannot read properties of undefined (reading 'name')`.
+
+**Why it happens:** Optional data arrives late, APIs omit keys, or you indexed the wrong array element.
+
+**The fix:**
+
+```javascript
+const label = user?.profile?.displayName ?? "Anonymous";
+
+// Combine with early return at boundaries
+if (!payload?.items?.length) return [];
+```
+
+**Learn it:** Scrimba → [Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript)
+
+## 3) Array mutation vs new arrays
+
+**The bug:** React state updates but UI does not, or history features break because arrays were shared references.
+
+**Why it happens:** `push`, `sort`, `splice`, and `reverse` **mutate** in place. React compares references for many updates.
+
+**The fix:**
+
+```javascript
+// Bad: mutates state in place
+// state.items.push(next);
+
+// Good: new array reference
+setItems((prev) => [...prev, next]);
+
+// Good: sorted copy
+const sorted = [...items].sort((a, b) => a.date - b.date);
+```
+
+**Learn it:** Scrimba → [Learn React](/docs/courses/react/learn-react)
+
+## 4) Closures and stale state
+
+**The bug:** A click handler logs an old value, `setInterval` uses outdated counters, or a `useEffect` closure "never sees" new props.
+
+**Why it happens:** Inner functions **capture** variables by reference at creation time — not telepathy at run time.
+
+**The fix:**
+
+```javascript
+// React: functional updates avoid stale state
+setCount((c) => c + 1);
+
+// Intervals: read fresh state without stale closure traps
+useEffect(() => {
+  const id = setInterval(() => {
+    setCount((c) => c + 1);
+  }, 1000);
+  return () => clearInterval(id);
+}, []);
+```
+
+**Learn it:** Scrimba → [JavaScript Deep Dive](/docs/courses/javascript/javascript-deep-dive)
+
+## 5) The event loop
+
+**The bug:** `console.log` order surprises you; microtasks starve UI; `setTimeout(0)` still runs "later" than `Promise.then`.
+
+**Why it happens:** JavaScript schedules **macrotasks** and **microtasks** differently. Promises enqueue microtasks.
+
+**The fix:** Model work in steps: sync code → microtasks → next macrotask. When in doubt, **draw the timeline** on paper.
+
+```javascript
+console.log("A");
+queueMicrotask(() => console.log("B"));
+setTimeout(() => console.log("C"), 0);
+Promise.resolve().then(() => console.log("D"));
+console.log("E");
+// A E B D C  (in typical engines — learn why in-course)
+```
+
+**Learn it:** Scrimba → [Modern JavaScript](/docs/courses/javascript/modern-javascript)
+
+## 6) Object reference equality
+
+**The bug:** `useEffect(() => ..., [obj])` runs every render; memoization never hits; `===` says two "identical" objects differ.
+
+**Why it happens:** Each object literal creates a **new identity**. Deep equality is not free — React relies on reference stability.
+
+**The fix:**
+
+```javascript
+// Stabilize with primitives as deps
+useEffect(() => {
+  // ...
+}, [user.id]);
+
+// Or memoize objects carefully (libraries help)
+```
+
+**Learn it:** Scrimba → [Learn JavaScript](/docs/courses/javascript/learn-javascript)
+
+## 7) Type coercion
+
+**The bug:** `if ([])` does something weird; `==` compares across types; `Number("")` is 0.
+
+**Why it happens:** JavaScript applies **coercion rules** that are learnable but not guessable.
+
+**The fix:** Default to **`===` and `!==`**. Be explicit with `Number()`, `String()`, and `Boolean()`.
+
+```javascript
+const n = Number(input);
+if (Number.isNaN(n)) {
+  throw new Error("not a number");
+}
+```
+
+**Learn it:** Scrimba → [Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript)
+
+## 8) Scope and hoisting (`const` vs `var`)
+
+**The bug:** `Cannot access 'x' before initialization`, loop variables leak, or `var` surprises you in blocks.
+
+**Why it happens:** `let`/`const` are **block-scoped** with a temporal dead zone; `var` is function-scoped and hoisted differently.
+
+**The fix:** Prefer **`const`**, use **`let` only when reassigned**, avoid **`var`** in new code.
+
+```javascript
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 10);
+}
+// prints 0 1 2 (with let)
+```
+
+**Learn it:** Scrimba → [Learn JavaScript](/docs/courses/javascript/learn-javascript)
+
+## 9) Error handling / try-catch
+
+**The bug:** Swallowed errors, silent failures, or `try/catch` around `async` without `await`.
+
+**Why it happens:** Thrown errors in async functions are **Promise rejections**; they will not hit a surrounding `try` unless you `await`.
+
+**The fix:**
+
+```javascript
+async function safeRun() {
+  try {
+    const data = await mightFail();
+    return { ok: true, data };
+  } catch (err) {
+    console.error(err);
+    return { ok: false, error: String(err) };
+  }
+}
+```
+
+**Learn it:** Scrimba → [Modern JavaScript](/docs/courses/javascript/modern-javascript)
+
+## 10) `this` binding in callbacks
+
+**The bug:** `TypeError: this.method is not a function` after passing a class method to `onClick`.
+
+**Why it happens:** `this` is determined by **call site** — not by where the function was written.
+
+**The fix:**
+
+```javascript
+class Counter {
+  constructor() {
+    this.n = 0;
+    this.inc = this.inc.bind(this); // stable this
+  }
+  inc() {
+    this.n += 1;
+  }
+}
+
+// Or use class fields + arrows (know the tradeoffs)
+```
+
+**Learn it:** Scrimba → [Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript)
+
+## When to stop vibe-generating and hand-write the fix
+
+If two model passes do not reduce the failing stack trace, **switch modes**:
+
+1. **Reproduce** with one input and one network speed (throttle in DevTools).
+2. **Delete** the clever abstraction the model added — replace with boring, explicit code.
+3. **Add** logging at boundaries: fetch, parse, render.
+
+This is where fundamentals pay rent. You are not "bad at AI" — you are doing engineering.
+
+## Tooling that speeds up the ten concepts (not cheating)
+
+- **Debugger breakpoints** beat `console.log` for async flows.
+- **React DevTools** shows props and state without guessing.
+- **TypeScript** converts whole classes of bugs into red squiggles — after you learn to read the messages.
+
+If types are your wall, [Learn TypeScript](/docs/courses/typescript/learn-typescript) pairs well after [Learn JavaScript](/docs/courses/javascript/learn-javascript).
+
+## One closing rule for vibe-coded repos
+
+If you cannot draw **data flow** from user action → state change → network call → render on a whiteboard, you do not understand the feature yet — you are narrating vibes.
+
+That diagram is the antidote. Five boxes beats a fifty-line prompt.
+
+## Content upgrade
+
+**Download the printable cheat sheet:** [Open printable cheat sheet](pathname:///downloads/vibe-coding-javascript-cheat-sheet.html)
+
+## Where to go next on Scrimba Guide
+
+- [How to learn JavaScript in 2026](/blog/how-to-learn-javascript-2026)
+- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp) (if you are choosing a practice platform)
+- [Learn JavaScript course](/docs/courses/javascript/learn-javascript) — **free** full course
+
+<AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986&utm_source=scrimbaguide&utm_medium=blog&utm_campaign=vibe-coding-javascript-survival-guide-2026&utm_content=inline">
+  Open Scrimba pricing (Pro unlocks full paths)
+</AffiliateLink>
+
+<PricingCTA
+  title="Drill the ten concepts until they feel boring"
+  subtitle="That boredom is the signal you are becoming hard to break in production. We earn a commission if you upgrade through our links, at no extra cost to you."
+  buttonText="Explore Scrimba Pro"
+  variant="inline"
+/>

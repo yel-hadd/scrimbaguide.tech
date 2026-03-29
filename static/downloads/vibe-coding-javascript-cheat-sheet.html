@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Vibe Coding JS Cheat Sheet — Scrimba Guide</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.55;
+      color: #1a1a2e;
+      background: #f8f9fa;
+      padding: 1.5rem 1rem;
+    }
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 100%);
+      color: white;
+      padding: 1.75rem 2rem;
+    }
+    .header .eyebrow {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a78bfa;
+      margin-bottom: 0.4rem;
+    }
+    .header h1 { font-size: 1.45rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.4rem; }
+    .header p { font-size: 0.82rem; color: #c4b5fd; }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .concept {
+      padding: 1.1rem 1.25rem;
+      border-right: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .concept:nth-child(even) { border-right: none; }
+    .concept h3 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .concept h3 .num {
+      background: #2d1b69;
+      color: white;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .concept .hell {
+      font-size: 11px;
+      color: #c53030;
+      font-style: italic;
+      margin-bottom: 0.3rem;
+    }
+    .concept p { font-size: 12px; color: #2d3748; margin-bottom: 0.3rem; }
+    code {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+      font-size: 11px;
+      background: #f0f4f8;
+      padding: 0.15rem 0.3rem;
+      border-radius: 3px;
+      color: #1a202c;
+    }
+    .code-block {
+      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+      font-size: 11px;
+      background: #1a202c;
+      color: #e2e8f0;
+      padding: 0.6rem 0.75rem;
+      border-radius: 5px;
+      margin: 0.4rem 0 0.3rem;
+      overflow-x: auto;
+      line-height: 1.5;
+    }
+    .code-block .comment { color: #68d391; }
+    .code-block .keyword { color: #f6ad55; }
+    .code-block .string { color: #fc8181; }
+    .code-block .fn { color: #76e4f7; }
+    .fix-tag {
+      display: inline-block;
+      background: #e6fffa;
+      color: #276749;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+      border: 1px solid #9ae6b4;
+      margin-top: 0.2rem;
+    }
+    .footer-strip {
+      background: #2d1b69;
+      color: #c4b5fd;
+      padding: 0.85rem 2rem;
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-strip a { color: #e9d8fd; text-decoration: none; }
+    @media print {
+      body { background: white; padding: 0; font-size: 11px; }
+      .page { box-shadow: none; border-radius: 0; }
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <p class="eyebrow">Scrimba Guide — Vibe Coding Survival Series</p>
+      <h1>The 10 JavaScript Concepts Every Vibe Coder Must Know</h1>
+      <p>The concepts behind 90% of vibe coding bugs — with plain-English explanations and the fix for each.</p>
+    </div>
+
+    <div class="grid">
+
+      <div class="concept">
+        <h3><span class="num">1</span> async/await and Promises</h3>
+        <p class="hell">Bug: "It returns undefined instead of the data."</p>
+        <p>JavaScript is non-blocking. If you call an async function without <code>await</code>, you get a Promise object, not the result.</p>
+        <div class="code-block"><span class="comment">// Wrong — data is a Promise, not the result</span>
+<span class="keyword">const</span> data = fetch(url);
+
+<span class="comment">// Right</span>
+<span class="keyword">const</span> data = <span class="keyword">await</span> fetch(url);
+<span class="keyword">const</span> json = <span class="keyword">await</span> data.<span class="fn">json</span>();</div>
+        <span class="fix-tag">Learn it: Scrimba → JavaScript Promises course</span>
+      </div>
+
+      <div class="concept">
+        <h3><span class="num">2</span> undefined vs null</h3>
+        <p class="hell">Bug: "Cannot read properties of undefined."</p>
+        <p><code>undefined</code> means a variable was declared but never assigned. <code>null</code> means intentionally empty. Always check before accessing properties.</p>
+        <div class="code-block"><span class="comment">// Safe access with optional chaining</span>
+<span class="keyword">const</span> name = user?.profile?.name;
+
+<span class="comment">// Default with nullish coalescing</span>
+<span class="keyword">const</span> label = name ?? <span class="string">'Anonymous'</span>;</div>
+        <span class="fix-tag">Learn it: Scrimba → Learn JavaScript (optional chaining)</span>
+      </div>
+
+      <div class="concept">
+        <h3><span class="num">3</span> Array mutation vs new arrays</h3>
+        <p class="hell">Bug: "The UI doesn't update when I change the array."</p>
+        <p>React (and most state systems) detect changes by reference. Mutating an existing array doesn't trigger a re-render. Always return a new array.</p>
+        <div class="code-block"><span class="comment">// Mutates — React won't re-render</span>
+items.<span class="fn">push</span>(newItem); setState(items);
+
+<span class="comment">// Creates new array — React sees change</span>
+setState([...items, newItem]);</div>
+        <span class="fix-tag">Learn it: Scrimba → Learn React (state)</span>
+      </div>
+
+      <div class="concept">
+        <h3><span class="num">4</span> Closures and stale state</h3>
+        <p class="hell">Bug: "The counter value is always 0 inside the event handler."</p>
+        <p>A closure captures the value of a variable at the time it was created. If state updates after the closure is created, it still sees the old value.</p>
+        <div class="code-block"><span class="comment">// Stale closure — count is always 0</span>
+onClick={() => setCount(count + 1)};
+
+<span class="comment">// Functional update — always fresh</span>
+onClick={() => setCount(prev => prev + 1)};</div>
+        <span class="fix-tag">Learn it: Scrimba → Learn JavaScript (closures)</span>
+      </div>
+
+      <div class="concept">
+        <h3><span class="num">5</span> The Event Loop</h3>
+        <p class="hell">Bug: "This setTimeout runs before the data is ready."</p>
+        <p>JavaScript runs one thing at a time. Async operations (fetch, setTimeout) are queued and run only when the call stack is empty. You can't "wait" synchronously.</p>
+        <div class="code-block"><span class="comment">// Wrong — data isn't ready yet</span>
+fetchData();
+console.log(data); <span class="comment">// undefined</span>
+
+<span class="comment">// Right — wait for the promise</span>
+<span class="keyword">const</span> data = <span class="keyword">await</span> fetchData();
+console.log(data); <span class="comment">// ✓</span></div>
+        <span class="fix-tag">Learn it: Scrimba → JavaScript async courses</span>
+      </div>
+
+      <div class="concept">
+        <h3><span class="num">6</span> Object reference equality</h3>
+        <p class="hell">Bug: "useEffect runs on every render even though nothing changed."</p>
+        <p>Two objects with identical content are NOT equal in JavaScript — they're different references in memory. React's dependency array comparison uses reference equality.</p>
+        <div class="code-block"><span class="comment">// These are NOT equal</span>
+{} === {} <span class="comment">// false</span>
+
+<span class="comment">// Fix: memoize objects in deps</span>
+<span class="keyword">const</span> opts = useMemo(() => ({...}), []);</div>
+        <span class="fix-tag">Learn it: Scrimba → Learn React (useMemo, useCallback)</span>
+      </div>
+
+      <div class="concept">
+        <h3><span class="num">7</span> Type coercion</h3>
+        <p class="hell">Bug: "1 + '1' returns '11', not 2."</p>
+        <p>JavaScript silently converts types. The <code>+</code> operator prioritises string concatenation. Use <code>===</code> (strict) not <code>==</code> (loose) for comparisons.</p>
+        <div class="code-block">1 + '1'   <span class="comment">// "11" (string)</span>
+1 - '1'   <span class="comment">// 0 (number)</span>
+0 == false <span class="comment">// true (coercion!)</span>
+0 === false <span class="comment">// false (strict)</span>
+
+<span class="comment">// Parse input values explicitly</span>
+parseInt(input.value, 10);</div>
+        <span class="fix-tag">Learn it: Scrimba → Learn JavaScript (types)</span>
+      </div>
+
+      <div class="concept">
+        <h3><span class="num">8</span> Scope and hoisting</h3>
+        <p class="hell">Bug: "I can use the variable before I define it and it's undefined."</p>
+        <p><code>var</code> declarations are hoisted (moved to the top of the function) and initialised as <code>undefined</code>. Use <code>const</code> and <code>let</code> — they're block-scoped and not hoisted.</p>
+        <div class="code-block">console.log(x); <span class="comment">// undefined (var hoisted)</span>
+<span class="keyword">var</span> x = 5;
+
+console.log(y); <span class="comment">// ReferenceError (good!)</span>
+<span class="keyword">const</span> y = 5;</div>
+        <span class="fix-tag">Learn it: Scrimba → Learn JavaScript (scope)</span>
+      </div>
+
+      <div class="concept">
+        <h3><span class="num">9</span> Error handling</h3>
+        <p class="hell">Bug: "The app crashes silently and I can't tell why."</p>
+        <p>Async errors don't bubble up the same way synchronous ones do. Every <code>await</code> call needs a try/catch, or a <code>.catch()</code> handler on the Promise chain.</p>
+        <div class="code-block"><span class="keyword">try</span> {
+  <span class="keyword">const</span> data = <span class="keyword">await</span> fetchData();
+  setState(data);
+} <span class="keyword">catch</span> (error) {
+  console.error(error);
+  setError(<span class="string">'Failed to load data'</span>);
+}</div>
+        <span class="fix-tag">Learn it: Scrimba → JavaScript error handling</span>
+      </div>
+
+      <div class="concept">
+        <h3><span class="num">10</span> this binding</h3>
+        <p class="hell">Bug: "'this' is undefined inside a method I passed as a callback."</p>
+        <p>In regular functions, <code>this</code> depends on how the function is called, not where it's defined. Arrow functions capture <code>this</code> from the surrounding scope — usually what you want.</p>
+        <div class="code-block"><span class="comment">// Regular function — this is undefined</span>
+button.onclick = <span class="keyword">function</span>() { this.doSomething(); }
+
+<span class="comment">// Arrow function — this from outer scope</span>
+button.onclick = () => { this.doSomething(); }</div>
+        <span class="fix-tag">Learn it: Scrimba → Learn JavaScript (this, arrow functions)</span>
+      </div>
+
+    </div>
+
+    <div class="footer-strip">
+      <span>Scrimba Guide — <a href="https://scrimbaguide.tech">scrimbaguide.tech</a></span>
+      <span>Full guide: <a href="https://scrimbaguide.tech/blog/vibe-coding-javascript-survival-guide-2026">Vibe Coding Survival Guide 2026</a></span>
+    </div>
+  </div>
+</body>
+</html>

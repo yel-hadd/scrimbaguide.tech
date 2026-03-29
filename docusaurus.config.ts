@@ -3,7 +3,7 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 /** Set to `false` to show the newsletter / path-guide lead magnet (`EmailCapture`). */
-const hideNewsletterLeadMagnetDefault = true;
+const hideNewsletterLeadMagnetDefault = false;
 
 /**
  * Legacy blog URLs that only exist as client-redirect stubs — omit from sitemap (canonical = `to` targets).

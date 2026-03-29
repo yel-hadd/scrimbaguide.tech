@@ -33,6 +33,127 @@ const KEY_PATHS = [
   '/contact',
 ];
 
+/**
+ * Curated annotations for high-value pages.
+ * Format: path (no trailing slash) → { title, description }
+ * These are rendered as `- [Title](URL): Description` in llms.txt
+ * so AI systems understand page content without fetching it.
+ */
+const PAGE_ANNOTATIONS = {
+  '/': {
+    title: 'Scrimba Guide — Home',
+    description: 'Independent guide to Scrimba covering paths, pricing, and platform comparisons for developers learning to code.',
+  },
+  '/docs/intro': {
+    title: 'What Is Scrimba Guide?',
+    description: 'Overview of this independent Scrimba resource: what we cover, how we review content, and how to navigate the guides.',
+  },
+  '/docs/paths': {
+    title: 'Scrimba Career Paths Overview (2026)',
+    description: 'Comparison of all four Scrimba career paths (Frontend, Fullstack, Backend, AI Engineer) — hours, skill level, and who each path is for.',
+  },
+  '/docs/paths/frontend-developer-path': {
+    title: 'Scrimba Frontend Developer Path Review (2026)',
+    description: '81.6-hour beginner path covering HTML, CSS, JavaScript, and React. Best for complete beginners targeting a first frontend job.',
+  },
+  '/docs/paths/fullstack-developer-path': {
+    title: 'Scrimba Fullstack Developer Path Review (2026)',
+    description: '108.4-hour path adding backend, databases, TypeScript, Next.js, and AI engineering on top of frontend skills.',
+  },
+  '/docs/paths/backend-developer-path': {
+    title: 'Scrimba Backend Developer Path Review (2026)',
+    description: '30.1-hour intermediate path covering Node.js, Express, SQL, TypeScript, cybersecurity, and DevOps.',
+  },
+  '/docs/paths/ai-engineer-path': {
+    title: 'Scrimba AI Engineer Path Review (2026)',
+    description: '11.4-hour intermediate path for building AI-powered apps with agents, RAG, MCP, and the Vercel AI SDK.',
+  },
+  '/docs/pricing': {
+    title: 'Scrimba Pricing 2026 — Pro vs Free',
+    description: 'Current Scrimba pricing breakdown: what Free includes, what Pro unlocks, and how to get the cheapest Pro subscription.',
+  },
+  '/docs/pricing/pro-vs-free': {
+    title: 'Scrimba Pro vs Free: What\'s the Difference? (2026)',
+    description: 'Side-by-side comparison of Scrimba Free and Pro tiers — course access, career paths, certificates, and AI features.',
+  },
+  '/docs/comparisons': {
+    title: 'Scrimba vs Alternatives: The Complete Comparison Guide (2026)',
+    description: 'Decision-focused comparisons of Scrimba against 12 platforms including Codecademy, Udemy, freeCodeCamp, and Frontend Masters.',
+  },
+  '/docs/comparisons/scrimba-vs-codecademy': {
+    title: 'Scrimba vs Codecademy (2026)',
+    description: 'Detailed comparison of interactive screencasts (Scrimba) vs text-based drills (Codecademy) — features, pricing, and who each suits.',
+  },
+  '/docs/comparisons/scrimba-vs-udemy': {
+    title: 'Scrimba vs Udemy (2026)',
+    description: 'Curated subscription platform vs marketplace: when to pick Scrimba\'s structured paths over Udemy\'s per-course model.',
+  },
+  '/docs/comparisons/scrimba-vs-freecodecamp': {
+    title: 'Scrimba vs freeCodeCamp (2026)',
+    description: 'Paid interactive platform vs free text-based curriculum — who should pay for Scrimba and who gets enough from freeCodeCamp.',
+  },
+  '/docs/comparisons/scrimba-vs-frontendmasters': {
+    title: 'Scrimba vs Frontend Masters (2026)',
+    description: 'Structured beginner paths (Scrimba) vs advanced expert workshops (Frontend Masters) — which fits your current skill level.',
+  },
+  '/docs/comparisons/scrimba-vs-odin-project': {
+    title: 'Scrimba vs The Odin Project (2026)',
+    description: 'Guided platform vs open-source self-directed curriculum — key tradeoffs for career changers and self-taught developers.',
+  },
+  '/docs/comparisons/scrimba-vs-coursera': {
+    title: 'Scrimba vs Coursera (2026)',
+    description: 'Job-ready interactive skills (Scrimba) vs university-style credentials (Coursera) — choosing based on your career goals.',
+  },
+  '/docs/comparisons/scrimba-vs-zerotomastery': {
+    title: 'Scrimba vs Zero to Mastery (2026)',
+    description: 'Comparison of interactive screencasts vs traditional video courses across web development and AI learning paths.',
+  },
+  '/docs/comparisons/scrimba-vs-treehouse': {
+    title: 'Scrimba vs Treehouse (2026)',
+    description: 'Interactive coding environment (Scrimba) vs general video library (Treehouse) — content depth, pricing, and job outcomes.',
+  },
+  '/docs/comparisons/scrimba-vs-pluralsight': {
+    title: 'Scrimba vs Pluralsight (2026)',
+    description: 'Beginner-focused interactive paths (Scrimba) vs enterprise certification platform (Pluralsight) — target audience and use cases.',
+  },
+  '/docs/comparisons/scrimba-vs-educative': {
+    title: 'Scrimba vs Educative (2026)',
+    description: 'Video-based interactive coding (Scrimba) vs text + embedded playgrounds (Educative) — interview prep and learning style comparison.',
+  },
+  '/docs/comparisons/scrimba-vs-fireship': {
+    title: 'Scrimba vs Fireship (2026)',
+    description: 'Structured career paths (Scrimba) vs fast-paced YouTube overviews + Pro course (Fireship) — depth vs breadth tradeoff.',
+  },
+  '/docs/comparisons/scrimba-vs-youtube': {
+    title: 'Scrimba vs YouTube for Learning to Code (2026)',
+    description: 'Passive video watching vs active coding environment — why structure and accountability matter for career changers.',
+  },
+  '/docs/faq/is-scrimba-free': {
+    title: 'Is Scrimba Free? (2026)',
+    description: 'Scrimba\'s free tier covers 19+ courses permanently — details on what is and isn\'t free, and when Pro is worth paying for.',
+  },
+  '/docs/faq/how-to-use-scrimba': {
+    title: 'How to Use Scrimba: Getting Started Guide',
+    description: 'Step-by-step guide to setting up Scrimba, navigating scrims, using the interactive IDE, and choosing a learning path.',
+  },
+  '/blog/scrimba-review': {
+    title: 'Scrimba Review 2026: Is It Worth It?',
+    description: 'In-depth independent review covering the scrim format, course quality, pricing, career outcomes, and who Scrimba is actually for.',
+  },
+  '/blog/is-scrimba-worth-it': {
+    title: 'Is Scrimba Worth It in 2026? Honest Assessment',
+    description: 'Evidence-based assessment of Scrimba Pro value — when the subscription pays off and when free alternatives are sufficient.',
+  },
+  '/blog/scrimba-vs-coding-bootcamps-cost': {
+    title: 'Scrimba vs Coding Bootcamps: Full Cost Analysis (2026)',
+    description: 'Total cost comparison between Scrimba Pro (~$19/mo) and coding bootcamps ($10k–$20k) — ROI, outcomes, and time commitment.',
+  },
+  '/about': {
+    title: 'About Scrimba Guide',
+    description: 'Who runs Scrimba Guide, our editorial independence policy, how we review platforms, and our affiliate disclosure.',
+  },
+};
+
 export function extractLocUrls(xml) {
   const urls = [];
   const locRegex = /<loc>(.*?)<\/loc>/g;
@@ -65,8 +186,15 @@ function uniqueCanonicalUrls(urls) {
   return [...new Set(urls.map(normalizeCanonicalUrl))];
 }
 
-function formatUrlList(urls) {
-  return urls.map((url) => `- ${url}`).join('\n');
+function formatUrlList(urls, siteUrl = DEFAULT_SITE_URL) {
+  return urls.map((url) => {
+    const pathname = toPathname(url).replace(/\/+$/, '') || '/';
+    const annotation = PAGE_ANNOTATIONS[pathname];
+    if (annotation) {
+      return `- [${annotation.title}](${url}): ${annotation.description}`;
+    }
+    return `- ${url}`;
+  }).join('\n');
 }
 
 function sectionByPrefix(urls, prefix) {
@@ -118,7 +246,7 @@ export function renderLlmsTxt(urls, options = {}) {
   const lines = [
     `# ${siteName}`,
     '',
-    `> Canonical URL index for ${siteName}. Use this file for high-signal pages and \`${siteUrl}/llms-full.txt\` for the complete set.`,
+    `> Independent guide to Scrimba — covering career paths, pricing, and platform comparisons for developers learning to code in 2026. Annotated high-signal pages below; see \`${siteUrl}/llms-full.txt\` for the complete canonical URL index.`,
     '',
     `- Full canonical index: ${siteUrl}/llms-full.txt`,
     '',
@@ -156,7 +284,7 @@ export function renderLlmsFullTxt(urls, options = {}) {
   const lines = [
     `# ${siteName} (Full URL Index)`,
     '',
-    '> Complete list of canonical URLs derived from sitemap.xml.',
+    '> Complete canonical URL index for Scrimba Guide — an independent review site covering Scrimba\'s courses, career paths, pricing, and comparisons with Codecademy, Udemy, freeCodeCamp, Frontend Masters, and 8 other platforms.',
     '',
     '## All Canonical URLs',
     '',
