@@ -313,7 +313,7 @@ function PricingSection() {
     <section className="pricing-cta home-pricing home-shell" aria-label="Pricing call to action">
       <h2 className="pricing-cta__title">Free to try. Pro when you&apos;re ready for the full library.</h2>
       <p className="pricing-cta__subtitle">
-        Free tier never expires. Pro unlocks every course and path—about $19/mo, cancel anytime.
+        Free tier never expires. Pro unlocks every course and path—20% off with our partner link, cancel anytime.
       </p>
       <p className="pricing-cta__includes">
         <strong>What&apos;s included in Pro:</strong> {totalCoursesLabel} courses &middot; 4 career paths
@@ -343,7 +343,7 @@ function FAQPreviewSection() {
     },
     {
       q: 'How much does Scrimba Pro cost in 2026?',
-      a: 'Scrimba Pro costs approximately $19/month on an annual plan. A monthly plan is available at a higher rate. The free tier never expires and includes 19+ full courses — no credit card required.',
+      a: 'Scrimba Pro is available on monthly and annual plans — annual billing offers the best per-month rate. Our partner link applies 20% off automatically at checkout. The free tier never expires and includes 19+ full courses — no credit card required.',
     },
     {
       q: 'Is Scrimba free to use?',
@@ -355,7 +355,7 @@ function FAQPreviewSection() {
     },
     {
       q: 'How does Scrimba compare to a coding bootcamp?',
-      a: 'Scrimba Pro costs roughly $200-$250 per year versus $10,000-$20,000 for a typical bootcamp. The interactive format is effective for self-motivated learners. Bootcamps offer more structure, cohort accountability, and career services.',
+      a: 'Scrimba Pro costs a fraction of a typical bootcamp ($10,000-$20,000). The interactive format is effective for self-motivated learners. Bootcamps offer more structure, cohort accountability, and career services.',
     },
     {
       q: 'What can you learn on Scrimba?',
