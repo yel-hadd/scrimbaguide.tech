@@ -14,29 +14,32 @@ keywords:
 last_update:
   date: 2026-03-30
 slug: /paths
-affiliateCtaTitle: "Start the path that matches your goal"
-affiliateCtaSubtitle: "Confirm the scrim format on free courses, then unlock every path with Pro—all four paths are included. Use our partner link for 20% off when you upgrade."
-affiliateCtaButtonText: "Try Scrimba free"
+affiliateCtaTitle: "Start building your portfolio today"
+affiliateCtaSubtitle: "Try the interactive scrim format on free courses, then unlock the full career path with Pro. Use our partner link for 20% off when you upgrade."
+affiliateCtaButtonText: "Try Scrimba Free"
 affiliateCtaType: free
 affiliateCtaShowDiscountNote: false
 ---
 
 import PathAdvisor from '@site/src/components/PathAdvisor';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import DocFaqSchema from '@site/src/components/DocFaqSchema';
 
 <div className="path-landing">
 
 # Pick a Scrimba path without second-guessing Pro
 
-**Quick answer:** Four Pro paths—**Frontend** (~81.6h), **Fullstack** (~108.4h), **Backend** (~30.1h), **AI Engineer** (~11.4h). Median web developer pay neared **$72k** (BLS, 2024); full‑stack and AI‑leaning roles often sit higher in competitive markets (e.g. Stack Overflow survey bands). Pro is typically **~$200/year** vs **$10k–$20k+** for many bootcamps—plus you can validate fit on free courses first. **Beginner → Frontend**; **widest stack → Fullstack**; **already strong at UI → Backend**; **can ship web apps → AI Engineer**.
+**What are the Scrimba Learning Paths?** Scrimba runs four Pro-only career tracks: Frontend (81.6 hours), Fullstack (108.4 hours), Backend (30.1 hours), and AI Engineer (11.4 hours). The Frontend path is built with Mozilla MDN; you work in the browser on real projects instead of only watching videos.
 
-*Last reviewed: March 2026. Path durations and catalog change on Scrimba’s side; verify module lists on each path page.*
+Median web developer pay was about $72,000 in 2024 (Bureau of Labor Statistics). Stack Overflow’s 2024 survey put many full-stack and AI-leaning roles above $100,000, though that varies a lot by city and company. Pro is roughly $200 a year. Bootcamps with overlapping topics often land in the five-figure range, so the math depends on whether you need structure and deadlines or you’re fine self-paced.
+
+*Last reviewed: March 2026. Path durations and catalogs change; verify module lists on Scrimba's site.*
 
 ## How to use this page (30 seconds)
 
-1. **Skim the comparison table** below if you want facts fast.
-2. **Run the interactive advisor**—it asks about your level, goal, weekly hours, and context, then suggests a path and a realistic week range.
-3. **Open the matching path guide** on this site (independent write-ups), then try Scrimba free or compare Pro when you are ready.
+1. **Skim the comparison matrix** below to find the path that matches your goals.
+2. **Run the interactive advisor** to get a personalized recommendation and timeline.
+3. **Read the detailed path guide** before you commit to a Pro subscription.
 
 ## Interactive path advisor {#path-advisor}
 
@@ -44,37 +47,44 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 
 ## Every path at a glance
 
-| Path | Duration | Level | Modules | Best for |
-| --- | --- | --- | --- | --- |
-| [Frontend Developer](/docs/paths/frontend-developer-path) | 81.6 hrs | Beginner | 13 | First job in web, portfolio projects, React + MDN-backed basics |
-| [Fullstack Developer](/docs/paths/fullstack-developer-path) | 108.4 hrs | Beginner (long) | 20 | Maximum breadth: frontend → backend → TypeScript → Next.js + AI topics |
-| [Backend Developer](/docs/paths/backend-developer-path) | 30.1 hrs | Intermediate | 12 | Node, Express, SQL, security, DevOps—**after** JS + basic web |
-| [AI Engineer](/docs/paths/ai-engineer-path) | 11.4 hrs | Intermediate | 8 | Agents, RAG, MCP—**not** a first coding course |
+| Feature | [Frontend Developer](/docs/paths/frontend-developer-path) | [Fullstack Developer](/docs/paths/fullstack-developer-path) | [Backend Developer](/docs/paths/backend-developer-path) | [AI Engineer](/docs/paths/ai-engineer-path) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Duration** | 81.6 hours | 108.4 hours | 30.1 hours | 11.4 hours |
+| **Modules** | 13 | 20 | 12 | 8 |
+| **Experience Level** | Complete Beginner | Beginner (Long Track) | Intermediate | Intermediate |
+| **Core Technologies** | HTML, CSS, JS, React | React, Node, SQL, Next.js | Node, Express, SQL | Agents, RAG, MCP |
+| **Best For** | First job in web dev, building UI portfolios | Maximum breadth, end-to-end apps | Adding server skills to frontend knowledge | Shipping AI features in web apps |
 
-**Reality check:** hours are curriculum estimates. Your calendar, repetition, and projects will matter more than the exact number.
+**Reality check:** These hours are curriculum estimates. Your actual completion time will depend on your schedule, repetition, and the depth of your portfolio projects.
 
 ## Who each path is for (2026)
 
 ### Career switchers targeting a first developer role
 
-Most people need a **credible portfolio** and **interview-ready fundamentals**. Frontend is the most common starting line because hiring pipelines still screen heavily for JavaScript + React + CSS. If you can commit **high weekly hours** and want the widest project surface area, Fullstack is the “one track” option—just expect a longer calendar commitment.
+Most people entering the industry need a portfolio employers can click through and fundamentals you can explain in an interview. Frontend is the usual first path: job posts still ask for JavaScript, React, and CSS constantly. 
 
-- Start here: [Frontend Developer path](/docs/paths/frontend-developer-path) or [Fullstack Developer path](/docs/paths/fullstack-developer-path)
-- Pair with: [Career change to coding (2026)](/blog/career-change-to-coding-2026), [6-month study plan](/docs/paths/study-plan)
+If you can commit **high weekly hours** and want the widest possible project surface area, the Fullstack Path is the "one track" option. Just expect a longer calendar commitment.
+
+- **Start here:** [Frontend Developer path](/docs/paths/frontend-developer-path) or [Fullstack Developer path](/docs/paths/fullstack-developer-path)
+- **Pair with:** [Career change to coding (2026)](/blog/career-change-to-coding-2026), [6-month study plan](/docs/paths/study-plan)
 
 ### Students (CS or not)
 
-**CS students** often need practical web skills on top of theory—React, TypeScript, APIs, and shipped projects. See [Scrimba for CS students](/docs/paths/scrimba-for-cs-students). Non-CS students usually mirror career switchers: Frontend first unless you already have proof you can build UIs.
+**Computer Science students** often have theory and algorithms down but not much shipped on the web. React, TypeScript, calling APIs, and finishing projects fill that gap. See [Scrimba for CS students](/docs/paths/scrimba-for-cs-students). 
+
+Non-CS students usually mirror career switchers: start with the Frontend Path unless you already have proof you can build user interfaces.
 
 ### Working professionals learning on the side
 
-Low weekly hours usually favor **one** focused path and a steady cadence—not hopping between four catalogs. Frontend or Backend (if you already know JS) tends to fit constrained schedules better than Fullstack, which is a marathon.
+If you only have a few hours a week, pick **one** path and stay on it. Jumping between catalogs burns time. Frontend stays manageable; Backend can work if you already know JavaScript. Fullstack is the long game.
 
-- Pair with: [Learn to code with a full-time job](/blog/learn-to-code-full-time-job)
+- **Pair with:** [Learn to code with a full-time job](/blog/learn-to-code-full-time-job)
 
-### Developers adding backend or AI
+### Developers adding backend or AI skills
 
-**Backend path** is for people who are already comfortable building pages or components and want servers, databases, and deployment depth. **AI Engineer** is for people who can ship apps and want applied AI patterns—if you are still shaky on JavaScript, do Frontend modules first so you are not debugging syntax and LLM prompts at the same time.
+The **Backend Path** fits if you can build pages or components and want servers, SQL, and shipping APIs without redoing all of frontend.
+
+The **AI Engineer Path** fits if you already ship web apps and want agents, RAG, and the usual JS-side AI tooling. Still wobbly on JavaScript? Finish Frontend (or enough of it) first so you’re not fighting syntax while you’re learning prompts and APIs.
 
 ## Scrimba paths vs other ways to learn (honest framing)
 
@@ -97,6 +107,16 @@ All career paths require **Scrimba Pro**. Check [Scrimba pricing](/docs/pricing/
 
 ## Frequently asked questions
 
+<DocFaqSchema questions={[
+  { q: "Which Scrimba path should I choose if I am a complete beginner?", a: "Start with the Frontend Developer path. It is designed from zero to hireable React fundamentals and includes practical projects. Pick Fullstack only if you are sure you want the longest, broadest track and can keep weekly momentum." },
+  { q: "Frontend vs Fullstack on Scrimba—which is better?", a: "Frontend is shorter and more focused on UI and React hiring signals. Fullstack adds backend, databases, TypeScript, Next.js, and AI-related modules. Fullstack is better if you want one end-to-end track and can commit the extra time." },
+  { q: "Can beginners take the AI Engineer path?", a: "You can enroll, but the AI Engineer path assumes you can build web apps. Beginners usually move faster by learning JavaScript and React fundamentals first, then taking AI Engineer as a second track." },
+  { q: "Do I need the Backend path if I chose Fullstack?", a: "Usually no. Fullstack already includes backend modules. Choose the Backend path when you want a tighter, backend-focused track without repeating all frontend content." },
+  { q: "How many hours a week do I need for Scrimba?", a: "There is no magic number. Consistency beats bursts, especially if you work full-time. Aim for 10-15 hours a week to maintain momentum without burning out." },
+  { q: "Are Scrimba paths worth Pro?", a: "If you will follow a structured track for several months, Pro is usually worth it because paths bundle the curriculum and projects you would otherwise assemble manually." },
+  { q: "Is Scrimba better than a bootcamp?", a: "Scrimba is much cheaper (roughly $200/year vs five figures for many bootcamps) and the material can overlap. Bootcamps add cohort pressure and live help; Scrimba leaves pacing and accountability to you." }
+]} />
+
 <FAQAccordion
   title="FAQs: Scrimba paths"
   items={[
@@ -106,23 +126,27 @@ All career paths require **Scrimba Pro**. Check [Scrimba pricing](/docs/pricing/
     },
     {
       q: 'Frontend vs Fullstack on Scrimba—which is better?',
-      a: 'Frontend is shorter and more focused on UI + React hiring signals. Fullstack adds backend, databases, TypeScript, Next.js, and AI-related modules—better if you want one end-to-end track and can commit the extra time. For a dedicated comparison, read the Frontend vs Fullstack path post on this site’s blog.',
+      a: 'Frontend is shorter and more focused on UI and React hiring signals. Fullstack adds backend, databases, TypeScript, Next.js, and AI-related modules. Fullstack is better if you want one end-to-end track and can commit the extra time.',
     },
     {
       q: 'Can beginners take the AI Engineer path?',
-      a: 'You can enroll, but the AI Engineer path assumes you can build web apps. Beginners usually move faster by learning JavaScript + React fundamentals first, then taking AI Engineer as a second track.',
+      a: 'You can enroll, but the AI Engineer path assumes you can build web apps. Beginners usually move faster by learning JavaScript and React fundamentals first, then taking AI Engineer as a second track.',
     },
     {
       q: 'Do I need the Backend path if I chose Fullstack?',
       a: 'Usually no. Fullstack already includes backend modules. Choose the Backend path when you want a tighter, backend-focused track without repeating all frontend content.',
     },
     {
-      q: 'How many hours a week do I need?',
-      a: 'There is no magic number. The interactive advisor on this page uses your answer to estimate how many weeks the curriculum might take at your pace. Consistency beats bursts—especially if you work full-time.',
+      q: 'How many hours a week do I need for Scrimba?',
+      a: 'There is no magic number. Consistency beats bursts, especially if you work full-time. Aim for 10-15 hours a week to maintain momentum without burning out.',
     },
     {
       q: 'Are Scrimba paths worth Pro?',
-      a: 'If you will follow a structured track for several months, Pro is usually worth it because paths bundle the curriculum and projects you would otherwise assemble manually. If you only need one narrow skill, a smaller set of courses might be enough—compare Pro vs Free.',
+      a: 'If you will follow a structured track for several months, Pro is usually worth it because paths bundle the curriculum and projects you would otherwise assemble manually.',
+    },
+    {
+      q: 'Is Scrimba better than a bootcamp?',
+      a: 'Scrimba is much cheaper (roughly $200/year vs five figures for many bootcamps) and the material can overlap. Bootcamps add cohort pressure and live help; Scrimba leaves pacing and accountability to you.',
     },
   ]}
 />

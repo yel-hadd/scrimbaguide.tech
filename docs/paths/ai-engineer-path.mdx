@@ -15,7 +15,9 @@ import DocFaqSchema from '@site/src/components/DocFaqSchema';
 
 # Scrimba AI Engineer Path: ship AI features on top of web skills
 
-**Quick Answer:** The Scrimba AI Engineer Path is 11.4 hours across eight modules (agents, RAG, MCP, Vercel AI SDK) for developers who already ship web apps. AI specialist compensation often reaches roughly $140,000 to $180,000+ (Stack Overflow Developer Survey, 2024). Scrimba Pro costs about $200 per year versus $10,000 to $20,000 for many bootcamps; interactive lessons improve retention over passive video. Pro is required.
+**What is the Scrimba AI Engineer Path?** ~11.4 hours for people who already build web apps. You touch agents, RAG, MCP, the Vercel AI SDK, embeddings, deployment—not ML math from scratch.
+
+Stack Overflow’s 2024 survey showed AI specialist pay often in the $140k–$180k+ range (again: geography and title noise). Pro is ~$200/year; bootcamps are a separate conversation. You need Pro for this path.
 
 *Last reviewed: March 2026.*
 
@@ -26,52 +28,55 @@ import DocFaqSchema from '@site/src/components/DocFaqSchema';
   access="Pro"
   modules={8}
   href="https://scrimba.com/the-ai-engineer-path-c02v?via=u42d4986"
-  description="Build apps powered by generative AI — an essential 2025/2026 skill. Learn about agents, RAG, MCP, multimodality, context engineering, and more."
+  description="Agents, RAG, MCP, Vercel AI SDK, embeddings, multimodal inputs, and shipping—short path, assumes you know JS."
 />
 
 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
   <AffiliateLink href="https://scrimba.com/the-ai-engineer-path-c02v?via=u42d4986" variant="button">
-    Start the AI Engineer Path
+    Start Building AI Apps
   </AffiliateLink>
+  <p style={{ fontSize: '0.9rem', marginTop: '0.5rem', color: 'var(--ifm-color-emphasis-600)' }}>
+    8 modules • 11+ hours of interactive coding
+  </p>
 </div>
 
-## What You'll Learn
+## What you'll learn
 
-The AI Engineer Path is Scrimba's newest and fastest-growing path. It teaches web developers how to **build AI-powered applications** using modern tools and frameworks.
+Newer, shorter path: wiring LLMs into apps you’d already know how to host. No PyTorch syllabus—think APIs, retrieval, and UI streaming.
 
-## Complete Module Breakdown
+## Complete module breakdown
 
-| Module | Duration | Lessons | Topics |
+Applied stuff only: prompts, vectors, tool use, cost/context tradeoffs, one deployment pass.
+
+| Module | Duration | Lessons | Why it matters in 2026 |
 |---|---|---|---|
-| Intro to AI Engineering | 2.4 hrs | 20 | LLM basics, API calls, prompt design |
-| Deployment | 52 min | 1 | Deploying AI apps (Cloudflare) |
-| Embeddings and Vector Databases | 95 min | 3 | Vector search, semantic similarity |
-| Agents | 117 min | 6 | Autonomous AI agents, tool use |
-| Context Engineering | 58 min | 5 | Optimizing LLM context windows |
-| Vercel AI SDK | 113 min | 6 | Building AI UIs with Vercel |
-| Model Context Protocol | 37 min | 3 | MCP servers and clients |
-| Multimodality | 62 min | 2 | Image, audio, and video AI |
+| Intro to AI Engineering | 2.4 hrs | 20 | LLM APIs, keys, prompt shape. |
+| Deployment | 52 min | 1 | One path to get something live (Cloudflare in the curriculum). |
+| Embeddings and Vector Databases | 95 min | 3 | What RAG actually stores and queries. |
+| Agents | 117 min | 6 | Tool loops without pretending they’re magic. |
+| Context Engineering | 58 min | 5 | Token budget, fewer dumb sends, cheaper runs. |
+| Vercel AI SDK | 113 min | 6 | Streaming UI patterns people copy from Vercel’s stack. |
+| Model Context Protocol | 37 min | 3 | MCP: plugging models into tools and data sources. |
+| Multimodality | 62 min | 2 | Images/audio/video in the same pipeline ideas. |
 
 **Total: 11.4 hours across 46 lessons**
 
-## Who This Is For
+## Who this is for
 
-- **Web developers** who want to add AI skills to their toolkit
-- **JavaScript/TypeScript developers** — the path uses JS throughout
-- Anyone building **AI-powered products** (startups, agencies, enterprise)
-- Developers curious about **agents, RAG, and MCP**
+- **Working web devs** who want features, not a second degree.
+- Comfortable in **JavaScript or TypeScript**—examples assume that.
+- Teams shipping **LLM-backed** UI at work or in side projects.
+- Anyone who has read a dozen threads about agents and wants an ordered first pass.
 
-## Cutting-Edge Topics
+## What you actually touch
 
-This path covers the most in-demand AI engineering topics of 2025-2026:
+- **Agents** — call tools in a loop; learn where they break.
+- **RAG** — your docs in a vector store, not just a fat prompt.
+- **MCP** — standard-ish way to expose data and actions to models.
+- **Context** — what you send vs. what you pay for.
+- **Vercel AI SDK** — streaming and hooks you’ll see in the wild.
 
-- **AI Agents** — autonomous systems that use tools and make decisions
-- **RAG (Retrieval-Augmented Generation)** — combining LLMs with your own data
-- **Model Context Protocol (MCP)** — the emerging standard for AI tool integration
-- **Context Engineering** — optimizing what you send to LLMs
-- **Vercel AI SDK** — building production AI user interfaces
-
-## Related Individual Courses
+## Related individual courses
 
 These standalone courses cover specific AI topics in more depth:
 
@@ -83,11 +88,11 @@ These standalone courses cover specific AI topics in more depth:
 - [Mistral AI](/docs/courses/ai/)
 - [OpenAI Assistants API](/docs/courses/ai/)
 
-## Choose This If
+## Choose this if
 
-**Choose this path if:** You're a web developer wanting to add AI engineering skills — agents, RAG, MCP. Requires JS/TS comfort. Choose Fullstack if you need frontend/backend first.
+You ship JS apps today and want the shortest on-ramp to agents, RAG, and MCP in code. Still learning React? Do [Fullstack](/docs/paths/fullstack-developer-path) or [Frontend](/docs/paths/frontend-developer-path) first so you’re not learning fetch and `useState` while debugging embeddings.
 
-## Related Pages
+## Related pages
 
 - [All Learning Paths](/docs/paths/)
 - [AI Courses Hub](/docs/courses/ai/)
@@ -95,24 +100,26 @@ These standalone courses cover specific AI topics in more depth:
 - [Tutorial Hell FAQ](/docs/faq/tutorial-hell)
 - [Scrimba Pricing](/docs/pricing/)
 - [How to Learn AI Engineering on Scrimba](/blog/learn-ai-engineering-scrimba)
-- [AI Tools Every Developer Should Know](/blog/ai-tools-every-developer-should-know-2026) — the broader AI tools landscape
+- [AI Tools Every Developer Should Know](/blog/ai-tools-every-developer-should-know-2026) — wider tool roundup beyond this path
 
 <DocFaqSchema questions={[
-  { q: "Do I need AI experience for Scrimba's AI Engineer Path?", a: "No prior AI experience needed, but you should be comfortable with JavaScript/TypeScript and web development basics." },
-  { q: "Is the Scrimba AI Engineer Path up to date in 2026?", a: "Yes. Scrimba regularly updates the AI Engineer Path. The Intro to AI Engineering module was updated in early 2026, and new modules on MCP and Context Engineering were added in 2025." },
-  { q: "What will I be able to build after Scrimba's AI Engineer Path?", a: "You'll be able to build AI-powered web apps with agents, RAG systems, and multimodal features using the Vercel AI SDK and various LLM APIs." },
-  { q: "How long is the Scrimba AI Engineer Path?", a: "The AI Engineer Path is 11.4 hours of content. It is designed as an intermediate path for developers already comfortable with web development basics." },
+  { q: "Do I need AI experience for Scrimba's AI Engineer Path?", a: "No prior AI experience is needed. However, you must be comfortable with JavaScript or TypeScript and have basic web development skills before starting." },
+  { q: "Is the Scrimba AI Engineer Path up to date in 2026?", a: "Yes. Scrimba regularly updates the AI Engineer Path. The Intro to AI Engineering module was updated in early 2026, and new modules covering MCP and Context Engineering were added recently." },
+  { q: "What will I be able to build after Scrimba's AI Engineer Path?", a: "Small production-shaped apps: chat-style UI, retrieval over your own content, tool-using flows, and multimodal experiments—mostly via JS/TS and common APIs, not custom model training." },
+  { q: "How long is the Scrimba AI Engineer Path?", a: "The AI Engineer Path contains 11.4 hours of content. It is designed as an intermediate path for developers who already know how to build web applications." },
+  { q: "Does the AI Engineer Path teach Python or PyTorch?", a: "No. The entire path focuses on applied AI engineering using JavaScript and TypeScript, not theoretical machine learning or Python data science." }
 ]} />
 
 <FAQAccordion items={[
-  { q: "Do I need AI experience for this path?", a: "No prior AI experience needed, but you should be comfortable with JavaScript/TypeScript and web development basics." },
-  { q: "Is this path up to date?", a: "Yes. Scrimba regularly updates the AI Engineer Path. The Intro to AI Engineering module was updated in early 2026, and new modules on MCP and Context Engineering were added in 2025." },
-  { q: "What will I be able to build after this path?", a: "You'll be able to build AI-powered web apps with agents, RAG systems, and multimodal features using the Vercel AI SDK and various LLM APIs." },
+  { q: "Do I need AI experience for this path?", a: "No prior AI experience is needed. However, you must be comfortable with JavaScript or TypeScript and have basic web development skills before starting." },
+  { q: "Is this path up to date?", a: "Yes. Scrimba regularly updates the AI Engineer Path. The Intro to AI Engineering module was updated in early 2026, and new modules covering MCP and Context Engineering were added recently." },
+  { q: "What will I be able to build after this path?", a: "Small production-shaped apps: chat-style UI, retrieval over your own content, tool-using flows, and multimodal experiments—mostly via JS/TS and common APIs, not custom model training." },
+  { q: "Does this path teach Python or PyTorch?", a: "No. The entire path focuses on applied AI engineering using JavaScript and TypeScript, not theoretical machine learning or Python data science." }
 ]} />
 
 <PricingCTA
-  title="Ship AI features after you can ship web apps"
-  subtitle="Preview free AI intros on Scrimba; Pro unlocks the full AI Engineer Path."
-  buttonText="Try Scrimba free"
+  title="Ship AI features on top of your web skills"
+  subtitle="Preview the free AI intros on Scrimba to test the format. Pro unlocks the full AI Engineer Path and the advanced modules."
+  buttonText="Try Scrimba Free"
   ctaType="free"
 />

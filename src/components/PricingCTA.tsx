@@ -1,4 +1,5 @@
 import React from 'react';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import AffiliateLink from './AffiliateLink';
 
 /** Avoid repeating the discount line when the subtitle already states it (layout + many MDX CTAs). */
@@ -41,21 +42,25 @@ export default function PricingCTA({
     !subtitleMentionsPartnerOrDiscount(subtitle);
 
   return (
-    <div className={`pricing-cta pricing-cta--${variant}`}>
-      <div className="pricing-cta__content">
-        <h2 className="pricing-cta__title">{title}</h2>
-        <p className="pricing-cta__subtitle">{subtitle}</p>
-        {showDiscountLine && (
-          <p className="pricing-cta__note">Use our partner link to get 20% off the Pro plan.</p>
-        )}
-      </div>
-      <AffiliateLink
-        href={href}
-        variant="button"
-        className="pricing-cta__button"
-      >
-        {buttonText ?? defaultButtonText}
-      </AffiliateLink>
-    </div>
+    <BrowserOnly fallback={<div className={`pricing-cta pricing-cta--${variant}`} style={{ minHeight: '150px' }}></div>}>
+      {() => (
+        <div className={`pricing-cta pricing-cta--${variant}`} data-nosnippet>
+          <div className="pricing-cta__content">
+            <h2 className="pricing-cta__title">{title}</h2>
+            <p className="pricing-cta__subtitle">{subtitle}</p>
+            {showDiscountLine && (
+              <p className="pricing-cta__note">Use our partner link to get 20% off the Pro plan.</p>
+            )}
+          </div>
+          <AffiliateLink
+            href={href}
+            variant="button"
+            className="pricing-cta__button"
+          >
+            {buttonText ?? defaultButtonText}
+          </AffiliateLink>
+        </div>
+      )}
+    </BrowserOnly>
   );
 }
