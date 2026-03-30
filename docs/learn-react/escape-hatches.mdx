@@ -2,19 +2,17 @@
 title: "Escape Hatches: Effects and Refs"
 description: "Learn how to 'escape' React to work with external systems. Master the useEffect hook and useRef for direct DOM manipulation."
 keywords: [react useeffect, react useref, api calls in react, side effects, scrimba]
+last_update:
+  date: 2026-03-30
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 
-# Escape Hatches
+# Escape hatches
 
-**Quick Answer:** Companion guide mapping docs to Scrimba lessons. See below for the roadmap.
+**Quick answer:** Sometimes you must touch the **DOM**, **network**, or **subscriptions**—that is **`useRef`** and **`useEffect`**, plus when **not** to use an effect. This page links to a free scrim and **Advanced React (Pro)** for deeper patterns.
 
-*Last reviewed: March 2026.*
-
-
-
-Sometimes you need to step outside React's rendering flow to talk to "the outside world"—APIs, browser storage, or third-party widgets.
+This page explains React’s **escape hatches** for work that does not belong in render alone: **useRef** for mutable values and DOM nodes without re-renders, **useEffect** for syncing with browsers, networks, and subscriptions after paint, and guidance on **when an effect is the wrong tool** (derive during render or handle in events instead).
 
 ## Who This Is For
 
@@ -95,3 +93,10 @@ We cover best practices and optimization in the **Advanced React** course.
 
 **Choose this page if:** You're learning React or Next.js and want a docs-to-Scrimba roadmap.
 
+## Related Scrimba courses
+
+- [Learn React course](/docs/courses/react/learn-react)  
+- [Advanced React course](/docs/courses/react/advanced-react)  
+- [Frontend Developer Path](/docs/paths/frontend-developer-path)  
+
+Continue with [Advanced React](/docs/courses/react/advanced-react) on **Pro** for custom hooks, performance, and larger app patterns ([pricing](/docs/pricing/)).

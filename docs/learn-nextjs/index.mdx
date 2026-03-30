@@ -2,32 +2,27 @@
 title: "Start Here: The Next.js Learning Roadmap (2026)"
 description: "A complete guide to learning Next.js 15+ and the App Router. Map the official documentation concepts to interactive Scrimba lessons."
 keywords: [learn next.js, next.js roadmap, next.js 15, app router tutorial, scrimba next.js]
+hideGlobalPricingCta: true
+last_update:
+  date: 2026-03-30
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 
-# Start Here: The Next.js Learning Roadmap
+# Learn Next.js App Router without drowning in docs
 
-**Quick Answer:** Companion guide mapping docs to Scrimba lessons. See below for the roadmap.
+**Quick answer:** This hub mirrors the [official Next.js docs](https://nextjs.org/docs) to **Scrimba’s free App Router course**—setup, routing, Server vs Client Components, data fetching, loading UI, and Server Actions—so each concept you read has a **typed-in-the-browser** counterpart.
 
-*Last reviewed: March 2026.*
+## Who this is for
 
-
-
-Next.js has become the standard for building React applications. With the release of the **App Router** (Next.js 13+), the way we build web apps has fundamentally changed.
-
-This roadmap maps the [official Next.js documentation](https://nextjs.org/docs) to Scrimba's interactive **Learn Next.js** course, so you can build real projects while you learn.
-
-## Who This Is For
-
-Learners following the React or Next.js roadmap.
+React devs who can build SPAs but freeze when `app/`, Server Components, and `loading.tsx` show up—and anyone on the [Fullstack path](/docs/paths/fullstack-developer-path) who wants Next to feel concrete.
 
 
-## 1. Getting Started
+## 1. Ship your first App Router page
 
-**Goal:** Understand the file structure and create your first page.
+**Goal:** Understand `app/` layout and publish `/` without fighting config.
 
 | Concept | Official Docs | Scrimba Lesson |
 |---|---|---|
@@ -44,9 +39,9 @@ Learners following the React or Next.js roadmap.
   description="Learn the absolute basics of the App Router by building a dashboard."
 />
 
-## 2. Routing & Navigation
+## 2. Route and navigate like Next expects
 
-**Goal:** Link pages together and understand dynamic routes.
+**Goal:** Map folders to URLs, share layouts, and add dynamic segments.
 
 Next.js uses a **file-system based router**. Folders define routes.
 
@@ -55,18 +50,18 @@ Next.js uses a **file-system based router**. Folders define routes.
 - **Dynamic Routes:** `[slug]/page.js` for dynamic content.
     - [Scrimba Lesson: Dynamic Routes](https://scrimba.com/learn/nextjs/dynamic-routes-c010?via=u42d4986)
 
-## 3. Rendering: Server vs Client
+## 3. Pick Server vs Client Components on purpose
 
-**Goal:** Master the single most important concept in modern Next.js.
+**Goal:** Stop shipping giant JS bundles when HTML would do.
 
 | Type | When to use | Scrimba Lesson |
 |---|---|---|
 | **Server Components** | Data fetching, database calls, sensitive logic. (Default) | [Server Components](https://scrimba.com/learn/nextjs/server-components-c012?via=u42d4986) |
 | **Client Components** | Interactivity, `onClick`, `useState`, `useEffect`. | [Client Components](https://scrimba.com/learn/nextjs/client-components-c014?via=u42d4986) |
 
-## 4. Data Fetching
+## 4. Fetch and stream data without spinners everywhere
 
-**Goal:** Get data from your database to your UI.
+**Goal:** Let Server Components own reads; use Suspense + `loading.tsx` for UX.
 
 In the App Router, you can fetch data directly in your Server Components using `async/await`.
 
@@ -75,9 +70,9 @@ In the App Router, you can fetch data directly in your Server Components using `
 - **Loading UI:** `loading.js` for instant loading states.
     - [Scrimba Lesson: Loading UI](https://scrimba.com/learn/nextjs/loading-ui-c018?via=u42d4986)
 
-## 5. Server Actions
+## 5. Mutate with Server Actions (skip boilerplate APIs)
 
-**Goal:** Mutate data without API routes.
+**Goal:** Post forms straight to server functions when it fits your app.
 
 Instead of writing a separate API endpoint (`/api/submit`), you write a function that runs on the server and call it directly from your form.
 
@@ -85,12 +80,19 @@ Instead of writing a separate API endpoint (`/api/submit`), you write a function
 
 ---
 
-## Choose This If
+## Use this hub when…
 
-**Choose this page if:** You're learning React or Next.js and want a docs-to-Scrimba roadmap.
+You want **official-doc concepts** translated into **interactive Scrimba casts**—not another passive YouTube marathon.
 
+## Related Scrimba Courses
+
+- [Next.js Course on Scrimba](/docs/courses/javascript/nextjs)
+- [Frontend Developer Path](/docs/paths/frontend-developer-path)
+- [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
 
 <PricingCTA
-  title="Become a Fullstack Next.js Developer"
-  subtitle="Master Next.js, Postgres, and deployment with the comprehensive Career Path."
+  title="Build Next.js inside guided scrims"
+  subtitle="Start with the free App Router course, then follow the Fullstack path for end-to-end shipping."
+  buttonText="Try Scrimba free"
+  ctaType="free"
 />

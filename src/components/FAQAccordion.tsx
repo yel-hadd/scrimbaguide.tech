@@ -1,4 +1,5 @@
-import React, { useState, useId } from 'react';
+import React, { useState, useId, Fragment } from 'react';
+import Link from '@docusaurus/Link';
 
 export interface FAQItem {
   q: string;
@@ -30,6 +31,39 @@ export default function FAQAccordion({
       .replace(/`([^`]+)`/g, '$1')
       .replace(/\*\*([^*]+)\*\*/g, '$1')
       .replace(/\*([^*]+)\*/g, '$1');
+
+  /** Renders FAQ answer text with [label](href) converted to real links (MDX passes plain strings). */
+  const renderAnswerText = (text: string): React.ReactNode => {
+    const linkRe = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts: React.ReactNode[] = [];
+    let last = 0;
+    let m: RegExpExecArray | null;
+    let key = 0;
+    while ((m = linkRe.exec(text)) !== null) {
+      if (m.index > last) {
+        parts.push(text.slice(last, m.index));
+      }
+      const label = m[1];
+      const href = m[2];
+      const isInternal = href.startsWith('/') || href.startsWith('.');
+      parts.push(
+        isInternal ? (
+          <Link key={key++} to={href}>
+            {label}
+          </Link>
+        ) : (
+          <a key={key++} href={href} target="_blank" rel="noopener noreferrer">
+            {label}
+          </a>
+        ),
+      );
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) {
+      parts.push(text.slice(last));
+    }
+    return parts.length > 0 ? <Fragment>{parts}</Fragment> : text;
+  };
 
   // JSON-LD FAQ Schema with optional citation
   const faqSchema = {
@@ -83,7 +117,7 @@ export default function FAQAccordion({
               className="faq-accordion__answer"
               hidden={!isOpen}
             >
-              <p>{item.a}</p>
+              <p>{renderAnswerText(item.a)}</p>
               {item.sourceUrl && (
                 <p className="faq-accordion__source">
                   Source:{' '}

@@ -13,6 +13,7 @@ import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import ReviewSchema from '@site/src/components/ReviewSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { freeCount, totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
 
 <ReviewSchema
   itemName="Scrimba vs Educative"
@@ -23,17 +24,19 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
   datePublished="2026-02-15"
 />
 
-# Scrimba vs Educative: browser practice vs reading-heavy courses
+# Ship web apps in guided video—or read your way through interviews
 
 <DisclosureNotice />
 
-**Quick Answer:** Scrimba wins for learning web dev and AI — interactive video. Educative wins for interview prep and system design. Scrimba is cheaper with a generous free tier.
+**Is this for you?** Starting **web or AI from zero** → Scrimba’s **video + in-lesson editor** usually feels clearer. **Grinding LeetCode-style patterns or system design** → Educative’s **text + playgrounds** (e.g. Grokking series) is the usual pick.
+
+**Money:** Scrimba is typically **cheaper** with **more free full courses**; Educative’s plans run **higher** — fair if interview prep is the product you’re buying.
 
 *Last reviewed: March 2026.*
 
 ## Ship projects vs grind interview concepts
 
-**Scrimba** keeps beginners inside a runnable lesson. **Educative** shines when you want text + diagrams for algorithms, system design, or interview patterns—often a better fit once you already code comfortably.
+**Scrimba** keeps beginners in **one runnable lesson flow**. **Educative** shines for **algorithms, system design, and interview reads** once you already type comfortably.
 
 <VerdictBox 
   title="The Verdict" 
@@ -60,8 +63,8 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
     { feature: "Teaching format", scrimba: "Interactive video (pause & edit code)", competitor: "Text-based lessons + inline code editors" },
     { feature: "Monthly price", scrimba: "Check current pricing", competitor: "$59-$129/month" },
     { feature: "Annual price", scrimba: "Check current pricing", competitor: "$161-$224/year" },
-    { feature: "Free tier", scrimba: "~17 full courses", competitor: "7-day trial + some free courses" },
-    { feature: "Number of courses", scrimba: "86+ focused courses", competitor: "1,600+ courses" },
+    { feature: "Free tier", scrimba: `~${freeCount} full courses`, competitor: "7-day trial + some free courses" },
+    { feature: "Number of courses", scrimba: `${totalCoursesLabel} focused courses`, competitor: "1,600+ courses" },
     { feature: "Interview prep", scrimba: "JS interview challenges course", competitor: "Extensive (Grokking series)" },
     { feature: "System design", scrimba: "Not available", competitor: "Industry-leading courses" },
     { feature: "AI courses", scrimba: "15+ (agents, RAG, MCP)", competitor: "ML and AI coverage" },
@@ -80,7 +83,7 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 ## Pricing Comparison
 
-Scrimba is significantly cheaper. Educative's Standard plan at $161/year or $59/month makes it one of the most expensive coding platforms. Scrimba offers 17+ free courses and lower Pro pricing, making it more accessible for career changers and students.
+Scrimba is usually **cheaper day-to-day**, with **many full free courses** (~{freeCount}) before you pay. Educative’s paid tiers are among the pricier learning subscriptions — justifiable when **interview or system-design depth** is what you’re optimizing for.
 
 ## When to Choose Scrimba
 
@@ -124,7 +127,7 @@ Scrimba is significantly cheaper. Educative's Standard plan at $161/year or $59/
 ]} />
 
 <PricingCTA
-  title="Try Scrimba's interactive learning"
-  subtitle="17+ free courses to start, or upgrade to Pro for full access to 86+ courses."
+  title="Try Scrimba free, then stack Educative if needed"
+  subtitle={`Start with ~${freeCount} free Scrimba courses; add Educative when interview/system design is the bottleneck.`}
   ctaType="free"
 />

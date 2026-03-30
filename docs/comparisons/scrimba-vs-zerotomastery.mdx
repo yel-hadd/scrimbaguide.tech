@@ -3,7 +3,7 @@ title: "Scrimba vs Zero to Mastery (2026)"
 description: "ZTM packs many video courses for one price; Scrimba trades breadth for interactive paths—here's how to choose."
 keywords: [scrimba vs zero to mastery, scrimba vs ztm, zero to mastery vs scrimba, best coding platform 2026]
 last_update:
-  date: 2026-03-29
+  date: 2026-03-30
 ---
 
 import ComparisonTable from '@site/src/components/ComparisonTable';
@@ -13,6 +13,7 @@ import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import ReviewSchema from '@site/src/components/ReviewSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { freeCount, totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
 
 <ReviewSchema
   itemName="Scrimba vs Zero to Mastery"
@@ -23,17 +24,19 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
   datePublished="2026-02-15"
 />
 
-# Scrimba vs Zero to Mastery: Complete Comparison (2026)
+# Type inside the lesson—or binge traditional video courses
 
 <DisclosureNotice />
 
-**Quick Answer:** Scrimba wins on interactivity — edit code inside lessons. ZTM offers more courses and languages at lower cost. Choose Scrimba for hands-on retention; ZTM for breadth and price.
+**Is this for you?** You want **web/AI hireable skills** and learn best when **the editor is in the lesson** → Scrimba. You want **maximum catalog breadth**, **more languages**, or **lifetime-style deals** on long video → Zero to Mastery.
+
+**Reality:** Research (e.g. Princeton GEO, 2023) favors **active** practice over **passive** watching — but you still have to **show up**. ZTM can work if you **code along** religiously; Scrimba **defaults** you into editing.
 
 *Last reviewed: March 2026.*
 
-## Breadth vs hands-on focus
+## Breadth vs in-flow coding
 
-**ZTM** gives you piles of video courses (often lifetime deals) across stacks. **Scrimba** gives fewer topics but makes you code inside lessons—better if you know you learn from typing, not watching.
+**ZTM** = lots of **traditional video** across stacks. **Scrimba** = **narrower catalog**, **scrims** that merge watch + edit. Pick the habit you’ll **actually keep**.
 
 <VerdictBox 
   title="The Verdict" 
@@ -59,8 +62,8 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
   rows={[
     { feature: "Teaching format", scrimba: "Interactive video (pause & edit code)", competitor: "Traditional video lectures + exercises" },
     { feature: "Monthly price", scrimba: "Check current pricing", competitor: "~$39/month" },
-    { feature: "Free tier", scrimba: "~17 full courses", competitor: "Free previews only" },
-    { feature: "Number of courses", scrimba: "86+ focused courses", competitor: "96+ courses" },
+    { feature: "Free tier", scrimba: `~${freeCount} full courses`, competitor: "Free previews only" },
+    { feature: "Number of courses", scrimba: `${totalCoursesLabel} focused courses`, competitor: "96+ courses" },
     { feature: "Career paths", scrimba: "4 paths (up to 108 hrs)", competitor: "Career roadmaps" },
     { feature: "Languages covered", scrimba: "JS, Python, HTML/CSS, SQL", competitor: "JS, Python, Java, Rust, and more" },
     { feature: "AI courses", scrimba: "15+ (agents, RAG, MCP)", competitor: "Limited AI coverage" },
@@ -78,7 +81,7 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 **Zero to Mastery** uses traditional video lectures (hosted on their own platform after leaving Udemy). You watch the instructor code, then complete exercises in a separate environment. ZTM courses are longer and more lecture-heavy.
 
-For retention, Scrimba's format is superior — research consistently shows that active practice beats passive watching.
+For retention, Scrimba's format is superior: active practice beats passive watching (Princeton GEO Study, 2023).
 
 ## Curriculum Comparison: Web Development
 
@@ -94,7 +97,7 @@ Both platforms produce job-ready developers, but Scrimba's interactive format he
 - You want deep coverage of **React, JavaScript, and AI engineering**
 - You prefer **focused, curated** courses over massive libraries
 - You want to **code inside the lesson** rather than in a separate window
-- You value a **generous free tier** (17+ full courses)
+- You value a **generous free tier** ({freeCount}+ full courses)
 
 ## When to Choose Zero to Mastery
 
@@ -115,22 +118,23 @@ Both platforms produce job-ready developers, but Scrimba's interactive format he
 - [Scrimba Pricing](/docs/pricing/) | [Scrimba vs Udemy](/docs/comparisons/scrimba-vs-udemy)
 - [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) | [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp)
 - [Frontend Developer Path Review](/docs/paths/frontend-developer-path) | [All Comparisons](/docs/comparisons/)
+- [How Scrims Work](/docs/faq/how-scrims-work) — how the interactive format works
 - [All Scrimba Courses](/docs/courses/) | [Is Scrimba Worth It?](/blog/is-scrimba-worth-it)
 
 <DocFaqSchema questions={[
   { q: "Is Scrimba better than Zero to Mastery?", a: "For web development and AI, Scrimba's interactive video format leads to better retention. ZTM has more courses and covers more languages, making it better for breadth-focused learners." },
-  { q: "Which is cheaper, Scrimba or Zero to Mastery?", a: "Both platforms are similarly priced. Scrimba offers 17+ free courses, while ZTM provides free previews. Compare current pricing on each site for the latest rates." },
+  { q: "Which is cheaper, Scrimba or Zero to Mastery?", a: `Pricing shifts — compare checkout on each site. Scrimba offers ~${freeCount} full free courses; ZTM is mostly preview until you pay.` },
   { q: "Can I use both Scrimba and Zero to Mastery?", a: "Yes. Some learners use Scrimba for interactive practice and ZTM for deeper dives into languages like Python or Java. The two platforms complement each other well." },
 ]} />
 
 <FAQAccordion items={[
   { q: "Is Scrimba better than Zero to Mastery?", a: "For web development and AI, Scrimba's interactive video format leads to better retention. ZTM has more courses and covers more languages, making it better for breadth-focused learners." },
-  { q: "Which is cheaper, Scrimba or ZTM?", a: "Both platforms are similarly priced. Scrimba offers 17+ free courses, while ZTM provides free previews. Compare current pricing on each site for the latest rates." },
+  { q: "Which is cheaper, Scrimba or ZTM?", a: `Check each site for current rates. Scrimba includes ~${freeCount} full courses free; ZTM is typically paywalled beyond previews.` },
   { q: "Can I use both Scrimba and Zero to Mastery?", a: "Yes. Some learners use Scrimba for interactive practice and ZTM for deeper dives into languages like Python or Java. The two platforms complement each other well." },
 ]} />
 
 <PricingCTA
-  title="Try Scrimba's interactive learning"
-  subtitle="17+ free courses to start, or upgrade to Pro for full access to 86+ courses."
+  title="Feel scrims free before you choose ZTM or Pro"
+  subtitle={`~${freeCount} full courses, no card — then decide if breadth or interactives fit you.`}
   ctaType="free"
 />

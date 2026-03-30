@@ -2,23 +2,20 @@
 title: "Routing in Next.js (App Router)"
 description: "Master the file-system based router in Next.js. Learn about pages, layouts, dynamic routes, and the Link component."
 keywords: [next.js routing, app router, next.js layouts, dynamic routes, next/link]
+hideGlobalPricingCta: true
+last_update:
+  date: 2026-03-30
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
+import PricingCTA from '@site/src/components/PricingCTA';
 
-# Routing Fundamentals
+# Route in Next.js without guessing folder magic
 
-**Quick Answer:** Companion guide mapping docs to Scrimba lessons. See below for the roadmap.
+**Quick answer:** Folders in `app/` **are** your URL tree—`page.tsx` renders a segment, `layout.tsx` shares chrome, `[slug]` handles dynamic paths, and **`next/link`** keeps navigation client-side (with prefetch). This page maps that mental model to **Scrimba’s free casts**.
 
-*Last reviewed: March 2026.*
+## Who this is for
 
-
-
-Next.js uses a **file-system based router**. This means the folders in your `app` directory define your URL paths.
-
-## Who This Is For
-
-Learners following the React or Next.js roadmap.
+Anyone who reaches for React Router muscle memory and gets burned by full reloads or missing layouts.
 
 
 ## 1. Defining Routes
@@ -89,13 +86,21 @@ Next.js automatically **prefetches** linked pages in the background, making navi
 
 ---
 
-<div style={{ textAlign: 'center', marginTop: '2rem' }}>
-  <AffiliateLink href="https://scrimba.com/learn-next-js-app-router-c02s?via=u42d4986" variant="button">
-    Start the Routing Module (Free)
-  </AffiliateLink>
-</div>
+**Next step (free on Scrimba):** [Open the App Router course →](https://scrimba.com/learn-next-js-app-router-c02s?via=u42d4986)
 
-## Choose This If
+## Read this when…
 
-**Choose this page if:** You're learning React or Next.js and want a docs-to-Scrimba roadmap.
+You need **`/blog/[slug]`**-style URLs, nested dashboards, or a refresher on route groups—**with** a guided place to type the code.
 
+## Related Scrimba Courses
+
+- [Next.js Course on Scrimba](/docs/courses/javascript/nextjs)
+- [Frontend Developer Path](/docs/paths/frontend-developer-path)
+- [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
+
+<PricingCTA
+  title="Practice routing inside scrims"
+  subtitle="Use the free App Router course to mirror every concept above—pause, edit, run."
+  buttonText="Start free Next.js course"
+  ctaType="free"
+/>

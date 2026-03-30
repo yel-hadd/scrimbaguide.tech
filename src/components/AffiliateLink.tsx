@@ -47,6 +47,14 @@ export default function AffiliateLink({
     onClick?.(e);
   };
 
+  /** MDX often wraps multiline link text in `<p>`, which is invalid inside `<a>`. */
+  const linkChildren = React.Children.map(children, (child) => {
+    if (React.isValidElement(child) && child.type === 'p') {
+      return (child.props as { children?: React.ReactNode }).children;
+    }
+    return child;
+  });
+
   return (
     <a
       href={url}
@@ -55,7 +63,7 @@ export default function AffiliateLink({
       className={`${baseClass} ${variantClass} ${className}`.trim()}
       onClick={handleClick}
     >
-      {children}
+      {linkChildren}
       <span className="sr-only"> (opens in a new tab)</span>
     </a>
   );

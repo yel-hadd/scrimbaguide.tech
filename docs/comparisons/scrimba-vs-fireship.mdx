@@ -3,7 +3,7 @@ title: "Scrimba vs Fireship (2026)"
 description: "Fireship is for quick awareness; Scrimba is for long-form practice—almost every beginner should not confuse the two."
 keywords: [scrimba vs fireship, fireship vs scrimba, scrimba or fireship, best coding platform 2026]
 last_update:
-  date: 2026-03-29
+  date: 2026-03-30
 ---
 
 import ComparisonTable from '@site/src/components/ComparisonTable';
@@ -13,6 +13,7 @@ import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import ReviewSchema from '@site/src/components/ReviewSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { freeCount } from '@site/src/utils/scrimbaFacts';
 
 <ReviewSchema
   itemName="Scrimba vs Fireship"
@@ -27,7 +28,7 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 <DisclosureNotice />
 
-**Quick Answer:** Scrimba is better for learning to code — structured paths, interactive lessons. Fireship suits experienced devs who want fast overviews and dense content. Different audiences.
+**Quick Answer:** Which is better depends on your goal. Scrimba is better if you are learning to code: structured paths and editable lessons build real skill. Fireship is better for experienced developers who want fast, dense tech overviews, not a full curriculum. The main differentiator is interactive long-form practice versus short high-speed explainers.
 
 *Last reviewed: March 2026.*
 
@@ -59,7 +60,7 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
   rows={[
     { feature: "Teaching format", scrimba: "Interactive video (pause & edit code)", competitor: "Fast-paced video courses" },
     { feature: "Pricing model", scrimba: "Monthly/annual subscription", competitor: "Monthly or $399 lifetime" },
-    { feature: "Free tier", scrimba: "~17 full courses", competitor: "YouTube channel (millions of viewers)" },
+    { feature: "Free tier", scrimba: `~${freeCount} full courses`, competitor: "YouTube channel (millions of viewers)" },
     { feature: "Number of courses", scrimba: "86+ focused courses", competitor: "20+ Pro courses" },
     { feature: "Career paths", scrimba: "4 structured paths (up to 108 hrs)", competitor: "No structured paths" },
     { feature: "Content depth", scrimba: "Deep, multi-hour courses", competitor: "Concise, fast-paced overviews" },
@@ -80,7 +81,7 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 ## The Free Content Factor
 
-Fireship's YouTube channel has millions of subscribers and hundreds of free videos. These are excellent for getting a quick mental model of any technology. Scrimba's 17+ free courses are more structured and hands-on, taking you from zero to building real projects.
+Fireship's YouTube channel has millions of subscribers and hundreds of free videos — excellent for a quick mental model. Scrimba's free full courses (about {freeCount}) are more structured and hands-on for going from zero to building.
 
 The two complement each other well: watch Fireship's "React in 100 Seconds" to understand what React is, then take Scrimba's Learn React course to actually learn it.
 
@@ -106,7 +107,7 @@ The two complement each other well: watch Fireship's "React in 100 Seconds" to u
 - You want a **lifetime access** option ($399 one-time)
 - You already have a coding foundation and want to expand
 
-## Our Verdict
+## Bottom line
 
 **Scrimba is the better learning platform.** If you want to go from zero to employed developer, Scrimba's structured paths and interactive format are what you need. **Fireship is the better reference platform.** If you already know how to code and want fast, modern content on new technologies, Fireship delivers. Many developers use Fireship's YouTube for quick learning and Scrimba for structured skill-building.
 
@@ -115,6 +116,7 @@ The two complement each other well: watch Fireship's "React in 100 Seconds" to u
 - [Scrimba Pricing](/docs/pricing/) | [Scrimba vs YouTube](/docs/comparisons/scrimba-vs-youtube)
 - [Scrimba vs Udemy](/docs/comparisons/scrimba-vs-udemy) | [Scrimba vs Frontend Masters](/docs/comparisons/scrimba-vs-frontendmasters)
 - [Frontend Developer Path Review](/docs/paths/frontend-developer-path) | [All Comparisons](/docs/comparisons/)
+- [How Scrims Work](/docs/faq/how-scrims-work) — how the interactive format works
 - [All Scrimba Courses](/docs/courses/) | [Is Scrimba Worth It?](/blog/is-scrimba-worth-it)
 
 <DocFaqSchema questions={[
@@ -130,7 +132,7 @@ The two complement each other well: watch Fireship's "React in 100 Seconds" to u
 ]} />
 
 <PricingCTA
-  title="Try Scrimba's interactive learning"
-  subtitle="17+ free courses to start, or upgrade to Pro for full access to 86+ courses."
+  title="Start with free Scrimba courses"
+  subtitle={`Feel full interactives (~${freeCount} free), then add Fireship for speed runs when you need them.`}
   ctaType="free"
 />

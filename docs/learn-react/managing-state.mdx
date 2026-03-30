@@ -2,20 +2,18 @@
 title: "Managing State: Context and Reducers"
 description: "Scale your React applications by managing complex state. Learn how to share state between components using Context and manage logic with Reducers."
 keywords: [react context api, usecontext hook, usereducer hook, global state, scrimba advanced react]
+last_update:
+  date: 2026-03-30
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
 
-# Managing State
+# Managing state
 
-**Quick Answer:** Companion guide mapping docs to Scrimba lessons. See below for the roadmap.
+**Quick answer:** Local `useState` stops scaling when siblings and deep trees need the same data—here is **lifted state**, **Context**, and **useReducer**, with a path into **Advanced React (Pro)** for full depth.
 
-*Last reviewed: March 2026.*
-
-
-
-As your application grows, simple `useState` isn't enough. You need to manage state that is shared across many components or has complex update logic.
+This page covers patterns for state that outgrows local `useState`: **lifting state** to a shared parent when siblings must stay in sync, **Context** to pass values deep without prop drilling, and **useReducer** to centralize many related updates in one function. Reach for these when coordination spans the tree or handlers multiply.
 
 ## Who This Is For
 
@@ -83,3 +81,10 @@ This is covered in depth in the **Advanced React** course.
 
 **Choose this page if:** You're learning React or Next.js and want a docs-to-Scrimba roadmap.
 
+## Related Scrimba courses
+
+- [Learn React course](/docs/courses/react/learn-react)  
+- [Advanced React course](/docs/courses/react/advanced-react)  
+- [Frontend Developer Path](/docs/paths/frontend-developer-path)  
+
+Context and reducer depth also sit in **Pro** [Advanced React](/docs/courses/react/advanced-react); see [pricing](/docs/pricing/).

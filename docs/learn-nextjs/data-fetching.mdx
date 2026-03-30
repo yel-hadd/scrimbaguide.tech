@@ -2,24 +2,22 @@
 title: "Data Fetching in Next.js"
 description: "Learn how to fetch data in Next.js using Server Components. Master async/await, caching, and Server Actions."
 keywords: [next.js data fetching, server actions, next.js caching, async components, react suspense]
+hideGlobalPricingCta: true
+last_update:
+  date: 2026-03-30
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import PricingCTA from '@site/src/components/PricingCTA';
 import CourseCard from '@site/src/components/CourseCard';
 
-# Data Fetching
+# Fetch, mutate, and stream in the App Router
 
-**Quick Answer:** Companion guide mapping docs to Scrimba lessons. See below for the roadmap.
+**Quick answer:** `async` Server Components can `await fetch`, opt into caching with `fetch` options or `revalidate`, and pair with **`loading.tsx` / Suspense** for polite UX. **Server Actions** let forms post to server functions without bespoke `/api` glue—this page links each idea to **Scrimba** reps.
 
-*Last reviewed: March 2026.*
+## Who this is for
 
-
-
-Next.js simplifies data fetching. You don't need `useEffect` + `fetch` inside your components anymore.
-
-## Who This Is For
-
-Learners following the React or Next.js roadmap.
+Devs who default to `useEffect` fetches for everything and want the **Next-native** pattern for reads/writes.
 
 
 ## 1. Fetching Data on the Server
@@ -88,7 +86,19 @@ You can create a `loading.tsx` file in any route segment, and Next.js will autom
   description="Take the full free course on data fetching and server actions."
 />
 
-## Choose This If
+## Read this when…
 
-**Choose this page if:** You're learning React or Next.js and want a docs-to-Scrimba roadmap.
+You are wiring **real APIs or databases** into Next and need **caching + mutations** that won’t embarrass you in code review.
 
+## Related Scrimba Courses
+
+- [Next.js Course on Scrimba](/docs/courses/javascript/nextjs)
+- [Frontend Developer Path](/docs/paths/frontend-developer-path)
+- [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
+
+<PricingCTA
+  title="Practice data flows in guided scrims"
+  subtitle="Use the free App Router course for fetch + loading UI, then Fullstack for production depth."
+  buttonText="Start free Next.js training"
+  ctaType="free"
+/>
