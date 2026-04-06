@@ -1,5 +1,6 @@
 import React, { useState, useId, Fragment } from 'react';
 import Link from '@docusaurus/Link';
+import { useLocation } from '@docusaurus/router';
 
 export interface FAQItem {
   q: string;
@@ -20,6 +21,9 @@ export default function FAQAccordion({
 }: FAQAccordionProps): React.ReactElement {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const baseId = useId();
+  const { pathname } = useLocation();
+  const isBlogListPage = pathname === '/blog/' || pathname.startsWith('/blog/page/');
+  const shouldEmitSchema = emitSchema && !isBlogListPage;
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -81,7 +85,7 @@ export default function FAQAccordion({
 
   return (
     <div className="faq-accordion">
-      {emitSchema && (
+      {shouldEmitSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

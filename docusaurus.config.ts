@@ -345,6 +345,7 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        { to: '/docs/intro', label: 'Start Here', position: 'left' },
         { to: '/docs/paths/', label: 'Learning Paths', position: 'left' },
         { to: '/docs/courses/', label: 'Courses', position: 'left' },
         { to: '/docs/pricing/', label: 'Scrimba Pricing', position: 'left' },

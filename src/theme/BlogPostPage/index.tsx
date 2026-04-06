@@ -10,7 +10,6 @@ import BlogLayout from '@theme/BlogLayout';
 import BlogPostItem from '@theme/BlogPostItem';
 import BlogPostPaginator from '@theme/BlogPostPaginator';
 import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
-import BlogPostPageStructuredData from '@theme/BlogPostPage/StructuredData';
 import TOC from '@theme/TOC';
 import ContentVisibility from '@theme/ContentVisibility';
 import BlogContextualCta from '@site/src/components/BlogContextualCta';
@@ -71,7 +70,6 @@ export default function BlogPostPage(props: any): React.ReactElement {
         className={clsx(ThemeClassNames.wrapper.blogPages, ThemeClassNames.page.blogPostPage)}
       >
         <BlogPostPageMetadata />
-        <BlogPostPageStructuredData />
         <BlogPostPageContent sidebar={props.sidebar}>
           <BlogPostContent />
         </BlogPostPageContent>

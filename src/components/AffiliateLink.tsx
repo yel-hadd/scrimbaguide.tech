@@ -64,6 +64,9 @@ export default function AffiliateLink({
       onClick={handleClick}
     >
       {linkChildren}
+      <span className="cta-link__external-icon" aria-hidden="true">
+        ↗
+      </span>
       <span className="sr-only"> (opens in a new tab)</span>
     </a>
   );
