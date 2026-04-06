@@ -3,11 +3,15 @@ import Header from '@theme-original/BlogPostItem/Header';
 import type HeaderType from '@theme/BlogPostItem/Header';
 import type {WrapperProps} from '@docusaurus/types';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
+import {useLocation} from '@docusaurus/router';
 
 type Props = WrapperProps<typeof HeaderType>;
 
 export default function HeaderWrapper(props: Props): React.JSX.Element {
+  const location = useLocation();
   const {metadata, frontMatter} = useBlogPost();
+  const normalize = (value: string): string => value.replace(/\/+$/, '');
+  const isFullPostPage = normalize(location.pathname) === normalize(metadata.permalink);
   const fm = frontMatter as Record<string, unknown>;
   const image = fm.image as string | undefined;
   const imageAlt =
@@ -36,13 +40,13 @@ export default function HeaderWrapper(props: Props): React.JSX.Element {
   return (
     <>
       <Header {...props} />
-      {formattedModifiedDate && (
+      {isFullPostPage && formattedModifiedDate && (
         <p className="blog-last-updated">
           Last updated:{' '}
           <time dateTime={modifiedDate.toISOString()}>{formattedModifiedDate}</time>
         </p>
       )}
-      {image && (
+      {isFullPostPage && image && (
         <figure className="blog-featured-image">
           <img
             src={image}
