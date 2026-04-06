@@ -14,15 +14,17 @@ type BlogFooterFrontMatter = {
 export default function FooterWrapper(props: any): React.ReactElement {
   const location = useLocation();
   const { metadata } = useBlogPost();
+  const normalize = (value: string): string => value.replace(/\/+$/, '');
+  const isFullPostPage = normalize(location.pathname) === normalize(metadata.permalink);
   const fm = metadata.frontMatter as BlogFooterFrontMatter;
   const guides = getRelatedGuides(location.pathname);
   const showPathCta = !location.pathname.includes('discount') && !location.pathname.includes('pricing');
-  const showFooterPricing = showPathCta && !fm.hideFooterPricingCta;
+  const showFooterPricing = isFullPostPage && showPathCta && !fm.hideFooterPricingCta;
 
   return (
     <>
       <Footer {...props} />
-      {guides.length > 0 && <RelatedGuides guides={guides} />}
+      {isFullPostPage && guides.length > 0 && <RelatedGuides guides={guides} />}
       {showFooterPricing && (
         <PricingCTA
           title="Want Full Access to Scrimba?"
@@ -30,7 +32,7 @@ export default function FooterWrapper(props: any): React.ReactElement {
           buttonText="Claim 20% Off Scrimba Pro"
         />
       )}
-      <MobileStickyCTA />
+      {isFullPostPage && <MobileStickyCTA />}
     </>
   );
 }
