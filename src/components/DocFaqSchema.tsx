@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from '@docusaurus/router';
 
 export interface FaqItem {
   q: string;
@@ -15,6 +16,13 @@ interface DocFaqSchemaProps {
  * increases AI Overview and featured snippet eligibility.
  */
 export default function DocFaqSchema({ questions }: DocFaqSchemaProps): React.ReactElement {
+  const { pathname } = useLocation();
+  const isBlogListPage = pathname === '/blog/' || pathname.startsWith('/blog/page/');
+
+  if (isBlogListPage) {
+    return <></>;
+  }
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

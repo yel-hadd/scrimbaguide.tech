@@ -16,6 +16,7 @@ import ReviewSchema from '@site/src/components/ReviewSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import { totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 
 <ReviewSchema
   itemName="Scrimba Pro Subscription"
@@ -156,3 +157,12 @@ Based on review analysis, the top reasons for long-term retention:
   title="See what Pro subscribers get"
   subtitle={`Try Scrimba Pro and access ${totalCoursesLabel} interactive courses, career paths, and the Discord community.`}
 />
+
+## Frequently asked questions
+
+<FAQAccordion items={[
+  { q: "Is this topic still relevant in 2026?", a: "Yes. Why I Keep Renewing My Scrimba Pro Subscription Every Year remains relevant for beginners and career switchers in 2026, especially when paired with consistent project-based practice." },
+  { q: "How long does this usually take to see progress?", a: "Most learners see clear progress within 4-8 weeks when they practice consistently and ship small projects each week." },
+  { q: "Can I start with free resources before paying for a course?", a: "Absolutely. Start with free fundamentals to validate fit, then upgrade only when structured paths, projects, and accountability will help you move faster." },
+  { q: "What should I do next after reading this guide?", a: "Pick one focused learning path, define a weekly study schedule, and build at least one portfolio project before switching topics." },
+]} />

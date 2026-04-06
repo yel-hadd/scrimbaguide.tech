@@ -1,27 +1,61 @@
-import React from 'react';
-import BlogListPage from '@theme-original/BlogListPage';
-import type BlogListPageType from '@theme/BlogListPage';
-import type { WrapperProps } from '@docusaurus/types';
-
-type Props = WrapperProps<typeof BlogListPageType>;
+import React, {type ReactNode} from 'react';
+import clsx from 'clsx';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {
+  PageMetadata,
+  HtmlClassNameProvider,
+  ThemeClassNames,
+} from '@docusaurus/theme-common';
+import BlogLayout from '@theme/BlogLayout';
+import BlogListPaginator from '@theme/BlogListPaginator';
+import SearchMetadata from '@theme/SearchMetadata';
+import type {Props} from '@theme/BlogListPage';
+import BlogPostItems from '@theme/BlogPostItems';
+import BlogListPageStructuredData from '@theme/BlogListPage/StructuredData';
 
 /**
- * Swizzle wrapper that adds a visible H1 to the /blog/ listing page.
- * Screaming Frog audit flagged /blog/ as missing an H1 — this fixes it.
- * The H1 is rendered visibly but small/muted so it doesn't conflict with
- * the blog list header UI while remaining unambiguous to crawlers.
+ * Replaces the default BlogListPage to inject a visible SEO H1 inside the
+ * content area (after the navbar), not above the layout.
+ *
+ * The H1 is styled small/muted so it doesn't compete with the blog post
+ * titles — it satisfies Screaming Frog's "missing H1" audit while
+ * staying out of the visual hierarchy.
+ *
+ * Previous approach used a wrapper fragment that placed the H1 before
+ * <BlogListPage>, which caused it to render above the navbar.
  */
-export default function BlogListPageWrapper(props: Props): React.ReactElement {
-  const isFirstPage = !props.metadata.page || props.metadata.page === 1;
+export default function BlogListPage(props: Props): ReactNode {
+  const {metadata, items, sidebar} = props;
+  const isFirstPage = !metadata.page || metadata.page === 1;
+  const {siteConfig: {title: siteTitle}} = useDocusaurusContext();
+  const {blogDescription, blogTitle, permalink} = metadata;
+  const isBlogOnlyMode = permalink === '/';
+  const title = isBlogOnlyMode ? siteTitle : blogTitle;
 
   return (
-    <>
-      {isFirstPage && (
-        <h1 style={{ fontSize: '0.85rem', color: 'var(--ifm-color-emphasis-600)', marginBottom: '0.25rem', fontWeight: 400 }}>
-          Scrimba Guide Blog — Reviews, Tips, and Career Advice for Developers
-        </h1>
-      )}
-      <BlogListPage {...props} />
-    </>
+    <HtmlClassNameProvider
+      className={clsx(
+        ThemeClassNames.wrapper.blogPages,
+        ThemeClassNames.page.blogListPage,
+      )}>
+      <PageMetadata title={title} description={blogDescription} />
+      <SearchMetadata tag="blog_posts_list" />
+      <BlogListPageStructuredData {...props} />
+      <BlogLayout sidebar={sidebar}>
+        {isFirstPage && (
+          <h1
+            style={{
+              fontSize: '0.85rem',
+              color: 'var(--ifm-color-emphasis-600)',
+              marginBottom: '0.25rem',
+              fontWeight: 400,
+            }}>
+            Scrimba Guide Blog — Reviews, Tips, and Career Advice for Developers
+          </h1>
+        )}
+        <BlogPostItems items={items} />
+        <BlogListPaginator metadata={metadata} />
+      </BlogLayout>
+    </HtmlClassNameProvider>
   );
 }

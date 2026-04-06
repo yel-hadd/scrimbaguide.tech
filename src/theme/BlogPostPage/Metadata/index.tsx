@@ -30,6 +30,13 @@ export default function MetadataWrapper(props: Props): React.ReactElement {
     : `${baseUrl}/img/social-card.png`;
   const seoTitle = toSeoTitle(title);
 
+  const rawKeywords = frontMatter.keywords as string[] | string | undefined;
+  const keywordsString = Array.isArray(rawKeywords)
+    ? rawKeywords.join(', ')
+    : typeof rawKeywords === 'string'
+      ? rawKeywords
+      : undefined;
+
   const blogPostingSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -59,6 +66,9 @@ export default function MetadataWrapper(props: Props): React.ReactElement {
       '@type': 'WebPage',
       '@id': canonicalUrl,
     },
+    isAccessibleForFree: true,
+    inLanguage: 'en-US',
+    ...(keywordsString && { keywords: keywordsString }),
   };
 
   return (

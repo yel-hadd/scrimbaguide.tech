@@ -88,25 +88,29 @@ function SocialProofStrip() {
       <div className="section-grid section-grid--2col">
         <blockquote className="section-card testimonial-card">
           <p>
-            &ldquo;Scrimba&apos;s frontend path gave me structure when I was lost in tutorial hell. I
-            finished it, built my portfolio, and landed a junior React role within six months.&rdquo;
+            &ldquo;The biggest change after moving to structured, project-first learning was momentum:
+            fewer abandoned courses, more shipped portfolio work, and clearer interview readiness.&rdquo;
           </p>
           <footer>
-            — <cite>Jake M.</cite>, junior React developer
+            — <cite>Learner-reported outcome</cite>{' '}
+            (<a href="/blog/scrimba-success-stories">source roundup</a>)
           </footer>
         </blockquote>
         <blockquote className="section-card testimonial-card">
           <p>
-            &ldquo;The scrim format forced me to type along instead of binge-watching. That&apos;s
-            what finally made JavaScript stick for me.&rdquo;
+            &ldquo;Interactive coding during lessons (not passive watching) is the recurring reason
+            learners say core JavaScript concepts started to stick long-term.&rdquo;
           </p>
           <footer>
-            — <cite>Samira K.</cite>, career changer, completed the Frontend Path
+            — <cite>Community pattern</cite>{' '}
+            (<a href="/blog/escape-tutorial-hell-scrimba">discussion synthesis</a>)
           </footer>
         </blockquote>
       </div>
       <p className="home-section__subtitle" style={{ marginTop: '1rem', textAlign: 'center' }}>
-        Representative of experiences shared in public forums. Individual outcomes vary by effort, consistency, and market conditions.
+        Quotes are synthesized from publicly shared learner discussions; each card links to the
+        supporting source page. Individual outcomes vary by effort, consistency, and market
+        conditions.
       </p>
     </section>
   );
