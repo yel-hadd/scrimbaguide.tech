@@ -88,6 +88,22 @@ function wrapText(text, maxCharsPerLine = 28) {
   return lines;
 }
 
+/**
+ * Normalize frontmatter slug into a safe social-card filename.
+ * Examples:
+ *   /blog/my-post      -> my-post
+ *   blog/my-post/      -> my-post
+ *   guides/react/hooks -> guides-react-hooks
+ */
+function toCardSlug(rawSlug) {
+  return rawSlug
+    .trim()
+    .replace(/^\/+/, '')
+    .replace(/^blog\//, '')
+    .replace(/\/+$/, '')
+    .replace(/\//g, '-');
+}
+
 /** Generate SVG social card */
 function generateSVG(title, category) {
   const lines = wrapText(title, 26);
@@ -203,11 +219,12 @@ for (const file of blogFiles) {
   if (!slugMatch || !titleMatch) continue;
 
   const slug = slugMatch[1].trim();
+  const cardSlug = toCardSlug(slug);
   const title = titleMatch[1].trim();
   const firstTag = tagsMatch ? tagsMatch[1].split(',')[0].trim() : 'guide';
   const categoryLabel = CATEGORY_MAP[firstTag] || 'Guide';
 
-  const imagePath = `/img/blog/${slug}.png`;
+  const imagePath = `/img/blog/${cardSlug}.png`;
   const altText = `${title} — Scrimba Guide ${categoryLabel}`;
 
   // ---- Backfill frontmatter ----
@@ -241,8 +258,8 @@ for (const file of blogFiles) {
   // Skip image generation if only updating frontmatter
   if (UPDATE_FM) continue;
 
-  const svgPath = join(IMG_DIR, `${slug}.svg`);
-  const pngPath = join(IMG_DIR, `${slug}.png`);
+  const svgPath = join(IMG_DIR, `${cardSlug}.svg`);
+  const pngPath = join(IMG_DIR, `${cardSlug}.png`);
 
   if (!FORCE && existsSync(pngPath)) {
     skipped++;
@@ -259,7 +276,7 @@ for (const file of blogFiles) {
     });
     generated++;
   } catch (err) {
-    console.error(`  Failed to convert ${slug}: ${err.message}`);
+    console.error(`  Failed to convert ${cardSlug}: ${err.message}`);
     generated++;
   }
 }
