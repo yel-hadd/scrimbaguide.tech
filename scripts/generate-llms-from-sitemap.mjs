@@ -18,6 +18,10 @@ const LOW_VALUE_PATTERNS = [
   /^\/blog\/authors(?:\/|$)/,
   /^\/blog\/archive(?:\/|$)/,
   /^\/blog\/page\/\d+(?:\/|$)/,
+  /** Redirect-only stubs; canonical blog URLs are `/blog/<slug>`. */
+  /^\/blog\/blog(?:\/|$)/,
+  /** Double-prefixed docs paths should never be indexed; canonical is `/docs/...`. */
+  /^\/docs\/docs(?:\/|$)/,
 ];
 
 const KEY_PATHS = [
@@ -154,6 +158,27 @@ const PAGE_ANNOTATIONS = {
   },
 };
 
+/**
+ * Remove MDX/JSX-shaped fragments so llms*.txt stays plain prose + URLs (no component syntax).
+ * Strips import lines, MDX block comments, and tags that look like `<Component />`.
+ * Does not remove `{identifier}` — keep literals like `use {foo} in code` intact in annotations.
+ */
+export function stripMdxAndJsxFromLlmsText(text) {
+  if (!text || typeof text !== 'string') return '';
+  let s = text
+    .split('\n')
+    .filter((line) => !/^\s*import\s/.test(line))
+    .join(' ');
+  s = s.replace(/\{\/\*[\s\S]*?\*\/\}/g, '');
+  s = s.replace(/<\/?[A-Za-z][A-Za-z0-9.]*(?:\s[^>]*)?\/?>/g, '');
+  return s.replace(/\s+/g, ' ').trim();
+}
+
+/** Escape `]` so link titles stay valid CommonMark link labels. */
+export function escapeMarkdownLinkTitle(text) {
+  return stripMdxAndJsxFromLlmsText(text).replace(/\\/g, '\\\\').replace(/\]/g, '\\]');
+}
+
 export function extractLocUrls(xml) {
   const urls = [];
   const locRegex = /<loc>(.*?)<\/loc>/g;
@@ -191,7 +216,9 @@ function formatUrlList(urls, siteUrl = DEFAULT_SITE_URL) {
     const pathname = toPathname(url).replace(/\/+$/, '') || '/';
     const annotation = PAGE_ANNOTATIONS[pathname];
     if (annotation) {
-      return `- [${annotation.title}](${url}): ${annotation.description}`;
+      const title = escapeMarkdownLinkTitle(annotation.title);
+      const description = stripMdxAndJsxFromLlmsText(annotation.description);
+      return `- [${title}](${url}): ${description}`;
     }
     return `- ${url}`;
   }).join('\n');

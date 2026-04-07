@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLocation } from '@docusaurus/router';
+import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
 
 /** Converts "9.8 hrs" or "86 min" to ISO 8601 duration (e.g. PT9H48M). */
 function toISODuration(duration: string): string {
@@ -46,21 +48,26 @@ export default function CourseSchema({
   modules,
   imageUrl = 'https://scrimbaguide.tech/img/social-card.png',
 }: CourseSchemaProps): React.ReactElement {
+  const { pathname } = useLocation();
+  const canonicalPath = toCanonicalPath(pathname);
+  const pageUrl = toAbsoluteUrl(canonicalPath);
   const isFree = access === 'Free';
 
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Course',
-    name,
-    description,
-    image: imageUrl,
+    '@id': `${pageUrl}#course`,
+    name: plainText(name),
+    description: plainText(description),
+    image: toAbsoluteUrl(imageUrl),
+    mainEntityOfPage: pageUrl,
     provider: {
       '@type': 'EducationalOrganization',
       name: provider,
       url: 'https://scrimba.com',
       sameAs: ['https://scrimba.com'],
     },
-    url,
+    url: toAbsoluteUrl(url),
     inLanguage: 'en',
     ...(difficulty && {
       educationalLevel: difficulty,
@@ -85,7 +92,7 @@ export default function CourseSchema({
       ...(isFree ? { priceCurrency: 'USD' } : {}),
       category: isFree ? 'Free' : 'Paid',
       availability: 'https://schema.org/InStock',
-      url,
+      url: toAbsoluteUrl(url),
     };
   }
 
@@ -95,14 +102,15 @@ export default function CourseSchema({
       itemListElement: modules.map((m, i) => ({
         '@type': 'ListItem',
         position: i + 1,
-        name: m.name,
-        description: `${m.lessons} lessons, ${m.duration}`,
+        name: plainText(m.name),
+        description: `${m.lessons} lessons, ${plainText(m.duration)}`,
       })),
     };
   }
 
   return (
     <script
+      id={schemaScriptId('course', canonicalPath, plainText(name))}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />

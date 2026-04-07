@@ -1,5 +1,4 @@
 import React from 'react';
-import BrowserOnly from '@docusaurus/BrowserOnly';
 import AffiliateLink from './AffiliateLink';
 
 /** Avoid repeating the discount line when the subtitle already states it (layout + many MDX CTAs). */
@@ -20,6 +19,7 @@ interface PricingCTAProps {
   subtitle?: string;
   buttonText?: string;
   variant?: 'inline' | 'banner';
+  headingLevel?: 2 | 3;
   /** Use 'free' to link to free courses/signup instead of Pro. Affiliate code still applies. */
   ctaType?: 'pro' | 'free';
   showDiscountNote?: boolean;
@@ -30,6 +30,7 @@ export default function PricingCTA({
   subtitle = 'Get full access to all Scrimba courses, paths, and community with Scrimba Pro.',
   buttonText,
   variant = 'inline',
+  headingLevel = 2,
   ctaType = 'pro',
   showDiscountNote = true,
 }: PricingCTAProps): React.ReactElement {
@@ -40,27 +41,24 @@ export default function PricingCTA({
     !isFree &&
     showDiscountNote &&
     !subtitleMentionsPartnerOrDiscount(subtitle);
+  const TitleTag = headingLevel === 3 ? 'h3' : 'h2';
 
   return (
-    <BrowserOnly fallback={<div className={`pricing-cta pricing-cta--${variant}`} style={{ minHeight: '150px' }}></div>}>
-      {() => (
-        <div className={`pricing-cta pricing-cta--${variant}`} data-nosnippet>
-          <div className="pricing-cta__content">
-            <h2 className="pricing-cta__title">{title}</h2>
-            <p className="pricing-cta__subtitle">{subtitle}</p>
-            {showDiscountLine && (
-              <p className="pricing-cta__note">Use our partner link to get 20% off the Pro plan.</p>
-            )}
-          </div>
-          <AffiliateLink
-            href={href}
-            variant="button"
-            className="pricing-cta__button"
-          >
-            {buttonText ?? defaultButtonText}
-          </AffiliateLink>
-        </div>
-      )}
-    </BrowserOnly>
+    <div className={`pricing-cta pricing-cta--${variant}`} data-nosnippet>
+      <div className="pricing-cta__content">
+        <TitleTag className="pricing-cta__title">{title}</TitleTag>
+        <p className="pricing-cta__subtitle">{subtitle}</p>
+        {showDiscountLine && (
+          <p className="pricing-cta__note">Use our partner link to get 20% off the Pro plan.</p>
+        )}
+      </div>
+      <AffiliateLink
+        href={href}
+        variant="button"
+        className="pricing-cta__button"
+      >
+        {buttonText ?? defaultButtonText}
+      </AffiliateLink>
+    </div>
   );
 }

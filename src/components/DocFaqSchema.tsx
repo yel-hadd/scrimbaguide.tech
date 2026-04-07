@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from '@docusaurus/router';
+import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
 
 export interface FaqItem {
   q: string;
@@ -17,7 +18,13 @@ interface DocFaqSchemaProps {
  */
 export default function DocFaqSchema({ questions }: DocFaqSchemaProps): React.ReactElement {
   const { pathname } = useLocation();
-  const isBlogListPage = pathname === '/blog/' || pathname.startsWith('/blog/page/');
+  const canonicalPath = toCanonicalPath(pathname);
+  const pageUrl = toAbsoluteUrl(canonicalPath);
+  const isBlogListPage =
+    canonicalPath === '/blog' ||
+    canonicalPath.startsWith('/blog/page') ||
+    canonicalPath.startsWith('/blog/tags') ||
+    canonicalPath.startsWith('/blog/archive');
 
   if (isBlogListPage) {
     return <></>;
@@ -26,18 +33,21 @@ export default function DocFaqSchema({ questions }: DocFaqSchemaProps): React.Re
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    '@id': `${pageUrl}#faq`,
+    mainEntityOfPage: pageUrl,
     mainEntity: questions.map(({ q, a }) => ({
       '@type': 'Question',
-      name: q,
+      name: plainText(q),
       acceptedAnswer: {
         '@type': 'Answer',
-        text: a,
+        text: plainText(a),
       },
     })),
   };
 
   return (
     <script
+      id={schemaScriptId('faq', canonicalPath)}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />

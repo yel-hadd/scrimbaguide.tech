@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLocation } from '@docusaurus/router';
+import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
 
 interface ReviewSchemaProps {
   itemName: string;
@@ -27,14 +29,19 @@ export default function ReviewSchema({
   reviewBody,
   datePublished,
 }: ReviewSchemaProps): React.ReactElement {
+  const { pathname } = useLocation();
+  const canonicalPath = toCanonicalPath(pathname);
+  const pageUrl = toAbsoluteUrl(canonicalPath);
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Review',
-    name: `${itemName} Review`,
+    '@id': `${pageUrl}#review`,
+    name: `${plainText(itemName)} Review`,
+    mainEntityOfPage: pageUrl,
     itemReviewed: {
       '@type': itemType,
-      name: itemName,
-      url: itemUrl,
+      name: plainText(itemName),
+      url: toAbsoluteUrl(itemUrl),
     },
     reviewRating: {
       '@type': 'Rating',
@@ -44,8 +51,8 @@ export default function ReviewSchema({
     },
     author: {
       '@type': 'Person',
-      name: author,
-      url: authorUrl,
+      name: plainText(author),
+      url: toAbsoluteUrl(authorUrl),
     },
     publisher: {
       '@id': 'https://scrimbaguide.tech/#organization',
@@ -53,12 +60,13 @@ export default function ReviewSchema({
       name: 'Scrimba Guide',
       url: 'https://scrimbaguide.tech',
     },
-    ...(reviewBody && { reviewBody }),
+    ...(reviewBody && { reviewBody: plainText(reviewBody) }),
     ...(datePublished && { datePublished }),
   };
 
   return (
     <script
+      id={schemaScriptId('review', canonicalPath, plainText(itemName))}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />

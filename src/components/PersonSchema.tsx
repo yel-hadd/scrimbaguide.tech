@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLocation } from '@docusaurus/router';
+import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
 
 interface PersonSchemaProps {
   name: string;
@@ -24,25 +26,30 @@ export default function PersonSchema({
   schemaType = 'Person',
   sameAs,
 }: PersonSchemaProps): React.ReactElement {
+  const { pathname } = useLocation();
+  const canonicalPath = toCanonicalPath(pathname);
+  const pageUrl = toAbsoluteUrl(canonicalPath);
   const base: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': schemaType,
-    name,
-    url,
-    ...(description && { description }),
+    '@id': `${toAbsoluteUrl(url)}#${schemaType.toLowerCase()}`,
+    name: plainText(name),
+    url: toAbsoluteUrl(url),
+    mainEntityOfPage: pageUrl,
+    ...(description && { description: plainText(description) }),
     ...(knowsAbout.length > 0 && { knowsAbout }),
-    ...(sameAs && sameAs.length > 0 && { sameAs }),
+    ...(sameAs && sameAs.length > 0 && { sameAs: sameAs.map((item) => toAbsoluteUrl(item)) }),
   };
 
   if (schemaType === 'Organization') {
     base.logo = {
       '@type': 'ImageObject',
-      url: imageUrl,
+      url: toAbsoluteUrl(imageUrl),
     };
   } else if (imageUrl) {
     base.image = {
       '@type': 'ImageObject',
-      url: imageUrl,
+      url: toAbsoluteUrl(imageUrl),
     };
   }
 
@@ -50,6 +57,7 @@ export default function PersonSchema({
 
   return (
     <script
+      id={schemaScriptId('person', canonicalPath, plainText(name))}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />

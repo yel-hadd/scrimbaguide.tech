@@ -46,6 +46,10 @@ function normalizeCanonicalUrl(url: string): string {
 function shouldIncludeInSitemap(pathname: string): boolean {
   if (SITEMAP_EXCLUDED_PATHS.has(pathname)) return false;
   if (SITEMAP_EXCLUDED_DOC_ALIASES.has(pathname)) return false;
+  /** Client-redirect stubs only (canonical = `/blog/<slug>`). Never index duplicate paths. */
+  if (pathname.startsWith('/blog/blog/')) return false;
+  /** Same pattern as `/blog/blog/` for docs if slug ever double-prefixes `docs/`. */
+  if (pathname.startsWith('/docs/docs/')) return false;
   return true;
 }
 
@@ -183,6 +187,8 @@ const config: Config = {
             '/blog/archive',
             '/blog/archive/**',
             '/blog/tags/**',
+            '/blog/blog/**',
+            '/docs/docs/**',
           ],
           filename: 'sitemap.xml',
           async createSitemapItems(params) {
@@ -243,6 +249,30 @@ const config: Config = {
           {
             from: '/blog/scrimba-for-cs-students',
             to: '/docs/paths/scrimba-for-cs-students',
+          },
+          {
+            from: '/blog/blog/javascript-roadmap-for-beginners-2026',
+            to: '/blog/javascript-roadmap-for-beginners-2026',
+          },
+          {
+            from: '/blog/blog/react-vs-nextjs-for-beginners-2026',
+            to: '/blog/react-vs-nextjs-for-beginners-2026',
+          },
+          {
+            from: '/blog/blog/frontend-portfolio-checklist-2026',
+            to: '/blog/frontend-portfolio-checklist-2026',
+          },
+          {
+            from: '/blog/blog/bootdev-vs-odin-vs-scrimba-2026',
+            to: '/blog/bootdev-vs-odin-vs-scrimba-2026',
+          },
+          {
+            from: '/blog/blog/best-coding-platforms-for-beginners-2026',
+            to: '/blog/best-coding-platforms-for-beginners-2026',
+          },
+          {
+            from: '/blog/blog/scrimba-pro-pricing-explained-2026',
+            to: '/blog/scrimba-pro-pricing-explained-2026',
           },
         ],
       },
@@ -347,11 +377,18 @@ const config: Config = {
       items: [
         { to: '/docs/intro', label: 'Start Here', position: 'left' },
         { to: '/docs/paths/', label: 'Learning Paths', position: 'left' },
-        { to: '/docs/courses/', label: 'Courses', position: 'left' },
-        { to: '/docs/pricing/', label: 'Scrimba Pricing', position: 'left' },
+        { to: '/docs/pricing/', label: 'Pricing', position: 'left' },
         { to: '/docs/comparisons/', label: 'Comparisons', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'left' },
-        { to: '/docs/paths#path-advisor', label: 'Path advisor', position: 'left' },
+        {
+          type: 'dropdown',
+          label: 'Tools',
+          position: 'left',
+          items: [
+            { to: '/docs/paths#path-advisor', label: 'Path Advisor' },
+            { to: '/docs/courses/', label: 'All Courses' },
+          ],
+        },
         {
           href: 'https://scrimba.com/?via=u42d4986',
           label: 'Get 20% Off Pro',
