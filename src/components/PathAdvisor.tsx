@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback, useEffect, useRef } from 'react';
+import React, { useMemo, useState, useCallback, useEffect, useRef, useId } from 'react';
 import Link from '@docusaurus/Link';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import {
@@ -39,6 +39,88 @@ export interface PathAdvisorProps {
   embedded?: boolean;
 }
 
+type ChoiceOption<T extends string> = {
+  value: T;
+  label: string;
+};
+
+interface ChoiceStepProps<T extends string> {
+  title: string;
+  options: readonly ChoiceOption<T>[];
+  onSelect: (value: T) => void;
+  hint?: string;
+  onBack?: () => void;
+}
+
+function ChoiceStep<T extends string>({
+  title,
+  options,
+  onSelect,
+  hint,
+  onBack,
+}: ChoiceStepProps<T>): React.ReactElement {
+  const titleId = useId();
+  const hintId = useId();
+  const buttonRefs = useRef<Array<HTMLButtonElement | null>>([]);
+
+  useEffect(() => {
+    buttonRefs.current[0]?.focus();
+  }, []);
+
+  const focusByIndex = (targetIndex: number) => {
+    const total = options.length;
+    if (!total) return;
+    const normalized = ((targetIndex % total) + total) % total;
+    buttonRefs.current[normalized]?.focus();
+  };
+
+  const onChoiceKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+      event.preventDefault();
+      focusByIndex(index + 1);
+    } else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+      event.preventDefault();
+      focusByIndex(index - 1);
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      focusByIndex(0);
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      focusByIndex(options.length - 1);
+    }
+  };
+
+  return (
+    <div className="path-advisor__card">
+      <h3 id={titleId} className="path-advisor__step-title">{title}</h3>
+      {hint && <p id={hintId} className="path-advisor__hint">{hint}</p>}
+      <div role="radiogroup" aria-labelledby={titleId} aria-describedby={hint ? hintId : undefined}>
+        {options.map(({ value, label }, index) => (
+          <button
+            key={value}
+            type="button"
+            role="radio"
+            aria-checked={false}
+            className="path-advisor__choice"
+            onClick={() => onSelect(value)}
+            onKeyDown={(event) => onChoiceKeyDown(event, index)}
+            ref={(node) => {
+              buttonRefs.current[index] = node;
+            }}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      {onBack && (
+        <button type="button" className="path-advisor__back" onClick={onBack}>
+          ← Back
+        </button>
+      )}
+    </div>
+  );
+}
+
 export default function PathAdvisor({ embedded = true }: PathAdvisorProps): React.ReactElement {
   const [step, setStep] = useState(0);
   const [experience, setExperience] = useState<Experience | null>(null);
@@ -47,6 +129,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
   const [situation, setSituation] = useState<Situation | null>(null);
   const [startedTracked, setStartedTracked] = useState(false);
   const completionTracked = useRef(false);
+  const resultHeadingRef = useRef<HTMLHeadingElement | null>(null);
 
   const result = useMemo(() => {
     if (!experience || !goal || !hours || !situation) return null;
@@ -77,6 +160,12 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
       });
     }
   }, [result, step]);
+
+  useEffect(() => {
+    if (step === TOTAL_STEPS) {
+      resultHeadingRef.current?.focus();
+    }
+  }, [step]);
 
   const onSelectExperience = (v: Experience) => {
     if (!startedTracked) {
@@ -125,10 +214,17 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
         </p>
         {step < TOTAL_STEPS && (
           <div className="path-advisor__progress-wrap">
-            <p className="path-advisor__progress-label">
+            <p className="path-advisor__progress-label" aria-live="polite">
               Step {currentStep} of {TOTAL_STEPS}
             </p>
-            <div className="path-advisor__progress" aria-hidden="true">
+            <div
+              className="path-advisor__progress"
+              role="progressbar"
+              aria-label="Path advisor progress"
+              aria-valuemin={1}
+              aria-valuemax={TOTAL_STEPS}
+              aria-valuenow={currentStep}
+            >
               {Array.from({ length: TOTAL_STEPS }, (_, i) => (
                 <span key={i} className={`path-advisor__progress-dot ${i < step ? 'path-advisor__progress-dot--active' : ''}`} />
               ))}
@@ -138,78 +234,45 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
       </div>
 
       {step === 0 && (
-        <div className="path-advisor__card">
-          <h3 className="path-advisor__step-title">1. Where are you starting?</h3>
-          {EXPERIENCE_OPTIONS.map(({ value, label }) => (
-            <button
-              key={value}
-              type="button"
-              className="path-advisor__choice"
-              onClick={() => onSelectExperience(value)}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        <ChoiceStep
+          title="1. Where are you starting?"
+          options={EXPERIENCE_OPTIONS}
+          onSelect={onSelectExperience}
+        />
       )}
 
       {step === 1 && (
-        <div className="path-advisor__card">
-          <h3 className="path-advisor__step-title">2. What is the main goal?</h3>
-          {GOAL_OPTIONS.map(({ value, label }) => (
-            <button key={value} type="button" className="path-advisor__choice" onClick={() => onSelectGoal(value)}>
-              {label}
-            </button>
-          ))}
-          <button type="button" className="path-advisor__back" onClick={() => setStep(0)}>
-            ← Back
-          </button>
-        </div>
+        <ChoiceStep
+          title="2. What is the main goal?"
+          options={GOAL_OPTIONS}
+          onSelect={onSelectGoal}
+          onBack={() => setStep(0)}
+        />
       )}
 
       {step === 2 && (
-        <div className="path-advisor__card">
-          <h3 className="path-advisor__step-title">3. How many hours can you study per week?</h3>
-          <p className="path-advisor__hint">We use this to estimate how long the path may take at your pace.</p>
-          {HOURS_OPTIONS.map(({ value, label }) => (
-            <button
-              key={value}
-              type="button"
-              className="path-advisor__choice"
-              onClick={() => onSelectHours(value)}
-            >
-              {label}
-            </button>
-          ))}
-          <button type="button" className="path-advisor__back" onClick={() => setStep(1)}>
-            ← Back
-          </button>
-        </div>
+        <ChoiceStep
+          title="3. How many hours can you study per week?"
+          options={HOURS_OPTIONS}
+          hint="We use this to estimate how long the path may take at your pace."
+          onSelect={onSelectHours}
+          onBack={() => setStep(1)}
+        />
       )}
 
       {step === 3 && (
-        <div className="path-advisor__card">
-          <h3 className="path-advisor__step-title">4. What best describes you right now?</h3>
-          {SITUATION_OPTIONS.map(({ value, label }) => (
-            <button
-              key={value}
-              type="button"
-              className="path-advisor__choice"
-              onClick={() => onSelectSituation(value)}
-            >
-              {label}
-            </button>
-          ))}
-          <button type="button" className="path-advisor__back" onClick={() => setStep(2)}>
-            ← Back
-          </button>
-        </div>
+        <ChoiceStep
+          title="4. What best describes you right now?"
+          options={SITUATION_OPTIONS}
+          onSelect={onSelectSituation}
+          onBack={() => setStep(2)}
+        />
       )}
 
       {step === 4 && result && (
         <div className="path-advisor__card path-advisor__card--result">
           <p className="path-advisor__result-kicker">Your best fit</p>
-          <h3 className="path-advisor__result-badge">{PATHS[result.primary].title}</h3>
+          <h3 ref={resultHeadingRef} tabIndex={-1} className="path-advisor__result-badge">{PATHS[result.primary].title}</h3>
           <p className="path-advisor__blurb">{PATHS[result.primary].blurb}</p>
           <p className="path-advisor__reasoning">{result.reasoning[0]}</p>
           <p className="path-advisor__pace">

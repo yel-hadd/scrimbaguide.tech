@@ -4,7 +4,7 @@ import { useLocation } from '@docusaurus/router';
 import { isMoneyPagePath } from '@site/src/utils/moneyPagePaths';
 
 /**
- * Desktop/tablet-only floating CTA (mobile uses MobileStickyCTA).
+ * Desktop-only floating CTA aligned with the navbar mobile breakpoint.
  */
 export default function DesktopStickyCTA(): React.ReactElement | null {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,7 +15,7 @@ export default function DesktopStickyCTA(): React.ReactElement | null {
   const isMoneyPage = isMoneyPagePath(path);
 
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
+    const mq = window.matchMedia('(min-width: 996px)');
     const update = () => setIsDesktop(mq.matches);
     update();
     mq.addEventListener('change', update);

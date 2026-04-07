@@ -6,6 +6,8 @@ import {
   normalizeCanonicalUrl,
   renderLlmsTxt,
   renderLlmsFullTxt,
+  stripMdxAndJsxFromLlmsText,
+  escapeMarkdownLinkTitle,
 } from '../generate-llms-from-sitemap.mjs';
 
 test('normalizeCanonicalUrl strips trailing slash except root', () => {
@@ -59,4 +61,41 @@ test('renderLlmsFullTxt lists all canonical URLs', () => {
   assert.match(full, /## All Canonical URLs/);
   assert.match(full, /https:\/\/scrimbaguide\.tech\/docs\/paths/);
   assert.match(full, /https:\/\/scrimbaguide\.tech\/blog\/post-a/);
+});
+
+test('renderLlmsFullTxt omits /blog/blog redirect stub URLs', () => {
+  const urls = [
+    'https://scrimbaguide.tech/blog/canonical-post',
+    'https://scrimbaguide.tech/blog/blog/canonical-post/',
+  ];
+
+  const full = renderLlmsFullTxt(urls, { siteName: 'Scrimba Guide' });
+
+  assert.match(full, /blog\/canonical-post/);
+  assert.doesNotMatch(full, /blog\/blog\//);
+});
+
+test('renderLlmsFullTxt omits /docs/docs redirect stub URLs', () => {
+  const urls = [
+    'https://scrimbaguide.tech/docs/paths',
+    'https://scrimbaguide.tech/docs/docs/paths/',
+  ];
+
+  const full = renderLlmsFullTxt(urls, { siteName: 'Scrimba Guide' });
+
+  assert.match(full, /docs\/paths/);
+  assert.doesNotMatch(full, /docs\/docs\//);
+});
+
+test('stripMdxAndJsxFromLlmsText removes component-like markup and import lines but keeps brace literals', () => {
+  const raw =
+    "import Foo from 'bar'\nSee <PricingCTA /> and {/* hide */} plus use {foo} and {bar_baz} in code.";
+  assert.equal(
+    stripMdxAndJsxFromLlmsText(raw),
+    'See and plus use {foo} and {bar_baz} in code.',
+  );
+});
+
+test('escapeMarkdownLinkTitle escapes brackets for markdown links', () => {
+  assert.equal(escapeMarkdownLinkTitle('Title with ] bracket'), 'Title with \\] bracket');
 });

@@ -43,13 +43,7 @@ export default function BlogListPage(props: Props): ReactNode {
       <BlogListPageStructuredData {...props} />
       <BlogLayout sidebar={sidebar}>
         {isFirstPage && (
-          <h1
-            style={{
-              fontSize: '0.85rem',
-              color: 'var(--ifm-color-emphasis-600)',
-              marginBottom: '0.25rem',
-              fontWeight: 400,
-            }}>
+          <h1 className="blog-list-page__title">
             Scrimba Guide Blog — Reviews, Tips, and Career Advice for Developers
           </h1>
         )}

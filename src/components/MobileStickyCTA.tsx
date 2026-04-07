@@ -6,13 +6,22 @@ import { isMoneyPagePath } from '@site/src/utils/moneyPagePaths';
 export default function MobileStickyCTA(): React.ReactElement | null {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const [isMobileViewport, setIsMobileViewport] = useState(false);
   const location = useLocation();
 
   const path = location.pathname;
   const isMoneyPage = isMoneyPagePath(path);
 
   useEffect(() => {
-    if (!isMoneyPage) return;
+    const mq = window.matchMedia('(max-width: 995px)');
+    const updateViewport = () => setIsMobileViewport(mq.matches);
+    updateViewport();
+    mq.addEventListener('change', updateViewport);
+    return () => mq.removeEventListener('change', updateViewport);
+  }, []);
+
+  useEffect(() => {
+    if (!isMoneyPage || !isMobileViewport) return;
 
     const handleScroll = () => {
       // Show after scrolling past hero (approx 300px)
@@ -23,11 +32,12 @@ export default function MobileStickyCTA(): React.ReactElement | null {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMoneyPage]);
+  }, [isMoneyPage, isMobileViewport]);
 
-  if (!isMoneyPage || !isVisible || isDismissed) return null;
+  if (!isMoneyPage || !isMobileViewport || !isVisible || isDismissed) return null;
 
   return (
     <div className="sticky-footer-cta">

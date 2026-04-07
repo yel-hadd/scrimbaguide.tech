@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import AffiliateLink from './AffiliateLink';
 
 interface ComparisonRow {
@@ -22,26 +22,34 @@ export default function ComparisonTable({
   scrimbaUrl = 'https://scrimba.com/?via=u42d4986',
   competitorUrl,
 }: ComparisonTableProps): React.ReactElement {
+  const captionId = useId();
+  const helpId = useId();
   return (
     <div
       className="comparison-table-wrapper"
       tabIndex={0}
       role="region"
-      aria-label={`${scrimbaLabel} versus ${competitorName} feature comparison table`}
+      aria-labelledby={captionId}
+      aria-describedby={helpId}
     >
+      <p id={helpId} className="sr-only">
+        This comparison table may scroll horizontally on smaller screens.
+      </p>
       <table className="comparison-table">
-        <caption className="sr-only">{scrimbaLabel} versus {competitorName} feature comparison</caption>
+        <caption id={captionId} className="sr-only">
+          {scrimbaLabel} versus {competitorName} feature comparison
+        </caption>
         <thead>
           <tr>
-            <th>Feature</th>
-            <th className="comparison-table__highlight">{scrimbaLabel}</th>
-            <th>{competitorName}</th>
+            <th scope="col">Feature</th>
+            <th scope="col" className="comparison-table__highlight">{scrimbaLabel}</th>
+            <th scope="col">{competitorName}</th>
           </tr>
         </thead>
         <tbody>
           {rows.map((row, i) => (
             <tr key={i}>
-              <td><strong>{row.feature}</strong></td>
+              <th scope="row">{row.feature}</th>
               <td className="comparison-table__highlight">{row.scrimba}</td>
               <td>{row.competitor}</td>
             </tr>

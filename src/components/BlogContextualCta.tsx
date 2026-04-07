@@ -2,6 +2,7 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import { useBlogPost } from '@docusaurus/plugin-content-blog/client';
 import { getBlogContextualCta } from '@site/src/content/blogContextualCtas';
+import AffiliateLink from './AffiliateLink';
 
 /**
  * Contextual next-step CTA injected after every blog post body.
@@ -23,21 +24,15 @@ export default function BlogContextualCta(): React.ReactElement {
 
   return (
     <aside
-      className="blog-contextual-cta margin-vert--xl padding-vert--md padding-horiz--md"
+      className="blog-contextual-cta margin-vert--xl"
       aria-label="Suggested next step"
-      style={{
-        border: '1px solid var(--ifm-color-emphasis-300)',
-        borderRadius: 8,
-        background: 'var(--ifm-background-surface-color)',
-      }}
     >
       <h2 className="text--lg margin-bottom--sm">{cta.title}</h2>
       <p className="margin-bottom--md">{cta.body}</p>
       {isExternal ? (
-        <a href={cta.href} className="cta-link cta-link--button" target="_blank" rel="noopener noreferrer">
+        <AffiliateLink href={cta.href} variant="button">
           {cta.linkLabel}
-          <span className="sr-only"> (opens in a new tab)</span>
-        </a>
+        </AffiliateLink>
       ) : (
         <Link className="cta-link cta-link--button" to={cta.href}>
           {cta.linkLabel}

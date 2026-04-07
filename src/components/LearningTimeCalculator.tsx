@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useId } from 'react';
+import AffiliateLink from './AffiliateLink';
 
 type Level = 'complete-beginner' | 'some-html' | 'basic-js';
 type Path = 'frontend' | 'fullstack' | 'backend' | 'ai-engineer';
@@ -61,16 +62,17 @@ const LEVEL_LABELS: Record<Level, string> = {
 
 const HOURS_OPTIONS = [5, 10, 15, 20, 25, 30];
 
-function weeksToJobReady(pathHours: number, hoursPerWeek: number): number {
-  const pathWeeks = pathHours / hoursPerWeek;
-  const projectWeeks = Math.max(4, pathHours / hoursPerWeek * 0.5);
-  return Math.round(pathWeeks + projectWeeks);
-}
-
 export default function LearningTimeCalculator(): React.ReactElement {
   const [level, setLevel] = useState<Level>('complete-beginner');
   const [hoursPerWeek, setHoursPerWeek] = useState<number>(10);
   const [selectedPath, setSelectedPath] = useState<Path>('frontend');
+  const idBase = useId();
+  const levelId = `${idBase}-level`;
+  const pathId = `${idBase}-path`;
+  const hoursId = `${idBase}-hours`;
+  const hoursMarksId = `${idBase}-hours-marks`;
+  const hoursHintId = `${idBase}-hours-hint`;
+  const resultLabelId = `${idBase}-result-label`;
 
   const result = useMemo(() => {
     const path = PATHS[selectedPath];
@@ -99,9 +101,9 @@ export default function LearningTimeCalculator(): React.ReactElement {
 
         <div className="ltc-inputs">
           <div className="ltc-field">
-            <label htmlFor="ltc-level">Your current level</label>
+            <label htmlFor={levelId}>Your current level</label>
             <select
-              id="ltc-level"
+              id={levelId}
               value={level}
               onChange={(e) => setLevel(e.target.value as Level)}
             >
@@ -112,9 +114,9 @@ export default function LearningTimeCalculator(): React.ReactElement {
           </div>
 
           <div className="ltc-field">
-            <label htmlFor="ltc-path">Target career path</label>
+            <label htmlFor={pathId}>Target career path</label>
             <select
-              id="ltc-path"
+              id={pathId}
               value={selectedPath}
               onChange={(e) => setSelectedPath(e.target.value as Path)}
             >
@@ -125,18 +127,28 @@ export default function LearningTimeCalculator(): React.ReactElement {
           </div>
 
           <div className="ltc-field">
-            <label htmlFor="ltc-hours">
+            <label htmlFor={hoursId}>
               Hours per week: <strong>{hoursPerWeek}h</strong>
             </label>
             <input
-              id="ltc-hours"
+              id={hoursId}
               type="range"
               min={5}
               max={30}
               step={5}
               value={hoursPerWeek}
+              list={hoursMarksId}
+              aria-describedby={hoursHintId}
               onChange={(e) => setHoursPerWeek(Number(e.target.value))}
             />
+            <datalist id={hoursMarksId}>
+              {HOURS_OPTIONS.map((h) => (
+                <option key={h} value={h} label={`${h}h`} />
+              ))}
+            </datalist>
+            <p id={hoursHintId} className="sr-only">
+              Move the slider in 5-hour steps to estimate your timeline.
+            </p>
             <div className="ltc-range-labels">
               {HOURS_OPTIONS.map((h) => (
                 <span key={h} className={h === hoursPerWeek ? 'active' : ''}>{h}h</span>
@@ -145,12 +157,12 @@ export default function LearningTimeCalculator(): React.ReactElement {
           </div>
         </div>
 
-        <div className="ltc-result">
+        <section className="ltc-result" aria-live="polite" aria-atomic="true" aria-labelledby={resultLabelId}>
           <div className="ltc-result-headline">
             <span className="ltc-months">{result.totalMonths} months</span>
             <span className="ltc-weeks">({result.totalWeeks} weeks)</span>
           </div>
-          <p className="ltc-result-label">estimated time to job-ready</p>
+          <p id={resultLabelId} className="ltc-result-label">estimated time to job-ready</p>
 
           <div className="ltc-breakdown">
             <div className="ltc-breakdown-item">
@@ -163,17 +175,16 @@ export default function LearningTimeCalculator(): React.ReactElement {
               <span className="ltc-breakdown-label">portfolio projects + job prep</span>
             </div>
           </div>
-        </div>
+        </section>
 
         <div className="ltc-cta">
-          <a
+          <AffiliateLink
             href={`https://scrimba.com/home?pricing&via=u42d4986&utm_source=scrimbaguide&utm_medium=calculator&utm_campaign=learning-time-calculator&utm_content=${selectedPath}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            variant="button"
             className="ltc-cta-btn"
           >
             Start the {PATHS[selectedPath].name} Path free &rarr;
-          </a>
+          </AffiliateLink>
           <a href={PATHS[selectedPath].slug} className="ltc-cta-link">
             See full path breakdown
           </a>

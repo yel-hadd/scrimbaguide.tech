@@ -1,4 +1,6 @@
 import React from 'react';
+import { useLocation } from '@docusaurus/router';
+import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
 
 export interface HowToStep {
   name: string;
@@ -31,20 +33,25 @@ export default function HowToSchema({
   totalTime,
   estimatedCost,
 }: HowToSchemaProps): React.ReactElement {
+  const { pathname } = useLocation();
+  const canonicalPath = toCanonicalPath(pathname);
+  const pageUrl = toAbsoluteUrl(canonicalPath);
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name,
-    description,
+    '@id': `${pageUrl}#howto`,
+    name: plainText(name),
+    description: plainText(description),
+    mainEntityOfPage: pageUrl,
     step: steps.map((step, index) => {
       const stepObj: Record<string, unknown> = {
         '@type': 'HowToStep',
         position: index + 1,
-        name: step.name,
-        text: step.text,
+        name: plainText(step.name),
+        text: plainText(step.text),
       };
       if (step.timeRequired) stepObj.timeRequired = step.timeRequired;
-      if (step.image) stepObj.image = step.image;
+      if (step.image) stepObj.image = toAbsoluteUrl(step.image);
       return stepObj;
     }),
   };
@@ -60,6 +67,7 @@ export default function HowToSchema({
 
   return (
     <script
+      id={schemaScriptId('howto', canonicalPath, plainText(name))}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
