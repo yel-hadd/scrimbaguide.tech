@@ -1,32 +1,27 @@
 import React from 'react';
-import AffiliateLink from './AffiliateLink';
+import { totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
 
 export default function WhyScrimba(): React.ReactElement {
   return (
     <div className="why-scrimba">
-      <h2>Why Scrimba?</h2>
+      <h2>Why people pick Scrimba over passive video</h2>
       <div className="why-scrimba__grid">
         <div className="why-scrimba__item">
-          <h3>Interactive Video</h3>
-          <p>Don't just watch. Pause the video and edit the instructor's code directly in the player.</p>
+          <h3>Code in the lesson</h3>
+          <p>Pause any video and edit the instructor's code in the same window. No tab-switching to a separate editor.</p>
         </div>
         <div className="why-scrimba__item">
-          <h3>87+ Courses</h3>
-          <p>From React and Python to AI Engineering and UI Design. One subscription covers everything.</p>
+          <h3>{totalCoursesLabel} courses, one subscription</h3>
+          <p>React, Python, AI engineering, backend, design — covered without per-course payments.</p>
         </div>
         <div className="why-scrimba__item">
-          <h3>Career Paths</h3>
-          <p>Structured roadmaps to take you from zero to job-ready, complete with certificates.</p>
+          <h3>Career paths, not playlists</h3>
+          <p>Four ordered tracks (Frontend, Fullstack, Backend, AI Engineer) with hiring modules at the end.</p>
         </div>
         <div className="why-scrimba__item">
-          <h3>Active Community</h3>
-          <p>Get help 24/7 in the Discord channel. You are never learning alone.</p>
+          <h3>Discord backup</h3>
+          <p>A live community channel for when you're stuck on a project at 11 pm.</p>
         </div>
-      </div>
-      <div className="why-scrimba__cta">
-        <AffiliateLink href="https://scrimba.com/?via=u42d4986" variant="button">
-          Try Scrimba for Free
-        </AffiliateLink>
       </div>
     </div>
   );

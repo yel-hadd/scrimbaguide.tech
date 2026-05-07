@@ -302,53 +302,45 @@ const config: Config = {
       attributes: { type: 'application/ld+json' },
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'WebSite',
-        '@id': 'https://scrimbaguide.tech/#website',
-        name: 'Scrimba Guide',
-        url: 'https://scrimbaguide.tech',
-        description: 'The unofficial guide to Scrimba courses, learning paths, pricing, and more.',
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: 'https://scrimbaguide.tech/search?q={search_term_string}',
-          'query-input': 'required name=search_term_string',
-        },
-        publisher: {
-          '@id': 'https://scrimbaguide.tech/#organization',
-          '@type': 'Organization',
-          name: 'Scrimba Guide',
-          url: 'https://scrimbaguide.tech',
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://scrimbaguide.tech/img/logo.svg',
+        '@graph': [
+          {
+            '@type': 'Organization',
+            '@id': 'https://scrimbaguide.tech/#organization',
+            name: 'Scrimba Guide',
+            url: 'https://scrimbaguide.tech',
+            description:
+              'The unofficial guide to Scrimba — courses, learning paths, pricing, and comparisons. Written by developers who have completed 40+ Scrimba courses.',
+            sameAs: [
+              'https://x.com/scrimbaguide',
+              'https://www.linkedin.com/in/yassine-el-haddad/',
+              'https://github.com/yel-hadd',
+            ],
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://scrimbaguide.tech/img/logo.svg',
+            },
+            contactPoint: {
+              '@type': 'ContactPoint',
+              contactType: 'customer service',
+              url: 'https://scrimbaguide.tech/about',
+              availableLanguage: 'en',
+            },
           },
-        },
-      }),
-    },
-    {
-      tagName: 'script',
-      attributes: { type: 'application/ld+json' },
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Organization',
-        '@id': 'https://scrimbaguide.tech/#organization',
-        name: 'Scrimba Guide',
-        url: 'https://scrimbaguide.tech',
-        description: 'The unofficial guide to Scrimba — courses, learning paths, pricing, and comparisons. Written by developers who have completed 40+ Scrimba courses.',
-        sameAs: [
-          'https://x.com/scrimbaguide',
-          'https://www.linkedin.com/in/yassine-el-haddad/',
-          'https://github.com/yel-hadd',
+          {
+            '@type': 'WebSite',
+            '@id': 'https://scrimbaguide.tech/#website',
+            name: 'Scrimba Guide',
+            url: 'https://scrimbaguide.tech',
+            description:
+              'The unofficial guide to Scrimba courses, learning paths, pricing, and more.',
+            publisher: { '@id': 'https://scrimbaguide.tech/#organization' },
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: 'https://scrimbaguide.tech/search?q={search_term_string}',
+              'query-input': 'required name=search_term_string',
+            },
+          },
         ],
-        logo: {
-          '@type': 'ImageObject',
-          url: 'https://scrimbaguide.tech/img/logo.svg',
-        },
-        contactPoint: {
-          '@type': 'ContactPoint',
-          contactType: 'customer service',
-          url: 'https://scrimbaguide.tech/about',
-          availableLanguage: 'en',
-        },
       }),
     },
     {

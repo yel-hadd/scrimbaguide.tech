@@ -94,10 +94,10 @@ function DocAffiliateCta({ pathname }: { pathname: string }): React.ReactElement
     return null;
   }
 
-  const title = fm.affiliateCtaTitle ?? 'Ready to Upgrade Your Learning?';
+  const title = fm.affiliateCtaTitle ?? 'Pro decision time? Here is the 20% partner link.';
   const subtitle =
     fm.affiliateCtaSubtitle ??
-    'Use our partner link to claim 20% off Scrimba Pro and unlock all courses and career paths.';
+    'The partner link below applies 20% off automatically at checkout. Confirm the final price on Scrimba.';
   const ctaType = fm.affiliateCtaType ?? 'pro';
 
   const pricingProps: React.ComponentProps<typeof PricingCTA> = {

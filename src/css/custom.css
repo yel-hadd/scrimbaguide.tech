@@ -630,7 +630,7 @@ body {
 .hero-section {
   position: relative;
   width: 100%;
-  padding: 3.25rem 1.5rem 1.5rem;
+  padding: 2.5rem 1.5rem 1.25rem;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -684,94 +684,32 @@ body {
   text-align: center;
 }
 
-/*
- * The <ul> is display:flex + flex-direction:column.
- * width:max-content makes it shrink to its longest item.
- * The parent's align-items:center then centers this group.
- * align-items:flex-start keeps text left-aligned within the group.
- */
-.hero-section__bullets {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.55rem;
-  width: max-content;
-  max-width: 100%;
-}
-
-.hero-section__bullets li {
-  font-size: 0.97rem;
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  color: var(--sg-text-strong);
-  text-align: left;
-}
-
-.hero-section__bullets li::before {
-  content: '✓';
-  color: var(--ifm-color-primary);
-  font-weight: 800;
-  font-size: 1rem;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
 .hero-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 0 1rem;
+  margin: 0 0 0.6rem;
 }
 
 .hero-buttons .cta-link--button {
-  min-width: 210px;
+  min-width: 240px;
 }
 
-.hero-section__secondary-btn {
-  background: transparent;
-  border: 2px solid var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
-}
-
-.hero-section__secondary-btn:hover {
-  background: var(--ifm-color-primary);
-  color: #fff;
-}
-
-.hero-section__secondary-btn:active {
-  background: var(--ifm-color-primary-dark);
-  border-color: var(--ifm-color-primary-dark);
-  color: #fff;
-}
-
-.hero-section__micro-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  font-size: 0.88rem;
-}
-
-.hero-section__micro-links a {
+.hero-section__secondary-link {
+  margin: 0;
+  font-size: 0.95rem;
   color: var(--sg-text-soft);
+}
+
+.hero-section__secondary-link a {
+  color: var(--sg-text-muted);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-.hero-section__micro-links a:hover {
+.hero-section__secondary-link a:hover {
   color: var(--ifm-color-primary);
-}
-
-.hero-section__trust {
-  margin-top: 0.4rem;
-  color: var(--sg-text-soft);
-  text-align: center;
-  font-size: 0.85rem;
 }
 
 .section-grid {
@@ -1239,12 +1177,6 @@ article a:not(.cta-link):not(.hash-link):hover {
   .hero-buttons .cta-link--button {
     min-width: 100%;
   }
-
-  /* On narrow screens, bullets stretch to fill available width */
-  .hero-section__bullets {
-    width: auto;
-    align-self: stretch;
-  }
 }
 
 /* ── Card link wrapper ────────────────────────────────────────── */
@@ -1267,6 +1199,23 @@ article a:not(.cta-link):not(.hash-link):hover {
   color: var(--sg-text-muted) !important;
   font-size: 0.82rem;
   line-height: 1.4;
+}
+
+.compare-card__notfor {
+  margin-top: 0.4rem !important;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--sg-text-soft) !important;
+}
+
+.home-section__advisor {
+  margin: -0.5rem 0 1.25rem;
+  font-size: 0.95rem;
+  color: var(--sg-text-muted);
+}
+
+.home-section__advisor a {
+  font-weight: 600;
 }
 
 /* ── FAQ answer panel ─────────────────────────────────────────── */
@@ -1996,10 +1945,6 @@ article table:focus,
   margin: 0;
   color: var(--sg-text-muted);
   font-size: 0.95rem;
-}
-
-.why-scrimba__cta {
-  margin-top: 1rem;
 }
 
 /* ── Tool and roadmap page polish ────────────────────────────── */

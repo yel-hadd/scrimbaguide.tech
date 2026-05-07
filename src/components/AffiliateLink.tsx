@@ -8,12 +8,26 @@ declare global {
 
 const AFFILIATE_PARAM = 'via=u42d4986';
 
+export type AffiliateLinkLocation =
+  | 'hero'
+  | 'inline'
+  | 'pricing_block'
+  | 'final_cta'
+  | 'sticky_mobile'
+  | 'sticky_desktop'
+  | 'verdict_box'
+  | 'course_card'
+  | 'related_guides'
+  | 'navbar';
+
 interface AffiliateLinkProps {
   href: string;
   children: React.ReactNode;
   className?: string;
   variant?: 'button' | 'text' | 'card';
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  /** Surface that rendered this link — pivots `affiliate_link_clicked` so we can compare CTA placements. */
+  location?: AffiliateLinkLocation;
 }
 
 export default function AffiliateLink({
@@ -22,6 +36,7 @@ export default function AffiliateLink({
   className = '',
   variant = 'text',
   onClick,
+  location,
 }: AffiliateLinkProps): React.ReactElement {
   /* eslint-disable no-nested-ternary */
   const url = href.includes('scrimba.com')
@@ -41,6 +56,7 @@ export default function AffiliateLink({
         post_slug: slug || window.location.pathname,
         destination_url: url,
         link_text: typeof children === 'string' ? children : 'affiliate_link',
+        cta_location: location ?? 'inline',
         page_location: window.location.href,
       });
     }

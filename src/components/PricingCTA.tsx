@@ -26,8 +26,8 @@ interface PricingCTAProps {
 }
 
 export default function PricingCTA({
-  title = 'Ready to start learning?',
-  subtitle = 'Get full access to all Scrimba courses, paths, and community with Scrimba Pro.',
+  title = 'When Pro is worth it (and the 20% partner link)',
+  subtitle = 'Pro unlocks every course, all four paths, and Discord access. Use our partner link to apply 20% off automatically at checkout.',
   buttonText,
   variant = 'inline',
   headingLevel = 2,
@@ -56,6 +56,7 @@ export default function PricingCTA({
         href={href}
         variant="button"
         className="pricing-cta__button"
+        location="pricing_block"
       >
         {buttonText ?? defaultButtonText}
       </AffiliateLink>
