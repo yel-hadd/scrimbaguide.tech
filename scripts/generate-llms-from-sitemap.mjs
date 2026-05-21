@@ -191,8 +191,10 @@ export function extractLocUrls(xml) {
 
 export function normalizeCanonicalUrl(url) {
   const parsed = new URL(url);
-  const normalizedPath = parsed.pathname === '/' ? '/' : parsed.pathname.replace(/\/+$/, '');
-  return `${parsed.origin}${normalizedPath}${parsed.search}${parsed.hash}`;
+  const pathname = parsed.pathname === '/'
+    ? '/'
+    : `${parsed.pathname.replace(/\/+$/, '')}/`;
+  return `${parsed.origin}${pathname}${parsed.search}${parsed.hash}`;
 }
 
 function isLowValuePath(pathname) {
@@ -201,6 +203,12 @@ function isLowValuePath(pathname) {
 
 function toPathname(url) {
   return new URL(url).pathname;
+}
+
+/** Canonical path comparison key — strips trailing slash so lookups work regardless of input form. */
+function pathnameKey(url) {
+  const p = toPathname(url);
+  return p === '/' ? '/' : p.replace(/\/+$/, '');
 }
 
 function uniqueSortedUrls(urls) {
@@ -213,7 +221,7 @@ function uniqueCanonicalUrls(urls) {
 
 function formatUrlList(urls, siteUrl = DEFAULT_SITE_URL) {
   return urls.map((url) => {
-    const pathname = toPathname(url).replace(/\/+$/, '') || '/';
+    const pathname = pathnameKey(url);
     const annotation = PAGE_ANNOTATIONS[pathname];
     if (annotation) {
       const title = escapeMarkdownLinkTitle(annotation.title);
@@ -238,22 +246,22 @@ function topLevelPages(urls) {
 }
 
 function findMatchingKeyUrls(urls) {
-  const byPath = new Map(urls.map((url) => [toPathname(url), url]));
+  const byPath = new Map(urls.map((url) => [pathnameKey(url), url]));
   return KEY_PATHS.map((keyPath) => byPath.get(keyPath)).filter(Boolean);
 }
 
 function buildSections(urls) {
   const docs = sectionByPrefix(urls, '/docs/');
   const blog = urls.filter((url) => {
-    const pathname = toPathname(url);
-    return pathname === '/blog' || pathname.startsWith('/blog/');
+    const key = pathnameKey(url);
+    return key === '/blog' || key.startsWith('/blog/');
   });
   const tools = sectionByPrefix(urls, '/tools/');
   const roadmaps = sectionByPrefix(urls, '/roadmaps/');
   const legal = sectionByPrefix(urls, '/legal/');
   const topPages = topLevelPages(urls).filter((url) => {
-    const pathname = toPathname(url);
-    return !['/blog', '/docs', '/tools', '/roadmaps', '/legal'].includes(pathname);
+    const key = pathnameKey(url);
+    return !['/blog', '/docs', '/tools', '/roadmaps', '/legal'].includes(key);
   });
 
   return { docs, blog, tools, roadmaps, legal, topPages };
@@ -267,7 +275,7 @@ export function renderLlmsTxt(urls, options = {}) {
   const { docs, blog, tools, roadmaps, legal, topPages } = buildSections(canonical);
   const docsHubs = docs.filter((url) => toPathname(url).split('/').filter(Boolean).length <= 3);
   const blogPosts = blog.filter((url) => toPathname(url).startsWith('/blog/')).slice(0, 20);
-  const blogOverview = blog.find((url) => toPathname(url) === '/blog');
+  const blogOverview = blog.find((url) => pathnameKey(url) === '/blog');
   const blogHighlights = blogOverview ? [blogOverview, ...blogPosts] : blogPosts;
 
   const lines = [
