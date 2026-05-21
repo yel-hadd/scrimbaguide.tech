@@ -234,6 +234,7 @@ const config: Config = {
   ],
 
   plugins: [
+    './plugins/normalize-canonical-urls',
     [
       '@docusaurus/plugin-client-redirects',
       {
