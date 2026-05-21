@@ -10,9 +10,11 @@ import {
   escapeMarkdownLinkTitle,
 } from '../generate-llms-from-sitemap.mjs';
 
-test('normalizeCanonicalUrl strips trailing slash except root', () => {
-  assert.equal(normalizeCanonicalUrl('https://scrimbaguide.tech/docs/learn-react/'), 'https://scrimbaguide.tech/docs/learn-react');
+test('normalizeCanonicalUrl ensures trailing slash on every path (matches site canonicals)', () => {
+  assert.equal(normalizeCanonicalUrl('https://scrimbaguide.tech/docs/learn-react'), 'https://scrimbaguide.tech/docs/learn-react/');
+  assert.equal(normalizeCanonicalUrl('https://scrimbaguide.tech/docs/learn-react/'), 'https://scrimbaguide.tech/docs/learn-react/');
   assert.equal(normalizeCanonicalUrl('https://scrimbaguide.tech/'), 'https://scrimbaguide.tech/');
+  assert.equal(normalizeCanonicalUrl('https://scrimbaguide.tech'), 'https://scrimbaguide.tech/');
 });
 
 test('extractLocUrls reads canonical URLs from sitemap xml', () => {
