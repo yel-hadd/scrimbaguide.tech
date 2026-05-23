@@ -253,29 +253,69 @@ const config: Config = {
           },
           {
             from: '/blog/blog/javascript-roadmap-for-beginners-2026',
-            to: '/blog/javascript-roadmap-for-beginners-2026',
+            to: '/docs/courses/javascript/',
           },
           {
             from: '/blog/blog/react-vs-nextjs-for-beginners-2026',
-            to: '/blog/react-vs-nextjs-for-beginners-2026',
+            to: '/docs/learn-nextjs/',
           },
           {
             from: '/blog/blog/frontend-portfolio-checklist-2026',
-            to: '/blog/frontend-portfolio-checklist-2026',
+            to: '/blog/portfolio-projects-get-hired-2026',
           },
           {
             from: '/blog/blog/bootdev-vs-odin-vs-scrimba-2026',
-            to: '/blog/bootdev-vs-odin-vs-scrimba-2026',
+            to: '/docs/comparisons/scrimba-vs-boot-dev/',
           },
           {
             from: '/blog/blog/best-coding-platforms-for-beginners-2026',
-            to: '/blog/best-coding-platforms-for-beginners-2026',
+            to: '/docs/comparisons/',
           },
           {
             from: '/blog/blog/scrimba-pro-pricing-explained-2026',
-            to: '/blog/scrimba-pro-pricing-explained-2026',
+            to: '/docs/pricing/',
           },
-        ],
+                  {
+            from: '/blog/javascript-vs-python-beginners-2026',
+            to: '/docs/courses/javascript/',
+          },
+          {
+            from: '/blog/frontend-portfolio-checklist-2026',
+            to: '/blog/portfolio-projects-get-hired-2026',
+          },
+          {
+            from: '/blog/react-vs-nextjs-for-beginners-2026',
+            to: '/docs/learn-nextjs/',
+          },
+          {
+            from: '/blog/bootdev-vs-odin-vs-scrimba-2026',
+            to: '/docs/comparisons/scrimba-vs-boot-dev/',
+          },
+          {
+            from: '/blog/best-coding-platforms-for-beginners-2026',
+            to: '/docs/comparisons/',
+          },
+          {
+            from: '/blog/scrimba-pro-pricing-explained-2026',
+            to: '/docs/pricing/',
+          },
+          {
+            from: '/blog/how-to-learn-react-2026',
+            to: '/docs/courses/react/',
+          },
+          {
+            from: '/blog/how-to-become-frontend-developer-2026',
+            to: '/docs/paths/frontend-developer-path/',
+          },
+          {
+            from: '/blog/javascript-roadmap-for-beginners-2026',
+            to: '/docs/courses/javascript/',
+          },
+          {
+            from: '/blog/how-to-learn-javascript-2026',
+            to: '/docs/courses/javascript/',
+          },
+],
       },
     ],
   ],

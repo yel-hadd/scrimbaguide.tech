@@ -14,6 +14,9 @@ interface AffiliateLinkProps {
   className?: string;
   variant?: 'button' | 'text' | 'card';
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  /** Optional placement label, e.g. "hero-primary", "verdict-box", "final-cta". Sent
+   *  to GA as `cta_location` so per-placement conversion can be compared. */
+  location?: string;
 }
 
 export default function AffiliateLink({
@@ -22,6 +25,7 @@ export default function AffiliateLink({
   className = '',
   variant = 'text',
   onClick,
+  location,
 }: AffiliateLinkProps): React.ReactElement {
   /* eslint-disable no-nested-ternary */
   const url = href.includes('scrimba.com')
@@ -42,6 +46,7 @@ export default function AffiliateLink({
         destination_url: url,
         link_text: typeof children === 'string' ? children : 'affiliate_link',
         page_location: window.location.href,
+        ...(location && { cta_location: location }),
       });
     }
     onClick?.(e);

@@ -43,7 +43,7 @@ function HeroSection() {
           the alternatives.
         </p>
         <div className="hero-buttons" role="group" aria-label="Primary actions">
-          <AffiliateLink href={DEMO_SCRIM_URL} variant="button">
+          <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-hero-primary">
             Try a scrim in your browser
           </AffiliateLink>
           <Link
@@ -55,7 +55,7 @@ function HeroSection() {
         </div>
         <p className="hero-section__tertiary">
           Already sold?{' '}
-          <AffiliateLink href={PRO_AFFILIATE_URL} variant="text">
+          <AffiliateLink href={PRO_AFFILIATE_URL} variant="text" location="home-hero-tertiary">
             Open Scrimba with 20% off Pro applied at checkout
           </AffiliateLink>
           .
@@ -320,7 +320,7 @@ function PricingSection() {
         <Link to="/docs/pricing/" className="cta-link cta-link--button home-pricing__outline-btn">
           See what Pro actually includes
         </Link>
-        <AffiliateLink href={PRO_AFFILIATE_URL} variant="button">
+        <AffiliateLink href={PRO_AFFILIATE_URL} variant="button" location="home-pricing-section">
           Open Scrimba with 20% off Pro
         </AffiliateLink>
       </div>
@@ -442,7 +442,7 @@ function FinalCtaSection() {
           right way takes thirty seconds.
         </p>
         <div className="home-pricing__buttons">
-          <AffiliateLink href={DEMO_SCRIM_URL} variant="button">
+          <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-final-cta">
             Open the demo scrim
           </AffiliateLink>
           <Link to="/docs/paths/" className="cta-link cta-link--button home-pricing__outline-btn">
