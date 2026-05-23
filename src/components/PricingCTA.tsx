@@ -23,6 +23,8 @@ interface PricingCTAProps {
   /** Use 'free' to link to free courses/signup instead of Pro. Affiliate code still applies. */
   ctaType?: 'pro' | 'free';
   showDiscountNote?: boolean;
+  /** Analytics location tag forwarded to AffiliateLink (e.g. "page-bottom:scrimba-vs-odin"). */
+  location?: string;
 }
 
 export default function PricingCTA({
@@ -33,6 +35,7 @@ export default function PricingCTA({
   headingLevel = 2,
   ctaType = 'pro',
   showDiscountNote = true,
+  location,
 }: PricingCTAProps): React.ReactElement {
   const isFree = ctaType === 'free';
   const defaultButtonText = isFree ? 'Try Scrimba Free' : 'Claim 20% Off Scrimba Pro';
@@ -56,6 +59,7 @@ export default function PricingCTA({
         href={href}
         variant="button"
         className="pricing-cta__button"
+        location={location}
       >
         {buttonText ?? defaultButtonText}
       </AffiliateLink>
