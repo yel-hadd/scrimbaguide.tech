@@ -45,7 +45,7 @@ const KEY_PATHS = [
  */
 const PAGE_ANNOTATIONS = {
   '/': {
-    title: 'Scrimba Guide — Home',
+    title: 'Scrimba Guide, Home',
     description: 'Independent guide to Scrimba covering paths, pricing, and platform comparisons for developers learning to code.',
   },
   '/docs/intro': {
@@ -54,7 +54,7 @@ const PAGE_ANNOTATIONS = {
   },
   '/docs/paths': {
     title: 'Scrimba Career Paths Overview (2026)',
-    description: 'Comparison of all four Scrimba career paths (Frontend, Fullstack, Backend, AI Engineer) — hours, skill level, and who each path is for.',
+    description: 'Comparison of all four Scrimba career paths (Frontend, Fullstack, Backend, AI Engineer), hours, skill level, and who each path is for.',
   },
   '/docs/paths/frontend-developer-path': {
     title: 'Scrimba Frontend Developer Path Review (2026)',
@@ -73,12 +73,12 @@ const PAGE_ANNOTATIONS = {
     description: '11.4-hour intermediate path for building AI-powered apps with agents, RAG, MCP, and the Vercel AI SDK.',
   },
   '/docs/pricing': {
-    title: 'Scrimba Pricing 2026 — Pro vs Free',
+    title: 'Scrimba Pricing 2026, Pro vs Free',
     description: 'Current Scrimba pricing breakdown: what Free includes, what Pro unlocks, and how to get the cheapest Pro subscription.',
   },
   '/docs/pricing/pro-vs-free': {
     title: 'Scrimba Pro vs Free: What\'s the Difference? (2026)',
-    description: 'Side-by-side comparison of Scrimba Free and Pro tiers — course access, career paths, certificates, and AI features.',
+    description: 'Side-by-side comparison of Scrimba Free and Pro tiers, course access, career paths, certificates, and AI features.',
   },
   '/docs/comparisons': {
     title: 'Scrimba vs Alternatives: The Complete Comparison Guide (2026)',
@@ -86,7 +86,7 @@ const PAGE_ANNOTATIONS = {
   },
   '/docs/comparisons/scrimba-vs-codecademy': {
     title: 'Scrimba vs Codecademy (2026)',
-    description: 'Detailed comparison of interactive screencasts (Scrimba) vs text-based drills (Codecademy) — features, pricing, and who each suits.',
+    description: 'Detailed comparison of interactive screencasts (Scrimba) vs text-based drills (Codecademy), features, pricing, and who each suits.',
   },
   '/docs/comparisons/scrimba-vs-udemy': {
     title: 'Scrimba vs Udemy (2026)',
@@ -94,19 +94,19 @@ const PAGE_ANNOTATIONS = {
   },
   '/docs/comparisons/scrimba-vs-freecodecamp': {
     title: 'Scrimba vs freeCodeCamp (2026)',
-    description: 'Paid interactive platform vs free text-based curriculum — who should pay for Scrimba and who gets enough from freeCodeCamp.',
+    description: 'Paid interactive platform vs free text-based curriculum, who should pay for Scrimba and who gets enough from freeCodeCamp.',
   },
   '/docs/comparisons/scrimba-vs-frontendmasters': {
     title: 'Scrimba vs Frontend Masters (2026)',
-    description: 'Structured beginner paths (Scrimba) vs advanced expert workshops (Frontend Masters) — which fits your current skill level.',
+    description: 'Structured beginner paths (Scrimba) vs advanced expert workshops (Frontend Masters), which fits your current skill level.',
   },
   '/docs/comparisons/scrimba-vs-odin-project': {
     title: 'Scrimba vs The Odin Project (2026)',
-    description: 'Guided platform vs open-source self-directed curriculum — key tradeoffs for career changers and self-taught developers.',
+    description: 'Guided platform vs open-source self-directed curriculum, key tradeoffs for career changers and self-taught developers.',
   },
   '/docs/comparisons/scrimba-vs-coursera': {
     title: 'Scrimba vs Coursera (2026)',
-    description: 'Job-ready interactive skills (Scrimba) vs university-style credentials (Coursera) — choosing based on your career goals.',
+    description: 'Job-ready interactive skills (Scrimba) vs university-style credentials (Coursera), choosing based on your career goals.',
   },
   '/docs/comparisons/scrimba-vs-zerotomastery': {
     title: 'Scrimba vs Zero to Mastery (2026)',
@@ -114,27 +114,27 @@ const PAGE_ANNOTATIONS = {
   },
   '/docs/comparisons/scrimba-vs-treehouse': {
     title: 'Scrimba vs Treehouse (2026)',
-    description: 'Interactive coding environment (Scrimba) vs general video library (Treehouse) — content depth, pricing, and job outcomes.',
+    description: 'Interactive coding environment (Scrimba) vs general video library (Treehouse), content depth, pricing, and job outcomes.',
   },
   '/docs/comparisons/scrimba-vs-pluralsight': {
     title: 'Scrimba vs Pluralsight (2026)',
-    description: 'Beginner-focused interactive paths (Scrimba) vs enterprise certification platform (Pluralsight) — target audience and use cases.',
+    description: 'Beginner-focused interactive paths (Scrimba) vs enterprise certification platform (Pluralsight), target audience and use cases.',
   },
   '/docs/comparisons/scrimba-vs-educative': {
     title: 'Scrimba vs Educative (2026)',
-    description: 'Video-based interactive coding (Scrimba) vs text + embedded playgrounds (Educative) — interview prep and learning style comparison.',
+    description: 'Video-based interactive coding (Scrimba) vs text + embedded playgrounds (Educative), interview prep and learning style comparison.',
   },
   '/docs/comparisons/scrimba-vs-fireship': {
     title: 'Scrimba vs Fireship (2026)',
-    description: 'Structured career paths (Scrimba) vs fast-paced YouTube overviews + Pro course (Fireship) — depth vs breadth tradeoff.',
+    description: 'Structured career paths (Scrimba) vs fast-paced YouTube overviews + Pro course (Fireship), depth vs breadth tradeoff.',
   },
   '/docs/comparisons/scrimba-vs-youtube': {
     title: 'Scrimba vs YouTube for Learning to Code (2026)',
-    description: 'Passive video watching vs active coding environment — why structure and accountability matter for career changers.',
+    description: 'Passive video watching vs active coding environment, why structure and accountability matter for career changers.',
   },
   '/docs/faq/is-scrimba-free': {
     title: 'Is Scrimba Free? (2026)',
-    description: 'Scrimba\'s free tier covers 19+ courses permanently — details on what is and isn\'t free, and when Pro is worth paying for.',
+    description: 'Scrimba\'s free tier covers 19+ courses permanently, details on what is and isn\'t free, and when Pro is worth paying for.',
   },
   '/docs/faq/how-to-use-scrimba': {
     title: 'How to Use Scrimba: Getting Started Guide',
@@ -146,11 +146,11 @@ const PAGE_ANNOTATIONS = {
   },
   '/blog/is-scrimba-worth-it': {
     title: 'Is Scrimba Worth It in 2026? Honest Assessment',
-    description: 'Evidence-based assessment of Scrimba Pro value — when the subscription pays off and when free alternatives are sufficient.',
+    description: 'Evidence-based assessment of Scrimba Pro value, when the subscription pays off and when free alternatives are sufficient.',
   },
   '/blog/scrimba-vs-coding-bootcamps-cost': {
     title: 'Scrimba vs Coding Bootcamps: Full Cost Analysis (2026)',
-    description: 'Total cost comparison between Scrimba Pro (~$19/mo) and coding bootcamps ($10k–$20k) — ROI, outcomes, and time commitment.',
+    description: 'Total cost comparison between Scrimba Pro (~$19/mo) and coding bootcamps ($10k–$20k), ROI, outcomes, and time commitment.',
   },
   '/about': {
     title: 'About Scrimba Guide',
@@ -161,7 +161,7 @@ const PAGE_ANNOTATIONS = {
 /**
  * Remove MDX/JSX-shaped fragments so llms*.txt stays plain prose + URLs (no component syntax).
  * Strips import lines, MDX block comments, and tags that look like `<Component />`.
- * Does not remove `{identifier}` — keep literals like `use {foo} in code` intact in annotations.
+ * Does not remove `{identifier}`, keep literals like `use {foo} in code` intact in annotations.
  */
 export function stripMdxAndJsxFromLlmsText(text) {
   if (!text || typeof text !== 'string') return '';
@@ -205,7 +205,7 @@ function toPathname(url) {
   return new URL(url).pathname;
 }
 
-/** Canonical path comparison key — strips trailing slash so lookups work regardless of input form. */
+/** Canonical path comparison key, strips trailing slash so lookups work regardless of input form. */
 function pathnameKey(url) {
   const p = toPathname(url);
   return p === '/' ? '/' : p.replace(/\/+$/, '');
@@ -281,7 +281,7 @@ export function renderLlmsTxt(urls, options = {}) {
   const lines = [
     `# ${siteName}`,
     '',
-    `> Independent guide to Scrimba — covering career paths, pricing, and platform comparisons for developers learning to code in 2026. Annotated high-signal pages below; see \`${siteUrl}/llms-full.txt\` for the complete canonical URL index.`,
+    `> Independent guide to Scrimba, covering career paths, pricing, and platform comparisons for developers learning to code in 2026. Annotated high-signal pages below; see \`${siteUrl}/llms-full.txt\` for the complete canonical URL index.`,
     '',
     `- Full canonical index: ${siteUrl}/llms-full.txt`,
     '',
@@ -319,7 +319,7 @@ export function renderLlmsFullTxt(urls, options = {}) {
   const lines = [
     `# ${siteName} (Full URL Index)`,
     '',
-    '> Complete canonical URL index for Scrimba Guide — an independent review site covering Scrimba\'s courses, career paths, pricing, and comparisons with Codecademy, Udemy, freeCodeCamp, Frontend Masters, and 8 other platforms.',
+    '> Complete canonical URL index for Scrimba Guide, an independent review site covering Scrimba\'s courses, career paths, pricing, and comparisons with Codecademy, Udemy, freeCodeCamp, Frontend Masters, and 8 other platforms.',
     '',
     '## All Canonical URLs',
     '',

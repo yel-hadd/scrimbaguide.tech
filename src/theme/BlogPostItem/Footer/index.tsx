@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from '@theme-original/BlogPostItem/Footer';
 import RelatedGuides from '@site/src/components/RelatedGuides';
-import MobileStickyCTA from '@site/src/components/MobileStickyCTA';
 import PricingCTA from '@site/src/components/PricingCTA';
 import { useLocation } from '@docusaurus/router';
 import { useBlogPost } from '@docusaurus/plugin-content-blog/client';
@@ -32,7 +31,6 @@ export default function FooterWrapper(props: any): React.ReactElement {
           buttonText="Claim 20% Off Scrimba Pro"
         />
       )}
-      {isFullPostPage && <MobileStickyCTA />}
     </>
   );
 }

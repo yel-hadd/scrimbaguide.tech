@@ -4,7 +4,6 @@ import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useDoc } from '@docusaurus/plugin-content-docs/client';
 import RelatedGuides from '@site/src/components/RelatedGuides';
-import MobileStickyCTA from '@site/src/components/MobileStickyCTA';
 import DesktopStickyCTA from '@site/src/components/DesktopStickyCTA';
 import PricingCTA from '@site/src/components/PricingCTA';
 import EmailCapture from '@site/src/components/EmailCapture';
@@ -126,7 +125,6 @@ export default function LayoutWrapper(props: any): React.ReactElement {
       <div className="container margin-bottom--lg">
         <EmailCapture variant="docs" />
       </div>
-      <MobileStickyCTA />
       <DesktopStickyCTA />
     </Layout>
   );

@@ -10,6 +10,5 @@ export { default as RelatedGuides } from './RelatedGuides';
 export { default as ReviewSchema } from './ReviewSchema';
 export { default as VerdictBox } from './VerdictBox';
 export { default as DisclosureNotice } from './DisclosureNotice';
-export { default as MobileStickyCTA } from './MobileStickyCTA';
 export { default as HowToSchema } from './HowToSchema';
 export { default as VisualProofPlaceholder } from './VisualProofPlaceholder';
