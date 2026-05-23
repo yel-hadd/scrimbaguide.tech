@@ -9,6 +9,7 @@ interface VerdictBoxProps {
   cons?: string[];
   ctaText?: string;
   ctaHref?: string;
+  /** Analytics location tag forwarded to AffiliateLink (e.g. "verdict-box:scrimba-vs-odin"). */
   location?: string;
 }
 

@@ -23,6 +23,7 @@ interface PricingCTAProps {
   /** Use 'free' to link to free courses/signup instead of Pro. Affiliate code still applies. */
   ctaType?: 'pro' | 'free';
   showDiscountNote?: boolean;
+  /** Analytics location tag forwarded to AffiliateLink (e.g. "page-bottom:scrimba-vs-odin"). */
   location?: string;
 }
 

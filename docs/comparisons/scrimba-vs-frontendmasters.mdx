@@ -34,21 +34,25 @@ Three questions cover most of it.
 
 <VerdictBox 
   title="The Verdict" 
-  rating="Different stages, both useful" 
-  verdict="Scrimba is the better starting point for beginners and early intermediates. Frontend Masters is the better second subscription once you ship apps and want senior-level depth on TypeScript, performance, system design, or React internals. Many developers run Scrimba first, then add Frontend Masters."
+  rating="Different stages, different price tiers" 
+  verdict="Scrimba is the better starting point for beginners and early intermediates: in-lesson coding, four ordered career paths, named React and AI instructors. Frontend Masters is the better second subscription once you ship apps and want senior-level depth on TypeScript, performance, system design, or React internals. On price, Frontend Masters lists $39/month or $390/year (their published rates); in most regions that puts FM at roughly 2x Scrimba's annual rate per month at list. Confirm Scrimba's current number on scrimba.com/our-pricing. Many developers run Scrimba first, then add Frontend Masters."
   pros={[
-    "Scrimba: Code inside the lesson",
-    "Scrimba: Structured career paths and AI engineering track",
-    "Frontend Masters: Senior instructors with name recognition",
-    "Frontend Masters: Deep workshops on advanced topics"
+    "Scrimba: Code inside the lesson (pause, edit, run, resume)",
+    "Scrimba: Structured career paths and dedicated AI engineering track",
+    "Scrimba: Trustpilot 4.3/5; named instructors Bob Ziroll, Per Borgen, Kevin Powell, Tom Chant",
+    "Frontend Masters: Senior instructors with industry name recognition (Holt, Sentance, Drasner, Kinney, Firtman)",
+    "Frontend Masters: Deep 6-to-8-hour workshops on advanced topics, live workshop attendance"
   ]}
   cons={[
     "Frontend Masters: Watch-only video; assumes you can rebuild in your IDE",
-    "Frontend Masters: $39/month is the higher tier",
-    "Scrimba: Lighter on expert-level conceptual content"
+    "Frontend Masters: $39/month or $390/year at list, roughly 2x Scrimba's annual rate per month in most regions",
+    "Frontend Masters: Assumes prior JavaScript knowledge; not built for absolute beginners",
+    "Scrimba: Lighter on expert-level conceptual content (React internals, performance, system design)",
+    "Scrimba: No live workshops"
   ]}
-  ctaText="Try Scrimba Free"
+  ctaText="Try a Scrimba scrim, no signup"
   ctaHref="https://scrimba.com/s0v687325e"
+  location="verdict-box:scrimba-vs-frontendmasters"
 />
 
 <ComparisonTable
@@ -66,7 +70,8 @@ Three questions cover most of it.
     { feature: "Annual price", scrimba: "See [our pricing](https://scrimba.com/our-pricing)", competitor: "$390/year" },
     { feature: "Free tier", scrimba: `~${freeCount} full courses`, competitor: "Preview lessons only" },
     { feature: "AI courses", scrimba: "15 dedicated AI courses (agents, RAG, MCP)", competitor: "Some AI workshops, not the focus" },
-    { feature: "Community", scrimba: "Active Discord (Pro)", competitor: "Limited community features" },
+    { feature: "Community", scrimba: "Active Discord (Pro) with instructor presence", competitor: "Limited community features" },
+    { feature: "Reputation signal", scrimba: "Trustpilot 4.3/5; freeCodeCamp mirrors the Bob Ziroll React course", competitor: "Industry name recognition through instructors (Holt, Sentance, Drasner, Kinney)" },
   ]}
 />
 
@@ -95,7 +100,7 @@ That format is the whole pitch. You are paying $39 a month to watch a workshop y
 
 Frontend Masters lists **$39 per month** or **$390 per year** for individual access on [their join page](https://frontendmasters.com/join/), with team plans at $24.50 per seat per month for groups of ten or more. The annual plan saves about 17%. GitHub Student Developer Pack members get six months free.
 
-Scrimba prices vary by region and run promotions throughout the year, so I link to [scrimba.com/our-pricing](https://scrimba.com/our-pricing) instead of quoting a number that will be wrong by the time you read this. In most regions Scrimba Pro is cheaper than Frontend Masters at list price, and the free tier is materially larger.
+Scrimba prices vary by region and run promotions year-round, so I link to [scrimba.com/our-pricing](https://scrimba.com/our-pricing) instead of quoting a number that will be wrong by the time you read this. The anchor most readers actually want: **Frontend Masters' $39/month list price is roughly 2x what Scrimba's annual plan works out to per month in most regions**, and FM's $390/year is meaningfully above Scrimba's annual at list. Scrimba's free tier is also materially larger: about {freeCount} full courses (including the 15-hour Learn React with Bob Ziroll) versus preview clips on Frontend Masters. The right way to read it: Frontend Masters is priced like a senior workshop library, Scrimba is priced like a structured beginner-to-intermediate platform, and the gap shows up in the per-month math.
 
 ## When to choose Scrimba
 
@@ -150,6 +155,7 @@ These are not competitors so much as **stages**. Scrimba walks a beginner to "I 
 
 <PricingCTA
   title="Start on Scrimba, add Frontend Masters when you are ready"
-  subtitle={`About ${freeCount} Scrimba courses are free in full. Try the format before you pay for either platform.`}
-  ctaType="free"
+  subtitle={`About ${freeCount} Scrimba courses are free in full, and Pro typically lands at roughly half FM's $39 monthly rate in most regions. Confirm at scrimba.com/our-pricing.`}
+  ctaType="pro"
+  location="page-bottom:scrimba-vs-frontendmasters"
 />
