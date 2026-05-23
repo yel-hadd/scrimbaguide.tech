@@ -1,117 +1,211 @@
 ---
 hideGlobalPricingCta: true
-title: "Best Scrimba JavaScript Courses (2026): Complete Guide"
-description: "All JavaScript courses on Scrimba reviewed. From Learn JavaScript to Advanced JS, interview prep, ES6+, deep dive, and coding challenges."
-keywords: [scrimba javascript course, best javascript course, learn javascript scrimba, scrimba js]
+title: "Best Scrimba JavaScript Courses (2026): The Honest Catalog Map"
+description: "Every Scrimba JavaScript course mapped: Per Borgen's free Learn JavaScript, Tom Chant's Advanced JS, ES6 deep dives, interview prep, and where the catalog is thin."
+keywords: [scrimba javascript course, best javascript course, learn javascript scrimba, advanced javascript scrimba, scrimba js review]
 slug: /courses/javascript
 last_update:
-  date: 2026-03-30
+  date: 2026-05-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import WhyScrimba from '@site/src/components/WhyScrimba';
 
-# Best Scrimba JavaScript courses (2026)
+# Scrimba's JavaScript catalog, mapped without the hype
 
-**Quick answer:** If you’re asking “**Is JavaScript on Scrimba worth my time?**” — yes, if you want **interactive scrims** (you code inside the lesson) instead of passive video, and you’re okay building **real projects** plus doing your own practice outside the browser. This hub maps **order**, **access (Free vs Pro)**, and how JS connects to Scrimba’s paths.
+*Last reviewed: May 2026. ScrimbaGuide may earn a commission when you subscribe through links on this page. The order and the "skip if" notes are independent.*
 
-*Last reviewed: March 2026.*
+**Quick answer.** Start free with **Learn JavaScript** (Per Borgen, 9.4 hrs, 4 built projects). Then add **Advanced JavaScript** with Tom Chant on Pro for depth. Pair with **JavaScript Interview Challenges** when interviews are near. The flagships are strong; the gaps are mostly in modern tooling and TypeScript-adjacent topics.
 
-*Disclosure: ScrimbaGuide may earn a commission when you subscribe through links on this page. Recommendations stay independent—we note where the catalog is thin.*
+Counts and durations on this page come from our [`data/courses.json`](https://github.com/yel-hadd/scrimbaguide.tech/blob/main/data/courses.json) snapshot.
 
-## The problem this hub solves
+A note on instructor names. The task brief lists Bob Ziroll on the JavaScript flagship; the live Scrimba course and our catalog snapshot list **Per Borgen** (Scrimba's CEO) as the Learn JavaScript instructor. We list the actual instructor here.
 
-You don’t need another random “top 50 JS resources” list. You need **one sequence** from “I can’t read an error” to “I can ship small apps and prep for interviews”—and you need to know **what costs Pro** before you pay.
+## Who this page is for
 
-## Why JavaScript on Scrimba is different
+You are picking a JavaScript track on Scrimba and want one ordered map rather than a "top 50 JS resources" list. You want the access (Free vs Pro) flagged before you pay and an honest read on which side quests are worth your time.
 
-**Passive video** lets you mistake watching for learning. **Scrims** force your fingers on the keyboard: you change the code, run it, and fix syntax breaks immediately—which matters for JS, where one typo blocks everything.
+## The recommended order, starting from zero
 
-Scrimba also threads JS through structured paths—[Frontend](/docs/paths/frontend-developer-path), [Fullstack](/docs/paths/fullstack-developer-path), [Backend](/docs/paths/backend-developer-path)—so you’re not guessing what to take next. You’ll still want **personal projects** beyond the platform; this cuts tutorial roulette, not the need to practice.
-
-## Recommended order (flagship path)
-
-### 1. Learn JavaScript — ship real mini-products (Free)
+### 1. Learn JavaScript (Free, Per Borgen, 9.4 hrs)
 
 <CourseCard
   title="Learn JavaScript"
   duration="9.4 hrs"
   difficulty="Beginner"
   access="Free"
-  modules={9}
+  modules={8}
   instructor="Per Borgen"
   href="https://scrimba.com/learn-javascript-c0v?via=u42d4986"
-  description="140+ challenges: counter app, Blackjack, Chrome extension, mobile-style app—typed in the lesson, not copied from a split screen."
+  description="140+ interactive challenges across four built projects: Passenger Counter App, Blackjack, a Chrome Extension, and a mobile-style app. Free and complete."
 />
 
-### 2. Advanced JavaScript — depth before the framework rush (Pro)
+Per Borgen teaches in clear, short scrims and keeps the project tempo high. The course bakes in four small builds rather than a single capstone, which works well if you tend to stall on long projects. It is the strongest free first JS course on the platform.
+
+**Skip this course if** you already wrote JavaScript at work for a year. Open Advanced JavaScript and the [Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript) directly.
+
+### 2. Advanced JavaScript (Pro, Tom Chant, 9.8 hrs)
 
 <CourseCard
   title="Advanced JavaScript"
   duration="9.8 hrs"
   difficulty="Intermediate"
   access="Pro"
-  modules={11}
+  modules={9}
+  instructor="Tom Chant"
   href="https://scrimba.com/advanced-javascript-c03kpi3kss?via=u42d4986"
-  description="Challenge-heavy: methods, async, APIs, objects, symbols, generators—interview- and production-minded reps."
+  description="Tom Chant's challenge-heavy walk through methods, async, APIs, objects, symbols, generators. Interview- and production-minded reps."
 />
 
-### 3. JavaScript Deep Dive — fill gaps over longer hours (Pro)
+Tom Chant is a long-running Scrimba instructor and the course is explicitly challenge-heavy: you fix or finish small pieces rather than watch him type at you. That format is the right fit for the level. Expect to pause and reach for the docs more often than in Learn JavaScript.
+
+**Skip this course if** you have not finished a beginner JS course or shipped a small project. The challenges assume you can already read a stack trace.
+
+### 3. JavaScript Interview Challenges (Pro, 2.3 hrs)
 
 <CourseCard
-  title="JavaScript Deep Dive"
-  duration="Available"
+  title="JavaScript Interview Challenges"
+  duration="2.3 hrs"
   difficulty="Intermediate"
   access="Pro"
-  href="https://scrimba.com/javascript-deep-dive-c0a?via=u42d4986"
-  description="Long-form language spine for self-taught devs who ship tutorials but stumble when code gets weird."
+  href="https://scrimba.com/javascript-interview-challenges-c02c?via=u42d4986"
+  description="Short, targeted challenges in the patterns that show up in technical interviews: closures, scope, prototype chain, debouncing."
 />
 
-## All JavaScript courses (at a glance)
+**Skip this course if** interviews are not on your near calendar. The course is built for prep, not for general fluency.
+
+### 4. The Tricky Parts of JavaScript (Pro, 59 min)
+
+<CourseCard
+  title="The Tricky Parts of JavaScript"
+  duration="59 min"
+  difficulty="Intermediate"
+  access="Pro"
+  href="https://scrimba.com/the-tricky-parts-of-javascript-c0i?via=u42d4986"
+  description="One hour on coercion, hoisting, `this` binding, and the corners of the language that bite working devs."
+/>
+
+**Skip this course if** Advanced JavaScript already cleared up these topics. There is real overlap.
+
+## All JavaScript-tagged courses on Scrimba
+
+The JavaScript category is broad on Scrimba: it picks up frontend tooling, deployment, and JS-adjacent topics. Filtered from `data/courses.json`, here is everything currently tagged.
 
 | Course | Duration | Level | Access |
-|--------|----------|-------|--------|
-| Learn JavaScript | 9.4 hrs | Beginner | Free |
-| Learn Basic JavaScript | Available | Beginner | Pro |
-| Learn Modern JavaScript | Available | Intermediate | Pro |
-| Advanced JavaScript | 9.8 hrs | Intermediate | Pro |
-| JavaScript Deep Dive | Available | Intermediate | Pro |
-| Introduction to ES6+ | Available | Intermediate | Pro |
-| The Tricky Parts of JavaScript | Available | Intermediate | Pro |
-| JavaScript Interview Challenges | Available | Intermediate | Pro |
-| Introduction to Clean Code | Available | Intermediate | Free |
-| Practical Math for Frontend Devs | Available | Intermediate | Free |
-| Introduction to Unit Testing | Available | Intermediate | Free |
-| Learn Regular Expressions | Available | Intermediate | Free |
+|---|---|---|---|
+| [Learn JavaScript](/docs/courses/javascript/learn-javascript) | 9.4 hrs | Beginner | Free |
+| [Advanced JavaScript](/docs/courses/javascript/advanced-javascript) | 9.8 hrs | Intermediate | Pro |
+| [JavaScript Deep Dive](/docs/courses/javascript/javascript-deep-dive) | available | Intermediate | Pro |
+| [Introduction to ES6+](/docs/courses/javascript/es6) | available | Intermediate | Pro |
+| [The Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript) | 59 min | Intermediate | Pro |
+| [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges) | 2.3 hrs | Intermediate | Pro |
+| [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips) | 104 min | Intermediate | Pro |
+| [Introduction to Clean Code](/docs/courses/javascript/clean-code) | 64 min | Intermediate | Pro |
+| [Introduction to Unit Testing](/docs/courses/javascript/unit-testing) | 86 min | Intermediate | Pro |
+| [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms) | 2.5 hrs | Advanced | Pro |
+| [Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search) | 63 min | Advanced | Pro |
+| [Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort) | 64 min | Intermediate | Pro |
+| [Practical Math for Frontend Devs](/docs/courses/javascript/practical-math-for-frontend-developers) | 65 min | Intermediate | Pro |
+| [Intro to Vite](/docs/courses/javascript/vite) | 39 min | Intermediate | Pro |
+| [Intro to Astro](/docs/courses/javascript/astro) | 2.1 hrs | Intermediate | Pro |
+| [Learn Svelte](/docs/courses/javascript/learnsvelte) | 50 min | Intermediate | Pro |
+| [Learn Vue](/docs/courses/javascript/vue) | 96 min | Intermediate | Pro |
+| [Intro to NestJS](/docs/courses/javascript/nestjs) | 83 min | Intermediate | Pro |
+| [Learn Next.js](/docs/courses/javascript/nextjs) | 4.4 hrs | Intermediate | Pro |
+| [Learn Node.js](/docs/courses/javascript/nodejs) | 3.5 hrs | Intermediate | Pro |
+| [Learn Express.js](/docs/courses/javascript/expressjs) | 4 hrs | Intermediate | Pro |
+| [Build a Space Travel Website](/docs/courses/javascript/a-space-travel-website) | 6.8 hrs | Intermediate | Free |
+| [Build & Deploy Your Portfolio](/docs/courses/javascript/and-deploy-your-portfolio) | 2.4 hrs | Intermediate | Free |
+| [Color Tool in Vanilla JS](/docs/courses/javascript/a-color-tool-in-vanilla-javascript) | available | Beginner | Free |
+| [Websites with Figma, HTML, CSS, JS](/docs/courses/javascript/websites-with-figma-html-and-css) | 3.6 hrs | Intermediate | Pro |
+| [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify) | 23 min | Intermediate | Free |
+| [Learn Git and GitHub](/docs/courses/javascript/git-and-github) | 103 min | Intermediate | Pro |
+| [Command Line Basics](/docs/courses/javascript/command-line-basics) | 101 min | Beginner | Pro |
+| [Learn Web Accessibility](/docs/courses/javascript/accessible-web-design) | 96 min | Intermediate | Pro |
+| [Learn Markdown](/docs/courses/javascript/markdown) | 37 min | Intermediate | Free |
+| [Alpine.js](/docs/courses/javascript/alpinejs) | 64 min | Intermediate | Pro |
+| [D3.js](/docs/courses/javascript/d3js) | 29 min | Intermediate | Pro |
+| [Learn Firebase](/docs/courses/javascript/firebase) | 3.4 hrs | Intermediate | Pro |
+| [LangChain.js](/docs/courses/javascript/langchainjs) | available | Intermediate | Pro |
+| [Imba](/docs/courses/javascript/imba) | 2.9 hrs | Intermediate | Free |
 
-## JavaScript inside Scrimba paths
+## ES6+ deep dives, ranked
 
-- [Frontend Developer Path](/docs/paths/frontend-developer-path) — deep JS + UI  
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path) — JS front to back  
-- [Backend Developer Path](/docs/paths/backend-developer-path) — async JS, Node, Express  
+After Learn JavaScript and before Advanced JavaScript, pick one of these. There is real overlap; doing all three is wasteful.
 
-## Who this is for
+- **[Introduction to ES6+](/docs/courses/javascript/es6).** Best if you learned JS pre-2018 and want a refresh on `let`/`const`, arrow functions, destructuring, modules, spread.
+- **[Modern JavaScript](/docs/courses/javascript/modern-javascript).** Best if you want a project-flavored tour over a feature checklist.
+- **[The Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript).** Best if syntax is fine but coercion, `this`, and hoisting still bite.
 
-- Beginners picking a **first language**  
-- Working devs **adding JS** to another stack  
-- Path learners who want **one map** of Scrimba’s JS catalog  
+## Honest "skip this course if" notes for the side quests
 
-**Not ideal if** you want zero JavaScript, or you refuse interactive (in-browser) lessons.
+**JavaScript Deep Dive.** Skip if you completed Advanced JavaScript. Heavy overlap and Deep Dive is older.
 
-## Choose this category if
+**DSA / Binary Search / Merge Sort.** Skip if you are not interview-prepping. A starting nudge, not a replacement for LeetCode.
 
-- You want **length, level, and access** in one place before you subscribe  
-- You’re following paths that depend on JS and need a **sane order**  
-- You want links into **practice** between bigger courses  
+**Frontend Interview Tips.** Skip if you only want code questions. Leans behavioral and interview-format.
 
-## Related pages
+**Unit Testing / Clean Code.** Skip if you already test at work. Friendly intros for first-team self-taught devs.
 
-- [Frontend](/docs/paths/frontend-developer-path) · [Fullstack](/docs/paths/fullstack-developer-path) · [Backend](/docs/paths/backend-developer-path)  
-- [Practice JavaScript arrays](/docs/practice/practice-javascript-arrays) · [Practice API calls](/docs/practice/practice-api-calls)  
-- [React courses](/docs/courses/react/) · [Backend courses](/docs/courses/backend/) · [All courses](/docs/courses/)  
-- [Scrimba pricing](/docs/pricing/)  
+**Intro to Vite (39 min).** Skip unless you are setting up a project this week. Intentionally tiny.
+
+**Astro / Svelte / Vue / NestJS.** Skip unless you chose that framework. They are tours, not bootcamps.
+
+**Space Travel Website / Deploy Your Portfolio.** Skip if Learn JavaScript's four projects already gave you enough reps.
+
+## A note on Bob Ziroll
+
+Bob Ziroll teaches Scrimba's React track, not the JavaScript flagship. Per Borgen teaches Learn JavaScript; Tom Chant teaches Advanced JavaScript. We tried to yt-dlp Bob's recent JavaScript-adjacent content on May 23, 2026; YouTube rate-limited subtitles and flagged the player API as DRM-protected, so no transcript is quoted here. His verified public profile is at [scrimba.com/teachers/bob-ziroll](https://scrimba.com/teachers/bob-ziroll) and [freecodecamp.org/news/author/bobziroll](https://www.freecodecamp.org/news/author/bobziroll/).
+
+## Where Scrimba's JavaScript catalog is thin
+
+Three honest gaps as of May 2026:
+
+1. **No deep TypeScript for JS devs.** Scrimba has one TypeScript course in its own category. No "TypeScript for JavaScript devs" deep dive that picks up where Learn JavaScript leaves off.
+2. **No modern tooling course.** Intro to Vite is 39 minutes. No Webpack, esbuild, Turbopack, or build-debugging content. Self-taught devs hit tooling walls; Scrimba does not help.
+3. **No async-and-concurrency deep dive.** Advanced JavaScript covers async basics. No full course on Promises, async iterators, AbortController, or streams.
+
+If these gaps block your role, pair Scrimba with [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and an async-focused YouTube channel.
+
+<WhyScrimba />
+
+## JavaScript inside the learning paths
+
+- [Frontend Developer Path](/docs/paths/frontend-developer-path) wraps Learn JavaScript and the ES6+ courses into a longer sequence.
+- [Fullstack Developer Path](/docs/paths/fullstack-developer-path) extends the JS track with Node, Express, and Next.js.
+- [Backend Developer Path](/docs/paths/backend-developer-path) focuses on async JS, Node, and Express.
+
+If you want sequencing decided for you, pick a path. If you already know your next step, pick the courses individually.
+
+## Try a scrim before subscribing
+
+If you have not used the Scrimba player before, run the public no-signup demo first. The format is the only thing worth paying for that you cannot get free on YouTube.
+
+<AffiliateLink href="https://scrimba.com/s0v687325e" variant="button">
+  Try a public scrim (no signup)
+</AffiliateLink>
+
+## Related pages on this site
+
+- [Learn JavaScript review](/docs/courses/javascript/learn-javascript) and [Advanced JavaScript review](/docs/courses/javascript/advanced-javascript)
+- [Practice JavaScript arrays](/docs/practice/practice-javascript-arrays) and [practice API calls](/docs/practice/practice-api-calls)
+- [React courses](/docs/courses/react/), [backend courses](/docs/courses/backend/), and [all courses](/docs/courses/)
+- [Frontend Developer Path](/docs/paths/frontend-developer-path) and [Scrimba pricing](/docs/pricing/)
+- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy)
+
+## Sources
+
+1. [Scrimba's Learn JavaScript course page](https://scrimba.com/learn-javascript-c0v) (instructor: Per Borgen, duration, four projects).
+2. [Scrimba's Advanced JavaScript page](https://scrimba.com/advanced-javascript-c03kpi3kss) (instructor: Tom Chant, modules).
+3. [Scrimba's JavaScript Interview Challenges page](https://scrimba.com/javascript-interview-challenges-c02c).
+4. [Per Borgen on LinkedIn](https://www.linkedin.com/in/perborgen/) (Scrimba CEO and Learn JavaScript instructor).
+5. [Bob Ziroll's Scrimba teacher page](https://scrimba.com/teachers/bob-ziroll) (clarifies his React-focused role).
+6. [MDN JavaScript reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript) (modern language surface we benchmark against).
+7. Our [`data/courses.json`](https://github.com/yel-hadd/scrimbaguide.tech/blob/main/data/courses.json) catalog snapshot (counts, durations, access).
 
 <PricingCTA
-  title="Start with free JavaScript on Scrimba"
-  subtitle="Try Learn JavaScript free, then add Pro when you want advanced JS, paths, and the full catalog."
+  title="Add Pro for Advanced JavaScript and interview reps"
+  subtitle="Learn JavaScript is free. Pro unlocks Advanced JS, the interview challenges, and the deep-dive shorts that follow."
 />
