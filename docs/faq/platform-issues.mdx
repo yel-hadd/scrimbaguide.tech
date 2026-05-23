@@ -1,7 +1,7 @@
 ---
-title: "Scrimba Platform Issues & Troubleshooting FAQ"
-description: "Troubleshooting Scrimba platform issues: device compatibility, lesson playback, progress tracking, offline access, captions, and more."
-keywords: [scrimba not working, scrimba problems, scrimba troubleshooting, scrimba offline]
+title: "Scrimba Platform Issues & Troubleshooting (2026)"
+description: "Practical fixes for common Scrimba issues: editor not loading, code freezing the browser, progress not updating, offline access, captions, mobile, and how to contact support."
+keywords: [scrimba not working, scrimba problems, scrimba troubleshooting, scrimba offline, scrimba editor]
 last_update:
   date: 2026-03-30
 ---
@@ -9,56 +9,128 @@ last_update:
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import PricingCTA from '@site/src/components/PricingCTA';
 
-# Scrimba Platform Issues & Troubleshooting
+# Scrimba platform issues and troubleshooting
 
-**Is this for you?** Something **won’t play**, the **editor glitches**, or **progress looks wrong** — you want fixes, not generic advice.
+**Quick answer:** Most platform issues come from one of four things: an old browser tab, a problem extension, an infinite loop in your own code, or a sync delay on progress. Use a recent Chrome or Firefox on a desktop or laptop, refresh the page, clear cache, or open the lesson in an incognito window with extensions off. If your code froze the tab, close it and click reset when you reopen. For anything that persists after those steps, email `help@scrimba.com`. Scrimba is a web-only platform; there is no native mobile app and no offline mode.
 
-**Quick answer:** Use **Chrome on desktop** for the smoothest experience. **Refresh**, **clear cache**, or **disable extensions** when the player misbehaves. **Progress oddities** → **help@scrimba.com**. Sections below mirror common Help Centre topics.
+*Last reviewed: March 2026. Steps below mirror official Scrimba help-centre articles.*
 
-*Last reviewed: 2026-03-30.*
+## Who this page is for
 
+You hit a wall. The lesson does not play, the editor will not save, your progress did not bump, or something else is in the way. This page covers the practical steps that resolve most issues without involving support, and tells you when to escalate.
 
+## Triage in order
 
-<FAQAccordion title="Device & Access" items={[
-  { q: "Is there a native Scrimba mobile app?", a: "No. Scrimba is web-based only. There is no native iOS or Android app. The site works in mobile browsers, but the interactive coding experience is optimized for desktop — you need a keyboard and larger screen for full functionality." },
-  { q: "What devices work with Scrimba?", a: "Scrimba works best on desktop/laptop computers with modern browsers (Chrome, Firefox, Safari, Edge). Mobile and tablet support is limited — the interactive coding features are designed for desktop screens." },
-  { q: "Can I watch courses offline?", a: "No. Scrimba requires an internet connection. The interactive editor needs the server to function. There is no offline mode or downloadable content." },
-  { q: "Can I change the language of the lesson?", a: "Scrimba courses are in English. Some lessons have captions/subtitles, but there's no multi-language support for the actual instruction." },
-  { q: "Do your lessons have captions?", a: "Some lessons include captions/subtitles. Support varies by course. Check individual lessons for caption availability." },
-  { q: "How do I sign in/sign up?", a: "Visit scrimba.com and click Sign In. You can use email/password, Google, or GitHub authentication." },
+1. **Refresh the tab.** A surprising amount of editor weirdness clears with a single reload.
+2. **Hard-reload to bypass cache** (`Ctrl+Shift+R` or `Cmd+Shift+R`).
+3. **Open the lesson in an incognito window** with no extensions. If the problem disappears, an extension or stale cookie is the cause.
+4. **Switch browsers.** Chrome is the most consistent. Firefox is fine. Safari sometimes lags on the interactive editor.
+5. **Check your connection.** Scrimba requires an internet connection at all times; the editor talks to the server constantly.
+6. **Update your browser.** If you are more than a few versions behind, update first before assuming Scrimba is the problem.
+
+If none of that fixes it, email `help@scrimba.com` with the lesson URL, the browser and version, and a screenshot or short video. Specifics shorten the support cycle.
+
+## Device and browser support
+
+- **Desktop or laptop, recent Chrome or Firefox** is the recommended setup. The interactive editor needs a keyboard and a screen big enough to show the lesson and the editor side by side.
+- **Mobile and tablet support is limited.** The site loads on mobile browsers; the interactive coding experience is not really usable. There is no native iOS or Android app.
+- **No offline mode.** The editor needs the server. You cannot download lessons for plane rides.
+
+References: [Mobile and tablet compatibility](https://scrimba.helpscoutdocs.com/article/50-device-compatibility-for-scrimba) · [Can I watch courses offline?](https://scrimba.helpscoutdocs.com/article/75-can-i-watch-courses-offline)
+
+## When the editor will not play or load
+
+1. Refresh; if that fails, hard-reload.
+2. Disable browser extensions, especially ad blockers and privacy extensions that intercept third-party requests.
+3. Open the lesson in incognito with no extensions to confirm the cause.
+4. Try Chrome if you are on something else.
+5. If it still fails on a clean profile, email support with the lesson URL.
+
+Reference: [The editor is not working correctly](https://scrimba.helpscoutdocs.com/article/76-the-lesson-is-not-playing)
+
+## When your code freezes the browser tab
+
+The classic cause is an infinite loop you wrote in JavaScript (`while (true)`, a forgotten recursion base case, a runaway interval). When the tab is unresponsive:
+
+1. Close the tab.
+2. Reopen the lesson.
+3. Click the **reset** button to restore the original code.
+4. Edit again, more carefully, with a sensible break condition.
+
+If a specific lesson reliably freezes even with the original code, that is a content bug; email support with the lesson URL.
+
+Reference: [My code crashes or freezes the browser](https://scrimba.helpscoutdocs.com/article/52-my-code-crashes-or-freezes-the-browser)
+
+## When progress does not update
+
+Progress tracking occasionally lags after a quick session, especially if your network dropped briefly mid-lesson, or if you have multiple tabs open on the same account.
+
+1. Wait a few minutes and refresh.
+2. Make sure you completed the lesson (some lessons require a final action, not just watching).
+3. Reset progress is available per-course from your dashboard if you want a clean run, but it cannot be undone.
+4. If progress is wrong and stays wrong, email `help@scrimba.com` with the course name and which lesson is wrong.
+
+References: [My progress is not correct, how do I fix it?](https://scrimba.helpscoutdocs.com/article/54-my-progress-is-now-correct-how-do-i-fix-it) · [How do I reset my progress?](https://scrimba.helpscoutdocs.com/article/81-how-to-i-reset-my-progress)
+
+## Sign-in trouble
+
+Sign in supports email and password, Google, and GitHub. If you signed up with one method and now log in with another, you may end up in a second account that has no progress. Use the same login method you signed up with. If you cannot remember, search your inbox for emails from Scrimba and check the email address they were sent to.
+
+Reference: [How to sign in / sign up](https://scrimba.helpscoutdocs.com/article/67-sign-in-sign-up)
+
+## Captions and language
+
+- Captions and subtitles are available on some lessons, not all. Support varies by course.
+- Scrimba's instruction language is English only. There is no multi-language audio or translated lessons.
+
+References: [Do your lessons have captions?](https://scrimba.helpscoutdocs.com/article/18-do-you-support-captions-subtitles) · [Can I change the language of the lesson?](https://scrimba.helpscoutdocs.com/article/74-can-i-change-the-language-of-the-lesson)
+
+## Account deletion
+
+Email `help@scrimba.com` and ask for account deletion. Cancel any active subscription first so you do not get billed during the deletion window.
+
+Reference: [How do I delete my account?](https://scrimba.helpscoutdocs.com/article/88-how-do-i-delete-my-account)
+
+## Sources
+
+- [Scrimba Help Centre: device compatibility](https://scrimba.helpscoutdocs.com/article/50-device-compatibility-for-scrimba)
+- [Scrimba Help Centre: editor not working](https://scrimba.helpscoutdocs.com/article/76-the-lesson-is-not-playing)
+- [Scrimba Help Centre: code freezes the browser](https://scrimba.helpscoutdocs.com/article/52-my-code-crashes-or-freezes-the-browser)
+- [Scrimba Help Centre: progress not correct](https://scrimba.helpscoutdocs.com/article/54-my-progress-is-now-correct-how-do-i-fix-it)
+- [Scrimba Help Centre: courses offline](https://scrimba.helpscoutdocs.com/article/75-can-i-watch-courses-offline)
+
+## Related pages
+
+- [FAQ index](/docs/faq/) | [Billing FAQ](/docs/faq/billing)
+- [How scrims work](/docs/faq/how-scrims-work)
+- [Scrimba pricing](/docs/pricing/)
+
+<FAQAccordion title="Device and access" items={[
+  { q: "Is there a native Scrimba mobile app?", a: "No. Scrimba is web-only. The interactive editor needs a keyboard and a desktop-sized screen, so even the mobile browser experience is limited." },
+  { q: "What devices work with Scrimba?", a: "Recent Chrome or Firefox on a desktop or laptop is the recommended setup. Safari works but sometimes lags. Mobile and tablet support is limited.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/50-device-compatibility-for-scrimba" },
+  { q: "Can I watch courses offline?", a: "No. The interactive editor needs a live server connection. There is no offline mode and no downloadable lessons.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/75-can-i-watch-courses-offline" },
+  { q: "Do lessons have captions?", a: "Some lessons include captions; coverage varies by course. Check the individual lesson for caption availability.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/18-do-you-support-captions-subtitles" },
+  { q: "Can I change the language of the lesson?", a: "Scrimba's instruction is English only. There is no translated audio or alternate-language version of the lessons.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/74-can-i-change-the-language-of-the-lesson" },
+  { q: "How do I sign in or sign up?", a: "Go to scrimba.com and click Sign In. You can use email and password, Google, or GitHub. Use the same method you signed up with, or you may end up in a second account.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/67-sign-in-sign-up" },
 ]} />
 
-<FAQAccordion emitSchema={false} title="Lessons & Progress" items={[
-  { q: "The editor is not working correctly", a: "Try refreshing the page, clearing your browser cache, or switching to Chrome. Disable browser extensions that might interfere. If the issue persists, contact help@scrimba.com." },
-  { q: "My code crashes or freezes the browser", a: "This usually happens with infinite loops. Close the tab, re-open the lesson, and click the reset button to restore the original code." },
-  { q: "My progress is not correct, how do I fix it?", a: "Contact Scrimba support at help@scrimba.com. Progress issues are occasionally caused by browser sync problems." },
-  { q: "How do I reset my progress?", a: "You can reset progress for individual courses from your dashboard. This cannot be undone." },
-  { q: "Can I download the code in a scrim?", a: "Yes. You can copy code from any scrim. Some lessons also allow you to fork the scrim to your own account." },
-  { q: "How do I copy a scrim?", a: "Use the fork/copy button in the lesson interface to create your own copy of the scrim that you can edit freely." },
+<FAQAccordion emitSchema={false} title="Lessons and progress" items={[
+  { q: "The editor is not playing or loading", a: "Refresh, hard-reload (Ctrl+Shift+R), disable extensions, then try Chrome in incognito. If it still fails on a clean profile, email help@scrimba.com with the lesson URL.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/76-the-lesson-is-not-playing" },
+  { q: "My code froze the browser tab", a: "Usually an infinite loop. Close the tab, reopen the lesson, and click reset to restore the original code.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/52-my-code-crashes-or-freezes-the-browser" },
+  { q: "My progress is not correct, how do I fix it?", a: "Refresh first; sync sometimes lags. If it stays wrong, email help@scrimba.com with the course name and which lesson is wrong.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/54-my-progress-is-now-correct-how-do-i-fix-it" },
+  { q: "How do I reset my progress?", a: "You can reset per-course from your dashboard. The reset cannot be undone.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/81-how-to-i-reset-my-progress" },
+  { q: "Can I download or copy the code in a scrim?", a: "Yes. Copy the code, or use the fork option (where available) to keep a copy of the scrim on your account." },
 ]} />
 
-<FAQAccordion emitSchema={false} title="Courses & Content" items={[
-  { q: "Where can I find free courses?", a: "Browse the Scrimba home page and look for courses labeled 'Community' — these are free. We also have a list of the best free Scrimba courses." },
-  { q: "Where can I find upcoming courses?", a: "Check the Scrimba roadmap page for planned courses and features." },
-  { q: "What is Instant Feedback?", a: "Instant Feedback is a feature in some lessons that checks your code solution against expected results and gives immediate feedback on whether it's correct." },
-  { q: "How do free challenges work?", a: "Free users can complete up to 10 interactive challenges total across the platform. Pro users get unlimited challenges." },
-  { q: "I see red error lines in my TypeScript code", a: "TypeScript error highlighting in the Scrimba editor is normal — it shows type errors in your code. Fix the highlighted issues or check the lesson instructions for guidance." },
-  { q: "How do I delete my account?", a: "Contact help@scrimba.com to request account deletion. Make sure to cancel any active subscription first." },
+<FAQAccordion emitSchema={false} title="Account and content" items={[
+  { q: "Where do I find free courses?", a: "Look for the Community label on the Scrimba home page. We also keep a curated list of the best free Scrimba courses." },
+  { q: "How do free challenges work?", a: "Free users can complete up to 10 interactive challenges total across the platform. Pro users get unlimited challenges.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/69-what-are-free-challenges-for-free-users" },
+  { q: "What is Instant Feedback?", a: "Instant Feedback checks your code against the expected solution and tells you immediately whether it is correct. It is available on some lessons.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/84-what-is-instant-feedback" },
+  { q: "I see red error lines in my TypeScript code", a: "That is the TypeScript compiler doing its job. Read the highlighted error and the lesson instructions to fix the type issue." },
+  { q: "How do I delete my account?", a: "Email help@scrimba.com and request account deletion. Cancel any active subscription first so you are not billed during the deletion window.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/88-how-do-i-delete-my-account" },
 ]} />
-
-## Who This Is For
-
-Best for: learners experiencing playback, editor, or account issues who need practical troubleshooting steps to continue learning.
-
-
-## Related Pages
-
-- [FAQ Index](/docs/faq/) | [Billing FAQ](/docs/faq/billing)
-- [Scrimba Pricing](/docs/pricing/)
-
-Source: [Scrimba Help Centre](https://scrimba.helpscoutdocs.com)
 
 <PricingCTA
-  title="Start learning on Scrimba"
-  subtitle="Interactive coding in your browser — no setup, no downloads, no excuses."
+  title="Once it is working, go finish the path"
+  subtitle="Interactive coding in the browser, no setup. When the platform behaves, the format is the point."
 />
