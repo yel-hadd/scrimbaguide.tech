@@ -23,8 +23,10 @@ interface PricingCTAProps {
   /** Use 'free' to link to free courses/signup instead of Pro. Affiliate code still applies. */
   ctaType?: 'pro' | 'free';
   showDiscountNote?: boolean;
-  /** Analytics location tag forwarded to AffiliateLink (e.g. "page-bottom:scrimba-vs-odin"). */
+  /** GA cta_location label forwarded to AffiliateLink (e.g. "pricing-final", "comparison-inline"). */
   location?: string;
+  /** When true, renders "7-day refund, cancel anytime" microcopy below the button. */
+  riskReversal?: boolean;
 }
 
 export default function PricingCTA({
@@ -36,6 +38,7 @@ export default function PricingCTA({
   ctaType = 'pro',
   showDiscountNote = true,
   location,
+  riskReversal = false,
 }: PricingCTAProps): React.ReactElement {
   const isFree = ctaType === 'free';
   const defaultButtonText = isFree ? 'Try Scrimba Free' : 'Claim 20% Off Scrimba Pro';
@@ -63,6 +66,9 @@ export default function PricingCTA({
       >
         {buttonText ?? defaultButtonText}
       </AffiliateLink>
+      {riskReversal && !isFree && (
+        <p className="pricing-cta__risk-reversal">7-day refund, cancel anytime.</p>
+      )}
     </div>
   );
 }
