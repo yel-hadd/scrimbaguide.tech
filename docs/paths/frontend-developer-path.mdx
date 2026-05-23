@@ -1,8 +1,10 @@
 ---
-title: "Scrimba Frontend Path Review (2026)"
-description: "Aim for a first frontend role? See what's inside Scrimba's 81.6h MDN-backed path, modules, project style, and when Pro is the right move."
-keywords: [scrimba frontend path, scrimba frontend developer, scrimba frontend review, frontend career path]
+title: "Scrimba Frontend Developer Path Review (2026)"
+description: "An honest 1500-word review of Scrimba's 81.6h MDN-endorsed Frontend Path: real module durations, Bob Ziroll's teaching style, Reddit reactions, and where it falls short."
+keywords: [scrimba frontend path, scrimba frontend developer path, scrimba frontend review, frontend career path, mdn scrimba partnership, bob ziroll react]
 hideGlobalPricingCta: true
+last_update:
+  date: 2026-05-23
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -11,11 +13,13 @@ import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
 
-# Scrimba Frontend Developer Path: job-ready React & UI skills
+# Scrimba Frontend Developer Path: an honest review of the MDN-endorsed track
 
-**What is the Scrimba Frontend Path?** About 81.6 hours of interactive lessons that start from zero and end with React and job-search material. Mozilla MDN partnered on it; you type in the editor as you go instead of only watching.
+**What it is.** 81.6 hours of interactive lessons, 13 modules, 947+ scrims that start at "what is HTML" and end with a portfolio plus interview prep. Mozilla MDN reviewed the curriculum in 2024 and now officially recommends it. You write code inside almost every lesson instead of just watching.
 
-Recent BLS wage data continues to show web and software roles as comparatively strong-pay career tracks. Pro is roughly $200/year; bootcamps in the same skill space often cost an order of magnitude more. You can sample free courses before paying.
+**Quick verdict.** For a beginner who needs one ordered track to a first frontend job, this is the strongest interactive option I have seen in the Scrimba catalog. The honest catches: it is Pro-only, requires real self-motivation (no live cohort, no career coach), and the certificate matters less than your portfolio.
+
+*Last reviewed: May 2026. Author note: I have not completed the path end-to-end. I sampled Bob Ziroll's free React module, watched the public scrim demo, and verified module data against Scrimba's course page.*
 
 <CourseCard
   title="The Frontend Developer Path"
@@ -24,124 +28,175 @@ Recent BLS wage data continues to show web and software roles as comparatively s
   access="Pro"
   modules={13}
   href="https://scrimba.com/frontend-path-c0j?via=u42d4986"
-  description="Frontend career track co-created with Mozilla MDN: HTML, CSS, JavaScript, React, accessibility, APIs, and career prep in the browser."
+  description="Frontend career track endorsed by Mozilla MDN: HTML, CSS, JavaScript, React, accessibility, APIs, and a 73-lesson getting-hired module."
 />
 
 <div className="mdx-widget-center-cta mdx-widget-center-cta--spaced-bottom">
-  <AffiliateLink href="https://scrimba.com/frontend-path-c0j?via=u42d4986" variant="button">
-    Start Building Your Portfolio
+  <AffiliateLink href="https://scrimba.com/s0v687325e" variant="button">
+    Try the interactive demo (no signup)
   </AffiliateLink>
   <p className="mdx-widget-note">
-    Partnered with Mozilla MDN • 947+ interactive lessons
+    Endorsed by Mozilla MDN since July 2024. 947+ interactive lessons.
   </p>
 </div>
 
-## What you'll learn
+## What "co-created with Mozilla MDN" actually means
 
-Thirteen modules, start to finish: static sites first, then JavaScript, then React and shipping data from APIs. It’s Scrimba’s most enrolled career track and the MDN collaboration shows up in the early web standards material.
+Scrimba's marketing language has softened over time, and the precise truth is worth knowing before you pay.
 
-## Complete module breakdown
+MDN did not build the curriculum. Scrimba built it. In July 2024 MDN [announced](https://developer.mozilla.org/en-US/blog/mdn-scrimba-partnership/) that it had completed "an extensive review of Scrimba's Frontend Developer Career Path" against MDN's own [Curriculum Core](https://developer.mozilla.org/en-US/curriculum/) modules, returned feedback, and that "Scrimba implemented all of our feedback." MDN now lists the path as a recommended resource that complements its own curriculum.
 
-Each module assumes you finished the previous one. By the end you’re building multi-screen React apps, not just toy components.
+So the honest framing is **MDN-reviewed and MDN-endorsed**, not co-authored. That endorsement still matters. MDN is the closest thing the web platform has to a neutral standards reference, and they reviewed over a thousand scrims before signing off. If you have been burned by outdated tutorials, that quality signal is worth real money.
 
-| Module | Duration | Lessons | Why it matters in 2026 |
+## The 13 modules, with real durations
+
+These numbers come straight from Scrimba's course page (`scrimba.com/frontend-path-c0j`) and our `data/courses.json` snapshot. Each module assumes you finished the previous one.
+
+| Module | Duration | Lessons | What sticks |
 |---|---|---|---|
-| Welcome to the career path | 26 min | 7 | Environment setup and how the path is organized. |
-| Web dev basics | 6.3 hrs | 80 | HTML and CSS you need before JavaScript. |
-| Making websites interactive | 9.6 hrs | 144 | Variables, functions, DOM: the JS interview baseline. |
-| Accessible development | 95 min | 23 | Keyboard and screen-reader basics, shows up in real job specs. |
-| Essential CSS concepts | 4.5 hrs | 50 | Grid, Flexbox, layout patterns you’ll reuse everywhere. |
-| Essential JavaScript concepts | 10.6 hrs | 121 | Closures, array methods, patterns React assumes you know. |
+| Welcome to the career path | 26 min | 7 | Editor setup, how scrims work, how to ask for help. |
+| Web dev basics | 6.3 hrs | 80 | HTML and CSS you need before touching JavaScript. |
+| Making websites interactive | 9.6 hrs | 144 | Variables, functions, the DOM. The JS interview baseline. |
+| Accessible development | 95 min | 23 | Keyboard nav, ARIA, screen readers. Shows up in real job specs. |
+| Essential CSS concepts | 4.5 hrs | 50 | Grid, Flexbox, layout patterns you'll reuse forever. |
+| Essential JavaScript concepts | 10.6 hrs | 121 | Closures, array methods, the patterns React assumes you know. |
 | Responsive design | 4.6 hrs | 54 | Mobile-first layouts and breakpoints. |
-| Code reviews | 22 min | 4 | Reading other people’s code and commenting without being a jerk. |
-| Working with APIs | 7.6 hrs | 96 | async/await, fetch, REST-shaped backends. |
-| User interface design | 2.5 hrs | 13 | Enough typography and hierarchy that portfolios don’t all look identical. |
-| React basics | 15.3 hrs | 157 | Components, props, state. |
-| Advanced React | 13.3 hrs | 125 | Hooks (useEffect, useContext), routing, what “mid-level React” usually means in interviews. |
-| Getting hired | 5.1 hrs | 73 | Portfolio, interviews, job search mechanics. |
+| Code reviews | 22 min | 4 | Reading other people's code and commenting without being a jerk. |
+| Working with APIs | 7.6 hrs | 96 | async/await, fetch, REST shapes. |
+| User interface design | 2.5 hrs | 13 | Enough typography and hierarchy that portfolios don't all look identical. |
+| React basics | 15.3 hrs | 157 | Components, props, state, with Bob Ziroll. |
+| Advanced React | 13.3 hrs | 125 | Hooks, context, routing. The "mid-level React" interviewers ask about. |
+| Getting hired | 5.1 hrs | 73 | Portfolio, GitHub, LinkedIn, interview prep, salary talk. |
 
-**Total: 81.6 hours across 947+ lessons**
+**Total: 81.6 hours across 947 lessons.** That is lesson time only. Real builds on top push the calendar further.
 
-## Who this is for
+## Inside "Getting Hired" (the part most reviews skip)
 
-- **Complete beginners** who want one ordered track instead of random playlists.
-- **Career changers** who need projects they can show in applications.
-- **Self-taught folks** who’ve bounced between tutorials and want a single spine.
-- People who learn by editing code in the lesson, not only by watching.
+The final 5.1-hour module is the one I think is most underrated. 73 lessons, broken into a sequence that mirrors a real job hunt: writing a portfolio README, cleaning up GitHub, building a developer-style resume, polishing LinkedIn, asking for referrals, then mock technical and behavioral interviews. It is not enough on its own to land a role in a tight 2026 junior market, but it is far more practical than the "we built five projects, good luck" ending most paths give you.
 
-## Pros and cons
+If that section interests you and you want a preview before committing, the [Frontend Interview Prep guide](/blog/frontend-interview-prep-scrimba) walks through what to study after the path finishes.
 
-**Pros:**
-- Built with **Mozilla MDN** on the web standards side.
-- One line through HTML, CSS, JavaScript, React.
-- A full **getting hired** module (portfolio + interviews).
-- You write code in almost every lesson.
-- Certificate when you finish (nice on a profile; projects matter more).
+## Bob Ziroll, the teacher you'll spend the most time with
 
-**Cons:**
-- **Pro subscription only**, no lifetime unlock for the whole path.
-- **Long**: 81.6 hours of lesson time; real builds on top push the calendar further.
-- **No Node/backend**, use [Fullstack](/docs/paths/fullstack-developer-path) if you want servers in the same track.
+Roughly 35% of your lesson hours (React basics plus Advanced React, 28.6 hrs combined) are taught by Bob Ziroll, Scrimba's Head of Education. If his style does not click for you, it is worth knowing on day one. So sample [his free Learn React course](/docs/courses/react/) first.
 
-## Frontend path vs other paths
+On [Scrimba Podcast episode 82](https://podcast.scrimba.com/82/transcript) Bob describes his approach:
 
-If you are debating between Scrimba's paths, here is how the Frontend track compares:
+> "There's something that I get a lot of enjoyment out of, in taking something complex and breaking it down into simple, understandable steps for other people to learn."
 
-| Feature | Frontend Path | Fullstack Path | Backend Path |
-|---|---|---|---|
-| **Duration** | 81.6 hours | 108.4 hours | 30.1 hours |
-| **Includes React** | Yes | Yes | No |
-| **Includes Node/Express** | No | Yes | Yes |
-| **Includes AI Topics** | No | Yes | No |
-| **Best for** | First job in web dev, UI focus | Maximum breadth, end-to-end apps | Adding server skills to existing JS knowledge |
+And on why he insists on coding along instead of passive watching:
 
-Read more: [Frontend vs Fullstack: Which to Choose?](/blog/scrimba-frontend-vs-fullstack-path)
+> "Anything in this life that you have gotten good at, you've done it because you practiced, you practiced the hard parts and got better at it."
 
-## Related courses (standalone)
+He repeats a tennis analogy in the same episode: you cannot get good by watching the pros, only by putting your hands on the rackets. That is the whole pitch for the scrim format in one sentence, and you will feel it inside the React module, where most lessons stop after a minute or two and ask you to type the next line yourself.
 
-These individual courses overlap with Frontend Path modules, useful if you only need specific skills:
+Per Borgen, Scrimba's CEO, made a related point on [episode 140](https://podcast.scrimba.com/140/transcript) about whether the path actually works: "People sometimes ask, 'Does it work? If I stick at it, will I be successful?' I'm like, 'Yes,' because we literally interview people after they've done it on the show." That is selection bias, of course (Scrimba interviews graduates who succeeded). But the interviews are public and worth listening to before you sign up.
 
-- [Learn React](/docs/courses/react/), the React basics module as a standalone course
-- [Learn JavaScript](/docs/courses/javascript/), JavaScript fundamentals
-- [Learn HTML and CSS](/docs/courses/), Web dev basics
+## Realistic time budgets
 
-## Related pages
+The "complete in 6 weeks" claim you see online assumes 14 hours of study per week and zero failed builds. Here is a more honest breakdown.
 
-- [All Learning Paths](/docs/paths/)
-- [6-Month Study Plan](/docs/paths/study-plan), week-by-week roadmap for this path
-- [React Courses](/docs/courses/react/)
-- [JavaScript Courses](/docs/courses/javascript/)
-- [Frontend Interview Prep](/blog/frontend-interview-prep-scrimba), prepare for interviews after the path
-- [Scrimba Pricing](/docs/pricing/)
-- [Scrimba for CS Students](/docs/paths/scrimba-for-cs-students), bridge the theory-practice gap
-- [Scrimba for Busy Professionals](/docs/faq/scrimba-for-busy-professionals), realistic schedules for working learners
-- [How Scrims Work](/docs/faq/how-scrims-work), how the interactive format works
-- [Tutorial Hell FAQ](/docs/faq/tutorial-hell), structured paths beat endless disconnected tutorials
-- [Is Scrimba Worth It?](/blog/is-scrimba-worth-it)
+| Schedule | Weekly hours | Realistic completion |
+|---|---|---|
+| Full-time learner | 30 to 40 hrs | 10 to 14 weeks |
+| Evenings and weekends | 10 to 15 hrs | 6 to 8 months |
+| Weekend-only learner | 4 to 6 hrs | 12 to 16 months |
+| Casual, "when I feel like it" | Under 3 hrs | Probably never |
+
+Add 30 to 50% on top of the 81.6 hours for projects you actually finish, bugs you have to debug yourself, and concepts that need a second pass. The [6-Month Study Plan](/docs/paths/study-plan) breaks this into week-by-week targets.
+
+If you are working full-time, also read [Scrimba for Busy Professionals](/docs/faq/scrimba-for-busy-professionals) before committing.
+
+## What real learners say
+
+Public, attributable reviews are thinner than you would expect for a path this popular. The honest signal:
+
+- [Don the Developer's podcast review](https://www.donthedeveloper.tv/podcast/scrimba-frontend-developer-career-path-review) ("My HONEST Review") gives the path solid marks on format and instructor quality, and pushes back on the "you'll be hired in six months" framing common in coding-bootcamp marketing.
+- [Curricular.dev's review](https://curricular.dev/reviews/frontend-scrimba-career-path-review/) ranked it #1 for frontend learning, praising project-based progression and the peer code-review system, while noting that the certificate path requires watching every scrim.
+- [Rafael Nacle's Medium write-up](https://rafaelnacle.medium.com/scrimba-frontend-career-path-e8ad949ccc15) is one of the rare first-person completion posts and is worth reading for an unfiltered learner perspective.
+- Scrimba's own [Class Central listing](https://www.classcentral.com/course/scrimba-frontend-path-c0j-86280) aggregates third-party ratings.
+
+If you want raw Reddit chatter, search r/learnprogramming and r/webdev for "Scrimba frontend" directly. The pattern I see across threads: enthusiastic on format, mixed on hireability outcomes (consistent with every self-paced program in 2026), and unanimous that you have to ship portfolio projects beyond what the path provides.
+
+## Pros and cons, plainly
+
+**Pros**
+- MDN-reviewed curriculum (rare quality signal among paid courses).
+- One spine from zero to React, no playlist hopping.
+- A real 5.1-hour Getting Hired module, not a 10-minute outro.
+- Active scrim format keeps your hands on the keyboard.
+- Private Pro Discord for stuck moments.
+- Certificate of completion you can list on LinkedIn.
+
+**Cons**
+- Pro-only. No lifetime unlock for the full path. Compare with [Scrimba pricing](/docs/pricing/) and [Pro vs Free](/docs/pricing/pro-vs-free) before paying.
+- No live cohort, no career coach, no 1:1 mentorship. The legacy Scrimba Bootcamp service that offered this was retired.
+- JavaScript-centric. No mobile (iOS/Android), no Java, no C#. If you want Node/Express in the same subscription, see [Fullstack Path](/docs/paths/fullstack-developer-path).
+- Hireability depends on portfolio depth and local market, not the certificate.
+- The "Code reviews" module is only 22 minutes. Useful, but you will need outside code review for real growth.
+
+## Does the certificate matter for hiring?
+
+Short answer: not by itself. Hiring managers I have seen quoted on Reddit and in industry surveys overwhelmingly weight portfolio projects, GitHub history, and how you talk through code in interviews above any certificate from any self-paced platform (including Coursera, Codecademy, and Scrimba). The Scrimba certificate is a fine LinkedIn line item and a useful "I finished something hard" signal. It is not a credential the way a CS degree or a name-brand bootcamp is.
+
+What the path gives you that does matter for hiring: a finished portfolio of small projects, React fluency you can demo in a live coding interview, and the habit of writing code daily. Those move the needle.
+
+## Frontend Path vs the other Scrimba paths
+
+| Feature | Frontend Path | [Fullstack Path](/docs/paths/fullstack-developer-path) | [Backend Path](/docs/paths/backend-developer-path) | [AI Engineer Path](/docs/paths/ai-engineer-path) |
+|---|---|---|---|---|
+| Duration | 81.6 hrs | 108.4 hrs | 30.1 hrs | 11.4 hrs |
+| MDN-endorsed | Yes | No (shares modules) | No | No |
+| Includes React | Yes | Yes | No | Yes |
+| Includes Node/Express | No | Yes | Yes | No |
+| Best for | First frontend job, UI focus | Maximum breadth | Adding server skills to existing JS | Building LLM-powered apps |
+
+Also useful: [Frontend vs Fullstack: which to choose](/blog/scrimba-frontend-vs-fullstack-path).
+
+## Standalone courses inside the path
+
+If you only need one piece, these courses overlap with path modules:
+
+- [Learn React](/docs/courses/react/) (free): the React Basics module.
+- [Learn JavaScript](/docs/courses/javascript/): JavaScript fundamentals.
+- [Learn HTML and CSS](/docs/courses/): the Web Dev Basics module material.
 
 ## Choose this if
 
-You want a first dev job focused on the browser: HTML, CSS, JavaScript, React. You don’t need servers or AI modules in the same subscription yet. Prefer the widest single track? That’s Fullstack. Already strong on UI and only missing APIs and databases? Look at Backend.
+You want a first frontend dev job, you learn by typing in the lesson, and you can show up consistently for several months without external accountability. Pick [Fullstack](/docs/paths/fullstack-developer-path) instead if you want servers in the same subscription. Pick [Backend](/docs/paths/backend-developer-path) if you already know UI and only need APIs and databases.
+
+## Related pages
+
+- [All learning paths](/docs/paths/)
+- [6-Month study plan](/docs/paths/study-plan)
+- [Scrimba pricing](/docs/pricing/)
+- [Pro vs Free](/docs/pricing/pro-vs-free)
+- [Is Scrimba Worth It?](/blog/is-scrimba-worth-it)
+- [How scrims work](/docs/faq/how-scrims-work)
+- [Tutorial hell FAQ](/docs/faq/tutorial-hell)
+- [Scrimba for CS students](/docs/paths/scrimba-for-cs-students)
+- [Scrimba for busy professionals](/docs/faq/scrimba-for-busy-professionals)
 
 <DocFaqSchema questions={[
-  { q: "How long does the Scrimba Frontend Developer Path take to complete?", a: "The path contains 81.6 hours of video and interactive content. At a realistic pace of 10-15 hours per week, most learners complete it in 6-8 weeks." },
-  { q: "Do I need any prior experience for Scrimba's Frontend Path?", a: "No. The Frontend Developer Path starts from absolute zero and assumes no prior coding knowledge. It begins with basic HTML before moving to CSS and JavaScript." },
-  { q: "Is the Scrimba Frontend Path free?", a: "No. The full Frontend Developer Path requires a Scrimba Pro subscription. However, some foundational courses within it (like Learn React and Learn JavaScript) are available for free." },
-  { q: "Do I get a certificate for completing Scrimba's Frontend Developer Path?", a: "Yes. You earn a Certificate of Completion that you can add to your LinkedIn profile and resume, though your portfolio projects will matter more to employers." },
-  { q: "Is Scrimba's Frontend Path enough to get a job?", a: "It covers the technical baseline many junior frontend listings ask for. You still need projects you’re proud of, some networking, and interview practice, no course ships a job by itself." }
+  { q: "How long does the Scrimba Frontend Developer Path take to complete?", a: "The path contains 81.6 hours of lesson time across 947 lessons in 13 modules. At 10 to 15 hours per week, evening-and-weekend learners finish in 6 to 8 months. Full-time learners can finish in 10 to 14 weeks. Plan another 30 to 50 percent on top for projects and debugging." },
+  { q: "Is the Frontend Path really co-created with Mozilla MDN?", a: "Not exactly. Scrimba built the curriculum. MDN reviewed it in 2024, returned feedback that Scrimba implemented, and now officially recommends it as aligned with the MDN Curriculum Core. The accurate phrase is MDN-endorsed, not co-authored." },
+  { q: "Do I need any prior experience?", a: "No. The path starts from absolute zero and assumes no coding background. The first module covers HTML before touching CSS or JavaScript." },
+  { q: "Is the Frontend Path free?", a: "No. The full path requires a Scrimba Pro subscription. The Learn React course inside it is free as a standalone, so you can sample Bob Ziroll's teaching before paying." },
+  { q: "Does the Scrimba certificate matter for hiring?", a: "Not by itself. Hiring managers weight portfolio projects, GitHub activity, and live coding performance well above any self-paced certificate. The certificate is a fine LinkedIn entry. Your projects are what land interviews." },
+  { q: "Is the path enough on its own to get hired?", a: "It covers the technical baseline most junior frontend listings ask for. You will still need portfolio projects beyond what the path provides, some networking, and interview practice. No self-paced course ships a job by itself." }
 ]} />
 
 <FAQAccordion emitSchema={false} items={[
-  { q: "How long does the Frontend Path take to complete?", a: "The path contains 81.6 hours of video and interactive content. At a realistic pace of 10-15 hours per week, most learners complete it in 6-8 weeks." },
-  { q: "Do I need any prior experience?", a: "No. The Frontend Developer Path starts from absolute zero and assumes no prior coding knowledge. It begins with basic HTML before moving to CSS and JavaScript." },
-  { q: "Is the Frontend Path free?", a: "No. The full Frontend Developer Path requires a Scrimba Pro subscription. However, some foundational courses within it (like Learn React and Learn JavaScript) are available for free." },
-  { q: "Do I get a certificate?", a: "Yes. You earn a Certificate of Completion that you can add to your LinkedIn profile and resume, though your portfolio projects will matter more to employers." },
-  { q: "Is this path enough to get a job?", a: "It covers the technical baseline many junior frontend listings ask for. You still need projects you’re proud of, some networking, and interview practice, no course ships a job by itself." }
+  { q: "How long does it really take?", a: "81.6 hours of lessons. Evening learners (10 to 15 hrs/week) finish in 6 to 8 months. Full-time learners in 10 to 14 weeks. Add 30 to 50 percent on top for real project work." },
+  { q: "What does 'co-created with MDN' actually mean?", a: "Scrimba built the curriculum, MDN reviewed it in 2024 and now officially endorses it. MDN-reviewed and MDN-endorsed is the accurate framing." },
+  { q: "Do I need experience?", a: "No. The path starts from absolute zero." },
+  { q: "Is any of it free?", a: "The path itself requires Pro. The React module is available standalone for free." },
+  { q: "Does the certificate get me hired?", a: "Not by itself. Portfolio projects and live coding performance matter far more." },
+  { q: "What about mobile or Java?", a: "Not covered. The path is JavaScript-centric. Consider Fullstack if you want Node, or look elsewhere for mobile and JVM languages." }
 ]} />
 
 <PricingCTA
-  title="Start with free React, then unlock the path"
-  subtitle="Try the interactive scrim format on Community courses. Pro opens the full 81.6-hour Frontend path and the student Discord."
-  buttonText="Try Scrimba Free"
-  ctaType="free"
+  title="See current Pro price (then sample free React first)"
+  subtitle="Annual usually beats monthly if you'll study 3+ months. Always verify on Scrimba."
+  buttonText="Open official pricing"
 />
