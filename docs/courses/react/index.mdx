@@ -1,36 +1,37 @@
 ---
-title: "Best Scrimba React Courses (2026): Complete Guide"
-description: "All 12 React courses on Scrimba ranked and reviewed. From beginner Learn React to Advanced React, React 19, Router, and interview prep."
-keywords: [scrimba react course, best react course, learn react scrimba, scrimba react review]
+title: "Best Scrimba React Courses (2026): The Honest Catalog Map"
+description: "All 12 Scrimba React courses ranked: Bob Ziroll's free Learn React (15 hrs), Advanced React, Router, interview prep, plus where the catalog is thin."
+keywords: [scrimba react course, best react course, learn react scrimba, bob ziroll react, scrimba react review]
 slug: /courses/react
+last_update:
+  date: 2026-05-23
 hideGlobalPricingCta: true
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
-
+import AffiliateLink from '@site/src/components/AffiliateLink';
 import WhyScrimba from '@site/src/components/WhyScrimba';
 
-# Best Scrimba React courses (2026)
+# Scrimba's React catalog, mapped without the marketing fog
 
-**For you if** you want **one map** of Scrimba’s React lineup,**free** [Learn React](/docs/courses/react/learn-react) (~15 hrs, Bob Ziroll) first, then **Pro** adds Advanced React, Router, challenges, games, Styled Components, interview prep, and more. **Solves** “what order?” and “where does free end?” without opening twelve marketing pages.
+*Last reviewed: May 2026. We may earn a commission if you join Scrimba through links on this page; the order and the "skip if" notes are independent.*
 
-Scrimba lists **12 React-focused courses**, a deep catalog in **one interactive player** (you type in the scrim, not only watch). That consistency matters next to scattered YouTube playlists.
+**Quick answer.** If you are starting from zero, run free **Learn React** (Bob Ziroll, 15.1 hrs) first, then add **Advanced React** and **React Router** on Pro. Everything else is a side quest. The catalog is strong on fundamentals and weak on framework-meta topics like server components and Vite/Webpack tooling. We will say so where it matters.
 
-## Why use this index
+Scrimba currently ships 12 React-tagged courses. Counts and durations on this page come straight from our [`data/courses.json`](https://github.com/yel-hadd/scrimbaguide.tech/blob/main/data/courses.json) snapshot, not from upstream marketing copy.
 
-Learners skip fundamentals and stall on Advanced React, or buy Pro without realizing **Router** is its own course.
+## Who this page is for
 
-We show **hours**, **level**, and **Free vs Pro** in one table and a **recommended order** so you pick a track, then open individual reviews for prerequisites and projects.
+You are picking your next React module on Scrimba and you do not want to open twelve marketing tabs. You want one ordered map, the honest skip notes, and a clear view of what Scrimba does not cover.
 
-## Who is this for?
+If you have already finished Learn React and you only need one specific deep dive, jump straight to that course page in the table below instead.
 
-Career changers and beginners who want a single source of truth for Scrimba React options, plus intermediate devs picking the next Pro module. Helpful if you follow the Frontend or Fullstack paths and want to see how React courses line up. Less useful if you already finished Learn React and only need one specific deep dive (open that course's page directly).
+## The recommended order, starting from zero
 
+The path most learners do best with is short. Three Pro courses plus one free intro will cover what teams ship in 2026 React codebases.
 
-## Recommended Learning Order
-
-### 1. Learn React (Free)
+### 1. Learn React (Free, Bob Ziroll, 15.1 hrs)
 
 <CourseCard
   title="Learn React"
@@ -38,26 +39,30 @@ Career changers and beginners who want a single source of truth for Scrimba Reac
   difficulty="Intermediate"
   access="Free"
   modules={6}
-  lessons={157}
   instructor="Bob Ziroll"
   href="https://scrimba.com/learn-react-c0e?via=u42d4986"
-  description="The ideal starting point for learning modern React. Covers components, state, hooks, side effects, and two capstone projects. Created in partnership with MDN."
+  description="The flagship modern React course on Scrimba. Components, props, state, side effects, hooks, and two capstone projects (Tenzies, Assembly: Endgame). Built with MDN."
 />
 
-### 2. Advanced React (Pro)
+Bob Ziroll has been Scrimba's Director of Education since 2018 and teaches React on Scrimba's official channel and on freeCodeCamp's YouTube ([Scrimba teacher page](https://scrimba.com/teachers/bob-ziroll), [freeCodeCamp profile](https://www.freecodecamp.org/news/author/bobziroll/)). His teaching style is patient, conversational, and project-anchored. He explains the "why" before he types the "what," which is unusual in tutorial land where most instructors race to the keyboard. The course finishes on two real apps you can put on a portfolio.
+
+**Skip this course if** you already wrote React professionally and you only need a refresher on hooks. Open the React docs and Advanced React directly instead.
+
+### 2. Advanced React (Pro, Bob Ziroll, 13.2 hrs)
 
 <CourseCard
   title="Advanced React"
   duration="13.2 hrs"
   difficulty="Advanced"
   access="Pro"
-  lessons={174}
   instructor="Bob Ziroll"
   href="https://scrimba.com/advanced-react-c02h?via=u42d4986"
-  description="The best learning experience paired with a world-class instructor. Aims to turn you into a hireable React developer."
+  description="The follow-up to Learn React. Compound components, reusable patterns, performance, and hireable-grade refactoring. The course Bob built explicitly to bridge tutorial to job."
 />
 
-### 3. Learn React Router (Pro)
+**Skip this course if** you have not finished Learn React or built at least one app outside a tutorial. The patterns here assume you already know why state lifts and why effects fire twice in Strict Mode.
+
+### 3. Learn React Router (Pro, 9.7 hrs)
 
 <CourseCard
   title="Learn React Router"
@@ -66,63 +71,114 @@ Career changers and beginners who want a single source of truth for Scrimba Reac
   access="Pro"
   modules={6}
   href="https://scrimba.com/learn-react-router-c06?via=u42d4986"
-  description="Learn React Router v6, the most popular routing library for React applications."
+  description="React Router v6 in depth: nested routes, loaders, actions, protected routes. The most-downloaded React routing library, taught at its current major version."
 />
 
-### 4. What's New in React 19 (Free)
+**Skip this course if** your team uses Next.js or TanStack Router. The patterns transfer, but the API surface differs enough that you will be translating constantly.
+
+### 4. What's New in React 19 (Free, Bob Ziroll, ~1 hr)
 
 <CourseCard
-  title="What's New in React 19?"
+  title="What's New in React 19"
   duration="1.1 hrs"
   difficulty="Advanced"
   access="Free"
-  lessons={17}
+  instructor="Bob Ziroll"
   href="https://scrimba.com/whats-new-in-react-19-c03d?via=u42d4986"
-  description="Learn about React 19 features: actions, optimistic updates, form statuses, the new use() API, and more."
+  description="Actions, optimistic updates, form statuses, and the new use() API. A short tour of what changed at the React 19 release."
 />
 
-## All React Courses
+**Skip this course if** you have not used React 18 features in anger. The course assumes you know what a transition is and why Suspense matters.
 
-| Course | Duration | Level | Access |
-|---|---|---|---|
-| Learn React | 15.1 hrs | Intermediate | Free |
-| Advanced React | 13.2 hrs | Advanced | Pro |
-| React Router | 9.7 hrs | Intermediate | Pro |
-| React Challenges | 9.8 hrs | Intermediate | Pro |
-| Build a Memory Game in React | 4.4 hrs | Intermediate | Pro |
-| Build Reusable React Components | 3.6 hrs | Advanced | Pro |
-| What's New in React 19 | 1.1 hrs | Advanced | Free |
-| Learn Styled Components | 99 min | Intermediate | Pro |
-| Build a Movie Search App | 56 min | Intermediate | Pro |
-| Build Tic Tac Toe with Hooks | 49 min | Intermediate | Pro |
-| React Interview Questions | 40 min | Intermediate | Pro |
-| Learn Class Components | 80 min | Intermediate | Pro |
+## All 12 React courses on Scrimba
+
+Pulled from our catalog snapshot. Durations are Scrimba's published numbers.
+
+| # | Course | Duration | Level | Access | Notes |
+|---|---|---|---|---|---|
+| 1 | [Learn React](/docs/courses/react/learn-react) | 15.1 hrs | Intermediate | Free | Bob Ziroll. Start here. |
+| 2 | [Advanced React](/docs/courses/react/advanced-react) | 13.2 hrs | Advanced | Pro | Bob Ziroll. After Learn React. |
+| 3 | [React Challenges](/docs/courses/react/react-challenges) | 9.8 hrs | Intermediate | Pro | 40 challenges. Practice reps. |
+| 4 | [Learn React Router](/docs/courses/react/react-router) | 9.7 hrs | Intermediate | Pro | v6 only. |
+| 5 | [Build a Memory Game](/docs/courses/react/memory-game-in-react) | 4.4 hrs | Intermediate | Pro | Accessible UI project. |
+| 6 | [Reusable React Components](/docs/courses/react/reusable-react-components) | 3.6 hrs | Advanced | Pro | Compound patterns. |
+| 7 | [What's New in React 19](/docs/courses/react/whats-new-in-react-19) | 1.1 hrs | Advanced | Free | Bob Ziroll. Update tour. |
+| 8 | [Learn Styled Components](/docs/courses/react/styledcomponents) | 99 min | Intermediate | Pro | CSS-in-JS basics. |
+| 9 | [Learn Class Components](/docs/courses/react/class-components-in-react) | 80 min | Intermediate | Free | Bob Ziroll. Legacy code. |
+| 10 | [Movie Search App](/docs/courses/react/a-react-project-movie-search-app) | 56 min | Intermediate | Pro | One-hour project. |
+| 11 | [Tic Tac Toe with Hooks](/docs/courses/react/tic-tac-toe-with-react-hooks) | 49 min | Intermediate | Pro | Tiny hooks demo. |
+| 12 | [React Interview Questions](/docs/courses/react/react-interview-questions) | 40 min | Intermediate | Pro | Concept refresh, not mock interviews. |
+
+## Honest "skip this course if" notes for the side quests
+
+**React Challenges.** Skip if you have not finished Learn React. The challenges assume hooks fluency and will frustrate you otherwise. If you are post-Learn-React and want reps, this is the strongest practice asset in the catalog.
+
+**Build a Memory Game.** Skip if you are not interested in accessibility patterns. The real value here is keyboard navigation and ARIA, not the game itself.
+
+**Reusable React Components.** Skip if you have not yet shipped a component twice. The patterns (compound components, slots, render props) only click once you have felt the pain they solve.
+
+**Styled Components.** Skip if your stack uses Tailwind or CSS Modules. Styled Components is on the way out for new projects; learn it only if you are joining an existing codebase that uses it.
+
+**Class Components.** Skip unless you are maintaining a pre-2019 React codebase. Bob is honest in the description that this is legacy. New code should not use class components.
+
+**Movie Search App / Tic Tac Toe.** Skip if Learn React's capstones already gave you the build-something-small reps. These are fine warm-ups but they overlap heavily with the flagship.
+
+**React Interview Questions.** Skip if you want behavioral or system-design interview prep. This is a 40-minute concept refresh, not mock-interview practice. Pair it with our [React interview questions guide](/docs/courses/react/react-interview-questions) if you want depth.
+
+## Bob Ziroll's teaching style, briefly
+
+We tried to pull a representative passage from Bob's Scrimba React intro through yt-dlp on May 23, 2026. YouTube returned 429s on subtitle endpoints and DRM errors on the player API, so we have no fresh transcript to quote. Rather than fabricate one, we describe the style from verifiable public materials.
+
+Bob teaches in two registers. In Learn React, he walks slowly, asks you to pause and write code before he writes it, and admits when a concept is awkward (his takes on `useEffect` cleanup and Strict Mode double-invocation are unusually candid). In Advanced React, the pace tightens. The Scrimba teacher page documents his work and freeCodeCamp hosts hours where the same cadence is audible ([Scrimba teacher page](https://scrimba.com/teachers/bob-ziroll), [freeCodeCamp author page](https://www.freecodecamp.org/news/author/bobziroll/)).
+
+## Where Scrimba's React catalog is thin
+
+We will not pretend the catalog is complete. Three real gaps as of May 2026:
+
+1. **No deep server components or Next.js App Router course taught as React.** Learn Next.js exists (4.4 hrs) but it is intentionally light. Scrimba does not have a React 19 server components deep dive on the order of what's on YouTube from Vercel and Lee Robinson.
+2. **No build-tooling course.** There is a short Intro to Vite (39 min) tagged under JavaScript, but no module on Webpack, esbuild, or modern Vite plugin authoring. If you need to debug a broken build at work, Scrimba will not help.
+3. **No state-management deep dive.** No Zustand, Redux Toolkit, Jotai, or TanStack Query course. The flagships teach `useState` and `useReducer`; everything past that you learn from docs and YouTube.
+
+If these gaps are blockers for your role, pair Scrimba with the [official React docs](https://react.dev) and Lee Robinson's YouTube. Scrimba covers fundamentals and patterns; the framework-meta layer lives elsewhere.
 
 <WhyScrimba />
 
-## React in the Learning Paths
+## React inside the learning paths
 
-React is covered extensively in two career paths:
-- [Frontend Developer Path](/docs/paths/frontend-developer-path), includes React basics + Advanced React (28.6 hrs of React content)
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path), includes React fundamentals + Advanced React + Next.js
+React appears inside two career paths on Scrimba Pro:
 
-## Choose This If
+- [Frontend Developer Path](/docs/paths/frontend-developer-path) wraps Learn React and Advanced React into a longer 81.6-hour sequence with HTML, CSS, JS, and TypeScript on either side.
+- [Fullstack Developer Path](/docs/paths/fullstack-developer-path) adds Node, Express, and Next.js after React.
 
-- You want every Scrimba React offering in one place with suggested order and hour counts.
-- You are choosing between free Learn React and Pro add-ons and need a clear before-and-after picture.
-- You plan to join a Scrimba path and want to see how React modules stack before you enroll.
+Pick a path if you want sequencing decided for you. Pick the courses individually if you already know what you want next.
 
+## Try a scrim before you commit
 
-## Related Pages
+If you have never used Scrimba's player, run a no-signup demo before subscribing. The format is the only thing that matters when comparing Scrimba to free YouTube content.
 
-- [Practice React Hooks](/docs/practice/practice-react-hooks)
-- [Practice React Projects](/docs/practice/practice-react-projects)
-- [JavaScript Courses](/docs/courses/javascript/) | [All Courses](/docs/courses/)
+<AffiliateLink href="https://scrimba.com/s0v687325e" variant="button">
+  Try a public scrim (no signup)
+</AffiliateLink>
+
+## Related pages on this site
+
+- [Learn React review](/docs/courses/react/learn-react) and [Advanced React review](/docs/courses/react/advanced-react)
+- [Practice React hooks](/docs/practice/practice-react-hooks) and [practice React projects](/docs/practice/practice-react-projects)
+- [JavaScript courses](/docs/courses/javascript/) and [all courses](/docs/courses/)
 - [Frontend Developer Path](/docs/paths/frontend-developer-path)
-- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy)
-- [Scrimba Pricing](/docs/pricing/)
+- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) and [Scrimba pricing](/docs/pricing/)
+
+## Sources
+
+1. [Scrimba's Learn React course page](https://scrimba.com/learn-react-c0e) (instructor, duration, projects).
+2. [Scrimba's Advanced React course page](https://scrimba.com/advanced-react-c02h) (duration, level).
+3. [Scrimba's Learn React Router page](https://scrimba.com/learn-react-router-c06) (v6 scope).
+4. [Bob Ziroll's Scrimba teacher page](https://scrimba.com/teachers/bob-ziroll) (role and authored courses).
+5. [Bob Ziroll on freeCodeCamp](https://www.freecodecamp.org/news/author/bobziroll/) (long-form public teaching record).
+6. [React 19 release notes](https://react.dev/blog/2024/12/05/react-19) (Actions, `use()` API, optimistic updates).
+7. Our [`data/courses.json`](https://github.com/yel-hadd/scrimbaguide.tech/blob/main/data/courses.json) catalog snapshot (counts, durations, access).
 
 <PricingCTA
-  title="Unlock all React courses"
-  subtitle="Get access to Advanced React, React Router, Challenges, and more with Scrimba Pro."
+  title="Unlock Advanced React, Router, and Challenges"
+  subtitle="Pro adds the courses that turn finished Learn React into a hireable React skill set."
 />
