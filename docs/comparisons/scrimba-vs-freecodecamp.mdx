@@ -1,131 +1,130 @@
 ---
 title: "Scrimba vs freeCodeCamp (2026)"
-description: "freeCodeCamp is free and text-first; Scrimba charges for interactive scrims and paths—here's when to pay vs when free is enough."
-keywords: [scrimba vs freecodecamp, freecodecamp vs scrimba, free coding course, best free coding platform]
+description: "freeCodeCamp is free and project-driven with 11 certifications. Scrimba charges for pause-and-code video. Here's when free is genuinely enough."
+keywords: [scrimba vs freecodecamp, freecodecamp vs scrimba, free coding course, freecodecamp certifications, best free coding platform]
 last_update:
-  date: 2026-03-30
+  date: 2026-05-23
 ---
 
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
-import ReviewSchema from '@site/src/components/ReviewSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import { totalCoursesLabel, freeCount, proCount } from '@site/src/utils/scrimbaFacts';
 
-<ReviewSchema
-  itemName="Scrimba vs freeCodeCamp"
-  ratingValue={4.5}
-  bestRating={5}
-  itemType="Product"
-  itemUrl="https://scrimbaguide.tech/docs/comparisons/scrimba-vs-freecodecamp"
-  datePublished="2026-01-15"
-/>
-
-# Stay 100% free—or pay for pause-and-code video
+# Free forever, or pay so a teacher pauses with you
 
 <DisclosureNotice />
 
-**Is this for you?** You refuse to spend money **or** you’re okay subscribing if it **cuts time-to-understanding** on React, JS, or AI.
+freeCodeCamp is a 501(c)(3) nonprofit founded by Quincy Larson in 2014. The entire curriculum plus 11 certifications cost zero dollars ([Wikipedia](https://en.wikipedia.org/wiki/FreeCodeCamp)). Scrimba is a Norwegian startup selling an interactive video format where you stop the instructor mid-sentence and edit the code they just typed.
 
-**freeCodeCamp** = **$0**, text challenges, **many certifications** — unbeatable on price, heavier on **reading and self-setup**. **Scrimba** = **instructor video + edit-in-place code**; **~{freeCount} full courses free**, Pro for paths. **$0 only?** Start FCC (and maybe Odin). **Stuck on text?** Try Scrimba’s free React/JS and decide if scrims justify Pro.
+This is not "which is better." It is three decisions about how you study.
 
-*Last reviewed: March 2026. Features and pricing may change — verify on each platform.*
+*Last reviewed: May 2026. Pricing and curricula change. Verify on [freecodecamp.org/learn](https://www.freecodecamp.org/learn) and [scrimba.com/our-pricing](https://scrimba.com/our-pricing).*
 
-## Price vs comprehension speed
+## The three decisions that actually matter
 
-**freeCodeCamp** rewards readers who **grind challenges**. **Scrimba** targets people who **think with the instructor** and **type in the lesson**. Stacking **FCC fundamentals + Scrimba interactives** is common.
+**1. Paid-but-interactive, or entirely free.** Scrimba Pro is a real subscription (see [scrimba.com/our-pricing](https://scrimba.com/our-pricing) for the current rate). freeCodeCamp is donation-funded. If budget is the gate, start with freeCodeCamp.
+
+**2. Project-driven, or lesson-driven.** Each freeCodeCamp certification ends with 5 required projects you build from a blank editor, gated on passing automated tests ([certifications overview](https://www.freecodecamp.org/news/freecodecamp-certifications/)). Scrimba embeds projects inside lessons, which is gentler but less of a blank-canvas test.
+
+**3. How much weight you put on the certificate.** That is the argument learners have most often, covered below.
 
 <VerdictBox 
   title="The Verdict" 
-  rating="It Depends" 
-  verdict="If you have absolutely zero budget, freeCodeCamp is the best place to start. If you can afford a subscription, Scrimba is significantly better because of the video instruction and interactive environment, which makes complex topics (like React) much easier to grasp."
+  rating="It depends on budget and study style" 
+  verdict="freeCodeCamp wins on cost (truly $0), breadth (11 certifications including data analysis, info security, and ML), and project-by-doing rigor. Scrimba wins when reading text drills exhausts you faster than the lessons teach you, and when you want a human voice walking through React, AI, or modern JS while you type."
   pros={[
-    "Scrimba: Video instruction (easier to understand)",
-    "Scrimba: Interactive editor (better UX)",
-    "freeCodeCamp: 100% Free forever"
+    "freeCodeCamp: 100% free, 11 certifications, project-gated",
+    "freeCodeCamp: huge community (forum, Discord, study groups)",
+    "Scrimba: pause-and-edit video makes React click for visual learners",
+    "Scrimba: focused web dev and AI curriculum, less to wade through"
   ]}
   cons={[
-    "freeCodeCamp: Text-only (can be dry/hard for beginners)",
-    "Scrimba: Pro content requires subscription"
+    "freeCodeCamp: no live instructor voice on most tracks",
+    "freeCodeCamp: certifications carry limited weight with employers (see below)",
+    "Scrimba: Pro subscription required to unlock career paths"
   ]}
-  ctaText="Try Scrimba Free Courses"
-  ctaHref="https://scrimba.com/?via=u42d4986"
+  ctaText="Try a Scrimba scrim (no signup)"
+  ctaHref="https://scrimba.com/s0v687325e"
 />
 
 <ComparisonTable
   competitorName="freeCodeCamp"
   scrimbaUrl="https://scrimba.com/?via=u42d4986"
-  competitorUrl="https://www.freecodecamp.org/"
+  competitorUrl="https://www.freecodecamp.org/learn"
   rows={[
-    { feature: "Price", scrimba: "Free tier + Pro subscription", competitor: "100% free" },
-    { feature: "Teaching format", scrimba: "Interactive video scrims", competitor: "Text-based challenges" },
-    { feature: "Video instruction", scrimba: "Yes, instructor-led", competitor: "YouTube channel (separate)" },
-    { feature: "Interactivity", scrimba: "Edit code inside video lessons", competitor: "Text challenges with test runner" },
-    { feature: "Career paths", scrimba: "4 structured paths", competitor: "10+ certifications" },
-    { feature: "Topics covered", scrimba: "Web dev, AI, Python", competitor: "Web dev, Python, data science, ML" },
-    { feature: "Community", scrimba: "Discord (Pro)", competitor: "Forum, Discord, local groups" },
-    { feature: "Certificates", scrimba: "Career path certificates", competitor: "Free certifications" },
-    { feature: "Content updates", scrimba: "Regular updates", competitor: "Community-driven updates" },
-    { feature: "Projects", scrimba: "Built into courses", competitor: "Certification projects required" },
+    { feature: "Cost", scrimba: "Free tier + Pro subscription", competitor: "100% free, donation-funded nonprofit" },
+    { feature: "Teaching format", scrimba: "Interactive video scrims (pause and edit)", competitor: "Text lessons + browser test runner" },
+    { feature: "Instructor voice", scrimba: "Yes (Bob Ziroll, Per Borgen, others)", competitor: "Text-first; separate YouTube channel for video" },
+    { feature: "Certifications", scrimba: "4 career path certificates", competitor: "11 certifications, ~300 hrs each, 5 projects each" },
+    { feature: "Project rigor", scrimba: "Projects embedded in lessons", competitor: "Build from blank editor; tests must pass" },
+    { feature: "Topics", scrimba: "React, JS, TS, Python, AI, cybersecurity", competitor: "Web, Python, data analysis, info security, ML" },
+    { feature: "Community", scrimba: "Private Pro Discord", competitor: "Forum, Discord, local study groups, 9M YouTube subs" },
+    { feature: "Best for", scrimba: "Visual learners on React and AI", competitor: "Self-starters comfortable reading specs" },
   ]}
 />
 
-## Curriculum Comparison: React
+## What freeCodeCamp actually covers
 
-**Scrimba's Learn React** (15.1 hrs, free): Instructor-led video with Bob Ziroll. Pause any moment and edit the code in-place. Covers hooks, effects, and builds a Meme Generator capstone. Created with Mozilla MDN.
+The curriculum is 11 certifications, each roughly 300 hours, each requiring 5 projects ([freeCodeCamp certifications](https://www.freecodecamp.org/news/freecodecamp-certifications/)): Responsive Web Design, JavaScript Algorithms and Data Structures (a new v9 launched December 2025 with a sit-down exam, [news post](https://www.freecodecamp.org/news/freecodecamps-new-javascript-certification-is-now-live/)), Front End Development Libraries (React, Redux, Sass), Data Visualization (D3), Relational Databases, Back End and APIs (Node, Express, MongoDB), Quality Assurance, Scientific Computing with Python, Data Analysis with Python, Information Security, and Machine Learning with Python.
 
-**freeCodeCamp's React curriculum**: Text-based lessons with a test runner. You read instructions and complete challenges. Certification requires 5 projects (e.g., Random Quote Machine, Calculator). No video; you may supplement with freeCodeCamp's YouTube channel separately.
+Scrimba does not cover this surface area. No D3, no info security cert, no ML certification. If those are what you need, freeCodeCamp is the only one of the two in the conversation.
 
-Scrimba suits learners who prefer guided video; freeCodeCamp suits those who like reading and autonomous project-building.
+## The certification debate
 
-## Choose Scrimba vs freeCodeCamp
+This is the recurring argument on Reddit, HN, and the freeCodeCamp forum. Do hiring managers care about a freeCodeCamp certificate? Short answer: not much, but they care about what you built to earn it.
 
-**Choose Scrimba if:**
-- You prefer **video-based, instructor-led** learning
-- You want **interactive scrims** rather than text challenges
-- You're focused on **React, AI engineering, modern JS, or cybersecurity** ([Learn Cybersecurity](/docs/courses/backend/cybersecurity))
-- You want a **polished, curated** learning experience
-- You can invest in a subscription
+A 2025 hackr.io review puts it plainly: "the certificate will not likely get you a job or impress an employer ... the portfolio projects will be more valuable than its certificates" ([hackr.io review](https://hackr.io/blog/freecodecamp-review)). The DEV.to thread "Is a freeCodeCamp Certificate Worth It?" lands in roughly the same place: the certification proves you sat through the work; the 5 finished projects prove you can ship ([DEV.to](https://dev.to/stack_overflowed/is-a-freecodecamp-certificate-worth-it-3l6b)). The freeCodeCamp forum's own advice on resume listings is pragmatic: lead with the projects and treat the cert as a footnote ([freeCodeCamp forum](https://forum.freecodecamp.org/t/listing-freecodecamp-certifications-in-resume/249984)). The newer Full Stack Developer path drew the same mixed reception on Hacker News in late 2024 ([HN discussion](https://news.ycombinator.com/item?id=42541541)).
 
-**Choose freeCodeCamp if:**
-- **Budget is the #1 priority** — freeCodeCamp is 100% free
-- You prefer **text-based, self-paced** learning
-- You want **more certification options** (10+ tracks)
-- You enjoy **project-based** certification requirements
-- You want **data science or ML** content
+What carries freeCodeCamp graduates into jobs is the project portfolio and public GitHub history, not the cert. Scrimba's career path certificates sit in the same spot. Neither is a credential the way a degree or AWS exam is.
 
-## Using Both
+## Curriculum comparison: React
 
-Many learners combine both platforms effectively:
-1. Start with **freeCodeCamp** for fundamentals (free)
-2. Move to **Scrimba** for interactive React/JS/AI courses
-3. Use freeCodeCamp certifications to supplement Scrimba career path certificates
+This is the one place where format makes a sharp difference.
 
-## Related Pages
+**freeCodeCamp's React track** lives inside Front End Development Libraries. Read instructions, write code, pass tests. The 5 capstones (Random Quote Machine, Markdown Previewer, Drum Machine, Calculator, Pomodoro Clock) are blank-editor builds with no instructor. If you finish, you have shipped 5 React apps from scratch.
 
-- [Scrimba Pricing](/docs/pricing/) | [Best Free Scrimba Courses](/blog/best-free-scrimba-courses)
+**Scrimba's Learn React** (15.1 hours, free) is Bob Ziroll on video, built with Mozilla MDN. You pause and edit the code he just wrote. Gentler on first-timers because the abstractions (state, effects, custom hooks) get a human voice while you type. The capstone is a Meme Generator.
+
+If "ship 5 React apps with nothing but tests guiding you" sounds energizing, freeCodeCamp. If "I need someone to explain why useEffect ran twice" sounds like you, Scrimba.
+
+## Two different theories of learning
+
+Quincy Larson runs the freeCodeCamp Podcast, which restarted in 2023 and now publishes weekly ([podcast playlist](https://www.youtube.com/playlist?list=PLWKjhJtqVAbm04DK8TSUCRheRjW2P9TR7)). The recurring theme across his interviews is consistency over cleverness: show up, build the project, publish it, repeat for a year. The platform does not try to make you feel fast; it tries to make you finish.
+
+Scrimba optimizes for the opposite: reducing friction between "I see the concept" and "I have typed the concept." Both legitimate, different shapes.
+
+## Using both
+
+Most learners run them in parallel. Start with **freeCodeCamp** for the certification grind (Responsive Web Design, then JS Algorithms and Data Structures). Drop into **Scrimba's free courses** (Learn React, Learn JavaScript, Learn TypeScript) when a freeCodeCamp section frustrates you. Only upgrade to **Scrimba Pro** if a free Scrimba course clicks and you want the AI Engineer or Frontend career path on top. That sequence keeps your cash at zero until the format has proven itself.
+
+## Related pages
+
+- [Scrimba pricing](/docs/pricing/) | [Best free Scrimba courses](/blog/best-free-scrimba-courses)
+- [Scrimba vs The Odin Project](/docs/comparisons/scrimba-vs-odin-project) (the other free option worth weighing)
 - [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) | [Scrimba vs Udemy](/docs/comparisons/scrimba-vs-udemy)
-- [Scrimba vs The Odin Project](/docs/comparisons/scrimba-vs-odin-project) | [Scrimba vs Coursera](/docs/comparisons/scrimba-vs-coursera)
-- [Scrimba vs YouTube](/docs/comparisons/scrimba-vs-youtube) — interactive coding vs passive video
-- [How Scrims Work](/docs/faq/how-scrims-work) — understanding Scrimba's unique format
+- [Scrimba vs YouTube](/docs/comparisons/scrimba-vs-youtube)
+- [How scrims work](/docs/faq/how-scrims-work)
 
 <DocFaqSchema questions={[
-  { q: "Is Scrimba better than freeCodeCamp?", a: "Scrimba offers a superior interactive format with video instruction. freeCodeCamp is 100% free with more certifications. The best choice depends on your budget and learning style." },
-  { q: "Does Scrimba have free courses like freeCodeCamp?", a: `Yes. Scrimba offers about ${freeCount} free courses including Learn React, Learn JavaScript, and Learn TypeScript. The Pro subscription unlocks additional courses.` },
-  { q: "Which leads to better job outcomes, Scrimba or freeCodeCamp?", a: "Both platforms produce employed developers. Scrimba's career paths and interactive format may lead to faster skill acquisition. Job outcomes depend more on your portfolio, networking, and persistence than the platform chosen." },
+  { q: "Is Scrimba better than freeCodeCamp?", a: "Neither is universally better. freeCodeCamp wins on cost (it is $0) and breadth (11 certifications including data analysis, info security, and ML). Scrimba wins when text drills exhaust you and you want a human voice walking through React, JS, or AI while you type." },
+  { q: "Do employers take freeCodeCamp certifications seriously?", a: "The consensus across hackr.io, DEV.to, the freeCodeCamp forum, and Hacker News is that the certificate alone carries limited weight. What employers respond to are the 5 required projects per certification and the public portfolio you build along the way." },
+  { q: "Does Scrimba have free courses like freeCodeCamp?", a: `Yes. About ${freeCount} Scrimba courses are free, including Learn React, Learn JavaScript, and Learn TypeScript. Pro unlocks the career paths and the rest of the ${proCount}+ course catalog.` },
+  { q: "Can I use both Scrimba and freeCodeCamp?", a: "Yes, and most learners we hear from do. A common pattern is freeCodeCamp for structured certifications and Scrimba's free courses for any topic where the text-first format is slowing you down." },
 ]} />
 
 <FAQAccordion emitSchema={false} items={[
-  { q: "Is Scrimba better than freeCodeCamp?", a: "Scrimba offers a superior interactive format with video instruction. freeCodeCamp is 100% free with more certifications. The best choice depends on your budget and learning style." },
-  { q: "Does Scrimba have free courses like freeCodeCamp?", a: `Yes. Scrimba offers about ${freeCount} free courses including Learn React, Learn JavaScript, and Learn TypeScript. Check the Scrimba site for current free offerings. The Pro subscription unlocks ${proCount}+ additional courses.` },
-  { q: "Which leads to better job outcomes?", a: "Both platforms produce employed developers. Scrimba's career paths and interactive format may lead to faster skill acquisition for many learners. Job outcomes depend more on your portfolio, networking, and persistence than the platform — the 2026 junior market is competitive regardless." },
+  { q: "Is Scrimba better than freeCodeCamp?", a: "Neither is universally better. freeCodeCamp wins on cost and breadth. Scrimba wins when text drills exhaust you and you want a human voice walking through React or AI while you type." },
+  { q: "Do employers take freeCodeCamp certifications seriously?", a: "Mostly the projects, not the certificate. The 5 required projects per certification and your public portfolio do the persuading; the certification is supporting evidence." },
+  { q: "Does Scrimba have free courses like freeCodeCamp?", a: `Yes, about ${freeCount} free courses including Learn React, Learn JavaScript, and Learn TypeScript. Pro unlocks career paths and the rest of the ${proCount}+ course catalog.` },
+  { q: "Which has better React content?", a: "Different shape. freeCodeCamp makes you ship 5 React projects from a blank editor with no instructor. Scrimba's Learn React (15.1 hrs, free) is video-led with Bob Ziroll where you pause and edit inline. Pick the one that matches how you study." },
 ]} />
 
 <PricingCTA 
-  title="Try Scrimba's free courses first"
-  subtitle={`${freeCount} free courses to test the format. No credit card required. Upgrade when you're ready.`}
+  title="Try Scrimba's free format before paying anything"
+  subtitle={`${freeCount} free courses, no card. If the scrim format does not click, freeCodeCamp is genuinely free forever.`}
   ctaType="free"
 />
