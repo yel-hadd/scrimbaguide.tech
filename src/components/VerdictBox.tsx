@@ -9,6 +9,7 @@ interface VerdictBoxProps {
   cons?: string[];
   ctaText?: string;
   ctaHref?: string;
+  location?: string;
 }
 
 export default function VerdictBox({
@@ -19,6 +20,7 @@ export default function VerdictBox({
   cons = [],
   ctaText = 'Claim 20% Off Scrimba Pro',
   ctaHref = 'https://scrimba.com/home?pricing&via=u42d4986',
+  location,
 }: VerdictBoxProps): React.ReactElement {
   return (
     <div className="verdict-box">
@@ -56,7 +58,7 @@ export default function VerdictBox({
       )}
       
       <div className="verdict-box__cta">
-        <AffiliateLink href={ctaHref} variant="button">
+        <AffiliateLink href={ctaHref} variant="button" location={location}>
           {ctaText}
         </AffiliateLink>
       </div>
