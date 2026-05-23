@@ -1,124 +1,161 @@
 ---
 title: "Best Scrimba AI & Machine Learning Courses (2026)"
-description: "All AI courses on Scrimba: AI Agents, RAG, LangChain, OpenAI, Claude, Mistral, MCP, prompt engineering, and the AI Engineer Path."
-keywords: [scrimba ai course, learn ai engineering, scrimba ai agents, scrimba langchain, ai engineer path]
+description: "All Scrimba AI courses reviewed for 2026: agents, RAG, MCP, LangChain.js, Vercel AI SDK, and the AI Engineer Path. Honest gaps included."
+keywords: [scrimba ai course, learn ai engineering, scrimba ai agents, scrimba langchain, ai engineer path, scrimba mcp]
 slug: /courses/ai
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-03-30
+  date: 2026-05-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
-# Best Scrimba AI & Machine Learning Courses (2026)
-
-**Quick Answer:** If you build (or want to build) **web apps in JavaScript** and need **LLMs, agents, RAG, and deployment** without a Python-only detour, this hub is for you. Start free with [Claude AI](/docs/courses/ai/claude-ai) or [Mistral](/docs/courses/ai/mistral-ai), then go deep with **Pro** on the [AI Engineer Path](/docs/paths/ai-engineer-path) (~11.4 hrs). Many employers pay **$140,000–$180,000+** for engineers who ship real AI features—paths and projects still beat hype.
-
-*Last reviewed: March 2026.*
+# Best Scrimba AI & Machine Learning courses (2026)
 
 <DisclosureNotice />
 
-## Stuck watching AI tutorials that never ship?
+**Quick answer.** Sixteen AI courses, one curated path. Free entry points with [Claude AI](/docs/courses/ai/claude-ai), [Mistral](/docs/courses/ai/mistral-ai), and the [OpenAI Assistants taster](/docs/courses/ai/openais-assistants-api). Pro depth with Tom Chant's [Intro to AI Engineering](/docs/courses/ai/ai-engineering), Bob Ziroll's [AI Agents](/docs/courses/ai/ai-agents), Arsala Khan's RAG and Context Engineering modules, plus [MCP](/docs/courses/ai/model-context-protocol-mcp), [LangChain.js](/docs/courses/ai/langchainjs), and the [Vercel AI SDK build](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk). The whole stack is JavaScript and TypeScript. Try the [interactive demo scrim](https://scrimba.com/s0v687325e) before you pay.
 
-Passive videos and blog chains leave you guessing when a header, stream, or tool schema breaks. **Scrimba scrims** let you **pause, edit the instructor’s code, and rerun** in the browser—closer to how you will debug APIs and UIs at work than copying snippets into a blank repo.
+*Last reviewed: May 2026. We are catalog reviewers, not graduates; we summarize what Scrimba ships and where it stops.*
 
-## Ship AI features in JS without drowning in setup
+## You are on this page if
 
-Every course here stays in **JavaScript/TypeScript** so you can add models and tools to the stack you already use. Free entry points ([Claude](/docs/courses/ai/claude-ai), [Mistral](/docs/courses/ai/mistral-ai), [serverless agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase)) sit next to **Pro** depth: **agents, RAG, LangChain.js, MCP, Vercel AI SDK, context engineering**, and **Cloudflare deployment**. The [AI Engineer Path](/docs/paths/ai-engineer-path) orders the stack so you are not guessing what to take next.
+You already write JavaScript or React, you use ChatGPT or Claude every day, and you want to **own the API calls, tool schemas, streams, and hosting** instead of pasting prompts into a chat window. You want a path that reflects the **2026 stack**, not a 2023 LangChain tutorial that bit-rots in six weeks.
 
-**We are independent:** we summarize Scrimba honestly—**Pro costs money**, free tiers rotate, and **no course replaces** portfolio work and interviews. Use [Practice AI Engineering](/docs/practice/practice-ai-engineering) between modules when you want reps without a greenfield repo.
+## The 2026 AI stack (and where Scrimba sits)
 
-## Who this hub is for
+A lot changed since the early agent hype:
 
-**JavaScript/React developers** (and serious beginners) who want **requests, streaming, tools, and deployment** in code—not only ChatGPT as a consumer. Brand-new to coding? Start with [ChatGPT Tutorial for Programming](/docs/courses/ai/to-code-with-ai); everyone else can follow the order below.
+- **MCP is no longer experimental.** Anthropic donated the Model Context Protocol to the Linux Foundation's Agentic AI Foundation in December 2025. OpenAI, Microsoft, Google, AWS, and Cloudflare all ship MCP clients or servers. Public servers now number in the thousands. If you are building agents in 2026 and you have not touched MCP, you are behind.
+- **Vercel AI SDK has matured** into the default for streaming UIs in Next.js and React. Tom Chant's [support agent build](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk) walks the exact pattern most product teams ship.
+- **LangChain.js still has critics.** It is useful when you need glue across vendors, frustrating when its abstractions hide what is actually happening on the wire. Scrimba's [LangChain.js course](/docs/courses/ai/langchainjs) teaches it; treat the abstractions as one option, not the only one.
+- **RAG is table stakes.** Embeddings, vector search, chunking. The [Learn RAG course](/docs/courses/ai/rag) covers the JavaScript path.
 
-## The AI Engineer Path (fastest structured route)
+The [AI Engineer Path](/docs/paths/ai-engineer-path) (around 11.4 hours, Pro) sequences these into one progression. It is the single best reason to pay for Pro in this category. Confirm the live duration and price on the [official path page](https://scrimba.com/home?pricing&via=u42d4986).
 
-The curated [AI Engineer Path](/docs/paths/ai-engineer-path) (~11.4 hrs, Pro) strings the topics below into one progression—best if you will commit for weeks, not one-off videos.
+## Recommended order, beginner to advanced
 
-## Recommended Learning Order
+If you are coming from React or vanilla JS and you want to ship LLM features:
 
-### 1. Intro to AI Engineering (Pro)
+### 1. Free taster (45 minutes, no payment)
+
+<CourseCard
+  title="Intro to Mistral AI"
+  duration="84 min"
+  difficulty="Intermediate"
+  access="Free"
+  href="https://scrimba.com/intro-to-mistral-ai-c0gld43sd1?via=u42d4986"
+  description="A free course built with Mistral. Touch a non-OpenAI provider so you do not assume every model behaves like GPT."
+/>
+
+### 2. Foundations with Tom Chant (Pro)
 
 <CourseCard
   title="Intro to AI Engineering"
   duration="2.5 hrs"
   difficulty="Intermediate"
   access="Pro"
-  lessons={20}
   instructor="Tom Chant"
   href="https://scrimba.com/intro-to-ai-engineering-c032?via=u42d4986"
-  description="Learn to build LLM-powered web apps in this crash course. The perfect starting point for web developers entering AI."
+  description="Tom Chant teaches 11 Scrimba courses across roughly 440,000 learners. This is the canonical 'JS dev meets LLMs' crash course."
 />
 
-### 2. Learn AI Agents (Pro)
+### 3. Agents with Bob Ziroll (Pro)
 
 <CourseCard
   title="Learn AI Agents"
-  duration="Available"
+  duration="117 min"
   difficulty="Intermediate"
   access="Pro"
   instructor="Bob Ziroll"
   href="https://scrimba.com/learn-ai-agents-c034?via=u42d4986"
-  description="Build LLM-powered autonomous agents with tool use, decision-making, and memory."
+  description="Bob Ziroll built Scrimba's React course. Here he covers tool use, decision loops, and agent memory in JavaScript."
 />
 
-### 3. Learn RAG (Pro)
+### 4. RAG and Context Engineering with Arsala Khan (Pro)
 
 <CourseCard
   title="Learn RAG"
-  duration="Available"
+  duration="94 min"
   difficulty="Intermediate"
   access="Pro"
+  instructor="Arsala Khan"
   href="https://scrimba.com/learn-rag-c033?via=u42d4986"
-  description="Retrieval-Augmented Generation — combine LLMs with your own data for accurate, grounded responses."
+  description="Embeddings, chunking, vector search, and grounded responses. Pair with Learn Context Engineering for what the model actually sees."
 />
 
-## All AI Courses
+### 5. The 2026 plumbing (Pro)
 
-| Course | Level | Access | Topic |
+[MCP](/docs/courses/ai/model-context-protocol-mcp) (37 min), [Vercel AI SDK support agent](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk) (114 min), [Cloudflare deploy](/docs/courses/ai/deploy-ai-apps-with-cloudflare), and [LangChain.js](/docs/courses/ai/langchainjs) (treat as optional glue, not gospel).
+
+## All AI courses
+
+| Course | Duration | Level | Access |
 |---|---|---|---|
-| Intro to AI Engineering | Intermediate | Pro | LLM basics, API calls |
-| Learn AI Agents | Intermediate | Pro | Autonomous agents, tools |
-| Learn RAG | Intermediate | Pro | Vector search, embeddings |
-| Learn LangChain.js | Intermediate | Pro | LangChain framework |
-| OpenAI Assistants API | Intermediate | Pro | OpenAI function calling |
-| Claude AI | Intermediate | Free | Anthropic Claude |
-| Intro to Mistral AI | Intermediate | Free | Mistral models |
-| DALL-E & GPT-4 Vision | Intermediate | Pro | Image generation & analysis |
-| Prompt Engineering | Intermediate | Pro | Prompt design for devs |
-| Learn to Code with AI | Beginner | Pro | Using ChatGPT for coding |
-| Deploy AI Apps with Cloudflare | Intermediate | Pro | AI app deployment |
-| Learn Context Engineering | Intermediate | Pro | LLM context optimization |
-| Intro to MCP | Intermediate | Pro | Model Context Protocol |
-| Build a Support Agent (Vercel AI SDK) | Intermediate | Pro | Production AI UIs |
-| Build Serverless AI Agents (Langbase) | Intermediate | Free | Serverless AI agents |
+| [Learn to Code with AI](/docs/courses/ai/to-code-with-ai) | 4.5 hrs | Beginner | Pro |
+| [Prompt Engineering for Web Devs](/docs/courses/ai/prompt-engineering-for-web-developers) | 3.1 hrs | Intermediate | Pro |
+| [Intro to AI Engineering](/docs/courses/ai/ai-engineering) | 2.5 hrs | Intermediate | Pro |
+| [Claude AI](/docs/courses/ai/claude-ai) | Available | Intermediate | Free |
+| [Intro to Mistral AI](/docs/courses/ai/mistral-ai) | 84 min | Intermediate | Free |
+| [OpenAI Assistants API](/docs/courses/ai/openais-assistants-api) | 30 min | Intermediate | Free |
+| [Learn AI Agents](/docs/courses/ai/ai-agents) | 117 min | Intermediate | Pro |
+| [Learn RAG](/docs/courses/ai/rag) | 94 min | Intermediate | Pro |
+| [Learn Context Engineering](/docs/courses/ai/context-engineering) | 59 min | Intermediate | Pro |
+| [Intro to MCP](/docs/courses/ai/model-context-protocol-mcp) | 37 min | Intermediate | Pro |
+| [LangChain.js](/docs/courses/ai/langchainjs) | Available | Intermediate | Pro |
+| [Vercel AI SDK support agent](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk) | 114 min | Intermediate | Pro |
+| [Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase) | 49 min | Intermediate | Pro |
+| [DALL-E & GPT-4 Vision](/docs/courses/ai/dall-e-and-gpt-vision) | 62 min | Intermediate | Pro |
+| [Deploy AI Apps with Cloudflare](/docs/courses/ai/deploy-ai-apps-with-cloudflare) | Available | Intermediate | Pro |
+| [AI Engineer Path](/docs/paths/ai-engineer-path) | 11.4 hrs | Path | Pro |
 
-## Why Scrimba for AI (vs passive courses)
+## Honest gaps
 
-- **You code inside the lesson** — fix prompts, streams, and tool payloads where they break.
-- **JavaScript-first** — same language as most web roles; less context-switching than Python-notebook tracks.
-- **Modern stack** — MCP, context engineering, Vercel AI SDK, LangChain.js, edge deploy.
-- **Caveat:** APIs and vendor limits change; always verify pricing and quotas on Scrimba and each provider.
+We like this catalog. We are also clear about what it is **not**:
+
+- **JavaScript and TypeScript only.** No PyTorch, no Hugging Face Transformers in Python, no scikit-learn. If you want classical ML, take Andrew Ng's specialization or fast.ai. Scrimba teaches LLM application engineering, not model training.
+- **No ML math.** Linear algebra, calculus, statistics, backpropagation. None of it. Bring it from elsewhere if you need it.
+- **No evaluation, RLHF, or fine-tuning depth.** You will learn to call models, not train them.
+- **Vendor coverage tilts toward OpenAI, Anthropic, and Mistral.** Less on open-weight self-hosted stacks (Llama, Mistral local, vLLM).
+- **LangChain.js abstractions can age fast.** Take the course; do not treat any one framework as required.
+
+That is the honest scope. Within it, the catalog is strong and current.
+
+## Why scrims work for AI specifically
+
+API calls fail in messy ways: a missing header, a stream that closes early, a tool schema the model ignores. Scrimba's format lets you **pause the instructor mid-request and edit the code in place**, so you see exactly where the payload went sideways. That is a better fit than passive video for a topic where every provider's SDK behaves slightly differently.
 
 ## Choose this hub if
 
-- You want **LLM, RAG, agent, and deployment** skills in **JavaScript**, not a Python-only bootcamp.
-- You use ChatGPT daily but need to **own API calls, tools, and hosting** yourself.
-- You are aiming at **$140,000–$180,000+** AI-capable engineering bands and want **free tasters plus a Pro path** that matches job-shaped work.
+- You write JavaScript or TypeScript and want to ship LLM features without a Python detour.
+- You want a 2026-current sequence covering agents, RAG, MCP, and the Vercel AI SDK.
+- You are weighing the [AI Engineer Path](/docs/paths/ai-engineer-path) against piecing together free YouTube content yourself.
 
-## Related Pages
+## Skip this hub if
+
+- You need Python ML, model training, or research-grade material.
+- You want a credentialed bootcamp with mentor hours and graded projects.
+
+## Related pages
 
 - [AI Engineer Path](/docs/paths/ai-engineer-path) | [All Learning Paths](/docs/paths/)
 - [Practice AI Engineering](/docs/practice/practice-ai-engineering)
-- [Scrimba vs Udemy](/docs/comparisons/scrimba-vs-udemy)
-- [JavaScript Courses](/docs/courses/javascript/)
-- [Scrimba Pricing](/docs/pricing/)
-- [How to Learn AI Engineering on Scrimba](/blog/learn-ai-engineering-scrimba)
+- [JavaScript Courses](/docs/courses/javascript/) | [React Courses](/docs/courses/react/)
+- [Scrimba Pricing](/docs/pricing/) | [Scrimba vs Udemy](/docs/comparisons/scrimba-vs-udemy)
+
+## Sources
+
+- [Anthropic donates MCP to the Linux Foundation](https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation)
+- [MCP Wikipedia entry](https://en.wikipedia.org/wiki/Model_Context_Protocol)
+- [Why MCP won (The New Stack)](https://thenewstack.io/why-the-model-context-protocol-won/)
+- [Tom Chant teacher profile on Scrimba](https://v1.scrimba.com/teachers/DoubleNemesis)
+- [Arsala Khan teacher profile on Scrimba](https://v1.scrimba.com/teachers/ArsalaBangash)
+- [Best RAG tutorials 2026 (Scrimba)](https://scrimba.com/articles/best-rag-tutorials-and-courses/)
+- [How to become an AI engineer 2026 (Scrimba)](https://scrimba.com/articles/how-to-become-an-ai-engineer-a-developers-roadmap-for-2026/)
 
 <PricingCTA
-  title="Build AI-powered apps"
-  subtitle="Learn agents, RAG, MCP, and more with the AI Engineer Path on Scrimba Pro."
+  title="Build AI features in JavaScript, not slides"
+  subtitle="The AI Engineer Path covers agents, RAG, MCP, and the Vercel AI SDK in one sequence. Try a scrim first; pay if it sticks."
 />
