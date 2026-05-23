@@ -9,16 +9,24 @@ interface VerdictBoxProps {
   cons?: string[];
   ctaText?: string;
   ctaHref?: string;
+  /** Optional GA `cta_location` tag for the verdict CTA. Defaults to
+   *  `verdict-box` so per-page conversion can still be filtered. */
+  location?: string;
 }
 
+/** VerdictBox lives at the bottom of upper-funnel comparison and review pages.
+ *  At that point the reader is evaluating, not buying, so the default CTA is
+ *  the no-signup demo scrim ("try the format"), not the Pro affiliate link.
+ *  Comparison/review pages that want the Pro CTA pass it explicitly. */
 export default function VerdictBox({
   title = 'The Verdict',
   rating,
   verdict,
   pros = [],
   cons = [],
-  ctaText = 'Claim 20% Off Scrimba Pro',
-  ctaHref = 'https://scrimba.com/home?pricing&via=u42d4986',
+  ctaText = 'Try a scrim in your browser (no signup)',
+  ctaHref = 'https://scrimba.com/s0v687325e',
+  location = 'verdict-box',
 }: VerdictBoxProps): React.ReactElement {
   return (
     <div className="verdict-box">
@@ -26,14 +34,17 @@ export default function VerdictBox({
         <h2 className="verdict-box__title">{title}</h2>
         {rating && <div className="verdict-box__rating">{rating}</div>}
       </div>
-      
+
       <p className="verdict-box__summary">{verdict}</p>
-      
+
       {(pros.length > 0 || cons.length > 0) && (
         <div className="verdict-box__lists">
           {pros.length > 0 && (
             <div className="verdict-box__list verdict-box__list--pros">
-              <h3 className="verdict-box__list-title">Pros</h3>
+              <h3 className="verdict-box__list-title">
+                <span className="verdict-box__list-icon" aria-hidden="true">+</span>
+                Pros
+              </h3>
               <ul>
                 {pros.map((pro, i) => (
                   <li key={i}>{pro}</li>
@@ -41,10 +52,13 @@ export default function VerdictBox({
               </ul>
             </div>
           )}
-          
+
           {cons.length > 0 && (
             <div className="verdict-box__list verdict-box__list--cons">
-              <h3 className="verdict-box__list-title">Cons</h3>
+              <h3 className="verdict-box__list-title">
+                <span className="verdict-box__list-icon" aria-hidden="true">−</span>
+                Cons
+              </h3>
               <ul>
                 {cons.map((con, i) => (
                   <li key={i}>{con}</li>
@@ -54,9 +68,9 @@ export default function VerdictBox({
           )}
         </div>
       )}
-      
+
       <div className="verdict-box__cta">
-        <AffiliateLink href={ctaHref} variant="button">
+        <AffiliateLink href={ctaHref} variant="button" location={location}>
           {ctaText}
         </AffiliateLink>
       </div>

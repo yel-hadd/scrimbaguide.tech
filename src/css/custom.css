@@ -366,22 +366,41 @@ body {
 
 .course-card__badge {
   display: inline-block;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+  white-space: nowrap;
 }
 
 .course-card__badge--free {
   background: #d4edda;
-  color: #155724;
+  color: #0e4a1d;
+  border-color: #95d5b2;
 }
 
 .course-card__badge--pro {
   background: #e8daff;
-  color: #4a148c;
+  color: #3a0d75;
+  border-color: #b39ddb;
+}
+
+.course-card__instructor {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+  color: var(--sg-text-muted);
+}
+
+.course-card__instructor-label {
+  color: var(--sg-text-muted);
+}
+
+.course-card__instructor-name {
+  color: var(--ifm-color-content);
+  font-weight: 700;
 }
 
 [data-theme='dark'] .course-card__badge--free {
@@ -1336,12 +1355,44 @@ article a:not(.cta-link):not(.hash-link):hover {
   margin-bottom: 1.5rem;
 }
 
+.verdict-box__list {
+  padding: 1rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-background-surface-color);
+}
+
 .verdict-box__list .verdict-box__list-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   margin-bottom: 0.5rem;
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 700;
+}
+
+.verdict-box__list-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.verdict-box__list--pros .verdict-box__list-icon {
+  background: rgba(46, 160, 67, 0.15);
+  color: var(--sg-green);
+}
+
+.verdict-box__list--cons .verdict-box__list-icon {
+  background: rgba(207, 34, 46, 0.12);
+  color: var(--sg-red);
 }
 
 .verdict-box__list ul {
@@ -1667,6 +1718,95 @@ article a:not(.cta-link):not(.hash-link):hover {
   color: var(--ifm-color-primary);
   font-weight: bold;
   font-size: 1.2rem;
+}
+
+/* Featured "next step" card: visually dominant so the reader sees ONE obvious
+   path forward (Hick's Law). Secondary links sit in a subtle list beneath. */
+.related-guides__featured {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 1.75rem;
+  border: 2px solid var(--ifm-color-primary);
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--ifm-background-surface-color),
+    var(--ifm-color-emphasis-100)
+  );
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.related-guides__featured:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sg-card-shadow);
+}
+
+.related-guides__featured-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  font-weight: 800;
+  margin-bottom: 0.4rem;
+}
+
+.related-guides__featured-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.25rem;
+  color: var(--ifm-font-color-base);
+}
+
+.related-guides__featured .related-guides__arrow {
+  font-size: 1.75rem;
+}
+
+.related-guides__list {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.related-guides__list-item {
+  margin: 0;
+}
+
+.related-guides__list-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  background: transparent;
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+}
+
+.related-guides__list-link:hover {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+}
+
+.related-guides__list-link .related-guides__badge {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.related-guides__list-title {
+  flex: 1;
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+}
+
+.related-guides__list-link .related-guides__arrow {
+  font-size: 1rem;
 }
 
 /* ── Accessibility fixes ───────────────────────────────────────── */
