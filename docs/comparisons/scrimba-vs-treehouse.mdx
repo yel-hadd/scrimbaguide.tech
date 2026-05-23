@@ -12,6 +12,7 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
 
 # Scrimba vs Treehouse: which one earns your 2026 subscription?
@@ -40,7 +41,8 @@ You are on this page because Treehouse keeps showing up in old "best place to le
     "Treehouse: Techdegree program includes human-reviewed capstone projects",
   ]}
   cons={[
-    "Treehouse: Catalog has visibly outdated material in places",
+    "Treehouse: Older platform (launched 2011), curriculum updates slower than peers",
+    "Treehouse: Catalog has visibly outdated material outside the Techdegree programs",
     "Treehouse: Techdegree at $199/mo is steep for self-taught learners",
     "Treehouse: Minimal AI engineering coverage in 2026",
   ]}
@@ -52,9 +54,9 @@ You are on this page because Treehouse keeps showing up in old "best place to le
 
 ### 1. Established library vs current curriculum
 
-Treehouse has a deep back catalog that includes web dev, Python, Java, C#, and design. The polish on the videos is genuinely high; reviewers consistently rate the production quality strongly [(BitDegree Treehouse Review)](https://www.bitdegree.org/online-learning-platforms/treehouse-review). The problem in 2026 is that some of that catalog has not aged well. Reviews note inconsistent content currency and slower updates to newer frameworks and tools [(BitDegree comparison)](https://www.bitdegree.org/tutorials/codecademy-vs-treehouse).
+Treehouse launched in 2011 and that history shows on both ends. The polish on the older videos is genuinely high; reviewers consistently rate the production quality strongly [(BitDegree Treehouse Review)](https://www.bitdegree.org/online-learning-platforms/treehouse-review). What the marketing pages do not surface is that the platform updates its curriculum more slowly than the rest of the field. Reviews flag inconsistent content currency, courses that still reference older framework versions, and gaps in newer tooling [(BitDegree comparison)](https://www.bitdegree.org/tutorials/codecademy-vs-treehouse). The Techdegree programs (Front End, Full Stack JavaScript, Python, Data Analysis, UX) are the most actively maintained tier; the rest of the library skews older.
 
-Scrimba's catalog is smaller (around {totalCoursesLabel} courses) but it is current in the corners that matter for 2026 web dev. React 19, Next.js, TypeScript, modern CSS, and a 15-course AI engineering track that actually covers agents, RAG, MCP, and the Vercel AI SDK. If your goal is "learn what people are hired to write in 2026," current matters more than catalog depth.
+Scrimba's catalog is smaller (around {totalCoursesLabel} courses) but it is current in the corners that matter for 2026 web dev. React 19, Next.js, TypeScript, modern CSS, and a 15-course AI engineering track that actually covers agents, RAG, MCP, and the Vercel AI SDK. If your goal is "learn what people are hired to write in 2026," current matters more than catalog depth. The honest framing is that Treehouse is a stable, slower-moving platform aimed at a learner who values structure and production quality over leading-edge stack coverage.
 
 ### 2. Video-first vs interactive video
 
@@ -99,8 +101,9 @@ If you specifically want a human grading your capstone project before you put it
     { feature: "Topics covered", scrimba: "Web dev, fullstack JS, Python (AI), AI engineering", competitor: "Web dev, Python, Java, C#, design" },
     { feature: "AI engineering", scrimba: "15 courses (agents, RAG, MCP, Vercel AI SDK)", competitor: "Minimal" },
     { feature: "Free tier", scrimba: `~${freeCount} full courses, no card`, competitor: "7-day free trial only" },
-    { feature: "Entry-level monthly price", scrimba: "Check current pricing", competitor: "~$25/mo (Courses)" },
+    { feature: "Entry-level monthly price", scrimba: "Check current pricing", competitor: "~$25/mo (Courses) after 7-day trial" },
     { feature: "Top tier monthly price", scrimba: "Pro (annual is best value)", competitor: "~$199/mo (Techdegree)" },
+    { feature: "Platform age and update cadence", scrimba: "Launched 2017, current with 2026 stack", competitor: "Launched 2011, slower curriculum refresh" },
     { feature: "Project review", scrimba: "Community via Discord", competitor: "Techdegree includes staff and peer review" },
     { feature: "Content currency", scrimba: "Regularly updated (2026 refresh)", competitor: "Mixed; some courses visibly dated" },
     { feature: "Community", scrimba: "Private Discord (Pro)", competitor: "Slack community" },
@@ -109,15 +112,15 @@ If you specifically want a human grading your capstone project before you put it
 
 ## Pricing reality check
 
-Treehouse runs three tiers in 2026: Courses around $25 per month, Courses Plus around $49 per month, and Techdegree around $199 per month [(Treehouse Techdegree)](https://teamtreehouse.com/techdegree). Annual options exist for the lower tiers; the Techdegree is generally monthly. The Courses tier is cheap but lacks much of the interactive challenge content; Courses Plus is closer to Scrimba Pro's feature parity.
+Treehouse's entry tier starts around $25 per month after a 7-day trial [(Treehouse pricing)](https://teamtreehouse.com/pricing), and the Techdegree program runs at $199 per month [(Treehouse Techdegree)](https://teamtreehouse.com/techdegree). Treehouse has simplified its plan structure over the years, so the higher-priced "Courses Plus" middle tier from earlier coverage may or may not be listed at the moment; the live pricing page is the only place to verify. The Courses tier is cheap but lacks much of the interactive challenge content; the Techdegree is a different product entirely.
 
 Scrimba Pro's annual plan typically lands close to Coursera Plus and below the Techdegree by a wide margin. The free tier of around {freeCount} full courses is the cleanest "try before you buy" option in this comparison.
 
-If you want a single-tier price comparison, Courses Plus vs Scrimba Pro is the fair one. The Techdegree is a different product (coached program) and should be compared against entry-level bootcamps, not against a self-paced subscription.
+If you want a single-tier price comparison, the Treehouse Courses subscription vs Scrimba Pro is the fair one. The Techdegree is a different product (coached program) and should be compared against entry-level bootcamps, not against a self-paced subscription.
 
 ## Choose Scrimba vs Treehouse
 
-**Choose Scrimba if** you want modern web dev or AI engineering, you learn better with the editor inside the video, and you want a real free tier before committing. Start with the [free interactive demo scrim](https://scrimba.com/s0v687325e).
+**Choose Scrimba if** you want modern web dev or AI engineering, you learn better with the editor inside the video, and you want a real free tier before committing. Start with the <AffiliateLink href="https://scrimba.com/s0v687325e" location="choose-scrimba-demo">free interactive demo scrim</AffiliateLink>, then move to <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" location="choose-scrimba-pro">Scrimba Pro</AffiliateLink> when you want the four career paths and the path certificate.
 
 **Choose Treehouse if** you specifically want the Techdegree's human-reviewed capstones, you need Java or C# coverage, or you genuinely prefer a watch-then-practice rhythm with high-production-quality videos.
 
@@ -136,7 +139,7 @@ Treehouse is not a bad platform; it has just been overtaken on the specific axis
 <DocFaqSchema questions={[
   { q: "Is Treehouse better than Scrimba in 2026?", a: "For modern web development and AI engineering, no. Scrimba's in-lesson scrim format and current curriculum are stronger. Treehouse remains a real option for the Techdegree program or for Java and C# coverage that Scrimba does not offer." },
   { q: "Does Treehouse have a free tier?", a: `No. Treehouse offers only a 7-day free trial. Scrimba offers around ${freeCount} full courses for free with no card required.` },
-  { q: "How much does Treehouse cost in 2026?", a: "Courses is around $25/month, Courses Plus around $49/month, and the Techdegree around $199/month. Annual plans are available on the lower tiers." },
+  { q: "How much does Treehouse cost in 2026?", a: "The Courses subscription starts around $25/month after a 7-day trial, and the Techdegree program is around $199/month. Treehouse has simplified its plan structure over time, so check the live pricing page for any middle tier currently on offer." },
   { q: "What is the Treehouse Techdegree and is it worth it?", a: "The Techdegree is a coached, project-based program with human-reviewed capstones. At $199/month it is significantly more expensive than self-paced subscriptions like Scrimba Pro. It is worth it if you specifically need coached project review; otherwise a self-paced path plus a Discord community is more cost-effective." },
   { q: "Are Scrimba or Treehouse certificates accredited?", a: "Neither platform offers accredited university credentials. Both offer certificates of completion you can list on LinkedIn." },
 ]} />
@@ -144,7 +147,7 @@ Treehouse is not a bad platform; it has just been overtaken on the specific axis
 <FAQAccordion emitSchema={false} items={[
   { q: "Is Treehouse better than Scrimba in 2026?", a: "For modern web development and AI engineering, no. Scrimba's scrim format and current curriculum are stronger. Treehouse is still a real option for the Techdegree or for Java and C# coverage." },
   { q: "Does Treehouse have a free tier?", a: `No, only a 7-day trial. Scrimba offers around ${freeCount} full courses for free.` },
-  { q: "How much does Treehouse cost in 2026?", a: "Courses ~$25/mo, Courses Plus ~$49/mo, Techdegree ~$199/mo." },
+  { q: "How much does Treehouse cost in 2026?", a: "Courses subscription around $25/mo after a 7-day trial, Techdegree around $199/mo. Verify any middle tier on the live pricing page." },
   { q: "What is the Techdegree?", a: "A coached, project-based program with human-reviewed capstones. Worth it if you specifically need that review; otherwise a self-paced subscription is more cost-effective." },
 ]} />
 

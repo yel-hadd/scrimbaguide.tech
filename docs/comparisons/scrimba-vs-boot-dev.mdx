@@ -12,6 +12,7 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
 
 # Scrimba vs Boot.dev: frontend reps vs backend quests
@@ -37,12 +38,13 @@ Pick the track you actually want, not the platform that looks more polished on T
     "Scrimba: Around 19 free courses, no credit card",
     "Scrimba: Strong 2026 AI engineering track (agents, RAG, MCP, Vercel AI SDK)",
     "Boot.dev: Genuine CS fundamentals (Big-O, data structures, algorithms)",
-    "Boot.dev: Gamified XP keeps daily streaks alive for many learners",
+    "Boot.dev: Gamified XP keeps daily streaks alive for learners it suits",
   ]}
   cons={[
     "Scrimba: Backend path is JavaScript-only, no Go or deep algorithms",
-    "Boot.dev: No meaningful free tier",
+    "Boot.dev: No meaningful free tier; you are committing on third-party reviews",
     "Boot.dev: Frontend coverage is minimal; not a JS/React resource",
+    "Boot.dev: RPG framing is polarizing; some adult learners find it infantilizing",
   ]}
   ctaText="Try Scrimba Free"
   ctaHref="https://scrimba.com/s0v687325e"
@@ -62,11 +64,23 @@ If your target job posting says "React, TypeScript, Next.js," Scrimba. If it say
 
 ### 2. Gamified XP vs structured path
 
-Boot.dev wraps its curriculum in an RPG layer: XP for finishing exercises, streaks for showing up daily, levels, achievements. Reviewers describe this as either "exactly the daily nudge I needed" or "feels silly and the XP-to-effort ratio is off when a lesson takes six hours" [(Trustpilot reviews)](https://www.trustpilot.com/review/www.boot.dev). The honest test is whether the game layer actually gets you to open the tab on a Tuesday night.
+Boot.dev wraps its curriculum in an RPG layer: XP for finishing exercises, streaks for showing up daily, levels, achievements, a fantasy framing on top of computer science. Reviewers split sharply on this. Some describe it as "exactly the daily nudge I needed" and credit the streak system with finishing a path they had abandoned three times elsewhere. Others find the XP-to-effort ratio off (a six-hour lesson awarding the same XP as a 15-minute one), or find the RPG framing infantilizing for an adult learning a professional skill [(Trustpilot reviews)](https://www.trustpilot.com/review/www.boot.dev). Both reactions are common; neither is wrong. The gamification is not a universal good and pretending otherwise gets people six months into a subscription they resent.
 
 Scrimba's structure is conventional in shape: courses grouped into career paths, a checklist of modules, a certificate at the end. The motivation lever is the format itself, not gamification. You hit play, the instructor starts typing, you pause and write code, you keep going because the loop is short.
 
-If you have a long history of starting and abandoning courses, the gamification on Boot.dev may genuinely help. If you have a history of grinding through dry material when the content is useful, Scrimba's straight curriculum is fine.
+The honest test is whether streaks and XP actually get you to open the tab on a Tuesday night. If yes, Boot.dev's gamification is a real feature. If you would resent being asked to "level up" while studying HTTP, a conventional curriculum like Scrimba's is the calmer choice.
+
+## Who should pick Boot.dev specifically
+
+Skip the broader "Where Boot.dev wins" framing for a moment. The five learners who actually get the most from Boot.dev are:
+
+1. **You bounced off Codecademy or freeCodeCamp because you stopped opening the tab.** If gamified streaks have worked for you in other apps (Duolingo, fitness apps), the same mechanic will likely work here.
+2. **You want a backend role at a Python or Go shop.** Stripe, HashiCorp, Twitch infra, Uber, Cloudflare, plus thousands of smaller companies pay well for Go. Boot.dev is one of the few non-bootcamp resources that takes Go seriously end to end.
+3. **You want to interview at companies that ask algorithm questions.** Boot.dev's CS fundamentals (data structures, Big-O, recursion, trees, graphs) directly map to LeetCode-style screens. Scrimba does not cover this seriously.
+4. **You learn well from one opinionated linear path and dislike browsing a catalog.** Boot.dev tells you what to do next; you do it. If decision fatigue is the thing that derails you, a single track helps.
+5. **You are okay paying for the full year up front.** Boot.dev's free tier will not get you far enough to evaluate the curriculum properly. You are effectively committing on faith based on third-party reviews.
+
+If none of those five fit, you are probably better off with a different platform. If three or more fit, Boot.dev is genuinely a strong choice and Scrimba is not its replacement.
 
 ### 3. Python and Go focus vs JS and TS focus
 
@@ -125,7 +139,7 @@ Scrimba has the deepest frontend catalog of any subscription platform: React, Vu
 
 ## Choose Scrimba vs Boot.dev
 
-**Choose Scrimba if** you want frontend, fullstack, or AI engineering, you want to try before you pay, and you learn better by editing the teacher's code inside the video. Start with the [free interactive demo scrim](https://scrimba.com/s0v687325e).
+**Choose Scrimba if** you want frontend, fullstack, or AI engineering, you want to try before you pay, and you learn better by editing the teacher's code inside the video. Start with the <AffiliateLink href="https://scrimba.com/s0v687325e" location="choose-scrimba-demo">free interactive demo scrim</AffiliateLink>, then move to <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" location="choose-scrimba-pro">Scrimba Pro</AffiliateLink> when you commit to the Frontend, Fullstack, or AI Engineer path.
 
 **Choose Boot.dev if** you want backend-with-CS-fundamentals using Python and Go, you respond well to gamified daily practice, and you want one opinionated linear path rather than a course library.
 
