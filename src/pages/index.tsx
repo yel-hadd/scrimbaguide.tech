@@ -35,12 +35,12 @@ function HeroSection() {
     <section className="hero-section">
       <div className="hero-section__inner">
         <h1>
-          Learn React by typing inside the lesson. Then pick the path that gets you hired.
+          Learn by typing inside the lesson. Then pick the path that gets you hired.
         </h1>
         <p className="hero-section__lead">
-          A practical guide to Scrimba's {totalCoursesLabel} courses and four career paths.
-          What each one actually teaches, what it costs, who it is for, and where it loses to
-          the alternatives.
+          A practical guide to Scrimba's {totalCoursesLabel} courses and four career paths
+          across frontend, fullstack, backend, and AI engineering. What each one actually
+          teaches, what it costs, who it is for, and where it loses to the alternatives.
         </p>
         <div className="hero-buttons" role="group" aria-label="Primary actions">
           <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-hero-primary">
@@ -95,7 +95,7 @@ function ScrimExplainerSection() {
       </p>
       <p>
         The fastest way to feel it is to{' '}
-        <AffiliateLink href={DEMO_SCRIM_URL} variant="text">
+        <AffiliateLink href={DEMO_SCRIM_URL} variant="text" location="home-scrim-explainer">
           open a real scrim in your browser
         </AffiliateLink>
         . No signup. Edit a line, hit run, and see whether the format fits how you actually
@@ -237,12 +237,6 @@ function formatCount(n: number): string {
 function CoursesSection() {
   const topics = [
     {
-      name: 'React',
-      category: 'react',
-      link: '/docs/courses/react/',
-      description: 'Hooks, advanced patterns, testing, project-based courses.',
-    },
-    {
       name: 'JavaScript',
       category: 'javascript',
       link: '/docs/courses/javascript/',
@@ -253,6 +247,12 @@ function CoursesSection() {
       category: 'ai',
       link: '/docs/courses/ai/',
       description: 'Agents, RAG, MCP, prompt engineering, LLM integration.',
+    },
+    {
+      name: 'React',
+      category: 'react',
+      link: '/docs/courses/react/',
+      description: 'Hooks, advanced patterns, testing, project-based courses.',
     },
     {
       name: 'CSS & Design',
@@ -314,7 +314,9 @@ function PricingSection() {
       </p>
       <p className="pricing-cta__note">
         Our partner link applies 20% off automatically at checkout. Always confirm the
-        final price on Scrimba, regional pricing varies.
+        final price on Scrimba, regional pricing varies. Pro is covered by Scrimba's{' '}
+        <Link to="/docs/pricing/refund-policy">7-day refund on first purchase</Link>{' '}
+        if the format does not fit how you learn.
       </p>
       <div className="home-pricing__buttons">
         <Link to="/docs/pricing/" className="cta-link cta-link--button home-pricing__outline-btn">
@@ -443,7 +445,7 @@ function FinalCtaSection() {
         </p>
         <div className="home-pricing__buttons">
           <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-final-cta">
-            Open the demo scrim
+            Open a 30-second scrim
           </AffiliateLink>
           <Link to="/docs/paths/" className="cta-link cta-link--button home-pricing__outline-btn">
             Or compare the four paths
