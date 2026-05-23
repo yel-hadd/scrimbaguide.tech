@@ -1,10 +1,10 @@
 ---
 title: "Scrimba Backend Path Review (2026)"
-description: "Node, Express, SQL, TypeScript, and shipping APIs in ~30h—who the Backend path fits, what you build, and how it pairs with frontend experience."
+description: "Node, Express, SQL, TypeScript, security, and deployment in ~39h. See who the Backend path fits, what you actually build, and where it stops."
 keywords: [scrimba backend path, scrimba backend developer, backend career path, scrimba node express]
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-03-30
+  date: 2026-05-23
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -13,100 +13,162 @@ import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
 
-# Scrimba Backend Developer Path: APIs, data, and production basics
+# Scrimba Backend Developer Path: APIs, data, and shipping basics
 
-**What is the Scrimba Backend Path?** ~30.1 hours on Node, Express, SQL, TypeScript, security basics, and deployment—aimed at people who already know how the browser side works. It’s labeled intermediate for a reason.
+**What is the Scrimba Backend Path?** Roughly 39.4 hours of interactive lessons across 12 modules covering Node, Express (with a NestJS peek), SQL, TypeScript, cybersecurity baselines, Git, and deployment. It is labeled Intermediate for a reason: the path assumes you already understand HTML, JavaScript, and how the browser side of an app fits together.
 
-BLS wage releases continue to place software developer compensation in a strong national median band (across multiple specialties). Pro is still ~$200/year; bootcamps are a different budget tier. Try free scrims first if you’re unsure about the format.
+For market context, ZipRecruiter reports average U.S. back end developer pay around $120k as of May 2026, with the 25th to 75th percentile band spanning roughly $98.5k to $142k ([ZipRecruiter Back End Developer Salary](https://www.ziprecruiter.com/Salaries/Back-End-Developer-Salary)). The BLS publishes broader medians under Software Developers ([BLS](https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm)). Scrimba Pro is in a very different budget tier than bootcamps; see the [official pricing page](https://scrimba.com/home?pricing&via=u42d4986) for the live rate.
 
-*Last reviewed: April 2026.*
+*Last reviewed: May 2026.*
 
 <CourseCard
   title="The Backend Developer Path"
-  duration="30.1 hrs"
+  duration="39.4 hrs"
   difficulty="Intermediate"
   access="Pro"
   modules={12}
   href="https://scrimba.com/the-backend-developer-path-c0tbi0l98f?via=u42d4986"
-  description="Node, Express, SQL, TypeScript, auth and security basics, Git, deployment—Pro path for devs adding server skills."
+  description="Node, Express, SQL, TypeScript, cybersecurity baselines, Git, deployment. Pro path for devs adding server skills."
 />
 
 <div className="mdx-widget-center-cta mdx-widget-center-cta--spaced-bottom">
   <AffiliateLink href="https://scrimba.com/the-backend-developer-path-c0tbi0l98f?via=u42d4986" variant="button">
-    Start Building Backend APIs
+    Start the Backend Path
   </AffiliateLink>
   <p className="mdx-widget-note">
-    12 modules • 30+ hours of interactive coding
+    12 modules, 943 lessons, 39.4 hours of interactive coding
   </p>
 </div>
 
+## Try the format first
+
+Backend lessons follow the same scrim format as the rest of Scrimba. Open this [public no-signup scrim](https://scrimba.com/s0v687325e) to feel the editor-inside-the-lesson loop before committing to ~40 hours of it.
+
+## Who teaches this path
+
+Scrimba lists Tom Chant, Gregor Thomson, Rachel Johnson, DonTheDeveloper, Jonathan Hill, Ajo Borgvold, and Shant Dashjian on the Backend path. The standalone courses that map into it tell you who leads each block:
+
+- **Node.js (3.5 hrs)** and **Express.js (4.0 hrs):** Tom Chant
+- **SQL (3.8 hrs):** Gregor Thomson
+- **Intro to Supabase (4.8 hrs):** Jonathan Hill
+- **Cybersecurity (5.0 hrs):** Rachel Johnson and Jonathan Hill
+
+That gives you a reasonable preview: Tom Chant carries most of the Node and Express weight, Gregor Thomson handles SQL, and Rachel Johnson plus Jonathan Hill cover the security material.
+
 ## Complete module breakdown
 
-Skewed toward APIs and shipping, not abstract CS theory.
+Skewed toward shipping APIs, not abstract CS theory.
 
 | Module | Topics Covered | Why it matters in 2026 |
 |---|---|---|
-| Welcome to the Backend Path | Orientation | What “backend” means in this track. |
+| Welcome to the Backend Path | Orientation | What "backend" means in this track. |
 | Command Line Interface | Terminal basics, navigation | Servers and scripts live here. |
 | Web Architecture Fundamentals | HTTP, client-server model | Request/response mental model for APIs. |
-| Async JavaScript & APIs | Promises, fetch, REST | Same async patterns you’ll use with databases and routes. |
+| Async JavaScript & APIs | Promises, fetch, REST | Same async patterns you'll use with DBs and routes. |
 | Node | Node.js runtime, modules, npm | JS on the server. |
 | Databases | SQL, data modeling, queries | Persistence and real queries. |
 | Git & Github | Version control, collaboration | Standard team workflow. |
 | TypeScript | Types for backend development | Fewer silly mistakes in larger handlers. |
 | Frameworks | Express.js, NestJS | Route stacks without writing everything raw. |
-| Cybersecurity | Auth, input safety, rate limiting. | Baseline hardening interviewers sometimes probe. |
+| Cybersecurity | Auth, input safety, rate limiting | Baseline hardening interviewers sometimes probe. |
 | DevOps | Deployment, CI/CD basics | From `localhost` to something public. |
 | Launching Your Career | Backend-focused job search | Positioning projects for API-heavy roles. |
 
-**Total: 30.1 hours across 60 modules**
+**Total: 39.4 hours across 943 lessons.**
+
+## Realistic time budget
+
+Lesson time alone is ~40 hours; real projects on top push that further. Rough calendar:
+
+- **6 to 8 hrs/week:** about 8 to 10 weeks of lessons, longer with builds.
+- **12 to 15 hrs/week:** 3 to 5 weeks.
+- **Full-time, 30+ hrs/week:** 2 to 3 weeks if you do not get sidetracked.
+
+There is no cohort and no deadline. The [study plan](/docs/paths/study-plan) gives a structured week-by-week if you want one.
+
+## Honest limits
+
+A few things to set expectations:
+
+- **JavaScript only.** No Python and Django, no Java and Spring, no Go, no Rust. If you want a non-JS backend, this is not the path. Boot.dev and Codecademy carry more of that surface area; see [Scrimba vs Boot.dev](/docs/comparisons/scrimba-vs-boot-dev).
+- **Shallow on CS fundamentals.** No algorithms course, no systems design, no concurrency deep-dive. Strong for shipping CRUD; thin for FAANG-style interviews.
+- **SQL is a working intro.** Enough to query and model small schemas; not a database engineering course.
+- **Security is baseline.** Auth, input safety, rate limiting. Useful coverage, not a substitute for a security specialization.
+- **Frontend is assumed.** Start with [Frontend](/docs/paths/frontend-developer-path) or the [Fullstack](/docs/paths/fullstack-developer-path) path if JS still feels new.
 
 ## Who this is for
 
 - You **already know frontend basics** and want APIs, data, and deploys.
-- You’re fine staying in **Node/JavaScript** rather than switching to Python or Go here.
-- Job search is aimed at **backend or full-stack** titles.
-- **Intermediate**: if HTML/JS still feel new, start with [Frontend](/docs/paths/frontend-developer-path).
+- You are fine staying in **Node and JavaScript** rather than switching to Python or Go.
+- Your job search targets **backend or full-stack JS** titles.
+- You want a **shorter Pro track** than Fullstack without losing the server material.
 
-## Backend vs Fullstack path
+## What learners actually report
 
-[Fullstack](/docs/paths/fullstack-developer-path) is 108+ hours and rebuilds frontend from scratch, then adds everything else. This Backend track is ~30 hours if you don’t need that repetition.
+Public discussion on the Scrimba forum and Reddit threads converges on a few points: the Backend path is finishable inside a couple of months at a steady pace; instructors are generally well-reviewed (Tom Chant in particular shows up positively); and the gap between "finished the path" and "landed a backend role" is mostly filled by extra projects, not the certificate ([Scrimba forum thread on the Backend path](https://forum.scrimba.com/t/c-course-and-backend-dev-path/2011), [DonTheDeveloper review of Scrimba's career path style](https://www.donthedeveloper.tv/podcast/scrimba-frontend-developer-career-path-review)). The path is the spine, not the whole job hunt.
+
+## Backend vs Fullstack
+
+| Feature | Backend Path | Fullstack Path |
+|---|---|---|
+| **Duration** | 39.4 hrs | 108.4 hrs |
+| **Starting point** | Intermediate (frontend assumed) | Zero |
+| **HTML / CSS / React** | No | Yes |
+| **Node / Express** | Yes | Yes |
+| **SQL / Databases** | Yes | Yes |
+| **TypeScript** | Yes | Yes |
+| **Next.js** | No | Yes |
+| **AI Engineering module** | No | Yes |
+| **Cybersecurity module** | Yes | No |
+| **Testing module** | No | Yes |
+
+[Fullstack](/docs/paths/fullstack-developer-path) rebuilds the frontend from scratch then adds everything else. Backend skips that 50+ hour rebuild if you do not need it.
 
 ## Choose this if
 
-You can ship UI and now want routes, SQL, and hosting without sitting through the whole Frontend arc again. Want zero-to-hero in one subscription? That’s Fullstack.
+You can already ship a UI and now want routes, SQL, hosting, and a baseline of security without sitting through the whole Frontend arc again. Want zero-to-hero in one subscription? That is Fullstack. Want a non-JS backend like Python or Java? Scrimba is not that platform.
 
 ## Related pages
 
 - [All Learning Paths](/docs/paths/)
 - [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
+- [Frontend Developer Path](/docs/paths/frontend-developer-path)
 - [Learn Node.js](/docs/courses/javascript/nodejs)
 - [Learn Express](/docs/courses/javascript/expressjs)
 - [Learn SQL](/docs/courses/backend/sql)
-- [Scrimba vs Boot.dev](/docs/comparisons/scrimba-vs-boot-dev) — how Scrimba's backend compares to Boot.dev's CS-fundamentals track
-- [Learn Cybersecurity](/docs/courses/backend/cybersecurity) (standalone course in path)
+- [Learn Cybersecurity](/docs/courses/backend/cybersecurity)
 - [Backend Courses](/docs/courses/backend/)
+- [Scrimba vs Boot.dev](/docs/comparisons/scrimba-vs-boot-dev)
 - [How Scrims Work](/docs/faq/how-scrims-work)
 - [Tutorial Hell FAQ](/docs/faq/tutorial-hell)
 - [Scrimba Pricing](/docs/pricing/)
 
+## Sources
+
+- [Scrimba: The Backend Developer Path](https://scrimba.com/the-backend-developer-path-c0tbi0l98f)
+- [ZipRecruiter: Back End Developer Salary (May 2026)](https://www.ziprecruiter.com/Salaries/Back-End-Developer-Salary)
+- [BLS: Software Developers, QA Analysts, and Testers](https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm)
+- [Scrimba forum: C# course and Backend Dev Path](https://forum.scrimba.com/t/c-course-and-backend-dev-path/2011)
+- [Scrimba: How to become a backend developer in 2026](https://scrimba.com/articles/how-to-become-a-backend-developer-in-2026-complete-roadmap/)
+- [DonTheDeveloper: Honest review of Scrimba's career path](https://www.donthedeveloper.tv/podcast/scrimba-frontend-developer-career-path-review)
+
 <DocFaqSchema questions={[
-  { q: "Do I need frontend experience for the Scrimba Backend Developer Path?", a: "Yes. The path is labeled Intermediate and assumes you already know basic JavaScript, HTML, and how the web generally works." },
-  { q: "What languages does the Scrimba Backend Path use?", a: "The path focuses exclusively on the JavaScript ecosystem: Node.js, Express.js, SQL, and TypeScript." },
-  { q: "How long does the Scrimba Backend Developer Path take?", a: "The Backend Developer Path contains 30.1 hours of content. At 10-15 hours per week, most learners complete it in 2-4 weeks." },
-  { q: "Does the Scrimba Backend Path teach Python or Python frameworks?", a: "No. Scrimba's backend path focuses entirely on Node.js and the JavaScript ecosystem. If you want to learn Python backend development, you will need to look elsewhere." }
+  { q: "Do I need frontend experience for the Scrimba Backend Developer Path?", a: "Yes. The path is labeled Intermediate and assumes you already know basic JavaScript, HTML, and how the web works." },
+  { q: "What languages does the Scrimba Backend Path use?", a: "JavaScript and TypeScript on Node.js, with SQL for databases. The path uses Express and previews NestJS for frameworks." },
+  { q: "How long does the Scrimba Backend Developer Path take?", a: "The path is 39.4 hours of lessons across 12 modules. At 10 to 15 hours a week, most learners finish in 3 to 5 weeks; weekend-only learners often take 2 months." },
+  { q: "Does the Scrimba Backend Path teach Python or Django?", a: "No. The path focuses entirely on the JavaScript ecosystem. For Python backend, you will need a different platform." }
 ]} />
 
 <FAQAccordion emitSchema={false} items={[
-  { q: "Do I need frontend experience for the Backend Path?", a: "Yes. The path is labeled Intermediate and assumes you already know basic JavaScript, HTML, and how the web generally works." },
-  { q: "What languages does the Backend Path use?", a: "The path focuses exclusively on the JavaScript ecosystem: Node.js, Express.js, SQL, and TypeScript." },
-  { q: "How long does the Backend Path take?", a: "The Backend Developer Path contains 30.1 hours of content. At 10-15 hours per week, most learners complete it in 2-4 weeks." },
-  { q: "Does this path teach Python?", a: "No. Scrimba's backend path focuses entirely on Node.js and the JavaScript ecosystem. If you want to learn Python backend development, you will need to look elsewhere." }
+  { q: "Do I need frontend experience for the Backend Path?", a: "Yes. The path is labeled Intermediate and assumes you already know basic JavaScript, HTML, and how the web works." },
+  { q: "What languages does the Backend Path use?", a: "JavaScript and TypeScript on Node.js, with SQL for databases. Express is the main framework with a NestJS preview." },
+  { q: "How long does the Backend Path take?", a: "39.4 hours of lessons across 12 modules. Most learners finish in 3 to 5 weeks at 10 to 15 hours per week." },
+  { q: "Does this path teach Python?", a: "No. Scrimba's backend path is JavaScript-only. For Python backend development you will need another platform." }
 ]} />
 
 <PricingCTA
   title="Add backend skills in the same editor"
-  subtitle="Try free scrims first. Pro unlocks the full Backend path when you’re ready for Node, Express, and SQL."
-  buttonText="Try Scrimba Free"
+  subtitle="Try free scrims first. Pro unlocks the full Backend path when you are ready for Node, Express, and SQL."
+  buttonText="See Pro pricing"
   ctaType="free"
 />
