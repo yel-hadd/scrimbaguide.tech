@@ -41,12 +41,16 @@ clean-env: ## Remove venv and node_modules
 # ── Scraping ─────────────────────────────────────────────────────
 
 .PHONY: scrape
-scrape: $(VENV) ## Run the Scrimba scraper (full crawl)
+scrape: $(VENV) ## Run the Scrimba scraper (incremental, default)
 	$(PY) scraper/scrape.py --output $(OUTPUT_DIR)
 
-.PHONY: scrape-resume
-scrape-resume: $(VENV) ## Resume an interrupted scrape
-	$(PY) scraper/scrape.py --output $(OUTPUT_DIR) --resume
+.PHONY: scrape-fast
+scrape-fast: $(VENV) ## Fast pass only (JSON-LD via httpx, skip Selenium modules)
+	$(PY) scraper/scrape.py --output $(OUTPUT_DIR) --no-modules
+
+.PHONY: scrape-full
+scrape-full: $(VENV) ## Force re-scrape ignoring the incremental cache
+	$(PY) scraper/scrape.py --output $(OUTPUT_DIR) --full
 
 .PHONY: scrape-courses
 scrape-courses: $(VENV) ## Scrape only course pages

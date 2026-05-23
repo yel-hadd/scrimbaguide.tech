@@ -1,0 +1,73 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Commands
+
+Day-to-day work goes through the Makefile; npm scripts are the underlying implementation.
+
+```bash
+make install         # Node + Python deps (creates .venv and node_modules)
+make dev             # docusaurus start on localhost:3000
+make build           # docusaurus build + generate llms.txt/llms-full.txt
+make typecheck       # tsc (no emit)
+make serve           # build then serve the static output
+
+make scrape          # full Selenium crawl of scrimba.com → output/
+make scrape-resume   # resume interrupted scrape
+make generate-data   # output/index.json → data/*.json
+make generate-pages  # data/courses.json → docs/courses/**/*.mdx
+make generate        # generate-data + generate-pages
+make pipeline        # scrape → generate → build (end-to-end)
+```
+
+Tests (Node's built-in runner, no Jest):
+
+```bash
+npm run test:llms                                                    # llms.txt generator tests
+node --test scripts/__tests__/<file>.test.mjs                        # single test file
+```
+
+Other useful scripts: `npm run generate:social-cards`, `npm run generate:llms`, `npm run assert-sitemap-url`, `npm run submit-indexnow`.
+
+Node 20+ is required (see `engines` in package.json).
+
+## Architecture
+
+This is a **Docusaurus 3** site (React 19, TypeScript) for scrimbaguide.tech, deployed to GitHub Pages via `.github/workflows/deploy.yml` on push to `main`.
+
+### Content pipeline
+
+The course catalog is not authored by hand. It flows through four stages:
+
+```
+scrimba.com  →  output/        →  data/*.json     →  docs/courses/**/*.mdx  →  build/
+              scraper/scrape.py    scripts/             scripts/                  docusaurus
+              (Python, Selenium)   build-data.mjs       generate-course-pages.mjs
+```
+
+- `scraper/` is Python+Selenium, run via `.venv`. Outputs raw `index.json` and per-page markdown/PNG into `output/`.
+- `scripts/build-data.mjs` transforms scraped output into normalized `data/courses.json`, `data/help-articles.json`, `data/topics.json`, `data/practice-pages.json`.
+- `scripts/generate-course-pages.mjs` writes MDX files under `docs/courses/{react,javascript,css,ai,...}/`. These pages are **generated artifacts** — edit the generator, not the MDX. Manually authored docs live in `docs/{comparisons,faq,paths,pricing,udemy}/` and `blog/`.
+- `scripts/generate-llms-from-sitemap.mjs` runs as part of `npm run build` to emit `llms.txt` / `llms-full.txt` from the built sitemap. It has its own test suite under `scripts/__tests__/`.
+
+### Site config & SEO invariants
+
+`docusaurus.config.ts` is where most cross-cutting concerns live and is worth reading before changing URL or sitemap behavior:
+
+- `trailingSlash: true` is canonical. Canonical URLs, og:url, JSON-LD, and the llms.txt files all must emit trailing-slash URLs to match. See `plugins/normalize-canonical-urls/` and recent commits `1f14a9f`, `9ed1d8d`.
+- `SITEMAP_EXCLUDED_PATHS` / `SITEMAP_EXCLUDED_DOC_ALIASES` in the config exclude legacy redirect stubs and duplicate scraped slugs from the sitemap — add new exclusions there, not by deleting pages.
+- `sitemapPriority()` assigns per-path priority; tweak there rather than hand-editing the generated sitemap.
+- `@docusaurus/plugin-client-redirects` handles legacy URLs. New legacy slugs should be added as redirects, not new pages.
+
+### Affiliate links
+
+All outbound links to scrimba.com go through `<AffiliateLink>` (in `src/components/`), which appends `?via=u42d4986` and sets `rel="nofollow"`. Don't hand-write `https://scrimba.com/...` anchors in MDX. `scripts/inject-affiliate-links.mjs` exists to retrofit raw links.
+
+### Pricing
+
+Never quote exact Scrimba prices in content — they vary by region and drift. Link to `https://scrimba.com/our-pricing` instead.
+
+### Theming
+
+Customizations to Docusaurus components live in `src/theme/` (swizzles). Global styles are `src/css/custom.css`. Reusable components are `src/components/`. The homepage is `src/pages/index.tsx`.
