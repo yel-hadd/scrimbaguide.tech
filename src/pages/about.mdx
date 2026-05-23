@@ -49,9 +49,21 @@ What I am is a developer who treats this site as a careful, slow audit of the pl
 - **No fabricated quotes.** If a testimonial does not link to a real person, a real Reddit thread, or a real review site, it does not appear on this site. Older versions of these pages used "synthesized" quotes. They are being removed.
 - **Catalog data is scraped, not invented.** Course counts, durations, and instructor names come from a nightly read of Scrimba's own structured data. The scraper is open source in the repo.
 
+## What I actually track
+
+The catalog data on this site is not assembled by hand. A nightly Python crawler ([`scraper/scrape.py`](https://github.com/yel-hadd/scrimbaguide.tech/blob/main/scraper/scrape.py)) reads Scrimba's public course pages, extracts the embedded JSON-LD structured data, and writes it to a normalized JSON dataset. The course pages on this site are regenerated from that dataset.
+
+What that means in practice:
+
+- **Course counts, durations, instructor names, and free/paid status** come from Scrimba's own structured markup, not from my interpretation of marketing copy.
+- **Removed or renamed courses** show up in the diff the next morning. That is how I know when something is quietly retired.
+- **Module breakdowns** are a separate case. Scrimba moved the anonymous module DOM behind login in 2026, so the breakdowns on this site come from a legacy capture of 31 courses. Newer courses show JSON-LD-level data only, and that limitation is called out on the affected pages.
+
+If the data behind a page looks wrong, the fix usually belongs in the scraper or the generator, not the MDX. Open an issue on the repo or email me.
+
 ## Corrections
 
-If something on this site is wrong, outdated, or unclear, email [hello@scrimbaguide.tech](mailto:hello@scrimbaguide.tech) and I will fix it with a dated note.
+If something on this site is wrong, outdated, or unclear, email [hello@scrimbaguide.tech](mailto:hello@scrimbaguide.tech). My policy: I respond within 48 hours and update the page with a dated correction note ("Updated YYYY-MM-DD: ...") so you can see what changed and when. Silent edits are not a correction, they are revisionism.
 
 ---
 

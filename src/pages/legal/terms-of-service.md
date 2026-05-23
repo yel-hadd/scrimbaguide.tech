@@ -8,6 +8,8 @@ keywords: [scrimbaguide terms of service]
 
 **Last Updated: 2026-02-06**
 
+> **In plain English:** this is a free reader's guide to Scrimba. We try to keep the information accurate but cannot guarantee it, the site is provided as-is, and we are not affiliated with Scrimba AS. Use the site for personal, non-commercial reading. The legal text below is the binding version.
+
 Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the https://scrimbaguide.tech website (the "Service") operated by Scrimba Guide ("us", "we", or "our").
 
 ## 1. Terms

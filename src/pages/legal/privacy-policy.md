@@ -8,6 +8,8 @@ keywords: [scrimbaguide privacy policy]
 
 **Last Updated: 2026-02-06**
 
+> **In plain English:** we do not sell your data. We use cookies for analytics and to remember your preferences. We use Google Analytics to understand traffic and may show Google ads. You can opt out of personalized advertising through Google's [Ads Settings](https://www.google.com/settings/ads) and manage cookies through your browser. If you are in the EU, UK, or California, you have additional rights covered below. The legal text below is the binding version.
+
 At Scrimba Guide, accessible from https://scrimbaguide.tech, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Scrimba Guide and how we use it.
 
 ## Information We Collect
