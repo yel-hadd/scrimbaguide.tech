@@ -619,7 +619,7 @@ body {
  * Pattern: full-bleed section, flex-column inner container.
  * align-items: center on the inner div centers every child as a block,
  * so the bullet <ul> (display:flex column, width:max-content) is truly
- * centered while its text stays left-aligned — same technique used by
+ * centered while its text stays left-aligned, same technique used by
  * Stripe, Linear, Vercel landing pages.
  *
  * Gradient lives on ::before so it's a decoration layer, not the
@@ -647,7 +647,7 @@ body {
   background: linear-gradient(160deg, rgba(111, 78, 255, 0.28) 0%, rgba(111, 78, 255, 0.1) 55%, transparent 100%);
 }
 
-/* Flex column — every child is centered horizontally as a unit */
+/* Flex column, every child is centered horizontally as a unit */
 .hero-section__inner {
   position: relative;
   z-index: 1;
@@ -794,7 +794,7 @@ body {
   margin: 2rem 0;
 }
 
-/* 2-column grid — for 4-item sections (paths). Always 2×2, 1 col on mobile. */
+/* 2-column grid, for 4-item sections (paths). Always 2×2, 1 col on mobile. */
 .section-grid--2col {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -806,7 +806,7 @@ body {
 }
 
 /*
- * 3-column grid — for 3-item and 6-item sections (compare, blog, courses).
+ * 3-column grid, for 3-item and 6-item sections (compare, blog, courses).
  * At ≤768px switches to 2 cols to avoid very narrow cards.
  * For 3-item grids a 2+1 split is possible; the orphan rule below
  * makes the last lone card span both columns instead of floating left.
@@ -1069,7 +1069,7 @@ article a:not(.cta-link):not(.hash-link):hover {
   font-size: 0.92rem;
 }
 
-/* ── Trust / stat bar — lives inside the hero section ────────── */
+/* ── Trust / stat bar, lives inside the hero section ────────── */
 .hero-section__stats {
   position: relative;
   z-index: 1;
@@ -1680,7 +1680,7 @@ article a:not(.cta-link):not(.hash-link):hover {
 }
 
 /* Ensure tables in markdown have tabindex for keyboard scrolling.
-   This is handled via JS below — this rule adds a visible focus ring. */
+   This is handled via JS below, this rule adds a visible focus ring. */
 .theme-doc-markdown table:focus,
 .comparison-table:focus {
   outline: 2px solid var(--ifm-color-primary);

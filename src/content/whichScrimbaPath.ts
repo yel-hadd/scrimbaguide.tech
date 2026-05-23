@@ -1,6 +1,6 @@
 /**
  * Path advisor: scoring + copy for Scrimba career path recommendations.
- * Pure functions — safe to test and reuse from PathAdvisor.
+ * Pure functions, safe to test and reuse from PathAdvisor.
  */
 
 export type Experience = 'beginner' | 'some' | 'junior' | 'senior';
@@ -45,7 +45,7 @@ export const PATHS: Record<
     doc: '/docs/paths/fullstack-developer-path',
     blurb:
       'Best when you want frontend through Next.js plus backend, databases, TypeScript, and AI engineering in one track.',
-    affiliateNote: 'Heavy time investment—annual billing usually wins if you will stick with it 3+ months.',
+    affiliateNote: 'Heavy time investment, annual billing usually wins if you will stick with it 3+ months.',
   },
   backend: {
     title: 'Backend Developer Career Path',
@@ -58,7 +58,7 @@ export const PATHS: Record<
     title: 'AI Engineer Career Path',
     doc: '/docs/paths/ai-engineer-path',
     blurb:
-      'Best for developers who already ship code and want agents, RAG, MCP, and AI app patterns—not a first programming course.',
+      'Best for developers who already ship code and want agents, RAG, MCP, and AI app patterns, not a first programming course.',
     affiliateNote: 'If you are brand new to code, finish Frontend fundamentals first so you can move faster here.',
   },
 };
@@ -110,7 +110,7 @@ function buildReasoning(
     );
   } else if (goal === 'job' && hours === 'low' && primary === 'fullstack') {
     lines.push(
-      'Fullstack is the longest path; at under ~5 hours/week it is still doable but will take many months—consistency matters more than speed.',
+      'Fullstack is the longest path; at under ~5 hours/week it is still doable but will take many months, consistency matters more than speed.',
     );
   } else if (goal === 'job' && hours === 'high' && primary === 'fullstack') {
     lines.push(
@@ -121,7 +121,7 @@ function buildReasoning(
   }
 
   if (situation === 'employed-learning' && hours === 'low') {
-    lines.push('Fitting study around a job usually favors one focused path and smaller weekly wins—not context-switching across four tracks.');
+    lines.push('Fitting study around a job usually favors one focused path and smaller weekly wins, not context-switching across four tracks.');
   }
   if (situation === 'student' && primary === 'fullstack') {
     lines.push('Students often use a semester or summer block; Fullstack maps well to a concentrated push if you can protect study time.');
@@ -142,7 +142,7 @@ function firstWeekSteps(primary: PathKey, goal: Goal): string[] {
   const steps: string[] = [
     'Open the path guide and skim the module order so you know the sequence before starting.',
     'Try two free Scrimba modules in that stack to confirm the scrim format works for you.',
-    'Block 2–3 calendar slots this week before upgrading—habit beats motivation.',
+    'Block 2–3 calendar slots this week before upgrading, habit beats motivation.',
   ];
   if (goal === 'job') {
     steps.push('Pick one portfolio-sized project from the path to treat as your north star.');
@@ -216,7 +216,7 @@ export function computePathRecommendation(input: AdvisorInput): PathRecommendati
 }
 
 export const EXPERIENCE_OPTIONS: readonly { value: Experience; label: string }[] = [
-  { value: 'beginner', label: 'Complete beginner — little or no code' },
+  { value: 'beginner', label: 'Complete beginner, little or no code' },
   { value: 'some', label: 'Some HTML/CSS/JS, still shaky' },
   { value: 'junior', label: 'Junior developer shipping small features' },
   { value: 'senior', label: 'Experienced dev adding a new stack' },
@@ -224,7 +224,7 @@ export const EXPERIENCE_OPTIONS: readonly { value: Experience; label: string }[]
 
 export const GOAL_OPTIONS: readonly { value: Goal; label: string }[] = [
   { value: 'job', label: 'Get hired as a developer' },
-  { value: 'backend', label: 'Build backend skills — APIs, databases, Node' },
+  { value: 'backend', label: 'Build backend skills, APIs, databases, Node' },
   { value: 'ai', label: 'Build AI-powered apps and agents' },
   { value: 'explore', label: 'Explore coding before I commit' },
 ] as const;
@@ -236,8 +236,8 @@ export const HOURS_OPTIONS: readonly { value: Hours; label: string }[] = [
 ] as const;
 
 export const SITUATION_OPTIONS: readonly { value: Situation; label: string }[] = [
-  { value: 'career-switch', label: "Career switch — I'm aiming for a developer job" },
-  { value: 'student', label: 'Student — fitting this around classes' },
-  { value: 'employed-learning', label: 'Working full-time — studying on the side' },
-  { value: 'exploring', label: 'Just exploring — not sure yet' },
+  { value: 'career-switch', label: "Career switch, I'm aiming for a developer job" },
+  { value: 'student', label: 'Student, fitting this around classes' },
+  { value: 'employed-learning', label: 'Working full-time, studying on the side' },
+  { value: 'exploring', label: 'Just exploring, not sure yet' },
 ] as const;

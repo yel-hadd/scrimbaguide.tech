@@ -16,7 +16,7 @@ In accordance with the Federal Trade Commission's 16 CFR Part 255 guidelines ("G
 
 ## How We Review
 
-All opinions expressed are our own, based on hands-on testing of the Scrimba platform. We recommend Scrimba because we genuinely believe it is the best interactive coding platform for web development — not because of the affiliate relationship.
+All opinions expressed are our own, based on hands-on testing of the Scrimba platform. We recommend Scrimba because we genuinely believe it is the best interactive coding platform for web development, not because of the affiliate relationship.
 
 - We have personally taken or deeply researched every course we review.
 - Our "Pros & Cons" are based on objective analysis, not marketing copy.

@@ -18,7 +18,7 @@ import BlogListPageStructuredData from '@theme/BlogListPage/StructuredData';
  * content area (after the navbar), not above the layout.
  *
  * The H1 is styled small/muted so it doesn't compete with the blog post
- * titles — it satisfies Screaming Frog's "missing H1" audit while
+ * titles, it satisfies Screaming Frog's "missing H1" audit while
  * staying out of the visual hierarchy.
  *
  * Previous approach used a wrapper fragment that placed the H1 before
@@ -44,7 +44,7 @@ export default function BlogListPage(props: Props): ReactNode {
       <BlogLayout sidebar={sidebar}>
         {isFirstPage && (
           <h1 className="blog-list-page__title">
-            Scrimba Guide Blog — Reviews, Tips, and Career Advice for Developers
+            Scrimba Guide Blog, Reviews, Tips, and Career Advice for Developers
           </h1>
         )}
         <BlogPostItems items={items} />

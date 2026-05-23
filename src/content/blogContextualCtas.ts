@@ -29,7 +29,7 @@ const BY_SLUG: Record<string, BlogCta> = {
   },
   'scrimba-discount-codes-2026': {
     title: 'Confirm the live checkout price',
-    body: 'Discounts apply at billing toggles and eligibility—not mystery coupon codes.',
+    body: 'Discounts apply at billing toggles and eligibility, not mystery coupon codes.',
     href: 'https://scrimba.com/home?pricing&via=u42d4986',
     linkLabel: 'Open Scrimba pricing',
   },
@@ -65,13 +65,13 @@ const BY_SLUG: Record<string, BlogCta> = {
   },
   'scrimba-backend-path-review': {
     title: 'Backend path breakdown',
-    body: 'Node, SQL, security modules—see if it matches your goals.',
+    body: 'Node, SQL, security modules, see if it matches your goals.',
     href: '/docs/paths/backend-developer-path',
     linkLabel: 'Backend Developer path',
   },
   'scrimba-ai-engineer-path-guide': {
     title: 'AI path on Scrimba',
-    body: 'Agents, RAG, MCP—map the curriculum before you start.',
+    body: 'Agents, RAG, MCP, map the curriculum before you start.',
     href: '/docs/paths/ai-engineer-path',
     linkLabel: 'AI Engineer path',
   },
@@ -101,7 +101,7 @@ const BY_SLUG: Record<string, BlogCta> = {
   },
   'portfolio-projects-get-hired-2026': {
     title: 'Build along a path',
-    body: 'Career paths bundle portfolio-grade projects—start with Frontend or Fullstack.',
+    body: 'Career paths bundle portfolio-grade projects, start with Frontend or Fullstack.',
     href: '/docs/paths/',
     linkLabel: 'Choose a path',
   },

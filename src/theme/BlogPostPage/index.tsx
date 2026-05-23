@@ -1,5 +1,5 @@
 /**
- * Swizzled BlogPostPage — adds contextual CTA + email capture after post body.
+ * Swizzled BlogPostPage, adds contextual CTA + email capture after post body.
  */
 import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
