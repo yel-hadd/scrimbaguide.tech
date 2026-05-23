@@ -314,7 +314,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
 
           {result.secondary && (
             <div className="path-advisor__secondary alert alert--info">
-              <strong>Also consider:</strong> {PATHS[result.secondary].title} — {PATHS[result.secondary].blurb}{' '}
+              <strong>Also consider:</strong> {PATHS[result.secondary].title}. {PATHS[result.secondary].blurb}{' '}
               <Link
                 to={PATHS[result.secondary].doc}
                 onClick={() =>

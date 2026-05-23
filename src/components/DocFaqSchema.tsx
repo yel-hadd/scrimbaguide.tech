@@ -13,7 +13,7 @@ interface DocFaqSchemaProps {
 
 /**
  * JSON-LD FAQPage schema for doc pages.
- * Add to comparison and path pages that contain FAQ sections —
+ * Add to comparison and path pages that contain FAQ sections;
  * increases AI Overview and featured snippet eligibility.
  */
 export default function DocFaqSchema({ questions }: DocFaqSchemaProps): React.ReactElement {

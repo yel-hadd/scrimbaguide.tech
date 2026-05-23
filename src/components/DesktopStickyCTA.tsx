@@ -40,7 +40,7 @@ export default function DesktopStickyCTA(): React.ReactElement | null {
     <div className="desktop-sticky-cta" role="complementary" aria-label="Scrimba Pro discount">
       <div className="desktop-sticky-cta__card">
         <p className="desktop-sticky-cta__title">20% off Scrimba Pro</p>
-        <p className="desktop-sticky-cta__sub">Partner checkout — verify price before paying.</p>
+        <p className="desktop-sticky-cta__sub">Partner checkout. Verify price before paying.</p>
         <AffiliateLink
           href="https://scrimba.com/home?pricing&via=u42d4986"
           variant="button"
