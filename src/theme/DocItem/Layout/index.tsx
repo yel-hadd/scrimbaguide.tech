@@ -89,7 +89,12 @@ function DocSeoHead(): React.ReactElement {
 function DocAffiliateCta({ pathname }: { pathname: string }): React.ReactElement | null {
   const { frontMatter } = useDoc();
   const fm = frontMatter as DocAffiliateFrontMatter;
-  if (pathname.startsWith('/docs/pricing/') || fm.hideGlobalPricingCta) {
+  // Suppress on pricing pages (own CTAs), comparison detail pages (VerdictBox has its
+  // own CTA, so the auto-injected one would stack), and any doc that opts out via
+  // hideGlobalPricingCta front matter.
+  const isComparisonDetail =
+    pathname.startsWith('/docs/comparisons/') && pathname !== '/docs/comparisons/';
+  if (pathname.startsWith('/docs/pricing/') || isComparisonDetail || fm.hideGlobalPricingCta) {
     return null;
   }
 

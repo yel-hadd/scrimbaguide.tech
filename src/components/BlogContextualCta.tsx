@@ -30,7 +30,11 @@ export default function BlogContextualCta(): React.ReactElement {
       <h2 className="text--lg margin-bottom--sm">{cta.title}</h2>
       <p className="margin-bottom--md">{cta.body}</p>
       {isExternal ? (
-        <AffiliateLink href={cta.href} variant="button">
+        <AffiliateLink
+          href={cta.href}
+          variant="button"
+          location={`blog-contextual-${slug}`}
+        >
           {cta.linkLabel}
         </AffiliateLink>
       ) : (
