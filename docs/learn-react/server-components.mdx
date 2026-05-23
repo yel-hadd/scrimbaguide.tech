@@ -2,8 +2,6 @@
 title: "React Server Components (RSC): The Future of React"
 description: "Understand React Server Components, Server Actions, and the shift to full-stack React. Learn where to start with Next.js and Scrimba."
 keywords: [react server components, rsc, next.js server components, react 19, server actions]
-last_update:
-  date: 2026-03-30
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -11,7 +9,7 @@ import CourseCard from '@site/src/components/CourseCard';
 
 # React Server Components
 
-**Quick answer:** RSC, Server Actions, and React 19 hooks confuse everyone at first—this page gives a **plain-language map**, then points to Scrimba’s **Next.js** material where you actually build.
+RSC, Server Actions, and React 19 hooks confuse everyone at first, this page gives a **plain-language map**, then points to Scrimba’s **Next.js** material where you actually build.
 
 This page summarizes React’s server-first stack: **Server Components** for data and leaner bundles, **Client Components** (`'use client'`) for hooks and events, **Server Actions** for form mutations, and key **React 19** hooks for actions and optimistic UI. It notes the optional **React Compiler** and treats Next.js as the practical place to learn RSC.
 
@@ -56,13 +54,13 @@ async function addToCart(formData) {
 
 React 19 adds hooks that work with Server Actions:
 
-- **`useActionState`** — replaces the deprecated `useFormState`. Manages pending state, errors, and return values from form actions.
-- **`useOptimistic`** — shows optimistic UI updates before the server responds (e.g., "liking" a post instantly).
-- **`use()`** — lets you read promises and context inside render (including conditionally).
+- **`useActionState`**, replaces the deprecated `useFormState`. Manages pending state, errors, and return values from form actions.
+- **`useOptimistic`**, shows optimistic UI updates before the server responds (e.g., "liking" a post instantly).
+- **`use()`**, lets you read promises and context inside render (including conditionally).
 
 ### 4. The React Compiler
 
-The React Compiler (optional in React 19) automatically memoizes your components and values. You no longer need manual `useMemo` or `useCallback` for most cases — the compiler optimizes re-renders for you. See the [React docs on the Compiler](https://react.dev/reference/react/Compiler).
+The React Compiler (optional in React 19) automatically memoizes your components and values. You no longer need manual `useMemo` or `useCallback` for most cases, the compiler optimizes re-renders for you. See the [React docs on the Compiler](https://react.dev/reference/react/Compiler).
 
 ## Learn This on Scrimba
 

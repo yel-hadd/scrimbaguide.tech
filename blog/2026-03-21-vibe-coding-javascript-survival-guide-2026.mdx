@@ -1,15 +1,13 @@
 ---
 slug: vibe-coding-javascript-survival-guide-2026
 title: "Vibe Coding JavaScript Survival Guide: 10 Concepts Behind 90% of Bugs"
-description: "Vibe coding JavaScript debugging: the 10 concepts behind most AI-generated bugs — error patterns, fixes, and Scrimba courses to learn each one."
+description: "Vibe coding JavaScript debugging: the 10 concepts behind most AI-generated bugs, error patterns, fixes, and Scrimba courses to learn each one."
 authors: [scrimbaguide]
 tags: [vibe-coding, javascript]
 keywords: [vibe coding javascript, vibe coding debugging, javascript for vibe coders, async await bugs, react stale closure]
 image: /img/blog/vibe-coding-javascript-survival-guide-2026.png
-image_alt: "Vibe Coding JavaScript Survival Guide — Scrimba Guide Blog"
+image_alt: "Vibe Coding JavaScript Survival Guide, Scrimba Guide Blog"
 hideFooterPricingCta: false
-last_update:
-  date: 2026-03-21
 ---
 
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
@@ -26,7 +24,7 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
     },
     {
       q: "Why does vibe-coded JavaScript break so often?",
-      a: "Models optimize for plausible-looking code, not your exact runtime environment. That produces missing awaits, accidental mutation, stale closures, and weak error handling — bugs that only appear under latency, concurrency, or real data."
+      a: "Models optimize for plausible-looking code, not your exact runtime environment. That produces missing awaits, accidental mutation, stale closures, and weak error handling, bugs that only appear under latency, concurrency, or real data."
     },
     {
       q: "How do I debug vibe coding errors faster?",
@@ -34,18 +32,18 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
     },
     {
       q: "Where can I practice JavaScript interactively?",
-      a: "Scrimba’s Learn JavaScript (free) and Modern JavaScript courses are built around in-browser typing — the fastest way to rebuild intuition AI tools skip."
+      a: "Scrimba’s Learn JavaScript (free) and Modern JavaScript courses are built around in-browser typing, the fastest way to rebuild intuition AI tools skip."
     },
     {
       q: "Is there a printable reference for these concepts?",
-      a: "Yes — see the printable cheat sheet at scrimbaguide.tech/downloads/vibe-coding-javascript-cheat-sheet.html which covers all 10 concepts with code examples."
+      a: "Yes, see the printable cheat sheet at scrimbaguide.tech/downloads/vibe-coding-javascript-cheat-sheet.html which covers all 10 concepts with code examples."
     }
   ]}
 />
 
 <ItemListSchema
   name="10 JavaScript concepts for vibe coding survival"
-  description="The core JavaScript ideas that explain most debugging sessions after AI-generated code ships — async, null safety, mutation, closures, event loop, references, coercion, scope, errors, and this binding."
+  description="The core JavaScript ideas that explain most debugging sessions after AI-generated code ships, async, null safety, mutation, closures, event loop, references, coercion, scope, errors, and this binding."
   items={[
     { name: "async/await and Promises", url: "/docs/courses/javascript/modern-javascript", description: "Scheduling, awaiting, and parallel async flows" },
     { name: "undefined vs null and optional chaining", url: "/docs/courses/javascript/tricky-parts-of-javascript", description: "Safe property access and nullish patterns" },
@@ -64,9 +62,7 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 <DisclosureNotice />
 
-**Vibe coding JavaScript** is JavaScript shipped after AI tools generate most of the lines while you steer by intent and small edits. Production still runs on the real event loop, real HTTP, and real user inputs — so **timing**, **references**, and **mutation** dominate debugging. Models optimize for plausible happy paths; users live on edge cases. This guide is a **quick-reference card**: ten concepts, the **error flavor** you will recognize, a **minimal fix**, and a **Scrimba** link to drill each skill without autopilot.
-
-*Last reviewed: April 2026.*
+**Vibe coding JavaScript** is JavaScript shipped after AI tools generate most of the lines while you steer by intent and small edits. Production still runs on the real event loop, real HTTP, and real user inputs, so **timing**, **references**, and **mutation** dominate debugging. Models optimize for plausible happy paths; users live on edge cases. This guide is a **quick-reference card**: ten concepts, the **error flavor** you will recognize, a **minimal fix**, and a **Scrimba** link to drill each skill without autopilot.
 
 We earn a commission if you upgrade through our links, at no extra cost to you.
 
@@ -102,7 +98,7 @@ These combos are why "just ask the model to fix it" loops forever: each pass cha
 
 **The bug:** `UnhandledPromiseRejectionWarning`, `undefined` where you expected data, or a function returns before work finishes.
 
-**Why it happens:** `async` functions return Promises. If you forget `await`, callers get a Promise object — not the result. Parallelism without `Promise.all` creates accidental waterfalls.
+**Why it happens:** `async` functions return Promises. If you forget `await`, callers get a Promise object, not the result. Parallelism without `Promise.all` creates accidental waterfalls.
 
 **The fix:**
 
@@ -164,7 +160,7 @@ const sorted = [...items].sort((a, b) => a.date - b.date);
 
 **The bug:** A click handler logs an old value, `setInterval` uses outdated counters, or a `useEffect` closure "never sees" new props.
 
-**Why it happens:** Inner functions **capture** variables by reference at creation time — not telepathy at run time.
+**Why it happens:** Inner functions **capture** variables by reference at creation time, not telepathy at run time.
 
 **The fix:**
 
@@ -197,7 +193,7 @@ queueMicrotask(() => console.log("B"));
 setTimeout(() => console.log("C"), 0);
 Promise.resolve().then(() => console.log("D"));
 console.log("E");
-// A E B D C  (in typical engines — learn why in-course)
+// A E B D C  (in typical engines, learn why in-course)
 ```
 
 **Learn it:** Scrimba → [Modern JavaScript](/docs/courses/javascript/modern-javascript)
@@ -206,7 +202,7 @@ console.log("E");
 
 **The bug:** `useEffect(() => ..., [obj])` runs every render; memoization never hits; `===` says two "identical" objects differ.
 
-**Why it happens:** Each object literal creates a **new identity**. Deep equality is not free — React relies on reference stability.
+**Why it happens:** Each object literal creates a **new identity**. Deep equality is not free, React relies on reference stability.
 
 **The fix:**
 
@@ -281,7 +277,7 @@ async function safeRun() {
 
 **The bug:** `TypeError: this.method is not a function` after passing a class method to `onClick`.
 
-**Why it happens:** `this` is determined by **call site** — not by where the function was written.
+**Why it happens:** `this` is determined by **call site**, not by where the function was written.
 
 **The fix:**
 
@@ -306,22 +302,22 @@ class Counter {
 If two model passes do not reduce the failing stack trace, **switch modes**:
 
 1. **Reproduce** with one input and one network speed (throttle in DevTools).
-2. **Delete** the clever abstraction the model added — replace with boring, explicit code.
+2. **Delete** the clever abstraction the model added, replace with boring, explicit code.
 3. **Add** logging at boundaries: fetch, parse, render.
 
-This is where fundamentals pay rent. You are not "bad at AI" — you are doing engineering.
+This is where fundamentals pay rent. You are not "bad at AI", you are doing engineering.
 
 ## Tooling that speeds up the ten concepts (not cheating)
 
 - **Debugger breakpoints** beat `console.log` for async flows.
 - **React DevTools** shows props and state without guessing.
-- **TypeScript** converts whole classes of bugs into red squiggles — after you learn to read the messages.
+- **TypeScript** converts whole classes of bugs into red squiggles, after you learn to read the messages.
 
 If types are your wall, [Learn TypeScript](/docs/courses/typescript/learn-typescript) pairs well after [Learn JavaScript](/docs/courses/javascript/learn-javascript).
 
 ## One closing rule for vibe-coded repos
 
-If you cannot draw **data flow** from user action → state change → network call → render on a whiteboard, you do not understand the feature yet — you are narrating vibes.
+If you cannot draw **data flow** from user action → state change → network call → render on a whiteboard, you do not understand the feature yet, you are narrating vibes.
 
 That diagram is the antidote. Five boxes beats a fifty-line prompt.
 
@@ -333,7 +329,7 @@ That diagram is the antidote. Five boxes beats a fifty-line prompt.
 
 - [How to learn JavaScript in 2026](/blog/how-to-learn-javascript-2026)
 - [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp) (if you are choosing a practice platform)
-- [Learn JavaScript course](/docs/courses/javascript/learn-javascript) — **free** full course
+- [Learn JavaScript course](/docs/courses/javascript/learn-javascript), **free** full course
 
 <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986&utm_source=scrimbaguide&utm_medium=blog&utm_campaign=vibe-coding-javascript-survival-guide-2026&utm_content=inline">
   Open Scrimba pricing (Pro unlocks full paths)

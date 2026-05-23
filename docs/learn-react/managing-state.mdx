@@ -2,8 +2,6 @@
 title: "Managing State: Context and Reducers"
 description: "Scale your React applications by managing complex state. Learn how to share state between components using Context and manage logic with Reducers."
 keywords: [react context api, usecontext hook, usereducer hook, global state, scrimba advanced react]
-last_update:
-  date: 2026-03-30
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -11,7 +9,7 @@ import CourseCard from '@site/src/components/CourseCard';
 
 # Managing state
 
-**Quick answer:** Local `useState` stops scaling when siblings and deep trees need the same data—here is **lifted state**, **Context**, and **useReducer**, with a path into **Advanced React (Pro)** for full depth.
+Local `useState` stops scaling when siblings and deep trees need the same data, here is **lifted state**, **Context**, and **useReducer**, with a path into **Advanced React (Pro)** for full depth.
 
 This page covers patterns for state that outgrows local `useState`: **lifting state** to a shared parent when siblings must stay in sync, **Context** to pass values deep without prop drilling, and **useReducer** to centralize many related updates in one function. Reach for these when coordination spans the tree or handlers multiply.
 

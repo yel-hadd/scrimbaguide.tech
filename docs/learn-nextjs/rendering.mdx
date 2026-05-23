@@ -3,15 +3,13 @@ title: "Rendering in Next.js: Server vs Client Components"
 description: "Understand the fundamental difference between Server and Client Components in Next.js. Learn when to use each for optimal performance."
 keywords: [next.js rendering, server components, client components, react server components, next.js interactive]
 hideGlobalPricingCta: true
-last_update:
-  date: 2026-03-30
 ---
 
 import PricingCTA from '@site/src/components/PricingCTA';
 
 # Ship less JavaScript: Server vs Client Components
 
-**Quick answer:** In the App Router, components are **Server Components by default**—great for data, secrets, and slim bundles. Add **`'use client'`** only where you need hooks, events, or browser APIs. This page ties that split to **Scrimba’s interactive lessons**.
+In the App Router, components are **Server Components by default**,great for data, secrets, and slim bundles. Add **`'use client'`** only where you need hooks, events, or browser APIs. This page ties that split to **Scrimba’s interactive lessons**.
 
 ## Who this is for
 
@@ -76,7 +74,7 @@ By default, Next.js **statically** renders routes at build time. Use `dynamic = 
 
 ## 5. Partial Prerendering (PPR)
 
-Next.js 15 introduces **Partial Prerendering** — a single page can have a static shell with dynamic holes. The shell is prerendered instantly; dynamic parts stream in. Enable with `experimental: { ppr: true }` in `next.config.js`. This gives you the best of both worlds: fast initial load and fresh data where needed.
+Next.js 15 introduces **Partial Prerendering**, a single page can have a static shell with dynamic holes. The shell is prerendered instantly; dynamic parts stream in. Enable with `experimental: { ppr: true }` in `next.config.js`. This gives you the best of both worlds: fast initial load and fresh data where needed.
 
 ---
 
@@ -84,7 +82,7 @@ Next.js 15 introduces **Partial Prerendering** — a single page can have a stat
 
 ## Read this when…
 
-Interviews or PRs keep asking **why** a component is client-only—and you want a crisp answer backed by reps.
+Interviews or PRs keep asking **why** a component is client-only, and you want a crisp answer backed by reps.
 
 ## Related Scrimba Courses
 
