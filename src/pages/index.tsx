@@ -12,6 +12,9 @@ import {
   pathDurations,
 } from '../utils/scrimbaFacts';
 
+const DEMO_SCRIM_URL = 'https://scrimba.com/s0v687325e';
+const PRO_AFFILIATE_URL = 'https://scrimba.com/home?pricing&via=u42d4986';
+
 function stripForFaqSchema(text: string): string {
   return text
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
@@ -23,47 +26,48 @@ function stripForFaqSchema(text: string): string {
 function HeroSection() {
   const stats = [
     { value: totalCoursesLabel, label: 'Courses tracked' },
-    { value: freeCountLabel, label: 'Free courses' },
+    { value: freeCountLabel, label: 'Free, no signup' },
     { value: '4', label: 'Career paths' },
-    { value: '2026', label: 'Data updated' },
+    { value: '11 to 108 hrs', label: 'Path range' },
   ];
 
   return (
     <section className="hero-section">
-      {/* Main centered content column */}
       <div className="hero-section__inner">
-        <p className="hero-section__eyebrow">
-          Independent — not affiliated with Scrimba. We compare paths, pricing, and alternatives so you choose right.
-        </p>
-        <h1>{totalCoursesLabel} Scrimba courses tracked. Four career paths compared. One honest guide.</h1>
+        <h1>
+          Learn React by typing inside the lesson. Then pick the path that gets you hired.
+        </h1>
         <p className="hero-section__lead">
-          Up-to-date path breakdowns, real pricing, and side-by-side comparisons with Codecademy, Udemy,
-          and freeCodeCamp—so you pick the plan that matches your goal and your schedule.
+          A practical guide to Scrimba's {totalCoursesLabel} courses and four career paths.
+          What each one actually teaches, what it costs, who it is for, and where it loses to
+          the alternatives.
         </p>
         <div className="hero-buttons" role="group" aria-label="Primary actions">
-          <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" variant="button">
-            Get 20% off Pro at checkout
+          <AffiliateLink href={DEMO_SCRIM_URL} variant="button">
+            Try a scrim in your browser
           </AffiliateLink>
-          <Link className="cta-link cta-link--button hero-section__secondary-btn" to="/docs/paths/">
-            Compare the four career paths
+          <Link
+            className="cta-link cta-link--button hero-section__secondary-btn"
+            to="/tools/which-scrimba-path"
+          >
+            Find my path (2 min quiz)
           </Link>
         </div>
-        <ul className="hero-section__bullets">
-          <li>Which path fits your role, skill level, and weekly hours—specific, not generic.</li>
-          <li>
-            Whether Pro is worth paying for your goal—and the cheapest legit way to upgrade if it is.
-          </li>
-          <li>
-            What you&apos;ll actually build—and how to turn projects into portfolio pieces that get
-            you hired.
-          </li>
-        </ul>
+        <p className="hero-section__tertiary">
+          Already sold?{' '}
+          <AffiliateLink href={PRO_AFFILIATE_URL} variant="text">
+            Open Scrimba with 20% off Pro applied at checkout
+          </AffiliateLink>
+          .
+        </p>
         <p className="hero-section__trust">
-          <small>Independent guidance. We earn a commission if you upgrade through our links, at no extra cost to you. Always verify final prices at checkout.</small>
+          <small>
+            We earn a commission if you upgrade through our links, at no extra cost to you.
+            Always verify the final price at checkout.
+          </small>
         </p>
       </div>
 
-      {/* Stat bar — full-width within hero gradient, separated by a divider */}
       <div className="hero-section__stats" role="region" aria-label="At a glance">
         <dl className="trust-bar home-shell">
           {stats.map((stat) => (
@@ -78,39 +82,24 @@ function HeroSection() {
   );
 }
 
-function SocialProofStrip() {
+function ScrimExplainerSection() {
   return (
-    <section
-      className="home-shell home-section home-section--compact"
-      aria-label="What learners say about structured Scrimba paths"
-    >
-      <h2 className="visually-hidden">Learner perspectives</h2>
-      <div className="section-grid section-grid--2col">
-        <blockquote className="section-card testimonial-card">
-          <p>
-            &ldquo;The biggest change after moving to structured, project-first learning was momentum:
-            fewer abandoned courses, more shipped portfolio work, and clearer interview readiness.&rdquo;
-          </p>
-          <footer>
-            — <cite>Learner-reported outcome</cite>{' '}
-            (<a href="/blog/scrimba-success-stories">source roundup</a>)
-          </footer>
-        </blockquote>
-        <blockquote className="section-card testimonial-card">
-          <p>
-            &ldquo;Interactive coding during lessons (not passive watching) is the recurring reason
-            learners say core JavaScript concepts started to stick long-term.&rdquo;
-          </p>
-          <footer>
-            — <cite>Community pattern</cite>{' '}
-            (<a href="/blog/escape-tutorial-hell-scrimba">discussion synthesis</a>)
-          </footer>
-        </blockquote>
-      </div>
-      <p className="home-section__subtitle" style={{ marginTop: '1rem', textAlign: 'center' }}>
-        Quotes are synthesized from publicly shared learner discussions; each card links to the
-        supporting source page. Individual outcomes vary by effort, consistency, and market
-        conditions.
+    <section className="home-shell home-section home-section--compact" aria-label="How scrims work">
+      <h2>What a "scrim" is, in 60 seconds</h2>
+      <p className="home-section__subtitle">
+        A scrim is Scrimba's lesson format. The instructor records themselves coding and
+        narrating. You can pause at any moment, edit their code right inside the player, run
+        it, and resume. There is no separate editor to set up on day one. That single
+        mechanic is the reason most learners come to Scrimba over passive YouTube playlists,
+        and it is the main thing the comparison pages on this site benchmark against.
+      </p>
+      <p>
+        The fastest way to feel it is to{' '}
+        <AffiliateLink href={DEMO_SCRIM_URL} variant="text">
+          open a real scrim in your browser
+        </AffiliateLink>
+        . No signup. Edit a line, hit run, and see whether the format fits how you actually
+        learn before you read another word.
       </p>
     </section>
   );
@@ -118,18 +107,18 @@ function SocialProofStrip() {
 
 const PATH_DESCRIPTIONS: Record<string, string> = {
   'frontend-developer-path':
-    'From zero to frontend developer. HTML, CSS, JavaScript, React, and career prep. Created with Mozilla MDN.',
+    'From zero to frontend. HTML, CSS, JavaScript, React, and the job-search module. Co-created with Mozilla MDN.',
   'fullstack-developer-path':
-    'The most comprehensive path. Frontend + backend + databases + TypeScript + Next.js + AI engineering.',
+    'The widest track. Frontend plus backend, databases, TypeScript, Next.js, and AI engineering.',
   'backend-developer-path':
-    'Node.js, Express, SQL, TypeScript, cybersecurity, DevOps. For developers adding backend skills.',
+    'Node.js, Express, SQL, TypeScript, cybersecurity, DevOps. For developers adding server skills.',
   'ai-engineer-path':
-    'Build AI-powered apps. Agents, RAG, MCP, context engineering, Vercel AI SDK, and multimodality.',
+    'Build AI-powered apps. Agents, RAG, MCP, context engineering, Vercel AI SDK, multimodality.',
 };
 
 const PATH_TAGLINES: Record<string, string> = {
   'frontend-developer-path': 'Best for: complete beginners with no coding experience',
-  'fullstack-developer-path': 'Best for: frontend devs who want to add backend + AI skills',
+  'fullstack-developer-path': 'Best for: frontend devs who want to add backend and AI skills',
   'backend-developer-path': 'Best for: developers already comfortable with frontend',
   'ai-engineer-path': 'Best for: developers who want to build AI-powered applications',
 };
@@ -162,10 +151,10 @@ function PathsSection() {
 
   return (
     <section className="home-shell home-section">
-      <h2>Which path fits your goal—and your starting point?</h2>
+      <h2>Which path fits your goal, and your starting point?</h2>
       <p className="home-section__subtitle">
-        Four career tracks from beginner to job-ready: what you&apos;ll learn, how long it takes,
-        and who each path is actually for.
+        Four career tracks from beginner to job-ready. What you will build, how long it
+        takes, and who each one is actually for.
       </p>
       <div className="section-grid section-grid--2col">
         {paths.map((path) => (
@@ -183,7 +172,56 @@ function PathsSection() {
       </div>
       <div className="home-section__footer">
         <Link to="/docs/paths/" className="cta-link cta-link--text">
-          Compare all four paths in detail &rarr;
+          Compare all four paths side by side &rarr;
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+function CompareSection() {
+  const comparisons = [
+    {
+      title: 'Scrimba vs Codecademy',
+      subtitle: 'Interactive scrims vs text-based lessons',
+      verdict: 'Pick Scrimba if you want to code inside the lesson from day one',
+      link: '/docs/comparisons/scrimba-vs-codecademy',
+    },
+    {
+      title: 'Scrimba vs Udemy',
+      subtitle: 'Curated subscription vs open marketplace',
+      verdict: 'Pick Scrimba if you want one curated path, not 800 instructor styles',
+      link: '/docs/comparisons/scrimba-vs-udemy',
+    },
+    {
+      title: 'Scrimba vs freeCodeCamp',
+      subtitle: 'Premium interactive vs free text-based',
+      verdict: 'Pick Scrimba if you are willing to pay for guided in-lesson practice',
+      link: '/docs/comparisons/scrimba-vs-freecodecamp',
+    },
+  ];
+
+  return (
+    <section className="home-shell home-section">
+      <h2>Scrimba next to the platforms you are already considering</h2>
+      <p className="home-section__subtitle">
+        Short comparisons aimed at one decision. Where Scrimba wins, where it does not, and
+        who should pick which.
+      </p>
+      <div className="section-grid section-grid--3col">
+        {comparisons.map((comparison) => (
+          <Link key={comparison.title} to={comparison.link} className="card-link">
+            <div className="section-card">
+              <h3>{comparison.title}</h3>
+              <p>{comparison.subtitle}</p>
+              <p className="compare-card__verdict">{comparison.verdict}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+      <div className="home-section__footer">
+        <Link to="/docs/comparisons/" className="cta-link cta-link--text">
+          Browse all 13 platform comparisons &rarr;
         </Link>
       </div>
     </section>
@@ -202,46 +240,46 @@ function CoursesSection() {
       name: 'React',
       category: 'react',
       link: '/docs/courses/react/',
-      description: 'Hooks, advanced patterns, testing, and project-based courses',
+      description: 'Hooks, advanced patterns, testing, project-based courses.',
     },
     {
       name: 'JavaScript',
       category: 'javascript',
       link: '/docs/courses/javascript/',
-      description: 'From ES6 basics to deep dives and interview challenges',
+      description: 'From ES6 basics to deep dives and interview challenges.',
     },
     {
       name: 'AI & ML',
       category: 'ai',
       link: '/docs/courses/ai/',
-      description: 'Agents, RAG, MCP, prompt engineering, and LLM integration',
+      description: 'Agents, RAG, MCP, prompt engineering, LLM integration.',
     },
     {
       name: 'CSS & Design',
       category: 'css',
       link: '/docs/courses/css/',
-      description: 'Flexbox, Grid, Tailwind, animations, and UI fundamentals',
+      description: 'Flexbox, Grid, Tailwind, animations, UI fundamentals.',
     },
     {
       name: 'Backend',
       category: 'backend',
       link: '/docs/courses/backend/',
-      description: 'Node, SQL, Firebase, cybersecurity, and API design',
+      description: 'Node, SQL, Firebase, cybersecurity, API design.',
     },
     {
       name: 'TypeScript',
       category: 'typescript',
       link: '/docs/courses/typescript/',
-      description: 'Type-safe JavaScript for frontend and fullstack projects',
+      description: 'Type-safe JavaScript for frontend and fullstack work.',
     },
   ].map((t) => ({ ...t, count: formatCount(categoryCounts[t.category] ?? 0) }));
 
   return (
     <section className="home-shell home-section home-section--shaded">
-      <h2>Find the right course—by topic, access, and path</h2>
+      <h2>Pick a topic, see what is worth your time</h2>
       <p className="home-section__subtitle">
-        Every category opens a filterable index: Free vs Pro, ratings, and which career path each
-        course belongs to.
+        Each topic opens an index showing free vs Pro, instructor, duration, and which
+        career path the course belongs to.
       </p>
       <div className="section-grid section-grid--3col">
         {topics.map((topic) => (
@@ -263,76 +301,27 @@ function CoursesSection() {
   );
 }
 
-function CompareSection() {
-  const comparisons = [
-    {
-      title: 'Scrimba vs Codecademy',
-      subtitle: 'Interactive scrims vs text-based lessons',
-      verdict: 'Pick Scrimba if: you want to code in-browser from day one',
-      link: '/docs/comparisons/scrimba-vs-codecademy',
-    },
-    {
-      title: 'Scrimba vs Udemy',
-      subtitle: 'Curated subscription vs marketplace',
-      verdict: 'Pick Scrimba if: you want a curated path, not a marketplace',
-      link: '/docs/comparisons/scrimba-vs-udemy',
-    },
-    {
-      title: 'Scrimba vs freeCodeCamp',
-      subtitle: 'Premium interactive vs free text-based',
-      verdict: 'Pick Scrimba if: you are willing to pay for interactive practice',
-      link: '/docs/comparisons/scrimba-vs-freecodecamp',
-    },
-  ];
-
-  return (
-    <section className="home-shell home-section">
-      <h2>Scrimba vs the platforms you&apos;re already considering</h2>
-      <p className="home-section__subtitle">
-        Short, decision-focused comparisons—where Scrimba wins, where it doesn&apos;t, and who
-        should pick what.
-      </p>
-      <div className="section-grid section-grid--3col">
-        {comparisons.map((comparison) => (
-          <Link key={comparison.title} to={comparison.link} className="card-link">
-            <div className="section-card">
-              <h3>{comparison.title}</h3>
-              <p>{comparison.subtitle}</p>
-              <p className="compare-card__verdict">{comparison.verdict}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
-      <div className="home-section__footer">
-        <Link to="/docs/comparisons/" className="cta-link cta-link--text">
-          Browse all 12 platform comparisons &rarr;
-        </Link>
-      </div>
-    </section>
-  );
-}
-
 function PricingSection() {
   return (
     <section className="pricing-cta home-pricing home-shell" aria-label="Pricing call to action">
-      <h2 className="pricing-cta__title">Free to try. Pro when you&apos;re ready for the full library.</h2>
+      <h2 className="pricing-cta__title">
+        Free to try. Pro when you are ready for the full library.
+      </h2>
       <p className="pricing-cta__subtitle">
-        Free tier never expires. Pro unlocks every course and path—20% off with our partner link, cancel anytime.
-      </p>
-      <p className="pricing-cta__includes">
-        <strong>What&apos;s included in Pro:</strong> {totalCoursesLabel} courses &middot; 4 career paths
-        &middot; certificate of completion
+        The free tier never expires and includes {freeCountLabel} full courses with no
+        credit card. Pro adds every paid course, all four paths, certificates, and the
+        Discord community. Annual billing has the best per-month rate.
       </p>
       <p className="pricing-cta__note">
-        Our partner link applies 20% off automatically at checkout (no code). Always confirm the
-        final price on Scrimba.
+        Our partner link applies 20% off automatically at checkout. Always confirm the
+        final price on Scrimba, regional pricing varies.
       </p>
       <div className="home-pricing__buttons">
         <Link to="/docs/pricing/" className="cta-link cta-link--button home-pricing__outline-btn">
-          View Scrimba Pricing
+          See what Pro actually includes
         </Link>
-        <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" variant="button">
-          Go to Scrimba with 20% off Pro
+        <AffiliateLink href={PRO_AFFILIATE_URL} variant="button">
+          Open Scrimba with 20% off Pro
         </AffiliateLink>
       </div>
     </section>
@@ -342,36 +331,28 @@ function PricingSection() {
 function FAQPreviewSection() {
   const faqs = [
     {
-      q: 'Is Scrimba good for beginners in 2026?',
-      a: 'Yes, especially if you learn by doing. Scrimba\'s free tier includes 19+ courses — start there, then commit to a career path when your consistency is proven.',
+      q: 'Is Scrimba free?',
+      a: `Partially. The free tier includes ${freeCount}+ full courses (Learn React, Learn JavaScript, Learn TypeScript among them) and up to ten interactive challenges. Career paths, unlimited challenges, Discord, and path certificates require Pro.`,
     },
     {
-      q: 'How much does Scrimba Pro cost in 2026?',
-      a: 'Scrimba Pro is available on monthly and annual plans — annual billing offers the best per-month rate. Our partner link applies 20% off automatically at checkout. The free tier never expires and includes 19+ full courses — no credit card required.',
-    },
-    {
-      q: 'Is Scrimba free to use?',
-      a: 'Yes. Scrimba has a permanently free tier with 19+ full courses including Learn React, Learn JavaScript, and Learn TypeScript. No credit card is needed to access free content.',
-    },
-    {
-      q: 'Is Scrimba Pro worth paying for?',
-      a: 'Usually yes for learners who want a structured career path, access to all 86+ courses, and a certificate. If you are uncertain, test with free courses first before upgrading.',
+      q: 'Is Scrimba worth paying for?',
+      a: 'Usually yes for learners who want a structured career path, access to the full ' + totalCoursesLabel + ' catalog, and a path certificate. Test the free courses first if you are unsure the format fits how you learn.',
     },
     {
       q: 'How does Scrimba compare to a coding bootcamp?',
-      a: 'Scrimba Pro costs a fraction of a typical bootcamp ($10,000-$20,000). The interactive format is effective for self-motivated learners. Bootcamps offer more structure, cohort accountability, and career services.',
+      a: 'Scrimba Pro costs a fraction of a typical bootcamp. The interactive format works well for self-motivated learners. Bootcamps add structure, cohort accountability, and career services that you will not get from a subscription product.',
     },
     {
-      q: 'What can you learn on Scrimba?',
-      a: 'Scrimba covers web development (HTML, CSS, JavaScript, React, TypeScript, Next.js), AI engineering (agents, RAG, MCP), backend (Node.js, SQL, Express), Python, and CSS frameworks. It has 86+ courses across 4 career paths.',
+      q: 'What does Scrimba actually teach?',
+      a: 'Web development (HTML, CSS, JavaScript, React, TypeScript, Next.js), AI engineering (agents, RAG, MCP, LangChain.js), backend (Node, SQL, Express, Firebase), Python basics, and CSS frameworks. Roughly ' + totalCoursesLabel + ' courses across four career paths.',
     },
     {
-      q: 'Does Scrimba offer a certificate?',
-      a: 'Yes. Completing a Scrimba career path earns a Certificate of Completion you can add to your LinkedIn profile and resume. Individual course certificates are also available.',
+      q: 'Do you get a certificate?',
+      a: 'Yes. Completing a Scrimba career path earns a Certificate of Completion you can add to LinkedIn. Individual course certificates are also available. Hiring managers care about projects more than certificates, so think of it as a small bonus.',
     },
     {
-      q: 'Can Scrimba actually help me get hired as a developer?',
-      a: 'It can improve your portfolio and interview readiness significantly. Hiring depends on execution, applications, and market conditions — Scrimba\'s career paths include job-search modules, but the work of applying and networking is yours.',
+      q: 'Can Scrimba get you hired?',
+      a: 'It can sharpen your portfolio and interview readiness. Hiring still depends on execution, applications, networking, and market conditions. The career paths include job-search modules; the actual job-hunting work is yours.',
     },
   ];
 
@@ -394,7 +375,7 @@ function FAQPreviewSection() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <h2>Common Questions Before You Subscribe</h2>
+      <h2>The questions people usually ask before subscribing</h2>
       <div className="home-faq-grid">
         {faqs.map((item) => (
           <article key={item.q} className="section-card faq-card">
@@ -417,21 +398,21 @@ function BlogSection() {
     <section className="home-shell home-section">
       <h2>Read this before you pay for Pro</h2>
       <p className="home-section__subtitle">
-        Long-form reviews and picks—no fluff, updated for 2026.
+        Long-form reviews and picks, no fluff, updated for 2026.
       </p>
       <div className="section-grid section-grid--3col">
         <Link to="/blog/scrimba-review" className="card-link">
           <div className="section-card">
             <h3>Scrimba Review 2026</h3>
             <p className="section-card__meta">12 min read</p>
-            <p>What works, what doesn&apos;t, and who Scrimba is actually for.</p>
+            <p>What works, what does not, and who Scrimba is actually for.</p>
           </div>
         </Link>
         <Link to="/blog/is-scrimba-worth-it" className="card-link">
           <div className="section-card">
             <h3>Is Scrimba Worth It?</h3>
             <p className="section-card__meta">8 min read</p>
-            <p>When Pro is worth it—and when Free is enough for your goal.</p>
+            <p>When Pro is worth it, and when free is enough for your goal.</p>
           </div>
         </Link>
         <Link to="/blog/best-free-scrimba-courses" className="card-link">
@@ -455,17 +436,17 @@ function FinalCtaSection() {
   return (
     <section className="home-shell home-section home-section--compact">
       <div className="home-final-cta">
-        <h2>Ready to start? Pick a path—then grab 20% off Pro if you upgrade.</h2>
+        <h2>One last thing. Open a scrim before you decide anything.</h2>
         <p>
-          Use the path guides above to choose a track, then open Scrimba through our partner link.
-          The 20% discount should apply automatically at checkout—always confirm the final price.
+          Reading about an interactive learning format is the wrong way to evaluate it. The
+          right way takes thirty seconds.
         </p>
         <div className="home-pricing__buttons">
-          <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986" variant="button">
-            Open Scrimba (20% off Pro)
+          <AffiliateLink href={DEMO_SCRIM_URL} variant="button">
+            Open the demo scrim
           </AffiliateLink>
           <Link to="/docs/paths/" className="cta-link cta-link--button home-pricing__outline-btn">
-            Compare learning paths again
+            Or compare the four paths
           </Link>
         </div>
       </div>
@@ -474,10 +455,9 @@ function FinalCtaSection() {
 }
 
 const BASE_URL = 'https://scrimbaguide.tech';
-/** Page segment only — Docusaurus appends ` | ${siteConfig.title}` to the document &lt;title&gt;. */
 const HOME_PAGE_TITLE = 'Scrimba Paths, Pricing & Reviews (2026)';
 const HOME_DESC =
-  'Independent guide to Scrimba: honest path breakdowns, up-to-date pricing, and side-by-side comparisons with Codecademy, Udemy, and freeCodeCamp. Built for developers who want real job outcomes.';
+  'A practical guide to Scrimba. Four career paths broken down, real pricing, side-by-side with Codecademy, Udemy, and freeCodeCamp. For developers picking a platform on substance, not slogans.';
 
 export default function Home(): React.ReactElement {
   const { siteConfig } = useDocusaurusContext();
@@ -501,10 +481,10 @@ export default function Home(): React.ReactElement {
       </Head>
       <main>
         <HeroSection />
-        <SocialProofStrip />
+        <ScrimExplainerSection />
         <PathsSection />
-        <CoursesSection />
         <CompareSection />
+        <CoursesSection />
         <PricingSection />
         <FAQPreviewSection />
         <BlogSection />
