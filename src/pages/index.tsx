@@ -70,7 +70,7 @@ function HeroSection() {
             </a>
           </li>
           <li>Frontend path built with <strong>Mozilla MDN</strong></li>
-          <li>Taught by <strong>Bob Ziroll, Kevin Powell</strong>, and 40+ others</li>
+          <li>Taught by <strong>Bob Ziroll, Kevin Powell</strong>, and 25+ others</li>
         </ul>
         <p className="hero-section__tertiary">
           Already sold?{' '}

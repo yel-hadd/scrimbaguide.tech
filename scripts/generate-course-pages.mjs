@@ -111,18 +111,16 @@ for (const course of courses) {
   const pageTitle = `${cleanTitle} on Scrimba: Course Review (2026)`;
   const description = course.description || `Review of ${cleanTitle} on Scrimba. ${course.duration || ''} ${course.level || ''} course.`;
 
-  // Build module table
+  // Build the visual curriculum (module-by-module breakdown).
   let moduleSection = '';
   if (course.modules && course.modules.length > 0) {
-    const rows = course.modules
-      .map(m => `| ${m.name} | ${m.duration} | ${m.totalLessons} |`)
-      .join('\n');
+    const moduleData = JSON.stringify(
+      course.modules.map(m => ({ name: m.name, duration: m.duration, lessons: m.totalLessons })),
+    );
     moduleSection = `
-## Module Breakdown
+## Course curriculum
 
-| Module | Duration | Lessons |
-|---|---|---|
-${rows}
+<CourseCurriculum modules={${moduleData}} title="" />
 `;
   }
 
@@ -255,7 +253,7 @@ import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import CourseSchema from '@site/src/components/CourseSchema';
+import CourseSchema from '@site/src/components/CourseSchema';${course.modules.length > 0 ? `\nimport CourseCurriculum from '@site/src/components/CourseCurriculum';` : ''}
 
 # ${cleanTitle} on Scrimba
 
@@ -264,6 +262,7 @@ import CourseSchema from '@site/src/components/CourseSchema';
   duration="${course.duration || 'Available'}"
   difficulty="${course.level || 'Intermediate'}"
   access="${course.access}"
+  ${course.instructor ? `instructor="${course.instructor.replace(/"/g, '\\"')}"` : ''}
   ${course.modules.length > 0 ? `modules={${course.modules.length}}` : ''}
   href="${course.scrimbaUrl}"
   description="${(course.description || '').replace(/"/g, '\\"').substring(0, 200)}"
@@ -324,7 +323,10 @@ ${course.access === 'Pro' ? `<PricingCTA
 </AffiliateLink>`}
 `;
 
-  writeFileSync(filePath, content);
+  // Enforce the project's no-em-dash rule on generated output: the boilerplate
+  // and some scraped Scrimba descriptions contain em-dashes. Replace each with a
+  // comma (the rule allows periods, commas, semicolons, or parentheses).
+  writeFileSync(filePath, content.replace(/\s*—\s*/g, ', '));
   generated++;
 }
 

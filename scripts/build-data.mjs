@@ -132,7 +132,7 @@ const PATHS = {
   'the-backend-developer-path-c0tbi0l98f': {
     name: 'Backend Developer Path',
     slug: 'backend-developer-path',
-    duration: '30.1 hrs',
+    duration: '39.4 hrs',
     level: 'Intermediate',
     access: 'Pro',
   },
@@ -147,7 +147,16 @@ const PATHS = {
 
 const PATH_SLUGS = new Set(Object.keys(PATHS));
 
-// ── Extract instructor from title ────────────────────────────────
+// ── Extract instructor ───────────────────────────────────────────
+// Prefer the JSON-LD "Instructor:" line the scraper writes into the body
+// (reliable, covers the whole catalogue); fall back to title phrasing.
+function extractInstructorFromBody(body) {
+  const m = body.match(/^Instructor:\s*(.+)$/m);
+  if (!m) return '';
+  // JSON-LD can list multiple instructors; keep the primary one.
+  return m[1].split(',')[0].trim();
+}
+
 function extractInstructor(title) {
   const patterns = [
     /lead by ([A-Z][a-z]+ [A-Z][a-z]+)/,
@@ -248,13 +257,28 @@ function parseCourse(item) {
         const parts = cleaned.split('\n').map(p => p.trim()).filter(Boolean);
         const modName = parts[0];
         if (!modName || modName.length < 2) continue;
-        const modDuration = parts.length > 1 ? parts[1] : '';
-        const modLessons = parts.length > 2 ? parts[2] : '';
-        const lessonMatch = modLessons.match(/(\d+)\/(\d+)/);
+        // Parse the remaining lines by pattern, not position: a duration line
+        // ("2.4 hrs"/"108 min") and a lesson counter ("0/22" or "22 lessons")
+        // can appear in either order or be absent.
+        let modDuration = '';
+        let totalLessons = 0;
+        for (const part of parts.slice(1)) {
+          if (!modDuration && /^\d+(\.\d+)?\s*(hrs?|min)$/i.test(part)) {
+            modDuration = part;
+            continue;
+          }
+          const progress = part.match(/(\d+)\s*\/\s*(\d+)/);
+          if (progress) {
+            totalLessons = parseInt(progress[2], 10);
+            continue;
+          }
+          const lessonsOnly = part.match(/(\d+)\s*lessons?/i);
+          if (lessonsOnly) totalLessons = parseInt(lessonsOnly[1], 10);
+        }
         modules.push({
           name: modName,
           duration: modDuration,
-          totalLessons: lessonMatch ? parseInt(lessonMatch[2]) : 0,
+          totalLessons,
         });
       }
     }
@@ -262,7 +286,7 @@ function parseCourse(item) {
 
   const topics = assignTopics(slug, item.title);
   const category = primaryCategory(topics);
-  const instructor = extractInstructor(item.title);
+  const instructor = extractInstructorFromBody(body) || extractInstructor(item.title);
   const description = extractDescription(frontmatter, body, item.title);
   const projects = extractProjects(body);
 
@@ -315,7 +339,11 @@ function parseCourse(item) {
     level,
     access,
     isPath,
-    pathInfo: isPath ? PATHS[slug] : null,
+    // Path duration comes from the path page's own JSON-LD (timeRequired),
+    // which stays current; the PATHS table value is only a fallback.
+    pathInfo: isPath
+      ? { ...PATHS[slug], duration: duration || PATHS[slug].duration }
+      : null,
     pathMembership: [...new Set(pathMembership)],
     modules,
     description,
