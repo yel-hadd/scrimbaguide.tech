@@ -2,6 +2,15 @@ import React from 'react';
 import { useLocation } from '@docusaurus/router';
 import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
 
+/**
+ * Independent, third-party editorial (critic) review of Scrimba, a product we
+ * do not own. This is allowed under Google's review snippet policy (the
+ * self-serving prohibition is about reviewing your OWN products/services).
+ * Deliberately emits a single named-author Review with a real critic rating and
+ * NO aggregateRating/reviewCount, so we never imply crowd-sourced ratings we
+ * have not collected. Keep it that way.
+ */
+
 interface ReviewSchemaProps {
   itemName: string;
   ratingValue: number;

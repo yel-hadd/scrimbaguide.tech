@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { load } from 'cheerio';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -66,7 +67,7 @@ const PAGE_ANNOTATIONS = {
   },
   '/docs/paths/backend-developer-path': {
     title: 'Scrimba Backend Developer Path Review (2026)',
-    description: '30.1-hour intermediate path covering Node.js, Express, SQL, TypeScript, cybersecurity, and DevOps.',
+    description: '39.4-hour intermediate path covering Node.js, Express, SQL, TypeScript, cybersecurity, and DevOps.',
   },
   '/docs/paths/ai-engineer-path': {
     title: 'Scrimba AI Engineer Path Review (2026)',
@@ -134,7 +135,7 @@ const PAGE_ANNOTATIONS = {
   },
   '/docs/faq/is-scrimba-free': {
     title: 'Is Scrimba Free? (2026)',
-    description: 'Scrimba\'s free tier covers 19+ courses permanently, details on what is and isn\'t free, and when Pro is worth paying for.',
+    description: 'Scrimba\'s free tier covers about 15 courses permanently, details on what is and isn\'t free, and when Pro is worth paying for.',
   },
   '/docs/faq/how-to-use-scrimba': {
     title: 'How to Use Scrimba: Getting Started Guide',
@@ -150,7 +151,7 @@ const PAGE_ANNOTATIONS = {
   },
   '/blog/scrimba-vs-coding-bootcamps-cost': {
     title: 'Scrimba vs Coding Bootcamps: Full Cost Analysis (2026)',
-    description: 'Total cost comparison between Scrimba Pro (~$19/mo) and coding bootcamps ($10k–$20k), ROI, outcomes, and time commitment.',
+    description: 'Total cost comparison between a Scrimba Pro subscription and coding bootcamps, ROI, outcomes, and time commitment.',
   },
   '/about': {
     title: 'About Scrimba Guide',
@@ -281,9 +282,9 @@ export function renderLlmsTxt(urls, options = {}) {
   const lines = [
     `# ${siteName}`,
     '',
-    `> Independent guide to Scrimba, covering career paths, pricing, and platform comparisons for developers learning to code in 2026. Annotated high-signal pages below; see \`${siteUrl}/llms-full.txt\` for the complete canonical URL index.`,
+    `> Independent guide to Scrimba, covering career paths, pricing, and platform comparisons for developers learning to code in 2026. Annotated high-signal pages below; see \`${siteUrl}/llms-full.txt\` for the full text of every page in one document.`,
     '',
-    `- Full canonical index: ${siteUrl}/llms-full.txt`,
+    `- Full text of every page: ${siteUrl}/llms-full.txt`,
     '',
   ];
 
@@ -305,29 +306,122 @@ export function renderLlmsTxt(urls, options = {}) {
   if (topPages.length > 0) {
     lines.push('## Pages', '', formatUrlList(topPages), '');
   }
+  // The llms.txt spec reserves `## Optional` for links an LLM may skip under a
+  // tight context budget. Legal/contact pages fit that.
   if (legal.length > 0) {
-    lines.push('## Legal', '', formatUrlList(legal), '');
+    lines.push('## Optional', '', formatUrlList(legal), '');
   }
 
   return `${lines.join('\n').trim()}\n`;
 }
 
-export function renderLlmsFullTxt(urls, options = {}) {
-  const siteName = options.siteName ?? DEFAULT_SITE_NAME;
-  const canonical = uniqueSortedUrls(urls).filter((url) => !isLowValuePath(toPathname(url)));
+/** Canonical, deduped, sorted, low-value-filtered URLs for the full corpus. */
+export function selectFullTxtUrls(urls) {
+  return uniqueSortedUrls(urls).filter((url) => !isLowValuePath(toPathname(url)));
+}
 
+/** Resolve a root-relative href to an absolute URL; drop in-page anchors. */
+function absoluteLink(href, siteUrl) {
+  if (!href) return '';
+  if (href.startsWith('#')) return '';
+  if (/^https?:\/\//i.test(href)) return href;
+  if (href.startsWith('//')) return `https:${href}`;
+  if (href.startsWith('/')) return `${siteUrl}${href}`;
+  return href;
+}
+
+/**
+ * Extract a built Docusaurus HTML page's main content as plain markdown so the
+ * whole site can be ingested from one file. Drops chrome (nav, sidebar, footer,
+ * scripts) and keeps headings, links, lists, and code as lightweight markdown.
+ */
+export function htmlToLlmsMarkdown(html, { siteUrl = DEFAULT_SITE_URL } = {}) {
+  const $ = load(html);
+  const pageTitle = ($('h1').first().text() || $('title').text() || '')
+    .replace(/\s*\|\s*Scrimba Guide\s*$/i, '')
+    .trim();
+
+  // Prefer the Docusaurus content region; fall back to <main>, then <body>.
+  let $root = $('.markdown').first();
+  if (!$root.length) $root = $('main').first();
+  if (!$root.length) $root = $('body').first();
+
+  // Strip non-content chrome before walking.
+  $root
+    .find('script, style, noscript, svg, nav, header, footer, button, .theme-doc-toc-mobile, .tableOfContents, .pagination-nav, .theme-doc-breadcrumbs, .breadcrumbs, .theme-doc-sidebar-container, .clean-btn')
+    .remove();
+  // The page's own <h1> is already captured as the section title; drop it here
+  // so the inlined body doesn't repeat the heading.
+  $root.find('h1').first().remove();
+
+  const walk = (node) => {
+    if (!node) return '';
+    if (node.type === 'text') return (node.data || '').replace(/\s+/g, ' ');
+    if (node.type !== 'tag') return '';
+    const tag = node.tagName.toLowerCase();
+    const $el = $(node);
+    const inner = () => $el.contents().map((_, c) => walk(c)).get().join('');
+    if (/^h([1-6])$/.test(tag)) {
+      const level = Number(tag[1]);
+      const text = inner().trim();
+      return text ? `\n\n${'#'.repeat(level)} ${text}\n\n` : '';
+    }
+    switch (tag) {
+      case 'p':
+      case 'blockquote':
+        return `\n\n${inner().trim()}\n\n`;
+      case 'br':
+        return '\n';
+      case 'li':
+        return `\n- ${inner().trim()}`;
+      case 'ul':
+      case 'ol':
+        return `\n${inner()}\n`;
+      case 'pre':
+        return `\n\n\`\`\`\n${$el.text().replace(/\n+$/, '')}\n\`\`\`\n\n`;
+      case 'code':
+        return $el.parents('pre').length ? inner() : `\`${$el.text().trim()}\``;
+      case 'a': {
+        const text = inner().trim();
+        const href = absoluteLink($el.attr('href'), siteUrl);
+        return href && text ? `[${text}](${href})` : text;
+      }
+      case 'tr':
+        return `\n${inner().replace(/\s*\|\s*$/, '')}`;
+      case 'td':
+      case 'th':
+        return `${inner().trim()} | `;
+      default:
+        return inner();
+    }
+  };
+
+  const body = walk($root.get(0))
+    .replace(/[ \t]+\n/g, '\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
+  return { title: pageTitle, markdown: body };
+}
+
+/**
+ * Render llms-full.txt with each page's content inlined as markdown (per the
+ * llms.txt spec, the "full" file is the whole site in one ingestible document).
+ * `pages` is an array of { url, title, content }.
+ */
+export function renderLlmsFullTxt(pages, options = {}) {
+  const siteName = options.siteName ?? DEFAULT_SITE_NAME;
   const lines = [
-    `# ${siteName} (Full URL Index)`,
+    `# ${siteName} (Full Content)`,
     '',
-    '> Complete canonical URL index for Scrimba Guide, an independent review site covering Scrimba\'s courses, career paths, pricing, and comparisons with Codecademy, Udemy, freeCodeCamp, Frontend Masters, and 8 other platforms.',
-    '',
-    '## All Canonical URLs',
-    '',
-    formatUrlList(canonical),
+    '> Full text of every canonical page on Scrimba Guide, an independent review site covering Scrimba\'s courses, career paths, pricing, and comparisons with Codecademy, Udemy, freeCodeCamp, Frontend Masters, and other platforms. Each section below is one page, inlined as markdown.',
     '',
   ];
-
-  return lines.join('\n');
+  for (const page of pages) {
+    if (!page || !page.content) continue;
+    lines.push('---', '', `# ${page.title || page.url}`, '', `Source: ${page.url}`, '', page.content, '');
+  }
+  return `${lines.join('\n').trim()}\n`;
 }
 
 function parseArgValue(args, name) {
@@ -348,7 +442,25 @@ export function generateLlmsFromSitemap({
   const xml = fs.readFileSync(sitemapPath, 'utf8');
   const urls = extractLocUrls(xml);
   const llmsTxt = renderLlmsTxt(urls, { siteName, siteUrl });
-  const llmsFullTxt = renderLlmsFullTxt(urls, { siteName });
+
+  // Inline each page's built HTML content into llms-full.txt.
+  const contentDir = outputDir;
+  let pagesInlined = 0;
+  let pagesMissing = 0;
+  const pages = selectFullTxtUrls(urls).map((url) => {
+    const pathname = new URL(url).pathname;
+    const file = path.join(contentDir, pathname, 'index.html');
+    if (!fs.existsSync(file)) {
+      pagesMissing += 1;
+      return null;
+    }
+    const { title, markdown } = htmlToLlmsMarkdown(fs.readFileSync(file, 'utf8'), { siteUrl });
+    if (!markdown) return null;
+    pagesInlined += 1;
+    return { url, title, content: markdown };
+  }).filter(Boolean);
+
+  const llmsFullTxt = renderLlmsFullTxt(pages, { siteName, siteUrl });
 
   fs.mkdirSync(outputDir, { recursive: true });
   const llmsPath = path.join(outputDir, 'llms.txt');
@@ -359,6 +471,8 @@ export function generateLlmsFromSitemap({
 
   return {
     totalUrls: urls.length,
+    pagesInlined,
+    pagesMissing,
     llmsPath,
     llmsFullPath,
   };
@@ -373,7 +487,7 @@ function main() {
 
   const result = generateLlmsFromSitemap({ sitemapPath, outputDir, siteName, siteUrl });
   console.log(`Generated ${result.llmsPath}`);
-  console.log(`Generated ${result.llmsFullPath}`);
+  console.log(`Generated ${result.llmsFullPath} (${result.pagesInlined} pages inlined, ${result.pagesMissing} missing)`);
   console.log(`Processed ${result.totalUrls} sitemap URLs`);
 }
 

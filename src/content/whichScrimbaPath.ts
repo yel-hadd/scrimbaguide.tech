@@ -14,7 +14,7 @@ export type PathKey = 'frontend' | 'fullstack' | 'backend' | 'ai';
 const PATH_HOURS: Record<PathKey, number> = {
   frontend: 81.6,
   fullstack: 108.4,
-  backend: 30.1,
+  backend: 39.4,
   ai: 11.4,
 };
 

@@ -34,7 +34,7 @@ const PATHS: Record<Path, PathData> = {
   },
   backend: {
     name: 'Backend Developer',
-    hours: 90,
+    hours: 39.4,
     prerequisiteHours: {
       'complete-beginner': 10,
       'some-html': 5,
@@ -44,7 +44,7 @@ const PATHS: Record<Path, PathData> = {
   },
   'ai-engineer': {
     name: 'AI Engineer',
-    hours: 60,
+    hours: 11.4,
     prerequisiteHours: {
       'complete-beginner': 30,
       'some-html': 20,

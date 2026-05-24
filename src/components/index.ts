@@ -1,6 +1,7 @@
 export { default as AffiliateLink } from './AffiliateLink';
 export { default as ComparisonTable } from './ComparisonTable';
 export { default as CourseCard } from './CourseCard';
+export { default as CourseCurriculum } from './CourseCurriculum';
 export { default as CourseSchema } from './CourseSchema';
 export { default as PersonSchema } from './PersonSchema';
 export { default as FAQAccordion } from './FAQAccordion';

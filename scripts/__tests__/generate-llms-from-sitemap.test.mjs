@@ -6,9 +6,13 @@ import {
   normalizeCanonicalUrl,
   renderLlmsTxt,
   renderLlmsFullTxt,
+  selectFullTxtUrls,
+  htmlToLlmsMarkdown,
   stripMdxAndJsxFromLlmsText,
   escapeMarkdownLinkTitle,
 } from '../generate-llms-from-sitemap.mjs';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 test('normalizeCanonicalUrl ensures trailing slash on every path (matches site canonicals)', () => {
   assert.equal(normalizeCanonicalUrl('https://scrimbaguide.tech/docs/learn-react'), 'https://scrimbaguide.tech/docs/learn-react/');
@@ -51,42 +55,67 @@ test('renderLlmsTxt includes blog and docs sections with canonical URLs', () => 
   assert.doesNotMatch(llms, /\.md\)/);
 });
 
-test('renderLlmsFullTxt lists all canonical URLs', () => {
-  const urls = [
-    'https://scrimbaguide.tech/',
-    'https://scrimbaguide.tech/docs/paths',
-    'https://scrimbaguide.tech/blog/post-a',
+test('renderLlmsFullTxt inlines each page content under its title and source URL', () => {
+  const pages = [
+    { url: 'https://scrimbaguide.tech/docs/paths/', title: 'Scrimba Paths', content: '## Overview\n\nFour career paths.' },
+    { url: 'https://scrimbaguide.tech/blog/post-a/', title: 'Post A', content: 'Body of post A.' },
   ];
 
-  const full = renderLlmsFullTxt(urls, { siteName: 'Scrimba Guide' });
+  const full = renderLlmsFullTxt(pages, { siteName: 'Scrimba Guide' });
 
-  assert.match(full, /## All Canonical URLs/);
-  assert.match(full, /https:\/\/scrimbaguide\.tech\/docs\/paths/);
-  assert.match(full, /https:\/\/scrimbaguide\.tech\/blog\/post-a/);
+  assert.match(full, /# Scrimba Guide \(Full Content\)/);
+  assert.match(full, /Source: https:\/\/scrimbaguide\.tech\/docs\/paths\//);
+  assert.match(full, /Four career paths\./);
+  assert.match(full, /Body of post A\./);
 });
 
-test('renderLlmsFullTxt omits /blog/blog redirect stub URLs', () => {
-  const urls = [
-    'https://scrimbaguide.tech/blog/canonical-post',
-    'https://scrimbaguide.tech/blog/blog/canonical-post/',
-  ];
-
-  const full = renderLlmsFullTxt(urls, { siteName: 'Scrimba Guide' });
-
-  assert.match(full, /blog\/canonical-post/);
-  assert.doesNotMatch(full, /blog\/blog\//);
-});
-
-test('renderLlmsFullTxt omits /docs/docs redirect stub URLs', () => {
+test('selectFullTxtUrls drops low-value and redirect-stub paths, dedupes and sorts', () => {
   const urls = [
     'https://scrimbaguide.tech/docs/paths',
     'https://scrimbaguide.tech/docs/docs/paths/',
+    'https://scrimbaguide.tech/blog/blog/canonical-post/',
+    'https://scrimbaguide.tech/blog/canonical-post',
+    'https://scrimbaguide.tech/search',
   ];
 
-  const full = renderLlmsFullTxt(urls, { siteName: 'Scrimba Guide' });
+  const kept = selectFullTxtUrls(urls);
 
-  assert.match(full, /docs\/paths/);
-  assert.doesNotMatch(full, /docs\/docs\//);
+  assert.ok(kept.includes('https://scrimbaguide.tech/docs/paths/'));
+  assert.ok(kept.includes('https://scrimbaguide.tech/blog/canonical-post/'));
+  assert.ok(!kept.some((u) => /docs\/docs\//.test(u)));
+  assert.ok(!kept.some((u) => /blog\/blog\//.test(u)));
+  assert.ok(!kept.some((u) => /\/search/.test(u)));
+});
+
+test('htmlToLlmsMarkdown extracts main content, drops chrome, converts headings and links', () => {
+  const html = `<!doctype html><html><head><title>Demo | Scrimba Guide</title></head>
+    <body><nav>SKIP NAV</nav><main><div class="markdown">
+      <h1>Demo Page</h1>
+      <p>Intro paragraph with a <a href="/docs/pricing/">pricing link</a>.</p>
+      <h2>Section</h2>
+      <ul><li>First</li><li>Second</li></ul>
+      <script>console.log('drop me')</script>
+    </div></main><footer>SKIP FOOTER</footer></body></html>`;
+
+  const { title, markdown } = htmlToLlmsMarkdown(html);
+
+  assert.equal(title, 'Demo Page');
+  // The page h1 is captured as `title` and dropped from the body to avoid a
+  // duplicate heading when renderLlmsFullTxt prints the title above the content.
+  assert.doesNotMatch(markdown, /# Demo Page/);
+  assert.match(markdown, /## Section/);
+  assert.match(markdown, /\[pricing link\]\(https:\/\/scrimbaguide\.tech\/docs\/pricing\/\)/);
+  assert.match(markdown, /- First/);
+  assert.doesNotMatch(markdown, /SKIP NAV|SKIP FOOTER|drop me/);
+});
+
+test('PAGE_ANNOTATIONS carry no exact prices or stale free-course counts (regression guard)', () => {
+  const src = readFileSync(fileURLToPath(new URL('../generate-llms-from-sitemap.mjs', import.meta.url)), 'utf8');
+  const start = src.indexOf('const PAGE_ANNOTATIONS');
+  const end = src.indexOf('export function stripMdxAndJsxFromLlmsText');
+  const block = src.slice(start, end);
+  assert.doesNotMatch(block, /\$\s?\d/, 'no exact dollar prices in llms annotations');
+  assert.doesNotMatch(block, /\b19\+?\s+courses?\b/i, 'stale "19 courses" free-tier count must not return');
 });
 
 test('stripMdxAndJsxFromLlmsText removes component-like markup and import lines but keeps brace literals', () => {

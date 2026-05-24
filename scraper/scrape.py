@@ -9,7 +9,9 @@ Strategy:
      the server-rendered article HTML directly. This gives us metadata for
      every URL in minutes instead of hours.
   3. Modules pass: course/path pages need module data which only renders
-     client-side. We use Selenium with a small concurrent pool, but only
+     client-side. The curriculum is public (no login) but hydrates late,
+     inside <toc-group> web components, so we render with Selenium and read
+     the rendered table-of-contents. We use a small concurrent pool, only
      for the ~80 course/path URLs and only when their JSON-LD dateModified
      has advanced since the last run (incremental).
   4. Disk layout and index.json shape are unchanged so scripts/build-data.mjs
@@ -94,8 +96,8 @@ PER_HOST_LIMITS = {
 }
 SELENIUM_WORKERS = 4
 SELENIUM_PAGE_TIMEOUT = 45
-SELENIUM_MODULE_WAIT = 15  # seconds to wait for module h2s to render
-SELENIUM_RETRY_MODULE_WAIT = 25  # bumped wait on retry pass
+SELENIUM_MODULE_WAIT = 20  # seconds to wait for the toc to hydrate
+SELENIUM_RETRY_MODULE_WAIT = 35  # bumped wait on retry pass
 
 
 # ── Logging ─────────────────────────────────────────────────────────
@@ -489,16 +491,62 @@ def discover_urls_sync(logger: logging.Logger) -> tuple[list[str], list[str]]:
 
 # ── Selenium concurrent modules pass ───────────────────────────────
 
+# JS run in-page to read the rendered table of contents. Scrimba renders the
+# curriculum into <toc-group> web components; the top-level modules carry the
+# class token `l0`. Inside each module head the pieces sit in dedicated slots:
+# `%name` (title), `%stat` (duration), plus spans that spell out the lesson
+# counter. We grab name and duration from their slots and derive the lesson
+# total from the head text, so a title ending in a digit can't be mis-split.
+_TOC_MODULE_JS = r"""
+const groups = Array.from(document.querySelectorAll('toc-group.l0'));
+return groups.map(function (g) {
+  const head = g.querySelector('toc-item-head') || g;
+  const nameEl = head.querySelector('[class~="%name"]');
+  const statEl = head.querySelector('[class~="%stat"]');
+  const h2 = g.querySelector('h2');
+  const name = nameEl ? nameEl.textContent.trim()
+                      : (h2 ? h2.textContent.trim() : '');
+  const duration = statEl ? statEl.textContent.trim() : '';
+  const headText = head.textContent.replace(/\s+/g, ' ').trim();
+  return [name, duration, headText];
+});
+"""
+
+_DURATION_RE = re.compile(r"^\d+(?:\.\d+)?\s*(?:hrs?|min)$", re.IGNORECASE)
+_PROGRESS_RE = re.compile(r"(\d+)\s*/\s*(\d+)")
+
+
+def _module_string(name: str, duration: str, head_text: str) -> str | None:
+    """Rebuild the legacy multi-line module entry: name / duration / done/total.
+
+    build-data.mjs's parser reads line 0 as the name and picks out a duration
+    line (e.g. "2.4 hrs") and a progress line (e.g. "0/22") for the lesson count.
+    The lesson total is read from the "done/total" counter specifically, not from
+    any stray digit, so a duration like "108 min" can't be mistaken for a count.
+    """
+    name = (name or "").strip()
+    if not name:
+        return None
+    parts = [name]
+    duration = (duration or "").strip()
+    if duration and _DURATION_RE.match(duration):
+        parts.append(duration)
+    progress = _PROGRESS_RE.search(head_text or "")
+    if progress:
+        parts.append(f"0/{progress.group(2)}")
+    return "\n".join(parts)
+
+
 def fetch_modules_selenium(url: str, module_wait: int = SELENIUM_MODULE_WAIT) -> tuple[list[str], list[str]]:
     """Render a course/path page, return (headings_h2, headings_h3).
 
-    The h2 strings preserve multi-line module text (name, duration, lesson
-    counter) so build-data.mjs's existing YAML parser handles them.
+    headings_h2 holds one multi-line entry per top-level module (name,
+    duration, lesson counter) so build-data.mjs's existing parser handles it.
+    A page that renders its table of contents but has no module grouping
+    returns an empty list (not an error).
     """
     from selenium import webdriver
     from selenium.webdriver.chrome.options import Options as ChromeOptions
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.support import expected_conditions as EC
     from selenium.webdriver.support.ui import WebDriverWait
 
     opts = ChromeOptions()
@@ -506,7 +554,7 @@ def fetch_modules_selenium(url: str, module_wait: int = SELENIUM_MODULE_WAIT) ->
     opts.add_argument("--no-sandbox")
     opts.add_argument("--disable-dev-shm-usage")
     opts.add_argument("--disable-gpu")
-    opts.add_argument("--window-size=1280,900")
+    opts.add_argument("--window-size=1280,1600")
     opts.add_argument("--disable-extensions")
     # Block images + media + fonts to cut renderer load on big course pages
     opts.add_experimental_option(
@@ -527,36 +575,38 @@ def fetch_modules_selenium(url: str, module_wait: int = SELENIUM_MODULE_WAIT) ->
             # Page-load timeout can fire even though the DOM is usable.
             # Stop the page and continue to the readiness wait below.
             driver.execute_script("window.stop();")
+        # Readiness: the curriculum hydrates inside <toc-root>; wait for the
+        # table of contents to actually populate (toc-item-head elements), not
+        # just for a bare <h2> (the sidebar's static "Popular" heading).
         WebDriverWait(driver, module_wait).until(
-            EC.presence_of_element_located((By.TAG_NAME, "h2"))
+            lambda d: d.execute_script(
+                "return !!document.querySelector('toc-root') && "
+                "document.querySelectorAll('toc-item-head').length > 0"
+            )
         )
-        # Wait for module list to populate beyond the static "Popular" h2.
-        deadline = time.time() + max(3, module_wait // 2)
-        while time.time() < deadline:
-            count = len(driver.find_elements(By.CSS_SELECTOR, "h2"))
-            if count >= 3:
-                break
-            time.sleep(0.5)
-        h2s = [
-            el.text.strip()
-            for el in driver.find_elements(By.CSS_SELECTOR, "h2")
-            if el.text.strip()
-        ]
-        h3s = [
-            el.text.strip()
-            for el in driver.find_elements(By.CSS_SELECTOR, "h3")
-            if el.text.strip()
-        ]
-        return h2s, h3s
+        # Let remaining top-level groups settle in.
+        time.sleep(2)
+        rows = driver.execute_script(_TOC_MODULE_JS) or []
+        h2s: list[str] = []
+        for row in rows:
+            name = row[0] if len(row) > 0 else ""
+            duration = row[1] if len(row) > 1 else ""
+            head_text = row[2] if len(row) > 2 else ""
+            entry = _module_string(name, duration, head_text)
+            if entry:
+                h2s.append(entry)
+        return h2s, []
     finally:
         driver.quit()
 
 
 def run_modules_pass(pages: dict[str, PageData], logger: logging.Logger) -> None:
     """In-place fill headings_h2/h3 for course/path pages, with a retry pass."""
+    # Only course pages carry a curriculum; topic hubs (/t/*) have no toc and
+    # would just time out and log spurious failures.
     targets = [
         (url, p) for url, p in pages.items()
-        if p.page_type in {"course", "topic"}
+        if p.page_type == "course"
     ]
     if not targets:
         return
@@ -575,9 +625,11 @@ def run_modules_pass(pages: dict[str, PageData], logger: logging.Logger) -> None
                 url, page = futures[future]
                 completed += 1
                 try:
+                    # An empty list is a valid result: the toc rendered but the
+                    # course has no module grouping (a flat list of lessons).
+                    # Genuine render failures raise inside fetch_modules_selenium
+                    # (readiness timeout) and are retried below.
                     h2s, h3s = future.result()
-                    if not h2s:
-                        raise RuntimeError("no h2 elements found")
                     page.headings_h2 = h2s
                     page.headings_h3 = h3s
                     if completed % 5 == 0 or completed == len(urls):

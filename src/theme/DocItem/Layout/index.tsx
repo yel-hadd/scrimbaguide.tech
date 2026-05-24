@@ -31,7 +31,11 @@ function DocSeoHead(): React.ReactElement {
     (typeof frontMatter.description === 'string' && frontMatter.description) ||
     metadata.description ||
     siteConfig.tagline;
-  const ogImage = `${baseUrl}/img/social-card.png`;
+  const frontMatterImage =
+    typeof frontMatter.image === 'string' && frontMatter.image ? frontMatter.image : '';
+  const ogImage = frontMatterImage
+    ? (/^https?:\/\//.test(frontMatterImage) ? frontMatterImage : `${baseUrl}${frontMatterImage}`)
+    : `${baseUrl}/img/social-card.png`;
   const dateModified =
     metadata.lastUpdatedAt != null
       ? new Date(metadata.lastUpdatedAt as string | number | Date).toISOString()
@@ -43,6 +47,7 @@ function DocSeoHead(): React.ReactElement {
     headline: title,
     description,
     url: canonical,
+    image: ogImage,
     inLanguage: 'en',
     ...(dateModified && { dateModified }),
     // Bare @id reference to the Organization defined in headTags (config), injected
