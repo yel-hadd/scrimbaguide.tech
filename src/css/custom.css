@@ -802,6 +802,41 @@ body {
   color: var(--sg-text-soft);
 }
 
+.hero-section__proof {
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.7rem;
+  font-size: 0.9rem;
+  color: var(--sg-text-soft);
+}
+
+.hero-section__proof li {
+  position: relative;
+}
+
+.hero-section__proof li:not(:last-child)::after {
+  content: "·";
+  position: absolute;
+  right: -0.95rem;
+  color: var(--sg-text-soft);
+  opacity: 0.5;
+}
+
+.hero-section__proof strong {
+  color: var(--sg-text);
+  font-weight: 700;
+}
+
+.hero-section__proof a {
+  color: var(--sg-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .hero-section__tertiary {
   margin-top: 0.6rem;
   text-align: center;

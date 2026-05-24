@@ -45,16 +45,9 @@ function DocSeoHead(): React.ReactElement {
     url: canonical,
     inLanguage: 'en',
     ...(dateModified && { dateModified }),
-    publisher: {
-      '@id': 'https://scrimbaguide.tech/#organization',
-      '@type': 'Organization',
-      name: siteConfig.title,
-      url: 'https://scrimbaguide.tech',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://scrimbaguide.tech/img/logo.svg',
-      },
-    },
+    // Bare @id reference to the Organization defined in headTags (config), injected
+    // on every page. Avoids re-declaring a second @type:Organization node per page.
+    publisher: { '@id': 'https://scrimbaguide.tech/#organization' },
     author: {
       '@type': 'Person',
       name: 'Yassine El Haddad',

@@ -54,12 +54,8 @@ export default function ReviewSchema({
       name: plainText(author),
       url: toAbsoluteUrl(authorUrl),
     },
-    publisher: {
-      '@id': 'https://scrimbaguide.tech/#organization',
-      '@type': 'Organization',
-      name: 'Scrimba Guide',
-      url: 'https://scrimbaguide.tech',
-    },
+    // Bare @id reference to the Organization defined globally in headTags.
+    publisher: { '@id': 'https://scrimbaguide.tech/#organization' },
     ...(reviewBody && { reviewBody: plainText(reviewBody) }),
     ...(datePublished && { datePublished }),
   };
