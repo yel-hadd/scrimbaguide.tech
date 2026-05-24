@@ -1,6 +1,22 @@
 import { themes as prismThemes } from 'prism-react-renderer';
+import { readFileSync, existsSync } from 'node:fs';
+import path from 'node:path';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+
+/**
+ * 301 redirects for retired course pages (de-listed from Scrimba's catalogue).
+ * Maintained in data/course-redirects.json so the old URLs redirect to the
+ * category hub instead of 404ing.
+ */
+const courseRedirects: { from: string; to: string }[] = (() => {
+  try {
+    const p = path.join(process.cwd(), 'data', 'course-redirects.json');
+    return existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : [];
+  } catch {
+    return [];
+  }
+})();
 
 /** Set to `false` to show the newsletter / path-guide lead magnet (`EmailCapture`). */
 const hideNewsletterLeadMagnetDefault = false;
@@ -315,7 +331,8 @@ const config: Config = {
             from: '/blog/how-to-learn-javascript-2026',
             to: '/docs/courses/javascript/',
           },
-],
+          ...courseRedirects,
+        ],
       },
     ],
   ],
