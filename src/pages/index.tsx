@@ -58,6 +58,20 @@ function HeroSection() {
         <p className="hero-section__cta-note">
           No signup. A real lesson opens in your browser in about 30 seconds.
         </p>
+        <ul className="hero-section__proof" aria-label="Why trust this guide">
+          <li>
+            <strong>4.3/5</strong> on{' '}
+            <a
+              href="https://www.trustpilot.com/review/www.scrimba.com"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+            >
+              Trustpilot
+            </a>
+          </li>
+          <li>Frontend path built with <strong>Mozilla MDN</strong></li>
+          <li>Taught by <strong>Bob Ziroll, Kevin Powell</strong>, and 40+ others</li>
+        </ul>
         <p className="hero-section__tertiary">
           Already sold?{' '}
           <AffiliateLink href={PRO_AFFILIATE_URL} variant="text" location="home-hero-tertiary">
@@ -465,6 +479,9 @@ const BASE_URL = 'https://scrimbaguide.tech';
 const HOME_PAGE_TITLE = 'Scrimba Paths, Pricing & Reviews (2026)';
 const HOME_DESC =
   'A practical guide to Scrimba. Four career paths broken down, real pricing, side-by-side with Codecademy, Udemy, and freeCodeCamp. For developers picking a platform on substance, not slogans.';
+// Note: site-level Organization + WebSite + SearchAction JSON-LD is injected globally
+// via headTags in docusaurus.config.ts. Do not redefine it here or the homepage would
+// emit duplicate nodes for @id #organization / #website.
 
 export default function Home(): React.ReactElement {
   const { siteConfig } = useDocusaurusContext();

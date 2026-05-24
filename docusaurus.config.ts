@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const hideNewsletterLeadMagnetDefault = false;
 
 /**
- * Legacy blog URLs that only exist as client-redirect stubs — omit from sitemap (canonical = `to` targets).
+ * Legacy blog URLs that only exist as client-redirect stubs. Omit from sitemap (canonical = `to` targets).
  */
 const SITEMAP_EXCLUDED_PATHS = new Set<string>([
   '/blog/scrimba-vs-odin-project',
@@ -15,7 +15,7 @@ const SITEMAP_EXCLUDED_PATHS = new Set<string>([
 ]);
 
 /**
- * Malformed scrapes or duplicate alias URLs — canonical pages stay indexed under hyphenated slugs.
+ * Malformed scrapes or duplicate alias URLs. Canonical pages stay indexed under hyphenated slugs.
  */
 const SITEMAP_EXCLUDED_DOC_ALIASES = new Set<string>([
   '/docs/courses/ai/claudeai',
@@ -122,7 +122,7 @@ const config: Config = {
   trailingSlash: true,
 
   customFields: {
-    /** Formspree/Mailchimp/etc. POST URL — set `NEWSLETTER_FORM_ACTION` in CI or `.env` for builds */
+    /** Formspree/Mailchimp/etc. POST URL. Set `NEWSLETTER_FORM_ACTION` in CI or `.env` for builds */
     newsletterFormAction: process.env.NEWSLETTER_FORM_ACTION ?? '',
     /**
      * When true, EmailCapture (path guide / newsletter) is not rendered.
@@ -353,16 +353,9 @@ const config: Config = {
           target: 'https://scrimbaguide.tech/search?q={search_term_string}',
           'query-input': 'required name=search_term_string',
         },
-        publisher: {
-          '@id': 'https://scrimbaguide.tech/#organization',
-          '@type': 'Organization',
-          name: 'Scrimba Guide',
-          url: 'https://scrimbaguide.tech',
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://scrimbaguide.tech/img/logo.svg',
-          },
-        },
+        // Bare @id reference. The full Organization node is defined once below and
+        // injected on every page via headTags, so we never re-declare @type here.
+        publisher: { '@id': 'https://scrimbaguide.tech/#organization' },
       }),
     },
     {
@@ -374,7 +367,12 @@ const config: Config = {
         '@id': 'https://scrimbaguide.tech/#organization',
         name: 'Scrimba Guide',
         url: 'https://scrimbaguide.tech',
-        description: 'The unofficial guide to Scrimba — courses, learning paths, pricing, and comparisons. Written by developers who have completed 40+ Scrimba courses.',
+        description: 'An independent guide to Scrimba: courses, learning paths, pricing, and honest comparisons with other coding platforms.',
+        founder: {
+          '@type': 'Person',
+          name: 'Yassine El Haddad',
+          url: 'https://scrimbaguide.tech/about',
+        },
         sameAs: [
           'https://x.com/scrimbaguide',
           'https://www.linkedin.com/in/yassine-el-haddad/',

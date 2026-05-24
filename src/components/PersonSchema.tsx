@@ -20,7 +20,7 @@ interface PersonSchemaProps {
 export default function PersonSchema({
   name,
   url = 'https://scrimbaguide.tech/about',
-  description = 'A team of senior frontend and fullstack developers who have collectively completed 40+ Scrimba courses and all 4 career paths.',
+  description = 'An independent reviewer covering Scrimba\'s catalog, learning paths, pricing, and how it compares to other coding platforms.',
   knowsAbout = ['Scrimba', 'web development', 'interactive coding education', 'React', 'JavaScript', 'frontend development'],
   imageUrl = 'https://scrimbaguide.tech/img/logo.svg',
   schemaType = 'Person',

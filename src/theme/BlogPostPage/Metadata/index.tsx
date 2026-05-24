@@ -51,16 +51,9 @@ export default function MetadataWrapper(props: Props): React.ReactElement {
       url: `${baseUrl}/about`,
       knowsAbout: ['Scrimba', 'web development', 'interactive coding education', 'React', 'JavaScript'],
     },
-    publisher: {
-      '@id': `${baseUrl}/#organization`,
-      '@type': 'Organization',
-      name: siteConfig.title,
-      url: baseUrl,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${baseUrl}/img/logo.svg`,
-      },
-    },
+    // Bare @id reference to the Organization defined in headTags (config), injected
+    // on every page. Avoids re-declaring a second @type:Organization node per page.
+    publisher: { '@id': `${baseUrl}/#organization` },
     image: imageUrl,
     mainEntityOfPage: {
       '@type': 'WebPage',

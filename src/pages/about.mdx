@@ -1,6 +1,6 @@
 ---
 title: About Scrimba Guide
-description: An independent reader's guide to Scrimba. Catalog analysis, path breakdowns, honest comparisons, and the parts the marketing pages skip. Written by Yassine El Haddad.
+description: An independent reader's guide to Scrimba, written by Yassine El Haddad, a software and AI engineer. Catalog analysis, path breakdowns, honest comparisons, and the parts the marketing pages skip.
 hide_table_of_contents: true
 ---
 
@@ -9,61 +9,35 @@ import PersonSchema from '@site/src/components/PersonSchema';
 <PersonSchema
   name="Yassine El Haddad"
   url="https://scrimbaguide.tech/about"
-  description="Developer and independent author of Scrimba Guide. Maps Scrimba's catalog, reviews learning paths, and benchmarks the platform against alternatives for readers choosing where to spend their learning time."
-  knowsAbout={['Scrimba', 'web development', 'interactive coding education', 'React', 'JavaScript', 'frontend development', 'fullstack development']}
-  imageUrl="https://scrimbaguide.tech/img/logo.svg"
+  description="Yassine El Haddad builds fullstack AI apps and runs Scrimba Guide. He learned to code through 42 Network instead of a CS degree, and reviews Scrimba as a working engineer and a self-taught learner."
+  knowsAbout={['Scrimba', 'web development', 'interactive coding education', 'React', 'JavaScript', 'TypeScript', 'AI engineering', 'RAG', 'automation']}
+  imageUrl="https://scrimbaguide.tech/img/authors/yassine-el-haddad.webp"
   schemaType="Person"
   sameAs={['https://www.linkedin.com/in/yassine-el-haddad/', 'https://github.com/yel-hadd']}
 />
 
 # About this site
 
-**Scrimba Guide** is an independent reader's guide to [Scrimba](https://scrimba.com/?via=u42d4986), the interactive coding platform. It is run by **[Yassine El Haddad](https://www.linkedin.com/in/yassine-el-haddad/)**, a developer who got tired of "best coding platform" roundups that read like press releases.
+**Scrimba Guide** is an independent reader's guide to [Scrimba](https://scrimba.com/?via=u42d4986), the interactive coding platform. It exists because Scrimba's catalog is sprawling (70-plus courses, four career paths, dozens of one-off projects, pricing that varies by region) and the official site is built to sell, not to help you decide.
 
-This site exists because Scrimba's catalog is sprawling. 70-plus courses, four career paths, dozens of one-off projects, and pricing pages that vary by region. The official site sells well. It does not always help you decide. That is the job I picked up.
+## Who writes this
 
-## What I have actually done
+Scrimba Guide is written by **[Yassine El Haddad](https://www.linkedin.com/in/yassine-el-haddad/)**, who builds fullstack AI apps and started this site on the side.
 
-I want this to be useful, so I will say honestly what I have and have not done.
+He did not take the CS-degree route. He learned to code at [42 Network](https://www.42network.org/), the peer-driven, project-based school, and that is the whole point of view here. He reads Scrimba as an engineer who knows which skills hold up on the job, and as someone who still remembers what learning to code from scratch actually feels like.
 
-- **I have not completed a full Scrimba career path.** Anyone telling you they completed all four paths to "verify" them is either lying or has zero life outside Scrimba.
-- **I have sampled the free courses across every major topic** (Learn React, Learn JavaScript, Learn TypeScript, the CSS basics, the Claude AI intro, the LangBase agent course, and the Mistral course). Enough to judge the format, the pacing, and the typical instructor style.
-- **I have read every course description and every help-centre article** Scrimba publishes, and I keep them scraped and diffed so I can spot quietly removed features.
-- **I have watched instructor talks and conference recordings on YouTube** for the people who teach the major paths (Bob Ziroll, Per Borgen, Kevin Powell, Tom Chant). It tells you a lot about what their lessons will feel like.
-- **I have read Reddit, Discord, and forum threads** where actual learners discuss their wins and frustrations. That is where the unmarketed truth lives.
-
-If you want to verify any of this, my [LinkedIn](https://www.linkedin.com/in/yassine-el-haddad/) and [GitHub](https://github.com/yel-hadd) are open.
-
-## What I will not pretend to be
-
-- I am not a Scrimba employee.
-- I am not a Scrimba graduate.
-- I am not a "self-taught dev who landed a $120k role in three months thanks to one platform." That genre of story sells subscriptions and warps expectations.
-
-What I am is a developer who treats this site as a careful, slow audit of the platform. If you have a question I have not answered, that is a gap in the audit, not a tactic.
+You can check who he is on [LinkedIn](https://www.linkedin.com/in/yassine-el-haddad/) and [GitHub](https://github.com/yel-hadd).
 
 ## How the site stays honest
 
-- **Pricing.** I never quote a Scrimba price on this site. They vary by country, change without notice, and the official page has the live number. Every reference points to [scrimba.com/our-pricing](https://scrimba.com/our-pricing).
-- **Affiliate disclosure.** Some links to Scrimba carry an affiliate parameter. If you subscribe through one, this site earns a commission at no extra cost to you. That does not change which free resources I link to or which competitors I recommend.
-- **No fabricated quotes.** If a testimonial does not link to a real person, a real Reddit thread, or a real review site, it does not appear on this site. Older versions of these pages used "synthesized" quotes. They are being removed.
-- **Catalog data is scraped, not invented.** Course counts, durations, and instructor names come from a nightly read of Scrimba's own structured data. The scraper is open source in the repo.
-
-## What I actually track
-
-The catalog data on this site is not assembled by hand. A nightly Python crawler ([`scraper/scrape.py`](https://github.com/yel-hadd/scrimbaguide.tech/blob/main/scraper/scrape.py)) reads Scrimba's public course pages, extracts the embedded JSON-LD structured data, and writes it to a normalized JSON dataset. The course pages on this site are regenerated from that dataset.
-
-What that means in practice:
-
-- **Course counts, durations, instructor names, and free/paid status** come from Scrimba's own structured markup, not from my interpretation of marketing copy.
-- **Removed or renamed courses** show up in the diff the next morning. That is how I know when something is quietly retired.
-- **Module breakdowns** are a separate case. Scrimba moved the anonymous module DOM behind login in 2026, so the breakdowns on this site come from a legacy capture of 31 courses. Newer courses show JSON-LD-level data only, and that limitation is called out on the affected pages.
-
-If the data behind a page looks wrong, the fix usually belongs in the scraper or the generator, not the MDX. Open an issue on the repo or email me.
+- **Pricing.** This site never quotes a Scrimba price. They vary by country, change without notice, and the [official page](https://scrimba.com/our-pricing) has the live number. Every reference points there.
+- **Affiliate disclosure.** Some links to Scrimba carry an affiliate parameter. If you subscribe through one, this site earns a commission at no extra cost to you. That does not change which free resources get recommended or which competitors get the nod when they fit better.
+- **No fabricated quotes.** If a testimonial does not link to a real person, a real Reddit thread, or a real review site, it does not appear here. Earlier versions of these pages used synthesized quotes; those have been removed.
+- **Not affiliated.** Scrimba Guide is independent. It is not operated by, or endorsed by, Scrimba.
 
 ## Corrections
 
-If something on this site is wrong, outdated, or unclear, email [hello@scrimbaguide.tech](mailto:hello@scrimbaguide.tech). My policy: I respond within 48 hours and update the page with a dated correction note ("Updated YYYY-MM-DD: ...") so you can see what changed and when. Silent edits are not a correction, they are revisionism.
+If something here is wrong, outdated, or unclear, email [hello@scrimbaguide.tech](mailto:hello@scrimbaguide.tech). The policy: a response within 48 hours, and a dated correction note on the page ("Updated YYYY-MM-DD: ...") so you can see what changed and when. Silent edits are not corrections.
 
 ---
 
