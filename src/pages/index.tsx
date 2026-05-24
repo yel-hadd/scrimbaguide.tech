@@ -34,17 +34,19 @@ function HeroSection() {
   return (
     <section className="hero-section">
       <div className="hero-section__inner">
+        <p className="hero-section__eyebrow">Independent guide</p>
         <h1>
-          Learn by typing inside the lesson. Then pick the path that gets you hired.
+          Scrimba teaches you to code in videos you can pause and edit, not just watch.
         </h1>
         <p className="hero-section__lead">
-          A practical guide to Scrimba's {totalCoursesLabel} courses and four career paths
-          across frontend, fullstack, backend, and AI engineering. What each one actually
-          teaches, what it costs, who it is for, and where it loses to the alternatives.
+          It looks like a normal lesson until you stop the playback, change the
+          instructor's code, and run it right there. This guide maps all {totalCoursesLabel} courses
+          and four career paths (frontend, fullstack, backend, AI): what each teaches, what
+          it costs, who it is for, and where it loses to the alternatives.
         </p>
         <div className="hero-buttons" role="group" aria-label="Primary actions">
           <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-hero-primary">
-            Try a scrim in your browser
+            Try a free lesson in your browser
           </AffiliateLink>
           <Link
             className="cta-link cta-link--button hero-section__secondary-btn"
@@ -53,6 +55,9 @@ function HeroSection() {
             Find my path (2 min quiz)
           </Link>
         </div>
+        <p className="hero-section__cta-note">
+          No signup. A real lesson opens in your browser in about 30 seconds.
+        </p>
         <p className="hero-section__tertiary">
           Already sold?{' '}
           <AffiliateLink href={PRO_AFFILIATE_URL} variant="text" location="home-hero-tertiary">
