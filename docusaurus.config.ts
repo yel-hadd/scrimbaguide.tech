@@ -28,6 +28,13 @@ const SITEMAP_EXCLUDED_PATHS = new Set<string>([
   '/blog/scrimba-vs-odin-project',
   '/blog/scrimba-vs-bootcamps-cost-comparison',
   '/blog/scrimba-for-cs-students',
+  // Udemy guides moved to /blog/*; these are now redirect stubs (canonical = /blog/* targets).
+  '/docs/udemy',
+  '/docs/udemy/best-udemy-javascript-courses',
+  '/docs/udemy/best-udemy-react-courses',
+  '/docs/udemy/best-udemy-python-courses',
+  '/docs/udemy/best-udemy-web-development-courses',
+  '/docs/udemy/best-udemy-ai-courses',
 ]);
 
 /**
@@ -84,8 +91,7 @@ function sitemapPriority(pathname: string): number {
   if (
     pathname === '/docs/intro' ||
     pathname === '/about' ||
-    pathname === '/blog' ||
-    pathname.startsWith('/docs/udemy')
+    pathname === '/blog'
   ) {
     return 0.8;
   }
@@ -330,6 +336,31 @@ const config: Config = {
           {
             from: '/blog/how-to-learn-javascript-2026',
             to: '/docs/courses/javascript/',
+          },
+          // Udemy guides moved from /docs/udemy/* to /blog/* (2026-05-24).
+          {
+            from: '/docs/udemy',
+            to: '/blog/best-udemy-coding-courses/',
+          },
+          {
+            from: '/docs/udemy/best-udemy-javascript-courses',
+            to: '/blog/best-udemy-javascript-courses/',
+          },
+          {
+            from: '/docs/udemy/best-udemy-react-courses',
+            to: '/blog/best-udemy-react-courses/',
+          },
+          {
+            from: '/docs/udemy/best-udemy-python-courses',
+            to: '/blog/best-udemy-python-courses/',
+          },
+          {
+            from: '/docs/udemy/best-udemy-web-development-courses',
+            to: '/blog/best-udemy-web-development-courses/',
+          },
+          {
+            from: '/docs/udemy/best-udemy-ai-courses',
+            to: '/blog/best-udemy-ai-courses/',
           },
           ...courseRedirects,
         ],
