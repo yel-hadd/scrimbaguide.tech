@@ -1,100 +1,117 @@
 ---
-title: "Interactive React Tutorial: Scrimba Review"
-description: "This is the ideal starting point for anyone eager to learn modern React basics in the most interactive, hands-on way possible."
-keywords: [scrimba interactive react tutorial, interactive react tutorial course, scrimba react course]
+title: "Learn React"
+description: "Bob Ziroll's free, project-based React course on Scrimba: about 15 hours, six modules, two capstone apps. Who it fits, what it assumes, and where it falls short."
+keywords: [scrimba learn react, learn react scrimba, bob ziroll react course, free react course, interactive react course]
+last_update:
+  date: 2026-05-27
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
-import PricingCTA from '@site/src/components/PricingCTA';
-import FAQAccordion from '@site/src/components/FAQAccordion';
-import CourseSchema from '@site/src/components/CourseSchema';
 import CourseCurriculum from '@site/src/components/CourseCurriculum';
+import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import PricingCTA from '@site/src/components/PricingCTA';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
-# Interactive React Tutorial on Scrimba
+# Learn React
+
+Scrimba's free flagship React course, taught by Bob Ziroll across roughly 15 hours of interactive scrims that end in two apps you build yourself.
+
+## Quick answer
+
+Learn React is Scrimba's free, intermediate-level React course: about 15 hours across six modules, taught by Bob Ziroll. You build components, manage state, handle side effects, and finish two capstone apps (Tenzies and Assembly: Endgame). It assumes you can already write JavaScript. If you can, it is the strongest free starting point for modern React.
 
 <CourseCard
-  title="Interactive React Tutorial"
+  title="Learn React"
   duration="15.1 hrs"
   difficulty="Intermediate"
   access="Free"
-  instructor="Bob Ziroll"
   modules={6}
+  instructor="Bob Ziroll"
+  instructorUrl="https://scrimba.com/@bobziroll"
   href="https://scrimba.com/learn-react-c0e"
-  description="This is the ideal starting point for anyone eager to learn modern React basics in the most interactive, hands-on way possible."
+  description="Modern, hooks-first React taught by editing the instructor's code in the browser, ending in two capstone projects."
 />
 
-<CourseSchema
-  name="Interactive React Tutorial"
-  description="This is the ideal starting point for anyone eager to learn modern React basics in the most interactive, hands-on way possible."
-  url="https://scrimba.com/learn-react-c0e"
-  duration="15.1 hrs"
-  difficulty="Intermediate"
-  access="Free"
-  keywords={["scrimba interactive react tutorial", "interactive react tutorial course", "scrimba react course"]}
-  modules={[{"name":"Static pages","duration":"2.4 hrs","lessons":22},{"name":"Data-Driven React","duration":"2.3 hrs","lessons":22},{"name":"React State","duration":"5.2 hrs","lessons":57},{"name":"Side Effects","duration":"108 min","lessons":18},{"name":"Capstone Project #1 - Tenzies","duration":"86 min","lessons":17},{"name":"Capstone Project #2 - Assembly: Endgame","duration":"2.2 hrs","lessons":21}]}
+## Is it worth your time?
+
+It is free, so the only thing it costs you is time, and the format earns that time. Editing the instructor's code directly in the player suits React especially well: you change a piece of state and watch the component re-render in the same window, which is the thing static tutorials cannot show you.
+
+The honest caveat is the level. This is labelled Intermediate, and it means it. The course moves quickly through JSX, props, and state, and assumes you can already write functions, use array methods like `map` and `filter`, and follow basic asynchronous code. If that does not describe you yet, you will struggle around the State module, not because React is hard but because the JavaScript underneath it is unfamiliar.
+
+## What you'll learn
+
+<CourseCurriculum
+  modules={[
+    { name: 'Static pages', duration: '2.4 hrs', lessons: 22 },
+    { name: 'Data-Driven React', duration: '2.3 hrs', lessons: 22 },
+    { name: 'React State', duration: '5.2 hrs', lessons: 57 },
+    { name: 'Side Effects', duration: '108 min', lessons: 18 },
+    { name: 'Capstone Project #1: Tenzies', duration: '86 min', lessons: 17 },
+    { name: 'Capstone Project #2: Assembly: Endgame', duration: '2.2 hrs', lessons: 21 },
+  ]}
 />
 
-## About This Course
+The sequence is deliberate. You start by rendering static components, then drive them from data, and then spend the single largest block (React State, over five hours) on the part that actually trips people up: lifting state, controlled inputs, and re-renders. Side Effects covers fetching data and talking to APIs. The two capstones are where it stops holding your hand and you assemble the pieces yourself, which is the point.
 
-This is the ideal starting point for anyone eager to learn modern React basics in the most interactive, hands-on way possible.
+## Who it's for, and who should skip it
 
-This Intermediate-level course covers 15.1 hrs of content across 157 interactive screencasts. It is available for free, no subscription required.
+It fits you if you are comfortable with JavaScript and want to learn React by building rather than watching. It is a natural anchor for anyone on the [Frontend Developer Path](/docs/paths/frontend-developer-path).
 
-- **Duration:** 15.1 hrs
-- **Level:** Intermediate
-- **Access:** Free (no subscription required)
-- **Modules:** 6
-- **Total Lessons:** 157
-
-### Instructor
-
-This course is taught by **Bob Ziroll**, an experienced educator on the Scrimba platform.
-
-## Course curriculum
-
-<CourseCurriculum modules={[{"name":"Static pages","duration":"2.4 hrs","lessons":22},{"name":"Data-Driven React","duration":"2.3 hrs","lessons":22},{"name":"React State","duration":"5.2 hrs","lessons":57},{"name":"Side Effects","duration":"108 min","lessons":18},{"name":"Capstone Project #1 - Tenzies","duration":"86 min","lessons":17},{"name":"Capstone Project #2 - Assembly: Endgame","duration":"2.2 hrs","lessons":21}]} title="" />
+Skip it, for now, if you have never written JavaScript. Do [Learn JavaScript](/docs/courses/javascript/learn-javascript) first and come back. Also skip it if you specifically need class components or older lifecycle patterns for a legacy codebase; this course teaches modern hooks-based React, and the class-based material lives in a [separate course](/docs/courses/react/class-components-in-react).
 
 ## Prerequisites
 
-Basic knowledge of HTML, CSS, and JavaScript is recommended before starting this course.
+Working JavaScript is the real prerequisite: variables, functions, array methods, and a basic grasp of asynchronous code. Comfort with HTML and CSS helps. You do not need any prior React.
 
-## Who Is This Course For?
+## Where it fits
 
-This course is ideal for developers with some experience who want to level up their Interactive React skills through hands-on practice.
+Learn React is the React anchor for two paths: the [Frontend Developer Path](/docs/paths/frontend-developer-path) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path). The usual next step after it is [Advanced React](/docs/courses/react/advanced-react), which goes deeper into performance, patterns, and the parts this course leaves out.
 
-## Part of These Learning Paths
+## Free or Pro
 
-- [Frontend Developer Path](/docs/paths/frontend-developer-path)
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
+The course itself is free, with no subscription required to start or finish it. Scrimba Pro is a separate decision: it unlocks the structured career paths, the coding challenges, the private Discord, and the path certificates. If you only want this course, you never have to pay. See [current plans](https://scrimba.com/our-pricing) if you later want the path structure around it.
 
+## Strengths and limits
 
-## Related Courses
+What it does well: it is free, it teaches modern hooks-first React, it ends in two projects you actually build, and Bob Ziroll is a clear, well-paced instructor. The interactive format is a genuine fit for the subject.
 
-- [Advanced React](/docs/courses/react/advanced-react)
-- [Best React Courses and Tutorials Compared [2026]](/docs/courses/react/best-react-courses-and-tutorials)
-- [React Search Tutorial](/docs/courses/react/a-react-project-movie-search-app)
+Where it is limited: the Intermediate pacing is unforgiving if your JavaScript is shaky, it does not cover routing or data libraries (you go to [React Router](/docs/courses/react/react-router) and other courses for those), and fast peer help depends on the Pro Discord rather than the free tier.
 
-## Practice & Learn More
+## Related courses and comparisons
 
-- [Practice React Hooks](/docs/practice/practice-react-hooks)
-- [Practice React Projects](/docs/practice/practice-react-projects)
-- [How Long Does It Take to Learn Coding?](/docs/how-it-works/learning-speed)
-- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) | [All Comparisons](/docs/comparisons/)
-
-## Related Pages
-
-- [React Courses](/docs/courses/react/)
-- [All Courses](/docs/courses/)
-- [Scrimba Pricing](/docs/pricing/)
-- [Scrimba Review 2026](/blog/scrimba-review)
+- [Advanced React](/docs/courses/react/advanced-react), the deeper follow-up
+- [React Router](/docs/courses/react/react-router), client-side routing
+- [Class Components in React](/docs/courses/react/class-components-in-react), for legacy codebases
+- [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials), how it stacks up
+- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp) and [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy), if you are choosing a platform
 
 <FAQAccordion items={[
-  { q: "Is Interactive React Tutorial free on Scrimba?", a: "Yes! This course is completely free. No credit card or Scrimba Pro subscription is needed to start learning." },
-  { q: "How long does Interactive React Tutorial take to complete?", a: "The course contains 15.1 hrs of interactive screencasts. Since you can pause and code along at your own pace, most learners finish in 2-4 weeks of regular practice." },
-  { q: "What will I build in this course?", a: "You will build practical projects using Interactive React Tutorial concepts. Scrimba's interactive format lets you modify the instructor's code directly in the browser." },
+  { q: "Is Learn React free on Scrimba?", a: "Yes. The full course is free with no credit card or Pro subscription required. Pro is only needed for the career paths, certificates, and private Discord, not for this course." },
+  { q: "Is Learn React good for complete beginners?", a: "Not as a first course. It is rated Intermediate and assumes working JavaScript. Complete beginners should do Learn JavaScript first, then return to this one." },
+  { q: "Who teaches Learn React on Scrimba?", a: "Bob Ziroll, a long-time React educator. The course is built around editing his code in the Scrimba player rather than passively watching." },
+  { q: "What do you build in the course?", a: "Two capstone apps, Tenzies (a dice game) and Assembly: Endgame (a word-guessing game), plus smaller components throughout the State and Side Effects modules." },
+  { q: "Does it teach modern React or class components?", a: "Modern, hooks-based React. If you need class components for a legacy project, Scrimba has a separate Class Components in React course." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/learn-react-c0e" variant="button">
-  Start Interactive React Tutorial for Free
+  Start Learn React for free
 </AffiliateLink>
+
+<CourseSchema
+  name="Learn React"
+  description="Scrimba's free, intermediate React course taught by Bob Ziroll. About 15 hours across six modules, ending in two capstone apps."
+  url="https://scrimba.com/learn-react-c0e"
+  timeRequired="PT15H6M25S"
+  difficulty="Intermediate"
+  access="Free"
+  keywords={["React", "Frontend"]}
+  modules={[
+    { name: 'Static pages', duration: '2.4 hrs', lessons: 22 },
+    { name: 'Data-Driven React', duration: '2.3 hrs', lessons: 22 },
+    { name: 'React State', duration: '5.2 hrs', lessons: 57 },
+    { name: 'Side Effects', duration: '108 min', lessons: 18 },
+    { name: 'Capstone Project #1: Tenzies', duration: '86 min', lessons: 17 },
+    { name: 'Capstone Project #2: Assembly: Endgame', duration: '2.2 hrs', lessons: 21 },
+  ]}
+/>
