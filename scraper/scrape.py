@@ -556,13 +556,17 @@ _TOC_MODULE_JS = r"""
 const groups = Array.from(document.querySelectorAll('toc-group.l0'));
 return groups.map(function (g) {
   const head = g.querySelector('toc-item-head') || g;
-  const nameEl = head.querySelector('[class~="%name"]');
-  const statEl = head.querySelector('[class~="%stat"]');
-  const h2 = g.querySelector('h2');
-  const name = nameEl ? nameEl.textContent.trim()
-                      : (h2 ? h2.textContent.trim() : '');
-  const duration = statEl ? statEl.textContent.trim() : '';
-  const headText = head.textContent.replace(/\s+/g, ' ').trim();
+  // Read the rendered text directly rather than per-slot class tokens, which
+  // Scrimba renames periodically. The module head renders as three lines:
+  //   <name>\n<duration>\n<done>/<total>
+  const text = (head.innerText || head.textContent || '').replace(/ /g, ' ');
+  const lines = text.split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+  const name = lines.length ? lines[0] : '';
+  let duration = '';
+  for (let i = 1; i < lines.length; i++) {
+    if (/^\d+(?:\.\d+)?\s*(?:hrs?|min)$/i.test(lines[i])) { duration = lines[i]; break; }
+  }
+  const headText = lines.join(' ');
   return [name, duration, headText];
 });
 """
