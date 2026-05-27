@@ -198,7 +198,7 @@ const BY_SLUG: Record<string, BlogCta> = {
   'complete-guide-scrimba-certificates': {
     title: 'Certificates FAQ',
     body: 'How certificates work, LinkedIn, and employer questions.',
-    href: '/docs/faq/certificates',
+    href: '/docs/how-it-works/certificates',
     linkLabel: 'Certificate FAQ',
   },
   'learn-to-code-full-time-job': {

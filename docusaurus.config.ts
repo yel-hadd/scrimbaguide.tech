@@ -96,8 +96,8 @@ function sitemapPriority(pathname: string): number {
     return 0.8;
   }
   if (
-    pathname === '/docs/faq/is-scrimba-free' ||
-    pathname === '/docs/faq/how-to-use-scrimba'
+    pathname === '/docs/how-it-works/is-scrimba-free' ||
+    pathname === '/docs/how-it-works/using-scrimba'
   ) {
     return 0.8;
   }
@@ -271,7 +271,7 @@ const config: Config = {
           },
           {
             from: '/blog/scrimba-for-cs-students',
-            to: '/docs/paths/scrimba-for-cs-students',
+            to: '/docs/for/cs-students/',
           },
           {
             from: '/blog/blog/javascript-roadmap-for-beginners-2026',
@@ -362,6 +362,24 @@ const config: Config = {
             from: '/docs/udemy/best-udemy-ai-courses',
             to: '/blog/best-udemy-ai-courses/',
           },
+          // IA restructure (2026-05-27): FAQ split into How Scrimba Works + Help,
+          // audience pages consolidated under /for/, discord merged into community.
+          { from: '/docs/faq/how-scrims-work', to: '/docs/how-it-works/how-scrims-work/' },
+          { from: '/docs/faq/how-to-use-scrimba', to: '/docs/how-it-works/using-scrimba/' },
+          { from: '/docs/faq/is-scrimba-free', to: '/docs/how-it-works/is-scrimba-free/' },
+          { from: '/docs/faq/scrimba-accreditation', to: '/docs/how-it-works/accreditation/' },
+          { from: '/docs/faq/certificates', to: '/docs/how-it-works/certificates/' },
+          { from: '/docs/faq/learning-speed', to: '/docs/how-it-works/learning-speed/' },
+          { from: '/docs/faq/tutorial-hell', to: '/docs/how-it-works/tutorial-hell/' },
+          { from: '/docs/faq/billing', to: '/docs/help/billing/' },
+          { from: '/docs/faq/platform-issues', to: '/docs/help/troubleshooting/' },
+          { from: '/docs/faq/community-and-events', to: '/docs/help/community-and-events/' },
+          { from: '/docs/faq/discord-community', to: '/docs/help/community-and-events/' },
+          { from: '/docs/faq/scrimba-for-busy-professionals', to: '/docs/for/busy-professionals/' },
+          { from: '/docs/paths/scrimba-for-beginners', to: '/docs/for/beginners/' },
+          { from: '/docs/paths/scrimba-for-cs-students', to: '/docs/for/cs-students/' },
+          { from: '/docs/paths/scrimba-for-designers', to: '/docs/for/designers/' },
+          { from: '/docs/paths/scrimba-for-marketers', to: '/docs/for/marketers/' },
           ...courseRedirects,
         ],
       },

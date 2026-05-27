@@ -29,13 +29,13 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Success Stories', href: '/blog/scrimba-success-stories', type: 'blog' },
   ],
   '/blog/escape-tutorial-hell-scrimba': [
-    { title: 'How Scrims Work', href: '/docs/faq/how-scrims-work', type: 'doc' },
+    { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
     { title: 'Scrimba vs YouTube', href: '/docs/comparisons/scrimba-vs-youtube', type: 'comparison' },
     { title: 'Build a Coding Habit', href: '/blog/build-coding-habit-scrimba', type: 'blog' },
   ],
   '/blog/best-free-scrimba-courses': [
     { title: 'Pro vs Free Comparison', href: '/docs/pricing/pro-vs-free', type: 'doc' },
-    { title: 'Scrimba for Beginners', href: '/docs/paths/scrimba-for-beginners', type: 'doc' },
+    { title: 'Scrimba for Beginners', href: '/docs/for/beginners', type: 'doc' },
     { title: 'Scrimba vs freeCodeCamp', href: '/docs/comparisons/scrimba-vs-freecodecamp', type: 'comparison' },
   ],
 
@@ -76,49 +76,49 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   '/docs/comparisons/scrimba-vs-freecodecamp': [
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
     { title: 'Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
-    { title: 'Scrimba for Beginners', href: '/docs/paths/scrimba-for-beginners', type: 'doc' },
+    { title: 'Scrimba for Beginners', href: '/docs/for/beginners', type: 'doc' },
   ],
   '/docs/comparisons/scrimba-vs-the-odin-project': [
-    { title: 'Scrimba for CS Students', href: '/docs/paths/scrimba-for-cs-students', type: 'doc' },
+    { title: 'Scrimba for CS Students', href: '/docs/for/cs-students', type: 'doc' },
     { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
     { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
   ],
   '/docs/comparisons/scrimba-vs-odin-project': [
-    { title: 'Scrimba for CS Students', href: '/docs/paths/scrimba-for-cs-students', type: 'doc' },
+    { title: 'Scrimba for CS Students', href: '/docs/for/cs-students', type: 'doc' },
     { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
     { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
   ],
   '/docs/comparisons/scrimba-vs-youtube': [
     { title: 'Escape Tutorial Hell', href: '/blog/escape-tutorial-hell-scrimba', type: 'blog' },
-    { title: 'How Scrims Work', href: '/docs/faq/how-scrims-work', type: 'doc' },
+    { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
   ],
   '/docs/comparisons/scrimba-vs-coursera': [
-    { title: 'Scrimba for CS Students', href: '/docs/paths/scrimba-for-cs-students', type: 'doc' },
+    { title: 'Scrimba for CS Students', href: '/docs/for/cs-students', type: 'doc' },
     { title: 'Certificates Guide', href: '/blog/complete-guide-scrimba-certificates', type: 'blog' },
     { title: 'Career Change Guide', href: '/blog/career-change-to-coding-2026', type: 'blog' },
   ],
 
   // --- Docs: Programmatic Pages ---
-  '/docs/paths/scrimba-for-designers': [
+  '/docs/for/designers': [
     { title: 'Learn CSS Grid', href: '/docs/practice/practice-css-grid', type: 'doc' },
     { title: 'Learn Flexbox', href: '/docs/practice/practice-flexbox', type: 'doc' },
     { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
-  '/docs/paths/scrimba-for-marketers': [
+  '/docs/for/marketers': [
     { title: 'Learn HTML & CSS', href: '/docs/courses/css/html-and-css', type: 'doc' },
     { title: 'AI Tools for Developers', href: '/blog/ai-tools-every-developer-should-know-2026', type: 'blog' },
     { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
   ],
-  '/docs/paths/scrimba-for-beginners': [
+  '/docs/for/beginners': [
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
-    { title: 'How Scrims Work', href: '/docs/faq/how-scrims-work', type: 'doc' },
+    { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
     { title: 'Frontend Roadmap', href: '/roadmaps/frontend-roadmap-2026', type: 'doc' },
   ],
 
   // --- Docs: Practice Pages ---
   '/docs/practice/practice-css-grid': [
-    { title: 'Scrimba for Designers', href: '/docs/paths/scrimba-for-designers', type: 'doc' },
+    { title: 'Scrimba for Designers', href: '/docs/for/designers', type: 'doc' },
     { title: 'Practice Flexbox', href: '/docs/practice/practice-flexbox', type: 'doc' },
     { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
