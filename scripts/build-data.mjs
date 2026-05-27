@@ -284,9 +284,24 @@ function parseCourse(item) {
     }
   }
 
+  // Prefer the rich Course JSON-LD facts (written to frontmatter by the
+  // scraper) over the values mined heuristically from body text.
+  if (frontmatter.course_level) level = frontmatter.course_level;
+  if (frontmatter.course_access) access = frontmatter.course_access;
+
   const topics = assignTopics(slug, item.title);
   const category = primaryCategory(topics);
-  const instructor = extractInstructorFromBody(body) || extractInstructor(item.title);
+  const instructor =
+    frontmatter.instructor_name || extractInstructorFromBody(body) || extractInstructor(item.title);
+  const instructorUrl = frontmatter.instructor_url || '';
+  const cleanName = frontmatter.clean_name || item.title;
+  const lessonCount = frontmatter.num_lessons ? parseInt(frontmatter.num_lessons, 10) || 0 : 0;
+  const timeRequired = frontmatter.time_required || '';
+  const teaches = frontmatter.teaches
+    ? frontmatter.teaches.split(',').map(s => s.trim()).filter(Boolean)
+    : [];
+  const datePublished = frontmatter.date_published || '';
+  const dateModified = frontmatter.date_modified || '';
   const description = extractDescription(frontmatter, body, item.title);
   const projects = extractProjects(body);
 
@@ -330,12 +345,18 @@ function parseCourse(item) {
 
   return {
     title: item.title,
+    cleanName,
     scrimbaUrl: item.url,
     scrimbaSlug: slug,
     docSlug: docSlug || slug,
     category,
     topics,
     duration,
+    timeRequired,
+    lessonCount,
+    teaches,
+    datePublished,
+    dateModified,
     level,
     access,
     isPath,
@@ -348,6 +369,7 @@ function parseCourse(item) {
     modules,
     description,
     instructor,
+    instructorUrl,
     projects,
     screenshot: item.screenshot,
   };
