@@ -1,95 +1,94 @@
 ---
-title: "tutorial on React class components: Scrimba Review"
-description: "A one-hour course to get you up to speed with class components in..."
-keywords: [scrimba tutorial on react class components, tutorial on react class components course, scrimba react course]
+title: "Learn Class Components in React"
+description: "Bob Ziroll's short Pro course on React class components: lifecycle methods, this binding, and setState. Built for maintaining legacy codebases, not for learning modern React."
+keywords: [scrimba class components react, react class components course, bob ziroll class components, legacy react, react lifecycle methods]
+last_update:
+  date: 2026-05-27
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
-import PricingCTA from '@site/src/components/PricingCTA';
-import FAQAccordion from '@site/src/components/FAQAccordion';
 import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
-# tutorial on React class components on Scrimba
+# Learn Class Components in React
+
+A short, targeted course with Bob Ziroll: about 1.3 hours on the class-based React that modern courses no longer teach, aimed at people maintaining older codebases.
+
+## Quick answer
+
+Learn Class Components in React is Scrimba's Pro, intermediate course, roughly 1.3 hours taught by Bob Ziroll, covering class components: lifecycle methods, `this` binding, and `setState`. Modern React is hooks-based, so most learners should not start here. Take this only if a job or an existing codebase forces you to read or write class components. For learning React itself, do the hooks-based Learn React instead.
 
 <CourseCard
-  title="tutorial on React class components"
+  title="Learn Class Components in React"
   duration="1.3 hrs"
   difficulty="Intermediate"
-  access="Free"
+  access="Pro"
   instructor="Bob Ziroll"
-  
+  instructorUrl="https://scrimba.com/@bobziroll"
   href="https://scrimba.com/learn-class-components-in-react-c0h"
-  description="A one-hour course to get you up to speed with class components in React"
+  description="A focused look at React class components, lifecycle methods, and setState, for maintaining legacy codebases."
 />
 
-<CourseSchema
-  name="tutorial on React class components"
-  description="A one-hour course to get you up to speed with class components in..."
-  url="https://scrimba.com/learn-class-components-in-react-c0h"
-  duration="1.3 hrs"
-  difficulty="Intermediate"
-  access="Free"
-  keywords={["scrimba tutorial on react class components", "tutorial on react class components course", "scrimba react course"]}
-  
-/>
+## Is it worth your time?
 
-## About This Course
+It is worth your time in one specific situation: you have landed in a codebase, or a job, that still uses class components and you need to read and edit them without guessing. For that, an hour with a clear instructor is far more efficient than piecing it together from old blog posts. Bob Ziroll covers the parts that trip people up coming from hooks, namely `this` binding, lifecycle methods, and the older `setState` pattern.
 
-A one-hour course to get you up to speed with class components in React
+The honest verdict is that almost nobody should take this as their introduction to React. The ecosystem moved to function components and hooks years ago, new code is written that way, and learning classes first will give you habits you then have to unlearn. This is a maintenance course, not a foundations course.
 
-This Intermediate-level course covers 1.3 hrs of content. It is available for free, no subscription required.
+## What you'll learn
 
-- **Duration:** 1.3 hrs
-- **Level:** Intermediate
-- **Access:** Free (no subscription required)
+There is no multi-module breakdown for this short course. In about 1.3 hours it covers the class component model end to end: defining a component as a class, the `render` method, managing state with `this.state` and `setState`, binding event handlers and the `this` keyword, and the lifecycle methods (`componentDidMount`, `componentDidUpdate`, `componentWillUnmount`) that hooks like `useEffect` later replaced. The goal is fluency in reading and editing existing class-based code, not building new apps this way.
 
+## Who it's for, and who should skip it
 
+It fits developers who already know modern React and have to work in a legacy class-based codebase, or who are studying older code they did not write.
 
-### Instructor
-
-This course is taught by **Bob Ziroll**, an experienced educator on the Scrimba platform.
+Skip it if you are learning React for the first time. Do [Learn React](/docs/courses/react/learn-react), which teaches the hooks-based approach used in all current work, and only come back here if a specific project requires classes.
 
 ## Prerequisites
 
-Basic knowledge of HTML, CSS, and JavaScript is recommended before starting this course.
+A working grasp of JavaScript classes, `this`, and basic React concepts (components, props, state). It helps to already know hooks, since the course frames class patterns against their modern equivalents.
 
-## Who Is This Course For?
+## Where it fits
 
-This course is ideal for developers with some experience who want to level up their tutorial on skills through hands-on practice.
+This is a side branch rather than a core step. It is listed under the [Frontend Developer Path](/docs/paths/frontend-developer-path) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path), but the main React track runs through the hooks-based courses; take this only when a legacy requirement comes up.
 
-## Part of These Learning Paths
+## Free or Pro
 
-- [Frontend Developer Path](/docs/paths/frontend-developer-path)
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
+This is a Pro course, so it needs a Scrimba subscription. Pro also unlocks the full career paths, the coding challenges, the private Discord, and path certificates. See [current plans](https://scrimba.com/our-pricing) for what Pro costs in your region.
 
+## Strengths and limits
 
-## Related Courses
+What it does well: it is short and to the point, it targets the exact friction (binding, lifecycle, `setState`) that hooks developers hit in old code, and Bob Ziroll explains the why, not just the syntax.
 
-- [Advanced React](/docs/courses/react/advanced-react)
-- [Best React Courses and Tutorials Compared [2026]](/docs/courses/react/best-react-courses-and-tutorials)
-- [React Search Tutorial](/docs/courses/react/a-react-project-movie-search-app)
+Where it is limited: it teaches a pattern that is no longer how new React is written, so it has a narrow audience, and on its own it is not a path to building modern apps.
 
-## Practice & Learn More
+## Related courses and comparisons
 
-- [Practice React Hooks](/docs/practice/practice-react-hooks)
-- [Practice React Projects](/docs/practice/practice-react-projects)
-- [How Long Does It Take to Learn Coding?](/docs/how-it-works/learning-speed)
-- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) | [All Comparisons](/docs/comparisons/)
-
-## Related Pages
-
-- [React Courses](/docs/courses/react/)
-- [All Courses](/docs/courses/)
-- [Scrimba Pricing](/docs/pricing/)
-- [Scrimba Review 2026](/blog/scrimba-review)
+- [Learn React](/docs/courses/react/learn-react), the modern hooks-based course most people should take
+- [Advanced React](/docs/courses/react/advanced-react), for production patterns once you know hooks
+- [React Challenges](/docs/courses/react/react-challenges), to drill modern React
+- [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials), how it stacks up
 
 <FAQAccordion items={[
-  { q: "Is tutorial on React class components free on Scrimba?", a: "Yes! This course is completely free. No credit card or Scrimba Pro subscription is needed to start learning." },
-  { q: "How long does tutorial on React class components take to complete?", a: "The course contains 1.3 hrs of interactive screencasts. Since you can pause and code along at your own pace, most learners finish in a few days of regular practice." },
-  { q: "What will I build in this course?", a: "You will build practical projects using tutorial on React concepts. Scrimba's interactive format lets you modify the instructor's code directly in the browser." },
+  { q: "Should I learn class components or hooks?", a: "Hooks, for almost everyone. Modern React is written with function components and hooks. Take this class components course only if a legacy codebase or job requires it." },
+  { q: "Is this course free?", a: "No. It is a Scrimba Pro course and requires a subscription. The hooks-based Learn React course is free." },
+  { q: "What does it cover?", a: "The class component model: lifecycle methods, this binding, setState, and reading and editing existing class-based code." },
+  { q: "Do I need to know hooks first?", a: "It helps. The course frames class patterns against their hook equivalents, so prior hooks knowledge makes the comparisons land." },
+  { q: "Who teaches it?", a: "Bob Ziroll, who also teaches Learn React and Advanced React, so the style is consistent across the React courses." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/learn-class-components-in-react-c0h" variant="button">
-  Start tutorial on React class components for Free
+  View Learn Class Components in React on Scrimba
 </AffiliateLink>
+
+<CourseSchema
+  name="Learn Class Components in React"
+  description="Scrimba's short, Pro, intermediate course taught by Bob Ziroll. About 1.3 hours on React class components, lifecycle methods, and setState for legacy codebases."
+  url="https://scrimba.com/learn-class-components-in-react-c0h"
+  timeRequired="PT1H20M1S"
+  difficulty="Intermediate"
+  access="Pro"
+  keywords={["React", "Frontend"]}
+/>

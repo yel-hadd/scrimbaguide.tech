@@ -1,101 +1,108 @@
 ---
-title: "Learn Advanced React: Scrimba Review"
-description: "The best learning experience paired with a world-class instructor. This massive course aims to turn you into hireable React developer as fast..."
-keywords: [scrimba learn advanced react, learn advanced react course, scrimba react course]
+title: "Advanced React"
+description: "Bob Ziroll's 13-hour Pro deep-dive into reusability, routing, and performance. Who it's for after Learn React, what it covers, and where it overlaps other courses."
+keywords: [scrimba advanced react, advanced react course, bob ziroll advanced react, react performance course, react reusability patterns]
+last_update:
+  date: 2026-05-27
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
-import PricingCTA from '@site/src/components/PricingCTA';
-import FAQAccordion from '@site/src/components/FAQAccordion';
-import CourseSchema from '@site/src/components/CourseSchema';
 import CourseCurriculum from '@site/src/components/CourseCurriculum';
+import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
-# Learn Advanced React on Scrimba
+# Advanced React
+
+The follow-up to Learn React, again with Bob Ziroll: about 13 hours on the patterns that separate someone who can use React from someone who can structure a real app.
+
+## Quick answer
+
+Advanced React is Scrimba's Pro-tier, advanced React course: roughly 13 hours across reusability patterns, routing, and performance, taught by Bob Ziroll. It is meant for people who already finished Learn React (or know hooks-based React) and want the composition patterns, render optimisation, and routing depth that production apps need. It is not a beginner course and does not reteach the basics.
 
 <CourseCard
-  title="Learn Advanced React"
+  title="Advanced React"
   duration="13.2 hrs"
   difficulty="Advanced"
   access="Pro"
-  instructor="Bob Ziroll"
   modules={3}
+  instructor="Bob Ziroll"
+  instructorUrl="https://scrimba.com/@bobziroll"
   href="https://scrimba.com/advanced-react-c02h"
-  description="The best learning experience paired with a world-class instructor. This massive course aims to turn you into hireable React developer as fast as"
+  description="Reusability patterns, routing, and performance for people who already know the React basics."
 />
 
-<CourseSchema
-  name="Learn Advanced React"
-  description="The best learning experience paired with a world-class instructor. This massive course aims to turn you into hireable React developer as fast..."
-  url="https://scrimba.com/advanced-react-c02h"
-  duration="13.2 hrs"
-  difficulty="Advanced"
-  access="Pro"
-  keywords={["scrimba learn advanced react", "learn advanced react course", "scrimba react course"]}
-  modules={[{"name":"Reusability","duration":"5 hrs","lessons":59},{"name":"Routing","duration":"6.4 hrs","lessons":53},{"name":"Performance","duration":"109 min","lessons":13}]}
+## Is it worth your time?
+
+If you have built a couple of React apps and keep hitting the same walls (prop drilling, components that are hard to reuse, pages that feel slow), this is aimed squarely at you. The reusability module alone is five hours on composition, custom hooks, and patterns that make components flexible without turning them into spaghetti.
+
+The honest caveat is overlap and prerequisites. The routing module covers a lot of the same ground as the dedicated [React Router](/docs/courses/react/react-router) course, so if you only need routing, that standalone course is the cheaper path. And this is genuinely advanced: starting here without solid hooks knowledge will not go well.
+
+## What you'll learn
+
+<CourseCurriculum
+  modules={[
+    { name: 'Reusability', duration: '5 hrs', lessons: 59 },
+    { name: 'Routing', duration: '6.4 hrs', lessons: 53 },
+    { name: 'Performance', duration: '109 min', lessons: 13 },
+  ]}
 />
 
-## About This Course
+Three large blocks. Reusability is the core: composition, custom hooks, and making components that bend without breaking. Routing is a full treatment of client-side navigation (and overlaps the React Router course). Performance is the shortest but high-value: memoisation, avoiding needless re-renders, and spotting what actually slows a React app down.
 
-The best learning experience paired with a world-class instructor. This massive course aims to turn you into hireable React developer as fast as
+## Who it's for, and who should skip it
 
-This Advanced-level course covers 13.2 hrs of content across 125 interactive screencasts. A [Scrimba Pro](/docs/pricing/) subscription is required for full access.
+It fits developers who have finished [Learn React](/docs/courses/react/learn-react) or already work with hooks and want to level up toward hireable, production-grade React.
 
-- **Duration:** 13.2 hrs
-- **Level:** Advanced
-- **Access:** [Scrimba Pro](/docs/pricing/) required
-- **Modules:** 3
-- **Total Lessons:** 125
-
-### Instructor
-
-This course is taught by **Bob Ziroll**, an experienced educator on the Scrimba platform.
-
-## Course curriculum
-
-<CourseCurriculum modules={[{"name":"Reusability","duration":"5 hrs","lessons":59},{"name":"Routing","duration":"6.4 hrs","lessons":53},{"name":"Performance","duration":"109 min","lessons":13}]} title="" />
+Skip it if you are still learning the basics (do Learn React first), or if your only goal is routing, in which case take [React Router](/docs/courses/react/react-router) on its own.
 
 ## Prerequisites
 
-Working knowledge of React fundamentals (components, state, props) is expected.
+Comfortable, hooks-based React: components, props, `useState`, `useEffect`, and fetching data. This course builds directly on that and does not pause to re-explain it.
 
-## Who Is This Course For?
+## Where it fits
 
-This course is for experienced developers looking to deepen their Learn Advanced skills. You should already be comfortable with the fundamentals before diving in.
+Advanced React sits late in the [Frontend Developer Path](/docs/paths/frontend-developer-path) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path), after the React fundamentals and usually after some project work.
 
-## Part of These Learning Paths
+## Free or Pro
 
-- [Frontend Developer Path](/docs/paths/frontend-developer-path)
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
+This is a Pro course, so it needs a Scrimba subscription. Pro also covers the full career paths, the coding challenges, the Discord, and certificates. See [current plans](https://scrimba.com/our-pricing) for what Pro costs in your region.
 
+## Strengths and limits
 
-## Related Courses
+What it does well: real depth on reusability and performance, a strong instructor, and projects rather than slides. It is one of the better advanced React resources at any price.
 
-- [Best React Courses and Tutorials Compared [2026]](/docs/courses/react/best-react-courses-and-tutorials)
-- [React Search Tutorial](/docs/courses/react/a-react-project-movie-search-app)
-- [Free tutorial on React class components](/docs/courses/react/class-components-in-react)
+Where it is limited: the routing module overlaps the standalone course, the published lesson counter runs ahead of the module-by-module total, and like all React work here, fast help depends on the Pro Discord.
 
-## Practice & Learn More
+## Related courses and comparisons
 
-- [Practice React Hooks](/docs/practice/practice-react-hooks)
-- [Practice React Projects](/docs/practice/practice-react-projects)
-- [How Long Does It Take to Learn Coding?](/docs/how-it-works/learning-speed)
-- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) | [All Comparisons](/docs/comparisons/)
-
-## Related Pages
-
-- [React Courses](/docs/courses/react/)
-- [All Courses](/docs/courses/)
-- [Scrimba Pricing](/docs/pricing/) | [Pro vs Free](/docs/pricing/pro-vs-free)
-- [Scrimba Review 2026](/blog/scrimba-review)
+- [Learn React](/docs/courses/react/learn-react), the prerequisite
+- [React Router](/docs/courses/react/react-router), if routing is all you need
+- [React Challenges](/docs/courses/react/react-challenges), to drill what you learn
+- [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials), how it stacks up
 
 <FAQAccordion items={[
-  { q: "Is Learn Advanced React free on Scrimba?", a: "This course requires a [Scrimba Pro](/docs/pricing/) subscription. Pro gives you access to 74+ courses, a certificate of completion, and access to the Discord community. Check the [pricing page](/docs/pricing/) for current rates." },
-  { q: "How long does Learn Advanced React take to complete?", a: "The course contains 13.2 hrs of interactive screencasts. Since you can pause and code along at your own pace, most learners finish in 2-4 weeks of regular practice." },
-  { q: "What will I build in this course?", a: "You will build practical projects using Learn Advanced React concepts. Scrimba's interactive format lets you modify the instructor's code directly in the browser." },
+  { q: "Is Advanced React free?", a: "No. It is a Scrimba Pro course, so it requires a subscription. The earlier Learn React course is free." },
+  { q: "Do I need to take Learn React first?", a: "Effectively yes. This course assumes hooks-based React and does not reteach the fundamentals. Finish Learn React or have equivalent experience before starting." },
+  { q: "Does it overlap the React Router course?", a: "Yes. The routing module covers much of the same material as the standalone React Router course. If routing is your only goal, take that course instead." },
+  { q: "Who teaches Advanced React?", a: "Bob Ziroll, who also teaches the free Learn React course, so the style and notation carry over." },
 ]} />
 
-<PricingCTA
-  title="Start Learn Advanced React"
-  subtitle="Get access to Learn Advanced React and 74+ more interactive courses with Scrimba Pro."
+<AffiliateLink href="https://scrimba.com/advanced-react-c02h" variant="button">
+  View Advanced React on Scrimba
+</AffiliateLink>
+
+<CourseSchema
+  name="Advanced React"
+  description="Scrimba's advanced, Pro-tier React course taught by Bob Ziroll. About 13 hours on reusability, routing, and performance."
+  url="https://scrimba.com/advanced-react-c02h"
+  timeRequired="PT13H13M54S"
+  difficulty="Advanced"
+  access="Pro"
+  keywords={["React", "Frontend"]}
+  modules={[
+    { name: 'Reusability', duration: '5 hrs', lessons: 59 },
+    { name: 'Routing', duration: '6.4 hrs', lessons: 53 },
+    { name: 'Performance', duration: '109 min', lessons: 13 },
+  ]}
 />
