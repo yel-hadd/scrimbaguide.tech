@@ -1,102 +1,106 @@
 ---
-title: "Learn Node.js on Scrimba: Course Review (2026)"
-description: "Discover how to craft fast, efficient backends with Node.js, the go-to runtime for modern web developers. From APIs to fullstack apps, see how..."
-keywords: [scrimba learn node.js, learn node.js course, scrimba javascript course]
+title: "Learn Node.js"
+description: "Tom Chant's free Node.js course on Scrimba: about 3.5 hours building a REST API and learning server routing. The backend anchor that pairs with Express."
+keywords: [scrimba learn nodejs, learn nodejs scrimba, free nodejs course, node rest api course, tom chant node]
+last_update:
+  date: 2026-05-27
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
-import PricingCTA from '@site/src/components/PricingCTA';
-import FAQAccordion from '@site/src/components/FAQAccordion';
-import CourseSchema from '@site/src/components/CourseSchema';
 import CourseCurriculum from '@site/src/components/CourseCurriculum';
+import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
-# Learn Node.js on Scrimba
+# Learn Node.js
+
+Scrimba's free Node.js course, taught by Tom Chant across roughly 3.5 hours: where a frontend developer crosses over into building the server side.
+
+## Quick answer
+
+Learn Node.js is Scrimba's free, intermediate backend course: about 3.5 hours across two modules, taught by Tom Chant. You build a REST API and work through routing and paths, which is the practical core of what a Node server actually does. It is the backend anchor in Scrimba's JavaScript track and pairs directly with the Express.js course. It assumes you can already write JavaScript.
 
 <CourseCard
   title="Learn Node.js"
   duration="3.5 hrs"
   difficulty="Intermediate"
-  access="Pro"
-  instructor="Tom Chant"
+  access="Free"
   modules={2}
+  instructor="Tom Chant"
+  instructorUrl="https://scrimba.com/@DoubleNemesis"
   href="https://scrimba.com/learn-nodejs-c00ho9qqh6"
-  description="Discover how to craft fast, efficient backends with Node.js, the go-to runtime for modern web developers. From APIs to fullstack apps, see how No"
+  description="Backend fundamentals in JavaScript: build a REST API and handle server routing with Node."
 />
 
-<CourseSchema
-  name="Learn Node.js"
-  description="Discover how to craft fast, efficient backends with Node.js, the go-to runtime for modern web developers. From APIs to fullstack apps, see how..."
-  url="https://scrimba.com/learn-nodejs-c00ho9qqh6"
-  duration="3.5 hrs"
-  difficulty="Intermediate"
-  access="Pro"
-  keywords={["scrimba learn node.js", "learn node.js course", "scrimba javascript course"]}
-  modules={[{"name":"Build a REST API","duration":"81 min","lessons":15},{"name":"Routes & Paths","duration":"2.3 hrs","lessons":15}]}
+## Is it worth your time?
+
+For a frontend developer, this is the cheapest way to stop being scared of the backend. It is free, and it spends its time on the one thing that demystifies server work fastest: building an actual REST API that responds to requests. Once you have done that, the idea of a server stops being abstract.
+
+The honest caveat is scope. Node is a runtime, not a full backend curriculum, and this course stays close to the fundamentals. It does not cover databases, authentication, or deployment in depth. Think of it as the foundation you build on top of with [Learn Express.js](/docs/courses/javascript/expressjs) and, later, database and auth material, not a standalone "become a backend engineer" course.
+
+## What you'll learn
+
+<CourseCurriculum
+  modules={[
+    { name: 'Build a REST API', duration: '81 min' },
+    { name: 'Routes & Paths', duration: '2.3 hrs' },
+  ]}
 />
 
-## About This Course
+The first module is hands-on from the start: you build a REST API, which forces the request and response cycle to make sense in a way reading about it never does. The longer second module drills into routing and paths, how a server decides what to do based on the URL and method it receives. Together they cover the mental model you reuse in every Node framework afterward.
 
-Discover how to craft fast, efficient backends with Node.js, the go-to runtime for modern web developers. From APIs to fullstack apps, see how No
+## Who it's for, and who should skip it
 
-This Intermediate-level course covers 3.5 hrs of content across 30 interactive screencasts. A [Scrimba Pro](/docs/pricing/) subscription is required for full access.
+It fits JavaScript developers, especially frontend ones, who want to understand and build the server side. It is the right first backend course if you already know the language and want to extend it past the browser.
 
-- **Duration:** 3.5 hrs
-- **Level:** Intermediate
-- **Access:** [Scrimba Pro](/docs/pricing/) required
-- **Modules:** 2
-- **Total Lessons:** 30
-
-### Instructor
-
-This course is taught by **Tom Chant**, an experienced educator on the Scrimba platform.
-
-## Course curriculum
-
-<CourseCurriculum modules={[{"name":"Build a REST API","duration":"81 min","lessons":15},{"name":"Routes & Paths","duration":"2.3 hrs","lessons":15}]} title="" />
+Skip it, for now, if you have not learned JavaScript. Do [Learn JavaScript](/docs/courses/javascript/learn-javascript) first. Also skip it if you specifically need a framework-driven, batteries-included backend course, in which case [Intro to NestJS](/docs/courses/javascript/nestjs) is the more structured option once you have the basics here.
 
 ## Prerequisites
 
-Basic knowledge of HTML and CSS is recommended before starting this course.
+Working JavaScript: variables, functions, objects, and asynchronous code, since servers are asynchronous by nature. Comfort with how HTTP requests work helps but the course builds that intuition for you. No prior backend experience needed.
 
-## Who Is This Course For?
+## Where it fits
 
-This course is ideal for developers with some experience who want to level up their Learn Node.js skills through hands-on practice.
+Learn Node.js is the backend anchor across three paths: the [Frontend Developer Path](/docs/paths/frontend-developer-path) (where it widens a frontend skill set), the [Fullstack Developer Path](/docs/paths/fullstack-developer-path), and the [Backend Developer Path](/docs/paths/backend-developer-path), where it sits near the start.
 
-## Part of These Learning Paths
+## Free or Pro
 
-- [Frontend Developer Path](/docs/paths/frontend-developer-path)
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
-- [Backend Developer Path](/docs/paths/backend-developer-path)
+The course itself is free, with no subscription required to start or finish it. Scrimba Pro is a separate decision that unlocks the career paths, coding challenges, the private Discord, and certificates. See [current plans](https://scrimba.com/our-pricing) if you later want the path structure.
 
+## Strengths and limits
 
-## Related Courses
+What it does well: it is free, project-first, and it makes the server side concrete by having you build a real API early. Tom Chant is a clear instructor and the interactive format suits backend work surprisingly well.
 
-- [Advanced JavaScript Tutorial](/docs/courses/javascript/advanced-javascript)
-- [How to Learn JavaScript](/docs/courses/javascript/how-to-learn-javascript-complete-beginners-guide)
-- [A Space Travel Website](/docs/courses/javascript/a-space-travel-website)
+Where it is limited: it stays at the fundamentals, so databases, auth, and deployment live elsewhere, and fast peer help depends on the Pro Discord rather than the free tier.
 
-## Practice & Learn More
+## Related courses and comparisons
 
-- [Practice JavaScript Arrays](/docs/practice/practice-javascript-arrays)
-- [Practice API Calls](/docs/practice/practice-api-calls)
-- [How Long Does It Take to Learn Coding?](/docs/faq/learning-speed)
-- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) | [All Comparisons](/docs/comparisons/)
-
-## Related Pages
-
-- [JavaScript Courses](/docs/courses/javascript/)
-- [All Courses](/docs/courses/)
-- [Scrimba Pricing](/docs/pricing/) | [Pro vs Free](/docs/pricing/pro-vs-free)
-- [Scrimba Review 2026](/blog/scrimba-review)
+- [Learn Express.js](/docs/courses/javascript/expressjs), the direct next step
+- [Intro to NestJS](/docs/courses/javascript/nestjs), a more structured framework
+- [Learn Next.js](/docs/courses/javascript/nextjs), fullstack React on top of Node
+- [Learn JavaScript](/docs/courses/javascript/learn-javascript), the prerequisite
 
 <FAQAccordion items={[
-  { q: "Is Learn Node.js free on Scrimba?", a: "This course requires a [Scrimba Pro](/docs/pricing/) subscription. Pro gives you access to 74+ courses, a certificate of completion, and access to the Discord community. Check the [pricing page](/docs/pricing/) for current rates." },
-  { q: "How long does Learn Node.js take to complete?", a: "The course contains 3.5 hrs of interactive screencasts. Since you can pause and code along at your own pace, most learners finish in a few days of regular practice." },
-  { q: "What will I build in this course?", a: "You will build practical projects using Learn Node.js concepts. Scrimba's interactive format lets you modify the instructor's code directly in the browser." },
+  { q: "Is Learn Node.js free on Scrimba?", a: "Yes. The full course is free with no credit card or Pro subscription required. Pro is only needed for the career paths, certificates, and private Discord." },
+  { q: "Do I need backend experience first?", a: "No. You only need working JavaScript. The course introduces server concepts from scratch by having you build a REST API." },
+  { q: "Who teaches Learn Node.js?", a: "Tom Chant, a long-time Scrimba instructor, who teaches it in the same interactive, code-along format as the rest of the catalog." },
+  { q: "What should I take after this?", a: "Learn Express.js is the natural next step, since most real Node servers use Express or a similar framework on top of the fundamentals taught here." },
 ]} />
 
-<PricingCTA
-  title="Start Learn Node.js"
-  subtitle="Get access to Learn Node.js and 74+ more interactive courses with Scrimba Pro."
+<AffiliateLink href="https://scrimba.com/learn-nodejs-c00ho9qqh6" variant="button">
+  Start Learn Node.js for free
+</AffiliateLink>
+
+<CourseSchema
+  name="Learn Node.js"
+  description="Scrimba's free, intermediate Node.js course taught by Tom Chant. About 3.5 hours building a REST API and learning server routing."
+  url="https://scrimba.com/learn-nodejs-c00ho9qqh6"
+  timeRequired="PT3H32M47S"
+  difficulty="Intermediate"
+  access="Free"
+  keywords={["Node.js", "Backend", "JavaScript"]}
+  modules={[
+    { name: 'Build a REST API', duration: '81 min' },
+    { name: 'Routes & Paths', duration: '2.3 hrs' },
+  ]}
 />

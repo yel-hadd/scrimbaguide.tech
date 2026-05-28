@@ -17,8 +17,10 @@ You can reach us directly at:
 
 We try to respond to all inquiries within 48 hours.
 
-## Social Media
+## Around the web
 
-Follow us for updates on new courses and guides:
-* [Twitter / X](https://twitter.com/scrimba) (Official Scrimba account)
-* [Discord](https://scrimba.com/discord?via=u42d4986) (Join the Scrimba community)
+Scrimba Guide is run by Yassine El Haddad. You can find him here:
+* [LinkedIn](https://www.linkedin.com/in/yassine-el-haddad/)
+* [GitHub](https://github.com/yel-hadd)
+
+Looking for Scrimba's own community? [Join the Scrimba Discord](https://scrimba.com/discord?via=u42d4986).

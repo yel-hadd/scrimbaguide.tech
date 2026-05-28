@@ -2,8 +2,16 @@ import React from 'react';
 import { useLocation } from '@docusaurus/router';
 import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
 
-/** Converts "9.8 hrs" or "86 min" to ISO 8601 duration (e.g. PT9H48M). */
+/**
+ * Converts "9.8 hrs" or "86 min" to an ISO 8601 duration (e.g. PT9H48M).
+ * Already-ISO values (e.g. "PT9H46M27S" from the catalog JSON-LD) pass through.
+ * Returns '' when the input cannot be expressed as a valid ISO 8601 duration,
+ * so callers omit timeRequired rather than emit an invalid value Google rejects.
+ */
 function toISODuration(duration: string): string {
+  if (/^P(?:\d+Y)?(?:\d+M)?(?:\d+W)?(?:\d+D)?(?:T(?:\d+H)?(?:\d+M)?(?:\d+S)?)?$/.test(duration)) {
+    return duration;
+  }
   const hrsMatch = duration.match(/^(\d+(?:\.\d+)?)\s*hrs?$/i);
   if (hrsMatch) {
     const h = parseFloat(hrsMatch[1]);
@@ -13,7 +21,7 @@ function toISODuration(duration: string): string {
   }
   const minMatch = duration.match(/^(\d+)\s*min$/i);
   if (minMatch) return `PT${minMatch[1]}M`;
-  return duration;
+  return '';
 }
 
 interface ModuleInfo {
@@ -28,6 +36,8 @@ interface CourseSchemaProps {
   provider?: string;
   url: string;
   duration?: string;
+  /** Exact ISO 8601 duration from the catalog (preferred over `duration`). */
+  timeRequired?: string;
   difficulty?: string;
   access?: 'Free' | 'Pro';
   keywords?: string[];
@@ -42,6 +52,7 @@ export default function CourseSchema({
   provider = 'Scrimba',
   url,
   duration,
+  timeRequired,
   difficulty,
   access,
   keywords,
@@ -52,6 +63,8 @@ export default function CourseSchema({
   const canonicalPath = toCanonicalPath(pathname);
   const pageUrl = toAbsoluteUrl(canonicalPath);
   const isFree = access === 'Free';
+  // Prefer the exact catalog ISO duration; fall back to parsing the label.
+  const isoDuration = toISODuration(timeRequired || duration || '');
 
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
@@ -72,8 +85,8 @@ export default function CourseSchema({
     ...(difficulty && {
       educationalLevel: difficulty,
     }),
-    ...(duration && {
-      timeRequired: toISODuration(duration),
+    ...(isoDuration && {
+      timeRequired: isoDuration,
     }),
     ...(keywords && keywords.length > 0 && {
       teaches: keywords,
@@ -81,7 +94,7 @@ export default function CourseSchema({
     hasCourseInstance: {
       '@type': 'CourseInstance',
       courseMode: 'online',
-      courseWorkload: duration ? toISODuration(duration) : 'PT2H',
+      ...(isoDuration && { courseWorkload: isoDuration }),
     },
   };
 

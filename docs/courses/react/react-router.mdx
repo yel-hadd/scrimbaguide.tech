@@ -1,101 +1,115 @@
 ---
-title: "React Router 6 Tutorial on Scrimba: Course Review (2026)"
-description: "Learn React Router v6, the most popular routing library for React applications and one of the most downloaded React support libraries ever."
-keywords: [scrimba react router 6 tutorial, react router 6 tutorial course, scrimba react course]
+title: "Learn React Router"
+description: "Bob Ziroll's 9.7-hour Pro course on React Router v6: nested routes, loaders, actions, and protected routes. Who it fits, what it covers, and where it overlaps Advanced React."
+keywords: [scrimba react router, learn react router scrimba, react router v6 course, bob ziroll react router, react routing tutorial]
+last_update:
+  date: 2026-05-27
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
-import PricingCTA from '@site/src/components/PricingCTA';
-import FAQAccordion from '@site/src/components/FAQAccordion';
-import CourseSchema from '@site/src/components/CourseSchema';
 import CourseCurriculum from '@site/src/components/CourseCurriculum';
+import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
-# React Router 6 Tutorial on Scrimba
+# Learn React Router
+
+Scrimba's dedicated routing course with Bob Ziroll: about 9.7 hours on React Router v6, from the first route to loaders, actions, and protected pages.
+
+## Quick answer
+
+Learn React Router is Scrimba's Pro-tier, intermediate course on React Router v6, roughly 9.7 hours taught by Bob Ziroll. It covers nested routes, search params, data loaders, error handling, actions, and protected routes. It is for people who already know hooks-based React and need real client-side routing. If routing is the only gap you are filling, this is the focused, cheaper option compared to taking the whole Advanced React course.
 
 <CourseCard
-  title="React Router 6 Tutorial"
+  title="Learn React Router"
   duration="9.7 hrs"
   difficulty="Intermediate"
   access="Pro"
-  instructor="Bob Ziroll"
   modules={6}
+  instructor="Bob Ziroll"
+  instructorUrl="https://scrimba.com/@bobziroll"
   href="https://scrimba.com/learn-react-router-c06"
-  description="Learn React Router v6, the most popular routing library for React applications and one of the most downloaded React support libraries ever."
+  description="A full treatment of React Router v6: nested routes, loaders, actions, and protected routes, built in the interactive Scrimba player."
 />
 
-<CourseSchema
-  name="React Router 6 Tutorial"
-  description="Learn React Router v6, the most popular routing library for React applications and one of the most downloaded React support libraries ever."
-  url="https://scrimba.com/learn-react-router-c06"
-  duration="9.7 hrs"
-  difficulty="Intermediate"
-  access="Pro"
-  keywords={["scrimba react router 6 tutorial", "react router 6 tutorial course", "scrimba react course"]}
-  modules={[{"name":"Introduction to React Router","duration":"87 min","lessons":11},{"name":"Nested Routes","duration":"2.1 hrs","lessons":19},{"name":"Search Params and Links","duration":"95 min","lessons":13},{"name":"Loaders and Errors","duration":"42 min","lessons":2},{"name":"Actions and Protected Routes","duration":"2.7 hrs","lessons":5},{"name":"Deferred Data","duration":"73 min","lessons":0}]}
+## Is it worth your time?
+
+If you can build React components but your apps are still single-page with no real navigation, this fills exactly that gap. React Router is the de facto routing library for React, and v6 changed enough (the data APIs, loaders, and actions) that older tutorials will steer you wrong. This course teaches the current model directly.
+
+The honest caveat is overlap. The routing module inside [Advanced React](/docs/courses/react/advanced-react) covers much of the same ground. If you already own Advanced React or plan to take it, you do not need this as well. Take this standalone course when routing is the specific thing you need and you do not want to pay for the broader advanced material around it.
+
+## What you'll learn
+
+<CourseCurriculum
+  modules={[
+    { name: 'Introduction to React Router', duration: '87 min', lessons: 11 },
+    { name: 'Nested Routes', duration: '2.1 hrs', lessons: 19 },
+    { name: 'Search Params and Links', duration: '95 min', lessons: 13 },
+    { name: 'Loaders and Errors', duration: '42 min', lessons: 2 },
+    { name: 'Actions and Protected Routes', duration: '2.7 hrs', lessons: 5 },
+    { name: 'Deferred Data', duration: '73 min', lessons: 0 },
+  ]}
 />
 
-## About This Course
+The arc moves from setup to the harder data patterns. You start with basic routes and links, then spend the largest early block on nested routes (layouts, outlets, and index routes). Search params and links cover real navigation state. From there it gets into the v6 data layer: loaders that fetch before a route renders, error boundaries for failed loads, actions for form submissions, and protected routes for auth-gated pages. Deferred data closes it out with streaming slow responses without blocking the page.
 
-Learn React Router v6, the most popular routing library for React applications and one of the most downloaded React support libraries ever.
+## Who it's for, and who should skip it
 
-This Intermediate-level course covers 9.7 hrs of content across 50 interactive screencasts. A [Scrimba Pro](/docs/pricing/) subscription is required for full access.
+It fits developers who have finished [Learn React](/docs/courses/react/learn-react) or already work comfortably with hooks and want production-grade routing.
 
-- **Duration:** 9.7 hrs
-- **Level:** Intermediate
-- **Access:** [Scrimba Pro](/docs/pricing/) required
-- **Modules:** 6
-- **Total Lessons:** 50
-
-### Instructor
-
-This course is taught by **Bob Ziroll**, an experienced educator on the Scrimba platform.
-
-## Course curriculum
-
-<CourseCurriculum modules={[{"name":"Introduction to React Router","duration":"87 min","lessons":11},{"name":"Nested Routes","duration":"2.1 hrs","lessons":19},{"name":"Search Params and Links","duration":"95 min","lessons":13},{"name":"Loaders and Errors","duration":"42 min","lessons":2},{"name":"Actions and Protected Routes","duration":"2.7 hrs","lessons":5},{"name":"Deferred Data","duration":"73 min","lessons":0}]} title="" />
+Skip it if you have not learned React yet (do Learn React first), or if you are already committed to [Advanced React](/docs/courses/react/advanced-react), whose routing module overlaps this heavily. There is no reason to pay for both purely for routing.
 
 ## Prerequisites
 
-Basic knowledge of HTML, CSS, and JavaScript is recommended before starting this course.
+Hooks-based React: components, props, `useState`, `useEffect`, and fetching data with `fetch` or similar. Comfort with JavaScript promises and async code matters here, since loaders and actions are async by design.
 
-## Who Is This Course For?
+## Where it fits
 
-This course is ideal for developers with some experience who want to level up their React Router skills through hands-on practice.
+Learn React Router sits in the [Frontend Developer Path](/docs/paths/frontend-developer-path) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path), after React fundamentals and usually alongside or just before serious project work.
 
-## Part of These Learning Paths
+## Free or Pro
 
-- [Frontend Developer Path](/docs/paths/frontend-developer-path)
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
+This is a Pro course, so it needs a Scrimba subscription. Pro also unlocks the full career paths, the coding challenges, the private Discord, and path certificates. See [current plans](https://scrimba.com/our-pricing) for what Pro costs in your region.
 
+## Strengths and limits
 
-## Related Courses
+What it does well: it teaches the current v6 data APIs rather than the older route-config style, it is project-driven, and Bob Ziroll's notation carries over cleanly if you took Learn React.
 
-- [Advanced React](/docs/courses/react/advanced-react)
-- [Best React Courses and Tutorials Compared [2026]](/docs/courses/react/best-react-courses-and-tutorials)
-- [React Search Tutorial](/docs/courses/react/a-react-project-movie-search-app)
+Where it is limited: it overlaps the Advanced React routing module, so you can end up paying for the same content twice if you are not careful, and it is specifically React Router v6, so framework-router users (Next.js, Remix) will only get partial transfer.
 
-## Practice & Learn More
+## Related courses and comparisons
 
-- [Practice React Hooks](/docs/practice/practice-react-hooks)
-- [Practice React Projects](/docs/practice/practice-react-projects)
-- [How Long Does It Take to Learn Coding?](/docs/faq/learning-speed)
-- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) | [All Comparisons](/docs/comparisons/)
-
-## Related Pages
-
-- [React Courses](/docs/courses/react/)
-- [All Courses](/docs/courses/)
-- [Scrimba Pricing](/docs/pricing/) | [Pro vs Free](/docs/pricing/pro-vs-free)
-- [Scrimba Review 2026](/blog/scrimba-review)
+- [Learn React](/docs/courses/react/learn-react), the prerequisite
+- [Advanced React](/docs/courses/react/advanced-react), which includes a routing module and more
+- [React Challenges](/docs/courses/react/react-challenges), to drill routing in practice
+- [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials), how it stacks up
 
 <FAQAccordion items={[
-  { q: "Is React Router 6 Tutorial free on Scrimba?", a: "This course requires a [Scrimba Pro](/docs/pricing/) subscription. Pro gives you access to 74+ courses, a certificate of completion, and access to the Discord community. Check the [pricing page](/docs/pricing/) for current rates." },
-  { q: "How long does React Router 6 Tutorial take to complete?", a: "The course contains 9.7 hrs of interactive screencasts. Since you can pause and code along at your own pace, most learners finish in 1-2 weeks of regular practice." },
-  { q: "What will I build in this course?", a: "You will build practical projects using React Router 6 concepts. Scrimba's interactive format lets you modify the instructor's code directly in the browser." },
+  { q: "Is Learn React Router free?", a: "No. It is a Scrimba Pro course and requires a subscription. The earlier Learn React course is free." },
+  { q: "Which version of React Router does it teach?", a: "React Router v6, including the data APIs: loaders, actions, and error boundaries. Older v5 patterns are not the focus." },
+  { q: "Do I need this if I'm taking Advanced React?", a: "Probably not. Advanced React includes a routing module that overlaps this course heavily. Take this standalone version when routing is the only thing you need." },
+  { q: "What do I need to know first?", a: "Hooks-based React and async JavaScript. Loaders and actions are asynchronous, so comfort with promises and fetch is assumed." },
+  { q: "Who teaches it?", a: "Bob Ziroll, who also teaches Learn React and Advanced React, so the style and notation carry over." },
 ]} />
 
-<PricingCTA
-  title="Start React Router 6 Tutorial"
-  subtitle="Get access to React Router 6 Tutorial and 74+ more interactive courses with Scrimba Pro."
+<AffiliateLink href="https://scrimba.com/learn-react-router-c06" variant="button">
+  View Learn React Router on Scrimba
+</AffiliateLink>
+
+<CourseSchema
+  name="Learn React Router"
+  description="Scrimba's Pro, intermediate React Router v6 course taught by Bob Ziroll. About 9.7 hours on nested routes, loaders, actions, and protected routes."
+  url="https://scrimba.com/learn-react-router-c06"
+  timeRequired="PT9H42M44S"
+  difficulty="Intermediate"
+  access="Pro"
+  keywords={["React", "Frontend"]}
+  modules={[
+    { name: 'Introduction to React Router', duration: '87 min', lessons: 11 },
+    { name: 'Nested Routes', duration: '2.1 hrs', lessons: 19 },
+    { name: 'Search Params and Links', duration: '95 min', lessons: 13 },
+    { name: 'Loaders and Errors', duration: '42 min', lessons: 2 },
+    { name: 'Actions and Protected Routes', duration: '2.7 hrs', lessons: 5 },
+    { name: 'Deferred Data', duration: '73 min', lessons: 0 },
+  ]}
 />

@@ -174,6 +174,32 @@ def extract_jsonld_course(html: str) -> dict | None:
     return None
 
 
+def extract_breadcrumb_name(html: str) -> str:
+    """Return the clean course name from BreadcrumbList position 3, or ''.
+
+    Scrimba's breadcrumb is Home > Courses > <Clean Name>, so position 3 is
+    the human course title without the marketing tail in Course.name.
+    """
+    for match in JSONLD_RE.finditer(html):
+        try:
+            payload = json.loads(match.group(1))
+        except json.JSONDecodeError:
+            continue
+        entries = payload if isinstance(payload, list) else [payload]
+        if isinstance(payload, dict) and isinstance(payload.get("@graph"), list):
+            entries = payload["@graph"]
+        for entry in entries:
+            if not isinstance(entry, dict) or entry.get("@type") != "BreadcrumbList":
+                continue
+            for el in entry.get("itemListElement", []):
+                if not isinstance(el, dict) or el.get("position") != 3:
+                    continue
+                item = el.get("item")
+                name = item.get("name") if isinstance(item, dict) else el.get("name")
+                return (name or "").strip()
+    return ""
+
+
 def extract_og_meta(html: str) -> dict[str, str]:
     """Pull OpenGraph + meta description as a fallback for non-course pages."""
     meta: dict[str, str] = {}
@@ -285,6 +311,8 @@ class PageData:
     headings_h3: list[str] = field(default_factory=list)
     body_text: str = ""
     date_modified: str = ""
+    # Rich course facts pulled from the Course JSON-LD (course/path pages only).
+    course_meta: dict = field(default_factory=dict)
 
     def to_dict(self) -> dict:
         return {
@@ -333,6 +361,32 @@ def page_from_scrimba_html(url: str, page_type: str, html: str) -> PageData:
         num_lessons = course.get("numberOfLessons", "")
         date_modified = course.get("dateModified", "") or ""
 
+        # Capture instructor profile URLs alongside names.
+        instructor_pairs = [
+            {"name": (i.get("name") or "").strip(), "url": (i.get("url") or "").strip()}
+            for i in instructors
+            if isinstance(i, dict) and i.get("name")
+        ]
+        teaches = course.get("teaches", "")
+        if isinstance(teaches, list):
+            teaches = ", ".join(str(t).strip() for t in teaches if t)
+        keywords = course.get("keywords", "")
+        if isinstance(keywords, list):
+            keywords = ", ".join(str(k).strip() for k in keywords if k)
+
+        course_meta = {
+            "clean_name": extract_breadcrumb_name(html) or title,
+            "num_lessons": str(num_lessons) if num_lessons not in (None, "") else "",
+            "time_required": course.get("timeRequired", "") or "",
+            "course_level": level,
+            "course_access": access,
+            "teaches": teaches or "",
+            "keywords": keywords or "",
+            "date_published": course.get("datePublished", "") or "",
+            "instructor_name": instructor_pairs[0]["name"] if instructor_pairs else "",
+            "instructor_url": instructor_pairs[0]["url"] if instructor_pairs else "",
+        }
+
         # Synthesize a body text that build-data.mjs can mine for duration/level/access.
         # It looks for: ^digits hrs|min$, ^Beginner|Intermediate|Advanced$, ^Free|Community$.
         body_lines = []
@@ -361,6 +415,7 @@ def page_from_scrimba_html(url: str, page_type: str, html: str) -> PageData:
             headings_h3=[],
             body_text="\n".join(body_lines),
             date_modified=date_modified,
+            course_meta=course_meta,
         )
 
     # Non-course page: use OG meta
@@ -501,13 +556,17 @@ _TOC_MODULE_JS = r"""
 const groups = Array.from(document.querySelectorAll('toc-group.l0'));
 return groups.map(function (g) {
   const head = g.querySelector('toc-item-head') || g;
-  const nameEl = head.querySelector('[class~="%name"]');
-  const statEl = head.querySelector('[class~="%stat"]');
-  const h2 = g.querySelector('h2');
-  const name = nameEl ? nameEl.textContent.trim()
-                      : (h2 ? h2.textContent.trim() : '');
-  const duration = statEl ? statEl.textContent.trim() : '';
-  const headText = head.textContent.replace(/\s+/g, ' ').trim();
+  // Read the rendered text directly rather than per-slot class tokens, which
+  // Scrimba renames periodically. The module head renders as three lines:
+  //   <name>\n<duration>\n<done>/<total>
+  const text = (head.innerText || head.textContent || '').replace(/ /g, ' ');
+  const lines = text.split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+  const name = lines.length ? lines[0] : '';
+  let duration = '';
+  for (let i = 1; i < lines.length; i++) {
+    if (/^\d+(?:\.\d+)?\s*(?:hrs?|min)$/i.test(lines[i])) { duration = lines[i]; break; }
+  }
+  const headText = lines.join(' ');
   return [name, duration, headText];
 });
 """
@@ -704,6 +763,14 @@ def save_page(page: PageData, output_dir: Path) -> dict:
     subdir = page_subdir(output_dir, page)
     subdir.mkdir(parents=True, exist_ok=True)
 
+    # Rich course facts (one quoted key per line so build-data.mjs's simple
+    # frontmatter parser reads them directly).
+    meta_lines = "".join(
+        f"{key}: {yaml_quote(str(value))}\n"
+        for key, value in (page.course_meta or {}).items()
+        if value not in (None, "")
+    )
+
     frontmatter = (
         "---\n"
         f"title: {yaml_quote(page.title)}\n"
@@ -714,6 +781,7 @@ def save_page(page: PageData, output_dir: Path) -> dict:
         f"scraped_at: {yaml_quote(page.scraped_at)}\n"
         f"date_modified: {yaml_quote(page.date_modified)}\n"
         f"meta_description: {yaml_quote(page.meta_description)}\n"
+        f"{meta_lines}"
         f"headings_h1:\n{yaml_list(page.headings_h1)}\n"
         f"headings_h2:\n{yaml_list(page.headings_h2)}\n"
         f"headings_h3:\n{yaml_list(page.headings_h3)}\n"

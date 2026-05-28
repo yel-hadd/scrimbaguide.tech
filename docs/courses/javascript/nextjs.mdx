@@ -1,101 +1,106 @@
 ---
-title: "Learn Next.js on Scrimba: Course Review (2026)"
-description: "Learn to build web apps with Next.js, the world's most popular full-stack framework. You'll cover routing, layouts, data fetching, optimizing..."
-keywords: [scrimba learn next.js, learn next.js course, scrimba javascript course]
+title: "Learn Next.js"
+description: "Bob Ziroll's free Next.js course on Scrimba: about 4.4 hours on routing, layouts, data fetching, and rendering strategies. Who it fits and what it assumes."
+keywords: [scrimba learn nextjs, learn nextjs scrimba, free nextjs course, bob ziroll nextjs, nextjs after react]
+last_update:
+  date: 2026-05-27
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
-import PricingCTA from '@site/src/components/PricingCTA';
-import FAQAccordion from '@site/src/components/FAQAccordion';
-import CourseSchema from '@site/src/components/CourseSchema';
 import CourseCurriculum from '@site/src/components/CourseCurriculum';
+import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
-# Learn Next.js on Scrimba
+# Learn Next.js
+
+Scrimba's free Next.js course, taught by Bob Ziroll across roughly 4.4 hours: the framework most React developers reach for when a single-page app is no longer enough.
+
+## Quick answer
+
+Learn Next.js is Scrimba's free, intermediate course on Next.js, the most popular React fullstack framework. About 4.4 hours across two modules, taught by Bob Ziroll. You cover file-based routing, shared layouts, data fetching, and the rendering strategies (server, static, client) that define how a Next.js app behaves. It assumes you already know React. If you do, this is the natural next step.
 
 <CourseCard
   title="Learn Next.js"
   duration="4.4 hrs"
   difficulty="Intermediate"
-  access="Pro"
-  instructor="Bob Ziroll"
+  access="Free"
   modules={2}
+  instructor="Bob Ziroll"
+  instructorUrl="https://scrimba.com/@bobziroll"
   href="https://scrimba.com/learn-nextjs-c02moisq6a"
-  description="Learn to build web apps with Next.js, the world's most popular full-stack framework. You'll cover routing, layouts, data fetching, optimizing ass"
+  description="File-based routing, layouts, data fetching, and rendering strategies for React developers moving to the Next.js framework."
 />
 
-<CourseSchema
-  name="Learn Next.js"
-  description="Learn to build web apps with Next.js, the world's most popular full-stack framework. You'll cover routing, layouts, data fetching, optimizing..."
-  url="https://scrimba.com/learn-nextjs-c02moisq6a"
-  duration="4.4 hrs"
-  difficulty="Intermediate"
-  access="Pro"
-  keywords={["scrimba learn next.js", "learn next.js course", "scrimba javascript course"]}
-  modules={[{"name":"Build a Next.js App","duration":"2 hrs","lessons":16},{"name":"Rendering Strategies and More","duration":"2.4 hrs","lessons":16}]}
+## Is it worth your time?
+
+It is free and it is taught by the same instructor as [Learn React](/docs/courses/react/learn-react), so the style and notation carry over cleanly. For a React developer, that continuity matters: you are not relearning how the player works or how the teacher thinks, just adding the framework layer on top of what you already know.
+
+The honest caveat is that Next.js moves fast as a project, and a recorded course is a snapshot. The routing and rendering concepts here are durable, but specific API surface around the App Router and server components shifts between releases. Treat this as the conceptual foundation, then check the official docs for the exact current syntax.
+
+## What you'll learn
+
+<CourseCurriculum
+  modules={[
+    { name: 'Build a Next.js App', duration: '2 hrs' },
+    { name: 'Rendering Strategies and More', duration: '2.4 hrs' },
+  ]}
 />
 
-## About This Course
+The first module gets you building a working app: routing, layouts, navigation, and pulling in data. The second is where Next.js earns its reputation, walking through the rendering strategies that decide whether a page is generated on the server, built statically, or hydrated on the client, and why that choice affects speed and SEO. That second half is the part you cannot get from a plain React course.
 
-Learn to build web apps with Next.js, the world's most popular full-stack framework. You'll cover routing, layouts, data fetching, optimizing ass
+## Who it's for, and who should skip it
 
-This Intermediate-level course covers 4.4 hrs of content across 32 interactive screencasts. A [Scrimba Pro](/docs/pricing/) subscription is required for full access.
+It fits React developers who want to ship real, multi-page, SEO-friendly apps rather than client-only SPAs. If you have finished a React course and keep hearing "just use Next.js," this answers why.
 
-- **Duration:** 4.4 hrs
-- **Level:** Intermediate
-- **Access:** [Scrimba Pro](/docs/pricing/) required
-- **Modules:** 2
-- **Total Lessons:** 32
-
-### Instructor
-
-This course is taught by **Bob Ziroll**, an experienced educator on the Scrimba platform.
-
-## Course curriculum
-
-<CourseCurriculum modules={[{"name":"Build a Next.js App","duration":"2 hrs","lessons":16},{"name":"Rendering Strategies and More","duration":"2.4 hrs","lessons":16}]} title="" />
+Skip it if you have not learned React yet. Next.js is a React framework, not a starting point; do [Learn React](/docs/courses/react/learn-react) first. Also skip it if your project is a small client-side widget that never needs server rendering, because the framework's weight would not pay off.
 
 ## Prerequisites
 
-Basic knowledge of HTML and CSS is recommended before starting this course.
+Working React: components, props, hooks, and data fetching. A basic grasp of how HTTP requests and URLs work helps, since routing and server rendering lean on both. No prior Next.js needed.
 
-## Who Is This Course For?
+## Where it fits
 
-This course is ideal for developers with some experience who want to level up their Learn Next.js skills through hands-on practice.
+Learn Next.js sits after the React fundamentals on the [Frontend Developer Path](/docs/paths/frontend-developer-path) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path), where it becomes the bridge from frontend React into fullstack territory.
 
-## Part of These Learning Paths
+## Free or Pro
 
-- [Frontend Developer Path](/docs/paths/frontend-developer-path)
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
+The course itself is free, with no subscription required. Scrimba Pro is a separate decision that unlocks the structured career paths, coding challenges, the private Discord, and certificates. If you only want this course, you never have to pay. See [current plans](https://scrimba.com/our-pricing) if you later want the path structure.
 
+## Strengths and limits
 
-## Related Courses
+What it does well: it is free, it is taught by a strong, familiar instructor, and it focuses on the two things that actually distinguish Next.js from plain React, routing and rendering. The interactive format suits a framework you learn by building.
 
-- [Advanced JavaScript Tutorial](/docs/courses/javascript/advanced-javascript)
-- [How to Learn JavaScript](/docs/courses/javascript/how-to-learn-javascript-complete-beginners-guide)
-- [A Space Travel Website](/docs/courses/javascript/a-space-travel-website)
+Where it is limited: a fast-moving framework means some syntax will drift from the recording, the two-module scope keeps it introductory rather than exhaustive, and fast peer help depends on the Pro Discord.
 
-## Practice & Learn More
+## Related courses and comparisons
 
-- [Practice JavaScript Arrays](/docs/practice/practice-javascript-arrays)
-- [Practice API Calls](/docs/practice/practice-api-calls)
-- [How Long Does It Take to Learn Coding?](/docs/faq/learning-speed)
-- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) | [All Comparisons](/docs/comparisons/)
-
-## Related Pages
-
-- [JavaScript Courses](/docs/courses/javascript/)
-- [All Courses](/docs/courses/)
-- [Scrimba Pricing](/docs/pricing/) | [Pro vs Free](/docs/pricing/pro-vs-free)
-- [Scrimba Review 2026](/blog/scrimba-review)
+- [Learn React](/docs/courses/react/learn-react), the prerequisite
+- [Advanced React](/docs/courses/react/advanced-react), deeper React patterns
+- [Learn Node.js](/docs/courses/javascript/nodejs), backend fundamentals for fullstack work
+- [Learn Express.js](/docs/courses/javascript/expressjs), a lighter server alternative
 
 <FAQAccordion items={[
-  { q: "Is Learn Next.js free on Scrimba?", a: "This course requires a [Scrimba Pro](/docs/pricing/) subscription. Pro gives you access to 74+ courses, a certificate of completion, and access to the Discord community. Check the [pricing page](/docs/pricing/) for current rates." },
-  { q: "How long does Learn Next.js take to complete?", a: "The course contains 4.4 hrs of interactive screencasts. Since you can pause and code along at your own pace, most learners finish in 1-2 weeks of regular practice." },
-  { q: "What will I build in this course?", a: "You will build practical projects using Learn Next.js concepts. Scrimba's interactive format lets you modify the instructor's code directly in the browser." },
+  { q: "Is Learn Next.js free on Scrimba?", a: "Yes. The full course is free with no credit card or Pro subscription required. Pro is only needed for the career paths, certificates, and private Discord." },
+  { q: "Do I need to know React first?", a: "Yes. Next.js is a framework built on React. Finish Learn React or have equivalent experience before starting this one." },
+  { q: "Who teaches Learn Next.js?", a: "Bob Ziroll, the same instructor as the free Learn React course, so the style and notation carry over." },
+  { q: "Will the syntax match the current Next.js version?", a: "Mostly. The routing and rendering concepts are durable, but Next.js evolves quickly, so check the official docs for the exact current API around the App Router and server components." },
 ]} />
 
-<PricingCTA
-  title="Start Learn Next.js"
-  subtitle="Get access to Learn Next.js and 74+ more interactive courses with Scrimba Pro."
+<AffiliateLink href="https://scrimba.com/learn-nextjs-c02moisq6a" variant="button">
+  Start Learn Next.js for free
+</AffiliateLink>
+
+<CourseSchema
+  name="Learn Next.js"
+  description="Scrimba's free, intermediate Next.js course taught by Bob Ziroll. About 4.4 hours on routing, layouts, data fetching, and rendering strategies."
+  url="https://scrimba.com/learn-nextjs-c02moisq6a"
+  timeRequired="PT4H22M57S"
+  difficulty="Intermediate"
+  access="Free"
+  keywords={["Next.js", "React", "Fullstack"]}
+  modules={[
+    { name: 'Build a Next.js App', duration: '2 hrs' },
+    { name: 'Rendering Strategies and More', duration: '2.4 hrs' },
+  ]}
 />

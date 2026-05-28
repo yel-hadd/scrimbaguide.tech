@@ -50,7 +50,7 @@ function HeroSection() {
           </AffiliateLink>
           <Link
             className="cta-link cta-link--button hero-section__secondary-btn"
-            to="/tools/which-scrimba-path"
+            to="/docs/paths/#path-advisor"
           >
             Find my path (2 min quiz)
           </Link>
@@ -132,7 +132,7 @@ const PATH_DESCRIPTIONS: Record<string, string> = {
   'backend-developer-path':
     'Node.js, Express, SQL, TypeScript, cybersecurity, DevOps. For developers adding server skills.',
   'ai-engineer-path':
-    'Build AI-powered apps. Agents, RAG, MCP, context engineering, Vercel AI SDK, multimodality.',
+    'Build AI-powered apps. Agents, retrieval-augmented generation (RAG), the Model Context Protocol (MCP), context engineering, and the Vercel AI SDK.',
 };
 
 const PATH_TAGLINES: Record<string, string> = {
@@ -265,7 +265,7 @@ function CoursesSection() {
       name: 'AI & ML',
       category: 'ai',
       link: '/docs/courses/ai/',
-      description: 'Agents, RAG, MCP, prompt engineering, LLM integration.',
+      description: 'Agents, retrieval-augmented generation (RAG), the Model Context Protocol (MCP), prompt engineering, and LLM integration.',
     },
     {
       name: 'React',

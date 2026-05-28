@@ -98,7 +98,7 @@ export default function BootcampCalculator(): React.ReactElement {
         <div className="margin-top--xl">
           <h2>Why the difference?</h2>
           <p>Bootcamps have high overhead (instructors, buildings, sales teams). Scrimba is self-paced and scalable. You get the same curriculum (HTML, CSS, JS, React) for a fraction of the price.</p>
-          <p>Read our full analysis: <a href="/docs/pricing/scrimba-vs-bootcamps">Scrimba vs Bootcamps Guide</a></p>
+          <p>Read our full analysis: <a href="/docs/pricing/scrimba-vs-bootcamps/">Scrimba vs Bootcamps Guide</a></p>
         </div>
       </div>
       </main>

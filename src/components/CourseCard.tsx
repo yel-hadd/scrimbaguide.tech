@@ -9,6 +9,8 @@ interface CourseCardProps {
   modules?: number;
   lessons?: number;
   instructor?: string;
+  /** Scrimba profile URL for the instructor; routed through AffiliateLink. */
+  instructorUrl?: string;
   href: string;
   description?: string;
   /** Optional override for the GA `cta_location` tag. Defaults to a slug
@@ -37,6 +39,7 @@ export default function CourseCard({
   modules,
   lessons,
   instructor,
+  instructorUrl,
   href,
   description,
   location,
@@ -60,7 +63,13 @@ export default function CourseCard({
       {instructor && (
         <p className="course-card__instructor">
           <span className="course-card__instructor-label">Taught by</span>{' '}
-          <strong className="course-card__instructor-name">{instructor}</strong>
+          {instructorUrl ? (
+            <AffiliateLink href={instructorUrl} location={`${ctaLocation}-instructor`}>
+              <strong className="course-card__instructor-name">{instructor}</strong>
+            </AffiliateLink>
+          ) : (
+            <strong className="course-card__instructor-name">{instructor}</strong>
+          )}
         </p>
       )}
 

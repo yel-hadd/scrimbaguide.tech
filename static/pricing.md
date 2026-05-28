@@ -11,7 +11,7 @@
 ## Plans
 
 ### Free
-- **Price:** $0 (never expires)
+- **Price:** free, no cost, never expires
 - **Account required:** no, for browsing free courses; account required to track progress
 - **Includes:**
   - Roughly 19 full courses (Learn React, Learn JavaScript, Learn TypeScript, Learn HTML & CSS, Claude AI, Mistral AI, LangBase agents, others)

@@ -100,15 +100,26 @@ for (const course of courses) {
     continue;
   }
 
-  // Build clean title
-  const cleanTitle = course.title
+  // Build a clean, short course name from the (often verbose) scraped title.
+  // Cut marketing tails ("in this ... course", " - A 13-hour ...", "lead by X"),
+  // anything after a colon, then cap length at a word boundary as a safety net.
+  let cleanTitle = course.title
     .replace(/^(Free |Tutorial: |Free Tutorial: |Interactive Tutorial: )/i, '')
-    .replace(/\s+in this (free |interactive |hands-on )*(course|tutorial).*/i, '')
-    .replace(/\s+with (this|our).*$/i, '')
+    .replace(/\s+in this\b[^:]*?\b(course|tutorial)\b.*$/i, '')
+    .replace(/\s+[–-]\s+.*$/, '')
+    .replace(/\s+(lead|taught|created)\s+by\b.*$/i, '')
+    .replace(/\s+with (this|our)\b.*$/i, '')
     .split(':')[0]
+    .replace(/[.\s]+$/, '')
     .trim();
+  if (cleanTitle.length > 44) {
+    cleanTitle = cleanTitle.slice(0, 44).replace(/\s+\S*$/, '').trim();
+  }
+  // Drop a dangling trailing conjunction/preposition left by truncation.
+  cleanTitle = cleanTitle.replace(/[\s,]+(?:and|or|&|with|the|a|an|to|of|in|on|for)$/i, '').replace(/[\s,]+$/, '').trim();
 
-  const pageTitle = `${cleanTitle} on Scrimba: Course Review (2026)`;
+  // Evergreen SEO title (no year-stamp); the sidebar uses the short course name.
+  const pageTitle = `${cleanTitle}: Scrimba Review`;
   const description = course.description || `Review of ${cleanTitle} on Scrimba. ${course.duration || ''} ${course.level || ''} course.`;
 
   // Build the visual curriculum (module-by-module breakdown).
@@ -299,7 +310,7 @@ ${relatedSection}
 ## Practice & Learn More
 
 ${(PRACTICE_LINKS[course.category] || []).map(l => `- [${l.label}](${l.url})`).join('\n')}
-- [How Long Does It Take to Learn Coding?](/docs/faq/learning-speed)
+- [How Long Does It Take to Learn Coding?](/docs/how-it-works/learning-speed)
 - [${COMPARISON_LINKS[0].label}](${COMPARISON_LINKS[0].url}) | [${COMPARISON_LINKS[2].label}](${COMPARISON_LINKS[2].url})
 
 ## Related Pages

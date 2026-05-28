@@ -2,10 +2,26 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   docs: [
+    // 1. Start Here
     'intro',
+    // 2. How Scrimba Works
     {
       type: 'category',
-      label: 'Scrimba Pricing',
+      label: 'How Scrimba Works',
+      items: [
+        'how-it-works/how-scrims-work',
+        'how-it-works/using-scrimba',
+        'how-it-works/is-scrimba-free',
+        'how-it-works/accreditation',
+        'how-it-works/certificates',
+        'how-it-works/learning-speed',
+        'how-it-works/tutorial-hell',
+      ],
+    },
+    // 3. Pricing
+    {
+      type: 'category',
+      label: 'Pricing',
       link: { type: 'doc', id: 'pricing/index' },
       items: [
         'pricing/pro-vs-free',
@@ -14,6 +30,28 @@ const sidebars: SidebarsConfig = {
         'pricing/scrimba-vs-bootcamps',
       ],
     },
+    // 4. Scrimba vs Alternatives
+    {
+      type: 'category',
+      label: 'Scrimba vs Alternatives',
+      link: { type: 'doc', id: 'comparisons/index' },
+      items: [
+        'comparisons/scrimba-vs-codecademy',
+        'comparisons/scrimba-vs-udemy',
+        'comparisons/scrimba-vs-freecodecamp',
+        'comparisons/scrimba-vs-coursera',
+        'comparisons/scrimba-vs-odin-project',
+        'comparisons/scrimba-vs-youtube',
+        'comparisons/scrimba-vs-frontendmasters',
+        'comparisons/scrimba-vs-boot-dev',
+        'comparisons/scrimba-vs-treehouse',
+        'comparisons/scrimba-vs-zerotomastery',
+        'comparisons/scrimba-vs-pluralsight',
+        'comparisons/scrimba-vs-educative',
+        'comparisons/scrimba-vs-fireship',
+      ],
+    },
+    // 5. Learning Paths
     {
       type: 'category',
       label: 'Learning Paths',
@@ -24,12 +62,21 @@ const sidebars: SidebarsConfig = {
         'paths/backend-developer-path',
         'paths/ai-engineer-path',
         'paths/study-plan',
-        'paths/scrimba-for-beginners',
-        'paths/scrimba-for-cs-students',
-        'paths/scrimba-for-designers',
-        'paths/scrimba-for-marketers',
       ],
     },
+    // 6. Who It's For
+    {
+      type: 'category',
+      label: "Who It's For",
+      items: [
+        'for/beginners',
+        'for/cs-students',
+        'for/designers',
+        'for/marketers',
+        'for/busy-professionals',
+      ],
+    },
+    // 7. Courses by Topic
     {
       type: 'category',
       label: 'Courses by Topic',
@@ -79,45 +126,28 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    // 8. Practice
     {
       type: 'category',
-      label: 'Scrimba vs Alternatives',
-      link: { type: 'doc', id: 'comparisons/index' },
-      items: [
-        'comparisons/scrimba-vs-codecademy',
-        'comparisons/scrimba-vs-udemy',
-        'comparisons/scrimba-vs-freecodecamp',
-        'comparisons/scrimba-vs-coursera',
-        'comparisons/scrimba-vs-odin-project',
-        'comparisons/scrimba-vs-youtube',
-        'comparisons/scrimba-vs-frontendmasters',
-        'comparisons/scrimba-vs-boot-dev',
-        'comparisons/scrimba-vs-treehouse',
-        'comparisons/scrimba-vs-zerotomastery',
-        'comparisons/scrimba-vs-pluralsight',
-        'comparisons/scrimba-vs-educative',
-        'comparisons/scrimba-vs-fireship',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Practice Guides',
+      label: 'Practice',
       items: [
         'practice/practice-css-grid',
         'practice/practice-flexbox',
-        'practice/practice-javascript-arrays',
-        'practice/practice-react-hooks',
-        'practice/practice-api-calls',
-        'practice/build-a-weather-app-interactively',
-        'practice/practice-typescript',
         'practice/practice-tailwind-css',
-        'practice/practice-react-projects',
+        'practice/practice-javascript-arrays',
+        'practice/practice-api-calls',
+        'practice/practice-react-hooks',
+        'practice/practice-typescript',
         'practice/practice-ai-engineering',
+        'practice/practice-react-projects',
+        'practice/react-portfolio-project-ideas',
+        'practice/build-a-weather-app-interactively',
       ],
     },
+    // 9. React Roadmap
     {
       type: 'category',
-      label: 'Learn React (Roadmap)',
+      label: 'React Roadmap',
       link: { type: 'doc', id: 'learn-react/index' },
       items: [
         'learn-react/quick-start',
@@ -128,9 +158,10 @@ const sidebars: SidebarsConfig = {
         'learn-react/server-components',
       ],
     },
+    // 10. Next.js Roadmap
     {
       type: 'category',
-      label: 'Learn Next.js (Roadmap)',
+      label: 'Next.js Roadmap',
       link: { type: 'doc', id: 'learn-nextjs/index' },
       items: [
         'learn-nextjs/getting-started',
@@ -139,31 +170,23 @@ const sidebars: SidebarsConfig = {
         'learn-nextjs/data-fetching',
       ],
     },
+    // 11. Help & Support
     {
       type: 'category',
-      label: 'FAQ & Help',
-      link: { type: 'doc', id: 'faq/index' },
+      label: 'Help & Support',
       items: [
-        'faq/is-scrimba-free',
-        'faq/how-to-use-scrimba',
-        'faq/billing',
-        'faq/certificates',
-        'faq/discord-community',
-        'faq/community-and-events',
-        'faq/platform-issues',
-        'faq/how-scrims-work',
-        'faq/tutorial-hell',
-        'faq/scrimba-for-busy-professionals',
-        'faq/learning-speed',
-        'faq/scrimba-accreditation',
+        'help/billing',
+        'help/troubleshooting',
+        'help/community-and-events',
       ],
     },
+    // 12. FAQ (curated hub linking to the distributed answers)
+    'faq/index',
+    // 13. Updates
     {
       type: 'category',
       label: 'Updates',
-      items: [
-        'changelog',
-      ],
+      items: ['changelog'],
     },
   ],
 };

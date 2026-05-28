@@ -35,6 +35,12 @@ const SITEMAP_EXCLUDED_PATHS = new Set<string>([
   '/docs/udemy/best-udemy-python-courses',
   '/docs/udemy/best-udemy-web-development-courses',
   '/docs/udemy/best-udemy-ai-courses',
+  // Blog cluster consolidation (2026-05-28): merged into pillars, now redirect stubs.
+  '/blog/escape-tutorial-hell-scrimba',
+  '/blog/vibe-coding-guide',
+  '/blog/vibe-coding-javascript-survival-guide-2026',
+  '/blog/how-to-get-hired-with-scrimba',
+  '/blog/learn-to-code-full-time-job',
 ]);
 
 /**
@@ -96,8 +102,8 @@ function sitemapPriority(pathname: string): number {
     return 0.8;
   }
   if (
-    pathname === '/docs/faq/is-scrimba-free' ||
-    pathname === '/docs/faq/how-to-use-scrimba'
+    pathname === '/docs/how-it-works/is-scrimba-free' ||
+    pathname === '/docs/how-it-works/using-scrimba'
   ) {
     return 0.8;
   }
@@ -271,7 +277,7 @@ const config: Config = {
           },
           {
             from: '/blog/scrimba-for-cs-students',
-            to: '/docs/paths/scrimba-for-cs-students',
+            to: '/docs/for/cs-students/',
           },
           {
             from: '/blog/blog/javascript-roadmap-for-beginners-2026',
@@ -337,6 +343,28 @@ const config: Config = {
             from: '/blog/how-to-learn-javascript-2026',
             to: '/docs/courses/javascript/',
           },
+          // Blog cluster consolidation (2026-05-28): cannibalizing posts merged
+          // into pillars (tutorial hell, vibe coding, get hired).
+          {
+            from: '/blog/escape-tutorial-hell-scrimba',
+            to: '/blog/how-to-escape-tutorial-hell-2026/',
+          },
+          {
+            from: '/blog/vibe-coding-guide',
+            to: '/blog/what-is-vibe-coding-2026/',
+          },
+          {
+            from: '/blog/vibe-coding-javascript-survival-guide-2026',
+            to: '/blog/what-is-vibe-coding-2026/',
+          },
+          {
+            from: '/blog/how-to-get-hired-with-scrimba',
+            to: '/blog/how-to-get-first-developer-job-2026/',
+          },
+          {
+            from: '/blog/learn-to-code-full-time-job',
+            to: '/blog/how-to-get-first-developer-job-2026/',
+          },
           // Udemy guides moved from /docs/udemy/* to /blog/* (2026-05-24).
           {
             from: '/docs/udemy',
@@ -362,6 +390,24 @@ const config: Config = {
             from: '/docs/udemy/best-udemy-ai-courses',
             to: '/blog/best-udemy-ai-courses/',
           },
+          // IA restructure (2026-05-27): FAQ split into How Scrimba Works + Help,
+          // audience pages consolidated under /for/, discord merged into community.
+          { from: '/docs/faq/how-scrims-work', to: '/docs/how-it-works/how-scrims-work/' },
+          { from: '/docs/faq/how-to-use-scrimba', to: '/docs/how-it-works/using-scrimba/' },
+          { from: '/docs/faq/is-scrimba-free', to: '/docs/how-it-works/is-scrimba-free/' },
+          { from: '/docs/faq/scrimba-accreditation', to: '/docs/how-it-works/accreditation/' },
+          { from: '/docs/faq/certificates', to: '/docs/how-it-works/certificates/' },
+          { from: '/docs/faq/learning-speed', to: '/docs/how-it-works/learning-speed/' },
+          { from: '/docs/faq/tutorial-hell', to: '/docs/how-it-works/tutorial-hell/' },
+          { from: '/docs/faq/billing', to: '/docs/help/billing/' },
+          { from: '/docs/faq/platform-issues', to: '/docs/help/troubleshooting/' },
+          { from: '/docs/faq/community-and-events', to: '/docs/help/community-and-events/' },
+          { from: '/docs/faq/discord-community', to: '/docs/help/community-and-events/' },
+          { from: '/docs/faq/scrimba-for-busy-professionals', to: '/docs/for/busy-professionals/' },
+          { from: '/docs/paths/scrimba-for-beginners', to: '/docs/for/beginners/' },
+          { from: '/docs/paths/scrimba-for-cs-students', to: '/docs/for/cs-students/' },
+          { from: '/docs/paths/scrimba-for-designers', to: '/docs/for/designers/' },
+          { from: '/docs/paths/scrimba-for-marketers', to: '/docs/for/marketers/' },
           ...courseRedirects,
         ],
       },
@@ -387,55 +433,55 @@ const config: Config = {
 
   headTags: [
     {
+      // Sitewide schema graph: WebSite and Organization unified into one @graph,
+      // cross-referenced by @id. Per-page entities (Course, Review, FAQPage,
+      // BreadcrumbList) are emitted by their components and reference these nodes.
       tagName: 'script',
       attributes: { type: 'application/ld+json' },
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'WebSite',
-        '@id': 'https://scrimbaguide.tech/#website',
-        name: 'Scrimba Guide',
-        url: 'https://scrimbaguide.tech',
-        description: 'The unofficial guide to Scrimba courses, learning paths, pricing, and more.',
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: 'https://scrimbaguide.tech/search?q={search_term_string}',
-          'query-input': 'required name=search_term_string',
-        },
-        // Bare @id reference. The full Organization node is defined once below and
-        // injected on every page via headTags, so we never re-declare @type here.
-        publisher: { '@id': 'https://scrimbaguide.tech/#organization' },
-      }),
-    },
-    {
-      tagName: 'script',
-      attributes: { type: 'application/ld+json' },
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Organization',
-        '@id': 'https://scrimbaguide.tech/#organization',
-        name: 'Scrimba Guide',
-        url: 'https://scrimbaguide.tech',
-        description: 'An independent guide to Scrimba: courses, learning paths, pricing, and honest comparisons with other coding platforms.',
-        founder: {
-          '@type': 'Person',
-          name: 'Yassine El Haddad',
-          url: 'https://scrimbaguide.tech/about',
-        },
-        sameAs: [
-          'https://x.com/scrimbaguide',
-          'https://www.linkedin.com/in/yassine-el-haddad/',
-          'https://github.com/yel-hadd',
+        '@graph': [
+          {
+            '@type': 'WebSite',
+            '@id': 'https://scrimbaguide.tech/#website',
+            name: 'Scrimba Guide',
+            url: 'https://scrimbaguide.tech',
+            description: 'The unofficial guide to Scrimba courses, learning paths, pricing, and more.',
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: 'https://scrimbaguide.tech/search?q={search_term_string}',
+              'query-input': 'required name=search_term_string',
+            },
+            publisher: { '@id': 'https://scrimbaguide.tech/#organization' },
+          },
+          {
+            '@type': 'Organization',
+            '@id': 'https://scrimbaguide.tech/#organization',
+            name: 'Scrimba Guide',
+            url: 'https://scrimbaguide.tech',
+            description: 'An independent guide to Scrimba: courses, learning paths, pricing, and honest comparisons with other coding platforms.',
+            founder: {
+              '@type': 'Person',
+              name: 'Yassine El Haddad',
+              url: 'https://scrimbaguide.tech/about',
+            },
+            sameAs: [
+              'https://x.com/scrimbaguide',
+              'https://www.linkedin.com/in/yassine-el-haddad/',
+              'https://github.com/yel-hadd',
+            ],
+            logo: {
+              '@type': 'ImageObject',
+              url: 'https://scrimbaguide.tech/img/logo.svg',
+            },
+            contactPoint: {
+              '@type': 'ContactPoint',
+              contactType: 'customer service',
+              url: 'https://scrimbaguide.tech/about',
+              availableLanguage: 'en',
+            },
+          },
         ],
-        logo: {
-          '@type': 'ImageObject',
-          url: 'https://scrimbaguide.tech/img/logo.svg',
-        },
-        contactPoint: {
-          '@type': 'ContactPoint',
-          contactType: 'customer service',
-          url: 'https://scrimbaguide.tech/about',
-          availableLanguage: 'en',
-        },
       }),
     },
     {
@@ -462,18 +508,29 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        { to: '/docs/intro', label: 'Start Here', position: 'left' },
-        { to: '/docs/paths/', label: 'Learning Paths', position: 'left' },
-        { to: '/docs/pricing/', label: 'Pricing', position: 'left' },
-        { to: '/docs/comparisons/', label: 'Comparisons', position: 'left' },
+        {
+          type: 'dropdown',
+          label: 'Learn',
+          position: 'left',
+          items: [
+            { to: '/docs/intro', label: 'What is Scrimba?' },
+            { to: '/docs/paths/', label: 'Learning Paths' },
+            { to: '/docs/courses/', label: 'Courses' },
+            { to: '/docs/comparisons/', label: 'Comparisons' },
+            { to: '/docs/pricing/', label: 'Pricing' },
+            { to: '/docs/faq/', label: 'FAQ' },
+          ],
+        },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
           type: 'dropdown',
           label: 'Tools',
           position: 'left',
           items: [
-            { to: '/docs/paths#path-advisor', label: 'Path Advisor' },
-            { to: '/docs/courses/', label: 'All Courses' },
+            { to: '/tools/', label: 'All Tools' },
+            { to: '/docs/paths/#path-advisor', label: 'Path Finder' },
+            { to: '/tools/bootcamp-cost-calculator', label: 'Cost Calculator' },
+            { to: '/roadmaps/frontend-roadmap-2026', label: 'Frontend Roadmap' },
           ],
         },
         {
