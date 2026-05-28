@@ -508,18 +508,29 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        { to: '/docs/intro', label: 'Start Here', position: 'left' },
-        { to: '/docs/paths/', label: 'Learning Paths', position: 'left' },
-        { to: '/docs/pricing/', label: 'Pricing', position: 'left' },
-        { to: '/docs/comparisons/', label: 'Comparisons', position: 'left' },
+        {
+          type: 'dropdown',
+          label: 'Learn',
+          position: 'left',
+          items: [
+            { to: '/docs/intro', label: 'What is Scrimba?' },
+            { to: '/docs/paths/', label: 'Learning Paths' },
+            { to: '/docs/courses/', label: 'Courses' },
+            { to: '/docs/comparisons/', label: 'Comparisons' },
+            { to: '/docs/pricing/', label: 'Pricing' },
+            { to: '/docs/faq/', label: 'FAQ' },
+          ],
+        },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
           type: 'dropdown',
           label: 'Tools',
           position: 'left',
           items: [
-            { to: '/docs/paths#path-advisor', label: 'Path Advisor' },
-            { to: '/docs/courses/', label: 'All Courses' },
+            { to: '/tools/', label: 'All Tools' },
+            { to: '/docs/paths/#path-advisor', label: 'Path Finder' },
+            { to: '/tools/bootcamp-cost-calculator', label: 'Cost Calculator' },
+            { to: '/roadmaps/frontend-roadmap-2026', label: 'Frontend Roadmap' },
           ],
         },
         {
