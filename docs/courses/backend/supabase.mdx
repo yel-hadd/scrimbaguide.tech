@@ -1,96 +1,106 @@
 ---
-title: "Intro to Supabase: Scrimba Review"
-description: "Master Supabase essentials by building a real-world React.js Sales Dashboard App with authentication, real-time data operations, and secure..."
-keywords: [scrimba intro to supabase, intro to supabase course, scrimba backend course]
+title: "Intro to Supabase"
+description: "Jonathan Hill's free Supabase course on Scrimba: build a React sales dashboard with auth, realtime data, and persistence. About 4.8 hours."
+keywords: [scrimba supabase course, intro to supabase, jonathan hill supabase, supabase react course, free supabase tutorial]
+last_update:
+  date: 2026-05-27
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
-import PricingCTA from '@site/src/components/PricingCTA';
-import FAQAccordion from '@site/src/components/FAQAccordion';
-import CourseSchema from '@site/src/components/CourseSchema';
 import CourseCurriculum from '@site/src/components/CourseCurriculum';
+import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
-# Intro to Supabase on Scrimba
+# Intro to Supabase
+
+Scrimba's free course on Supabase, taught by Jonathan Hill across roughly 4.8 hours. You build a React sales dashboard backed by Supabase, covering authentication, realtime data, and persistence.
+
+## Quick answer
+
+Intro to Supabase is Scrimba's free, intermediate course: about 4.8 hours across two modules and 57 lessons, taught by Jonathan Hill. You build a React sales dashboard on top of Supabase, the Postgres-based backend-as-a-service, wiring up authentication, realtime data, and persistence. It is aimed at frontend and React developers who need a real backend without writing one from scratch.
 
 <CourseCard
   title="Intro to Supabase"
   duration="4.8 hrs"
   difficulty="Intermediate"
-  access="Pro"
-  instructor="Jonathan Hill"
+  access="Free"
   modules={2}
+  instructor="Jonathan Hill"
+  instructorUrl="https://scrimba.com/@MrHighViolet"
   href="https://scrimba.com/intro-to-supabase-c0abltfqed"
-  description="Master Supabase essentials by building a real-world React.js Sales Dashboard App with authentication, real-time data operations, and secure user"
+  description="A free, project-based course building a React sales dashboard backed by Supabase, with auth, realtime data, and persistence."
 />
 
-<CourseSchema
-  name="Intro to Supabase"
-  description="Master Supabase essentials by building a real-world React.js Sales Dashboard App with authentication, real-time data operations, and secure..."
-  url="https://scrimba.com/intro-to-supabase-c0abltfqed"
-  duration="4.8 hrs"
-  difficulty="Intermediate"
-  access="Pro"
-  keywords={["scrimba intro to supabase", "intro to supabase course", "scrimba backend course"]}
-  modules={[{"name":"Persistence","duration":"60 min","lessons":6},{"name":"Authentication","duration":"3.8 hrs","lessons":21}]}
+## Is it worth your time?
+
+If you can build React interfaces but stall the moment you need a database, auth, or data that survives a refresh, this is exactly the bridge. Supabase gives you a real Postgres backend without server code, and the course teaches it through one coherent app rather than disconnected demos. For a frontend developer it is a fast route to feeling full-stack, and it is free.
+
+The honest caveat is that it is a project course, not a Supabase reference. You learn the parts the sales dashboard needs, so areas like row-level security in depth, edge functions, and storage get lighter or no coverage. It also assumes working JavaScript and some React, so it is not a first course.
+
+## What you'll learn
+
+<CourseCurriculum
+  modules={[
+    { name: 'Persistence', duration: '60 min' },
+    { name: 'Authentication', duration: '3.8 hrs' },
+  ]}
 />
 
-## About This Course
+Two modules of uneven size. Persistence covers connecting the app to Supabase and storing and reading data, the foundation everything else sits on. Authentication is by far the larger block and is where the real depth lives: signing users in and out, protecting data, and handling sessions, all wired into the React dashboard you build. The weighting tells you the course treats auth as the hard, important part, which it is.
 
-Master Supabase essentials by building a real-world React.js Sales Dashboard App with authentication, real-time data operations, and secure user
+## Who it's for, and who should skip it
 
-This Intermediate-level course covers 4.8 hrs of content across 27 interactive screencasts. A [Scrimba Pro](/docs/pricing/) subscription is required for full access.
+It fits frontend and React developers who want their first real backend, and anyone who has done the interface side and wants to ship something with users and saved data. It is also a good companion to a SQL course, since Supabase is Postgres underneath.
 
-- **Duration:** 4.8 hrs
-- **Level:** Intermediate
-- **Access:** [Scrimba Pro](/docs/pricing/) required
-- **Modules:** 2
-- **Total Lessons:** 27
-
-### Instructor
-
-This course is taught by **Jonathan Hill**, an experienced educator on the Scrimba platform.
-
-## Course curriculum
-
-<CourseCurriculum modules={[{"name":"Persistence","duration":"60 min","lessons":6},{"name":"Authentication","duration":"3.8 hrs","lessons":21}]} title="" />
+Skip it if you have not yet learned React, since the project assumes you can build components and manage state. Skip it too if you want exhaustive Supabase reference coverage rather than a guided build.
 
 ## Prerequisites
 
-Basic knowledge of JavaScript fundamentals is recommended before starting this course.
+Working JavaScript and some React: components, state, and fetching data. A basic feel for databases helps but is not required. Prior Supabase knowledge is not assumed.
 
-## Who Is This Course For?
+## Where it fits
 
-This course is ideal for developers with some experience who want to level up their Intro to skills through hands-on practice.
+This course is not part of a named career path, but it slots in naturally after [Learn React](/docs/courses/react/learn-react) for anyone who wants to add a backend to their frontend skills. It pairs well with [Learn SQL](/docs/courses/backend/sql), since understanding the query language makes Supabase's Postgres core far less opaque.
 
+## Free or Pro
 
-## Related Courses
+The course itself is free, with no subscription required to start or finish it. Scrimba Pro is a separate decision that unlocks the structured career paths, the coding challenges, the private Discord, and certificates. For this course alone you never have to pay. See [current plans](https://scrimba.com/our-pricing) if you later want the path structure around it.
 
-- [Firebase Tutorial](/docs/courses/backend/a-mobile-app-with-firebase)
-- [Regex Tutorial](/docs/courses/backend/regular-expressions)
-- [Learn SQL](/docs/courses/backend/sql)
+## Strengths and limits
 
-## Practice & Learn More
+What it does well: it is free, it teaches a modern backend-as-a-service through one real app, and it gives frontend developers a genuine path to shipping full-stack features without server code.
 
-- [Practice API Calls](/docs/practice/practice-api-calls)
-- [Practice JavaScript Arrays](/docs/practice/practice-javascript-arrays)
-- [How Long Does It Take to Learn Coding?](/docs/how-it-works/learning-speed)
-- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) | [All Comparisons](/docs/comparisons/)
+Where it is limited: it is project-bound, so it does not cover Supabase comprehensively, and it assumes you already bring JavaScript and React. For database fundamentals underneath it, take a SQL course alongside.
 
-## Related Pages
+## Related courses and comparisons
 
-- [Backend & Databases Courses](/docs/courses/backend/)
-- [All Courses](/docs/courses/)
-- [Scrimba Pricing](/docs/pricing/) | [Pro vs Free](/docs/pricing/pro-vs-free)
-- [Scrimba Review 2026](/blog/scrimba-review)
+- [Learn React](/docs/courses/react/learn-react), the prerequisite for the frontend half
+- [Learn SQL](/docs/courses/backend/sql), the database language under Supabase
+- [Build a Mobile App with Firebase](/docs/courses/backend/a-mobile-app-with-firebase), an alternative backend-as-a-service
+- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp), if you are choosing a platform
 
 <FAQAccordion items={[
-  { q: "Is Intro to Supabase free on Scrimba?", a: "This course requires a [Scrimba Pro](/docs/pricing/) subscription. Pro gives you access to 74+ courses, a certificate of completion, and access to the Discord community. Check the [pricing page](/docs/pricing/) for current rates." },
-  { q: "How long does Intro to Supabase take to complete?", a: "The course contains 4.8 hrs of interactive screencasts. Since you can pause and code along at your own pace, most learners finish in 1-2 weeks of regular practice." },
-  { q: "What will I build in this course?", a: "You will build practical projects using Intro to Supabase concepts. Scrimba's interactive format lets you modify the instructor's code directly in the browser." },
+  { q: "Is Intro to Supabase free on Scrimba?", a: "Yes. The full course is free with no Pro subscription required. Pro is only needed for the career paths, certificates, and Discord." },
+  { q: "Do I need to know React first?", a: "Yes. The course builds a React sales dashboard and assumes you can write components and manage state. Take Learn React first if you cannot." },
+  { q: "Is this a full Supabase reference?", a: "No. It is a guided project, so it covers the auth, realtime data, and persistence the dashboard needs rather than every Supabase feature." },
+  { q: "Who teaches Intro to Supabase?", a: "Jonathan Hill, an instructor on the Scrimba platform. You build the app by editing his code directly in the browser." },
 ]} />
 
-<PricingCTA
-  title="Start Intro to Supabase"
-  subtitle="Get access to Intro to Supabase and 74+ more interactive courses with Scrimba Pro."
+<AffiliateLink href="https://scrimba.com/intro-to-supabase-c0abltfqed" variant="button">
+  Start Intro to Supabase for free
+</AffiliateLink>
+
+<CourseSchema
+  name="Intro to Supabase"
+  description="Scrimba's free, intermediate course taught by Jonathan Hill. About 4.8 hours building a React sales dashboard with Supabase auth, realtime data, and persistence."
+  url="https://scrimba.com/intro-to-supabase-c0abltfqed"
+  timeRequired="PT4H47M23S"
+  difficulty="Intermediate"
+  access="Free"
+  keywords={["Supabase", "Databases", "React"]}
+  modules={[
+    { name: 'Persistence', duration: '60 min' },
+    { name: 'Authentication', duration: '3.8 hrs' },
+  ]}
 />
