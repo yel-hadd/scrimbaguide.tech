@@ -1,96 +1,111 @@
 ---
-title: "Learn Cybersecurity: Scrimba Review"
-description: "Instructor: Rachel Johnson, Jonathan..."
-keywords: [scrimba learn cybersecurity, learn cybersecurity course, scrimba javascript course]
+title: "Learn Cybersecurity"
+description: "A Pro course on practical app security for developers: auth, input safety, and rate limiting. What it covers, who it fits, and where it stops short."
+keywords: [scrimba learn cybersecurity, app security course for developers, authentication course scrimba, web security fundamentals, rate limiting course]
+last_update:
+  date: 2026-05-27
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
-import PricingCTA from '@site/src/components/PricingCTA';
-import FAQAccordion from '@site/src/components/FAQAccordion';
-import CourseSchema from '@site/src/components/CourseSchema';
 import CourseCurriculum from '@site/src/components/CourseCurriculum';
+import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
-# Learn Cybersecurity on Scrimba
+# Learn Cybersecurity
+
+A Pro course on the security work developers actually do day to day, authentication, input safety, and rate limiting, co-taught by Rachel Johnson and Jonathan Hill across about five hours.
+
+## Quick answer
+
+This is Scrimba's Pro-tier security course, roughly 5 hours co-taught by Rachel Johnson and Jonathan Hill. It is practical application security for developers rather than abstract theory or penetration testing: thinking like an attacker, handling authentication and identity safely, validating and sanitising input, and protecting endpoints with rate limiting and throttling. It leans backend, and it is aimed at developers who build apps and want to stop shipping the common vulnerabilities.
 
 <CourseCard
   title="Learn Cybersecurity"
   duration="5.0 hrs"
   difficulty="Intermediate"
   access="Pro"
-  instructor="Rachel Johnson"
   modules={4}
+  instructor="Rachel Johnson"
+  instructorUrl="https://scrimba.com/@rachelktyjohnson"
   href="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9"
-  description="Instructor: Rachel Johnson, Jonathan Hill"
+  description="Practical app security for developers: authentication, input safety, and rate limiting, taught by editing real code."
 />
 
-<CourseSchema
-  name="Learn Cybersecurity"
-  description="Instructor: Rachel Johnson, Jonathan..."
-  url="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9"
-  duration="5.0 hrs"
-  difficulty="Intermediate"
-  access="Pro"
-  keywords={["scrimba learn cybersecurity", "learn cybersecurity course", "scrimba javascript course"]}
-  modules={[{"name":"Think Like a Security-Minded Developer","duration":"30 min","lessons":3},{"name":"Authentication and Identity","duration":"67 min","lessons":4},{"name":"Input & Data Safety","duration":"101 min","lessons":12},{"name":"Rate Limiting & Throttling","duration":"98 min","lessons":12}]}
+## Is it worth your time?
+
+Most developers learn security the hard way, by shipping a bug and reading the incident report. This course is the cheaper alternative: it walks through the vulnerabilities that actually show up in real apps and how to defend against them, with two instructors who keep it grounded in code. The input safety and rate limiting modules in particular cover ground that a lot of self-taught developers never get taught explicitly.
+
+The honest caveat is the framing. Despite the broad name, this is application security for builders, not a general cybersecurity course. It will not cover network security, malware analysis, security certifications, or red-team tooling. If you came expecting an ethical-hacking curriculum, this is not that; it is about writing more secure apps.
+
+## What you'll learn
+
+<CourseCurriculum
+  modules={[
+    { name: 'Think Like a Security-Minded Developer', duration: '30 min' },
+    { name: 'Authentication and Identity', duration: '67 min' },
+    { name: 'Input & Data Safety', duration: '101 min' },
+    { name: 'Rate Limiting & Throttling', duration: '98 min' },
+  ]}
 />
 
-## About This Course
+The course opens by reframing how you look at your own code, learning to ask where an attacker would push. From there it gets concrete: authentication and identity covers doing logins and sessions safely; input and data safety, the longest module, covers validating and sanitising what users send so you avoid the classic injection and data-handling bugs; and rate limiting and throttling covers protecting endpoints from abuse and brute force. The two shorter modules set up the mindset; the two longer ones do the hands-on defending.
 
-Instructor: Rachel Johnson, Jonathan Hill
+## Who it's for, and who should skip it
 
-This Intermediate-level course covers 5.0 hrs of content across 31 interactive screencasts. A [Scrimba Pro](/docs/pricing/) subscription is required for full access.
+It fits developers who already build apps, especially anything with a backend, and want to harden them. It is a strong fit for anyone on the [Backend Developer Path](/docs/paths/backend-developer-path) or building APIs.
 
-- **Duration:** 5.0 hrs
-- **Level:** Intermediate
-- **Access:** [Scrimba Pro](/docs/pricing/) required
-- **Modules:** 4
-- **Total Lessons:** 31
-
-### Instructor
-
-This course is taught by **Rachel Johnson**, an experienced educator on the Scrimba platform.
-
-## Course curriculum
-
-<CourseCurriculum modules={[{"name":"Think Like a Security-Minded Developer","duration":"30 min","lessons":3},{"name":"Authentication and Identity","duration":"67 min","lessons":4},{"name":"Input & Data Safety","duration":"101 min","lessons":12},{"name":"Rate Limiting & Throttling","duration":"98 min","lessons":12}]} title="" />
+Skip it if you are a complete beginner who has not built an app yet; the material assumes you understand how requests, auth, and data flow through an application. Skip it too if you wanted general cybersecurity or ethical hacking rather than app-level defence.
 
 ## Prerequisites
 
-Basic knowledge of HTML and CSS is recommended before starting this course.
+Practical web development experience: you should understand how a client and server exchange requests, what authentication and sessions are for, and how an app handles user input. Backend familiarity (such as Node or Express) helps, since several examples are server-side.
 
-## Who Is This Course For?
+## Where it fits
 
-This course is ideal for developers with some experience who want to level up their Learn Cybersecurity skills through hands-on practice.
+This course is a standalone Pro course rather than a named path member, but it sits naturally alongside backend work on the [Backend Developer Path](/docs/paths/backend-developer-path). It pairs well after a framework course like [Learn Express.js](/docs/courses/javascript/expressjs), where the auth and input topics map directly onto code you can already write.
 
+## Free or Pro
 
-## Related Courses
+This is a Pro course, so it needs a Scrimba subscription. Pro also covers the full career paths, the coding challenges, the Discord, and certificates. See [current plans](https://scrimba.com/our-pricing) for what Pro costs in your region.
 
-- [Advanced JavaScript Tutorial](/docs/courses/javascript/advanced-javascript)
-- [How to Learn JavaScript](/docs/courses/javascript/how-to-learn-javascript-complete-beginners-guide)
-- [A Space Travel Website](/docs/courses/javascript/a-space-travel-website)
+## Strengths and limits
 
-## Practice & Learn More
+What it does well: it teaches the security topics that genuinely bite working developers, it is co-taught with code throughout, and it covers input safety and rate limiting in real depth rather than a passing mention.
 
-- [Practice JavaScript Arrays](/docs/practice/practice-javascript-arrays)
-- [Practice API Calls](/docs/practice/practice-api-calls)
-- [How Long Does It Take to Learn Coding?](/docs/how-it-works/learning-speed)
-- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy) | [All Comparisons](/docs/comparisons/)
+Where it is limited: the broad name oversells the scope, since this is app security rather than general cybersecurity; it assumes you can already build apps; and it sits behind Pro.
 
-## Related Pages
+## Related courses and comparisons
 
-- [JavaScript Courses](/docs/courses/javascript/)
-- [All Courses](/docs/courses/)
-- [Scrimba Pricing](/docs/pricing/) | [Pro vs Free](/docs/pricing/pro-vs-free)
-- [Scrimba Review 2026](/blog/scrimba-review)
+- [Learn Express.js](/docs/courses/javascript/expressjs), where the auth topics apply directly
+- [Learn Node.js](/docs/courses/javascript/nodejs), the backend foundation
+- [Learn Firebase](/docs/courses/javascript/firebase), for managed auth and data
+- [Scrimba vs Boot.dev](/docs/comparisons/scrimba-vs-boot-dev), if you are weighing backend-focused platforms
 
 <FAQAccordion items={[
-  { q: "Is Learn Cybersecurity free on Scrimba?", a: "This course requires a [Scrimba Pro](/docs/pricing/) subscription. Pro gives you access to 74+ courses, a certificate of completion, and access to the Discord community. Check the [pricing page](/docs/pricing/) for current rates." },
-  { q: "How long does Learn Cybersecurity take to complete?", a: "The course contains 5.0 hrs of interactive screencasts. Since you can pause and code along at your own pace, most learners finish in 1-2 weeks of regular practice." },
-  { q: "What will I build in this course?", a: "You will build practical projects using Learn Cybersecurity concepts. Scrimba's interactive format lets you modify the instructor's code directly in the browser." },
+  { q: "Is Learn Cybersecurity free?", a: "No. It is a Scrimba Pro course, so it requires a subscription. Pro also unlocks the career paths, challenges, and certificates." },
+  { q: "Is this a general cybersecurity course?", a: "No. It is application security for developers, covering authentication, input safety, and rate limiting. It does not cover network security, ethical hacking, or security certifications." },
+  { q: "Who teaches it?", a: "It is co-taught by Rachel Johnson and Jonathan Hill, with hands-on code throughout the Scrimba player." },
+  { q: "Do I need backend experience?", a: "It helps. Several examples are server-side, and the material assumes you understand how requests, auth, and user input flow through an app. A framework like Express is good background." },
+  { q: "How long does it take?", a: "About 5 hours of interactive content. Most learners spread it over one to two weeks of regular practice." },
 ]} />
 
-<PricingCTA
-  title="Start Learn Cybersecurity"
-  subtitle="Get access to Learn Cybersecurity and 74+ more interactive courses with Scrimba Pro."
+<AffiliateLink href="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9" variant="button">
+  View Learn Cybersecurity on Scrimba
+</AffiliateLink>
+
+<CourseSchema
+  name="Learn Cybersecurity"
+  description="Scrimba's Pro-tier application security course co-taught by Rachel Johnson and Jonathan Hill. About 5 hours on authentication, input safety, and rate limiting."
+  url="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9"
+  timeRequired="PT4H57M"
+  difficulty="Intermediate"
+  access="Pro"
+  keywords={["Backend"]}
+  modules={[
+    { name: 'Think Like a Security-Minded Developer', duration: '30 min' },
+    { name: 'Authentication and Identity', duration: '67 min' },
+    { name: 'Input & Data Safety', duration: '101 min' },
+    { name: 'Rate Limiting & Throttling', duration: '98 min' },
+  ]}
 />
