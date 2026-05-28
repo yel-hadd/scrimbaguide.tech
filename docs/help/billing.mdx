@@ -3,10 +3,13 @@ title: "Scrimba Billing & Payments"
 description: "Answers to Scrimba billing questions: pricing, refunds, payment methods, student discounts, subscription management, and more."
 keywords: [scrimba billing, scrimba payment, scrimba refund, scrimba subscription]
 hideGlobalPricingCta: true
+last_update:
+  date: 2026-05-28
 ---
 
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import PricingCTA from '@site/src/components/PricingCTA';
+import { freeCount } from '@site/src/utils/scrimbaFacts';
 
 # Scrimba Billing & Payments
 
@@ -18,6 +21,17 @@ For the full plan breakdown, see [Pro vs Free](/docs/pricing/pro-vs-free). For c
 
 Subscribers or potential subscribers with billing questions: pricing, refunds, payment methods, student discounts, or subscription management.
 
+## How Scrimba billing works in one minute
+
+There is only one paid product: Pro. There is no per-course purchase and no lifetime buyout, so every billing question reduces to how you pay for Pro and how you stop.
+
+- **Two billing cycles.** Monthly or annual. Annual works out to roughly half the per-month rate, so if you will study for three months or more, annual is the cheaper unit. Weigh it on the [Pro vs Free comparison](/docs/pricing/pro-vs-free).
+- **Region-aware pricing.** Scrimba applies purchasing-power parity automatically, so the price you see can be lower than the headline rate depending on your country. No coupon needed.
+- **One renewal switch.** A subscription renews until you cancel. Cancelling stops the next charge but keeps your access to the end of the period; it does not refund the current term. The two actions are different, and the [refund policy](/docs/pricing/refund-policy) lays out which one returns money.
+- **Your progress is yours.** Cancel, lapse, and resubscribe months later, and your completed lessons are still on your account.
+
+If you only remember one thing: try the [free tier](/docs/pricing/pro-vs-free) first, pick annual once you are confident, and you keep the 7-day refund window on that first charge either way.
+
 ## Fast Navigation
 
 - **Need current plan pricing?** Check [Scrimba Pricing](/docs/pricing/) first, then use the FAQs below for edge cases.
@@ -28,7 +42,7 @@ Subscribers or potential subscribers with billing questions: pricing, refunds, p
 <FAQAccordion title="Pricing & Plans" items={[
   { q: "How much does Scrimba Pro cost?", a: "Monthly or annual subscription. Annual is roughly half the per-month rate of monthly. Live numbers shift by region and promotion, so check scrimba.com/our-pricing for your current price.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/72-how-much-does-scrimba-cost" },
   { q: "How do I claim the 20% Pro discount?", a: "Open checkout through the partner link on this site; the discount applies to eligible Pro plans automatically. If it does not show at checkout, see the 2026 discount guide for the current state.", sourceUrl: "https://scrimbaguide.tech/blog/scrimba-discount-codes-2026" },
-  { q: "What's the difference between Pro and Free?", a: "Pro unlocks all courses, the four career paths, unlimited challenges, the private Discord, and path certificates. Free gives roughly 19 full courses and 10 interactive challenges total across the platform. Full breakdown on the Pro vs Free page.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/73-whats-the-difference-between-pro-and-free" },
+  { q: "What's the difference between Pro and Free?", a: `Pro unlocks all courses, the four career paths, unlimited challenges, the private Discord, and path certificates. Free gives roughly ${freeCount} full courses and 10 interactive challenges total across the platform. Full breakdown on the Pro vs Free page.`, sourceUrl: "https://scrimba.helpscoutdocs.com/article/73-whats-the-difference-between-pro-and-free" },
   { q: "Can I purchase a single course instead of subscribing?", a: "No. Scrimba is subscription-only; there is no per-course purchase option.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/21-can-i-purchase-a-single-course-instead-of-subscribing" },
   { q: "Do I get access to all courses when I subscribe?", a: "Yes. One Pro subscription covers all current and future Pro courses across the platform.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/24-do-i-get-access-to-all-content-when-i-subscribe" },
 ]} />

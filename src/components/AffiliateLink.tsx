@@ -60,11 +60,15 @@ export default function AffiliateLink({
     return child;
   });
 
+  const rel = url.includes('scrimba.com')
+    ? 'nofollow noopener noreferrer'
+    : 'noopener noreferrer';
+
   return (
     <a
       href={url}
       target="_blank"
-      rel="noopener noreferrer"
+      rel={rel}
       className={`${baseClass} ${variantClass} ${className}`.trim()}
       onClick={handleClick}
     >
