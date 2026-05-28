@@ -1,115 +1,45 @@
 ---
 hideGlobalPricingCta: true
 title: "Scrimba TypeScript Courses"
-description: "Review of Scrimba's Learn TypeScript course. About 4.2 hours, free, covering TS fundamentals, TS in React, and TS in Express with a project."
+description: "Scrimba's TypeScript catalog centers on one free 4.2-hour course covering TS fundamentals, TS in React, and TS in Express. Here is what it covers and where it fits."
 keywords: [scrimba typescript, learn typescript scrimba, typescript course, scrimba typescript review]
 slug: /courses/typescript
+last_update:
+  date: 2026-05-28
 ---
 
-import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 
 # Scrimba TypeScript Courses
 
-**Quick answer:** Scrimba's TypeScript hub is built around one free 4.2-hour intermediate course taught by Bob Ziroll and Rachel Johnson. It covers fundamentals, TypeScript in React, and TypeScript in Express, plus a short project. It is best if you already know JavaScript and want types, safer refactors, and the credential most job postings list for React and Node roles.
+Scrimba treats TypeScript as a layer on top of the JavaScript you already write, not a separate language reboot. The catalog is one focused, free course tied to the React and Node stacks teams actually ship.
 
-*Last reviewed: March 2026. Reviewed by the ScrimbaGuide catalog team.*
+## Where to start
 
-<CourseCard
-  title="Learn TypeScript"
-  duration="4.2 hrs"
-  difficulty="Intermediate"
-  access="Free"
-  lessons={79}
-  href="https://scrimba.com/learn-typescript-c03c?via=u42d4986"
-  description="The essential building blocks of TypeScript. Covers TS fundamentals, TS in React, TS in Express, plus a hands-on project. Free."
-/>
+There is one course here: the free [Learn TypeScript](/docs/courses/typescript/learn-typescript) (4.2 hrs). It covers type fundamentals, TypeScript in React, and TypeScript in Express, plus a hands-on project. It assumes you already know JavaScript, so do a JS course first if you do not.
 
-## What makes TypeScript on Scrimba distinctive
+## All TypeScript courses
 
-Scrimba treats TypeScript as a layer on the JavaScript you already use in the browser and on Node, not a separate language reboot. The flagship [Learn TypeScript](/docs/courses/typescript/learn-typescript) course is free, about 4.2 hours, and tied to real stacks (React components and Express-style backends).
+| Course | Level | Access | Length |
+|---|---|---|---|
+| [Learn TypeScript](/docs/courses/typescript/learn-typescript) | Intermediate | Free | 4.2 hrs |
 
-The interactive editor matches how you learn types on the job. You change code, see compiler feedback fast, and fix issues before they ship. That pairs well with Scrimba's JavaScript and React catalog, so you can move from JS to typed code without changing how you study.
+## How to progress
 
-TypeScript shows up inside the [Fullstack Developer Path](/docs/paths/fullstack-developer-path) and [Backend Developer Path](/docs/paths/backend-developer-path), which reflects hiring reality: many React and Node job posts expect TypeScript today.
+The prerequisite is JavaScript: run [Learn JavaScript](/docs/courses/javascript/learn-javascript) first if you have not, then [Learn TypeScript](/docs/courses/typescript/learn-typescript) to add types, safer refactors, and the credential most React and Node job posts list. After that, apply it in the framework courses on the [React](/docs/courses/react/) and [backend](/docs/courses/backend/) hubs.
 
-## Who this is for
+## Where it fits
 
-- JavaScript developers adding types for work or interviews
-- Career switchers who finished core JS and want the credential most job posts list
-- Developers who use AI-assisted coding and need to read and fix type errors when generated code drifts
+TypeScript modules appear inside the [Fullstack Developer Path](/docs/paths/fullstack-developer-path) and the [Backend Developer Path](/docs/paths/backend-developer-path), which reflects hiring reality. Browse every track on the [Learning Paths hub](/docs/paths/).
 
-This course is not the starting point if you have never written JavaScript. Do a JS course first, then return.
+## Related
 
-## Why TypeScript at all
-
-TypeScript is JavaScript with static types. It catches a class of bugs at compile time instead of runtime: typos, wrong argument types, missing properties on objects. In 2026 it is the default for new React and Next.js projects, and the [official TypeScript handbook](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html) puts the prerequisite plainly: you cannot learn TypeScript without first knowing JavaScript.
-
-## What you will learn
-
-- Type inference: how TypeScript infers types when you do not annotate
-- Union types: `string | number` for values that can be either
-- Interfaces vs types: defining object shapes and reusable types
-- Generics: `<T>` for reusable, type-safe functions and components
-- Utility types: `Partial`, `Pick`, `Omit`, and others
-
-## TypeScript with React
-
-The course covers typing React components: props interfaces, generic components, and event handlers. For example:
-
-```tsx
-interface ButtonProps {
-  label: string;
-  onClick: () => void;
-}
-
-function Button({ label, onClick }: ButtonProps) {
-  return <button onClick={onClick}>{label}</button>;
-}
-```
-
-## TypeScript with Express
-
-You will type Express routes, request and response objects, and middleware, which matters for building backends where the request shape is enforced before logic runs.
-
-## TypeScript inside the learning paths
-
-TypeScript modules appear in:
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path)
-- [Backend Developer Path](/docs/paths/backend-developer-path)
-
-## Bridges for what Scrimba does not cover
-
-Scrimba ships one TypeScript course. For depth past the 4.2 hours:
-
-- **Advanced types and inference.** Bridge: Matt Pocock's free [Total TypeScript essentials](https://www.totaltypescript.com/tutorials) is the standard resource for generics, conditional types, and inference puzzles.
-- **TS for library authors.** Bridge: the [official TypeScript handbook](https://www.typescriptlang.org/docs/handbook/intro.html) and Anders Hejlsberg's [TSConf talks on YouTube](https://www.youtube.com/results?search_query=anders+hejlsberg+tsconf).
-- **TS in build tooling.** Bridge: the [tsup docs](https://tsup.egoist.dev/) and [tsconfig/bases](https://github.com/tsconfig/bases) for production configs.
-
-For a third-party take on the flagship, see Bob Ziroll's [freeCodeCamp posts](https://www.freecodecamp.org/news/author/bobziroll/) and community write-ups under the [dev.to #typescript tag](https://dev.to/t/typescript).
-
-## Choose this if
-
-- You know JavaScript and want type safety, clearer APIs, and fewer production surprises
-- You are working through the Fullstack or Backend path and need the TypeScript modules
-- You hit TypeScript errors in frameworks or AI output and want a short, hands-on path to fluency
-
-## Sources
-
-- [Scrimba: Learn TypeScript course page](https://scrimba.com/learn-typescript-c03c?via=u42d4986)
-- [TypeScript handbook](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)
-- [Scrimba Fullstack Developer Path](/docs/paths/fullstack-developer-path)
-
-## Related pages
-
-- [Learn TypeScript (course detail)](/docs/courses/typescript/learn-typescript)
+- [JavaScript courses](/docs/courses/javascript/), [React courses](/docs/courses/react/), and [backend courses](/docs/courses/backend/)
 - [Practice TypeScript](/docs/practice/practice-typescript)
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path) | [Backend Developer Path](/docs/paths/backend-developer-path)
-- [JavaScript Courses](/docs/courses/javascript/) | [React Courses](/docs/courses/react/) | [Backend Courses](/docs/courses/backend/)
-- [All Courses](/docs/courses/) | [Scrimba pricing](/docs/pricing/)
+- [All courses](/docs/courses/) and [Scrimba pricing](/docs/pricing/)
 
 <PricingCTA
   title="Start Learn TypeScript for free"
-  subtitle="No credit card required. The course is free; you can upgrade to Pro later for paths and unlimited challenges."
+  subtitle="The course is free with no credit card. Upgrade to Pro later for the paths and unlimited challenges."
   ctaType="free"
 />
