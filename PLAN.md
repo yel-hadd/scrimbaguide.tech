@@ -22,6 +22,28 @@
 
 ---
 
+## Session update (2026-05-28 continued) — Waves 0-2, 4, 6 SHIPPED
+
+Branch `ranking-waves-0-2`. Build green via `npx docusaurus build`; `check:content` guardrails pass.
+
+- ✅ **Waves 0/1** committed (`a051c54`): AffiliateLink `rel=nofollow`; 3 comparison freshness dates.
+- ✅ **Wave 2** committed (`a051c54`):
+  - Backend hours blocker RESOLVED: **39.4h is canonical** (data + page + `check:content` agree; "30.1h" was a stale audit sum, not a real bug). No change needed.
+  - AI path module count fixed 8 → **9** on `paths/index` (matches data + `ai-engineer-path.mdx`).
+  - `last_update` on `paths/index` + `faq/index`; removed Scrimba price language → pricing links.
+  - FAQ: legit/scam/beginner framing + Trustpilot/Class Central trust signals, internal links, in-body affiliate demo CTA.
+  - `CourseSchema` (correct `timeRequired`) on all 4 path pages; `ItemListSchema` + in-body CTA on `paths/index`.
+- ✅ **Wave 4** committed (`f6baa2a`): pricing/index (freeCount, sourced bootcamp range, "cheapest legit way" Q), pro-vs-free (free-tier walkthrough + decision flow), refund-policy (HowTo schema, refund-vs-cancel table, Trustpilot note), student-discount (3-option table, promo-timing patterns), scrimba-vs-bootcamps (sourced named-bootcamp table + job-guarantee fine print), study-plan (HowTo schema, Fullstack extension, printable checklist, catalog links).
+- ✅ **Wave 6** committed (`554e433`): `last_update` on 5 pages; billing depth section + freeCount fix; how-scrims-work HowTo schema.
+
+### DEFERRED by user choice (still open)
+- ⏸️ **Wave 3** (course generator + 79 pages): NOT done. Still gated by the STALE GENERATOR blocker (running `make generate-pages` would clobber hand-written course pages). Reconcile prose into `data/courses.json` or rework the generator before regenerating.
+- ⏸️ **Wave 5** (cannibalization redirects): NOT done. learn-react/*, learn-nextjs/*, practice/* consolidation via `@docusaurus/plugin-client-redirects` + `SITEMAP_EXCLUDED_PATHS`. Changes live URLs, so left for a deliberate pass.
+
+**Next:** open a PR for `ranking-waves-0-2`, then tackle Wave 3 (carefully) and Wave 5 when ready.
+
+---
+
 ## Remaining Waves (2-6)
 
 ### Wave 2 — Paths (6) + FAQ
