@@ -12,8 +12,6 @@ import BlogPostPaginator from '@theme/BlogPostPaginator';
 import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import TOC from '@theme/TOC';
 import ContentVisibility from '@theme/ContentVisibility';
-import BlogContextualCta from '@site/src/components/BlogContextualCta';
-import EmailCapture from '@site/src/components/EmailCapture';
 import DesktopStickyCTA from '@site/src/components/DesktopStickyCTA';
 
 function BlogPostPageContent({
@@ -47,11 +45,6 @@ function BlogPostPageContent({
       <ContentVisibility metadata={metadata} />
 
       <BlogPostItem>{children}</BlogPostItem>
-
-      <div className="container margin-vert--lg">
-        <BlogContextualCta />
-        <EmailCapture variant="blog" />
-      </div>
 
       {(nextItem || prevItem) && (
         <BlogPostPaginator nextItem={nextItem} prevItem={prevItem} />

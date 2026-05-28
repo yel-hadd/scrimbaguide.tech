@@ -87,12 +87,19 @@ function DocSeoHead(): React.ReactElement {
 function DocAffiliateCta({ pathname }: { pathname: string }): React.ReactElement | null {
   const { frontMatter } = useDoc();
   const fm = frontMatter as DocAffiliateFrontMatter;
-  // Suppress on pricing pages (own CTAs), comparison detail pages (VerdictBox has its
-  // own CTA, so the auto-injected one would stack), and any doc that opts out via
-  // hideGlobalPricingCta front matter.
+  // Suppress where the page already carries its own conversion CTA, so the
+  // auto-injected one never stacks beneath another: pricing pages (own CTAs),
+  // comparison detail pages (VerdictBox CTA), course pages (course-detail pages
+  // end with a contextual affiliate button; hubs have their own PricingCTA), and
+  // any doc that opts out via the hideGlobalPricingCta front matter.
   const isComparisonDetail =
     pathname.startsWith('/docs/comparisons/') && pathname !== '/docs/comparisons/';
-  if (pathname.startsWith('/docs/pricing/') || isComparisonDetail || fm.hideGlobalPricingCta) {
+  if (
+    pathname.startsWith('/docs/pricing/') ||
+    pathname.startsWith('/docs/courses/') ||
+    isComparisonDetail ||
+    fm.hideGlobalPricingCta
+  ) {
     return null;
   }
 
