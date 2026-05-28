@@ -12,6 +12,8 @@ keywords:
     scrimba ai engineer path,
   ]
 slug: /paths
+last_update:
+  date: 2026-05-28
 affiliateCtaTitle: "Start building your portfolio today"
 affiliateCtaSubtitle: "Try the interactive scrim format on free courses, then unlock the full career path with Pro. Use our partner link for 20% off when you upgrade."
 affiliateCtaButtonText: "Try Scrimba Free"
@@ -22,14 +24,27 @@ affiliateCtaShowDiscountNote: false
 import PathAdvisor from '@site/src/components/PathAdvisor';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import ItemListSchema from '@site/src/components/ItemListSchema';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
 <div className="path-landing">
+
+<ItemListSchema
+  name="Scrimba Learning Paths"
+  description="The four Pro career tracks on Scrimba: Frontend, Fullstack, Backend, and AI Engineer."
+  items={[
+    { name: "Frontend Developer Path", url: "/docs/paths/frontend-developer-path", description: "81.6 hours, 13 modules. Best for a first web dev job." },
+    { name: "Fullstack Developer Path", url: "/docs/paths/fullstack-developer-path", description: "108.4 hours, 20 modules. Widest end-to-end track." },
+    { name: "Backend Developer Path", url: "/docs/paths/backend-developer-path", description: "39.4 hours, 12 modules. Adds servers and SQL to frontend skills." },
+    { name: "AI Engineer Path", url: "/docs/paths/ai-engineer-path", description: "11.4 hours, 9 modules. Agents, RAG, and MCP for JS developers." },
+  ]}
+/>
 
 # Scrimba Learning Paths
 
 **What are the Scrimba Learning Paths?** Scrimba runs four Pro-only career tracks: Frontend (81.6 hours), Fullstack (108.4 hours), Backend (39.4 hours), and AI Engineer (11.4 hours). The Frontend path is built with Mozilla MDN; you work in the browser on real projects instead of only watching videos.
 
-Latest BLS and Stack Overflow compensation datasets still support the same directional takeaway in 2026: web and software roles remain well-paid, but outcomes vary heavily by city, stack, and seniority. Pro is roughly $200 a year. Bootcamps with overlapping topics often land in the five-figure range, so the math depends on whether you need structure and deadlines or you’re fine self-paced.
+Latest BLS and Stack Overflow compensation datasets still support the same directional takeaway in 2026: web and software roles remain well-paid, but outcomes vary heavily by city, stack, and seniority. Pro is a flat annual subscription ([see current Scrimba pricing](/docs/pricing/)). Bootcamps with overlapping topics often land in the five-figure range, so the math depends on whether you need structure and deadlines or you’re fine self-paced.
 
 ## How to use this page (30 seconds)
 
@@ -46,12 +61,18 @@ Latest BLS and Stack Overflow compensation datasets still support the same direc
 | Feature | [Frontend Developer](/docs/paths/frontend-developer-path) | [Fullstack Developer](/docs/paths/fullstack-developer-path) | [Backend Developer](/docs/paths/backend-developer-path) | [AI Engineer](/docs/paths/ai-engineer-path) |
 | :--- | :--- | :--- | :--- | :--- |
 | **Duration** | 81.6 hours | 108.4 hours | 39.4 hours | 11.4 hours |
-| **Modules** | 13 | 20 | 12 | 8 |
+| **Modules** | 13 | 20 | 12 | 9 |
 | **Experience Level** | Complete Beginner | Beginner (Long Track) | Intermediate | Intermediate |
 | **Core Technologies** | HTML, CSS, JS, React | React, Node, SQL, Next.js | Node, Express, SQL | Agents, RAG, MCP |
 | **Best For** | First job in web dev, building UI portfolios | Maximum breadth, end-to-end apps | Adding server skills to frontend knowledge | Shipping AI features in web apps |
 
 **Reality check:** These hours are curriculum estimates. Your actual completion time will depend on your schedule, repetition, and the depth of your portfolio projects.
+
+<div className="mdx-widget-center-cta mdx-widget-center-cta--spaced-bottom">
+  <AffiliateLink href="https://scrimba.com/s0v687325e" variant="button" location="paths-index-demo">
+    Try a free interactive scrim first (no signup)
+  </AffiliateLink>
+</div>
 
 ## Who each path is for (2026)
 
@@ -110,7 +131,7 @@ All career paths require **Scrimba Pro**. Check [Scrimba pricing](/docs/pricing/
   { q: "Do I need the Backend path if I chose Fullstack?", a: "Usually no. Fullstack already includes backend modules. Choose the Backend path when you want a tighter, backend-focused track without repeating all frontend content." },
   { q: "How many hours a week do I need for Scrimba?", a: "There is no magic number. Consistency beats bursts, especially if you work full-time. Aim for 10-15 hours a week to maintain momentum without burning out." },
   { q: "Are Scrimba paths worth Pro?", a: "If you will follow a structured track for several months, Pro is usually worth it because paths bundle the curriculum and projects you would otherwise assemble manually." },
-  { q: "Is Scrimba better than a bootcamp?", a: "Scrimba is much cheaper (roughly $200/year vs five figures for many bootcamps) and the material can overlap. Bootcamps add cohort pressure and live help; Scrimba leaves pacing and accountability to you." }
+  { q: "Is Scrimba better than a bootcamp?", a: "Scrimba is far cheaper than most bootcamps (a flat annual Pro subscription versus five figures for many bootcamps) and the material can overlap. Bootcamps add cohort pressure and live help; Scrimba leaves pacing and accountability to you." }
 ]} />
 
 <FAQAccordion emitSchema={false}
@@ -142,7 +163,7 @@ All career paths require **Scrimba Pro**. Check [Scrimba pricing](/docs/pricing/
     },
     {
       q: 'Is Scrimba better than a bootcamp?',
-      a: 'Scrimba is much cheaper (roughly $200/year vs five figures for many bootcamps) and the material can overlap. Bootcamps add cohort pressure and live help; Scrimba leaves pacing and accountability to you.',
+      a: 'Scrimba is far cheaper than most bootcamps (a flat annual Pro subscription versus five figures for many bootcamps) and the material can overlap. Bootcamps add cohort pressure and live help; Scrimba leaves pacing and accountability to you.',
     },
   ]}
 />
