@@ -508,14 +508,17 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        // Paths and Courses are the two primary content pillars (and the main
+        // conversion funnel), so they sit top-level rather than buried in a
+        // dropdown. Secondary info pages stay grouped under "Learn".
+        { to: '/docs/paths/', label: 'Paths', position: 'left' },
+        { to: '/docs/courses/', label: 'Courses', position: 'left' },
         {
           type: 'dropdown',
           label: 'Learn',
           position: 'left',
           items: [
             { to: '/docs/intro', label: 'What is Scrimba?' },
-            { to: '/docs/paths/', label: 'Learning Paths' },
-            { to: '/docs/courses/', label: 'Courses' },
             { to: '/docs/comparisons/', label: 'Comparisons' },
             { to: '/docs/pricing/', label: 'Pricing' },
             { to: '/docs/faq/', label: 'FAQ' },
