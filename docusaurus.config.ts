@@ -35,6 +35,12 @@ const SITEMAP_EXCLUDED_PATHS = new Set<string>([
   '/docs/udemy/best-udemy-python-courses',
   '/docs/udemy/best-udemy-web-development-courses',
   '/docs/udemy/best-udemy-ai-courses',
+  // Blog cluster consolidation (2026-05-28): merged into pillars, now redirect stubs.
+  '/blog/escape-tutorial-hell-scrimba',
+  '/blog/vibe-coding-guide',
+  '/blog/vibe-coding-javascript-survival-guide-2026',
+  '/blog/how-to-get-hired-with-scrimba',
+  '/blog/learn-to-code-full-time-job',
 ]);
 
 /**
@@ -336,6 +342,28 @@ const config: Config = {
           {
             from: '/blog/how-to-learn-javascript-2026',
             to: '/docs/courses/javascript/',
+          },
+          // Blog cluster consolidation (2026-05-28): cannibalizing posts merged
+          // into pillars (tutorial hell, vibe coding, get hired).
+          {
+            from: '/blog/escape-tutorial-hell-scrimba',
+            to: '/blog/how-to-escape-tutorial-hell-2026/',
+          },
+          {
+            from: '/blog/vibe-coding-guide',
+            to: '/blog/what-is-vibe-coding-2026/',
+          },
+          {
+            from: '/blog/vibe-coding-javascript-survival-guide-2026',
+            to: '/blog/what-is-vibe-coding-2026/',
+          },
+          {
+            from: '/blog/how-to-get-hired-with-scrimba',
+            to: '/blog/how-to-get-first-developer-job-2026/',
+          },
+          {
+            from: '/blog/learn-to-code-full-time-job',
+            to: '/blog/how-to-get-first-developer-job-2026/',
           },
           // Udemy guides moved from /docs/udemy/* to /blog/* (2026-05-24).
           {

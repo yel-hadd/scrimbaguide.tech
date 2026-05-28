@@ -25,8 +25,12 @@ export default function HeaderWrapper(props: Props): React.JSX.Element {
     typeof metadataWithUpdate.lastUpdatedAt === 'number'
       ? new Date(metadataWithUpdate.lastUpdatedAt).toISOString()
       : metadataWithUpdate.lastUpdatedAt;
+  const frontMatterLastUpdate = (fm.last_update as {date?: string} | undefined)?.date;
   const modifiedIso =
-    normalizedLastUpdatedAt ?? metadataWithUpdate.lastUpdated ?? metadata.date;
+    frontMatterLastUpdate ??
+    normalizedLastUpdatedAt ??
+    metadataWithUpdate.lastUpdated ??
+    metadata.date;
   const modifiedDate = new Date(modifiedIso);
   const hasValidModifiedDate = !Number.isNaN(modifiedDate.getTime());
   const formattedModifiedDate = hasValidModifiedDate

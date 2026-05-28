@@ -28,7 +28,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: '6-Month Study Plan', href: '/docs/paths/study-plan', type: 'doc' },
     { title: 'Success Stories', href: '/blog/scrimba-success-stories', type: 'blog' },
   ],
-  '/blog/escape-tutorial-hell-scrimba': [
+  '/blog/how-to-escape-tutorial-hell-2026': [
     { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
     { title: 'Scrimba vs YouTube', href: '/docs/comparisons/scrimba-vs-youtube', type: 'comparison' },
     { title: 'Build a Coding Habit', href: '/blog/build-coding-habit-scrimba', type: 'blog' },
@@ -89,7 +89,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
   ],
   '/docs/comparisons/scrimba-vs-youtube': [
-    { title: 'Escape Tutorial Hell', href: '/blog/escape-tutorial-hell-scrimba', type: 'blog' },
+    { title: 'Escape Tutorial Hell', href: '/blog/how-to-escape-tutorial-hell-2026', type: 'blog' },
     { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
   ],
