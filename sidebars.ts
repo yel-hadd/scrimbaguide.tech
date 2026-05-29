@@ -18,40 +18,20 @@ const sidebars: SidebarsConfig = {
         'how-it-works/tutorial-hell',
       ],
     },
-    // 3. Pricing
+    // 3. Who It's For (orientation / self-select, with hub landing page)
     {
       type: 'category',
-      label: 'Pricing',
-      link: { type: 'doc', id: 'pricing/index' },
+      label: "Who It's For",
+      link: { type: 'doc', id: 'for/index' },
       items: [
-        'pricing/pro-vs-free',
-        'pricing/student-discount',
-        'pricing/refund-policy',
-        'pricing/scrimba-vs-bootcamps',
+        'for/beginners',
+        'for/cs-students',
+        'for/designers',
+        'for/marketers',
+        'for/busy-professionals',
       ],
     },
-    // 4. Scrimba vs Alternatives
-    {
-      type: 'category',
-      label: 'Scrimba vs Alternatives',
-      link: { type: 'doc', id: 'comparisons/index' },
-      items: [
-        'comparisons/scrimba-vs-codecademy',
-        'comparisons/scrimba-vs-udemy',
-        'comparisons/scrimba-vs-freecodecamp',
-        'comparisons/scrimba-vs-coursera',
-        'comparisons/scrimba-vs-odin-project',
-        'comparisons/scrimba-vs-youtube',
-        'comparisons/scrimba-vs-frontendmasters',
-        'comparisons/scrimba-vs-boot-dev',
-        'comparisons/scrimba-vs-treehouse',
-        'comparisons/scrimba-vs-zerotomastery',
-        'comparisons/scrimba-vs-pluralsight',
-        'comparisons/scrimba-vs-educative',
-        'comparisons/scrimba-vs-fireship',
-      ],
-    },
-    // 5. Learning Paths
+    // 4. Learning Paths
     {
       type: 'category',
       label: 'Learning Paths',
@@ -64,19 +44,7 @@ const sidebars: SidebarsConfig = {
         'paths/study-plan',
       ],
     },
-    // 6. Who It's For
-    {
-      type: 'category',
-      label: "Who It's For",
-      items: [
-        'for/beginners',
-        'for/cs-students',
-        'for/designers',
-        'for/marketers',
-        'for/busy-professionals',
-      ],
-    },
-    // 7. Courses by Topic
+    // 5. Courses by Topic
     {
       type: 'category',
       label: 'Courses by Topic',
@@ -126,10 +94,11 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
-    // 8. Practice
+    // 6. Practice (with hub landing page)
     {
       type: 'category',
       label: 'Practice',
+      link: { type: 'doc', id: 'practice/index' },
       items: [
         'practice/practice-css-grid',
         'practice/practice-flexbox',
@@ -144,11 +113,50 @@ const sidebars: SidebarsConfig = {
         'practice/build-a-weather-app-interactively',
       ],
     },
-    // 9. React Roadmap (leaf concept pages consolidated into the index, 2026-05-29)
-    'learn-react/index',
-    // 10. Next.js Roadmap (leaf concept pages consolidated into the index, 2026-05-29)
-    'learn-nextjs/index',
-    // 11. Help & Support
+    // 7. Free Roadmaps (React + Next.js; leaf concept pages consolidated into
+    // each index on 2026-05-29, so each roadmap is now a single hub page)
+    {
+      type: 'category',
+      label: 'Free Roadmaps',
+      items: [
+        'learn-react/index',
+        'learn-nextjs/index',
+      ],
+    },
+    // 8. Scrimba vs Alternatives (decision stage)
+    {
+      type: 'category',
+      label: 'Scrimba vs Alternatives',
+      link: { type: 'doc', id: 'comparisons/index' },
+      items: [
+        'comparisons/scrimba-vs-codecademy',
+        'comparisons/scrimba-vs-udemy',
+        'comparisons/scrimba-vs-freecodecamp',
+        'comparisons/scrimba-vs-coursera',
+        'comparisons/scrimba-vs-odin-project',
+        'comparisons/scrimba-vs-youtube',
+        'comparisons/scrimba-vs-frontendmasters',
+        'comparisons/scrimba-vs-boot-dev',
+        'comparisons/scrimba-vs-treehouse',
+        'comparisons/scrimba-vs-zerotomastery',
+        'comparisons/scrimba-vs-pluralsight',
+        'comparisons/scrimba-vs-educative',
+        'comparisons/scrimba-vs-fireship',
+      ],
+    },
+    // 9. Pricing (commitment stage)
+    {
+      type: 'category',
+      label: 'Pricing',
+      link: { type: 'doc', id: 'pricing/index' },
+      items: [
+        'pricing/pro-vs-free',
+        'pricing/student-discount',
+        'pricing/refund-policy',
+        'pricing/scrimba-vs-bootcamps',
+      ],
+    },
+    // 10. Help & Support
     {
       type: 'category',
       label: 'Help & Support',
@@ -158,9 +166,9 @@ const sidebars: SidebarsConfig = {
         'help/community-and-events',
       ],
     },
-    // 12. FAQ (curated hub linking to the distributed answers)
+    // 11. FAQ (curated hub linking to the distributed answers)
     'faq/index',
-    // 13. Updates
+    // 12. Updates
     {
       type: 'category',
       label: 'Updates',
