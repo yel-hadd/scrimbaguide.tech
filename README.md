@@ -9,13 +9,12 @@ scrimbaguide.tech/
 ├── scraper/                          # Python scraper (Selenium)
 │   ├── scrape.py                     #   Main scraping script
 │   └── requirements.txt              #   Python dependencies
-├── scripts/                          # Node.js content generators
-│   ├── build-data.mjs                #   output/index.json → data/*.json
-│   └── generate-course-pages.mjs     #   data/courses.json → docs/courses/**/*.mdx
+├── scripts/                          # Node.js data + build scripts
+│   └── build-data.mjs                #   output/index.json → data/*.json (runtime data)
 ├── blog/                             # Blog posts (MDX, date-prefixed)
-├── docs/                             # Documentation pages (MDX)
+├── docs/                             # Documentation pages (MDX, hand-authored)
 │   ├── comparisons/                  #   Platform comparison guides
-│   ├── courses/{react,js,ai,...}/    #   Course pages by topic (generated)
+│   ├── courses/{react,js,ai,...}/    #   Course pages by topic
 │   ├── faq/                          #   FAQ & help articles
 │   ├── paths/                        #   Learning path deep-dives
 │   └── pricing/                      #   Pricing & plans guides
@@ -54,8 +53,7 @@ make scrape-resume    Resume an interrupted scrape
 make scrape-courses   Scrape only course pages
 
 make generate-data    Process scraped data → data/*.json
-make generate-pages   Generate course MDX pages from data
-make generate         Run full content generation pipeline
+make generate         Build data/*.json (pages are hand-authored)
 
 make pipeline         Run entire pipeline: scrape → generate → build
 

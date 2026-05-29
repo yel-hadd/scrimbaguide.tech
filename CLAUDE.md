@@ -16,8 +16,7 @@ make serve           # build then serve the static output
 make scrape          # full Selenium crawl of scrimba.com → output/
 make scrape-resume   # resume interrupted scrape
 make generate-data   # output/index.json → data/*.json
-make generate-pages  # data/courses.json → docs/courses/**/*.mdx
-make generate        # generate-data + generate-pages
+make generate        # generate-data (data/*.json only; pages are hand-authored)
 make pipeline        # scrape → generate → build (end-to-end)
 ```
 
@@ -38,17 +37,17 @@ This is a **Docusaurus 3** site (React 19, TypeScript) for scrimbaguide.tech, de
 
 ### Content pipeline
 
-The course catalog is not authored by hand. It flows through four stages:
+The scraper feeds a normalized data layer that runtime React components read. Pages themselves are hand-authored.
 
 ```
-scrimba.com  →  output/        →  data/*.json     →  docs/courses/**/*.mdx  →  build/
-              scraper/scrape.py    scripts/             scripts/                  docusaurus
-              (Python, Selenium)   build-data.mjs       generate-course-pages.mjs
+scrimba.com  →  output/        →  data/*.json     →  (runtime React components)
+              scraper/scrape.py    scripts/             CourseCurriculum, scrimbaFacts, …
+              (Python, Selenium)   build-data.mjs
 ```
 
 - `scraper/` is Python+Selenium, run via `.venv`. Outputs raw `index.json` and per-page markdown/PNG into `output/`.
-- `scripts/build-data.mjs` transforms scraped output into normalized `data/courses.json`, `data/help-articles.json`, `data/topics.json`, `data/practice-pages.json`.
-- `scripts/generate-course-pages.mjs` writes MDX files under `docs/courses/{react,javascript,css,ai,...}/`. These pages are **generated artifacts** — edit the generator, not the MDX. Manually authored docs live in `docs/{comparisons,faq,paths,pricing,udemy}/` and `blog/`.
+- `scripts/build-data.mjs` transforms scraped output into normalized `data/courses.json`, `data/help-articles.json`, `data/topics.json`, `data/practice-pages.json`. `data/courses.json` is consumed at runtime by `src/components/CourseCurriculum.tsx` and `src/utils/scrimbaFacts.ts` (not by a page generator).
+- **All MDX under `docs/` (including `docs/courses/**` and `docs/practice/**`) is hand-authored — edit the MDX directly.** The old `generate-course-pages.mjs` / `generate-practice-pages.mjs` generators were retired: the live pages were rewritten by hand into a stronger archetype the generators never produced, so running them would clobber the real content. Do not reintroduce page generation.
 - `scripts/generate-llms-from-sitemap.mjs` runs as part of `npm run build` to emit `llms.txt` / `llms-full.txt` from the built sitemap. It has its own test suite under `scripts/__tests__/`.
 
 ### Site config & SEO invariants

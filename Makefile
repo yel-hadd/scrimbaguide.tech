@@ -62,12 +62,10 @@ scrape-courses: $(VENV) ## Scrape only course pages
 generate-data: $(OUTPUT_DIR)/index.json ## Process scraped data → data/*.json
 	node scripts/build-data.mjs
 
-.PHONY: generate-pages
-generate-pages: data/courses.json ## Generate course MDX pages from data
-	node scripts/generate-course-pages.mjs
-
+# Course and practice pages under docs/ are hand-authored and maintained by hand.
+# build-data.mjs only produces data/*.json (consumed by runtime React components).
 .PHONY: generate
-generate: generate-data generate-pages ## Run full content generation pipeline
+generate: generate-data ## Build data/*.json from scraped output (pages are hand-authored)
 
 # ── Development ──────────────────────────────────────────────────
 
