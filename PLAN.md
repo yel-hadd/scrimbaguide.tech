@@ -79,6 +79,8 @@ Branch `ranking-waves-0-2`. Build green via `npx docusaurus build`; `check:conte
 ### Wave 3 — Course generator + 79 pages
 **Goal:** Template-level improvements that lift all 79 course pages at once
 
+> **RESOLVED (2026-05-29): the generators are retired.** `scripts/generate-course-pages.mjs` and `scripts/generate-practice-pages.mjs` were deleted and all references (CLAUDE.md, README.md, Makefile, package.json) updated; course/practice pages are now maintained by hand. The generator-coupled steps below are moot — apply any remaining template-level improvements directly to the MDX. The original blocker text is kept below as the historical record.
+
 **FIRST: resolve STALE GENERATOR blocker**
 - Live course pages were hand-rewritten into a stronger template than `scripts/generate-course-pages.mjs` produces
 - Running `make generate-pages` would clobber the improvements
