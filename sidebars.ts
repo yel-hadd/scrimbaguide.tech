@@ -144,32 +144,10 @@ const sidebars: SidebarsConfig = {
         'practice/build-a-weather-app-interactively',
       ],
     },
-    // 9. React Roadmap
-    {
-      type: 'category',
-      label: 'React Roadmap',
-      link: { type: 'doc', id: 'learn-react/index' },
-      items: [
-        'learn-react/quick-start',
-        'learn-react/describing-ui',
-        'learn-react/adding-interactivity',
-        'learn-react/managing-state',
-        'learn-react/escape-hatches',
-        'learn-react/server-components',
-      ],
-    },
-    // 10. Next.js Roadmap
-    {
-      type: 'category',
-      label: 'Next.js Roadmap',
-      link: { type: 'doc', id: 'learn-nextjs/index' },
-      items: [
-        'learn-nextjs/getting-started',
-        'learn-nextjs/routing',
-        'learn-nextjs/rendering',
-        'learn-nextjs/data-fetching',
-      ],
-    },
+    // 9. React Roadmap (leaf concept pages consolidated into the index, 2026-05-29)
+    'learn-react/index',
+    // 10. Next.js Roadmap (leaf concept pages consolidated into the index, 2026-05-29)
+    'learn-nextjs/index',
     // 11. Help & Support
     {
       type: 'category',

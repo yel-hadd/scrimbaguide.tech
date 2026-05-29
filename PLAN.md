@@ -36,11 +36,17 @@ Branch `ranking-waves-0-2`. Build green via `npx docusaurus build`; `check:conte
 - ✅ **Wave 4** committed (`f6baa2a`): pricing/index (freeCount, sourced bootcamp range, "cheapest legit way" Q), pro-vs-free (free-tier walkthrough + decision flow), refund-policy (HowTo schema, refund-vs-cancel table, Trustpilot note), student-discount (3-option table, promo-timing patterns), scrimba-vs-bootcamps (sourced named-bootcamp table + job-guarantee fine print), study-plan (HowTo schema, Fullstack extension, printable checklist, catalog links).
 - ✅ **Wave 6** committed (`554e433`): `last_update` on 5 pages; billing depth section + freeCount fix; how-scrims-work HowTo schema.
 
-### DEFERRED by user choice (still open)
-- ⏸️ **Wave 3** (course generator + 79 pages): NOT done. Still gated by the STALE GENERATOR blocker (running `make generate-pages` would clobber hand-written course pages). Reconcile prose into `data/courses.json` or rework the generator before regenerating.
-- ⏸️ **Wave 5** (cannibalization redirects): NOT done. learn-react/*, learn-nextjs/*, practice/* consolidation via `@docusaurus/plugin-client-redirects` + `SITEMAP_EXCLUDED_PATHS`. Changes live URLs, so left for a deliberate pass.
+### Waves 3 + 5 SHIPPED (2026-05-29) — branch `ranking-waves-3-5`, commit `a2a0959`
 
-**Next:** open a PR for `ranking-waves-0-2`, then tackle Wave 3 (carefully) and Wave 5 when ready.
+- ✅ **Wave 3** (manual; the course generator is retired, pages are maintained by hand):
+  - **BreadcrumbList is already emitted site-wide** by Docusaurus's built-in `DocBreadcrumbs/StructuredData` (79 course + 14 comparison pages, etc.). The Phase 1 audit's "BreadcrumbList confirmed absent" was WRONG. No swizzle needed.
+  - **OpenAI Assistants stub enriched + indexed.** Was a 464-word orphan (in `SITEMAP_EXCLUDED_DOC_ALIASES` with no canonical counterpart). Raw scrape `output/scrimba.com/course/openaiassistants/index.md` gave ground truth: **Pro, 30 min, 7 lessons, Intermediate**, Guil Hernandez (the "Free…Tutorial" SEO title misled an earlier web-search read; it's Pro with a free sample lesson). Added CourseCard + CourseSchema (`PT30M`) + verdict + depth + affiliate CTA, removed from sitemap exclusion.
+  - ReviewSchema rollout + category-aware interlinks were generator-coupled; moot now that pages are manual. Not pursued.
+- ✅ **Wave 5** (cannibalization, redirects):
+  - Consolidated 6 `learn-react/*` + 4 `learn-nextjs/*` thin concept stubs into their roadmap index pages. Mechanism: delete leaf → 301 redirect → `SITEMAP_EXCLUDED_PATHS` → sidebar simplified to single doc entries. No inbound internal links to the removed leaves.
+  - **Skipped** practice drills (they may hold long-tail rankings) and the how-it-works merges (accreditation is a substantial 7.2k page, not a stub) — deliberate, documented.
+
+**All waves (0-6) now shipped.** Realistic next steps: monitor Search Console post-deploy (`~/use-apify/indexer`); if practice-drill consolidation is still wanted, do it as a separate judged pass.
 
 ---
 
