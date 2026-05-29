@@ -41,6 +41,18 @@ const SITEMAP_EXCLUDED_PATHS = new Set<string>([
   '/blog/vibe-coding-javascript-survival-guide-2026',
   '/blog/how-to-get-hired-with-scrimba',
   '/blog/learn-to-code-full-time-job',
+  // Cannibalization cleanup (2026-05-29): React/Next.js concept stubs merged
+  // into their roadmap index; these are now redirect stubs (canonical = index).
+  '/docs/learn-react/quick-start',
+  '/docs/learn-react/describing-ui',
+  '/docs/learn-react/adding-interactivity',
+  '/docs/learn-react/managing-state',
+  '/docs/learn-react/escape-hatches',
+  '/docs/learn-react/server-components',
+  '/docs/learn-nextjs/getting-started',
+  '/docs/learn-nextjs/routing',
+  '/docs/learn-nextjs/rendering',
+  '/docs/learn-nextjs/data-fetching',
 ]);
 
 /**
@@ -50,7 +62,6 @@ const SITEMAP_EXCLUDED_DOC_ALIASES = new Set<string>([
   '/docs/courses/ai/claudeai',
   '/docs/courses/ai/deployaiwithcloudflare',
   '/docs/courses/ai/langchainjs',
-  '/docs/courses/ai/openaiassistants',
   '/docs/courses/javascript/javascriptdeepd',
   '/docs/courses/javascript/alpinejs',
   '/docs/courses/javascript/learnsvelte',
@@ -408,6 +419,19 @@ const config: Config = {
           { from: '/docs/paths/scrimba-for-cs-students', to: '/docs/for/cs-students/' },
           { from: '/docs/paths/scrimba-for-designers', to: '/docs/for/designers/' },
           { from: '/docs/paths/scrimba-for-marketers', to: '/docs/for/marketers/' },
+          // Cannibalization cleanup (2026-05-29): thin React/Next.js concept
+          // stubs consolidated into their roadmap index (one canonical owner
+          // for "learn react free" / "learn next.js" intent).
+          { from: '/docs/learn-react/quick-start', to: '/docs/learn-react/' },
+          { from: '/docs/learn-react/describing-ui', to: '/docs/learn-react/' },
+          { from: '/docs/learn-react/adding-interactivity', to: '/docs/learn-react/' },
+          { from: '/docs/learn-react/managing-state', to: '/docs/learn-react/' },
+          { from: '/docs/learn-react/escape-hatches', to: '/docs/learn-react/' },
+          { from: '/docs/learn-react/server-components', to: '/docs/learn-react/' },
+          { from: '/docs/learn-nextjs/getting-started', to: '/docs/learn-nextjs/' },
+          { from: '/docs/learn-nextjs/routing', to: '/docs/learn-nextjs/' },
+          { from: '/docs/learn-nextjs/rendering', to: '/docs/learn-nextjs/' },
+          { from: '/docs/learn-nextjs/data-fetching', to: '/docs/learn-nextjs/' },
           ...courseRedirects,
         ],
       },

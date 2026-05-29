@@ -1,35 +1,82 @@
 ---
 title: "OpenAI Assistants API on Scrimba"
 sidebar_position: 12
-description: "A short orientation to Scrimba's Pro course on OpenAI's Assistants API: threads, file uploads, and tool calling for building assistant-style AI apps in JavaScript."
+description: "An honest look at Scrimba's Pro course on OpenAI's Assistants API: 30 minutes, 7 lessons, threads, file retrieval, and tool calling for building assistant-style AI apps in JavaScript."
 keywords: [scrimba openai assistants api, openai assistants tutorial, assistants api javascript, ai assistant course, openai threads and tools]
 last_update:
-  date: 2026-05-27
+  date: 2026-05-29
 ---
 
-import PricingCTA from '@site/src/components/PricingCTA';
+import CourseCard from '@site/src/components/CourseCard';
+import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
 # OpenAI Assistants API on Scrimba
 
-Scrimba has a Pro course on OpenAI's Assistants API, the toolkit for building assistant-style AI apps in JavaScript using threads, file uploads, and tool calling. As of the last catalog review it is a Pro course. This page is a brief orientation to what the Assistants API is and where the course fits on the AI track.
+Scrimba has a short Pro course on OpenAI's Assistants API, the toolkit for building assistant-style AI apps in JavaScript using threads, file retrieval, and tool calling. Taught by Guil Hernandez in about 30 minutes across 7 lessons, it sits on the applied end of the AI Engineer track.
 
-## What it covers
+## Quick answer
 
-The Assistants API wraps several useful pieces into one product-shaped flow. Threads keep a conversation's history so you do not have to manage state by hand. File uploads let the assistant work with documents you provide. Tool calling lets the assistant trigger your own functions, so it can do things rather than only describe them. Together they make it straightforward to prototype assistant-style apps, including internal copilots, before reaching for heavier custom orchestration.
+The OpenAI Assistants API course is a Scrimba Pro course: roughly 30 minutes across 7 lessons, taught by Guil Hernandez, at an intermediate level. You build a knowledge-retrieval chatbot using the Assistants API's four primitives (Assistants, Threads, Messages, and Runs). It is a fast, focused introduction rather than a deep course, and it assumes you can already write JavaScript and call an API. The first lesson is a free sample; the rest needs Pro.
+
+<CourseCard
+  title="Learn OpenAI's Assistants API"
+  duration="30 min"
+  difficulty="Intermediate"
+  access="Pro"
+  lessons={7}
+  instructor="Guil Hernandez"
+  href="https://scrimba.com/learn/openaiassistants"
+  description="Build assistant-style AI apps in JavaScript with threads, file retrieval, and tool calling, in about 30 minutes."
+/>
+
+<CourseSchema
+  name="Learn OpenAI's Assistants API"
+  description="Scrimba's Pro course on OpenAI's Assistants API: build assistant-style AI apps in JavaScript using threads, file retrieval, and tool calling, taught by Guil Hernandez in about 30 minutes."
+  url="https://scrimba.com/learn/openaiassistants"
+  timeRequired="PT30M"
+  difficulty="Intermediate"
+  access="Pro"
+  keywords={["OpenAI Assistants API", "AI assistants", "tool calling", "JavaScript", "RAG"]}
+/>
+
+## Is it worth your time?
+
+If you are already on the AI Engineer Path or paying for Pro, yes: 30 minutes to a working knowledge-retrieval assistant is a good trade, and the interactive scrims mean you build it rather than watch. It is one of the quickest ways to see the Assistants API end to end.
+
+The honest caveats are length and platform specificity. At 7 lessons it is an orientation, not a thorough treatment, so do not expect production patterns like streaming, cost control, or evaluation. It is also tied to OpenAI's Assistants API specifically; the concepts (threads, retrieval, tool calling) transfer, but the code is OpenAI's surface. If you want a platform-neutral take on agents, [Learn AI Agents](/docs/courses/ai/ai-agents) is broader.
+
+## What you'll learn
+
+The course works through the Assistants API's building blocks and ties them together into a movie chatbot that answers from an underlying dataset:
+
+- **Assistants, Threads, Messages, and Runs**, the four primitives the API is built on
+- **Threads** so conversation history is managed for you instead of by hand
+- **File retrieval** so the assistant can answer from documents you supply
+- **Tool calling** so the assistant can trigger your own functions rather than only generating text
+- **Bringing it together** into a working, knowledge-aware assistant
+
+## Who it's for, and who should skip it
+
+It fits JavaScript developers who want a fast, practical first build on the Assistants API, especially anyone prototyping an internal copilot or a retrieval-backed chatbot.
+
+Skip it if you are new to coding: it assumes working JavaScript and API familiarity. Start with the free options first: [Learn to Code with AI](/docs/courses/ai/to-code-with-ai), [Intro to Mistral AI](/docs/courses/ai/mistral-ai), and [Build Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase).
 
 ## Where it fits
 
-This course sits within the [AI Engineer Path](/docs/paths/ai-engineer-path), alongside the other applied AI courses. It assumes you can already write JavaScript and call an API, so it is not a starting point. If you are new to building with AI, begin with the free options first: [Learn to Code with AI](/docs/courses/ai/to-code-with-ai), [Intro to Mistral AI](/docs/courses/ai/mistral-ai), and [Build Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase). Those will give you the footing to make the Assistants API material land.
+This course sits within the [AI Engineer Path](/docs/paths/ai-engineer-path), alongside the other applied AI courses, and is taken after the fundamentals rather than as a first step.
 
 <FAQAccordion items={[
-  { q: "Is this course free?", a: "As of the last catalog review it is a Scrimba Pro course. For free starting points, try Learn to Code with AI, Intro to Mistral AI, or Build Serverless AI Agents with Langbase." },
-  { q: "What does the Assistants API let you build?", a: "Assistant-style AI apps in JavaScript using threads for conversation history, file uploads for documents, and tool calling so the assistant can run your functions. It is a common way to prototype internal copilots." },
+  { q: "Is this course free?", a: "It is a Scrimba Pro course with a free sample lesson. The full 7-lesson course needs Pro. For fully free starting points, try Learn to Code with AI, Intro to Mistral AI, or Build Serverless AI Agents with Langbase." },
+  { q: "How long is the course?", a: "About 30 minutes across 7 lessons, taught by Guil Hernandez at an intermediate level." },
+  { q: "What does the Assistants API let you build?", a: "Assistant-style AI apps in JavaScript using threads for conversation history, file retrieval for documents, and tool calling so the assistant can run your functions. It is a common way to prototype internal copilots and retrieval chatbots." },
   { q: "Do I need prior experience?", a: "Yes. It assumes working JavaScript and familiarity with calling an API. Newcomers should start with the free AI courses on the path first." },
   { q: "Where does it fit on the AI Engineer Path?", a: "It is one of the applied AI courses on the path, taken after the fundamentals rather than as a first step." },
 ]} />
 
-<PricingCTA
-  title="Explore Scrimba's AI Engineer Path"
-  subtitle="Scrimba Pro unlocks the Assistants API course, the AI fundamentals, agents, RAG, and the full AI Engineer Path."
-/>
+<div className="mdx-widget-center-cta mdx-widget-center-cta--spaced-bottom">
+  <AffiliateLink href="https://scrimba.com/learn/openaiassistants" variant="button" location="openai-assistants-cta">
+    View the course on Scrimba
+  </AffiliateLink>
+</div>
