@@ -4,12 +4,14 @@ import Head from '@docusaurus/Head';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import AffiliateLink from '../components/AffiliateLink';
+import ScrimSandbox from '../components/ScrimSandbox';
 import {
   totalCoursesLabel,
   freeCount,
   freeCountLabel,
   categoryCounts,
   pathDurations,
+  totalContentHoursLabel,
 } from '../utils/scrimbaFacts';
 
 const DEMO_SCRIM_URL = 'https://scrimba.com/s0v687325e';
@@ -28,21 +30,22 @@ function HeroSection() {
     { value: totalCoursesLabel, label: 'Courses tracked' },
     { value: freeCountLabel, label: 'Free, no signup' },
     { value: '4', label: 'Career paths' },
-    { value: '11 to 108 hrs', label: 'Path range' },
+    { value: totalContentHoursLabel, label: 'Hours of content' },
   ];
 
   return (
     <section className="hero-section">
       <div className="hero-section__inner">
-        <p className="hero-section__eyebrow">Independent guide</p>
+        <p className="hero-section__eyebrow">Independent Scrimba guide</p>
         <h1>
-          Scrimba teaches you to code in videos you can pause and edit, not just watch.
+          Scrimba lets you pause the video and edit the instructor's code. This guide helps
+          you decide if it is worth it.
         </h1>
         <p className="hero-section__lead">
-          It looks like a normal lesson until you stop the playback, change the
-          instructor's code, and run it right there. This guide maps all {totalCoursesLabel} courses
-          and four career paths (frontend, fullstack, backend, AI): what each teaches, what
-          it costs, who it is for, and where it loses to the alternatives.
+          I tested the format across a dozen courses, independently and not on Scrimba's
+          payroll. Here is which of the {totalCoursesLabel} courses and four career paths are
+          worth your time, what they actually cost, who each is for, and where Scrimba loses
+          to Codecademy, Udemy, and freeCodeCamp.
         </p>
         <div className="hero-buttons" role="group" aria-label="Primary actions">
           <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-hero-primary">
@@ -56,7 +59,7 @@ function HeroSection() {
           </Link>
         </div>
         <p className="hero-section__cta-note">
-          No signup. A real lesson opens in your browser in about 30 seconds.
+          No signup, nothing to install. A real lesson opens in your browser in about 30 seconds.
         </p>
         <ul className="hero-section__proof" aria-label="Why trust this guide">
           <li>
@@ -107,45 +110,27 @@ function ScrimExplainerSection() {
       <div className="scrim-explainer__grid">
         <div className="scrim-explainer__copy">
           <p className="home-eyebrow">The format</p>
-          <h2>What a "scrim" is, in 60 seconds</h2>
+          <h2>What a scrim is. Try it, don't read about it.</h2>
           <p className="home-section__subtitle">
-            A scrim is Scrimba's lesson format. The instructor records themselves coding and
-            narrating. You can pause at any moment, edit their code right inside the player,
-            run it, and resume. There is no separate editor to set up on day one. That single
-            mechanic is the reason most learners come to Scrimba over passive YouTube
-            playlists, and it is the main thing the comparison pages on this site benchmark
-            against.
+            A scrim is an interactive screencast: a recorded coding lesson you can pause at
+            any point to edit and run the instructor's code directly in the browser. The
+            player is the editor. Nothing to install on day one.
           </p>
           <p>
-            The fastest way to feel it is to{' '}
+            That one mechanic is why people pick Scrimba over passive video, and it is the
+            thing the comparison pages on this site benchmark against. The editor on the
+            right is real. Change the text, change the color, hit Run, and watch it update.
+            It is closer to pair-programming with a recorded mentor than to watching a course.
+          </p>
+          <p>
+            Liked that? It feels the same inside a full lesson. You can{' '}
             <AffiliateLink href={DEMO_SCRIM_URL} variant="text" location="home-scrim-explainer">
               open a real scrim in your browser
-            </AffiliateLink>
-            . No signup. Edit a line, hit run, and see whether the format fits how you
-            actually learn before you read another word.
+            </AffiliateLink>{' '}
+            with no signup.
           </p>
         </div>
-        <div className="scrim-window" aria-hidden="true">
-          <div className="scrim-window__bar">
-            <span className="scrim-window__dot" />
-            <span className="scrim-window__dot" />
-            <span className="scrim-window__dot" />
-            <span className="scrim-window__file">App.jsx</span>
-            <span className="scrim-window__status">paused</span>
-          </div>
-          <pre className="scrim-window__code">
-            <code>
-              <span className="scrim-tok-kw">function</span>{' '}
-              <span className="scrim-tok-fn">Greeting</span>() {'{'}
-              {'\n'}  <span className="scrim-tok-kw">return</span>{' '}
-              <span className="scrim-tok-tag">&lt;h1&gt;</span>Edit me, hit run
-              <span className="scrim-tok-tag">&lt;/h1&gt;</span>
-              {'\n'}
-              <span className="scrim-window__caret">{'}'}</span>
-            </code>
-          </pre>
-          <div className="scrim-window__run">▶ run</div>
-        </div>
+        <ScrimSandbox />
       </div>
     </section>
   );
@@ -398,6 +383,14 @@ function FAQPreviewSection() {
       a: 'Usually yes for learners who want a structured career path, access to the full ' + totalCoursesLabel + ' catalog, and a path certificate. Test the free courses first if you are unsure the format fits how you learn.',
     },
     {
+      q: 'Is Scrimba good for beginners?',
+      a: 'Yes, especially for complete beginners aiming at web development. The Frontend path starts from zero (HTML, CSS, JavaScript) and was built with Mozilla MDN. The pause-and-edit format keeps you typing code instead of passively watching, which is where most beginners stall. It is a weaker fit if you want languages outside the JavaScript and Python world.',
+    },
+    {
+      q: 'How long does Scrimba take to complete?',
+      a: 'It depends on the path and your pace. The four career paths range from roughly 11 to 108 hours of content. At five hours a week, a shorter path takes a couple of months and the longest closer to half a year. It is self-paced, with no cohort or deadlines, so you set the schedule.',
+    },
+    {
       q: 'How does Scrimba compare to a coding bootcamp?',
       a: 'Scrimba Pro costs a fraction of a typical bootcamp. The interactive format works well for self-motivated learners. Bootcamps add structure, cohort accountability, and career services that you will not get from a subscription product.',
     },
@@ -516,7 +509,7 @@ function FinalCtaSection() {
 }
 
 const BASE_URL = 'https://scrimbaguide.tech';
-const HOME_PAGE_TITLE = 'Scrimba Paths, Pricing & Reviews (2026)';
+const HOME_PAGE_TITLE = 'Is Scrimba Worth It? Paths, Pricing & Review (2026)';
 const HOME_DESC =
   'A practical guide to Scrimba. Four career paths broken down, real pricing, side-by-side with Codecademy, Udemy, and freeCodeCamp. For developers picking a platform on substance, not slogans.';
 // Note: site-level Organization + WebSite + SearchAction JSON-LD is injected globally

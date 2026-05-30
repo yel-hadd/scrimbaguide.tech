@@ -8,6 +8,7 @@ const courses = require('../../data/courses.json') as Array<{
   category: string;
   access: string;
   isPath: boolean;
+  duration?: string;
   pathInfo?: { name: string; slug: string; duration: string; level: string };
 }>;
 
@@ -40,6 +41,20 @@ for (const p of paths) {
     };
   }
 }
+
+/**
+ * Total hours of educational content across individual courses (paths excluded,
+ * since a path bundles courses and would double-count). `duration` is a string
+ * like "9.8 hrs"; we pull the leading number. Courses without a duration count
+ * as zero, so this is a conservative floor, not an exact figure.
+ */
+export const totalContentHours = nonPaths.reduce((sum, c) => {
+  const match = /([\d.]+)/.exec(c.duration ?? '');
+  return sum + (match ? parseFloat(match[1]) : 0);
+}, 0);
+
+/** Conservative label, floored to the nearest 50, e.g. "450+ hrs". */
+export const totalContentHoursLabel = `${Math.floor(totalContentHours / 50) * 50}+ hrs`;
 
 /** Human-readable count string, e.g. "87+" or "19" */
 export const totalCoursesLabel = `${totalCourses}+`;
