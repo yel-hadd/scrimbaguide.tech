@@ -103,23 +103,50 @@ function HeroSection() {
 
 function ScrimExplainerSection() {
   return (
-    <section className="home-shell home-section home-section--compact" aria-label="How scrims work">
-      <h2>What a "scrim" is, in 60 seconds</h2>
-      <p className="home-section__subtitle">
-        A scrim is Scrimba's lesson format. The instructor records themselves coding and
-        narrating. You can pause at any moment, edit their code right inside the player, run
-        it, and resume. There is no separate editor to set up on day one. That single
-        mechanic is the reason most learners come to Scrimba over passive YouTube playlists,
-        and it is the main thing the comparison pages on this site benchmark against.
-      </p>
-      <p>
-        The fastest way to feel it is to{' '}
-        <AffiliateLink href={DEMO_SCRIM_URL} variant="text" location="home-scrim-explainer">
-          open a real scrim in your browser
-        </AffiliateLink>
-        . No signup. Edit a line, hit run, and see whether the format fits how you actually
-        learn before you read another word.
-      </p>
+    <section className="home-shell home-section scrim-explainer" aria-label="How scrims work">
+      <div className="scrim-explainer__grid">
+        <div className="scrim-explainer__copy">
+          <p className="home-eyebrow">The format</p>
+          <h2>What a "scrim" is, in 60 seconds</h2>
+          <p className="home-section__subtitle">
+            A scrim is Scrimba's lesson format. The instructor records themselves coding and
+            narrating. You can pause at any moment, edit their code right inside the player,
+            run it, and resume. There is no separate editor to set up on day one. That single
+            mechanic is the reason most learners come to Scrimba over passive YouTube
+            playlists, and it is the main thing the comparison pages on this site benchmark
+            against.
+          </p>
+          <p>
+            The fastest way to feel it is to{' '}
+            <AffiliateLink href={DEMO_SCRIM_URL} variant="text" location="home-scrim-explainer">
+              open a real scrim in your browser
+            </AffiliateLink>
+            . No signup. Edit a line, hit run, and see whether the format fits how you
+            actually learn before you read another word.
+          </p>
+        </div>
+        <div className="scrim-window" aria-hidden="true">
+          <div className="scrim-window__bar">
+            <span className="scrim-window__dot" />
+            <span className="scrim-window__dot" />
+            <span className="scrim-window__dot" />
+            <span className="scrim-window__file">App.jsx</span>
+            <span className="scrim-window__status">paused</span>
+          </div>
+          <pre className="scrim-window__code">
+            <code>
+              <span className="scrim-tok-kw">function</span>{' '}
+              <span className="scrim-tok-fn">Greeting</span>() {'{'}
+              {'\n'}  <span className="scrim-tok-kw">return</span>{' '}
+              <span className="scrim-tok-tag">&lt;h1&gt;</span>Edit me, hit run
+              <span className="scrim-tok-tag">&lt;/h1&gt;</span>
+              {'\n'}
+              <span className="scrim-window__caret">{'}'}</span>
+            </code>
+          </pre>
+          <div className="scrim-window__run">▶ run</div>
+        </div>
+      </div>
     </section>
   );
 }
@@ -170,17 +197,21 @@ function PathsSection() {
 
   return (
     <section className="home-shell home-section">
+      <p className="home-eyebrow">Career paths</p>
       <h2>Which path fits your goal, and your starting point?</h2>
       <p className="home-section__subtitle">
         Four career tracks from beginner to job-ready. What you will build, how long it
         takes, and who each one is actually for.
       </p>
       <div className="section-grid section-grid--2col">
-        {paths.map((path) => (
+        {paths.map((path, i) => (
           <Link key={path.title} to={path.link} className="card-link">
-            <div className={`section-card ${path.accentClass}`}>
+            <div className={`section-card path-card ${path.accentClass}`}>
+              <span className="path-card__index" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
               <h3>{path.title}</h3>
-              <p className="section-card__meta">
+              <p className="section-card__meta path-card__duration">
                 {path.duration} &middot; {path.level}
               </p>
               <p>{path.description}</p>
@@ -201,19 +232,19 @@ function PathsSection() {
 function CompareSection() {
   const comparisons = [
     {
-      title: 'Scrimba vs Codecademy',
+      opponent: 'Codecademy',
       subtitle: 'Interactive scrims vs text-based lessons',
       verdict: 'Pick Scrimba if you want to code inside the lesson from day one',
       link: '/docs/comparisons/scrimba-vs-codecademy',
     },
     {
-      title: 'Scrimba vs Udemy',
+      opponent: 'Udemy',
       subtitle: 'Curated subscription vs open marketplace',
       verdict: 'Pick Scrimba if you want one curated path, not 800 instructor styles',
       link: '/docs/comparisons/scrimba-vs-udemy',
     },
     {
-      title: 'Scrimba vs freeCodeCamp',
+      opponent: 'freeCodeCamp',
       subtitle: 'Premium interactive vs free text-based',
       verdict: 'Pick Scrimba if you are willing to pay for guided in-lesson practice',
       link: '/docs/comparisons/scrimba-vs-freecodecamp',
@@ -222,6 +253,7 @@ function CompareSection() {
 
   return (
     <section className="home-shell home-section">
+      <p className="home-eyebrow">Head to head</p>
       <h2>Scrimba next to the platforms you are already considering</h2>
       <p className="home-section__subtitle">
         Short comparisons aimed at one decision. Where Scrimba wins, where it does not, and
@@ -229,9 +261,13 @@ function CompareSection() {
       </p>
       <div className="section-grid section-grid--3col">
         {comparisons.map((comparison) => (
-          <Link key={comparison.title} to={comparison.link} className="card-link">
-            <div className="section-card">
-              <h3>{comparison.title}</h3>
+          <Link key={comparison.opponent} to={comparison.link} className="card-link">
+            <div className="section-card compare-card">
+              <h3 className="compare-card__title">
+                Scrimba
+                <span className="compare-card__vs">vs</span>
+                <span className="compare-card__opponent">{comparison.opponent}</span>
+              </h3>
               <p>{comparison.subtitle}</p>
               <p className="compare-card__verdict">{comparison.verdict}</p>
             </div>
@@ -295,6 +331,7 @@ function CoursesSection() {
 
   return (
     <section className="home-shell home-section home-section--shaded">
+      <p className="home-eyebrow">Browse by topic</p>
       <h2>Pick a topic, see what is worth your time</h2>
       <p className="home-section__subtitle">
         Each topic opens an index showing free vs Pro, instructor, duration, and which
@@ -303,9 +340,9 @@ function CoursesSection() {
       <div className="section-grid section-grid--3col">
         {topics.map((topic) => (
           <Link key={topic.name} to={topic.link} className="card-link">
-            <div className="section-card">
+            <div className="section-card topic-card">
               <h3>{topic.name}</h3>
-              <p className="section-card__meta">{topic.count}</p>
+              <p className="section-card__meta topic-card__count">{topic.count}</p>
               <p>{topic.description}</p>
             </div>
           </Link>
@@ -323,6 +360,7 @@ function CoursesSection() {
 function PricingSection() {
   return (
     <section className="pricing-cta home-pricing home-shell" aria-label="Pricing call to action">
+      <p className="home-eyebrow home-eyebrow--on-tint">Pricing</p>
       <h2 className="pricing-cta__title">
         Free to try. Pro when you are ready for the full library.
       </h2>
@@ -396,6 +434,7 @@ function FAQPreviewSection() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <p className="home-eyebrow">FAQ</p>
       <h2>The questions people usually ask before subscribing</h2>
       <div className="home-faq-grid">
         {faqs.map((item) => (
@@ -417,29 +456,30 @@ function FAQPreviewSection() {
 function BlogSection() {
   return (
     <section className="home-shell home-section">
+      <p className="home-eyebrow">From the blog</p>
       <h2>Read this before you pay for Pro</h2>
       <p className="home-section__subtitle">
         Long-form reviews and picks, no fluff, updated for 2026.
       </p>
       <div className="section-grid section-grid--3col">
         <Link to="/blog/scrimba-review" className="card-link">
-          <div className="section-card">
+          <div className="section-card blog-card">
+            <p className="section-card__meta blog-card__read">12 min read</p>
             <h3>Scrimba Review 2026</h3>
-            <p className="section-card__meta">12 min read</p>
             <p>What works, what does not, and who Scrimba is actually for.</p>
           </div>
         </Link>
         <Link to="/blog/is-scrimba-worth-it" className="card-link">
-          <div className="section-card">
+          <div className="section-card blog-card">
+            <p className="section-card__meta blog-card__read">8 min read</p>
             <h3>Is Scrimba Worth It?</h3>
-            <p className="section-card__meta">8 min read</p>
             <p>When Pro is worth it, and when free is enough for your goal.</p>
           </div>
         </Link>
         <Link to="/blog/best-free-scrimba-courses" className="card-link">
-          <div className="section-card">
+          <div className="section-card blog-card">
+            <p className="section-card__meta blog-card__read">5 min read</p>
             <h3>Best Free Courses</h3>
-            <p className="section-card__meta">5 min read</p>
             <p>{freeCountLabel} completely free courses you can take without a subscription.</p>
           </div>
         </Link>
@@ -488,7 +528,7 @@ export default function Home(): React.ReactElement {
   const homeTitleFull = `${HOME_PAGE_TITLE} | ${siteConfig.title}`;
 
   return (
-    <Layout title={HOME_PAGE_TITLE} description={HOME_DESC}>
+    <Layout title={HOME_PAGE_TITLE} description={HOME_DESC} wrapperClassName="homepage">
       <Head>
         <meta property="og:type" content="website" />
         <meta property="og:title" content={homeTitleFull} />

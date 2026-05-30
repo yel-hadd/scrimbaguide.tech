@@ -512,6 +512,23 @@ const config: Config = {
       tagName: 'link',
       attributes: { rel: 'preconnect', href: 'https://scrimba.com' },
     },
+    // Fonts: preconnect + non-blocking stylesheet beats the render-blocking
+    // @import that used to live at the top of custom.css.
+    {
+      tagName: 'link',
+      attributes: { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+    },
+    {
+      tagName: 'link',
+      attributes: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap',
+      },
+    },
   ],
 
   themeConfig: {

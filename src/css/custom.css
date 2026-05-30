@@ -3,7 +3,8 @@
  * Docusaurus color overrides + component styles
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
+/* Fonts are loaded via <link rel="preconnect"/stylesheet> in docusaurus.config.ts
+ * headTags (non-blocking), not a render-blocking @import here. */
 
 :root {
   --ifm-color-primary: #5b3fd9;
@@ -16,6 +17,7 @@
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   --ifm-heading-font-family: 'Sora', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --sg-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
   --sg-green: #2ecc71;
   --sg-orange: #f39c12;
   --sg-red: #e74c3c;
@@ -26,9 +28,29 @@
   --sg-card-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   --sg-card-shadow-strong: 0 8px 24px rgba(0, 0, 0, 0.12);
   --sg-home-max-width: 1280px;
+  --sg-text: #111522;
   --sg-text-strong: #1f2937;
   --sg-text-muted: #4b5563;
   --sg-text-soft: #6b7280;
+
+  /* ── Evolved homepage palette ───────────────────────────────────
+   * Violet stays the brand anchor; a warm coral/amber secondary breaks
+   * the generic purple-on-white look and carries hover/accent moments.
+   * Homepage surfaces sit on warm paper, not pure white. */
+  --sg-accent-warm: #db6b3a;
+  /* Accessible text variant: #db6b3a fails 4.5:1 on paper, this passes (~7:1).
+   * Use --sg-accent-warm-ink for text, --sg-accent-warm for decoration only. */
+  --sg-accent-warm-ink: #ad481d;
+  --sg-accent-warm-soft: rgba(219, 107, 58, 0.1);
+  --sg-home-bg: #faf7f2;
+  --sg-home-surface: #ffffff;
+  --sg-home-tint: #f3eee6;
+  --sg-home-ink: #14101f;
+  --sg-home-border: rgba(20, 16, 31, 0.1);
+  --sg-home-border-strong: rgba(20, 16, 31, 0.16);
+  /* Decoration layers (kept off the text's computed bg so axe samples
+   * contrast against the solid surface, per the hero ::before note below). */
+  --sg-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
   --sg-type-body: clamp(1rem, 0.15vw + 0.97rem, 1.0625rem);
   --sg-type-small: clamp(0.875rem, 0.08vw + 0.85rem, 0.95rem);
   --sg-type-h1: clamp(1.9rem, 3.2vw, 2.6rem);
@@ -53,9 +75,19 @@
   --sg-accent-softer: rgba(184, 165, 255, 0.1);
   --sg-card-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
   --sg-card-shadow-strong: 0 10px 30px rgba(0, 0, 0, 0.4);
+  --sg-text: #f6f7fb;
   --sg-text-strong: #f3f4f6;
   --sg-text-muted: #d1d5db;
   --sg-text-soft: #a8b1c2;
+  --sg-accent-warm: #ff9d63;
+  --sg-accent-warm-ink: #ffa873;
+  --sg-accent-warm-soft: rgba(255, 157, 99, 0.16);
+  --sg-home-bg: #0e0b1a;
+  --sg-home-surface: #171327;
+  --sg-home-tint: #1c1730;
+  --sg-home-ink: #f6f7fb;
+  --sg-home-border: rgba(184, 165, 255, 0.16);
+  --sg-home-border-strong: rgba(184, 165, 255, 0.26);
   --ifm-navbar-search-input-icon: url("data:image/svg+xml;utf8,<svg fill='%23f3f4f6' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' height='16px' width='16px'><path d='M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z' /></svg>");
   --ifm-navbar-search-input-color: var(--ifm-color-emphasis-100);
   --ifm-navbar-search-input-placeholder-color: var(--ifm-color-emphasis-400);
@@ -2848,4 +2880,410 @@ article table:focus,
 html[data-theme='dark'] .curriculum__index {
   background: rgba(125, 101, 227, 0.18);
   color: var(--ifm-color-primary-lighter);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   HOMEPAGE REDESIGN — "independent technical review" editorial look.
+   Everything here is scoped under .homepage (set via Layout
+   wrapperClassName) so docs/blog pages are untouched. Violet brand
+   anchor + warm coral accent, warm-paper surfaces, a code-window
+   motif, mono numerals, and scroll-reveal motion that fully disables
+   under prefers-reduced-motion. Decoration sits on ::before/::after
+   layers so axe samples text contrast against the solid surface.
+   ════════════════════════════════════════════════════════════════ */
+
+.homepage {
+  position: relative;
+  background-color: var(--sg-home-bg);
+}
+
+/* Fine paper grain across the whole page, behind all content. */
+.homepage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--sg-grain);
+  background-size: 200px;
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme='dark'] .homepage::before {
+  opacity: 0.05;
+}
+
+.homepage main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section kicker (mono, with a short accent rule) ────────────── */
+.home-eyebrow {
+  font-family: var(--sg-font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sg-accent-warm-ink);
+  margin: 0 0 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.home-eyebrow::before {
+  content: '';
+  width: 1.7rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--sg-accent-warm);
+}
+
+.home-eyebrow--on-tint {
+  justify-content: center;
+}
+
+/* ── Homepage headings ──────────────────────────────────────────── */
+.homepage .home-section > h2,
+.homepage .scrim-explainer h2 {
+  font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+  line-height: 1.16;
+  letter-spacing: -0.022em;
+  color: var(--sg-home-ink);
+  margin: 0 0 0.6rem;
+}
+
+/* ── Hero atmosphere + scale ────────────────────────────────────── */
+.homepage .hero-section {
+  background-color: var(--sg-home-bg);
+  overflow: hidden;
+}
+
+.homepage .hero-section::before {
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(91, 63, 217, 0.16), transparent 60%),
+    radial-gradient(70% 60% at 85% 5%, var(--sg-accent-warm-soft), transparent 55%);
+}
+
+[data-theme='dark'] .homepage .hero-section::before {
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(111, 78, 255, 0.32), transparent 60%),
+    radial-gradient(70% 60% at 85% 5%, var(--sg-accent-warm-soft), transparent 55%);
+}
+
+/* Faint dot-grid, masked to fade out below the fold. */
+.homepage .hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  color: rgba(20, 16, 31, 0.05);
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(75% 55% at 50% 0%, #000, transparent 75%);
+  mask-image: radial-gradient(75% 55% at 50% 0%, #000, transparent 75%);
+}
+
+[data-theme='dark'] .homepage .hero-section::after {
+  color: rgba(184, 165, 255, 0.08);
+}
+
+.homepage .hero-section h1 {
+  font-size: clamp(2.1rem, 5.2vw, 3.7rem);
+  letter-spacing: -0.025em;
+}
+
+/* Hero eyebrow becomes a mono terminal-style chip. */
+.homepage .hero-section__eyebrow {
+  font-family: var(--sg-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--sg-accent-warm-ink);
+  margin-bottom: 1.3rem;
+  padding: 0.32rem 0.85rem;
+  border: 1px solid var(--sg-accent-warm-soft);
+  border-radius: 999px;
+  background: var(--sg-accent-warm-soft);
+}
+
+.homepage .trust-bar__value {
+  font-family: var(--sg-font-mono);
+  letter-spacing: -0.01em;
+}
+
+/* ── Card surfaces (paper → white cards) ────────────────────────── */
+.homepage .section-card {
+  background: var(--sg-home-surface);
+  border: 1px solid var(--sg-home-border);
+  border-radius: 16px;
+  padding: 1.6rem;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.homepage .card-link:hover .section-card {
+  border-color: var(--sg-home-border-strong);
+  transform: translateY(-3px);
+  box-shadow: var(--sg-card-shadow);
+}
+
+.homepage .home-section--shaded {
+  background: var(--sg-home-tint);
+  border: 1px solid var(--sg-home-border);
+  border-radius: 22px;
+}
+
+/* ── Path cards: editorial feature cards with mono index ────────── */
+.homepage .path-card {
+  position: relative;
+  padding-top: 1.7rem;
+}
+
+.homepage .path-card__index {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.35rem;
+  font-family: var(--sg-font-mono);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--sg-home-border-strong);
+  letter-spacing: 0.04em;
+}
+
+.homepage .path-card__duration,
+.homepage .topic-card__count,
+.homepage .blog-card__read {
+  font-family: var(--sg-font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+}
+
+/* ── Compare cards: "versus" treatment, bottom-aligned verdict ──── */
+.homepage .compare-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.homepage .compare-card__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.45rem;
+  font-size: 1.18rem;
+  margin-bottom: 0.5rem;
+}
+
+.homepage .compare-card__vs {
+  font-family: var(--sg-font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--sg-accent-warm-ink);
+  padding: 0.12rem 0.42rem;
+  border: 1px solid var(--sg-accent-warm-soft);
+  border-radius: 6px;
+  align-self: center;
+}
+
+.homepage .compare-card__opponent {
+  color: var(--sg-text-muted);
+}
+
+.homepage .compare-card__verdict {
+  margin-top: auto !important;
+}
+
+/* ── Topic + blog cards ─────────────────────────────────────────── */
+.homepage .topic-card {
+  padding: 1.35rem 1.4rem;
+}
+
+.homepage .blog-card__read {
+  color: var(--sg-accent-warm-ink);
+  margin-bottom: 0.45rem !important;
+}
+
+.homepage .blog-card h3 {
+  margin-top: 0;
+}
+
+/* ── Scrim explainer: asymmetric copy + code-window motif ───────── */
+.scrim-explainer__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .scrim-explainer__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* The editor stays dark in both themes — that's how a code editor reads. */
+.scrim-window {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #1b1430;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: var(--sg-card-shadow-strong);
+  font-family: var(--sg-font-mono);
+}
+
+.scrim-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.7rem 0.95rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.scrim-window__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ff5f57;
+}
+
+.scrim-window__dot:nth-child(2) {
+  background: #febc2e;
+}
+
+.scrim-window__dot:nth-child(3) {
+  background: #28c840;
+}
+
+.scrim-window__file {
+  margin-left: 0.55rem;
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.scrim-window__status {
+  margin-left: auto;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffb072;
+  border: 1px solid rgba(255, 176, 114, 0.32);
+  border-radius: 6px;
+  padding: 0.12rem 0.45rem;
+}
+
+.scrim-window__code {
+  margin: 0;
+  padding: 1.15rem 1.25rem 2.4rem;
+  background: transparent;
+  font-size: 0.86rem;
+  line-height: 1.75;
+  color: #e6e3f2;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.scrim-window__code code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.scrim-tok-kw { color: #c792ea; }
+.scrim-tok-fn { color: #82aaff; }
+.scrim-tok-tag { color: #7fdbca; }
+
+.scrim-window__caret::after {
+  content: '▍';
+  margin-left: 1px;
+  color: #82aaff;
+  animation: sg-blink 1.1s steps(1) infinite;
+}
+
+.scrim-window__run {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #08210d;
+  background: #28c840;
+  border-radius: 6px;
+  padding: 0.3rem 0.65rem;
+}
+
+/* ── Pricing band ───────────────────────────────────────────────── */
+.homepage .home-pricing.pricing-cta {
+  background:
+    radial-gradient(90% 130% at 0% 0%, var(--sg-accent-soft), transparent 60%),
+    radial-gradient(90% 130% at 100% 100%, var(--sg-accent-warm-soft), transparent 60%),
+    var(--sg-home-surface);
+  border: 1px solid var(--sg-home-border-strong);
+  border-radius: 22px;
+  padding: clamp(1.9rem, 4vw, 3rem);
+  text-align: center;
+}
+
+/* ── FAQ cards ──────────────────────────────────────────────────── */
+.homepage .faq-card {
+  background: var(--sg-home-tint);
+  border-color: var(--sg-home-border);
+}
+
+/* ── Final CTA band ─────────────────────────────────────────────── */
+.homepage .home-final-cta {
+  background:
+    radial-gradient(80% 130% at 50% 0%, var(--sg-accent-soft), transparent 70%),
+    var(--sg-home-surface);
+  border: 1px solid var(--sg-home-border-strong);
+  border-radius: 22px;
+  padding: clamp(2rem, 5vw, 3.4rem) 1.5rem;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MOTION — load-stagger for the hero, scroll-reveal for sections.
+   Wrapped in no-preference so reduced-motion users get none of it.
+   ════════════════════════════════════════════════════════════════ */
+@keyframes sg-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes sg-blink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .homepage .hero-section__inner > * {
+    animation: sg-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .homepage .hero-section__inner > *:nth-child(1) { animation-delay: 0.04s; }
+  .homepage .hero-section__inner > *:nth-child(2) { animation-delay: 0.1s; }
+  .homepage .hero-section__inner > *:nth-child(3) { animation-delay: 0.16s; }
+  .homepage .hero-section__inner > *:nth-child(4) { animation-delay: 0.22s; }
+  .homepage .hero-section__inner > *:nth-child(5) { animation-delay: 0.28s; }
+  .homepage .hero-section__inner > *:nth-child(6) { animation-delay: 0.34s; }
+  .homepage .hero-section__inner > *:nth-child(7) { animation-delay: 0.4s; }
+  .homepage .hero-section__inner > *:nth-child(8) { animation-delay: 0.46s; }
+
+  /* Scroll-driven reveal where supported (no JS, progressive enhancement). */
+  @supports (animation-timeline: view()) {
+    .homepage main > .home-section {
+      animation: sg-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 16%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrim-window__caret::after {
+    animation: none;
+  }
 }
