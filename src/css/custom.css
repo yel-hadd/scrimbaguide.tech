@@ -3217,6 +3217,84 @@ html[data-theme='dark'] .curriculum__index {
   padding: 0.3rem 0.65rem;
 }
 
+/* ── Live editor variant (real edit-and-run sandbox) ────────────────
+   Reuses the dark window chrome above; the editor stays dark in both
+   themes because it reads as a code editor. */
+.scrim-window--live {
+  display: flex;
+  flex-direction: column;
+}
+
+.scrim-window__editor {
+  width: 100%;
+  min-height: 9.5rem;
+  margin: 0;
+  padding: 1.05rem 1.25rem;
+  border: 0;
+  resize: vertical;
+  background: transparent;
+  color: #e6e3f2;
+  font-family: var(--sg-font-mono);
+  font-size: 0.84rem;
+  line-height: 1.7;
+  tab-size: 2;
+  white-space: pre;
+  overflow-wrap: normal;
+  outline: none;
+}
+
+.scrim-window__editor:focus-visible {
+  box-shadow: inset 0 0 0 2px rgba(130, 170, 255, 0.55);
+}
+
+.scrim-window__editor::selection {
+  background: rgba(130, 170, 255, 0.3);
+}
+
+.scrim-window__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem 0.6rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.scrim-window__hint {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* In the live variant the Run button lives in the toolbar, not floated. */
+.scrim-window--live .scrim-window__run {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--sg-font-mono);
+}
+
+.scrim-window--live .scrim-window__run:hover {
+  background: #2fde4c;
+}
+
+.scrim-window--live .scrim-window__run:focus-visible {
+  outline: 2px solid #82aaff;
+  outline-offset: 2px;
+}
+
+.scrim-window__preview {
+  width: 100%;
+  height: 9rem;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  background: #ffffff;
+  display: block;
+}
+
 /* ── Pricing band ───────────────────────────────────────────────── */
 .homepage .home-pricing.pricing-cta {
   background:
