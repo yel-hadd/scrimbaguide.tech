@@ -1324,13 +1324,16 @@ article a:not(.cta-link):not(.hash-link):hover {
   color: var(--sg-text-muted);
 }
 
-/* Tighten homepage handoff from final CTA into global footer. */
-.homepage .home-section.home-section--compact:last-of-type {
-  padding-bottom: 0.5rem;
+/* Tighten homepage handoff from final CTA into global footer. The final CTA
+   sits in a compact section; collapse its trailing padding so the card meets
+   the footer cleanly instead of floating in a band of page background. */
+.homepage main > .home-section--compact:last-child {
+  padding-top: 1.5rem;
+  padding-bottom: 0;
 }
 
 .homepage .footer {
-  padding-top: 1.35rem;
+  padding-top: 1.6rem;
 }
 
 .homepage .footer__links {
@@ -3223,24 +3226,56 @@ html[data-theme='dark'] .curriculum__index {
 .scrim-window--live {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
-.scrim-window__editor {
-  width: 100%;
-  min-height: 9.5rem;
+/* Editor + highlight layer share identical box metrics so the visible
+   highlighted text lines up exactly under the transparent editable text. */
+.scrim-window__editarea {
+  position: relative;
+  min-width: 0;
+}
+
+.scrim-window__editor,
+.scrim-window__highlight {
   margin: 0;
   padding: 1.05rem 1.25rem;
   border: 0;
-  resize: vertical;
-  background: transparent;
-  color: #e6e3f2;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 9.5rem;
   font-family: var(--sg-font-mono);
   font-size: 0.84rem;
   line-height: 1.7;
   tab-size: 2;
-  white-space: pre;
-  overflow-wrap: normal;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Highlight layer sits behind the textarea, non-interactive. */
+.scrim-window__highlight {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  pointer-events: none;
+  background: transparent !important;
+  color: #e6e3f2;
+}
+
+.scrim-window__highlight::-webkit-scrollbar {
+  display: none;
+}
+
+/* Transparent text + visible caret so the highlight shows through. */
+.scrim-window__editor {
+  position: relative;
+  resize: vertical;
+  background: transparent;
+  color: transparent;
+  caret-color: #e6e3f2;
   outline: none;
+  overflow: auto;
 }
 
 .scrim-window__editor:focus-visible {
@@ -3286,13 +3321,32 @@ html[data-theme='dark'] .curriculum__index {
   outline-offset: 2px;
 }
 
+.scrim-window__preview-wrap {
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
 .scrim-window__preview {
   width: 100%;
   height: 9rem;
   border: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.09);
   background: #ffffff;
   display: block;
+}
+
+/* Shown over the (empty) preview until the visitor clicks Run. */
+.scrim-window__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  text-align: center;
+  font-family: var(--sg-font-mono);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: #15101f;
 }
 
 /* ── Pricing band ───────────────────────────────────────────────── */
