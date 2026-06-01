@@ -51,7 +51,11 @@ export default function CourseCard({
   return (
     <article className="course-card" aria-label={title}>
       <div className="course-card__header">
-        <h3 className="course-card__title">{title}</h3>
+        {/* Styled as a title, not a heading: the <article> already exposes the
+            title via aria-label, and keeping it out of the heading outline avoids
+            heading-order jumps (e.g. an intro card placed between the page h1 and
+            its first h2). */}
+        <p className="course-card__title">{title}</p>
         <span
           className={`course-card__badge course-card__badge--${access.toLowerCase()}`}
           aria-label={isFree ? 'Free course' : 'Scrimba Pro course'}
