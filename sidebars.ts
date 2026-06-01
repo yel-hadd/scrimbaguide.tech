@@ -151,6 +151,7 @@ const sidebars: SidebarsConfig = {
       link: { type: 'doc', id: 'pricing/index' },
       items: [
         'pricing/pro-vs-free',
+        'pricing/scrimba-free-trial',
         'pricing/student-discount',
         'pricing/refund-policy',
         'pricing/scrimba-vs-bootcamps',

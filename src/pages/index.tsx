@@ -6,6 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import AffiliateLink from '../components/AffiliateLink';
 import ScrimSandbox from '../components/ScrimSandbox';
 import ScrimbaBlocksArt from '../components/ScrimbaBlocksArt';
+import AffiliateDisclosureClient from '../components/AffiliateDisclosureClient';
 import {
   totalCoursesLabel,
   freeCount,
@@ -41,9 +42,8 @@ function HeroSection() {
           <p className="hero-section__eyebrow">Independent Scrimba guide</p>
           <h1>Try a real Scrimba lesson before you trust any review.</h1>
           <p className="hero-section__lead">
-            I review Scrimba independently, not on its payroll. Start by editing a real lesson
-            in your browser. Then use this guide to pick a path, see what Pro actually costs,
-            and decide if it fits how you learn.
+            Start by editing a real lesson in your browser. Then use this guide to pick a path,
+            see what Pro actually costs, and decide whether it is worth it for how you learn.
           </p>
           <div className="hero-buttons" role="group" aria-label="Primary actions">
             <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-hero-primary">
@@ -73,12 +73,7 @@ function HeroSection() {
             </li>
             <li>Frontend path built with <strong>Mozilla MDN</strong></li>
           </ul>
-          <p className="hero-section__trust">
-            <small>
-              We earn a commission if you upgrade through our links, at no extra cost to you.
-              Always verify the final price at checkout.
-            </small>
-          </p>
+          <AffiliateDisclosureClient className="hero-section__trust" />
         </div>
 
         <div className="hero-section__media">
@@ -132,7 +127,8 @@ function ScrimExplainerSection() {
           <p className="home-section__subtitle">
             A scrim is an interactive screencast: a recorded coding lesson you can pause at
             any point to edit and run the instructor's code directly in the browser. The
-            player is the editor. Nothing to install on day one.
+            player is the editor, so there is no local setup. No installing Node, no configuring
+            an editor, no environment to break. You write and run real code from the first lesson.
           </p>
           <p>
             That one mechanic is why people pick Scrimba over passive video, and it is the

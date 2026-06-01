@@ -127,11 +127,16 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Practice API Calls', href: '/docs/practice/practice-api-calls', type: 'doc' },
     { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
+  '/docs/pricing/scrimba-free-trial': [
+    { title: 'Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
+    { title: 'Student Discount', href: '/docs/pricing/student-discount', type: 'doc' },
+    { title: 'Refund Policy', href: '/docs/pricing/refund-policy', type: 'doc' },
+  ],
 };
 
 const sectionFallbacks: Record<string, RelatedGuide[]> = {
   '/docs/pricing/': [
-    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba Free Trial', href: '/docs/pricing/scrimba-free-trial', type: 'doc' },
     { title: 'Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Scrimba Discount Codes', href: '/blog/scrimba-discount-codes-2026', type: 'blog' },
   ],
