@@ -82,19 +82,25 @@ export default function ScrimSandbox(): React.ReactElement {
       </label>
       <div className="scrim-window__editarea">
         <Highlight theme={themes.vsDark} code={source} language="markup">
-          {({ tokens, getLineProps, getTokenProps }) => (
-            <pre className="scrim-window__highlight" aria-hidden="true" ref={preRef}>
-              {tokens.map((line, i) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <div key={i} {...getLineProps({ line })}>
-                  {line.map((token, key) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <span key={key} {...getTokenProps({ token })} />
-                  ))}
-                </div>
-              ))}
-            </pre>
-          )}
+          {({ tokens, getLineProps, getTokenProps }) =>
+            // prism-react-renderer 2.x types this render prop against the ambient
+            // global `JSX.Element`, which React 19's @types no longer provide, so a
+            // returned React element reads as not-assignable. Cast only the result
+            // to the prop's expected return type; the body stays fully type-checked.
+            ((
+              <pre className="scrim-window__highlight" aria-hidden="true" ref={preRef}>
+                {tokens.map((line, i) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div key={i} {...getLineProps({ line })}>
+                    {line.map((token, key) => (
+                      // eslint-disable-next-line react/no-array-index-key
+                      <span key={key} {...getTokenProps({ token })} />
+                    ))}
+                  </div>
+                ))}
+              </pre>
+            ) as unknown as ReturnType<React.ComponentProps<typeof Highlight>['children']>)
+          }
         </Highlight>
         <textarea
           id={editorId}
