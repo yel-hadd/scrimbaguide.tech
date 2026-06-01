@@ -18,6 +18,18 @@ const PATH_HOURS: Record<PathKey, number> = {
   ai: 11.4,
 };
 
+/**
+ * Module count Scrimba advertises on each path's /paths card. Surfaced in the
+ * result for specificity (hours alone undersell how much is in a path). Verified
+ * against scrimba.com/paths; update here if Scrimba revises a path.
+ */
+export const PATH_MODULES: Record<PathKey, number> = {
+  frontend: 70,
+  fullstack: 95,
+  backend: 62,
+  ai: 13,
+};
+
 const HOURS_PER_WEEK: Record<Hours, number> = {
   low: 4,
   mid: 10,
@@ -108,6 +120,10 @@ function buildReasoning(
     lines.push(
       'Backend path expects JavaScript comfort; Fullstack or Frontend gets you there without skipping fundamentals.',
     );
+  } else if (goal === 'job' && experience === 'beginner' && hours === 'high' && primary === 'frontend') {
+    lines.push(
+      'Frontend is the right first step from zero, and with 15+ hours a week you can roll straight into the Beginner-level Fullstack path after, the route Scrimba markets as its one-stop shop into tech.',
+    );
   } else if (goal === 'job' && experience === 'some' && primary === 'frontend') {
     lines.push(
       'With shaky fundamentals, Frontend is the fastest route to a hireable React portfolio; branch into Fullstack once the basics hold.',
@@ -183,6 +199,10 @@ export function computePathRecommendation(input: AdvisorInput): PathRecommendati
     secondary = 'backend';
   } else if (goal === 'job' && experience === 'beginner') {
     primary = 'frontend';
+    // Scrimba positions Fullstack as a Beginner-level "one-stop shop." A true
+    // beginner with lots of weekly time can realistically aim there next, so
+    // surface it as a secondary rather than hiding it entirely.
+    if (hours === 'high') secondary = 'fullstack';
   } else if (goal === 'job' && experience === 'some') {
     // Shaky fundamentals + a job target: Frontend is the faster route to a
     // hireable portfolio than the much longer Fullstack path. Branch into
