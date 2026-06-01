@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import {
   computePathRecommendation,
+  answerRecap,
   PATHS,
   EXPERIENCE_OPTIONS,
   GOAL_OPTIONS,
@@ -50,6 +51,14 @@ interface ChoiceStepProps<T extends string> {
   onSelect: (value: T) => void;
   hint?: string;
   onBack?: () => void;
+  /**
+   * Move keyboard focus to the first option on mount. Off for the very first
+   * step on initial page load, otherwise focusing an embedded, below-the-fold
+   * quiz scrolls the page down to it unprompted (e.g. landing on /docs/paths/).
+   * Enabled once the user has started, so step-to-step transitions stay
+   * keyboard-accessible.
+   */
+  autoFocus?: boolean;
 }
 
 function ChoiceStep<T extends string>({
@@ -58,14 +67,15 @@ function ChoiceStep<T extends string>({
   onSelect,
   hint,
   onBack,
+  autoFocus = false,
 }: ChoiceStepProps<T>): React.ReactElement {
   const titleId = useId();
   const hintId = useId();
   const buttonRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   useEffect(() => {
-    buttonRefs.current[0]?.focus();
-  }, []);
+    if (autoFocus) buttonRefs.current[0]?.focus();
+  }, [autoFocus]);
 
   const focusByIndex = (targetIndex: number) => {
     const total = options.length;
@@ -128,6 +138,9 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
   const [hours, setHours] = useState<Hours | null>(null);
   const [situation, setSituation] = useState<Situation | null>(null);
   const [startedTracked, setStartedTracked] = useState(false);
+  // True once the user has made any selection. Drives per-step autofocus so the
+  // embedded quiz never steals focus (and scroll) on initial page load.
+  const [interacted, setInteracted] = useState(false);
   const completionTracked = useRef(false);
   const resultHeadingRef = useRef<HTMLHeadingElement | null>(null);
 
@@ -136,6 +149,14 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
     return computePathRecommendation({ experience, goal, hours, situation });
   }, [experience, goal, hours, situation]);
 
+  const recap = useMemo(
+    () =>
+      experience && goal && hours && situation
+        ? answerRecap({ experience, goal, hours, situation })
+        : [],
+    [experience, goal, hours, situation],
+  );
+
   const reset = useCallback(() => {
     setStep(0);
     setExperience(null);
@@ -143,6 +164,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
     setHours(null);
     setSituation(null);
     setStartedTracked(false);
+    setInteracted(false);
     completionTracked.current = false;
   }, []);
 
@@ -172,6 +194,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
       trackAdvisorEvent('path_advisor_start');
       setStartedTracked(true);
     }
+    setInteracted(true);
     setExperience(v);
     trackAdvisorEvent('path_advisor_step', { step: 1, field: 'experience', value: v });
     setStep(1);
@@ -238,6 +261,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
           title="1. Where are you starting?"
           options={EXPERIENCE_OPTIONS}
           onSelect={onSelectExperience}
+          autoFocus={interacted}
         />
       )}
 
@@ -247,6 +271,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
           options={GOAL_OPTIONS}
           onSelect={onSelectGoal}
           onBack={() => setStep(0)}
+          autoFocus={interacted}
         />
       )}
 
@@ -257,6 +282,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
           hint="We use this to estimate how long the path may take at your pace."
           onSelect={onSelectHours}
           onBack={() => setStep(1)}
+          autoFocus={interacted}
         />
       )}
 
@@ -266,6 +292,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
           options={SITUATION_OPTIONS}
           onSelect={onSelectSituation}
           onBack={() => setStep(2)}
+          autoFocus={interacted}
         />
       )}
 
@@ -273,6 +300,13 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
         <div className="path-advisor__card path-advisor__card--result">
           <p className="path-advisor__result-kicker">Your best fit</p>
           <h3 ref={resultHeadingRef} tabIndex={-1} className="path-advisor__result-badge">{PATHS[result.primary].title}</h3>
+          {recap.length > 0 && (
+            <ul className="path-advisor__recap" aria-label="Based on your answers">
+              {recap.map((tag) => (
+                <li key={tag} className="path-advisor__recap-chip">{tag}</li>
+              ))}
+            </ul>
+          )}
           <p className="path-advisor__blurb">{PATHS[result.primary].blurb}</p>
           <p className="path-advisor__reasoning">{result.reasoning[0]}</p>
           <p className="path-advisor__pace">

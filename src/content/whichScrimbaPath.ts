@@ -34,28 +34,28 @@ export const PATHS: Record<
   }
 > = {
   frontend: {
-    title: 'Frontend Developer Career Path',
+    title: 'Frontend Developer Path',
     doc: '/docs/paths/frontend-developer-path',
     blurb:
       'Best if you are starting from zero or want a hireable React portfolio with MDN-backed curriculum.',
     affiliateNote: 'Start free, then upgrade through our partner link when you are ready for Pro.',
   },
   fullstack: {
-    title: 'Fullstack Developer Career Path',
+    title: 'Fullstack Developer Path',
     doc: '/docs/paths/fullstack-developer-path',
     blurb:
       'Best when you want frontend through Next.js plus backend, databases, TypeScript, and AI engineering in one track.',
     affiliateNote: 'Heavy time investment, annual billing usually wins if you will stick with it 3+ months.',
   },
   backend: {
-    title: 'Backend Developer Career Path',
+    title: 'Backend Developer Path',
     doc: '/docs/paths/backend-developer-path',
     blurb:
       'Best if you are comfortable with JavaScript and want Node, SQL, security, and DevOps depth without redoing all of React.',
     affiliateNote: 'Pair with the Backend course hub for electives after the path intro.',
   },
   ai: {
-    title: 'AI Engineer Career Path',
+    title: 'AI Engineer Path',
     doc: '/docs/paths/ai-engineer-path',
     blurb:
       'Best for developers who already ship code and want agents, RAG, MCP, and AI app patterns, not a first programming course.',
@@ -107,6 +107,14 @@ function buildReasoning(
   } else if (goal === 'backend' && experience === 'beginner') {
     lines.push(
       'Backend path expects JavaScript comfort; Fullstack or Frontend gets you there without skipping fundamentals.',
+    );
+  } else if (goal === 'job' && experience === 'some' && primary === 'frontend') {
+    lines.push(
+      'With shaky fundamentals, Frontend is the fastest route to a hireable React portfolio; branch into Fullstack once the basics hold.',
+    );
+  } else if (goal === 'job' && hours === 'low' && primary === 'frontend') {
+    lines.push(
+      'At under ~5 hours a week, a focused Frontend path is far more finishable than a 100h+ Fullstack track; depth beats breadth when time is tight.',
     );
   } else if (goal === 'job' && hours === 'low' && primary === 'fullstack') {
     lines.push(
@@ -176,10 +184,15 @@ export function computePathRecommendation(input: AdvisorInput): PathRecommendati
   } else if (goal === 'job' && experience === 'beginner') {
     primary = 'frontend';
   } else if (goal === 'job' && experience === 'some') {
-    primary = 'fullstack';
-    secondary = 'frontend';
+    // Shaky fundamentals + a job target: Frontend is the faster route to a
+    // hireable portfolio than the much longer Fullstack path. Branch into
+    // Fullstack later once the basics hold.
+    primary = 'frontend';
+    secondary = 'fullstack';
   } else if (goal === 'job' && (experience === 'junior' || experience === 'senior')) {
     if (experience === 'junior' && hours === 'low') {
+      // A junior with limited weekly time finishes a focused Frontend path
+      // long before a 100h+ Fullstack track; keep Fullstack as the next step.
       primary = 'frontend';
       secondary = 'fullstack';
     } else {
@@ -241,3 +254,36 @@ export const SITUATION_OPTIONS: readonly { value: Situation; label: string }[] =
   { value: 'employed-learning', label: 'Working full-time, studying on the side' },
   { value: 'exploring', label: 'Just exploring, not sure yet' },
 ] as const;
+
+/** Short, human-readable tags for the chosen answers, shown back in the result. */
+export function answerRecap(input: AdvisorInput): string[] {
+  const experience: Record<Experience, string> = {
+    beginner: 'New to code',
+    some: 'Some basics',
+    junior: 'Junior dev',
+    senior: 'Experienced dev',
+  };
+  const goal: Record<Goal, string> = {
+    job: 'Goal: get hired',
+    backend: 'Goal: backend skills',
+    ai: 'Goal: AI apps',
+    explore: 'Goal: explore coding',
+  };
+  const hours: Record<Hours, string> = {
+    low: 'Under 5 hrs/week',
+    mid: '5–15 hrs/week',
+    high: '15+ hrs/week',
+  };
+  const situation: Record<Situation, string> = {
+    'career-switch': 'Career switcher',
+    student: 'Student',
+    'employed-learning': 'Working full-time',
+    exploring: 'Still exploring',
+  };
+  return [
+    experience[input.experience],
+    goal[input.goal],
+    hours[input.hours],
+    situation[input.situation],
+  ];
+}
