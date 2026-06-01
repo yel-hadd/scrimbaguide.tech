@@ -5,6 +5,7 @@ import {
   computePathRecommendation,
   answerRecap,
   PATHS,
+  PATH_MODULES,
   EXPERIENCE_OPTIONS,
   GOAL_OPTIONS,
   HOURS_OPTIONS,
@@ -34,6 +35,11 @@ function trackAdvisorEvent(
 }
 
 const TOTAL_STEPS = 4;
+
+// Public, no-signup interactive scrim. Mirrors Scrimba's own "Try it for free /
+// 2 min, no signup" hero CTA and the homepage demo, so the free-emphasis path
+// actually opens a real lesson instead of the marketing homepage.
+const DEMO_SCRIM_URL = 'https://scrimba.com/s0v687325e';
 
 export interface PathAdvisorProps {
   /** When true, tighter layout for embedding in docs. */
@@ -300,6 +306,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
         <div className="path-advisor__card path-advisor__card--result">
           <p className="path-advisor__result-kicker">Your best fit</p>
           <h3 ref={resultHeadingRef} tabIndex={-1} className="path-advisor__result-badge">{PATHS[result.primary].title}</h3>
+          <p className="path-advisor__result-meta">{PATH_MODULES[result.primary]} modules in this path</p>
           {recap.length > 0 && (
             <ul className="path-advisor__recap" aria-label="Based on your answers">
               {recap.map((tag) => (
@@ -326,12 +333,12 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
             </Link>
             {result.ctaEmphasis === 'free' ? (
               <AffiliateLink
-                href="https://scrimba.com/?via=u42d4986"
+                href={DEMO_SCRIM_URL}
                 variant="button"
                 className="button button--secondary"
                 onClick={() => trackAdvisorEvent('path_advisor_scrimba_click', { type: 'free' })}
               >
-                Try Scrimba free
+                Try a free lesson (2 min, no signup)
               </AffiliateLink>
             ) : (
               <AffiliateLink
