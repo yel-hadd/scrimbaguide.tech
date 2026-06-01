@@ -5,6 +5,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import AffiliateLink from '../components/AffiliateLink';
 import ScrimSandbox from '../components/ScrimSandbox';
+import ScrimbaBlocksArt from '../components/ScrimbaBlocksArt';
 import {
   totalCoursesLabel,
   freeCount,
@@ -507,6 +508,7 @@ function FinalCtaSection() {
   return (
     <section className="home-shell home-section home-section--compact">
       <div className="home-final-cta">
+        <ScrimbaBlocksArt className="home-final-cta__mark" />
         <h2>One last thing. Open a scrim before you decide anything.</h2>
         <p>
           Reading about an interactive learning format is the wrong way to evaluate it. The
