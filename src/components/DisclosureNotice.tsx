@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 
-export default function DisclosureNotice(): React.ReactElement {
+export default function DisclosureNotice(): React.ReactElement | null {
   const { pathname } = useLocation();
+  // Render only on the client, after hydration, so the disclosure is visible to
+  // real users (FTC) but absent from the server-rendered HTML. Combined with
+  // data-nosnippet, that keeps it out of SERP snippets, plain-HTML crawlers, and
+  // LLM scrapers that do not execute JavaScript, while staying transparent to
+  // anyone actually reading the page.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const isBlogListPreviewPage =
     pathname === '/blog/' ||
     pathname.startsWith('/blog/page/') ||
     pathname.startsWith('/blog/tags') ||
     pathname.startsWith('/blog/archive');
 
-  if (isBlogListPreviewPage) {
+  if (!mounted || isBlogListPreviewPage) {
     return null;
   }
 

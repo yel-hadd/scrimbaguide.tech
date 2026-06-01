@@ -391,9 +391,14 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.course-card__title {
+/* Scoped under .course-card so it beats `.theme-doc-markdown p` (the title is a
+   <p> now, not an <h3>, to stay out of the heading outline). */
+.course-card .course-card__title {
   margin: 0;
   font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--sg-text-strong);
 }
 
 .course-card__badge {
@@ -505,7 +510,21 @@ body {
 
 /* ── Reusable MDX widget helpers ──────────────────────────────── */
 .mdx-widget-center-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  /* row-gap when buttons wrap, column-gap between adjacent buttons. Without this
+     the inline-flex buttons collapse to a ~4px whitespace gap and look glued. */
+  gap: 0.75rem 1rem;
   text-align: center;
+}
+
+/* Notes and descriptive copy break onto their own full-width line, so the flex
+   gap only spaces the buttons against each other. */
+.mdx-widget-center-cta > p {
+  flex-basis: 100%;
+  margin: 0;
 }
 
 .mdx-widget-center-cta--spaced-top {
@@ -1535,12 +1554,12 @@ article a:not(.cta-link):not(.hash-link):hover {
 
 .compare-card__verdict {
   margin-top: 0.65rem !important;
-  padding: 0.35rem 0.55rem;
+  padding: 0.55rem 0.7rem;
   border-radius: 8px;
   background: var(--sg-accent-softer);
   color: var(--sg-text-muted) !important;
   font-size: 0.82rem;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 /* ── FAQ answer panel ─────────────────────────────────────────── */
@@ -3277,8 +3296,13 @@ html[data-theme='dark'] .curriculum__index {
   color: var(--sg-text-muted);
 }
 
+/* Consistent, comfortable gap below the subtitle on every card. The old
+   margin-top:auto bottom-pinned the verdict, which made the gap depend on
+   subtitle length (1-line subtitles got a big gap, 2-line ones looked cramped).
+   A fixed margin keeps the spacing uniform across the row; any leftover height
+   falls to the bottom of the card, which is unobtrusive. */
 .homepage .compare-card__verdict {
-  margin-top: auto !important;
+  margin-top: 1rem !important;
 }
 
 /* ── Topic + blog cards ─────────────────────────────────────────── */
