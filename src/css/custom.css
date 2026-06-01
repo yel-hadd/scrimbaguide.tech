@@ -889,6 +889,145 @@ body {
   font-size: 0.85rem;
 }
 
+/* --- Split hero: copy left, clickable lesson poster right --- */
+.hero-section__inner--split {
+  max-width: 1160px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  gap: 2.75rem;
+  align-items: center;
+}
+
+.hero-section__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* In the split layout the copy column reads left-aligned, not centered. */
+.hero-section__inner--split .hero-section__eyebrow,
+.hero-section__inner--split h1,
+.hero-section__inner--split .hero-section__lead,
+.hero-section__inner--split .hero-section__cta-note,
+.hero-section__inner--split .hero-section__trust {
+  text-align: left;
+}
+
+.hero-section__inner--split .hero-section__lead {
+  max-width: 560px;
+}
+
+.hero-section__inner--split .hero-buttons,
+.hero-section__inner--split .hero-section__proof {
+  justify-content: flex-start;
+}
+
+.hero-section__media {
+  position: relative;
+}
+
+.hero-scrim-poster {
+  display: block;
+  text-decoration: none;
+  border: 0;
+}
+
+.hero-scrim-poster__frame {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  filter: drop-shadow(0 20px 44px rgba(20, 12, 50, 0.26));
+  transition: transform 0.22s ease;
+}
+
+.hero-scrim-poster:hover .hero-scrim-poster__frame {
+  transform: translateY(-3px);
+}
+
+.hero-scrim-poster__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-scrim-poster__play {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  padding-left: 0.18em; /* optically center the triangle */
+  border-radius: 999px;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  font-size: 1.45rem;
+  box-shadow: 0 10px 26px rgba(91, 63, 217, 0.5);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.hero-scrim-poster:hover .hero-scrim-poster__play {
+  transform: translate(-50%, -50%) scale(1.09);
+  background: var(--ifm-color-primary-dark);
+}
+
+.hero-scrim-poster__caption {
+  display: block;
+  margin-top: 0.95rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--sg-text-soft);
+}
+
+/* The poster is the affiliate link itself; hide the inline ↗ glyph here. */
+.hero-scrim-poster .cta-link__external-icon {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-section__copy > *,
+  .hero-section__media {
+    animation: heroFadeUp 0.5s ease both;
+  }
+  .hero-section__copy > *:nth-child(2) { animation-delay: 0.05s; }
+  .hero-section__copy > *:nth-child(3) { animation-delay: 0.1s; }
+  .hero-section__copy > *:nth-child(4) { animation-delay: 0.15s; }
+  .hero-section__media { animation-delay: 0.18s; }
+
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section__inner--split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hero-section__copy {
+    align-items: center;
+  }
+  .hero-section__inner--split .hero-section__eyebrow,
+  .hero-section__inner--split h1,
+  .hero-section__inner--split .hero-section__lead,
+  .hero-section__inner--split .hero-section__cta-note,
+  .hero-section__inner--split .hero-section__trust {
+    text-align: center;
+  }
+  .hero-section__inner--split .hero-buttons,
+  .hero-section__inner--split .hero-section__proof {
+    justify-content: center;
+  }
+  .hero-section__media {
+    max-width: 540px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
 .section-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

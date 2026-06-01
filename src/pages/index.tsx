@@ -35,59 +35,76 @@ function HeroSection() {
 
   return (
     <section className="hero-section">
-      <div className="hero-section__inner">
-        <p className="hero-section__eyebrow">Independent Scrimba guide</p>
-        <h1>
-          Scrimba lets you pause the video and edit the instructor's code. This guide helps
-          you decide if it is worth it.
-        </h1>
-        <p className="hero-section__lead">
-          I tested the format across a dozen courses, independently and not on Scrimba's
-          payroll. Here is which of the {totalCoursesLabel} courses and four career paths are
-          worth your time, what they actually cost, who each is for, and where Scrimba loses
-          to Codecademy, Udemy, and freeCodeCamp.
-        </p>
-        <div className="hero-buttons" role="group" aria-label="Primary actions">
-          <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-hero-primary">
-            Try a free lesson in your browser
-          </AffiliateLink>
-          <Link
-            className="cta-link cta-link--button hero-section__secondary-btn"
-            to="/docs/paths/#path-advisor"
-          >
-            Find my path (2 min quiz)
-          </Link>
-        </div>
-        <p className="hero-section__cta-note">
-          No signup, nothing to install. A real lesson opens in your browser in about 30 seconds.
-        </p>
-        <ul className="hero-section__proof" aria-label="Why trust this guide">
-          <li>
-            <strong>4.3/5</strong> on{' '}
-            <a
-              href="https://www.trustpilot.com/review/www.scrimba.com"
-              target="_blank"
-              rel="noopener noreferrer nofollow"
+      <div className="hero-section__inner hero-section__inner--split">
+        <div className="hero-section__copy">
+          <p className="hero-section__eyebrow">Independent Scrimba guide</p>
+          <h1>Try a real Scrimba lesson before you trust any review.</h1>
+          <p className="hero-section__lead">
+            I review Scrimba independently, not on its payroll. Start by editing a real lesson
+            in your browser. Then use this guide to pick a path, see what Pro actually costs,
+            and decide if it fits how you learn.
+          </p>
+          <div className="hero-buttons" role="group" aria-label="Primary actions">
+            <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-hero-primary">
+              Open a real lesson (2 min, no signup)
+            </AffiliateLink>
+            <Link
+              className="cta-link cta-link--button hero-section__secondary-btn"
+              to="/docs/paths/#path-advisor"
             >
-              Trustpilot
-            </a>
-          </li>
-          <li>Frontend path built with <strong>Mozilla MDN</strong></li>
-          <li>Taught by <strong>Bob Ziroll, Kevin Powell</strong>, and 25+ others</li>
-        </ul>
-        <p className="hero-section__tertiary">
-          Already sold?{' '}
-          <AffiliateLink href={PRO_AFFILIATE_URL} variant="text" location="home-hero-tertiary">
-            Open Scrimba with 20% off Pro applied at checkout
+              Find my path (2 min quiz)
+            </Link>
+          </div>
+          <p className="hero-section__cta-note">
+            No signup, nothing to install. A real lesson opens in your browser in about 30 seconds.
+          </p>
+          <ul className="hero-section__proof" aria-label="Trust signals">
+            <li>Scrimba has <strong>2M+ learners</strong></li>
+            <li>
+              <strong>4.3/5</strong> on{' '}
+              <a
+                href="https://www.trustpilot.com/review/www.scrimba.com"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+              >
+                Trustpilot
+              </a>
+            </li>
+            <li>Frontend path built with <strong>Mozilla MDN</strong></li>
+          </ul>
+          <p className="hero-section__trust">
+            <small>
+              We earn a commission if you upgrade through our links, at no extra cost to you.
+              Always verify the final price at checkout.
+            </small>
+          </p>
+        </div>
+
+        <div className="hero-section__media">
+          <AffiliateLink
+            href={DEMO_SCRIM_URL}
+            variant="card"
+            className="hero-scrim-poster"
+            location="home-hero-poster"
+          >
+            <span className="hero-scrim-poster__frame">
+              <img
+                className="hero-scrim-poster__img"
+                src="/img/scrimba-lesson-preview.webp"
+                alt="A real Scrimba lesson open in the browser: an in-browser code editor showing index.js that you can pause and edit."
+                width={859}
+                height={450}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+              />
+              <span className="hero-scrim-poster__play" aria-hidden="true">▶</span>
+            </span>
+            <span className="hero-scrim-poster__caption">
+              Press play. A real lesson opens in your browser, no signup.
+            </span>
           </AffiliateLink>
-          .
-        </p>
-        <p className="hero-section__trust">
-          <small>
-            We earn a commission if you upgrade through our links, at no extra cost to you.
-            Always verify the final price at checkout.
-          </small>
-        </p>
+        </div>
       </div>
 
       <div className="hero-section__stats" role="region" aria-label="At a glance">
