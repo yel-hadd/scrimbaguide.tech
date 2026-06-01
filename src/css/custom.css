@@ -688,7 +688,8 @@ body {
 .hero-section {
   position: relative;
   width: 100%;
-  padding: 3.25rem 1.5rem 1.5rem;
+  /* Horizontal padding matches .home-section so hero + sections share a left edge. */
+  padding: 3.25rem clamp(1rem, 2.5vw, 2rem) 1.5rem;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -887,6 +888,161 @@ body {
   color: var(--sg-text-soft);
   text-align: center;
   font-size: 0.85rem;
+}
+
+/* --- Split hero: copy left, clickable lesson poster right --- */
+.hero-section__inner--split {
+  /* Match the section shell width + the hero's own horizontal padding so the
+     hero copy's left edge lines up with every section below it. */
+  max-width: var(--sg-home-max-width);
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+  gap: clamp(2rem, 4vw, 3.25rem);
+  align-items: center;
+}
+
+.hero-section__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* In the split layout the copy column reads left-aligned, not centered. */
+.hero-section__inner--split .hero-section__eyebrow,
+.hero-section__inner--split h1,
+.hero-section__inner--split .hero-section__lead,
+.hero-section__inner--split .hero-section__cta-note,
+.hero-section__inner--split .hero-section__trust {
+  text-align: left;
+}
+
+.hero-section__inner--split .hero-section__lead {
+  max-width: 560px;
+}
+
+.hero-section__inner--split .hero-buttons,
+.hero-section__inner--split .hero-section__proof {
+  justify-content: flex-start;
+}
+
+.hero-section__media {
+  position: relative;
+}
+
+.hero-scrim-poster {
+  display: block;
+  text-decoration: none;
+  border: 0;
+}
+
+.hero-scrim-poster__frame {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  filter: drop-shadow(0 20px 44px rgba(20, 12, 50, 0.26));
+  transition: transform 0.22s ease;
+}
+
+.hero-scrim-poster:hover .hero-scrim-poster__frame {
+  transform: translateY(-3px);
+}
+
+.hero-scrim-poster__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-scrim-poster__play {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  padding-left: 0.18em; /* optically center the triangle */
+  border-radius: 999px;
+  /* Fixed saturated violet in both themes: the laptop art is always dark, and
+     a theme-variable primary would go pale lavender in dark mode and wash out
+     the white triangle. */
+  background: #6f4eff;
+  color: #fff;
+  font-size: 1.45rem;
+  box-shadow: 0 10px 26px rgba(91, 63, 217, 0.5);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.hero-scrim-poster:hover .hero-scrim-poster__play {
+  transform: translate(-50%, -50%) scale(1.09);
+  background: #5b3fd9;
+}
+
+/* A soft expanding ring draws the eye to the play affordance. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-scrim-poster__play::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    border: 2px solid #6f4eff;
+    animation: sg-play-ring 2.4s ease-out infinite;
+  }
+  @keyframes sg-play-ring {
+    0% { transform: scale(1); opacity: 0.55; }
+    70% { transform: scale(1.55); opacity: 0; }
+    100% { transform: scale(1.55); opacity: 0; }
+  }
+}
+
+.hero-scrim-poster__caption {
+  display: block;
+  margin-top: 0.95rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--sg-text-soft);
+}
+
+/* The poster is the affiliate link itself; hide the inline ↗ glyph here. */
+.hero-scrim-poster .cta-link__external-icon {
+  display: none;
+}
+
+/* Keyboard focus ring for the media poster (it is the affiliate <a>). */
+.hero-scrim-poster:focus-visible {
+  outline: none;
+}
+.hero-scrim-poster:focus-visible .hero-scrim-poster__frame {
+  outline: 3px solid var(--ifm-color-primary);
+  outline-offset: 4px;
+  border-radius: 16px;
+}
+
+@media (max-width: 900px) {
+  .hero-section__inner--split {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hero-section__copy {
+    align-items: center;
+  }
+  .hero-section__inner--split .hero-section__eyebrow,
+  .hero-section__inner--split h1,
+  .hero-section__inner--split .hero-section__lead,
+  .hero-section__inner--split .hero-section__cta-note,
+  .hero-section__inner--split .hero-section__trust {
+    text-align: center;
+  }
+  .hero-section__inner--split .hero-buttons,
+  .hero-section__inner--split .hero-section__proof {
+    justify-content: center;
+  }
+  .hero-section__media {
+    max-width: 540px;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 
 .section-grid {
@@ -3404,6 +3560,44 @@ html[data-theme='dark'] .curriculum__index {
   padding: clamp(2rem, 5vw, 3.4rem) 1.5rem;
 }
 
+/* ── Animated Scrimba blocks mark (decorative brand flourish) ─────── */
+.scrimba-blocks {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.scrimba-blocks__b {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.scrimba-blocks__b--1 { fill: var(--ifm-color-primary); }
+.scrimba-blocks__b--2 { fill: var(--ifm-color-primary-light); }
+.scrimba-blocks__b--3 { fill: var(--sg-accent-warm); }
+.scrimba-blocks__b--4 { fill: var(--ifm-color-primary); }
+
+.home-final-cta__mark {
+  width: 96px;
+  margin: 0 auto 1.15rem;
+  filter: drop-shadow(0 6px 14px rgba(91, 63, 217, 0.28));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scrimba-blocks__b {
+    animation: sg-block-bob 3.4s ease-in-out infinite;
+  }
+  .scrimba-blocks__b--1 { animation-delay: 0s; }
+  .scrimba-blocks__b--2 { animation-delay: 0.18s; }
+  .scrimba-blocks__b--3 { animation-delay: 0.36s; }
+  .scrimba-blocks__b--4 { animation-delay: 0.54s; }
+
+  @keyframes sg-block-bob {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(-1.1px); opacity: 0.82; }
+  }
+}
+
 /* ════════════════════════════════════════════════════════════════
    MOTION — load-stagger for the hero, scroll-reveal for sections.
    Wrapped in no-preference so reduced-motion users get none of it.
@@ -3418,18 +3612,21 @@ html[data-theme='dark'] .curriculum__index {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .homepage .hero-section__inner > * {
+  /* Split hero: stagger the copy column's children, settle the poster as one
+     unit a beat later. (Single motion system; no competing keyframes.) */
+  .homepage .hero-section__copy > *,
+  .homepage .hero-section__media {
     animation: sg-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
-  .homepage .hero-section__inner > *:nth-child(1) { animation-delay: 0.04s; }
-  .homepage .hero-section__inner > *:nth-child(2) { animation-delay: 0.1s; }
-  .homepage .hero-section__inner > *:nth-child(3) { animation-delay: 0.16s; }
-  .homepage .hero-section__inner > *:nth-child(4) { animation-delay: 0.22s; }
-  .homepage .hero-section__inner > *:nth-child(5) { animation-delay: 0.28s; }
-  .homepage .hero-section__inner > *:nth-child(6) { animation-delay: 0.34s; }
-  .homepage .hero-section__inner > *:nth-child(7) { animation-delay: 0.4s; }
-  .homepage .hero-section__inner > *:nth-child(8) { animation-delay: 0.46s; }
+  .homepage .hero-section__copy > *:nth-child(1) { animation-delay: 0.04s; }
+  .homepage .hero-section__copy > *:nth-child(2) { animation-delay: 0.1s; }
+  .homepage .hero-section__copy > *:nth-child(3) { animation-delay: 0.16s; }
+  .homepage .hero-section__copy > *:nth-child(4) { animation-delay: 0.22s; }
+  .homepage .hero-section__copy > *:nth-child(5) { animation-delay: 0.28s; }
+  .homepage .hero-section__copy > *:nth-child(6) { animation-delay: 0.34s; }
+  .homepage .hero-section__copy > *:nth-child(7) { animation-delay: 0.4s; }
+  .homepage .hero-section__media { animation-delay: 0.24s; }
 
   /* Scroll-driven reveal where supported (no JS, progressive enhancement). */
   @supports (animation-timeline: view()) {
