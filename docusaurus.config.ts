@@ -473,7 +473,9 @@ const config: Config = {
             description: 'The unofficial guide to Scrimba courses, learning paths, pricing, and more.',
             potentialAction: {
               '@type': 'SearchAction',
-              target: 'https://scrimbaguide.tech/search?q={search_term_string}',
+              // Trailing slash is required: with trailingSlash:true, /search?q=…
+              // 301s to /search/ and drops the query, landing on an empty page.
+              target: 'https://scrimbaguide.tech/search/?q={search_term_string}',
               'query-input': 'required name=search_term_string',
             },
             publisher: { '@id': 'https://scrimbaguide.tech/#organization' },
