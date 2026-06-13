@@ -124,6 +124,16 @@ export default function SearchBar(): React.ReactElement {
     history.push(url);
   }, [closeSearch, history]);
 
+  const handleSeeAll = useCallback(() => {
+    const url = `/search?q=${encodeURIComponent(query)}`;
+    setOpen(false);
+    setQuery('');
+    setResults(null);
+    setHighlightIdx(-1);
+    document.body.style.overflow = '';
+    history.push(url);
+  }, [query, history]);
+
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     switch (e.key) {
       case 'ArrowDown':
@@ -255,15 +265,14 @@ export default function SearchBar(): React.ReactElement {
           ))}
         </div>
 
-        {query && (
+          {query && (
           <div className="sg-search-footer">
-            <a
+            <button
               className="sg-search-footer-link"
-              href={`/search?q=${encodeURIComponent(query)}`}
-              onClick={closeSearch}
+              onClick={handleSeeAll}
             >
               See all results&hellip;
-            </a>
+            </button>
             <div className="sg-search-footer-hints">
               <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> Navigate</span>
               <span><kbd>&#9166;</kbd> Open</span>
