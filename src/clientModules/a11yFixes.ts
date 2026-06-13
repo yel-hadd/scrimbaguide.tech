@@ -105,7 +105,7 @@ function focusSearchInputOnDemand() {
   if (params.get('focus') !== '1') return;
 
   const input = document.querySelector<HTMLInputElement>(
-    '.navbar__search-input, input[aria-label="Search"]'
+    '[class*="searchQueryInput"], input[aria-label="Search"]'
   );
   if (input) {
     input.focus();
