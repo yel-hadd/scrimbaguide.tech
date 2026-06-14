@@ -4,7 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useHistory } from '@docusaurus/router';
 import { searchByWorker } from '@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker';
 
-const PER_GROUP_LIMIT = 8;
+const PER_GROUP_LIMIT = 4;
 const FETCH_LIMIT = 50;
 
 interface SearchDoc {

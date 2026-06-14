@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 // autocomplete dropdown would have produced.
 
 const SEARCH_LIMIT = 8;
-const PER_GROUP_LIMIT = 8;
+const PER_GROUP_LIMIT = 4;
 
 /**
  * Old behavior: flat, ungrouped list of hit rows. The autocomplete
