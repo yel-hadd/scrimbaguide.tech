@@ -67,13 +67,23 @@ export default function SearchBar(): React.ReactElement {
   const inputRef = useRef<HTMLInputElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const grouped = useMemo(() => {
+  const rawGrouped = useMemo(() => {
     if (!results) return [];
-    return groupResults(results).map((g) => ({
+    return groupResults(results);
+  }, [results]);
+
+  const perGroupCounts = useMemo(() => {
+    const m: Record<string, number> = { All: results?.length ?? 0 };
+    for (const g of rawGrouped) m[g.label] = g.results.length;
+    return m;
+  }, [rawGrouped, results]);
+
+  const grouped = useMemo(() => {
+    return rawGrouped.map((g) => ({
       ...g,
       results: g.results.slice(0, PER_GROUP_LIMIT),
     }));
-  }, [results]);
+  }, [rawGrouped]);
 
   const filtered = useMemo(() => {
     if (activeFilter === 'All') return grouped;
@@ -232,9 +242,7 @@ export default function SearchBar(): React.ReactElement {
           {!loading && query && results && results.length > 0 && (
             <div className="sg-search-filters">
               {['All', 'Courses', 'Blog', 'Docs'].map((f) => {
-                const count = f === 'All'
-                  ? grouped.reduce((s, g) => s + g.results.length, 0)
-                  : grouped.find((g) => g.label === f)?.results.length || 0;
+                const count = perGroupCounts[f] ?? 0;
                 return (
                   <button
                     key={f}
@@ -300,7 +308,7 @@ export default function SearchBar(): React.ReactElement {
               className="sg-search-footer-link"
               onClick={handleSeeAll}
             >
-              See all {results?.length ?? 0} results &rarr;
+              See all {perGroupCounts[activeFilter] ?? 0} results &rarr;
             </button>
             <div className="sg-search-footer-hints">
               <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> Navigate</span>
