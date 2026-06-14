@@ -438,12 +438,14 @@ body {
   color: var(--sg-text-strong);
 }
 
-/* ── Category filters ────────────────────────────────────────── */
+/* ── Category filters (fixed, does not scroll) ────────────────── */
 .sg-search-filters {
   display: flex;
   gap: 0.4rem;
   padding: 0.5rem 0.7rem;
   flex-wrap: wrap;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--sg-home-border);
 }
 
 .sg-search-filter {
@@ -488,7 +490,7 @@ body {
   flex: 1;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 0.4rem 0.5rem;
+  padding: 0.25rem 0.5rem;
 }
 
 /* ── Status messages (loading / empty / no-results) ───────────── */

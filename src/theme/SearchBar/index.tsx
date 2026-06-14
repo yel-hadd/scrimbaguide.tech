@@ -229,6 +229,24 @@ export default function SearchBar(): React.ReactElement {
           </button>
         </div>
 
+        {!loading && query && results && results.length > 0 && (
+          <div className="sg-search-filters">
+            {['All', 'Courses', 'Blog', 'Docs'].map((f) => {
+              const count = perGroupCounts[f] ?? 0;
+              return (
+                <button
+                  key={f}
+                  className={'sg-search-filter' + (activeFilter === f ? ' sg-search-filter--active' : '') + (count === 0 ? ' sg-search-filter--empty' : '')}
+                  onClick={() => { setActiveFilter(f); setHighlightIdx(-1); }}
+                  disabled={count === 0}
+                >
+                  {f}{count > 0 ? ` (${count})` : ''}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
         <div className="sg-search-body">
           {loading && (
             <div className="sg-search-status">Searching&hellip;</div>
@@ -238,23 +256,6 @@ export default function SearchBar(): React.ReactElement {
           )}
           {!loading && query && results && results.length === 0 && (
             <div className="sg-search-status">No results found for &ldquo;{query}&rdquo;.</div>
-          )}
-          {!loading && query && results && results.length > 0 && (
-            <div className="sg-search-filters">
-              {['All', 'Courses', 'Blog', 'Docs'].map((f) => {
-                const count = perGroupCounts[f] ?? 0;
-                return (
-                  <button
-                    key={f}
-                    className={'sg-search-filter' + (activeFilter === f ? ' sg-search-filter--active' : '') + (count === 0 ? ' sg-search-filter--empty' : '')}
-                    onClick={() => { setActiveFilter(f); setHighlightIdx(-1); }}
-                    disabled={count === 0}
-                  >
-                    {f}{count > 0 ? ` (${count})` : ''}
-                  </button>
-                );
-              })}
-            </div>
           )}
           {!loading && filtered.map((group, gi) => (
             <div key={group.label} className="sg-search-group">
