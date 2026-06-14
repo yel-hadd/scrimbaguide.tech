@@ -28,10 +28,10 @@ function hitUrl(doc) {
 function groupResults(results) {
   const map = { Courses: [], Blog: [], Docs: [] };
   for (const r of results) {
-    const path = r.document.b?.join('/') || '';
-    if (path.includes('courses')) {
+    const root = r.document.b?.[0] || '';
+    if (root === 'Courses') {
       map.Courses.push(r);
-    } else if (path.includes('blog')) {
+    } else if (root === 'Blog') {
       map.Blog.push(r);
     } else {
       map.Docs.push(r);
@@ -43,30 +43,34 @@ function groupResults(results) {
 }
 
 // ── Mock data (shape matches searchByWorker output) ──────────────
+// The b[] holds sidebar breadcrumbs as found in the lunr index:
+//   Blog -> ['Blog']
+//   Courses -> ['Courses', 'Courses by Topic', 'React']
+//   Other docs -> ['Pricing'], ['Scrimba vs Alternatives'], ['How Scrimba Works'], etc.
 const mockResults = [
   {
-    document: { i: 0, t: 'Learn React', u: '/docs/courses/react/learn-react', b: ['docs', 'courses', 'react', 'learn-react'] },
-    type: 0, page: { b: ['docs', 'courses', 'react', 'learn-react'], t: 'Learn React' }, tokens: ['react'],
+    document: { i: 0, t: 'Learn React', u: '/docs/courses/react/learn-react/', b: ['Courses', 'Courses by Topic', 'React'] },
+    type: 0, page: { b: ['Courses', 'Courses by Topic', 'React'], t: 'Learn React' }, tokens: ['react'],
   },
   {
-    document: { i: 1, t: 'Advanced React', u: '/docs/courses/react/advanced-react', b: ['docs', 'courses', 'react', 'advanced-react'] },
-    type: 0, page: { b: ['docs', 'courses', 'react', 'advanced-react'], t: 'Advanced React' }, tokens: ['react'],
+    document: { i: 1, t: 'Advanced React', u: '/docs/courses/react/advanced-react/', b: ['Courses', 'Courses by Topic', 'React'] },
+    type: 0, page: { b: ['Courses', 'Courses by Topic', 'React'], t: 'Advanced React' }, tokens: ['react'],
   },
   {
-    document: { i: 2, t: 'My First Blog Post', u: '/blog/my-first-post', b: ['blog', 'my-first-post'] },
-    type: 1, page: { b: ['blog', 'my-first-post'], t: 'Blog' }, tokens: ['post'],
+    document: { i: 2, t: 'My First Blog Post', u: '/blog/my-first-post/', b: ['Blog'] },
+    type: 1, page: { b: ['Blog'], t: 'Blog' }, tokens: ['post'],
   },
   {
-    document: { i: 3, t: 'Scrimba Pricing', u: '/docs/pricing/', b: ['docs', 'pricing'] },
-    type: 0, page: { b: ['docs', 'pricing'], t: 'Scrimba Pricing' }, tokens: ['pricing'],
+    document: { i: 3, t: 'Scrimba Pricing', u: '/docs/pricing/', b: ['Pricing'] },
+    type: 0, page: { b: ['Pricing'], t: 'Scrimba Pricing' }, tokens: ['pricing'],
   },
   {
-    document: { i: 4, t: 'Scrimba vs Codecademy', u: '/docs/comparisons/scrimba-vs-codecademy', b: ['docs', 'comparisons', 'scrimba-vs-codecademy'] },
-    type: 0, page: { b: ['docs', 'comparisons', 'scrimba-vs-codecademy'], t: 'Comparisons' }, tokens: ['scrimba'],
+    document: { i: 4, t: 'Scrimba vs Codecademy', u: '/docs/comparisons/scrimba-vs-codecademy/', b: ['Scrimba vs Alternatives'] },
+    type: 0, page: { b: ['Scrimba vs Alternatives'], t: 'Comparisons' }, tokens: ['scrimba'],
   },
   {
-    document: { i: 5, t: 'React Learning Path', u: '/blog/scrimba-react-learning-path', b: ['blog', 'scrimba-react-learning-path'] },
-    type: 1, page: { b: ['blog', 'scrimba-react-learning-path'], t: 'Blog' }, tokens: ['react', 'learning'],
+    document: { i: 5, t: 'React Learning Path', u: '/blog/scrimba-react-learning-path/', b: ['Blog'] },
+    type: 1, page: { b: ['Blog'], t: 'Blog' }, tokens: ['react', 'learning'],
   },
 ];
 
@@ -138,15 +142,15 @@ test('groupResults: single result in a category', () => {
   assert.equal(grouped[0].results.length, 1);
 });
 
-test('groupResults: path matching is substring-based (handles nested routes)', () => {
+test('groupResults: nested Courses breadcrumbs all land in Courses', () => {
   const results = [
     {
-      document: { i: 0, t: 'Deep React', u: '/docs/courses/react/deep', b: ['docs', 'courses', 'react', 'deep'] },
-      type: 0, page: { b: ['docs', 'courses', 'react', 'deep'], t: 'Deep' }, tokens: ['react'],
+      document: { i: 0, t: 'Deep React', u: '/docs/courses/react/deep/', b: ['Courses', 'Courses by Topic', 'React'] },
+      type: 0, page: { b: ['Courses', 'Courses by Topic', 'React'], t: 'Deep' }, tokens: ['react'],
     },
     {
-      document: { i: 1, t: 'CSS Flexbox', u: '/docs/courses/css/flexbox', b: ['docs', 'courses', 'css', 'flexbox'] },
-      type: 0, page: { b: ['docs', 'courses', 'css', 'flexbox'], t: 'CSS' }, tokens: ['flexbox'],
+      document: { i: 1, t: 'CSS Flexbox', u: '/docs/courses/css/flexbox/', b: ['Courses', 'Courses by Topic', 'CSS & Design'] },
+      type: 0, page: { b: ['Courses', 'Courses by Topic', 'CSS & Design'], t: 'CSS' }, tokens: ['flexbox'],
     },
   ];
   const grouped = groupResults(results);
@@ -155,28 +159,38 @@ test('groupResults: path matching is substring-based (handles nested routes)', (
   assert.equal(grouped[0].results.length, 2);
 });
 
-test('groupResults: substring matching means "blogging" inside docs is still Blog', () => {
-  // Known limitation: includes('blog') matches "blogging".
-  // No such page exists on the site, so this is harmless.
+test('groupResults: uses first breadcrumb segment (case-sensitive)', () => {
+  // b[0] is the sidebar section title, checked case-sensitively.
+  // 'Blog' -> Blog group, 'Courses' -> Courses group, everything else -> Docs.
   const results = [
-    {
-      document: { i: 0, t: 'Blogging PDF', u: '/docs/guides/blogging', b: ['docs', 'guides', 'blogging'] },
-      type: 0, page: { b: ['docs', 'guides', 'blogging'], t: 'Guides' }, tokens: ['blog'],
-    },
+    { document: { i: 0, t: 'How Scrimba Works', u: '/docs/how-it-works/', b: ['How Scrimba Works'] }, type: 0, page: { b: ['How Scrimba Works'], t: 'How Scrimba Works' }, tokens: ['scrimba'] },
+    { document: { i: 1, t: 'Blogging Tips', u: '/blog/blogging-tips/', b: ['Blog'] }, type: 1, page: { b: ['Blog'], t: 'Blog' }, tokens: ['blog'] },
   ];
   const grouped = groupResults(results);
+  assert.equal(grouped.length, 2);
   assert.equal(grouped[0].label, 'Blog');
+  assert.equal(grouped[1].label, 'Docs');
 });
 
-test('groupResults: "courses" in a blog URL becomes Courses (substring match)', () => {
+test('groupResults: empty b array falls to Docs', () => {
   const results = [
-    {
-      document: { i: 0, t: 'Programming Courses', u: '/blog/programming-courses', b: ['blog', 'programming-courses'] },
-      type: 1, page: { b: ['blog', 'programming-courses'], t: 'Blog' }, tokens: ['courses'],
-    },
+    { document: { i: 0, t: 'Homepage', u: '/', b: [] }, type: 0, page: { b: [], t: 'Home' }, tokens: ['home'] },
   ];
   const grouped = groupResults(results);
-  assert.equal(grouped[0].label, 'Courses');
+  assert.equal(grouped[0].label, 'Docs');
+});
+
+test('groupResults: handles mixed categories correctly', () => {
+  const results = [
+    { document: { i: 0, t: 'JS Course', u: '/js/', b: ['Courses', 'JavaScript'] }, type: 0, page: { b: ['Courses', 'JavaScript'], t: 'JS' }, tokens: ['js'] },
+    { document: { i: 1, t: 'A Blog', u: '/blog/a/', b: ['Blog'] }, type: 1, page: { b: ['Blog'], t: 'Blog' }, tokens: ['a'] },
+    { document: { i: 2, t: 'Pricing', u: '/pricing/', b: ['Pricing'] }, type: 0, page: { b: ['Pricing'], t: 'Pricing' }, tokens: ['pricing'] },
+  ];
+  const grouped = groupResults(results);
+  assert.equal(grouped.length, 3);
+  assert.equal(grouped.find(g => g.label === 'Courses')?.results.length, 1);
+  assert.equal(grouped.find(g => g.label === 'Blog')?.results.length, 1);
+  assert.equal(grouped.find(g => g.label === 'Docs')?.results.length, 1);
 });
 
 test('old flat result format would be order-of-results from searchByWorker (preserved)', () => {

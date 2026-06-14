@@ -34,10 +34,10 @@ function groupResults(results: SearchResult[]): ResultGroup[] {
     Docs: [],
   };
   for (const r of results) {
-    const path = r.document.b?.join('/') || '';
-    if (path.includes('courses')) {
+    const root = r.document.b?.[0] || '';
+    if (root === 'Courses') {
       map.Courses.push(r);
-    } else if (path.includes('blog')) {
+    } else if (root === 'Blog') {
       map.Blog.push(r);
     } else {
       map.Docs.push(r);
