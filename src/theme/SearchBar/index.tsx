@@ -4,7 +4,8 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useHistory } from '@docusaurus/router';
 import { searchByWorker } from '@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker';
 
-const SEARCH_LIMIT = 8;
+const PER_GROUP_LIMIT = 8;
+const FETCH_LIMIT = 50;
 
 interface SearchDoc {
   i: number;
@@ -67,7 +68,10 @@ export default function SearchBar(): React.ReactElement {
 
   const grouped = useMemo(() => {
     if (!results) return [];
-    return groupResults(results);
+    return groupResults(results).map((g) => ({
+      ...g,
+      results: g.results.slice(0, PER_GROUP_LIMIT),
+    }));
   }, [results]);
 
   const flatItems = useMemo(() => {
@@ -85,7 +89,7 @@ export default function SearchBar(): React.ReactElement {
     }
     setLoading(true);
     try {
-      const res = await searchByWorker(baseUrl, '', q, SEARCH_LIMIT);
+      const res = await searchByWorker(baseUrl, '', q, FETCH_LIMIT);
       setResults(res);
     } catch {
       setResults([]);
