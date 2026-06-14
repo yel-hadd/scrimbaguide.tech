@@ -300,7 +300,7 @@ export default function SearchBar(): React.ReactElement {
               className="sg-search-footer-link"
               onClick={handleSeeAll}
             >
-              See all results&hellip;
+              See all {results.length} results &rarr;
             </button>
             <div className="sg-search-footer-hints">
               <span><kbd>&uarr;</kbd><kbd>&darr;</kbd> Navigate</span>
