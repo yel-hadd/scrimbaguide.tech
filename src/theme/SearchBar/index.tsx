@@ -210,15 +210,13 @@ export default function SearchBar(): React.ReactElement {
             onKeyDown={handleKeyDown}
             autoComplete="off"
           />
-          {query && (
-            <button
-              className="sg-search-clear"
-              onClick={() => { setQuery(''); setResults(null); inputRef.current?.focus(); }}
-              aria-label="Clear search"
-            >
-              &times;
-            </button>
-          )}
+          <button
+            className="sg-search-clear"
+            onClick={closeSearch}
+            aria-label="Close search"
+          >
+            &times;
+          </button>
         </div>
 
         <div className="sg-search-body">
