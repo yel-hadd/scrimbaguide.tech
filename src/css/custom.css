@@ -369,7 +369,7 @@ body {
 .sg-search-modal {
   width: 100%;
   max-width: min(42rem, 94vw);
-  max-height: min(70vh, 34rem);
+  max-height: min(80vh, 40rem);
   display: flex;
   flex-direction: column;
   background: var(--ifm-background-surface-color);
@@ -647,7 +647,7 @@ body {
 
   .sg-search-modal {
     max-width: 100%;
-    max-height: min(80vh, 34rem);
+    max-height: min(85vh, 40rem);
   }
 }
 
@@ -662,6 +662,13 @@ body {
 
   .sg-search-modal {
     animation: none;
+  }
+}
+
+/* ── Hide keyboard hints on mobile ────────────────────────────── */
+@media (max-width: 768px) {
+  .sg-search-footer-hints {
+    display: none;
   }
 }
 

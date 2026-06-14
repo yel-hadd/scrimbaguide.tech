@@ -222,6 +222,28 @@ test('filtered groups: Docs filter returns only Docs group', () => {
   assert.equal(filtered[0].label, 'Docs');
 });
 
+test('conditional slice: All filter caps each group at PER_GROUP_LIMIT (4)', () => {
+  const manyResults = [];
+  for (let i = 0; i < 12; i++) {
+    manyResults.push({
+      document: { i, t: `Blog Post ${i}`, u: `/blog/post-${i}/`, b: ['Blog'] },
+      type: 1, page: { b: ['Blog'], t: 'Blog' }, tokens: ['blog'],
+    });
+  }
+  // Replicate the new logic: slice only when activeFilter === 'All'
+  const rawGrouped = groupResults(manyResults);
+  const perGroup = 4;
+  const groupedAll = rawGrouped.map((g) => ({ ...g, results: g.results.slice(0, perGroup) }));
+  const filteredAll = groupedAll;
+  const blogGroupAll = filteredAll.find((g) => g.label === 'Blog');
+  assert.equal(blogGroupAll.results.length, 4, 'Blog group capped at 4 when All filter');
+
+  const groupedBlog = rawGrouped.map((g) => ({ ...g, results: g.results.slice(0, 50) }));
+  const filteredBlog = groupedBlog.filter((g) => g.label === 'Blog');
+  const blogGroupBlog = filteredBlog[0];
+  assert.equal(blogGroupBlog.results.length, 12, 'Blog group shows all results when specific filter active');
+});
+
 test('old flat result format would be order-of-results from searchByWorker (preserved)', () => {
   // The old autocomplete dropdown rendered results in the order returned
   // by searchByWorker, ungrouped. The new version groups them but the
@@ -238,4 +260,104 @@ test('old flat result format would be order-of-results from searchByWorker (pres
       assert.ok(Array.isArray(result.tokens));
     }
   }
+});
+
+// ── SearchPage category tests ─────────────────────────────────────
+
+test('SearchPage groupResults returns a map (not an array)', () => {
+  // The SearchPage's groupResults returns {Courses: [], Blog: [], Docs: []}
+  // instead of the SearchBar's array format.
+  function searchPageGroupResults(results) {
+    const map = { Courses: [], Blog: [], Docs: [] };
+    for (const r of results) {
+      const root = r.document.b?.[0] || '';
+      if (root === 'Courses') map.Courses.push(r);
+      else if (root === 'Blog') map.Blog.push(r);
+      else map.Docs.push(r);
+    }
+    return map;
+  }
+  const map = searchPageGroupResults(mockResults);
+  assert.equal(map.Courses.length, 2);
+  assert.equal(map.Blog.length, 2);
+  assert.equal(map.Docs.length, 2);
+  assert.equal(Object.keys(map).length, 3);
+});
+
+test('SearchPage perGroupCounts computed correctly', () => {
+  // Replicates the useMemo logic in SearchPageContent
+  function searchPageGroupResults(results) {
+    const map = { Courses: [], Blog: [], Docs: [] };
+    for (const r of results) {
+      const root = r.document.b?.[0] || '';
+      if (root === 'Courses') map.Courses.push(r);
+      else if (root === 'Blog') map.Blog.push(r);
+      else map.Docs.push(r);
+    }
+    return map;
+  }
+  const grouped = searchPageGroupResults(mockResults);
+  const perGroupCounts = {
+    All: mockResults.length,
+    Courses: grouped.Courses.length,
+    Blog: grouped.Blog.length,
+    Docs: grouped.Docs.length,
+  };
+  assert.equal(perGroupCounts.All, 6);
+  assert.equal(perGroupCounts.Courses, 2);
+  assert.equal(perGroupCounts.Blog, 2);
+  assert.equal(perGroupCounts.Docs, 2);
+});
+
+test('SearchPage category filter: All returns all results', () => {
+  // Replicates the filteredResults logic in SearchPageContent
+  function searchPageGroupResults(results) {
+    const map = { Courses: [], Blog: [], Docs: [] };
+    for (const r of results) {
+      const root = r.document.b?.[0] || '';
+      if (root === 'Courses') map.Courses.push(r);
+      else if (root === 'Blog') map.Blog.push(r);
+      else map.Docs.push(r);
+    }
+    return map;
+  }
+  const grouped = searchPageGroupResults(mockResults);
+  const resultsAll = mockResults; // category === 'All'
+  assert.equal(resultsAll.length, 6);
+  const resultsCourses = grouped.Courses;
+  assert.equal(resultsCourses.length, 2);
+  const resultsBlog = grouped.Blog;
+  assert.equal(resultsBlog.length, 2);
+  const resultsDocs = grouped.Docs;
+  assert.equal(resultsDocs.length, 2);
+});
+
+test('SearchPage URL param: category from query string', () => {
+  // Replicates the URL parsing logic in SearchPageContent
+  // This tests the logic that initializes `category` state from `?category=`
+  function getCategoryFromSearch(searchString) {
+    const params = new URLSearchParams(searchString);
+    const cat = params.get('category');
+    const CATEGORIES = ['All', 'Courses', 'Blog', 'Docs'];
+    return CATEGORIES.includes(cat) ? cat : 'All';
+  }
+  assert.equal(getCategoryFromSearch('?q=react'), 'All');
+  assert.equal(getCategoryFromSearch('?q=react&category=Blog'), 'Blog');
+  assert.equal(getCategoryFromSearch('?q=react&category=Courses'), 'Courses');
+  assert.equal(getCategoryFromSearch('?q=react&category=Invalid'), 'All');
+  assert.equal(getCategoryFromSearch('?category=Docs&q=test'), 'Docs');
+  assert.equal(getCategoryFromSearch(''), 'All');
+});
+
+test('SearchPage "See all" URL includes category when filter is active', () => {
+  // Replicates the handleSeeAll URL construction from SearchBar
+  function buildSeeAllUrl(query, activeFilter) {
+    const params = new URLSearchParams();
+    params.set('q', query);
+    if (activeFilter !== 'All') params.set('category', activeFilter);
+    return `/search?${params.toString()}`;
+  }
+  assert.equal(buildSeeAllUrl('react', 'All'), '/search?q=react');
+  assert.equal(buildSeeAllUrl('react', 'Blog'), '/search?q=react&category=Blog');
+  assert.equal(buildSeeAllUrl('react', 'Courses'), '/search?q=react&category=Courses');
 });

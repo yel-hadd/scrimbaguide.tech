@@ -5,6 +5,7 @@ import { useHistory } from '@docusaurus/router';
 import { searchByWorker } from '@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker';
 
 const PER_GROUP_LIMIT = 4;
+const SPECIFIC_GROUP_LIMIT = 8;
 const FETCH_LIMIT = 50;
 
 interface SearchDoc {
@@ -81,9 +82,9 @@ export default function SearchBar(): React.ReactElement {
   const grouped = useMemo(() => {
     return rawGrouped.map((g) => ({
       ...g,
-      results: g.results.slice(0, PER_GROUP_LIMIT),
+      results: g.results.slice(0, activeFilter === 'All' ? PER_GROUP_LIMIT : SPECIFIC_GROUP_LIMIT),
     }));
-  }, [rawGrouped]);
+  }, [rawGrouped, activeFilter]);
 
   const filtered = useMemo(() => {
     if (activeFilter === 'All') return grouped;
@@ -147,14 +148,26 @@ export default function SearchBar(): React.ReactElement {
   }, [closeSearch, history]);
 
   const handleSeeAll = useCallback(() => {
-    const url = `/search?q=${encodeURIComponent(query)}`;
+    const params = new URLSearchParams();
+    params.set('q', query);
+    if (activeFilter !== 'All') params.set('category', activeFilter);
+    const url = `/search?${params.toString()}`;
     setOpen(false);
     setQuery('');
     setResults(null);
     setHighlightIdx(-1);
+    setActiveFilter('All');
     document.body.style.overflow = '';
     history.push(url);
-  }, [query, history]);
+  }, [query, activeFilter, history]);
+
+  const bodyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (highlightIdx < 0 || !bodyRef.current) return;
+    const hl = bodyRef.current.querySelector('.sg-search-result--hl');
+    hl?.scrollIntoView({ block: 'nearest' });
+  }, [highlightIdx]);
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     switch (e.key) {
@@ -247,7 +260,7 @@ export default function SearchBar(): React.ReactElement {
           </div>
         )}
 
-        <div className="sg-search-body">
+        <div className="sg-search-body" ref={bodyRef}>
           {loading && (
             <div className="sg-search-status">Searching&hellip;</div>
           )}
@@ -293,7 +306,7 @@ export default function SearchBar(): React.ReactElement {
                     <div className="sg-search-result-info">
                       <div className="sg-search-result-title">{result.document.t}</div>
                       {result.document.b && (
-                        <div className="sg-search-result-path">{result.document.b.slice(1).join(' / ')}</div>
+                        <div className="sg-search-result-path">{result.document.b.slice(result.document.b[0] === 'Courses' ? 2 : 1).join(' / ')}</div>
                       )}
                     </div>
                   </div>
