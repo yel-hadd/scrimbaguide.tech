@@ -49,11 +49,7 @@ function SearchPageContent() {
     const history = useHistory();
     const [searchQuery, setSearchQuery] = useState(searchValue);
     const [searchResults, setSearchResults] = useState();
-    const [category, setCategory] = useState(() => {
-      const params = new URLSearchParams(location.search);
-      const cat = params.get('category');
-      return CATEGORIES.includes(cat) ? cat : 'All';
-    });
+    const [category, setCategory] = useState('All');
     const versionUrl = `${baseUrl}${searchVersion}`;
     const pageTitle = useMemo(() => searchQuery
         ? translate({
@@ -90,6 +86,13 @@ function SearchPageContent() {
             setSearchQuery(searchValue);
         }
     }, [searchValue]);
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const cat = params.get('category');
+        if (CATEGORIES.includes(cat) && cat !== category) {
+            setCategory(cat);
+        }
+    }, [location.search]);
     const [searchWorkerReady, setSearchWorkerReady] = useState(false);
     useEffect(() => {
         async function doFetchIndexes() {
