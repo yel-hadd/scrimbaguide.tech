@@ -194,6 +194,34 @@ test('groupResults: handles mixed categories correctly', () => {
   assert.equal(grouped.find(g => g.label === 'Docs')?.results.length, 1);
 });
 
+test('filtered groups: All filter returns all groups unchanged', () => {
+  const grouped = groupResults(mockResults);
+  // 'All' means no filtering — same as grouped
+  const filtered = grouped;
+  assert.equal(filtered.length, grouped.length);
+});
+
+test('filtered groups: Courses filter returns only Courses group', () => {
+  const grouped = groupResults(mockResults);
+  const filtered = grouped.filter((g) => g.label === 'Courses');
+  assert.equal(filtered.length, 1);
+  assert.equal(filtered[0].label, 'Courses');
+});
+
+test('filtered groups: Blog filter returns only Blog group', () => {
+  const grouped = groupResults(mockResults);
+  const filtered = grouped.filter((g) => g.label === 'Blog');
+  assert.equal(filtered.length, 1);
+  assert.equal(filtered[0].label, 'Blog');
+});
+
+test('filtered groups: Docs filter returns only Docs group', () => {
+  const grouped = groupResults(mockResults);
+  const filtered = grouped.filter((g) => g.label === 'Docs');
+  assert.equal(filtered.length, 1);
+  assert.equal(filtered[0].label, 'Docs');
+});
+
 test('old flat result format would be order-of-results from searchByWorker (preserved)', () => {
   // The old autocomplete dropdown rendered results in the order returned
   // by searchByWorker, ungrouped. The new version groups them but the

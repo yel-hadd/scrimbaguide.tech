@@ -438,6 +438,51 @@ body {
   color: var(--sg-text-strong);
 }
 
+/* ── Category filters ────────────────────────────────────────── */
+.sg-search-filters {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.5rem 0.7rem;
+  flex-wrap: wrap;
+}
+
+.sg-search-filter {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--sg-home-border);
+  border-radius: 999px;
+  background: var(--ifm-background-color);
+  color: var(--sg-text-muted);
+  font-size: 0.75rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.12s ease, background 0.12s ease, color 0.12s ease;
+  line-height: 1.4;
+}
+
+.sg-search-filter:hover:not(:disabled) {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+.sg-search-filter--active {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-primary);
+  color: var(--ifm-color-primary-contrast-background, #fff);
+}
+
+.sg-search-filter--active:hover:not(:disabled) {
+  color: var(--ifm-color-primary-contrast-background, #fff);
+}
+
+.sg-search-filter--empty {
+  opacity: 0.35;
+  cursor: default;
+}
+
 /* ── Scrollable body ──────────────────────────────────────────── */
 .sg-search-body {
   flex: 1;

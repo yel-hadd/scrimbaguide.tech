@@ -62,6 +62,7 @@ export default function SearchBar(): React.ReactElement {
   const [results, setResults] = useState<SearchResult[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [highlightIdx, setHighlightIdx] = useState(-1);
+  const [activeFilter, setActiveFilter] = useState<string>('All');
 
   const inputRef = useRef<HTMLInputElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -74,13 +75,18 @@ export default function SearchBar(): React.ReactElement {
     }));
   }, [results]);
 
+  const filtered = useMemo(() => {
+    if (activeFilter === 'All') return grouped;
+    return grouped.filter((g) => g.label === activeFilter);
+  }, [grouped, activeFilter]);
+
   const flatItems = useMemo(() => {
     const items: { gi: number; ri: number }[] = [];
-    grouped.forEach((g, gi) => {
+    filtered.forEach((g, gi) => {
       g.results.forEach((_, ri) => items.push({ gi, ri }));
     });
     return items;
-  }, [grouped]);
+  }, [filtered]);
 
   const doSearch = useCallback(async (q: string) => {
     if (!q.trim()) {
@@ -110,6 +116,7 @@ export default function SearchBar(): React.ReactElement {
     setQuery('');
     setResults(null);
     setHighlightIdx(-1);
+    setActiveFilter('All');
     document.body.style.overflow = 'hidden';
     setTimeout(() => inputRef.current?.focus(), 50);
   }, []);
@@ -119,6 +126,7 @@ export default function SearchBar(): React.ReactElement {
     setQuery('');
     setResults(null);
     setHighlightIdx(-1);
+    setActiveFilter('All');
     document.body.style.overflow = '';
   }, []);
 
@@ -152,7 +160,7 @@ export default function SearchBar(): React.ReactElement {
         e.preventDefault();
         if (highlightIdx >= 0 && flatItems[highlightIdx]) {
           const { gi, ri } = flatItems[highlightIdx];
-          navigate(grouped[gi].results[ri]);
+          navigate(filtered[gi].results[ri]);
         }
         break;
       case 'Escape':
@@ -223,7 +231,26 @@ export default function SearchBar(): React.ReactElement {
           {!loading && query && results && results.length === 0 && (
             <div className="sg-search-status">No results found for &ldquo;{query}&rdquo;.</div>
           )}
-          {!loading && grouped.map((group, gi) => (
+          {!loading && query && results && results.length > 0 && (
+            <div className="sg-search-filters">
+              {['All', 'Courses', 'Blog', 'Docs'].map((f) => {
+                const count = f === 'All'
+                  ? grouped.reduce((s, g) => s + g.results.length, 0)
+                  : grouped.find((g) => g.label === f)?.results.length || 0;
+                return (
+                  <button
+                    key={f}
+                    className={'sg-search-filter' + (activeFilter === f ? ' sg-search-filter--active' : '') + (count === 0 ? ' sg-search-filter--empty' : '')}
+                    onClick={() => { setActiveFilter(f); setHighlightIdx(-1); }}
+                    disabled={count === 0}
+                  >
+                    {f}{count > 0 ? ` (${count})` : ''}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+          {!loading && filtered.map((group, gi) => (
             <div key={group.label} className="sg-search-group">
               <div className="sg-search-group-label">{group.label}</div>
               {group.results.map((result, ri) => {
