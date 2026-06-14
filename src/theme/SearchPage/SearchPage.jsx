@@ -181,7 +181,7 @@ function SearchPageContent() {
                     border: `1px solid ${active ? 'var(--ifm-color-primary)' : 'var(--ifm-color-emphasis-300)'}`,
                     borderRadius: '999px',
                     background: active ? 'var(--ifm-color-primary)' : 'var(--ifm-background-color)',
-                    color: active ? '#fff' : 'var(--ifm-color-emphasis-600)',
+                    color: active ? 'var(--sg-search-filter-active-text)' : 'var(--ifm-color-emphasis-700)',
                     fontSize: '0.78rem',
                     fontWeight: 600,
                     cursor: count === 0 ? 'default' : 'pointer',

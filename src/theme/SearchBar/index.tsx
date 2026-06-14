@@ -217,7 +217,7 @@ export default function SearchBar(): React.ReactElement {
 
   const modal = open && createPortal(
     <div className="sg-search-overlay" onClick={closeSearch}>
-      <div className="sg-search-modal" onClick={(e) => e.stopPropagation()}>
+      <div className="sg-search-modal" role="dialog" aria-modal="true" aria-label="Search" onClick={(e) => e.stopPropagation()}>
         <div className="sg-search-header">
           <svg className="sg-search-header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8" />
@@ -260,7 +260,7 @@ export default function SearchBar(): React.ReactElement {
           </div>
         )}
 
-        <div className="sg-search-body" ref={bodyRef}>
+        <div className="sg-search-body" ref={bodyRef} tabIndex={0}>
           {loading && (
             <div className="sg-search-status">Searching&hellip;</div>
           )}
@@ -272,7 +272,7 @@ export default function SearchBar(): React.ReactElement {
           )}
           {!loading && filtered.map((group, gi) => (
             <div key={group.label} className="sg-search-group">
-              <div className="sg-search-group-label">{group.label}</div>
+              <h2 className="sg-search-group-label">{group.label}</h2>
               {group.results.map((result, ri) => {
                 const flatIdx = flatItems.findIndex((f) => f.gi === gi && f.ri === ri);
                 const hl = flatIdx === highlightIdx;

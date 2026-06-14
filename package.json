@@ -14,6 +14,7 @@
     "generate:llms": "node scripts/generate-llms-from-sitemap.mjs",
     "test:llms": "node --test scripts/__tests__/generate-llms-from-sitemap.test.mjs",
     "test:search": "node --test scripts/__tests__/search-modal.test.mjs",
+    "test:a11y": "node --test scripts/__tests__/*a11y*.test.mjs",
     "generate": "npm run generate:data && npm run generate:social-cards",
     "assert-sitemap-url": "node scripts/assert-sitemap-url.mjs",
     "submit-indexnow": "node scripts/submit-indexnow.mjs",

@@ -102,6 +102,13 @@ clean-all: clean clean-data clean-env ## Remove everything (build + data + envs)
 lint: node_modules ## Check for build errors (dry run)
 	npm run build 2>&1 | tail -5
 
+# ── Tests ────────────────────────────────────────────────────────
+
+.PHONY: test-a11y
+test-a11y: ## Build site and run axe-core accessibility tests
+	npm run build
+	npm run test:a11y
+
 # ── Full pipeline ────────────────────────────────────────────────
 
 .PHONY: pipeline

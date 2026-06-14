@@ -9,6 +9,7 @@
 :root {
   --ifm-color-primary: #5b3fd9;
   --ifm-color-primary-dark: #4c31c8;
+  --sg-search-filter-active-text: #fff;
   --ifm-color-primary-darker: #462dbd;
   --ifm-color-primary-darkest: #39259c;
   --ifm-color-primary-light: #7058e0;
@@ -62,6 +63,7 @@
 [data-theme='dark'] {
   --ifm-color-primary: #b8a5ff;
   --ifm-color-primary-dark: #9b82ff;
+  --sg-search-filter-active-text: #1a1a2e;
   --ifm-color-primary-darker: #8c70ff;
   --ifm-color-primary-darkest: #6f4eff;
   --ifm-color-primary-light: #d5c8ff;
@@ -493,6 +495,10 @@ body {
   padding: 0.25rem 0.5rem;
 }
 
+.sg-search-body:focus {
+  outline: none;
+}
+
 /* ── Status messages (loading / empty / no-results) ───────────── */
 .sg-search-status {
   padding: 1.5rem 0.75rem;
@@ -503,6 +509,7 @@ body {
 
 /* ── Result group ─────────────────────────────────────────────── */
 .sg-search-group-label {
+  margin: 0;
   padding: 0.5rem 0.7rem 0.25rem;
   font-size: 0.72rem;
   font-weight: 700;
@@ -530,6 +537,10 @@ body {
 .sg-search-result--hl {
   background: var(--sg-accent-soft);
   box-shadow: inset 3px 0 0 0 var(--ifm-color-primary);
+}
+
+.sg-search-result--hl .sg-search-result-path {
+  color: var(--ifm-font-color-base);
 }
 
 .sg-search-result-icon {
