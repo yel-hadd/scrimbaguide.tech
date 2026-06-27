@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import Link from '@docusaurus/Link';
 import {
   BookOpen,
@@ -39,6 +39,7 @@ const CLOSE_DELAY = 200;
 export default function MegaMenu({ label, items }: MegaMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const open = useCallback(() => {
     if (closeTimer.current) {
@@ -52,6 +53,14 @@ export default function MegaMenu({ label, items }: MegaMenuProps) {
     closeTimer.current = setTimeout(() => setIsOpen(false), CLOSE_DELAY);
   }, []);
 
+  const toggle = useCallback(() => {
+    if (isOpen) {
+      setIsOpen(false);
+    } else {
+      open();
+    }
+  }, [isOpen, open]);
+
   const handleLinkClick = useCallback(() => {
     if (closeTimer.current) {
       clearTimeout(closeTimer.current);
@@ -60,14 +69,31 @@ export default function MegaMenu({ label, items }: MegaMenuProps) {
     setIsOpen(false);
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isOpen]);
+
   return (
     <div
+      ref={containerRef}
       className={`mega-menu${isOpen ? ' mega-menu--open' : ''}`}
       onMouseEnter={open}
       onMouseLeave={close}
     >
       <span
         className="navbar__link mega-menu__toggle"
+        onClick={toggle}
         onFocus={open}
         onBlur={close}
       >
