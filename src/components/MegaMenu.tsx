@@ -86,17 +86,21 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
     if (!isOpen) return;
     
     const handleClickOutside = (e: MouseEvent | TouchEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (containerRef.current && !containerRef.current.contains(target)) {
+        if ((target as HTMLElement).closest('.mega-menu__toggle')) {
+          return;
+        }
         onClose(menuId);
       }
     };
     
-    document.addEventListener('click', handleClickOutside, true);
-    document.addEventListener('touchstart', handleClickOutside, true);
+    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
     
     return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-      document.removeEventListener('touchstart', handleClickOutside, true);
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [isOpen, menuId, onClose]);
 
