@@ -33,13 +33,14 @@ interface MegaMenuProps {
   label: string;
   items: MegaMenuItem[];
   isOpen: boolean;
+  menuId: string;
   onToggle: () => void;
-  onClose: () => void;
+  onClose: (id: string) => void;
 }
 
 const CLOSE_DELAY = 200;
 
-export default function MegaMenu({ label, items, isOpen, onToggle, onClose }: MegaMenuProps) {
+export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClose }: MegaMenuProps) {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -54,9 +55,9 @@ export default function MegaMenu({ label, items, isOpen, onToggle, onClose }: Me
   const scheduleClose = useCallback(() => {
     cancelCloseTimer();
     closeTimer.current = setTimeout(() => {
-      onClose();
+      onClose(menuId);
     }, CLOSE_DELAY);
-  }, [onClose, cancelCloseTimer]);
+  }, [onClose, menuId, cancelCloseTimer]);
 
   const handleMouseEnter = useCallback(() => {
     cancelCloseTimer();
@@ -78,15 +79,15 @@ export default function MegaMenu({ label, items, isOpen, onToggle, onClose }: Me
 
   const handleLinkClick = useCallback(() => {
     cancelCloseTimer();
-    onClose();
-  }, [onClose, cancelCloseTimer]);
+    onClose(menuId);
+  }, [onClose, menuId, cancelCloseTimer]);
 
   useEffect(() => {
     if (!isOpen) return;
     
     const handleClickOutside = (e: MouseEvent | TouchEvent) => {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        onClose();
+        onClose(menuId);
       }
     };
     
@@ -97,21 +98,21 @@ export default function MegaMenu({ label, items, isOpen, onToggle, onClose }: Me
       document.removeEventListener('click', handleClickOutside, true);
       document.removeEventListener('touchstart', handleClickOutside, true);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, menuId, onClose]);
 
   useEffect(() => {
     if (!isOpen) return;
     
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose();
+        onClose(menuId);
         buttonRef.current?.focus();
       }
     };
     
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen, onClose]);
+  }, [isOpen, menuId, onClose]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {

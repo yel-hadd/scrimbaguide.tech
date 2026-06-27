@@ -24,25 +24,28 @@ function useNavbarItems() {
 
 interface NavbarItemsProps {
   items: NavbarItemConfig[];
-  openMegaMenu: number | null;
-  onOpenMegaMenu: (index: number | null) => void;
+  openMegaMenu: string | null;
+  onOpenMegaMenu: (id: string | null) => void;
+  onCloseMegaMenu: (id: string) => void;
 }
 
-function NavbarItems({items, openMegaMenu, onOpenMegaMenu}: NavbarItemsProps): ReactNode {
+function NavbarItems({items, openMegaMenu, onOpenMegaMenu, onCloseMegaMenu}: NavbarItemsProps): ReactNode {
   return (
     <>
       {items.map((item, i) => {
         const itemAny = item as any;
         if (itemAny.type === 'dropdown' && itemAny.items?.[0]?.icon) {
-          const isOpen = openMegaMenu === i;
+          const menuId = `mega-${itemAny.label.toLowerCase()}`;
+          const isOpen = openMegaMenu === menuId;
           return (
             <MegaMenu
               key={i}
               label={itemAny.label}
               items={itemAny.items}
               isOpen={isOpen}
-              onToggle={() => onOpenMegaMenu(isOpen ? null : i)}
-              onClose={() => onOpenMegaMenu(null)}
+              menuId={menuId}
+              onToggle={() => onOpenMegaMenu(isOpen ? null : menuId)}
+              onClose={onCloseMegaMenu}
             />
           );
         }
@@ -98,10 +101,14 @@ export default function NavbarContent(): ReactNode {
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');
 
-  const [openMegaMenu, setOpenMegaMenu] = useState<number | null>(null);
+  const [openMegaMenu, setOpenMegaMenu] = useState<string | null>(null);
 
-  const handleOpenMegaMenu = useCallback((index: number | null) => {
-    setOpenMegaMenu(index);
+  const handleOpenMegaMenu = useCallback((id: string | null) => {
+    setOpenMegaMenu(id);
+  }, []);
+
+  const handleCloseMegaMenu = useCallback((id: string) => {
+    setOpenMegaMenu((prev) => (prev === id ? null : prev));
   }, []);
 
   return (
@@ -114,6 +121,7 @@ export default function NavbarContent(): ReactNode {
             items={leftItems}
             openMegaMenu={openMegaMenu}
             onOpenMegaMenu={handleOpenMegaMenu}
+            onCloseMegaMenu={handleCloseMegaMenu}
           />
         </>
       }
@@ -123,6 +131,7 @@ export default function NavbarContent(): ReactNode {
             items={rightItems}
             openMegaMenu={openMegaMenu}
             onOpenMegaMenu={handleOpenMegaMenu}
+            onCloseMegaMenu={handleCloseMegaMenu}
           />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           {!searchBarItem && (
