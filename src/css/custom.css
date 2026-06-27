@@ -289,6 +289,119 @@ body {
   background: var(--ifm-color-primary-darker);
 }
 
+/* ── Mega menu ───────────────────────────────────────────────── */
+
+.mega-menu {
+  position: static;
+}
+
+.mega-menu__toggle {
+  cursor: pointer;
+  padding: var(--ifm-navbar-item-padding-vertical) var(--ifm-navbar-item-padding-horizontal);
+  font: inherit;
+  font-weight: var(--ifm-font-weight-semibold);
+}
+
+.mega-menu__toggle::after {
+  content: '';
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  margin-left: 0.3em;
+  vertical-align: middle;
+  position: relative;
+  top: -0.1em;
+  transform: rotate(45deg);
+  opacity: 0.6;
+  transition: transform 0.2s;
+}
+
+.mega-menu--open .mega-menu__toggle::after {
+  transform: rotate(-135deg);
+}
+
+.mega-menu__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: var(--ifm-navbar-background-color);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: var(--sg-card-shadow-strong);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s, transform 0.15s, visibility 0.15s;
+  z-index: 100;
+}
+
+.mega-menu--open .mega-menu__panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mega-menu__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 1.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.mega-menu__link {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  text-decoration: none !important;
+  border-radius: 12px;
+  transition: background 0.15s;
+}
+
+.mega-menu__link:hover {
+  background: var(--ifm-menu-color-background-active);
+}
+
+.mega-menu__link-icon {
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--sg-accent-softer);
+  color: var(--ifm-color-primary);
+}
+
+.mega-menu__link-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.mega-menu__link-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--sg-text-strong);
+  margin-bottom: 0.15rem;
+}
+
+.mega-menu__link-desc {
+  font-size: 0.8rem;
+  color: var(--sg-text-soft);
+  line-height: 1.4;
+}
+
+@media (max-width: 996px) {
+  .mega-menu {
+    display: none;
+  }
+}
+
 /* ════════════════════════════════════════════════════════════════
    Search modal (pill button + centered overlay)
    Replaces the old autocomplete.js dropdown.
@@ -328,7 +441,6 @@ body {
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
-  opacity: 0.55;
 }
 
 .sg-search-pill-text {
@@ -400,7 +512,6 @@ body {
   width: 1.15rem;
   height: 1.15rem;
   flex-shrink: 0;
-  opacity: 0.4;
 }
 
 .sg-search-input {
@@ -649,7 +760,6 @@ body {
   .sg-search-pill-icon {
     width: 1.15rem;
     height: 1.15rem;
-    opacity: 0.6;
   }
 
   .sg-search-overlay {
@@ -659,6 +769,39 @@ body {
   .sg-search-modal {
     max-width: 100%;
     max-height: min(85vh, 40rem);
+  }
+}
+
+/* ── Mid-range: tighten navbar between mobile and full desktop ─ */
+@media (min-width: 997px) and (max-width: 1150px) {
+  .navbar__inner {
+    column-gap: 0.35rem;
+  }
+
+  .navbar__items .navbar__item {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .mega-menu__toggle {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .sg-search-pill-kbd {
+    display: none;
+  }
+
+  .sg-search-pill-text {
+    font-size: 0.8rem;
+  }
+
+  .navbar__brand {
+    margin-right: 0.5rem;
+  }
+
+  .navbar__title {
+    font-size: 0.95rem;
   }
 }
 

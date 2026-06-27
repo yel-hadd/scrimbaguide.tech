@@ -1,4 +1,4 @@
-import React, {type ReactNode} from 'react';
+import React, {type ReactNode, useState, useCallback} from 'react';
 import clsx from 'clsx';
 import {
   useThemeConfig,
@@ -15,29 +15,55 @@ import SearchBar from '@theme/SearchBar';
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
 import NavbarSearch from '@theme/Navbar/Search';
+import MegaMenu from '@site/src/components/MegaMenu';
 import styles from './styles.module.css';
 
 function useNavbarItems() {
   return useThemeConfig().navbar.items as NavbarItemConfig[];
 }
 
-function NavbarItems({items}: {items: NavbarItemConfig[]}): ReactNode {
+interface NavbarItemsProps {
+  items: NavbarItemConfig[];
+  openMegaMenu: string | null;
+  onOpenMegaMenu: (id: string | null) => void;
+  onCloseMegaMenu: (id: string) => void;
+}
+
+function NavbarItems({items, openMegaMenu, onOpenMegaMenu, onCloseMegaMenu}: NavbarItemsProps): ReactNode {
   return (
     <>
-      {items.map((item, i) => (
-        <ErrorCauseBoundary
-          key={i}
-          onError={(error) =>
-            new Error(
-              `A theme navbar item failed to render.
+      {items.map((item, i) => {
+        const itemAny = item as any;
+        if (itemAny.type === 'dropdown' && itemAny.items?.[0]?.icon) {
+          const menuId = `mega-${itemAny.label.toLowerCase()}`;
+          const isOpen = openMegaMenu === menuId;
+          return (
+            <MegaMenu
+              key={i}
+              label={itemAny.label}
+              items={itemAny.items}
+              isOpen={isOpen}
+              menuId={menuId}
+              onToggle={() => onOpenMegaMenu(isOpen ? null : menuId)}
+              onClose={onCloseMegaMenu}
+            />
+          );
+        }
+        return (
+          <ErrorCauseBoundary
+            key={i}
+            onError={(error) =>
+              new Error(
+                `A theme navbar item failed to render.
 Please double-check the following navbar item (themeConfig.navbar.items) of your Docusaurus config:
 ${JSON.stringify(item, null, 2)}`,
-              {cause: error},
-            )
-          }>
-          <NavbarItem {...item} />
-        </ErrorCauseBoundary>
-      ))}
+                {cause: error},
+              )
+            }>
+            <NavbarItem {...item} />
+          </ErrorCauseBoundary>
+        );
+      })}
     </>
   );
 }
@@ -75,18 +101,38 @@ export default function NavbarContent(): ReactNode {
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');
 
+  const [openMegaMenu, setOpenMegaMenu] = useState<string | null>(null);
+
+  const handleOpenMegaMenu = useCallback((id: string | null) => {
+    setOpenMegaMenu(id);
+  }, []);
+
+  const handleCloseMegaMenu = useCallback((id: string) => {
+    setOpenMegaMenu((prev) => (prev === id ? null : prev));
+  }, []);
+
   return (
     <NavbarContentLayout
       left={
         <>
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
           <NavbarLogo />
-          <NavbarItems items={leftItems} />
+          <NavbarItems
+            items={leftItems}
+            openMegaMenu={openMegaMenu}
+            onOpenMegaMenu={handleOpenMegaMenu}
+            onCloseMegaMenu={handleCloseMegaMenu}
+          />
         </>
       }
       right={
         <>
-          <NavbarItems items={rightItems} />
+          <NavbarItems
+            items={rightItems}
+            openMegaMenu={openMegaMenu}
+            onOpenMegaMenu={handleOpenMegaMenu}
+            onCloseMegaMenu={handleCloseMegaMenu}
+          />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           {!searchBarItem && (
             <NavbarSearch>
