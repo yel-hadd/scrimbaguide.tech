@@ -15,6 +15,7 @@ import SearchBar from '@theme/SearchBar';
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
 import NavbarSearch from '@theme/Navbar/Search';
+import MegaMenu from '@site/src/components/MegaMenu';
 import styles from './styles.module.css';
 
 function useNavbarItems() {
@@ -24,20 +25,28 @@ function useNavbarItems() {
 function NavbarItems({items}: {items: NavbarItemConfig[]}): ReactNode {
   return (
     <>
-      {items.map((item, i) => (
-        <ErrorCauseBoundary
-          key={i}
-          onError={(error) =>
-            new Error(
-              `A theme navbar item failed to render.
+      {items.map((item, i) => {
+        const itemAny = item as any;
+        if (itemAny.type === 'dropdown' && itemAny.items?.[0]?.icon) {
+          return (
+            <MegaMenu key={i} label={itemAny.label} items={itemAny.items} />
+          );
+        }
+        return (
+          <ErrorCauseBoundary
+            key={i}
+            onError={(error) =>
+              new Error(
+                `A theme navbar item failed to render.
 Please double-check the following navbar item (themeConfig.navbar.items) of your Docusaurus config:
 ${JSON.stringify(item, null, 2)}`,
-              {cause: error},
-            )
-          }>
-          <NavbarItem {...item} />
-        </ErrorCauseBoundary>
-      ))}
+                {cause: error},
+              )
+            }>
+            <NavbarItem {...item} />
+          </ErrorCauseBoundary>
+        );
+      })}
     </>
   );
 }

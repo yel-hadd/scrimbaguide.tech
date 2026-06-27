@@ -561,11 +561,11 @@ const config: Config = {
           label: 'Learn',
           position: 'left',
           items: [
-            { to: '/docs/intro', label: 'What is Scrimba?' },
-            { to: '/docs/comparisons/', label: 'Comparisons' },
-            { to: '/docs/pricing/', label: 'Pricing' },
-            { to: '/docs/faq/', label: 'FAQ' },
-          ],
+            { to: '/docs/intro', label: 'What is Scrimba?', icon: 'BookOpen', description: "How Scrimba's interactive scrims work and why they're different" },
+            { to: '/docs/comparisons/', label: 'Comparisons', icon: 'Scale', description: 'How Scrimba stacks up against Codecademy, Udemy, and others' },
+            { to: '/docs/pricing/', label: 'Pricing', icon: 'Tag', description: 'Compare Pro vs Free plans and find the best value' },
+            { to: '/docs/faq/', label: 'FAQ', icon: 'CircleHelp', description: 'Answers to the most common questions about Scrimba' },
+          ] as any,
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
@@ -573,11 +573,11 @@ const config: Config = {
           label: 'Tools',
           position: 'left',
           items: [
-            { to: '/tools/', label: 'All Tools' },
-            { to: '/docs/paths/#path-advisor', label: 'Path Finder' },
-            { to: '/tools/bootcamp-cost-calculator', label: 'Cost Calculator' },
-            { to: '/roadmaps/frontend-roadmap-2026', label: 'Frontend Roadmap' },
-          ],
+            { to: '/tools/', label: 'All Tools', icon: 'LayoutGrid', description: 'Browse every interactive tool and calculator' },
+            { to: '/docs/paths/#path-advisor', label: 'Path Finder', icon: 'Compass', description: "Not sure where to start? Get a personalized recommendation" },
+            { to: '/tools/bootcamp-cost-calculator', label: 'Cost Calculator', icon: 'Calculator', description: 'Compare bootcamp costs vs Scrimba Pro' },
+            { to: '/roadmaps/frontend-roadmap-2026', label: 'Frontend Roadmap', icon: 'Map', description: 'Step-by-step frontend development learning path' },
+          ] as any,
         },
         {
           href: 'https://scrimba.com/home?pricing&via=u42d4986',
