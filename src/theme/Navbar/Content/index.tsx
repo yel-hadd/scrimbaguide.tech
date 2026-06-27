@@ -1,4 +1,4 @@
-import React, {type ReactNode} from 'react';
+import React, {type ReactNode, useState, useCallback} from 'react';
 import clsx from 'clsx';
 import {
   useThemeConfig,
@@ -22,14 +22,28 @@ function useNavbarItems() {
   return useThemeConfig().navbar.items as NavbarItemConfig[];
 }
 
-function NavbarItems({items}: {items: NavbarItemConfig[]}): ReactNode {
+interface NavbarItemsProps {
+  items: NavbarItemConfig[];
+  openMegaMenu: number | null;
+  onOpenMegaMenu: (index: number | null) => void;
+}
+
+function NavbarItems({items, openMegaMenu, onOpenMegaMenu}: NavbarItemsProps): ReactNode {
   return (
     <>
       {items.map((item, i) => {
         const itemAny = item as any;
         if (itemAny.type === 'dropdown' && itemAny.items?.[0]?.icon) {
+          const isOpen = openMegaMenu === i;
           return (
-            <MegaMenu key={i} label={itemAny.label} items={itemAny.items} />
+            <MegaMenu
+              key={i}
+              label={itemAny.label}
+              items={itemAny.items}
+              isOpen={isOpen}
+              onToggle={() => onOpenMegaMenu(isOpen ? null : i)}
+              onClose={() => onOpenMegaMenu(null)}
+            />
           );
         }
         return (
@@ -84,18 +98,32 @@ export default function NavbarContent(): ReactNode {
   const [leftItems, rightItems] = splitNavbarItems(items);
   const searchBarItem = items.find((item) => item.type === 'search');
 
+  const [openMegaMenu, setOpenMegaMenu] = useState<number | null>(null);
+
+  const handleOpenMegaMenu = useCallback((index: number | null) => {
+    setOpenMegaMenu(index);
+  }, []);
+
   return (
     <NavbarContentLayout
       left={
         <>
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
           <NavbarLogo />
-          <NavbarItems items={leftItems} />
+          <NavbarItems
+            items={leftItems}
+            openMegaMenu={openMegaMenu}
+            onOpenMegaMenu={handleOpenMegaMenu}
+          />
         </>
       }
       right={
         <>
-          <NavbarItems items={rightItems} />
+          <NavbarItems
+            items={rightItems}
+            openMegaMenu={openMegaMenu}
+            onOpenMegaMenu={handleOpenMegaMenu}
+          />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
           {!searchBarItem && (
             <NavbarSearch>
