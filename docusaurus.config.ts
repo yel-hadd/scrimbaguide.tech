@@ -580,12 +580,14 @@ const config: Config = {
           ] as any,
         },
         {
-          href: 'https://scrimba.com/home?pricing&via=u42d4986',
-          label: 'Get Scrimba Pro',
+          // Same interactive demo scrim as the homepage hero CTA (DEMO_SCRIM_URL in src/pages/index.tsx);
+          // via= appended manually because navbar hrefs do not route through <AffiliateLink>.
+          href: 'https://scrimba.com/s0v687325e?via=u42d4986',
+          label: 'Try Scrimba for free',
           position: 'right',
           className: 'navbar-cta',
           rel: 'nofollow noopener noreferrer',
-          'aria-label': 'Get Scrimba Pro, 20% off applied at checkout (opens in a new tab)',
+          'aria-label': 'Try Scrimba for free, opens a real interactive lesson in a new tab',
         },
       ],
     },
