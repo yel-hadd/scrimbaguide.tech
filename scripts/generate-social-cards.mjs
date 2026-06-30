@@ -5,7 +5,7 @@
  *   - Size: 1200x630 (Open Graph standard)
  *   - Background: #5b3fd9 (ScrimbaGuide brand purple)
  *   - Accent circles: white at 5% opacity for depth
- *   - Title: white, bold, max 3 lines with word-wrap
+ *   - Title: white, bold, auto-fit font size, up to 4 lines (ellipsis only if it overflows)
  *   - Brand badge: "ScrimbaGuide" top-left
  *   - Category pill: bottom-right, white at 15% opacity
  *   - Border: rounded rect, white at 30% opacity
@@ -63,29 +63,49 @@ function esc(str) {
     .replace(/'/g, '&apos;');
 }
 
-/** Word-wrap text to fit within maxWidth (approximate char count per line) */
-function wrapText(text, maxCharsPerLine = 28) {
-  const words = text.split(' ');
+// ---------- Title layout ----------
+const TITLE_X = 80;                 // left edge of title text
+const TITLE_RIGHT_PADDING = 90;     // keep title clear of the right border
+const TITLE_MAX_WIDTH = WIDTH - TITLE_X - TITLE_RIGHT_PADDING; // ~1030px usable
+const TITLE_MAX_LINES = 4;          // hard cap before we truncate
+const TITLE_FONT_SIZES = [66, 62, 58, 54, 50, 46, 42]; // tried largest-first
+const CHAR_WIDTH_RATIO = 0.56;      // approx avg glyph width / font-size for bold sans
+
+/** Greedy word-wrap using an estimated chars-per-line for a given font size. */
+function wrapToWidth(text, fontSize) {
+  const maxChars = Math.max(8, Math.floor(TITLE_MAX_WIDTH / (fontSize * CHAR_WIDTH_RATIO)));
+  const words = text.split(/\s+/);
   const lines = [];
   let current = '';
-
   for (const word of words) {
-    if (current.length + word.length + 1 > maxCharsPerLine && current.length > 0) {
-      lines.push(current.trim());
+    if (current && current.length + 1 + word.length > maxChars) {
+      lines.push(current);
       current = word;
     } else {
       current += (current ? ' ' : '') + word;
     }
   }
-  if (current) lines.push(current.trim());
-
-  // Cap at 3 lines
-  if (lines.length > 3) {
-    lines.length = 3;
-    lines[2] = lines[2].replace(/\s+\S*$/, '') + '...';
-  }
-
+  if (current) lines.push(current);
   return lines;
+}
+
+/**
+ * Auto-fit the title: pick the largest font size whose word-wrap fits within
+ * TITLE_MAX_LINES. Only truncate (with an ellipsis) if even the smallest size
+ * overflows. Returns { lines, fontSize }.
+ */
+function fitTitle(title) {
+  for (const fontSize of TITLE_FONT_SIZES) {
+    const lines = wrapToWidth(title, fontSize);
+    if (lines.length <= TITLE_MAX_LINES) return { lines, fontSize };
+  }
+  const fontSize = TITLE_FONT_SIZES[TITLE_FONT_SIZES.length - 1];
+  const lines = wrapToWidth(title, fontSize);
+  lines.length = TITLE_MAX_LINES;
+  // drop the dangling partial word + trailing punctuation, then ellipsize
+  lines[TITLE_MAX_LINES - 1] =
+    lines[TITLE_MAX_LINES - 1].replace(/\s+\S*$/, '').replace(/[\s.,:;]+$/, '') + '…';
+  return { lines, fontSize };
 }
 
 /**
@@ -106,8 +126,8 @@ function toCardSlug(rawSlug) {
 
 /** Generate SVG social card */
 function generateSVG(title, category) {
-  const lines = wrapText(title, 26);
-  const lineHeight = 72;
+  const { lines, fontSize } = fitTitle(title);
+  const lineHeight = Math.round(fontSize * 1.22);
   const totalTextHeight = lines.length * lineHeight;
   const startY = (HEIGHT / 2) - (totalTextHeight / 2) + 20;
 
@@ -115,12 +135,12 @@ function generateSVG(title, category) {
 
   const titleLines = lines.map((line, i) => {
     const y = startY + (i * lineHeight);
-    return `    <text x="80" y="${y}"
+    return `    <text x="${TITLE_X}" y="${y}"
           dominant-baseline="middle"
           text-anchor="start"
           font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
           font-weight="800"
-          font-size="58"
+          font-size="${fontSize}"
           fill="${TEXT_WHITE}"
           letter-spacing="-1">
       ${esc(line)}
