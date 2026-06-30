@@ -6,6 +6,58 @@ export interface RelatedGuide {
 }
 
 export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
+  // --- Week 27 batch (2026-06/07) ---
+  '/blog/do-you-need-to-learn-to-code-if-ai-writes-it': [
+    { title: 'Can AI Replace Junior Developers?', href: '/blog/can-ai-replace-junior-developers-2026', type: 'blog' },
+    { title: 'From Vibe Coder to Real Developer', href: '/blog/vibe-coder-to-real-developer-2026', type: 'blog' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+  ],
+  '/blog/is-software-engineering-dead-2026': [
+    { title: 'Junior Developer Job Market 2026', href: '/blog/junior-developer-job-market-2026', type: 'blog' },
+    { title: 'How to Get Your First Dev Job', href: '/blog/how-to-get-first-developer-job-2026', type: 'blog' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+  ],
+  '/blog/learn-to-code-summer-2026': [
+    { title: 'Web Development Roadmap 2026', href: '/blog/web-development-roadmap-2026', type: 'blog' },
+    { title: 'How Long to Learn Web Dev', href: '/blog/how-long-to-learn-web-development-2026', type: 'blog' },
+    { title: 'Scrimba Study Plan', href: '/docs/paths/study-plan', type: 'doc' },
+  ],
+  '/blog/coding-bootcamps-closing-2026': [
+    { title: 'Best Bootcamp Alternatives 2026', href: '/blog/best-coding-bootcamp-alternatives-2026', type: 'blog' },
+    { title: 'Scrimba vs Bootcamps Cost', href: '/docs/pricing/scrimba-vs-bootcamps', type: 'doc' },
+    { title: 'Bootcamp Cost Calculator', href: '/tools/bootcamp-cost-calculator/', type: 'doc' },
+  ],
+  '/blog/cheapest-way-to-learn-ai-agents-2026': [
+    { title: 'Scrimba AI Engineer Path Guide', href: '/blog/scrimba-ai-engineer-path-guide', type: 'blog' },
+    { title: 'Best Udemy AI Courses', href: '/blog/best-udemy-ai-courses', type: 'blog' },
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+  ],
+  '/blog/how-to-build-ai-agent-beginners-2026': [
+    { title: 'Learn AI Engineering on Scrimba', href: '/blog/learn-ai-engineering-scrimba', type: 'blog' },
+    { title: 'AI Tools Every Developer Should Know', href: '/blog/ai-tools-every-developer-should-know-2026', type: 'blog' },
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+  ],
+  '/blog/is-react-still-worth-learning-2026': [
+    { title: 'Scrimba React Learning Path', href: '/blog/scrimba-react-learning-path', type: 'blog' },
+    { title: 'Frontend Developer Skills 2026', href: '/blog/frontend-developer-skills-2026', type: 'blog' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+  ],
+  '/blog/how-to-learn-coding-without-depending-on-ai': [
+    { title: 'Escape Tutorial Hell in 2026', href: '/blog/how-to-escape-tutorial-hell-2026', type: 'blog' },
+    { title: 'AI Tools for Learning to Code', href: '/blog/ai-tools-for-learning-to-code-2026', type: 'blog' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+  ],
+  '/blog/how-to-become-ai-engineer-javascript-developer': [
+    { title: 'Scrimba AI Engineer Path Guide', href: '/blog/scrimba-ai-engineer-path-guide', type: 'blog' },
+    { title: 'Should JS Devs Learn TypeScript?', href: '/blog/should-javascript-developers-learn-typescript-2026', type: 'blog' },
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+  ],
+  '/blog/developer-specialization-job-market-2026': [
+    { title: 'Developer Salary Guide 2026', href: '/blog/developer-salary-guide-2026', type: 'blog' },
+    { title: 'Frontend vs Fullstack Path', href: '/blog/scrimba-frontend-vs-fullstack-path', type: 'blog' },
+    { title: 'Which Scrimba Path Fits You?', href: '/tools/which-scrimba-path/', type: 'doc' },
+  ],
+
   // --- Blog Posts: Money Pages ---
   '/blog/scrimba-review': [
     { title: 'Is Scrimba Worth It?', href: '/blog/is-scrimba-worth-it', type: 'blog' },

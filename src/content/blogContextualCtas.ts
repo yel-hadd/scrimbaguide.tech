@@ -243,6 +243,67 @@ const BY_SLUG: Record<string, BlogCta> = {
     href: 'https://scrimba.com/?via=u42d4986',
     linkLabel: 'Try Scrimba free',
   },
+  // --- Week 27 batch (2026-06/07) ---
+  'do-you-need-to-learn-to-code-if-ai-writes-it': {
+    title: 'Build the skill that gets hired',
+    body: 'Reading and verifying code is the part AI cannot do for you. Practice it by editing real programs.',
+    href: '/docs/pricing/',
+    linkLabel: 'See Scrimba pricing',
+  },
+  'is-software-engineering-dead-2026': {
+    title: 'Start a projects-first path',
+    body: 'The entry door is narrower, so prove you can ship. The Frontend path is built around real projects.',
+    href: '/docs/paths/frontend-developer-path',
+    linkLabel: 'Frontend Developer path',
+  },
+  'learn-to-code-summer-2026': {
+    title: 'Follow a week-by-week plan',
+    body: 'A structured study plan keeps a summer of learning from drifting into tutorial hell.',
+    href: '/docs/paths/study-plan',
+    linkLabel: 'Scrimba study plan',
+  },
+  'coding-bootcamps-closing-2026': {
+    title: 'A lower-risk way to learn',
+    body: 'No five-figure upfront tuition. Run the numbers against a cohort bootcamp first.',
+    href: '/docs/pricing/scrimba-vs-bootcamps',
+    linkLabel: 'Scrimba vs bootcamps',
+  },
+  'cheapest-way-to-learn-ai-agents-2026': {
+    title: 'Lowest-cost coherent path',
+    body: 'One subscription covers agents, RAG, and MCP end to end, in JavaScript.',
+    href: '/docs/paths/ai-engineer-path',
+    linkLabel: 'AI Engineer path',
+  },
+  'how-to-build-ai-agent-beginners-2026': {
+    title: 'Go past the toy agent',
+    body: 'The AI Engineer path sequences agents, RAG, and MCP so your second agent holds up.',
+    href: '/docs/paths/ai-engineer-path',
+    linkLabel: 'AI Engineer path',
+  },
+  'is-react-still-worth-learning-2026': {
+    title: 'Learn modern React in order',
+    body: 'Skip the 2021 tutorials. The Frontend path teaches current React with real projects.',
+    href: '/docs/paths/frontend-developer-path',
+    linkLabel: 'Frontend Developer path',
+  },
+  'how-to-learn-coding-without-depending-on-ai': {
+    title: 'Practice where you cannot paste',
+    body: 'The scrim format makes you type and fix code yourself, which is how recall actually forms.',
+    href: '/docs/paths/frontend-developer-path',
+    linkLabel: 'Frontend Developer path',
+  },
+  'how-to-become-ai-engineer-javascript-developer': {
+    title: 'A JavaScript-first AI path',
+    body: 'No Python detour. Agents, RAG, and MCP in JavaScript and TypeScript.',
+    href: '/docs/paths/ai-engineer-path',
+    linkLabel: 'AI Engineer path',
+  },
+  'developer-specialization-job-market-2026': {
+    title: 'Find your specialization',
+    body: 'Answer a few questions and get matched to a path that fits your goals.',
+    href: '/tools/which-scrimba-path/',
+    linkLabel: 'Path Advisor',
+  },
 };
 
 export function getBlogContextualCta(slug: string): BlogCta {
