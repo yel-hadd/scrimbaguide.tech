@@ -1,5 +1,6 @@
 import React from 'react';
 import AffiliateLink from './AffiliateLink';
+import { DEMO_SCRIM_URL } from '@site/src/constants';
 
 interface VerdictBoxProps {
   title?: string;
@@ -25,7 +26,7 @@ export default function VerdictBox({
   pros = [],
   cons = [],
   ctaText = 'Try a scrim in your browser (no signup)',
-  ctaHref = 'https://scrimba.com/s0v687325e',
+  ctaHref = DEMO_SCRIM_URL,
   location = 'verdict-box',
 }: VerdictBoxProps): React.ReactElement {
   return (

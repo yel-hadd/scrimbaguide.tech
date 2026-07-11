@@ -8,10 +8,10 @@ export type BlogCta = {
 };
 
 export const DEFAULT_BLOG_CTA: BlogCta = {
-  title: 'Decide on Pro with the pricing guide',
-  body: 'Compare what Pro unlocks vs the free tier, then use our partner link if you upgrade.',
+  title: 'Not sure yet? Try a real lesson first',
+  body: 'You can open a Scrimba lesson free with no signup. A one-time 20%-off Pro banner pops up first; close it and the lesson is yours to explore. Compare the plans here before you pay for anything.',
   href: '/docs/pricing/',
-  linkLabel: 'Scrimba pricing (2026)',
+  linkLabel: 'See Scrimba pricing (2026)',
 };
 
 const BY_SLUG: Record<string, BlogCta> = {
@@ -28,10 +28,10 @@ const BY_SLUG: Record<string, BlogCta> = {
     linkLabel: 'Pro vs Free comparison',
   },
   'scrimba-discount-codes-2026': {
-    title: 'Confirm the live checkout price',
-    body: 'Discounts apply at billing toggles and eligibility, not mystery coupon codes.',
+    title: 'See your real price with the discount applied',
+    body: 'There is no code to type. Our partner link applies 20% off Pro at checkout, and a one-time banner confirms it. Open the pricing page to check your regional price before you decide.',
     href: 'https://scrimba.com/home?pricing&via=u42d4986',
-    linkLabel: 'Open Scrimba pricing',
+    linkLabel: 'Open Scrimba pricing (20% applied)',
   },
   'best-free-scrimba-courses': {
     title: 'When free is not enough',
@@ -76,16 +76,40 @@ const BY_SLUG: Record<string, BlogCta> = {
     linkLabel: 'AI Engineer path',
   },
   'typescript-for-beginners-scrimba': {
-    title: 'TypeScript courses on Scrimba',
-    body: 'Jump into the TypeScript topic index from the course catalog.',
-    href: '/docs/courses/typescript/',
-    linkLabel: 'TypeScript courses',
+    title: 'Start the free TypeScript course',
+    body: 'The Learn TypeScript course by Bob Ziroll is free and runs in your browser, no signup. A 20%-off Pro banner shows first; close it and work through every lesson for free. Upgrade only if you want the full path.',
+    href: 'https://scrimba.com/learn-typescript-c03c',
+    linkLabel: 'Open Learn TypeScript (free)',
   },
   'how-to-learn-typescript-scrimba': {
-    title: 'TypeScript topic hub',
-    body: 'Pick a course order that matches your JS level.',
-    href: '/docs/courses/typescript/',
-    linkLabel: 'Browse TypeScript courses',
+    title: 'Open Learn TypeScript free',
+    body: 'It runs in your browser with no signup. You will see a one-time 20%-off Pro popup; close it and the whole course is open to explore for free.',
+    href: 'https://scrimba.com/learn-typescript-c03c',
+    linkLabel: 'Start Learn TypeScript',
+  },
+  'should-javascript-developers-learn-typescript-2026': {
+    title: 'Try TypeScript in the browser',
+    body: 'Decide for yourself in ten minutes: Learn TypeScript is free and needs no signup. Close the one-time 20%-off Pro banner and the full course is yours.',
+    href: 'https://scrimba.com/learn-typescript-c03c',
+    linkLabel: 'Open the free TypeScript course',
+  },
+  'best-typescript-courses': {
+    title: 'Start the free TypeScript course',
+    body: 'Skip the video backlog: Learn TypeScript is free and interactive, no signup. Close the one-time 20%-off Pro banner and the whole course stays open.',
+    href: 'https://scrimba.com/learn-typescript-c03c',
+    linkLabel: 'Open Learn TypeScript (free)',
+  },
+  'best-nextjs-courses': {
+    title: 'Build a Next.js app for free',
+    body: 'Learn Next.js is free and interactive, no signup. Close the one-time 20%-off Pro banner and build a real app in the browser.',
+    href: 'https://scrimba.com/learn-nextjs-c02moisq6a',
+    linkLabel: 'Open Learn Next.js (free)',
+  },
+  'best-ai-engineering-courses': {
+    title: 'See the AI Engineer Path',
+    body: 'One structured track from calling an API to shipping an AI app. Try the interactive format free first; our partner link takes 20% off Pro if you upgrade.',
+    href: '/docs/paths/ai-engineer-path',
+    linkLabel: 'AI Engineer Path overview',
   },
   'frontend-developer-skills-2026': {
     title: 'Frontend path alignment',
