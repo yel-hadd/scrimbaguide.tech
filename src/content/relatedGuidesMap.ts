@@ -91,6 +91,23 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba vs freeCodeCamp', href: '/docs/comparisons/scrimba-vs-freecodecamp', type: 'comparison' },
   ],
 
+  // --- Blog: new comparison posts ---
+  '/blog/best-typescript-courses': [
+    { title: 'Should JS Devs Learn TypeScript?', href: '/blog/should-javascript-developers-learn-typescript-2026', type: 'blog' },
+    { title: 'Learn TypeScript (course)', href: '/docs/courses/typescript/learn-typescript', type: 'doc' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+  ],
+  '/blog/best-nextjs-courses': [
+    { title: 'Scrimba React Learning Path', href: '/blog/scrimba-react-learning-path', type: 'blog' },
+    { title: 'Learn Next.js (course)', href: '/docs/courses/javascript/nextjs', type: 'doc' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+  ],
+  '/blog/best-ai-engineering-courses': [
+    { title: 'Scrimba AI Engineer Path Guide', href: '/blog/scrimba-ai-engineer-path-guide', type: 'blog' },
+    { title: 'AI Courses Hub', href: '/docs/courses/ai', type: 'doc' },
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+  ],
+
   // --- Docs: Paths ---
   '/docs/paths': [
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
@@ -112,6 +129,55 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Learn AI Engineering', href: '/blog/learn-ai-engineering-scrimba', type: 'blog' },
     { title: 'AI Tools for Developers', href: '/blog/ai-tools-every-developer-should-know-2026', type: 'blog' },
     { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+  ],
+
+  // --- Docs: AI course leaves → funnel into the AI Engineer Path money page ---
+  '/docs/courses/ai': [
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Learn AI Agents', href: '/docs/courses/ai/ai-agents', type: 'doc' },
+    { title: 'Scrimba AI Engineer Path Guide', href: '/blog/scrimba-ai-engineer-path-guide', type: 'blog' },
+  ],
+  '/docs/courses/ai/ai-agents': [
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Learn RAG', href: '/docs/courses/ai/rag', type: 'doc' },
+    { title: 'Scrimba AI Engineer Path Guide', href: '/blog/scrimba-ai-engineer-path-guide', type: 'blog' },
+  ],
+  '/docs/courses/ai/rag': [
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Learn AI Agents', href: '/docs/courses/ai/ai-agents', type: 'doc' },
+    { title: 'Learn AI Engineering', href: '/blog/learn-ai-engineering-scrimba', type: 'blog' },
+  ],
+  '/docs/courses/ai/ai-engineering': [
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Prompt Engineering', href: '/docs/courses/ai/prompt-engineering-for-web-developers', type: 'doc' },
+    { title: 'Learn AI Engineering', href: '/blog/learn-ai-engineering-scrimba', type: 'blog' },
+  ],
+  '/docs/courses/ai/prompt-engineering-for-web-developers': [
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Intro to AI Engineering', href: '/docs/courses/ai/ai-engineering', type: 'doc' },
+    { title: 'AI Tools for Developers', href: '/blog/ai-tools-every-developer-should-know-2026', type: 'blog' },
+  ],
+  '/docs/courses/ai/context-engineering': [
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Learn RAG', href: '/docs/courses/ai/rag', type: 'doc' },
+    { title: 'Model Context Protocol (MCP)', href: '/docs/courses/ai/model-context-protocol-mcp', type: 'doc' },
+  ],
+  '/docs/courses/ai/model-context-protocol-mcp': [
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Learn AI Agents', href: '/docs/courses/ai/ai-agents', type: 'doc' },
+    { title: 'Context Engineering', href: '/docs/courses/ai/context-engineering', type: 'doc' },
+  ],
+
+  // --- Docs: TypeScript → link both fullstack AND frontend paths ---
+  '/docs/courses/typescript': [
+    { title: 'Learn TypeScript', href: '/docs/courses/typescript/learn-typescript', type: 'doc' },
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+  ],
+  '/docs/courses/typescript/learn-typescript': [
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Should JS Devs Learn TypeScript?', href: '/blog/should-javascript-developers-learn-typescript-2026', type: 'blog' },
   ],
 
   // --- Docs: Comparisons ---

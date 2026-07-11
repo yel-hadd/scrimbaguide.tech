@@ -50,6 +50,22 @@ Branch `ranking-waves-0-2`. Build green via `npx docusaurus build`; `check:conte
 
 ---
 
+## Conversion optimization SHIPPED (2026-07-11) — branch `feat/conversion-optimization`
+
+Build green (`npm run build` exit 0, zero broken links); `check:content` + `typecheck` pass. Driven by affiliate-portal analytics + a Playwright walkthrough of the real post-click experience: every `?via=u42d4986` link fires a **one-time, dismissible "20% off Pro" modal** (`SCRIMBASSADORS20`), courses (e.g. Learn React) are **free behind it**, and demo scrim `s0v687325e` is the free no-signup lesson. Pre-click content wasn't priming users for this.
+
+- ✅ **Shared constant** `src/constants.ts` — centralizes `DEMO_SCRIM_URL` + affiliate id (was hardcoded in 4 files; importable by `docusaurus.config.ts` since it's a pure-constants leaf). Fixes silent-404 risk.
+- ✅ **Discount-aware + transparent CTAs** — refreshed `DEFAULT_BLOG_CTA`, discount-codes post, and 3 TS-post entries in `blogContextualCtas.ts`. Copy now states the 20%-off banner is one-time/dismissible and the lesson is free (no forced-purchase feel). Discount kept **link-only** — never publish a typeable code, which would let users bypass `?via=` and cost the commission.
+- ✅ **3 new comparison posts** (proven format, real facts from `data/courses.json`): `best-typescript-courses`, `best-nextjs-courses`, `best-ai-engineering-courses`. Scrimba as the pick, cross-platform honesty, FAQ + schema. In sitemap + llms.txt; social-card SVGs generated (PNGs render in CI).
+- ✅ **AI funnel** — 7 `/docs/courses/ai/*` leaves now surface the AI Engineer Path in `relatedGuidesMap.ts` (were hitting the generic `/docs/courses/` fallback).
+- ✅ **TypeScript push** — added missing Frontend-path links on `learn-typescript` + TS index and their related-guides entries.
+- ✅ **Bad-CTA cleanup** — re-pointed affiliate CTAs that dead-ended on Scrimba's own blog/roadmap (non-converting, seen as landing pages in analytics) to money pages: the `best-react-courses-and-tutorials` stub CTA (was `scrimba.com/blog/...` → Frontend path) + 2 `changelog.mdx` links.
+- ✅ **Pricing/discount transparency** — added "close the one-time banner, explore free" note to `pricing/index` + discount-codes post.
+
+**Next steps:** do NOT commit stray Playwright artifacts (`scrimba-*.png`, `.playwright-mcp/`); monitor Search Console for the 3 new posts; add `best-*-courses` posts for other top click clusters (React/JS are Scrimba-owned blog territory) if these perform. Policy recorded in memory: `affiliate-funnel-and-cta-policy`, `demo-scrim-constant`.
+
+---
+
 ## Remaining Waves (2-6)
 
 ### Wave 2 — Paths (6) + FAQ

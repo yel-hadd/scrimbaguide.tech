@@ -1,12 +1,11 @@
 import React from 'react';
+import { AFFILIATE_PARAM } from '@site/src/constants';
 
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
   }
 }
-
-const AFFILIATE_PARAM = 'via=u42d4986';
 
 interface AffiliateLinkProps {
   href: string;

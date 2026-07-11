@@ -3,6 +3,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import { DEMO_SCRIM_URL_AFFILIATE } from './src/constants';
 
 /**
  * 301 redirects for retired course pages (de-listed from Scrimba's catalogue).
@@ -580,9 +581,9 @@ const config: Config = {
           ] as any,
         },
         {
-          // Same interactive demo scrim as the homepage hero CTA (DEMO_SCRIM_URL in src/pages/index.tsx);
-          // via= appended manually because navbar hrefs do not route through <AffiliateLink>.
-          href: 'https://scrimba.com/s0v687325e?via=u42d4986',
+          // Same interactive demo scrim as the homepage hero CTA. Uses the shared
+          // constant because navbar hrefs do not route through <AffiliateLink>.
+          href: DEMO_SCRIM_URL_AFFILIATE,
           label: 'Try Scrimba for free',
           position: 'right',
           className: 'navbar-cta',

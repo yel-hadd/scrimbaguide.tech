@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useCallback, useEffect, useRef, useId } from 'react';
 import Link from '@docusaurus/Link';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import { DEMO_SCRIM_URL } from '@site/src/constants';
 import {
   computePathRecommendation,
   answerRecap,
@@ -35,11 +36,6 @@ function trackAdvisorEvent(
 }
 
 const TOTAL_STEPS = 4;
-
-// Public, no-signup interactive scrim. Mirrors Scrimba's own "Try it for free /
-// 2 min, no signup" hero CTA and the homepage demo, so the free-emphasis path
-// actually opens a real lesson instead of the marketing homepage.
-const DEMO_SCRIM_URL = 'https://scrimba.com/s0v687325e';
 
 export interface PathAdvisorProps {
   /** When true, tighter layout for embedding in docs. */

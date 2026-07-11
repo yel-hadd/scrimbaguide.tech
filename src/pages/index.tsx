@@ -15,9 +15,7 @@ import {
   pathDurations,
   totalContentHoursLabel,
 } from '../utils/scrimbaFacts';
-
-const DEMO_SCRIM_URL = 'https://scrimba.com/s0v687325e';
-const PRO_AFFILIATE_URL = 'https://scrimba.com/home?pricing&via=u42d4986';
+import { DEMO_SCRIM_URL, PRO_AFFILIATE_URL } from '../constants';
 
 function stripForFaqSchema(text: string): string {
   return text
