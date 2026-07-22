@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useId } from 'react';
+import Link from '@docusaurus/Link';
 import AffiliateLink from './AffiliateLink';
 
 type Level = 'complete-beginner' | 'some-html' | 'basic-js';
@@ -185,9 +186,9 @@ export default function LearningTimeCalculator(): React.ReactElement {
           >
             Start the {PATHS[selectedPath].name} Path free &rarr;
           </AffiliateLink>
-          <a href={PATHS[selectedPath].slug} className="ltc-cta-link">
+          <Link to={PATHS[selectedPath].slug} className="ltc-cta-link">
             See full path breakdown
-          </a>
+          </Link>
         </div>
 
         <p className="ltc-disclaimer">
@@ -210,7 +211,9 @@ export default function LearningTimeCalculator(): React.ReactElement {
           box-shadow: 0 2px 12px rgba(0,0,0,0.06);
         }
         .ltc-header {
-          background: linear-gradient(135deg, var(--ifm-color-primary, #2b6cb0), var(--ifm-color-primary-dark, #1a4a8a));
+          /* --sg-btn-bg / primary-darkest stay dark in BOTH themes, so white text
+             keeps ~5:1 contrast in dark mode (--ifm-color-primary lightens to #b8a5ff). */
+          background: linear-gradient(135deg, var(--sg-btn-bg, #4c31c8), var(--ifm-color-primary-darkest, #39259c));
           color: white;
           padding: 1.25rem 1.5rem;
         }
@@ -259,7 +262,7 @@ export default function LearningTimeCalculator(): React.ReactElement {
         .ltc-range-labels {
           display: flex;
           justify-content: space-between;
-          font-size: 11px;
+          font-size: 0.72rem;
           color: var(--ifm-color-content-secondary, #718096);
         }
         .ltc-range-labels .active {
@@ -312,7 +315,7 @@ export default function LearningTimeCalculator(): React.ReactElement {
           color: var(--ifm-color-content, #1a202c);
         }
         .ltc-breakdown-label {
-          font-size: 11px;
+          font-size: 0.72rem;
           color: var(--ifm-color-content-secondary, #718096);
         }
         .ltc-breakdown-sep {
@@ -329,17 +332,17 @@ export default function LearningTimeCalculator(): React.ReactElement {
         .ltc-cta-btn {
           display: inline-block;
           padding: 0.55rem 1rem;
-          background: var(--ifm-color-primary, #2b6cb0);
+          background: var(--sg-btn-bg, #4c31c8);
           color: white !important;
           border-radius: 6px;
           font-size: 0.85rem;
           font-weight: 600;
           text-decoration: none !important;
-          white-space: nowrap;
-          transition: background 0.15s;
+          white-space: normal;
+          transition: filter 0.15s;
         }
         .ltc-cta-btn:hover {
-          background: var(--ifm-color-primary-dark, #1a4a8a);
+          filter: brightness(0.94);
         }
         .ltc-cta-link {
           font-size: 0.82rem;
@@ -349,7 +352,7 @@ export default function LearningTimeCalculator(): React.ReactElement {
         .ltc-cta-link:hover { text-decoration: underline; }
         .ltc-disclaimer {
           padding: 0 1.5rem 1rem;
-          font-size: 11px;
+          font-size: 0.72rem;
           color: var(--ifm-color-content-secondary, #718096);
           margin: 0;
         }

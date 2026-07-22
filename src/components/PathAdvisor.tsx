@@ -51,6 +51,9 @@ interface ChoiceStepProps<T extends string> {
   title: string;
   options: readonly ChoiceOption<T>[];
   onSelect: (value: T) => void;
+  /** The already-chosen value for this step (set when navigating Back), so the
+   *  radiogroup can reflect the selection to assistive tech and rove tabindex. */
+  selected?: T;
   hint?: string;
   onBack?: () => void;
   /**
@@ -67,6 +70,7 @@ function ChoiceStep<T extends string>({
   title,
   options,
   onSelect,
+  selected,
   hint,
   onBack,
   autoFocus = false,
@@ -112,7 +116,8 @@ function ChoiceStep<T extends string>({
             key={value}
             type="button"
             role="radio"
-            aria-checked={false}
+            aria-checked={selected === value}
+            tabIndex={selected != null ? (selected === value ? 0 : -1) : index === 0 ? 0 : -1}
             className="path-advisor__choice"
             onClick={() => onSelect(value)}
             onKeyDown={(event) => onChoiceKeyDown(event, index)}
@@ -263,6 +268,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
           title="1. Where are you starting?"
           options={EXPERIENCE_OPTIONS}
           onSelect={onSelectExperience}
+          selected={experience ?? undefined}
           autoFocus={interacted}
         />
       )}
@@ -272,6 +278,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
           title="2. What is the main goal?"
           options={GOAL_OPTIONS}
           onSelect={onSelectGoal}
+          selected={goal ?? undefined}
           onBack={() => setStep(0)}
           autoFocus={interacted}
         />
@@ -283,6 +290,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
           options={HOURS_OPTIONS}
           hint="We use this to estimate how long the path may take at your pace."
           onSelect={onSelectHours}
+          selected={hours ?? undefined}
           onBack={() => setStep(1)}
           autoFocus={interacted}
         />
@@ -293,6 +301,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
           title="4. What best describes you right now?"
           options={SITUATION_OPTIONS}
           onSelect={onSelectSituation}
+          selected={situation ?? undefined}
           onBack={() => setStep(2)}
           autoFocus={interacted}
         />

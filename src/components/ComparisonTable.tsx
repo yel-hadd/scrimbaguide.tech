@@ -58,7 +58,7 @@ export default function ComparisonTable({
       </table>
       <div className="comparison-table__cta-row">
         <AffiliateLink href={scrimbaUrl} variant="button">
-          Claim 20% Off Pro
+          Claim 20% off Pro
         </AffiliateLink>
         {competitorUrl && (
           <a href={competitorUrl} target="_blank" rel="noopener noreferrer" className="comparison-table__secondary-cta">

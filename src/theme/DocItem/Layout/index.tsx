@@ -6,7 +6,6 @@ import { useDoc } from '@docusaurus/plugin-content-docs/client';
 import RelatedGuides from '@site/src/components/RelatedGuides';
 import DesktopStickyCTA from '@site/src/components/DesktopStickyCTA';
 import PricingCTA from '@site/src/components/PricingCTA';
-import EmailCapture from '@site/src/components/EmailCapture';
 import { useLocation } from '@docusaurus/router';
 import { getRelatedGuides } from '@site/src/content/relatedGuidesMap';
 
@@ -132,9 +131,6 @@ export default function LayoutWrapper(props: any): React.ReactElement {
       {props.children}
       {guides.length > 0 && <RelatedGuides guides={guides} />}
       <DocAffiliateCta pathname={location.pathname} />
-      <div className="container margin-bottom--lg">
-        <EmailCapture variant="docs" />
-      </div>
       <DesktopStickyCTA />
     </Layout>
   );

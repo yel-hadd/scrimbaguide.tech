@@ -19,9 +19,6 @@ const courseRedirects: { from: string; to: string }[] = (() => {
   }
 })();
 
-/** Set to `false` to show the newsletter / path-guide lead magnet (`EmailCapture`). */
-const hideNewsletterLeadMagnetDefault = false;
-
 /**
  * Legacy blog URLs that only exist as client-redirect stubs. Omit from sitemap (canonical = `to` targets).
  */
@@ -160,19 +157,6 @@ const config: Config = {
   url: 'https://scrimbaguide.tech',
   baseUrl: '/',
   trailingSlash: true,
-
-  customFields: {
-    /** Formspree/Mailchimp/etc. POST URL. Set `NEWSLETTER_FORM_ACTION` in CI or `.env` for builds */
-    newsletterFormAction: process.env.NEWSLETTER_FORM_ACTION ?? '',
-    /**
-     * When true, EmailCapture (path guide / newsletter) is not rendered.
-     * Default: hidden (`hideNewsletterLeadMagnetDefault`). Set `HIDE_NEWSLETTER_LEAD_MAGNET=false` at build time to show it.
-     */
-    hideNewsletterLeadMagnet:
-      process.env.HIDE_NEWSLETTER_LEAD_MAGNET === 'false'
-        ? false
-        : hideNewsletterLeadMagnetDefault,
-  },
 
   future: {
     v4: true,
