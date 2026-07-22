@@ -216,6 +216,48 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Certificates Guide', href: '/blog/complete-guide-scrimba-certificates', type: 'blog' },
     { title: 'Career Change Guide', href: '/blog/career-change-to-coding-2026', type: 'blog' },
   ],
+  '/docs/comparisons/scrimba-vs-boot-dev': [
+    { title: 'All Comparisons', href: '/docs/comparisons/', type: 'doc' },
+    { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba vs Codecademy', href: '/docs/comparisons/scrimba-vs-codecademy', type: 'comparison' },
+  ],
+  '/docs/comparisons/scrimba-vs-educative': [
+    { title: 'All Comparisons', href: '/docs/comparisons/', type: 'doc' },
+    { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba vs Codecademy', href: '/docs/comparisons/scrimba-vs-codecademy', type: 'comparison' },
+  ],
+  '/docs/comparisons/scrimba-vs-fireship': [
+    { title: 'All Comparisons', href: '/docs/comparisons/', type: 'doc' },
+    { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba vs YouTube', href: '/docs/comparisons/scrimba-vs-youtube', type: 'comparison' },
+  ],
+  '/docs/comparisons/scrimba-vs-frontendmasters': [
+    { title: 'All Comparisons', href: '/docs/comparisons/', type: 'doc' },
+    { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
+  ],
+  '/docs/comparisons/scrimba-vs-pluralsight': [
+    { title: 'All Comparisons', href: '/docs/comparisons/', type: 'doc' },
+    { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
+  ],
+  '/docs/comparisons/scrimba-vs-treehouse': [
+    { title: 'All Comparisons', href: '/docs/comparisons/', type: 'doc' },
+    { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba vs Codecademy', href: '/docs/comparisons/scrimba-vs-codecademy', type: 'comparison' },
+  ],
+  '/docs/comparisons/scrimba-vs-zerotomastery': [
+    { title: 'All Comparisons', href: '/docs/comparisons/', type: 'doc' },
+    { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
+  ],
 
   // --- Docs: Programmatic Pages ---
   '/docs/for/designers': [
@@ -249,6 +291,40 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Student Discount', href: '/docs/pricing/student-discount', type: 'doc' },
     { title: 'Refund Policy', href: '/docs/pricing/refund-policy', type: 'doc' },
+  ],
+
+  // --- Docs: Backend course leaves → funnel into the Backend Developer Path ---
+  '/docs/courses/backend/sql': [
+    { title: 'Backend Courses', href: '/docs/courses/backend/', type: 'doc' },
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+    { title: 'Learn Supabase', href: '/docs/courses/backend/supabase', type: 'doc' },
+    { title: 'Scrimba vs Boot.dev', href: '/docs/comparisons/scrimba-vs-boot-dev', type: 'comparison' },
+  ],
+  '/docs/courses/backend/supabase': [
+    { title: 'Backend Courses', href: '/docs/courses/backend/', type: 'doc' },
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+    { title: 'Learn SQL', href: '/docs/courses/backend/sql', type: 'doc' },
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+  ],
+  '/docs/courses/backend/regular-expressions': [
+    { title: 'Backend Courses', href: '/docs/courses/backend/', type: 'doc' },
+    { title: 'Learn JavaScript', href: '/docs/courses/javascript/learn-javascript', type: 'doc' },
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+  ],
+  '/docs/courses/backend/a-mobile-app-with-firebase': [
+    { title: 'Backend Courses', href: '/docs/courses/backend/', type: 'doc' },
+    { title: 'Learn Firebase', href: '/docs/courses/javascript/firebase', type: 'doc' },
+    { title: 'Learn Supabase', href: '/docs/courses/backend/supabase', type: 'doc' },
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+  ],
+
+  // --- Docs: JavaScript flagship free course → funnel into frontend/fullstack paths ---
+  '/docs/courses/javascript/learn-javascript': [
+    { title: 'JavaScript Courses', href: '/docs/courses/javascript/', type: 'doc' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Best Free Scrimba Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
   ],
 };
 

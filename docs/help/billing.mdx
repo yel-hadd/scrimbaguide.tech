@@ -1,5 +1,5 @@
 ---
-title: "Scrimba Billing & Payments"
+title: "Scrimba Billing & Payments: Refunds, Discounts & Plans"
 description: "Answers to Scrimba billing questions: pricing, refunds, payment methods, student discounts, subscription management, and more."
 keywords: [scrimba billing, scrimba payment, scrimba refund, scrimba subscription]
 hideGlobalPricingCta: true
@@ -7,6 +7,7 @@ last_update:
   date: 2026-05-28
 ---
 
+import AffiliateLink from '@site/src/components/AffiliateLink';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import PricingCTA from '@site/src/components/PricingCTA';
 import { freeCount } from '@site/src/utils/scrimbaFacts';
@@ -15,7 +16,7 @@ import { freeCount } from '@site/src/utils/scrimbaFacts';
 
 **Short answer:** Pro is subscription-only (monthly or annual, no one-off course purchases). Refunds are honored within 7 days of first purchase. Student discounts and the GitHub Student Pack are available. Cancel anytime from account settings; your progress stays on your account.
 
-For the full plan breakdown, see [Pro vs Free](/docs/pricing/pro-vs-free). For current numbers, [scrimba.com/our-pricing](https://scrimba.com/our-pricing) is the source of truth.
+For the full plan breakdown, see [Pro vs Free](/docs/pricing/pro-vs-free/). For current numbers, <AffiliateLink href="https://scrimba.com/our-pricing">scrimba.com/our-pricing</AffiliateLink> is the source of truth.
 
 ## Who This Is For
 
@@ -25,29 +26,29 @@ Subscribers or potential subscribers with billing questions: pricing, refunds, p
 
 There is only one paid product: Pro. There is no per-course purchase and no lifetime buyout, so every billing question reduces to how you pay for Pro and how you stop.
 
-- **Two billing cycles.** Monthly or annual. Annual works out to roughly half the per-month rate, so if you will study for three months or more, annual is the cheaper unit. Weigh it on the [Pro vs Free comparison](/docs/pricing/pro-vs-free).
+- **Two billing cycles.** Monthly or annual. Annual works out to roughly half the per-month rate, so if you will study for three months or more, annual is the cheaper unit. Weigh it on the [Pro vs Free comparison](/docs/pricing/pro-vs-free/).
 - **Region-aware pricing.** Scrimba applies purchasing-power parity automatically, so the price you see can be lower than the headline rate depending on your country. No coupon needed.
-- **One renewal switch.** A subscription renews until you cancel. Cancelling stops the next charge but keeps your access to the end of the period; it does not refund the current term. The two actions are different, and the [refund policy](/docs/pricing/refund-policy) lays out which one returns money.
+- **One renewal switch.** A subscription renews until you cancel. Cancelling stops the next charge but keeps your access to the end of the period; it does not refund the current term. The two actions are different, and the [refund policy](/docs/pricing/refund-policy/) lays out which one returns money.
 - **Your progress is yours.** Cancel, lapse, and resubscribe months later, and your completed lessons are still on your account.
 
-If you only remember one thing: try the [free tier](/docs/pricing/pro-vs-free) first, pick annual once you are confident, and you keep the 7-day refund window on that first charge either way.
+If you only remember one thing: try the [free tier](/docs/pricing/pro-vs-free/) first, pick annual once you are confident, and you keep the 7-day refund window on that first charge either way.
 
 ## Fast Navigation
 
 - **Need current plan pricing?** Check [Scrimba Pricing](/docs/pricing/) first, then use the FAQs below for edge cases.
-- **Looking for discounts?** See [Student Discount](/docs/pricing/student-discount) and [Discount Codes & Deals](/blog/scrimba-discount-codes-2026).
-- **Unsure whether to upgrade?** Compare [Pro vs Free](/docs/pricing/pro-vs-free).
+- **Looking for discounts?** See [Student Discount](/docs/pricing/student-discount/) and [Discount Codes & Deals](/blog/scrimba-discount-codes-2026/).
+- **Unsure whether to upgrade?** Compare [Pro vs Free](/docs/pricing/pro-vs-free/).
 - **Need cancellation/refund help?** Jump to *Payments & Refunds* and *Cancellation* sections.
 
 <FAQAccordion title="Pricing & Plans" items={[
   { q: "How much does Scrimba Pro cost?", a: "Monthly or annual subscription. Annual is roughly half the per-month rate of monthly. Live numbers shift by region and promotion, so check scrimba.com/our-pricing for your current price.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/72-how-much-does-scrimba-cost" },
-  { q: "How do I claim the 20% Pro discount?", a: "Open checkout through the partner link on this site; the discount applies to eligible Pro plans automatically. If it does not show at checkout, see the 2026 discount guide for the current state.", sourceUrl: "https://scrimbaguide.tech/blog/scrimba-discount-codes-2026" },
+  { q: "How do I claim the 20% Pro discount?", a: "Open checkout through the partner link on this site; the discount applies to eligible Pro plans automatically. If it does not show at checkout, see the 2026 discount guide for the current state.", sourceUrl: "https://scrimbaguide.tech/blog/scrimba-discount-codes-2026/" },
   { q: "What's the difference between Pro and Free?", a: `Pro unlocks all courses, the four career paths, unlimited challenges, the private Discord, and path certificates. Free gives roughly ${freeCount} full courses and 10 interactive challenges total across the platform. Full breakdown on the Pro vs Free page.`, sourceUrl: "https://scrimba.helpscoutdocs.com/article/73-whats-the-difference-between-pro-and-free" },
   { q: "Can I purchase a single course instead of subscribing?", a: "No. Scrimba is subscription-only; there is no per-course purchase option.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/21-can-i-purchase-a-single-course-instead-of-subscribing" },
   { q: "Do I get access to all courses when I subscribe?", a: "Yes. One Pro subscription covers all current and future Pro courses across the platform.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/24-do-i-get-access-to-all-content-when-i-subscribe" },
 ]} />
 
-**Next step:** Decide annual vs monthly on the [Pro vs Free comparison](/docs/pricing/pro-vs-free), then check the current promotion on [Scrimba pricing](/docs/pricing/).
+**Next step:** Decide annual vs monthly on the [Pro vs Free comparison](/docs/pricing/pro-vs-free/), then check the current promotion on [Scrimba pricing](/docs/pricing/).
 
 <FAQAccordion emitSchema={false} title="Student Discounts & Scholarships" items={[
   { q: "Do you offer student discounts?", a: "Yes. Email help@scrimba.com from your academic email to request the student rate.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/19-do-you-offer-student-discounts" },
@@ -55,16 +56,16 @@ If you only remember one thing: try the [free tier](/docs/pricing/pro-vs-free) f
   { q: "Can I get a scholarship?", a: "No formal program. For genuine financial hardship, email help@scrimba.com directly.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/71-can-i-get-a-scholarship" },
 ]} />
 
-**Next step:** Check the [student discount eligibility guide](/docs/pricing/student-discount) before emailing support.
+**Next step:** Check the [student discount eligibility guide](/docs/pricing/student-discount/) before emailing support.
 
 <FAQAccordion emitSchema={false} title="Payments & Refunds" items={[
   { q: "Can I pay with PayPal, UPI, or bank transfer?", a: "Primarily credit and debit cards. Email help@scrimba.com to ask about alternative methods for your region.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/85-can-i-pay-using-paypal-upi-or-bank-transfer" },
-  { q: "How do I get a refund?", a: "Yes, within 7 days of first purchase, one refund per account. Submit the refund form or email help@scrimba.com. Full policy on the refund page.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/6-how-do-i-get-a-refund" },
+  { q: "How do I get a refund?", a: "Refunds are available within 7 days of first purchase, one refund per account. Submit the refund form or email help@scrimba.com. Full policy on the refund page.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/6-how-do-i-get-a-refund" },
   { q: "My automatic payment failed. What do I do?", a: "Update the card in account settings. If the retry still fails, email help@scrimba.com before access expires.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/26-my-automatic-payment-failed-what-do-i-do" },
   { q: "How do I manage my subscription/billing?", a: "Account settings has the controls for subscription tier, payment method, and invoices.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/43-how-do-i-manage-my-subscription-billing-account" },
 ]} />
 
-**Next step:** Read the [refund policy summary](/docs/pricing/refund-policy) before subscribing so you know the 7-day window.
+**Next step:** Read the [refund policy summary](/docs/pricing/refund-policy/) before subscribing so you know the 7-day window.
 
 <FAQAccordion emitSchema={false} title="Cancellation" items={[
   { q: "Do I lose my progress if I cancel?", a: "No. Progress stays on your account permanently. Resubscribe later and you pick up at the last completed lesson.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/15-do-i-lose-my-progress-if-i-cancel-my-subscription" },
@@ -78,7 +79,7 @@ If you only remember one thing: try the [free tier](/docs/pricing/pro-vs-free) f
 
 ## Related Pages
 
-- [Scrimba Pricing](/docs/pricing/) | [Pro vs Free](/docs/pricing/pro-vs-free) | [Student Discount](/docs/pricing/student-discount) | [Refund Policy](/docs/pricing/refund-policy)
+- [Scrimba Pricing](/docs/pricing/) | [Pro vs Free](/docs/pricing/pro-vs-free/) | [Student Discount](/docs/pricing/student-discount/) | [Refund Policy](/docs/pricing/refund-policy/)
 
 Source: [Scrimba Help Centre](https://scrimba.helpscoutdocs.com)
 
