@@ -1,5 +1,6 @@
 /**
- * Swizzled BlogPostPage, adds contextual CTA + email capture after post body.
+ * Swizzled BlogPostPage: renders the desktop sticky CTA (money pages only) after
+ * the post body. The end-of-post conversion CTA is authored per post in MDX.
  */
 import React, { type ReactNode } from 'react';
 import clsx from 'clsx';

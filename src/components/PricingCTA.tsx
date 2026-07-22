@@ -41,7 +41,7 @@ export default function PricingCTA({
   riskReversal = false,
 }: PricingCTAProps): React.ReactElement {
   const isFree = ctaType === 'free';
-  const defaultButtonText = isFree ? 'Try Scrimba Free' : 'Claim 20% Off Scrimba Pro';
+  const defaultButtonText = isFree ? 'Try Scrimba free' : 'Claim 20% off Scrimba Pro';
   const href = isFree ? 'https://scrimba.com/?via=u42d4986' : 'https://scrimba.com/home?pricing&via=u42d4986';
   const showDiscountLine =
     !isFree &&

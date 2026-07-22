@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import Link from '@docusaurus/Link';
+import { useLocation } from '@docusaurus/router';
 import {
   BookOpen,
   Scale,
@@ -44,6 +45,15 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const { pathname } = useLocation();
+
+  // Highlight the trigger when the current page lives under one of its items, so
+  // pages inside the Learn/Tools dropdowns get the same "you are here" wayfinding
+  // that Paths/Courses/Blog already receive from Infima's navbar__link--active.
+  const isActive = items.some((item) => {
+    const to = item.to.replace(/\/$/, '');
+    return to !== '' && (pathname === to || pathname.startsWith(`${to}/`));
+  });
 
   const cancelCloseTimer = useCallback(() => {
     if (closeTimer.current) {
@@ -140,18 +150,17 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
       <button
         ref={buttonRef}
         type="button"
-        className="navbar__link mega-menu__toggle clean-btn"
+        className={`navbar__link mega-menu__toggle clean-btn${isActive ? ' navbar__link--active' : ''}`}
         aria-expanded={isOpen}
-        aria-haspopup="menu"
+        aria-haspopup="true"
         onClick={handleToggleClick}
         onKeyDown={handleKeyDown}
       >
         {label}
       </button>
       {isOpen && (
-        <div 
-          className="mega-menu__panel" 
-          role="menu"
+        <div
+          className="mega-menu__panel"
           aria-label={`${label} menu`}
           onMouseEnter={cancelCloseTimer}
           onMouseLeave={handleMouseLeave}
@@ -164,7 +173,6 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
                   key={item.to}
                   to={item.to}
                   className="mega-menu__link"
-                  role="menuitem"
                   onClick={handleLinkClick}
                 >
                   {Icon && (

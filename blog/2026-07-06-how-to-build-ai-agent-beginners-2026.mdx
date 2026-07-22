@@ -1,6 +1,6 @@
 ---
 slug: how-to-build-ai-agent-beginners-2026
-title: "How to build your first AI agent in 2026 (and what MCP and context engineering actually mean)"
+title: "How to build your first AI agent in 2026 (no Python)"
 description: "How to build an AI agent for beginners in 2026: a working JavaScript example in about 40 lines, plus what MCP and context engineering actually mean, no Python."
 authors: [scrimbaguide]
 tags: [ai, guide]
@@ -15,8 +15,8 @@ last_update:
 
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import HowToSchema from '@site/src/components/HowToSchema';
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import PricingCTA from '@site/src/components/PricingCTA';
 
 <DocFaqSchema
   questions={[
@@ -180,11 +180,7 @@ The fixes map directly onto the definitions above. Cap the steps, which the exam
 
 Once you have felt where the toy version strains, the forgetting, the runaway loops, the pain of wiring each new tool by hand, the next move is to learn the upgrades in the order a real project needs them: retrieval so the agent can pull from your own documents, MCP so tools are reusable instead of hard-wired, and a deploy so it runs somewhere other than your terminal.
 
-That is the gap a guided sequence closes. Scrimba's AI Engineer Path runs about 11.4 hours, taught entirely in JavaScript and TypeScript (no PyTorch), covering agents, RAG, MCP, the Vercel AI SDK, embeddings, and a Cloudflare Workers deploy, with the MCP and Context Engineering modules added recently. I broke down the full module list and who it suits in the [AI Engineer Path review](/blog/scrimba-ai-engineer-path-guide/), and there is a free intro scrim with Tom Chant so you can test the edit-the-code format before paying anything. If it clicks, Pro is a low monthly subscription (see current [Scrimba pricing](/docs/pricing/)), and our link applies 20% off:
-
-<AffiliateLink href="https://scrimba.com/home?via=u42d4986&utm_source=scrimbaguide&utm_medium=blog&utm_campaign=how-to-build-ai-agent-beginners-2026&utm_content=inline" location="inline-cta">
-  Start the AI Engineer Path with 20% off
-</AffiliateLink>
+That is the gap a guided sequence closes. Scrimba's AI Engineer Path runs about 11.4 hours, taught entirely in JavaScript and TypeScript (no PyTorch), covering agents, RAG, MCP, the Vercel AI SDK, embeddings, and a Cloudflare Workers deploy, with the MCP and Context Engineering modules added recently. I broke down the full module list and who it suits in the [AI Engineer Path review](/blog/scrimba-ai-engineer-path-guide/), and there is a free intro scrim with Tom Chant so you can test the edit-the-code format before paying anything. If it clicks, Pro is a low monthly subscription (see current [Scrimba pricing](/docs/pricing/)).
 
 I point you there for one reason: the path teaches MCP and context engineering as the named answers to the exact failures your forty-line agent just hit, in roughly the sequence a real build follows. For the deeper why-JavaScript argument, [how to learn AI engineering on Scrimba](/blog/learn-ai-engineering-scrimba/) covers the same ground from the curriculum side.
 
@@ -209,3 +205,9 @@ So here is the concrete next step, and you can finish it today. Build the weathe
 **What is the difference between an AI agent and a single prompt?** A single prompt sends one input and gets one answer back. An agent can take actions between the question and the answer. Anthropic defines agents as systems where the model directs its own steps and tool use, as opposed to workflows where the code path is fixed in advance. The loop that lets the model decide its next step is what makes it an agent.
 
 **How long does it take to learn to build AI agents?** A first working agent takes an afternoon. Getting reliable agents that handle retrieval, multiple tools, and deployment takes longer. Scrimba's AI Engineer Path covers that ground in 11.4 hours of interactive lessons, taught in JavaScript and TypeScript, which is a realistic estimate for the full on-ramp rather than the toy version.
+
+<PricingCTA
+  title="Go past the toy agent"
+  subtitle="Scrimba's AI Engineer path sequences agents, RAG, and MCP so your second agent holds up. Start free."
+  ctaType="free"
+/>

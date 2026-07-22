@@ -12,9 +12,9 @@ export default function FooterWrapper(props: any): React.ReactElement {
   const isFullPostPage = normalize(location.pathname) === normalize(metadata.permalink);
   const guides = getRelatedGuides(location.pathname);
 
-  // Blog posts already get one contextual CTA from BlogPostPage (BlogContextualCta).
-  // We intentionally do NOT add a second footer PricingCTA here, so each post shows
-  // a single conversion CTA rather than two stacked at the bottom.
+  // Each blog post authors its own conversion CTA (a <PricingCTA> in its MDX body).
+  // We intentionally do NOT inject another one here, so each post shows a single
+  // conversion CTA rather than two stacked at the bottom.
   return (
     <>
       <Footer {...props} />

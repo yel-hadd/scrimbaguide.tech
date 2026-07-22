@@ -12,6 +12,7 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
 
 # Scrimba vs Frontend Masters
@@ -21,8 +22,6 @@ import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
 **Is this for you?** You are deciding between **Scrimba's** in-player coding for beginners and intermediates and **Frontend Masters'** recorded expert workshops aimed at working developers.
 
 **The short version:** Frontend Masters is a premium workshop library where instructors like **Brian Holt** (Microsoft), **Will Sentance** (Codesmith), **Steve Kinney** (Temporal), **Sarah Drasner**, and **Maximiliano Firtman** spend six to eight hours going deep on one topic in front of a live class. Scrimba is a guided platform where you pause the instructor, edit their code, and run it inside the same window. The right answer usually depends on whether you already ship apps for a living.
-
-*Last reviewed: May 2026. Frontend Masters pricing taken from their public join page; Scrimba pricing changes by region, so confirm on [the official page](https://scrimba.com/our-pricing).*
 
 ## Decide in one minute
 
@@ -66,10 +65,10 @@ Three questions cover most of it.
     { feature: "Career paths", scrimba: "4 structured paths (Frontend, Fullstack, Backend, AI)", competitor: "Curated learning paths (workshop lists)" },
     { feature: "Instructor pool", scrimba: "Small specialist team (Bob Ziroll, Per Borgen, others)", competitor: "Brian Holt, Will Sentance, Steve Kinney, Sarah Drasner, Maximiliano Firtman" },
     { feature: "Topics", scrimba: "Web dev, AI engineering, Python, cybersecurity", competitor: "Advanced JS, TypeScript, React internals, performance, system design, DevOps" },
-    { feature: "Monthly price", scrimba: "See [our pricing](https://scrimba.com/our-pricing)", competitor: "$39/month" },
-    { feature: "Annual price", scrimba: "See [our pricing](https://scrimba.com/our-pricing)", competitor: "$390/year" },
+    { feature: "Monthly price", scrimba: "See our pricing page", competitor: "$39/month" },
+    { feature: "Annual price", scrimba: "See our pricing page", competitor: "$390/year" },
     { feature: "Free tier", scrimba: `~${freeCount} full courses`, competitor: "Preview lessons only" },
-    { feature: "AI courses", scrimba: "15 dedicated AI courses (agents, RAG, MCP)", competitor: "Some AI workshops, not the focus" },
+    { feature: "AI courses", scrimba: "12 dedicated AI courses (agents, RAG, MCP)", competitor: "Some AI workshops, not the focus" },
     { feature: "Community", scrimba: "Active Discord (Pro) with instructor presence", competitor: "Limited community features" },
     { feature: "Reputation signal", scrimba: "Trustpilot 4.3/5; freeCodeCamp mirrors the Bob Ziroll React course", competitor: "Industry name recognition through instructors (Holt, Sentance, Drasner, Kinney)" },
   ]}
@@ -94,20 +93,20 @@ That format is the whole pitch. You are paying $39 a month to watch a workshop y
 - **In-lesson coding.** This is the single biggest format difference. On Scrimba you pause Bob Ziroll mid-sentence, edit his file, run the result, then resume. Frontend Masters cannot do that because the source is a live workshop recording.
 - **Structured career paths.** Scrimba's Frontend, Fullstack, Backend, and AI Engineer paths give you a fixed order with checkpoints and certificates. Frontend Masters offers curated lists, but the work of sequencing still falls on you.
 - **Free tier that actually teaches.** About {freeCount} Scrimba courses are free in full, including Learn React. Frontend Masters preview clips do not get you to a working project.
-- **AI engineering coverage.** Scrimba has 15 dedicated AI courses covering agents, RAG, MCP, and prompt engineering. Frontend Masters has a handful of AI workshops but it is not the platform's center of gravity.
+- **AI engineering coverage.** Scrimba has 12 dedicated AI courses covering agents, RAG, MCP, and prompt engineering. Frontend Masters has a handful of AI workshops but it is not the platform's center of gravity.
 
 ## Pricing reality check
 
 Frontend Masters lists **$39 per month** or **$390 per year** for individual access on [their join page](https://frontendmasters.com/join/), with team plans at $24.50 per seat per month for groups of ten or more. The annual plan saves about 17%. GitHub Student Developer Pack members get six months free.
 
-Scrimba prices vary by region and run promotions year-round, so I link to [scrimba.com/our-pricing](https://scrimba.com/our-pricing) instead of quoting a number that will be wrong by the time you read this. The anchor most readers actually want: **Frontend Masters' $39/month list price is roughly 2x what Scrimba's annual plan works out to per month in most regions**, and FM's $390/year is meaningfully above Scrimba's annual at list. Scrimba's free tier is also materially larger: about {freeCount} full courses (including the 15-hour Learn React with Bob Ziroll) versus preview clips on Frontend Masters. The right way to read it: Frontend Masters is priced like a senior workshop library, Scrimba is priced like a structured beginner-to-intermediate platform, and the gap shows up in the per-month math.
+Scrimba prices vary by region and run promotions year-round, so I link to <AffiliateLink href="https://scrimba.com/our-pricing">scrimba.com/our-pricing</AffiliateLink> instead of quoting a number that will be wrong by the time you read this. The anchor most readers actually want: **Frontend Masters' $39/month list price is roughly 2x what Scrimba's annual plan works out to per month in most regions**, and FM's $390/year is meaningfully above Scrimba's annual at list. Scrimba's free tier is also materially larger: about {freeCount} full courses (including the 15-hour Learn React with Bob Ziroll) versus preview clips on Frontend Masters. The right way to read it: Frontend Masters is priced like a senior workshop library, Scrimba is priced like a structured beginner-to-intermediate platform, and the gap shows up in the per-month math.
 
 ## When to choose Scrimba
 
 - You are a **beginner** or early-intermediate developer who has not yet shipped a real app
 - You learn better when you **type along inside the lesson** instead of switching to a separate editor
 - You want a **fixed sequence** (paths) instead of picking workshops off a menu
-- You are aiming at **AI engineering** ([AI Engineer path](/docs/paths/ai-engineer-path)) or **cybersecurity** ([Learn Cybersecurity](/docs/courses/backend/))
+- You are aiming at **AI engineering** ([AI Engineer path](/docs/paths/ai-engineer-path/)) or **cybersecurity** ([Learn Cybersecurity](/docs/courses/javascript/cybersecurity/))
 - You want a **Discord community** of other learners
 
 ## When to choose Frontend Masters
@@ -124,10 +123,10 @@ These are not competitors so much as **stages**. Scrimba walks a beginner to "I 
 
 ## Related Pages
 
-- [Scrimba Pricing](/docs/pricing/) | [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy)
-- [Scrimba vs The Odin Project](/docs/comparisons/scrimba-vs-odin-project) | [Scrimba vs Coursera](/docs/comparisons/scrimba-vs-coursera)
-- [Scrimba vs YouTube](/docs/comparisons/scrimba-vs-youtube) interactive coding vs passive video
-- [How Scrims Work](/docs/how-it-works/how-scrims-work) the technology that sets Scrimba apart
+- [Scrimba Pricing](/docs/pricing/) | [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy/)
+- [Scrimba vs The Odin Project](/docs/comparisons/scrimba-vs-odin-project/) | [Scrimba vs Coursera](/docs/comparisons/scrimba-vs-coursera/)
+- [Scrimba vs YouTube](/docs/comparisons/scrimba-vs-youtube/) interactive coding vs passive video
+- [How Scrims Work](/docs/how-it-works/how-scrims-work/) the technology that sets Scrimba apart
 - [All Scrimba Courses](/docs/courses/) | [Learning Paths](/docs/paths/)
 
 ## Sources
@@ -136,7 +135,7 @@ These are not competitors so much as **stages**. Scrimba walks a beginner to "I 
 - [Frontend Masters Brian Holt teacher page](https://frontendmasters.com/teachers/brian-holt/)
 - [Frontend Masters live workshops](https://frontendmasters.com/workshops/)
 - [Frontend Masters course catalog](https://frontendmasters.com/courses/)
-- [Scrimba official pricing](https://scrimba.com/our-pricing)
+- <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba official pricing</AffiliateLink>
 
 <DocFaqSchema questions={[
   { q: "Is Scrimba better than Frontend Masters for beginners?", a: "Yes. Scrimba is built for beginners and early intermediates with in-lesson coding and structured paths. Frontend Masters targets developers who already ship apps and want senior-level workshop depth." },

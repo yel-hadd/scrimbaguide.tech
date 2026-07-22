@@ -1,14 +1,38 @@
 ---
-title: "All Scrimba Courses"
+title: "All Scrimba Courses: Full Catalog by Topic"
 description: "Browse all Scrimba courses organized by topic. React, JavaScript, AI, CSS, Backend, Python, TypeScript, and more. Free and Pro courses included."
 keywords: [scrimba courses, scrimba course list, scrimba catalog, all scrimba courses]
 slug: /courses
 hideGlobalPricingCta: true
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
+import Head from '@docusaurus/Head';
 import { totalCoursesLabel, freeCount, categoryCounts } from '@site/src/utils/scrimbaFacts';
 import PricingCTA from '@site/src/components/PricingCTA';
+
+<Head>
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "All Scrimba Courses",
+      "description": "Browse all Scrimba courses organized by topic: React, JavaScript, AI, CSS, Backend, Python, and TypeScript.",
+      "url": "https://scrimbaguide.tech/docs/courses/",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "React", "url": "https://scrimbaguide.tech/docs/courses/react/" },
+          { "@type": "ListItem", "position": 2, "name": "JavaScript", "url": "https://scrimbaguide.tech/docs/courses/javascript/" },
+          { "@type": "ListItem", "position": 3, "name": "AI & Machine Learning", "url": "https://scrimbaguide.tech/docs/courses/ai/" },
+          { "@type": "ListItem", "position": 4, "name": "CSS & Design", "url": "https://scrimbaguide.tech/docs/courses/css/" },
+          { "@type": "ListItem", "position": 5, "name": "Backend & Databases", "url": "https://scrimbaguide.tech/docs/courses/backend/" },
+          { "@type": "ListItem", "position": 6, "name": "Python", "url": "https://scrimbaguide.tech/docs/courses/python/" },
+          { "@type": "ListItem", "position": 7, "name": "TypeScript", "url": "https://scrimbaguide.tech/docs/courses/typescript/" }
+        ]
+      }
+    })}
+  </script>
+</Head>
 
 # All Scrimba Courses
 
@@ -16,8 +40,6 @@ import PricingCTA from '@site/src/components/PricingCTA';
 
 ## Who this is for
 The catalog is huge; you do not know whether to buy Pro, cherry-pick one course, or commit to a path. Scan by topic below, or open [Learning paths](/docs/paths/) when you want a single ordered track to a job-ready portfolio.
-
-Scrimba offers **{totalCoursesLabel} interactive courses** (pause the video, edit code in the browser). About {freeCount} are free; everything else sits behind [Scrimba Pro](/docs/pricing/).
 
 ## Browse by Topic
 
@@ -27,7 +49,7 @@ Scrimba offers **{totalCoursesLabel} interactive courses** (pause the video, edi
 | [JavaScript](/docs/courses/javascript/) | {(categoryCounts.javascript ?? 0)}+ courses | Beginner to advanced, interview prep, ES6+ |
 | [AI & Machine Learning](/docs/courses/ai/) | {(categoryCounts.ai ?? 0)}+ courses | Agents, RAG, LangChain, OpenAI, Claude, MCP |
 | [CSS & Design](/docs/courses/css/) | {(categoryCounts.css ?? 0)}+ courses | Tailwind, Grid, Flexbox, animations, UI design |
-| [Backend & Databases](/docs/courses/backend/) | {(categoryCounts.backend ?? 0) > 1 ? `${categoryCounts.backend}+` : (categoryCounts.backend ?? 0)} courses | Node.js, Express, SQL, Cybersecurity, Supabase, Firebase, NestJS |
+| [Backend & Databases](/docs/courses/backend/) | {(categoryCounts.backend ?? 0) > 1 ? `${categoryCounts.backend}+` : (categoryCounts.backend ?? 0)} courses | SQL, Supabase, Firebase, Regex |
 | [Python](/docs/courses/python/) | {(categoryCounts.python ?? 0) === 1 ? '1 course' : `${categoryCounts.python ?? 0}+ courses`} | Learn Python (5.6 hrs, beginner) |
 | [TypeScript](/docs/courses/typescript/) | {(categoryCounts.typescript ?? 0) === 1 ? '1 course' : `${categoryCounts.typescript ?? 0}+ courses`} | Learn TypeScript (4.2 hrs, intermediate) |
 
@@ -35,33 +57,33 @@ Scrimba offers **{totalCoursesLabel} interactive courses** (pause the video, edi
 
 For structured learning from beginner to job-ready, check out the [Learning Paths](/docs/paths/):
 
-- [Frontend Developer Path](/docs/paths/frontend-developer-path), 81.6 hrs
-- [Fullstack Developer Path](/docs/paths/fullstack-developer-path), 108.4 hrs
-- [Backend Developer Path](/docs/paths/backend-developer-path), 39.4 hrs
-- [AI Engineer Path](/docs/paths/ai-engineer-path), 11.4 hrs
+- [Frontend Developer Path](/docs/paths/frontend-developer-path/), 81.6 hrs
+- [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), 108.4 hrs
+- [Backend Developer Path](/docs/paths/backend-developer-path/), 39.4 hrs
+- [AI Engineer Path](/docs/paths/ai-engineer-path/), 11.4 hrs
 
 ## Free Courses
 
 These courses are available without a Pro subscription:
 
-- [Learn React](/docs/courses/react/learn-react) (15.1 hrs)
-- [Learn JavaScript](/docs/courses/javascript/learn-javascript) (9.4 hrs)
-- [Learn HTML and CSS](/docs/courses/css/html-and-css) (5.7 hrs)
-- [Learn TypeScript](/docs/courses/typescript/learn-typescript) (4.2 hrs)
-- [Learn Python](/docs/courses/python/learn-python) (5.6 hrs)
-- [What's New in React 19?](/docs/courses/react/whats-new-in-react-19)
-- [Build Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase)
-- And more. See [Best Free Scrimba Courses](/blog/best-free-scrimba-courses)
+- [Learn React](/docs/courses/react/learn-react/) (15.1 hrs)
+- [Learn JavaScript](/docs/courses/javascript/learn-javascript/) (9.4 hrs)
+- [Learn HTML and CSS](/docs/courses/css/html-and-css/) (5.7 hrs)
+- [Learn TypeScript](/docs/courses/typescript/learn-typescript/) (4.2 hrs)
+- [Learn Python](/docs/courses/python/learn-python/) (5.6 hrs)
+- [What's New in React 19?](/docs/courses/react/whats-new-in-react-19/)
+- [Build Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase/)
+- And more. See [Best Free Scrimba Courses](/blog/best-free-scrimba-courses/)
 
 ## Practice Guides
 
 Stop reading documentation and start coding. Check out our interactive practice guides:
 
-- **[Practice CSS Grid](/docs/practice/practice-css-grid)**
-- **[Practice Flexbox](/docs/practice/practice-flexbox)**
-- **[Practice React Hooks](/docs/practice/practice-react-hooks)**
-- **[Practice JavaScript Arrays](/docs/practice/practice-javascript-arrays)**
-- **[Practice API Calls](/docs/practice/practice-api-calls)**
+- **[Practice CSS Grid](/docs/practice/practice-css-grid/)**
+- **[Practice Flexbox](/docs/practice/practice-flexbox/)**
+- **[Practice React Hooks](/docs/practice/practice-react-hooks/)**
+- **[Practice JavaScript Arrays](/docs/practice/practice-javascript-arrays/)**
+- **[Practice API Calls](/docs/practice/practice-api-calls/)**
 
 ## Pick a course or a path?
 
@@ -69,9 +91,9 @@ Stop reading documentation and start coding. Check out our interactive practice 
 
 ## Related Pages
 
-- [Scrimba Pricing](/docs/pricing/) | [Pro vs Free](/docs/pricing/pro-vs-free)
-- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy)
-- [Scrimba Review 2026](/blog/scrimba-review)
+- [Scrimba Pricing](/docs/pricing/) | [Pro vs Free](/docs/pricing/pro-vs-free/)
+- [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy/)
+- [Scrimba Review 2026](/blog/scrimba-review/)
 
 <PricingCTA
   title="Open the catalog on Scrimba"

@@ -88,8 +88,8 @@ export default function BootcampCalculator(): React.ReactElement {
                   You Save: ${savings.toLocaleString()}
                 </p>
               </div>
-              <AffiliateLink href="https://scrimba.com/pricing?via=u42d4986" variant="button">
-                Claim 20% Off Pro
+              <AffiliateLink href="https://scrimba.com/our-pricing" variant="button">
+                Claim 20% off Pro
               </AffiliateLink>
             </div>
           </div>

@@ -23,8 +23,6 @@ import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
 
 **The tradeoff in one sentence.** Treehouse sells you an established library plus a Techdegree credential with human code review at $199 per month. Scrimba sells you in-lesson coding reps and a current curriculum (React 19, Next.js, AI engineering) on a much larger free tier. The Techdegree price [(Treehouse Techdegree)](https://teamtreehouse.com/techdegree) is the main reason these platforms are not in the same price tier.
 
-*Last reviewed: May 2026. Confirm pricing on each site.*
-
 ## Decide in one minute
 
 You are on this page because Treehouse keeps showing up in old "best place to learn to code" lists and you want to know if it still belongs there in 2026. Short answer: for web dev and AI, Scrimba is the more current platform. For Techdegree-style coached projects, Treehouse still has a niche.
@@ -46,8 +44,9 @@ You are on this page because Treehouse keeps showing up in old "best place to le
     "Treehouse: Techdegree at $199/mo is steep for self-taught learners",
     "Treehouse: Minimal AI engineering coverage in 2026",
   ]}
-  ctaText="Try Scrimba Free"
+  ctaText="Try Scrimba free"
   ctaHref="https://scrimba.com/s0v687325e"
+  location="verdict-box:scrimba-vs-treehouse"
 />
 
 ## The three decisions that actually matter
@@ -56,13 +55,13 @@ You are on this page because Treehouse keeps showing up in old "best place to le
 
 Treehouse launched in 2011 and that history shows on both ends. The polish on the older videos is genuinely high; reviewers consistently rate the production quality strongly [(BitDegree Treehouse Review)](https://www.bitdegree.org/online-learning-platforms/treehouse-review). What the marketing pages do not surface is that the platform updates its curriculum more slowly than the rest of the field. Reviews flag inconsistent content currency, courses that still reference older framework versions, and gaps in newer tooling [(BitDegree comparison)](https://www.bitdegree.org/tutorials/codecademy-vs-treehouse). The Techdegree programs (Front End, Full Stack JavaScript, Python, Data Analysis, UX) are the most actively maintained tier; the rest of the library skews older.
 
-Scrimba's catalog is smaller (around {totalCoursesLabel} courses) but it is current in the corners that matter for 2026 web dev. React 19, Next.js, TypeScript, modern CSS, and a 15-course AI engineering track that actually covers agents, RAG, MCP, and the Vercel AI SDK. If your goal is "learn what people are hired to write in 2026," current matters more than catalog depth. The honest framing is that Treehouse is a stable, slower-moving platform aimed at a learner who values structure and production quality over leading-edge stack coverage.
+Scrimba's catalog is smaller (around {totalCoursesLabel} courses) but it is current in the corners that matter for 2026 web dev. React 19, Next.js, TypeScript, modern CSS, and a 12-course AI engineering track that actually covers agents, RAG, MCP, and the Vercel AI SDK. If your goal is "learn what people are hired to write in 2026," current matters more than catalog depth. The honest framing is that Treehouse is a stable, slower-moving platform aimed at a learner who values structure and production quality over leading-edge stack coverage.
 
 ### 2. Video-first vs interactive video
 
 Treehouse's format is traditional in shape: a polished instructor video, then a quiz, then a code challenge in a separate workspace. It is interactive in the loose sense that you eventually type code, but the typing is between videos, not during them.
 
-Scrimba's scrims put the editor inside the video. The instructor types, you pause, you edit the same code, you resume and watch what they do next. Context switching drops to near zero. This is not a small UI difference; it is a different learning loop. Research on retention via active recall, including the Princeton GEO Study (2023), points consistently in the same direction: typing while watching beats watching then typing.
+Scrimba's scrims put the editor inside the video. The instructor types, you pause, you edit the same code, you resume and watch what they do next. Context switching drops to near zero. This is not a small UI difference; it is a different learning loop. Research on retention, from the testing effect (Roediger and Karpicke, 2006) to the active-learning literature, points consistently in the same direction: typing while you watch beats watching and then typing.
 
 If you genuinely prefer a watch-then-practice rhythm because that matches how you study, Treehouse's format is fine. If you have ever finished a video course and realized you cannot reproduce anything without the tutorial open, the scrim format is the fix.
 
@@ -99,7 +98,7 @@ If you specifically want a human grading your capstone project before you put it
     { feature: "Interactivity", scrimba: "Edit instructor's code mid-lesson", competitor: "Separate practice workspaces between videos" },
     { feature: "Career paths", scrimba: "4 paths (up to 108 hrs)", competitor: "Tracks plus Techdegree programs" },
     { feature: "Topics covered", scrimba: "Web dev, fullstack JS, Python (AI), AI engineering", competitor: "Web dev, Python, Java, C#, design" },
-    { feature: "AI engineering", scrimba: "15 courses (agents, RAG, MCP, Vercel AI SDK)", competitor: "Minimal" },
+    { feature: "AI engineering", scrimba: "12 courses (agents, RAG, MCP, Vercel AI SDK)", competitor: "Minimal" },
     { feature: "Free tier", scrimba: `~${freeCount} full courses, no card`, competitor: "7-day free trial only" },
     { feature: "Entry-level monthly price", scrimba: "Check current pricing", competitor: "~$25/mo (Courses) after 7-day trial" },
     { feature: "Top tier monthly price", scrimba: "Pro (annual is best value)", competitor: "~$199/mo (Techdegree)" },
@@ -130,11 +129,11 @@ Treehouse is not a bad platform; it has just been overtaken on the specific axis
 
 ## Related Pages
 
-- [Scrimba Pricing](/docs/pricing/) | [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy)
-- [Scrimba vs The Odin Project](/docs/comparisons/scrimba-vs-odin-project) | [Scrimba vs Coursera](/docs/comparisons/scrimba-vs-coursera)
-- [Scrimba vs Boot.dev](/docs/comparisons/scrimba-vs-boot-dev), backend-focused alternative
-- [Scrimba vs YouTube](/docs/comparisons/scrimba-vs-youtube), interactive coding vs passive video
-- [How Scrims Work](/docs/how-it-works/how-scrims-work)
+- [Scrimba Pricing](/docs/pricing/) | [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy/)
+- [Scrimba vs The Odin Project](/docs/comparisons/scrimba-vs-odin-project/) | [Scrimba vs Coursera](/docs/comparisons/scrimba-vs-coursera/)
+- [Scrimba vs Boot.dev](/docs/comparisons/scrimba-vs-boot-dev/), backend-focused alternative
+- [Scrimba vs YouTube](/docs/comparisons/scrimba-vs-youtube/), interactive coding vs passive video
+- [How Scrims Work](/docs/how-it-works/how-scrims-work/)
 
 <DocFaqSchema questions={[
   { q: "Is Treehouse better than Scrimba in 2026?", a: "For modern web development and AI engineering, no. Scrimba's in-lesson scrim format and current curriculum are stronger. Treehouse remains a real option for the Techdegree program or for Java and C# coverage that Scrimba does not offer." },
@@ -155,4 +154,5 @@ Treehouse is not a bad platform; it has just been overtaken on the specific axis
   title="Try Scrimba's free courses first"
   subtitle={`Around ${freeCount} full courses, no card. Compare the in-player editor to Treehouse's watch-then-practice flow.`}
   ctaType="free"
+  location="page-bottom:scrimba-vs-treehouse"
 />

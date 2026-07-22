@@ -71,7 +71,7 @@ scrimba.com  →  output/        →  data/*.json     →  (runtime React compon
 Some on-page content lives in typed TS modules under `src/content/`, not MDX, because it's reused across many pages by React components:
 
 - `relatedGuidesMap.ts` — per-slug "related guides" lists, read by `RelatedGuides.tsx` (mounted in `DocItem/Layout` and the blog footer swizzle).
-- `blogContextualCtas.ts` — per-slug inline CTA shown after blog posts via `BlogContextualCta.tsx` (`BlogPostItem/Footer`), with a `DEFAULT_BLOG_CTA` fallback.
+- Blog posts author their own after-post conversion CTA as an inline `<PricingCTA>` in the MDX body. (The old per-slug `blogContextualCtas.ts` / `BlogContextualCta.tsx` auto-injection system was removed — it was never actually mounted.)
 - `whichScrimbaPath.ts` — pure scoring + copy for the interactive `PathAdvisor.tsx` path recommender.
 
 Edit these files to change that content; they're keyed by route slug.
@@ -159,7 +159,7 @@ Grouped by intent so you can extend a cluster without cannibalizing an existing 
 
 - **Hub-and-spoke** is the model: section index pages (`*/index.mdx`) are pillars; leaves link up to their hub and across to the relevant path/comparison/pricing page. Avoid orphan pages.
 - **`src/content/relatedGuidesMap.ts`** drives the per-slug "Related guides" block (keyed by route). When you add or move a page, update its entry here, not by hand-linking in MDX.
-- **`src/content/blogContextualCtas.ts`** sets the after-post CTA per blog slug (falls back to `DEFAULT_BLOG_CTA`).
+- The after-post CTA on each blog post is an inline `<PricingCTA>` authored in that post's MDX (the per-slug `blogContextualCtas.ts` system was removed).
 - Tools (`src/pages/tools/`): `which-scrimba-path` (Path Advisor, logic in `src/content/whichScrimbaPath.ts`), `bootcamp-cost-calculator`, plus `roadmaps/frontend-roadmap-2026`.
 
 ### Content conventions for edits

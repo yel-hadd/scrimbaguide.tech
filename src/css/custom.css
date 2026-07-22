@@ -110,7 +110,9 @@ body {
 
 .theme-doc-markdown li,
 .blog-wrapper article .markdown li {
+  font-size: 1rem;
   line-height: 1.65;
+  color: var(--sg-text-muted);
 }
 
 .theme-doc-markdown h1,
@@ -1196,18 +1198,6 @@ article[class*='searchResultItem'] mark {
   font-size: 0.85rem;
   color: var(--sg-text-muted);
   text-align: center;
-}
-
-/* ── Blog contextual CTA ───────────────────────────────────────── */
-.blog-contextual-cta {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 10px;
-  background: var(--ifm-background-surface-color);
-  padding: 1rem;
-}
-
-.blog-contextual-cta h2 {
-  margin-top: 0;
 }
 
 /* ── FAQ accordion ─────────────────────────────────────────────── */
@@ -2519,30 +2509,6 @@ article a:not(.cta-link):not(.hash-link):hover {
   font-size: 1.5rem;
 }
 
-.related-guides__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.5rem;
-}
-
-.related-guides__card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.25rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
-  background: var(--ifm-background-surface-color);
-  text-decoration: none !important; /* Override default link underline */
-  transition: all 0.2s ease;
-}
-
-.related-guides__card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--sg-card-shadow);
-  border-color: var(--ifm-color-primary);
-}
-
 .related-guides__content {
   flex: 1;
   padding-right: 1rem;
@@ -2566,12 +2532,6 @@ article a:not(.cta-link):not(.hash-link):hover {
 [data-theme='dark'] .related-guides__badge--doc { background: #1a237e; color: #e8eaf6; }
 [data-theme='dark'] .related-guides__badge--blog { background: #1b5e20; color: #e8f5e9; }
 [data-theme='dark'] .related-guides__badge--comparison { background: #5a1f10; color: #ffd9ca; }
-
-.related-guides__card-title {
-  margin: 0 0 0.25rem;
-  font-size: 1.1rem;
-  color: var(--ifm-font-color-base);
-}
 
 .related-guides__description {
   margin: 0;
@@ -3414,17 +3374,20 @@ article table:focus,
 .path-advisor__cta-guide.button {
   margin: 0;
   color: #ffffff;
-  border-color: var(--ifm-color-primary-dark);
-  background: var(--ifm-color-primary-dark);
-  box-shadow: 0 8px 18px rgba(47, 70, 220, 0.32);
+  /* --sg-btn-bg stays dark enough for white text in BOTH themes (~4.99:1),
+     unlike --ifm-color-primary-dark which lightens to #9b82ff in dark (~3:1). */
+  border-color: var(--sg-btn-bg);
+  background: var(--sg-btn-bg);
+  box-shadow: 0 8px 18px rgba(91, 63, 217, 0.32);
 }
 
 .path-advisor__cta-guide.button:hover {
   color: #ffffff;
-  background: var(--ifm-color-primary-darker);
-  border-color: var(--ifm-color-primary-darker);
+  background: var(--sg-btn-bg);
+  border-color: var(--sg-btn-bg);
+  filter: brightness(0.94);
   transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(47, 70, 220, 0.38);
+  box-shadow: 0 12px 24px rgba(91, 63, 217, 0.38);
 }
 
 .path-advisor__cta-guide.button:focus-visible,
@@ -3435,10 +3398,11 @@ article table:focus,
 }
 
 .path-advisor__cta-guide.button:active {
-  background: var(--ifm-color-primary-darkest);
-  border-color: var(--ifm-color-primary-darkest);
+  background: var(--sg-btn-bg);
+  border-color: var(--sg-btn-bg);
+  filter: brightness(0.88);
   transform: translateY(0);
-  box-shadow: 0 6px 14px rgba(47, 70, 220, 0.3);
+  box-shadow: 0 6px 14px rgba(91, 63, 217, 0.3);
 }
 
 .path-advisor__cta-row .button--secondary,
