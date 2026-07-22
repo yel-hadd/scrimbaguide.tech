@@ -326,6 +326,17 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
     { title: 'Best Free Scrimba Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
   ],
+  '/blog/typescript-for-beginners-scrimba': [
+    { title: 'Should JS Devs Learn TypeScript?', href: '/blog/should-javascript-developers-learn-typescript-2026', type: 'blog' },
+    { title: 'How to Learn TypeScript on Scrimba', href: '/blog/how-to-learn-typescript-scrimba', type: 'blog' },
+    { title: 'Learn TypeScript Free Course', href: '/docs/courses/typescript/learn-typescript', type: 'doc' },
+    { title: 'TypeScript Courses', href: '/docs/courses/typescript/', type: 'doc' },
+  ],
+  '/blog/developer-job-without-degree-2026': [
+    { title: 'Junior Developer Job Market 2026', href: '/blog/junior-developer-job-market-2026', type: 'blog' },
+    { title: 'How to Get Your First Dev Job', href: '/blog/how-to-get-first-developer-job-2026', type: 'blog' },
+    { title: 'Developer Salary Guide 2026', href: '/blog/developer-salary-guide-2026', type: 'blog' },
+  ],
 };
 
 const sectionFallbacks: Record<string, RelatedGuide[]> = {
