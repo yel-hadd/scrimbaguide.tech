@@ -9,7 +9,6 @@ last_update:
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import { freeCount, totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
@@ -127,14 +126,7 @@ Scrimba and Fireship serve different brains on different days. If you're learnin
 - [Fireship customer reviews (Trustpilot)](https://www.trustpilot.com/review/fireship.io)
 - [Fireship channel profile (Wikitubia)](https://youtube.fandom.com/wiki/Fireship)
 
-<DocFaqSchema questions={[
-  { q: "Is Scrimba better than Fireship for learning to code?", a: "For beginners, yes. Scrimba offers structured paths and interactive practice that a non-coder can follow. Fireship assumes you already code and moves much faster." },
-  { q: "Can I use both Scrimba and Fireship?", a: "Yes, and most developers should. Watch Fireship's YouTube for quick mental models and trend awareness. Use Scrimba for structured skill-building. They run on different timescales and don't compete." },
-  { q: "Is Fireship Pro lifetime worth it?", a: "If you like Jeff Delaney's pacing and you want to avoid recurring subscriptions, the lifetime plan is a solid value for the Pro catalog. It's a poor substitute for a structured beginner platform like Scrimba." },
-  { q: "Who is Jeff Delaney?", a: "Jeff Delaney is the creator behind Fireship. He runs the YouTube channel and produces the Pro courses on fireship.dev. The platform is a one-creator brand built around his voice and editorial taste." },
-]} />
-
-<FAQAccordion emitSchema={false} items={[
+<FAQAccordion items={[
   { q: "Is Scrimba better than Fireship for learning to code?", a: "For beginners, yes. Scrimba offers structured paths and interactive practice. Fireship assumes you already code and moves much faster." },
   { q: "Can I use both Scrimba and Fireship?", a: "Yes. Watch Fireship's YouTube for quick mental models and trend awareness. Use Scrimba for structured skill-building. They complement each other." },
   { q: "Is Fireship Pro lifetime worth it?", a: "Good value if you like Jeff Delaney's pacing and want to avoid recurring subscriptions. Not a substitute for a structured beginner platform like Scrimba." },

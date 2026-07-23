@@ -9,7 +9,6 @@ last_update:
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -159,19 +158,12 @@ If your YouTube tab count is climbing and your GitHub commit count is not, that 
 - Scrimba, <AffiliateLink href="https://scrimba.com/learn-react-c0e">Learn React with Bob Ziroll</AffiliateLink>
 - Scrimba, <AffiliateLink href="https://scrimba.com/our-pricing">official pricing page</AffiliateLink>
 
-<DocFaqSchema questions={[
-  { q: "Why pay for Scrimba when YouTube is free?", a: "YouTube wins on price and breadth, but its passive default leads most beginners into tutorial hell: watching without building. Scrimba's format puts the editor inside the lesson, so the default action is to type instead of keep watching. For beginners, format usually matters more than free." },
-  { q: "Is YouTube enough to learn to code?", a: "It can be, for disciplined learners who set up their own projects and force themselves to build alongside videos. Most beginners do not, and end up with strong recognition memory and weak recall. A structured platform with built-in coding works better for most." },
-  { q: "Net Ninja vs Scrimba for React, which is better?", a: "Same modern React content is taught well in both. Net Ninja's YouTube playlist is free and excellent for self-directed learners. Scrimba's Bob Ziroll course is interactive: 170+ challenges and 6 projects you build inside the lesson. If you have already tried YouTube React tutorials and they did not stick, the format change usually solves it." },
-  { q: "Can I just watch Bob Ziroll's React course on freeCodeCamp YouTube instead of paying Scrimba?", a: "Yes, the same content is there as a 16-hour video. You lose the interactive editor, the 170+ challenges, the project workflow, and the Discord. If you can stay disciplined through 16 hours of YouTube and code along in your own editor, you do not need to pay. Most learners benefit from the format change." },
-  { q: "Which YouTubers should I follow if I use Scrimba as my main course?", a: "For supplements, not replacements: Fireship for weekly awareness, Kevin Powell for CSS deep dives, Web Dev Simplified (Kyle Cobb) for single-topic videos, Traversy Media (Brad Traversy) for project tutorials, Net Ninja (Shaun Pelling) for long-form playlists, JavaScript Mastery for portfolio builds." },
-]} />
-
-<FAQAccordion emitSchema={false} items={[
+<FAQAccordion items={[
   { q: "Why pay for Scrimba when YouTube is free?", a: "YouTube wins on price and breadth, but its passive default leads most beginners into tutorial hell. Scrimba puts the editor inside the lesson so the default action becomes typing instead of watching. For beginners, that format change usually matters more than the price difference." },
   { q: "Is YouTube enough to learn to code?", a: "For disciplined learners who set up their own projects and force themselves to build alongside videos, yes. Most beginners get stuck with strong recognition memory and weak recall, which is the textbook tutorial hell pattern." },
   { q: "Net Ninja vs Scrimba for React?", a: "Same modern React, two formats. Net Ninja's YouTube playlist is free and self-directed. Bob Ziroll's Scrimba course is interactive with 170+ challenges and 6 projects built inside the lesson." },
   { q: "Which YouTubers pair well with Scrimba?", a: "Fireship for weekly awareness, Kevin Powell for CSS, Web Dev Simplified for single-topic deep dives, Traversy Media for project tutorials, Net Ninja for long playlists, JavaScript Mastery for portfolio builds." },
+  { q: "Can I just watch Bob Ziroll's React course on freeCodeCamp YouTube instead of paying Scrimba?", a: "Yes, the same content is there as a 16-hour video. You lose the interactive editor, the 170+ challenges, the project workflow, and the Discord. If you can stay disciplined through 16 hours of YouTube and code along in your own editor, you do not need to pay. Most learners benefit from the format change." },
 ]} />
 
 <PricingCTA

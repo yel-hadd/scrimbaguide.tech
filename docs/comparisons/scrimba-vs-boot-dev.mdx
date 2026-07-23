@@ -9,7 +9,6 @@ last_update:
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -157,19 +156,12 @@ These platforms are not direct competitors. They sell different careers. Pick th
 - [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy/), broader language coverage
 - [Scrimba Pricing](/docs/pricing/) | [How Scrims Work](/docs/how-it-works/how-scrims-work/)
 
-<DocFaqSchema questions={[
-  { q: "Is Scrimba better than Boot.dev?", a: "It depends on the target role. Scrimba is better for frontend, fullstack, and AI engineering. Boot.dev is better for backend roles using Python or Go with CS fundamentals. Neither is universally better." },
-  { q: "Does Scrimba have a free tier unlike Boot.dev?", a: `Yes. Scrimba offers around ${freeCount} full free courses with no card required. Boot.dev's free access is very limited; most content requires a paid subscription.` },
-  { q: "How much does Boot.dev cost in 2026?", a: "Around $49 per month or $349 per year. The annual plan is the realistic option if you intend to finish the full backend path, which takes most learners about 12 months." },
-  { q: "Can I use Scrimba for backend development?", a: "Yes. Scrimba's Backend Developer Path covers Node.js, Express, SQL, and TypeScript across about 39 hours. For deeper Python or Go backends with algorithms, Boot.dev goes much further." },
-  { q: "Does Boot.dev cover frontend or AI?", a: "Frontend coverage is minimal and AI engineering is not a primary focus. If those are your goals, Boot.dev is not the right primary subscription in 2026." },
-]} />
-
-<FAQAccordion emitSchema={false} items={[
+<FAQAccordion items={[
   { q: "Is Scrimba better than Boot.dev?", a: "It depends on your target role. Scrimba is better for frontend, fullstack, and AI engineering. Boot.dev is better for backend with CS fundamentals." },
   { q: "Does Scrimba have a free tier unlike Boot.dev?", a: `Yes. Scrimba offers around ${freeCount} full free courses, no card needed. Boot.dev's free tier is minimal.` },
   { q: "How much does Boot.dev cost in 2026?", a: "Around $49 per month or $349 per year." },
   { q: "Can I use Scrimba for backend development?", a: "Yes, the Backend Path covers Node.js, Express, SQL, and TypeScript. For Python or Go backends with algorithms, Boot.dev goes deeper." },
+  { q: "Does Boot.dev cover frontend or AI?", a: "Frontend coverage is minimal and AI engineering is not a primary focus. If those are your goals, Boot.dev is not the right primary subscription in 2026." },
 ]} />
 
 <PricingCTA

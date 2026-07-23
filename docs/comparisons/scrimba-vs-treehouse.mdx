@@ -9,7 +9,6 @@ last_update:
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -135,19 +134,12 @@ Treehouse is not a bad platform; it has just been overtaken on the specific axis
 - [Scrimba vs YouTube](/docs/comparisons/scrimba-vs-youtube/), interactive coding vs passive video
 - [How Scrims Work](/docs/how-it-works/how-scrims-work/)
 
-<DocFaqSchema questions={[
-  { q: "Is Treehouse better than Scrimba in 2026?", a: "For modern web development and AI engineering, no. Scrimba's in-lesson scrim format and current curriculum are stronger. Treehouse remains a real option for the Techdegree program or for Java and C# coverage that Scrimba does not offer." },
-  { q: "Does Treehouse have a free tier?", a: `No. Treehouse offers only a 7-day free trial. Scrimba offers around ${freeCount} full courses for free with no card required.` },
-  { q: "How much does Treehouse cost in 2026?", a: "The Courses subscription starts around $25/month after a 7-day trial, and the Techdegree program is around $199/month. Treehouse has simplified its plan structure over time, so check the live pricing page for any middle tier currently on offer." },
-  { q: "What is the Treehouse Techdegree and is it worth it?", a: "The Techdegree is a coached, project-based program with human-reviewed capstones. At $199/month it is significantly more expensive than self-paced subscriptions like Scrimba Pro. It is worth it if you specifically need coached project review; otherwise a self-paced path plus a Discord community is more cost-effective." },
-  { q: "Are Scrimba or Treehouse certificates accredited?", a: "Neither platform offers accredited university credentials. Both offer certificates of completion you can list on LinkedIn." },
-]} />
-
-<FAQAccordion emitSchema={false} items={[
+<FAQAccordion items={[
   { q: "Is Treehouse better than Scrimba in 2026?", a: "For modern web development and AI engineering, no. Scrimba's scrim format and current curriculum are stronger. Treehouse is still a real option for the Techdegree or for Java and C# coverage." },
   { q: "Does Treehouse have a free tier?", a: `No, only a 7-day trial. Scrimba offers around ${freeCount} full courses for free.` },
   { q: "How much does Treehouse cost in 2026?", a: "Courses subscription around $25/mo after a 7-day trial, Techdegree around $199/mo. Verify any middle tier on the live pricing page." },
   { q: "What is the Techdegree?", a: "A coached, project-based program with human-reviewed capstones. Worth it if you specifically need that review; otherwise a self-paced subscription is more cost-effective." },
+  { q: "Are Scrimba or Treehouse certificates accredited?", a: "Neither platform offers accredited university credentials. Both offer certificates of completion you can list on LinkedIn." },
 ]} />
 
 <PricingCTA

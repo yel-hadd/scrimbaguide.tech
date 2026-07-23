@@ -9,7 +9,6 @@ last_update:
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import { freeCount, totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
@@ -130,14 +129,7 @@ Both platforms can produce a working developer. The honest question is which stu
 - [ZTM Academy review (CyberSchoolers, 2026)](https://www.cyberschoolers.com/platform-reviews/zero-to-mastery-review/)
 - [ZTM lifetime plan review (Javarevisited, 2026)](https://medium.com/javarevisited/review-is-zero-to-mastery-academy-lifetime-plan-worth-it-in-2025-366b55a47d8c)
 
-<DocFaqSchema questions={[
-  { q: "Is Scrimba better than Zero to Mastery?", a: "For learners who want an editor inside the lesson and don't mind a narrower catalog, yes. ZTM is better for those who want bootcamp-style depth across more languages and a single lead instructor's voice (Andrei Neagoie)." },
-  { q: "Which is cheaper, Scrimba or ZTM?", a: `Both vary. ZTM's annual is ~$299-$399 with a ~$1,299 lifetime plan. Scrimba's personal annual is typically lighter and includes ~${freeCount} full free courses with no card. Check the current pricing page on each site.` },
-  { q: "Is the ZTM lifetime plan worth it?", a: "If you'll use ZTM for more than three years, yes. The math beats annual subscriptions and includes all future updates. Skip it if you're not sure ZTM's traditional video format fits you." },
-  { q: "Can I use both Scrimba and ZTM?", a: "Yes. Some learners take ZTM's Python or ML bootcamp and Scrimba's interactive React or AI engineering paths. The two platforms complement each other across stacks." },
-]} />
-
-<FAQAccordion emitSchema={false} items={[
+<FAQAccordion items={[
   { q: "Is Scrimba better than Zero to Mastery?", a: "For learners who want an editor inside the lesson and don't mind a narrower catalog, yes. ZTM is better for bootcamp-style depth across more languages and one lead instructor's voice." },
   { q: "Which is cheaper, Scrimba or ZTM?", a: `Both vary. ZTM's annual runs ~$299-$399 with a ~$1,299 lifetime. Scrimba's personal annual is typically lighter and includes ~${freeCount} full free courses with no card.` },
   { q: "Is the ZTM lifetime plan worth it?", a: "If you'll use it for more than three years, the math beats annual subscriptions. Skip if you're not sure traditional video works for you." },
