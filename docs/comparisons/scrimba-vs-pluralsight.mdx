@@ -9,7 +9,6 @@ last_update:
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import { freeCount, totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
@@ -123,14 +122,7 @@ Pick by who's paying and what you're optimizing for. Individual learner targetin
 - [Pluralsight Skills review (SaaSWorthy, 2026)](https://www.saasworthy.com/product/pluralsight-skills)
 - [Pluralsight pricing breakdown (FindBetter, 2026)](https://findbetter.net/education/pluralsight-pricing/)
 
-<DocFaqSchema questions={[
-  { q: "Is Scrimba better than Pluralsight for web development?", a: "For an individual learning from scratch, yes. Scrimba's scrim format embeds the editor in the lesson and its paths are tuned for hireable web and AI skills. Pluralsight is built for enterprise IT training and certification prep across a much broader stack." },
-  { q: "Does Pluralsight have interactive coding like Scrimba?", a: "Premium plans include hands-on labs and multi-cloud sandboxes, but they're separate from the video lessons. Scrimba embeds the code editor inside the video itself." },
-  { q: "What is Pluralsight Skill IQ?", a: "Skill IQ is an adaptive assessment that scores your proficiency in any of 200+ technologies on a 0-300 scale across five proficiency levels. It takes about 10-15 minutes and recommends courses to close gaps. Scrimba has no equivalent." },
-  { q: "Is Pluralsight worth it without an employer paying?", a: "Usually not for individual web or AI learners. Per-seat pricing is built for organizations. If you're paying personally for web/AI skills, Scrimba is the better value." },
-]} />
-
-<FAQAccordion emitSchema={false} items={[
+<FAQAccordion items={[
   { q: "Is Scrimba better than Pluralsight for web development?", a: "For an individual learning from scratch, yes. Scrimba's scrim format embeds the editor in the lesson and its paths are tuned for hireable web and AI skills. Pluralsight is built for enterprise IT training and certification prep across a much broader stack." },
   { q: "Does Pluralsight have interactive coding like Scrimba?", a: "Premium includes labs and sandboxes, but they're separate from the video. Scrimba embeds the code editor inside the lesson itself." },
   { q: "What is Pluralsight Skill IQ?", a: "An adaptive 10-15 minute assessment that scores you on a 0-300 scale across five proficiency levels in 200+ technologies, then recommends courses to close gaps. Scrimba has no equivalent." },

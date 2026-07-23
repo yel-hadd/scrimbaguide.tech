@@ -9,7 +9,6 @@ last_update:
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -133,19 +132,12 @@ Neither platform is universally better. They sell different things. Coursera sel
 - [How Scrims Work](/docs/how-it-works/how-scrims-work/)
 - [How Scrimba Helps You Escape Tutorial Hell](/docs/how-it-works/tutorial-hell/)
 
-<DocFaqSchema questions={[
-  { q: "Is Scrimba on Coursera?", a: "Yes. Scrimba publishes around 11 specializations on Coursera. The full interactive scrim experience, where you edit the instructor's code in the video player, is only available on Scrimba's own platform." },
-  { q: "Is a Coursera certificate worth more than a Scrimba certificate?", a: "For HR filters at large corporations, yes. Coursera certificates from Google, Meta, IBM, and accredited universities carry brand recognition, and Google certificates are ACE-recommended for up to 15 college credits. For developer hiring, your portfolio matters more than either certificate." },
-  { q: "How much does Coursera Plus cost in 2026?", a: "Around $59 per month or $399 per year for unlimited access to most of the 10,000+ catalog. Coursera also offers a 7-day free trial and an audit option on most individual courses." },
-  { q: "Can I learn React on Coursera?", a: "Yes, through Meta's Front-End Developer Professional Certificate. Scrimba offers more dedicated React practice with interactive lessons where you edit the instructor's code directly inside the video." },
-  { q: "Which platform is better for AI in 2026?", a: "Coursera wins for ML theory (Andrew Ng's DeepLearning.AI specializations). Scrimba wins for applied AI engineering on the 2026 LLM tooling stack (agents, RAG, MCP, Vercel AI SDK)." },
-]} />
-
-<FAQAccordion emitSchema={false} items={[
+<FAQAccordion items={[
   { q: "Is Scrimba on Coursera?", a: "Yes. Scrimba publishes around 11 specializations on Coursera. The full interactive scrim experience is only available on Scrimba's own platform." },
   { q: "Is a Coursera certificate worth more than a Scrimba certificate?", a: "For HR filters at large corporations, yes. For developer hiring, your portfolio matters more than either certificate." },
   { q: "How much does Coursera Plus cost in 2026?", a: "Around $59 per month or $399 per year. Audit option is free for most individual courses." },
   { q: "Can I learn React on Coursera?", a: "Yes, through Meta's Front-End Developer Professional Certificate. Scrimba offers more interactive React practice." },
+  { q: "Which platform is better for AI in 2026?", a: "Coursera wins for ML theory (Andrew Ng's DeepLearning.AI specializations). Scrimba wins for applied AI engineering on the 2026 LLM tooling stack (agents, RAG, MCP, Vercel AI SDK)." },
 ]} />
 
 <PricingCTA

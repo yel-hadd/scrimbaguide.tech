@@ -9,7 +9,6 @@ last_update:
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -137,19 +136,12 @@ These are not competitors so much as **stages**. Scrimba walks a beginner to "I 
 - [Frontend Masters course catalog](https://frontendmasters.com/courses/)
 - <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba official pricing</AffiliateLink>
 
-<DocFaqSchema questions={[
-  { q: "Is Scrimba better than Frontend Masters for beginners?", a: "Yes. Scrimba is built for beginners and early intermediates with in-lesson coding and structured paths. Frontend Masters targets developers who already ship apps and want senior-level workshop depth." },
-  { q: "How much does Frontend Masters cost in 2026?", a: "Frontend Masters lists $39 per month or $390 per year for individual access on their join page. Team plans start at $24.50 per seat per month for groups of ten or more." },
-  { q: "Can I use Scrimba and Frontend Masters together?", a: "Yes, and many developers do. Scrimba first for structured beginner-to-intermediate paths, then add Frontend Masters for expert workshops on TypeScript, performance, or system design once you are working professionally." },
-  { q: "Does Frontend Masters have interactive coding like Scrimba?", a: "No. Frontend Masters publishes recordings of live workshops. You watch the instructor teach and rebuild the project in your own IDE. Scrimba lets you pause the lesson and edit the instructor's code inside the video." },
-  { q: "Who teaches on Frontend Masters?", a: "Senior engineers and authors including Brian Holt (Microsoft), Will Sentance (Codesmith), Steve Kinney (Temporal), Sarah Drasner, and Maximiliano Firtman, among others." },
-]} />
-
-<FAQAccordion emitSchema={false} items={[
+<FAQAccordion items={[
   { q: "Is Scrimba better than Frontend Masters for beginners?", a: "Yes. Scrimba is built for beginners and early intermediates with in-lesson coding and structured paths. Frontend Masters targets developers who already ship apps." },
   { q: "How much does Frontend Masters cost in 2026?", a: "$39 per month or $390 per year for individual access, per the official join page. Team plans start at $24.50 per seat per month." },
   { q: "Can I use both Scrimba and Frontend Masters?", a: "Yes. Scrimba for structured beginner-to-intermediate paths, then Frontend Masters for senior-level workshops once you are shipping apps." },
   { q: "Does Frontend Masters have interactive coding?", a: "No. It is workshop-recording video. Scrimba is the platform with in-lesson code editing." },
+  { q: "Who teaches on Frontend Masters?", a: "Senior engineers and authors including Brian Holt (Microsoft), Will Sentance (Codesmith), Steve Kinney (Temporal), Sarah Drasner, and Maximiliano Firtman, among others." },
 ]} />
 
 <PricingCTA
