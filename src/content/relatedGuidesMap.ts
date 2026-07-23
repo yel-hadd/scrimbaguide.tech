@@ -6,6 +6,48 @@ export interface RelatedGuide {
 }
 
 export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
+  // --- Week 30 batch: one post per cluster (2026-07-23) ---
+  '/blog/scrimba-vs-chatgpt-learn-to-code': [
+    { title: 'Best Interactive Coding Platforms 2026', href: '/blog/best-interactive-coding-platforms-2026', type: 'blog' },
+    { title: 'Reading Code Is the Skill AI Coders Skip', href: '/blog/how-to-get-better-at-reading-code-2026', type: 'blog' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+  ],
+  '/blog/which-coding-path-to-learn-2026': [
+    { title: 'Frontend vs Fullstack Path', href: '/blog/scrimba-frontend-vs-fullstack-path', type: 'blog' },
+    { title: 'Scrimba Path Finder', href: '/tools/which-scrimba-path/', type: 'doc' },
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+  ],
+  '/blog/cost-to-become-a-developer-2026': [
+    { title: 'Scrimba vs Bootcamps Cost', href: '/docs/pricing/scrimba-vs-bootcamps', type: 'doc' },
+    { title: 'Bootcamp Cost Calculator', href: '/tools/bootcamp-cost-calculator/', type: 'doc' },
+    { title: 'How Long to Learn Web Dev', href: '/blog/how-long-to-learn-web-development-2026', type: 'blog' },
+  ],
+  '/blog/how-to-get-coding-experience-without-a-job-2026': [
+    { title: 'Portfolio Projects That Get You Hired', href: '/blog/portfolio-projects-get-hired-2026', type: 'blog' },
+    { title: 'How to Get Your First Dev Job', href: '/blog/how-to-get-first-developer-job-2026', type: 'blog' },
+    { title: 'Junior Developer Job Market 2026', href: '/blog/junior-developer-job-market-2026', type: 'blog' },
+  ],
+  '/blog/what-is-context-engineering': [
+    { title: 'How to Become an AI Engineer', href: '/blog/how-to-become-ai-engineer-javascript-developer', type: 'blog' },
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
+  ],
+  '/blog/how-to-get-better-at-reading-code-2026': [
+    { title: 'Scrimba vs ChatGPT', href: '/blog/scrimba-vs-chatgpt-learn-to-code', type: 'blog' },
+    { title: 'From Vibe Coder to Real Developer', href: '/blog/vibe-coder-to-real-developer-2026', type: 'blog' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+  ],
+  '/blog/best-interactive-coding-platforms-2026': [
+    { title: 'Scrimba vs ChatGPT', href: '/blog/scrimba-vs-chatgpt-learn-to-code', type: 'blog' },
+    { title: 'Scrimba vs YouTube', href: '/blog/scrimba-vs-youtube-coding', type: 'blog' },
+    { title: 'Scrimba Comparisons', href: '/docs/comparisons/', type: 'comparison' },
+  ],
+  '/blog/best-css-courses-2026': [
+    { title: 'Learn HTML and CSS on Scrimba', href: '/docs/courses/css/html-and-css/', type: 'doc' },
+    { title: 'Frontend Roadmap 2026', href: '/roadmaps/frontend-roadmap-2026/', type: 'doc' },
+    { title: 'Best Free Scrimba Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
+  ],
+
   // --- Week 27 batch (2026-06/07) ---
   '/blog/do-you-need-to-learn-to-code-if-ai-writes-it': [
     { title: 'Can AI Replace Junior Developers?', href: '/blog/can-ai-replace-junior-developers-2026', type: 'blog' },
