@@ -35,7 +35,7 @@ CSS got a genuine upgrade between 2023 and 2026, and most older courses predate 
 
 The State of CSS 2025 survey makes the pace obvious. `:has()`, the long-requested parent selector, is now both the most-used and most-loved feature in the survey, at 80.4% usage. `aspect-ratio` (76.2%) and intrinsic sizing keywords (75%) rank second and third, and the survey covered a record 50 features. That is a lot of new surface area for any curriculum to keep up with.
 
-And these are not fringe experiments. By 2026, container queries, cascade layers, `@property`, `:has()`, native nesting, logical properties, and intrinsic sizing have all reached Baseline "Widely Available," which means they work across current browsers without fallbacks. Container queries alone change how you write responsive components, replacing a chunk of the media-query juggling older courses spend hours on. If a course never says the words "container query" or "`:has()`," it is teaching 2021.
+And these are not fringe experiments. By 2026, container queries, cascade layers, `@property`, `:has()`, native nesting, logical properties, and intrinsic sizing now have broad cross-browser support, which means they work across current browsers without fallbacks. Container queries alone change how you write responsive components, replacing a chunk of the media-query juggling older courses spend hours on. If a course never says the words "container query" or "`:has()`," it is teaching 2021.
 
 ## How we filtered (and how to spot an outdated CSS course)
 
@@ -53,17 +53,17 @@ Fast red flags: a course that opens with `float` for page layout, `clearfix` tri
 
 ## Scrimba: Learn HTML and CSS, free and interactive
 
-For a true beginner, Scrimba's Learn HTML and CSS is my default first course, because it is free and you write the CSS inside the lesson instead of watching someone else type. It runs roughly 5.7 hours across 120 lessons and six project modules, taught by Per Borgen, and you build and deploy five real sites along the way.
+For a true beginner, Scrimba's Learn HTML and CSS is my default first course, because it is free and you write the CSS inside the lesson instead of watching someone else type. It runs roughly 5.7 hours across 120 lessons and several project modules where you build and deploy real sites, taught by Per Borgen.
 
 The format is the reason I point beginners here. Scrimba's "scrims" are interactive screencasts: you pause at any point, edit the instructor's code right in the player, run it, and keep going. That forced typing matters more than it sounds, because CSS only clicks once you change a value and watch the box move. You are not copying from a video into a separate editor and losing the thread. The editor is the video. The course is genuinely free, no card required, so there is no risk in trying it. See it on the CSS hub at [Learn HTML and CSS](/docs/courses/css/html-and-css/), or start it directly: <AffiliateLink href="https://scrimba.com/learn-html-and-css-c0p" location="css-scrimba-free">Learn HTML and CSS on Scrimba</AffiliateLink>.
 
-Honest limit: the free course is beginner scope. For deeper layout work (Grid, responsive systems, real-world components) you step up to Scrimba's [Responsive Web Design](/docs/courses/css/responsive-web-design/) course and the paid path structure around it. The upside is that you can judge whether the interactive format fits you before spending anything.
+Honest limit: the free course is beginner scope. For deeper layout work (Grid, responsive systems, real-world components) you step up to Scrimba's [Responsive Web Design](/docs/courses/css/responsive-web-design/) course and the paid path structure around it. The upside is that you can judge whether the interactive format fits you before spending anything. If you want to see what else Scrimba offers for free beyond CSS, our [best free Scrimba courses](/blog/best-free-scrimba-courses/) roundup collects the full list.
 
 ## Best paid deep-dives: Josh Comeau and Jonas Schmedtmann
 
 If you want to truly understand CSS rather than memorise properties, two paid courses stand out, and one of them is the best-maintained CSS course I know of.
 
-Josh Comeau's CSS for JavaScript Developers is my top paid pick for people who can build React apps but "never really learned CSS." It teaches the mental model, the cascade, stacking contexts, and how the layout algorithms actually decide where things go, so positioning stops feeling random. It also stays current: a 2026 practitioner review notes its last significant update landed in December 2025, adding lessons on CSS `subgrid` and reading-flow. It is a one-time purchase (typically around $149, with purchasing-power parity discounts), which is the trade-off for that depth and upkeep.
+Josh Comeau's CSS for JavaScript Developers is my top paid pick for people who can build React apps but "never really learned CSS." It teaches the mental model, the cascade, stacking contexts, and how the layout algorithms actually decide where things go, so positioning stops feeling random. It also stays current: the course's own changelog and FAQ document a December 2025 update that added lessons on CSS `subgrid` and reading-flow, and independent practitioner reviews back up its reputation for upkeep. It is a one-time purchase (typically around $149, with purchasing-power parity discounts), which is the trade-off for that depth and upkeep.
 
 Jonas Schmedtmann's Advanced CSS and Sass on Udemy is the other classic, and it is excellent on layout architecture, Sass, and animation. Its list price is high, but it is frequently on sale for around $10 to $15. The honest caveat: at its core it is an older course, so check the most recent update date before buying and expect to top it up with current material on `:has()` and container queries. As a fundamentals-and-architecture foundation, it still holds up well.
 
@@ -71,7 +71,7 @@ Jonas Schmedtmann's Advanced CSS and Sass on Udemy is the other classic, and it 
 
 You can learn modern CSS to a professional level without paying anything. Three free resources cover most of the ground.
 
-Kevin Powell is the CSS teacher on YouTube, with more than 400,000 students, and his free 21-day Conquering Responsive Layouts course is the fastest cure for pixel-perfect thinking. It drills mobile-first layout and modern sizing with `clamp()`, `min()`, and `max()` instead of fixed widths, which is exactly the habit shift most self-taught developers need.
+Kevin Powell is the CSS teacher on YouTube, one of the most-followed CSS educators online, and his free 21-day Conquering Responsive Layouts course is the fastest cure for pixel-perfect thinking. It drills mobile-first layout and modern sizing with `clamp()`, `min()`, and `max()` instead of fixed widths, which is exactly the habit shift most self-taught developers need.
 
 freeCodeCamp's Responsive Web Design certification is free, project-based, and has been rebuilt around hands-on builds rather than passive reading. It is a solid, no-cost way to get real reps on layout and forms.
 
@@ -97,8 +97,9 @@ Match the course to where you actually are. Total beginner: start with Scrimba's
 ## References
 
 - [State of CSS 2025: Features](https://2025.stateofcss.com/en-US/features/) - source for `:has()` at 80.4% usage and the top feature rankings
-- [Modern CSS Features: A Complete Guide to CSS in 2026](https://explainx.ai/blog/modern-css-features-2026-guide) - on which features reached Baseline "Widely Available"
-- [CSS for JavaScript Developers, reviewed after 4+ years](https://abbeal.com/en/insights/css-for-javascript-developers-josh-comeau-retour-alex-lim) - for the December 2025 update adding `subgrid` and reading-flow
+- [Modern CSS Features: A Complete Guide to CSS in 2026](https://explainx.ai/blog/modern-css-features-2026-guide) - on which modern CSS features now have broad cross-browser support in 2026
+- [CSS for JavaScript Developers (course FAQ)](https://css-for-js.dev/#faq) - the course's own page documenting the December 2025 update adding `subgrid` and reading-flow
+- [CSS for JavaScript Developers, reviewed after 4+ years](https://abbeal.com/en/insights/css-for-javascript-developers-josh-comeau-retour-alex-lim) - general practitioner review of the course's depth and upkeep
 - [Conquering Responsive Layouts (Kevin Powell)](https://courses.kevinpowell.co/conquering-responsive-layouts) - the free 21-day responsive course
 - [CSS in 2026: container queries, cascade layers, and beyond](https://dev.to/zny10289/css-in-2026-container-queries-cascade-layers-and-the-end-of-utility-class-bloat-6k5) - on modern CSS replacing old JavaScript and utility-class workarounds
 
