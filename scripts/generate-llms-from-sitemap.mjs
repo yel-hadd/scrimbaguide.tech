@@ -67,7 +67,7 @@ const PAGE_ANNOTATIONS = {
   },
   '/docs/paths/backend-developer-path': {
     title: 'Scrimba Backend Developer Path Review (2026)',
-    description: '39.4-hour intermediate path covering Node.js, Express, SQL, TypeScript, cybersecurity, and DevOps.',
+    description: '36.2-hour intermediate path covering Node.js, Express, SQL, TypeScript, cybersecurity, and DevOps.',
   },
   '/docs/paths/ai-engineer-path': {
     title: 'Scrimba AI Engineer Path Review (2026)',

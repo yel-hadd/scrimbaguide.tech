@@ -132,7 +132,7 @@ const PATHS = {
   'the-backend-developer-path-c0tbi0l98f': {
     name: 'Backend Developer Path',
     slug: 'backend-developer-path',
-    duration: '39.4 hrs',
+    duration: '36.2 hrs',
     level: 'Intermediate',
     access: 'Pro',
   },
