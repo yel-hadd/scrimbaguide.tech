@@ -179,6 +179,21 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Learn AI Agents', href: '/docs/courses/ai/ai-agents', type: 'doc' },
     { title: 'Scrimba AI Engineer Path Guide', href: '/blog/scrimba-ai-engineer-path-guide', type: 'blog' },
   ],
+  '/docs/courses/python': [
+    { title: 'Learn Python', href: '/docs/courses/python/learn-python', type: 'doc' },
+    { title: 'Best Python Courses for Beginners', href: '/docs/courses/python/best-python-courses-for-beginners', type: 'doc' },
+    { title: 'Scrimba vs freeCodeCamp', href: '/docs/comparisons/scrimba-vs-freecodecamp', type: 'comparison' },
+  ],
+  '/docs/courses/python/learn-python': [
+    { title: 'Best Python Courses for Beginners', href: '/docs/courses/python/best-python-courses-for-beginners', type: 'doc' },
+    { title: 'Python Course Catalog', href: '/docs/courses/python/', type: 'doc' },
+    { title: 'For Beginners', href: '/docs/for/beginners', type: 'doc' },
+  ],
+  '/docs/courses/python/best-python-courses-for-beginners': [
+    { title: 'Learn Python', href: '/docs/courses/python/learn-python', type: 'doc' },
+    { title: 'For Beginners', href: '/docs/for/beginners', type: 'doc' },
+    { title: 'Scrimba vs Codecademy', href: '/docs/comparisons/scrimba-vs-codecademy', type: 'comparison' },
+  ],
   '/docs/courses/ai/ai-agents': [
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
     { title: 'Learn RAG', href: '/docs/courses/ai/rag', type: 'doc' },
