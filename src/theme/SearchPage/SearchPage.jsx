@@ -134,7 +134,12 @@ function SearchPageContent() {
          We should not index search pages
           See https://github.com/facebook/docusaurus/pull/3233
         */}
-        <meta property="robots" content="noindex, follow"/>
+        {/* Must be name="robots", not property=". Crawlers only read the
+            name attribute; property is Open Graph/RDFa, so the previous
+            property="robots" left this internal search-results page fully
+            indexable. Google's guidance is to keep site-search results out
+            of the index. */}
+        <meta name="robots" content="noindex, follow"/>
         <title>{pageTitle}</title>
       </Head>
 

@@ -23,14 +23,30 @@ import BlogListPageStructuredData from '@theme/BlogListPage/StructuredData';
  *
  * Previous approach used a wrapper fragment that placed the H1 before
  * <BlogListPage>, which caused it to render above the navbar.
+ *
+ * Pagination: Docusaurus gives every paginated page the same title and
+ * description, so /blog/page/2..8 all shipped as "Blog | Scrimba Guide" with
+ * no H1 at all. We differentiate both, and render an H1 on every page.
+ *
+ * Deliberately NOT noindexed. Google dropped rel=next/prev and treats
+ * paginated pages as ordinary URLs; noindexing them is the common "fix" but it
+ * degrades the crawl path to older posts, which for a 50-plus post blog is the
+ * main way deep archive content stays discoverable. Self-referencing canonicals
+ * (Docusaurus default) plus unique titles is the current guidance.
  */
 export default function BlogListPage(props: Props): ReactNode {
   const {metadata, items, sidebar} = props;
-  const isFirstPage = !metadata.page || metadata.page === 1;
+  const page = metadata.page ?? 1;
+  const totalPages = metadata.totalPages ?? 1;
+  const isFirstPage = page === 1;
   const {siteConfig: {title: siteTitle}} = useDocusaurusContext();
   const {blogDescription, blogTitle, permalink} = metadata;
   const isBlogOnlyMode = permalink === '/';
-  const title = isBlogOnlyMode ? siteTitle : blogTitle;
+  const baseTitle = isBlogOnlyMode ? siteTitle : blogTitle;
+  const title = isFirstPage ? baseTitle : `${baseTitle}, Page ${page} of ${totalPages}`;
+  const description = isFirstPage
+    ? blogDescription
+    : `Page ${page} of ${totalPages} of the Scrimba Guide blog: reviews, tips, and career advice for developers.`;
 
   return (
     <HtmlClassNameProvider
@@ -38,15 +54,15 @@ export default function BlogListPage(props: Props): ReactNode {
         ThemeClassNames.wrapper.blogPages,
         ThemeClassNames.page.blogListPage,
       )}>
-      <PageMetadata title={title} description={blogDescription} />
+      <PageMetadata title={title} description={description} />
       <SearchMetadata tag="blog_posts_list" />
       <BlogListPageStructuredData {...props} />
       <BlogLayout sidebar={sidebar}>
-        {isFirstPage && (
-          <h1 className="blog-list-page__title">
-            Scrimba Guide Blog, Reviews, Tips, and Career Advice for Developers
-          </h1>
-        )}
+        <h1 className="blog-list-page__title">
+          {isFirstPage
+            ? 'Scrimba Guide Blog, Reviews, Tips, and Career Advice for Developers'
+            : `Scrimba Guide Blog, Page ${page} of ${totalPages}`}
+        </h1>
         <BlogPostItems items={items} />
         <BlogListPaginator metadata={metadata} />
       </BlogLayout>

@@ -47,12 +47,33 @@ export default function ToolsHub(): React.ReactElement {
         <meta name="twitter:description" content={pageDescription} />
         <meta name="twitter:image" content={socialImage} />
         <link rel="canonical" href={canonicalUrl} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            '@id': `${canonicalUrl}#itemlist`,
+            name: 'Scrimba Guide Tools',
+            itemListElement: TOOLS.map((t, i) => ({
+              '@type': 'ListItem',
+              position: i + 1,
+              name: t.title,
+              description: t.desc,
+              url: `https://scrimbaguide.tech${t.to.replace(/\/?(#.*)?$/, '/')}`,
+            })),
+          })}
+        </script>
       </Head>
       <main className="container margin-vert--lg">
         <h1>Tools</h1>
         <p>
           Small, free tools to help you plan what to learn and decide whether
-          Scrimba is the right spend for you.
+          Scrimba is the right spend for you. No signup, no email capture.
+        </p>
+        <p>
+          They answer the three questions people ask before starting: which track fits my
+          goal, what does this cost against the alternatives, and in what order should I
+          learn things. Each one is deliberately narrow, and each links through to the
+          longer write-up if you want the reasoning rather than the answer.
         </p>
         <div className="row">
           {TOOLS.map((tool) => (

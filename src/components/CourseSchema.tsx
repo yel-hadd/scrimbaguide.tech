@@ -41,6 +41,13 @@ interface CourseSchemaProps {
   difficulty?: string;
   access?: 'Free' | 'Pro';
   keywords?: string[];
+  /** Course teacher. Emitted as CourseInstance.instructor (schema.org puts
+   *  `instructor` on CourseInstance, not Course). Worth setting wherever the
+   *  teacher is a known name: it is the entity AI answers most often get wrong
+   *  after a course is re-recorded with a new instructor. */
+  instructor?: string;
+  /** Scrimba profile URL for the instructor, emitted as Person.url. */
+  instructorUrl?: string;
   modules?: ModuleInfo[];
   /** Course image for rich results (absolute URL recommended) */
   imageUrl?: string;
@@ -56,6 +63,8 @@ export default function CourseSchema({
   difficulty,
   access,
   keywords,
+  instructor,
+  instructorUrl,
   modules,
   imageUrl = 'https://scrimbaguide.tech/img/social-card.png',
 }: CourseSchemaProps): React.ReactElement {
@@ -95,6 +104,13 @@ export default function CourseSchema({
       '@type': 'CourseInstance',
       courseMode: 'online',
       ...(isoDuration && { courseWorkload: isoDuration }),
+      ...(instructor && {
+        instructor: {
+          '@type': 'Person',
+          name: plainText(instructor),
+          ...(instructorUrl && { url: toAbsoluteUrl(instructorUrl) }),
+        },
+      }),
     },
   };
 

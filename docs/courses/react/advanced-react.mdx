@@ -15,18 +15,19 @@ import AffiliateLink from '@site/src/components/AffiliateLink';
 
 # Advanced React
 
-The follow-up to Learn React, again with Bob Ziroll: about 13 hours on the patterns that separate someone who can use React from someone who can structure a real app.
+The follow-up to Learn React, again with Bob Ziroll: about 19 hours on the patterns that separate someone who can use React from someone who can structure a real app.
 
 ## Quick answer
 
-Advanced React is Scrimba's Pro-tier, advanced React course: roughly 13 hours across reusability patterns, routing, and performance, taught by Bob Ziroll. It is meant for people who already finished Learn React (or know hooks-based React) and want the composition patterns, render optimisation, and routing depth that production apps need. It is not a beginner course and does not reteach the basics.
+Advanced React is Scrimba's Pro-tier, advanced React course: roughly 18.8 hours across six modules, taught by Bob Ziroll. It covers reusability patterns, routing, performance, persistence, authentication, and TypeScript in React. It is meant for people who already finished Learn React (or know hooks-based React) and want the composition patterns, render optimisation, and routing depth that production apps need. It is not a beginner course and does not reteach the basics.
 
 <CourseCard
   title="Advanced React"
-  duration="13.2 hrs"
+  duration="18.8 hrs"
   difficulty="Advanced"
   access="Pro"
-  modules={3}
+  modules={6}
+  lessons={240}
   instructor="Bob Ziroll"
   instructorUrl="https://scrimba.com/@bobziroll"
   href="https://scrimba.com/advanced-react-c02h"
@@ -46,10 +47,15 @@ The honest caveat is overlap and prerequisites. The routing module covers a lot 
     { name: 'Reusability', duration: '5 hrs', lessons: 59 },
     { name: 'Routing', duration: '6.4 hrs', lessons: 53 },
     { name: 'Performance', duration: '109 min', lessons: 13 },
+    { name: 'Persistance', duration: '54 min', lessons: 6 },
+    { name: 'Authentication', duration: '3.8 hrs', lessons: 21 },
+    { name: 'TypeScript in React', duration: '50 min', lessons: 20 },
   ]}
 />
 
-Three large blocks. Reusability is the core: composition, custom hooks, and making components that bend without breaking. Routing is a full treatment of client-side navigation (and overlaps the React Router course). Performance is the shortest but high-value: memoisation, avoiding needless re-renders, and spotting what actually slows a React app down.
+Six modules now, up from three. Scrimba expanded this course in 2026, adding persistence, authentication, and TypeScript on top of the original three blocks, which is most of why it grew from about 13 hours to 18.8.
+
+Reusability is still the core: composition, custom hooks, and making components that bend without breaking. Routing is a full treatment of client-side navigation (and overlaps the React Router course). Performance is short but high-value: memoisation, avoiding needless re-renders, and spotting what actually slows a React app down. The three newer modules are the ones that push it closer to production work. Authentication is the largest of them at 3.8 hours, and TypeScript in React is the one most likely to close a gap between what you know and what job listings ask for.
 
 ## Who it's for, and who should skip it
 
@@ -95,9 +101,9 @@ Where it is limited: the routing module overlaps the standalone course, the publ
 
 <CourseSchema
   name="Advanced React"
-  description="Scrimba's advanced, Pro-tier React course taught by Bob Ziroll. About 13 hours on reusability, routing, and performance."
+  description="Scrimba's advanced, Pro-tier React course taught by Bob Ziroll. About 18.8 hours across six modules: reusability, routing, performance, persistence, authentication, and TypeScript."
   url="https://scrimba.com/advanced-react-c02h"
-  timeRequired="PT13H13M54S"
+  timeRequired="PT18H50M4S"
   difficulty="Advanced"
   access="Pro"
   keywords={["React", "Frontend"]}

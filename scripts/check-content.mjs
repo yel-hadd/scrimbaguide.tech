@@ -6,7 +6,7 @@
  *      Competitor/bootcamp prices are allowed, so we only flag a $-amount that
  *      sits directly next to a Scrimba plan (its own price), not one that merely
  *      shares a comparison line with "Scrimba Pro".
- *   3. No reappearance of the stale Backend path duration (30.1 hrs -> 39.4 hrs).
+ *   3. No reappearance of the stale Backend path duration (30.1 hrs -> 36.2 hrs).
  *
  * Usage: node scripts/check-content.mjs
  */
@@ -37,6 +37,10 @@ const SCRIMBA_PRICE_LEAK = [
   /scrimba\s+(?:pro|bootcamp|subscription|plan)\b[^.|\n]{0,15}\$\s?\d/i,
   // "$20/month for Scrimba Pro" — price directly attributed via for/of.
   /\$\s?\d[\d.,kK]*\s*(?:\/?\s?(?:mo|month|yr|year))?\s+(?:for|of)\s+scrimba\s+pro\b/i,
+  // A Scrimba price expressed as CODE rather than prose, e.g.
+  // `const scrimbaMonthly = 30`. The prose patterns above cannot see this, and
+  // it shipped a live $30/mo figure into the bootcamp calculator once already.
+  /(?:const|let|var)\s+\w*scrimba\w*\s*(?::\s*number\s*)?=\s*\d/i,
 ];
 const violations = [];
 
@@ -50,7 +54,7 @@ for (const dir of SCAN_DIRS) {
       if (SCRIMBA_PRICE_LEAK.some((re) => re.test(line))) {
         violations.push(`${rel}:${n} possible exact Scrimba price (link to /our-pricing instead): ${line.trim().slice(0, 100)}`);
       }
-      if (/\b30\.1\b/.test(line)) violations.push(`${rel}:${n} stale Backend hours (30.1, should be 39.4): ${line.trim().slice(0, 100)}`);
+      if (/\b(?:30\.1|39\.4)\b/.test(line)) violations.push(`${rel}:${n} stale Backend hours (should be 36.2 as of 2026-08): ${line.trim().slice(0, 100)}`);
     });
   }
 }
