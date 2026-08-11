@@ -1,0 +1,2537 @@
+{
+  "$comment": [
+    "MACHINE-READABLE TASK MANIFEST for the multilingual program. Schema is I18N-PLAN.md section 14,",
+    "plus ONE addition: every record carries a 'status' field ('todo' | 'in_progress' | 'done').",
+    "Section 14 does not define 'status'; it is added here because the program is executed by",
+    "successive ultracode runs that need to know what already landed without re-deriving it from git.",
+    "",
+    "THE INVARIANT (section 14): files_owned sets are DISJOINT across any two units that can run",
+    "concurrently, and a unit may never edit a file it does not own. Where two units genuinely must",
+    "touch one file, they are serialized with a depends_on edge instead of being allowed to race.",
+    "Every such shared file is listed under $sharedFileChains below with the chain that orders it.",
+    "",
+    "'blocks' is the exact inverse of 'depends_on' and is generated, not hand-maintained: if A appears",
+    "in B.depends_on then B appears in A.blocks. Validated on every edit (see $validation).",
+    "",
+    "PATH GLOBS: a trailing '/**' means the whole subtree. Overlap is computed by prefix, so",
+    "'src/components/**' is treated as colliding with 'src/components/MegaMenu.tsx' and the two owners",
+    "are ordered by an edge. Do not add a glob that swallows another unit's file without adding the edge.",
+    "",
+    "PHASE labels are strings, not integers, because the plan has sub-phases (0b Pagefind, 0c hosting",
+    "cutover). '11' = section 11 indexer, '13' = section 13 per-language skills, '15' = section 15.4",
+    "build isolation. Pagefind units carry phase '0b' (section 12.4 is that phase's checklist).",
+    "",
+    "human_decision is true for exactly two units, per section 18: the Cloudflare custom-domain attach",
+    "(P0c-custom-domain-attach) and the service-account key rotation (IDX-key-rotation, decision 7).",
+    "Decisions 1-6 were resolved on 2026-08-09, so nothing else is human-gated.",
+    "",
+    "MERGED CHECKBOXES (deliberate, per section 14's 'merge or add an edge' rule):",
+    "  - Phase 0b's SKIP_PAGEFIND gate is part of P0b-pagefind-plugin, not its own unit.",
+    "  - Phase 3's static/ dedupe (B3), merged-tree Pagefind run, and two-axis size gate all live in",
+    "    .github/workflows/deploy.yml, so they are one unit: P3-deploy-workflow.",
+    "  - Phase 4's bidi isolation, icon flipping and :lang(ja) line-breaking are all src/css/custom.css,",
+    "    so they are one unit: P4-rtl-css.",
+    "  - Phase 8's per-locale navbar.json/footer.json checkbox is covered by the P6-translate-<locale>",
+    "    units (which own all of i18n/<locale>/**) and asserted by P6-ui-string-parity-check.",
+    "  - Section 11.1's 'confirm the Indexing API is enabled' is part of IDX-notify.",
+    "  - Section 12.3's extended-release and et/ga/lt UI-string checkboxes are part of the P0b units.",
+    "",
+    "STATUS AS OF 2026-08-11: P1-config-split and P1-locales-config are reported complete by the",
+    "orchestrator (concurrent agents in this same checkout) but were not yet flushed to disk when this",
+    "manifest was written; both were verified present on disk (config/*.ts, i18n/locales.config.ts)",
+    "before this file was finalized. P2-tiers-json and P1-task-manifest were also verified on disk.",
+    "Two further units are mid-flight in this same checkout and are marked 'in_progress':",
+    "P1-canonical-plugin-harden (plugins/normalize-canonical-urls modified, test file present) and",
+    "IDX-auth-quota-ledger (auth/ledger/quota .mjs + tests present, commit-state.sh not yet)."
+  ],
+  "$schemaNote": "One record per work unit. Fields: id, phase, title, files_owned, files_touched_readonly, depends_on, blocks, acceptance, parallel_safe, human_decision, status.",
+  "$sharedFileChains": {
+    "CLAUDE.md": "P0-hosting-decision -> P1-claude-md-invariants",
+    "docusaurus.config.ts": "P1-config-split -> P1-anchor-freeze",
+    "config/metadata.ts": "P1-config-split -> P1-metadata-locale",
+    "config/search.ts": "P1-config-split -> P0b-search-config",
+    "config/fonts.ts": "P1-config-split -> P4-fonts",
+    "config/i18n.ts": "P1-config-split -> P3-locale-baseurl",
+    "config/sitemap.ts": "P1-config-split -> P3-sitemap-locale-config",
+    "config/redirects.ts": "P1-config-split -> P3-sitemap-locale-config",
+    "config/navigation.ts": "P1-config-split -> P2-content-exclude -> P8-locale-switcher",
+    "config/content.ts": "P2-content-exclude -> P7-locale-only-content-mechanism",
+    "src/clientModules/a11yFixes.ts": "P0b-a11y-search-cleanup -> P1-locale-path-util  (section 15.2 collision 2)",
+    "src/theme/SearchPage/SearchPage.module.css": "P0b-pagefind-search-ui -> P4-rtl-css  (section 15.2 collision 1)",
+    "scripts/check-content.mjs + check-content.config.json": "P1-check-content-i18n owns the code; P13-check-content-lang-config appends config DATA only (section 15.2 collision 3)",
+    "src/components/**": "P1-locale-path-util -> P1-ui-strings -> {P2-link-pruning, P5-localized-catalog, P8-locale-switcher, P8-locale-suggestion-banner}",
+    "src/content/relatedGuidesMap.ts": "P1-locale-path-util -> P1-ui-strings -> P2-link-pruning -> P7-related-guides-market-entries",
+    "src/pages/tools/**": "P1-ui-strings -> P7-localize-tools. NOTE: src/pages/about.mdx and contact.md are markdown, not <Translate> call sites, so they belong to P1-anchor-freeze; src/pages/legal/** is English-only in every locale and is owned by nobody.",
+    "docs/** + blog/**": "P1-anchor-freeze -> P7-en-in-english-pages",
+    "package.json": "P0b-search-config -> P2-prebuild-wiring -> P5-skill-scripts",
+    "Makefile": "P1-makefile-i18n-scaffold -> P2-makefile-i18n-status",
+    ".gitignore": "P2-coverage-manifest -> P5-skill-scripts",
+    "plugins/normalize-canonical-urls/index.js": "P1-canonical-plugin-harden -> P2-canonical-manifest-assert",
+    "scripts/generate-llms-from-sitemap.mjs": "P1-llms-exports -> P3-llms-per-locale",
+    ".github/workflows/deploy.yml": "P0c-deploy-publish-step -> P3-deploy-workflow",
+    "i18n/locales.config.ts": "P1-locales-config -> P6-tier-a-launch",
+    "i18n/<locale>/**": "P6-translate-<locale> -> {P7-local-competitor-pages}",
+    "sidebars.ts": "P2-sidebars-coverage -> P7-locale-only-content-mechanism"
+  },
+  "$validation": "Before committing an edit to this file, re-run the four checks it is built on: (1) every depends_on and blocks id resolves to a real unit; (2) blocks is the exact inverse of depends_on (regenerate it, never hand-edit it); (3) the graph is acyclic, i.e. a Kahn topological sort consumes all units; (4) for every pair of units with no dependency path between them in either direction, their files_owned sets are disjoint under PREFIX comparison, so that 'src/components/**' counts as colliding with 'src/components/MegaMenu.tsx'. Checks 3 and 4 are the ones that actually protect the run; 4 is what section 14 calls the rule that makes parallelism safe.",
+  "version": 1,
+  "units": [
+    {
+      "id": "P0-two-locale-spike",
+      "phase": "0",
+      "title": "Measure the en+de two-locale spike: bytes AND file count per locale, plus per-language Pagefind index size",
+      "files_owned": [],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts",
+        "plugins/pagefind/index.js"
+      ],
+      "depends_on": [
+        "P1-locales-config",
+        "P0b-pagefind-plugin"
+      ],
+      "blocks": [
+        "P0-hosting-decision"
+      ],
+      "acceptance": [
+        "npx docusaurus build --locale en --out-dir build-spike-en",
+        "npx docusaurus build --locale de --out-dir build-spike-de",
+        "du -sh build-spike-en build-spike-de",
+        "find build-spike-de -type f | wc -l",
+        "du -sh build-spike-de/pagefind"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P0-hosting-decision",
+      "phase": "0",
+      "title": "Record the hosting decision (Cloudflare Workers Static Assets, Paid) in CLAUDE.md with the spike numbers",
+      "files_owned": [
+        "CLAUDE.md"
+      ],
+      "files_touched_readonly": [
+        "I18N-PLAN.md"
+      ],
+      "depends_on": [
+        "P0-two-locale-spike"
+      ],
+      "blocks": [
+        "P0c-wrangler-config",
+        "P1-claude-md-invariants",
+        "P3-deploy-workflow"
+      ],
+      "acceptance": [
+        "grep -q 'Workers Static Assets' CLAUDE.md",
+        "grep -q 'not_found_handling' CLAUDE.md",
+        "grep -q '100,000 files' CLAUDE.md"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P0b-pagefind-plugin",
+      "phase": "0b",
+      "title": "plugins/pagefind: postBuild plugin shelling out to pagefind extended, with the SKIP_PAGEFIND=1 no-op gate",
+      "files_owned": [
+        "plugins/pagefind/index.js",
+        "scripts/__tests__/pagefind-plugin.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "plugins/normalize-canonical-urls/index.js"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "P0-two-locale-spike",
+        "P0b-pagefind-search-ui",
+        "P3-deploy-workflow"
+      ],
+      "acceptance": [
+        "node --test scripts/__tests__/pagefind-plugin.test.mjs",
+        "grep -q 'SKIP_PAGEFIND' plugins/pagefind/index.js",
+        "! grep -q 'force_language' plugins/pagefind/index.js"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P0b-pagefind-search-ui",
+      "phase": "0b",
+      "title": "Replace the three lunr swizzles with a Pagefind JS-API wrapper keeping the custom modal and /search/ page",
+      "files_owned": [
+        "src/theme/SearchBar/**",
+        "src/theme/Navbar/Search/**",
+        "src/theme/SearchPage/**"
+      ],
+      "files_touched_readonly": [
+        "plugins/pagefind/index.js",
+        "src/css/custom.css"
+      ],
+      "depends_on": [
+        "P0b-pagefind-plugin"
+      ],
+      "blocks": [
+        "P0b-a11y-search-cleanup",
+        "P0b-search-config",
+        "P0b-search-tests",
+        "P1-ui-strings",
+        "P4-rtl-css"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "! grep -rn '@easyops-cn' src/theme | grep -q .",
+        "grep -rq 'pagefind' src/theme/SearchPage"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P0b-search-tests",
+      "phase": "0b",
+      "title": "Rewrite the search-modal test suite against the Pagefind UI",
+      "files_owned": [
+        "scripts/__tests__/search-modal.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "src/theme/SearchBar/**",
+        "src/theme/SearchPage/**"
+      ],
+      "depends_on": [
+        "P0b-pagefind-search-ui"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "npm run test:search"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P0b-search-config",
+      "phase": "0b",
+      "title": "Drop @easyops-cn from themes and package.json; make the WebSite SearchAction target locale-aware",
+      "files_owned": [
+        "config/search.ts",
+        "package.json",
+        "package-lock.json"
+      ],
+      "files_touched_readonly": [
+        "docusaurus.config.ts",
+        "config/metadata.ts"
+      ],
+      "depends_on": [
+        "P1-config-split",
+        "P0b-pagefind-search-ui"
+      ],
+      "blocks": [
+        "P2-prebuild-wiring"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "! grep -q '@easyops-cn' package.json",
+        "grep -q 'search/?q=' config/search.ts"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P0b-a11y-search-cleanup",
+      "phase": "0b",
+      "title": "Section 12.5: delete the a11yFixes search patches that Pagefind makes redundant; keep the rest",
+      "files_owned": [
+        "src/clientModules/a11yFixes.ts",
+        "scripts/__tests__/a11y-search.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "src/theme/SearchPage/**"
+      ],
+      "depends_on": [
+        "P0b-pagefind-search-ui"
+      ],
+      "blocks": [
+        "P1-locale-path-util",
+        "P4-a11y-ar"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "npm run test:a11y"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P0c-wrangler-config",
+      "phase": "0c",
+      "title": "Add assets-only wrangler.json (no main), not_found_handling=404-page, html_handling=force-trailing-slash",
+      "files_owned": [
+        "wrangler.json"
+      ],
+      "files_touched_readonly": [
+        "static/CNAME"
+      ],
+      "depends_on": [
+        "P0-hosting-decision"
+      ],
+      "blocks": [
+        "P0c-deploy-publish-step"
+      ],
+      "acceptance": [
+        "npx wrangler deploy --dry-run",
+        "grep -q '\"not_found_handling\": \"404-page\"' wrangler.json",
+        "! grep -q 'single-page-application' wrangler.json",
+        "! grep -q '\"main\"' wrangler.json"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P0c-deploy-publish-step",
+      "phase": "0c",
+      "title": "Swap deploy.yml's publish step from actions/deploy-pages to wrangler deploy, leaving post-deploy verification intact",
+      "files_owned": [
+        ".github/workflows/deploy.yml"
+      ],
+      "files_touched_readonly": [
+        "wrangler.json",
+        "scripts/assert-sitemap-url.mjs",
+        "scripts/submit-indexnow.mjs"
+      ],
+      "depends_on": [
+        "P0c-wrangler-config"
+      ],
+      "blocks": [
+        "P0c-custom-domain-attach",
+        "P3-deploy-workflow"
+      ],
+      "acceptance": [
+        "actionlint .github/workflows/deploy.yml",
+        "grep -q 'wrangler deploy' .github/workflows/deploy.yml",
+        "grep -q 'assert-sitemap-url' .github/workflows/deploy.yml",
+        "! grep -q 'actions/deploy-pages' .github/workflows/deploy.yml"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P0c-custom-domain-attach",
+      "phase": "0c",
+      "title": "Attach scrimbaguide.tech as a Workers Custom Domain and run the cutover checklist (HUMAN: records the revert DNS value)",
+      "files_owned": [],
+      "files_touched_readonly": [
+        "wrangler.json"
+      ],
+      "depends_on": [
+        "P0c-deploy-publish-step"
+      ],
+      "blocks": [
+        "P0c-post-cutover-gsc-watch"
+      ],
+      "acceptance": [
+        "test \"$(curl -s -o /dev/null -w '%{http_code}' https://scrimbaguide.tech/docs/paths/)\" = 200",
+        "test \"$(curl -s -o /dev/null -w '%{http_code}' https://scrimbaguide.tech/nonexistent-page-xyz/)\" = 404",
+        "test \"$(curl -s -o /dev/null -w '%{http_code}' https://scrimbaguide.tech/docs/paths)\" = 301 || test \"$(curl -s -o /dev/null -w '%{http_code}' https://scrimbaguide.tech/docs/paths)\" = 308",
+        "test \"$(curl -s https://scrimbaguide.tech/sitemap.xml | grep -c '<loc>')\" -ge 220",
+        "node scripts/assert-sitemap-url.mjs"
+      ],
+      "parallel_safe": false,
+      "human_decision": true,
+      "status": "todo"
+    },
+    {
+      "id": "P0c-post-cutover-gsc-watch",
+      "phase": "0c",
+      "title": "Post-cutover GSC watch at +48h and +14d against the section 6.1 baseline",
+      "files_owned": [],
+      "files_touched_readonly": [],
+      "depends_on": [
+        "P0c-custom-domain-attach"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "node scripts/assert-sitemap-url.mjs",
+        "test \"$(curl -s https://scrimbaguide.tech/docs/paths/ | grep -c 'rel=\"canonical\"')\" -eq 1"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-config-split",
+      "phase": "1",
+      "title": "Section 15.1: split docusaurus.config.ts into config/{i18n,metadata,fonts,sitemap,search,redirects,navigation}.ts",
+      "files_owned": [
+        "docusaurus.config.ts",
+        "config/i18n.ts",
+        "config/metadata.ts",
+        "config/fonts.ts",
+        "config/sitemap.ts",
+        "config/search.ts",
+        "config/redirects.ts",
+        "config/navigation.ts"
+      ],
+      "files_touched_readonly": [
+        "tsconfig.json"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "P0b-search-config",
+        "P1-anchor-freeze",
+        "P1-current-locale-helper",
+        "P1-metadata-locale",
+        "P2-content-exclude",
+        "P3-locale-baseurl",
+        "P3-sitemap-locale-config",
+        "P4-fonts"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "test -f config/i18n.ts && test -f config/metadata.ts && test -f config/fonts.ts",
+        "test -f config/sitemap.ts && test -f config/search.ts && test -f config/redirects.ts && test -f config/navigation.ts"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "done"
+    },
+    {
+      "id": "P1-locales-config",
+      "phase": "1",
+      "title": "i18n/locales.config.ts: the single locale roster (locale, htmlLang, direction, calendar, tier, coverage, status, region, fontScript, register)",
+      "files_owned": [
+        "i18n/locales.config.ts"
+      ],
+      "files_touched_readonly": [
+        "i18n/tiers.json"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "P0-two-locale-spike",
+        "P1-locale-path-util",
+        "P1-seo-title-budget",
+        "P13-native-profiles",
+        "P2-coverage-manifest",
+        "P3-locale-baseurl",
+        "P4-fonts",
+        "P5-localized-catalog",
+        "P6-tier-a-launch",
+        "P8-locale-switcher"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "! grep -rn \"'pt-BR'\" src plugins scripts config docusaurus.config.ts | grep -q .",
+        "grep -q \"status: 'draft'\" i18n/locales.config.ts"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "done"
+    },
+    {
+      "id": "P1-task-manifest",
+      "phase": "1",
+      "title": "plan/tasks.json: the machine-readable dependency graph for every work unit in the program",
+      "files_owned": [
+        "plan/tasks.json"
+      ],
+      "files_touched_readonly": [
+        "I18N-PLAN.md"
+      ],
+      "depends_on": [],
+      "blocks": [],
+      "acceptance": [
+        "node -e \"JSON.parse(require('fs').readFileSync('plan/tasks.json','utf8'))\"",
+        "node -e \"const u=require('./plan/tasks.json').units;const ids=new Set(u.map(x=>x.id));for(const x of u){for(const d of x.depends_on){if(!ids.has(d))process.exit(1)}}\""
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "done"
+    },
+    {
+      "id": "P1-current-locale-helper",
+      "phase": "1",
+      "title": "C7 helper: config/currentLocale.ts exporting CURRENT_LOCALE, immune to the literal 'undefined' that docusaurus start sets",
+      "files_owned": [
+        "config/currentLocale.ts"
+      ],
+      "files_touched_readonly": [
+        "docusaurus.config.ts"
+      ],
+      "depends_on": [
+        "P1-config-split"
+      ],
+      "blocks": [
+        "P1-metadata-locale",
+        "P2-content-exclude",
+        "P2-coverage-manifest",
+        "P2-sidebars-coverage",
+        "P4-fonts"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "grep -q \"=== 'undefined'\" config/currentLocale.ts",
+        "! grep -rn 'DOCUSAURUS_CURRENT_LOCALE' config src plugins scripts sidebars.ts | grep -v 'config/currentLocale.ts' | grep -q ."
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-locale-path-util",
+      "phase": "1",
+      "title": "localePath.ts + strip the locale prefix in the 10 path predicates (C3, C4) including AffiliateLink's GA4 post_slug",
+      "files_owned": [
+        "src/utils/localePath.ts",
+        "src/utils/moneyPagePaths.ts",
+        "src/theme/DocItem/Layout/index.tsx",
+        "src/components/RelatedGuides.tsx",
+        "src/content/relatedGuidesMap.ts",
+        "src/components/DisclosureNotice.tsx",
+        "src/components/FAQAccordion.tsx",
+        "src/components/DocFaqSchema.tsx",
+        "src/components/MegaMenu.tsx",
+        "src/components/AffiliateLink.tsx",
+        "src/clientModules/a11yFixes.ts",
+        "scripts/__tests__/localePath.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts",
+        "src/theme/BlogPostItem/**"
+      ],
+      "depends_on": [
+        "P1-locales-config",
+        "P0b-a11y-search-cleanup"
+      ],
+      "blocks": [
+        "IDX-discover-sitemaps",
+        "P1-ui-strings"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "node --test scripts/__tests__/localePath.test.mjs",
+        "! grep -rn 'window.location.pathname' src | grep -v stripLocale | grep -q .",
+        "! grep -rn \"startsWith('/docs/paths/')\" src | grep -q ."
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-metadata-locale",
+      "phase": "1",
+      "title": "C1/C2/C7: drop the two hardcoded og:locale tags, derive inLanguage from currentLocale, branch themeConfig.metadata per locale",
+      "files_owned": [
+        "config/metadata.ts",
+        "src/theme/BlogPostPage/Metadata/index.tsx"
+      ],
+      "files_touched_readonly": [
+        "config/currentLocale.ts",
+        "i18n/locales.config.ts"
+      ],
+      "depends_on": [
+        "P1-config-split",
+        "P1-current-locale-helper"
+      ],
+      "blocks": [
+        "P2-hreflang-engine"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "! grep -rn 'en_US' config src | grep -q .",
+        "! grep -rn \"'en-US'\" src/theme/BlogPostPage | grep -q ."
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-seo-title-budget",
+      "phase": "1",
+      "title": "C5: toSeoTitle(rawTitle, locale) reading LOCALE_TITLE_BUDGET, hard ceiling 44, CJK at 30 (decision 5)",
+      "files_owned": [
+        "src/utils/seoTitle.ts",
+        "scripts/__tests__/seoTitle.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts"
+      ],
+      "depends_on": [
+        "P1-locales-config"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "npm run typecheck",
+        "node --test scripts/__tests__/seoTitle.test.mjs",
+        "! grep -nE ':\\s*(4[5-9]|[5-9][0-9]|1[0-9][0-9])\\s*,' src/utils/seoTitle.ts | grep -q ."
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-canonical-plugin-harden",
+      "phase": "1",
+      "title": "Make normalize-canonical-urls attribute-order-independent and add a postBuild absolute+trailing-slash assertion (C6, invariant 12)",
+      "files_owned": [
+        "plugins/normalize-canonical-urls/index.js",
+        "scripts/__tests__/normalize-canonical-urls.test.mjs"
+      ],
+      "files_touched_readonly": [],
+      "depends_on": [],
+      "blocks": [
+        "P2-canonical-manifest-assert"
+      ],
+      "acceptance": [
+        "node --test scripts/__tests__/normalize-canonical-urls.test.mjs",
+        "! grep -q 'rel=\\[\"' plugins/normalize-canonical-urls/index.js"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "in_progress"
+    },
+    {
+      "id": "P1-llms-exports",
+      "phase": "1",
+      "title": "Export LOW_VALUE_PATTERNS and isLowValuePath from generate-llms-from-sitemap.mjs so section 11.3 A can reuse them",
+      "files_owned": [
+        "scripts/generate-llms-from-sitemap.mjs"
+      ],
+      "files_touched_readonly": [
+        "scripts/__tests__/generate-llms-from-sitemap.test.mjs"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "IDX-discover-sitemaps",
+        "P3-llms-per-locale"
+      ],
+      "acceptance": [
+        "npm run test:llms",
+        "node -e \"import('./scripts/generate-llms-from-sitemap.mjs').then(m=>{if(!m.LOW_VALUE_PATTERNS||!m.isLowValuePath)process.exit(1)})\""
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-anchor-freeze",
+      "phase": "1",
+      "title": "C8: run write-heading-ids, commit frozen {#id} anchors across all MDX, set onBrokenAnchors: 'throw'",
+      "files_owned": [
+        "docs/**",
+        "blog/**",
+        "src/pages/about.mdx",
+        "src/pages/contact.md",
+        "docusaurus.config.ts"
+      ],
+      "files_touched_readonly": [
+        "sidebars.ts"
+      ],
+      "depends_on": [
+        "P1-config-split"
+      ],
+      "blocks": [
+        "P5-translate-content-skill",
+        "P7-en-in-english-pages"
+      ],
+      "acceptance": [
+        "npm run write-heading-ids && git diff --quiet -- docs blog",
+        "grep -q \"onBrokenAnchors: 'throw'\" docusaurus.config.ts",
+        "npm run check:content"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-ui-strings",
+      "phase": "1",
+      "title": "Wrap ~500-700 UI string units in <Translate>/translate() across components, pages, whichScrimbaPath and relatedGuidesMap",
+      "files_owned": [
+        "src/components/**",
+        "src/pages/index.tsx",
+        "src/pages/tools/**",
+        "src/pages/roadmaps/**",
+        "src/content/whichScrimbaPath.ts",
+        "src/content/relatedGuidesMap.ts"
+      ],
+      "files_touched_readonly": [
+        "src/utils/localePath.ts"
+      ],
+      "depends_on": [
+        "P1-locale-path-util",
+        "P0b-pagefind-search-ui"
+      ],
+      "blocks": [
+        "P1-write-translations-baseline",
+        "P2-link-pruning",
+        "P5-localized-catalog",
+        "P7-localize-tools",
+        "P8-locale-suggestion-banner",
+        "P8-locale-switcher"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "npm run check:content",
+        "test \"$(grep -rl '@docusaurus/Translate' src/components | wc -l)\" -ge 20"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-write-translations-baseline",
+      "phase": "1",
+      "title": "Generate the English baseline for all four write-translations outputs and confirm the extraction surface",
+      "files_owned": [
+        "i18n/en/**"
+      ],
+      "files_touched_readonly": [
+        "src/components/**",
+        "sidebars.ts",
+        "config/navigation.ts"
+      ],
+      "depends_on": [
+        "P1-ui-strings"
+      ],
+      "blocks": [
+        "P6-ui-string-parity-check"
+      ],
+      "acceptance": [
+        "npx docusaurus write-translations --locale en",
+        "test -s i18n/en/code.json",
+        "test -s i18n/en/docusaurus-theme-classic/navbar.json",
+        "test -s i18n/en/docusaurus-theme-classic/footer.json",
+        "test -s i18n/en/docusaurus-plugin-content-docs/current.json"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-makefile-i18n-scaffold",
+      "phase": "1",
+      "title": "Add `make i18n-scaffold LOCALE=xx` to the Makefile",
+      "files_owned": [
+        "Makefile"
+      ],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "P2-makefile-i18n-status"
+      ],
+      "acceptance": [
+        "grep -q 'i18n-scaffold' Makefile",
+        "make -n i18n-scaffold LOCALE=de"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-check-content-i18n",
+      "phase": "1",
+      "title": "C9: extend check-content.mjs over i18n/**, add localized-currency and affiliate-integrity rules, scope em-dashes to Latin script via check-content.config.json",
+      "files_owned": [
+        "scripts/check-content.mjs",
+        "check-content.config.json",
+        "scripts/__tests__/check-content.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "src/components/AffiliateLink.tsx"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "P13-check-content-lang-config",
+        "P5-translate-content-skill"
+      ],
+      "acceptance": [
+        "npm run check:content",
+        "node --test scripts/__tests__/check-content.test.mjs",
+        "grep -q 'i18n' scripts/check-content.mjs",
+        "grep -q 'via=u42d4986' scripts/check-content.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-head-diff-baseline",
+      "phase": "1",
+      "title": "Section 16.1 proving artifact: structured head-diff over the built tree against a committed English baseline",
+      "files_owned": [
+        "scripts/head-diff.mjs",
+        "scripts/__tests__/head-diff.test.mjs",
+        "scripts/__fixtures__/head-baseline/**"
+      ],
+      "files_touched_readonly": [],
+      "depends_on": [],
+      "blocks": [],
+      "acceptance": [
+        "node --test scripts/__tests__/head-diff.test.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P1-claude-md-invariants",
+      "phase": "1",
+      "title": "Append the 12 new SEO invariants from section 5 to CLAUDE.md",
+      "files_owned": [
+        "CLAUDE.md"
+      ],
+      "files_touched_readonly": [
+        "I18N-PLAN.md"
+      ],
+      "depends_on": [
+        "P0-hosting-decision"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "grep -q 'Self-referencing canonical' CLAUDE.md",
+        "grep -q 'hreflang comes from' CLAUDE.md",
+        "grep -q 'Path parity' CLAUDE.md",
+        "grep -q 'Frozen heading anchors' CLAUDE.md"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-tiers-json",
+      "phase": "2",
+      "title": "i18n/tiers.json: the declared route sets (full, full-minus-course-leaves, Core-40, Micro-16) plus alwaysBuilt/alwaysExcluded",
+      "files_owned": [
+        "i18n/tiers.json"
+      ],
+      "files_touched_readonly": [],
+      "depends_on": [],
+      "blocks": [
+        "P2-coverage-closure-test",
+        "P2-coverage-manifest"
+      ],
+      "acceptance": [
+        "node -e \"const t=require('./i18n/tiers.json');if(t.routeSets.core.length!==40)process.exit(1)\"",
+        "node -e \"const t=require('./i18n/tiers.json');if(t.routeSets.micro.length!==16)process.exit(1)\"",
+        "node -e \"const t=require('./i18n/tiers.json');const c=new Set(t.routeSets.core);if(!t.routeSets.micro.every(r=>c.has(r)))process.exit(1)\""
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "done"
+    },
+    {
+      "id": "P2-coverage-manifest",
+      "phase": "2",
+      "title": "scripts/build-coverage-manifest.mjs: disk-derived i18n/coverage.json with route->sourceFile mapping read from frontmatter, gated on .status sidecars",
+      "files_owned": [
+        "scripts/build-coverage-manifest.mjs",
+        "scripts/__tests__/build-coverage-manifest.test.mjs",
+        ".gitignore"
+      ],
+      "files_touched_readonly": [
+        "i18n/tiers.json",
+        "i18n/locales.config.ts",
+        "config/currentLocale.ts"
+      ],
+      "depends_on": [
+        "P2-tiers-json",
+        "P1-locales-config",
+        "P1-current-locale-helper"
+      ],
+      "blocks": [
+        "IDX-discover-sitemaps",
+        "P2-content-exclude",
+        "P2-coverage-closure-test",
+        "P2-hreflang-engine",
+        "P2-link-pruning",
+        "P2-makefile-i18n-status",
+        "P2-prebuild-wiring",
+        "P2-sidebars-coverage",
+        "P2-sitemap-alternates",
+        "P3-sitemap-locale-config",
+        "P5-skill-scripts"
+      ],
+      "acceptance": [
+        "node scripts/build-coverage-manifest.mjs && test -f i18n/coverage.json",
+        "node --test scripts/__tests__/build-coverage-manifest.test.mjs",
+        "grep -q 'i18n/coverage.json' .gitignore",
+        "node -e \"const c=require('./i18n/coverage.json');if(Object.keys(c).includes('en'))process.exit(1)\""
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-sidebars-coverage",
+      "phase": "2",
+      "title": "Phase 2 (a): sidebars.ts computes a coverage-filtered plain object at module-evaluation time",
+      "files_owned": [
+        "sidebars.ts",
+        "scripts/__tests__/sidebars-coverage.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/coverage.json",
+        "config/currentLocale.ts"
+      ],
+      "depends_on": [
+        "P2-coverage-manifest",
+        "P1-current-locale-helper"
+      ],
+      "blocks": [
+        "P6-translate-es",
+        "P7-locale-only-content-mechanism"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "node --test scripts/__tests__/sidebars-coverage.test.mjs",
+        "! grep -q 'export default function' sidebars.ts"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-coverage-closure-test",
+      "phase": "2",
+      "title": "Phase 2 (b): global-chrome closure invariant test, per tier",
+      "files_owned": [
+        "scripts/__tests__/coverage-closure.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/tiers.json",
+        "config/navigation.ts",
+        "src/components/MegaMenu.tsx"
+      ],
+      "depends_on": [
+        "P2-coverage-manifest",
+        "P2-tiers-json"
+      ],
+      "blocks": [
+        "P6-translate-es"
+      ],
+      "acceptance": [
+        "node --test scripts/__tests__/coverage-closure.test.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-link-pruning",
+      "phase": "2",
+      "title": "Phase 2 (c): prune-locale-links.mjs unlinks uncovered markdown targets; getRelatedGuides filters against the manifest and renders nothing below 2 survivors",
+      "files_owned": [
+        "scripts/prune-locale-links.mjs",
+        "scripts/__tests__/prune-locale-links.test.mjs",
+        "src/components/RelatedGuides.tsx",
+        "src/content/relatedGuidesMap.ts"
+      ],
+      "files_touched_readonly": [
+        "i18n/coverage.json",
+        "src/utils/localePath.ts"
+      ],
+      "depends_on": [
+        "P2-coverage-manifest",
+        "P1-ui-strings"
+      ],
+      "blocks": [
+        "P2-prebuild-wiring",
+        "P6-translate-es",
+        "P7-related-guides-market-entries"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "node --test scripts/__tests__/prune-locale-links.test.mjs",
+        "node scripts/prune-locale-links.mjs --dry-run"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-content-exclude",
+      "phase": "2",
+      "title": "Phase 2 (d) + fail-closed exclusion: config/content.ts per-locale exclude globs, ALWAYS_BUILT/ALWAYS_EXCLUDED, footer Legal notice line, I18N_COVERAGE escape hatch",
+      "files_owned": [
+        "config/content.ts",
+        "config/navigation.ts"
+      ],
+      "files_touched_readonly": [
+        "i18n/coverage.json",
+        "i18n/tiers.json",
+        "config/currentLocale.ts"
+      ],
+      "depends_on": [
+        "P1-config-split",
+        "P2-coverage-manifest",
+        "P1-current-locale-helper"
+      ],
+      "blocks": [
+        "P4-rtl-fixtures",
+        "P6-translate-es",
+        "P7-locale-only-content-mechanism",
+        "P8-locale-switcher"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "grep -q 'alwaysBuilt' config/content.ts",
+        "grep -q 'alwaysExcluded' config/content.ts",
+        "grep -q 'I18N_COVERAGE' config/content.ts"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-hreflang-engine",
+      "phase": "2",
+      "title": "Eject SiteMetadata (--danger) and emit rel=alternate + og:locale:alternate only for locales whose manifest contains the current route, plus self and one x-default",
+      "files_owned": [
+        "src/theme/SiteMetadata/**",
+        "scripts/__tests__/hreflang.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/coverage.json",
+        "config/metadata.ts"
+      ],
+      "depends_on": [
+        "P2-coverage-manifest",
+        "P1-metadata-locale"
+      ],
+      "blocks": [
+        "P2-canonical-manifest-assert",
+        "P2-reciprocity-assert",
+        "P6-translate-es"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "node --test scripts/__tests__/hreflang.test.mjs",
+        "grep -q 'x-default' src/theme/SiteMetadata/index.tsx"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-canonical-manifest-assert",
+      "phase": "2",
+      "title": "Extend normalize-canonical-urls to ASSERT trailing slash + manifest membership only; it never emits or removes hreflang",
+      "files_owned": [
+        "plugins/normalize-canonical-urls/index.js"
+      ],
+      "files_touched_readonly": [
+        "scripts/__tests__/normalize-canonical-urls.test.mjs",
+        "i18n/coverage.json",
+        "src/theme/SiteMetadata/**"
+      ],
+      "depends_on": [
+        "P1-canonical-plugin-harden",
+        "P2-hreflang-engine"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "node --test scripts/__tests__/normalize-canonical-urls.test.mjs",
+        "! grep -q 'hreflang' plugins/normalize-canonical-urls/index.js"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-sitemap-alternates",
+      "phase": "2",
+      "title": "Post-process each generated sitemap to add xhtml:link alternates (plugin-sitemap has no alternateRefs field)",
+      "files_owned": [
+        "scripts/add-sitemap-alternates.mjs",
+        "scripts/__tests__/add-sitemap-alternates.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/coverage.json"
+      ],
+      "depends_on": [
+        "P2-coverage-manifest"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "node --test scripts/__tests__/add-sitemap-alternates.test.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-reciprocity-assert",
+      "phase": "2",
+      "title": "assemble-only cross-locale hreflang reciprocity assertion over the merged HTML tree",
+      "files_owned": [
+        "scripts/assert-hreflang-reciprocity.mjs",
+        "scripts/__tests__/assert-hreflang-reciprocity.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/coverage.json"
+      ],
+      "depends_on": [
+        "P2-hreflang-engine"
+      ],
+      "blocks": [
+        "P3-deploy-workflow"
+      ],
+      "acceptance": [
+        "node --test scripts/__tests__/assert-hreflang-reciprocity.test.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-prebuild-wiring",
+      "phase": "2",
+      "title": "Wire build-coverage-manifest and prune-locale-links into prebuild; add the new test scripts",
+      "files_owned": [
+        "package.json"
+      ],
+      "files_touched_readonly": [
+        "scripts/build-coverage-manifest.mjs",
+        "scripts/prune-locale-links.mjs"
+      ],
+      "depends_on": [
+        "P0b-search-config",
+        "P2-coverage-manifest",
+        "P2-link-pruning"
+      ],
+      "blocks": [
+        "P5-skill-scripts"
+      ],
+      "acceptance": [
+        "npm run check:content",
+        "grep -q 'build-coverage-manifest' package.json",
+        "grep -q 'prune-locale-links' package.json"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P2-makefile-i18n-status",
+      "phase": "2",
+      "title": "`make i18n-status`: report declared minus covered per locale (the section 1 launch gate, made computable)",
+      "files_owned": [
+        "Makefile"
+      ],
+      "files_touched_readonly": [
+        "scripts/build-coverage-manifest.mjs",
+        "i18n/tiers.json"
+      ],
+      "depends_on": [
+        "P1-makefile-i18n-scaffold",
+        "P2-coverage-manifest"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "grep -q 'i18n-status' Makefile",
+        "make -n i18n-status"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P3-locale-baseurl",
+      "phase": "3",
+      "title": "B5 fix: explicit baseUrl per localeConfigs entry ('/' for en, '/<locale>/' otherwise) plus a config-time assertion",
+      "files_owned": [
+        "config/i18n.ts"
+      ],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts"
+      ],
+      "depends_on": [
+        "P1-config-split",
+        "P1-locales-config"
+      ],
+      "blocks": [
+        "P15-build-isolation",
+        "P3-deploy-workflow",
+        "P3-sitemap-index"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "grep -q \"baseUrl: '/'\" config/i18n.ts",
+        "! grep -q \"'/en/'\" config/i18n.ts",
+        "grep -q 'throw' config/i18n.ts"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P3-sitemap-index",
+      "phase": "3",
+      "title": "generate-sitemap-index.mjs + robots.txt listing sitemap-index.xml alongside the existing sitemap.xml",
+      "files_owned": [
+        "scripts/generate-sitemap-index.mjs",
+        "scripts/__tests__/generate-sitemap-index.test.mjs",
+        "static/robots.txt"
+      ],
+      "files_touched_readonly": [
+        "config/sitemap.ts",
+        "i18n/locales.config.ts"
+      ],
+      "depends_on": [
+        "P3-locale-baseurl"
+      ],
+      "blocks": [
+        "IDX-discover-sitemaps",
+        "P3-deploy-workflow",
+        "P3-indexnow-per-locale",
+        "P3-llms-per-locale"
+      ],
+      "acceptance": [
+        "node --test scripts/__tests__/generate-sitemap-index.test.mjs",
+        "grep -q 'sitemap-index.xml' static/robots.txt",
+        "grep -q 'Sitemap: https://scrimbaguide.tech/sitemap.xml' static/robots.txt"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P3-sitemap-locale-config",
+      "phase": "3",
+      "title": "C13: shouldIncludeInSitemap strips the locale prefix before matching exclusions; verify redirect stubs are emitted per locale",
+      "files_owned": [
+        "config/sitemap.ts",
+        "config/redirects.ts"
+      ],
+      "files_touched_readonly": [
+        "data/course-redirects.json",
+        "src/utils/localePath.ts"
+      ],
+      "depends_on": [
+        "P1-config-split",
+        "P2-coverage-manifest"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "npm run typecheck",
+        "grep -q 'stripLocale' config/sitemap.ts",
+        "node --test scripts/__tests__/sitemap-exclusions.test.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P3-llms-per-locale",
+      "phase": "3",
+      "title": "C11: per-locale llms.txt/llms-full.txt keyed by locale-stripped path, root llms.txt linking the locale indexes",
+      "files_owned": [
+        "scripts/generate-llms-from-sitemap.mjs",
+        "scripts/__tests__/generate-llms-from-sitemap.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts",
+        "i18n/coverage.json"
+      ],
+      "depends_on": [
+        "P1-llms-exports",
+        "P3-sitemap-index"
+      ],
+      "blocks": [
+        "P3-deploy-workflow"
+      ],
+      "acceptance": [
+        "npm run test:llms",
+        "grep -q 'PAGE_ANNOTATIONS' scripts/generate-llms-from-sitemap.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P3-indexnow-per-locale",
+      "phase": "3",
+      "title": "C12: per-locale IndexNow submission and sitemap-URL assertion; add the --urls flag that section 11.3 D reuses",
+      "files_owned": [
+        "scripts/submit-indexnow.mjs",
+        "scripts/assert-sitemap-url.mjs",
+        "scripts/__tests__/submit-indexnow.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts"
+      ],
+      "depends_on": [
+        "P3-sitemap-index"
+      ],
+      "blocks": [
+        "IDX-notify",
+        "P3-deploy-workflow"
+      ],
+      "acceptance": [
+        "node --test scripts/__tests__/submit-indexnow.test.mjs",
+        "node scripts/submit-indexnow.mjs --help | grep -q -- '--urls'",
+        "node scripts/assert-sitemap-url.mjs --help | grep -q -- '--locale'"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P3-deploy-workflow",
+      "phase": "3",
+      "title": "Rewrite deploy.yml: per-locale build matrix, assemble job (static/ dedupe, single merged-tree Pagefind run, two-axis size/file gate), per-locale indexnow",
+      "files_owned": [
+        ".github/workflows/deploy.yml"
+      ],
+      "files_touched_readonly": [
+        "wrangler.json",
+        "plugins/pagefind/index.js",
+        "scripts/generate-sitemap-index.mjs",
+        "scripts/assert-hreflang-reciprocity.mjs",
+        "scripts/generate-llms-from-sitemap.mjs",
+        "i18n/locales.config.ts"
+      ],
+      "depends_on": [
+        "P0c-deploy-publish-step",
+        "P0-hosting-decision",
+        "P3-locale-baseurl",
+        "P3-sitemap-index",
+        "P3-llms-per-locale",
+        "P3-indexnow-per-locale",
+        "P2-reciprocity-assert",
+        "P0b-pagefind-plugin"
+      ],
+      "blocks": [
+        "IDX-workflows",
+        "P6-translate-es"
+      ],
+      "acceptance": [
+        "actionlint .github/workflows/deploy.yml",
+        "grep -q 'SKIP_PAGEFIND' .github/workflows/deploy.yml",
+        "grep -q 'max-parallel' .github/workflows/deploy.yml",
+        "grep -q 'fail-fast: false' .github/workflows/deploy.yml",
+        "grep -q 'I18N_COVERAGE' .github/workflows/deploy.yml"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P15-build-isolation",
+      "phase": "15",
+      "title": "Section 15.4: a worktree+--out-dir wrapper so parallel local/agent locale builds cannot clobber .docusaurus",
+      "files_owned": [
+        "scripts/build-locale-worktree.sh"
+      ],
+      "files_touched_readonly": [
+        "Makefile"
+      ],
+      "depends_on": [
+        "P3-locale-baseurl"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "bash -n scripts/build-locale-worktree.sh",
+        "grep -q 'git worktree' scripts/build-locale-worktree.sh",
+        "grep -q -- '--out-dir' scripts/build-locale-worktree.sh"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P4-rtl-fixtures",
+      "phase": "4",
+      "title": "Throwaway ar + ja fixture pages (homepage, a path page, a comparison table, a course leaf with code) for the RTL/CJK pass",
+      "files_owned": [
+        "i18n/.rtl-fixtures/**"
+      ],
+      "files_touched_readonly": [
+        "docs/paths/frontend-developer-path.mdx"
+      ],
+      "depends_on": [
+        "P2-content-exclude"
+      ],
+      "blocks": [
+        "P4-rtl-visual-qa"
+      ],
+      "acceptance": [
+        "test \"$(ls i18n/.rtl-fixtures/ar | wc -l)\" -ge 4",
+        "test -d i18n/.rtl-fixtures/ja",
+        "grep -q 'i18n/.rtl-fixtures' .gitignore"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P4-rtl-css",
+      "phase": "4",
+      "title": "Logical properties across custom.css + 3 CSS modules, bidi isolation for code, directional icon flipping, :lang(ja) line breaking",
+      "files_owned": [
+        "src/css/custom.css",
+        "src/theme/Navbar/Content/styles.module.css",
+        "src/theme/NavbarItem/DropdownNavbarItem/Mobile/styles.module.css",
+        "src/theme/SearchPage/SearchPage.module.css"
+      ],
+      "files_touched_readonly": [],
+      "depends_on": [
+        "P0b-pagefind-search-ui"
+      ],
+      "blocks": [
+        "P4-rtl-visual-qa"
+      ],
+      "acceptance": [
+        "! grep -nE '(margin|padding)-(left|right):' src/css/custom.css | grep -q .",
+        "grep -q 'unicode-bidi: isolate' src/css/custom.css",
+        "grep -q ':lang(ja)' src/css/custom.css",
+        "grep -q 'icon-directional' src/css/custom.css"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P4-fonts",
+      "phase": "4",
+      "title": "C14: per-script font stacks emitted conditionally from CURRENT_LOCALE; system stacks for CJK and Indic",
+      "files_owned": [
+        "config/fonts.ts"
+      ],
+      "files_touched_readonly": [
+        "config/currentLocale.ts",
+        "i18n/locales.config.ts",
+        "docusaurus.config.ts"
+      ],
+      "depends_on": [
+        "P1-config-split",
+        "P1-current-locale-helper",
+        "P1-locales-config"
+      ],
+      "blocks": [
+        "P4-rtl-visual-qa",
+        "P6-translate-ja",
+        "P7-localized-social-cards"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "grep -q 'CURRENT_LOCALE' config/fonts.ts",
+        "! grep -qE 'Noto Sans (JP|SC|KR|Devanagari)' config/fonts.ts",
+        "grep -q 'fontScript' config/fonts.ts"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P4-rtl-visual-qa",
+      "phase": "4",
+      "title": "RTL/CJK visual pass under I18N_COVERAGE=full: no tofu, LTR code spans in Arabic prose, no title clipping, axe clean",
+      "files_owned": [],
+      "files_touched_readonly": [
+        "src/css/custom.css",
+        "config/fonts.ts",
+        "i18n/.rtl-fixtures/**"
+      ],
+      "depends_on": [
+        "P4-rtl-css",
+        "P4-fonts",
+        "P4-rtl-fixtures"
+      ],
+      "blocks": [
+        "P4-a11y-ar"
+      ],
+      "acceptance": [
+        "I18N_COVERAGE=full npx docusaurus build --locale ar --out-dir build-ar-qa",
+        "node scripts/axe-audit.mjs --dir build-ar-qa"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P4-a11y-ar",
+      "phase": "4",
+      "title": "Extend the axe suite with an Arabic run",
+      "files_owned": [
+        "scripts/__tests__/a11y-rtl.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "scripts/axe-audit.mjs",
+        "scripts/__tests__/a11y-search.test.mjs"
+      ],
+      "depends_on": [
+        "P4-rtl-visual-qa",
+        "P0b-a11y-search-cleanup"
+      ],
+      "blocks": [
+        "P6-translate-ar"
+      ],
+      "acceptance": [
+        "npm run test:a11y"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P5-translate-content-skill",
+      "phase": "5",
+      "title": "Author .claude/skills/translate-content/SKILL.md + references (frontmatter, JSX, glossary policy, anchors, transcreation tier, two-tier QA gate, sidecar schema)",
+      "files_owned": [
+        ".claude/skills/translate-content/SKILL.md",
+        ".claude/skills/translate-content/references/locales.md",
+        ".claude/skills/translate-content/references/jsx-contract.md",
+        ".claude/skills/translate-content/references/qa-checklist.md",
+        ".claude/skills/translate-content/references/mqm-rubric.md",
+        ".claude/skills/translate-content/references/workflow.md"
+      ],
+      "files_touched_readonly": [
+        "CLAUDE.md",
+        "i18n/locales.config.ts",
+        "i18n/tiers.json"
+      ],
+      "depends_on": [
+        "P1-anchor-freeze",
+        "P1-check-content-i18n"
+      ],
+      "blocks": [
+        "P13-translate-es-skill",
+        "P5-skill-scripts"
+      ],
+      "acceptance": [
+        "grep -q 'name: translate-content' .claude/skills/translate-content/SKILL.md",
+        "test -f .claude/skills/translate-content/references/mqm-rubric.md",
+        "test -f .claude/skills/translate-content/references/workflow.md",
+        "! grep -qi 'register' .claude/skills/translate-content/references/locales.md"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P5-skill-scripts",
+      "phase": "5",
+      "title": "The five skill scripts (new-locale, translation-status, build-glossary, jsx-integrity, glossary-check) + mqm-wordcount + the generated glossary.csv",
+      "files_owned": [
+        ".claude/skills/translate-content/scripts/**",
+        ".claude/skills/translate-content/references/glossary.csv",
+        "scripts/translation-status.mjs",
+        "scripts/mqm-wordcount.mjs",
+        "scripts/__tests__/jsx-integrity.test.mjs",
+        "scripts/__tests__/glossary-check.test.mjs",
+        "scripts/__tests__/mqm-wordcount.test.mjs",
+        "package.json",
+        ".gitignore"
+      ],
+      "files_touched_readonly": [
+        "data/courses.json",
+        "i18n/coverage.json"
+      ],
+      "depends_on": [
+        "P5-translate-content-skill",
+        "P2-prebuild-wiring",
+        "P2-coverage-manifest"
+      ],
+      "blocks": [
+        "P6-translate-es"
+      ],
+      "acceptance": [
+        "node --test scripts/__tests__/jsx-integrity.test.mjs",
+        "node --test scripts/__tests__/glossary-check.test.mjs",
+        "node --test scripts/__tests__/mqm-wordcount.test.mjs",
+        "node .claude/skills/translate-content/scripts/build-glossary.mjs && test -s .claude/skills/translate-content/references/glossary.csv",
+        "! grep -q 'cp -r' .claude/skills/translate-content/scripts/new-locale.mjs",
+        "grep -q 'translation-status' package.json"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P5-localized-catalog",
+      "phase": "5",
+      "title": "Phase 5 item 11: data/i18n/<locale>/courses-strings.json + units.json, localizedCatalog.ts resolver, build-data.mjs stub emission",
+      "files_owned": [
+        "src/utils/localizedCatalog.ts",
+        "src/utils/scrimbaFacts.ts",
+        "src/components/CourseCurriculum.tsx",
+        "scripts/build-data.mjs",
+        "data/i18n/**",
+        "scripts/__tests__/localizedCatalog.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "data/courses.json",
+        "i18n/locales.config.ts"
+      ],
+      "depends_on": [
+        "P1-ui-strings",
+        "P1-locales-config"
+      ],
+      "blocks": [
+        "P6-translate-es"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "node scripts/build-data.mjs",
+        "node --test scripts/__tests__/localizedCatalog.test.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P13-translate-es-skill",
+      "phase": "13",
+      "title": "translate-es: the reference per-language skill, all eight sections, MQM threshold calibrated on 20 pages",
+      "files_owned": [
+        ".claude/skills/translate-es/**"
+      ],
+      "files_touched_readonly": [
+        ".claude/skills/translate-content/SKILL.md"
+      ],
+      "depends_on": [
+        "P5-translate-content-skill"
+      ],
+      "blocks": [
+        "P13-check-content-lang-config",
+        "P13-translate-ar-skill",
+        "P13-translate-ja-skill",
+        "P6-translate-es"
+      ],
+      "acceptance": [
+        "grep -q 'name: translate-es' .claude/skills/translate-es/SKILL.md",
+        "test \"$(grep -c '^## ' .claude/skills/translate-es/SKILL.md)\" -ge 8",
+        "! grep -rn 'check:content' .claude/skills/translate-es/SKILL.md | grep -q ."
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P13-translate-ja-skill",
+      "phase": "13",
+      "title": "translate-ja: CJK typography, です・ます register, full-width punctuation, SERP pixel-width budget",
+      "files_owned": [
+        ".claude/skills/translate-ja/**"
+      ],
+      "files_touched_readonly": [
+        ".claude/skills/translate-es/SKILL.md"
+      ],
+      "depends_on": [
+        "P13-translate-es-skill"
+      ],
+      "blocks": [
+        "P13-translate-de-skill",
+        "P13-translate-fr-skill",
+        "P13-translate-pt-br-skill",
+        "P6-translate-ja"
+      ],
+      "acceptance": [
+        "grep -q 'name: translate-ja' .claude/skills/translate-ja/SKILL.md",
+        "test \"$(grep -c '^## ' .claude/skills/translate-ja/SKILL.md)\" -ge 8"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P13-translate-ar-skill",
+      "phase": "13",
+      "title": "translate-ar: MSA, Arabic punctuation, ASCII digits beside code, bidi-safe phrasing",
+      "files_owned": [
+        ".claude/skills/translate-ar/**"
+      ],
+      "files_touched_readonly": [
+        ".claude/skills/translate-es/SKILL.md"
+      ],
+      "depends_on": [
+        "P13-translate-es-skill"
+      ],
+      "blocks": [
+        "P13-translate-de-skill",
+        "P13-translate-fr-skill",
+        "P13-translate-pt-br-skill",
+        "P6-translate-ar"
+      ],
+      "acceptance": [
+        "grep -q 'name: translate-ar' .claude/skills/translate-ar/SKILL.md",
+        "test \"$(grep -c '^## ' .claude/skills/translate-ar/SKILL.md)\" -ge 8"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P13-translate-pt-br-skill",
+      "phase": "13",
+      "title": "translate-pt-br (locale tag pt-BR): você register, Alura/Rocketseat competitor set, 'vale a pena' query behaviour",
+      "files_owned": [
+        ".claude/skills/translate-pt-br/**"
+      ],
+      "files_touched_readonly": [
+        ".claude/skills/translate-es/SKILL.md"
+      ],
+      "depends_on": [
+        "P13-translate-ja-skill",
+        "P13-translate-ar-skill"
+      ],
+      "blocks": [
+        "P6-translate-pt-br"
+      ],
+      "acceptance": [
+        "grep -q 'name: translate-pt-br' .claude/skills/translate-pt-br/SKILL.md",
+        "grep -q 'pt-BR' .claude/skills/translate-pt-br/SKILL.md"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P13-translate-fr-skill",
+      "phase": "13",
+      "title": "translate-fr: vous register, U+202F spacing rules, OpenClassrooms competitor set, 'avis' query behaviour",
+      "files_owned": [
+        ".claude/skills/translate-fr/**"
+      ],
+      "files_touched_readonly": [
+        ".claude/skills/translate-es/SKILL.md"
+      ],
+      "depends_on": [
+        "P13-translate-ja-skill",
+        "P13-translate-ar-skill"
+      ],
+      "blocks": [
+        "P6-translate-fr"
+      ],
+      "acceptance": [
+        "grep -q 'name: translate-fr' .claude/skills/translate-fr/SKILL.md",
+        "grep -q 'U+202F' .claude/skills/translate-fr/SKILL.md"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P13-translate-de-skill",
+      "phase": "13",
+      "title": "translate-de: du register, compound-noun length hazards against the 44-char title budget, 'Erfahrungen' query behaviour",
+      "files_owned": [
+        ".claude/skills/translate-de/**"
+      ],
+      "files_touched_readonly": [
+        ".claude/skills/translate-es/SKILL.md"
+      ],
+      "depends_on": [
+        "P13-translate-ja-skill",
+        "P13-translate-ar-skill"
+      ],
+      "blocks": [
+        "P6-translate-de"
+      ],
+      "acceptance": [
+        "grep -q 'name: translate-de' .claude/skills/translate-de/SKILL.md",
+        "grep -q 'Erfahrungen' .claude/skills/translate-de/SKILL.md"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P13-native-profiles",
+      "phase": "13",
+      "title": "build-native-profile.mjs + one committed 150-type profile per Tier A locale (profiles only, never corpus text)",
+      "files_owned": [
+        "scripts/build-native-profile.mjs",
+        "scripts/__tests__/build-native-profile.test.mjs",
+        "i18n/native-profiles/**"
+      ],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts"
+      ],
+      "depends_on": [
+        "P1-locales-config"
+      ],
+      "blocks": [
+        "P13-translationese-check"
+      ],
+      "acceptance": [
+        "node --test scripts/__tests__/build-native-profile.test.mjs",
+        "! git ls-files i18n/native-profiles | grep -qv '\\.json$'",
+        "node -e \"const p=require('./i18n/native-profiles/es.json');if(p.topTypes.length!==150||p.tokenCount<300000)process.exit(1)\""
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P13-translationese-check",
+      "phase": "13",
+      "title": "translationese-check.mjs: Intl.Segmenter tokenizer, JSD vs the native profile, p95 bootstrap threshold, per-locale median tracking",
+      "files_owned": [
+        "scripts/translationese-check.mjs",
+        "scripts/__tests__/translationese-check.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/native-profiles/**"
+      ],
+      "depends_on": [
+        "P13-native-profiles"
+      ],
+      "blocks": [
+        "P6-translate-es"
+      ],
+      "acceptance": [
+        "node --test scripts/__tests__/translationese-check.test.mjs",
+        "grep -q 'Intl.Segmenter' scripts/translationese-check.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P13-check-content-lang-config",
+      "phase": "13",
+      "title": "Section 15.2 collision 3: per-language typographic assertions supplied as DATA in check-content.config.json, never as new checker code",
+      "files_owned": [
+        "check-content.config.json"
+      ],
+      "files_touched_readonly": [
+        "scripts/check-content.mjs",
+        ".claude/skills/translate-es/SKILL.md"
+      ],
+      "depends_on": [
+        "P1-check-content-i18n",
+        "P13-translate-es-skill"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "npm run check:content",
+        "node -e \"JSON.parse(require('fs').readFileSync('check-content.config.json','utf8'))\"",
+        "node --test scripts/__tests__/check-content.test.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P6-ui-string-parity-check",
+      "phase": "6",
+      "title": "Barrier assertion: fail if any message in the four write-translations files is byte-identical to English (unless it is a glossary do-not-translate term)",
+      "files_owned": [
+        "scripts/assert-ui-translation-parity.mjs",
+        "scripts/__tests__/assert-ui-translation-parity.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/en/**",
+        ".claude/skills/translate-content/references/glossary.csv"
+      ],
+      "depends_on": [
+        "P1-write-translations-baseline"
+      ],
+      "blocks": [
+        "P6-translate-es"
+      ],
+      "acceptance": [
+        "node --test scripts/__tests__/assert-ui-translation-parity.test.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P6-translate-es",
+      "phase": "6",
+      "title": "Translate Tier A locale es: full site, alone, first (largest market, lowest-risk script)",
+      "files_owned": [
+        "i18n/es/**"
+      ],
+      "files_touched_readonly": [
+        "docs/**",
+        "blog/**",
+        "src/pages/**",
+        "data/courses.json"
+      ],
+      "depends_on": [
+        "P5-skill-scripts",
+        "P5-localized-catalog",
+        "P13-translate-es-skill",
+        "P13-translationese-check",
+        "P6-ui-string-parity-check",
+        "P2-hreflang-engine",
+        "P2-sidebars-coverage",
+        "P2-content-exclude",
+        "P2-link-pruning",
+        "P2-coverage-closure-test",
+        "P3-deploy-workflow"
+      ],
+      "blocks": [
+        "P6-tier-a-launch",
+        "P6-translate-de",
+        "P6-translate-fr",
+        "P6-translate-pt-br",
+        "P7-local-competitor-pages"
+      ],
+      "acceptance": [
+        "npm run check:content",
+        "node scripts/build-coverage-manifest.mjs && make i18n-status",
+        "npx docusaurus build --locale es --out-dir build-es",
+        "node scripts/translationese-check.mjs --locale es",
+        "node scripts/assert-ui-translation-parity.mjs --locale es"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P6-translate-pt-br",
+      "phase": "6",
+      "title": "Translate Tier A locale pt-BR: full site",
+      "files_owned": [
+        "i18n/pt-BR/**"
+      ],
+      "files_touched_readonly": [
+        "docs/**",
+        "blog/**",
+        "src/pages/**"
+      ],
+      "depends_on": [
+        "P6-translate-es",
+        "P13-translate-pt-br-skill"
+      ],
+      "blocks": [
+        "P6-tier-a-launch",
+        "P6-translate-ar",
+        "P6-translate-ja",
+        "P7-local-competitor-pages"
+      ],
+      "acceptance": [
+        "npm run check:content",
+        "npx docusaurus build --locale pt-BR --out-dir build-pt-BR",
+        "node scripts/translationese-check.mjs --locale pt-BR",
+        "node scripts/assert-ui-translation-parity.mjs --locale pt-BR"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P6-translate-fr",
+      "phase": "6",
+      "title": "Translate Tier A locale fr: full site",
+      "files_owned": [
+        "i18n/fr/**"
+      ],
+      "files_touched_readonly": [
+        "docs/**",
+        "blog/**",
+        "src/pages/**"
+      ],
+      "depends_on": [
+        "P6-translate-es",
+        "P13-translate-fr-skill"
+      ],
+      "blocks": [
+        "P6-tier-a-launch",
+        "P6-translate-ar",
+        "P6-translate-ja",
+        "P7-local-competitor-pages"
+      ],
+      "acceptance": [
+        "npm run check:content",
+        "npx docusaurus build --locale fr --out-dir build-fr",
+        "node scripts/translationese-check.mjs --locale fr",
+        "node scripts/assert-ui-translation-parity.mjs --locale fr"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P6-translate-de",
+      "phase": "6",
+      "title": "Translate Tier A locale de: full site",
+      "files_owned": [
+        "i18n/de/**"
+      ],
+      "files_touched_readonly": [
+        "docs/**",
+        "blog/**",
+        "src/pages/**"
+      ],
+      "depends_on": [
+        "P6-translate-es",
+        "P13-translate-de-skill"
+      ],
+      "blocks": [
+        "P6-tier-a-launch",
+        "P6-translate-ar",
+        "P6-translate-ja",
+        "P7-local-competitor-pages"
+      ],
+      "acceptance": [
+        "npm run check:content",
+        "npx docusaurus build --locale de --out-dir build-de",
+        "node scripts/translationese-check.mjs --locale de",
+        "node scripts/assert-ui-translation-parity.mjs --locale de"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P6-translate-ja",
+      "phase": "6",
+      "title": "Translate Tier A locale ja: full site; validates CJK typography, system font stack and Pagefind segmentation end to end",
+      "files_owned": [
+        "i18n/ja/**"
+      ],
+      "files_touched_readonly": [
+        "docs/**",
+        "blog/**",
+        "src/pages/**"
+      ],
+      "depends_on": [
+        "P6-translate-pt-br",
+        "P6-translate-fr",
+        "P6-translate-de",
+        "P13-translate-ja-skill",
+        "P4-fonts"
+      ],
+      "blocks": [
+        "P6-tier-a-launch",
+        "P7-local-competitor-pages"
+      ],
+      "acceptance": [
+        "npm run check:content",
+        "npx docusaurus build --locale ja --out-dir build-ja",
+        "node scripts/translationese-check.mjs --locale ja",
+        "node scripts/assert-ui-translation-parity.mjs --locale ja"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P6-translate-ar",
+      "phase": "6",
+      "title": "Translate Tier A locale ar: full site; validates the whole RTL stack end to end",
+      "files_owned": [
+        "i18n/ar/**"
+      ],
+      "files_touched_readonly": [
+        "docs/**",
+        "blog/**",
+        "src/pages/**"
+      ],
+      "depends_on": [
+        "P6-translate-pt-br",
+        "P6-translate-fr",
+        "P6-translate-de",
+        "P13-translate-ar-skill",
+        "P4-a11y-ar"
+      ],
+      "blocks": [
+        "P6-tier-a-launch"
+      ],
+      "acceptance": [
+        "npm run check:content",
+        "npx docusaurus build --locale ar --out-dir build-ar",
+        "node scripts/translationese-check.mjs --locale ar",
+        "node scripts/assert-ui-translation-parity.mjs --locale ar",
+        "npm run test:a11y"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P6-tier-a-launch",
+      "phase": "6",
+      "title": "Flip the six Tier A locales to status 'live' in the roster once each clears its barrier and the <=10% auto-drop gate",
+      "files_owned": [
+        "i18n/locales.config.ts"
+      ],
+      "files_touched_readonly": [
+        "i18n/coverage.json",
+        "i18n/tiers.json"
+      ],
+      "depends_on": [
+        "P1-locales-config",
+        "P6-translate-es",
+        "P6-translate-pt-br",
+        "P6-translate-fr",
+        "P6-translate-de",
+        "P6-translate-ja",
+        "P6-translate-ar"
+      ],
+      "blocks": [
+        "P7-locale-only-content-mechanism",
+        "P7-localize-tools",
+        "P7-localized-social-cards"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "make i18n-status",
+        "npm run build",
+        "node scripts/assert-hreflang-reciprocity.mjs --dir build"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P7-locale-only-content-mechanism",
+      "phase": "7",
+      "title": "Resolve where locale-only content lives (second content-docs instance vs docs/ + per-locale exclude) and wire it, with singleton coverage entries",
+      "files_owned": [
+        "config/content.ts",
+        "sidebars.local.ts"
+      ],
+      "files_touched_readonly": [
+        "sidebars.ts",
+        "i18n/coverage.json",
+        "scripts/build-coverage-manifest.mjs"
+      ],
+      "depends_on": [
+        "P2-content-exclude",
+        "P2-sidebars-coverage",
+        "P6-tier-a-launch"
+      ],
+      "blocks": [
+        "P7-local-competitor-pages"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "grep -q 'local-docs' config/content.ts",
+        "node --test scripts/__tests__/coverage-closure.test.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P7-local-competitor-pages",
+      "phase": "7",
+      "title": "Net-new per-market competitor and job-market pages (Alura, Rocketseat, Platzi, OpenClassrooms, Progate, TechAcademy, CodeCamp, DACH bootcamps)",
+      "files_owned": [
+        "i18n/es/local-docs/**",
+        "i18n/pt-BR/local-docs/**",
+        "i18n/fr/local-docs/**",
+        "i18n/de/local-docs/**",
+        "i18n/ja/local-docs/**"
+      ],
+      "files_touched_readonly": [
+        "docs/comparisons/**"
+      ],
+      "depends_on": [
+        "P7-locale-only-content-mechanism",
+        "P6-translate-es",
+        "P6-translate-pt-br",
+        "P6-translate-fr",
+        "P6-translate-de",
+        "P6-translate-ja"
+      ],
+      "blocks": [
+        "P7-related-guides-market-entries"
+      ],
+      "acceptance": [
+        "npm run check:content",
+        "npx docusaurus build --locale ja --out-dir build-ja",
+        "test -f build-ja/ja/docs/comparisons/scrimba-vs-progate/index.html"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P7-en-in-english-pages",
+      "phase": "7",
+      "title": "en-IN intent: new ENGLISH comparison pages (scrimba-vs-scaler, -coding-ninjas, -geeksforgeeks) in the normal docs tree",
+      "files_owned": [
+        "docs/comparisons/scrimba-vs-scaler.mdx",
+        "docs/comparisons/scrimba-vs-coding-ninjas.mdx",
+        "docs/comparisons/scrimba-vs-geeksforgeeks.mdx"
+      ],
+      "files_touched_readonly": [
+        "docs/comparisons/index.mdx"
+      ],
+      "depends_on": [
+        "P1-anchor-freeze"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "npm run check:content",
+        "npm run typecheck"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P7-localized-social-cards",
+      "phase": "7",
+      "title": "Localized OG cards: per-script font handling and RTL text layout in generate-social-cards.mjs",
+      "files_owned": [
+        "scripts/generate-social-cards.mjs"
+      ],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts",
+        "config/fonts.ts"
+      ],
+      "depends_on": [
+        "P6-tier-a-launch",
+        "P4-fonts"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "node scripts/generate-social-cards.mjs",
+        "node scripts/generate-social-cards.mjs --locale ar"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P7-localize-tools",
+      "phase": "7",
+      "title": "Localize the bootcamp cost calculator: local currency display and local bootcamp price ranges (never Scrimba prices)",
+      "files_owned": [
+        "src/pages/tools/bootcamp-cost-calculator.tsx"
+      ],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts"
+      ],
+      "depends_on": [
+        "P1-ui-strings",
+        "P6-tier-a-launch"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "npm run typecheck",
+        "npm run check:content"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P7-related-guides-market-entries",
+      "phase": "7",
+      "title": "relatedGuidesMap entries for the per-market pages",
+      "files_owned": [
+        "src/content/relatedGuidesMap.ts"
+      ],
+      "files_touched_readonly": [
+        "i18n/coverage.json"
+      ],
+      "depends_on": [
+        "P2-link-pruning",
+        "P7-local-competitor-pages"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "npm run typecheck",
+        "node --test scripts/__tests__/prune-locale-links.test.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P8-locale-switcher",
+      "phase": "8",
+      "title": "Custom searchable, region-grouped LocaleSwitcher rendering real crawlable anchors, left of the Get Scrimba Pro CTA, plus the 'help improve this translation' link",
+      "files_owned": [
+        "src/components/LocaleSwitcher.tsx",
+        "src/components/LocaleSwitcher.module.css",
+        "config/navigation.ts"
+      ],
+      "files_touched_readonly": [
+        "i18n/locales.config.ts",
+        "i18n/coverage.json"
+      ],
+      "depends_on": [
+        "P2-content-exclude",
+        "P1-ui-strings",
+        "P1-locales-config"
+      ],
+      "blocks": [
+        "P8-locale-suggestion-banner"
+      ],
+      "acceptance": [
+        "npm run typecheck",
+        "! grep -q 'localeDropdown' config/navigation.ts",
+        "grep -q '<a' src/components/LocaleSwitcher.tsx"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "P8-locale-suggestion-banner",
+      "phase": "8",
+      "title": "Dismissible Accept-Language suggestion banner with a cookie. Suggests, never redirects (invariant 5)",
+      "files_owned": [
+        "src/components/LocaleSuggestionBanner.tsx",
+        "src/components/LocaleSuggestionBanner.module.css"
+      ],
+      "files_touched_readonly": [
+        "src/components/LocaleSwitcher.tsx"
+      ],
+      "depends_on": [
+        "P1-ui-strings",
+        "P8-locale-switcher"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "npm run typecheck",
+        "! grep -qE 'window\\.location\\.(replace|assign|href) *=' src/components/LocaleSuggestionBanner.tsx"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "IDX-state-branch-bootstrap",
+      "phase": "11",
+      "title": "Section 11.7 step 0: create the orphan indexer-state branch seeded with ledger.json, quota.json and reports/.gitkeep",
+      "files_owned": [],
+      "files_touched_readonly": [
+        ".gitignore"
+      ],
+      "depends_on": [],
+      "blocks": [
+        "IDX-baseline-sweep",
+        "IDX-workflows"
+      ],
+      "acceptance": [
+        "git ls-remote --exit-code --heads origin indexer-state",
+        "grep -q '.indexer-state' .gitignore"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "IDX-auth-quota-ledger",
+      "phase": "11",
+      "title": "auth.mjs (hand-rolled service-account JWT, scopes, endpoints, gscFetch) + quota.mjs (Pacific-day buckets) + ledger.mjs (sole reader/writer) + commit-state.sh",
+      "files_owned": [
+        "scripts/indexer/auth.mjs",
+        "scripts/indexer/quota.mjs",
+        "scripts/indexer/ledger.mjs",
+        "scripts/indexer/commit-state.sh",
+        "scripts/indexer/__tests__/auth.test.mjs",
+        "scripts/indexer/__tests__/quota.test.mjs",
+        "scripts/indexer/__tests__/ledger.test.mjs"
+      ],
+      "files_touched_readonly": [],
+      "depends_on": [],
+      "blocks": [
+        "IDX-discover-sitemaps"
+      ],
+      "acceptance": [
+        "node --test scripts/indexer/__tests__/auth.test.mjs scripts/indexer/__tests__/quota.test.mjs scripts/indexer/__tests__/ledger.test.mjs",
+        "! grep -q 'googleapis' package.json",
+        "grep -q 'sc-domain:scrimbaguide.tech' scripts/indexer/auth.mjs",
+        "! grep -rn 'private_key' scripts/indexer/*.mjs | grep -v 'createSign' | grep -q ."
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "in_progress"
+    },
+    {
+      "id": "IDX-discover-sitemaps",
+      "phase": "11",
+      "title": "discover.mjs (live sitemap-index recursion, locale-stripped low-value filtering, coverage cross-check, reconciliation) + sitemaps.mjs (idempotent submit)",
+      "files_owned": [
+        "scripts/indexer/discover.mjs",
+        "scripts/indexer/sitemaps.mjs",
+        "scripts/indexer/__tests__/discover.test.mjs",
+        "scripts/indexer/__tests__/sitemaps.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "scripts/generate-llms-from-sitemap.mjs",
+        "src/utils/localePath.ts",
+        "i18n/coverage.json"
+      ],
+      "depends_on": [
+        "IDX-auth-quota-ledger",
+        "P1-llms-exports",
+        "P1-locale-path-util",
+        "P2-coverage-manifest",
+        "P3-sitemap-index"
+      ],
+      "blocks": [
+        "IDX-inspect"
+      ],
+      "acceptance": [
+        "node --test scripts/indexer/__tests__/discover.test.mjs scripts/indexer/__tests__/sitemaps.test.mjs",
+        "node scripts/indexer/discover.mjs --dry-run"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "IDX-inspect",
+      "phase": "11",
+      "title": "inspect.mjs: the P0-P4 priority sweep inside the 1,800/day budget, with the status+reason error classification table",
+      "files_owned": [
+        "scripts/indexer/inspect.mjs",
+        "scripts/indexer/__tests__/inspect.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "src/utils/moneyPagePaths.ts",
+        "scripts/indexer/ledger.mjs"
+      ],
+      "depends_on": [
+        "IDX-discover-sitemaps"
+      ],
+      "blocks": [
+        "IDX-baseline-sweep",
+        "IDX-notify",
+        "IDX-report"
+      ],
+      "acceptance": [
+        "node --test scripts/indexer/__tests__/inspect.test.mjs",
+        "node scripts/indexer/inspect.mjs --dry-run --limit 50"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "IDX-baseline-sweep",
+      "phase": "11",
+      "title": "Seed the ledger with a full baseline sweep of the current ~190 English URLs (the pre-i18n section 6 baseline)",
+      "files_owned": [],
+      "files_touched_readonly": [
+        "scripts/indexer/inspect.mjs"
+      ],
+      "depends_on": [
+        "IDX-inspect",
+        "IDX-state-branch-bootstrap"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "node scripts/indexer/inspect.mjs --limit 1800",
+        "bash scripts/indexer/commit-state.sh",
+        "node -e \"const l=require('./.indexer-state/ledger.json');if(Object.keys(l.urls).length<180)process.exit(1)\""
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "IDX-report",
+      "phase": "11",
+      "title": "report.mjs: per-locale coverage rollup, state-transition regression count, single updating tracking issue",
+      "files_owned": [
+        "scripts/indexer/report.mjs",
+        "scripts/indexer/__tests__/report.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "scripts/indexer/ledger.mjs"
+      ],
+      "depends_on": [
+        "IDX-inspect"
+      ],
+      "blocks": [
+        "IDX-workflows"
+      ],
+      "acceptance": [
+        "node --test scripts/indexer/__tests__/report.test.mjs",
+        "! grep -q 'contents\\[\\].indexed' scripts/indexer/report.mjs"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "IDX-notify",
+      "phase": "11",
+      "title": "notify.mjs: IndexNow by default via submit-indexnow --urls; Indexing API strictly behind --enable-indexing-api with URL-count-before-send quota accounting",
+      "files_owned": [
+        "scripts/indexer/notify.mjs",
+        "scripts/indexer/__tests__/notify.test.mjs"
+      ],
+      "files_touched_readonly": [
+        "scripts/submit-indexnow.mjs",
+        "scripts/indexer/quota.mjs"
+      ],
+      "depends_on": [
+        "IDX-inspect",
+        "P3-indexnow-per-locale"
+      ],
+      "blocks": [
+        "IDX-workflows"
+      ],
+      "acceptance": [
+        "node --test scripts/indexer/__tests__/notify.test.mjs",
+        "node scripts/indexer/notify.mjs --dry-run",
+        "grep -q 'enable-indexing-api' scripts/indexer/notify.mjs"
+      ],
+      "parallel_safe": false,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "IDX-workflows",
+      "phase": "11",
+      "title": "The four indexer workflows (submit, sweep, report, manual) with the byte-identical indexer-state concurrency block and the workflow_run conclusion guard",
+      "files_owned": [
+        ".github/workflows/indexer-submit.yml",
+        ".github/workflows/indexer-sweep.yml",
+        ".github/workflows/indexer-report.yml",
+        ".github/workflows/indexer-manual.yml"
+      ],
+      "files_touched_readonly": [
+        ".github/workflows/deploy.yml"
+      ],
+      "depends_on": [
+        "IDX-report",
+        "IDX-notify",
+        "IDX-state-branch-bootstrap",
+        "P3-deploy-workflow"
+      ],
+      "blocks": [
+        "IDX-key-rotation"
+      ],
+      "acceptance": [
+        "actionlint .github/workflows/indexer-submit.yml .github/workflows/indexer-sweep.yml .github/workflows/indexer-report.yml .github/workflows/indexer-manual.yml",
+        "test \"$(grep -l 'group: indexer-state' .github/workflows/indexer-*.yml | wc -l)\" -eq 4",
+        "grep -q \"workflow_run.conclusion == 'success'\" .github/workflows/indexer-submit.yml"
+      ],
+      "parallel_safe": true,
+      "human_decision": false,
+      "status": "todo"
+    },
+    {
+      "id": "IDX-key-rotation",
+      "phase": "11",
+      "title": "Rotate the GSC service-account key (HUMAN: decision 7; the key is on disk in two repos and shares Indexing API quota with use-apify.com)",
+      "files_owned": [],
+      "files_touched_readonly": [],
+      "depends_on": [
+        "IDX-workflows"
+      ],
+      "blocks": [],
+      "acceptance": [
+        "node scripts/indexer/inspect.mjs --dry-run --limit 1",
+        "gh secret list --repo yel-hadd/scrimbaguide.tech | grep -q GSC_SERVICE_ACCOUNT_JSON"
+      ],
+      "parallel_safe": false,
+      "human_decision": true,
+      "status": "todo"
+    }
+  ]
+}

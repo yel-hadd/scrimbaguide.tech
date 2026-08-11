@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
 
 /**
@@ -69,6 +70,7 @@ export default function CourseSchema({
   imageUrl = 'https://scrimbaguide.tech/img/social-card.png',
 }: CourseSchemaProps): React.ReactElement {
   const { pathname } = useLocation();
+  const { i18n } = useDocusaurusContext();
   const canonicalPath = toCanonicalPath(pathname);
   const pageUrl = toAbsoluteUrl(canonicalPath);
   const isFree = access === 'Free';
@@ -90,7 +92,7 @@ export default function CourseSchema({
       sameAs: ['https://scrimba.com'],
     },
     url: toAbsoluteUrl(url),
-    inLanguage: 'en',
+    inLanguage: i18n.currentLocale,
     ...(difficulty && {
       educationalLevel: difficulty,
     }),

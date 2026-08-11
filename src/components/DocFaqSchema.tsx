@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from '@docusaurus/router';
-import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
+import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath, toRoutePath } from './schemaUtils';
 
 export interface FaqItem {
   q: string;
@@ -20,11 +20,13 @@ export default function DocFaqSchema({ questions }: DocFaqSchemaProps): React.Re
   const { pathname } = useLocation();
   const canonicalPath = toCanonicalPath(pathname);
   const pageUrl = toAbsoluteUrl(canonicalPath);
+  // Locale-stripped: /de/blog/tags is still the tags page.
+  const routePath = toRoutePath(pathname);
   const isBlogListPage =
-    canonicalPath === '/blog' ||
-    canonicalPath.startsWith('/blog/page') ||
-    canonicalPath.startsWith('/blog/tags') ||
-    canonicalPath.startsWith('/blog/archive');
+    routePath === '/blog' ||
+    routePath.startsWith('/blog/page') ||
+    routePath.startsWith('/blog/tags') ||
+    routePath.startsWith('/blog/archive');
 
   if (isBlogListPage) {
     return <></>;

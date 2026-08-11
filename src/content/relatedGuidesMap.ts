@@ -1,3 +1,4 @@
+import { stripLocale } from '../utils/localePath';
 export interface RelatedGuide {
   title: string;
   href: string;
@@ -445,7 +446,13 @@ const sectionFallbacks: Record<string, RelatedGuide[]> = {
 };
 
 // Helper to get guides with fallback logic
-export function getRelatedGuides(slug: string): RelatedGuide[] {
+export function getRelatedGuides(rawSlug: string): RelatedGuide[] {
+  // Every key in relatedGuidesMap and every section fallback below is an
+  // English route, so the locale prefix has to come off here (the one entry
+  // point) or all three call sites return [] in every locale and the internal
+  // linking layer silently vanishes from the translated site.
+  const slug = stripLocale(rawSlug);
+
   // 1. Direct match
   if (relatedGuidesMap[slug]) return relatedGuidesMap[slug];
 

@@ -88,7 +88,7 @@ import PricingCTA from '@site/src/components/PricingCTA';
   ]}
 />
 
-## The short version: an agent is an LLM that can take actions
+## The short version: an agent is an LLM that can take actions {#the-short-version-an-agent-is-an-llm-that-can-take-actions}
 
 An AI agent is a language model that can take actions between your question and its answer, instead of only producing text. That is the entire distinction, and it is worth getting it from a primary source rather than a vendor landing page. Anthropic's definition is the clean one: agents are "systems where LLMs dynamically direct their own processes and tool usage, maintaining control over how they accomplish tasks" (Building effective agents, December 2024), as opposed to workflows, where the code path is fixed in advance.
 
@@ -96,7 +96,7 @@ In practice the difference comes down to a loop. A single prompt is one input an
 
 This is not a fringe interest anymore. Gartner named multiagent systems, collections of interacting AI agents, one of its top strategic technology trends for 2026 when it published the list in October 2025. On the hiring side, LinkedIn's Jobs on the Rise 2026 (January 2026) ranked AI Engineer the number one fastest-growing job in the US, and levels.fyi puts applied AI engineer total compensation in roughly the $134k to $193k band at mainstream employers as of mid-2026, with frontier labs pulling the top of the range far above that. The skill is real and it pays. The barrier to a first version is much lower than the job titles suggest.
 
-## What is MCP (Model Context Protocol), in plain terms
+## What is MCP (Model Context Protocol), in plain terms {#what-is-mcp-model-context-protocol-in-plain-terms}
 
 MCP is a shared standard for telling a model what tools and data it can use, so you write an integration once instead of rewriting it for every model. The closest familiar comparison is HTTP: every browser speaks it, so any browser can load any website without a custom integration per site. MCP aims to be that for tools, so an agent built against one model can reach the same tools when you swap to another.
 
@@ -104,7 +104,7 @@ The timeline is what makes it worth your attention rather than a passing acronym
 
 Here is the honest part most explainers skip: you do not need MCP for your first agent. The build below uses one inline tool, defined right in your own code, and that is the right place to start. MCP earns its keep later, when you want the same tool reused across different models or exposed to other people's agents without rewriting the glue each time. When you reach that point, the [Intro to Model Context Protocol course](/docs/courses/ai/model-context-protocol-mcp/) walks through exposing a tool over the protocol rather than hard-wiring it.
 
-## What context engineering actually means
+## What context engineering actually means {#what-context-engineering-actually-means}
 
 Context engineering is deciding what information and tools to put in front of the model at each step of a task. I will say the slightly cynical thing first: as a named discipline it is partly a rebrand of something developers were already doing, which is choosing what goes in the context window and when. The term got popular in 2025. The underlying problem is older than the label.
 
@@ -112,7 +112,7 @@ That said, the problem it points at is real, and two of the companies pushing th
 
 The reason it matters more for agents than for plain prompts is the loop. A prompt is one input you write once and tune by hand. An agent accumulates context as it runs: your question, the tool calls, every result those calls returned, and its own intermediate reasoning. By the tenth step the window can be full of stale tool output that crowds out the thing the model needs to answer well. Context engineering is the work of keeping that window useful while the agent runs, and the [Learn Context Engineering course](/docs/courses/ai/context-engineering/) is built around exactly that token-budget problem.
 
-## What you need before you build your first agent
+## What you need before you build your first agent {#what-you-need-before-you-build-your-first-agent}
 
 You need three things: Node 20 or newer, an API key from one model provider, and the ability to call a fetch. That is genuinely the whole list.
 
@@ -120,7 +120,7 @@ For the toolkit, I used the Vercel AI SDK, which Vercel describes as "the leadin
 
 The data source is the part where I can keep the "no API key friction" promise honestly. Open-Meteo needs no API key and no sign-up for non-commercial use, so the worked example is a plain fetch with nothing to configure. You still need one key for the model itself (OpenAI or Anthropic, your call), but the tool the agent calls has nothing to register, no billing dashboard, and no rate-limit page to read first. That is usually the step where beginners stall, and here it is gone.
 
-## Build your first AI agent: a worked example
+## Build your first AI agent: a worked example {#build-your-first-ai-agent-a-worked-example}
 
 Here is a working weather agent in about forty lines. It answers a question like "should I bring an umbrella in Berlin tomorrow?" by calling a real forecast API and reasoning over the result, instead of guessing from training data. Install the dependencies first:
 
@@ -170,13 +170,13 @@ Run it with `node agent.js`. The model reads your question, sees it has a `getWe
 
 The one line that makes this an agent rather than a single call is `stopWhen: stepCountIs(5)`. Without it, the model answers once from whatever it already knows. With it, the SDK runs the loop: call the tool, feed the result back, let the model decide whether it is done or needs to act again, up to five steps. That loop is Anthropic's "dynamically direct their own processes" definition, written out in code you can read. Swap the weather function for any API you already call at work, and the shape does not change.
 
-## Context engineering for agents that don't fall over
+## Context engineering for agents that don't fall over {#context-engineering-for-agents-that-dont-fall-over}
 
 A toy agent works on the first question and starts to wobble on the tenth, and context engineering is the set of fixes for that wobble. The failure modes are predictable once you have built one. The model forgets something it was told early because newer tool output pushed it out of the window. It calls the same tool twice because it lost track of the first result. On a bad day it loops, burning tokens and your API budget, because nothing told it when to stop.
 
 The fixes map directly onto the definitions above. Cap the steps, which the example already does with `stepCountIs`. Trim or summarize old turns before they crowd out the current task, instead of replaying the entire history every step. Pass the model only the tools a given step needs, not all twenty you eventually build, because a long tool list is its own kind of noise. None of this is exotic. It is bookkeeping about what the model sees at each step, which is the whole job that the "context engineering" label points at. The agents that stay reliable in production are the ones where someone did this bookkeeping deliberately.
 
-## From toy agent to a structured build
+## From toy agent to a structured build {#from-toy-agent-to-a-structured-build}
 
 Once you have felt where the toy version strains, the forgetting, the runaway loops, the pain of wiring each new tool by hand, the next move is to learn the upgrades in the order a real project needs them: retrieval so the agent can pull from your own documents, MCP so tools are reusable instead of hard-wired, and a deploy so it runs somewhere other than your terminal.
 
@@ -184,7 +184,7 @@ That is the gap a guided sequence closes. Scrimba's AI Engineer Path runs about 
 
 I point you there for one reason: the path teaches MCP and context engineering as the named answers to the exact failures your forty-line agent just hit, in roughly the sequence a real build follows. For the deeper why-JavaScript argument, [how to learn AI engineering on Scrimba](/blog/learn-ai-engineering-scrimba/) covers the same ground from the curriculum side.
 
-## Common beginner mistakes when building AI agents
+## Common beginner mistakes when building AI agents {#common-beginner-mistakes-when-building-ai-agents}
 
 The mistakes are predictable, and most cost you a day each if you do not see them coming. The first is reaching for MCP or a heavyweight framework before a single inline tool works. Get one `fetch`-backed tool returning real data first; standardize and reuse it later. The second is shipping without a step cap, which is how a loop quietly runs your API bill up while you watch the terminal. The third is trusting tool output and model reasoning without reading either, the same almost-right trap that bites people pasting AI-written code: an agent that calls the wrong endpoint and confidently summarizes the wrong number looks exactly like one that worked.
 
@@ -192,7 +192,7 @@ The fourth is starting in Python because a tutorial told you that is where AI li
 
 So here is the concrete next step, and you can finish it today. Build the weather agent above, confirm it actually calls Open-Meteo, then change one thing: swap the weather function for an API you already use in your own work, a database lookup, an internal endpoint, anything that returns data the model cannot guess. When the model calls your tool and answers from the result, you have built an agent. Everything after that is making it reliable.
 
-## Frequently asked questions
+## Frequently asked questions {#frequently-asked-questions}
 
 **How do I build my first AI agent in 2026?** Give a language model one tool it can call, such as a function that fetches data, and a loop that lets it decide when to call that tool. The model reads your request, calls the tool, reads the result, and answers. In JavaScript with the Vercel AI SDK this is about forty lines of code, and you can finish a working agent in an afternoon.
 

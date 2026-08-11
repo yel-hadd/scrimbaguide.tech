@@ -1,3 +1,5 @@
+import { stripLocale } from './localePath';
+
 /**
  * Routes where the desktop sticky discount affiliate CTA should appear.
  *
@@ -15,14 +17,21 @@
  * CTAs in the page body and nothing else.
  */
 export function isMoneyPagePath(path: string): boolean {
+  // Locale-stripped before matching. Every literal below is an English route,
+  // so without this the sticky affiliate CTA silently disappears from
+  // /de/docs/paths/..., /es/docs/pricing/... and every other localized money
+  // page: the highest-intent pages on the site, in every market the
+  // translation program exists to win. That is direct revenue loss, and it
+  // fails silently because a missing CTA looks like a design choice.
+  const route = stripLocale(path);
   return (
-    path.includes('/pricing/') ||
-    path.startsWith('/docs/paths/') ||
-    path === '/blog/scrimba-review' ||
-    path === '/blog/scrimba-review/' ||
-    path === '/blog/is-scrimba-worth-it' ||
-    path === '/blog/is-scrimba-worth-it/' ||
-    path === '/blog/scrimba-pro-pricing-explained-2026' ||
-    path === '/blog/scrimba-pro-pricing-explained-2026/'
+    route.includes('/pricing/') ||
+    route.startsWith('/docs/paths/') ||
+    route === '/blog/scrimba-review' ||
+    route === '/blog/scrimba-review/' ||
+    route === '/blog/is-scrimba-worth-it' ||
+    route === '/blog/is-scrimba-worth-it/' ||
+    route === '/blog/scrimba-pro-pricing-explained-2026' ||
+    route === '/blog/scrimba-pro-pricing-explained-2026/'
   );
 }

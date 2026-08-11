@@ -10,14 +10,14 @@ Have a question about a Scrimba course? Found a bug on our site? Just want to sa
 
 We'd love to hear from you.
 
-## Email
+## Email {#email}
 
 You can reach us directly at:
 **hello@scrimbaguide.tech**
 
 We try to respond to all inquiries within 48 hours.
 
-## Around the web
+## Around the web {#around-the-web}
 
 Scrimba Guide is run by Yassine El Haddad. You can find him here:
 * [LinkedIn](https://www.linkedin.com/in/yassine-el-haddad/)

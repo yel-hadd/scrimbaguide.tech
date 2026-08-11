@@ -30,6 +30,34 @@
 /.claude/worktrees
 /.claude/.shell-snapshots
 
+# Secrets: Google service account keys for the Search Console / Indexing APIs.
+# NEVER commit these. In CI the key comes from the GSC_SERVICE_ACCOUNT_JSON
+# GitHub secret, not from the repo. See I18N-PLAN.md section 11.
+/secrets/
+*service_account*.json
+*service-account*.json
+*.pem
+gcp-*.json
+
+# Indexing automation local state (progress/quota ledgers are machine-local)
+/.indexer-state/
+
+# Generated i18n state. See the state-file registry in I18N-PLAN.md section 17: each of these
+# has exactly one writer script and is rebuilt from disk on demand. Committing them would let a
+# stale snapshot outvote reality, and coverage.json in particular decides which routes earn an
+# hreflang annotation, so a stale copy ships hreflang for pages nobody translated.
+/i18n/coverage.json
+/i18n/translation-status.json
+/i18n/translationese-report.json
+
+# Translationese reference corpus cache (I18N-PLAN.md section 13.5). NEVER commit corpus text.
+# The corpus is scraped third-party native-language writing and THIS REPO IS PUBLIC, so
+# committing it would republish someone else's copy at scale inside the very system whose
+# purpose is avoiding a scaled-content penalty. Only the derived profile is committed:
+# i18n/native-profiles/<locale>.json, ~10KB of token frequencies and bootstrap percentiles,
+# which carries no reproducible source text.
+/i18n/.corpus-cache/
+
 # Misc
 .DS_Store
 .env

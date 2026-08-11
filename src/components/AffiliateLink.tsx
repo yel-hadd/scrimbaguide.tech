@@ -1,5 +1,6 @@
 import React from 'react';
 import { AFFILIATE_PARAM } from '@site/src/constants';
+import { stripLocale, getLocale } from '@site/src/utils/localePath';
 
 declare global {
   interface Window {
@@ -39,9 +40,16 @@ export default function AffiliateLink({
 
   const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
     if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-      const slug = window.location.pathname.replace(/^\/blog\//, '').replace(/\/$/, '');
+      // Locale-stripped so /de/blog/x and /blog/x report the SAME post_slug.
+      // Without this, per-post affiliate attribution fragments across every
+      // locale and no post's true conversion total is ever visible in GA4.
+      // `locale` is emitted alongside so per-market performance stays
+      // separable when you actually want it.
+      const routePath = stripLocale(window.location.pathname);
+      const slug = routePath.replace(/^\/blog\//, '').replace(/\/$/, '');
       window.gtag('event', 'affiliate_link_clicked', {
-        post_slug: slug || window.location.pathname,
+        post_slug: slug || routePath,
+        locale: getLocale(window.location.pathname),
         destination_url: url,
         link_text: typeof children === 'string' ? children : 'affiliate_link',
         page_location: window.location.href,

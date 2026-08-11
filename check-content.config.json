@@ -1,0 +1,232 @@
+{
+  "$comment": [
+    "Rule DATA for scripts/check-content.mjs. Plan section 15.2 row 3 is explicit: every rule",
+    "CODE change lands in one Phase 1 unit, and the per-language typographic assertions from",
+    "plan section 13.2 item 2 arrive HERE as data, never as new branches in the script.",
+    "Enabling a rule for a locale must therefore be a data change to this file only.",
+    "",
+    "Why this file exists at all: the em-dash rule used to run on every line of every file.",
+    "Japanese prose legitimately uses the horizontal bar and the ideographic full stop, Arabic",
+    "uses the Arabic comma and semicolon, and Russian typography uses the em dash as its",
+    "standard clause separator. A single global blacklist is wrong the moment a second script",
+    "exists, so the blacklist became per-script data with per-locale overrides.",
+    "",
+    "`script` values mirror `FontScript` in i18n/locales.config.ts (that file is the roster of",
+    "record). A locale absent from `locales` below falls back to `defaultLocale`, i.e. Latin",
+    "script with today's exact English behaviour, so adding a locale to the roster can never",
+    "silently loosen a guardrail."
+  ],
+
+  "ruleTypes": {
+    "$comment": [
+      "The two shapes scripts/check-content.mjs understands. Both are evaluated per line.",
+      "Every plan section 13.2 item 2 assertion expresses as one of these:",
+      "  forbid  - `pattern` (RegExp source) matching a line is a violation.",
+      "            e.g. de: straight double quotes instead of the low/high pair.",
+      "  require - a line matching `when` MUST also match `must`, otherwise it is a violation.",
+      "            e.g. es: a line containing '?' must also contain the opening '¿'.",
+      "`flags` defaults to 'u'. An entry with `enabled: false` is never compiled, so an",
+      "unfinished assertion is inert; an entry with `enabled: true` and no pattern throws at",
+      "load time rather than passing silently."
+    ],
+    "forbid": { "pattern": "RegExp source", "flags": "optional, default 'u'", "message": "shown in the failure output" },
+    "require": { "when": "RegExp source", "must": "RegExp source", "flags": "optional, default 'u'", "message": "shown in the failure output" }
+  },
+
+  "affiliateRules": {
+    "$comment": [
+      "Data for the affiliate-integrity rule (plan invariant 9, risk R6): under i18n/**, every",
+      "outbound scrimba.com URL must route through <AffiliateLink> or carry via=<AFFILIATE_ID>.",
+      "The id itself is NOT here; scripts/check-content.mjs reads it from src/constants.ts so it",
+      "has exactly one definition.",
+      "",
+      "`allowedProps` is what keeps the rule usable. Most scrimba.com URLs in this repo are JSX",
+      "prop values, not anchors: the component either wraps them in <AffiliateLink> itself (so",
+      "the param is appended at render time and must NOT be inlined in the MDX) or the value only",
+      "reaches JSON-LD, where an affiliate param would be wrong. Without this list a translated",
+      "course page would report ~10 false positives and the rule would get switched off.",
+      "A prop is still flagged when it sits on a hand-written <a> tag, which is the one shape",
+      "that reaches the browser exactly as the translator typed it.",
+      "When a new component takes a Scrimba URL prop, add it HERE with its justification."
+    ],
+    "wrapperComponents": ["AffiliateLink"],
+    "allowedProps": {
+      "href": "CourseCard, VerdictBox, PricingCTA, WhyScrimba, ComparisonTable render href through <AffiliateLink> (src/components/CourseCard.tsx:91)",
+      "ctaHref": "VerdictBox -> <AffiliateLink>",
+      "instructorUrl": "CourseCard -> <AffiliateLink> (src/components/CourseCard.tsx:71)",
+      "url": "CourseSchema / ItemListSchema JSON-LD `url`; structured data, never clicked",
+      "itemUrl": "ReviewSchema JSON-LD itemReviewed.url; structured data, never clicked",
+      "sourceUrl": "FAQAccordion citation link: a source reference, not a CTA"
+    }
+  },
+
+  "priceRules": {
+    "$comment": [
+      "Data for the localized-currency price rule. The price patterns themselves are code",
+      "(plan section 4 Phase 1), but the comparison connectives are language data and belong",
+      "here. A price that sits next to a Scrimba plan across one of these words is a competitor",
+      "comparison ('30 € contre Scrimba Pro'), not Scrimba's own price, and must not be flagged.",
+      "Add the local 'versus' word when a locale's first pages land."
+    ],
+    "comparisonConnectives": [
+      "vs",
+      "versus",
+      "contre",
+      "gegen",
+      "frente a",
+      "en lugar de",
+      "invece di",
+      "em vez de",
+      "против",
+      "対",
+      "مقابل"
+    ]
+  },
+
+  "scripts": {
+    "$comment": [
+      "Per-script punctuation policy. `forbiddenPunctuation` is the blacklist; a locale may",
+      "subtract from it via its own `allowedPunctuation`. Only Latin carries the em dash today,",
+      "which is what keeps English output byte-identical (plan section 16.1)."
+    ],
+    "latin": {
+      "forbiddenPunctuation": ["—"],
+      "allowedPunctuation": [],
+      "$comment": "U+2014 EM DASH. The original project style rule; unchanged for en and every Latin-script locale until a translate-<lang> skill argues otherwise in its own `allowedPunctuation`."
+    },
+    "cyrillic": {
+      "forbiddenPunctuation": [],
+      "allowedPunctuation": ["—", "«", "»"],
+      "$comment": "Russian/Ukrainian/Bulgarian тире (U+2014) is the standard clause separator and « » are the standard quotes. Blacklisting them would fail every correct page."
+    },
+    "greek": {
+      "forbiddenPunctuation": [],
+      "allowedPunctuation": ["·", "«", "»"],
+      "$comment": "ano teleia (U+0387) and guillemets are standard Greek punctuation. Plan section 13.2 adds the final-sigma and monosyllable-accent assertions as `rules` on el."
+    },
+    "arabic": {
+      "forbiddenPunctuation": [],
+      "allowedPunctuation": ["،", "؛", "؟", "٪", "ـ"],
+      "$comment": "Arabic comma, semicolon, question mark, percent sign and tatweel. Plan section 13.2 (ar) also wants ASCII digits for version numbers and durations; that lands as a `forbid` rule on ar."
+    },
+    "hebrew": { "forbiddenPunctuation": [], "allowedPunctuation": ["־", "׳", "״"] },
+    "urdu": { "forbiddenPunctuation": [], "allowedPunctuation": ["۔", "،", "؟"] },
+    "devanagari": { "forbiddenPunctuation": [], "allowedPunctuation": ["।", "॥"] },
+    "bengali": { "forbiddenPunctuation": [], "allowedPunctuation": ["।"] },
+    "tamil": { "forbiddenPunctuation": [], "allowedPunctuation": [] },
+    "telugu": { "forbiddenPunctuation": [], "allowedPunctuation": [] },
+    "thai": { "forbiddenPunctuation": [], "allowedPunctuation": ["ๆ", "ฯ"] },
+    "cjk": {
+      "forbiddenPunctuation": [],
+      "allowedPunctuation": ["、", "。", "―", "「", "」", "・", "：", "；", "？", "！", "（", "）"],
+      "$comment": "Japanese/Chinese full-width punctuation. U+2015 HORIZONTAL BAR is one Kana keystroke away from U+2014 EM DASH, so no dash is blacklisted here; plan section 13.2 (ja) instead asserts full-width punctuation POSITIVELY as a `rules` entry."
+    }
+  },
+
+  "defaultLocale": {
+    "$comment": "Applied to every path outside i18n/<locale>/ (docs, blog, src) and to any locale with no entry below.",
+    "script": "latin",
+    "allowedPunctuation": [],
+    "forbiddenPunctuation": [],
+    "rules": []
+  },
+
+  "locales": {
+    "$comment": [
+      "One entry per locale that has a typographic profile. `rules` is intentionally EMPTY or",
+      "disabled everywhere today: this commit adds zero locales, and each assertion is authored",
+      "with its language's translate-<lang>/SKILL.md (plan section 13.2 item 2), which is where",
+      "the linguistic justification lives. The disabled entries below are the checklist of what",
+      "that section owes this file, not dead code: fill in `pattern`/`when`/`must` and flip",
+      "`enabled` to true. No change to scripts/check-content.mjs is required or permitted."
+    ],
+    "en": {
+      "script": "latin",
+      "rules": []
+    },
+    "fr": {
+      "script": "latin",
+      "rules": [
+        {
+          "id": "fr-narrow-nbsp-before-high-punctuation",
+          "type": "forbid",
+          "enabled": false,
+          "message": "French requires a narrow no-break space (U+202F) before ? ! ; : and inside « »",
+          "$comment": "Plan section 13.2 (fr). Also forbids straight \" \" quotes in favour of « ». Pattern must tolerate code spans and URLs, which is why it is not written blind here."
+        }
+      ]
+    },
+    "de": {
+      "script": "latin",
+      "rules": [
+        {
+          "id": "de-low-high-quotes",
+          "type": "forbid",
+          "enabled": false,
+          "message": "German prose uses „ \" quotes, not straight double quotes",
+          "$comment": "Plan section 13.2 (de). The ß/ss Swiss-variant decision belongs in the same entry set once the de skill picks a variant."
+        }
+      ]
+    },
+    "es": {
+      "script": "latin",
+      "rules": [
+        {
+          "id": "es-opening-inverted-marks",
+          "type": "require",
+          "enabled": false,
+          "message": "Spanish question/exclamation sentences require the opening ¿ / ¡",
+          "$comment": "Plan section 13.2 (es). `when` matches a line ending a question, `must` asserts the opening mark on the same line."
+        }
+      ]
+    },
+    "ja": {
+      "script": "cjk",
+      "rules": [
+        {
+          "id": "ja-full-width-punctuation",
+          "type": "forbid",
+          "enabled": false,
+          "message": "Japanese prose uses 、 and 。, never ASCII comma/period, and takes no space around parentheses",
+          "$comment": "Plan section 13.2 (ja). Must not fire inside code spans, version numbers or URLs, which is the entire difficulty of this rule."
+        }
+      ]
+    },
+    "tr": {
+      "script": "latin",
+      "rules": [
+        {
+          "id": "tr-dotted-dotless-i",
+          "type": "forbid",
+          "enabled": false,
+          "message": "Turkish dotted/dotless i casing trap: 'IT' lowercased to 'ıt' is a silent corruption",
+          "$comment": "Plan section 13.2 (tr). Targets do-not-translate terms whose casing was run through a Turkish-locale toLowerCase."
+        }
+      ]
+    },
+    "el": {
+      "script": "greek",
+      "rules": [
+        {
+          "id": "el-final-sigma",
+          "type": "forbid",
+          "enabled": false,
+          "message": "Greek final sigma ς is word-final only; no accent on monosyllables",
+          "$comment": "Plan section 13.2 (el)."
+        }
+      ]
+    },
+    "ar": {
+      "script": "arabic",
+      "rules": [
+        {
+          "id": "ar-ascii-digits",
+          "type": "forbid",
+          "enabled": false,
+          "message": "Arabic pages use ASCII digits for version numbers and durations, to match the code they sit beside",
+          "$comment": "Plan section 13.2 (ar). Eastern Arabic-Indic digits ٠-٩ in a version number or an hours figure are the violation."
+        }
+      ]
+    }
+  }
+}

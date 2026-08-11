@@ -10,7 +10,7 @@ import {toSeoTitle} from '@site/src/utils/seoTitle';
 type Props = WrapperProps<typeof MetadataType>;
 
 export default function MetadataWrapper(props: Props): React.ReactElement {
-  const {siteConfig} = useDocusaurusContext();
+  const {siteConfig, i18n} = useDocusaurusContext();
   const {metadata} = useBlogPost();
   const {title, description, date, permalink, frontMatter} = metadata;
   const metadataWithUpdate = metadata as unknown as {
@@ -60,7 +60,9 @@ export default function MetadataWrapper(props: Props): React.ReactElement {
       '@id': canonicalUrl,
     },
     isAccessibleForFree: true,
-    inLanguage: 'en-US',
+    // C2 / invariant 7: must reflect the ACTUAL locale, or every translated
+    // BlogPosting claims English and contradicts its own hreflang cluster.
+    inLanguage: i18n.currentLocale,
     ...(keywordsString && { keywords: keywordsString }),
   };
 
@@ -72,7 +74,6 @@ export default function MetadataWrapper(props: Props): React.ReactElement {
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:locale" content="en_US" />
         <meta property="og:image" content={imageUrl} />
         <meta property="og:site_name" content={siteConfig.title} />
         <meta property="article:author" content="Yassine El Haddad" />

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
+import { stripLocale } from '../utils/localePath';
 import {
   BookOpen,
   Scale,
@@ -50,9 +51,13 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
   // Highlight the trigger when the current page lives under one of its items, so
   // pages inside the Learn/Tools dropdowns get the same "you are here" wayfinding
   // that Paths/Courses/Blog already receive from Infima's navbar__link--active.
+  // Locale-stripped: item.to values are English routes, so /de/docs/pricing/
+  // would never match and the dropdown would lose its "you are here" state in
+  // every locale.
+  const routePath = stripLocale(pathname);
   const isActive = items.some((item) => {
     const to = item.to.replace(/\/$/, '');
-    return to !== '' && (pathname === to || pathname.startsWith(`${to}/`));
+    return to !== '' && (routePath === to || routePath.startsWith(`${to}/`));
   });
 
   const cancelCloseTimer = useCallback(() => {

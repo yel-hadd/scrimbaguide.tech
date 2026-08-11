@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
+import { stripLocale } from '../utils/localePath';
 
 export default function DisclosureNotice(): React.ReactElement | null {
   const { pathname } = useLocation();
@@ -14,11 +15,14 @@ export default function DisclosureNotice(): React.ReactElement | null {
     setMounted(true);
   }, []);
 
+  // Locale-stripped, or the FTC disclosure would render on /de/blog/ list
+  // pages (and vanish nowhere useful) once locales ship.
+  const routePath = stripLocale(pathname);
   const isBlogListPreviewPage =
-    pathname === '/blog/' ||
-    pathname.startsWith('/blog/page/') ||
-    pathname.startsWith('/blog/tags') ||
-    pathname.startsWith('/blog/archive');
+    routePath === '/blog/' ||
+    routePath.startsWith('/blog/page/') ||
+    routePath.startsWith('/blog/tags') ||
+    routePath.startsWith('/blog/archive');
 
   if (!mounted || isBlogListPreviewPage) {
     return null;

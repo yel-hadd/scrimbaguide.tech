@@ -1,0 +1,164 @@
+{
+  "$comment": [
+    "DECLARED translation scope per coverage tier. Hand-authored, version-controlled.",
+    "This is the 'declared' half of the launch gate in I18N-PLAN.md section 1; the 'actual'",
+    "half is i18n/coverage.json, which is generated from disk. A locale may join",
+    "i18n.locales only when (declared - covered) is empty for its tier.",
+    "",
+    "Route strings are canonical, trailing-slash, locale-STRIPPED. All 40 core routes were",
+    "validated against the live sitemap on 2026-08-09.",
+    "",
+    "Tier ASSIGNMENT per locale lives in i18n/locales.config.ts (field: coverage).",
+    "This file owns the route SETS only. One writer per file, per section 17.",
+    "",
+    "The first 9 routes of 'micro' are the global-chrome closure floor: every route reachable",
+    "from navbar, footer, and MegaMenu. Removing any of them fails the locale build",
+    "(onBrokenLinks: 'throw'). See section 4 Phase 2 task (b).",
+    "",
+    "A routeSets entry has ONE OF THREE value shapes, and the manifest builder must handle all",
+    "three: (1) the string '*' meaning every route on the site; (2) an array of explicit",
+    "canonical routes; (3) a DERIVED object {base, excludeRouteGlobs, retainRoutes} as used by",
+    "'full-minus-course-leaves'. Shape 3 arrived with version 2; that is what the bump records."
+  ],
+  "version": 2,
+  "routeSets": {
+    "full": "*",
+
+    "full-minus-course-leaves": {
+      "$comment": [
+        "Tier B scope, locked as decision 4 in section 18: the full site MINUS the 71",
+        "docs/courses leaves, with all 7 category hubs RETAINED. ~190 - 71 = ~119 routes.",
+        "",
+        "Expressed as a derivation rather than 119 hand-listed routes on purpose: an enumerated",
+        "copy of 'full' would silently rot the first time an English page is added, and the",
+        "whole point of this entry is that it tracks the site automatically.",
+        "",
+        "SEMANTICS, stated exactly so the Phase 2 manifest builder cannot misread them:",
+        "  base              name of another routeSet to start from. '*' here means every route.",
+        "  excludeRouteGlobs canonical, trailing-slash, locale-STRIPPED route globs. '*' matches",
+        "                    exactly ONE path segment and NEVER crosses a '/'. There is no '**'.",
+        "  retainRoutes      applied AFTER the excludes; retain always wins over exclude. It is",
+        "                    a belt-and-braces guard, not decoration.",
+        "",
+        "Why the glob is leaf-shaped: a category hub is docs/courses/<topic>/index.mdx and",
+        "renders at /docs/courses/<topic>/ (ONE segment after /courses/), while a leaf is",
+        "docs/courses/<topic>/<leaf>.mdx and renders at /docs/courses/<topic>/<leaf>/ (TWO).",
+        "So a single-segment-wildcard glob at depth two hits leaves only. Verified 2026-08-11:",
+        "71 leaves, 7 hubs, and no leaf overrides its slug, so no leaf collapses to hub depth.",
+        "A source-path glob such as 'docs/courses/*/*' would be WRONG here: it also matches",
+        "docs/courses/<topic>/index.mdx and would delete the hubs this entry exists to keep.",
+        "",
+        "Promotion path: a Tier B locale earns its course leaves once its category hubs clear",
+        "500 impressions/month in GSC. That promotion is a one-word edit to that locale's",
+        "'coverage' in i18n/locales.config.ts ('full'), never an edit to this entry."
+      ],
+      "base": "full",
+      "excludeRouteGlobs": ["/docs/courses/*/*/"],
+      "retainRoutes": [
+        "/docs/courses/",
+        "/docs/courses/react/",
+        "/docs/courses/javascript/",
+        "/docs/courses/css/",
+        "/docs/courses/ai/",
+        "/docs/courses/backend/",
+        "/docs/courses/python/",
+        "/docs/courses/typescript/"
+      ]
+    },
+
+    "core": [
+      "/docs/intro/",
+      "/docs/paths/",
+      "/docs/courses/",
+      "/docs/comparisons/",
+      "/docs/pricing/",
+      "/docs/faq/",
+      "/docs/changelog/",
+      "/about/",
+      "/contact/",
+
+      "/docs/paths/frontend-developer-path/",
+      "/docs/paths/fullstack-developer-path/",
+      "/docs/paths/backend-developer-path/",
+      "/docs/paths/ai-engineer-path/",
+      "/docs/paths/study-plan/",
+
+      "/docs/comparisons/scrimba-vs-codecademy/",
+      "/docs/comparisons/scrimba-vs-udemy/",
+      "/docs/comparisons/scrimba-vs-freecodecamp/",
+      "/docs/comparisons/scrimba-vs-coursera/",
+      "/docs/comparisons/scrimba-vs-odin-project/",
+      "/docs/comparisons/scrimba-vs-youtube/",
+
+      "/docs/pricing/pro-vs-free/",
+      "/docs/pricing/student-discount/",
+      "/docs/pricing/refund-policy/",
+      "/docs/pricing/scrimba-vs-bootcamps/",
+
+      "/docs/how-it-works/how-scrims-work/",
+      "/docs/how-it-works/is-scrimba-free/",
+      "/docs/how-it-works/certificates/",
+
+      "/docs/for/",
+      "/docs/for/beginners/",
+
+      "/docs/courses/react/",
+      "/docs/courses/javascript/",
+      "/docs/courses/css/",
+      "/docs/courses/ai/",
+      "/docs/courses/backend/",
+      "/docs/courses/python/",
+      "/docs/courses/typescript/",
+
+      "/blog/scrimba-review/",
+      "/blog/is-scrimba-worth-it/",
+      "/blog/best-free-scrimba-courses/",
+      "/blog/how-long-to-learn-web-development-2026/"
+    ],
+
+    "micro": [
+      "/docs/intro/",
+      "/docs/paths/",
+      "/docs/courses/",
+      "/docs/comparisons/",
+      "/docs/pricing/",
+      "/docs/faq/",
+      "/docs/changelog/",
+      "/about/",
+      "/contact/",
+
+      "/docs/paths/frontend-developer-path/",
+      "/docs/paths/fullstack-developer-path/",
+      "/docs/paths/backend-developer-path/",
+      "/docs/paths/ai-engineer-path/",
+      "/docs/paths/study-plan/",
+
+      "/blog/scrimba-review/",
+      "/blog/is-scrimba-worth-it/"
+    ]
+  },
+  "alwaysBuilt": {
+    "$comment": [
+      "React .tsx routes translated via code.json only. They can never be 'covered' by a",
+      "translated markdown file, so the manifest builder injects them into EVERY locale so",
+      "they stay in the hreflang cluster. This is the one accepted exception to invariant 4;",
+      "without it the locale homepage loses its alternates entirely."
+    ],
+    "routes": [
+      "/",
+      "/tools/",
+      "/tools/which-scrimba-path/",
+      "/tools/bootcamp-cost-calculator/",
+      "/roadmaps/frontend-roadmap-2026/"
+    ]
+  },
+  "alwaysExcluded": {
+    "$comment": [
+      "English-only in every locale, replaced by a localized one-line notice. Translated",
+      "legal text creates real exposure and has zero SEO value (section 1). Requires a",
+      "plugin-content-pages exclude AND footer link replacement in non-en locales, or the",
+      "footer alone throws in every locale (section 4 Phase 2 task (d))."
+    ],
+    "globs": ["legal/**"]
+  }
+}

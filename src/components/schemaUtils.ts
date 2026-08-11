@@ -1,3 +1,5 @@
+import { stripLocale } from '../utils/localePath';
+
 const SITE_ORIGIN = 'https://scrimbaguide.tech';
 
 export function toAbsoluteUrl(urlOrPath: string): string {
@@ -9,10 +11,30 @@ export function toAbsoluteUrl(urlOrPath: string): string {
   return `${SITE_ORIGIN}${normalizedPath}`;
 }
 
+/**
+ * The page's own path, KEEPING any locale prefix.
+ *
+ * Used to build canonical/`@id`/`mainEntityOfPage` URLs, so the locale must
+ * survive: the canonical URL of `/de/docs/pricing/` is the German one, never
+ * the English one. Canonicalising a translation to English is the single
+ * fastest way to deindex an entire locale.
+ */
 export function toCanonicalPath(pathname: string): string {
   if (!pathname) return '/';
   const stripped = pathname.replace(/\/+$/, '');
   return stripped === '' ? '/' : stripped;
+}
+
+/**
+ * The page's path with the locale prefix REMOVED, for matching against
+ * hardcoded route literals like `/blog/tags`.
+ *
+ * Deliberately separate from `toCanonicalPath`: route predicates must compare
+ * locale-free (`/de/blog/tags` is still the tags page) while URL construction
+ * must not. Collapsing the two breaks one or the other.
+ */
+export function toRoutePath(pathname: string): string {
+  return toCanonicalPath(stripLocale(pathname));
 }
 
 export function schemaScriptId(type: string, pathname: string, suffix?: string): string {

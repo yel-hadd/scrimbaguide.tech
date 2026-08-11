@@ -12,7 +12,17 @@ const DEFAULT_SITE_URL = 'https://scrimbaguide.tech';
 const DEFAULT_SITEMAP_PATH = path.resolve(__dirname, '..', 'build', 'sitemap.xml');
 const DEFAULT_OUTPUT_DIR = path.resolve(__dirname, '..', 'build');
 
-const LOW_VALUE_PATTERNS = [
+/**
+ * Paths that carry no standalone value for an LLM ingesting the site: search, tag/author
+ * indexes, blog pagination, and redirect-only stubs.
+ *
+ * Exported because the indexer reuses this exact list; keeping one copy means a new stub
+ * pattern cannot be filtered out of llms.txt while still being submitted for indexing.
+ *
+ * Every pattern is `^/`-anchored, so it matches a *locale-stripped* pathname only.
+ * `/de/tags/` and `/ja/blog/page/2/` do NOT match. See isLowValuePath below.
+ */
+export const LOW_VALUE_PATTERNS = [
   /^\/search(?:\/|$)/,
   /^\/tags(?:\/|$)/,
   /^\/blog\/tags(?:\/|$)/,
@@ -198,7 +208,16 @@ export function normalizeCanonicalUrl(url) {
   return `${parsed.origin}${pathname}${parsed.search}${parsed.hash}`;
 }
 
-function isLowValuePath(pathname) {
+/**
+ * True when `pathname` is one of the low-value paths above.
+ *
+ * CALL-SITE CONTRACT: pass a locale-stripped pathname, i.e. `isLowValuePath(stripLocale(p))`,
+ * never the raw pathname. Because LOW_VALUE_PATTERNS is `^/`-anchored, a raw `/de/tags/` or
+ * `/ja/blog/page/2/` returns false and the junk page sails through the filter, with nothing
+ * failing to signal it. This module is a build script (.mjs) and cannot import the app's
+ * `src/utils/localePath.ts`, so the strip must happen in the consumer.
+ */
+export function isLowValuePath(pathname) {
   return LOW_VALUE_PATTERNS.some((pattern) => pattern.test(pathname));
 }
 

@@ -87,7 +87,7 @@ import PricingCTA from '@site/src/components/PricingCTA';
   ]}
 />
 
-## Can a JavaScript developer become an AI engineer without Python?
+## Can a JavaScript developer become an AI engineer without Python? {#can-a-javascript-developer-become-an-ai-engineer-without-python}
 
 Yes, if you are aiming at applied and integration roles. The AI engineering work that web companies hire for in 2026 is building features on top of models that already exist, and that work lives on the JavaScript and TypeScript stack. Python is the language of model research and training. It is not a prerequisite for putting a language model inside a product.
 
@@ -95,13 +95,13 @@ Here is the opinion I will defend for the rest of this post: most "how to become
 
 The line that matters runs between two kinds of work. Research and training roles build and improve the models. Applied and integration roles use them. If you can deploy a React app and authenticate against a REST API, you are closer to the second kind of job than to a junior frontend one. I will draw the Python line explicitly later in this post, because pretending it never matters would be the same dishonesty pointed the other way.
 
-## What an AI engineer actually does (and why JavaScript covers most of it)
+## What an AI engineer actually does (and why JavaScript covers most of it) {#what-an-ai-engineer-actually-does-and-why-javascript-covers-most-of-it}
 
 An applied AI engineer builds product features on top of models they did not train. Day to day that means chat interfaces with streaming responses, retrieval over a company's own documents so the model answers from real data, agents that call external tools, and integrations that hand data to models in a standard way. It is integration and product work, much closer to full-stack web development than to data science.
 
 Look at what is missing from that list: training a model from scratch, designing a new architecture, tuning a loss function. Those are real jobs, and they are Python jobs, but they are a minority of what gets posted under the AI engineer title. The common case is a web product that needs an LLM feature shipped by someone who understands both the model API and the app it lives in. If you are worried AI is quietly eating the junior rung, I dug into [whether AI can replace junior developers](/blog/can-ai-replace-junior-developers-2026/), and the applied AI seat is one of the few entry points that is growing rather than thinning out. The skill is not exotic. It is web development with a model in the loop.
 
-## Why 2026 is the year the JavaScript AI stack caught up
+## Why 2026 is the year the JavaScript AI stack caught up {#why-2026-is-the-year-the-javascript-ai-stack-caught-up}
 
 The short reason is that the tools a JS developer needs to build with models now exist as first-class JavaScript libraries, not Python ports. Two years ago, the honest answer to "can I do AI in JavaScript" was "sort of, with friction." That stopped being true in 2025.
 
@@ -109,7 +109,7 @@ Three things closed the gap. Anthropic open-sourced the Model Context Protocol i
 
 The language data points the same direction. By GitHub's Octoverse 2025 (October 28, 2025), TypeScript is the most-used language on GitHub by contributor count, with Python second and JavaScript third (Python had overtaken JavaScript back in 2024). On Stack Overflow's separate 2025 survey, JavaScript was still the most-used language at 66% of all respondents, with Python at 57.9% of all respondents (54.8% of professional developers). Read together, those say one thing: the stack most web products ship in is JavaScript and TypeScript, and that is where AI features get built and deployed. If you have been weighing whether to commit to TypeScript, the AI tooling is one more reason it pays off, and I make the fuller case in [should JavaScript developers learn TypeScript in 2026](/blog/should-javascript-developers-learn-typescript-2026/).
 
-## The 2026 AI engineer job market, in real numbers
+## The 2026 AI engineer job market, in real numbers {#the-2026-ai-engineer-job-market-in-real-numbers}
 
 Demand is real and the pay is high: LinkedIn ranked AI engineer the number one fastest-growing job in the US on its Jobs on the Rise list two years running, in both 2025 and 2026 (LinkedIn Jobs on the Rise, January 2026). The salary numbers below carry the usual caveat that self-reported data skews upward. And my read of the job boards is that this demand is not confined to dedicated AI titles: AI skills increasingly show up in ordinary software descriptions too. The requirement is leaking into roles that are not branded as AI jobs at all.
 
@@ -117,13 +117,13 @@ On compensation, Levels.fyi puts the median AI engineer total compensation near 
 
 The figure to internalize is the premium rather than any single salary. The same web developer skills, plus the ability to ship AI features, command measurably more, and the gap is widening year over year.
 
-## What you already know that transfers, and the three gaps to close
+## What you already know that transfers, and the three gaps to close {#what-you-already-know-that-transfers-and-the-three-gaps-to-close}
 
 Most of an applied AI engineer's toolkit is web development you already do. Async code and promises, calling and authenticating against APIs, parsing JSON, building interfaces, and deploying to a real host all carry over unchanged. An LLM endpoint is, mechanically, just another API that returns text.
 
 What you probably have not done falls into three gaps. The first is treating a model as a reliable function: prompting it so it returns structured, parseable output every time, not prose you have to scrape. The second is retrieval: embedding your own data, storing the vectors, and querying them at request time so the model answers from your documents instead of guessing. The third is agency: giving a model a set of tools, running the loop that lets it choose which to call, and handling the failures that loop produces. Close those three and you have the core of the job. The rest is ordinary web work.
 
-## Your JavaScript-first AI engineer roadmap, skill by skill
+## Your JavaScript-first AI engineer roadmap, skill by skill {#your-javascript-first-ai-engineer-roadmap-skill-by-skill}
 
 Build one small thing at each stage instead of collecting tutorials. The order matters, because each skill assumes the one before it.
 
@@ -136,7 +136,7 @@ Build one small thing at each stage instead of collecting tutorials. The order m
 
 If assembling this yourself sounds like a lot of sequencing, that is the honest tradeoff, and I get to the pre-ordered version of this exact list at the end.
 
-## When you actually do need Python (the honest line)
+## When you actually do need Python (the honest line) {#when-you-actually-do-need-python-the-honest-line}
 
 You need Python when the job is to build or change models, not use them. Research-engineer roles at frontier labs, fine-tuning and training pipelines, novel architecture work, and most ML-heavy data teams assume Python, the math under it, and tools like PyTorch. Interviews at those companies test things a short applied course never covers, and no amount of JavaScript substitutes for that.
 
@@ -144,13 +144,13 @@ There is also a softer version. Even in applied work you will occasionally hit a
 
 So the rule is short. Applied and integration roles: JavaScript is enough to get hired and to do the work. Research and training roles: learn Python properly and budget months. Pick your target before you pick your reading list.
 
-## The portfolio that gets a JavaScript AI engineer hired
+## The portfolio that gets a JavaScript AI engineer hired {#the-portfolio-that-gets-a-javascript-ai-engineer-hired}
 
 What gets you the interview is a small set of working projects, not a certificate. Employers on the applied side want to see you ship the three gaps as real apps, so a good starter portfolio is three projects, each deployed to a live URL.
 
 Build a retrieval app over documents you actually have, your notes, a codebase, a product manual, anything where the model answering from your data clearly beats it guessing. Build a tool-using agent that calls at least one real external API and handles that call failing without crashing. Build something that exposes a tool through MCP, so you can speak to the standard now reshaping how models reach data. Then write an honest paragraph on each about where it broke and what you did, because the failure write-up is what separates someone who followed a tutorial from someone who understands the system. For the broader principle that shipped projects beat credentials, see [the portfolio projects that get you hired](/blog/portfolio-projects-get-hired-2026/).
 
-## Self-assemble vs the structured version of what you just built by hand
+## Self-assemble vs the structured version of what you just built by hand {#self-assemble-vs-the-structured-version-of-what-you-just-built-by-hand}
 
 You can assemble all of this for free, and plenty of disciplined people do. The official SDK docs, Vercel's AI SDK guides, the MCP specification, and the free intro material from the model vendors cover every skill on the roadmap. The cost is paid in hours rather than money: the time you spend sequencing it yourself, hitting dead ends, and never quite knowing whether the order you chose is the order that matters.
 
@@ -160,7 +160,7 @@ For the module-by-module breakdown of that path, including what it skips, I keep
 
 Either way, the action this week is the same. Pick one project from the list above, the retrieval app is the easiest place to start, and get it answering from your own documents by Sunday. You will learn more from one shipped feature than from another month of deciding whether you are allowed to begin.
 
-## Frequently asked questions
+## Frequently asked questions {#frequently-asked-questions}
 
 **Can a JavaScript developer become an AI engineer without learning Python first?** Yes, for applied and integration roles. The jobs that involve wiring LLMs, agents, retrieval, and the Model Context Protocol into real products run on the JavaScript and TypeScript stack, and the official OpenAI and Anthropic SDKs plus the Vercel AI SDK cover that work without Python. Research and model-training roles are the exception and still expect Python.
 

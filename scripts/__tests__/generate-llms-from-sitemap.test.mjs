@@ -10,6 +10,8 @@ import {
   htmlToLlmsMarkdown,
   stripMdxAndJsxFromLlmsText,
   escapeMarkdownLinkTitle,
+  LOW_VALUE_PATTERNS,
+  isLowValuePath,
 } from '../generate-llms-from-sitemap.mjs';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -129,4 +131,48 @@ test('stripMdxAndJsxFromLlmsText removes component-like markup and import lines 
 
 test('escapeMarkdownLinkTitle escapes brackets for markdown links', () => {
   assert.equal(escapeMarkdownLinkTitle('Title with ] bracket'), 'Title with \\] bracket');
+});
+
+/**
+ * `[raw sitemap pathname, stripLocale(raw)]` pairs.
+ * These pin both halves of the isLowValuePath call-site contract: under a localized sitemap
+ * the raw pathname carries a locale prefix, and the raw form is a silent pass-through because
+ * every low-value pattern is anchored at `^/`. Consumers must strip the prefix first.
+ * The stripped column is written out literally rather than computed, so this file never has to
+ * duplicate the locale roster (and cannot drift from it).
+ */
+const LOCALE_PREFIXED_LOW_VALUE = [
+  ['/de/tags/', '/tags/'],
+  ['/ja/blog/page/2/', '/blog/page/2/'],
+  ['/ar/search/', '/search/'],
+];
+
+test('isLowValuePath does NOT match locale-prefixed junk paths (callers must stripLocale first)', () => {
+  for (const [raw] of LOCALE_PREFIXED_LOW_VALUE) {
+    assert.equal(
+      isLowValuePath(raw),
+      false,
+      `${raw} is expected to slip through the raw filter; call isLowValuePath(stripLocale(path)) instead`,
+    );
+  }
+});
+
+test('isLowValuePath matches those same junk paths once the locale prefix is stripped', () => {
+  for (const [raw, stripped] of LOCALE_PREFIXED_LOW_VALUE) {
+    assert.equal(isLowValuePath(stripped), true, `stripLocale('${raw}') === '${stripped}' must be filtered out`);
+  }
+});
+
+test('isLowValuePath keeps real content paths in both raw and locale-stripped form', () => {
+  assert.equal(isLowValuePath('/docs/paths/'), false);
+  assert.equal(isLowValuePath('/de/docs/paths/'), false);
+});
+
+test('every LOW_VALUE_PATTERNS entry stays ^/-anchored (the reason stripLocale is mandatory)', () => {
+  for (const pattern of LOW_VALUE_PATTERNS) {
+    assert.ok(
+      pattern.source.startsWith('^\\/'),
+      `${pattern} must stay anchored at ^/; an unanchored pattern would match substrings mid-path and silently over-filter`,
+    );
+  }
 });

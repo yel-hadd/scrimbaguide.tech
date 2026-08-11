@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '@theme-original/DocItem/Layout';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { stripLocale } from '@site/src/utils/localePath';
 import { useDoc } from '@docusaurus/plugin-content-docs/client';
 import RelatedGuides from '@site/src/components/RelatedGuides';
 import DesktopStickyCTA from '@site/src/components/DesktopStickyCTA';
@@ -21,7 +22,7 @@ type DocAffiliateFrontMatter = {
 
 
 function DocSeoHead(): React.ReactElement {
-  const { siteConfig } = useDocusaurusContext();
+  const { siteConfig, i18n } = useDocusaurusContext();
   const { metadata, frontMatter } = useDoc();
   const baseUrl = siteConfig.url.replace(/\/$/, '');
   const canonical = `${baseUrl}${metadata.permalink}`;
@@ -47,7 +48,7 @@ function DocSeoHead(): React.ReactElement {
     description,
     url: canonical,
     image: ogImage,
-    inLanguage: 'en',
+    inLanguage: i18n.currentLocale,
     ...(dateModified && { dateModified }),
     // Bare @id reference to the Organization defined in headTags (config), injected
     // on every page. Avoids re-declaring a second @type:Organization node per page.
@@ -91,11 +92,14 @@ function DocAffiliateCta({ pathname }: { pathname: string }): React.ReactElement
   // comparison detail pages (VerdictBox CTA), course pages (course-detail pages
   // end with a contextual affiliate button; hubs have their own PricingCTA), and
   // any doc that opts out via the hideGlobalPricingCta front matter.
+  // Locale-stripped, or every localized pricing/course/comparison page would
+  // stack the auto-injected CTA on top of the one it already carries.
+  const routePath = stripLocale(pathname);
   const isComparisonDetail =
-    pathname.startsWith('/docs/comparisons/') && pathname !== '/docs/comparisons/';
+    routePath.startsWith('/docs/comparisons/') && routePath !== '/docs/comparisons/';
   if (
-    pathname.startsWith('/docs/pricing/') ||
-    pathname.startsWith('/docs/courses/') ||
+    routePath.startsWith('/docs/pricing/') ||
+    routePath.startsWith('/docs/courses/') ||
     isComparisonDetail ||
     fm.hideGlobalPricingCta
   ) {

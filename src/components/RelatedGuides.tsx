@@ -2,6 +2,7 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import { getRelatedGuides, RelatedGuide } from '../content/relatedGuidesMap';
+import { stripLocale } from '../utils/localePath';
 
 interface RelatedGuidesProps {
   title?: string;
@@ -13,8 +14,10 @@ interface RelatedGuidesProps {
  *  does not have to weigh several equal-weight options. */
 function pickFeatured(
   guides: RelatedGuide[],
-  pathname: string,
+  rawPathname: string,
 ): { featured: RelatedGuide; rest: RelatedGuide[] } {
+  // Locale-stripped: the cue checks below match English path segments.
+  const pathname = stripLocale(rawPathname);
   const isReactCourse =
     pathname.includes('/courses/react/') || pathname.includes('/learn-react');
   const isFullstackCue =
