@@ -129,15 +129,23 @@ i18n-scaffold: node_modules ## Scaffold a locale's dirs + translation JSON (LOCA
 # i18n/translation-status.json). Until it lands this target explains itself and exits 0, so a
 # CI job or a habit that calls `make i18n-status` does not fail on the Phase 1 commit.
 .PHONY: i18n-status
-i18n-status: ## Report translation coverage per locale
-	@if [ -f scripts/translation-status.mjs ]; then \
-		node scripts/translation-status.mjs; \
-	else \
-		echo "make i18n-status: not implemented until Phase 5."; \
-		echo "  scripts/translation-status.mjs (the sole reducer of the i18n/<locale>/.status/"; \
-		echo "  sidecars into i18n/translation-status.json) does not exist yet, so there is"; \
-		echo "  nothing to report. Exiting 0 on purpose."; \
-	fi
+i18n-status: ## Report declared-minus-covered per locale
+	@node scripts/build-coverage-manifest.mjs >/dev/null
+	@node -e "\
+	  const m = require('./i18n/coverage.json');\
+	  const rows = Object.entries(m.locales).filter(([,v]) => v.status !== 'draft' || v.coveredCount > 0);\
+	  if (!rows.length) { console.log('No locale has any translated route yet. 47 locales are status: draft.'); process.exit(0); }\
+	  console.log('locale  tier cov      status   covered/declared  missing stale blocked');\
+	  for (const [l,v] of rows) console.log(\
+	    l.padEnd(8)+String(v.tier).padEnd(5)+String(v.coverage).padEnd(9)+String(v.status).padEnd(9)+\
+	    (v.coveredCount+'/'+v.declaredCount).padEnd(18)+String(v.missing.length).padEnd(8)+\
+	    String(v.stale.length).padEnd(6)+v.blocked.length);"
+
+# Fails if any LIVE locale is incomplete relative to its declared scope, which is the
+# section 1 launch gate made computable ("a locale ships complete or not at all").
+.PHONY: i18n-check
+i18n-check: ## Block if a live locale is incomplete
+	node scripts/build-coverage-manifest.mjs --check
 
 # ── Development ──────────────────────────────────────────────────
 
