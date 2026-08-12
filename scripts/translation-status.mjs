@@ -72,7 +72,16 @@ export function validateSidecar(obj, { fileName = null, locale = null } = {}) {
   if (typeof obj.attempts !== 'number' || obj.attempts < 1) {
     errors.push('attempts must be a number >= 1');
   }
-  if (typeof obj.jsd !== 'number') errors.push('jsd must be a number (section 13.5 score)');
+  // `null` means NOT MEASURED, and is accepted deliberately.
+  // scripts/translationese-check.mjs and i18n/native-profiles/*.json do not exist
+  // yet, so requiring a number here would force every translating agent to invent
+  // a value for the one pre-publish signal that is supposed to be INDEPENDENT of
+  // the model doing the grading. A fabricated JSD is strictly worse than an absent
+  // one. Nulls are excluded from the median below, and this must tighten to
+  // required-number once the producer lands.
+  if (obj.jsd !== null && typeof obj.jsd !== 'number') {
+    errors.push('jsd must be a number, or null when not yet measured (section 13.5)');
+  }
   if (obj.mqm && typeof obj.mqm === 'object') {
     for (const k of MQM_REQUIRED) {
       if (obj.mqm[k] === undefined) errors.push(`missing key 'mqm.${k}'`);

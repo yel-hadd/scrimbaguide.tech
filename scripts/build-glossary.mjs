@@ -171,13 +171,33 @@ export function seedRows(courses) {
 
   for (const c of courses) {
     const category = c.isPath ? 'path-name' : 'course-name';
-    add(c.cleanName, category, 'data/courses.json#cleanName');
+    // cleanName is normally a real product name, but a handful of catalog entries
+    // are listicle headings ("Best React Courses and Tutorials Compared [2026]").
+    // Freezing those would require a translator to leave an English sentence,
+    // bracketed year and all, sitting inside Spanish prose.
+    if (c.cleanName && !c.cleanName.includes('[')) {
+      add(c.cleanName, category, 'data/courses.json#cleanName');
+    }
     // Path names appear in prose both with and without the leading article
     // ("the Frontend Developer Path"), and the article is the part a translator localizes.
     if (c.isPath && /^The\s+/i.test(c.cleanName ?? '')) {
       add(c.cleanName.replace(/^The\s+/i, ''), 'path-name', 'data/courses.json#cleanName-no-article');
     }
-    if (c.title && !c.title.includes(':')) add(c.title, category, 'data/courses.json#title');
+    // Only PRODUCT NAMES get frozen. Scraped titles also come in marketing-sentence
+    // form ("CSS Variables Tutorial - Learn CSS variables in this free course"),
+    // sometimes carrying a scraper typo ("Free Botstrap Tutorial ..."). Freezing
+    // those as do-not-translate forces a translator to reproduce an English
+    // sentence, typo included, verbatim in Spanish prose. Excluding ':' alone did
+    // not catch the dash-separated and dated-listicle forms.
+    if (
+      c.title &&
+      !c.title.includes(':') &&
+      !c.title.includes(' - ') &&
+      !c.title.includes('[') &&
+      c.title.trim().split(/\s+/).length <= 6
+    ) {
+      add(c.title, category, 'data/courses.json#title');
+    }
   }
 
   // Sort by category then term so a re-run never produces a diff from ordering alone.

@@ -12,7 +12,7 @@
     "generate:data": "node scripts/build-data.mjs",
     "generate:social-cards": "node scripts/generate-social-cards.mjs",
     "generate:llms": "node scripts/generate-llms-from-sitemap.mjs",
-    "test": "node --test scripts/__tests__/check-content.test.mjs scripts/__tests__/coverage-closure.test.mjs scripts/__tests__/hreflang.test.mjs scripts/__tests__/generate-llms-from-sitemap.test.mjs scripts/__tests__/localePath.test.mjs scripts/__tests__/normalize-canonical-urls.test.mjs scripts/__tests__/search-modal.test.mjs scripts/indexer/__tests__/*.test.mjs",
+    "test": "node --test scripts/__tests__/check-content.test.mjs scripts/__tests__/coverage-closure.test.mjs scripts/__tests__/hreflang.test.mjs scripts/__tests__/generate-llms-from-sitemap.test.mjs scripts/__tests__/localePath.test.mjs scripts/__tests__/normalize-canonical-urls.test.mjs scripts/__tests__/search-modal.test.mjs scripts/__tests__/glossary-check.test.mjs scripts/__tests__/jsx-integrity.test.mjs scripts/__tests__/prune-locale-links.test.mjs scripts/indexer/__tests__/*.test.mjs",
     "test:llms": "node --test scripts/__tests__/generate-llms-from-sitemap.test.mjs",
     "test:search": "node --test scripts/__tests__/search-modal.test.mjs",
     "test:a11y": "node --test scripts/__tests__/*a11y*.test.mjs",
@@ -30,7 +30,8 @@
     "prebuild": "npm run check:content && node scripts/build-coverage-manifest.mjs --check",
     "test:coverage-manifest": "node --test scripts/__tests__/coverage-closure.test.mjs",
     "prestart": "node scripts/build-coverage-manifest.mjs",
-    "test:hreflang": "node --test scripts/__tests__/hreflang.test.mjs"
+    "test:hreflang": "node --test scripts/__tests__/hreflang.test.mjs",
+    "test:i18n-qa": "node --test scripts/__tests__/jsx-integrity.test.mjs scripts/__tests__/glossary-check.test.mjs scripts/__tests__/prune-locale-links.test.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",

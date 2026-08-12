@@ -126,16 +126,30 @@ export function checkGlossary(sourceText, translatedText, terms) {
   const violations = [];
   for (const t of terms) {
     // Term must be present in the English source for the rule to apply at all.
-    if (countExact(sourceText, t.term) === 0) continue;
-    if (countExact(translatedText, t.rendering, { inflectable: t.inflectable }) > 0) continue;
+    const sourceCount = countExact(sourceText, t.term);
+    if (sourceCount === 0) continue;
+
+    // PARITY, not presence. Presence alone is satisfied by a single surviving
+    // occurrence, so a page that localizes a frozen course name nine times out
+    // of ten would exit 0. Terminology is binary and zero-tolerance in the MQM
+    // rubric precisely because an invented course name is a commercial error,
+    // and this is its only deterministic enforcement across the corpus. JSX and
+    // code structure are already frozen by jsx-integrity, so the two counts are
+    // directly comparable.
+    const translatedCount = countExact(translatedText, t.rendering, {
+      inflectable: t.inflectable,
+    });
+    if (translatedCount >= sourceCount) continue;
 
     const near = findNearMiss(maskLongerTerms(translatedText, terms, t), t.rendering);
     violations.push({
-      type: near ? 'rendered-differently' : 'missing',
+      type: translatedCount === 0 ? (near ? 'rendered-differently' : 'missing') : 'count-shortfall',
       term: t.term,
       category: t.category,
       expected: t.rendering,
       found: near,
+      sourceCount,
+      translatedCount,
       inflectable: t.inflectable,
     });
   }

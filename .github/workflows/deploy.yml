@@ -331,11 +331,22 @@ jobs:
       - name: Build the Pagefind index once over the merged tree
         run: |
           rm -rf "$MERGED_DIR"/*/pagefind
+          # The selector list is READ FROM THE PLUGIN, never restated here. Every matrix job
+          # sets SKIP_PAGEFIND=1, so plugins/pagefind never indexes in CI and this line is the
+          # sole producer of the deployed index. A hardcoded copy would drift from the plugin
+          # (and from its unit tests and any local `make build`), and the symptom is only
+          # visible by decoding index fragments: "Skip to main content" and the entire table of
+          # contents leak into every page's indexed text, so every query matches every page.
+          SELECTORS=$(node -e "process.stdout.write(require('./plugins/pagefind').EXCLUDE_SELECTORS)")
+          if [ -z "$SELECTORS" ]; then
+            echo "::error::Could not read EXCLUDE_SELECTORS from plugins/pagefind."
+            exit 1
+          fi
           # Resolved from node_modules (npm ci installed the pinned version), NOT `npx --yes
           # pagefind@1`: an unpinned network fetch can index with a different minor than
           # plugins/pagefind uses locally, so a local build and the deployed index disagree
           # on index format.
-          npx pagefind --site "$MERGED_DIR"
+          npx pagefind --site "$MERGED_DIR" --exclude-selectors "$SELECTORS"
 
       # Two-axis deploy gate (B1). Cloudflare Workers Static Assets has NO total-size cap; its
       # binding limit is file count (20,000 Free, 100,000 Paid, 25 MiB per asset), and the full

@@ -382,7 +382,22 @@ function main() {
   const target = path.join(ROOT, 'i18n', 'coverage.json');
   fs.writeFileSync(target, JSON.stringify(manifest, null, 2) + '\n');
 
-  const live = Object.entries(manifest.locales).filter(([, v]) => v.status === 'live');
+  // --locale <L> gates a SPECIFIC locale regardless of status. The barrier by
+  // construction runs while the locale is still 'draft' (the flip to live is the
+  // step AFTER a green barrier), and the default live-only sweep exits 0
+  // vacuously in that state, which would make the completeness gate and the 10%
+  // auto-drop veto both meaningless exactly when they matter.
+  const localeArg = (() => {
+    const i = args.indexOf('--locale');
+    return i !== -1 ? args[i + 1] : null;
+  })();
+  const live = localeArg
+    ? Object.entries(manifest.locales).filter(([l]) => l === localeArg)
+    : Object.entries(manifest.locales).filter(([, v]) => v.status === 'live');
+  if (localeArg && live.length === 0) {
+    console.error(`Unknown locale '${localeArg}'. It must exist in i18n/locales.config.ts.`);
+    process.exit(1);
+  }
   console.log(
     `Coverage manifest: ${Object.keys(manifest.locales).length} translation locales, ` +
     `${live.length} live.`,
@@ -391,7 +406,7 @@ function main() {
   if (args.includes('--check')) {
     const bad = live.filter(([, v]) => !v.complete);
     if (bad.length) {
-      console.error('\nLive locales are incomplete relative to their declared scope:');
+      console.error(`\n${localeArg ? 'Locale' : 'Live locales'} incomplete relative to declared scope:`);
       for (const [l, v] of bad) {
         console.error(`  ${l}: ${v.coveredCount}/${v.declaredCount} covered, ` +
           `${v.missing.length} missing, ${v.stale.length} stale`);

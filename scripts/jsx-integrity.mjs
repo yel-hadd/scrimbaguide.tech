@@ -115,6 +115,33 @@ export function inlineCodeSet(body) {
   return new Set([...body.matchAll(/(?<!`)`([^`\n]+)`(?!`)/g)].map((m) => m[1]));
 }
 
+
+/**
+ * Markdown link TARGETS, as a multiset.
+ *
+ * This is the check that actually protects internal linking here. FROZEN_PROPS
+ * freezes href/to/slug, but the corpus contains 2,221 markdown links and ZERO
+ * `to=` or `href=` props, so without this the frozen-props check protects
+ * nothing at all for internal links.
+ *
+ * The failure it catches is the single most predictable translator error:
+ * localizing `/docs/paths/frontend-developer-path/` into
+ * `/docs/rutas/desarrollador-frontend/`. That breaks slug parity, which is what
+ * hreflang is computed from (Docusaurus swaps the locale segment on the CURRENT
+ * pathname), so every alternate on the page would point at a 404.
+ *
+ * External targets and bare anchors are included for free: an external URL must
+ * never be rewritten either, and a bare `#anchor` must match the frozen {#id}.
+ */
+export function linkTargetMultiset(body) {
+  const out = new Map();
+  for (const m of body.matchAll(/\]\(\s*(<[^>]*>|[^)\s]+)(?:\s+["'][^"']*["'])?\s*\)/g)) {
+    const target = m[1].replace(/^<|>$/g, '');
+    out.set(target, (out.get(target) ?? 0) + 1);
+  }
+  return out;
+}
+
 /* -------------------------------------------------------------- compare */
 
 function diffMultiset(a, b) {
@@ -163,6 +190,23 @@ export function checkIntegrity(sourceText, translatedText) {
 
   const sBody = stripFences(s.body);
   const tBody = stripFences(t.body);
+
+  // 2b. Markdown link targets. See linkTargetMultiset: these are 100% of this
+  // repo's internal links, and a localized path silently breaks slug parity.
+  {
+    const sLinks = linkTargetMultiset(sBody);
+    const tLinks = linkTargetMultiset(tBody);
+    const keys = new Set([...sLinks.keys(), ...tLinks.keys()]);
+    for (const target of keys) {
+      const a = sLinks.get(target) ?? 0;
+      const b = tLinks.get(target) ?? 0;
+      if (a !== b) {
+        push('link-target', `link target '${target}' appears ${a}x in the source and ${b}x in the translation`, {
+          target, source: a, translated: b,
+        });
+      }
+    }
+  }
 
   // 3. Components, frozen props, imports: identical multisets.
   for (const d of diffMultiset(componentMultiset(sBody), componentMultiset(tBody))) {

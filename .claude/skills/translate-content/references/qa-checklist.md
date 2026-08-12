@@ -1,5 +1,12 @@
 # QA checklist
 
+> **NOT YET ACTIVE (2026-08-12).** The producer and consumer of these files do not exist:
+> `src/utils/localizedCatalog.ts` has not been written and `scripts/build-data.mjs` emits no
+> per-locale stub. Nothing in `src/`, `config/`, `scripts/` or `plugins/` reads either JSON
+> file today, so a translated `courses-strings.json` renders nowhere. Do NOT spend translation
+> effort on it until those two land; translated course pages will show an English curriculum
+> table in the meantime, and the cold MQM judge must NOT score that as an Accuracy error.
+
 Two tiers. The per-file gate runs on **every** translated file. The barrier runs **once** per
 locale, at the end.
 

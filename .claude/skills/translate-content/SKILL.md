@@ -5,6 +5,13 @@ description: The repo contract for translating scrimbaguide.tech into another lo
 
 # Translating this repo
 
+> **NOT YET ACTIVE (2026-08-12).** The producer and consumer of these files do not exist:
+> `src/utils/localizedCatalog.ts` has not been written and `scripts/build-data.mjs` emits no
+> per-locale stub. Nothing in `src/`, `config/`, `scripts/` or `plugins/` reads either JSON
+> file today, so a translated `courses-strings.json` renders nowhere. Do NOT spend translation
+> effort on it until those two land; translated course pages will show an English curriculum
+> table in the meantime, and the cold MQM judge must NOT score that as an Accuracy error.
+
 This file is **repo mechanics only**. It is language-agnostic on purpose, so it stays the one
 thing to update when the repo changes.
 
@@ -81,11 +88,17 @@ Emit the English name **character-for-character** (so `glossary-check.mjs` passe
 localized descriptor that carries the market's own keyword from your section 5:
 
 ```yaml
-es:    title: '"Learn React": ¿merece la pena?'
+es:    title: '“Learn React”: ¿vale la pena?'
 de:    title: '"Learn React": Kurs im Test'
 ja:    title: 「Learn React」コースレビュー
 pt-BR: title: '"Learn React": vale a pena?'
 ```
+
+The quote glyphs and the descriptor keyword are NOT chosen here. They come from the
+language profile: `translate-<lang>` section 2 (typography) fixes the quote marks, and
+section 5 (search behaviour) fixes which phrase real users actually search. For `es`
+that is `“ ”` and `vale la pena`; writing `"` and `merece la pena` would violate both,
+and `merece la pena` is Spain-leaning where the profile is LatAm-neutral.
 
 Where the English title is **only** the product name, the descriptor is **mandatory**. The
 first body mention uses the English name; later mentions may paraphrase ("el curso", "der
