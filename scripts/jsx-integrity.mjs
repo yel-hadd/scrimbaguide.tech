@@ -112,7 +112,15 @@ export function anchorSet(body) {
  * required, but it may never translate `data/courses.json` into a localized path.
  */
 export function inlineCodeSet(body) {
-  return new Set([...body.matchAll(/(?<!`)`([^`\n]+)`(?!`)/g)].map((m) => m[1]));
+  return new Set(
+    [...body.matchAll(/(?<!`)`([^`\n]+)`(?!`)/g)]
+      .map((m) => m[1])
+      // Template literals are backtick-delimited too, but they are PROSE with
+      // code holes, not code spans. templateLiterals() owns them; leaving them
+      // here would flag every correctly translated interpolated string as a
+      // changed code span.
+      .filter((code) => !code.includes('${')),
+  );
 }
 
 
@@ -140,6 +148,40 @@ export function linkTargetMultiset(body) {
     out.set(target, (out.get(target) ?? 0) + 1);
   }
   return out;
+}
+
+
+/**
+ * Prose carried inside TEMPLATE LITERALS, keyed by its interpolation skeleton.
+ *
+ * This exists because of a real, measured failure. The JSX policy said "never
+ * touch anything inside {...} expressions", and template literals live inside
+ * {...}. Translators followed that rule correctly and therefore skipped every
+ * interpolated string, while translating the quoted ones beside them. The
+ * result shipped Spanish comparison tables whose Scrimba column was English,
+ * and Spanish FAQ questions with English answers - 24 Major/Non-translation
+ * errors across the first calibration tranche, all of this one shape.
+ *
+ * The `${...}` holes are code and must stay byte-identical; the text BETWEEN
+ * them is prose and must be translated. We compare on the skeleton (the
+ * interpolations, in order) so a template can be matched across locales even
+ * though its prose changed.
+ */
+export function templateLiterals(body) {
+  const out = [];
+  for (const m of body.matchAll(/`((?:[^`\\]|\\.)*)`/g)) {
+    const raw = m[1];
+    if (!raw.includes('${')) continue;
+    const holes = [...raw.matchAll(/\$\{([^}]*)\}/g)].map((h) => h[1].trim());
+    const prose = raw.replace(/\$\{[^}]*\}/g, ' ').replace(/\s+/g, ' ').trim();
+    out.push({ skeleton: holes.join('|'), prose, raw });
+  }
+  return out;
+}
+
+/** Words of two or more letters. Used to decide whether a chunk is prose at all. */
+function proseWordCount(text) {
+  return (text.match(/[\p{L}]{2,}/gu) ?? []).length;
 }
 
 /* -------------------------------------------------------------- compare */
@@ -190,6 +232,39 @@ export function checkIntegrity(sourceText, translatedText) {
 
   const sBody = stripFences(s.body);
   const tBody = stripFences(t.body);
+
+  // 2a. Template-literal prose. Interpolations must be identical (they are code);
+  // the prose between them must NOT be, or the string was never translated.
+  {
+    const sTpl = templateLiterals(s.body);
+    const tTpl = templateLiterals(t.body);
+    if (sTpl.length !== tTpl.length) {
+      push('template-literal-count',
+        `source has ${sTpl.length} interpolated template literals, translation has ${tTpl.length}`);
+    }
+    const n2 = Math.min(sTpl.length, tTpl.length);
+    for (let i = 0; i < n2; i++) {
+      if (sTpl[i].skeleton !== tTpl[i].skeleton) {
+        push('template-literal-interpolation',
+          `template literal #${i + 1} changed its \${...} expressions`, {
+            index: i, source: sTpl[i].skeleton, translated: tTpl[i].skeleton,
+          });
+        continue;
+      }
+      // Identical prose in a translated file means the string was skipped. Short
+      // fragments (a unit, a bare product name) can legitimately match, so only
+      // flag chunks substantial enough to be sentences.
+      if (
+        proseWordCount(sTpl[i].prose) >= 4 &&
+        sTpl[i].prose === tTpl[i].prose
+      ) {
+        push('template-literal-untranslated',
+          `template literal #${i + 1} is byte-identical to the English source`, {
+            index: i, prose: sTpl[i].prose.slice(0, 120),
+          });
+      }
+    }
+  }
 
   // 2b. Markdown link targets. See linkTargetMultiset: these are 100% of this
   // repo's internal links, and a localized path silently breaks slug parity.

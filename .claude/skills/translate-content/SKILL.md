@@ -118,7 +118,11 @@ examples: `references/jsx-contract.md`.
 `verdict`, `alt`, and element **children**.
 
 **Never touch:** `href`, `to`, `slug`, `courseSlug`, `id`; component names; `import`
-statements; anything inside `{...}` expressions.
+statements; CODE inside `{...}` expressions (identifiers, calls, ternaries, `{' '}`).
+  **Template literals are the exception and they are not optional:** the prose between
+  `${...}` holes IS translatable body copy, and every `${...}` hole must be reproduced
+  byte-for-byte. Skipping them is the highest-frequency defect measured on this repo
+  (24 Major errors in the first 22 pages). See references/jsx-contract.md.
 
 **Never translate:** fenced code blocks (byte-identical, including comments and string
 literals), inline code, CLI commands, file paths, URLs.

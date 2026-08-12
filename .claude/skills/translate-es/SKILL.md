@@ -264,27 +264,48 @@ Spanish one. Load it for the refine step on money pages.
 
 ## 7. Known LLM failure modes for EN to ES
 
-**This section starts EMPTY and grows.** It is the compounding asset in the whole system: every
-entry here is a defect the next 200 pages do not repeat.
+Harvested from real MQM findings on this repo. Every entry below was an actual
+error a cold judge caught, not a hypothetical. Read this list before drafting.
 
-**How to add an entry.** When the cold judge fails a page a third time (attempt 3 of the
-failure ladder in `translate-content/references/workflow.md`), append the error class here
-before re-translating. Also append anything the native-register critic flags twice on
-different pages.
+**Measured 2026-08-12, first transcreation tranche (22 money pages, median MQM 8.07):**
 
-Format:
+### 7.1 Interpolated strings skipped entirely (24 Major/Non-translation errors)
 
-```
-### <short name of the failure>
-Seen on: <route>, <route>
-Symptom: <what the output does>
-Cause: <why the model does it, if known>
-Fix instruction: <one sentence that can be pasted into the translate prompt>
-```
+The dominant defect by a wide margin. Every occurrence was a backtick template
+literal inside a JSX prop. Quoted props beside them were translated correctly; the
+interpolated ones were not. Symptom the reader sees: a Spanish comparison table
+whose Scrimba column is English, or a Spanish FAQ question with an English answer.
 
-_(No entries yet. The first Spanish run populates this.)_
+The rule is now explicit in `translate-content/references/jsx-contract.md`, and
+`jsx-integrity.mjs` fails the file. But the reflex is strong, so check every
+backtick in a JSX prop before you call a page done.
 
----
+### 7.2 Idiom calques that are grammatical and wrong
+
+| English | Wrong (calque) | Right |
+|---|---|---|
+| "if the format clicks" | `si el formato te hace clic` | `si te engancha`, `si te cuadra`, `si te funciona` |
+| "if that is you" | `si ese eres tú` | `si es tu caso` |
+| "to audit a course" | `auditar un curso` | `asistir como oyente`, `acceder en modo oyente` |
+
+`hacer clic` in Spanish means to click a mouse, nothing else. `auditar` belongs to
+accounting and compliance; using it for coursework is an English sense imported
+wholesale. All three appeared MULTIPLE times per page, so they are systematic
+reflexes rather than slips: fix them everywhere, including in CTA subtitles.
+
+### 7.3 Redundant subject pronouns
+
+English needs "if that is **you**"; Spanish carries the subject in the verb.
+Retaining the pronoun is one of the clearest literal-translation fingerprints, and
+it is the specific tell described in section 3. Drop it unless it is contrastive.
+
+### 7.4 Terminology drift within one page
+
+A page translated `Path` as `ruta` in prose and then left `4 paths` in a table
+cell, and another used `Modo oyente` as a heading while writing `auditar` three
+times in the body. Pick the rendering once, then grep your own output for the
+English term before finishing.
+
 
 ## 8. Sign-off criteria
 

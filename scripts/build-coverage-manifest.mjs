@@ -323,6 +323,29 @@ export function coverageForLocale(locale, declared, universe) {
       stale.push({ route, reason: 'source-changed-since-translation' });
       continue;
     }
+    // A written file is not a publishable page. The sidecar is authored by the
+    // translating agent BEFORE the cold MQM judge runs, so state 'current' only
+    // means "the translator finished", not "the page passed". Counting those as
+    // covered is the same class of error as counting an untranslated copy:
+    // the locale would report itself complete and ship pages a judge rejected.
+    // Measured on the first es tranche: 22 sidecars written, 4 judge passes.
+    if (sidecar.mqm && sidecar.mqm.verdict && sidecar.mqm.verdict !== 'pass') {
+      missing.push({ route, reason: `mqm:${sidecar.mqm.verdict}` });
+      continue;
+    }
+    if (!sidecar.mqm || sidecar.mqm.verdict === undefined) {
+      missing.push({ route, reason: 'not-yet-judged' });
+      continue;
+    }
+    // The verdict must come from a COLD judge, not the translator's own review.
+    // Measured: all 22 pages of the first tranche self-scored 'pass' (one at
+    // MQM 2.1) while the independent judge failed 18 of them, the worst at 38.6.
+    // A model grading its own draft rationalises; that is the entire reason
+    // section 13.4 step 5 requires a separate instance.
+    if (/self[- ]review/i.test(String(sidecar.mqm.judgeModel ?? ''))) {
+      missing.push({ route, reason: 'self-assessed-verdict-not-accepted' });
+      continue;
+    }
     covered.push({ route, surface: entry.surface, sourceFile: entry.sourceFile });
   }
   return { covered, missing, stale, blocked };

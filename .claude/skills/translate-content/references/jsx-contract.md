@@ -25,7 +25,36 @@ parameter, a build that throws at the locale barrier, or a code sample that teac
 - `href`, `to`, `slug`, `courseSlug`, `id`
 - component names (`<AffiliateLink>` stays `<AffiliateLink>`)
 - `import` statements, including the imported binding name
-- anything inside a `{...}` expression, including `{' '}` and template literals
+- anything inside a `{...}` expression that is CODE: identifiers, member access, calls,
+  ternaries, `{' '}` spacers, object keys, and every `${...}` hole inside a template literal
+
+**TEMPLATE LITERALS ARE PROSE WITH CODE HOLES, AND THE PROSE IS TRANSLATABLE.**
+This is the single most expensive mistake made in this repo's first translation
+tranche: 24 Major/Non-translation errors across 22 pages, every one of them an
+interpolated string that was skipped because "it is inside `{...}`". The result
+shipped Spanish comparison tables whose Scrimba column was English, and Spanish
+FAQ questions with English answers.
+
+```jsx
+// SOURCE
+a={`Yes. Scrimba offers around ${freeCount} full free courses, no card needed.`}
+
+// WRONG - left untranslated because it sits inside {...}
+a={`Yes. Scrimba offers around ${freeCount} full free courses, no card needed.`}
+
+// RIGHT - prose translated, ${...} hole byte-identical, same order
+a={`Sí. Scrimba ofrece alrededor de ${freeCount} cursos completos gratis, sin tarjeta.`}
+```
+
+Rules for template literals:
+1. Translate the text between the holes.
+2. Reproduce every `${...}` hole byte-for-byte, in the same order. Renaming
+   `${freeCount}` to `${cursosGratis}` is a `ReferenceError`.
+3. Word order may move around a hole if the target language needs it, as long as
+   the hole's own text is unchanged.
+
+`scripts/jsx-integrity.mjs` enforces all three. A template literal whose prose is
+byte-identical to the English source fails as `template-literal-untranslated`.
 - fenced code blocks: byte-identical, including comments, string literals and the info string
 - inline code, CLI commands, file paths, URLs
 
@@ -64,7 +93,7 @@ the surrounding words move.
 | `{#id}` anchors frozen | `onBrokenAnchors: 'throw'`. Also breaks every deep link into the page from other pages and from search results. |
 | component names frozen | The component does not exist. MDX compile error, at best. |
 | imports frozen | Same, plus the error message points at a line the translator never thought they edited. |
-| `{...}` expressions frozen | It is code. A translated identifier is a `ReferenceError`; a translated string inside a template literal silently changes a computed URL. |
+| `{...}` code frozen, template-literal PROSE translated | Identifiers are code: a translated one is a `ReferenceError`. But the text between `${...}` holes is body copy the reader sees, and freezing it ships English inside a Spanish page. Translate the prose, reproduce the holes verbatim. |
 | fenced code frozen | A localized identifier teaches broken code, and the reader copies it. |
 | inline code frozen | `data/courses.json` is a path, not a phrase. |
 
