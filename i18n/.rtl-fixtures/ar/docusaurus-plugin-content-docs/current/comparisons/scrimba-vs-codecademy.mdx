@@ -1,0 +1,41 @@
+---
+title: "سكريمبا مقابل كودأكاديمي"
+description: "صفحة اختبار للجداول والصناديق في التخطيط من اليمين إلى اليسار. ليست ترجمة حقيقية."
+---
+
+{/* THROWAWAY FIXTURE. Hand-written Arabic, not a translation, never shipped.
+    Chosen for the table: `text-align: start` on th/td, the mobile
+    scroll-fade edge, and the verdict box's pros/cons markers, which sit on
+    inset-inline-start and must move to the right edge. */}
+
+import VerdictBox from '@site/src/components/VerdictBox';
+
+# سكريمبا مقابل كودأكاديمي
+
+المنصتان تعلّمان البرمجة بالممارسة، لكن طريقة الدرس مختلفة تمامًا.
+
+## مقارنة سريعة {#quick-comparison}
+
+| المعيار | سكريمبا | كودأكاديمي |
+| --- | --- | --- |
+| صيغة الدرس | فيديو قابل للتعديل | محرر مقسوم |
+| اللغات الأساسية | JavaScript و React | Python و JavaScript |
+| المسارات المهنية | ٦ مسارات | أكثر من ١٥ مسارًا |
+| الأمر الأول | `npm create vite@latest` | `pip install requests` |
+| آخر تحديث للفهرس | <span className="sg-ltr">2026-08</span> | <span className="sg-ltr">2026-07</span> |
+
+الصف الرابع مقصود: الخلية تحتوي على أمر لاتيني داخل جدول عربي، وهو أوضح مكان
+يظهر فيه انهيار الاتجاه إن لم تكن العزلة ثنائية الاتجاه مفعّلة.
+
+<VerdictBox
+  title="الخلاصة"
+  verdict="اختر سكريمبا إن كان هدفك الواجهة الأمامية، واختر كودأكاديمي إن كنت تريد اتساع التغطية."
+  pros={[
+    'الدرس نفسه محرر قابل للتشغيل',
+    'مسار الواجهة الأمامية مترابط',
+  ]}
+  cons={[
+    'تغطية أضيق خارج JavaScript',
+    'لا يوجد مسار بيانات',
+  ]}
+/>

@@ -1,32 +1,88 @@
-name: Deploy to GitHub Pages
+# Multi-locale build, assemble, and deploy (I18N-PLAN.md section 4 Phase 3, Phase 0c).
+#
+# Shape: one runner per LIVE locale, then a single `assemble` job that stitches the per-locale
+# trees into one publishable directory, runs Pagefind exactly once over it, and gates the result
+# on BOTH bytes and file count before anything is published.
+#
+# NOTE FOR THE SECTION 11.6 INDEXER WORKFLOWS: their `on.workflow_run.workflows:` filter must
+# equal the `name:` below byte-for-byte. A mismatch never fires and never errors.
+name: Deploy
 
 on:
   push:
     branches:
       - main
+  # The Cloudflare preview deploy is driven by hand during the Phase 0c cutover.
+  workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: "pages"
+  group: deploy
   cancel-in-progress: false
 
+env:
+  SITE_URL: https://scrimbaguide.tech
+  NODE_VERSION: "22"
+
 jobs:
-  build:
+  # ────────────────────────────────────────────────────────────────────────────
+  # Roster + shared build inputs. Derives the matrix from i18n/locales.config.ts so a locale
+  # cannot be promoted to `status: 'live'` without CI building it, and generates the blog social
+  # cards ONCE instead of once per locale (they are byte-identical across locales, and the
+  # assemble job dedupes static/ anyway).
+  # ────────────────────────────────────────────────────────────────────────────
+  prepare:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.roster.outputs.matrix }}
+      locales: ${{ steps.roster.outputs.locales }}
+      full_txt_locales: ${{ steps.roster.outputs.full_txt_locales }}
     steps:
       - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: ${{ env.NODE_VERSION }}
           cache: npm
+
+      # I18N_COVERAGE is the Phase 2 local-QA escape hatch: it forces a coverage set instead of
+      # deriving it from disk, which is exactly how a locale would ship half-translated pages
+      # under its own hreflang. It must never reach a deploy.
+      - name: Refuse to deploy with the coverage escape hatch set
+        env:
+          I18N_COVERAGE_VAR: ${{ vars.I18N_COVERAGE }}
+        run: |
+          if [ -n "${I18N_COVERAGE:-}" ] || [ -n "${I18N_COVERAGE_VAR:-}" ]; then
+            echo "::error::I18N_COVERAGE is set. It is a local-QA-only escape hatch (I18N-PLAN.md Phase 2) and must never be set in CI."
+            exit 1
+          fi
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Derive the locale build matrix from the roster
+        id: roster
+        run: |
+          node --experimental-strip-types --input-type=module -e '
+            const fs = await import("node:fs");
+            const { LOCALES } = await import("./i18n/locales.config.ts");
+            const live = LOCALES.filter((l) => l.status === "live");
+            if (live.length === 0) {
+              console.error("::error::No locale has status \"live\"; refusing to deploy an empty site.");
+              process.exit(1);
+            }
+            // llms-full.txt is ~1.6 MB per locale, so only Tier A/B carry one (Phase 3).
+            const fullTxt = live.filter((l) => l.tier === "A" || l.tier === "B");
+            const lines = [
+              `matrix=${JSON.stringify(live.map((l) => l.locale))}`,
+              `locales=${live.map((l) => l.locale).join(",")}`,
+              `full_txt_locales=${fullTxt.map((l) => l.locale).join(",")}`,
+            ];
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, lines.join("\n") + "\n");
+            console.log(lines.join("\n"));
+          '
 
       - name: Install librsvg (for social card generation)
         run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
@@ -34,29 +90,362 @@ jobs:
       - name: Generate social card images
         run: npm run generate:social-cards -- --force
 
-      - name: Build website
-        run: npm run build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5
+      - name: Upload social cards
+        uses: actions/upload-artifact@v5
         with:
+          name: social-cards
+          path: static/img/blog
+          retention-days: 1
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # One runner per locale. Section 15.4: `generatedFilesDir` is NOT locale-scoped, so two
+  # concurrent locale builds in one checkout clobber each other. One runner per locale is what
+  # keeps that safe here.
+  # ────────────────────────────────────────────────────────────────────────────
+  build-locale:
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      # A single failing locale must not cancel the other 47: the failure list is the signal.
+      fail-fast: false
+      max-parallel: 15
+      matrix:
+        locale: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    env:
+      # Docusaurus routinely OOMs the default heap at this route count.
+      NODE_OPTIONS: --max-old-space-size=6144
+      # Phase 0b: the Pagefind postBuild plugin no-ops here. Without this every matrix job would
+      # leave its own pagefind/ directory in the merged tree, on top of the merged index.
+      SKIP_PAGEFIND: "1"
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Refuse to build with the coverage escape hatch set
+        env:
+          I18N_COVERAGE_VAR: ${{ vars.I18N_COVERAGE }}
+        run: |
+          if [ -n "${I18N_COVERAGE:-}" ] || [ -n "${I18N_COVERAGE_VAR:-}" ]; then
+            echo "::error::I18N_COVERAGE is set. It is a local-QA-only escape hatch and must never be set in CI."
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download social cards
+        uses: actions/download-artifact@v5
+        with:
+          name: social-cards
+          path: static/img/blog
+
+      # `npm run build` would also run the English-only llms generator; the assemble job runs the
+      # locale-aware one over the merged tree instead. The prebuild gates still run, explicitly.
+      - name: Content gate
+        run: npm run check:content
+
+      - name: Build the coverage manifest
+        run: node scripts/build-coverage-manifest.mjs --check
+
+      - name: Build ${{ matrix.locale }}
+        run: npx docusaurus build --locale ${{ matrix.locale }}
+
+      # Explicit per-locale baseUrl means `en` writes build/ and `de` writes build/de/, so the
+      # artifacts already have the right shape and merge without any path rewriting.
+      - name: Upload ${{ matrix.locale }} build
+        uses: actions/upload-artifact@v5
+        with:
+          name: site-${{ matrix.locale }}
+          path: build
+          retention-days: 1
+          if-no-files-found: error
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # Merge, dedupe, index, gate.
+  # ────────────────────────────────────────────────────────────────────────────
+  assemble:
+    needs: [prepare, build-locale]
+    runs-on: ubuntu-latest
+    env:
+      LOCALES: ${{ needs.prepare.outputs.locales }}
+      FULL_TXT_LOCALES: ${{ needs.prepare.outputs.full_txt_locales }}
+      MERGED_DIR: merged
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download every locale build
+        uses: actions/download-artifact@v5
+        with:
+          pattern: site-*
+          path: merged
+          merge-multiple: true
+
+      # The dedupe below builds its file list from the `static/` checkout, but the 161 social
+      # cards (7.3 MB, 96% of static/ by bytes) are GENERATED in `prepare` and gitignored, so
+      # they are absent here. Without this download the dedupe collapses only the 16 tracked
+      # files and every locale keeps its own copy of the cards.
+      - name: Restore generated social cards into static/
+        uses: actions/download-artifact@v5
+        with:
+          name: social-cards
+          path: static/img/blog
+
+      # B3: `static/` is 7.5 MB and Docusaurus copies ALL of it into every locale outDir. At the
+      # full 48-locale roster that is ~360 MB of byte-identical duplicates, and it is file count,
+      # not bytes, that binds on Workers Static Assets. Keep one copy at the root and repoint the
+      # locale HTML/CSS/JS at it.
+      - name: Dedupe static/ into the root
+        run: |
+          cat > /tmp/dedupe-static.mjs <<'NODE_EOF'
+          import fs from 'node:fs';
+          import path from 'node:path';
+
+          const merged = process.env.MERGED_DIR;
+          const staticDir = 'static';
+          const locales = process.env.LOCALES.split(',').map((l) => l.trim()).filter(Boolean);
+          const defaultLocale = 'en';
+
+          /** Every path inside static/, relative to it. These are the files copied per locale. */
+          function walk(dir, base = dir) {
+            return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+              const full = path.join(dir, entry.name);
+              return entry.isDirectory() ? walk(full, base) : [path.relative(base, full)];
+            });
+          }
+
+          /** Top-level static DIRECTORIES; only these appear in `/de/<dir>/...` references. */
+          const staticDirs = fs
+            .readdirSync(staticDir, { withFileTypes: true })
+            .filter((entry) => entry.isDirectory())
+            .map((entry) => entry.name);
+
+          const staticFiles = walk(staticDir);
+          let removed = 0;
+
+          for (const locale of locales) {
+            if (locale === defaultLocale) continue;
+            const localeRoot = path.join(merged, locale);
+            if (!fs.existsSync(localeRoot)) continue;
+
+            for (const rel of staticFiles) {
+              const copy = path.join(localeRoot, rel);
+              // Only drop a locale copy when the ROOT copy is actually there to serve.
+              if (fs.existsSync(copy) && fs.existsSync(path.join(merged, rel))) {
+                fs.rmSync(copy);
+                removed += 1;
+              }
+            }
+          }
+
+          /** Repoint `/de/img/...` at `/img/...` now that only the root copy exists. */
+          const rewritable = new Set(['.html', '.css', '.js', '.json', '.xml', '.txt']);
+          const patterns = locales
+            .filter((locale) => locale !== defaultLocale)
+            .flatMap((locale) => staticDirs.map((dir) => ({
+              from: new RegExp(`/${locale}/${dir}/`, 'g'),
+              to: `/${dir}/`,
+            })));
+
+          let rewritten = 0;
+          function rewrite(dir) {
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory()) {
+                rewrite(full);
+                continue;
+              }
+              if (!rewritable.has(path.extname(entry.name))) continue;
+              const before = fs.readFileSync(full, 'utf8');
+              let after = before;
+              for (const { from, to } of patterns) after = after.replace(from, to);
+              if (after !== before) {
+                fs.writeFileSync(full, after, 'utf8');
+                rewritten += 1;
+              }
+            }
+          }
+
+          for (const locale of locales) {
+            if (locale === defaultLocale) continue;
+            const localeRoot = path.join(merged, locale);
+            if (fs.existsSync(localeRoot)) rewrite(localeRoot);
+          }
+
+          console.log(`Removed ${removed} duplicated static file(s); rewrote references in ${rewritten} file(s).`);
+          NODE_EOF
+          node /tmp/dedupe-static.mjs
+
+      # C11: /llms.txt stays English and links the locale indexes; each locale gets its own
+      # index under its prefix. Content is always read from the merged ROOT because locale
+      # sitemap URLs already carry the `/de/` segment.
+      - name: Generate per-locale llms.txt
+        run: |
+          set -euo pipefail
+          for locale in $(echo "$LOCALES" | tr ',' ' '); do
+            full_flag="--no-full"
+            case ",$FULL_TXT_LOCALES," in
+              *",$locale,"*) full_flag="" ;;
+            esac
+            if [ "$locale" = "en" ]; then
+              node scripts/generate-llms-from-sitemap.mjs \
+                --sitemap "$MERGED_DIR/sitemap.xml" \
+                --output-dir "$MERGED_DIR" \
+                --content-root "$MERGED_DIR" \
+                --site-url "$SITE_URL" \
+                --locale en \
+                --locales "$LOCALES" \
+                $full_flag
+            else
+              node scripts/generate-llms-from-sitemap.mjs \
+                --sitemap "$MERGED_DIR/$locale/sitemap.xml" \
+                --output-dir "$MERGED_DIR/$locale" \
+                --content-root "$MERGED_DIR" \
+                --site-url "$SITE_URL" \
+                --locale "$locale" \
+                $full_flag
+            fi
+          done
+
+      - name: Generate sitemap-index.xml
+        run: |
+          node scripts/generate-sitemap-index.mjs \
+            --build-dir "$MERGED_DIR" \
+            --site-url "$SITE_URL" \
+            --locales "$LOCALES"
+
+      # Section 12: Pagefind reads `<html lang>` and splits its index per language by itself, so
+      # ONE pass over the merged tree indexes every locale. Any per-locale index that slipped
+      # past SKIP_PAGEFIND is deleted first, or the merged tree carries both.
+      - name: Build the Pagefind index once over the merged tree
+        run: |
+          rm -rf "$MERGED_DIR"/*/pagefind
+          # Resolved from node_modules (npm ci installed the pinned version), NOT `npx --yes
+          # pagefind@1`: an unpinned network fetch can index with a different minor than
+          # plugins/pagefind uses locally, so a local build and the deployed index disagree
+          # on index format.
+          npx pagefind --site "$MERGED_DIR"
+
+      # Two-axis deploy gate (B1). Cloudflare Workers Static Assets has NO total-size cap; its
+      # binding limit is file count (20,000 Free, 100,000 Paid, 25 MiB per asset), and the full
+      # roster projects to ~22,200 files, which is why the account is on Paid (decision 1). The
+      # byte axis stays because a runaway asset would still be a regression worth failing on.
+      - name: Enforce the size and file-count gate
+        run: |
+          set -euo pipefail
+          MAX_MB=900
+          MAX_FILES=90000
+          SIZE_MB=$(du -sm "$MERGED_DIR" | cut -f1)
+          FILE_COUNT=$(find "$MERGED_DIR" -type f | wc -l)
+          # awk, not `sort -nr | head -1`: under `pipefail` the SIGPIPE that `head` sends to
+          # `sort` fails the whole step, which would read as a size-gate failure.
+          LARGEST_MB=$(find "$MERGED_DIR" -type f -printf '%s\n' | awk 'BEGIN{m=0} $1>m{m=$1} END{printf "%.1f", m/1024/1024}')
+          echo "merged tree: ${SIZE_MB} MB, ${FILE_COUNT} files, largest asset ${LARGEST_MB} MB"
+          {
+            echo "### Merged tree"
+            echo "- size: ${SIZE_MB} MB (limit ${MAX_MB} MB)"
+            echo "- files: ${FILE_COUNT} (limit ${MAX_FILES})"
+            echo "- largest asset: ${LARGEST_MB} MB (Cloudflare per-asset limit 25 MiB)"
+          } >> "$GITHUB_STEP_SUMMARY"
+          FAILED=0
+          if [ "$SIZE_MB" -gt "$MAX_MB" ]; then
+            echo "::error::Merged tree is ${SIZE_MB} MB, over the ${MAX_MB} MB gate."
+            FAILED=1
+          fi
+          if [ "$FILE_COUNT" -gt "$MAX_FILES" ]; then
+            echo "::error::Merged tree has ${FILE_COUNT} files, over the ${MAX_FILES} file gate (Cloudflare Paid caps at 100,000)."
+            FAILED=1
+          fi
+          # Third axis. Cloudflare REJECTS any single asset over 25 MiB, so a runaway
+          # llms-full.txt or a stray media file fails the upload rather than the gate, which is
+          # a much worse place to find out. Printing it without enforcing it read as covered.
+          if [ -n "$(find "$MERGED_DIR" -type f -size +25M -print -quit)" ]; then
+            echo "::error::Assets over Cloudflare's 25 MiB per-asset limit:"
+            find "$MERGED_DIR" -type f -size +25M -printf '  %s\t%p\n'
+            FAILED=1
+          fi
+          exit $FAILED
+
+      - name: Upload the merged site
+        uses: actions/upload-artifact@v5
+        with:
+          name: site-merged
+          path: merged
+          retention-days: 5
+          if-no-files-found: error
+
+      # Until the Phase 0c cutover flips this variable, a push to main builds, assembles and
+      # gates the site but publishes NOTHING. Say so in the log, or a green run reads as a
+      # successful deploy.
+      - name: Report the publish state
+        run: |
+          if [ "${{ vars.CLOUDFLARE_DEPLOY_ENABLED }}" = "true" ]; then
+            echo "::notice::Cloudflare publish is enabled; the deploy job will run."
+          else
+            echo "::notice::Cloudflare publish is DISABLED (vars.CLOUDFLARE_DEPLOY_ENABLED != 'true'). The merged site was built and gated but not published; download the site-merged artifact or run the preview deploy by hand."
+            echo "Cloudflare publish is disabled; nothing was deployed." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # Publish. Assets-only Workers deploy; wrangler.json points at ./build, so the merged tree is
+  # downloaded there. DISABLED until the Phase 0c cutover flips the repository variable: the
+  # preview deploy (`*.workers.dev`, no custom domain) is run by hand first.
+  # ────────────────────────────────────────────────────────────────────────────
+  deploy:
+    needs: assemble
+    if: vars.CLOUDFLARE_DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://scrimbaguide.tech
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/download-artifact@v5
+        with:
+          name: site-merged
           path: build
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+      # `not_found_handling: "404-page"` in wrangler.json is invariant 11: the
+      # `single-page-application` value returns HTTP 200 for every unknown URL and mass-indexes
+      # soft 404s. Assert it here too, because it is one word away in a file nobody re-reads.
+      - name: Assert the 404 handling has not been inverted
+        run: |
+          node -e '
+            const cfg = JSON.parse(require("fs").readFileSync("wrangler.json", "utf8"));
+            if (cfg.assets?.not_found_handling !== "404-page") {
+              console.error("::error::wrangler.json assets.not_found_handling must be \"404-page\" (I18N-PLAN.md invariant 11).");
+              process.exit(1);
+            }
+          '
 
+      - name: Deploy to Cloudflare Workers Static Assets
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # Post-deploy verification against the LIVE site, preserved from the GitHub Pages workflow.
+  # ────────────────────────────────────────────────────────────────────────────
   indexnow:
+    needs: [prepare, assemble, deploy]
+    if: vars.CLOUDFLARE_DEPLOY_ENABLED == 'true'
     runs-on: ubuntu-latest
-    needs: [build, deploy]
     env:
+      LOCALES: ${{ needs.prepare.outputs.locales }}
       INDEXNOW_HOST: scrimbaguide.tech
       INDEXNOW_KEY: "04a47dc50a7a4b528f9fa0aa65c489ff"
       INDEXNOW_SUBMIT_ALL_ENDPOINTS: "true"
@@ -70,11 +459,11 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: ${{ env.NODE_VERSION }}
 
-      - name: Wait for GitHub Pages CDN propagation
+      - name: Wait for CDN propagation
         run: |
-          echo "Waiting 60s for GitHub Pages CDN to propagate..."
+          echo "Waiting 60s for the edge to serve the new deployment..."
           sleep 60
 
       - name: Verify key file is live and correct
@@ -97,8 +486,31 @@ jobs:
           echo "::error::Key file verification failed after 8 attempts"
           exit 1
 
-      - name: Assert required URL exists in live sitemap
-        run: node scripts/assert-sitemap-url.mjs --sitemap-url https://scrimbaguide.tech/sitemap.xml --require-url https://scrimbaguide.tech/docs/paths/
+      # C12: one required URL PER LOCALE, resolved through the live sitemap index. A locale that
+      # built to an empty tree passes every earlier gate and only fails here.
+      - name: Assert required URL exists in every live sitemap
+        run: |
+          node scripts/assert-sitemap-url.mjs \
+            --sitemap-url "$SITE_URL/sitemap-index.xml" \
+            --site-url "$SITE_URL" \
+            --locales "$LOCALES" \
+            --require-path /docs/paths/
 
-      - name: Submit URLs to IndexNow
-        run: node scripts/submit-indexnow.mjs --sitemap-url https://scrimbaguide.tech/sitemap.xml --require-url https://scrimbaguide.tech/docs/paths/
+      # One invocation per locale: submit-indexnow.mjs rejects a <sitemapindex> on purpose,
+      # since `<loc>` parses in both shapes and the flat read would submit child sitemaps
+      # instead of pages. Batching stays at the IndexNow 10k-URL-per-request limit.
+      - name: Submit URLs to IndexNow, per locale
+        run: |
+          set -euo pipefail
+          for locale in $(echo "$LOCALES" | tr ',' ' '); do
+            if [ "$locale" = "en" ]; then
+              sitemap="$SITE_URL/sitemap.xml"
+              required="$SITE_URL/docs/paths/"
+            else
+              sitemap="$SITE_URL/$locale/sitemap.xml"
+              required="$SITE_URL/$locale/docs/paths/"
+            fi
+            echo "::group::IndexNow $locale"
+            node scripts/submit-indexnow.mjs --sitemap-url "$sitemap" --require-url "$required"
+            echo "::endgroup::"
+          done

@@ -1,0 +1,40 @@
+---
+title: "Scrimbaフロントエンド開発者パス"
+description: "日本語の行分割と CJK システムフォントを確認するためのテストページです。実際の翻訳ではありません。"
+hideGlobalPricingCta: true
+---
+
+{/* THROWAWAY FIXTURE. Hand-written Japanese, not a translation, never shipped.
+
+    Exercises `:lang(ja) { line-break: strict; overflow-wrap: anywhere }`.
+    Japanese has no word spaces, so a whole clause is one unbreakable run: the
+    long sentences and the narrow table cells below are where the default
+    `word-break` overflows a card. Also confirms the CJK SYSTEM stack (no
+    webfont is requested for `cjk` in config/fonts.ts) renders without tofu at
+    every weight. */}
+
+# Scrimbaフロントエンド開発者パス
+
+このパスはHTMLとCSSの基礎から始まり、JavaScriptの中核を学んだうえで、最終的にReactでひとつのアプリケーションを最後まで作り切る構成になっています。
+
+## パスの内容 {#what-the-path-covers}
+
+各レッスンはブラウザ内で編集できるため、`npm install react`をローカルで実行する必要はありません。動画を一時停止してコードを書き換え、そのまま実行できます。
+
+長い見出しの折り返しを確認するための一文です。単語の区切りがない日本語の文章はカード内やテーブルのセル内であふれやすく、行分割の指定がないと右端で不自然に切れます。
+
+## モジュール一覧 {#modules}
+
+| モジュール | 内容 | 目安時間 |
+| --- | --- | --- |
+| はじめてのHTML | 文書構造とセマンティクス | 8時間 |
+| CSSレイアウト | FlexboxとCSS Gridを使った実装 | 12時間 |
+| JavaScript基礎 | 変数、関数、配列操作、非同期処理 | 20時間 |
+| Reactアプリケーション開発 | 状態管理とコンポーネント設計 | 24時間 |
+
+## 確認項目 {#assertions}
+
+- 見出しとカードのタイトルが途中で切れていないこと。
+- テーブルのセルが横にあふれず、セル内で折り返されていること。
+- 句読点が行頭に来ていないこと（禁則処理）。
+- 豆腐（□）が一文字も出ていないこと。

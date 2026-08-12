@@ -1,0 +1,73 @@
+---
+title: "دليل سكريمبا"
+description: "صفحة اختبار للتخطيط من اليمين إلى اليسار. ليست محتوى حقيقيًا."
+---
+
+{/* THROWAWAY FIXTURE. Hand-written Arabic, not a translation, never shipped.
+    The real homepage is src/pages/index.tsx and cannot be overridden by an MDX
+    page, so this file reproduces its layout classes instead. */}
+
+<section className="hero-section">
+  <div className="hero-section__inner hero-section__inner--split">
+    <div className="hero-section__copy">
+      <p className="hero-section__eyebrow">دليل مستقل</p>
+
+      {/* Long title on purpose: this is the title-clipping assertion. */}
+      <h1>تعلّم البرمجة عبر دروس تفاعلية قابلة للتعديل داخل المتصفح</h1>
+
+      <p className="hero-section__lead">
+        مراجعة مستقلة لمنصة سكريمبا: المسارات، الدورات، والأسعار. يمكنك تشغيل
+        الأمر <code>npm install react</code> مباشرة داخل الدرس دون أي إعداد.
+      </p>
+
+      <ul className="hero-section__bullets">
+        <li>دروس قابلة للإيقاف والتعديل</li>
+        <li>مشاريع حقيقية من البداية</li>
+        <li>مسارات مهنية كاملة</li>
+      </ul>
+
+      <ul className="hero-section__proof">
+        <li><strong>٧٩</strong> دورة</li>
+        <li><strong>٦</strong> مسارات</li>
+        <li>تحديث <span className="sg-ltr">2026-08</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section className="home-section">
+  <div className="home-shell">
+    <div className="trust-bar">
+      <div className="trust-bar__item">
+        <span className="trust-bar__value">٨١٫٦</span>
+        <span className="trust-bar__label">ساعة في مسار الواجهة</span>
+      </div>
+      <div className="trust-bar__item">
+        <span className="trust-bar__value">٧٩</span>
+        <span className="trust-bar__label">دورة في الفهرس</span>
+      </div>
+      <div className="trust-bar__item">
+        <span className="trust-bar__value">٦</span>
+        <span className="trust-bar__label">مسارات مهنية</span>
+      </div>
+    </div>
+
+    {/* The accent stripe on these cards is border-inline-start: it must appear
+        on the RIGHT edge under RTL. */}
+    <div className="path-card path-card--frontend">
+      <h3>مسار مطوّر الواجهة الأمامية</h3>
+      <p className="path-card__tagline">HTML و CSS و JavaScript و React</p>
+      <span className="path-card__index">٠١</span>
+    </div>
+
+    <div className="path-card path-card--backend">
+      <h3>مسار مطوّر الواجهة الخلفية</h3>
+      <p className="path-card__tagline">Node.js و SQL و Supabase</p>
+      <span className="path-card__index">٠٢</span>
+    </div>
+
+    <p className="disclosure-notice">
+      يحتوي هذا الموقع على روابط تابعة. الرابط لا يغيّر رأينا في المنصة.
+    </p>
+  </div>
+</section>

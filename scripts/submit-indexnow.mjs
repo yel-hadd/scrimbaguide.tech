@@ -1,16 +1,25 @@
 #!/usr/bin/env node
 
 /**
- * Submit all site URLs to IndexNow after a build/deploy.
+ * Submit site URLs to IndexNow after a build/deploy.
  *
- * Reads URLs from the built sitemap.xml, filters out low-value pages
- * (tags, archive, pagination), and submits them in batches of 10,000
- * (the IndexNow API limit per request).
+ * Reads URLs either from a sitemap (built file or live URL) or from an explicit newline-
+ * delimited file, filters out low-value pages (tags, archive, pagination), and submits them in
+ * batches of 10,000 (the IndexNow API limit per request).
  *
  * Usage:
  *   node scripts/submit-indexnow.mjs                   # reads build/sitemap.xml
  *   node scripts/submit-indexnow.mjs --sitemap-url https://scrimbaguide.tech/sitemap.xml
+ *   node scripts/submit-indexnow.mjs --sitemap-url https://scrimbaguide.tech/de/sitemap.xml
+ *   node scripts/submit-indexnow.mjs --urls /tmp/changed-urls.txt
  *   node scripts/submit-indexnow.mjs --dry-run
+ *
+ * MULTI-LOCALE (C12): call it once per locale with that locale's own sitemap. A
+ * `<sitemapindex>` is rejected on purpose, see readSitemapUrls below.
+ *
+ * `--urls <file>` exists for section 11.3 D: `notify.mjs` writes the changed set to a temp file
+ * and shells out to this script, so IndexNow batching, endpoint list, retries and the
+ * INDEXNOW_REQUIRE_BING policy live in exactly one place.
  */
 
 import fs from 'fs';
@@ -54,11 +63,16 @@ const dryRun = args.includes('--dry-run');
 const sitemapUrlIdx = args.indexOf('--sitemap-url');
 const sitemapUrlArg = sitemapUrlIdx !== -1 ? args[sitemapUrlIdx + 1] : null;
 const sitemapIdx = args.indexOf('--sitemap');
-const sitemapPath = sitemapIdx !== -1
-  ? args[sitemapIdx + 1]
-  : path.resolve(__dirname, '..', 'build', 'sitemap.xml');
-const requireUrlIdx = args.indexOf('--require-url');
-const requiredUrl = requireUrlIdx !== -1 ? args[requireUrlIdx + 1] : null;
+const sitemapPathArg = sitemapIdx !== -1 ? args[sitemapIdx + 1] : null;
+const sitemapPath = sitemapPathArg ?? path.resolve(__dirname, '..', 'build', 'sitemap.xml');
+const urlsFileIdx = args.indexOf('--urls');
+const urlsFileArg = urlsFileIdx !== -1 ? args[urlsFileIdx + 1] : null;
+// Every `--require-url` occurrence is collected: one deploy asserts one required URL per
+// locale, and a silently ignored second flag would turn a missing locale into a green run.
+const requiredUrls = args.reduce((acc, arg, index) => {
+  if (arg === '--require-url' && args[index + 1]) acc.push(args[index + 1]);
+  return acc;
+}, []);
 
 // ── Helpers ─────────────────────────────────────────────────────
 function fetchUrl(url) {
@@ -80,6 +94,22 @@ function extractUrlsFromSitemap(xml) {
     urls.push(match[1]);
   }
   return urls;
+}
+
+/**
+ * Reject a `<sitemapindex>` loudly.
+ *
+ * `<loc>` appears in BOTH sitemap shapes, so the flat extractor above happily "succeeds" on
+ * sitemap-index.xml and submits ~48 child-sitemap URLs to IndexNow instead of the ~4,400 pages,
+ * exiting 0 with a plausible-looking log. Since Phase 3 publishes a sitemap index at the root,
+ * that mistake is now one copy-paste away.
+ */
+function assertNotSitemapIndex(xml, source) {
+  if (/<sitemapindex[\s>]/i.test(xml)) {
+    console.error(`${source} is a <sitemapindex>, not a <urlset>.`);
+    console.error('Submit one locale sitemap per invocation (e.g. .../de/sitemap.xml), or pass --urls <file>.');
+    process.exit(1);
+  }
 }
 
 function filterUrls(urls) {
@@ -141,23 +171,52 @@ async function main() {
     process.exit(1);
   }
 
-  // Get sitemap XML from URL or local file
-  let xml;
-  if (sitemapUrlArg) {
-    console.log(`Fetching sitemap from ${sitemapUrlArg}...`);
-    xml = await fetchUrl(sitemapUrlArg);
-  } else if (fs.existsSync(sitemapPath)) {
-    xml = fs.readFileSync(sitemapPath, 'utf8');
-  } else {
-    console.error(`Sitemap not found at ${sitemapPath}`);
-    console.error('Run "npm run build" first, pass --sitemap <path>, or use --sitemap-url <url>');
+  // `--urls` is mutually exclusive with the sitemap flags: silently preferring one over the
+  // other would let a typo submit the whole site when the caller meant a 12-URL delta.
+  if (urlsFileArg && (sitemapUrlArg || sitemapPathArg)) {
+    console.error('--urls is mutually exclusive with --sitemap and --sitemap-url. Pass exactly one source.');
     process.exit(1);
   }
 
-  const allUrls = extractUrlsFromSitemap(xml);
+  let allUrls;
+  let sourceLabel;
+  if (urlsFileArg) {
+    if (!fs.existsSync(urlsFileArg)) {
+      console.error(`URL list not found at ${urlsFileArg}`);
+      process.exit(1);
+    }
+    sourceLabel = `URL list ${urlsFileArg}`;
+    allUrls = fs.readFileSync(urlsFileArg, 'utf8')
+      .split('\n')
+      .map((line) => line.trim())
+      // `#` comments keep a hand-edited reindex list readable.
+      .filter((line) => line && !line.startsWith('#'));
+    const malformed = allUrls.filter((url) => !/^https?:\/\//i.test(url));
+    if (malformed.length > 0) {
+      console.error(`--urls entries must be absolute URLs. First offender: ${malformed[0]}`);
+      process.exit(1);
+    }
+  } else {
+    let xml;
+    if (sitemapUrlArg) {
+      console.log(`Fetching sitemap from ${sitemapUrlArg}...`);
+      xml = await fetchUrl(sitemapUrlArg);
+      sourceLabel = sitemapUrlArg;
+    } else if (fs.existsSync(sitemapPath)) {
+      xml = fs.readFileSync(sitemapPath, 'utf8');
+      sourceLabel = sitemapPath;
+    } else {
+      console.error(`Sitemap not found at ${sitemapPath}`);
+      console.error('Run "npm run build" first, pass --sitemap <path>, --sitemap-url <url>, or --urls <file>');
+      process.exit(1);
+    }
+    assertNotSitemapIndex(xml, sourceLabel);
+    allUrls = extractUrlsFromSitemap(xml);
+  }
+
   const urls = filterUrls(allUrls);
 
-  if (requiredUrl) {
+  for (const requiredUrl of requiredUrls) {
     const normalizedRequired = normalizeUrlForCompare(requiredUrl);
     const hasRequired = urls.some((url) => normalizeUrlForCompare(url) === normalizedRequired);
     if (!hasRequired) {
@@ -166,7 +225,7 @@ async function main() {
     }
   }
 
-  console.log(`Found ${allUrls.length} URLs in sitemap`);
+  console.log(`Found ${allUrls.length} URLs in ${sourceLabel}`);
   console.log(`After filtering: ${urls.length} URLs to submit`);
   console.log(`Excluded: ${allUrls.length - urls.length} low-value pages`);
   console.log(`Submitting to endpoints: ${ENDPOINTS.join(', ')}`);

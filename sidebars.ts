@@ -1,5 +1,19 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
+import { currentLocaleCoverage, filterSidebars } from './config/locale-coverage.mjs';
 
+/**
+ * The full English sidebar. Every entry below is a doc id, and a locale that has
+ * not translated that doc does not build it, so this literal is filtered against
+ * the coverage manifest before it is exported (I18N-PLAN.md section 4 Phase 2
+ * task (a)). `plugin-content-docs` throws "These sidebar document ids do not
+ * exist" during content load, before any link checking, so an unfiltered sidebar
+ * is a hard build failure in every non-full locale, not a broken link.
+ *
+ * The filtering happens at module evaluation, not in an exported function:
+ * `loadSidebarsFileUnsafe` returns the module as-is and a function export is not
+ * supported. For English (and under `I18N_COVERAGE=full`) the filter returns this
+ * very object, unchanged and by reference.
+ */
 const sidebars: SidebarsConfig = {
   docs: [
     // 1. Start Here
@@ -178,4 +192,4 @@ const sidebars: SidebarsConfig = {
   ],
 };
 
-export default sidebars;
+export default filterSidebars(sidebars, currentLocaleCoverage());

@@ -1,0 +1,53 @@
+---
+title: "تعلّم React"
+description: "صفحة اختبار لعزل الكود ثنائي الاتجاه داخل نص عربي. ليست ترجمة حقيقية."
+---
+
+{/* THROWAWAY FIXTURE. Hand-written Arabic, not a translation, never shipped.
+
+    THIS IS THE IMPORTANT ONE. Every paragraph below deliberately embeds a
+    Latin code run inside Arabic prose. Without
+      code, pre, kbd, samp, .token { direction: ltr; unicode-bidi: isolate }
+    the bidi algorithm resolves the neutral spaces against the surrounding RTL
+    run and `npm install react` renders as `react install npm`, which is not a
+    styling nit but wrong text. Read every inline code span left to right and
+    confirm the token order. */}
+
+# تعلّم React
+
+## التثبيت {#installation}
+
+ابدأ بتشغيل `npm install react react-dom` ثم `npm run dev`. إن ظهر خطأ في
+الإصدار، تأكد أن Node أحدث من `20.11.0`، وأن ملف `package.json` يحتوي على
+`"type": "module"`.
+
+اضغط <kbd>Ctrl</kbd> + <kbd>C</kbd> لإيقاف الخادم، ثم شغّل
+`npm run build -- --base=/docs/` من جديد.
+
+## أول مكوّن {#first-component}
+
+المكوّن دالة تُعيد JSX. لاحظ أن `props.title` يبقى بالإنجليزية داخل جملة عربية:
+
+```jsx
+export default function Header({ title = 'مرحبا' }) {
+  // The comment stays LTR inside an RTL page.
+  return <h1 className="header__title">{title}</h1>;
+}
+```
+
+## الحالة {#state}
+
+`useState` يُعيد مصفوفة من عنصرين. الأمر التالي يوضّح المسار الكامل للملف داخل
+فقرة عربية: `src/components/Header.tsx`، وهو نوع النص الذي ينكسر أولًا.
+
+```bash
+npm create vite@latest my-app -- --template react-ts
+cd my-app && npm install && npm run dev
+```
+
+## نقاط التحقق {#assertions}
+
+- ترتيب الكلمات داخل كل `code` يُقرأ من اليسار إلى اليمين.
+- الكتلة البرمجية بأكملها محاذاة إلى اليسار داخل صفحة من اليمين إلى اليسار.
+- علامات الترقيم في نهاية الفقرة لا تنتقل إلى بداية السطر.
+- لا توجد مربعات فارغة مكان أي حرف عربي.

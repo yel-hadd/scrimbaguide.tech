@@ -1,4 +1,22 @@
 import type { HtmlTagObject } from '@docusaurus/types';
+import { DEFAULT_LOCALE } from '../i18n/locales.config';
+
+/**
+ * The locale this build is producing, for the `SearchAction` target below.
+ *
+ * `DOCUSAURUS_CURRENT_LOCALE` is set by the CLI, but under a bare
+ * `docusaurus start` it is assigned the JS value `undefined`, which `process.env`
+ * coerces to the LITERAL STRING "undefined". That string is truthy, so both
+ * `process.env.DOCUSAURUS_CURRENT_LOCALE ?? 'en'` and `|| 'en'` sail straight
+ * past it and produce `/undefined/search/`. Hence the explicit comparison.
+ */
+const rawCurrentLocale = process.env.DOCUSAURUS_CURRENT_LOCALE;
+const currentLocale = rawCurrentLocale && rawCurrentLocale !== 'undefined'
+  ? rawCurrentLocale
+  : DEFAULT_LOCALE;
+
+/** The default locale is served at the bare root; every other one is prefixed. */
+const localePrefix = currentLocale === DEFAULT_LOCALE ? '' : `/${currentLocale}`;
 
 /**
  * Sitewide social card. Per-page `image` frontmatter overrides it; this is the
@@ -39,7 +57,12 @@ export const siteSchemaHeadTag: HtmlTagObject = {
           '@type': 'SearchAction',
           // Trailing slash is required: with trailingSlash:true, /search?q=…
           // 301s to /search/ and drops the query, landing on an empty page.
-          target: 'https://scrimbaguide.tech/search/?q={search_term_string}',
+          //
+          // Locale-aware per plan 12.4: `/de/search/?q=` is the German search
+          // page. A hardcoded root target would send every localized searcher to
+          // the English index, which under Pagefind's per-language indexes means
+          // searching a corpus in a language they are not reading.
+          target: `https://scrimbaguide.tech${localePrefix}/search/?q={search_term_string}`,
           'query-input': 'required name=search_term_string',
         },
         publisher: { '@id': 'https://scrimbaguide.tech/#organization' },

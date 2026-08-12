@@ -3,11 +3,28 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import { fontHeadTags } from './config/fonts';
 import { i18n } from './config/i18n';
+import { contentExcludeOption, currentLocaleCoverage } from './config/locale-coverage.mjs';
 import { image, metadata, siteSchemaHeadTag } from './config/metadata';
 import { footer, navbar } from './config/navigation';
 import { clientRedirectsPlugin } from './config/redirects';
 import { searchThemes } from './config/search';
 import { sitemapOptions } from './config/sitemap';
+
+/**
+ * Which pages this locale actually builds (I18N-PLAN.md section 4 Phase 2 task (d)).
+ *
+ * A tiered locale must genuinely not build what it has not translated, on all
+ * THREE content surfaces: docs, blog, and `src/pages`. The plugin `exclude`
+ * option takes file-path globs rather than routes, and the route-to-file inverse
+ * is not derivable by convention here, so the patterns are built from the
+ * `sourceFile` that `scripts/build-coverage-manifest.mjs` records beside every
+ * route. `legal/**` is excluded from every locale on top of that.
+ *
+ * `contentExcludeOption` returns `undefined` for English and under the
+ * `I18N_COVERAGE=full` escape hatch, so every key below keeps its current
+ * plugin defaults and the English build is untouched.
+ */
+const localeCoverage = currentLocaleCoverage();
 
 /**
  * This file is assembly only. Every block that a work unit is likely to edit
@@ -57,6 +74,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           showLastUpdateTime: true,
+          ...contentExcludeOption('docs', localeCoverage),
         },
         blog: {
           showReadingTime: true,
@@ -71,7 +89,12 @@ const config: Config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+          ...contentExcludeOption('blog', localeCoverage),
         },
+        // `src/pages` is the third surface. Passing `undefined` is exactly the
+        // same as omitting the key (preset-classic registers the plugin with its
+        // defaults), so English keeps building /legal/* and every .mdx page.
+        pages: contentExcludeOption('pages', localeCoverage),
         sitemap: sitemapOptions,
         theme: {
           customCss: './src/css/custom.css',
@@ -103,6 +126,12 @@ const config: Config = {
 
   plugins: [
     './plugins/normalize-canonical-urls',
+    // Registers the /search route (baseUrl-prefixed, so /es/search in a locale
+    // build) and runs Pagefind over outDir at postBuild. Docusaurus does NOT
+    // auto-discover ./plugins, and `themes: searchThemes` is now an empty array
+    // after the lunr removal, so without this line nothing serves /search at
+    // all and the WebSite SearchAction JSON-LD points at a hard 404.
+    './plugins/pagefind',
     clientRedirectsPlugin,
   ],
 

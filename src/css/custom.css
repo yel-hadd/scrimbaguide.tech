@@ -183,7 +183,7 @@ body {
 }
 
 .cta-link__external-icon {
-  margin-left: 0.35rem;
+  margin-inline-start: 0.35rem;
   font-size: 0.9em;
   opacity: 0.78;
 }
@@ -309,9 +309,13 @@ body {
   display: inline-block;
   width: 0.4em;
   height: 0.4em;
+  /* PHYSICAL ON PURPOSE: border-right + border-bottom + rotate(45deg) is the
+     geometry of a DOWN caret, not a side-pointing one. Swapping in
+     border-inline-end would move the corner and rotate the caret to point
+     sideways under RTL. Nothing here needs to mirror. */
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
-  margin-left: 0.3em;
+  margin-inline-start: 0.3em;
   vertical-align: middle;
   position: relative;
   top: -0.1em;
@@ -326,8 +330,8 @@ body {
 
 .mega-menu__panel {
   position: absolute;
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   top: 100%;
   background: var(--ifm-navbar-background-color);
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
@@ -464,7 +468,7 @@ body {
   font-family: inherit;
   font-size: 0.7rem;
   line-height: 1;
-  margin-left: 0.15rem;
+  margin-inline-start: 0.15rem;
 }
 
 /* ── Modal backdrop ───────────────────────────────────────────── */
@@ -781,13 +785,13 @@ body {
   }
 
   .navbar__items .navbar__item {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-inline-start: 0.5rem;
+    padding-inline-end: 0.5rem;
   }
 
   .mega-menu__toggle {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-inline-start: 0.5rem;
+    padding-inline-end: 0.5rem;
   }
 
   .sg-search-pill-kbd {
@@ -799,7 +803,7 @@ body {
   }
 
   .navbar__brand {
-    margin-right: 0.5rem;
+    margin-inline-end: 0.5rem;
   }
 
   .navbar__title {
@@ -958,7 +962,7 @@ article[class*='searchResultItem'] mark {
 
   [class*='navbarSearchContainer'] {
     position: static !important;
-    margin-left: 0 !important;
+    margin-inline-start: 0 !important;
   }
 
   .navbar__toggle {
@@ -1090,7 +1094,7 @@ article[class*='searchResultItem'] mark {
 .comparison-table th,
 .comparison-table td {
   padding: 0.75rem 1rem;
-  text-align: left;
+  text-align: start;
   border-bottom: 1px solid var(--ifm-color-emphasis-300);
 }
 
@@ -1227,7 +1231,7 @@ article[class*='searchResultItem'] mark {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  text-align: left;
+  text-align: start;
   color: var(--ifm-font-color-base);
 }
 
@@ -1239,7 +1243,7 @@ article[class*='searchResultItem'] mark {
   font-size: 1.25rem;
   font-weight: 700;
   flex-shrink: 0;
-  margin-left: 1rem;
+  margin-inline-start: 1rem;
 }
 
 .faq-accordion__answer {
@@ -1383,7 +1387,7 @@ article[class*='searchResultItem'] mark {
   align-items: center;
   gap: 0.65rem;
   color: var(--sg-text-strong);
-  text-align: left;
+  text-align: start;
 }
 
 .hero-section__bullets li::before {
@@ -1468,7 +1472,7 @@ article[class*='searchResultItem'] mark {
 .hero-section__proof li:not(:last-child)::after {
   content: "·";
   position: absolute;
-  right: -0.95rem;
+  inset-inline-end: -0.95rem;
   color: var(--sg-text-soft);
   opacity: 0.5;
 }
@@ -1527,7 +1531,7 @@ article[class*='searchResultItem'] mark {
 .hero-section__inner--split .hero-section__lead,
 .hero-section__inner--split .hero-section__cta-note,
 .hero-section__inner--split .hero-section__trust {
-  text-align: left;
+  text-align: start;
 }
 
 .hero-section__inner--split .hero-section__lead {
@@ -1570,12 +1574,18 @@ article[class*='searchResultItem'] mark {
 .hero-scrim-poster__play {
   position: absolute;
   top: 42%;
+  /* PHYSICAL ON PURPOSE: left:50% + translate(-50%,-50%) is direction-safe
+     centering. inset-inline-start:50% would resolve to right:50% under RTL
+     while the translate still pulls left, pushing the button off centre. */
   left: 50%;
   transform: translate(-50%, -50%);
   width: 66px;
   height: 66px;
   display: grid;
   place-items: center;
+  /* PHYSICAL ON PURPOSE: the play triangle always points right (media
+     transport controls are not mirrored in RTL), so its optical nudge is a
+     physical-left nudge. */
   padding-left: 0.18em; /* optically center the triangle */
   border-radius: 999px;
   /* Fixed saturated violet in both themes: the laptop art is always dark, and
@@ -1745,7 +1755,7 @@ article[class*='searchResultItem'] mark {
 .module-table th,
 .module-table td {
   padding: 0.6rem 1rem;
-  text-align: left;
+  text-align: start;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -1799,7 +1809,7 @@ article a:not(.cta-link):not(.hash-link):hover {
     content: '';
     position: absolute;
     top: 0;
-    right: 0;
+    inset-inline-end: 0;
     bottom: 0;
     width: 24px;
     background: linear-gradient(to right, transparent, var(--ifm-background-color));
@@ -1837,8 +1847,8 @@ article a:not(.cta-link):not(.hash-link):hover {
 
 .home-shell {
   max-width: var(--sg-home-max-width);
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
 }
 
 .home-section--compact {
@@ -1875,35 +1885,35 @@ article a:not(.cta-link):not(.hash-link):hover {
 }
 
 .path-card--frontend {
-  border-left: 3px solid #4f9cff;
+  border-inline-start: 3px solid #4f9cff;
 }
 
 .path-card--fullstack {
-  border-left: 3px solid #7a5cff;
+  border-inline-start: 3px solid #7a5cff;
 }
 
 .path-card--backend {
-  border-left: 3px solid #2fbb84;
+  border-inline-start: 3px solid #2fbb84;
 }
 
 .path-card--ai {
-  border-left: 3px solid #cc7a2a;
+  border-inline-start: 3px solid #cc7a2a;
 }
 
 [data-theme='dark'] .path-card--frontend {
-  border-left-color: #80baff;
+  border-inline-start-color: #80baff;
 }
 
 [data-theme='dark'] .path-card--fullstack {
-  border-left-color: #b8a5ff;
+  border-inline-start-color: #b8a5ff;
 }
 
 [data-theme='dark'] .path-card--backend {
-  border-left-color: #5ad6a4;
+  border-inline-start-color: #5ad6a4;
 }
 
 [data-theme='dark'] .path-card--ai {
-  border-left-color: #ffba70;
+  border-inline-start-color: #ffba70;
 }
 
 .home-pricing {
@@ -1968,17 +1978,17 @@ article a:not(.cta-link):not(.hash-link):hover {
   align-items: center;
   justify-content: center;
   padding: 1.4rem 2.5rem;
-  border-right: 1px solid rgba(91, 63, 217, 0.15);
+  border-inline-end: 1px solid rgba(91, 63, 217, 0.15);
   flex: 1;
   min-width: 130px;
 }
 
 [data-theme='dark'] .trust-bar__item {
-  border-right-color: rgba(184, 165, 255, 0.18);
+  border-inline-end-color: rgba(184, 165, 255, 0.18);
 }
 
 .trust-bar__item:last-child {
-  border-right: none;
+  border-inline-end: none;
 }
 
 .trust-bar__value {
@@ -2016,7 +2026,7 @@ article a:not(.cta-link):not(.hash-link):hover {
   .trust-bar__item {
     padding: 1rem 0.75rem;
     min-height: 92px;
-    border-right: none;
+    border-inline-end: none;
     border-bottom: 1px solid rgba(91, 63, 217, 0.15);
   }
 
@@ -2035,7 +2045,7 @@ article a:not(.cta-link):not(.hash-link):hover {
   }
 
   .trust-bar__item:nth-child(odd) {
-    border-right: 1px solid rgba(91, 63, 217, 0.15);
+    border-inline-end: 1px solid rgba(91, 63, 217, 0.15);
   }
 
   [data-theme='dark'] .trust-bar__item {
@@ -2043,7 +2053,7 @@ article a:not(.cta-link):not(.hash-link):hover {
   }
 
   [data-theme='dark'] .trust-bar__item:nth-child(odd) {
-    border-right-color: rgba(184, 165, 255, 0.18);
+    border-inline-end-color: rgba(184, 165, 255, 0.18);
   }
 }
 
@@ -2120,8 +2130,8 @@ article a:not(.cta-link):not(.hash-link):hover {
   }
 
   .home-section {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
   }
 
   .hero-buttons .cta-link--button {
@@ -2259,14 +2269,14 @@ article a:not(.cta-link):not(.hash-link):hover {
 
 .verdict-box__list li {
   position: relative;
-  padding-left: 1.5rem;
+  padding-inline-start: 1.5rem;
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
 }
 
 .verdict-box__list li::before {
   position: absolute;
-  left: 0;
+  inset-inline-start: 0;
   font-weight: bold;
 }
 
@@ -2295,7 +2305,7 @@ article a:not(.cta-link):not(.hash-link):hover {
   padding: 0.75rem 1rem;
   border-radius: 8px;
   margin: 1.5rem 0;
-  border-left: 3px solid var(--ifm-color-emphasis-400);
+  border-inline-start: 3px solid var(--ifm-color-emphasis-400);
 }
 
 .disclosure-notice p {
@@ -2306,8 +2316,8 @@ article a:not(.cta-link):not(.hash-link):hover {
 .sticky-footer-cta {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
   background: var(--ifm-background-surface-color);
   border-top: 1px solid var(--ifm-color-emphasis-300);
   padding: 1rem;
@@ -2368,7 +2378,7 @@ article a:not(.cta-link):not(.hash-link):hover {
 /* ── Desktop / tablet floating CTA (docs + money blog posts) ─── */
 .desktop-sticky-cta {
   position: fixed;
-  right: 1.25rem;
+  inset-inline-end: 1.25rem;
   bottom: 1.5rem;
   z-index: 90;
   max-width: 220px;
@@ -2422,7 +2432,7 @@ article a:not(.cta-link):not(.hash-link):hover {
 .desktop-sticky-cta__close {
   position: absolute;
   top: 0.35rem;
-  right: 0.35rem;
+  inset-inline-end: 0.35rem;
   background: none;
   border: none;
   font-size: 1.35rem;
@@ -2511,7 +2521,7 @@ article a:not(.cta-link):not(.hash-link):hover {
 
 .related-guides__content {
   flex: 1;
-  padding-right: 1rem;
+  padding-inline-end: 1rem;
 }
 
 .related-guides__badge {
@@ -2676,7 +2686,7 @@ a[href$="/tags"]:hover {
 
 .task-list-item > input[type="checkbox"] {
   /* Ensure checkboxes have accessible name via aria-label (added via JS) */
-  margin-right: 0.5rem;
+  margin-inline-end: 0.5rem;
 }
 
 /* Screenreader-only utility class */
@@ -2893,7 +2903,7 @@ article table:focus,
   }
 
   .blog-list-page article.margin-bottom--xl footer .text--right {
-    text-align: left;
+    text-align: start;
   }
 }
 
@@ -3018,7 +3028,7 @@ article table:focus,
 }
 
 .roadmap-step {
-  border-left: 5px solid var(--ifm-color-primary);
+  border-inline-start: 5px solid var(--ifm-color-primary);
 }
 
 .roadmap-step__link {
@@ -3071,21 +3081,22 @@ article table:focus,
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 5px;
   height: 100%;
   background: linear-gradient(180deg, var(--ifm-color-primary), var(--ifm-color-primary-lightest));
-  border-radius: 16px 0 0 16px;
+  border-start-start-radius: 16px;
+  border-end-start-radius: 16px;
 }
 
 .path-advisor--embedded {
-  margin-left: 0;
-  margin-right: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 
 .path-advisor__header {
   position: relative;
-  padding-left: 0.75rem;
+  padding-inline-start: 0.75rem;
   margin-bottom: 1.35rem;
 }
 
@@ -3174,7 +3185,7 @@ article table:focus,
 .path-advisor__choice {
   display: block;
   width: 100%;
-  text-align: left;
+  text-align: start;
   margin-bottom: 0.5rem;
   padding: 0.9rem 1rem;
   border-radius: 10px;
@@ -3311,7 +3322,7 @@ article table:focus,
 
 .path-advisor__reasons {
   margin: 0 0 1rem;
-  padding-left: 1.2rem;
+  padding-inline-start: 1.2rem;
   font-size: 0.92rem;
   color: var(--sg-text-strong);
 }
@@ -3335,7 +3346,7 @@ article table:focus,
 
 .path-advisor__first-week ol {
   margin: 0.35rem 0 0;
-  padding-left: 1.2rem;
+  padding-inline-start: 1.2rem;
 }
 
 .path-advisor__affiliate-note {
@@ -3463,7 +3474,7 @@ article table:focus,
   }
 
   .path-advisor__header {
-    padding-left: 0.45rem;
+    padding-inline-start: 0.45rem;
     margin-bottom: 1rem;
   }
 
@@ -3647,7 +3658,7 @@ article table:focus,
   }
 
   .curriculum__bar {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 }
 
@@ -3817,7 +3828,7 @@ html[data-theme='dark'] .curriculum__index {
 .homepage .path-card__index {
   position: absolute;
   top: 1.15rem;
-  right: 1.35rem;
+  inset-inline-end: 1.35rem;
   font-family: var(--sg-font-mono);
   font-size: 1.05rem;
   font-weight: 700;
@@ -3888,7 +3899,12 @@ html[data-theme='dark'] .curriculum__index {
   margin-top: 0;
 }
 
-/* ── Scrim explainer: asymmetric copy + code-window motif ───────── */
+/* ── Scrim explainer: asymmetric copy + code-window motif ─────────
+   The `.scrim-window` rules below keep PHYSICAL left/right offsets on purpose:
+   the whole mock is pinned `direction: ltr` in the internationalization block
+   at the end of this file, because a code editor is not mirrored in RTL. Do
+   not "fix" them to logical properties, which would flip the traffic-light
+   dots and the run button away from the editor they are drawn on. */
 .scrim-explainer__grid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -4235,4 +4251,200 @@ html[data-theme='dark'] .curriculum__index {
   .scrim-window__caret::after {
     animation: none;
   }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   INTERNATIONALIZATION — bidi isolation, per-script type, RTL mirroring
+   (I18N-PLAN.md section 4 Phase 4.)
+
+   Everything above this block is direction-agnostic by construction: the
+   physical properties were converted to logical ones in place, so `dir="rtl"`
+   on <html> mirrors them for free. This block holds only the four things
+   logical properties CANNOT do: isolate LTR runs inside RTL prose, pick a font
+   per writing system, break Japanese lines, and mirror the handful of
+   declarations that are physical on purpose.
+
+   Nothing here is scoped to a locale that ships today (`en` is the only
+   `status: 'live'` roster entry), so this block is inert on the current build.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Bidi isolation: runs that are LTR in every locale ─────────────
+   THE highest-value rule in this file for RTL. An Arabic paragraph containing
+   `npm install react` renders the words in visual order without isolation:
+   the bidi algorithm resolves the neutral spaces against the surrounding RTL
+   run and the tokens come out reversed, reading `react install npm`. It is
+   not a styling nit, it is wrong text. `isolate` gives each run its own
+   embedding level so the surrounding paragraph cannot reorder it, and
+   `direction: ltr` fixes the base direction of the run itself.
+
+   `text-align: start` (not `left`) is deliberate: inside the LTR run start IS
+   left, and writing it logically keeps a nested override honest. */
+code,
+pre,
+kbd,
+samp,
+.token {
+  direction: ltr;
+  text-align: start;
+  unicode-bidi: isolate;
+}
+
+/* Inline runs that are Latin regardless of locale: version numbers, URLs,
+   CLI flags, file paths, durations like `4.1h`. Prefer the `dir="ltr"`
+   attribute in markup where you can (the HTML UA stylesheet already isolates
+   any element carrying `dir`); this class is for the cases where the string
+   is assembled in a component. */
+.sg-ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* Route paths in the search dropdown are URLs, never prose. */
+.sg-search-result-path {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* The homepage "scrim window" is a picture of a code editor: traffic-light
+   dots, a filename, a code pane and a run button. Editors are not mirrored
+   (VS Code, the Scrimba IDE itself and every screenshot a reader has seen are
+   LTR), so the whole mock is pinned LTR and its internal physical offsets are
+   correct as written. */
+.scrim-window {
+  direction: ltr;
+}
+
+/* ── Per-script type (C14) ─────────────────────────────────────────
+   The webfont <link> for the locale being built is chosen in `config/fonts.ts`;
+   these rules only say which family to USE. Scripts whose entry there requests
+   no text webfont fall through to platform fonts on purpose: Noto Sans
+   Devanagari / Bengali / Tamil / Telugu / Thai and the CJK families ship with
+   Windows, macOS, iOS and Android, and the webfont equivalents are megabytes
+   (risk R8, LCP in exactly the markets this program targets).
+
+   `:lang()` matches on subtag prefixes, so `:lang(zh)` covers `zh-Hans` and
+   `:lang(pt)` would cover `pt-BR`. The heading family follows the body family
+   for every non-Latin script: Sora has no coverage outside Latin, so leaving
+   it in front would just cost a fallback lookup per heading. */
+:root:lang(ru),
+:root:lang(uk),
+:root:lang(bg),
+:root:lang(sr),
+:root:lang(mk),
+:root:lang(el) {
+  --ifm-font-family-base: 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+:root:lang(ar),
+:root:lang(fa) {
+  --ifm-font-family-base: 'Noto Sans Arabic', 'Segoe UI', Tahoma, 'Geeza Pro', sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+:root:lang(he) {
+  --ifm-font-family-base: 'Noto Sans Hebrew', 'Arial Hebrew', 'Segoe UI', sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+/* Nastaliq is a sloped, deeply stacked style: at the default line-height its
+   descenders collide with the next line and its ascenders clip inside cards.
+   The extra leading is a requirement of the script, not a preference. */
+:root:lang(ur) {
+  --ifm-font-family-base: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+  line-height: 2;
+}
+
+:root:lang(hi),
+:root:lang(mr) {
+  --ifm-font-family-base: 'Noto Sans Devanagari', 'Nirmala UI', 'Kohinoor Devanagari', sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+:root:lang(bn) {
+  --ifm-font-family-base: 'Noto Sans Bengali', 'Nirmala UI', 'Kohinoor Bangla', sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+:root:lang(ta) {
+  --ifm-font-family-base: 'Noto Sans Tamil', 'Nirmala UI', 'Tamil Sangam MN', sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+:root:lang(te) {
+  --ifm-font-family-base: 'Noto Sans Telugu', 'Nirmala UI', 'Kohinoor Telugu', sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+:root:lang(th) {
+  --ifm-font-family-base: 'Noto Sans Thai', 'Leelawadee UI', Thonburi, sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+/* CJK: one stack per language, because the same code point is drawn
+   differently in Japanese, Korean and Simplified Chinese and a shared stack
+   would show a reader the wrong regional forms. */
+:root:lang(ja) {
+  --ifm-font-family-base: -apple-system, 'Hiragino Sans', 'Yu Gothic', Meiryo, sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+:root:lang(ko) {
+  --ifm-font-family-base: -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+:root:lang(zh) {
+  --ifm-font-family-base: -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+}
+
+/* ── Japanese line breaking ────────────────────────────────────────
+   Japanese has no word spaces, so the default `word-break: normal` treats a
+   whole clause as one unbreakable token and overflows narrow containers
+   (cards, table cells, the sidebar). `line-break: strict` also keeps small
+   kana and the prolonged sound mark off the start of a line, which is what
+   kinsoku shori requires. */
+:lang(ja) {
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+
+/* ── RTL mirroring for the declarations that stay physical ─────────
+   A logical property could not express any of these: a glyph, a gradient
+   axis, a shadow offset or an animation vector. */
+
+/* Opt-in hook for directional iconography (lucide chevrons and arrows, the
+   "next / previous" affordances). Add `icon-directional` to the icon itself,
+   never to a container: `scaleX(-1)` on a wrapper would also mirror its text.
+   Do NOT add it to non-directional icons (search, checkmarks, external-link)
+   or to media transport controls, which are not mirrored in RTL. */
+[dir='rtl'] .icon-directional {
+  transform: scaleX(-1);
+}
+
+/* Blog card "read more" arrow: a glyph in `content`, so it needs a different
+   glyph rather than a transform. */
+[dir='rtl'] .blog-list-page article.margin-bottom--xl footer .text--right a::after {
+  content: "←";
+}
+
+/* The choice buttons nudge toward the reader's forward direction on hover. */
+[dir='rtl'] .path-advisor__choice:hover {
+  transform: translateX(-2px);
+}
+
+/* Horizontal-scroll fade on narrow comparison tables: it marks the edge the
+   content scrolls TOWARD, which under RTL is the left one. The logical
+   `inset-inline-end` already moved the strip; the gradient axis has no logical
+   keyword, so it is flipped here. */
+[dir='rtl'] .comparison-table-wrapper::after {
+  background: linear-gradient(to left, transparent, var(--ifm-background-color));
+}
+
+/* Selected-row accent bar in the search palette: an inset box-shadow, whose
+   offsets are physical by definition. */
+[dir='rtl'] .sg-search-result--hl {
+  box-shadow: inset -3px 0 0 0 var(--ifm-color-primary);
 }

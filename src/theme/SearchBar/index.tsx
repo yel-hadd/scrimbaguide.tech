@@ -2,57 +2,39 @@ import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { createPortal } from 'react-dom';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useHistory } from '@docusaurus/router';
-import { searchByWorker } from '@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker';
+import { PagefindUnavailableError, searchPagefind, type SearchHit } from './pagefind';
+import {
+  MODAL_FETCH_LIMIT,
+  PER_GROUP_LIMIT,
+  SPECIFIC_GROUP_LIMIT,
+  CATEGORIES,
+  buildSearchUrl,
+  countByCategory,
+  groupHits,
+} from './searchUtils.mjs';
 
-const PER_GROUP_LIMIT = 4;
-const SPECIFIC_GROUP_LIMIT = 8;
-const FETCH_LIMIT = 50;
+/**
+ * The site's search modal, now backed by Pagefind (I18N-PLAN.md section 12).
+ *
+ * Markup, class names, keyboard model and ARIA are unchanged from the lunr
+ * version on purpose: `scripts/__tests__/a11y-search.test.mjs` drives this modal
+ * through `.sg-search-pill`, `.sg-search-modal`, `.sg-search-input`,
+ * `.sg-search-result`, `.sg-search-filter`, `.sg-search-clear` and
+ * `.sg-search-footer-link`, and the styling in `src/css/custom.css` is keyed to
+ * the same names. Only the data source changed.
+ *
+ * What that swap means in practice: instead of downloading a 7.8 MB lunr index
+ * before the first keystroke, the first query pulls a ~45 KB runtime, a ~72 KB
+ * WASM blob and the one ~28 KB index chunk the query touches, then one ~3 KB
+ * fragment per displayed result. Pagefind also picks the index matching the
+ * page's `<html lang>` by itself, so a visitor on `/de/` searches German pages
+ * with no locale wiring here.
+ */
 
-interface SearchDoc {
-  i: number;
-  t: string;
-  u: string;
-  b: string[];
-  s?: string;
-  h?: string;
-}
+/** Debounce before a keystroke turns into a query. Unchanged from the lunr UI. */
+const SEARCH_DEBOUNCE_MS = 200;
 
-interface SearchResult {
-  document: SearchDoc;
-  type: number;
-  page: { b: string[]; t: string };
-  tokens: string[];
-}
-
-interface ResultGroup {
-  label: string;
-  results: SearchResult[];
-}
-
-function groupResults(results: SearchResult[]): ResultGroup[] {
-  const map: Record<string, SearchResult[]> = {
-    Courses: [],
-    Blog: [],
-    Docs: [],
-  };
-  for (const r of results) {
-    const root = r.document.b?.[0] || '';
-    if (root === 'Courses') {
-      map.Courses.push(r);
-    } else if (root === 'Blog') {
-      map.Blog.push(r);
-    } else {
-      map.Docs.push(r);
-    }
-  }
-  return Object.entries(map)
-    .filter(([, items]) => items.length > 0)
-    .map(([label, items]) => ({ label, results: items }));
-}
-
-function hitUrl(doc: SearchDoc): string {
-  return doc.u + (doc.h || '');
-}
+type Filter = (typeof CATEGORIES)[number];
 
 export default function SearchBar(): React.ReactElement {
   const { siteConfig: { baseUrl } } = useDocusaurusContext();
@@ -60,41 +42,43 @@ export default function SearchBar(): React.ReactElement {
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult[] | null>(null);
+  const [results, setResults] = useState<SearchHit[] | null>(null);
+  const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [unavailable, setUnavailable] = useState(false);
   const [highlightIdx, setHighlightIdx] = useState(-1);
-  const [activeFilter, setActiveFilter] = useState<string>('All');
+  const [activeFilter, setActiveFilter] = useState<Filter>('All');
 
   const inputRef = useRef<HTMLInputElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Monotonic query id. Pagefind fragment fetches are parallel network calls, so
+  // a slow query can land after a faster later one; without this the modal can
+  // display results for a prefix the user has already typed past.
+  const requestRef = useRef(0);
 
-  const rawGrouped = useMemo(() => {
-    if (!results) return [];
-    return groupResults(results);
-  }, [results]);
+  const rawGrouped = useMemo(() => (results ? groupHits(results) : []), [results]);
 
   const perGroupCounts = useMemo(() => {
-    const m: Record<string, number> = { All: results?.length ?? 0 };
-    for (const g of rawGrouped) m[g.label] = g.results.length;
-    return m;
-  }, [rawGrouped, results]);
+    const counts = countByCategory(results ?? []);
+    // `All` reports Pagefind's uncapped match count, which is what the footer
+    // promises to show on `/search`. The per-group counts can only describe the
+    // fragments actually loaded.
+    return { ...counts, All: total };
+  }, [results, total]);
 
-  const grouped = useMemo(() => {
-    return rawGrouped.map((g) => ({
-      ...g,
-      results: g.results.slice(0, activeFilter === 'All' ? PER_GROUP_LIMIT : SPECIFIC_GROUP_LIMIT),
-    }));
-  }, [rawGrouped, activeFilter]);
+  const grouped = useMemo(() => rawGrouped.map((group) => ({
+    ...group,
+    results: group.results.slice(0, activeFilter === 'All' ? PER_GROUP_LIMIT : SPECIFIC_GROUP_LIMIT),
+  })), [rawGrouped, activeFilter]);
 
-  const filtered = useMemo(() => {
-    if (activeFilter === 'All') return grouped;
-    return grouped.filter((g) => g.label === activeFilter);
-  }, [grouped, activeFilter]);
+  const filtered = useMemo(() => (
+    activeFilter === 'All' ? grouped : grouped.filter((group) => group.label === activeFilter)
+  ), [grouped, activeFilter]);
 
   const flatItems = useMemo(() => {
     const items: { gi: number; ri: number }[] = [];
-    filtered.forEach((g, gi) => {
-      g.results.forEach((_, ri) => items.push({ gi, ri }));
+    filtered.forEach((group, gi) => {
+      group.results.forEach((_, ri) => items.push({ gi, ri }));
     });
     return items;
   }, [filtered]);
@@ -102,21 +86,33 @@ export default function SearchBar(): React.ReactElement {
   const doSearch = useCallback(async (q: string) => {
     if (!q.trim()) {
       setResults(null);
+      setTotal(0);
       return;
     }
+    const requestId = requestRef.current + 1;
+    requestRef.current = requestId;
     setLoading(true);
     try {
-      const res = await searchByWorker(baseUrl, '', q, FETCH_LIMIT);
-      setResults(res);
-    } catch {
+      const outcome = await searchPagefind(q, MODAL_FETCH_LIMIT, baseUrl);
+      if (requestRef.current !== requestId) return;
+      setUnavailable(false);
+      setResults(outcome.hits);
+      setTotal(outcome.total);
+    } catch (error) {
+      if (requestRef.current !== requestId) return;
+      // A missing index is a deployment state (dev server, or a build whose
+      // postBuild was skipped), not a failed query. It gets its own message so
+      // it never reads as "your search matched nothing".
+      setUnavailable(error instanceof PagefindUnavailableError);
       setResults([]);
+      setTotal(0);
     }
-    setLoading(false);
+    if (requestRef.current === requestId) setLoading(false);
   }, [baseUrl]);
 
   useEffect(() => {
     if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => doSearch(query), 200);
+    debounceRef.current = setTimeout(() => doSearch(query), SEARCH_DEBOUNCE_MS);
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current);
     };
@@ -126,6 +122,7 @@ export default function SearchBar(): React.ReactElement {
     setOpen(true);
     setQuery('');
     setResults(null);
+    setTotal(0);
     setHighlightIdx(-1);
     setActiveFilter('All');
     document.body.style.overflow = 'hidden';
@@ -136,30 +133,28 @@ export default function SearchBar(): React.ReactElement {
     setOpen(false);
     setQuery('');
     setResults(null);
+    setTotal(0);
     setHighlightIdx(-1);
     setActiveFilter('All');
     document.body.style.overflow = '';
   }, []);
 
-  const navigate = useCallback((result: SearchResult) => {
-    const url = hitUrl(result.document);
+  const navigate = useCallback((hit: SearchHit) => {
     closeSearch();
-    history.push(url);
+    history.push(hit.url);
   }, [closeSearch, history]);
 
   const handleSeeAll = useCallback(() => {
-    const params = new URLSearchParams();
-    params.set('q', query);
-    if (activeFilter !== 'All') params.set('category', activeFilter);
-    const url = `/search?${params.toString()}`;
+    const url = buildSearchUrl(query, activeFilter, baseUrl);
     setOpen(false);
     setQuery('');
     setResults(null);
+    setTotal(0);
     setHighlightIdx(-1);
     setActiveFilter('All');
     document.body.style.overflow = '';
     history.push(url);
-  }, [query, activeFilter, history]);
+  }, [query, activeFilter, baseUrl, history]);
 
   const bodyRef = useRef<HTMLDivElement>(null);
 
@@ -190,7 +185,7 @@ export default function SearchBar(): React.ReactElement {
         closeSearch();
         break;
     }
-  }, [flatItems, highlightIdx, grouped, navigate, closeSearch]);
+  }, [flatItems, highlightIdx, filtered, navigate, closeSearch]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -244,7 +239,7 @@ export default function SearchBar(): React.ReactElement {
 
         {!loading && query && results && results.length > 0 && (
           <div className="sg-search-filters">
-            {['All', 'Courses', 'Blog', 'Docs'].map((f) => {
+            {CATEGORIES.map((f) => {
               const count = perGroupCounts[f] ?? 0;
               return (
                 <button
@@ -267,20 +262,25 @@ export default function SearchBar(): React.ReactElement {
           {!loading && !query && (
             <div className="sg-search-status">Start typing to search&hellip;</div>
           )}
-          {!loading && query && results && results.length === 0 && (
+          {!loading && query && unavailable && (
+            <div className="sg-search-status">
+              Search is unavailable here. The index is generated during a production build.
+            </div>
+          )}
+          {!loading && query && !unavailable && results && results.length === 0 && (
             <div className="sg-search-status">No results found for &ldquo;{query}&rdquo;.</div>
           )}
           {!loading && filtered.map((group, gi) => (
             <div key={group.label} className="sg-search-group">
               <h2 className="sg-search-group-label">{group.label}</h2>
-              {group.results.map((result, ri) => {
+              {group.results.map((hit, ri) => {
                 const flatIdx = flatItems.findIndex((f) => f.gi === gi && f.ri === ri);
                 const hl = flatIdx === highlightIdx;
                 return (
                   <div
-                    key={`${gi}-${ri}`}
+                    key={hit.url}
                     className={'sg-search-result' + (hl ? ' sg-search-result--hl' : '')}
-                    onClick={() => navigate(result)}
+                    onClick={() => navigate(hit)}
                     onMouseEnter={() => setHighlightIdx(flatIdx)}
                   >
                     <div className="sg-search-result-icon">
@@ -304,9 +304,9 @@ export default function SearchBar(): React.ReactElement {
                       )}
                     </div>
                     <div className="sg-search-result-info">
-                      <div className="sg-search-result-title">{result.document.t}</div>
-                      {result.document.b && (
-                        <div className="sg-search-result-path">{result.document.b.slice(result.document.b[0] === 'Courses' ? 2 : 1).join(' / ')}</div>
+                      <div className="sg-search-result-title">{hit.title}</div>
+                      {hit.path && (
+                        <div className="sg-search-result-path">{hit.path}</div>
                       )}
                     </div>
                   </div>

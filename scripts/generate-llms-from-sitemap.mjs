@@ -13,6 +13,16 @@ const DEFAULT_SITEMAP_PATH = path.resolve(__dirname, '..', 'build', 'sitemap.xml
 const DEFAULT_OUTPUT_DIR = path.resolve(__dirname, '..', 'build');
 
 /**
+ * The source locale, which is served from the bare root (`/docs/...`, no prefix).
+ *
+ * Mirrors `DEFAULT_LOCALE` in `i18n/locales.config.ts`, which this file cannot import: that
+ * roster is TypeScript and this is a plain `.mjs` build script running on the repo's Node 20
+ * floor (package.json `engines`), where `.ts` imports do not load. Keep the two values equal;
+ * everything else about the roster is passed in by the caller.
+ */
+const DEFAULT_LOCALE = 'en';
+
+/**
  * Paths that carry no standalone value for an LLM ingesting the site: search, tag/author
  * indexes, blog pagination, and redirect-only stubs.
  *
@@ -50,9 +60,15 @@ const KEY_PATHS = [
 
 /**
  * Curated annotations for high-value pages.
- * Format: path (no trailing slash) → { title, description }
- * These are rendered as `- [Title](URL): Description` in llms.txt
- * so AI systems understand page content without fetching it.
+ *
+ * KEYED BY LOCALE-STRIPPED PATH, no trailing slash: `/docs/paths`, never `/de/docs/paths`.
+ * Slugs are identical across locales (SEO invariant 1: never localize a `slug`), so one table
+ * annotates every locale and a key with a locale prefix in it would simply never match.
+ *
+ * Rendered as `- [Title](URL): Description` in llms.txt so AI systems understand page content
+ * without fetching it. A locale that wants its own annotation text passes an override map
+ * (CLI `--annotations <file>`, same key shape); anything it omits falls back to English, which
+ * is strictly better than dropping the annotation.
  */
 const PAGE_ANNOTATIONS = {
   '/': {
@@ -225,9 +241,36 @@ function toPathname(url) {
   return new URL(url).pathname;
 }
 
-/** Canonical path comparison key, strips trailing slash so lookups work regardless of input form. */
-function pathnameKey(url) {
-  const p = toPathname(url);
+/**
+ * Drop a leading `/<locale>` segment so every downstream comparison is against the canonical,
+ * locale-independent route.
+ *
+ * This is the `.mjs` twin of `stripLocale()` in `src/utils/localePath.ts`; it takes the locale
+ * as an argument instead of consulting the roster, because this file cannot import TypeScript
+ * (see DEFAULT_LOCALE above). It therefore strips ONLY the locale it was told about, which is
+ * the right behaviour here: each generator run processes exactly one locale's sitemap.
+ *
+ * `stripLocalePrefix('/de/tags/', 'de') === '/tags/'` is what makes `isLowValuePath` work under
+ * a localized sitemap; passing the raw pathname is a silent pass-through.
+ */
+export function stripLocalePrefix(pathname, locale) {
+  if (!locale || locale === DEFAULT_LOCALE) return pathname;
+  const prefix = `/${locale}`;
+  if (pathname === prefix || pathname === `${prefix}/`) return '/';
+  return pathname.startsWith(`${prefix}/`) ? pathname.slice(prefix.length) : pathname;
+}
+
+/** Locale-stripped pathname of a URL, trailing slash preserved. */
+function routePathname(url, locale) {
+  return stripLocalePrefix(toPathname(url), locale);
+}
+
+/**
+ * Canonical route comparison key: locale-stripped and trailing-slash-free, so `/de/docs/paths/`
+ * and `/docs/paths` both key as `/docs/paths` and hit the same annotation.
+ */
+function routeKey(url, locale) {
+  const p = routePathname(url, locale);
   return p === '/' ? '/' : p.replace(/\/+$/, '');
 }
 
@@ -239,10 +282,9 @@ function uniqueCanonicalUrls(urls) {
   return [...new Set(urls.map(normalizeCanonicalUrl))];
 }
 
-function formatUrlList(urls, siteUrl = DEFAULT_SITE_URL) {
+function formatUrlList(urls, { locale = DEFAULT_LOCALE, annotations = PAGE_ANNOTATIONS } = {}) {
   return urls.map((url) => {
-    const pathname = pathnameKey(url);
-    const annotation = PAGE_ANNOTATIONS[pathname];
+    const annotation = annotations[routeKey(url, locale)] ?? PAGE_ANNOTATIONS[routeKey(url, locale)];
     if (annotation) {
       const title = escapeMarkdownLinkTitle(annotation.title);
       const description = stripMdxAndJsxFromLlmsText(annotation.description);
@@ -252,91 +294,137 @@ function formatUrlList(urls, siteUrl = DEFAULT_SITE_URL) {
   }).join('\n');
 }
 
-function sectionByPrefix(urls, prefix) {
-  return urls.filter((url) => toPathname(url).startsWith(prefix));
+function sectionByPrefix(urls, prefix, locale) {
+  return urls.filter((url) => routePathname(url, locale).startsWith(prefix));
 }
 
-function topLevelPages(urls) {
+function topLevelPages(urls, locale) {
   return urls.filter((url) => {
-    const pathname = toPathname(url);
+    const pathname = routePathname(url, locale);
     if (pathname === '/') return false;
     const depth = pathname.split('/').filter(Boolean).length;
     return depth === 1;
   });
 }
 
-function findMatchingKeyUrls(urls) {
-  const byPath = new Map(urls.map((url) => [pathnameKey(url), url]));
+function findMatchingKeyUrls(urls, locale) {
+  const byPath = new Map(urls.map((url) => [routeKey(url, locale), url]));
   return KEY_PATHS.map((keyPath) => byPath.get(keyPath)).filter(Boolean);
 }
 
-function buildSections(urls) {
-  const docs = sectionByPrefix(urls, '/docs/');
+function buildSections(urls, locale) {
+  const docs = sectionByPrefix(urls, '/docs/', locale);
   const blog = urls.filter((url) => {
-    const key = pathnameKey(url);
+    const key = routeKey(url, locale);
     return key === '/blog' || key.startsWith('/blog/');
   });
-  const tools = sectionByPrefix(urls, '/tools/');
-  const roadmaps = sectionByPrefix(urls, '/roadmaps/');
-  const legal = sectionByPrefix(urls, '/legal/');
-  const topPages = topLevelPages(urls).filter((url) => {
-    const key = pathnameKey(url);
+  const tools = sectionByPrefix(urls, '/tools/', locale);
+  const roadmaps = sectionByPrefix(urls, '/roadmaps/', locale);
+  const legal = sectionByPrefix(urls, '/legal/', locale);
+  const topPages = topLevelPages(urls, locale).filter((url) => {
+    const key = routeKey(url, locale);
     return !['/blog', '/docs', '/tools', '/roadmaps', '/legal'].includes(key);
   });
 
   return { docs, blog, tools, roadmaps, legal, topPages };
 }
 
+/**
+ * Render one locale's `llms.txt`.
+ *
+ * Options beyond the original two:
+ *   locale         which locale's sitemap these URLs came from; drives prefix stripping.
+ *   localeIndexes  `[{ locale, url? }]` rendered as a `## Translations` section. Only the ROOT
+ *                  (English) file passes this, so the English index is the discovery entry
+ *                  point for every localized index (plan Phase 3, C11).
+ *   emitFull       whether a sibling `llms-full.txt` exists to point at. It is ~1.6 MB per
+ *                  locale, so it is generated for Tier A/B only; advertising a file that was
+ *                  never written would send every crawler to a 404.
+ *   annotations    per-locale override map, same locale-stripped key shape as PAGE_ANNOTATIONS.
+ */
 export function renderLlmsTxt(urls, options = {}) {
   const siteName = options.siteName ?? DEFAULT_SITE_NAME;
   const siteUrl = options.siteUrl ?? DEFAULT_SITE_URL;
-  const canonical = uniqueCanonicalUrls(urls).filter((url) => !isLowValuePath(toPathname(url)));
-  const keyUrls = findMatchingKeyUrls(canonical);
-  const { docs, blog, tools, roadmaps, legal, topPages } = buildSections(canonical);
-  const docsHubs = docs.filter((url) => toPathname(url).split('/').filter(Boolean).length <= 3);
-  const blogPosts = blog.filter((url) => toPathname(url).startsWith('/blog/')).slice(0, 20);
-  const blogOverview = blog.find((url) => pathnameKey(url) === '/blog');
+  const locale = options.locale ?? DEFAULT_LOCALE;
+  const localeIndexes = options.localeIndexes ?? [];
+  const emitFull = options.emitFull ?? true;
+  const annotations = options.annotations ?? PAGE_ANNOTATIONS;
+  const listOptions = { locale, annotations };
+
+  const localePrefix = locale === DEFAULT_LOCALE ? '' : `/${locale}`;
+  const localeBase = `${siteUrl}${localePrefix}`;
+
+  // Locale-STRIPPED path, always: every LOW_VALUE_PATTERNS entry is `^/`-anchored, so filtering
+  // the raw pathname would let `/de/tags/` and `/ja/blog/page/2/` straight through.
+  const canonical = uniqueCanonicalUrls(urls).filter(
+    (url) => !isLowValuePath(routePathname(url, locale)),
+  );
+  const keyUrls = findMatchingKeyUrls(canonical, locale);
+  const { docs, blog, tools, roadmaps, legal, topPages } = buildSections(canonical, locale);
+  const docsHubs = docs.filter(
+    (url) => routePathname(url, locale).split('/').filter(Boolean).length <= 3,
+  );
+  const blogPosts = blog.filter((url) => routePathname(url, locale).startsWith('/blog/')).slice(0, 20);
+  const blogOverview = blog.find((url) => routeKey(url, locale) === '/blog');
   const blogHighlights = blogOverview ? [blogOverview, ...blogPosts] : blogPosts;
 
-  const lines = [
-    `# ${siteName}`,
-    '',
-    `> Independent guide to Scrimba, covering career paths, pricing, and platform comparisons for developers learning to code in 2026. Annotated high-signal pages below; see \`${siteUrl}/llms-full.txt\` for the full text of every page in one document.`,
-    '',
-    `- Full text of every page: ${siteUrl}/llms-full.txt`,
-    '',
-  ];
+  const heading = locale === DEFAULT_LOCALE ? `# ${siteName}` : `# ${siteName} (${locale})`;
+  const intro = locale === DEFAULT_LOCALE
+    ? `> Independent guide to Scrimba, covering career paths, pricing, and platform comparisons for developers learning to code in 2026. Annotated high-signal pages below${emitFull ? `; see \`${siteUrl}/llms-full.txt\` for the full text of every page in one document` : ''}.`
+    : `> Independent guide to Scrimba, covering career paths, pricing, and platform comparisons, in the \`${locale}\` locale. Page slugs are identical across locales, so \`${siteUrl}/llms.txt\` is the English equivalent of this file${emitFull ? `; see \`${localeBase}/llms-full.txt\` for the full text of every page in this locale` : ''}.`;
+
+  const lines = [heading, '', intro, ''];
+
+  if (emitFull) {
+    lines.push(`- Full text of every page: ${localeBase}/llms-full.txt`, '');
+  }
+  if (locale !== DEFAULT_LOCALE) {
+    lines.push(`- English source index: ${siteUrl}/llms.txt`, '');
+  }
 
   if (keyUrls.length > 0) {
-    lines.push('## Key Pages', '', formatUrlList(keyUrls), '');
+    lines.push('## Key Pages', '', formatUrlList(keyUrls, listOptions), '');
   }
   if (docsHubs.length > 0) {
-    lines.push('## Docs', '', formatUrlList(docsHubs), '');
+    lines.push('## Docs', '', formatUrlList(docsHubs, listOptions), '');
   }
   if (blogHighlights.length > 0) {
-    lines.push('## Blog', '', formatUrlList(blogHighlights), '');
+    lines.push('## Blog', '', formatUrlList(blogHighlights, listOptions), '');
   }
   if (tools.length > 0) {
-    lines.push('## Tools', '', formatUrlList(tools), '');
+    lines.push('## Tools', '', formatUrlList(tools, listOptions), '');
   }
   if (roadmaps.length > 0) {
-    lines.push('## Roadmaps', '', formatUrlList(roadmaps), '');
+    lines.push('## Roadmaps', '', formatUrlList(roadmaps, listOptions), '');
   }
   if (topPages.length > 0) {
-    lines.push('## Pages', '', formatUrlList(topPages), '');
+    lines.push('## Pages', '', formatUrlList(topPages, listOptions), '');
+  }
+  if (localeIndexes.length > 0) {
+    lines.push(
+      '## Translations',
+      '',
+      localeIndexes
+        .map(({ locale: tag, url }) => `- [${tag}](${url ?? `${siteUrl}/${tag}/llms.txt`}): index of the same pages in the ${tag} locale.`)
+        .join('\n'),
+      '',
+    );
   }
   // The llms.txt spec reserves `## Optional` for links an LLM may skip under a
   // tight context budget. Legal/contact pages fit that.
   if (legal.length > 0) {
-    lines.push('## Optional', '', formatUrlList(legal), '');
+    lines.push('## Optional', '', formatUrlList(legal, listOptions), '');
   }
 
   return `${lines.join('\n').trim()}\n`;
 }
 
-/** Canonical, deduped, sorted, low-value-filtered URLs for the full corpus. */
-export function selectFullTxtUrls(urls) {
-  return uniqueSortedUrls(urls).filter((url) => !isLowValuePath(toPathname(url)));
+/**
+ * Canonical, deduped, sorted, low-value-filtered URLs for the full corpus.
+ * `locale` is optional and only affects the low-value filter, which must see a stripped path.
+ */
+export function selectFullTxtUrls(urls, locale = DEFAULT_LOCALE) {
+  return uniqueSortedUrls(urls).filter((url) => !isLowValuePath(routePathname(url, locale)));
 }
 
 /** Resolve a root-relative href to an absolute URL; drop in-page anchors. */
@@ -448,11 +536,25 @@ function parseArgValue(args, name) {
   return index !== -1 ? args[index + 1] : null;
 }
 
+/**
+ * Generate `llms.txt` (and optionally `llms-full.txt`) for ONE locale.
+ *
+ * `outputDir` and `contentRoot` are separate because the merged multi-locale tree nests locale
+ * builds: `de`'s files are written to `merged/de/`, but its sitemap URLs are `/de/docs/...`,
+ * which already carry the `de/` segment. Resolving those pathnames against `merged/de` would
+ * look for `merged/de/de/docs/...` and inline zero pages while exiting 0. So HTML is always
+ * read from the tree ROOT and only the two output files are written into the locale directory.
+ */
 export function generateLlmsFromSitemap({
   sitemapPath = DEFAULT_SITEMAP_PATH,
   outputDir = DEFAULT_OUTPUT_DIR,
+  contentRoot = null,
   siteName = DEFAULT_SITE_NAME,
   siteUrl = DEFAULT_SITE_URL,
+  locale = DEFAULT_LOCALE,
+  localeIndexes = [],
+  emitFull = true,
+  annotations = PAGE_ANNOTATIONS,
 } = {}) {
   if (!fs.existsSync(sitemapPath)) {
     throw new Error(`Sitemap not found at ${sitemapPath}`);
@@ -460,35 +562,39 @@ export function generateLlmsFromSitemap({
 
   const xml = fs.readFileSync(sitemapPath, 'utf8');
   const urls = extractLocUrls(xml);
-  const llmsTxt = renderLlmsTxt(urls, { siteName, siteUrl });
+  const llmsTxt = renderLlmsTxt(urls, { siteName, siteUrl, locale, localeIndexes, emitFull, annotations });
 
   // Inline each page's built HTML content into llms-full.txt.
-  const contentDir = outputDir;
+  const contentDir = contentRoot ?? outputDir;
   let pagesInlined = 0;
   let pagesMissing = 0;
-  const pages = selectFullTxtUrls(urls).map((url) => {
-    const pathname = new URL(url).pathname;
-    const file = path.join(contentDir, pathname, 'index.html');
-    if (!fs.existsSync(file)) {
-      pagesMissing += 1;
-      return null;
-    }
-    const { title, markdown } = htmlToLlmsMarkdown(fs.readFileSync(file, 'utf8'), { siteUrl });
-    if (!markdown) return null;
-    pagesInlined += 1;
-    return { url, title, content: markdown };
-  }).filter(Boolean);
-
-  const llmsFullTxt = renderLlmsFullTxt(pages, { siteName, siteUrl });
+  const pages = emitFull
+    ? selectFullTxtUrls(urls, locale).map((url) => {
+      const pathname = new URL(url).pathname;
+      const file = path.join(contentDir, pathname, 'index.html');
+      if (!fs.existsSync(file)) {
+        pagesMissing += 1;
+        return null;
+      }
+      const { title, markdown } = htmlToLlmsMarkdown(fs.readFileSync(file, 'utf8'), { siteUrl });
+      if (!markdown) return null;
+      pagesInlined += 1;
+      return { url, title, content: markdown };
+    }).filter(Boolean)
+    : [];
 
   fs.mkdirSync(outputDir, { recursive: true });
   const llmsPath = path.join(outputDir, 'llms.txt');
-  const llmsFullPath = path.join(outputDir, 'llms-full.txt');
-
   fs.writeFileSync(llmsPath, llmsTxt, 'utf8');
-  fs.writeFileSync(llmsFullPath, llmsFullTxt, 'utf8');
+
+  let llmsFullPath = null;
+  if (emitFull) {
+    llmsFullPath = path.join(outputDir, 'llms-full.txt');
+    fs.writeFileSync(llmsFullPath, renderLlmsFullTxt(pages, { siteName, siteUrl }), 'utf8');
+  }
 
   return {
+    locale,
     totalUrls: urls.length,
     pagesInlined,
     pagesMissing,
@@ -497,16 +603,50 @@ export function generateLlmsFromSitemap({
   };
 }
 
+function parseList(value) {
+  return (value ?? '')
+    .split(',')
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
+
 function main() {
   const args = process.argv.slice(2);
   const sitemapPath = parseArgValue(args, '--sitemap') ?? DEFAULT_SITEMAP_PATH;
   const outputDir = parseArgValue(args, '--output-dir') ?? DEFAULT_OUTPUT_DIR;
+  const contentRoot = parseArgValue(args, '--content-root');
   const siteName = parseArgValue(args, '--site-name') ?? DEFAULT_SITE_NAME;
   const siteUrl = parseArgValue(args, '--site-url') ?? DEFAULT_SITE_URL;
+  const locale = parseArgValue(args, '--locale') ?? DEFAULT_LOCALE;
+  // `--locales` lists the OTHER live locales to advertise; only the root file uses it.
+  const localeIndexes = parseList(parseArgValue(args, '--locales'))
+    .filter((tag) => tag !== locale)
+    .map((tag) => ({ locale: tag }));
+  // Tier C/D/E skip llms-full.txt: it is ~1.6 MB per locale and the merged tree is gated on
+  // both bytes and file count (plan Phase 3 two-axis deploy gate).
+  const emitFull = !args.includes('--no-full');
+  const annotationsPath = parseArgValue(args, '--annotations');
+  const annotations = annotationsPath
+    ? { ...PAGE_ANNOTATIONS, ...JSON.parse(fs.readFileSync(annotationsPath, 'utf8')) }
+    : PAGE_ANNOTATIONS;
 
-  const result = generateLlmsFromSitemap({ sitemapPath, outputDir, siteName, siteUrl });
-  console.log(`Generated ${result.llmsPath}`);
-  console.log(`Generated ${result.llmsFullPath} (${result.pagesInlined} pages inlined, ${result.pagesMissing} missing)`);
+  const result = generateLlmsFromSitemap({
+    sitemapPath,
+    outputDir,
+    contentRoot,
+    siteName,
+    siteUrl,
+    locale,
+    localeIndexes,
+    emitFull,
+    annotations,
+  });
+  console.log(`Generated ${result.llmsPath} (locale ${result.locale})`);
+  if (result.llmsFullPath) {
+    console.log(`Generated ${result.llmsFullPath} (${result.pagesInlined} pages inlined, ${result.pagesMissing} missing)`);
+  } else {
+    console.log('Skipped llms-full.txt (--no-full)');
+  }
   console.log(`Processed ${result.totalUrls} sitemap URLs`);
 }
 

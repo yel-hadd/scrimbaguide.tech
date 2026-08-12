@@ -1,4 +1,22 @@
-.searchContextInput,
+/**
+ * Styling for the `/search` page. Carried over unchanged from the easyops
+ * theme's stylesheet apart from two edits made by the Pagefind migration
+ * (I18N-PLAN.md section 12):
+ *
+ *   - the `.searchContextInput` / `.searchContextColumn` / `.searchQueryColumn`
+ *     rules are gone with the search-context selector they styled. That selector
+ *     only ever appeared for versioned docs, which this site does not use.
+ *
+ * Excerpt highlighting is deliberately NOT styled here. Pagefind returns real
+ * `<mark>` elements, and `src/css/custom.css` already brand-tints them through
+ * `article[class*='searchResultItem'] mark` - a rule that outranks anything this
+ * module could write for the same element, and whose contrast the a11y suite
+ * already covers in both themes.
+ *
+ * `.searchQueryInput` keeps its class name because `src/clientModules/a11yFixes.ts`
+ * focuses `[class*="searchQueryInput"]` when `/search?focus=1` is opened.
+ */
+
 .searchQueryInput {
   border-radius: var(--ifm-global-radius);
   border: var(--ifm-global-border-width) solid
@@ -29,25 +47,4 @@
 .searchResultItemSummary {
   font-style: italic;
   margin: 0.5rem 0px 0px;
-}
-
-@media only screen and (max-width: 996px) {
-  .searchQueryColumn {
-    max-width: 60% !important;
-  }
-
-  .searchContextColumn {
-    max-width: 40% !important;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .searchQueryColumn {
-    max-width: 100% !important;
-  }
-
-  .searchContextColumn {
-    max-width: 100% !important;
-    padding-left: var(--ifm-spacing-horizontal) !important;
-  }
 }

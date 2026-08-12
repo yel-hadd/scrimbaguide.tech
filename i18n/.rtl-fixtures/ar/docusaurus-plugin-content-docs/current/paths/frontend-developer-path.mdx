@@ -1,0 +1,50 @@
+---
+title: "مسار مطوّر الواجهة الأمامية في سكريمبا"
+description: "صفحة اختبار للتخطيط من اليمين إلى اليسار على صفحة مسار. ليست ترجمة حقيقية."
+hideGlobalPricingCta: true
+---
+
+{/* THROWAWAY FIXTURE. Hand-written Arabic, not a translation, never shipped.
+    Mirrors the English file's path so the doc id and slug stay identical:
+    slug parity is what makes the hreflang cluster reciprocal. Heading anchors
+    keep their frozen English {#id}s for the same reason (onBrokenAnchors is
+    'throw', and a translated heading would otherwise mint a new anchor). */}
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import PathAdvisor from '@site/src/components/PathAdvisor';
+
+# مسار مطوّر الواجهة الأمامية في سكريمبا
+
+مسار كامل يبدأ من <code>HTML</code> وينتهي بمشروع React جاهز للنشر. المسار
+يستغرق ٨١٫٦ ساعة من الدروس التفاعلية، ويغطي الأدوات التي يطلبها سوق العمل.
+
+<AffiliateLink href="https://scrimba.com/frontend-path-c0j" variant="button" location="rtl-fixture-cta">
+  ابدأ المسار الآن
+</AffiliateLink>
+
+## ما الذي يغطيه المسار {#what-the-path-covers}
+
+الوحدات الأولى تشرح بنية الصفحة، ثم تنتقل إلى التنسيق باستخدام Flexbox و
+CSS Grid، ثم إلى JavaScript. الوحدة الأخيرة تبني تطبيقًا كاملًا باستخدام
+React <span className="sg-ltr">19</span> و Vite <span className="sg-ltr">6.0</span>.
+
+## هل يناسبك هذا المسار {#is-this-path-for-you}
+
+<PathAdvisor embedded />
+
+## أسئلة شائعة {#faq}
+
+<FAQAccordion
+  emitSchema={false}
+  items={[
+    {
+      q: 'كم يستغرق إنهاء المسار؟',
+      a: 'ساعة يوميًا تعني حوالي ثلاثة أشهر. المسار نفسه ٨١٫٦ ساعة من الدروس.',
+    },
+    {
+      q: 'هل أحتاج إلى إعداد بيئة على جهازي؟',
+      a: 'لا. المحرر يعمل داخل المتصفح، ولا تحتاج إلى تشغيل npm install محليًا.',
+    },
+  ]}
+/>

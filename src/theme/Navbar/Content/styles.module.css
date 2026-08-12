@@ -8,6 +8,9 @@
 Restore some Infima style that broke with CSS Cascade Layers
 See https://github.com/facebook/docusaurus/pull/11142
  */
+/* Logical, not physical: `--right` is Infima's name for the END-side item
+   group, which sits on the left under RTL. `padding-right: 0` would then trim
+   the wrong edge and leave the navbar visibly off-gutter in `ar`/`he`. */
 :global(.navbar__items--right) > :last-child {
-  padding-right: 0;
+  padding-inline-end: 0;
 }

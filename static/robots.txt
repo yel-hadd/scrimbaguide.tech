@@ -116,6 +116,11 @@ Disallow: /
 # Sitemaps & LLM content
 # ================================================================
 Sitemap: https://scrimbaguide.tech/sitemap.xml
+# The index is what makes per-locale sitemaps discoverable. Without it, the
+# first locale to go live has its /<locale>/sitemap.xml generated, gated and
+# published, then never crawled except through internal links. The English
+# child above stays listed for continuity.
+Sitemap: https://scrimbaguide.tech/sitemap-index.xml
 
 # LLM-optimized content indexes (generated from canonical sitemap URLs)
 # See: https://scrimbaguide.tech/llms.txt
