@@ -1,0 +1,80 @@
+---
+title: "Crea una aplicación de clima en React"
+description: "Deja de mirar tutoriales y construye una aplicación real de clima escribiendo código en el navegador. Domina la integración de APIs, la gestión de estado y el diseño CSS."
+keywords: [crear app de clima, proyecto app clima React, tutorial app clima interactivo, app de clima Scrimba]
+sidebar_position: 10
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import CourseCard from '@site/src/components/CourseCard';
+
+# Crea una aplicación de clima en React
+
+Construye una **interfaz real de clima** en Scrimba con **geolocalización, `fetch` estilo OpenWeather, estado para carga/errores y estilos dinámicos**, escribiendo código en el mismo reproductor que el instructor. Es el patrón de portafolio que reconocen los reclutadores.
+
+Uno de los proyectos de portafolio React más solicitados es la clásica **aplicación de clima**. ¿Por qué? Porque demuestra que entiendes tres habilidades críticas:
+
+1. **Obtener datos externos** (trabajar con APIs REST reales).
+2. **Gestionar estado complejo** (almacenar coordenadas geográficas, temperaturas y estados de error).
+3. **Renderizado dinámico de UI** (cambiar fondos según lluvia, sol o nieve).
+
+Pero leer un tutorial no es suficiente para aprender estos conceptos. Necesitas escribir el código tú mismo.
+
+<div className="text-center margin-vert--lg">
+  <AffiliateLink href="https://scrimba.com/learn-react-c0e?via=u42d4986" variant="button" size="lg">
+    Construye Interactivamente en Scrimba
+  </AffiliateLink>
+</div>
+
+## Para quién es esto {#who-this-is-for}
+
+Desarrolladores que quieren práctica práctica con este tema.
+
+
+## El problema con los tutoriales en video {#the-problem-with-video-tutorials}
+
+Cuando ves un tutorial de YouTube sobre "Cómo construir una aplicación de clima React", caes en la **ilusión del tutorial**. Entiendes lo que escribe el instructor, pero cuando abres un editor VS Code vacío al día siguiente, tu mente se queda en blanco.
+
+### La solución interactiva {#the-interactive-solution}
+
+En Scrimba, no solo ves videos. El video *es* el editor de código. Cuando el instructor dice, "Okay, ahora escribamos la llamada `fetch()` a la API de OpenWeather", el video se pausa, y **escribes el código directamente en el reproductor**. 
+
+Si te atascas, presionas reproducir, y el instructor escribe la solución EXACTA en las líneas de código exactas que acabas de ver.
+
+## Conceptos clave que dominarás {#key-concepts-you-will-master}
+
+### 1. El gancho `useEffect` para obtener datos {#1-the-useeffect-hook-for-data-fetching}
+Aprenderás cómo desencadenar llamadas a la API apenas tu componente se monta sin causar bucles infinitos de re-renderizado.
+
+### 2. El gancho `useState` para actualizar la UI {#2-the-usestate-hook-for-ui-updates}
+Gestionarás múltiples piezas de estado:
+- `city` (string)
+- `weatherData` (object)
+- `isLoading` (boolean)
+- `error` (string)
+
+### 3. Renderizado condicional {#3-conditional-rendering}
+Si la API devuelve "clouds", renderizas el icono de nube. Si `isLoading` es true, muestras un spinner. Así es como se construyen las aplicaciones frontend profesionales.
+
+## ¿Listo para construir? {#ready-to-build}
+
+El mejor lugar para construir esto interactivamente es en el curso **Advanced React**, o comenzar con el curso fundacional **Learn React (Free)** que cubre la integración de API extensamente.
+
+<CourseCard
+  title="Learn React (Free)"
+  duration="15.1 hrs"
+  difficulty="Intermediate"
+  access="Free"
+  lessons={357}
+  instructor="Bob Ziroll"
+  href="https://scrimba.com/learn-react-c0e?via=u42d4986"
+  description="Domina los fundamentos necesarios para construir aplicaciones complejas como un dashboard de clima."
+/>
+
+### Por qué este proyecto te consigue trabajo {#why-this-project-gets-you-hired}
+
+Los reclutadores quieren ver que puedes tomar una pantalla vacía y conectarla al mundo real. Una aplicación de clima pulida demuestra competencia técnica completa en renderizar datos del servidor dinámicamente. Construye interactivamente, súbelo a GitHub y despliégalo en Vercel para que tu portafolio destaque.
+
+## Elige esto si {#choose-this-if}
+
+**Elige esta guía si:** Quieres recomendaciones de cursos para práctica práctica. La mayoría requieren Pro.

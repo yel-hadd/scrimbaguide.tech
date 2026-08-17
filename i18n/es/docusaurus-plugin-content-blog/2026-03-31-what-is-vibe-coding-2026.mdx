@@ -1,0 +1,199 @@
+---
+slug: what-is-vibe-coding-2026
+title: "¿Qué es vibe coding? Collins WOTY 2025 explicado (y cuándo falla)"
+description: "¿Qué es vibe coding en 2026? Palabra del año de Collins Dictionary 2025, acuñada por Andrej Karpathy, y por qué el vibe coding hell es un problema de habilidades, no de moral."
+authors: [scrimbaguide]
+tags: [vibe-coding, javascript]
+keywords: [qué es vibe coding, vibe coding explicado, vibe coding 2026, Andrej Karpathy vibe coding, palabra del año Collins 2025 vibe coding]
+image: /img/blog/what-is-vibe-coding-2026.png
+image_alt: "¿Qué es vibe coding? Collins WOTY 2025 explicado, blog de Scrimba Guide"
+hideFooterPricingCta: false
+date: 2026-03-31
+last_update:
+  date: 2026-05-28
+  author: Yassine El Haddad
+---
+
+import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import PricingCTA from '@site/src/components/PricingCTA';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+
+<DocFaqSchema
+  questions={[
+    {
+      q: "¿Qué es vibe coding?",
+      a: "Vibe coding es un enfoque de programación en el que un desarrollador describe lo que quiere a un asistente de IA como Cursor, ChatGPT, Claude, GitHub Copilot, y la IA genera la implementación. El desarrollador se enfoca en la intención y la dirección, no en la sintaxis. Collins Dictionary lo nombró Palabra del Año para 2025; el término se asocia con el post de Andrej Karpathy en X (Twitter) de febrero de 2025."
+    },
+    {
+      q: "¿Quién acuñó vibe coding?",
+      a: "La frase se atribuye ampliamente a Andrej Karpathy en febrero de 2025 en X (anteriormente Twitter). Collins Dictionary destacó el término como su Palabra del Año para 2025, reflejando la adopción generalizada de la construcción asistida por IA."
+    },
+    {
+      q: "¿Qué es vibe coding hell?",
+      a: "Vibe coding hell es el momento cuando un código generado por IA se rompe en producción y quien lo construyó no puede depurarlo porque nunca construyó un modelo mental de la lógica. Los disparadores comunes incluyen errores async, acceso a null, estado React obsoleto y bugs de coerción de tipos."
+    },
+    {
+      q: "¿Es vibe coding malo para aprender?",
+      a: "No automáticamente. Acelera la creación de prototipos y reduce la barrera para publicar. Se vuelve dañino cuando reemplaza la comprensión, especialmente para el mantenimiento, la seguridad y el rendimiento. El objetivo es vibe coding con fundamentos, no en lugar de ellos."
+    },
+    {
+      q: "¿Cómo aprendo JavaScript si principalmente hago vibe coding?",
+      a: "Usa ejercicios interactivos cortos que te obliguen a escribir y predecir comportamiento, no solo aceptar completaciones. El curso Learn JavaScript de Scrimba es gratuito y está diseñado alrededor de la práctica en el navegador, que construye la memoria muscular de depuración que las herramientas de IA omiten."
+    },
+    {
+      q: "¿Pueden los vibe coders usar Scrimba?",
+      a: "Sí, Scrimba es muy adecuado para vibe coders que quieren reforzar los fundamentos de JavaScript y React. El formato de scrim te obliga a escribir y predecir código en lugar de aceptar completaciones de IA, lo que construye directamente las habilidades de depuración que vibe coding omite. The Frontend Developer Path (81.6 horas) cubre los fundamentos de JavaScript y React desde cero y requiere una suscripción Pro."
+    }
+  ]}
+/>
+
+# ¿Qué es vibe coding? Collins WOTY 2025 explicado (y cuándo falla)
+
+<DisclosureNotice />
+
+**Vibe coding** es un enfoque de programación en el que un desarrollador describe lo que quiere a un asistente de IA como Cursor, ChatGPT, Claude, GitHub Copilot, y la IA genera la implementación. El desarrollador se enfoca en la intención y la dirección, no en la sintaxis.
+
+**Vibe coding fue nombrado Palabra del Año 2025 de Collins Dictionary**, el término se asocia ampliamente con **Andrej Karpathy en Twitter/X en febrero de 2025** (ver el anuncio de Palabra del Año de Collins y el post de Karpathy en X para las fuentes principales).
+
+{/* truncate */}
+
+## El panorama de herramientas (la misma idea, diferentes envoltorios) {#the-tool-landscape-same-idea-different-wrappers}
+
+"Vibe coding" describe un **flujo de trabajo**, no un solo proveedor. En 2026, los constructores combinan:
+
+| Tipo de herramienta | Lo que optimiza | Truco típico |
+| --- | --- | --- |
+| Interfaces de chat (ChatGPT, Claude) | Razonamiento + explicaciones | Sin red de seguridad para refactorización a nivel de proyecto |
+| Agentes de IDE (Cursor, Copilot) | Ediciones conscientes del archivo | Parches multi-archivo demasiado confiados |
+| Modelos locales / stacks OSS | Costo + privacidad | Carga operativa + evaluación |
+
+Ninguno de estos elimina **tu** trabajo como la persona a quien se llamará. Solo cambian dónde ocurre la escritura.
+
+## Por qué la tendencia es real (y principalmente buena) {#why-the-trend-is-real-and-mostly-good}
+
+Vibe coding no es un meme de broma para todos. Para fundadores, diseñadores e ingenieros experimentados, es un **algoritmo de compresión** para la iteración:
+
+- Explores los flujos de interfaz más rápido.
+- Creas integraciones sin leer cinco documentaciones de principio a fin.
+- Traduces el lenguaje del producto a la forma del código rápidamente.
+
+Las comunidades alrededor de editores orientados a IA crecieron rápidamente en 2025 porque el **bucle**, describir, generar, ajustar, coincide con cómo muchas personas ya piensan sobre software cuando los detalles son vagos.
+
+Hay una historia **positiva** legítima: más personas pueden **publicar**. Publicar es cómo aprendes qué se rompe.
+
+## El techo honesto: cuando la "intención" no es suficiente {#the-honest-ceiling-when-intent-is-not-enough}
+
+El software no es una vibra. Es **estado**, **tiempo**, **memoria** y **modos de falla**.
+
+| Fortaleza del vibe coding | Modo de falla |
+| --- | --- |
+| Andamiaje rápido | Suposiciones ocultas en dependencias |
+| Especificaciones en lenguaje natural | Casos extremos ambiguos |
+| Velocidad de Copilot | Puntos ciegos en seguridad + privacidad |
+| Interfaz lista para demostración | Logging + monitoreo de producción faltante |
+
+Esta tabla no es anti-IA. Es **pro-ingeniería**. Las herramientas amplifican cualquier proceso que traigas. Si tu proceso es "aceptar y rezar," la producción tiene opiniones.
+
+## Vibe coding hell (la parte que los influencers omiten) {#vibe-coding-hell-the-part-influencers-skip}
+
+**Vibe coding hell** no es moralizante. Es descriptivo.
+
+Es el momento de las **2 a.m.**: los usuarios alcanzan un error, Sentry se enciende, y tu repositorio se lee como un idioma extranjero porque **no lo escribiste línea por línea**. La IA **no "entendió"** tus reglas de negocio, **coincidió con el patrón**.
+
+Disparadores típicos:
+
+- Bugs **async** que parecen "parpadeo" aleatorio de interfaz
+- Acceso a **`undefined`** que solo sucede en redes lentas
+- **Cierres obsoletos** en React que hacen que el estado "mienta"
+- **Coerción de tipos** que se rompe solo para una localización de cliente
+
+En ese momento, la solución no es un prompt mejor. Son **fundamentos de JavaScript**.
+
+## De vibe coder a desarrollador capaz de depuración {#from-vibe-coder-to-debugging-capable-developer}
+
+La versión más común de vibe coding hell se ve exactamente así: tu componente React generado por IA se renderiza bien en desarrollo, se rompe silenciosamente en producción, y el stack trace dice `Cannot read properties of undefined` en una línea que nunca has tocado. Lo pegas de vuelta en el chat. La IA lo "arregla". Se rompe en otro lugar.
+
+La brecha no es tu prompt. Son **estado de React y el modelo de ejecución de JavaScript**, las dos cosas que las herramientas de vibe coding consistentemente omiten porque coinciden con el patrón, no razonan.
+
+**El [Frontend Developer Path](/docs/paths/frontend-developer-path/) de Scrimba cierra esta brecha directamente.** El path de 81.6 horas recorre los fundamentos de JavaScript, patrones async y React (básico a través de hooks avanzados y enrutamiento) con el formato de scrim que te obliga a escribir código dentro de las lecciones en lugar de aceptar completaciones. Completar solo los módulos de React y JavaScript significa que puedes leer la mayoría de errores de React sin necesidad de preguntarle a una IA qué significan.
+
+Esto no se trata de abandonar las herramientas de IA, se trata de hacerlas funcionar de manera confiable. Los desarrolladores que entienden el estado y los efectos de JavaScript pueden hacer prompts mejores, revisar el resultado de IA más rápido y depurar lo que se rompe sin girar indefinidamente. Si quieres un método para eso, aquí está [cómo seguir aprendiendo a programar sin volverse dependiente de la IA](/blog/how-to-learn-coding-without-depending-on-ai/).
+
+<AffiliateLink href="https://scrimba.com/frontend-path-c0j?via=u42d4986&utm_source=scrimbaguide&utm_medium=blog&utm_campaign=what-is-vibe-coding-2026&utm_content=frontend-path-bridge">
+  Comienza el Frontend Path de Scrimba (Se requiere Pro)
+</AffiliateLink>
+
+## El puente: fundamentos gratuitos vencen el pánico costoso {#the-bridge-free-fundamentals-beat-expensive-panic}
+
+Cuando tu app de vibe coding se rompe a las 2am, necesitas **fundamentos de JavaScript**, no un hilo de chat más largo.
+
+**El [Learn JavaScript](/docs/courses/javascript/learn-javascript/) de Scrimba es gratis**, interactivo y construido alrededor de escribir código dentro de las lecciones en lugar de ver a alguien más escribir. Esa diferencia importa para vibe coders específicamente: estás re-entrenando la **predicción**, no consumiendo **contenido**.
+
+## Cómo vibe coding se conecta con la contratación (brevemente) {#how-vibe-coding-connects-to-hiring-briefly}
+
+Los empleadores no son alérgicos a la asistencia de IA. Son alérgicos al **código sin dueño**. Si haces vibe coding, tu portafolio debería mostrar **decisiones**: compensaciones, pruebas, manejo de errores y un README que pruebe que puedes explicar el sistema.
+
+Nuestro post [proyectos de portafolio para conseguir trabajo](/blog/portfolio-projects-get-hired-2026/) es un checklist concreto.
+
+## Vibe coding vs tutorial hell (trampas diferentes) {#vibe-coding-vs-tutorial-hell-different-traps}
+
+**Tutorial hell** es consumo pasivo. **Vibe coding hell** es generación pasiva. Ambos omiten **lucha en bucles cortos**.
+
+La salida es la misma: **ejercicios más pequeños**, **predicciones escritas a mano**, **lee mensajes de error sin autocompletar**. Si estás atrapado en la versión de visualización de este bucle, [cómo escapar de tutorial hell](/blog/how-to-escape-tutorial-hell-2026/) establece los ejercicios de recuperación que también funcionan para vibe coders.
+
+Si Scrimba es nuevo para ti, [qué hace que Scrimba sea diferente](/blog/what-makes-scrimba-different/) explica el formato interactivo en lenguaje simple. Y si quieres un resumen de qué asistentes de IA realmente te ayudan a aprender (no solo a publicar), ver [mejores herramientas de IA para aprender a programar](/blog/ai-tools-for-learning-to-code-2026/).
+
+## Seguridad y privacidad (la diapositiva aburrida que importa) {#security-and-privacy-the-boring-slide-that-matters}
+
+Vibe coding te anima a **pegar contexto** en modelos. Está bien para tutoriales públicos. No es está bien para:
+
+- Datos de clientes
+- Secretos y tokens
+- Documentos de estrategia no lanzados
+
+Trata las herramientas de IA como cualquier otro tercero: **redacta**, **localiza** y **rota claves** cuando ocurren errores. Si estás aprendiendo, usa **datos sintéticos** en ejercicios, las lecciones interactivas de Scrimba mantienen la práctica dentro de un entorno controlado, lo que ayuda a los principiantes a evitar fugas accidentales.
+
+## Para quién es vibe coding (y para quién no) {#who-vibe-coding-is-for-and-not-for}
+
+**Encaje fuerte:** creación de prototipos, herramientas internas, proyectos personales, ingenieros experimentados que pueden auditar el resultado rápidamente.
+
+**Encaje débil solo:** sistemas regulados, rutas críticas de rendimiento que no puedes perfilar, equipos sin cultura de revisión.
+
+Si estás cambiando de carrera, no confundas **publicar una demostración** con **pasar una entrevista técnica senior**. Las demostraciones ayudan; los fundamentos cierran la brecha. Empareja este artículo con [cómo aprender JavaScript en 2026](/docs/courses/javascript/) si todavía estás eligiendo un stack de línea de base.
+
+## Habilidades relacionadas: React es donde vibe coding falla más fuerte {#related-skills-react-is-where-vibe-coding-breaks-loudest}
+
+Muchos productos de vibe coding son stacks de **React + Vite**. Los errores de React son legibles **si** entiendes **estado** y **efectos**. Si no, se sienten embrujados.
+
+Lee [cómo aprender React en 2026](/docs/courses/react/) para profundizar en la capa donde vibe coding falla más fuerte.
+
+## Señal de comunidad (por qué la palabra cruzó hacia la corriente principal) {#community-signal-why-the-word-crossed-into-mainstream}
+
+Las comunidades de desarrolladores aceleraron el meme, desde hackers indie publicando apps de fin de semana hasta ingenieros experimentados bromeando sobre "arquitectura completamente impulsada por vibraciones". **Collins** nombrar el término **Palabra del Año 2025** es menos sobre gramática prescriptiva y más sobre **reconocimiento cultural**: la construcción asistida por IA es ahora un flujo de trabajo predeterminado para muchos equipos.
+
+Eso no elimina la obligación de ingeniería. Eleva el estándar para **revisión**, **pruebas** y **documentación**, las partes que los clientes todavía castigan cuando fallan.
+
+## Un flujo de trabajo sensato: vibra primero, verifica siempre {#a-sane-workflow-vibe-first-verify-always}
+
+1. **Vibra** el prototipo.
+2. **Congela** un segmento de alcance.
+3. **Reescribe** la ruta crítica tú mismo, incluso si la IA la redactó primero.
+4. **Añade** pruebas para las ramas peligrosas.
+5. **Documenta** los invariantes en los que realmente dependiste.
+
+Así es como mantienes velocidad **sin** rendirte la propiedad.
+
+<PricingCTA
+  title="Convierte prototipos en habilidades mantenibles"
+  subtitle="Usa las rutas interactivas de Scrimba para reforzar los fundamentos de JavaScript y React, la capa que mantiene las apps generadas por IA como enviables."
+  buttonText="Explora Scrimba Pro"
+  variant="inline"
+/>
+
+## Fuentes y notas {#sources-and-notes}
+
+- **Collins Palabra del Año 2025**, "vibe coding" ([Collins Dictionary](https://www.collinsdictionary.com/)).
+- **Karpathy, febrero de 2025**, popularización del término en **X** (fuente principal: timeline de Karpathy / post).
+
+Si quieres el siguiente artículo de la serie: **[De vibe coder a desarrollador real](/blog/vibe-coder-to-real-developer-2026/)**.

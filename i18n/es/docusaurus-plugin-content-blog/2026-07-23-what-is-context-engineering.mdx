@@ -1,0 +1,104 @@
+---
+slug: what-is-context-engineering
+image: /img/blog/what-is-context-engineering.png
+image_alt: "¿Qué es context engineering? La habilidad que sustituyó a prompt engineering en 2026, Scrimba Guide Blog"
+title: "¿Qué es context engineering? (Guía para desarrolladores 2026)"
+description: "Context engineering sustituyó a prompt engineering como la habilidad fundamental de 2026. Aquí te contamos qué es realmente, qué dicen los datos sobre el cambio y cómo aprenderla."
+authors: [scrimbaguide]
+tags: [ai, guide, career, learning]
+keywords: [qué es context engineering, context engineering vs prompt engineering, context engineering 2026, aprender context engineering, prompt engineering muerto, habilidades ai para desarrolladores 2026, Model Context Protocol]
+hideFooterPricingCta: true
+date: 2026-07-23
+last_update:
+  date: 2026-07-23
+  author: Yassine El Haddad
+---
+
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import PricingCTA from '@site/src/components/PricingCTA';
+
+# ¿Qué es context engineering? La habilidad que sustituyó a prompt engineering en 2026
+
+<DisclosureNotice />
+
+Context engineering es la práctica de decidir qué información ve un modelo de IA antes de escribir una sola línea de código: los archivos, documentación, ejemplos, reglas y herramientas que cargas en su ventana de contexto. Es la habilidad que absorbió silenciosamente prompt engineering durante el año pasado. Mi perspectiva honesta, después de usar estas herramientas a diario como ingeniero que aprendió a programar por su cuenta a través de 42 Network: el nombre es nuevo y un poco comercial, pero el trabajo que hay detrás es real, y es buena noticia para desarrolladores autodidactas, porque recompensa la comprensión de una base de código en lugar de memorizar frases ingeniosas.
+
+{/* truncate */}
+
+## Qué significa realmente context engineering (en lenguaje claro) {#what-context-engineering-actually-means-in-plain-english}
+
+Context engineering significa gestionar todo lo que un modelo lee antes de responder. Un modelo de lenguaje grande no tiene memoria de tu proyecto entre sesiones. Solo conoce lo que cabe en su ventana de contexto ahora: tu solicitud, los archivos que adjuntaste, las reglas en un archivo de configuración, y cualquier herramienta que se le permita usar. Curar esa ventana es todo el juego.
+
+Piénsalo como si briefearas a un freelancer brillante pero con amnesia. Dale tres archivos equivocados y una solicitud vaga, y construirá confiadamente algo equivocado. Dale los archivos correctos, tus convenciones de nombres, un ejemplo funcional y una especificación clara, y se acercará notablemente en el primer intento. La diferencia en la salida tiene menos que ver con cómo formulas la solicitud y más con lo que pones frente al modelo. En la práctica esto se ve en archivos de contexto de proyecto (los archivos `CLAUDE.md`, `AGENTS.md`, o archivos de reglas del editor que los agentes leen automáticamente), los archivos específicos que extrae en un chat, y las fuentes de datos que conectas.
+
+## Dónde encaja prompt engineering dentro de context engineering {#where-prompt-engineering-fits-inside-context-engineering}
+
+Prompt engineering no murió. Se redujo. Formular bien una solicitud sigue importando, pero ahora es una entrada entre varias en lugar del apalancamiento principal. Conforme los modelos mejoraron al analizar solicitudes simples, el modo de fallo dejó de ser fraseología incómoda y comenzó a ser información faltante.
+
+Un análisis ampliamente compartido de 2026 en DEV, "Context Engineering: The Skill Replacing Prompt Engineering in 2026," marca la distinción claramente: prompt engineering trata sobre lo que le dices al modelo, mientras que context engineering trata sobre lo que le proporcionas. Context engineering es la disciplina más amplia de gestionar todo lo que el modelo ve (sus instrucciones, herramientas, memoria y datos recuperados), y prompting es una técnica dentro de ella. Eso coincide con lo que veo en el uso diario. Cuando un agente hoy hace algo mal, reformular la solicitud rara vez lo arregla. Darle el archivo que le faltaba usualmente lo hace.
+
+## Lo que dicen los datos de 2026: los números detrás del cambio {#what-the-2026-data-says-the-numbers-behind-the-shift}
+
+El encuadre no es solo charla de blog. El Informe de Tendencias en Programación Agéntica de Anthropic 2026 nombró a context engineering "la habilidad fundamental de 2026." El mismo informe dice que los equipos que mantienen bien archivos de contexto ven aproximadamente 40% menos errores y aproximadamente 55% de finalización de tareas más rápida. También pone límites concretos a la exageración: alrededor del 60% del trabajo de desarrollo ahora involucra asistencia de IA, pero solo 0 a 20% de las tareas se delegan completamente a agentes. Un humano todavía encuadra el problema y cuida el contexto.
+
+Los números independientes apuntan al mismo lado. La Encuesta de Desarrolladores 2025 de Stack Overflow, lanzada en julio de 2025, encontró que aproximadamente 84% de desarrolladores usan o planean usar herramientas de IA, pero la frustración más común, citada por aproximadamente 66%, fue soluciones de IA que son "casi correctas, pero no del todo." La confianza en la precisión de la salida de IA realmente cayó año tras año. Esa brecha entre "casi correcto" y correcto es usualmente una brecha de contexto: el modelo no conocía una restricción, una convención, o un archivo que solo vivía en tu cabeza. Trata los porcentajes exactos como direccionales en lugar de precisos, ya que uno viene de un proveedor de herramientas y las encuestas se mueven, pero la dirección es consistente entre fuentes.
+
+## Las cinco cosas que un context engineer realmente hace {#the-five-things-a-context-engineer-actually-does}
+
+Quita la palabrería y el trabajo se divide en cinco tareas concretas.
+
+- **Cuida la ventana de contexto.** Elige los archivos, documentación y ejemplos correctos para cargar, e igual de importante, deja fuera el ruido que tira al modelo fuera de pista.
+- **Escribe y mantiene archivos de contexto.** Un buen `CLAUDE.md` o `AGENTS.md` le dice al agente tus convenciones, tu stack y tus restricciones una vez, para que no tengas que repetirlas cada sesión.
+- **Conecta herramientas y datos.** El Model Context Protocol (MCP) es cómo los agentes acceden a tus archivos, bases de datos y APIs de manera estándar. Según una guía de SitePoint de 2026, miles de servidores MCP ahora existen y el protocolo fue adoptado por Anthropic, OpenAI, Google DeepMind y Microsoft, lo que convierte el cableado de contexto básico en una habilidad de referencia en lugar de un experimento.
+- **Encuadra el problema y escribe especificaciones.** El flujo de trabajo adyacente de 2026, desarrollo impulsado por especificaciones, responde a la "desviación" de contexto escribiendo una especificación ejecutable antes del código. Una guía de DEV sobre la práctica muestra equipos tratando la especificación, no la solicitud, como la fuente de verdad.
+- **Evalúa y corrige la salida.** Porque solo una pequeña proporción de tareas se delegan completamente, revisar lo que el modelo produjo y devolver correcciones sigue siendo un trabajo humano, y el que mantiene la calidad.
+
+## Los fundamentales primero: por qué los principiantes no deben saltarse lo básico {#fundamentals-still-come-first-why-beginners-shouldnt-skip-the-basics}
+
+Aquí está la parte que la multitud de la palabrería se salta: no puedes curar contexto para código que no puedas leer. Context engineering es un multiplicador sobre los fundamentales, no un sustituto para ellos. Si no puedes saber si la salida de un agente es "casi correcta" o realmente incorrecta, no puedes hacer el trabajo, y ciertamente no puedes decidir qué archivos necesitaba.
+
+La propia investigación de enero de 2026 de Anthropic sobre comprensión de código hizo el mismo punto desde la otra dirección: desarrolladores que pueden leer y razonar sobre código dirigen estas herramientas mucho mejor que aquellos que solo escriben solicitudes. Entonces, si estás comenzando desde cero, resiste la urgencia de saltar directamente a la orquestación de agentes. Las personas que obtienen la mayor ganancia de context engineering son las que entienden HTML, CSS, JavaScript, y cómo encaja una base de código, luego aplican ese juicio a lo que el modelo ve. Si confiar en IA ya se está convirtiendo en una muleta para ti, el artículo de mi colega sobre [cómo aprender a programar sin depender de IA](/blog/how-to-learn-coding-without-depending-on-ai/) vale la pena leer antes de ir más lejos.
+
+## Cómo un desarrollador autodidacta puede empezar a aprender context engineering {#how-a-self-taught-developer-can-start-learning-context-engineering}
+
+No necesitas un título en Ciencias de la Computación o un curso empresarial para aprender esto. Un orden sensato se vería así:
+
+1. **Solidifica bien los fundamentales web.** Construye algunas cosas por tu cuenta primero. El [frontend developer path](/docs/paths/frontend-developer-path/) interactivo de Scrimba es una ruta razonable si quieres estructura, ya que escribes código en la lección en lugar de ver a alguien más.
+2. **Construye una pequeña aplicación de IA de principio a fin.** Llama a un modelo desde JavaScript, fundamentalo con tus propios datos, lánzalo. Ese proyecto único te enseña qué es realmente una ventana de contexto al hacerte chocar contra sus límites. El [AI Engineer Path](/docs/paths/ai-engineer-path/) secuencia esto, y su currículo ya incluye context engineering y MCP como temas.
+3. **Practica escribir archivos de contexto en un proyecto real.** Añade un `CLAUDE.md`, observa cómo se comporta el agente con y sin él, e itera. Esta es la forma más económica y rápida de construir el instinto.
+4. **Toma un curso enfocado cuando golpees la pared.** Una vez que una aplicación comienza a olvidar cosas, el curso de una hora de Scrimba [Learn Context Engineering](/docs/courses/ai/context-engineering/) aborda ese problema específico con herramientas convencionales. Es nicho y corto, y asume que ya construyes aplicaciones de IA, así que ven a él después del paso dos, no antes.
+
+Si eres un desarrollador de JavaScript pensando si especializarte aquí, la guía sobre [convertirse en ingeniero de IA como desarrollador de JS](/blog/how-to-become-ai-engineer-javascript-developer/) recorre la transición más amplia. No estás seguro de dónde encajas, usa el [buscador de ruta](/tools/which-scrimba-path/) gratuito para obtener un punto de partida.
+
+## ¿Es solo una palabrería, o una habilidad que vale la pena construir tu 2026 alrededor? {#is-it-just-a-buzzword-or-a-skill-worth-building-your-2026-around}
+
+Honestamente, ambas. El término es parcialmente marketing. Las prácticas centrales, un buen README, una buena especificación, elegir los archivos correctos para compartir, preceden a la etiqueta por años, y muchos desarrolladores experimentados estaban "context engineering" mucho antes de que alguien lo llamara así. Las herramientas específicas también cambiarán, ya que este campo cambia mensualmente, así que no ates tu identidad a ningún formato de configuración o servidor MCP.
+
+Pero el trabajo subyacente es real y no se va a ir. Cuando 84% de desarrolladores usan o planean usar herramientas de IA y su queja número uno es salida que es "casi correcta," la habilidad que cierra esa brecha vale la pena tener. Mi consejo para un desarrollador autodidacta en 2026: no persigues la palabrería, construye los fundamentos. Aprende a programar bien, lanza una aplicación de IA, domina diciéndole a un modelo lo que necesita saber. Haz eso y eres un context engineer, sin importar si pones la frase en tu currículum o no.
+
+## Referencias {#references}
+
+- [Informe de Tendencias en Programación Agéntica de Anthropic 2026](https://resources.anthropic.com/2026-agentic-coding-trends-report) - el informe primario detrás del encuadre "habilidad fundamental".
+- [Cobertura del Informe de Programación Agéntica de Anthropic 2026](https://www.claudeainews.com/news/anthropic-2026-agentic-coding-report) - el encuadre "habilidad fundamental", las cifras de contexto de 40%/55%, y el techo de delegación de 0 a 20%.
+- [Análisis del Informe de Tendencias en Programación Agéntica de Anthropic 2026](https://rits.shanghai.nyu.edu/ai/anthropics-2026-agentic-coding-trends-report-from-assistants-to-agent-teams/) - el cambio de asistentes únicos a equipos de agentes y el papel humano de encuadre y evaluación.
+- [Context Engineering: The Skill Replacing Prompt Engineering in 2026 (DEV)](https://dev.to/gabrielhca/context-engineering-the-skill-replacing-prompt-engineering-in-2026-3lgd) - marca la distinción entre lo que le dices al modelo (prompting) y lo que le proporcionas (context).
+- [Guía Completa 2026 del Model Context Protocol (SitePoint)](https://www.sitepoint.com/model-context-protocol-mcp/) - adopción de MCP en miles de servidores.
+- [Desarrollo Impulsado por Especificaciones en 2026 (DEV)](https://dev.to/krlz/spec-driven-development-in-2026-what-it-is-the-tooling-and-how-teams-actually-use-it-2fk2) - el flujo de trabajo adyacente enfocado en especificaciones primero.
+- [Cómo la asistencia de IA impacta la formación de habilidades de codificación (Anthropic)](https://www.anthropic.com/news/AI-assistance-coding-skills) - desarrolladores que pueden leer y razonar sobre código dirigen herramientas de IA mejor que aquellos que solo escriben solicitudes.
+- [Encuesta de Desarrolladores 2025 de Stack Overflow](https://survey.stackoverflow.co/2025/) - 84% de adopción de IA, la frustración de 66% "casi correcto", y confianza decreciente en precisión.
+
+<FAQAccordion items={[
+  { q: "¿Qué es context engineering en términos simples?", a: "Es la práctica de gestionar lo que ve un modelo de IA antes de responder: los archivos, ejemplos, reglas y herramientas que cargas en su ventana de contexto. El modelo no tiene memoria de tu proyecto, así que la calidad de su salida depende más de la información que le das que de qué tan ingeniosamente formules la solicitud." },
+  { q: "¿Está prompt engineering muerto en 2026?", a: "No, pero se redujo. Formular bien una solicitud sigue ayudando, pero ahora es una entrada entre muchas. Conforme los modelos mejoraron al analizar solicitudes simples, la falla común se convirtió en contexto faltante en lugar de fraseología deficiente. Context engineering es la disciplina más amplia de gestionar todo lo que el modelo ve, sus instrucciones, herramientas, memoria y datos recuperados, y prompting es una técnica dentro de ella." },
+  { q: "¿Necesito saber cómo programar para hacer context engineering?", a: "Sí. No puedes decidir qué necesita un modelo, o juzgar si su salida es correcta, si no puedes leer código. Context engineering multiplica tu habilidad existente en lugar de reemplazarla. Aprende los fundamentales web primero, luego aplica ese juicio a lo que alimentas al modelo." },
+  { q: "¿Qué es el Model Context Protocol (MCP)?", a: "MCP es una forma estándar para que los agentes de IA accedan a tus archivos, bases de datos y APIs. Una guía de SitePoint de 2026 reporta que miles de servidores MCP ahora existen y que fue adoptado por Anthropic, OpenAI, Google DeepMind y Microsoft, lo que hace que conectar herramientas y datos sea una habilidad de referencia de context engineering." },
+  { q: "¿Cuánto tiempo toma aprender context engineering?", a: "Si ya construyes aplicaciones web, los conceptos centrales tienen sentido después de un pequeño proyecto de IA y una semana practicando archivos de contexto. Si estás comenzando desde cero, presupuesta varios meses para los fundamentales primero. El instinto de qué incluir viene de lanzar proyectos reales, no de leer sobre ello." },
+]} />
+
+<PricingCTA
+  title="Aprende las habilidades detrás de context engineering"
+  subtitle="El Interactive AI Engineer Path de Scrimba te enseña a construir aplicaciones LLM reales, con context engineering y MCP en el currículo. Prueba primero los cursos de IA gratuitos para probar el formato."
+  ctaType="pro"
+  riskReversal={true}
+/>

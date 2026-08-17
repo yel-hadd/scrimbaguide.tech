@@ -1,0 +1,39 @@
+{
+  "source": "docs/practice/practice-ai-engineering.mdx",
+  "locale": "es",
+  "state": "blocked",
+  "mqm": {
+    "score": 18.8,
+    "verdict": "fail",
+    "judgeModel": "cold judge haiku",
+    "majorAccuracyErrors": 2,
+    "terminologyErrors": 0,
+    "minorErrors": 1,
+    "details": [
+      {
+        "line": 20,
+        "type": "Major Accuracy - False Friend",
+        "english": "shipping products with models",
+        "spanish": "productos de envío con modelos",
+        "issue": "\"Productos de envío\" means delivery/shipping products (noun), not launching products (verb). Meaning significantly altered.",
+        "points": 5
+      },
+      {
+        "line": 40,
+        "type": "Minor - Orthographic",
+        "spanish": "tareas multiples",
+        "issue": "Missing accent: should be \"tareas múltiples\"",
+        "points": 1
+      },
+      {
+        "line": 85,
+        "type": "Major Accuracy - Nonsensical",
+        "english": "hands-on practice",
+        "spanish": "práctica práctica",
+        "issue": "Doubled word makes phrase nonsensical. Should be \"práctica interactiva\" or similar.",
+        "points": 5
+      }
+    ]
+  },
+  "registerAssessment": "Reads like English translated literally into Spanish word order, with calqued noun phrases (\"productos de envío\") and doubled words (\"práctica práctica\") that a native speaker would not write. Evidence: Line 20 'productos de envío' is a false cognate structure from English 'shipping products', not how Spanish developers would describe launching AI applications."
+}

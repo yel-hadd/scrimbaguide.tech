@@ -1,0 +1,139 @@
+---
+title: "Solucionar problemas de Scrimba: editor, login y progreso"
+description: "Cómo arreglar problemas comunes de Scrimba: editor que no carga, código que congela el navegador, progreso que no se actualiza, acceso sin conexión, subtítulos, móvil y cómo contactar soporte."
+keywords: [scrimba no funciona, problemas de scrimba, solucionar problemas scrimba, scrimba sin conexión, editor de scrimba]
+last_update:
+  date: 2026-07-22
+hideGlobalPricingCta: true
+---
+
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import PricingCTA from '@site/src/components/PricingCTA';
+
+# Solucionar problemas de Scrimba
+
+**Respuesta rápida:** La mayoría de los problemas vienen de uno de cuatro factores: una pestaña de navegador antigua, una extensión problemática, un bucle infinito en tu código, o un atraso en la sincronización del progreso. Usa Chrome o Firefox recientes en computadora, recarga la página, limpia caché o abre la lección en una ventana incógnito sin extensiones. Si tu código congeló la pestaña, ciérrala y haz clic en reset cuando la reabrras. Si el problema persiste después de esos pasos, envía un correo a `help@scrimba.com`. Scrimba es una plataforma solo web; no hay aplicación móvil nativa ni modo sin conexión.
+
+*Última revisión: julio de 2026. Los pasos siguientes reflejan artículos del centro de ayuda oficial de Scrimba.*
+
+## A quién va dirigida esta página {#who-this-page-is-for}
+
+Llegaste a un obstáculo. La lección no se reproduce, el editor no guarda, tu progreso no avanzó, o algo más te bloquea. Esta página cubre los pasos prácticos que resuelven la mayoría de los problemas sin contactar a soporte, y te indica cuándo escalar.
+
+## Diagnóstico en orden {#triage-in-order}
+
+1. **Recarga la pestaña.** Una cantidad sorprendente de problemas del editor se resuelven con una recarga simple.
+2. **Recarga fuerte para ignorar caché** (`Ctrl+Shift+R` o `Cmd+Shift+R`).
+3. **Abre la lección en una ventana incógnito** sin extensiones. Si el problema desaparece, una extensión o una cookie antigua es la causa.
+4. **Cambia de navegador.** Chrome es el más consistente. Firefox funciona bien. Safari a veces se atrasa en el editor interactivo.
+5. **Verifica tu conexión.** Scrimba requiere conexión a internet todo el tiempo; el editor se comunica constantemente con el servidor.
+6. **Actualiza tu navegador.** Si estás varios versiones atrás, actualiza primero antes de asumir que el problema es de Scrimba.
+
+Si nada de eso lo arregla, envía un correo a `help@scrimba.com` con la URL de la lección, el navegador y versión, y una captura de pantalla o video corto. Los detalles específicos aceleran el proceso de soporte.
+
+**Paso siguiente:** Guarda en marcadores el [Centro de ayuda de Scrimba](https://scrimba.helpscoutdocs.com) para que puedas buscar en el catálogo de artículos directamente la próxima vez.
+
+## Dispositivos y compatibilidad de navegador {#device-and-browser-support}
+
+- **Computadora o laptop, Chrome o Firefox recientes** es la configuración recomendada. El editor interactivo necesita un teclado y una pantalla lo suficientemente grande para mostrar la lección y el editor lado a lado.
+- **La compatibilidad con móvil y tablet es limitada.** El sitio se carga en navegadores móviles; la experiencia de código interactivo no es realmente usable. No hay aplicación nativa para iOS o Android.
+- **Sin modo sin conexión.** El editor necesita el servidor. No puedes descargar lecciones para viajes en avión.
+
+Referencias: [Compatibilidad con móvil y tablet](https://scrimba.helpscoutdocs.com/article/50-device-compatibility-for-scrimba) · [¿Puedo ver cursos sin conexión?](https://scrimba.helpscoutdocs.com/article/75-can-i-watch-courses-offline)
+
+## Cuando el editor no se reproduce o no carga {#when-the-editor-will-not-play-or-load}
+
+1. Recarga; si eso falla, haz una recarga fuerte.
+2. Desactiva las extensiones del navegador, especialmente bloqueadores de anuncios y extensiones de privacidad que intercepten solicitudes de terceros.
+3. Abre la lección en incógnito sin extensiones para confirmar la causa.
+4. Prueba Chrome si estás en otro navegador.
+5. Si falla en un perfil limpio, envía un correo a soporte con la URL de la lección.
+
+Referencia: [El editor no funciona correctamente](https://scrimba.helpscoutdocs.com/article/76-the-lesson-is-not-playing)
+
+## Cuando tu código congela la pestaña del navegador {#when-your-code-freezes-the-browser-tab}
+
+La causa clásica es un bucle infinito que escribiste en JavaScript (`while (true)`, un caso base de recursión olvidado, un intervalo desbocado). Cuando la pestaña no responde:
+
+1. Cierra la pestaña.
+2. Reabre la lección.
+3. Haz clic en el botón **reset** para restaurar el código original.
+4. Edita de nuevo, con más cuidado, con una condición de salida sensata.
+
+Si una lección específica congela de forma confiable incluso con el código original, es un error de contenido; envía un correo a soporte con la URL de la lección.
+
+Referencia: [Mi código se bloquea o congela el navegador](https://scrimba.helpscoutdocs.com/article/52-my-code-crashes-or-freezes-the-browser)
+
+## Cuando el progreso no se actualiza {#when-progress-does-not-update}
+
+El seguimiento del progreso ocasionalmente se atrasa después de una sesión rápida, especialmente si tu conexión se interrumpió brevemente durante la lección, o si tienes múltiples pestañas abiertas en la misma cuenta.
+
+1. Espera unos minutos y recarga.
+2. Asegúrate de haber completado la lección (algunas lecciones requieren una acción final, no solo mirar).
+3. El reinicio del progreso está disponible por curso desde tu panel si quieres una ejecución limpia, pero no se puede deshacer.
+4. Si el progreso es incorrecto y sigue así, envía un correo a `help@scrimba.com` con el nombre del curso y cuál lección es incorrecta.
+
+Referencias: [Mi progreso no es correcto, ¿cómo lo arreglo?](https://scrimba.helpscoutdocs.com/article/54-my-progress-is-now-correct-how-do-i-fix-it) · [¿Cómo reinicio mi progreso?](https://scrimba.helpscoutdocs.com/article/81-how-to-i-reset-my-progress)
+
+## Problemas con el inicio de sesión {#sign-in-trouble}
+
+El inicio de sesión es compatible con correo y contraseña, Google y GitHub. Si te registraste con un método y ahora inicias sesión con otro, podrías terminar en una segunda cuenta que no tiene progreso. Usa el mismo método de inicio de sesión que usaste para registrarte. Si no lo recuerdas, busca en tu bandeja de entrada correos de Scrimba y verifica la dirección de correo a la que fueron enviados.
+
+Referencia: [Cómo iniciar o crear una sesión](https://scrimba.helpscoutdocs.com/article/67-sign-in-sign-up)
+
+## Subtítulos e idioma {#captions-and-language}
+
+- Los subtítulos están disponibles en algunas lecciones, no en todas. La compatibilidad varía según el curso.
+- El idioma de instrucción de Scrimba es solo inglés. No hay audio multiidioma ni lecciones traducidas.
+
+Referencias: [¿Tienen subtítulos tus lecciones?](https://scrimba.helpscoutdocs.com/article/18-do-you-support-captions-subtitles) · [¿Puedo cambiar el idioma de la lección?](https://scrimba.helpscoutdocs.com/article/74-can-i-change-the-language-of-the-lesson)
+
+## Eliminación de cuenta {#account-deletion}
+
+Envía un correo a `help@scrimba.com` y solicita la eliminación de tu cuenta. Cancela cualquier suscripción activa primero para no ser facturado durante la ventana de eliminación.
+
+Referencia: [¿Cómo elimino mi cuenta?](https://scrimba.helpscoutdocs.com/article/88-how-do-i-delete-my-account)
+
+## Fuentes {#sources}
+
+- [Centro de ayuda de Scrimba: compatibilidad de dispositivos](https://scrimba.helpscoutdocs.com/article/50-device-compatibility-for-scrimba)
+- [Centro de ayuda de Scrimba: editor no funciona](https://scrimba.helpscoutdocs.com/article/76-the-lesson-is-not-playing)
+- [Centro de ayuda de Scrimba: el código congela el navegador](https://scrimba.helpscoutdocs.com/article/52-my-code-crashes-or-freezes-the-browser)
+- [Centro de ayuda de Scrimba: progreso no correcto](https://scrimba.helpscoutdocs.com/article/54-my-progress-is-now-correct-how-do-i-fix-it)
+- [Centro de ayuda de Scrimba: cursos sin conexión](https://scrimba.helpscoutdocs.com/article/75-can-i-watch-courses-offline)
+
+## Páginas relacionadas {#related-pages}
+
+- [Índice de preguntas frecuentes](/docs/faq/) | [Preguntas frecuentes sobre facturación](/docs/help/billing/)
+- [Cómo funcionan los scrims](/docs/how-it-works/how-scrims-work/)
+- [Precios de Scrimba](/docs/pricing/)
+
+<FAQAccordion title="Dispositivos y acceso" items={[
+  { q: "¿Hay una aplicación móvil nativa de Scrimba?", a: "No. Scrimba es solo web. El editor interactivo necesita un teclado y una pantalla de tamaño escritorio, así que incluso la experiencia del navegador móvil es limitada." },
+  { q: "¿Qué dispositivos funcionan con Scrimba?", a: "Chrome o Firefox recientes en computadora o laptop es la configuración recomendada. Safari funciona pero a veces se atrasa. La compatibilidad con móvil y tablet es limitada.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/50-device-compatibility-for-scrimba" },
+  { q: "¿Puedo ver cursos sin conexión?", a: "No. El editor interactivo necesita una conexión activa al servidor. No hay modo sin conexión ni lecciones descargables.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/75-can-i-watch-courses-offline" },
+  { q: "¿Tienen subtítulos las lecciones?", a: "Algunas lecciones incluyen subtítulos; la cobertura varía según el curso. Verifica la lección individual para ver la disponibilidad de subtítulos.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/18-do-you-support-captions-subtitles" },
+  { q: "¿Puedo cambiar el idioma de la lección?", a: "La instrucción de Scrimba es solo en inglés. No hay audio traducido ni versión alternativa en otro idioma de las lecciones.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/74-can-i-change-the-language-of-the-lesson" },
+  { q: "¿Cómo inicio o creo una sesión?", a: "Ve a scrimba.com y haz clic en Sign In. Puedes usar correo y contraseña, Google o GitHub. Usa el mismo método con el que te registraste, o podrías terminar en una segunda cuenta.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/67-sign-in-sign-up" },
+]} />
+
+<FAQAccordion emitSchema={false} title="Lecciones y progreso" items={[
+  { q: "El editor no se reproduce o no carga", a: "Recarga, haz una recarga fuerte (Ctrl+Shift+R), desactiva extensiones, luego prueba Chrome en incógnito. Si aún falla en un perfil limpio, envía un correo a help@scrimba.com con la URL de la lección.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/76-the-lesson-is-not-playing" },
+  { q: "Mi código congeló la pestaña del navegador", a: "Generalmente un bucle infinito. Cierra la pestaña, reabre la lección y haz clic en reset para restaurar el código original.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/52-my-code-crashes-or-freezes-the-browser" },
+  { q: "Mi progreso no es correcto, ¿cómo lo arreglo?", a: "Recarga primero; la sincronización a veces se atrasa. Si sigue siendo incorrecto, envía un correo a help@scrimba.com con el nombre del curso y cuál lección es incorrecta.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/54-my-progress-is-now-correct-how-do-i-fix-it" },
+  { q: "¿Cómo reinicio mi progreso?", a: "Puedes reiniciar por curso desde tu panel. El reinicio no se puede deshacer.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/81-how-to-i-reset-my-progress" },
+  { q: "¿Puedo descargar o copiar el código en un scrim?", a: "Sí. Copia el código, o usa la opción de fork (donde esté disponible) para mantener una copia del scrim en tu cuenta." },
+]} />
+
+<FAQAccordion emitSchema={false} title="Cuenta y contenido" items={[
+  { q: "¿Dónde encuentro cursos gratis?", a: "Busca la etiqueta Community en la página de inicio de Scrimba. También mantenemos una lista seleccionada de los mejores cursos gratuitos de Scrimba." },
+  { q: "¿Cómo funcionan los desafíos gratuitos?", a: "Los usuarios gratuitos pueden completar hasta 10 desafíos interactivos en total en toda la plataforma. Los usuarios Pro obtienen desafíos ilimitados.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/69-what-are-free-challenges-for-free-users" },
+  { q: "¿Qué es Instant Feedback?", a: "Instant Feedback verifica tu código contra la solución esperada y te dice inmediatamente si es correcto. Está disponible en algunas lecciones.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/84-what-is-instant-feedback" },
+  { q: "Veo líneas de error rojo en mi código TypeScript", a: "Ese es el compilador TypeScript haciendo su trabajo. Lee el error resaltado y las instrucciones de la lección para arreglar el problema de tipo." },
+  { q: "¿Cómo elimino mi cuenta?", a: "Envía un correo a help@scrimba.com y solicita la eliminación de tu cuenta. Cancela cualquier suscripción activa primero para no ser facturado durante la ventana de eliminación.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/88-how-do-i-delete-my-account" },
+]} />
+
+<PricingCTA
+  title="Una vez que funcione, termina la ruta"
+  subtitle="Código interactivo en el navegador, sin configuración. Cuando la plataforma funciona, el formato es lo importante."
+/>

@@ -1,0 +1,96 @@
+---
+title: "Ruta de aprendizaje de Next.js"
+description: "Guía completa para aprender Next.js moderno y el App Router. Vincula conceptos de la documentación oficial con lecciones interactivas de Scrimba."
+keywords: [aprender next.js, ruta de aprendizaje next.js, guía next.js, app router tutorial, scrimba next.js]
+hideGlobalPricingCta: true
+---
+
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import CourseCard from '@site/src/components/CourseCard';
+import PricingCTA from '@site/src/components/PricingCTA';
+
+# Ruta de aprendizaje de Next.js
+
+Este hub vincula la [documentación oficial de Next.js](https://nextjs.org/docs) con el curso gratuito App Router de Scrimba, cubriendo configuración, enrutamiento, Server vs Client Components, obtención de datos, UI de carga y Server Actions, para que cada concepto que lees tenga un equivalente interactivo de escribir-en-el-navegador.
+
+## Quién es esto para {#who-this-is-for}
+
+Desarrolladores de React que pueden construir SPAs pero se pierden cuando aparecen `app/`, Server Components y `loading.tsx`, y cualquiera en la [ruta Fullstack](/docs/paths/fullstack-developer-path/) que quiera aprender Next de forma práctica.
+
+
+## 1. Publica tu primera página con App Router {#1-ship-your-first-app-router-page}
+
+**Objetivo:** Entender la estructura `app/` y publicar `/` sin batallar con la configuración.
+
+| Concepto | Documentación oficial | En el curso de Scrimba |
+|---|---|---|
+| **Instalación** | [Documentación](https://nextjs.org/docs/getting-started/installation) | Setup & File Structure |
+| **Estructura del proyecto** | [Documentación](https://nextjs.org/docs/getting-started/project-structure) | The App Folder |
+| **Páginas y diseños** | [Documentación](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) | Pages & Layouts |
+
+<CourseCard
+  title="The Next.js App Router (Gratis)"
+  duration="8.5 h"
+  difficulty="Intermedio"
+  access="Gratis"
+  href="https://scrimba.com/learn-nextjs-c02moisq6a?via=u42d4986"
+  description="Aprende lo básico del App Router construyendo un panel de control."
+/>
+
+## 2. Enruta y navega como Next lo espera {#2-route-and-navigate-like-next-expects}
+
+**Objetivo:** Mapea carpetas a URLs, comparte diseños y añade segmentos dinámicos.
+
+Next.js utiliza un **enrutador basado en el sistema de archivos**. Las carpetas definen las rutas.
+
+- **Vinculación:** componente `Link` para navegación del lado del cliente.
+    - _Cubierto en el curso de Scrimba: The Link Component_
+- **Rutas dinámicas:** `[slug]/page.js` para contenido dinámico.
+    - _Cubierto en el curso de Scrimba: Dynamic Routes_
+
+## 3. Elige entre Server y Client Components a propósito {#3-pick-server-vs-client-components-on-purpose}
+
+**Objetivo:** Deja de enviar bundles JS gigantes cuando HTML sería suficiente.
+
+| Tipo | Cuándo usar | En el curso de Scrimba |
+|---|---|---|
+| **Server Components** | Obtención de datos, llamadas a base de datos, lógica sensible. (Predeterminado) | Server Components |
+| **Client Components** | Interactividad, `onClick`, `useState`, `useEffect`. | Client Components |
+
+## 4. Obtén y transmite datos sin spinners por todos lados {#4-fetch-and-stream-data-without-spinners-everywhere}
+
+**Objetivo:** Permite que Server Components gestionen lecturas; usa Suspense + `loading.tsx` para UX.
+
+En el App Router, puedes obtener datos directamente en tus Server Components usando `async/await`.
+
+- **Obtención de datos:** `const data = await fetch(...)`
+    - _Cubierto en el curso de Scrimba: Fetching Data_
+- **UI de carga:** `loading.js` para estados de carga instantáneos.
+    - _Cubierto en el curso de Scrimba: Loading UI_
+
+## 5. Muta con Server Actions (salta APIs estándar) {#5-mutate-with-server-actions-skip-boilerplate-apis}
+
+**Objetivo:** Envía formularios directamente a funciones de servidor cuando se adapta a tu aplicación.
+
+En lugar de escribir un endpoint de API separado (`/api/submit`), escribes una función que se ejecuta en el servidor y la llamas directamente desde tu formulario.
+
+-> **Esta es una parte clave de la <AffiliateLink href="https://scrimba.com/fullstack-path-c0fullstack">Fullstack Career Path</AffiliateLink>.**
+
+---
+
+## Usa este hub cuando… {#use-this-hub-when}
+
+Quieres **conceptos de documentación oficial** traducidos en **videos interactivos de Scrimba**, no otro maratón pasivo de YouTube.
+
+## Cursos relacionados de Scrimba {#related-scrimba-courses}
+
+- [Next.js Course on Scrimba](/docs/courses/javascript/nextjs/)
+- [Frontend Developer Path](/docs/paths/frontend-developer-path/)
+- [Fullstack Developer Path](/docs/paths/fullstack-developer-path/)
+
+<PricingCTA
+  title="Construye Next.js en scrims guiados"
+  subtitle="Empieza con el curso gratuito App Router, luego sigue la ruta Fullstack para despliegues completos."
+  buttonText="Prueba Scrimba gratis"
+  ctaType="free"
+/>

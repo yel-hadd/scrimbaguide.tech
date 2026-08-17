@@ -1,0 +1,120 @@
+---
+title: "Hoja de ruta de aprendizaje de React: react.dev mapeado a Scrimba"
+description: "Guía completa para aprender React en Scrimba. Mapea conceptos de la documentación oficial de React a cursos y lecciones interactivas de Scrimba."
+keywords: [aprender React, hoja de ruta de React, guía de React, documentación de React, cómo aprender React, desde cero, curso React]
+hideGlobalPricingCta: true
+---
+
+import CourseCard from '@site/src/components/CourseCard';
+import PricingCTA from '@site/src/components/PricingCTA';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+
+# Hoja de ruta de aprendizaje de React
+
+Estás leyendo [react.dev](https://react.dev) (o la documentación de Next.js) y quieres **práctica interactiva en el mismo momento**. Esta hoja de ruta mapea cada área importante de la documentación a **scrims específicos de Scrimba**, screencasts interactivos donde editas el código en el reproductor, para que "leer el concepto" y "escribir código" se mantengan conectados.
+
+Esta hoja de ruta conecta la [documentación oficial de React](https://react.dev) con las lecciones interactivas de Scrimba. Cada bloque abajo corresponde a un área importante de la documentación: inicio rápido, descripción de la UI, interactividad, estado, vías de escape, y React 19, para que puedas leer en react.dev y practicar en el navegador. Úsala para React solo o junto a Next.js.
+
+> **Reglas de React:** Los componentes y hooks deben ser **puros** (las mismas entradas → la misma salida). Props y state son **inmutables**, nunca los modifiques directamente. Consulta [react.dev/reference/rules](https://react.dev/reference/rules) para todas las reglas.
+
+## Para quién es esto {#who-this-is-for}
+
+Si sigues la hoja de ruta de React o Next.js.
+
+
+## 1. Inicio rápido {#1-quick-start}
+
+**Objetivo:** Construye tu primer componente, entiende JSX y maneja estado básico.
+
+| Concepto | Documentación oficial | Lección de Scrimba |
+|---|---|---|
+| **Pensar en React** | [Leer documentación](https://react.dev/learn/thinking-in-react) | <AffiliateLink href="https://scrimba.com/learn/learnreact/intro-to-react-c0e">Introducción a React</AffiliateLink> |
+| **Tu primer componente** | [Leer documentación](https://react.dev/learn/your-first-component) | <AffiliateLink href="https://scrimba.com/learn/learnreact/custom-components-c0b">Componentes personalizados</AffiliateLink> |
+| **Importar/Exportar** | [Leer documentación](https://react.dev/learn/importing-and-exporting-components) | <AffiliateLink href="https://scrimba.com/learn/learnreact/organizing-components-c0d">Organizando componentes</AffiliateLink> |
+| **JSX** | [Leer documentación](https://react.dev/learn/writing-markup-with-jsx) | <AffiliateLink href="https://scrimba.com/learn/learnreact/jsx-c0a">JSX</AffiliateLink> |
+
+<CourseCard
+  title="Learn React (Gratuito)"
+  duration="15.1 hrs"
+  difficulty="Intermediate"
+  access="Free"
+  href="https://scrimba.com/learn-react-c0e?via=u42d4986"
+  description="The comprehensive free course that covers all these Quick Start topics and more."
+/>
+
+## 2. Describir la UI {#2-describing-the-ui}
+
+**Objetivo:** Domina los fundamentos del renderizado.
+
+- **Propiedades:** Aprende cómo pasar datos entre componentes, <AffiliateLink href="https://scrimba.com/learn/learnreact/props-part-1-c0f">Lección de Scrimba: Propiedades Parte 1</AffiliateLink>
+- **Renderizado condicional:** Muestra/oculta elementos según el estado, <AffiliateLink href="https://scrimba.com/learn/learnreact/conditional-rendering-%26%26-c010">Lección de Scrimba: Renderizado condicional</AffiliateLink>
+- **Renderizado de listas:** Renderiza datos de arrays (usando `.map()`), <AffiliateLink href="https://scrimba.com/learn/learnreact/mapping-components-c012">Lección de Scrimba: Mapeando componentes</AffiliateLink>
+
+## 3. Agregar interactividad {#3-adding-interactivity}
+
+**Objetivo:** Haz que tu aplicación responda a la entrada del usuario.
+
+Aquí es donde entra `state`, el concepto más importante de React.
+
+| Concepto | Explicación | Lección de Scrimba |
+|---|---|---|
+| **Eventos** | Manejo de clics, envío de formularios, etc. | <AffiliateLink href="https://scrimba.com/learn/learnreact/event-listeners-c014">Escuchadores de eventos</AffiliateLink> |
+| **Estado** | Datos que cambian con el tiempo. | <AffiliateLink href="https://scrimba.com/learn/learnreact/usestate-array-destructuring-c016">Hook useState</AffiliateLink> |
+| **Actualizaciones de estado** | Cambio de objetos de estado complejos. | <AffiliateLink href="https://scrimba.com/learn/learnreact/complex-state-objects-c018">Estado complejo (objetos)</AffiliateLink> |
+
+## 4. Gestionar estado {#4-managing-state}
+
+**Objetivo:** Maneja los flujos de datos complejos en tu aplicación.
+
+Conforme tu aplicación crece, necesitas mejores formas de gestionar el estado que solo pasar props.
+
+- **Pasar datos profundamente:** Evita el "prop drilling" con Context, <AffiliateLink href="https://scrimba.com/learn/learnreact/context-provider-c020">Lección de Scrimba: Context API</AffiliateLink>
+- **Escalar:** Gestiona la lógica de estado compleja con `useReducer`, cubierta en **<AffiliateLink href="https://scrimba.com/advanced-react-c02h">Advanced React</AffiliateLink>**
+
+## 5. Vías de escape {#5-escape-hatches}
+
+**Objetivo:** Sincroniza con sistemas externos (APIs, DOM).
+
+Esto se trata principalmente de `useEffect` y `useRef`.
+
+- **Efectos:** Ejecuta código cuando los componentes se monten/actualicen/desmonten, <AffiliateLink href="https://scrimba.com/learn/learnreact/useeffect-syntax-c022">Lección de Scrimba: useEffect</AffiliateLink>, <AffiliateLink href="https://scrimba.com/learn/learnreact/async-javascript-c024">Lección de Scrimba: Async / Llamadas a API</AffiliateLink>
+
+<CourseCard
+  title="Advanced React (Pro)"
+  duration="18.8 hrs"
+  difficulty="Advanced"
+  access="Pro"
+  href="https://scrimba.com/advanced-react-c02h?via=u42d4986"
+  description="Master useEffect, custom hooks, and performance optimization."
+/>
+
+## 6. React 19 y el futuro {#6-react-19--the-future}
+
+**Objetivo:** Aprende las características más nuevas como Componentes de servidor y Acciones.
+
+React 19 introduce cambios importantes en cómo manejamos mutaciones de datos y comunicación servidor-cliente.
+
+- **Acciones:** Maneja envíos de formularios automáticamente.
+- **`useActionState`:** Gestiona estados de espera fácilmente.
+- **Componentes de servidor:** Renderiza componentes en el servidor para mejorar el rendimiento.
+
+**<AffiliateLink href="https://scrimba.com/whats-new-in-react-19-c03d">Inicia el curso de React 19</AffiliateLink>**
+
+---
+
+## Elige esto si {#choose-this-if}
+
+**Elige esta página si:** Estás aprendiendo React o Next.js y quieres una guía que conecte la documentación oficial con Scrimba.
+
+## Cursos relacionados de Scrimba {#related-scrimba-courses}
+
+- [Curso Learn React](/docs/courses/react/learn-react/)
+- [Curso Advanced React](/docs/courses/react/advanced-react/)
+- [Ruta Frontend Developer Path](/docs/paths/frontend-developer-path/)
+- [Práctica de React Hooks](/docs/practice/practice-react-hooks/)
+- [Proyectos de React](/docs/practice/practice-react-projects/)
+
+<PricingCTA
+  title="Master React with Scrimba Pro"
+  subtitle="Get access to Advanced React, React Router, and the full Frontend Career Path."
+/>

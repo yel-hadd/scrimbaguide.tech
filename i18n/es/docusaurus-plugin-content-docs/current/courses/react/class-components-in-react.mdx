@@ -1,0 +1,95 @@
+---
+title: "Learn Class Components in React"
+sidebar_position: 2
+description: "Curso Pro de Bob Ziroll sobre componentes de clase en React: métodos de ciclo de vida, enlace de this, y setState. Para mantener código heredado, no para aprender React moderno."
+keywords: [componentes de clase react, curso react componentes de clase, bob ziroll react, react heredado, métodos de ciclo de vida react]
+last_update:
+  date: 2026-05-27
+---
+
+import CourseCard from '@site/src/components/CourseCard';
+import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+
+# Learn Class Components in React
+
+Un curso breve y enfocado con Bob Ziroll: aproximadamente 1.3 horas sobre React basado en clases, que los cursos modernos ya no enseñan, dirigido a personas que mantienen códigos antiguos.
+
+## Respuesta rápida {#quick-answer}
+
+Learn Class Components in React es el curso Pro de Scrimba, nivel intermedio, de aproximadamente 1.3 horas impartido por Bob Ziroll, que cubre componentes de clase: métodos de ciclo de vida, enlace de `this`, y `setState`. React moderno está basado en hooks, así que la mayoría de los aprendices no deberían empezar aquí. Toma este curso solo si un trabajo o un código existente te obliga a leer o escribir componentes de clase. Para aprender React en sí, haz Learn React basado en hooks.
+
+<CourseCard
+  title="Learn Class Components in React"
+  duration="1.3 hrs"
+  difficulty="Intermediate"
+  access="Pro"
+  instructor="Bob Ziroll"
+  instructorUrl="https://scrimba.com/@bobziroll"
+  href="https://scrimba.com/learn-class-components-in-react-c0h"
+  description="Una mirada enfocada a los componentes de clase en React, métodos de ciclo de vida, y setState, para mantener códigos heredados."
+/>
+
+## ¿Vale la pena tu tiempo? {#is-it-worth-your-time}
+
+Vale la pena tu tiempo en una situación específica: desembarcaste en un código, o un trabajo, que aún usa componentes de clase y necesitas leerlos y editarlos sin adivinar. Para eso, una hora con un instructor claro es mucho más eficiente que armar el rompecabezas desde blogs antiguos. Bob Ziroll cubre las partes que confunden a los que vienen de hooks, es decir, enlace de `this`, métodos de ciclo de vida, y el patrón antiguo de `setState`.
+
+El veredicto honesto es que casi nadie debería tomar esto como su introducción a React. El ecosistema se movió a componentes de función y hooks hace años, el código nuevo se escribe así, y aprender clases primero te dará hábitos que después tendrás que desaprender. Este es un curso de mantenimiento, no un curso de fundamentos.
+
+## Qué aprenderás {#what-youll-learn}
+
+No hay desglose de múltiples módulos para este curso breve. En aproximadamente 1.3 horas cubre el modelo de componentes de clase de punta a punta: definir un componente como una clase, el método `render`, manejar estado con `this.state` y `setState`, enlazar manejadores de eventos y la palabra clave `this`, y los métodos de ciclo de vida (`componentDidMount`, `componentDidUpdate`, `componentWillUnmount`) que hooks como `useEffect` después reemplazaron. El objetivo es fluidez en la lectura y edición de código existente basado en clases, no construir nuevas apps así.
+
+## Para quién es, y quién debería omitirlo {#who-its-for-and-who-should-skip-it}
+
+Se ajusta a desarrolladores que ya conocen React moderno y tienen que trabajar en un código heredado basado en clases, o que están estudiando código antiguo que no escribieron.
+
+Omítelo si estás aprendiendo React por primera vez. Haz [Learn React](/docs/courses/react/learn-react/), que enseña el enfoque basado en hooks usado en todo trabajo actual, y solo vuelve aquí si un proyecto específico requiere clases.
+
+## Requisitos previos {#prerequisites}
+
+Un entendimiento funcional de clases de JavaScript, `this`, y conceptos básicos de React (componentes, props, estado). Ayuda saber hooks, ya que el curso enmarca patrones de clase contra sus equivalentes modernos.
+
+## Dónde encaja {#where-it-fits}
+
+Esto es una rama lateral en lugar de un paso central. Se lista bajo la [Frontend Developer Path](/docs/paths/frontend-developer-path/) y la [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), pero la pista principal de React corre a través de los cursos basados en hooks; toma esto solo cuando surge un requisito heredado.
+
+## Gratis o Pro {#free-or-pro}
+
+Este es un curso Pro, así que necesita una suscripción a Scrimba. Pro también desbloquea las rutas de carrera completas, los desafíos de codificación, el Discord privado, y certificados de ruta. Ver <AffiliateLink href="https://scrimba.com/our-pricing">planes actuales</AffiliateLink> para saber qué cuesta Pro en tu región.
+
+## Fortalezas y limitaciones {#strengths-and-limits}
+
+Qué hace bien: es breve y al punto, apunta a la fricción exacta (enlace, ciclo de vida, `setState`) que los desarrolladores de hooks encuentran en código antiguo, y Bob Ziroll explica el por qué, no solo la sintaxis.
+
+Donde está limitado: enseña un patrón que ya no es cómo se escribe React nuevo, así que tiene una audiencia estrecha, y por sí solo no es un camino para construir apps modernas.
+
+## Cursos relacionados y comparaciones {#related-courses-and-comparisons}
+
+- [Learn React](/docs/courses/react/learn-react/), el curso moderno basado en hooks que la mayoría debería tomar
+- [Advanced React](/docs/courses/react/advanced-react/), para patrones de producción una vez que conoces hooks
+- [React Challenges](/docs/courses/react/react-challenges/), para practicar React moderno
+- [Mejores cursos de React comparados](/docs/courses/react/best-react-courses-and-tutorials/), cómo se compara
+
+<FAQAccordion items={[
+  { q: "¿Debo aprender componentes de clase u hooks?", a: "Hooks, para casi todos. React moderno se escribe con componentes de función y hooks. Toma este curso de componentes de clase solo si un código heredado o un trabajo lo requiere." },
+  { q: "¿Es este curso gratis?", a: "No. Es un curso Scrimba Pro y requiere una suscripción. El curso Learn React basado en hooks es gratis." },
+  { q: "¿Qué cubre?", a: "El modelo de componentes de clase: métodos de ciclo de vida, enlace de this, setState, y lectura y edición de código existente basado en clases." },
+  { q: "¿Necesito conocer hooks primero?", a: "Ayuda. El curso enmarca patrones de clase contra sus equivalentes de hooks, así que el conocimiento previo de hooks hace que las comparaciones tengan sentido." },
+  { q: "¿Quién lo enseña?", a: "Bob Ziroll, quien también enseña Learn React y Advanced React, así que el estilo es consistente en los cursos de React." },
+]} />
+
+<AffiliateLink href="https://scrimba.com/learn-class-components-in-react-c0h" variant="button">
+  Ver Learn Class Components in React en Scrimba
+</AffiliateLink>
+
+<CourseSchema
+  name="Learn Class Components in React"
+  description="Scrimba's short, Pro, intermediate course taught by Bob Ziroll. About 1.3 hours on React class components, lifecycle methods, and setState for legacy codebases."
+  url="https://scrimba.com/learn-class-components-in-react-c0h"
+  timeRequired="PT1H20M1S"
+  difficulty="Intermediate"
+  access="Pro"
+  keywords={["React", "Frontend"]}
+/>

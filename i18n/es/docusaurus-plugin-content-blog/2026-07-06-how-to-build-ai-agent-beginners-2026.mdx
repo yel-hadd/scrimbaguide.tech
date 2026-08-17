@@ -1,0 +1,213 @@
+---
+slug: how-to-build-ai-agent-beginners-2026
+title: "Cómo construir tu primer agente de IA en 2026 (sin Python)"
+description: "Cómo construir un agente de IA para principiantes en 2026: un ejemplo funcional de JavaScript en unas 40 líneas, más qué significa realmente MCP e ingeniería de contexto, sin Python."
+authors: [scrimbaguide]
+tags: [ai, guide]
+keywords: [cómo construir agente de IA para principiantes 2026, qué es MCP model context protocol, qué es ingeniería de contexto en IA, cómo construir agente de IA en javascript, construir agente de IA sin python, tutorial agente de IA 2026]
+image: /img/blog/how-to-build-ai-agent-beginners-2026.png
+image_alt: "Cómo construir tu primer agente de IA en 2026 con JavaScript, más MCP e ingeniería de contexto explicados, Scrimba Guide Blog"
+date: 2026-07-06
+last_update:
+  date: 2026-07-06
+  author: Yassine El Haddad
+---
+
+import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import HowToSchema from '@site/src/components/HowToSchema';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import PricingCTA from '@site/src/components/PricingCTA';
+
+<DocFaqSchema
+  questions={[
+    {
+      q: "¿Cómo construyo mi primer agente de IA en 2026?",
+      a: "Dale a un modelo de lenguaje una herramienta que pueda usar, como una función que recupera datos, y un bucle que le permita decidir cuándo usar esa herramienta. El modelo lee tu solicitud, usa la herramienta, lee el resultado y responde. En JavaScript con el SDK de Vercel AI esto son aproximadamente cuarenta líneas de código, y puedes terminar un agente funcional en una tarde."
+    },
+    {
+      q: "¿Qué es MCP, Model Context Protocol, en términos simples?",
+      a: "MCP es un estándar compartido para decirle a un modelo qué herramientas y datos puede usar, para que escribas una integración una vez en lugar de una por cada modelo. Anthropic lo presentó el 25 de noviembre de 2024, y en aproximadamente cinco meses tanto OpenAI como Google lo adoptaron, por eso vale la pena aprenderlo una vez que tu agente necesite más de una herramienta."
+    },
+    {
+      q: "¿Necesito aprender Python para construir un agente de IA?",
+      a: "No. Si puedes llamar a una API con fetch en JavaScript, puedes construir un agente real. Python domina el entrenamiento de modelos y la investigación, pero los agentes desplegados dentro de aplicaciones web son mayormente JavaScript y TypeScript, respaldados por el SDK de Vercel AI y los clientes oficiales de OpenAI y Anthropic para JS. Solo necesitas Python si te mudas a roles de entrenamiento o investigación."
+    },
+    {
+      q: "¿Qué significa realmente ingeniería de contexto?",
+      a: "Ingeniería de contexto es decidir qué información y herramientas poner frente al modelo en cada paso de una tarea de varios pasos. Un prompt es una entrada que escribes una vez. Ingeniería de contexto gestiona todo el contexto en evolución a través del bucle: qué se mantiene, qué se recorta, y qué sigue viendo el modelo en el décimo paso en lugar de solo en el primero."
+    },
+    {
+      q: "¿Cuál es la diferencia entre un agente de IA y un prompt único?",
+      a: "Un prompt único envía una entrada y obtiene una respuesta. Un agente puede tomar acciones entre la pregunta y la respuesta. Anthropic define los agentes como sistemas donde el modelo dirige sus propios pasos y uso de herramientas, a diferencia de los flujos de trabajo donde la ruta del código se fija de antemano. El bucle que permite al modelo decidir su próximo paso es lo que lo hace un agente."
+    },
+    {
+      q: "¿Cuánto tiempo tarda en aprender a construir agentes de IA?",
+      a: "Un primer agente funcional toma una tarde. Obtener agentes confiables que manejen recuperación, múltiples herramientas y despliegue toma más tiempo. El AI Engineer Path de Scrimba cubre ese terreno en 11.4 horas de lecciones interactivas, enseñadas en JavaScript y TypeScript, lo que es una estimación realista para el arranque completo en lugar de la versión de juguete."
+    }
+  ]}
+/>
+
+# Cómo construir tu primer agente de IA en 2026 (y qué significan realmente MCP e ingeniería de contexto)
+
+<DisclosureNotice />
+
+**Para construir tu primer agente de IA, le das a un modelo de lenguaje una herramienta que puede usar y un bucle que le permite decidir cuándo usarla. Esa es la idea completa, y puedes hacerlo en JavaScript en una tarde sin tocar Python.** Si eres un desarrollador web que sigue aterrizando en tutoriales de "agentes de IA" que abren con un entorno virtual de Python y un desvío de entrenamiento de modelos, esta es la ruta más corta: una API sin claves, unas cuarenta líneas de código, y una explicación clara de los dos términos que el resto de internet explica de forma extraña: MCP e ingeniería de contexto.
+
+{/* truncate */}
+
+<HowToSchema
+  name="Cómo construir tu primer agente de IA en JavaScript en 2026"
+  description="Una construcción de cinco pasos de un agente de IA funcional con el SDK de Vercel AI y Node, usando la API de Open-Meteo, que no necesita clave de API para la fuente de datos."
+  totalTime="PT1H"
+  steps={[
+    {
+      name: "Crear un proyecto Node",
+      text: "Crea una carpeta, ejecuta npm init, establece type como module en package.json, y confirma que estás en Node 20 o más nuevo. Instala el SDK de Vercel AI, un paquete de proveedor de modelo, y zod para validación de entrada.",
+      timeRequired: "PT10M"
+    },
+    {
+      name: "Escribe una herramienta sin clave",
+      text: "Escribe una función de herramienta que recupere datos que el modelo no puede producir por sí solo. Este ejemplo llama a Open-Meteo, que no necesita clave de API ni registro para uso no comercial, así que no hay nada que configurar más allá de un fetch simple.",
+      timeRequired: "PT15M"
+    },
+    {
+      name: "Describe la herramienta al modelo",
+      text: "Envuelve la función con el asistente de herramienta del SDK, dale una descripción corta y un esquema de entrada, para que el modelo sepa cuándo usarla y qué argumentos pasar.",
+      timeRequired: "PT10M"
+    },
+    {
+      name: "Dale al modelo un bucle",
+      text: "Llama a generateText con tu herramienta y una condición de parada como stepCountIs(5). El bucle es lo que convierte una única respuesta en un agente: el modelo usa la herramienta, lee el resultado, y decide su próximo paso.",
+      timeRequired: "PT10M"
+    },
+    {
+      name: "Prueba con una pregunta real",
+      text: "Ejecuta el script con una pregunta que force una llamada a herramienta, como si deberías llevar un paraguas en una ciudad mañana. Lee los pasos del modelo y el resultado de la herramienta para confirmar que actuó en lugar de adivinar.",
+      timeRequired: "PT15M"
+    }
+  ]}
+/>
+
+## La versión corta: un agente es un modelo de lenguaje que puede tomar acciones {#the-short-version-an-agent-is-an-llm-that-can-take-actions}
+
+Un agente de IA es un modelo de lenguaje que puede tomar acciones entre tu pregunta y su respuesta, en lugar de solo producir texto. Esa es toda la distinción, y vale la pena obtenerla de una fuente primaria en lugar de una página de landing de un proveedor. La definición de Anthropic es la clara: los agentes son "sistemas donde los modelos de lenguaje dirigen dinámicamente sus propios procesos y uso de herramientas, manteniendo el control sobre cómo logran tareas" (Building effective agents, diciembre de 2024), a diferencia de los flujos de trabajo, donde la ruta del código se fija de antemano.
+
+En la práctica, la diferencia se reduce a un bucle. Un prompt único es una entrada y una respuesta. Un agente recibe una solicitud, decide si necesita una herramienta, usa esa herramienta, lee lo que regresó, y luego decide qué hacer a continuación, posiblemente usando otra herramienta antes de responderte. Escribiste las herramientas y la condición de parada. El modelo eligió el orden. Esa elección es la parte que la gente significa cuando dice "agentic".
+
+Esto ya no es un interés marginal. Gartner nombró los sistemas multiagente, colecciones de agentes de IA interactuantes, una de sus principales tendencias tecnológicas estratégicas para 2026 cuando publicó la lista en octubre de 2025. En el lado de la contratación, Jobs on the Rise 2026 de LinkedIn (enero de 2026) clasificó AI Engineer como el trabajo de más rápido crecimiento número uno en los EE.UU., y levels.fyi pone la compensación total de un ingeniero de IA aplicado en aproximadamente la banda de $134k a $193k en empleadores convencionales a mediados de 2026, con laboratorios fronterizos tirando la parte superior del rango muy por encima. La habilidad es real y paga. La barrera para una primera versión es mucho más baja de lo que sugieren los títulos de trabajo.
+
+## Qué es MCP (Model Context Protocol), en términos simples {#what-is-mcp-model-context-protocol-in-plain-terms}
+
+MCP es un estándar compartido para decirle a un modelo qué herramientas y datos puede usar, así que escribes una integración una vez en lugar de reescribirla para cada modelo. La comparación familiar más cercana es HTTP: cada navegador lo habla, así que cualquier navegador puede cargar cualquier sitio web sin una integración personalizada por sitio. MCP apunta a ser eso para las herramientas, así que un agente construido contra un modelo puede alcanzar las mismas herramientas cuando cambias a otro.
+
+La línea de tiempo es lo que lo hace digno de tu atención en lugar de un acrónimo pasajero. Anthropic presentó Model Context Protocol y lo abrió como fuente el 25 de noviembre de 2024, como un estándar abierto para conectar modelos a herramientas y datos. En marzo de 2025, OpenAI adoptó MCP, con Sam Altman diciendo que la compatibilidad se implementaría en todos los productos de OpenAI. Google siguió en abril de 2025, con el CEO de DeepMind, Demis Hassabis, confirmando que Gemini soportaría MCP. Dentro de aproximadamente cinco meses de lanzamiento, MCP tenía el respaldo de los tres principales proveedores de modelos, lo cual casi nunca sucede tan rápido con un nuevo estándar.
+
+Aquí está la parte honesta que la mayoría de los explicadores se salta: no necesitas MCP para tu primer agente. La construcción a continuación usa una herramienta en línea, definida directamente en tu propio código, y ese es el lugar correcto para empezar. MCP se justifica después, cuando quieres que la misma herramienta se reutilice en diferentes modelos o se exponga a los agentes de otras personas sin reescribir la conexión cada vez. Cuando llegues a ese punto, el curso [Intro to Model Context Protocol](/docs/courses/ai/model-context-protocol-mcp/) camina a través de exponer una herramienta sobre el protocolo en lugar de programarla directamente.
+
+## Qué significa realmente ingeniería de contexto {#what-context-engineering-actually-means}
+
+Ingeniería de contexto es decidir qué información y herramientas poner frente al modelo en cada paso de una tarea. Diré primero la parte ligeramente cínica: como disciplina nombrada es en parte un renombramiento de algo que los desarrolladores ya estaban haciendo, que es elegir qué va en la ventana de contexto y cuándo. El término se popularizó en 2025. El problema subyacente es más antiguo que la etiqueta.
+
+Dicho esto, el problema al que apunta es real, y dos de las empresas que impulsan el término lo definen útilmente. La definición funcional de LangChain es "construir sistemas dinámicos para proporcionar la información y herramientas correctas en el formato correcto de modo que el modelo de lenguaje pueda plausiblemente lograr la tarea" (The rise of context engineering, junio de 2025). Anthropic lo presenta como "el conjunto de estrategias para seleccionar y mantener el conjunto óptimo de tokens (información) durante la inferencia de modelos de lenguaje" (Effective context engineering for AI agents, septiembre de 2025), que es un nombre más elegante para la pregunta antigua de qué pones en la ventana de contexto y cuándo.
+
+La razón por la que importa más para los agentes que para los prompts simples es el bucle. Un prompt es una entrada que escribes una vez y ajustas a mano. Un agente acumula contexto mientras se ejecuta: tu pregunta, las llamadas a herramientas, cada resultado que esas llamadas devolvieron, y su propio razonamiento intermedio. Para el décimo paso, la ventana puede estar llena de resultado de herramienta obsoleta que eclipsa lo que el modelo necesita para responder bien. Ingeniería de contexto es el trabajo de mantener esa ventana útil mientras se ejecuta el agente, y el curso [Learn Context Engineering](/docs/courses/ai/context-engineering/) está construido alrededor exactamente de ese problema de presupuesto de tokens.
+
+## Lo que necesitas antes de construir tu primer agente {#what-you-need-before-you-build-your-first-agent}
+
+Necesitas tres cosas: Node 20 o más nuevo, una clave de API de un proveedor de modelo, y la capacidad de llamar a un fetch. Esa es genuinamente toda la lista.
+
+Para el conjunto de herramientas, usé el SDK de Vercel AI, que Vercel describe como "el kit de herramientas TypeScript líder para construir aplicaciones de IA" e informó más de 20 millones de descargas mensuales en su anuncio de AI SDK 6 (diciembre de 2025). Maneja el bucle, llamadas de herramientas, y streaming para que no estés ensamblando manualmente el formato de solicitud. El ejemplo aquí fue probado con el paquete `ai` en su versión principal actual (v7) en Node 20, a fines de junio de 2026. La versión 6, lanzada el 22 de diciembre de 2025, es donde el soporte de MCP se volvió estable si vas por esa ruta después; el código de herramienta simple a continuación funciona igual en ambos.
+
+La fuente de datos es la parte donde puedo mantener la promesa "sin fricción de clave de API" honestamente. Open-Meteo no necesita clave de API ni registro para uso no comercial, así que el ejemplo funcional es un fetch simple sin nada que configurar. Aún necesitas una clave para el modelo mismo (OpenAI o Anthropic, tu decisión), pero la herramienta que el agente usa no tiene nada que registrar, no hay panel de facturación, y no hay página de límite de velocidad que leer primero. Ese es usualmente el paso donde los principiantes se quedan atrapados, y aquí se ha ido.
+
+## Construye tu primer agente de IA: un ejemplo funcional {#build-your-first-ai-agent-a-worked-example}
+
+Aquí hay un agente de clima funcional en aproximadamente cuarenta líneas. Responde una pregunta como "¿debería llevar un paraguas en Berlín mañana?" llamando a una API de pronóstico real y razonando sobre el resultado, en lugar de adivinar a partir de datos de entrenamiento. Instala las dependencias primero:
+
+```bash
+npm init -y
+npm install ai @ai-sdk/openai zod
+```
+
+Establece `"type": "module"` en tu `package.json`, exporta tu `OPENAI_API_KEY`, luego crea `agent.js`:
+
+```js
+import { generateText, tool, stepCountIs } from 'ai';
+import { openai } from '@ai-sdk/openai';
+import { z } from 'zod';
+
+const getWeather = tool({
+  description: 'Get the chance of rain tomorrow for a city',
+  inputSchema: z.object({ city: z.string() }),
+  execute: async ({ city }) => {
+    const geo = await fetch(
+      'https://geocoding-api.open-meteo.com/v1/search?count=1&name=' +
+        encodeURIComponent(city),
+    ).then((r) => r.json());
+    const { latitude, longitude } = geo.results[0];
+
+    const data = await fetch(
+      'https://api.open-meteo.com/v1/forecast?forecast_days=2' +
+        '&daily=precipitation_probability_max' +
+        '&latitude=' + latitude + '&longitude=' + longitude,
+    ).then((r) => r.json());
+
+    return { city, rainChanceTomorrow: data.daily.precipitation_probability_max[1] };
+  },
+});
+
+const result = await generateText({
+  model: openai('gpt-4o-mini'),
+  tools: { getWeather },
+  stopWhen: stepCountIs(5),
+  prompt: 'Should I bring an umbrella in Berlin tomorrow?',
+});
+
+console.log(result.text);
+```
+
+Ejecútalo con `node agent.js`. El modelo lee tu pregunta, ve que tiene una herramienta `getWeather`, la usa con `city: "Berlin"`, la función llama a Open-Meteo y devuelve un porcentaje de lluvia, y el modelo escribe una respuesta basada en ese número.
+
+La línea que hace esto un agente en lugar de una llamada única es `stopWhen: stepCountIs(5)`. Sin él, el modelo responde una vez a partir de lo que ya sabe. Con él, el SDK ejecuta el bucle: usa la herramienta, retroalimenta el resultado, deja que el modelo decida si está listo o necesita actuar de nuevo, hasta cinco pasos. Ese bucle es la definición de "dirigen dinámicamente sus propios procesos" de Anthropic, escrita en código que puedes leer. Cambia la función de clima por cualquier API que ya uses en el trabajo, y la forma no cambia.
+
+## Ingeniería de contexto para agentes que no se caen {#context-engineering-for-agents-that-dont-fall-over}
+
+Un agente de juguete funciona en la primera pregunta y empieza a tambalearse en la décima, e ingeniería de contexto es el conjunto de correcciones para ese tambaleo. Los modos de fallo son predecibles una vez que has construido uno. El modelo olvida algo que le fue dicho temprano porque resultado de herramienta más nuevo lo sacó de la ventana. Usa la misma herramienta dos veces porque perdió el seguimiento del primer resultado. En un mal día entra en bucle, quemando tokens y tu presupuesto de API, porque nada le dijo cuándo parar.
+
+Las correcciones se asignan directamente a las definiciones anteriores. Limita los pasos, que el ejemplo ya hace con `stepCountIs`. Recorta o resume turnos antiguos antes de que eclipsen la tarea actual, en lugar de repetir el historial completo en cada paso. Pasa al modelo solo las herramientas que necesita un paso dado, no las veinte que eventualmente construyas, porque una lista larga de herramientas es su propio tipo de ruido. Nada de esto es exótico. Es contabilidad sobre lo que el modelo ve en cada paso, que es todo el trabajo al que apunta la etiqueta "ingeniería de contexto". Los agentes que se mantienen confiables en producción son aquellos donde alguien hizo esta contabilidad deliberadamente.
+
+## De agente de juguete a una construcción estructurada {#from-toy-agent-to-a-structured-build}
+
+Una vez que has sentido dónde la versión de juguete se estira, el olvido, los bucles descontrolados, el dolor de cablear cada nueva herramienta a mano, el siguiente movimiento es aprender las actualizaciones en el orden que un proyecto real las necesita: recuperación para que el agente pueda extraer de tus propios documentos, MCP para que las herramientas sean reutilizables en lugar de programadas, y un despliegue para que se ejecute en algún lugar que no sea tu terminal.
+
+Esa es la brecha que una secuencia guiada cierra. El AI Engineer Path de Scrimba se ejecuta aproximadamente 11.4 horas, enseñado completamente en JavaScript y TypeScript (sin PyTorch), cubriendo agentes, RAG, MCP, el SDK de Vercel AI, embeddings, y un despliegue de Cloudflare Workers, con los módulos MCP e Ingeniería de Contexto agregados recientemente. Desglosé la lista de módulos completa y para quién es adecuada en la [reseña de AI Engineer Path](/blog/scrimba-ai-engineer-path-guide/), y hay un scrim de introducción gratuito con Tom Chant para que puedas probar el formato editar-el-código antes de pagar algo. Si te engancha, Pro es una suscripción mensual baja (ver [precios de Scrimba](/docs/pricing/) actual).
+
+Te lo señalo por una razón: el path enseña MCP e ingeniería de contexto como las respuestas nombradas a los fallos exactos que tu agente de cuarenta líneas acaba de golpear, en aproximadamente la secuencia que un build real sigue. Para el argumento más profundo del por qué JavaScript, [cómo aprender ingeniería de IA en Scrimba](/blog/learn-ai-engineering-scrimba/) cubre el mismo terreno desde el lado del currículo.
+
+## Errores comunes de principiantes al construir agentes de IA {#common-beginner-mistakes-when-building-ai-agents}
+
+Los errores son predecibles, y la mayoría te cuestan un día cada uno si no los ves venir. El primero es alcanzar MCP o un framework pesado antes de que una única herramienta en línea funcione. Obtén primero una herramienta respaldada por `fetch` devolviendo datos reales; estandariza y reutilízala después. El segundo es desplegar sin un límite de pasos, que es cómo un bucle silenciosamente ejecuta tu factura de API mientras ves la terminal. El tercero es confiar en resultado de herramienta y razonamiento de modelo sin leer ninguno, la misma trampa casi correcta que muerde a personas pegando código escrito por IA: un agente que llama al endpoint incorrecto y resume con confianza el número incorrecto se ve exactamente como uno que funcionó.
+
+El cuarto es empezar en Python porque un tutorial te dijo que ahí es donde vive la IA. Es cierto que el 84% de los desarrolladores ahora usa o planea usar herramientas de IA (Stack Overflow 2025 Developer Survey, los números más frescos publicados), y muchos de ellos son desarrolladores de JavaScript que cablean agentes en aplicaciones que ya envían. Si puedes llamar a una API, estás más cerca de esto de lo que sugiere el enmarque primero en Python. Para tener una idea de qué asistentes realmente ayudan mientras construyes, mantengo [un resumen de herramientas de IA que todo desarrollador debería conocer](/blog/ai-tools-every-developer-should-know-2026/).
+
+Así que aquí está el próximo paso concreto, y puedes terminarlo hoy. Construye el agente de clima anterior, confirma que realmente llama a Open-Meteo, luego cambia una cosa: intercambia la función de clima por una API que ya usas en tu propio trabajo, una búsqueda de base de datos, un endpoint interno, cualquier cosa que devuelva datos que el modelo no puede adivinar. Cuando el modelo usa tu herramienta y responde a partir del resultado, has construido un agente. Todo después de eso es hacerlo confiable.
+
+## Preguntas frecuentes {#frequently-asked-questions}
+
+**¿Cómo construyo mi primer agente de IA en 2026?** Dale a un modelo de lenguaje una herramienta que pueda usar, como una función que recupera datos, y un bucle que le permita decidir cuándo usar esa herramienta. El modelo lee tu solicitud, usa la herramienta, lee el resultado, y responde. En JavaScript con el SDK de Vercel AI esto son aproximadamente cuarenta líneas de código, y puedes terminar un agente funcional en una tarde.
+
+**¿Qué es MCP, Model Context Protocol, en términos simples?** MCP es un estándar compartido para decirle a un modelo qué herramientas y datos puede usar, para que escribas una integración una vez en lugar de una por cada modelo. Anthropic lo presentó el 25 de noviembre de 2024, y en aproximadamente cinco meses tanto OpenAI como Google lo adoptaron, por eso vale la pena aprenderlo una vez que tu agente necesite más de una herramienta.
+
+**¿Necesito aprender Python para construir un agente de IA?** No. Si puedes llamar a una API con fetch en JavaScript, puedes construir un agente real. Python domina el entrenamiento de modelos y la investigación, pero los agentes desplegados dentro de aplicaciones web son mayormente JavaScript y TypeScript, respaldados por el SDK de Vercel AI y los clientes oficiales de OpenAI y Anthropic para JS. Solo necesitas Python si te mudas a roles de entrenamiento o investigación.
+
+**¿Qué significa realmente ingeniería de contexto?** Ingeniería de contexto es decidir qué información y herramientas poner frente al modelo en cada paso de una tarea de varios pasos. Un prompt es una entrada que escribes una vez. Ingeniería de contexto gestiona todo el contexto en evolución a través del bucle: qué se mantiene, qué se recorta, y qué sigue viendo el modelo en el décimo paso en lugar de solo en el primero.
+
+**¿Cuál es la diferencia entre un agente de IA y un prompt único?** Un prompt único envía una entrada y obtiene una respuesta. Un agente puede tomar acciones entre la pregunta y la respuesta. Anthropic define los agentes como sistemas donde el modelo dirige sus propios pasos y uso de herramientas, a diferencia de los flujos de trabajo donde la ruta del código se fija de antemano. El bucle que permite al modelo decidir su próximo paso es lo que lo hace un agente.
+
+**¿Cuánto tiempo tarda en aprender a construir agentes de IA?** Un primer agente funcional toma una tarde. Obtener agentes confiables que manejen recuperación, múltiples herramientas y despliegue toma más tiempo. El AI Engineer Path de Scrimba cubre ese terreno en 11.4 horas de lecciones interactivas, enseñadas en JavaScript y TypeScript, lo que es una estimación realista para el arranque completo en lugar de la versión de juguete.
+
+<PricingCTA
+  title="Ve más allá del agente de juguete"
+  subtitle="La ruta AI Engineer de Scrimba secuencia agentes, RAG, y MCP para que tu segundo agente se sostenga. Empieza gratis."
+  ctaType="free"
+/>

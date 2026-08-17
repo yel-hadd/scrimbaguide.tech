@@ -1,0 +1,113 @@
+---
+title: "Learn Cybersecurity para desarrolladores"
+sidebar_position: 22
+description: "Curso Pro sobre seguridad práctica de aplicaciones para desarrolladores: autenticación, validación de entrada y rate limiting. Qué cubre, para quién es y dónde tiene limitaciones."
+keywords: [seguridad de aplicaciones para desarrolladores, curso autenticación, seguridad web, proteger API, rate limiting]
+last_update:
+  date: 2026-05-27
+---
+
+import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
+import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+
+# Learn Cybersecurity
+
+Un curso Pro sobre el trabajo de seguridad que los desarrolladores hacen día a día: autenticación, validación de entrada y rate limiting, co-impartido por Rachel Johnson y Jonathan Hill en aproximadamente cinco horas.
+
+## Respuesta rápida {#quick-answer}
+
+Este es el curso de seguridad de nivel Pro de Scrimba, de aproximadamente 5 horas co-impartido por Rachel Johnson y Jonathan Hill. Es seguridad práctica de aplicaciones para desarrolladores, no teoría abstracta ni pruebas de penetración: pensar como un atacante, manejar la autenticación e identidad de forma segura, validar y sanitizar entrada, y proteger endpoints con rate limiting y throttling. Se enfoca más en backend y está dirigido a desarrolladores que construyen aplicaciones y quieren dejar de desplegar vulnerabilidades comunes.
+
+<CourseCard
+  title="Learn Cybersecurity"
+  duration="5.0 hrs"
+  difficulty="Intermediate"
+  access="Pro"
+  modules={4}
+  instructor="Rachel Johnson"
+  instructorUrl="https://scrimba.com/@rachelktyjohnson"
+  href="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9"
+  description="Seguridad práctica de aplicaciones para desarrolladores: autenticación, validación de entrada y rate limiting, enseñado mediante edición de código real."
+/>
+
+## ¿Vale la pena tu tiempo? {#is-it-worth-your-time}
+
+La mayoría de los desarrolladores aprenden seguridad de la manera difícil: desplegando un bug y leyendo el reporte de incidente. Este curso es la alternativa más económica: te guía a través de las vulnerabilidades que realmente aparecen en aplicaciones reales y cómo defenderse contra ellas, con dos instructores que lo mantienen fundamentado en código. Los módulos de validación de entrada y rate limiting en particular cubren material que muchos desarrolladores autodidactas nunca llegan a aprender explícitamente.
+
+La advertencia honesta es el enfoque. A pesar del nombre amplio, esta es seguridad de aplicaciones para quienes construyen, no un curso general de ciberseguridad. No cubrirá seguridad de redes, análisis de malware, certificaciones de seguridad o herramientas de red team. Si viniste esperando un currículo de ethical hacking, esto no es eso; trata de escribir aplicaciones más seguras.
+
+## Qué aprenderás {#what-youll-learn}
+
+<CourseCurriculum
+  modules={[
+    { name: 'Think Like a Security-Minded Developer', duration: '30 min' },
+    { name: 'Authentication and Identity', duration: '67 min' },
+    { name: 'Input & Data Safety', duration: '101 min' },
+    { name: 'Rate Limiting & Throttling', duration: '98 min' },
+  ]}
+/>
+
+El curso comienza replanteando cómo observas tu propio código, aprendiendo a preguntarte dónde empujaría un atacante. De allí se vuelve concreto: autenticación e identidad cubre hacer logins y sesiones de forma segura; validación y seguridad de datos, el módulo más largo, cubre validar y sanitizar lo que envían los usuarios para evitar los bugs clásicos de inyección y manejo de datos; y rate limiting y throttling cubre proteger endpoints del abuso y ataques de fuerza bruta. Los dos módulos más cortos establecen la mentalidad; los dos más largos hacen la defensa práctica.
+
+## Para quién es y quién debería saltárselo {#who-its-for-and-who-should-skip-it}
+
+Se ajusta bien a desarrolladores que ya construyen aplicaciones, especialmente algo con backend, y quieren reforzarlas. Es un ajuste muy bueno para cualquiera en la [Backend Developer Path](/docs/paths/backend-developer-path/) o que construya APIs.
+
+Saltárselo si eres un principiante completo que no ha construido una aplicación aún; el material asume que entiendes cómo requests, autenticación y datos fluyen a través de una aplicación. También saltárselo si querías ciberseguridad general o ethical hacking en lugar de defensa a nivel de aplicación.
+
+## Requisitos previos {#prerequisites}
+
+Experiencia práctica en desarrollo web: deberías entender cómo un cliente y servidor intercambian requests, para qué sirve la autenticación y sesiones, y cómo una aplicación maneja entrada del usuario. Familiaridad con backend (como Node o Express) ayuda, ya que varios ejemplos son del lado del servidor.
+
+## Dónde encaja {#where-it-fits}
+
+Este curso es un curso Pro independiente en lugar de un miembro de ruta nombrada, pero encaja naturalmente junto con trabajo de backend en la [Backend Developer Path](/docs/paths/backend-developer-path/). Combina bien después de un curso de framework como [Learn Express.js](/docs/courses/javascript/expressjs/), donde los temas de autenticación y entrada se mapean directamente a código que ya puedes escribir.
+
+## Gratis o Pro {#free-or-pro}
+
+Este es un curso Pro, así que necesita una suscripción a Scrimba. Pro también cubre todas las rutas de carrera, los desafíos de codificación, el Discord y certificados. Ve <AffiliateLink href="https://scrimba.com/our-pricing">planes actuales</AffiliateLink> para ver cuánto cuesta Pro en tu región.
+
+## Fortalezas y limitaciones {#strengths-and-limits}
+
+Qué hace bien: enseña los temas de seguridad que realmente afectan a desarrolladores que trabajan, es co-impartido con código en toda parte, y cubre validación de entrada y rate limiting en profundidad real en lugar de una mención pasajera.
+
+Dónde es limitado: el nombre amplio sobrevende el alcance, ya que esto es seguridad de aplicaciones en lugar de ciberseguridad general; asume que ya puedes construir aplicaciones; y está detrás de Pro.
+
+## Cursos relacionados y comparaciones {#related-courses-and-comparisons}
+
+- [Learn Express.js](/docs/courses/javascript/expressjs/), donde los temas de autenticación aplican directamente
+- [Learn Node.js](/docs/courses/javascript/nodejs/), la base de backend
+- [Learn Firebase](/docs/courses/javascript/firebase/), para autenticación administrada y datos
+- [Todos los cursos JavaScript](/docs/courses/javascript/), el hub de categoría completo
+- [Scrimba vs Boot.dev](/docs/comparisons/scrimba-vs-boot-dev/), si estás considerando plataformas enfocadas en backend
+
+<FAQAccordion items={[
+  { q: "¿Es Learn Cybersecurity gratis?", a: "No. Es un curso Scrimba Pro, así que requiere una suscripción. Pro también desbloquea las rutas de carrera, desafíos y certificados." },
+  { q: "¿Es este un curso general de ciberseguridad?", a: "No. Es seguridad de aplicaciones para desarrolladores, cubriendo autenticación, validación de entrada y rate limiting. No cubre seguridad de redes, ethical hacking o certificaciones de seguridad." },
+  { q: "¿Quién lo enseña?", a: "Es co-impartido por Rachel Johnson y Jonathan Hill, con código práctico en todo el reproductor de Scrimba." },
+  { q: "¿Necesito experiencia de backend?", a: "Ayuda. Varios ejemplos son del lado del servidor, y el material asume que entiendes cómo requests, autenticación y entrada del usuario fluyen a través de una aplicación. Un framework como Express es buen antecedente." },
+  { q: "¿Cuánto tiempo lleva?", a: "Aproximadamente 5 horas de contenido interactivo. La mayoría de los aprendices lo extienden durante una o dos semanas de práctica regular." },
+]} />
+
+<AffiliateLink href="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9" variant="button">
+  Ver Learn Cybersecurity en Scrimba
+</AffiliateLink>
+
+<CourseSchema
+  name="Learn Cybersecurity"
+  description="Curso de seguridad de aplicaciones de nivel Pro de Scrimba co-impartido por Rachel Johnson y Jonathan Hill. Aproximadamente 5 horas sobre autenticación, validación de entrada y rate limiting."
+  url="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9"
+  timeRequired="PT4H57M"
+  difficulty="Intermediate"
+  access="Pro"
+  keywords={["Backend"]}
+  modules={[
+    { name: 'Think Like a Security-Minded Developer', duration: '30 min' },
+    { name: 'Authentication and Identity', duration: '67 min' },
+    { name: 'Input & Data Safety', duration: '101 min' },
+    { name: 'Rate Limiting & Throttling', duration: '98 min' },
+  ]}
+/>

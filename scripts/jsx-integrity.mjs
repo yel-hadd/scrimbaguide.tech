@@ -184,6 +184,29 @@ function proseWordCount(text) {
   return (text.match(/[\p{L}]{2,}/gu) ?? []).length;
 }
 
+/**
+ * Prose-carrying JSX props, by name.
+ *
+ * These render as user-visible text, so leaving one in English ships an English
+ * sentence inside a translated page. `description` additionally flows through
+ * plainText() into CourseSchema's JSON-LD, so an untranslated one also reaches
+ * search results in the wrong language.
+ *
+ * Measured 2026-08-12: `description` (173 uses) and `subtitle` (119) were absent
+ * from the contract's translatable allowlist, so translators correctly skipped
+ * them and the judge correctly failed the pages. Second-largest defect class on
+ * record, after template literals.
+ */
+export const PROSE_PROPS = ['description', 'subtitle', 'buttonText', 'ctaText', 'verdict', 'label', 'alt'];
+
+export function prosePropValues(body) {
+  const out = [];
+  const rx = new RegExp(`\\b(${PROSE_PROPS.join('|')})\\s*=\\s*"([^"]*)"`, 'g');
+  for (const m of body.matchAll(rx)) out.push({ prop: m[1], value: m[2] });
+  return out;
+}
+
+
 /* -------------------------------------------------------------- compare */
 
 function diffMultiset(a, b) {
@@ -261,6 +284,24 @@ export function checkIntegrity(sourceText, translatedText) {
         push('template-literal-untranslated',
           `template literal #${i + 1} is byte-identical to the English source`, {
             index: i, prose: sTpl[i].prose.slice(0, 120),
+          });
+      }
+    }
+  }
+
+  // 2c. Prose props left in English. Same shape of failure as an untranslated
+  // template literal: the page looks translated but a visible string is not.
+  {
+    const sProps = prosePropValues(sBody);
+    const tProps = prosePropValues(tBody);
+    const n3 = Math.min(sProps.length, tProps.length);
+    for (let i = 0; i < n3; i++) {
+      if (sProps[i].prop !== tProps[i].prop) continue;
+      const words = (sProps[i].value.match(/[\p{L}]{2,}/gu) ?? []).length;
+      if (words >= 4 && sProps[i].value === tProps[i].value) {
+        push('prose-prop-untranslated',
+          `${sProps[i].prop}="..." is byte-identical to the English source`, {
+            prop: sProps[i].prop, value: sProps[i].value.slice(0, 100),
           });
       }
     }

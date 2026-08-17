@@ -1,0 +1,181 @@
+---
+slug: how-to-become-ai-engineer-javascript-developer
+title: "Convertirse en ingeniero de IA como desarrollador de JavaScript (2026)"
+description: "Cómo convertirse en ingeniero de IA como desarrollador de JavaScript en 2026: una hoja de ruta basada en JS para LLMs, RAG, agentes y MCP, más cuándo aún necesitas Python."
+authors: [scrimbaguide]
+tags: [career, ai]
+keywords: [cómo convertirse en ingeniero de IA con JavaScript, ingeniero de IA sin Python, hoja de ruta IA JavaScript, cambiar de frontend a ingeniero de IA, desarrollador IA en JavaScript 2026]
+image: /img/blog/how-to-become-ai-engineer-javascript-developer.png
+image_alt: "Cómo convertirse en ingeniero de IA como desarrollador de JavaScript en 2026, una hoja de ruta aplicada basada en JS, Scrimba Guide Blog"
+date: 2026-07-09
+last_update:
+  date: 2026-07-09
+  author: Yassine El Haddad
+---
+
+import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import HowToSchema from '@site/src/components/HowToSchema';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import PricingCTA from '@site/src/components/PricingCTA';
+
+<DocFaqSchema
+  questions={[
+    {
+      q: "¿Puede un desarrollador de JavaScript convertirse en ingeniero de IA sin aprender Python primero?",
+      a: "Sí, para roles aplicados e de integración. Los trabajos que implican conectar LLMs, agentes, recuperación y el Model Context Protocol en productos reales funcionan en la pila de JavaScript y TypeScript, y los SDKs oficiales de OpenAI y Anthropic más el SDK de IA de Vercel cubren ese trabajo sin Python. Los roles de investigación y entrenamiento de modelos son la excepción y aún esperan Python."
+    },
+    {
+      q: "¿Cuándo los ingenieros de IA realmente necesitan Python?",
+      a: "Cuando el trabajo implica entrenar, ajustar o interpretar modelos en lugar de simplemente usarlos. Los roles de ingeniero investigador en laboratorios de frontera, equipos de datos intensivos en ML y la mayoría del trabajo académico asumen Python, las matemáticas detrás de él y herramientas como PyTorch. Si tu objetivo es desplegar características de IA en aplicaciones web, puedes diferir Python hasta que una tarea específica lo requiera."
+    },
+    {
+      q: "¿Qué construye un ingeniero de IA aplicada día a día?",
+      a: "Características sobre modelos existentes: interfaces de chat con respuestas en streaming, recuperación sobre documentos propios de la empresa, agentes que llaman herramientas externas, e integraciones que exponen datos a modelos a través de MCP. Es trabajo de integración y producto, más cercano al desarrollo web full-stack que a la ciencia de datos."
+    },
+    {
+      q: "¿Cuánto ganan los ingenieros de IA en 2026?",
+      a: "Levels.fyi coloca la compensación total mediana del ingeniero de IA cerca de 154,000 dólares a mediados de 2026, con la categoría más amplia de ingeniero de software ML/IA alrededor de 243,000 dólares y los laboratorios de frontera mucho más arriba. Esos números autorreportados se inclinan hacia empleadores mejor pagados, así que trátalosComo una banda, no como un piso. El Barómetro Global de Trabajos de IA de PwC 2026 también encontró una prima salarial del 62% para trabajadores con habilidades de IA, arriba del 57% hace un año."
+    },
+    {
+      q: "¿Cuál es la ruta más rápida basada en JavaScript para entrar en la ingeniería de IA?",
+      a: "Aprende a llamar a una API LLM y obtén salida estructurada, transmítela a una interfaz de usuario, agrega recuperación con embeddings y un almacén vectorial, construye un agente que usa herramientas, luego estandariza el acceso a herramientas con MCP. Construye un pequeño proyecto en cada etapa en lugar de coleccionar tutoriales. Esa secuencia se asigna al trabajo de IA aplicada y omite el material de entrenamiento de modelos que no usarías."
+    },
+    {
+      q: "¿Es ingeniero de IA solo un rol de desarrollador web rebautizado?",
+      a: "No exactamente, pero la superposición es grande para roles aplicados. Reutilizas tu conocimiento de código asincrónico, APIs, JSON y despliegue, luego agregas tres cosas que probablemente no has hecho: prompting de modelos para salida estructurada confiable, recuperación y loops de agentes con llamada de herramientas. Un desarrollador web que cierra esas brechas está más cerca de un trabajo de IA aplicada que de una contratación frontend fresca."
+    }
+  ]}
+/>
+
+# Cómo convertirse en ingeniero de IA como desarrollador de JavaScript en 2026 (no necesitas Python primero)
+
+<DisclosureNotice />
+
+**Puedes convertirte en ingeniero de IA como desarrollador de JavaScript sin aprender Python primero, siempre que apuntes a roles aplicados e de integración en lugar de investigación o entrenamiento de modelos. El trabajo que paga bien en 2026, conectando modelos de lenguaje, agentes, recuperación y el Model Context Protocol en aplicaciones reales, se ejecuta en la pila de JavaScript y TypeScript que ya usas.** Si despliegas React o Node y estás cansado de que te digan que necesitas un año de Python y álgebra lineal antes de tocar IA, esa barrera es en su mayoría ficticia para los trabajos a los que realmente aplicarías.
+
+{/* truncate */}
+
+<HowToSchema
+  name="Hoja de ruta del ingeniero de IA basada en JavaScript"
+  description="Una hoja de ruta habilidad por habilidad para que un desarrollador de JavaScript o TypeScript se mueva hacia la ingeniería de IA aplicada sin aprender Python primero."
+  steps={[
+    {
+      name: "Llama a un modelo y obtén salida estructurada",
+      text: "Usa el SDK oficial de TypeScript de OpenAI o Anthropic para enviar un prompt y obtén JSON en el que tu código pueda confiar. Esta es la habilidad principal: convertir un modelo en una función en la que tu aplicación puede confiar."
+    },
+    {
+      name: "Transmite la respuesta a una interfaz de usuario",
+      text: "Conecta el modelo a una interfaz de React o Node con el SDK de IA de Vercel para que los tokens aparezcan mientras se generan. Este es el mismo trabajo de cliente y servidor que ya haces, aplicado a un endpoint de modelo."
+    },
+    {
+      name: "Agrega recuperación con embeddings y almacén vectorial",
+      text: "Incorpora tus propios documentos, almacena los vectores en una base de datos y consulta los por solicitud para que las respuestas provengan de tus datos. Esta es RAG, y es principalmente tuberías de datos que ya entiendes."
+    },
+    {
+      name: "Construye un agente que usa herramientas",
+      text: "Dale al modelo un conjunto de funciones que puede llamar, ejecuta el loop que le permite decidir cuál usar, y maneja los reintentos y callejones sin salida. Esto es donde un LLM deja de generar texto y comienza a tomar acciones."
+    },
+    {
+      name: "Estandariza el acceso a herramientas con MCP",
+      text: "Expone tus herramientas y datos a través del Model Context Protocol para que cualquier modelo compatible pueda usarlos sin pegamento personalizado por integración. MCP se convirtió en un estándar entre proveedores en 2025."
+    },
+    {
+      name: "Despliega, luego gestiona contexto y evaluación",
+      text: "Despliegua la aplicación a una URL real, controla qué contexto envías en cada paso para mantener el costo y la confiabilidad razonables, y agrega controles simples para que detectes salida incorrecta. La confiabilidad en producción, no el acceso a modelos, es la parte difícil."
+    }
+  ]}
+/>
+
+## ¿Puede un desarrollador de JavaScript convertirse en ingeniero de IA sin Python? {#can-a-javascript-developer-become-an-ai-engineer-without-python}
+
+Sí, si apuntas a roles aplicados e de integración. El trabajo de ingeniería de IA que las empresas web contratan en 2026 es construir características sobre modelos que ya existen, y ese trabajo vive en la pila de JavaScript y TypeScript. Python es el lenguaje de la investigación y el entrenamiento de modelos. No es un requisito previo para poner un modelo de lenguaje dentro de un producto.
+
+Aquí está la opinión que defenderé para el resto de este post: la mayoría del consejo "cómo convertirse en ingeniero de IA" es gatekeeping de Python escrito por personas que nunca han despliegue una característica LLM. Te dicen que pases un año en Python, NumPy y las matemáticas detrás de la retropropagación antes de que se te permita comenzar. Para un rol de ingeniero investigador, eso es justo. Para los trabajos aplicados que constituyen la mayoría de las vacantes, es el orden incorrecto, y desalienta a desarrolladores web capaces de un campo en el que ya están casi completamente dentro.
+
+La línea que importa corre entre dos tipos de trabajo. Los roles de investigación y entrenamiento construyen y mejoran los modelos. Los roles aplicados e de integración los usan. Si puedes desplegar una aplicación React y autenticarte contra una API REST, estás más cerca del segundo tipo de trabajo que de uno junior de frontend. Dibujaré la línea de Python explícitamente más adelante en este post, porque pretender que nunca importa sería la misma desonestidad apuntando en la otra dirección.
+
+## Qué un ingeniero de IA realmente hace (y por qué JavaScript cubre la mayoría) {#what-an-ai-engineer-actually-does-and-why-javascript-covers-most-of-it}
+
+Un ingeniero de IA aplicada construye características de producto sobre modelos que no entrenó. Día a día eso significa interfaces de chat con respuestas en streaming, recuperación sobre documentos propios de la empresa para que el modelo responda desde datos reales, agentes que llaman herramientas externas, e integraciones que entregan datos a modelos de manera estándar. Es trabajo de integración y producto, mucho más cercano al desarrollo web full-stack que a la ciencia de datos.
+
+Mira lo que falta de esa lista: entrenar un modelo desde cero, diseñar una nueva arquitectura, ajustar una función de pérdida. Esos son trabajos reales, y son trabajos de Python, pero son una minoría de lo que se publica bajo el título de ingeniero de IA. El caso común es un producto web que necesita una característica LLM despliegue por alguien que entiende tanto la API del modelo como la aplicación en la que vive. Si te preocupa que la IA esté comiendo silenciosamente el nivel junior, profundicé en [si la IA puede reemplazar a desarrolladores junior](/blog/can-ai-replace-junior-developers-2026/), y el asiento de IA aplicada es uno de los pocos puntos de entrada que está creciendo en lugar de adelgazarse. La habilidad no es exótica. Es desarrollo web con un modelo en el loop.
+
+## Por qué 2026 es el año en que la pila de JavaScript de IA se puso al día {#why-2026-is-the-year-the-javascript-ai-stack-caught-up}
+
+La razón corta es que las herramientas que un desarrollador JS necesita para construir con modelos ahora existen como bibliotecas de JavaScript de primera clase, no puertos de Python. Hace dos años, la respuesta honesta a "¿puedo hacer IA en JavaScript" era "más o menos, con fricción". Eso dejó de ser verdad en 2025.
+
+Tres cosas cerraron la brecha. Anthropic abrió el código del Model Context Protocol en noviembre de 2024, y se convirtió en un estándar entre proveedores a través de 2025 (OpenAI lo adoptó en marzo, Google en abril), así que ahora hay una forma de conectar herramientas y datos a modelos en lugar de un adaptador diferente por proveedor. Vercel despliegue AI SDK 5, su kit de herramientas de IA de TypeScript, el 31 de julio de 2025, y el SDK de IA de Vercel ahora es la forma estándar de transmitir salida de modelo a una interfaz de React, Next o Node. Y OpenAI y Anthropic ambos despliegue SDKs oficiales de TypeScript, así que llamar a un modelo de frontera desde JavaScript es una ruta documentada y soportada en lugar de una solución comunitaria.
+
+Los datos del idioma apuntan en la misma dirección. Según el Octoverse 2025 de GitHub (28 de octubre de 2025), TypeScript es el lenguaje más usado en GitHub por recuento de colaboradores, con Python segundo y JavaScript tercero (Python había superado a JavaScript nuevamente en 2024). En la encuesta separada de 2025 de Stack Overflow, JavaScript seguía siendo el lenguaje más utilizado en el 66% de todos los encuestados, con Python en 57.9% de todos los encuestados (54.8% de desarrolladores profesionales). Leídos juntos, esos dicen una cosa: la pila en la que la mayoría de productos web se desplieguen es JavaScript y TypeScript, y eso es donde se construyen e despliegan características de IA. Si has estado sopesando si comprometerte con TypeScript, el soporte de IA es una razón más por la que vale la pena, y hago el caso más completo en [deberían los desarrolladores de JavaScript aprender TypeScript en 2026](/blog/should-javascript-developers-learn-typescript-2026/).
+
+## El mercado laboral del ingeniero de IA de 2026, en números reales {#the-2026-ai-engineer-job-market-in-real-numbers}
+
+La demanda es real y el pago es alto: LinkedIn clasificó al ingeniero de IA como el trabajo que crece más rápidamente número uno en los EE.UU. en su lista de Trabajos en Auge dos años seguidos, en 2025 y 2026 (LinkedIn Jobs on the Rise, enero de 2026). Los números de salario a continuación conllevan la caveat usual de que los datos autorreportados se sesgan hacia arriba. Y mi lectura de los tableros de trabajo es que esta demanda no se limita a títulos de IA dedicados: las habilidades de IA cada vez más aparecen en descripciones de software ordinarias también. El requisito se filtra en roles que no están marcados como trabajos de IA en absoluto.
+
+En compensación, Levels.fyi coloca la compensación total mediana del ingeniero de IA cerca de 154,000 dólares a mediados de 2026, con la categoría más amplia de ingeniero de software ML/IA alrededor de 243,000 dólares, y los laboratorios de frontera mucho más arriba. Sus datos son autorreportados y se inclinan hacia empleadores mejor pagados, así que trátalo como una banda, no como un piso. El Barómetro Global de Trabajos de IA de PwC 2026 encontró una prima salarial del 62% para trabajadores con habilidades de IA, arriba del 57% hace un año. Para cómo esos números se sientan contra el pago general de desarrollador, mantengo [una guía de salario de desarrollador para 2026](/blog/developer-salary-guide-2026/) con las bandas más amplias.
+
+La cifra para interiorizar es la prima en lugar de ningún salario único. Las mismas habilidades de desarrollador web, más la capacidad de desplegar características de IA, exigen significativamente más, y la brecha se está ampliando año tras año.
+
+## Lo que ya sabes que se transfiere, y las tres brechas para cerrar {#what-you-already-know-that-transfers-and-the-three-gaps-to-close}
+
+La mayoría del kit de herramientas de un ingeniero de IA aplicada es desarrollo web que ya haces. Código asincrónico y promesas, llamadas y autenticación contra APIs, análisis de JSON, construcción de interfaces y despliegue a un host real se transfieren sin cambios. Un endpoint LLM es, mecánicamente, solo otra API que devuelve texto.
+
+Lo que probablemente no has hecho cae en tres brechas. La primera es tratar un modelo como una función confiable: prompting para que devuelva salida estructurada y analizable cada vez, no prosa que tengas que raspar. La segunda es recuperación: incorporar tus propios datos, almacenar los vectores, y consultarlos en tiempo de solicitud para que el modelo responda desde tus documentos en lugar de adivinar. La tercera es agencia: dar a un modelo un conjunto de herramientas, ejecutar el loop que le permite elegir cuál llamar, y manejar los fallos que ese loop produce. Cierra esas tres y tienes el núcleo del trabajo. El resto es trabajo web ordinario.
+
+## Tu hoja de ruta del ingeniero de IA basada en JavaScript, habilidad por habilidad {#your-javascript-first-ai-engineer-roadmap-skill-by-skill}
+
+Construye una cosa pequeña en cada etapa en lugar de coleccionar tutoriales. El orden importa, porque cada habilidad asume la anterior.
+
+1. Llama a un modelo y obtén salida estructurada. Usa el SDK oficial de TypeScript de OpenAI o Anthropic para enviar un prompt y obtén JSON en el que tu código pueda confiar. Hasta que la salida sea analizable cada vez, nada posterior es confiable, así que esto es donde pasar tu primera semana.
+2. Transmite la respuesta a una interfaz de usuario. Conecta el modelo a una interfaz de React o Node con el SDK de IA de Vercel para que los tokens aparezcan mientras se generan. Este es trabajo ordinario de cliente y servidor apuntado a un endpoint de modelo, y es la parte que encontrarás más fácil.
+3. Agrega recuperación, también llamada RAG. Incorpora tus propios documentos, almacena los vectores en una base de datos, y consulta los por solicitud para que el modelo responda desde tus datos. La mayoría de esto es tuberías de datos que ya entiendes, con embeddings como el único concepto nuevo.
+4. Construye un agente que usa herramientas. Dale al modelo funciones que puede llamar, ejecuta el loop donde elige una, y maneja los reintentos y callejones sin salida. Este es el momento en que un LLM deja de generar texto y comienza a tomar acciones, y es donde comienza la ingeniería real.
+5. Estandariza el acceso a herramientas con MCP. Expone tus herramientas y datos a través del Model Context Protocol para que cualquier modelo compatible pueda alcanzarlos sin pegamento personalizado por integración. Aprender el estándar ahora significa que tus agentes no están bloqueados a un solo proveedor.
+6. Despliega y gestiona contexto. Despliegua a una URL en vivo, controla lo que envías al modelo en cada paso para mantener el costo y la confiabilidad razonables, y agrega controles simples para que detectes salida incorrecta antes de que la vea un usuario. Mantenerlo confiable una vez que el tráfico real lo golpea es lo que realmente paga, y ese trabajo dura más que cualquier modelo individual.
+
+Si armarte esto por tu cuenta suena como mucha secuencia, ese es el intercambio honesto, y llego a la versión preordenada de esta lista exacta al final.
+
+## Cuándo realmente necesitas Python (la línea honesta) {#when-you-actually-do-need-python-the-honest-line}
+
+Necesitas Python cuando el trabajo es construir o cambiar modelos, no usarlos. Los roles de ingeniero investigador en laboratorios de frontera, pipelines de ajuste fino y entrenamiento, trabajo de arquitectura novedosa, y la mayoría de equipos de datos intensivos en ML asumen Python, las matemáticas bajo él, y herramientas como PyTorch. Las entrevistas en esas empresas prueban cosas que un curso aplicado corto nunca cubre, y ninguna cantidad de JavaScript sustituye eso.
+
+También hay una versión más suave. Incluso en trabajo aplicado ocasionalmente encontrarás una tarea, un script de procesamiento de datos, una libreta que un colega comparte, un arnés de evaluación, donde Python es el camino de menor resistencia. Eso está bien. Aprender suficiente Python para leer y ejecutar un script es un fin de semana, y es algo diferente de "aprende Python primero antes de que se te permita comenzar". Difiere hasta que una tarea real lo requiera.
+
+Así que la regla es corta. Roles aplicados e de integración: JavaScript es suficiente para conseguir contratado y hacer el trabajo. Roles de investigación y entrenamiento: aprende Python adecuadamente y presupuesta meses. Elige tu objetivo antes de elegir tu lista de lectura.
+
+## El portafolio que consigue que un ingeniero de IA de JavaScript sea contratado {#the-portfolio-that-gets-a-javascript-ai-engineer-hired}
+
+Lo que te consigue la entrevista es un pequeño conjunto de proyectos de trabajo, no un certificado. Los empleadores en el lado aplicado quieren verte desplegar las tres brechas como aplicaciones reales, así que un buen portafolio inicial son tres proyectos, cada uno desplegue a una URL en vivo.
+
+Construye una aplicación de recuperación sobre documentos que realmente tienes, tus notas, una codebase, un manual de producto, cualquier cosa donde el modelo respondiendo desde tus datos claramente lo vence adivinando. Construye un agente que usa herramientas que llama al menos una API externa real y maneja que esa llamada falle sin bloquearse. Construye algo que expone una herramienta a través de MCP, así que puedas hablar al estándar ahora remodelando cómo los modelos alcanzan datos. Luego escribe un párrafo honesto en cada uno sobre dónde se rompió y qué hiciste, porque la escritura de fracaso es lo que separa a alguien que siguió un tutorial de alguien que entiende el sistema. Para el principio más amplio de que los proyectos despliegue vencen las credenciales, ve [los proyectos de portafolio que te consiguen contratado](/blog/portfolio-projects-get-hired-2026/).
+
+## Auto-ensamblar vs. la versión estructurada de lo que acabas de construir a mano {#self-assemble-vs-the-structured-version-of-what-you-just-built-by-hand}
+
+Puedes ensamblar todo esto de forma gratuita, y un montón de gente disciplinada lo hace. Los documentos oficiales del SDK, las guías del SDK de IA de Vercel, la especificación de MCP, y el material de introducción gratuito de los proveedores de modelos cubren cada habilidad en la hoja de ruta. El costo se paga en horas en lugar de dinero: el tiempo que pasas secuenciándolo por ti mismo, golpeando callejones sin salida, y nunca sabiendo realmente si el orden que elegiste es el orden que importa.
+
+Una ruta estructurada intercambia una suscripción mensual baja por esa secuencia. El AI Engineer Path de Scrimba corre sobre 11.4 horas, JavaScript y TypeScript en todo, sin PyTorch. Te enseña a conectar LLMs, agentes, RAG, y MCP en aplicaciones que ya despliegas, aproximadamente en el orden que esta hoja de ruta lista, que es el orden en que un proyecto real se construye. Las lecciones de introducción gratuitas te permiten probar el formato de editar-el-código-del-instructor antes de pagar nada (actual [precios de Scrimba](/docs/pricing/), y qué es gratuito, se explica allí).
+
+Para el desglose módulo-por-módulo de esa ruta, incluyendo qué omite, mantengo una [reseña honesta del AI Engineer Path](/docs/paths/ai-engineer-path/). Si quieres el orden exacto del curso a seguir, [cómo aprender ingeniería de IA en Scrimba](/blog/learn-ai-engineering-scrimba/) y la [guía completa del AI Engineer Path](/blog/scrimba-ai-engineer-path-guide/) van curso por curso. Este post es el por qué y la hoja de ruta. Esos dos son el qué y el cómo.
+
+De cualquier forma, la acción esta semana es la misma. Elige un proyecto de la lista anterior, la aplicación de recuperación es el lugar más fácil para comenzar, y consigue que responda desde tus propios documentos antes del domingo. Aprenderás más de una característica despliegue que de otro mes decidiendo si se te permite comenzar.
+
+## Preguntas frecuentes {#frequently-asked-questions}
+
+**¿Puede un desarrollador de JavaScript convertirse en ingeniero de IA sin aprender Python primero?** Sí, para roles aplicados e de integración. Los trabajos que implican conectar LLMs, agentes, recuperación y el Model Context Protocol en productos reales funcionan en la pila de JavaScript y TypeScript, y los SDKs oficiales de OpenAI y Anthropic más el SDK de IA de Vercel cubren ese trabajo sin Python. Los roles de investigación y entrenamiento de modelos son la excepción y aún esperan Python.
+
+**¿Cuándo los ingenieros de IA realmente necesitan Python?** Cuando el trabajo implica entrenar, ajustar o interpretar modelos en lugar de simplemente usarlos. Los roles de ingeniero investigador en laboratorios de frontera, equipos de datos intensivos en ML y la mayoría del trabajo académico asumen Python, las matemáticas detrás de él y herramientas como PyTorch. Si tu objetivo es desplegar características de IA en aplicaciones web, puedes diferir Python hasta que una tarea específica lo requiera.
+
+**¿Qué construye un ingeniero de IA aplicada día a día?** Características sobre modelos existentes: interfaces de chat con respuestas en streaming, recuperación sobre documentos propios de la empresa, agentes que llaman herramientas externas, e integraciones que exponen datos a modelos a través de MCP. Es trabajo de integración y producto, más cercano al desarrollo web full-stack que a la ciencia de datos.
+
+**¿Cuánto ganan los ingenieros de IA en 2026?** Levels.fyi coloca la compensación total mediana del ingeniero de IA cerca de 154,000 dólares a mediados de 2026, con la categoría más amplia de ingeniero de software ML/IA alrededor de 243,000 dólares y los laboratorios de frontera mucho más arriba. Esos números autorreportados se inclinan hacia empleadores mejor pagados, así que trátalosComo una banda, no como un piso. El Barómetro Global de Trabajos de IA de PwC 2026 también encontró una prima salarial del 62% para trabajadores con habilidades de IA, arriba del 57% hace un año.
+
+**¿Cuál es la ruta más rápida basada en JavaScript para entrar en la ingeniería de IA?** Aprende a llamar a una API LLM y obtén salida estructurada, transmítela a una interfaz de usuario, agrega recuperación con embeddings y un almacén vectorial, construye un agente que usa herramientas, luego estandariza el acceso a herramientas con MCP. Construye un pequeño proyecto en cada etapa en lugar de coleccionar tutoriales. Esa secuencia se asigna al trabajo de IA aplicada y omite el material de entrenamiento de modelos que no usarías.
+
+**¿Es ingeniero de IA solo un rol de desarrollador web rebautizado?** No exactamente, pero la superposición es grande para roles aplicados. Reutilizas tu conocimiento de código asincrónico, APIs, JSON y despliegue, luego agregas tres cosas que probablemente no has hecho: prompting de modelos para salida estructurada confiable, recuperación, y loops de agentes con llamada de herramientas. Un desarrollador web que cierra esas brechas está más cerca de un trabajo de IA aplicada que de una contratación frontend fresca.
+
+<PricingCTA
+  title="Una ruta de IA basada en JavaScript"
+  subtitle="Sin desvío de Python. Aprende agentes, RAG y MCP en JavaScript en la ruta del Ingeniero de IA de Scrimba."
+  ctaType="free"
+/>

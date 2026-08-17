@@ -11,16 +11,43 @@ parameter, a build that throws at the locale barrier, or a code sample that teac
 
 **Translatable props, and nothing else:**
 
-| Prop | Appears on |
-|---|---|
-| `question`, `answer` | `<FAQAccordion>` |
-| `title` | `<CourseCard>`, `<CourseCurriculum>`, callouts |
-| `label` | `<AffiliateLink>`, `<PricingCTA>` |
-| `verdict` | `<PricingCTA>`, comparison summaries |
-| `alt` | images |
-| children | every component |
+| Prop | Appears on | Corpus count |
+|---|---|---|
+| `question`, `answer` | `<FAQAccordion>` | |
+| `title` | `<CourseCard>`, `<CourseCurriculum>`, callouts | 215 |
+| `description` | `<CourseCard>`, `<CourseSchema>` | **173** |
+| `subtitle` | `<PricingCTA>` | **119** |
+| `buttonText` | `<PricingCTA>` and other CTAs | **36** |
+| `ctaText` | `<VerdictBox>` | 13 |
+| `label` | `<AffiliateLink>`, `<PricingCTA>` | |
+| `verdict` | `<PricingCTA>`, comparison summaries | 15 |
+| `alt` | images | |
+| children | every component | |
+
+**`description`, `subtitle`, `buttonText` and `ctaText` were missing from this
+list until 2026-08-12, and their absence was the second-largest source of
+failures on record.** Translators correctly left them in English, and the cold
+judge correctly scored that as a Major Accuracy error, because all four render
+as user-visible text: `description` becomes a `<p>` inside `<CourseCard>` AND is
+passed through `plainText()` into `<CourseSchema>`'s JSON-LD, so leaving it
+English also ships an English course description to search results. If you add a
+component that takes a prose prop, add it here in the same commit.
+
+**`difficulty` is a CONTROLLED VOCABULARY, not free prose.** It renders in
+`<CourseCard>` and is also emitted as `educationalLevel` by `<CourseSchema>`, so
+the two must agree on the same page. Translate it, but use exactly one rendering
+per locale for each of the three values — for `es`: Beginner -> `Principiante`,
+Intermediate -> `Intermedio`, Advanced -> `Avanzado`. A page that says
+`Intermedio` in the card and `Intermediate` in the schema is a Terminology error.
+
+**`rating` is a score, not prose.** `4.5/5` stays `4.5/5`. Only a worded rating
+(`Conditional yes`) is translated.
 
 **Never touch:**
+- `location` — a GA4 `cta_location` analytics label (e.g. `pricing-final`,
+  `comparison-inline`), never rendered to the reader. Translating it silently
+  fragments conversion reporting per locale.
+
 
 - `href`, `to`, `slug`, `courseSlug`, `id`
 - component names (`<AffiliateLink>` stays `<AffiliateLink>`)
