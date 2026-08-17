@@ -138,7 +138,11 @@ test('affiliate integrity: tag state closes on a lone ">" line', () => {
     '  href="https://scrimba.com/home?pricing"',
     '>Voir</AffiliateLink>',
     '',
-    'Voir [les tarifs](https://scrimba.com/our-pricing).',
+    // Deliberately a URL the English source does NOT contain, so this test keeps
+    // measuring tag-state closing rather than accidentally hitting the
+    // source-parity exemption (a bare URL present in the English original is
+    // exempt, because copying it is link parity, not a stripped via= param).
+    'Voir [le cours](https://scrimba.com/learn/frontend-not-in-source).',
   ].join('\n');
   const found = lint(FR_DOC, text);
   assert.equal(found.length, 1, 'the markdown link after the closed tag must still be flagged');
@@ -279,5 +283,21 @@ test('scan set covers i18n/ and still covers the English surfaces', () => {
   assert.ok(
     !files.some((f) => f.endsWith('coverage.json') || f.endsWith('translation-status.json')),
     'generated manifests are not linted',
+  );
+});
+
+test('affiliate integrity: source-parity exemption is narrow', () => {
+  // A bare scrimba.com URL that the ENGLISH source also leaves bare is exempt:
+  // reproducing it is link parity, and tagging an "official pricing" citation
+  // would be dishonest. docs/pricing/index.mdx contains exactly such a link.
+  assert.deepEqual(
+    lint(FR_DOC, 'Voir [les tarifs](https://scrimba.com/our-pricing).'),
+    [],
+  );
+  // But a DIFFERENT untagged link is still a violation — the exemption must not
+  // become a blanket bypass that lets a stripped via= param through.
+  assert.equal(
+    lint(FR_DOC, 'Voir [le cours](https://scrimba.com/learn/learnreact).').length,
+    1,
   );
 });

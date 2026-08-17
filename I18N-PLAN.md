@@ -4,8 +4,8 @@
 European, Indian, Japanese, and Arabic-speaking search markets, without losing any of the
 English rankings or SEO invariants the site already depends on.
 
-**Status:** planning only. No code written yet. Translation execution happens later via
-ultracode + dynamic workflows; this document is the contract those workflows must follow.
+**Status:** infrastructure COMPLETE and committed; `es` translation IN PROGRESS and PARKED.
+See §19 for the execution log. This document remains the contract.
 
 **Author's note on scope:** this is deliberately front-loaded. Phases 0 to 3 are
 infrastructure and cost roughly two weeks of engineering. They are what make the
@@ -2310,3 +2310,96 @@ work, noted inline.
 7. **Rotate the service account key.** It has been on disk in two repos, and its 200/day Indexing
    API quota is shared with `use-apify.com`. *Blocks:* nothing, but do it before the automation
    handles anything that matters.
+
+---
+
+## 19. Execution log (updated 2026-08-17)
+
+Written at the point work was parked. Numbers are from `i18n/coverage.json`, not estimates.
+
+### What shipped
+
+Branch `feat/i18n-phase-1`, 10 commits, **not merged, no locale live**. `i18n.locales`
+still resolves to `['en']`; no `build/es/` is emitted; nothing has reached production.
+
+Every infrastructure phase is done: the `config/` split, the 48-locale roster, `localePath`,
+the disk-derived coverage manifest, manifest-driven hreflang via an ejected `SiteMetadata`,
+per-locale `baseUrl` (B5), Pagefind (7.8 MB lunr monolith to a 2.05 MB sharded index),
+the matrix deploy + `wrangler.json`, RTL and per-script fonts, the `translate-content` and
+`translate-es` skills with their QA scripts, and the per-locale exclusion machinery.
+
+### `es` state at park
+
+| Metric | Value |
+|---|---|
+| Covered (cold-judge pass + integrity clean) | **84 / 212 (40%)** |
+| Blocked (failed judging) | 74 |
+| Dropped ratio | **34.9%** |
+| §7.1 launch veto | **10%** |
+| Verdict | **`es` CANNOT LAUNCH as-is** |
+
+`status: 'draft'`. The blocked pages must be retranslated and re-judged to bring the
+dropped ratio under 10%, or the declared route set must shrink (see Next steps).
+
+### Model quality, measured on this corpus
+
+Same contract, same checkers, same judge design — only the translating model changed:
+
+| Translator | Pass rate | Median MQM (gate <5) |
+|---|---|---|
+| Haiku 4.5 | 25/92 — 27% | — |
+| Sonnet, `effort: low` | 33/57 — 58% | 6.10 |
+| Sonnet, `effort: high` | 16/18 — 89% | 1.10 |
+
+Low effort is a false economy here: a failing page costs the translate call *plus* the
+judge call *plus* a retranslation, so it is more expensive **per passing page**. Haiku
+produced errors no checker can catch — `cavedad` (not a Spanish word), `bien paseado`
+for "well-paced", `práctica práctica`, and `$1,299` rewritten as `$1.299`, which changes
+a cost-comparison figure by a factor of a thousand.
+
+### Four contract defects found, all fixed and all gated
+
+Each was the CONTRACT being wrong, not the translator. Each is now enforced by a
+deterministic, model-independent check, so it cannot recur silently:
+
+1. **Template literals frozen.** The JSX policy said never touch anything inside `{...}`,
+   so translators skipped every interpolated string: Spanish tables with English columns,
+   Spanish FAQ questions with English answers *inside FAQPage schema*. 24 Major errors in
+   22 pages. Gate: `template-literal-untranslated`.
+2. **Prose props missing from the allowlist.** `description` (173 uses), `subtitle` (119),
+   `buttonText` (36), `ctaText` (13) all render as visible text, and `description` also
+   feeds `CourseSchema`'s JSON-LD — so an untranslated one shipped an English course
+   description to Google. Gate: `prose-prop-untranslated`.
+3. **Markdown links unprotected.** The contract froze `href`/`to` props; the corpus has
+   **2,221 markdown links and zero such props**. Gate: link-target multiset equality.
+4. **Self-assessed verdicts counted as coverage.** Every translator wrote its own
+   `verdict: pass` — one self-scoring MQM 2.1 on a page the cold judge scored 21.7. The
+   manifest claimed 22/212 complete when the truth was 4/212. Coverage now requires an
+   explicit pass from a judge whose `judgeModel` is not self-review.
+
+### Two sidecar corruptions, repaired
+
+Caused by an escape hatch in the translation prompt ("edit the sidecar JSON directly"),
+which let agents invent a schema:
+
+- **24 sidecars stored `sha256(sourcePath)` in `sourceHash`** — the FILENAME hash, not the
+  CONTENT hash. Those pages read as permanently stale and were silently excluded.
+- **21 sidecars used `source` instead of `sourcePath`** and omitted `sourceHash` entirely.
+
+Both were deterministically repaired (coverage 63 to 84 with no model spend), and
+`translation-status.mjs` now rejects both shapes.
+
+### Next steps, cheapest first
+
+1. **Repair, don't retranslate, wherever possible.** Two of the four defect classes are
+   mechanical. A script that fixes untranslated prose props and template literals in place
+   would recover a large share of the 74 blocked pages for near-zero model spend. Do this
+   before buying any more translation.
+2. **Retranslate the true failures at `effort: high`.** Low effort and Haiku are both
+   measurably below the gate; using them costs more per passing page.
+3. **Consider narrowing `es` to Core-40.** ~40 routes instead of 212. §1's gate measures
+   completeness against the *declared* set, so a complete Core-40 `es` is a legitimate
+   launch, and it is roughly a fifth of the remaining cost. The full set currently cannot
+   clear the 10% veto.
+4. **Only then** flip `status: 'live'`, run the per-locale barrier build, and deploy.
+

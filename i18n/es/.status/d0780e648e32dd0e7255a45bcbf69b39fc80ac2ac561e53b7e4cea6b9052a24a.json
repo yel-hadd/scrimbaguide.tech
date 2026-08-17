@@ -1,14 +1,17 @@
 {
-  "source": "docs/practice/practice-ai-engineering.mdx",
+  "sourcePath": "docs/practice/practice-ai-engineering.mdx",
+  "route": "/docs/practice/practice-ai-engineering/",
   "locale": "es",
-  "state": "blocked",
+  "sourceHash": "ecd682fecc00c354a69c64d1399ae695cea987e504e55a616e3531ca06dbb2f8",
+  "translatedAt": "1970-01-01T00:00:00.000Z",
+  "tier": "faithful",
   "mqm": {
-    "score": 18.8,
+    "score": 20.5,
     "verdict": "fail",
-    "judgeModel": "cold judge haiku",
+    "judgeModel": "cold judge sonnet",
     "majorAccuracyErrors": 2,
-    "terminologyErrors": 0,
-    "minorErrors": 1,
+    "terminologyErrors": 1,
+    "minorErrors": 2,
     "details": [
       {
         "line": 20,
@@ -26,6 +29,14 @@
         "points": 1
       },
       {
+        "line": 40,
+        "type": "Terminology - Wrong sense",
+        "english": "message arrays",
+        "spanish": "matrices de mensajes",
+        "issue": "\"Array\" mistranslated as \"matriz\" (math matrix), not the programming term for array/arreglo. Confuses meaning for developer readers.",
+        "points": 5
+      },
+      {
         "line": 85,
         "type": "Major Accuracy - Nonsensical",
         "english": "hands-on practice",
@@ -35,5 +46,7 @@
       }
     ]
   },
-  "registerAssessment": "Reads like English translated literally into Spanish word order, with calqued noun phrases (\"productos de envío\") and doubled words (\"práctica práctica\") that a native speaker would not write. Evidence: Line 20 'productos de envío' is a false cognate structure from English 'shipping products', not how Spanish developers would describe launching AI applications."
+  "jsd": null,
+  "state": "blocked",
+  "attempts": 1
 }

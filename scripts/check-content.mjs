@@ -272,6 +272,32 @@ const STALE_BACKEND_HOURS = /\b(?:30\.1|39\.4)\b/;
  * fills up (measured: 2,100 files in ~0.25s), so no regex may be constructed inside the
  * per-line loop and no file may be read twice. It gates every build via `prebuild`.
  */
+/**
+ * The bare scrimba.com URLs an English source file already contains.
+ *
+ * Maps a translation path back to its English original and collects every
+ * scrimba.com URL there that carries no affiliate param. Used to exempt a
+ * translation from the affiliate rule when it is faithfully reproducing a link
+ * the English page deliberately left untagged (the /our-pricing citation).
+ * Returns an empty set when the source cannot be resolved, so the rule fails
+ * CLOSED: an unresolvable path keeps the strict behaviour.
+ */
+function englishBareScrimbaUrls(rel) {
+  const m = rel.match(/^i18n\/[^/]+\/docusaurus-plugin-content-(docs\/current|blog|pages)\/(.+)$/);
+  if (!m) return new Set();
+  const base = { 'docs/current': 'docs', blog: 'blog', pages: 'src/pages' }[m[1]];
+  const src = path.join(ROOT, base, m[2]);
+  if (!fs.existsSync(src)) return new Set();
+  const out = new Set();
+  const text = fs.readFileSync(src, 'utf8');
+  const rx = new RegExp(SCRIMBA_URL.source, 'g');
+  let hit;
+  while ((hit = rx.exec(text)) !== null) {
+    if (!hit[0].includes('via=')) out.add(hit[0]);
+  }
+  return out;
+}
+
 export function createLinter({ config = loadConfig(), affiliateId = readAffiliateId() } = {}) {
   const mirrorGap = buildMirrorGap(config.priceRules?.comparisonConnectives ?? []);
   const priceRules = [
@@ -304,6 +330,10 @@ export function createLinter({ config = loadConfig(), affiliateId = readAffiliat
     const violations = [];
     const { locale, forbidden, rules } = localeRules(localeForPath(rel));
     const checkAffiliate = isTranslationPath(rel);
+    // Bare (un-tagged) scrimba.com URLs present in this file's ENGLISH source.
+    // A translation copying one of these is obeying link parity, not stripping a
+    // via= param -- see the exemption at the violation site below.
+    const englishBareUrls = checkAffiliate ? englishBareScrimbaUrls(rel) : null;
     const lines = text.split('\n');
     // Multi-line tag state, carried down the file. Tracked for every line of a translation
     // file (not just the ones holding a URL), because a tag opened three lines earlier is
@@ -349,6 +379,18 @@ export function createLinter({ config = loadConfig(), affiliateId = readAffiliat
           const inRawAnchor = tagOpenAt(line, match.index, RAW_ANCHOR_OPEN, anchorOpen);
           const prop = PROP_BEFORE_URL.exec(line.slice(0, match.index))?.[1];
           if (!wrapped && !(prop && allowedProps.has(prop) && !inRawAnchor)) {
+            // SOURCE PARITY EXEMPTION. Two rules of this program collide here:
+            // "every scrimba.com link carries via=" (invariant 9) and "never
+            // change a link target" (slug/link parity). When the ENGLISH source
+            // deliberately links to scrimba.com WITHOUT the affiliate param --
+            // the /our-pricing reference is the real case, where tagging an
+            // "official price" citation would be dishonest -- a faithful
+            // translation must copy it verbatim, and flagging that punishes the
+            // translator for obeying the more important rule.
+            // So: a bare URL in a translated file is a violation only if it is
+            // NOT bare in the English source. A translator who STRIPS a via=
+            // param still fails, which is the revenue case this rule exists for.
+            if (englishBareUrls && englishBareUrls.has(match[0])) continue;
             violations.push(`${rel}:${n} scrimba.com link without affiliate attribution (use <AffiliateLink> or ${affiliateParam}): ${match[0].slice(0, 100)}`);
           }
         }

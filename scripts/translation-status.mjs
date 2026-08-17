@@ -79,6 +79,22 @@ export function validateSidecar(obj, { fileName = null, locale = null } = {}) {
   // the model doing the grading. A fabricated JSD is strictly worse than an absent
   // one. Nulls are excluded from the median below, and this must tighten to
   // required-number once the producer lands.
+  // A sidecar whose sourceHash equals sha256(sourcePath) is the path-hash bug:
+  // an agent hand-editing the JSON confused the FILENAME hash (which is
+  // sha256 of the path) with the CONTENT hash. The page then reads as
+  // permanently stale and is silently excluded from coverage forever.
+  // Measured 2026-08-17: 24 sidecars, 24 good pages wrongly uncounted.
+  if (typeof obj.sourcePath === 'string' && typeof obj.sourceHash === 'string') {
+    const pathHash = crypto.createHash('sha256').update(obj.sourcePath).digest('hex');
+    if (obj.sourceHash === pathHash) {
+      errors.push('sourceHash is sha256(sourcePath) — that is the FILENAME hash, not the file CONTENT hash');
+    }
+  }
+  // Agents that hand-edited sidecars invented `source` instead of `sourcePath`
+  // and omitted sourceHash entirely (21 cases). Reject the wrong schema loudly.
+  if (obj.source !== undefined && obj.sourcePath === undefined) {
+    errors.push("field is 'sourcePath', not 'source' — sidecar written with an invented schema");
+  }
   if (obj.jsd !== null && typeof obj.jsd !== 'number') {
     errors.push('jsd must be a number, or null when not yet measured (section 13.5)');
   }
