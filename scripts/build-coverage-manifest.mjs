@@ -282,7 +282,22 @@ function relSourceFor(entry) {
   return `${base}/${entry.sourceFile}`;
 }
 
-export function coverageForLocale(locale, declared, universe) {
+/**
+ * May this route be transcreated rather than faithfully translated?
+ *
+ * Read from tiers.json, never inferred. Transcreation is the only tier allowed
+ * to change framing, so mis-tagging a page grants it permission to invent local
+ * claims; that is not a style slip, it is how an unsourced competitor price
+ * comparison reached a page whose English source makes no such claim.
+ */
+export function isTranscreationRoute(route, tiers) {
+  const t = tiers?.transcreation;
+  if (!t) return false;
+  if ((t.routes ?? []).includes(route)) return true;
+  return (t.routePrefixes ?? []).some((prefix) => route.startsWith(prefix));
+}
+
+export function coverageForLocale(locale, declared, universe, TIERS_CACHE = null) {
   const byRoute = new Map(universe.map((e) => [e.route, e]));
   const covered = [];
   const missing = [];
@@ -329,12 +344,26 @@ export function coverageForLocale(locale, declared, universe) {
     // covered is the same class of error as counting an untranslated copy:
     // the locale would report itself complete and ship pages a judge rejected.
     // Measured on the first es tranche: 22 sidecars written, 4 judge passes.
-    if (sidecar.mqm && sidecar.mqm.verdict && sidecar.mqm.verdict !== 'pass') {
-      missing.push({ route, reason: `mqm:${sidecar.mqm.verdict}` });
+    // Tier authorization. Transcreation licenses reframing for the market, so a
+    // page wrongly tagged with it is licensed to invent local claims: a run that
+    // mis-classified a blog post as a money page produced an unsourced price
+    // comparison against a named competitor that the English source never made.
+    // The authoritative set lives in tiers.json, never in a classifier's regex.
+    if (sidecar.tier === 'transcreation' && !isTranscreationRoute(route, TIERS_CACHE)) {
+      missing.push({ route, reason: 'tier-not-authorized-for-transcreation' });
       continue;
     }
-    if (!sidecar.mqm || sidecar.mqm.verdict === undefined) {
-      missing.push({ route, reason: 'not-yet-judged' });
+
+    // ALLOWLIST, not denylist. This must be `=== 'pass'` and nothing looser.
+    // The previous formulation tested `verdict && verdict !== 'pass'` and then
+    // `verdict === undefined`, which let `verdict: null` through BOTH branches
+    // (null is falsy, and null !== undefined) and silently counted 16 unjudged
+    // pages as covered. Every relaxation of this check has produced the same
+    // failure: a locale reporting itself complete when it is not. Any state
+    // that is not an explicit pass is not coverage.
+    const verdict = sidecar.mqm?.verdict ?? null;
+    if (verdict !== 'pass') {
+      missing.push({ route, reason: verdict ? `mqm:${verdict}` : 'not-yet-judged' });
       continue;
     }
     // The verdict must come from a COLD judge, not the translator's own review.
@@ -363,7 +392,7 @@ export function buildManifest() {
   for (const rec of roster) {
     if (rec.locale === 'en') continue; // the default locale is the source, never a translation target
     const declared = resolveRouteSet(rec.coverage, tiers, universe);
-    const { covered, missing, stale, blocked } = coverageForLocale(rec.locale, declared, universe);
+    const { covered, missing, stale, blocked } = coverageForLocale(rec.locale, declared, universe, tiers);
 
     // ALWAYS_BUILT: the five .tsx routes are translated through code.json and can
     // never be "covered" by a translated markdown file, so they are injected into

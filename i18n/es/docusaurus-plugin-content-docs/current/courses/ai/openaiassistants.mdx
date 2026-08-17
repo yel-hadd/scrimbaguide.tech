@@ -1,0 +1,84 @@
+---
+title: "OpenAI Assistants API en Scrimba"
+sidebar_position: 12
+description: "Análisis honesto del curso Scrimba Pro de la OpenAI Assistants API: 30 min y 7 lecciones sobre threads, recuperación de archivos y llamadas a herramientas."
+keywords: [curso openai assistants api opiniones, api de asistentes de openai scrimba, curso de ia en JavaScript, aprender assistants api desde cero, threads y tool calling openai]
+last_update:
+  date: 2026-05-29
+---
+
+import CourseCard from '@site/src/components/CourseCard';
+import CourseSchema from '@site/src/components/CourseSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+
+# OpenAI Assistants API en Scrimba
+
+Scrimba tiene un curso Pro corto sobre la OpenAI Assistants API, el conjunto de herramientas para crear apps de IA estilo asistente en JavaScript usando threads, recuperación de archivos y llamadas a herramientas. Lo imparte Guil Hernandez en unos 30 minutos a lo largo de 7 lecciones, y se ubica en el extremo más aplicado del recorrido de AI Engineer.
+
+## Respuesta rápida {#quick-answer}
+
+El curso de OpenAI Assistants API es un curso Scrimba Pro: unos 30 minutos a lo largo de 7 lecciones, impartido por Guil Hernandez, de nivel intermedio. Construyes un chatbot con recuperación de conocimiento usando las cuatro primitivas de la Assistants API (Assistants, Threads, Messages y Runs). Es una introducción rápida y enfocada, no un curso a fondo, y asume que ya sabes escribir JavaScript y llamar a una API. La primera lección es una muestra gratis; el resto requiere Pro.
+
+<CourseCard
+  title="Learn OpenAI's Assistants API"
+  duration="30 min"
+  difficulty="Intermediate"
+  access="Pro"
+  lessons={7}
+  instructor="Guil Hernandez"
+  href="https://scrimba.com/learn/openaiassistants"
+  description="Construye apps de IA estilo asistente en JavaScript con threads, recuperación de archivos y llamadas a herramientas, en unos 30 minutos."
+/>
+
+<CourseSchema
+  name="Learn OpenAI's Assistants API"
+  description="Curso Scrimba Pro sobre la OpenAI Assistants API: construye apps de IA estilo asistente en JavaScript usando threads, recuperación de archivos y llamadas a herramientas, impartido por Guil Hernandez en unos 30 minutos."
+  url="https://scrimba.com/learn/openaiassistants"
+  timeRequired="PT30M"
+  difficulty="Intermediate"
+  access="Pro"
+  keywords={["OpenAI Assistants API", "AI assistants", "tool calling", "JavaScript", "RAG"]}
+/>
+
+## ¿Vale la pena tu tiempo? {#is-it-worth-your-time}
+
+Si ya estás en el AI Engineer Path o pagas Pro, sí: 30 minutos para tener un asistente de recuperación de conocimiento funcionando es un buen trato, y los scrims interactivos hacen que lo construyas en vez de solo mirar. Es una de las formas más rápidas de ver la Assistants API de principio a fin.
+
+Las salvedades honestas son la duración y la dependencia de la plataforma. Con 7 lecciones es una orientación, no un tratamiento a fondo, así que no esperes patrones de producción como streaming, control de costos o evaluación. Además está ligado específicamente a la OpenAI Assistants API; los conceptos (threads, recuperación, llamadas a herramientas) sí se transfieren, pero el código es la superficie de OpenAI. Si buscas un enfoque neutral de plataforma sobre agentes, [Learn AI Agents](/docs/courses/ai/ai-agents/) es más amplio.
+
+Una nota de vigencia que conviene saber antes de empezar: OpenAI está migrando de la Assistants API hacia su nueva Responses API, y la Assistants API está en camino de quedar obsoleta. Eso no invalida el curso. El modelo mental que enseña (gestionar la conversación con threads, fundamentar las respuestas con recuperación de archivos y dejar que el modelo dispare tus funciones mediante llamadas a herramientas) es exactamente lo que se traslada a la Responses API y a otros proveedores. Apréndelo por las primitivas, y espera tener que adaptar las llamadas específicas cuando lo lleves a producción.
+
+## Qué aprenderás {#what-youll-learn}
+
+El curso recorre los bloques de construcción de la Assistants API y los une en un chatbot de películas que responde a partir de un conjunto de datos subyacente:
+
+- **Assistants, Threads, Messages y Runs**, las cuatro primitivas sobre las que se construye la API
+- **Threads**, para que el historial de conversación se gestione por ti en lugar de a mano
+- **Recuperación de archivos**, para que el asistente pueda responder a partir de documentos que tú le proporciones
+- **Llamadas a herramientas**, para que el asistente pueda activar tus propias funciones en lugar de solo generar texto
+- **Todo junto**, en un asistente funcional con acceso a ese conocimiento
+
+## Para quién es, y quién puede saltárselo {#who-its-for-and-who-should-skip-it}
+
+Encaja bien con desarrolladores de JavaScript que quieren una primera construcción rápida y práctica sobre la Assistants API, sobre todo si estás prototipando un copiloto interno o un chatbot basado en recuperación.
+
+Sáltatelo si eres nuevo en programación: asume JavaScript funcional y familiaridad con APIs. Empieza primero con las opciones gratis: [Learn to Code with AI](/docs/courses/ai/to-code-with-ai/), [Intro to Mistral AI](/docs/courses/ai/mistral-ai/) y [Build Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase/).
+
+## Dónde encaja {#where-it-fits}
+
+Este curso se ubica dentro del [AI Engineer Path](/docs/paths/ai-engineer-path/), junto con los demás cursos de IA aplicada, y se toma después de los fundamentos, no como primer paso.
+
+<FAQAccordion items={[
+  { q: "¿Este curso es gratis?", a: "Es un curso Pro de Scrimba con una lección de muestra gratis. El curso completo de 7 lecciones requiere Pro. Para puntos de partida totalmente gratis, prueba Learn to Code with AI, Intro to Mistral AI o Build Serverless AI Agents with Langbase." },
+  { q: "¿Cuánto dura el curso?", a: "Unos 30 minutos a lo largo de 7 lecciones, impartido por Guil Hernandez a nivel intermedio." },
+  { q: "¿Qué te permite construir la Assistants API?", a: "Apps de IA estilo asistente en JavaScript usando threads para el historial de conversación, recuperación de archivos para documentos y llamadas a herramientas para que el asistente ejecute tus funciones. Es una forma habitual de prototipar copilotos internos y chatbots de recuperación." },
+  { q: "¿Necesito experiencia previa?", a: "Sí. Asume JavaScript funcional y familiaridad con el uso de APIs. Quienes recién empiezan deberían comenzar primero con los cursos de IA gratis del recorrido." },
+  { q: "¿Dónde encaja dentro del AI Engineer Path?", a: "Es uno de los cursos de IA aplicada del recorrido, y se toma después de los fundamentos, no como primer paso." },
+]} />
+
+<div className="mdx-widget-center-cta mdx-widget-center-cta--spaced-bottom">
+  <AffiliateLink href="https://scrimba.com/learn/openaiassistants" variant="button" location="openai-assistants-cta">
+    Ver el curso en Scrimba
+  </AffiliateLink>
+</div>

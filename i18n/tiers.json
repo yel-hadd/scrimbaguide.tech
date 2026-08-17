@@ -23,7 +23,6 @@
   "version": 2,
   "routeSets": {
     "full": "*",
-
     "full-minus-course-leaves": {
       "$comment": [
         "Tier B scope, locked as decision 4 in section 18: the full site MINUS the 71",
@@ -53,7 +52,9 @@
         "'coverage' in i18n/locales.config.ts ('full'), never an edit to this entry."
       ],
       "base": "full",
-      "excludeRouteGlobs": ["/docs/courses/*/*/"],
+      "excludeRouteGlobs": [
+        "/docs/courses/*/*/"
+      ],
       "retainRoutes": [
         "/docs/courses/",
         "/docs/courses/react/",
@@ -65,7 +66,6 @@
         "/docs/courses/typescript/"
       ]
     },
-
     "core": [
       "/docs/intro/",
       "/docs/paths/",
@@ -76,32 +76,26 @@
       "/docs/changelog/",
       "/about/",
       "/contact/",
-
       "/docs/paths/frontend-developer-path/",
       "/docs/paths/fullstack-developer-path/",
       "/docs/paths/backend-developer-path/",
       "/docs/paths/ai-engineer-path/",
       "/docs/paths/study-plan/",
-
       "/docs/comparisons/scrimba-vs-codecademy/",
       "/docs/comparisons/scrimba-vs-udemy/",
       "/docs/comparisons/scrimba-vs-freecodecamp/",
       "/docs/comparisons/scrimba-vs-coursera/",
       "/docs/comparisons/scrimba-vs-odin-project/",
       "/docs/comparisons/scrimba-vs-youtube/",
-
       "/docs/pricing/pro-vs-free/",
       "/docs/pricing/student-discount/",
       "/docs/pricing/refund-policy/",
       "/docs/pricing/scrimba-vs-bootcamps/",
-
       "/docs/how-it-works/how-scrims-work/",
       "/docs/how-it-works/is-scrimba-free/",
       "/docs/how-it-works/certificates/",
-
       "/docs/for/",
       "/docs/for/beginners/",
-
       "/docs/courses/react/",
       "/docs/courses/javascript/",
       "/docs/courses/css/",
@@ -109,13 +103,11 @@
       "/docs/courses/backend/",
       "/docs/courses/python/",
       "/docs/courses/typescript/",
-
       "/blog/scrimba-review/",
       "/blog/is-scrimba-worth-it/",
       "/blog/best-free-scrimba-courses/",
       "/blog/how-long-to-learn-web-development-2026/"
     ],
-
     "micro": [
       "/docs/intro/",
       "/docs/paths/",
@@ -126,13 +118,11 @@
       "/docs/changelog/",
       "/about/",
       "/contact/",
-
       "/docs/paths/frontend-developer-path/",
       "/docs/paths/fullstack-developer-path/",
       "/docs/paths/backend-developer-path/",
       "/docs/paths/ai-engineer-path/",
       "/docs/paths/study-plan/",
-
       "/blog/scrimba-review/",
       "/blog/is-scrimba-worth-it/"
     ]
@@ -159,6 +149,34 @@
       "plugin-content-pages exclude AND footer link replacement in non-en locales, or the",
       "footer alone throws in every locale (section 4 Phase 2 task (d))."
     ],
-    "globs": ["legal/**"]
+    "globs": [
+      "legal/**"
+    ]
+  },
+  "transcreation": {
+    "$comment": [
+      "The ONLY routes that may be transcreated rather than faithfully translated.",
+      "Authoritative, because guessing this set has already caused a real defect: a",
+      "run classified /blog/why-i-keep-renewing-scrimba-pro/ as a money page, its",
+      "sidecar recorded tier 'transcreation', and the page then inserted an unsourced",
+      "price comparison against a named competitor that the English source never makes.",
+      "A cold MQM judge scored that Major Accuracy (Addition).",
+      "",
+      "Transcreation licenses ONLY: local competitor set, local job-market framing,",
+      "local social proof, and a CTA rewritten for the market. Claims, structure,",
+      "headings, anchors, components and links stay. Mirrors translate-content/SKILL.md;",
+      "keep the two in sync."
+    ],
+    "routePrefixes": [
+      "/docs/paths/",
+      "/docs/comparisons/",
+      "/docs/pricing/"
+    ],
+    "routes": [
+      "/",
+      "/blog/scrimba-review/",
+      "/blog/is-scrimba-worth-it/",
+      "/blog/scrimba-pro-pricing-explained-2026/"
+    ]
   }
 }
