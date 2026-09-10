@@ -8,9 +8,9 @@ export interface RelatedGuide {
 export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   // --- 2026-09-08 ---
   '/blog/how-to-learn-devops-2026': [
-    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
-    { title: 'Learn SQL on Scrimba', href: '/docs/courses/backend/sql/', type: 'doc' },
+    { title: 'Scrimba Backend Path Review', href: '/blog/scrimba-backend-path-review', type: 'blog' },
     { title: 'Coding Experience Without a Job', href: '/blog/how-to-get-coding-experience-without-a-job-2026', type: 'blog' },
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
   ],
 
   // --- Week 30 batch: one post per cluster (2026-07-23) ---
