@@ -6,6 +6,13 @@ export interface RelatedGuide {
 }
 
 export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
+  // --- 2026-09-08 ---
+  '/blog/how-to-learn-devops-2026': [
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+    { title: 'Learn SQL on Scrimba', href: '/docs/courses/backend/sql/', type: 'doc' },
+    { title: 'Coding Experience Without a Job', href: '/blog/how-to-get-coding-experience-without-a-job-2026', type: 'blog' },
+  ],
+
   // --- Week 30 batch: one post per cluster (2026-07-23) ---
   '/blog/scrimba-vs-chatgpt-learn-to-code': [
     { title: 'Best Interactive Coding Platforms 2026', href: '/blog/best-interactive-coding-platforms-2026', type: 'blog' },

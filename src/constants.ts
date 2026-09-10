@@ -25,3 +25,10 @@ export const DEMO_SCRIM_URL_AFFILIATE = `${DEMO_SCRIM_URL}?${AFFILIATE_PARAM}`;
 
 /** Scrimba Pro pricing page with the affiliate param inlined. */
 export const PRO_AFFILIATE_URL = `https://scrimba.com/home?pricing&${AFFILIATE_PARAM}`;
+
+/**
+ * Hosts whose outbound links are monetised and therefore must carry
+ * `rel="nofollow"`. Scrimba links also get the `via=` param appended by
+ * `<AffiliateLink>`; other merchants arrive pre-tracked from their network.
+ */
+export const MONETISED_HOSTS = ['scrimba.com', 'trk.udemy.com'] as const;

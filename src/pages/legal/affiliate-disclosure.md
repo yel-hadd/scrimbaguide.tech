@@ -10,13 +10,18 @@ keywords: [scrimbaguide affiliate disclosure, scrimba affiliate]
 
 ## In plain English
 
-Clicking our affiliate links costs you nothing extra. We earn a commission only if you subscribe to Scrimba Pro through one of those links. That commission is what lets us run this site without ads, sponsored posts, or paid endorsements. It does not change which courses we recommend or which competitors we link to. If we think the free tier is enough for you, we will say so on the page.
+Clicking our affiliate links costs you nothing extra. We earn a commission if you buy through one of them, currently from Scrimba and from Udemy. That commission is what lets us run this site without ads, sponsored posts, or paid endorsements. It does not change which courses we recommend or which competitors we link to. If we think the free tier is enough for you, we will say so on the page.
 
 ## FTC Disclosure & Material Connection
 
 In accordance with the Federal Trade Commission's 16 CFR Part 255 guidelines ("Guides Concerning the Use of Endorsements and Testimonials in Advertising"), Scrimba Guide discloses the following material connection:
 
-**Scrimba Guide is a participant in the Scrimba Affiliate Program.** When you click affiliate links on this site and subscribe to Scrimba Pro, we earn a commission. This commission comes at **no additional cost to you** and does not influence our editorial assessments, ratings, or recommendations.
+**Scrimba Guide participates in the following affiliate programs:**
+
+- **The Scrimba Affiliate Program.** When you click a Scrimba link on this site and subscribe to Scrimba Pro, we earn a commission.
+- **The Udemy affiliate program** (via Impact). When you click a Udemy link on this site and buy a course, we earn a commission.
+
+These commissions come at **no additional cost to you** and do not influence our editorial assessments, ratings, or recommendations. Where a free resource serves you better than a paid one, we say so, including when the paid one would pay us.
 
 ## How We Review
 

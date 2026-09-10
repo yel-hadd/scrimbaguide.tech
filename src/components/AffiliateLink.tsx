@@ -1,5 +1,5 @@
 import React from 'react';
-import { AFFILIATE_PARAM } from '@site/src/constants';
+import { AFFILIATE_PARAM, MONETISED_HOSTS } from '@site/src/constants';
 
 declare global {
   interface Window {
@@ -26,6 +26,9 @@ export default function AffiliateLink({
   onClick,
   location,
 }: AffiliateLinkProps): React.ReactElement {
+  /* Scrimba links get the `via=` param appended. Other monetised merchants
+     (e.g. Udemy via Impact) arrive already tracked in the href, so they are
+     passed through untouched but still marked as paid links below. */
   /* eslint-disable no-nested-ternary */
   const url = href.includes('scrimba.com')
     ? href.includes('via=')
@@ -59,9 +62,10 @@ export default function AffiliateLink({
     return child;
   });
 
-  const rel = url.includes('scrimba.com')
-    ? 'nofollow noopener noreferrer'
-    : 'noopener noreferrer';
+  /* Every monetised destination must carry rel="nofollow" (FTC disclosure is
+     separate; this is the Google paid-link requirement). Add new merchants here. */
+  const isMonetised = MONETISED_HOSTS.some((host) => url.includes(host));
+  const rel = isMonetised ? 'nofollow noopener noreferrer' : 'noopener noreferrer';
 
   return (
     <a
