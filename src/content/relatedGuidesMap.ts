@@ -7,6 +7,11 @@ export interface RelatedGuide {
 
 export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   // --- 2026-09-08 ---
+  '/blog/scrimba-explain-review': [
+    { title: 'Reading Code Is the Skill AI Coders Skip', href: '/blog/how-to-get-better-at-reading-code-2026', type: 'blog' },
+    { title: 'Learn to Code Without Depending on AI', href: '/blog/how-to-learn-coding-without-depending-on-ai', type: 'blog' },
+    { title: 'Scrimba vs ChatGPT', href: '/blog/scrimba-vs-chatgpt-learn-to-code', type: 'blog' },
+  ],
   '/blog/how-to-learn-devops-2026': [
     { title: 'Scrimba Backend Path Review', href: '/blog/scrimba-backend-path-review', type: 'blog' },
     { title: 'Coding Experience Without a Job', href: '/blog/how-to-get-coding-experience-without-a-job-2026', type: 'blog' },

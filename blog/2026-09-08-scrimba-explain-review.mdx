@@ -1,0 +1,252 @@
+---
+slug: scrimba-explain-review
+image: /img/blog/scrimba-explain-review.png
+image_alt: "What Scrimba Explain is and how it works, turning a question into a narrated video explainer, Scrimba Guide Blog"
+title: "What Is Scrimba Explain? The Free AI Explainer, Tested (2026)"
+description: "Scrimba Explain turns a question, a web page or your code into a narrated video. Tested on the web, in Chrome and in Claude Code: what it does and who it suits."
+authors: [ayoub]
+tags: [review, ai, learning, tools]
+keywords: [scrimba explain, what is scrimba explain, scrimba explain review, scrimba explain free, explain video generator, scrimba explain mcp, scrimba explain chrome extension, ai tool to explain concepts, ai tool to understand code, understand ai generated code]
+hideFooterPricingCta: true
+date: 2026-09-08
+last_update:
+  date: 2026-09-11
+  author: Ayoub El Haddad
+---
+
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import PricingCTA from '@site/src/components/PricingCTA';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import VideoSchema from '@site/src/components/VideoSchema';
+
+# What is Scrimba Explain? The free AI tool for the thing you are stuck on
+
+<DisclosureNotice />
+
+**Scrimba Explain turns a question into a short narrated video explainer, complete with diagrams, code walkthroughs and usually a quiz at the end. It is free during open beta, needs only a free account, and works in the browser, in ChatGPT, and inside coding agents like Claude Code through MCP.** Most AI coding tools compete to write your code faster. This one explains it.
+
+{/* truncate */}
+
+There is a kind of stuck that no course fixes. You have read the syntax three times. You can reproduce the example. You still could not say out loud why it works, and you know that asking the question properly would take longer than pretending you understood.
+
+Scrimba's own documentation uses that exact reader as its example prompt: *"I understand the syntax, it's the 'why' I'm missing."* Another one: *"why does a closure still see a variable after the function returned? I know Python but not JS, show me a diagram."* Neither of those is a beginner. Both are people mid-way through learning something, which is where most of us spend most of our time.
+
+That is who this tool is for first. Everything else it does is downstream of that.
+
+## How Scrimba Explain works
+
+You type a question and get back a short video that explains it, narrated, with visuals built for the answer rather than stock footage. The docs put it in one line: *"Ask a question, and get a narrated video lesson back, built while you watch."*
+
+![The Scrimba Explain interface. A prompt box reads "Explain how my code works" with a Public toggle and an Explain button, above four cards describing ways to use it: ask @Explain in ChatGPT, explain any page with the Chrome extension, explore your codebase from Claude or Codex via MCP, and upload documents to turn them into lessons.](/img/guides/scrimba-explain-home.webp)
+
+Here it is answering "What happens when you type a URL into the browser?". A few seconds after pressing Explain, a narrated explainer called "How a URL becomes a website" starts playing.
+
+<video
+  controls
+  preload="none"
+  playsInline
+  poster="/img/guides/scrimba-explain-demo-poster.webp"
+  aria-label="Scrimba Explain answering a question on the web"
+  style={{ width: '100%', borderRadius: '8px', display: 'block' }}
+>
+  <source src="/video/scrimba-explain-demo.mp4" type="video/mp4" />
+  Your browser does not support the video tag. The recording shows a prompt being typed into Scrimba Explain and the generated video explainer playing back.
+</video>
+
+<VideoSchema
+  name="Scrimba Explain answering a question on the web"
+  description="A question typed into scrimba.com/explain becomes a narrated video explainer, How a URL becomes a website, shown generating and playing its opening slides."
+  thumbnailUrl="/img/guides/scrimba-explain-demo-poster.webp"
+  contentUrl="/video/scrimba-explain-demo.mp4"
+  uploadDate="2026-09-10T12:20:00+01:00"
+  duration="PT41S"
+/>
+
+<p style={{ fontSize: '0.9rem', opacity: 0.75, marginTop: '0.5rem' }}>
+  The first 30 seconds of a 57-second explainer. Sound on for the narration.
+</p>
+
+The explainer is built slide by slide for that question: a title card, an animated diagram of the browser asking DNS for an address, a request-and-response walkthrough, a numbered breakdown of how the browser builds the page, and a multiple-choice question at the end. The docs are firm about the distinction: *"An explainer is not a screen recording. Each slide is real, typed content."*
+
+There are four ways in:
+
+| Entry point | What it does |
+|---|---|
+| **Web** | Type a question at `scrimba.com/explain`, get a video back |
+| **ChatGPT** | Mention `@Explain` in a conversation and the answer arrives as a video |
+| **Chrome extension** | Turn any article or page you are reading into an explainer |
+| **Claude Code / Codex (MCP)** | Connect it to your coding agent through MCP, the standard way agents plug into outside tools, and get a walkthrough of your actual code |
+
+## If you are learning: it answers the question you cannot phrase
+
+A chat window drifts. You ask for the simple version, and three replies later you are reading about edge cases. Explain lets you pick the level up front, and the whole video stays at it.
+
+Scrimba ships several teaching styles:
+
+| Style | What it does |
+|---|---|
+| **Explain** | The default. *"Simple words, small steps"*, built on concrete examples |
+| **Standard** | Clear, well-rounded teaching |
+| **TLDR** | A few slides. The core insight instead of a full lesson |
+| **Professor** | *"Maximum depth, down to the bytes"*: real memory, wire formats, engine behaviour |
+| **LOL** | *"Funny and sarcastic, still accurate"* |
+| **Per** and **Tom** | Scrimba's founder and Tom Chant, in their own teaching voices |
+
+`Professor` is the one that tells you who else they are building for, but `Explain` and `TLDR` are the two a learner will live in. TLDR is for the moments you do not want a lesson, just the one sentence that makes the rest click.
+
+The other thing worth knowing if you are not learning in English: explainers are narrated in 33 languages, with a native voice for each. I learned to code in my second language and I underrate how much friction that adds until something removes it.
+
+My rule: **let it explain something you have already tried to understand and failed.** Not the first thing that meets a new topic. The order decides whether it builds the muscle or replaces it, and nothing in the tool enforces that for you. This is the same argument I make about AI generally in [how to learn coding without depending on it](/blog/how-to-learn-coding-without-depending-on-ai/).
+
+## If you are a junior: it is for the code you did not write
+
+The second audience is the one starting a first job, and the problem there is different. The concepts are usually fine. What is not fine is forty thousand lines of someone else's code and three days to find your way around it.
+
+I do not think you can read an entire codebase as a solo developer or on a team of three. Nobody can. You cannot read every pull request line by line either, and neither can anyone else on the team, which is why code quietly gets merged that nobody has really read.
+
+Scrimba reached the same conclusion. They attach an Explain video to every pull request in their own codebase. Per describes it as starting with a high-level overview and then digging into the details, so the team can stay on top of what is changing.
+
+Through MCP, the prompts their docs suggest are exactly the ones a new hire needs:
+
+- *"Walk me through how authentication works in this codebase"*
+- *"Explain what this branch changes and why"*
+- *"Explain the bug we just fixed and how"*
+
+The output is grounded in your actual files, because your agent does the research and Explain renders it. That is what separates it from a generic illustration of the concept.
+
+Here is that flow on the Express source code. Asked for a short explainer of what `res.send` does in `lib/response.js`, Claude Code reads the file, calls Explain, and hands back a link that renders while it works.
+
+<video
+  controls
+  preload="none"
+  playsInline
+  poster="/img/guides/scrimba-explain-claude-code-poster.webp"
+  aria-label="Scrimba Explain in Claude Code through MCP"
+  style={{ width: '100%', borderRadius: '8px', display: 'block' }}
+>
+  <source src="/video/scrimba-explain-claude-code.mp4" type="video/mp4" />
+  Your browser does not support the video tag. The recording shows Claude Code reading lib/response.js from the Express repository, calling Scrimba Explain through MCP, and the resulting explainer opening.
+</video>
+
+<VideoSchema
+  name="Scrimba Explain in Claude Code through MCP"
+  description="Claude Code reads lib/response.js in the Express repository, calls Scrimba Explain through MCP and returns an explainer of res.send that renders while it builds."
+  thumbnailUrl="/img/guides/scrimba-explain-claude-code-poster.webp"
+  contentUrl="/video/scrimba-explain-claude-code.mp4"
+  uploadDate="2026-09-11T15:40:00+01:00"
+  duration="PT57S"
+/>
+
+<p style={{ fontSize: '0.9rem', opacity: 0.75, marginTop: '0.5rem' }}>
+  Claude Code connected to Explain through MCP, sped up while it builds the explainer. Sound on for the narration.
+</p>
+
+One detail explains a lot: **explainers made through MCP are private by default.** ChatGPT ones are unlisted. So the entire developer half of this product is invisible to everyone outside the team using it, which is why the public side of Explain looks like a general learning tool and the developer side looks like a rumour.
+
+If you are heading into a first role, this pairs with [reading code, the skill AI coders skip](/blog/how-to-get-better-at-reading-code-2026/), and with the general reality of [the junior job market in 2026](/blog/junior-developer-job-market-2026/): writing code is the cheap part now, and being able to explain it is what gets noticed.
+
+## The Chrome extension: explain the page you are reading
+
+You hit the extension icon on a dense technical article. There is no popup: the extension reads the page, opens the explainer in a new tab, and it starts building while you watch. Here it is on MDN's guide to using promises, a page plenty of JavaScript learners bounce off the first time.
+
+<video
+  controls
+  preload="none"
+  playsInline
+  poster="/img/guides/scrimba-explain-extension-poster.webp"
+  aria-label="Scrimba Explain Chrome extension on an MDN guide"
+  style={{ width: '100%', borderRadius: '8px', display: 'block' }}
+>
+  <source src="/video/scrimba-explain-extension.mp4" type="video/mp4" />
+  Your browser does not support the video tag. The recording shows the Explain extension turning MDN's Using promises guide into a narrated video explainer.
+</video>
+
+<VideoSchema
+  name="Scrimba Explain Chrome extension on an MDN guide"
+  description="The Explain extension turns MDN's guide to using promises into a narrated video explainer with a code diff and a line-by-line code view."
+  thumbnailUrl="/img/guides/scrimba-explain-extension-poster.webp"
+  contentUrl="/video/scrimba-explain-extension.mp4"
+  uploadDate="2026-09-10T23:40:00+01:00"
+  duration="PT44S"
+/>
+
+<p style={{ fontSize: '0.9rem', opacity: 0.75, marginTop: '0.5rem' }}>
+  The extension is available for Chrome. The clip shows the click, the explainer generating and its first half minute. Sound on for the narration.
+</p>
+
+A long reference page became a one-minute walkthrough: what a promise is, a diff that turns nested callbacks into a promise chain, the async/await version with the code view highlighting each line as it is narrated, running several promises at once, and wrapping an old callback API. The on-screen pointer does the talking-through. Scrimba's own demo of the extension also draws mermaid diagrams.
+
+Per pitches this for articles you *"kind of don't have the patience or the energy to go through"* right now, rather than ones you cannot understand. That is an honest description of most evenings.
+
+Most explainers end with a quiz, though not every one does. When it is there, it is a small detail doing heavy lifting. The failure mode of every explanation tool is that watching feels like learning. A question at the end is the cheapest possible defence against that.
+
+## What people use Scrimba Explain for besides code
+
+The docs list eleven use-case domains, and only two of them are software. The others include healthcare (*"Cardiac Prescription Logic"*), finance, real estate, automotive, philosophy, and care and admin (*"Navigating Elder Care in the UK"*). Per's own launch demo generates a driving test briefing for a driving instructor's students.
+
+The public community feed says the same thing louder. A sample of what people have made: Algebra Basics, The Sky in Norwegian, How to Train Your Puppy, Why We Get Hiccups, Why Ice Floats, The Human Respiratory System. The coding entries in the feed are entry-level general computing, like What is an Operating System and How the Internet Works.
+
+So Scrimba built a general learning tool, and the coding integration is the specialised half. For you, that means a free tool you will end up using outside programming too, which is worth more than a narrow one you open twice.
+
+## How to get Scrimba Explain, and is it free?
+
+Two steps: create a free Scrimba account, then install the plugin in your coding agent if you want the repository side. The <AffiliateLink href="https://scrimba.com/explain" location="explain-product">Explain product page</AffiliateLink> carries install links for Claude Code and for Codex and ChatGPT, and any MCP-capable agent can connect through the endpoint at `scrimba.com/explain/mcp`. The Chrome extension is a separate install and needs no agent at all.
+
+It is **free during open beta**, and it needs a free account rather than Scrimba Pro. Worth being direct about why it is free: it is an acquisition funnel. Per says so himself at the end of the Chrome extension video, that it is all free but you need an account on scrimba.com, *"which is a learning platform that we are building"*. Explainers went from 20,000 at launch in mid-August to close to 50,000 in a later update from Scrimba's team.
+
+I don't mean that as a criticism. It means you can use Explain without a subscription decision attached, and nobody should tell you it is a reason to buy Pro. If you want to know whether Pro is worth it, that is a separate question answered by our [pricing breakdown](/docs/pricing/) and by [what makes the platform different](/blog/what-makes-scrimba-different/).
+
+One naming quirk will save you a confused search. In ChatGPT's plugin directory the same product is listed as **Explain Video Generator**, not Scrimba Explain.
+
+## The limits of Scrimba Explain
+
+### The output is only as good as the research behind it
+
+With MCP, that research is your agent's work rather than Scrimba's. A vague question against a repository your agent has not properly explored produces a confident, well-narrated, shallow video. The production values do not drop when the substance does, and in a learning tool that is a real risk.
+
+### Pricing after the beta is undecided
+
+Anything free during a beta may not be free after it, so do not build a study routine that depends on it staying free.
+
+### It answers questions but does not plan your learning
+
+Scrimba never pitches Explain as a course. The limit is subtler than that: it answers questions you already know to ask. It cannot tell you what you do not know, and it never makes you write anything. Those are the jobs the [Frontend](/docs/paths/frontend-developer-path/) and [Fullstack](/docs/paths/fullstack-developer-path/) paths do, and this does not overlap with them.
+
+## The bottom line
+
+If you are learning, this is the closest thing I have used to a tutor you can interrupt. Point it at the concept you have already failed to understand once, pick TLDR when you want the insight and Explain when you want the lesson, and take the quiz seriously.
+
+If you are junior and drowning in a codebase, the MCP integration is the strongest thing here, and few people ever see it because those explainers are private by default.
+
+Whether it helps depends on a habit the tool cannot enforce. Use it on something you have already wrestled with and it works like a tutor. Use it to skip the wrestling and you start leaning on it, the kind of reliance behind the 20% of developers in the Stack Overflow 2025 survey who report less confidence in their own problem-solving. I use it. I just use it second.
+
+## References
+
+- <AffiliateLink href="https://docs.scrimba.com/explain/introduction" location="explain-docs">Scrimba Docs, What is Scrimba Explain?</AffiliateLink> - the one-line definition, the "not a screen recording" distinction, and 33-language narration.
+- <AffiliateLink href="https://docs.scrimba.com/explain/prompting" location="explain-prompting">Scrimba Docs, Writing a good prompt</AffiliateLink> - the "I understand the syntax, it's the 'why' I'm missing" and closure example prompts.
+- <AffiliateLink href="https://docs.scrimba.com/explain/teaching-styles" location="explain-styles">Scrimba Docs, Teaching styles</AffiliateLink> - Explain, Standard, TLDR, Professor, LOL, Per and Tom, with their exact descriptions.
+- <AffiliateLink href="https://docs.scrimba.com/explain/use-cases" location="explain-usecases">Scrimba Docs, Use cases</AffiliateLink> - the eleven domains, including healthcare, finance, real estate and elder care.
+- <AffiliateLink href="https://docs.scrimba.com/explain/privacy-and-sharing" location="explain-privacy">Scrimba Docs, Privacy and sharing</AffiliateLink> - MCP explainers private by default, ChatGPT explainers unlisted.
+- <AffiliateLink href="https://docs.scrimba.com/explain/claude-code" location="explain-claude">Scrimba Docs, Claude Code</AffiliateLink> - the install command and the suggested repository prompts quoted above.
+- [Introducing Explain by Scrimba](https://www.youtube.com/watch?v=k6rbHmBxSEs) - the pull request practice, the driving instructor example, and 20,000 explainers as of 13 August 2026.
+- [Turn Complex Articles into Videos with Explain in Chrome](https://www.youtube.com/watch?v=JW6trsvl7HA) - the extension walkthrough, the mermaid diagrams and closing quiz, and the free account framing.
+- [Scrimba on Product Hunt](https://www.producthunt.com/posts/scrimba-explain) - the team's update that explainers were closing in on 50,000.
+- [Stack Overflow 2025 Developer Survey, AI](https://survey.stackoverflow.co/2025/ai) - 20% reporting decreased confidence in their own problem-solving.
+
+<FAQAccordion items={[
+  { q: "What is Scrimba Explain?", a: "It turns a question, article, document or codebase into a short narrated video explainer with diagrams, code walkthroughs and usually a closing quiz. You can use it on the web, through the Chrome extension, by mentioning @Explain in ChatGPT, or from a coding agent like Claude Code via MCP. Unlike most AI coding tools it does not write code, it explains things that already exist." },
+  { q: "Is Scrimba Explain free?", a: "Yes, it is free during open beta and needs only a free Scrimba account rather than a Pro subscription. It is free because it brings people onto the platform, which the founder says openly. Scrimba has not announced post-beta pricing, so it is worth trying now but not worth building a permanent study routine around until the pricing is settled." },
+  { q: "Is Scrimba Explain only for programmers?", a: "No. Scrimba's own documentation lists eleven use-case domains and only two are software, with the rest covering healthcare, finance, real estate, philosophy and elder care among others. The public community feed is mostly non-coding topics like algebra, languages and biology. The developer features are the specialised half, not the main event." },
+  { q: "How is Explain different from asking ChatGPT?", a: "The output format and the grounding. You get a narrated video with diagrams, a code view and usually a quiz rather than a wall of text, and you can pick a teaching style so the explanation stays at your level. With MCP, your coding agent researches your actual files first. It is not a text-to-video model and uses no avatars or stock footage. In ChatGPT's plugin directory it is listed as Explain Video Generator." },
+  { q: "Can Scrimba Explain explain my own codebase?", a: "Yes, through MCP. Connect it to Claude Code, Codex or any MCP-capable agent and it builds the walkthrough around code in your repository rather than a generic example. Those explainers are private by default, which is why this side of the product is largely invisible. Scrimba attaches one to every pull request in their own codebase." },
+  { q: "How do I use Scrimba Explain with Claude Code?", a: "Add it as an MCP server with claude mcp add --transport http scrimba-explain https://scrimba.com/explain/mcp, then ask for an explainer in plain words, such as 'make an explainer of what this branch changes'. Claude Code reads your files, calls Explain and returns a link that renders while it builds. The explainer is private by default, and opening the link claims it to your free Scrimba account." },
+  { q: "Should I use Explain instead of reading the code myself?", a: "No, and that order matters more than anything else in this review. Use it on something you have already tried to understand and failed, where it works like a tutor. Use it as the first thing that meets a new topic and it replaces the struggle that builds skill, since a polished narrated explanation produces a strong feeling of understanding whether or not the understanding is there." }
+]} />
+
+<PricingCTA
+  title="Try the format before you weigh a subscription"
+  subtitle="Explain needs only a free Scrimba account, and the free courses are a better test of whether interactive learning suits you than any feature list."
+  ctaType="free"
+  location="explain-post-final"
+/>
