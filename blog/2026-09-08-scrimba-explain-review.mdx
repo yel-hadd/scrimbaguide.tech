@@ -38,21 +38,36 @@ That is who this tool is for first. Everything else it does is downstream of tha
 
 You type a question and get back a short video that explains it, narrated, with visuals built for the answer rather than stock footage. The docs put it in one line: *"Ask a question, and get a narrated video lesson back, built while you watch."*
 
-![The Scrimba Explain interface. A prompt box reads "Explain how my code works" with a Public toggle and an Explain button, above four cards describing ways to use it: ask @Explain in ChatGPT, explain any page with the Chrome extension, explore your codebase from Claude or Codex via MCP, and upload documents to turn them into lessons.](/img/guides/scrimba-explain-home.webp)
+![Scrimba Explain home screen: a prompt box with an Explain button, above cards for ChatGPT, the Chrome extension, Claude or Codex via MCP, and uploads](/img/guides/scrimba-explain-home.webp)
 
 Here it is answering "What happens when you type a URL into the browser?". A few seconds after pressing Explain, a narrated explainer called "How a URL becomes a website" starts playing.
 
-<video
-  controls
-  preload="none"
-  playsInline
-  poster="/img/guides/scrimba-explain-demo-poster.webp"
-  aria-label="Scrimba Explain answering a question on the web"
-  style={{ width: '100%', borderRadius: '8px', display: 'block' }}
->
-  <source src="/video/scrimba-explain-demo.mp4" type="video/mp4" />
-  Your browser does not support the video tag. The recording shows a prompt being typed into Scrimba Explain and the generated video explainer playing back.
-</video>
+<figure style={{ margin: '1.5rem 0' }}>
+  <video
+    controls
+    preload="none"
+    playsInline
+    width="1280"
+    height="774"
+    poster="/img/guides/scrimba-explain-demo-poster.webp"
+    aria-label="Scrimba Explain answering a question on the web"
+    aria-describedby="caption-scrimba-explain-demo"
+    style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
+  >
+    <source src="/video/scrimba-explain-demo.mp4" type="video/mp4" />
+    <track kind="captions" src="/video/scrimba-explain-demo.en.vtt" srcLang="en" label="English" default />
+    Your browser cannot play this video. It shows a prompt being typed into Scrimba Explain and the generated video explainer playing back. <a href="/video/scrimba-explain-demo.mp4">Download the recording (MP4)</a>.
+  </video>
+  <figcaption id="caption-scrimba-explain-demo" style={{ fontSize: '0.9rem', color: 'var(--ifm-color-emphasis-700)', marginTop: '0.5rem' }}>
+    The first 30 seconds of a 57-second explainer. Captions are available in the player.
+  </figcaption>
+</figure>
+
+<details>
+  <summary>Transcript and on-screen description</summary>
+  <p><strong>On screen:</strong> The Scrimba Explain home page. The question "What happens when you type a URL into the browser?" is typed into the prompt box and Explain is pressed. A generating screen appears, then a narrated explainer titled "How a URL becomes a website" starts playing. It moves to a slide titled "The internet's address book", where an animated diagram connects a browser, a DNS address book and a website server, and then to a slide titled "The request and response".</p>
+  <p><strong>Narration:</strong> What happens when you type a URL into your browser? Think of the internet like a massive phone system. Your browser knows the name you typed, like example.com, but it needs a phone number, called an IP address, to actually call the server. It asks a DNS server, which acts like an address book, to swap that name for a number. Once the browser has the address, it reaches out to the server. They start with a TCP handshake, which is just a way of saying "Are you there?" and "Yes, I'm ready." Only then does the browser send a GET…</p>
+</details>
 
 <VideoSchema
   name="Scrimba Explain answering a question on the web"
@@ -62,10 +77,6 @@ Here it is answering "What happens when you type a URL into the browser?". A few
   uploadDate="2026-09-10T12:20:00+01:00"
   duration="PT41S"
 />
-
-<p style={{ fontSize: '0.9rem', opacity: 0.75, marginTop: '0.5rem' }}>
-  The first 30 seconds of a 57-second explainer. Sound on for the narration.
-</p>
 
 The explainer is built slide by slide for that question: a title card, an animated diagram of the browser asking DNS for an address, a request-and-response walkthrough, a numbered breakdown of how the browser builds the page, and a multiple-choice question at the end. The docs are firm about the distinction: *"An explainer is not a screen recording. Each slide is real, typed content."*
 
@@ -117,17 +128,32 @@ The output is grounded in your actual files, because your agent does the researc
 
 Here is that flow on the Express source code. Asked for a short explainer of what `res.send` does in `lib/response.js`, Claude Code reads the file, calls Explain, and hands back a link that renders while it works.
 
-<video
-  controls
-  preload="none"
-  playsInline
-  poster="/img/guides/scrimba-explain-claude-code-poster.webp"
-  aria-label="Scrimba Explain in Claude Code through MCP"
-  style={{ width: '100%', borderRadius: '8px', display: 'block' }}
->
-  <source src="/video/scrimba-explain-claude-code.mp4" type="video/mp4" />
-  Your browser does not support the video tag. The recording shows Claude Code reading lib/response.js from the Express repository, calling Scrimba Explain through MCP, and the resulting explainer opening.
-</video>
+<figure style={{ margin: '1.5rem 0' }}>
+  <video
+    controls
+    preload="none"
+    playsInline
+    width="1280"
+    height="774"
+    poster="/img/guides/scrimba-explain-claude-code-poster.webp"
+    aria-label="Scrimba Explain in Claude Code through MCP"
+    aria-describedby="caption-scrimba-explain-claude-code"
+    style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
+  >
+    <source src="/video/scrimba-explain-claude-code.mp4" type="video/mp4" />
+    <track kind="captions" src="/video/scrimba-explain-claude-code.en.vtt" srcLang="en" label="English" default />
+    Your browser cannot play this video. It shows Claude Code reading lib/response.js from the Express repository, calling Scrimba Explain through MCP, and the resulting explainer opening. <a href="/video/scrimba-explain-claude-code.mp4">Download the recording (MP4)</a>.
+  </video>
+  <figcaption id="caption-scrimba-explain-claude-code" style={{ fontSize: '0.9rem', color: 'var(--ifm-color-emphasis-700)', marginTop: '0.5rem' }}>
+    Claude Code connected to Explain through MCP, sped up while it builds the explainer. Captions are available in the player.
+  </figcaption>
+</figure>
+
+<details>
+  <summary>Transcript and on-screen description</summary>
+  <p><strong>On screen:</strong> A terminal running Claude Code in the Express repository. The prompt "Make a short explainer video of what res.send does in lib/response.js. Keep it brief." is typed and submitted. Claude Code reads lib/response.js, calls scrimba-explain and replies with a link to the explainer, which renders while it builds. This part plays sped up six times. The browser then opens the finished explainer, titled "Express res.send() Internals", which moves to a flowchart titled "What send() does" and a code slide titled "Branching on body type".</p>
+  <p><strong>Narration:</strong> …turns whatever you hand it into a finished HTTP response. The flow branches on the type of the body. A string just gets a charset, while a plain object is handed off to res.json instead of being sent directly. Everything else moves on to compute Content-Length and an ETag, before the final status check decides whether the body actually gets sent. This switch is the entry point. A string falls back to Content-Type HTML, unless one is already set, in which case Express only adds a UTF-8 charset. A null body becomes an empty string, a Buffer-like value gets Content-Type bin…</p>
+</details>
 
 <VideoSchema
   name="Scrimba Explain in Claude Code through MCP"
@@ -138,10 +164,6 @@ Here is that flow on the Express source code. Asked for a short explainer of wha
   duration="PT57S"
 />
 
-<p style={{ fontSize: '0.9rem', opacity: 0.75, marginTop: '0.5rem' }}>
-  Claude Code connected to Explain through MCP, sped up while it builds the explainer. Sound on for the narration.
-</p>
-
 One detail explains a lot: **explainers made through MCP are private by default.** ChatGPT ones are unlisted. So the entire developer half of this product is invisible to everyone outside the team using it, which is why the public side of Explain looks like a general learning tool and the developer side looks like a rumour.
 
 If you are heading into a first role, this pairs with [reading code, the skill AI coders skip](/blog/how-to-get-better-at-reading-code-2026/), and with the general reality of [the junior job market in 2026](/blog/junior-developer-job-market-2026/): writing code is the cheap part now, and being able to explain it is what gets noticed.
@@ -150,17 +172,32 @@ If you are heading into a first role, this pairs with [reading code, the skill A
 
 You hit the extension icon on a dense technical article. There is no popup: the extension reads the page, opens the explainer in a new tab, and it starts building while you watch. Here it is on MDN's guide to using promises, a page plenty of JavaScript learners bounce off the first time.
 
-<video
-  controls
-  preload="none"
-  playsInline
-  poster="/img/guides/scrimba-explain-extension-poster.webp"
-  aria-label="Scrimba Explain Chrome extension on an MDN guide"
-  style={{ width: '100%', borderRadius: '8px', display: 'block' }}
->
-  <source src="/video/scrimba-explain-extension.mp4" type="video/mp4" />
-  Your browser does not support the video tag. The recording shows the Explain extension turning MDN's Using promises guide into a narrated video explainer.
-</video>
+<figure style={{ margin: '1.5rem 0' }}>
+  <video
+    controls
+    preload="none"
+    playsInline
+    width="1280"
+    height="774"
+    poster="/img/guides/scrimba-explain-extension-poster.webp"
+    aria-label="Scrimba Explain Chrome extension on an MDN guide"
+    aria-describedby="caption-scrimba-explain-extension"
+    style={{ width: '100%', height: 'auto', borderRadius: '8px', display: 'block' }}
+  >
+    <source src="/video/scrimba-explain-extension.mp4" type="video/mp4" />
+    <track kind="captions" src="/video/scrimba-explain-extension.en.vtt" srcLang="en" label="English" default />
+    Your browser cannot play this video. It shows the Explain extension turning MDN's Using promises guide into a narrated video explainer. <a href="/video/scrimba-explain-extension.mp4">Download the recording (MP4)</a>.
+  </video>
+  <figcaption id="caption-scrimba-explain-extension" style={{ fontSize: '0.9rem', color: 'var(--ifm-color-emphasis-700)', marginTop: '0.5rem' }}>
+    The extension is available for Chrome. The clip shows the click, the explainer generating and its first half minute. Captions are available in the player.
+  </figcaption>
+</figure>
+
+<details>
+  <summary>Transcript and on-screen description</summary>
+  <p><strong>On screen:</strong> MDN's "Using promises" guide is scrolled briefly, then the Explain extension icon in the browser toolbar is clicked. A new tab opens and a narrated explainer titled "Using JavaScript Promises" starts playing. It moves to a slide titled "What is a Promise?" and then to a side-by-side code comparison titled "From Callbacks to Promises".</p>
+  <p><strong>Narration:</strong> Promises are the standard way to handle asynchronous tasks in JavaScript, moving us away from messy callback functions. A promise is an object that stands in for a future result. The fundamental shift is that functions now return this object immediately, and you attach your success or failure logic to it later. The difference is striking. Callback hell forces deep nesting and repetitive error handling. The promise chain flattens the logic, allowing you to catch all errors in one place at the end.</p>
+</details>
 
 <VideoSchema
   name="Scrimba Explain Chrome extension on an MDN guide"
@@ -170,10 +207,6 @@ You hit the extension icon on a dense technical article. There is no popup: the 
   uploadDate="2026-09-10T23:40:00+01:00"
   duration="PT44S"
 />
-
-<p style={{ fontSize: '0.9rem', opacity: 0.75, marginTop: '0.5rem' }}>
-  The extension is available for Chrome. The clip shows the click, the explainer generating and its first half minute. Sound on for the narration.
-</p>
 
 A long reference page became a one-minute walkthrough: what a promise is, a diff that turns nested callbacks into a promise chain, the async/await version with the code view highlighting each line as it is narrated, running several promises at once, and wrapping an old callback API. The on-screen pointer does the talking-through. Scrimba's own demo of the extension also draws mermaid diagrams.
 

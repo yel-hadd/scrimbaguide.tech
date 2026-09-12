@@ -116,7 +116,7 @@ Start at [roadmap.sh/devops](https://roadmap.sh/devops). It is a free visual roa
 
 Use it as a map, not a checklist. Here is a slice of the middle of it, and the sprawl is the point:
 
-![A section of the roadmap.sh DevOps roadmap showing dozens of interconnected tools across networking, cloud providers, serverless, configuration management, provisioning and logs management](/img/guides/devops-roadmap-sprawl.webp)
+![Part of the roadmap.sh DevOps roadmap, with dozens of interconnected tools across networking, cloud, configuration management and logging](/img/guides/devops-roadmap-sprawl.webp)
 
 That is one screen of several, and you will never touch most of those boxes. Its value is not the list. It is that it shows what depends on what, which is exactly the knowledge that stops you spending a fortnight on Kubernetes before you understand Linux file permissions.
 
@@ -172,7 +172,7 @@ Scrimba shipped <AffiliateLink href="https://scrimba.com/intro-to-devops-c0tjgdu
 
 It is a better course than its own marketing suggests. Here is the shape of it:
 
-![The Intro to DevOps curriculum on Scrimba, showing the Containers and Docker module expanded into individual lessons including What is Docker, Installing Docker, Docker Images, Node in a container, Containerizing an App parts one and two, and Docker Hub, each with its own runtime.](/img/guides/scrimba-devops-curriculum.webp)
+![Scrimba's Intro to DevOps curriculum with the Containers and Docker module expanded into its individual lessons](/img/guides/scrimba-devops-curriculum.webp)
 
 | Module | Lessons | Time | What it actually covers |
 |---|---|---|---|
@@ -186,11 +186,11 @@ Look at the Continuous Delivery module in particular. It teaches backward-compat
 
 The format is the other half of the case, and it matters more here than in most subjects:
 
-![A Scrimba lesson from the Containers and Docker module. The file tree shows a real project with a Dockerfile, the editor displays server.js, and a live preview pane runs the finished app on port 3000 alongside Runner and Terminal tabs.](/img/guides/scrimba-scrim-editor.webp)
+![A Scrimba Docker lesson with the project files, server.js in the editor and the running app in a live preview pane](/img/guides/scrimba-scrim-editor.webp)
 
 That is a real project, not a slide: a Node microblog with a Dockerfile, a live preview running on port 3000, and a terminal. When you click into the code, the player switches to your copy of it and offers a "back to teacher" button to return to the instructor's version:
 
-![The same lesson with the Dockerfile open, showing FROM node:22-alpine, WORKDIR /app, COPY package star json, RUN npm ci, COPY dot dot and CMD node server.js. A Back To Teacher button has appeared in the toolbar because the code has been edited.](/img/guides/scrimba-dockerfile-lesson.webp)
+![The same Scrimba lesson with the Dockerfile open, building a Node app on node:22-alpine](/img/guides/scrimba-dockerfile-lesson.webp)
 
 That button is the whole pedagogical argument in one control. You can stop the lesson at any line, edit the instructor's Dockerfile, and jump back to their version when you want to.
 
@@ -218,19 +218,19 @@ The hard problem in learning infrastructure is not understanding what a pod is. 
 
 What platforms like KodeKloud and Killercoda actually sell is that missing environment. You get a disposable world with a terminal attached, organised by the tool you are trying to learn:
 
-![KodeKloud's labs catalogue showing lab counts by topic: DevOps Pre-Requisites 12 labs, Kubernetes 6, Git and Version Control 15, Terraform 26, Docker 9, Linux Administration 20, Ansible 7, Jenkins 5, Python 30 and AWS Cloud 7, each tagged by difficulty](/img/guides/kodekloud-labs-catalog.webp)
+![KodeKloud's labs catalogue listing lab counts by topic, including Docker, Kubernetes, Terraform, Ansible and AWS](/img/guides/kodekloud-labs-catalog.webp)
 
 Note what that catalogue is counting. Not videos: labs. Twenty-six separate Terraform environments, twenty Linux ones, fifteen for Git.
 
 Here is what one of them looks like from the inside, which is the part the marketing pages never show you:
 
-![A KodeKloud Docker lab in progress. The left pane shows Question 1 of 17 asking which version of the Docker Server Engine is running on the host, with four multiple-choice answers. The right pane is a live terminal logged in as root@docker-host showing real output from the docker version command, including Docker Engine Community 29.4.3, containerd 2.2.3 and runc 1.3.5. A 45-minute session timer and a Stop Lab button sit above the terminal.](/img/guides/kodekloud-lab-terminal.webp)
+![A KodeKloud Docker lab: a multiple-choice question on the left and a live root terminal showing docker version output on the right](/img/guides/kodekloud-lab-terminal.webp)
 
 That is the whole argument in one screen. The question on the left cannot be answered from memory or from the video; you have to go into the shell on the right, run `docker version` against a machine that actually exists, and read the answer out of the output. The host is real, you are root on it, and there is a timer because it is a live container that costs somebody money to run.
 
 The Kubernetes labs give you an actual cluster rather than a single host, and this is where the value gets hard to replicate on a laptop:
 
-![A KodeKloud Kubernetes lab. The left pane asks how many nodes are part of the cluster. The right pane shows a terminal on the controlplane node. kubectl get nodes -o wide reports a Ready control-plane running k3s v1.29.0 on Alpine Linux with containerd 1.7.11 as the runtime. kubectl get pods -A lists the kube-system namespace: coredns, local-path-provisioner, traefik and its helm install jobs, svclb-traefik and metrics-server, all Running or Completed.](/img/guides/kodekloud-k8s-cluster.webp)
+![A KodeKloud Kubernetes lab asking how many nodes the cluster has, with kubectl get nodes and get pods output in a live terminal](/img/guides/kodekloud-k8s-cluster.webp)
 
 Read what the second command returns. That is not a diagram of a cluster, it is a cluster: CoreDNS resolving service names, a local-path provisioner handing out volumes, Traefik installed by a Helm job and fronted by a service load balancer, and a metrics server feeding resource data. Standing that up on your own machine is an afternoon of yak-shaving before you have learned anything about Kubernetes. Here it existed before you arrived, and you get root on the control plane.
 
@@ -244,7 +244,7 @@ There is a step beyond single-topic labs, and it is the closest thing to real wo
 
 The company has documentation, and the documentation is the point:
 
-![The Infrastructure Details table from the Project Nautilus documentation. Ten servers are listed with hostname, assigned user, password and purpose: three application servers stapp01 to stapp03 owned by tony, steve and banner, a load balancer stlb01 owned by loki, a database server stdb01 owned by peter, a storage server ststor01 owned by natasha, a backup server stbkp01 owned by clint, a mail server stmail01 owned by groot, a jump host owned by thor, and a Jenkins server. The passwords are Marvel character jokes such as Ir0nM@n and mjolnir123.](/img/guides/kodekloud-nautilus-infra.webp)
+![The Project Nautilus infrastructure table listing ten servers with their hostnames, users, joke Marvel passwords and purposes](/img/guides/kodekloud-nautilus-infra.webp)
 
 Yes, that is a full credential table sitting in public documentation, and yes, I am publishing it. Before you file a CVE: the users are the Avengers, `thor` guards the jump host with `mjolnir123`, and the Jenkins box logs in as `j@rv!s`. Every one of those machines is destroyed and rebuilt per session. If a password table ever gives you that little anxiety at work, something has gone very right.
 

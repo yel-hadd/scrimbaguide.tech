@@ -1,0 +1,43 @@
+WEBVTT
+
+00:00:20.340 --> 00:00:23.980
+…turns whatever you hand it into a
+finished HTTP response.
+
+00:00:25.460 --> 00:00:27.140
+The flow branches on the type of the body.
+
+00:00:27.720 --> 00:00:29.200
+A string just gets a charset,
+
+00:00:29.640 --> 00:00:33.520
+while a plain object is handed off to
+res.json instead of being sent directly.
+
+00:00:34.140 --> 00:00:36.220
+Everything else moves on to compute
+Content-Length
+
+00:00:36.220 --> 00:00:38.277
+and an ETag, before the final status check
+
+00:00:38.277 --> 00:00:40.480
+decides whether the body actually gets
+sent.
+
+00:00:41.480 --> 00:00:43.140
+This switch is the entry point.
+
+00:00:43.700 --> 00:00:47.900
+A string falls back to Content-Type HTML,
+unless one is already set,
+
+00:00:47.900 --> 00:00:51.153
+in which case Express only adds a UTF-8
+charset.
+
+00:00:51.153 --> 00:00:53.660
+A null body becomes an empty string,
+
+00:00:54.160 --> 00:00:56.260
+a Buffer-like value gets Content-Type bin…
