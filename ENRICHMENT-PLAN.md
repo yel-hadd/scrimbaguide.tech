@@ -58,6 +58,20 @@ Site-wide correction found on the way: 47 pages call the Discord a Pro perk;
 scrimba.com/our-pricing lists "basic access to Discord community" as free and
 "Pro Discord channels" as Pro. Fix wording when touching those pages.
 
+## Accepted exceptions (follow-ups)
+
+- `docs/courses/ai/serverless-ai-agents-with-langbase.mdx` (reviewed
+  2026-09-20, all 13 transcripts read) ships **without images**: archetype
+  items 3 and 5 are outstanding. Two capture attempts (drafting run and the
+  review-fix run) hit a shared Chrome window where the agent's tab stayed
+  `visibilityState === "hidden"` while other agents' tabs were active, so the
+  scrim app never rendered and every capture was a blank frame. Retake when the
+  window is free: intro title card at `~03uk` (960x540 slide, Google-hosted
+  background image) for the grid, plus 2 to 4 lesson moments: the Create a
+  Memory challenge pause (`~0235`), the Langbase Studio retrieval-testing panel
+  (`~02nq`), and the final `npx tsx index.ts` console output with the cited
+  source (`~05qr`). Then re-add the `Screenshot` import and remove this entry.
+
 ## Queue (priority = hub impressions × page importance)
 
 1. ~~learn-react, html-and-css, ai-engineering~~ done

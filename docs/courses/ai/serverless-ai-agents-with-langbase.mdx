@@ -1,86 +1,164 @@
 ---
-title: "Build Serverless AI Agents with Langbase"
+title: "Build Serverless AI Agents with Langbase on Scrimba: 2026 Review"
 sidebar_position: 6
-description: "Maham Codes's free course on Scrimba: build AI agents on Langbase, a serverless AI cloud. About 50 minutes, 19 lessons, a quick free way to try agents."
-keywords: [scrimba langbase course, serverless ai agents scrimba, build ai agents free, langbase tutorial, maham codes scrimba]
+toc_max_heading_level: 2
+sidebar_label: "Serverless AI Agents with Langbase"
+description: "Maham Codes's free Langbase course from inside: 49 minutes, 13 scrims, three challenges, a RAG support agent in TypeScript, and what you need before you start."
+keywords: [scrimba langbase course, build serverless ai agents with langbase review, serverless ai agents scrimba, langbase tutorial, maham codes scrimba, agentic rag course, free ai agents course]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 
 # Build Serverless AI Agents with Langbase
 
-Scrimba's short, free course on building AI agents with Langbase, taught by Maham Codes in about 50 minutes. Langbase is a serverless AI cloud, and this is a quick, no-cost way to put together a working agent.
+Scrimba's free, 49 minute course on building a memory-backed AI agent with the Langbase SDK, taught by Maham Codes. It is short enough that I read the transcript of every one of its 13 scrims with a Pro account in September 2026, so this page covers the whole course, not a sample of it.
 
-*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. It is sequenced into the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
+*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
 
 ## Quick answer
 
-Build Serverless AI Agents with Langbase is Scrimba's free, intermediate course on building agents with Langbase: roughly 50 minutes across 19 lessons, taught by Maham Codes. Langbase is a serverless AI cloud that handles the infrastructure, so you can stand up an agent quickly. Because it is free and short, it is one of the easiest ways on the catalog to try building an agent before committing to the Pro track.
+Build Serverless AI Agents with Langbase is a free, intermediate course of 13 short scrims. In about 50 minutes you build one thing: a support agent that answers questions from a text file you upload. You create a memory on Langbase, upload a mock FAQ document, retrieve the most relevant chunks for a question, create an agent (Langbase calls it a pipe), and connect the two so the agent answers with citations. Three of the scrims are challenges with instant feedback. The whole thing is TypeScript run from the terminal with the `langbase` package.
+
+It is a good hour if you want to see a complete retrieval-augmented generation (RAG) loop end to end without setting up a vector database. It is a product tutorial, though: everything you learn is expressed through Langbase's SDK, and you need a Langbase account plus an LLM provider key before scrim 4.
 
 <CourseCard
   title="Build Serverless AI Agents with Langbase"
-  duration="50 min"
+  duration="49 min"
   difficulty="Intermediate"
   access="Free"
-  lessons={19}
+  lessons={13}
   instructor="Maham Codes"
   instructorUrl="https://scrimba.com/@MahamDev"
   href="https://scrimba.com/build-serverless-ai-agents-with-langbase-c0cg73hgmh"
-  description="Build AI agents on Langbase, a serverless AI cloud, in a short, free, hands-on course."
+  description="Build a RAG support agent in TypeScript with the Langbase SDK: memory, document upload, retrieval, an agent pipe, and grounded answers with sources."
 />
 
 ## Is it worth your time?
 
-It is free and under an hour, so the cost is minimal and the payoff is a working agent. Because Langbase is serverless, you skip a lot of the setup that usually slows down a first agent build, which keeps the focus on the agent itself. As a low-stakes way to see whether agent-building clicks for you, it is hard to beat.
+Yes, if you already know what RAG is and want to see one working in under an hour. The build is small but real. By scrim 9 you type one command, `npx tsx index.ts`, and the console prints an answer to "How do I upgrade my individual plan?" that is grounded in the FAQ file you uploaded, with the source cited. Nothing is skipped over: every step is a file you create and a command you run.
 
-The honest caveat is that it is tied to one platform. The concepts transfer, but the specifics are Langbase, so if you want to learn agents in a platform-neutral way, the dedicated agent course is broader. It is also short, so it is an introduction rather than a thorough treatment.
+The caveat is that this is a Langbase course first and an agents course second. The concepts (chunking, embeddings, top-k retrieval, system prompts) are explained well, but every one of them is used through a Langbase method: `memories.create`, `memories.documents.upload`, `memories.retrieve`, `pipes.create`, `pipes.run`. If Langbase is not in your plans, the transferable part is the mental model, which you can also get from [Learn RAG](/docs/courses/ai/rag/).
+
+The second caveat is setup. Before the first coding scrim you need a Langbase account, a Langbase API key stored in Scrimba's environment variables, and an LLM provider key added inside Langbase Studio (the course embeds documents with OpenAI's text-embedding-3-large). The course tells you this, but only in passing, so budget fifteen minutes for it.
 
 ## What you'll learn
 
-The course walks through building an AI agent on Langbase from start to finish. You see how a serverless AI cloud removes the infrastructure burden and how to compose an agent on it, getting something running quickly. The interactive format means you build the agent yourself rather than watching, which is the whole value of trying it hands-on.
+Scrimba presents this course as one flat list of 13 scrims with no sections. The grouping below is mine, so you can see how the time is spent.
+
+<CourseCurriculum
+  summary="13 scrims in one flat list, grouped here for readability"
+  modules={[
+    { name: 'Orientation: what you are building and how to run code', duration: '10 min', lessons: 3 },
+    { name: 'Build the memory: create, upload, understand', duration: '15 min', lessons: 3 },
+    { name: 'Retrieve and generate: the RAG loop', duration: '15 min', lessons: 3 },
+    { name: 'Beyond the build: AI primitives and Command.new', duration: '10 min', lessons: 2 },
+    { name: 'Scrimba house scrims: referral program and certificate', duration: '3 min', lessons: 2 },
+  ]}
+/>
+
+The 13 scrims add up to 52 minutes 48 seconds; take away the two Scrimba house scrims at the end and it is 49 minutes 53 seconds, which is the 49 minutes shown in the course header. Scrimba's listing and structured data say 19 lessons, which counts the clips inside scrims rather than the scrims you click; 13 is what you will see in the table of contents.
+
+## Inside the course, scrim by scrim
+
+### 1. Orientation (10 min, 3 scrims)
+
+The intro is the free preview scrim. Maham sets out the premise in one sentence: "AI agents without frameworks, and these agents are going to be context aware." She then defines an agent as "autonomous software powered by LLMs that can perceive, reason, decide, and act," names the prerequisites (JavaScript and TypeScript, with a pointer to [Learn JavaScript](/docs/courses/javascript/learn-javascript/)), and tells you to sign up on Langbase and get an API key, because "we'll need it for the upcoming lessons."
+
+Core Concepts is a four minute slide lesson that defines agentic RAG and Langbase's two main building blocks. Pipes are "serverless AI agents that run online"; memory agents are "AI agents with human like long term memory." The useful part is the last minute, where she walks the full pipeline you are about to build: create a memory, upload data, retrieve chunks for a question, pass them to a pipe, return the answer.
+
+Setting Up Environment Variables in Scrimba is the practical bridge. You add your Langbase key in Scrimba's settings under "scrim environment" and read it as `process.env.LANGBASE_API_KEY`. She also tells you how every code scrim will run: `npm install`, then `npx tsx filename.ts` in the terminal.
+
+### 2. Build the memory (15 min, 3 scrims)
+
+Create a Memory with Langbase SDK is the first coding scrim and the first challenge. You watch her create `create-memory.ts`, import `dotenv/config` and `Langbase`, and instantiate the client. Then the recording pauses: "Create a memory named knowledge base using the memories dot create method and use OpenAI text embedding three large model for embeddings. Finally, log the created memory to the console." The solution is eleven lines. When she runs it, the console prints the new memory with a chunk size of 10,000 and an overlap of 2,048, and it appears in the Memory tab of Langbase Studio.
+
+Upload Documents to AI Memory is the longest scrim at six and a half minutes and the second challenge. You create a `docs` folder with a mock `langbase-faq.txt`, read it with `readFile` and `path.join`, and call `memories.documents.upload` with a content type, a document name, the file contents, and optional `meta` tags. The challenge is to finish the upload call and print a success message. She notes that Langbase accepts text, PDF, markdown, and CSV.
+
+Memory Agents on Langbase is a slide lesson with no code, and it is the best explanation in the course. She walks through what happens after upload: parse, chunk, embed, index. Her line on embeddings is the one to remember: "an embedding is basically a numerical representation of the meaning." She then covers the query side, where Langbase can rewrite the query, retrieve, rerank, generate, and evaluate.
+
+### 3. Retrieve and generate (15 min, 3 scrims)
+
+Perform RAG Retrieval starts in Langbase Studio, where a "retrieval testing" panel lets you type a question and see chunks come back with similarity percentages. Then the code: an `agents.ts` file exporting `runMemoryAgent(query)`, which calls `memories.retrieve` with the query, `topK: 4`, and the memory name, and an `index.ts` that prints the chunks. Her tip here is worth noting: "You can adjust chunk size and overlap under the settings to improve retrieval accuracy."
+
+Create an AI Agent Pipe is the third challenge. You create `create-pipe.ts` and define a pipe with `pipes.create`: a name, a description, and a `messages` array holding the system prompt. She explains the system prompt as "giving the AI its job description before the conversation starts." The challenge is to write that definition yourself; the solution names it `ai-support-agent` with a two sentence system prompt.
+
+Generate RAG Responses closes the loop. Back in `agents.ts` you add `runAiSupportAgent(chunks, query)`, which builds a system prompt from the chunk text (rules: be helpful, use only the given context, always cite sources) and calls `pipes.run` with `stream: false`. `index.ts` now chains the two functions. She runs it and ends with: "You just build a retrieval augmented generation rag agent, and it first retrieves relevant info from memory, then it uses that info to answer questions accurately. And it always cites its sources."
+
+### 4. Beyond the build (10 min, 2 scrims)
+
+AI Primitives for Context Engineering is a tour of the rest of Langbase's catalog: Workflow, Threads, Parser, Chunker, Embed, Tools, and Agent, plus eight reference architectures with names like "prompt chaining" and "evaluator optimizer." It is a slide lesson with no code and reads like a product overview. It does contain one good pointer, to Scrimba's [Intro to Model Context Protocol](/docs/courses/ai/model-context-protocol-mcp/) course, which Maham also teaches.
+
+Vibe Coding AI Agents with Command.new is a six minute screen recording of Langbase's Command tool. You type "build an AI support agent that uses my docs as memory for autonomous RAG" and it generates the agent code, a React front end, a memory, and a deployable API. This is the same agent you just built by hand, generated in a minute, and she is candid that the point of the manual build was understanding: "we'll be building the back end step by step so you can understand exactly what's happening behind the scenes."
+
+### 5. Scrimba house scrims (3 min, 2 scrims)
+
+The last two scrims are not part of the course content. Per Borgen of Scrimba pitches the Scrimbassador referral program, then a 53 second scrim tells you to put your certificate on LinkedIn. Both appear at the end of many Scrimba courses.
+
+## What a lesson actually feels like
+
+Every scrim is between one and six and a half minutes. Five of the thirteen are slide lessons with no code (intro, Core Concepts, environment variables, Memory Agents, AI Primitives), one is a screen recording of a third-party site (Command.new), and five are coding scrims where you can pause, edit the file, and run it in Scrimba's built-in terminal. The three challenges follow the same pattern: she demonstrates a method, states the task in one sentence, and says "I'll pause here so you can do it on your own," then walks through the solution.
+
+The code is small. The longest file, `upload-docs.ts`, is 31 lines. Because the scrims are so short, the transcript panel is more useful here than in most courses: you can read a scrim's transcript in a minute to decide whether you need to watch it. Captions, playback speed, and subtitles in ten languages are all there.
+
+One thing to know: the challenges only work if your keys are set up. If you skipped the environment variables scrim, the first `npx tsx` will fail on a missing API key, and the course does not show you that error.
+
+## Free or Pro: exactly what is gated
+
+All 13 scrims and all three challenges are free; the course sits in the Free tab of Scrimba's catalog and its structured data marks it free. There are no Solo Projects in this course, so nothing inside it is locked behind Pro.
+
+What Pro adds around it: the Certificate of Completion listed at the end of the table of contents, the [AI Engineer Path](/docs/paths/ai-engineer-path/) structure that this course belongs to, and the Pro-only Discord channels (basic Discord access is free). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if the path is what you want.
+
+Separately from Scrimba, you need a Langbase account and an LLM provider key for the code to run. I did not test what Langbase's free tier covers, so check that before you start.
+
+## How long it really takes
+
+Video runtime is 49 minutes. Plan for two to three hours: fifteen minutes of setup (Langbase account, API keys, Scrimba environment variables), around an hour to type along with the five coding scrims and do the three challenges yourself, and time to poke at the retrieval testing panel with your own questions. If you swap the mock FAQ for a document of your own, which is the obvious next step, add another hour.
 
 ## Who it's for, and who should skip it
 
-It fits developers curious about AI agents who want a fast, free, practical first build without standing up their own infrastructure. It is a great low-commitment entry into the agent material.
+It fits you if you can write basic TypeScript, you know what an LLM API call looks like, and you want to see a full RAG agent run in one sitting. It is also a reasonable first look at Langbase specifically if you are evaluating it against a framework.
 
-Skip it if you want a platform-neutral, in-depth treatment of agents; [Learn AI Agents](/docs/courses/ai/ai-agents/) is broader. Complete beginners should also have some JavaScript first.
+Skip it if you have never called an LLM from code; [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) is the right start. Skip it if you want platform-neutral agent design; [Learn AI Agents](/docs/courses/ai/ai-agents/) covers tool calling and agent loops without tying you to a vendor. And if what you want is to understand RAG itself, [Learn RAG](/docs/courses/ai/rag/) goes deeper on chunking and embeddings than this course has room for.
 
 ## Prerequisites
 
-Basic JavaScript and comfort following an API-driven workflow. No prior agent experience needed; the course introduces the idea as you build. A grasp of the [AI fundamentals](/docs/courses/ai/ai-engineering/) helps but is not required.
+Basic JavaScript and TypeScript (async functions, imports, reading a file). Maham says so in the intro and recommends Learn JavaScript if you are not there yet. You also need to be comfortable running commands in a terminal, because every coding scrim ends with `npx tsx`. No prior agent or RAG experience is assumed; Core Concepts and Memory Agents cover the ideas before you use them.
 
 ## Where it fits
 
-This is a free stop on the [AI Engineer Path](/docs/paths/ai-engineer-path/) and a natural companion to [Learn AI Agents](/docs/courses/ai/ai-agents/): try an agent for free here, then go deeper into the concepts there. It also pairs with [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/) as a contrasting tooling approach.
-
-## Free or Pro
-
-The course is free, start to finish, no subscription required. Scrimba Pro is a separate decision that unlocks the full AI Engineer Path, the challenges, and certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you later want the path structure.
+This is a free stop on the [AI Engineer Path](/docs/paths/ai-engineer-path/). It pairs naturally with [Learn RAG](/docs/courses/ai/rag/) (the concepts) and [Learn Context Engineering](/docs/courses/ai/context-engineering/) (the broader practice the course keeps referring to). For a contrasting agent build on a different SDK, [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/) builds a similar support agent with more decision logic. Maham's other Scrimba course, [Intro to Model Context Protocol](/docs/courses/ai/model-context-protocol-mcp/), is the one the AI Primitives scrim points you to.
 
 ## Strengths and limits
 
-What it does well: it is free, short, and hands-on, and Langbase's serverless model keeps the build focused on the agent rather than infrastructure.
+What it does well: a complete RAG agent in five short coding scrims, each step a file you can read in a minute; three challenges that are small enough to finish; the Memory Agents lesson, which explains parse, chunk, embed, and index more clearly than many longer courses.
 
-Where it is limited: it is tied to one platform and brief, so it is an introduction rather than a platform-neutral or in-depth agent course.
+Where it is limited: everything is expressed through the Langbase SDK, so little of the code transfers elsewhere; two of the eleven content scrims are product tours (AI Primitives, Command.new); setup outside Scrimba is required and only lightly explained; and it does not touch tools, workflows, or threads in code, only on slides.
 
 ## Related courses and comparisons
 
-- [Learn AI Agents](/docs/courses/ai/ai-agents/), the broader, deeper agent course
+- [Learn AI Agents](/docs/courses/ai/ai-agents/), the broader, platform-neutral agent course
+- [Learn RAG](/docs/courses/ai/rag/), the concepts behind chunking, embeddings, and retrieval
 - [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/), a contrasting agent build
+- [Intro to Model Context Protocol (MCP)](/docs/courses/ai/model-context-protocol-mcp/), also taught by Maham Codes
 - [Intro to AI Engineering](/docs/courses/ai/ai-engineering/), the underlying fundamentals
 - [Intro to Mistral AI](/docs/courses/ai/mistral-ai/), another free AI course
 
 <FAQAccordion items={[
-  { q: "Is this course free on Scrimba?", a: "Yes. The full course is free with no credit card or Pro subscription required. Pro only adds the career paths, certificates, and Discord." },
-  { q: "What is Langbase?", a: "A serverless AI cloud that handles the infrastructure for AI agents, so you can build and run one without managing your own servers." },
-  { q: "Do I need prior agent experience?", a: "No. The course introduces agents as you build. Some JavaScript helps, and the AI fundamentals are useful but not required." },
-  { q: "Who teaches it?", a: "Maham Codes, who also teaches Intro to Model Context Protocol (MCP) on Scrimba." },
-  { q: "How does it compare to Learn AI Agents?", a: "This one is a quick, free, Langbase-specific build. Learn AI Agents is broader and platform-neutral, so it is the natural deeper follow-up." },
+  { q: "Is Build Serverless AI Agents with Langbase free on Scrimba?", a: "Yes. All 13 scrims, including the three challenges, are free with no Pro subscription. Pro only adds the certificate, the AI Engineer Path structure, and the Pro-only Discord channels. You do need a separate Langbase account and an LLM provider key for the code to run." },
+  { q: "What do you build in the course?", a: "One project: a support agent that answers questions from a mock FAQ text file. You create a Langbase memory, upload the document, retrieve the four most relevant chunks for a question, create an agent pipe with a system prompt, and connect them so the agent answers with sources cited. It runs from the terminal with npx tsx." },
+  { q: "Who teaches it?", a: "Maham Codes (@MahamDev), who describes herself in the intro as an AI content developer and also teaches Scrimba's Intro to Model Context Protocol course. The two closing scrims are Scrimba house content from Per Borgen." },
+  { q: "How many lessons does it have?", a: "13 scrims in one flat list, no sections. Scrimba's listing says 19 lessons because it counts the clips inside scrims. Five scrims are slide lessons, five are coding scrims, one is a screen recording of Command.new, and two are Scrimba's standard closing scrims." },
+  { q: "Are there challenges?", a: "Three, each marked with Scrimba's Challenge with Instant Feedback icon: create the memory, upload the document, and define the agent pipe. Each is stated in one sentence, the recording pauses, and the solution follows." },
+  { q: "What do I need to install or sign up for?", a: "A Langbase account and API key, stored as LANGBASE_API_KEY in Scrimba's environment variable settings, plus an LLM provider key added in Langbase Studio (the course embeds with OpenAI's text-embedding-3-large). Inside Scrimba nothing else is installed; each coding scrim runs npm install and npx tsx in the built-in terminal." },
+  { q: "How long does it take?", a: "49 minutes of video. Plan two to three hours including account setup, typing along with the five coding scrims, and doing the three challenges yourself." },
+  { q: "Does it have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript panel, playback speed control, and subtitles in ten languages. The transcripts are a fast way to skim the slide lessons." },
+  { q: "How does it compare to Learn AI Agents?", a: "This is a short, Langbase-specific RAG build. Learn AI Agents is longer and platform-neutral, covering tool calling and agent loops. Take this one to see a memory-backed agent work quickly, and the other to learn agent design you can apply anywhere." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/build-serverless-ai-agents-with-langbase-c0cg73hgmh" variant="button">
@@ -89,10 +167,12 @@ Where it is limited: it is tied to one platform and brief, so it is an introduct
 
 <CourseSchema
   name="Build Serverless AI Agents with Langbase"
-  description="Scrimba's free, intermediate course on building AI agents with Langbase, a serverless AI cloud. About 50 minutes, taught by Maham Codes."
+  description="Scrimba's free, intermediate course on building a memory-backed RAG agent with the Langbase SDK in TypeScript. About 49 minutes and 13 scrims with three challenges, taught by Maham Codes."
   url="https://scrimba.com/build-serverless-ai-agents-with-langbase-c0cg73hgmh"
   timeRequired="PT49M58S"
   difficulty="Intermediate"
   access="Free"
+  instructor="Maham Codes"
+  instructorUrl="https://scrimba.com/@MahamDev"
   keywords={["AI"]}
 />
