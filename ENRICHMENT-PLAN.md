@@ -21,7 +21,7 @@ screenshots) is what makes them index-worthy and citable.
 
 ## Per-page archetype (what "enriched" means)
 
-1. Title: `<Course> on Scrimba: Review From Inside the Course (2026)`; short
+1. Title: `<Course> on Scrimba: 2026 Review`; short
    `sidebar_label`; `toc_max_heading_level: 2`; `last_update` = day reviewed.
 2. Intro states the method in one sentence ("opened every module, worked
    through a sample of lessons with a Pro account in <month year>").
