@@ -53,6 +53,7 @@ const SITEMAP_EXCLUDED_PATHS = new Set<string>([
   '/docs/learn-nextjs/data-fetching',
   // Cannibalization fix (2026-09-20): merged into /docs/pricing/pro-vs-free.
   '/docs/how-it-works/is-scrimba-free',
+  '/docs/practice/react-portfolio-project-ideas',
 ]);
 
 /**
@@ -394,6 +395,9 @@ const config: Config = {
           // was merged into pro-vs-free. Both legacy slugs redirect there.
           { from: '/docs/faq/is-scrimba-free', to: '/docs/pricing/pro-vs-free/' },
           { from: '/docs/how-it-works/is-scrimba-free', to: '/docs/pricing/pro-vs-free/' },
+          // Consolidation (2026-09-20): thin, never-indexed practice page merged into the
+          // React projects practice guide.
+          { from: '/docs/practice/react-portfolio-project-ideas', to: '/docs/practice/practice-react-projects/' },
           { from: '/docs/faq/scrimba-accreditation', to: '/docs/how-it-works/accreditation/' },
           { from: '/docs/faq/certificates', to: '/docs/how-it-works/certificates/' },
           { from: '/docs/faq/learning-speed', to: '/docs/how-it-works/learning-speed/' },

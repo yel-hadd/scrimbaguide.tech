@@ -108,7 +108,6 @@ const sidebars: SidebarsConfig = {
         'practice/practice-typescript',
         'practice/practice-ai-engineering',
         'practice/practice-react-projects',
-        'practice/react-portfolio-project-ideas',
         'practice/build-a-weather-app-interactively',
       ],
     },
