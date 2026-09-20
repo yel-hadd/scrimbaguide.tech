@@ -1,58 +1,455 @@
 ---
-title: "Practice CSS Flexbox"
-description: "Master alignment and layout. These interactive courses force you to write Flexbox code until it clicks."
-keywords: [css flexbox practice, learn css flexbox, interactive css flexbox]
+title: "Practice CSS Flexbox: 6 Drills"
+description: "Six flexbox drills with starting code and solutions: centering, wrap and gap, order, a navbar, and a holy-grail card row."
+keywords: [css flexbox practice, learn css flexbox, flexbox exercises, flexbox drills]
 hideGlobalPricingCta: true
+last_update:
+  date: 2026-09-20
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import CodePreview from '@site/src/components/CodePreview';
 
 # Practice CSS Flexbox
 
-Use Scrimba’s **Flexbox** + **responsive** courses to **type real layouts in the player**, pause, tweak `justify-content`, see the row/column snap into place. No local setup; you fix alignment issues where they actually happen: in code.
+Six flexbox drills you can run in the browser, each with starting code and a solution to check after. They go from centering a box to a navbar and a card row that stays equal-height with a footer pinned to the bottom, for anyone whose layouts "mostly work" until `align-items` exposes a gap.
 
-## Who this is for
+## Before you start
 
-Anyone whose layouts “almost work” until `align-items` exposes a gap in your mental model, especially Frontend path learners prepping interviews.
+You need basic CSS selectors and the box model; flexbox itself is what these drills teach. Open the [Learn Flexbox course](/docs/courses/css/flexbox/) or the free <AffiliateLink href="https://scrimba.com/learn-html-and-css-c0p">Learn HTML and CSS course</AffiliateLink> in a second tab as scratch paper: pause, edit the code pane, hit run. Free courses need no card, and the one-time 20% banner can be dismissed.
 
+## Drills
 
-## Why Practice CSS Flexbox on Scrimba?
+### Drill 1: Center a single box
 
-Reading documentation is passive. To truly master **CSS Flexbox**, you need to write code. Scrimba's interactive format lets you:
+Center the `.box` both horizontally and vertically inside its parent, without using margins.
 
-1. **Pause the video** at any moment
-2. **Edit the code** directly in the player
-3. **Run it** to see your changes instantly
+```html
+<div class="container">
+  <div class="box"></div>
+</div>
+```
 
-## Top Courses to Practice CSS Flexbox
+```css
+.container {
+  height: 300px;
+  border: 1px solid #ccc;
+}
 
+.box {
+  width: 80px;
+  height: 80px;
+  background: coral;
+}
+```
 
-### [Flexbox Tutorial: Learn CSS Flexbox with Per Borgen](/docs/courses/css/flexbox/)
-**Level**: Intermediate | **Duration**: 53 min | **Access**: Pro
+What you should see: the coral box centered both across and down.
 
-This tutorial teaches you CSS Flexbox through 16 interactive screencasts. You'll learn all the key concepts while building a responsive layout.
+<CodePreview
+  title="Drill 1: Center a single box"
+  html={"<div class=\"container\"><div class=\"box\"></div></div>"}
+  css={".container {\n  height: 300px;\n  border: 1px solid #ccc;\n}\n\n.box {\n  width: 80px;\n  height: 80px;\n  background: coral;\n}"}
+  height={320}
+  scrimbaUrl="https://scrimba.com/learn-flexbox-c0k"
+  scrimbaLabel="Learn Flexbox"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-flexbox-1"
+/>
 
+<figure className="drill-result">
+  <img src="/img/practice/flexbox-drill-1.webp" alt="A coral square centered horizontally and vertically inside a bordered container using flexbox" width="1440" height="720" loading="lazy" />
+  <figcaption>Expected result for drill 1.</figcaption>
+</figure>
 
-### [Responsive CSS Tutorial: Learn Responsive Web Design with our interative course](/docs/courses/css/responsive-web-design/)
-**Level**: Intermediate | **Duration**: 15.1 hrs
+<details>
+<summary>Solution</summary>
 
-This course will take you to a professional level in responsive web design. You'll learn to build advanced layouts while solving fun coding challenges.
+```css
+.container {
+  height: 300px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+```
 
+`display: flex` turns on both alignment axes: `justify-content` for the main axis, `align-items` for the cross axis. The common mistake is `text-align: center`, which only centers inline content, not a block-level child like `.box`.
 
-## How to Practice Effectively
+</details>
 
-1. **Don't just watch**. Whenever the instructor writes code, pause and type it yourself.
-2. **Break things**. Change values, delete lines, and see what happens.
-3. **Do the challenges**. Scrimba courses have built-in challenges. Do not skip them.
+### Drill 2: Justify-content vs align-items
 
-## Use this guide when…
+Arrange three `.item` boxes at opposite ends and the middle of the row, vertically centered.
 
-You are done reading MDN tables and need **reps**, Scrimba scrims force you to **edit flex code inside the lesson**, not copy-paste from a video.
+```html
+<div class="row">
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>
+```
+
+```css
+.row {
+  display: flex;
+  height: 150px;
+  border: 1px solid #ccc;
+}
+
+.item {
+  width: 60px;
+  height: 60px;
+  background: steelblue;
+}
+```
+
+What you should see: the first item at the left edge, the last at the right edge, the middle one between them, all three vertically aligned.
+
+<CodePreview
+  title="Drill 2: Justify-content vs align-items"
+  html={"<div class=\"row\"><div class=\"item\"></div><div class=\"item\"></div><div class=\"item\"></div></div>"}
+  css={".row {\n  display: flex;\n  height: 150px;\n  border: 1px solid #ccc;\n}\n\n.item {\n  width: 60px;\n  height: 60px;\n  background: steelblue;\n}"}
+  height={230}
+  scrimbaUrl="https://scrimba.com/learn-flexbox-c0k"
+  scrimbaLabel="Learn Flexbox"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-flexbox-2"
+/>
+
+<figure className="drill-result">
+  <img src="/img/practice/flexbox-drill-2.webp" alt="Three blue squares spread across a row with space-between and vertically centered" width="1440" height="420" loading="lazy" />
+  <figcaption>Expected result for drill 2.</figcaption>
+</figure>
+
+<details>
+<summary>Solution</summary>
+
+```css
+.row {
+  display: flex;
+  height: 150px;
+  border: 1px solid #ccc;
+  justify-content: space-between;
+  align-items: center;
+}
+```
+
+`justify-content: space-between` spreads items along the main axis, pushing first and last to the edges. `align-items: center` centers every item on the cross axis: "along the row" versus "across the row."
+
+</details>
+
+### Drill 3: flex-grow, flex-shrink, and flex-basis
+
+Make the middle `.panel` take twice the leftover space of the side panels, starting from an equal 100px basis.
+
+```html
+<div class="panels">
+  <div class="panel">Left</div>
+  <div class="panel middle">Middle (grows 2x)</div>
+  <div class="panel">Right</div>
+</div>
+```
+
+```css
+.panels {
+  display: flex;
+  width: 600px;
+  border: 1px solid #ccc;
+}
+
+.panel {
+  flex-basis: 100px;
+  background: #eee;
+  border: 1px solid #999;
+}
+
+.panel.middle {
+  background: #ccc;
+}
+```
+
+What you should see: three panels filling 600px, the middle one visibly wider.
+
+<CodePreview
+  title="Drill 3: flex-grow, flex-shrink, and flex-basis"
+  html={"<div class=\"panels\"><div class=\"panel\">Left</div><div class=\"panel middle\">Middle (grows 2x)</div><div class=\"panel\">Right</div></div>"}
+  css={".panels {\n  display: flex;\n  width: 600px;\n  border: 1px solid #ccc;\n}\n\n.panel {\n  flex-basis: 100px;\n  background: #eee;\n  border: 1px solid #999;\n}\n\n.panel.middle {\n  background: #ccc;\n}"}
+  height={200}
+  scrimbaUrl="https://scrimba.com/learn-flexbox-c0k"
+  scrimbaLabel="Learn Flexbox"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-flexbox-3"
+/>
+
+<figure className="drill-result">
+  <img src="/img/practice/flexbox-drill-3.webp" alt="Three panels in a row where the middle panel is twice as wide as the outer two because of flex-grow 2" width="1440" height="320" loading="lazy" />
+  <figcaption>Expected result for drill 3.</figcaption>
+</figure>
+
+<details>
+<summary>Solution</summary>
+
+```css
+.panel {
+  flex: 1 1 100px;
+}
+
+.panel.middle {
+  flex: 2 1 100px;
+}
+```
+
+`flex` shorthand is `flex-grow flex-shrink flex-basis`. Grow divides leftover space by ratio (2 against 1 here), shrink controls compression, basis sets starting size. A frequent error: setting only `flex-grow`, forgetting items can overflow narrow screens without a shrink value.
+
+</details>
+
+### Drill 4: flex-wrap with gap
+
+These six `.tile` elements are stuck on one line, overflowing. Make them wrap onto multiple rows with consistent spacing using `gap`.
+
+```html
+<div class="grid">
+  <div class="tile"></div>
+  <div class="tile"></div>
+  <div class="tile"></div>
+  <div class="tile"></div>
+  <div class="tile"></div>
+  <div class="tile"></div>
+</div>
+```
+
+```css
+.grid {
+  display: flex;
+  width: 400px;
+  border: 1px solid #ccc;
+}
+
+.tile {
+  width: 120px;
+  height: 80px;
+  background: seagreen;
+}
+```
+
+What you should see: two rows of three tiles, an even gap between every tile, no overflow.
+
+<CodePreview
+  title="Drill 4: flex-wrap with gap"
+  html={"<div class=\"grid\"><div class=\"tile\"></div><div class=\"tile\"></div><div class=\"tile\"></div><div class=\"tile\"></div><div class=\"tile\"></div><div class=\"tile\"></div></div>"}
+  css={".grid {\n  display: flex;\n  width: 400px;\n  border: 1px solid #ccc;\n}\n\n.tile {\n  width: 120px;\n  height: 80px;\n  background: seagreen;\n}"}
+  height={254}
+  scrimbaUrl="https://scrimba.com/learn-flexbox-c0k"
+  scrimbaLabel="Learn Flexbox"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-flexbox-4"
+/>
+
+<figure className="drill-result">
+  <img src="/img/practice/flexbox-drill-4.webp" alt="Six green tiles wrapping onto two rows with equal 12px gaps inside a 400px flex container" width="1440" height="468" loading="lazy" />
+  <figcaption>Expected result for drill 4.</figcaption>
+</figure>
+
+<details>
+<summary>Solution</summary>
+
+```css
+.grid {
+  display: flex;
+  width: 400px;
+  border: 1px solid #ccc;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+```
+
+`flex-wrap: wrap` lets items that no longer fit drop to a new line instead of overflowing. `gap` spaces items on both axes without the margin-collapsing quirks of `margin-right` on every tile but the last. Forgetting `flex-wrap` is the top reason a "responsive" layout still overflows on mobile.
+
+</details>
+
+### Drill 5: order and a navbar layout
+
+Rebuild this navbar so the logo stays left, the links sit centered, and "Sign up" moves right, without changing the HTML order.
+
+```html
+<nav class="navbar">
+  <button class="signup">Sign up</button>
+  <div class="logo">Brand</div>
+  <ul class="links">
+    <li>Home</li>
+    <li>Docs</li>
+    <li>Pricing</li>
+  </ul>
+</nav>
+```
+
+```css
+.navbar {
+  display: flex;
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+}
+```
+
+What you should see: logo, then links, then sign-up button, left to right, despite "Sign up" being first in the markup.
+
+<CodePreview
+  title="Drill 5: order and a navbar layout"
+  html={"<nav class=\"navbar\">\n  <button class=\"signup\">Sign up</button>\n  <div class=\"logo\">Brand</div>\n  <ul class=\"links\">\n    <li>Home</li>\n    <li>Docs</li>\n    <li>Pricing</li>\n  </ul>\n</nav>"}
+  css={".navbar {\n  display: flex;\n  padding: 16px;\n  border-bottom: 1px solid #ccc;\n}"}
+  height={200}
+  scrimbaUrl="https://scrimba.com/learn-flexbox-c0k"
+  scrimbaLabel="Learn Flexbox"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-flexbox-5"
+/>
+
+<figure className="drill-result">
+  <img src="/img/practice/flexbox-drill-5.webp" alt="A navbar with the brand on the left, links in the middle, and a Sign up button pushed to the right edge with margin-left auto" width="1440" height="320" loading="lazy" />
+  <figcaption>Expected result for drill 5.</figcaption>
+</figure>
+
+<details>
+<summary>Solution</summary>
+
+```css
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo { order: 1; }
+.links { order: 2; display: flex; gap: 16px; list-style: none; }
+.signup { order: 3; margin-left: auto; }
+```
+
+`order` reflows the visual position of flex items independently of DOM position, exactly what this navbar needs. `margin-left: auto` on the last item pushes everything after it to the far edge. The trap: `order` changes appearance only, so tab order still follows the HTML.
+
+</details>
+
+### Drill 6: A holy-grail card row with a sticky footer
+
+Build three cards that stay the same height regardless of content length, with each "Buy" button pinned to the bottom.
+
+```html
+<div class="cards">
+  <div class="card">
+    <h3>Plan A</h3>
+    <p>Short description.</p>
+    <button>Buy</button>
+  </div>
+  <div class="card">
+    <h3>Plan B</h3>
+    <p>A much longer description that wraps onto several lines and would normally make this card taller than its neighbors.</p>
+    <button>Buy</button>
+  </div>
+  <div class="card">
+    <h3>Plan C</h3>
+    <p>Medium length description here.</p>
+    <button>Buy</button>
+  </div>
+</div>
+```
+
+```css
+.cards {
+  display: flex;
+  gap: 16px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 16px;
+}
+```
+
+What you should see: three cards of identical height, each "Buy" button flush with the bottom edge regardless of description length.
+
+<CodePreview
+  title="Drill 6: A holy-grail card row with a sticky footer"
+  html={"<div class=\"cards\">\n  <div class=\"card\">\n    <h3>Plan A</h3>\n    <p>Short description.</p>\n    <button>Buy</button>\n  </div>\n  <div class=\"card\">\n    <h3>Plan B</h3>\n    <p>A much longer description that wraps onto several lines and would normally make this card taller than its neighbors.</p>\n    <button>Buy</button>\n  </div>\n  <div class=\"card\">\n    <h3>Plan C</h3>\n    <p>Medium length description here.</p>\n    <button>Buy</button>\n  </div>\n</div>"}
+  css={".cards {\n  display: flex;\n  gap: 16px;\n}\n\n.card {\n  border: 1px solid #ccc;\n  padding: 16px;\n}"}
+  height={315}
+  scrimbaUrl="https://scrimba.com/learn-flexbox-c0k"
+  scrimbaLabel="Learn Flexbox"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-flexbox-6"
+/>
+
+<figure className="drill-result">
+  <img src="/img/practice/flexbox-drill-6.webp" alt="Three pricing cards of equal height in a row, each Buy button aligned to the bottom regardless of text length" width="1440" height="590" loading="lazy" />
+  <figcaption>Expected result for drill 6.</figcaption>
+</figure>
+
+<details>
+<summary>Solution</summary>
+
+```css
+.cards {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card button {
+  margin-top: auto;
+}
+```
+
+Equal-height columns come free with flexbox: `stretch` is the default cross-axis behavior, so direct flex children match the tallest. The sticky-footer button is what people miss: make `.card` a column flex container, then `margin-top: auto` on the button pushes it down, the same trick as `margin-left: auto` on the navbar button. Without `flex-direction: column`, that margin has no space to consume.
+
+</details>
+
+## Common mistakes
+
+- **Centering with `text-align` instead of `justify-content`/`align-items`.** Text alignment only affects inline content.
+- **Confusing the main and cross axis.** They swap under `flex-direction: column`.
+- **Using margins where `gap` would do the job.** Margins on every item but the last break when items change.
+- **Setting `flex-grow` without `flex-basis`.** Items grow from an inconsistent content-based width.
+- **Forgetting `flex-wrap` on responsive layouts.** Without it, items shrink past readability or overflow.
+
+## Where to practice next on Scrimba
+
+Flexbox is core to the [frontend developer path](/docs/paths/frontend-developer-path/). Four courses build on what you just drilled:
+
+| Course | What it drills | Access | Length |
+| --- | --- | --- | --- |
+| [Learn HTML and CSS](/docs/courses/css/html-and-css/) | Flexbox basics in real project builds | Free | 5.7 hrs |
+| [Flexbox Tutorial](/docs/courses/css/flexbox/) | Focused flexbox screencasts | Pro | 53 min |
+| [Responsive Web Design](/docs/courses/css/responsive-web-design/) | Flexbox and Grid across breakpoints | Pro | 15.1 hrs |
+| [CSS Challenges](/docs/courses/css/css-challenges/) | Recreating real UI components | Pro | 2.6 hrs |
+
+## Related practice guides
+
+- [Practice CSS Grid](/docs/practice/practice-css-grid/), for two-dimensional layouts
+- [Practice Tailwind CSS](/docs/practice/practice-tailwind-css/), the same flex properties as utility classes
+- [All practice guides](/docs/practice/)
+
+<FAQAccordion items={[
+  { q: "What is the difference between justify-content and align-items?", a: "justify-content aligns items along the main axis (horizontal by default). align-items aligns them along the cross axis. flex-direction: column swaps the two." },
+  { q: "When should I use flexbox instead of CSS Grid?", a: "Flexbox suits one-dimensional layouts like a navbar. Grid suits two-dimensional layouts where you control rows and columns at once, like a dashboard." },
+  { q: "Why isn't flex-grow working on my items?", a: "flex-grow distributes leftover space after items lay out at their flex-basis. With no extra space, there is nothing to grow into." },
+  { q: "How do I stop flex items from shrinking?", a: "Set flex-shrink: 0 on the item. Every flex item defaults to flex-shrink: 1, which compresses it below content size." },
+  { q: "Is flexbox free to practice on Scrimba?", a: "Learn HTML and CSS, which covers flexbox fundamentals inside real project builds, is free. The dedicated Flexbox Tutorial and Responsive Web Design courses require Pro." },
+]} />
 
 <PricingCTA
-  title="Open a Flexbox scrim now"
-  subtitle="Start free where you can; add Pro when you want the full CSS + path catalog."
+  title="Open a flexbox scrim now"
+  subtitle="Start free with Learn HTML and CSS; add Pro for the dedicated flexbox and responsive courses."
   buttonText="Try Scrimba free"
   ctaType="free"
+  location="practice-flexbox"
 />

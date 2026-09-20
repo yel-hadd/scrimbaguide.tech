@@ -1,72 +1,263 @@
 ---
-title: "Practice React Hooks"
-description: "Hooks can be confusing until you build with them. These courses give you hands-on practice with state and effects."
-keywords: [react hooks practice, learn react hooks, interactive react hooks]
+title: "Practice React Hooks: 6 Drills"
+description: "Six React hooks drills with solutions: stale closures, controlled inputs, cleanup effects, data fetching, a custom hook, and useReducer."
+keywords: [react hooks practice, learn react hooks, useState useEffect practice, useReducer exercise]
 hideGlobalPricingCta: true
+last_update:
+  date: 2026-09-20
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 
 # Practice React Hooks
 
-Learn React and Advanced React on Scrimba give hands-on useState/useEffect practice. Pause and edit code in lessons. Most courses free or Pro.
+Six drills covering hooks mistakes that show up in real components and interviews: stale closures, cleanup, data fetching, custom hooks, and `useReducer`. Each has starting code and a solution with an explanation, not just a course list. Open a free Scrimba scrim alongside them to run the code instead of tracing it on paper.
 
-## Who This Is For
+## Before you start
 
-Developers learning React hooks who want interactive practice instead of passive docs, useState, useEffect, and patterns.
+You should already know `useState` and JSX basics. Keep <AffiliateLink href="https://scrimba.com/learn-react-c0e">Learn React</AffiliateLink> (see the [course page](/docs/courses/react/learn-react/)) open in another tab, or a blank scrim, to paste each snippet in and run it. Scrimba's editor lets you pause, edit, and rerun instantly; the free course needs no card, and its one-time 20% banner can be dismissed.
 
-Hooks can be confusing until you build with them. These courses give you hands-on practice with state and effects.
+## Drills
 
-## Why Practice React Hooks on Scrimba?
+### Drill 1: fix the stale closure in a counter
 
-Reading documentation is passive. To truly master **React Hooks**, you need to write code. Scrimba's interactive format lets you:
+This counter ticks up every second with `setInterval`, but it gets stuck at 1.
 
-1. **Pause the video** at any moment
-2. **Edit the code** directly in the player
-3. **Run it** to see your changes instantly
+```jsx
+useEffect(() => {
+  const id = setInterval(() => {
+    setCount(count + 1);
+  }, 1000);
+  return () => clearInterval(id);
+}, []);
+```
 
-## Top Courses to Practice React Hooks
+What you should see: the count should climb once per second, but it freezes at 1.
 
+<details>
+<summary>Solution</summary>
 
-### [Free Interactive React Tutorial: Learn modern React in this extensive course lead by Bob Ziroll](/docs/courses/react/learn-react/)
-**Level**: Intermediate | **Duration**: 15.1 hrs
+```jsx
+useEffect(() => {
+  const id = setInterval(() => {
+    setCount((prev) => prev + 1);
+  }, 1000);
+  return () => clearInterval(id);
+}, []);
+```
 
-This is the ideal starting point for anyone eager to learn modern React basics in the most interactive, hands-on way possible.
+The callback closes over `count` from the render when the effect first ran, and the empty dependency array means that closure never refreshes: every tick reads the same stale `0`. The functional updater, `setCount((prev) => prev + 1)`, reads the latest value instead of the captured one.
 
+</details>
 
-### [Tutorial: Learn Advanced React – A 13-hour interactive course lead by Bob Ziroll](/docs/courses/react/advanced-react/)
-**Level**: Advanced | **Duration**: 18.8 hrs
+### Drill 2: controlled input backed by an object
 
-The best learning experience paired with a world-class instructor. This massive course aims to turn you into a hireable React developer as fast as possible, with deep dives into custom hooks, context, and performance patterns.
+Wire this form up so both fields update a single state object without wiping each other out.
 
+```jsx
+const [form, setForm] = useState({ name: "", email: "" });
+// <input value={form.name} /> and <input value={form.email} />
+```
 
-### [React Interview Questions Tutorial: Learn key React concepts in no-time with this interative course](/docs/courses/react/react-interview-questions/)
-**Level**: Intermediate | **Duration**: 41 min
+What you should see: typing in either field updates only that field, without erasing the other.
 
-Learn to ace a React interview with a Principal Developer Experience Engineer as your guide! In about 41 minutes, you’ll cover topics such as the Virtual DOM, reconciliation, keys, and the rules of hooks.
+<details>
+<summary>Solution</summary>
 
+```jsx
+const handleChange = (event) => {
+  const { name, value } = event.target;
+  setForm((prev) => ({ ...prev, [name]: value }));
+};
+// <input name="name" value={form.name} onChange={handleChange} />
+```
 
-## How to Practice Effectively
+The `name` attribute tells one handler which key to update via the computed property `[name]: value`. Spreading `...prev` is mandatory: `setForm({ [name]: value })` would replace the whole object and erase the untouched field.
 
-1. **Don't just watch**. Whenever the instructor writes code, pause and type it yourself.
-2. **Break things**. Change values, delete lines, and see what happens.
-3. **Do the challenges**. Scrimba courses have built-in challenges. Do not skip them.
+</details>
 
-## Choose This If
+### Drill 3: clean up a subscription
 
-**Choose this guide if:** You're learning React hooks and want course recommendations for hands-on practice. Start with Learn React (free); Advanced React for deeper patterns.
+This component listens for window resizes but leaks the listener when it unmounts.
 
-## Related practice and guides
+```jsx
+useEffect(() => {
+  window.addEventListener("resize", () => setWidth(window.innerWidth));
+});
+```
 
-- [All practice drills](/docs/practice/) | [React courses](/docs/courses/react/)
-- [React Practice Projects](/docs/practice/practice-react-projects/), put hooks to work in real builds
-- [Practice API Calls](/docs/practice/practice-api-calls/), fetch data inside `useEffect`
-- [Frontend Developer Path](/docs/paths/frontend-developer-path/), structured React learning
+What you should see: resizing updates the width, and unmounting stops adding new listeners.
+
+<details>
+<summary>Solution</summary>
+
+```jsx
+useEffect(() => {
+  const handleResize = () => setWidth(window.innerWidth);
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+```
+
+Two mistakes stacked here: no dependency array, so the effect reran every render and stacked listeners, and no cleanup, so a listener outlived the component after unmount. Naming the handler and returning a cleanup function fixes both.
+
+</details>
+
+### Drill 4: fetch with loading, error, and a cancelled flag
+
+Fetch a user by ID and handle loading and error states without setting state after unmount.
+
+```jsx
+useEffect(() => {
+  fetch(`/api/users/${userId}`)
+    .then((res) => res.json())
+    .then((data) => setUser(data));
+}, [userId]);
+
+return user ? <p>{user.name}</p> : <p>Loading...</p>;
+```
+
+What you should see: a loading message, an error on failure, no warning about setting state after unmount.
+
+<details>
+<summary>Solution</summary>
+
+```jsx
+useEffect(() => {
+  let cancelled = false;
+  setLoading(true);
+
+  fetch(`/api/users/${userId}`)
+    .then((res) => (res.ok ? res.json() : Promise.reject(new Error("Failed"))))
+    .then((data) => !cancelled && setUser(data))
+    .catch((err) => !cancelled && setError(err.message))
+    .finally(() => !cancelled && setLoading(false));
+
+  return () => {
+    cancelled = true;
+  };
+}, [userId]);
+```
+
+There is no error handling, and nothing guards against `userId` changing before the fetch resolves. The `cancelled` flag stops a stale response from calling `setUser` after unmount or a newer request; without `userId` in the dependency array, the effect would never refetch.
+
+</details>
+
+### Drill 5: extract a `useLocalStorage` custom hook
+
+Turn this component's manual `localStorage` reads and writes into a reusable hook.
+
+```jsx
+const [notes, setNotes] = useState(
+  JSON.parse(localStorage.getItem("notes")) || ""
+);
+
+const handleChange = (event) => {
+  setNotes(event.target.value);
+  localStorage.setItem("notes", JSON.stringify(event.target.value));
+};
+```
+
+What you should see: notes persist across reloads, and the storage logic leaves the component.
+
+<details>
+<summary>Solution</summary>
+
+```jsx
+function useLocalStorage(key, initialValue) {
+  const [value, setValue] = useState(() => {
+    const stored = localStorage.getItem(key);
+    return stored !== null ? JSON.parse(stored) : initialValue;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+
+  return [value, setValue];
+}
+
+// const [notes, setNotes] = useLocalStorage("notes", "");
+```
+
+A custom hook is a function that calls other hooks and starts with `use`. The lazy initializer, `useState(() => ...)`, reads `localStorage` once on mount, and the write moves into its own effect keyed on `[key, value]`. Never call a hook conditionally or inside a loop.
+
+</details>
+
+### Drill 6: a shopping cart with `useReducer`
+
+Replace ad-hoc `useState` calls with `useReducer` to handle adding and removing items in one place.
+
+```jsx
+const [items, setItems] = useState([]);
+
+const addItem = (item) => setItems([...items, { ...item, qty: 1 }]);
+const removeItem = (id) => setItems(items.filter((i) => i.id !== id));
+```
+
+What you should see: the same add and remove behaviour, driven by one reducer and a `dispatch` call per action.
+
+<details>
+<summary>Solution</summary>
+
+```jsx
+function cartReducer(state, action) {
+  switch (action.type) {
+    case "add":
+      return [...state, { ...action.item, qty: 1 }];
+    case "remove":
+      return state.filter((i) => i.id !== action.id);
+    default:
+      return state;
+  }
+}
+
+const [items, dispatch] = useReducer(cartReducer, []);
+// dispatch({ type: "remove", id: item.id })
+```
+
+`useReducer` earns its keep once several related transitions touch the same state, which is exactly a cart: the logic moves into one pure function instead of several `useState` setters. The common mistake when converting is mutating `state` inside a case (`state.push(...)`) instead of returning a new array; React compares state by reference, so a mutated array will not trigger a re-render.
+
+</details>
+
+## Common mistakes
+
+- **Missing dependencies.** Trust ESLint's `react-hooks/exhaustive-deps` warning instead of silencing it.
+- **Reading state instead of using the updater.** `setState(state + 1)` can read a stale snapshot; the updater form never does.
+- **Forgetting cleanup in `useEffect`.** A subscription, timer, or listener needs a returned cleanup, or it outlives the component.
+- **Fetching without a cancelled flag.** A slow response for an old prop value can otherwise overwrite a newer one.
+- **Calling hooks conditionally.** Hooks must run unconditionally at the top level, never inside an `if` or loop.
+
+## Where to practice next on Scrimba
+
+React hooks anchor the [Frontend Developer Path](/docs/paths/frontend-developer-path/); these courses go deeper on the same patterns.
+
+| Course | What it drills | Access | Length |
+| --- | --- | --- | --- |
+| [Learn React](/docs/courses/react/learn-react/) | `useState`, `useEffect`, component fundamentals | Free | 15.1 hrs |
+| [What's New in React 19?](/docs/courses/react/whats-new-in-react-19/) | Hook-adjacent API changes since React 18 | Free | 1.2 hrs |
+| [Advanced React](/docs/courses/react/advanced-react/) | Custom hooks, context, performance patterns | Pro | 18.8 hrs |
+| [React Interview Questions](/docs/courses/react/react-interview-questions/) | Rules of hooks and common gotchas | Pro | 41 min |
+
+## Related practice guides
+
+- [Practice React Projects](/docs/practice/practice-react-projects/), put hooks to work in full builds
+- [Practice API Calls](/docs/practice/practice-api-calls/), more on fetching and error states
+- [All practice drills](/docs/practice/)
+
+<FAQAccordion items={[
+  { q: "Why does my useState value stay stale inside setInterval or an event handler?", a: "The callback closes over the state from the render where the effect ran. Use the updater form, setCount((prev) => prev + 1), to read the latest value." },
+  { q: "Do I always need a cleanup function in useEffect?", a: "Only when the effect starts something that outlives a render: a subscription, an interval, a listener, or a request." },
+  { q: "When should I use useReducer instead of useState?", a: "When several state updates share the same actions, like a cart. It centralises the logic in one function." },
+  { q: "Is Scrimba's free React course enough to practice hooks, or do I need Pro?", a: "Learn React is free and covers useState and useEffect in full. Advanced React (Pro) goes deeper into custom hooks." },
+]} />
 
 <PricingCTA
-  title="Feel hooks stick in interactive React"
-  subtitle="Learn React is free; Advanced React and paths unlock with Pro."
+  title="Turn hooks drills into real components"
+  subtitle="Learn React is free; Advanced React and the Pro paths go deeper on custom hooks and patterns."
   buttonText="Try Scrimba free"
   ctaType="free"
+  location="practice-react-hooks"
 />

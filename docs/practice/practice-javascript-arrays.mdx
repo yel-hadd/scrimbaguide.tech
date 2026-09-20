@@ -1,67 +1,236 @@
 ---
-title: "Practice JavaScript Arrays"
-description: "Array methods are the bread and butter of React. Practice map, filter, and reduce with these interactive challenges."
-keywords: [javascript arrays practice, learn javascript arrays, interactive javascript arrays]
+title: "Practice JavaScript Arrays: 6 Real Drills"
+description: "Six JavaScript array drills with starting code and solutions: map/filter/reduce, dedup, flatten, sort without mutating, group, and join two arrays."
+keywords: [javascript arrays practice, learn javascript arrays, javascript reduce practice, sort array of objects javascript, group array by key]
 hideGlobalPricingCta: true
+last_update:
+  date: 2026-09-20
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 
 # Practice JavaScript Arrays
 
-Scrimba’s **Learn JavaScript** and **interview challenge** courses turn **array methods** into hundreds of micro-reps, typed in the player, not copied from a gist. That is the substrate every hooks-heavy UI sits on.
+Six array drills you can run in a browser console or a Scrimba scrim, no setup required, running from a `map`/`filter`/`reduce` warm-up to a two-array join that shows up in junior interviews. Each has starting code, an expected result, and a solution with an explanation. For anyone who can write `array.map(x => x * 2)` but freezes when asked to group or sort real data.
 
-Array methods are the bread and butter of React, this page points at the fastest interactive stacks on Scrimba.
+## Before you start
 
-## Who this is for
+You need basic JavaScript: variables, arrow functions, and `array.method()` syntax. If `reduce` is still fuzzy, open <AffiliateLink href="https://scrimba.com/learn-javascript-c0v">Learn JavaScript</AffiliateLink> (free) alongside this page, or start with the [Learn JavaScript course](/docs/courses/javascript/learn-javascript/) page. A scrim doubles as a scratchpad: pause, edit the visible code, and run to test a guess, no card needed for free courses. Dismiss the one-time 20% banner if it appears.
 
-Anyone who “kind of gets” `map` until an interviewer asks for **`reduce`** with a straight face.
+## Drills
 
+### Drill 1: map, filter, and reduce together
 
-## Why Practice JavaScript Arrays on Scrimba?
+Take a list of prices, apply 8% tax, keep only the ones over 20 after tax, then total what's left.
 
-Reading documentation is passive. To truly master **JavaScript Arrays**, you need to write code. Scrimba's interactive format lets you:
+```js
+const prices = [12, 45, 8, 99, 23, 60];
 
-1. **Pause the video** at any moment
-2. **Edit the code** directly in the player
-3. **Run it** to see your changes instantly
+// map, filter, reduce
+```
 
-## Top Courses to Practice JavaScript Arrays
+What you should see: one number, the sum of the taxed prices above 20.
 
+<details>
+<summary>Solution</summary>
 
-### [Free JavaScript Tutorial: Learn the basics in this 9-hour interactive course lead by Per Borgen](/docs/courses/javascript/learn-javascript/)
-**Level**: Beginner | **Duration**: 9.4 hrs
+```js
+const withTax = prices.map((price) => price * 1.08);
+const overTwenty = withTax.filter((price) => price > 20);
+const total = overTwenty.reduce((sum, price) => sum + price, 0);
 
-Learn the basics of JavaScript by solving 140+ interactive coding challenges. Along the way you will build a game, a browser extension, and even a mobile app, with array methods like `map`, `filter`, and `reduce` woven through every project.
+console.log(total);
+```
 
+`map` and `filter` each return a new array, so `prices` never changes. The common mistake is skipping the `0` starting value in `reduce`: without it, the first element becomes the accumulator, breaking once you reduce into an object.
 
-### [JavaScript Interview Challenge Tutorial: Learn, practice and prepare with this course](/docs/courses/javascript/javascript-interview-challenges/)
-**Level**: Intermediate | **Duration**: 2.3 hrs
+</details>
 
-Your essential tech interview preparation pack! Practice solving problems and honing the skills you need to succeed in a frontend coding interview, with plenty of array-manipulation questions in the mix.
+### Drill 2: remove duplicates while keeping order
 
+Given a list of tags with repeats, return a new array with each tag appearing once, order preserved.
 
-## How to Practice Effectively
+```js
+const tags = ['react', 'javascript', 'css', 'react', 'html', 'javascript'];
 
-1. **Don't just watch**. Whenever the instructor writes code, pause and type it yourself.
-2. **Break things**. Change values, delete lines, and see what happens.
-3. **Do the challenges**. Scrimba courses have built-in challenges. Do not skip them.
+// remove duplicates, keep order
+```
 
-## Use this guide when…
+What you should see: `['react', 'javascript', 'css', 'html']`.
 
-You can follow a React tutorial but **data transformations** still feel fuzzy, fix the JS layer first, inside scrims.
+<details>
+<summary>Solution</summary>
 
-## Related practice and guides
+```js
+const uniqueTags = [...new Set(tags)];
+```
 
-- [All practice drills](/docs/practice/) | [JavaScript courses](/docs/courses/javascript/)
-- [Practice API Calls](/docs/practice/practice-api-calls/), put array methods to work on real responses
-- [Practice React Hooks](/docs/practice/practice-react-hooks/), where array reflexes pay off in JSX
-- [Frontend Developer Path](/docs/paths/frontend-developer-path/), structured JavaScript-to-React learning
+A `Set` only stores unique values and remembers insertion order, so spreading it back into an array gives you what you want in one line. The trap: deduping with a `for` loop that calls `splice` while iterating shifts every later index down, skipping the item right after each duplicate.
+
+</details>
+
+### Drill 3: flatten nested arrays
+
+Some items in this array are arrays themselves, nested more than one level deep. Return a single flat array.
+
+```js
+const nested = [[1, 2], [3, [4, 5]], [6]];
+
+// flatten to: [1, 2, 3, 4, 5, 6]
+```
+
+What you should see: `[1, 2, 3, 4, 5, 6]`.
+
+<details>
+<summary>Solution</summary>
+
+```js
+const flat = nested.flat(Infinity);
+```
+
+`flat()` takes a depth argument, default `1`, so plain `nested.flat()` would leave `[4, 5]` nested inside the second element. `Infinity` flattens however deep the data goes, safer than guessing a fixed depth.
+
+</details>
+
+### Drill 4: sort objects by a key without mutating the original
+
+Sort a list of products by price, cheapest first, without changing the order of the original `products` array.
+
+```js
+const products = [
+  { name: 'Keyboard', price: 45 },
+  { name: 'Monitor', price: 199 },
+  { name: 'Mouse', price: 25 },
+];
+
+// return a NEW sorted array; products must stay unchanged
+```
+
+What you should see: a new array ordered Mouse, Keyboard, Monitor, while `products` still logs Keyboard, Monitor, Mouse.
+
+<details>
+<summary>Solution</summary>
+
+```js
+const sortedByPrice = [...products].sort((a, b) => a.price - b.price);
+```
+
+`sort()` mutates the array it's called on and returns that reference, so `products.sort(...)` would quietly reorder your original data too. Spread `products` into a new array first, then sort the copy: the most common mutation bug in array interviews.
+
+</details>
+
+### Drill 5: group items into an object with reduce
+
+Group a list of people into an object keyed by department, so each key holds an array of the people in it.
+
+```js
+const people = [
+  { name: 'Ana', dept: 'Engineering' },
+  { name: 'Ben', dept: 'Sales' },
+  { name: 'Cleo', dept: 'Engineering' },
+  { name: 'Dev', dept: 'Sales' },
+  { name: 'Eve', dept: 'Marketing' },
+];
+
+// group into: { Engineering: [...], Sales: [...], Marketing: [...] }
+```
+
+What you should see: an object with three keys, each holding the matching person objects.
+
+<details>
+<summary>Solution</summary>
+
+```js
+const byDept = people.reduce((groups, person) => {
+  const key = person.dept;
+  if (!groups[key]) {
+    groups[key] = [];
+  }
+  groups[key].push(person);
+  return groups;
+}, {});
+```
+
+The accumulator starts as `reduce`'s empty-object second argument, and each pass creates or reuses a department array. The common mistake: forgetting to return `groups` at the end of the callback, leaving the accumulator `undefined` on the next pass.
+
+</details>
+
+### Drill 6: join two arrays by a shared id
+
+The classic interview shape: two arrays that share an id field, combined. Add a `customerName` field to each order by matching `customerId` against the `customers` list.
+
+```js
+const orders = [
+  { id: 101, customerId: 1, total: 42 },
+  { id: 102, customerId: 2, total: 15 },
+  { id: 103, customerId: 1, total: 30 },
+];
+
+const customers = [
+  { id: 1, name: 'Priya' },
+  { id: 2, name: 'Sam' },
+];
+
+// add a customerName field to each order
+```
+
+What you should see: three orders, each now carrying a `customerName` of `'Priya'` or `'Sam'`.
+
+<details>
+<summary>Solution</summary>
+
+```js
+const customersById = new Map(customers.map((c) => [c.id, c.name]));
+
+const ordersWithNames = orders.map((order) => ({
+  ...order,
+  customerName: customersById.get(order.customerId) ?? 'Unknown customer',
+}));
+```
+
+Building a `Map` from `customers` first makes each lookup constant-time, instead of calling `customers.find(...)` inside `.map()`, which re-scans `customers` for every order. Naming that tradeoff is what interviewers listen for. The `...order` spread matters too: writing `order.customerName = ...` directly would mutate the original array, and `??` stops a missing id from silently writing `undefined`.
+
+</details>
+
+## Common mistakes
+
+- **Calling `sort`, `reverse`, or `splice` on data you still need.** All three mutate in place. Spread into a copy first.
+- **Forgetting the initial value in `reduce`.** Without it, the first item becomes the accumulator, breaking once you reduce into an object.
+- **Assuming `flat()` goes all the way down.** Default depth is `1`; pass `Infinity` for unknown nesting.
+- **Using `.find()` inside a `.map()` for a join.** Works, but it's O(n \* m). Build a `Map` keyed by id once either array grows.
+- **Reading a property off `.find()`'s result unchecked.** No match returns `undefined`, and `.someProperty` throws.
+
+## Where to practice next on Scrimba
+
+Array methods sit under the [Frontend Developer Path](/docs/paths/frontend-developer-path/): React's list rendering and search filtering both depend on being comfortable with `map`, `filter`, and `reduce` first.
+
+| Course | What it drills | Access | Length |
+| --- | --- | --- | --- |
+| [Learn JavaScript](/docs/courses/javascript/learn-javascript/) | Array methods across 140+ challenges and three projects | Free | 9.4 hrs |
+| [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) | Timed array and string questions, interview format | Pro | 2.3 hrs |
+| [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/) | Closures and the internals behind array methods | Pro | 9.8 hrs |
+| [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) | Complexity (the O(n \* m) trap from Drill 6), sorting | Pro | 2.5 hrs |
+
+## Related practice guides
+
+- [All practice drills](/docs/practice/)
+- [Practice React Hooks](/docs/practice/practice-react-hooks/)
+- [Practice API Calls](/docs/practice/practice-api-calls/)
+
+<FAQAccordion items={[
+  { q: "Which array method should I learn first?", a: "Start with map and filter, then move to reduce. Reduce is the one most learners avoid, and the one interviewers ask about most." },
+  { q: "Do I need to memorise every array method?", a: "No. Map, filter, reduce, find, some, every, flat, and sort cover most real code and interview questions." },
+  { q: "Why does my sort() change my original array?", a: "sort() mutates the array it's called on. Spread it into a copy first, [...array].sort(...), to keep the original order intact." },
+  { q: "Is a for loop or array methods better?", a: "Array methods usually read more clearly and are what interviewers expect. A for loop is fine when breaking early or performance on a huge array outweighs readability." },
+  { q: "Can I do these drills without installing anything?", a: "Yes. Paste the code into your browser's console, a Scrimba scrim, or any online JavaScript playground." },
+]} />
 
 <PricingCTA
   title="Drill arrays inside scrims"
-  subtitle="Huge chunks of Learn JavaScript are free; Pro unlocks deeper interview + path content."
+  subtitle="Learn JavaScript is free; Pro unlocks the interview challenges and paths."
   buttonText="Try Scrimba free"
   ctaType="free"
+  location="practice-javascript-arrays"
 />

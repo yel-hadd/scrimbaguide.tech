@@ -1,58 +1,434 @@
 ---
-title: "Practice CSS Grid"
-description: "Stop reading documentation and start building grids. Here are the best interactive Scrimba courses to practice CSS Grid."
-keywords: [css grid practice, learn css grid, interactive css grid]
+title: "Practice CSS Grid: 6 Browser Drills"
+description: "Six CSS Grid drills with starting code and solutions: column layouts, template areas, spanning, auto-fit cards, and a dashboard."
+keywords: [css grid practice, learn css grid, css grid drills, css grid exercises]
 hideGlobalPricingCta: true
+last_update:
+  date: 2026-09-20
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import CodePreview from '@site/src/components/CodePreview';
 import PricingCTA from '@site/src/components/PricingCTA';
 
 # Practice CSS Grid
 
-Scrimba’s **CSS Grid** track (plus supporting UI/CSS drills) has you **place areas, gaps, and breakpoints in the browser player**, so `fr`, `minmax`, and `grid-template-areas` stick because you used them, not because you highlighted a blog post.
+Six CSS Grid drills you can run in the browser, from a three-column layout to a dashboard with a collapsing sidebar. Each has starting code, what to expect, and a solution. Open a free Scrimba course alongside them for video. This is for developers who know basic CSS but reach for Flexbox out of habit when a layout needs two dimensions.
 
-## Who this is for
+## Before you start
 
-Devs who default to Flexbox hacks for 2D layouts and want **portfolio-grade** marketing sections or dashboards.
+You should know CSS selectors, the box model, and basic Flexbox already. Keep a scrim open in another tab as scratch paper: the <AffiliateLink href="https://scrimba.com/learn-css-grid-c02k">Learn CSS Grid course</AffiliateLink> (Pro, 1.1 hrs, Per Borgen; see our [course notes](/docs/courses/css/css-grid/)) if you have a subscription, or the free <AffiliateLink href="https://scrimba.com/learn-html-and-css-c0p">Learn HTML and CSS course</AffiliateLink> if not; any scrim's editor works for these drills.
 
+A Scrimba scrim works as a scratchpad: pause, edit the code pane, and run it to see the result. Free courses need no card, and the one-time 20% banner that appears via our links can be dismissed.
 
-## Why Practice CSS Grid on Scrimba?
+## Drills
 
-Reading documentation is passive. To truly master **CSS Grid**, you need to write code. Scrimba's interactive format lets you:
+### Drill 1: A three-column grid with gaps
 
-1. **Pause the video** at any moment
-2. **Edit the code** directly in the player
-3. **Run it** to see your changes instantly
+Turn this stacked list into three evenly sized columns with a gap.
 
-## Top Courses to Practice CSS Grid
+```html
+<div class="cards">
+  <div class="card">One</div>
+  <div class="card">Two</div>
+  <div class="card">Three</div>
+</div>
+```
 
+```css
+.cards {
+  /* add grid rules */
+}
+```
 
-### [CSS Grid Tutorial: Learn CSS Grid with Per Borgen](/docs/courses/css/css-grid/)
-**Level**: Intermediate | **Duration**: ~66 min | **Access**: Pro
+What you should see: three even boxes side by side, gaps between them, none at the outer edges.
 
-This tutorial teaches you CSS Grid through 20 interactive screencasts. You'll learn all the key concepts while building three responsive layouts.
+<CodePreview
+  title="Drill 1: A three-column grid with gaps"
+  html={"<div class=\"cards\">\n  <div class=\"card\">One</div>\n  <div class=\"card\">Two</div>\n  <div class=\"card\">Three</div>\n</div>"}
+  css={".cards {\n  /* add grid rules */\n}"}
+  height={200}
+  scrimbaUrl="https://scrimba.com/learn-css-grid-c02k"
+  scrimbaLabel="Learn CSS Grid"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-css-grid-1"
+/>
 
+<figure className="drill-result">
+  <img src="/img/practice/css-grid-drill-1.webp" alt="Three equal-width cards side by side with a gap between them and no gap at the outer edges" width="1440" height="320" loading="lazy" />
+  <figcaption>Expected result for drill 1.</figcaption>
+</figure>
 
-### [UI design fundamentals tutorial: Learn to create beautiful and functional user interfaces in this free course](/docs/courses/css/ui-design-fundamentals/)
-**Level**: Intermediate | **Duration**: 70 min
+<details>
+<summary>Solution</summary>
 
-This tutorial course will teach you to design user interfaces that both look good and work well. All is done with HTML and CSS, so no clunky design software required.
+```css
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+```
 
+`repeat(3, 1fr)` divides the row into three equal fractions; `gap` spaces the tracks without adding outer margin. The common mistake, `33% 33% 33%`, ignores the gap and overflows the container.
 
-## How to Practice Effectively
+</details>
 
-1. **Don't just watch**. Whenever the instructor writes code, pause and type it yourself.
-2. **Break things**. Change values, delete lines, and see what happens.
-3. **Do the challenges**. Scrimba courses have built-in challenges. Do not skip them.
+### Drill 2: A page layout with grid-template-areas
 
-## Use this guide when…
+Arrange a header, sidebar, main area, and footer using named areas.
 
-You are ready to **own two-dimensional layouts**, Grid for structure, Flexbox for micro-alignment, inside guided scrims.
+```html
+<div class="page">
+  <header>Header</header>
+  <nav>Sidebar</nav>
+  <main>Main</main>
+  <footer>Footer</footer>
+</div>
+```
+
+```css
+.page {
+  display: grid;
+  min-height: 100vh;
+  /* define columns, rows, and areas */
+}
+
+header { }
+nav { }
+main { }
+footer { }
+```
+
+What you should see: a header on top, a narrow sidebar on the left, main filling what's left, a full-width footer at the bottom.
+
+<CodePreview
+  title="Drill 2: A page layout with grid-template-areas"
+  html={"<div class=\"page\">\n  <header>Header</header>\n  <nav>Sidebar</nav>\n  <main>Main</main>\n  <footer>Footer</footer>\n</div>"}
+  css={".page {\n  display: grid;\n  min-height: 100vh;\n  /* define columns, rows, and areas */\n}\n\nheader { }\nnav { }\nmain { }\nfooter { }"}
+  height={320}
+  scrimbaUrl="https://scrimba.com/learn-css-grid-c02k"
+  scrimbaLabel="Learn CSS Grid"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-css-grid-2"
+/>
+
+<figure className="drill-result">
+  <img src="/img/practice/css-grid-drill-2.webp" alt="Page layout with a full-width header, a 200px sidebar beside the main area, and a full-width footer, built with grid-template-areas" width="1440" height="800" loading="lazy" />
+  <figcaption>Expected result for drill 2.</figcaption>
+</figure>
+
+<details>
+<summary>Solution</summary>
+
+```css
+.page {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
+
+header { grid-area: header; }
+nav     { grid-area: sidebar; }
+main    { grid-area: main; }
+footer  { grid-area: footer; }
+```
+
+Each row is a string; each word names the area filling that cell, and repeating a name merges cells. Elements match by `grid-area`, not HTML order. A mismatched column count anywhere invalidates the whole declaration.
+
+</details>
+
+### Drill 3: Spanning rows and columns
+
+Make the first card span two columns, and the last card span two rows.
+
+```html
+<div class="grid">
+  <div class="card wide">Wide</div>
+  <div class="card">B</div>
+  <div class="card">C</div>
+  <div class="card tall">Tall</div>
+</div>
+```
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+  gap: 0.75rem;
+}
+```
+
+What you should see: "Wide" spanning two of the three columns on row one, "Tall" stretching through two row heights on the right.
+
+<CodePreview
+  title="Drill 3: Spanning rows and columns"
+  html={"<div class=\"grid\">\n  <div class=\"card wide\">Wide</div>\n  <div class=\"card\">B</div>\n  <div class=\"card\">C</div>\n  <div class=\"card tall\">Tall</div>\n</div>"}
+  css={".grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-auto-rows: 100px;\n  gap: 0.75rem;\n}"}
+  height={320}
+  scrimbaUrl="https://scrimba.com/learn-css-grid-c02k"
+  scrimbaLabel="Learn CSS Grid"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-css-grid-3"
+/>
+
+<figure className="drill-result">
+  <img src="/img/practice/css-grid-drill-3.webp" alt="A card grid where one card spans two columns and another card spans two rows" width="1440" height="768" loading="lazy" />
+  <figcaption>Expected result for drill 3.</figcaption>
+</figure>
+
+<details>
+<summary>Solution</summary>
+
+```css
+.wide {
+  grid-column: span 2;
+}
+
+.tall {
+  grid-row: span 2;
+}
+```
+
+`span 2` occupies two tracks from wherever auto-placement lands, without naming exact line numbers. People often try `grid-column: 2` expecting "two columns wide," but a bare number is a line position, not a count.
+
+</details>
+
+### Drill 4: An auto-fit, minmax card grid with no media queries
+
+Build a card grid that adds or drops columns as the viewport resizes, no `@media` rule.
+
+```html
+<div class="grid">
+  <div class="card">1</div>
+  <div class="card">2</div>
+  <div class="card">3</div>
+  <div class="card">4</div>
+  <div class="card">5</div>
+</div>
+```
+
+```css
+.grid {
+  display: grid;
+  gap: 1rem;
+  /* columns go here */
+}
+```
+
+What you should see: cards at least 200px wide, wrapping onto new rows as the window narrows, stretching to fill space on wide screens.
+
+<CodePreview
+  title="Drill 4: An auto-fit, minmax card grid with no media queries"
+  html={"<div class=\"grid\">\n  <div class=\"card\">1</div>\n  <div class=\"card\">2</div>\n  <div class=\"card\">3</div>\n  <div class=\"card\">4</div>\n  <div class=\"card\">5</div>\n</div>"}
+  css={".grid {\n  display: grid;\n  gap: 1rem;\n  /* columns go here */\n}"}
+  height={224}
+  scrimbaUrl="https://scrimba.com/learn-css-grid-c02k"
+  scrimbaLabel="Learn CSS Grid"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-css-grid-4"
+/>
+
+<figure className="drill-result">
+  <img src="/img/practice/css-grid-drill-4.webp" alt="Five cards in a responsive grid that fits as many 200px-minimum columns as the width allows, with no media queries" width="1440" height="408" loading="lazy" />
+  <figcaption>Expected result for drill 4.</figcaption>
+</figure>
+
+<details>
+<summary>Solution</summary>
+
+```css
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+```
+
+`auto-fit` recalculates how many tracks fit at the current width; `minmax(200px, 1fr)` sets each track's floor while letting it grow. Swapping in `auto-fill` is the near-miss: identical with a full row but leaves empty phantom tracks with too few items.
+
+</details>
+
+### Drill 5: Aligning items inside grid cells
+
+Center a badge inside its cell, then push a button to the right edge of its own cell.
+
+```html
+<div class="grid">
+  <div class="cell badge">New</div>
+  <div class="cell">
+    <button class="save">Save</button>
+  </div>
+</div>
+```
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.cell {
+  border: 1px solid #ccc;
+  min-height: 80px;
+}
+```
+
+What you should see: "New" centered inside its box, and "Save" sitting against the right edge of its box rather than stretched across it.
+
+<CodePreview
+  title="Drill 5: Aligning items inside grid cells"
+  html={"<div class=\"grid\">\n  <div class=\"cell badge\">New</div>\n  <div class=\"cell\">\n    <button class=\"save\">Save</button>\n  </div>\n</div>"}
+  css={".grid {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  gap: 1rem;\n}\n\n.cell {\n  border: 1px solid #ccc;\n  min-height: 80px;\n}"}
+  height={200}
+  scrimbaUrl="https://scrimba.com/learn-css-grid-c02k"
+  scrimbaLabel="Learn CSS Grid"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-css-grid-5"
+/>
+
+<figure className="drill-result">
+  <img src="/img/practice/css-grid-drill-5.webp" alt="Two grid cells: a yellow New badge centered in the first cell and a Save button aligned to the right edge of the second" width="1440" height="320" loading="lazy" />
+  <figcaption>Expected result for drill 5.</figcaption>
+</figure>
+
+<details>
+<summary>Solution</summary>
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  place-items: center;
+}
+
+.save {
+  justify-self: end;
+}
+```
+
+`place-items: center` centers content on both axes for every cell at once; `justify-self` overrides that on one item. The Flexbox habit is reaching for `align-items` alone and wondering why content is only centered vertically.
+
+</details>
+
+### Drill 6: A dashboard with a spanning panel and a collapsing sidebar
+
+Build a dashboard where the stats panel spans two rows, and the sidebar drops above the content past 700px.
+
+```html
+<div class="dashboard">
+  <nav class="sidebar">Sidebar</nav>
+  <div class="panel stats">Stats (tall)</div>
+  <div class="panel">Chart</div>
+  <div class="panel">Recent activity</div>
+</div>
+```
+
+```css
+.dashboard {
+  display: grid;
+  gap: 1rem;
+  /* layout and responsive rules go here */
+}
+```
+
+What you should see: a sidebar beside a two-column panel area with stats spanning both rows; under 700px, the sidebar sits above one stacked column.
+
+<CodePreview
+  title="Drill 6: A dashboard with a spanning panel and a collapsing sidebar"
+  html={"<div class=\"dashboard\">\n  <nav class=\"sidebar\">Sidebar</nav>\n  <div class=\"panel stats\">Stats (tall)</div>\n  <div class=\"panel\">Chart</div>\n  <div class=\"panel\">Recent activity</div>\n</div>"}
+  css={".dashboard {\n  display: grid;\n  gap: 1rem;\n  /* layout and responsive rules go here */\n}"}
+  height={320}
+  scrimbaUrl="https://scrimba.com/learn-css-grid-c02k"
+  scrimbaLabel="Learn CSS Grid"
+  scrimbaAccess="Pro"
+  location="code-preview:practice-css-grid-6"
+/>
+
+<figure className="drill-result">
+  <img src="/img/practice/css-grid-drill-6.webp" alt="Dashboard layout with a sidebar spanning two rows, a tall stats panel spanning two rows, and Chart and Recent activity panels stacked in the third column" width="1440" height="632" loading="lazy" />
+  <figcaption>Expected result for drill 6.</figcaption>
+</figure>
+
+<details>
+<summary>Solution</summary>
+
+```css
+.dashboard {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 200px repeat(2, 1fr);
+  grid-template-rows: repeat(2, minmax(120px, auto));
+}
+
+.sidebar {
+  grid-row: span 2;
+}
+
+.stats {
+  grid-row: span 2;
+}
+
+@media (max-width: 700px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar,
+  .stats {
+    grid-row: auto;
+  }
+}
+```
+
+Both `.sidebar` and `.stats` get `grid-row: span 2` to stretch through two rows. Below 700px, a single column makes "span 2" meaningless, so it resets to `auto` in the media query. Forgetting that reset is the usual bug: the spans stay active and swallow rows the other panels needed.
+
+</details>
+
+## Common mistakes
+
+- **Percentages instead of `fr` units.** Percentages ignore `gap` and overflow the container.
+- **Mismatched `grid-template-areas` strings.** Row and column counts must match, or the declaration is dropped.
+- **Confusing `auto-fit` and `auto-fill`.** `auto-fit` collapses empty tracks; `auto-fill` keeps them, leaving gaps.
+- **Leaving spans active after a collapse.** A `span 2` written for a multi-column layout needs resetting to `auto` at the single-column breakpoint.
+
+## Where to practice next on Scrimba
+
+CSS Grid sits inside the [frontend developer path](/docs/paths/frontend-developer-path/).
+
+| Course | What it drills | Access | Length |
+| --- | --- | --- | --- |
+| [Learn CSS Grid](/docs/courses/css/css-grid/) | Tracks, template areas, spanning | Pro | 1.1 hrs |
+| [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) | Grid and Flexbox together | Pro | 15.1 hrs |
+| [Learn HTML and CSS](/docs/courses/css/html-and-css/) | CSS fundamentals Grid builds on | Free | 5.7 hrs |
+| [Intro to UI Design Fundamentals](/docs/courses/css/ui-design-fundamentals/) | Layout decisions on top of Grid | Free | 1.2 hrs |
+
+## Related practice guides
+
+- [Practice CSS Flexbox](/docs/practice/practice-flexbox/): pair with Grid for one-dimensional alignment.
+- [Practice Tailwind CSS](/docs/practice/practice-tailwind-css/): the same concepts as utility classes.
+- [Practice Coding on Scrimba](/docs/practice/): the full index of drill pages.
+
+<FAQAccordion items={[
+  { q: "Do I need to know Flexbox before learning CSS Grid?", a: "Not strictly, but it helps. Grid handles two dimensions at once; Flexbox handles one. Most layouts use both: Grid for structure, Flexbox for aligning items inside a cell." },
+  { q: "Why did my grid-template-areas declaration stop working?", a: "Usually a mismatch between the area names in each row string and the columns in grid-template-columns. Every row needs as many names as columns, or the browser ignores the property." },
+  { q: "Is CSS Grid worth learning with Tailwind's grid utilities available?", a: "Yes. Tailwind's grid classes wrap the same CSS Grid properties, so the underlying model makes the utility classes click, and it is the only option for custom areas Tailwind has no class for." },
+  { q: "How long does it take to get comfortable with CSS Grid?", a: "Most people who know CSS layout basics get functional with Grid in a few focused hours, enough to build layouts like the ones above." },
+]} />
 
 <PricingCTA
-  title="Practice Grid inside scrims"
-  subtitle="Free modules cover the basics; Pro unlocks the full design + path library."
+  title="Practice Grid inside a real course"
+  subtitle="Start in the free HTML and CSS course, no card required. Learn CSS Grid itself is a Pro course."
   buttonText="Try Scrimba free"
   ctaType="free"
+  location="practice-css-grid"
 />
