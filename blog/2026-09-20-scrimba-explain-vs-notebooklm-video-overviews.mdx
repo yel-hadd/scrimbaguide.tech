@@ -1,0 +1,202 @@
+---
+slug: scrimba-explain-vs-notebooklm-video-overviews
+image: /img/blog/scrimba-explain-vs-notebooklm-video-overviews.png
+image_alt: "Scrimba Explain vs NotebookLM Video Overviews for learning code, a side by side of the two AI explainer video tools, Scrimba Guide Blog"
+title: "Scrimba Explain vs NotebookLM Video Overviews for Learning Code (2026)"
+description: "Scrimba Explain and NotebookLM Video Overviews both turn a question into a narrated video. One is built for code, the other for your documents. Which fits?"
+authors: [ayoub]
+tags: [comparison, ai, tools]
+keywords: [scrimba explain vs notebooklm, notebooklm video overview alternative, ai explainer video for code, best ai explainer video generator for learning, notebooklm video overviews code, scrimba explain comparison]
+hideFooterPricingCta: true
+date: 2026-09-20
+last_update:
+  date: 2026-09-20
+  author: Ayoub El Haddad
+---
+
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import PricingCTA from '@site/src/components/PricingCTA';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
+import ComparisonTable from '@site/src/components/ComparisonTable';
+import ItemListSchema from '@site/src/components/ItemListSchema';
+
+# Scrimba Explain vs NotebookLM Video Overviews for learning code
+
+<DisclosureNotice />
+
+**Scrimba Explain turns a typed question into a narrated video with code, diff and diagram slides, ending in a quiz when you ask for one, and it runs from a prompt, a Chrome tab or a coding agent. NotebookLM Video Overviews turn the documents you have already collected in a notebook into a narrated slideshow. For understanding a concept or a piece of code, Explain is the better fit. For a video summary of your own PDFs, lecture notes or a folder of docs, NotebookLM is the one to reach for.**
+
+One caveat before the table. The Scrimba side of this comparison is first-hand: I generated the explainers, read the transcripts and took the quizzes. The NotebookLM side is not. Google's NotebookLM sat behind a corporate sign-in on the machine I had, so every NotebookLM claim below comes from Google's own help pages and blog posts, each linked where it appears. Anything Google does not document is marked as unverified rather than guessed.
+
+{/* truncate */}
+
+<ItemListSchema
+  name="Scrimba Explain vs NotebookLM Video Overviews: comparison points"
+  description="The ten dimensions this comparison covers, from input types to agent integration."
+  items={[
+    { name: "Input types", description: "Typed question, pasted code and attachments versus a notebook of collected sources." },
+    { name: "Code slides", description: "Explain renders code slides the narration points into; Google does not document code slides for Video Overviews." },
+    { name: "Diagram slides", description: "Explain draws diagrams on request; Video Overviews pull images and diagrams from your sources." },
+    { name: "Quiz", description: "Explain can end with a multiple choice quiz when you ask for one; NotebookLM keeps quizzes as a separate Studio output." },
+    { name: "Languages", description: "33 narration languages on Explain versus 80 plus on Video Overviews." },
+    { name: "Length and build time", description: "About 10 seconds for a 1 to 2 minute explainer versus renders Google says can take over 30 minutes." },
+    { name: "Export format", description: "MP4 at 2560x1440 plus captions versus a downloadable video file." },
+    { name: "Free quota", description: "10 explainers for the life of a free Scrimba account versus 3 Video Overviews a day on NotebookLM's free plan." },
+    { name: "Sharing defaults", description: "Explain defaults to Public on the web hub; NotebookLM shares through a link or the whole notebook." },
+    { name: "Agent and MCP integration", description: "Explain has an MCP endpoint for Claude Code and Codex; Google documents no equivalent for Video Overviews." },
+  ]}
+/>
+
+## What each tool is
+
+Scrimba Explain is the AI explainer feature on <AffiliateLink href="https://scrimba.com/explain">scrimba.com/explain</AffiliateLink>. You type a question, optionally paste code or attach a file, and it builds a short narrated lesson from typed slides while you watch. The [Scrimba Explain review](/blog/scrimba-explain-review/) covers what it is like to use; the [reference page](/docs/how-it-works/scrimba-explain/) has the full quota and entry point tables. I will not repeat either here.
+
+NotebookLM is Google's research notebook. You add sources (PDFs, Docs, slides, web pages, YouTube links, audio) and ask questions grounded in them. A Video Overview is one of its Studio outputs: Google describes it as narrated slides that pull "images, diagrams, quotes and numbers from your documents", launched in July 2025 as the visual sibling of Audio Overviews ([Google blog](https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-video-overviews-studio-upgrades/)). Google's help centre now calls the product Gemini Notebook on some pages, though the app still lives at notebooklm.google.com.
+
+Explain starts from a question. NotebookLM starts from a pile of sources. Most of the table below follows from that.
+
+<Screenshot
+  src="/img/blog/scrimba-explain-vs-notebooklm-video-overviews/input-to-video.webp"
+  alt="Two flowcharts. Top, Scrimba Explain: a question, pasted code or attached files flows into an explainer built in about 10 seconds, then into code, diff and diagram slides with narration and a closing quiz. Bottom, NotebookLM Video Overview: sources added to a notebook flow into a Studio render that Google says can exceed 30 minutes, then into narrated slides from your sources with an MP4 download."
+  width={1400}
+  height={618}
+  caption="Explain is prompt first; NotebookLM is source first. Build time is the other gap: seconds on one side, potentially half an hour on the other."
+  source="Diagram by scrimbaguide.tech. NotebookLM timings from Google's help page."
+/>
+
+## Comparison table
+
+Every NotebookLM cell below is taken from Google's documentation. Where Google is silent, the cell says so.
+
+<ComparisonTable
+  competitorName="NotebookLM Video Overviews"
+  scrimbaLabel="Scrimba Explain"
+  scrimbaUrl="https://scrimba.com/explain?via=u42d4986"
+  competitorUrl="https://support.google.com/notebooklm/answer/16454555"
+  rows={[
+    { feature: "Input types", scrimba: "Typed question; pasted code; attached code files, Markdown, PDFs, images, Jupyter notebooks; a web page (Chrome extension); a repository (MCP)", competitor: "Notebook sources: Docs, Word, PDF, text, Markdown, Slides, Sheets, audio, images, YouTube URLs, web URLs, ePub, CSV, pasted text (help page)" },
+    { feature: "Code slides", scrimba: "Yes, a first class slide type. My context window explainer (below) got a chatUtils.js slide with a working trimHistory function", competitor: "Not documented. Google lists images, diagrams, quotes and numbers from your sources; code is not mentioned (unverified)" },
+    { feature: "Diagram slides", scrimba: "Yes, on request. The same explainer drew a User / App State / LLM sequence diagram", competitor: "Yes, diagrams pulled from your sources; Google does not document drawing new ones (unverified)" },
+    { feature: "Quiz", scrimba: "When you ask for one in the prompt. One multiple choice question at the end (TLDR style and extension explainers skip it)", competitor: "Not inside the video as documented. Quizzes and flashcards are a separate Studio output" },
+    { feature: "Languages", scrimba: "33 narration languages", competitor: "80 plus (80 listed for Explainer format, 73 for Short, as of September 2026); Cinematic is English only" },
+    { feature: "Length and build time", scrimba: "Most run 40 seconds to 2 minutes; mine was playable about 10 seconds after submit", competitor: "Short format (called Brief at launch) is about 60 seconds; Explainer length not published; generation can take over 30 minutes (help page)" },
+    { feature: "Export format", scrimba: "MP4 at 2560x1440 and 60 fps plus a .vtt captions file; Public or Unlisted only", competitor: "Download as a local video file; Play Books sources can block it; resolution not published" },
+    { feature: "Free quota", scrimba: "10 explainers for the life of a free account; 100 a month on Pro", competitor: "3 Video Overviews a day on the free plan; 20 a day on Pro; 200 a day on Ultra" },
+    { feature: "Sharing defaults", scrimba: "Public by default on the web hub (picker in the composer); Unlisted from ChatGPT; private draft from MCP", competitor: "Share a link after confirming notebook sharing, or share the whole notebook; default state of a fresh overview not documented (unverified)" },
+    { feature: "Agent and MCP integration", scrimba: "Yes: MCP endpoint for Claude Code, Codex and other agents, plus a ChatGPT plugin and a CI endpoint for pull requests", competitor: "None documented for Video Overviews (unverified)" },
+  ]}
+/>
+
+Sources for the NotebookLM column: the [Video Overviews help page](https://support.google.com/notebooklm/answer/16454555), the [source types page](https://support.google.com/gemininotebook/answer/16215270), the [plan limits page](https://support.google.com/notebooklm/answer/16213268) and Google's [languages announcement](https://blog.google/technology/google-labs/notebook-lm-audio-video-overviews-more-languages-longer-content/). Sources for the Scrimba column: my own explainers plus <AffiliateLink href="https://docs.scrimba.com/explain/limits-and-plans">limits and plans</AffiliateLink>, <AffiliateLink href="https://docs.scrimba.com/explain/languages">languages</AffiliateLink> and <AffiliateLink href="https://docs.scrimba.com/explain/exporting">exporting</AffiliateLink> in Scrimba's docs.
+
+## Where NotebookLM wins
+
+Your own corpus. If the thing you want explained is a 90 page PDF, six lecture recordings and a Google Doc of notes, NotebookLM is built for that. A free notebook takes up to 50 sources, each up to 500,000 words or 200 MB ([source limits](https://support.google.com/gemininotebook/answer/16215270)). Explain accepts attachments too, but Scrimba pitches it as a question answering tool, and I would not hand it a semester of material.
+
+Languages. Google's help page lists 80 languages for the Explainer format against Scrimba's 33. If you learn in Tamil or Ukrainian both are covered; if you learn in Swahili, only NotebookLM is.
+
+Daily renewal. The free plan gives 3 Video Overviews a day, reset every 24 hours ([plan limits](https://support.google.com/notebooklm/answer/16213268)). Scrimba's free 10 never renew. Over a month of light use, the NotebookLM free plan gives you more videos.
+
+Visual variety. Google offers eight illustration styles (Classic, Whiteboard, Watercolor, Retro Print, Heritage, Paper-craft, Kawaii, Anime) and a Cinematic format built with Veo 3 for Ultra subscribers ([styles](https://blog.google/innovation-and-ai/models-and-research/google-labs/video-overviews-nano-banana/), [Cinematic](https://blog.google/innovation-and-ai/products/notebooklm/generate-your-own-cinematic-video-overviews-in-notebooklm/)). Explain lets you name an art style for its images, but the product is not about looking good.
+
+## Where Scrimba Explain wins
+
+Code on screen. This is the one that decides it for programmers. When I asked for "one short JavaScript snippet that trims the history to a token budget", the result was a `chatUtils.js` slide with a `trimHistory(messages, tokenLimit)` function that the narration walked through line by line. Google's own description of Video Overviews never mentions code, and nothing in the help pages suggests a syntax highlighted code slide exists. I could not check, so treat that as unverified, but the absence in the docs is telling.
+
+Speed. The context window explainer was playable about ten seconds after I pressed the button. Google warns that a Video Overview "may take a while" and "sometimes, more than 30 minutes" ([help page](https://support.google.com/notebooklm/answer/16454555)). If you are stuck mid lesson, ten seconds keeps you in the lesson; thirty minutes does not.
+
+The quiz. Every one of my explainers ended with a quiz slide, usually headed "Test your knowledge" (one Professor run called it "Your turn", and one playlist lesson "Test your strategy"): one question, three or four answers, gold for a first try. NotebookLM has quizzes, but as a separate Studio item, not inside the video. For retention that matters, because the question arrives while the explanation is still in your head.
+
+Your repository. Explain has an MCP endpoint (MCP is the open protocol coding agents use to call outside tools) that lets Claude Code or Codex write a lesson about the branch you are reading. Google documents nothing like this for Video Overviews. If you want the [MCP course](/docs/courses/ai/model-context-protocol-mcp/) view of how that works, Scrimba teaches the protocol itself.
+
+Embedding and Public sharing. Explain gives you an iframe embed and a Public community feed. That default cuts both ways, which the sharing row in the table shows, but it means a good explainer can be dropped into a README or a blog post.
+
+## The same prompt, both tools
+
+This is the section I most wanted to write with two screenshots side by side, and could not. Here is what I can offer: the full Explain result, and what Google's documentation says would happen if you fed the same brief to NotebookLM.
+
+The prompt I used, Standard teaching style, on the web hub:
+
+> What is a context window, why do LLMs seem to forget the start of a long conversation, and what can a developer do about it? For a web developer building a chat app in JavaScript who sends the whole message history on every request. Cover tokens versus characters, what happens when the history exceeds the limit, and the two common fixes: a sliding window and summarising older turns. Show one short JavaScript snippet that trims the history to a token budget before the API call. Include one diagram slide showing the window filling up turn by turn, and finish with a quiz.
+
+### What Scrimba Explain produced
+
+The explainer is at <AffiliateLink href="https://scrimba.com/explain/guide0jc32sm3l">scrimba.com/explain/guide0jc32sm3l</AffiliateLink>, titled "Managing the LLM Context Window", 1 minute 22 seconds. Its transcript has six sections: Managing the LLM Context Window, Tokens vs. Characters, The window filling up, Handling the limit, Implementing a sliding window, and Test your knowledge.
+
+Three slides matter. The diagram slide shows a User, App State and LLM sequence with the window filling turn by turn, exactly what I asked for. The code slide, `chatUtils.js`, holds a `trimHistory(messages, tokenLimit)` function that drops the oldest messages until the estimate fits, using the rough four characters per token heuristic. The quiz asks what happens when the history exceeds the limit; the correct answer is that the API returns an error, which is right.
+
+What it skipped: the prompt asked why models "seem to forget" the start of a conversation, and the explainer only covered truncation and overflow. It said nothing about attention degrading in the middle of long contexts. Fair for 82 seconds, but a Professor style run might have gone there. The screenshot below is a different explainer from the same batch, on RAG in Professor style, because it shows the transcript layout more clearly than the context window one.
+
+<Screenshot
+  src="/img/blog/scrimba-explain-vs-notebooklm-video-overviews/explain-professor-style-rag-explainer-transcript.webp"
+  alt="A finished Scrimba Explain explainer page titled How RAG Works, with a 1:27 duration and 2 views in the meta row, the AI disclaimer, and a transcript with headings How RAG Works, The context window limit, The RAG pipeline, What is an embedding, Similarity search in JS and The augmented prompt. A right rail lists other community explainers."
+  width={1400}
+  height={653}
+  caption="Every Explain result page has the transcript as headed prose under the player, so you can check what the narration claimed before you trust it."
+  source=""
+/>
+
+### What NotebookLM's docs say you would get
+
+You cannot type that prompt into an empty notebook. Video Overviews need at least one source, so step one is adding something: a blog post on context windows, an API reference page, or your own notes. Then, in Studio, you choose Video Overview, pick a format (Cinematic, Explainer or Short, which Google's launch post called Brief), a language and a visual style, and pick a suggested topic or type a custom one ([help page](https://support.google.com/notebooklm/answer/16454555)).
+
+The output would be a narrated slideshow drawing on the sources you added. Whether it would contain a JavaScript slide is the open question, and Google does not answer it. A diagram is plausible if one of your sources contains one. A quiz inside the video is not something Google documents; you would generate the quiz separately in Studio. And you would wait: minutes at best, more than thirty at worst.
+
+So the honest version of "same prompt, both tools" is that the prompt only fits one of them. NotebookLM's steering prompt shapes a summary of what you gave it. Explain's prompt is the whole input.
+
+<Screenshot
+  src="/img/blog/scrimba-explain-vs-notebooklm-video-overviews/explain-composer-teaching-style-menu.webp"
+  alt="The Scrimba Explain composer on scrimba.com/explain with a long prompt about retrieval-augmented generation typed in, a Public visibility picker, and the teaching style menu open showing Explain (checked), Standard, Per, Tom, LOL, Professor and TLDR with a one line tagline under each."
+  width={1400}
+  height={660}
+  caption="The style menu behind the Explain button. NotebookLM's equivalent is a visual style picker plus a steering prompt; it has no teaching voice options."
+  source=""
+/>
+
+## Who should use which
+
+Pick Scrimba Explain if you are learning to code and the thing you are stuck on is a concept, a function or a diff. Code slides and a ten second turnaround are built for that moment, and the quiz catches you before you move on. It also fits anyone using Claude Code or Codex who wants a walkthrough of a branch without writing it. Ten free explainers is enough to find out whether it helps; after that you are on the Pro quota or the free agent drafts.
+
+Pick NotebookLM Video Overviews if your material already exists as documents and you want a video summary of it. Students with a folder of lecture PDFs are the obvious case, along with anyone learning in a language Scrimba does not cover. The free plan's three a day is generous for that use.
+
+Use both if you are working through Scrimba's AI courses. The [RAG course](/docs/courses/ai/rag/) and the [context engineering course](/docs/courses/ai/context-engineering/) explain the retrieval and context window ideas behind both products; NotebookLM is a retrieval system over your notebook, and Explain's in lesson button is a snapshot of the scrim you paused. The [AI agents course](/docs/courses/ai/ai-agents/) and [AI engineering course](/docs/courses/ai/ai-engineering/) cover the calling side, and the [AI Engineer Path](/docs/paths/ai-engineer-path/) strings them together.
+
+Whichever you choose, both vendors say the same thing about accuracy. Scrimba prints "Explain is AI and can make mistakes" under every player. Google says Video Overviews "may contain inaccuracies or audio glitches" ([help page](https://support.google.com/notebooklm/answer/16454555)). My context window explainer was correct but incomplete, which is the usual shape of the problem.
+
+<PricingCTA
+  title="Try Explain on a free Scrimba account"
+  subtitle="Ten explainers, the free course modules and the Discord come with a free account. Enough to see whether narrated code slides help you before any subscription question comes up."
+  ctaType="free"
+  riskReversal
+  location="explain-vs-notebooklm-inline"
+/>
+
+## References
+
+- <AffiliateLink href="https://docs.scrimba.com/explain/introduction">Scrimba Docs, What is Scrimba Explain?</AffiliateLink> - definition and slide types.
+- <AffiliateLink href="https://docs.scrimba.com/explain/limits-and-plans">Scrimba Docs, Limits and plans</AffiliateLink> - 10 explainers for life on Free, 100 a month on Pro.
+- <AffiliateLink href="https://docs.scrimba.com/explain/languages">Scrimba Docs, Languages</AffiliateLink> - the 33 narration languages.
+- <AffiliateLink href="https://docs.scrimba.com/explain/exporting">Scrimba Docs, Exporting</AffiliateLink> - MP4 at 2560x1440, 60 fps, .vtt captions.
+- <AffiliateLink href="https://docs.scrimba.com/explain/visibility-when-creating">Scrimba Docs, Visibility when creating</AffiliateLink> - Public default on the web hub.
+- <AffiliateLink href="https://docs.scrimba.com/explain/mcp">Scrimba Docs, MCP</AffiliateLink> - the agent endpoint.
+- <AffiliateLink href="https://scrimba.com/explain/guide0jc32sm3l">Managing the LLM Context Window</AffiliateLink> - the explainer generated for this article, 1:22, Standard style.
+- [Google, Video Overviews help page](https://support.google.com/notebooklm/answer/16454555) - formats, styles, generation time, sharing and download, accuracy notice.
+- [Google, Source types and limits](https://support.google.com/gemininotebook/answer/16215270) - accepted sources, 500,000 words or 200 MB per source.
+- [Google, Plan limits](https://support.google.com/notebooklm/answer/16213268) - 3 Video Overviews a day on the free plan, 20 on Pro, 200 on Ultra.
+- [Google blog, Video Overviews launch](https://blog.google/innovation-and-ai/models-and-research/google-labs/notebooklm-video-overviews-studio-upgrades/) - July 2025 launch and the "images, diagrams, quotes and numbers" description.
+- [Google blog, More languages](https://blog.google/technology/google-labs/notebook-lm-audio-video-overviews-more-languages-longer-content/) - 80 languages for Video Overviews.
+- [Google blog, Nano Banana styles](https://blog.google/innovation-and-ai/models-and-research/google-labs/video-overviews-nano-banana/) - six of the visual styles; the [help page](https://support.google.com/notebooklm/answer/16454555) lists all eight.
+- [Google blog, Cinematic Video Overviews](https://blog.google/innovation-and-ai/products/notebooklm/generate-your-own-cinematic-video-overviews-in-notebooklm/) - Cinematic format, English only, Ultra plan.
+
+<FAQAccordion items={[
+  { q: "Is Scrimba Explain or NotebookLM better for learning to code?", a: "Scrimba Explain, for most coding questions. It renders code and diagram slides from a typed prompt, builds in about ten seconds and can end with a quiz when you ask for one. NotebookLM Video Overviews summarise documents you have already added to a notebook, and Google does not document code slides for them.", sourceUrl: "https://docs.scrimba.com/explain/introduction?via=u42d4986" },
+  { q: "Can NotebookLM make a video from a question alone?", a: "Not as documented. A Video Overview is generated from the sources in a notebook, so you add at least one source first and then use a steering prompt to focus it. Scrimba Explain works from the prompt itself, with attachments optional.", sourceUrl: "https://support.google.com/notebooklm/answer/16454555" },
+  { q: "How many free videos do you get on each?", a: "A free Scrimba account gets 10 explainers for the life of the account; Pro gets 100 a month. NotebookLM's free plan allows 3 Video Overviews a day, reset every 24 hours, with 20 a day on Pro and 200 on Ultra.", sourceUrl: "https://support.google.com/notebooklm/answer/16213268" },
+  { q: "Which one supports more languages?", a: "NotebookLM. Google's help page lists 80 languages for the Explainer format and 73 for Short; the Cinematic format is English only. Scrimba Explain narrates in 33 languages and keeps code and file names unchanged.", sourceUrl: "https://docs.scrimba.com/explain/languages?via=u42d4986" },
+  { q: "Can I download the video from both tools?", a: "Yes. Scrimba exports an MP4 at 2560x1440 and 60 fps with a .vtt captions file, for Public or Unlisted explainers. NotebookLM has a Download option on the Video Overview, though some sources such as Play Books can block it and the resolution is not published.", sourceUrl: "https://docs.scrimba.com/explain/exporting?via=u42d4986" },
+  { q: "Does either tool work with Claude Code or Codex?", a: "Scrimba Explain does, through an MCP endpoint that lets a coding agent write a lesson about your repository, plus a ChatGPT plugin. Google documents no agent or MCP integration for Video Overviews.", sourceUrl: "https://docs.scrimba.com/explain/mcp?via=u42d4986" },
+  { q: "Was the NotebookLM side of this comparison tested first-hand?", a: "No. NotebookLM was behind a corporate sign-in on the machine used for this article, so every NotebookLM claim comes from Google's help centre and blog, linked in the References. The Scrimba side is first-hand, including the context window explainer linked above.", sourceUrl: "https://support.google.com/notebooklm/answer/16454555" },
+  { q: "Does the Explain quiz count as a separate explainer?", a: "No. The quiz is the last slide of the explainer you already created. Follow-up questions and the Go deeper button do create new explainers and draw on the same allowance.", sourceUrl: "https://docs.scrimba.com/explain/limits-and-plans?via=u42d4986" },
+]} />

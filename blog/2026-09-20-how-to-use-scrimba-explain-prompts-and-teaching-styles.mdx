@@ -1,0 +1,211 @@
+---
+slug: how-to-use-scrimba-explain-prompts-and-teaching-styles
+image: /img/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles.png
+image_alt: "How to prompt Scrimba Explain, the same RAG question in three teaching styles with an attached document and a playlist, Scrimba Guide Blog"
+title: "How to Prompt Scrimba Explain: Teaching Styles, Audience, Attachments"
+description: "The same RAG prompt in Explain, Standard and Professor style, a Markdown attachment, a 3-lesson playlist, and the prompts that waste your quota."
+authors: [ayoub]
+tags: [guide, ai, learning]
+keywords: [how to use scrimba explain, scrimba explain prompts, scrimba explain teaching styles, scrimba explain professor, scrimba explain attach pdf, scrimba explain playlist, scrimba explain go deeper]
+hideFooterPricingCta: true
+date: 2026-09-20
+last_update:
+  date: 2026-09-20
+  author: Ayoub El Haddad
+---
+
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import PricingCTA from '@site/src/components/PricingCTA';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
+import HowToSchema from '@site/src/components/HowToSchema';
+
+# How to prompt Scrimba Explain: teaching styles, audience, and attachments
+
+<DisclosureNotice />
+
+**A good Scrimba Explain prompt names the topic, the audience, and the slides you want. I ran the same RAG prompt through three teaching styles, attached a Markdown file, and built a three-lesson playlist, seven explainers in total. Professor was not noticeably deeper than Standard, which suggests the prompt text, not the picker, sets the depth.**
+
+If you do not know what Explain is yet, the [reference page](/docs/how-it-works/scrimba-explain/) covers entry points and quotas, and the [full review](/blog/scrimba-explain-review/) covers whether the output is any good. This post is only about the web composer at <AffiliateLink href="https://scrimba.com/explain">scrimba.com/explain</AffiliateLink>: what to type, which style to pick, and which clicks cost you an explainer.
+
+{/* truncate */}
+
+<HowToSchema
+  name="How to write a Scrimba Explain prompt"
+  description="Write a prompt for Scrimba Explain that names the topic, the audience and the slides you want, pick a teaching style, attach a document if you have one, and check the visibility picker before you submit."
+  totalTime="PT3M"
+  steps={[
+    { name: "State the topic in one sentence", text: "Say what you want explained and where the explanation should stop. Explain how RAG works is a topic; add the sub-points you care about, such as chunking, embeddings and similarity search." },
+    { name: "Add the audience sentence", text: "Say who the explainer is for and what they already know, for example a JavaScript developer who has called an LLM API once. Scrimba's docs say this is the sentence most people leave out." },
+    { name: "Ask for the slides you want", text: "Name the slide types: one pipeline diagram, one JavaScript code slide, and a quiz at the end. Explain decides the rest of the structure." },
+    { name: "Pick a teaching style and attach files", text: "Open the chevron next to the Explain button and choose a style (Explain, Standard, Per, Tom, LOL, Professor or TLDR). Drag a Markdown, PDF, code or image file onto the composer if the explainer should be built from it." },
+    { name: "Check visibility and submit", text: "The picker next to the button defaults to Public when you are signed in. Change it to Unlisted or Private if needed, then press Explain. The explainer starts playing within about ten seconds." },
+  ]}
+/>
+
+## The three ingredients of a prompt
+
+Scrimba's prompting guide says a prompt needs a topic, an audience, and the slide types you want (<AffiliateLink href="https://docs.scrimba.com/explain/prompting">docs.scrimba.com/explain/prompting</AffiliateLink>). Explain decides the structure and layout itself. You can also name an art style for all the images, such as hand-drawn or blueprint, and you can push the depth past whatever the teaching style implies.
+
+The docs call the audience line "the sentence most people leave out". I did not test a prompt without one, so I cannot show you what "Explain RAG" alone produces. Every explainer I ran with an audience line stayed on that audience. "For a JavaScript developer who has called an LLM API once" got JavaScript instead of Python and a pipeline that ends in a prompt string. The style comparison below suggests the picker moves the output less than the prompt text does.
+
+<Screenshot
+  src="/img/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles/prompt-anatomy.webp"
+  alt="Flowchart of a Scrimba Explain prompt: three boxes labelled Topic, Audience and Format feed into one box labelled one prompt plus teaching style, which feeds Scrimba Explain builds the explainer, which fans out into a diagram slide, a code slide and a quiz slide"
+  width={1400}
+  height={640}
+  caption="Topic, audience and format go in together. The teaching style is a separate picker, and the slide types you ask for are the ones you get."
+  source=""
+/>
+
+## The same RAG prompt in three teaching styles
+
+Teaching styles are a web-only picker that changes both the writing and the voice (<AffiliateLink href="https://docs.scrimba.com/explain/teaching-styles">docs.scrimba.com/explain/teaching-styles</AffiliateLink>). To see how much they change, I submitted this prompt three times, word for word, and only moved the picker.
+
+```text
+Explain how retrieval-augmented generation (RAG) works, for a JavaScript developer who has called an LLM API once and wants to build a chatbot that answers questions from their own docs. Cover why you cannot paste every doc into the prompt, chunking, embeddings, similarity search, and how the retrieved chunks end up in the prompt. Include one pipeline diagram slide with the ingest path and the query path, one JavaScript code slide that embeds a query and runs a cosine-similarity search over an in-memory array (JavaScript, not Python), and finish with a quiz.
+```
+
+RAG (retrieval-augmented generation) is the pattern where you search your own documents for relevant chunks and paste only those into the prompt. Scrimba teaches it in the [Learn RAG](/docs/courses/ai/rag/) course, which is why I picked it: I could check the output against a curriculum I had already read.
+
+<Screenshot
+  src="/img/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles/explain-composer-teaching-style-menu.webp"
+  alt="The Scrimba Explain composer with the RAG prompt typed in and the teaching style menu open under the Explain button, listing Explain (checked), Standard, Per, Tom, LOL, Professor and TLDR, each with a one-line tagline"
+  width={1400}
+  height={660}
+  caption="The style menu opens from the chevron on the Explain button. The choice persists across page loads, so check it before every submit."
+  source=""
+/>
+
+| Style | Explainer | Length | Transcript headings |
+|---|---|---|---|
+| Explain (default) | <AffiliateLink href="https://scrimba.com/explain/guide0niu04ksn">Retrieval-Augmented Generation (RAG)</AffiliateLink> | 1:20 | The context window problem, Chunking your data, The RAG Pipeline, Finding the right chunks, The final prompt, Test your knowledge |
+| Standard | <AffiliateLink href="https://scrimba.com/explain/guide0sp3ljm85">How RAG Works</AffiliateLink> | 1:28 | The context window problem, The RAG pipeline, Chunking and Embeddings, Similarity search, Finding similar chunks, The final prompt, Test your knowledge |
+| Professor | <AffiliateLink href="https://scrimba.com/explain/guide050741s62">How RAG Works</AffiliateLink> | 1:26 | The context window limit, The RAG pipeline, What is an embedding?, Similarity search in JS, The augmented prompt, Your turn |
+
+All three delivered the requested slides: an animation, a pipeline diagram, a `search.js` code slide, a second code slide that builds the prompt, and a quiz. All three stayed in JavaScript. The differences were smaller than the taglines suggest.
+
+The Explain version leaned on an analogy (an exam desk with too many books) and used shorter sentences. It also had the one slip of the batch: the code comment calls a plain dot product "cosine similarity", which is only true when the vectors are normalised. The concept explanation around it was fine, but if you copied that snippet you would ship a subtle bug.
+
+The Standard version fixed that. Its `cosineSimilarity(vecA, vecB)` divides by both magnitudes, and its ingest and query paths were the clearest of the three.
+
+<Screenshot
+  src="/img/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles/explain-professor-style-rag-explainer-transcript.webp"
+  alt="A finished Scrimba Explain explainer titled How RAG Works in Professor style, with the player above, a meta row showing the length and view count, the AI disclaimer, and transcript headings The context window limit, The RAG pipeline, What is an embedding, Similarity search in JS and The augmented prompt"
+  width={1400}
+  height={653}
+  caption="The Professor version. Same slide types and within two seconds of Standard's length. The headings are worded differently, but the content under them covers the same ground, plus one worked example of embedding vectors."
+  source=""
+/>
+
+Professor promises "Maximum depth, down to the bytes". At this prompt length it did not deliver that. It added a `docs` array with example vectors and a nice intuition (JavaScript and Python embed close together, baking bread lands far away), but no wire formats, no memory layout, nothing Standard lacked. My reading: the prompt already pinned the depth, and the style could not push past it. The docs say depth comes mainly from the teacher you pick and that the prompt can amplify it. In my run the prompt did most of the work, so I would put the detail in the prompt and treat the style as a bonus.
+
+## Attaching a document
+
+The composer accepts code files, Markdown, READMEs, logs, PDFs, images and Jupyter notebooks. Drag a file onto the box, use the paperclip, or paste a large block of text and Explain converts it into an attachment (<AffiliateLink href="https://docs.scrimba.com/explain/attaching-documents">docs.scrimba.com/explain/attaching-documents</AffiliateLink>). The docs state no size or file count limit, and they say nothing about how uploads are stored.
+
+I attached a 98-line Markdown file I had written about the MCP lifecycle and transports. MCP (Model Context Protocol) is the standard that lets an AI agent call tools on a server, and it has its own [Scrimba course](/docs/courses/ai/model-context-protocol-mcp/). The prompt:
+
+```text
+Explain this document for a Node.js developer who wants to build their first MCP server. Focus on what a server offers (tools, resources, prompts), the stdio transport, and the initialize handshake. Include one sequence-diagram slide of the three-message handshake between client and server, one short TypeScript slide showing a minimal tool registered with the MCP SDK, and finish with a quiz.
+```
+
+<Screenshot
+  src="/img/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles/explain-composer-markdown-attachment-chip.webp"
+  alt="The Scrimba Explain composer with the MCP prompt typed in and an attachment chip reading mcp-reference.md next to the paperclip icon, with an X to remove it, and the visibility picker set to Public"
+  width={1400}
+  height={653}
+  caption="The attached file shows as a chip under the prompt. Dropping a file onto the box works; the paperclip opens your system file picker."
+  source=""
+/>
+
+The result, <AffiliateLink href="https://scrimba.com/explain/guide02qftck7g">Building Your First MCP Server</AffiliateLink> (1:17), tracked the file closely. The sequence diagram labelled the three messages `initialize`, `result` and `notifications/initialized`, as my document did. The `server.ts` slide used the real `@modelcontextprotocol/sdk` and `zod` imports, and the narration repeated my note that a stdio server must log to `console.error`, never `console.log`. It skipped the section on Streamable HTTP, which the prompt had not asked about.
+
+So an attachment does two things. It grounds the explainer in your text instead of the model's general knowledge, and it lets you point the prompt at parts of the document. Attach your own notes before an exam, or a README you have to onboard onto, and ask for the three things you keep forgetting.
+
+## Playlists as a mini curriculum
+
+Toggle the playlist icon next to the visibility picker and Explain plans a series of explainers on one topic, then builds them lesson by lesson (<AffiliateLink href="https://docs.scrimba.com/explain/playlists">docs.scrimba.com/explain/playlists</AffiliateLink>). Each lesson gets its own URL, and the playlist inherits whatever style and visibility you chose. I asked for three lessons on context engineering, the subject of Scrimba's [Learn Context Engineering](/docs/courses/ai/context-engineering/) course.
+
+```text
+Context engineering for AI agents, for a developer who has built one chatbot and is now adding tools and memory. Three lessons, each under 2 minutes. Lesson 1: what actually goes into the context window on every call (system prompt, message history, tool schemas, tool results) and why it fills up faster than you expect; include one diagram slide. Lesson 2: retrieval versus long context, when to fetch a few relevant chunks and when to send everything. Lesson 3: managing memory and tool results, summarising old history, truncating large tool output, and keeping state outside the window. Use short JavaScript examples where code helps, and end lesson 3 with a quiz.
+```
+
+<Screenshot
+  src="/img/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles/explain-playlist-context-engineering-three-lessons.webp"
+  alt="Lesson 1 of a Scrimba Explain playlist titled Context Engineering for AI Agents, with the transcript on the left and a Playlist panel on the right showing 3 min, 3 explainers, 0 of 3 watched, and the three lessons: Context Engineering for AI Agents, Retrieval vs. Long Context, and Memory Management and State"
+  width={1400}
+  height={653}
+  caption="The playlist panel sits beside the first lesson. The three lengths add up to the 3 min label, and each lesson opens at its own URL."
+  source=""
+/>
+
+The three lessons came out at 1:15, 1:14 and 0:51 (<AffiliateLink href="https://scrimba.com/explain/guide0j3tt3irh">lesson 1</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide0ih5ernr6">lesson 2</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide0bnbt17e2">lesson 3</AffiliateLink>), and the whole set finished building in under 40 seconds. Each lesson stayed on its assigned sub-topic and referred back to the previous one. Lesson 1's `payload.json` slide shows the system prompt, tool schemas and message history competing for the same token budget, which is the point of the course.
+
+Two things did not follow the prompt. Every lesson ended with a quiz, although I asked for one on lesson 3 only. And lesson 2's example hard-coded `model: "gpt-4o"`, which nobody asked for. Neither is wrong, but a playlist follows its own plan more than a single explainer does, so keep per-lesson instructions short.
+
+## Go deeper and follow-ups cost one explainer each
+
+Two buttons keep the conversation going after an explainer ends. Go deeper sits in the player's top corner (or the right-click menu). It pauses playback and opens a card for the current slide, then spawns a standalone explainer that uses the lesson and that slide as context (<AffiliateLink href="https://docs.scrimba.com/explain/going-deeper">docs.scrimba.com/explain/going-deeper</AffiliateLink>). Follow-ups are the suggested questions on the end card, plus a free-text box.
+
+Both create a new explainer, and both count against your allowance (<AffiliateLink href="https://docs.scrimba.com/explain/limits-and-plans">docs.scrimba.com/explain/limits-and-plans</AffiliateLink>). A free account gets 10 explainers for the life of the account; Pro gets 100 a month. So a single question, two follow-ups and one Go deeper is four of a free account's ten. Redo slide and Regenerate narration, both in the player's cog menu, are free.
+
+## The seven styles, as the menu describes them
+
+The chevron next to the Explain button lists seven styles with a tagline each. Quoting the menu:
+
+- Explain: "Simple words, small steps" (the default)
+- Standard: "Clear, well-rounded teaching"
+- Per: "Plain language, concrete examples"
+- Tom: "Tom Chant, in his own voice"
+- LOL: "Funny and sarcastic, still accurate"
+- Professor: "Maximum depth, down to the bytes"
+- TLDR: "A few slides, straight to the point"
+
+Per and Tom are Scrimba's founder and one of its teachers. Among the styles, TLDR is the only one that never ends with a quiz (overviews, own-code tasks and Chrome extension page explainers skip it too). Styles apply on the web only; explainers made from ChatGPT or an MCP agent are written by that model, so the picker does not exist there.
+
+## Portrait output and the mobile toggle
+
+The cog menu on your own explainer has a Vertical view toggle, next to Show captions and Show watermark. I saw it in the menu and did not test what it does to the slides, so treat it as a portrait option to try rather than a feature I can vouch for. Scrimba's mobile app is not released; there is a waitlist, and the docs say your web explainers will appear in it at launch (<AffiliateLink href="https://docs.scrimba.com/explain/mobile-app">docs.scrimba.com/explain/mobile-app</AffiliateLink>). Until then a phone gets the web player.
+
+## Prompts that waste your quota
+
+With 10 explainers on a free account, the expensive mistakes are the ones that make you regenerate.
+
+- A prompt with no audience sentence. Scrimba's docs say this is the line most people skip; I did not test the omission myself, but a second explainer to fix the pitch is the likely cost.
+- Running the same prompt across styles to compare them. I have done that for you above; the differences are small.
+- Asking for "everything about X". My seven explainers ran between 0:51 and 1:28, so a broad topic gets a shallow pass. Narrow it or use a playlist.
+- Chaining follow-ups instead of writing the follow-up question into the original prompt.
+- Regenerating to fix one slide or a mispronounced word. Redo slide and Regenerate narration are free.
+
+If you are working through Scrimba's AI courses, the [AI Engineer path](/docs/paths/ai-engineer-path/) and the [AI Engineering](/docs/courses/ai/ai-engineering/) and [AI Agents](/docs/courses/ai/ai-agents/) courses are the places where these prompts pay off: use an explainer on the one lesson you failed to follow, with the course's own variable names in the audience sentence.
+
+<PricingCTA
+  title="Ten free explainers is enough to learn the prompt shape"
+  subtitle="A free Scrimba account gets 10 explainers for life. Write the audience sentence first, and one of them is usually enough."
+  ctaType="free"
+  riskReversal
+  location="explain-prompts-post"
+/>
+
+## References
+
+- <AffiliateLink href="https://docs.scrimba.com/explain/prompting" location="explain-prompts-ref-prompting">Scrimba Docs, Writing a good prompt</AffiliateLink>: topic, audience and slide types, art styles, pushing depth past the style.
+- <AffiliateLink href="https://docs.scrimba.com/explain/teaching-styles" location="explain-prompts-ref-styles">Scrimba Docs, Teaching styles</AffiliateLink>: the seven styles and that they are web-only.
+- <AffiliateLink href="https://docs.scrimba.com/explain/attaching-documents" location="explain-prompts-ref-attach">Scrimba Docs, Attaching documents</AffiliateLink>: accepted file types and the paste-to-attachment behaviour.
+- <AffiliateLink href="https://docs.scrimba.com/explain/playlists" location="explain-prompts-ref-playlists">Scrimba Docs, Playlists</AffiliateLink>: one URL per lesson, inherited style and visibility.
+- <AffiliateLink href="https://docs.scrimba.com/explain/going-deeper" location="explain-prompts-ref-deeper">Scrimba Docs, Going deeper</AffiliateLink>: what the button does and that it consumes allowance.
+- <AffiliateLink href="https://docs.scrimba.com/explain/limits-and-plans" location="explain-prompts-ref-limits">Scrimba Docs, Limits and plans</AffiliateLink>: 10 explainers on Free, 100 a month on Pro, what counts.
+- <AffiliateLink href="https://docs.scrimba.com/explain/mobile-app" location="explain-prompts-ref-mobile">Scrimba Docs, Mobile app</AffiliateLink>: waitlist only at the time of writing.
+- The seven explainers generated for this post, all Public: <AffiliateLink href="https://scrimba.com/explain/guide0niu04ksn">A1</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide0sp3ljm85">A2</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide050741s62">A3</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide02qftck7g">B</AffiliateLink>, the playlist (<AffiliateLink href="https://scrimba.com/explain/guide0j3tt3irh">1</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide0ih5ernr6">2</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide0bnbt17e2">3</AffiliateLink>).
+
+<FAQAccordion items={[
+  { q: "What should a Scrimba Explain prompt contain?", a: "Three things: the topic, the audience (who it is for and what they already know), and the slides you want, such as one diagram, one code slide and a quiz. Scrimba's docs call the audience line the sentence most people leave out. I did not test a prompt without one. On the same RAG prompt, though, switching teaching styles changed less than I expected, so the prompt text is where the depth gets set.", sourceUrl: "https://docs.scrimba.com/explain/prompting?via=u42d4986" },
+  { q: "Which Scrimba Explain teaching style should I use?", a: "Start with Standard. It produced the most accurate code of the three I compared on the same RAG prompt, and it was the same length as Professor. Use Explain when you want an analogy and shorter sentences, and TLDR when you want the core idea in a few slides without a quiz." },
+  { q: "Is the Professor style deeper?", a: "Not noticeably, at least for a detailed prompt. On the same RAG prompt, Professor ran 1:26 against Standard's 1:28 with the same slide types and overlapping headings. It added one worked example of embedding vectors and nothing else Standard lacked. If you want depth, ask for it in the prompt." },
+  { q: "Can I upload a PDF or a Markdown file to Scrimba Explain?", a: "Yes. The composer accepts code files, text and Markdown, PDFs, images and Jupyter notebooks, by drag and drop or the paperclip button. Pasting a large block of text also turns it into an attachment. The docs state no size limit and say nothing about how uploads are stored, so do not attach anything confidential.", sourceUrl: "https://docs.scrimba.com/explain/attaching-documents?via=u42d4986" },
+  { q: "Do follow-ups and Go deeper use up my explainers?", a: "Yes. Each follow-up question and each Go deeper click creates a new explainer and counts against your allowance: 10 for life on a free account, 100 a month on Pro. Redo slide and Regenerate narration are free.", sourceUrl: "https://docs.scrimba.com/explain/limits-and-plans?via=u42d4986" },
+  { q: "How do playlists work in Scrimba Explain?", a: "Toggle the playlist icon in the composer and describe the lessons you want. Explain plans the series and builds each lesson as its own explainer with its own URL. My three-lesson context engineering playlist finished in under 40 seconds, but every lesson got a quiz even though I asked for one on the last lesson only.", sourceUrl: "https://docs.scrimba.com/explain/playlists?via=u42d4986" },
+  { q: "Can I watch explainers in portrait on my phone?", a: "The cog menu on your own explainer has a Vertical view toggle. Scrimba's mobile app is waitlist-only at the time of writing, and the docs say your web explainers will appear in it once it launches.", sourceUrl: "https://docs.scrimba.com/explain/mobile-app?via=u42d4986" }
+]} />

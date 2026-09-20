@@ -17,9 +17,29 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
     { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
   ],
+  '/blog/scrimba-explain-inside-courses': [
+    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
+    { title: 'How to Prompt Scrimba Explain', href: '/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles', type: 'blog' },
+    { title: 'Learn RAG (course)', href: '/docs/courses/ai/rag', type: 'doc' },
+  ],
+  '/blog/scrimba-explain-vs-notebooklm-video-overviews': [
+    { title: 'What Is Scrimba Explain? (tested)', href: '/blog/scrimba-explain-review', type: 'blog' },
+    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
+    { title: 'All Comparisons', href: '/docs/comparisons/', type: 'comparison' },
+  ],
+  '/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles': [
+    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
+    { title: 'The Explain Button Inside Lessons', href: '/blog/scrimba-explain-inside-courses', type: 'blog' },
+    { title: 'What Is Scrimba Explain? (tested)', href: '/blog/scrimba-explain-review', type: 'blog' },
+  ],
+  '/blog/scrimba-explain-claude-code-pr-explainers': [
+    { title: 'What Is Scrimba Explain? (tested)', href: '/blog/scrimba-explain-review', type: 'blog' },
+    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
+    { title: 'Reading Code Is the Skill AI Coders Skip', href: '/blog/how-to-get-better-at-reading-code-2026', type: 'blog' },
+  ],
   '/docs/how-it-works/scrimba-explain': [
     { title: 'What Is Scrimba Explain? (tested)', href: '/blog/scrimba-explain-review', type: 'blog' },
-    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
+    { title: 'The Explain Button Inside Lessons', href: '/blog/scrimba-explain-inside-courses', type: 'blog' },
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
   ],
   '/docs/how-it-works/how-scrims-work': [
@@ -39,9 +59,8 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   ],
   '/blog/scrimba-explain-review': [
     { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
-    { title: 'Reading Code Is the Skill AI Coders Skip', href: '/blog/how-to-get-better-at-reading-code-2026', type: 'blog' },
-    { title: 'Learn to Code Without Depending on AI', href: '/blog/how-to-learn-coding-without-depending-on-ai', type: 'blog' },
-    { title: 'Scrimba vs ChatGPT', href: '/blog/scrimba-vs-chatgpt-learn-to-code', type: 'blog' },
+    { title: 'The Explain Button Inside Lessons', href: '/blog/scrimba-explain-inside-courses', type: 'blog' },
+    { title: 'How to Prompt Scrimba Explain', href: '/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles', type: 'blog' },
   ],
   '/blog/how-to-learn-devops-2026': [
     { title: 'Scrimba Backend Path Review', href: '/blog/scrimba-backend-path-review', type: 'blog' },
