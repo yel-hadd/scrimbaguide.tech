@@ -19,6 +19,7 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 import PricingCTA from '@site/src/components/PricingCTA';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import ExplainerEmbed from '@site/src/components/ExplainerEmbed';
 import ComparisonTable from '@site/src/components/ComparisonTable';
 import ItemListSchema from '@site/src/components/ItemListSchema';
 
@@ -123,7 +124,13 @@ The prompt I used, Standard teaching style, on the web hub:
 
 ### What Scrimba Explain produced
 
-The explainer is at <AffiliateLink href="https://scrimba.com/explain/guide0jc32sm3l">scrimba.com/explain/guide0jc32sm3l</AffiliateLink>, titled "Managing the LLM Context Window", 1 minute 22 seconds. Its transcript has six sections: Managing the LLM Context Window, Tokens vs. Characters, The window filling up, Handling the limit, Implementing a sliding window, and Test your knowledge.
+The explainer is at [scrimba.com/explain/guide0jc32sm3l](https://scrimba.com/explain/guide0jc32sm3l), titled "Managing the LLM Context Window", 1 minute 22 seconds, and it is embedded here so you can watch it before reading my notes on it. Its transcript has six sections: Managing the LLM Context Window, Tokens vs. Characters, The window filling up, Handling the limit, Implementing a sliding window, and Test your knowledge.
+
+<ExplainerEmbed
+  id="guide0jc32sm3l"
+  title="Managing the LLM Context Window, the Scrimba Explain result for the shared prompt"
+  caption="The Explain side of the comparison, 1:22, Standard style: sequence diagram, trimHistory code slide and a quiz."
+/>
 
 Three slides matter. The diagram slide shows a User, App State and LLM sequence with the window filling turn by turn, exactly what I asked for. The code slide, `chatUtils.js`, holds a `trimHistory(messages, tokenLimit)` function that drops the oldest messages until the estimate fits, using the rough four characters per token heuristic. The quiz asks what happens when the history exceeds the limit; the correct answer is that the API returns an error, which is right.
 
@@ -181,7 +188,7 @@ Whichever you choose, both vendors say the same thing about accuracy. Scrimba pr
 - <AffiliateLink href="https://docs.scrimba.com/explain/exporting">Scrimba Docs, Exporting</AffiliateLink> - MP4 at 2560x1440, 60 fps, .vtt captions.
 - <AffiliateLink href="https://docs.scrimba.com/explain/visibility-when-creating">Scrimba Docs, Visibility when creating</AffiliateLink> - Public default on the web hub.
 - <AffiliateLink href="https://docs.scrimba.com/explain/mcp">Scrimba Docs, MCP</AffiliateLink> - the agent endpoint.
-- <AffiliateLink href="https://scrimba.com/explain/guide0jc32sm3l">Managing the LLM Context Window</AffiliateLink> - the explainer generated for this article, 1:22, Standard style.
+- [Managing the LLM Context Window](https://scrimba.com/explain/guide0jc32sm3l) - the explainer generated for this article, 1:22, Standard style.
 - [Google, Video Overviews help page](https://support.google.com/notebooklm/answer/16454555) - formats, styles, generation time, sharing and download, accuracy notice.
 - [Google, Source types and limits](https://support.google.com/gemininotebook/answer/16215270) - accepted sources, 500,000 words or 200 MB per source.
 - [Google, Plan limits](https://support.google.com/notebooklm/answer/16213268) - 3 Video Overviews a day on the free plan, 20 on Pro, 200 on Ultra.

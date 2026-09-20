@@ -19,6 +19,7 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 import PricingCTA from '@site/src/components/PricingCTA';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import ExplainerEmbed from '@site/src/components/ExplainerEmbed';
 import HowToSchema from '@site/src/components/HowToSchema';
 
 # How to prompt Scrimba Explain: teaching styles, audience, and attachments
@@ -80,15 +81,21 @@ RAG (retrieval-augmented generation) is the pattern where you search your own do
 
 | Style | Explainer | Length | Transcript headings |
 |---|---|---|---|
-| Explain (default) | <AffiliateLink href="https://scrimba.com/explain/guide0niu04ksn">Retrieval-Augmented Generation (RAG)</AffiliateLink> | 1:20 | The context window problem, Chunking your data, The RAG Pipeline, Finding the right chunks, The final prompt, Test your knowledge |
-| Standard | <AffiliateLink href="https://scrimba.com/explain/guide0sp3ljm85">How RAG Works</AffiliateLink> | 1:28 | The context window problem, The RAG pipeline, Chunking and Embeddings, Similarity search, Finding similar chunks, The final prompt, Test your knowledge |
-| Professor | <AffiliateLink href="https://scrimba.com/explain/guide050741s62">How RAG Works</AffiliateLink> | 1:26 | The context window limit, The RAG pipeline, What is an embedding?, Similarity search in JS, The augmented prompt, Your turn |
+| Explain (default) | [Retrieval-Augmented Generation (RAG)](https://scrimba.com/explain/guide0niu04ksn) | 1:20 | The context window problem, Chunking your data, The RAG Pipeline, Finding the right chunks, The final prompt, Test your knowledge |
+| Standard | [How RAG Works](https://scrimba.com/explain/guide0sp3ljm85) | 1:28 | The context window problem, The RAG pipeline, Chunking and Embeddings, Similarity search, Finding similar chunks, The final prompt, Test your knowledge |
+| Professor | [How RAG Works](https://scrimba.com/explain/guide050741s62) | 1:26 | The context window limit, The RAG pipeline, What is an embedding?, Similarity search in JS, The augmented prompt, Your turn |
 
 All three delivered the requested slides: an animation, a pipeline diagram, a `search.js` code slide, a second code slide that builds the prompt, and a quiz. All three stayed in JavaScript. The differences were smaller than the taglines suggest.
 
 The Explain version leaned on an analogy (an exam desk with too many books) and used shorter sentences. It also had the one slip of the batch: the code comment calls a plain dot product "cosine similarity", which is only true when the vectors are normalised. The concept explanation around it was fine, but if you copied that snippet you would ship a subtle bug.
 
-The Standard version fixed that. Its `cosineSimilarity(vecA, vecB)` divides by both magnitudes, and its ingest and query paths were the clearest of the three.
+The Standard version fixed that. Its `cosineSimilarity(vecA, vecB)` divides by both magnitudes, and its ingest and query paths were the clearest of the three. It is embedded below, so you can watch the one I would keep without leaving the page.
+
+<ExplainerEmbed
+  id="guide0sp3ljm85"
+  title="How RAG Works, the Standard-style explainer from the RAG prompt"
+  caption="The Standard version, 1:28. The cosineSimilarity code slide is the one of the three that divides by both magnitudes."
+/>
 
 <Screenshot
   src="/img/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles/explain-professor-style-rag-explainer-transcript.webp"
@@ -120,7 +127,7 @@ Explain this document for a Node.js developer who wants to build their first MCP
   source=""
 />
 
-The result, <AffiliateLink href="https://scrimba.com/explain/guide02qftck7g">Building Your First MCP Server</AffiliateLink> (1:17), tracked the file closely. The sequence diagram labelled the three messages `initialize`, `result` and `notifications/initialized`, as my document did. The `server.ts` slide used the real `@modelcontextprotocol/sdk` and `zod` imports, and the narration repeated my note that a stdio server must log to `console.error`, never `console.log`. It skipped the section on Streamable HTTP, which the prompt had not asked about.
+The result, [Building Your First MCP Server](https://scrimba.com/explain/guide02qftck7g) (1:17), tracked the file closely. The sequence diagram labelled the three messages `initialize`, `result` and `notifications/initialized`, as my document did. The `server.ts` slide used the real `@modelcontextprotocol/sdk` and `zod` imports, and the narration repeated my note that a stdio server must log to `console.error`, never `console.log`. It skipped the section on Streamable HTTP, which the prompt had not asked about.
 
 So an attachment does two things. It grounds the explainer in your text instead of the model's general knowledge, and it lets you point the prompt at parts of the document. Attach your own notes before an exam, or a README you have to onboard onto, and ask for the three things you keep forgetting.
 
@@ -141,7 +148,7 @@ Context engineering for AI agents, for a developer who has built one chatbot and
   source=""
 />
 
-The three lessons came out at 1:15, 1:14 and 0:51 (<AffiliateLink href="https://scrimba.com/explain/guide0j3tt3irh">lesson 1</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide0ih5ernr6">lesson 2</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide0bnbt17e2">lesson 3</AffiliateLink>), and the whole set finished building in under 40 seconds. Each lesson stayed on its assigned sub-topic and referred back to the previous one. Lesson 1's `payload.json` slide shows the system prompt, tool schemas and message history competing for the same token budget, which is the point of the course.
+The three lessons came out at 1:15, 1:14 and 0:51 ([lesson 1](https://scrimba.com/explain/guide0j3tt3irh), [lesson 2](https://scrimba.com/explain/guide0ih5ernr6), [lesson 3](https://scrimba.com/explain/guide0bnbt17e2)), and the whole set finished building in under 40 seconds. Each lesson stayed on its assigned sub-topic and referred back to the previous one. Lesson 1's `payload.json` slide shows the system prompt, tool schemas and message history competing for the same token budget, which is the point of the course.
 
 Two things did not follow the prompt. Every lesson ended with a quiz, although I asked for one on lesson 3 only. And lesson 2's example hard-coded `model: "gpt-4o"`, which nobody asked for. Neither is wrong, but a playlist follows its own plan more than a single explainer does, so keep per-lesson instructions short.
 
@@ -198,7 +205,7 @@ If you are working through Scrimba's AI courses, the [AI Engineer path](/docs/pa
 - <AffiliateLink href="https://docs.scrimba.com/explain/going-deeper" location="explain-prompts-ref-deeper">Scrimba Docs, Going deeper</AffiliateLink>: what the button does and that it consumes allowance.
 - <AffiliateLink href="https://docs.scrimba.com/explain/limits-and-plans" location="explain-prompts-ref-limits">Scrimba Docs, Limits and plans</AffiliateLink>: 10 explainers on Free, 100 a month on Pro, what counts.
 - <AffiliateLink href="https://docs.scrimba.com/explain/mobile-app" location="explain-prompts-ref-mobile">Scrimba Docs, Mobile app</AffiliateLink>: waitlist only at the time of writing.
-- The seven explainers generated for this post, all Public: <AffiliateLink href="https://scrimba.com/explain/guide0niu04ksn">A1</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide0sp3ljm85">A2</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide050741s62">A3</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide02qftck7g">B</AffiliateLink>, the playlist (<AffiliateLink href="https://scrimba.com/explain/guide0j3tt3irh">1</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide0ih5ernr6">2</AffiliateLink>, <AffiliateLink href="https://scrimba.com/explain/guide0bnbt17e2">3</AffiliateLink>).
+- The seven explainers generated for this post, all Public: [A1](https://scrimba.com/explain/guide0niu04ksn), [A2](https://scrimba.com/explain/guide0sp3ljm85), [A3](https://scrimba.com/explain/guide050741s62), [B](https://scrimba.com/explain/guide02qftck7g), the playlist ([1](https://scrimba.com/explain/guide0j3tt3irh), [2](https://scrimba.com/explain/guide0ih5ernr6), [3](https://scrimba.com/explain/guide0bnbt17e2)).
 
 <FAQAccordion items={[
   { q: "What should a Scrimba Explain prompt contain?", a: "Three things: the topic, the audience (who it is for and what they already know), and the slides you want, such as one diagram, one code slide and a quiz. Scrimba's docs call the audience line the sentence most people leave out. I did not test a prompt without one. On the same RAG prompt, though, switching teaching styles changed less than I expected, so the prompt text is where the depth gets set.", sourceUrl: "https://docs.scrimba.com/explain/prompting?via=u42d4986" },

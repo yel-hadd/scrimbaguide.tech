@@ -19,6 +19,7 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 import PricingCTA from '@site/src/components/PricingCTA';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import ExplainerEmbed from '@site/src/components/ExplainerEmbed';
 import HowToSchema from '@site/src/components/HowToSchema';
 
 # Scrimba Explain from Claude Code: MCP setup, PR explainers and the CI endpoint
@@ -112,7 +113,7 @@ I cloned Anthropic's public `anthropic-quickstarts` repository and ran this from
 
 Claude Code read both files, opened the stream with the title "Agent tool loop: how Claude calls tools" and visibility unlisted, then sent two chunks of OPML (6.6 KB and 7.3 KB). The run took 160 seconds and 13 turns. Claude Code reported about USD 1.20 of API usage for it, which is the real cost of an agent-authored explainer, since the draft itself is free.
 
-The result is at <AffiliateLink href="https://scrimba.com/explain/guide049ig84ai">scrimba.com/explain/guide049ig84ai</AffiliateLink>. It plays for 5 minutes 12 seconds across 14 narrated slides. The transcript headings, as rendered on the page: Agent tool loop, One call vs. a loop, One turn of the agent loop, What every API call carries, Ask the model then look for tool_use, Record the model's turn first, Run tools or return, Executing one tool call, Several tool calls in one reply, The conversation grows each pass, The loop in six steps, Quiz 1, Quiz 2, Answers.
+The result is at [scrimba.com/explain/guide049ig84ai](https://scrimba.com/explain/guide049ig84ai) and embedded below, so you can step through it while reading. It plays for 5 minutes 12 seconds across 14 narrated slides. The transcript headings, as rendered on the page: Agent tool loop, One call vs. a loop, One turn of the agent loop, What every API call carries, Ask the model then look for tool_use, Record the model's turn first, Run tools or return, Executing one tool call, Several tool calls in one reply, The conversation grows each pass, The loop in six steps, Quiz 1, Quiz 2, Answers.
 
 <Screenshot
   src="/img/blog/scrimba-explain-claude-code-pr-explainers/agent-loop-diagram-slide.webp"
@@ -120,6 +121,12 @@ The result is at <AffiliateLink href="https://scrimba.com/explain/guide049ig84ai
   width={1568}
   height={739}
   caption="The diagram slide at 0:40. Claude Code wrote it as Mermaid; Scrimba rendered it. The Publish to community button in the corner is the owner view of an unlisted explainer."
+/>
+
+<ExplainerEmbed
+  id="guide049ig84ai"
+  title="Agent tool loop: how Claude calls tools, the explainer Claude Code wrote from anthropic-quickstarts"
+  caption="The agent-loop explainer, 5:12, 14 slides, written by Claude Code over the MCP endpoint and rendered by Scrimba."
 />
 
 I checked the content against the source. Both quiz answers are right: with no `tool_use` block the loop returns, and a tool that throws becomes a `tool_result` with `is_error` set. The narration's claim that the assistant turn is appended before any tool runs matches the code. One wrinkle: the code is Python and the audience was a JavaScript developer, and Claude flagged that in the narration rather than translating it, with `asyncio.gather` explained as `Promise.all`.
@@ -140,7 +147,7 @@ For the second run I used the PR endpoint on a merged pull request from the same
 
 > Make a Scrimba explainer of this pull request. The PR description is in pr-485.md and the full diff is in pr-485.diff (read both with the Read tool). Audience: a JavaScript developer who has shipped one webhook. Use a diff slide for the key change. When done, reply with the explainer URL.
 
-This run took 135 seconds and 14 turns, one 18 KB chunk, 12 narrations, about 7 minutes of audio. Claude Code chose landscape mode and the title "Signing webhook routes with HMAC (PR 485)". It is at <AffiliateLink href="https://scrimba.com/explain/guide04mover9n">scrimba.com/explain/guide04mover9n</AffiliateLink>.
+This run took 135 seconds and 14 turns, one 18 KB chunk, 12 narrations, about 7 minutes of audio. Claude Code chose landscape mode and the title "Signing webhook routes with HMAC (PR 485)". It is at [scrimba.com/explain/guide04mover9n](https://scrimba.com/explain/guide04mover9n).
 
 The slide order tells you how the agent read the change: a sequence diagram of the Slack bridge, cards on why the old agent-ID check was forgeable, an animation of the forged route, the diff slide on the `verifyRoute` guard, three code slides (key derivation, kickoff ordering, constant-time compare), a lifecycle diagram, and a closing slide on consequences like secret rotation. Claude added one caveat in its reply: the "after" pane of the diff omits a long `console.warn` line so both panes fit the frame.
 
@@ -188,7 +195,7 @@ After this post you can add the server, make one draft of a branch you understan
 - <AffiliateLink href="https://docs.scrimba.com/explain/limits-and-plans" location="explain-cc-limits">Scrimba Docs, Limits and plans</AffiliateLink>: 10 explainers for life on Free, 100 a month on Pro, drafts free until claimed.
 - <AffiliateLink href="https://docs.scrimba.com/explain/privacy-and-sharing" location="explain-cc-privacy">Scrimba Docs, Privacy and sharing</AffiliateLink>: private default over MCP, unlisted for the PR endpoint.
 - [anthropics/anthropic-quickstarts](https://github.com/anthropics/anthropic-quickstarts): the `agents/agent.py` and `utils/tool_util.py` files, and pull request #485, used for the two runs.
-- Two runs on 2026-09-20 with Claude Code CLI 2.1.278: explainers <AffiliateLink href="https://scrimba.com/explain/guide049ig84ai" location="explain-cc-run1">guide049ig84ai</AffiliateLink> and <AffiliateLink href="https://scrimba.com/explain/guide04mover9n" location="explain-cc-run2">guide04mover9n</AffiliateLink>.
+- Two runs on 2026-09-20 with Claude Code CLI 2.1.278: explainers [guide049ig84ai](https://scrimba.com/explain/guide049ig84ai) and [guide04mover9n](https://scrimba.com/explain/guide04mover9n).
 
 <FAQAccordion items={[
   { q: "Do I need a Scrimba account or token to connect Claude Code to Explain?", a: "Not to create a draft. Both endpoints accepted the stream with no token, header or login step. You need a signed-in Scrimba account to open the link and claim the explainer, which is when it starts to play and when it counts against your quota.", sourceUrl: "https://docs.scrimba.com/explain/claude-code?via=u42d4986" },
