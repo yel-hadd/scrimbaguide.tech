@@ -132,7 +132,7 @@ export default function CourseSchema({
         '@type': 'ListItem',
         position: i + 1,
         name: plainText(m.name),
-        description: `${m.lessons} lessons, ${plainText(m.duration)}`,
+        description: m.lessons ? `${m.lessons} lessons, ${plainText(m.duration)}` : plainText(m.duration),
       })),
     };
   }

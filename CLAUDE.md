@@ -162,6 +162,10 @@ Grouped by intent so you can extend a cluster without cannibalizing an existing 
 - The after-post CTA on each blog post is an inline `<PricingCTA>` authored in that post's MDX (the per-slug `blogContextualCtas.ts` system was removed).
 - Tools (`src/pages/tools/`): `which-scrimba-path` (Path Advisor, logic in `src/content/whichScrimbaPath.ts`), `bootcamp-cost-calculator`, plus `roadmaps/frontend-roadmap-2026`.
 
+### First-hand Scrimba access
+
+`SCRIMBA-BROWSING-GUIDE.md` documents how to browse scrimba.com with the logged-in Pro account via Claude in Chrome: URL map, curriculum/transcript/code extraction snippets, the Explain feature, and screenshot + alt-text rules. Read it before enriching course, path, or feature pages with first-hand detail.
+
 ### Content conventions for edits
 
 - Course catalog facts (durations, lesson counts, module names) come from `data/courses.json`, surfaced by `CourseCurriculum`/`CourseCard`/`scrimbaFacts` — fix data there, not by editing prose numbers.

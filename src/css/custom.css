@@ -4357,3 +4357,60 @@ html[data-theme='dark'] .curriculum__index {
   color: var(--ifm-color-emphasis-700);
   margin-top: 0.4rem;
 }
+
+/* First-hand Scrimba screenshots (src/components/Screenshot.tsx) */
+.screenshot {
+  margin: 1.25rem 0 1.75rem;
+}
+
+.screenshot a {
+  display: block;
+  text-decoration: none;
+}
+
+.screenshot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  background: #16191f;
+}
+
+.screenshot figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-top: 0.5rem;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.screenshot__source {
+  font-size: 0.76rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* Chapter title cards sit side by side on wide screens */
+.screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 1.75rem;
+}
+
+.screenshot-grid .screenshot {
+  margin: 0;
+}
+
+/* Cards in a grid share one 16:9 frame regardless of source aspect ratio */
+.screenshot-grid .screenshot img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.screenshot--narrow img {
+  max-width: 480px;
+  margin: 0 auto;
+}
