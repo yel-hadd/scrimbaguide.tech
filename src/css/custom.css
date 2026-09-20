@@ -237,6 +237,28 @@ body {
   box-shadow: 0 2px 8px rgba(91, 63, 217, 0.24);
 }
 
+/* The dark palette inverts the scale (primary-darker is lighter than
+   --sg-btn-bg), so hover/active need explicit darker fills to keep white
+   text above 4.5:1 (white on #5b3fd9 = 6.65:1, on #4c31c8 = 8.2:1). */
+[data-theme='dark'] .cta-link--button:hover {
+  background: #5b3fd9;
+  border-color: #5b3fd9;
+}
+
+[data-theme='dark'] .cta-link--button:active {
+  background: #4c31c8;
+  border-color: #4c31c8;
+}
+
+/* Form controls do not inherit the page font by default (they fall back
+   to Arial), so every native button/input/select/textarea inherits here. */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
 /* ── Navbar right-side spacing ─────────────────────────────────── */
 .navbar__items--right {
   gap: 0.5rem;
@@ -285,6 +307,14 @@ body {
 .navbar-cta:hover {
   background: var(--ifm-color-primary-darkest);
   color: var(--sg-text-on-primary) !important;
+}
+
+[data-theme='dark'] .navbar-cta:hover {
+  background: #5b3fd9;
+}
+
+[data-theme='dark'] .navbar-cta:active {
+  background: #4c31c8;
 }
 
 .navbar-cta:active {
@@ -649,6 +679,14 @@ body {
   cursor: pointer;
   transition: background-color 0.1s ease;
   min-height: 44px;
+  color: inherit; /* results are real links now; keep the row styling */
+  text-decoration: none;
+}
+
+.sg-search-result:hover,
+.sg-search-result:focus {
+  color: inherit;
+  text-decoration: none;
 }
 
 .sg-search-result:hover {
@@ -1093,6 +1131,10 @@ article[class*='searchResultItem'] mark {
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
+  /* Infima makes every table a block scroller; here the wrapper is the single
+     scroll region (it carries tabindex, role and the focus ring). */
+  display: table;
+  overflow: visible;
 }
 
 .comparison-table th,
@@ -1179,17 +1221,21 @@ article[class*='searchResultItem'] mark {
   padding: 1.5rem;
 }
 
+/* Doubled selectors so these beat the `.theme-doc-markdown h2/p` resets */
+.theme-doc-markdown .pricing-cta__title,
 .pricing-cta__title {
   margin: 0 0 0.5rem;
   font-size: 1.5rem;
 }
 
+.theme-doc-markdown .pricing-cta__subtitle,
 .pricing-cta__subtitle {
   margin: 0 0 1.5rem;
   color: var(--sg-text-muted);
   font-size: 1.05rem;
 }
 
+.theme-doc-markdown .pricing-cta__note,
 .pricing-cta__note {
   margin: -0.75rem 0 1rem;
   font-size: 0.9rem;
@@ -1201,11 +1247,24 @@ article[class*='searchResultItem'] mark {
   padding: 0.85rem 2rem;
 }
 
+.theme-doc-markdown .pricing-cta__risk-reversal,
 .pricing-cta__risk-reversal {
   margin: 0.75rem 0 0;
   font-size: 0.85rem;
   color: var(--sg-text-muted);
   text-align: center;
+}
+
+@media (max-width: 480px) {
+  .pricing-cta {
+    padding: 1.5rem 1rem;
+  }
+
+  .pricing-cta__button {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
+  }
 }
 
 /* ── FAQ accordion ─────────────────────────────────────────────── */
@@ -1233,6 +1292,7 @@ article[class*='searchResultItem'] mark {
   background: none;
   border: none;
   cursor: pointer;
+  font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
   text-align: left;
@@ -1254,6 +1314,10 @@ article[class*='searchResultItem'] mark {
   padding: 0 1.25rem 1rem;
   color: var(--sg-text-muted);
   line-height: 1.6;
+}
+
+.faq-accordion__answer > :last-child {
+  margin-bottom: 0;
 }
 
 .faq-accordion__source {
@@ -1734,7 +1798,7 @@ article[class*='searchResultItem'] mark {
 
 /* ── Link distinction (WCAG 1.4.1) ────────────────────────────── */
 .theme-doc-markdown a:not(.cta-link):not(.hash-link),
-article a:not(.cta-link):not(.hash-link) {
+article a:not(.cta-link):not(.hash-link):not(header *) {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
@@ -1773,24 +1837,48 @@ article a:not(.cta-link):not(.hash-link):hover {
     position: relative;
   }
 
-  .comparison-table-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 24px;
-    background: linear-gradient(to right, transparent, var(--ifm-background-color));
-    pointer-events: none;
-    opacity: 0.8;
-  }
-
   .comparison-table th,
   .comparison-table td {
     padding: 0.5rem 0.6rem;
     font-size: 0.85rem;
-    white-space: nowrap;
   }
+
+  /* Row labels stay visible while the wide middle column scrolls */
+  .comparison-table tbody th,
+  .comparison-table thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--ifm-color-emphasis-100);
+  }
+}
+
+/* ── Mobile tap targets (docs TOC toggle, breadcrumbs, drawer) ─── */
+@media (max-width: 996px) {
+  .theme-doc-toc-mobile > button {
+    min-height: 44px;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .breadcrumbs__link {
+    padding-top: 0.45rem;
+    padding-bottom: 0.45rem;
+  }
+
+  .navbar-sidebar .menu__link {
+    padding: 0.75rem;
+  }
+
+  .navbar-sidebar .sg-search-pill {
+    height: 2.75rem;
+    min-width: 2.75rem;
+  }
+}
+
+.navbar-sidebar__close {
+  padding: 0.75rem;
+  margin: -0.75rem -0.75rem -0.75rem auto; /* keep Infima's margin-left: auto */
 }
 
 /* ── Visually hidden utility (sr-only) ────────────────────────── */
@@ -2281,8 +2369,11 @@ article a:not(.cta-link):not(.hash-link):hover {
   border-left: 3px solid var(--ifm-color-emphasis-400);
 }
 
+.theme-doc-markdown .disclosure-notice p,
 .disclosure-notice p {
   margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
 /* ── Mobile Sticky CTA ────────────────────────────────────────── */
@@ -2352,7 +2443,8 @@ article a:not(.cta-link):not(.hash-link):hover {
 .desktop-sticky-cta {
   position: fixed;
   right: 1.25rem;
-  bottom: 1.5rem;
+  /* Sits above the Docusaurus back-to-top button (48px at bottom ~1.3rem) */
+  bottom: 5.5rem;
   z-index: 90;
   max-width: 220px;
   animation: desktopCtaFade 0.35s ease-out;
@@ -2378,13 +2470,17 @@ article a:not(.cta-link):not(.hash-link):hover {
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
 }
 
+.theme-doc-markdown .desktop-sticky-cta__title,
 .desktop-sticky-cta__title {
   margin: 0 0 0.35rem;
+  padding-right: 2.5rem; /* keep the headline clear of the 44px close target */
   font-weight: 700;
   font-size: 0.95rem;
   line-height: 1.25;
+  color: var(--ifm-font-color-base);
 }
 
+.theme-doc-markdown .desktop-sticky-cta__sub,
 .desktop-sticky-cta__sub {
   margin: 0 0 0.75rem;
   font-size: 0.75rem;
@@ -2622,7 +2718,6 @@ article a:not(.cta-link):not(.hash-link):hover {
 
 /* scrollable-region-focusable: make table wrappers keyboard-accessible */
 .theme-doc-markdown div[class*="tableWrapper"],
-.theme-doc-markdown .comparison-table,
 .mdx-table-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -2631,14 +2726,14 @@ article a:not(.cta-link):not(.hash-link):hover {
 /* Ensure tables in markdown have tabindex for keyboard scrolling.
    This is handled via JS below, this rule adds a visible focus ring. */
 .theme-doc-markdown table:focus,
-.comparison-table:focus {
+.comparison-table-wrapper:focus-visible {
   outline: 2px solid var(--ifm-color-primary);
   outline-offset: 2px;
 }
 
 /* link-in-text-block: ensure links in blog tag pages have underlines */
 .blog-tags-post-list a,
-article a:not(.cta-link):not([class*="card"]):not([class*="button"]),
+article a:not(.cta-link):not([class*="card"]):not([class*="button"]):not(header *),
 .blogTagsListPage a,
 a[href$="/tags"],
 a[href*="/tags/"] {
@@ -2677,43 +2772,50 @@ a[href$="/tags"]:hover {
 
 /* ── Prism code token contrast fixes (WCAG 2.1 AA) ────────────── */
 
-/* Light theme (github): boost low-contrast tokens */
-:root .token.comment,
-:root .token.prolog,
-:root .token.doctype,
-:root .token.cdata {
+/* Light theme (github): boost low-contrast tokens. Scoped to Docusaurus code
+   blocks so the always-dark ScrimSandbox editor keeps its own palette. */
+:root .theme-code-block .token.comment,
+:root .theme-code-block .token.prolog,
+:root .theme-code-block .token.doctype,
+:root .theme-code-block .token.cdata {
   color: #57606a !important; /* 4.6:1 on #fff */
 }
 
-:root .token.string,
-:root .token.attr-value {
+:root .theme-code-block .token.string,
+:root .theme-code-block .token.attr-value {
   color: #0a3069 !important; /* 9.8:1 on #fff */
 }
 
-:root .token.number {
+:root .theme-code-block .token.number {
   color: #0550ae !important; /* 7.0:1 on #fff */
 }
 
-:root .token.property,
-:root .token.function,
-:root .token.method,
-:root .token.function-variable,
-:root .token.maybe-class-name,
-:root .token.property-access {
+:root .theme-code-block .token.property,
+:root .theme-code-block .token.function,
+:root .theme-code-block .token.method,
+:root .theme-code-block .token.function-variable,
+:root .theme-code-block .token.maybe-class-name,
+:root .theme-code-block .token.property-access {
   color: #6639ba !important; /* 5.9:1 on #fff */
 }
 
-:root .token.attr-name {
+:root .theme-code-block .token.attr-name {
   color: #0550ae !important; /* 7.0:1 on #fff */
 }
 
-:root .token.literal-property {
+:root .theme-code-block .token.literal-property {
   color: #0a3069 !important; /* 9.8:1 on #fff */
 }
 
-:root .token.boolean,
-:root .token.constant {
+:root .theme-code-block .token.boolean,
+:root .theme-code-block .token.constant {
   color: #0550ae !important; /* 7.0:1 on #fff */
+}
+
+/* ScrimSandbox editor (always dark, #1b1430): vsDark's grey punctuation is
+   4.47:1 there, so lift it just over the 4.5:1 line. */
+.scrim-window__highlight .token.punctuation {
+  color: #c8c8c8 !important;
 }
 
 /* Dark theme (dracula): boost low-contrast tokens */
@@ -2834,12 +2936,15 @@ article table:focus,
 }
 
 .blog-list-page article.margin-bottom--xl footer ul[class*='tags'] {
-  gap: 0.45rem;
+  gap: 0.6rem;
 }
 
 .blog-list-page article.margin-bottom--xl footer a[rel='tag'] {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
   border-radius: 999px;
-  padding: 0.2rem 0.55rem;
+  padding: 0.35rem 0.7rem;
   font-size: 0.875rem;
   line-height: 1.35;
   font-weight: 500;
@@ -2856,7 +2961,9 @@ article table:focus,
 
 .blog-list-page article.margin-bottom--xl footer .text--right a::after {
   content: "→";
-  font-size: 0.95rem;
+  font-size: inherit;
+  line-height: 1;
+  text-decoration: none;
 }
 
 @media (max-width: 996px) {
@@ -2916,6 +3023,8 @@ article table:focus,
 
 .blog-featured-image img {
   width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 630;
   max-height: 420px;
   object-fit: cover;
   border-radius: 12px;
@@ -2924,6 +3033,37 @@ article table:focus,
 
 [data-theme='dark'] .blog-featured-image img {
   box-shadow: var(--sg-card-shadow-strong);
+}
+
+/* Blog author block: let the title wrap on phones instead of truncating,
+   and grow the 16px social icons to a 44px hit area without moving them. */
+@media (max-width: 576px) {
+  .avatar__intro small[class*='authorTitle'] {
+    display: block;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-clamp: unset;
+    -webkit-line-clamp: unset;
+  }
+}
+
+[class*='authorSocials'] {
+  height: auto;
+  overflow: visible;
+}
+
+[class*='authorSocials'] a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: -6px 0 -6px -14px;
+}
+
+[class*='authorSocials'] a + a {
+  margin-left: 0;
 }
 
 /* ── Why Scrimba component ───────────────────────────────────── */
@@ -2983,6 +3123,13 @@ article table:focus,
   border-radius: 8px;
   background: var(--ifm-background-color);
   color: var(--ifm-font-color-base);
+  font-family: inherit;
+  font-size: 1rem; /* keeps iOS Safari from zooming on focus */
+}
+
+.tool-calculator__input:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
 }
 
 .tool-calculator__results {
@@ -3195,8 +3342,9 @@ article table:focus,
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  margin-top: 0.75rem;
-  padding: 0;
+  margin-top: 0.25rem;
+  padding: 0.6rem 0.25rem;
+  min-height: 44px;
   border: none;
   background: none;
   color: var(--ifm-color-primary-dark);
@@ -3231,6 +3379,12 @@ article table:focus,
   font-size: 1.44rem;
   line-height: 1.2;
   color: var(--ifm-color-primary-darkest);
+}
+
+.path-advisor__result-badge:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 [data-theme='dark'] .path-advisor__result-badge {
@@ -3624,13 +3778,21 @@ article table:focus,
 }
 
 @media (max-width: 600px) {
-  .curriculum__meta {
-    gap: 0.5rem;
-    font-size: 0.75rem;
+  /* Meta drops under the module name so names stop wrapping into orphans */
+  .curriculum__row {
+    flex-wrap: wrap;
+    row-gap: 0.1rem;
   }
 
-  .curriculum__bar {
-    margin-left: 0;
+  .curriculum__name {
+    flex-basis: calc(100% - 2.25rem);
+  }
+
+  .curriculum__meta {
+    flex-basis: 100%;
+    padding-left: 2.25rem;
+    gap: 0.5rem;
+    font-size: 0.75rem;
   }
 }
 
@@ -4066,6 +4228,9 @@ html[data-theme='dark'] .curriculum__index {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  font-size: 0.85rem;
   border: 0;
   cursor: pointer;
   font-family: var(--sg-font-mono);
@@ -4335,6 +4500,17 @@ html[data-theme='dark'] .curriculum__index {
     border-right: 0;
     border-bottom: 1px solid var(--ifm-color-emphasis-300);
   }
+
+  /* 16px stops iOS Safari zooming the drill out of view on focus */
+  .code-preview__textarea {
+    font-size: 16px;
+    max-height: 220px;
+  }
+
+  .code-preview__reset {
+    min-height: 44px;
+    padding: 0.5rem 0.9rem;
+  }
 }
 
 /* Expected-result figures on practice drills */
@@ -4368,6 +4544,12 @@ html[data-theme='dark'] .curriculum__index {
   text-decoration: none;
 }
 
+.screenshot a:focus-visible {
+  outline: 3px solid var(--ifm-color-primary);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
 .screenshot img {
   display: block;
   width: 100%;
@@ -4388,8 +4570,8 @@ html[data-theme='dark'] .curriculum__index {
 }
 
 .screenshot__source {
-  font-size: 0.76rem;
-  color: var(--ifm-color-emphasis-600);
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-700); /* 5.7:1 on white; 600 was 3.1:1 */
 }
 
 /* Chapter title cards sit side by side on wide screens */

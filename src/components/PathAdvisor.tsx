@@ -256,7 +256,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
               aria-valuenow={currentStep}
             >
               {Array.from({ length: TOTAL_STEPS }, (_, i) => (
-                <span key={i} className={`path-advisor__progress-dot ${i < step ? 'path-advisor__progress-dot--active' : ''}`} />
+                <span key={i} className={`path-advisor__progress-dot ${i <= step ? 'path-advisor__progress-dot--active' : ''}`} />
               ))}
             </div>
           </div>

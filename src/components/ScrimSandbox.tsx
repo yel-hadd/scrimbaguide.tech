@@ -12,7 +12,7 @@ import { Highlight, themes } from 'prism-react-renderer';
  */
 
 const STARTER_SOURCE = `<h1>Edit me, then hit Run</h1>
-<button onclick="this.textContent = 'You ran it \\u{1F389}'">
+<button onclick="this.textContent = 'You ran it!'">
   Click me
 </button>
 
