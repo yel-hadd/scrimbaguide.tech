@@ -8,7 +8,7 @@ export interface RelatedGuide {
 export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   // --- 2026-09-08 ---
   '/docs/intro': [
-    { title: 'What Is Scrimba Explain?', href: '/blog/scrimba-explain-review', type: 'blog' },
+    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
     { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
     { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
   ],
@@ -17,7 +17,28 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
     { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
   ],
+  '/docs/how-it-works/scrimba-explain': [
+    { title: 'What Is Scrimba Explain? (tested)', href: '/blog/scrimba-explain-review', type: 'blog' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+  ],
+  '/docs/how-it-works/how-scrims-work': [
+    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
+    { title: 'How to Use Scrimba', href: '/docs/how-it-works/using-scrimba', type: 'doc' },
+    { title: 'Escape Tutorial Hell', href: '/blog/how-to-escape-tutorial-hell-2026', type: 'blog' },
+  ],
+  '/docs/how-it-works/using-scrimba': [
+    { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
+    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
+    { title: 'Community and Events', href: '/docs/help/community-and-events', type: 'doc' },
+  ],
+  '/docs/pricing/pro-vs-free': [
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
+    { title: 'Scrimba Student Discount', href: '/docs/pricing/student-discount', type: 'doc' },
+  ],
   '/blog/scrimba-explain-review': [
+    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
     { title: 'Reading Code Is the Skill AI Coders Skip', href: '/blog/how-to-get-better-at-reading-code-2026', type: 'blog' },
     { title: 'Learn to Code Without Depending on AI', href: '/blog/how-to-learn-coding-without-depending-on-ai', type: 'blog' },
     { title: 'Scrimba vs ChatGPT', href: '/blog/scrimba-vs-chatgpt-learn-to-code', type: 'blog' },
@@ -286,7 +307,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
   ],
   '/docs/comparisons/scrimba-vs-youtube': [
-    { title: 'Escape Tutorial Hell', href: '/blog/how-to-escape-tutorial-hell-2026', type: 'blog' },
+    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
     { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
   ],

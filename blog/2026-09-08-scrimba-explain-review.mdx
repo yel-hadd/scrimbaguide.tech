@@ -10,7 +10,7 @@ keywords: [scrimba explain, what is scrimba explain, scrimba explain review, scr
 hideFooterPricingCta: true
 date: 2026-09-08
 last_update:
-  date: 2026-09-11
+  date: 2026-09-20
   author: Ayoub El Haddad
 ---
 
@@ -19,12 +19,13 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 import PricingCTA from '@site/src/components/PricingCTA';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import VideoSchema from '@site/src/components/VideoSchema';
+import Screenshot from '@site/src/components/Screenshot';
 
-# What is Scrimba Explain? The free AI tool for the thing you are stuck on
+# What is Scrimba Explain? The AI tool for the thing you are stuck on
 
 <DisclosureNotice />
 
-**Scrimba Explain turns a question into a short narrated video explainer, complete with diagrams, code walkthroughs and usually a quiz at the end. It is free during open beta, needs only a free account, and works in the browser, in ChatGPT, and inside coding agents like Claude Code through MCP.** Most AI coding tools compete to write your code faster. This one explains it.
+**Scrimba Explain turns a question into a short narrated video explainer, complete with diagrams, code walkthroughs and, most of the time, a quiz at the end. A free Scrimba account gets 10 explainers for life, Pro gets 100 a month, and it works in the browser, inside Scrimba lessons, in ChatGPT, and inside coding agents like Claude Code through MCP.** Most AI coding tools compete to write your code faster. This one explains it.
 
 {/* truncate */}
 
@@ -80,11 +81,12 @@ Here it is answering "What happens when you type a URL into the browser?". A few
 
 The explainer is built slide by slide for that question: a title card, an animated diagram of the browser asking DNS for an address, a request-and-response walkthrough, a numbered breakdown of how the browser builds the page, and a multiple-choice question at the end. The docs are firm about the distinction: *"An explainer is not a screen recording. Each slide is real, typed content."*
 
-There are four ways in:
+There are five ways in:
 
 | Entry point | What it does |
 |---|---|
 | **Web** | Type a question at `scrimba.com/explain`, get a video back |
+| **Inside a lesson** | Press EXPLAIN in a scrim's header and ask about the code in front of you; the lesson, your highlighted lines and the teacher's transcript go in as context |
 | **ChatGPT** | Mention `@Explain` in a conversation and the answer arrives as a video |
 | **Chrome extension** | Turn any article or page you are reading into an explainer |
 | **Claude Code / Codex (MCP)** | Connect it to your coding agent through MCP, the standard way agents plug into outside tools, and get a walkthrough of your actual code |
@@ -212,23 +214,35 @@ A long reference page became a one-minute walkthrough: what a promise is, a diff
 
 Per pitches this for articles you *"kind of don't have the patience or the energy to go through"* right now, rather than ones you cannot understand. That is an honest description of most evenings.
 
-Most explainers end with a quiz, though not every one does. When it is there, it is a small detail doing heavy lifting. The failure mode of every explanation tool is that watching feels like learning. A question at the end is the cheapest possible defence against that.
+Many explainers end with a quiz. Summaries, tasks on your own code and the TLDR style skip it. Scrimba's docs say page explainers from the extension skip it too, though the closing quiz in their own extension demo suggests that rule is not firm. When it is there, it is a small detail doing heavy lifting. The failure mode of every explanation tool is that watching feels like learning. A question at the end is the cheapest possible defence against that.
 
 ## What people use Scrimba Explain for besides code
 
 The docs list eleven use-case domains, and only two of them are software. The others include healthcare (*"Cardiac Prescription Logic"*), finance, real estate, automotive, philosophy, and care and admin (*"Navigating Elder Care in the UK"*). Per's own launch demo generates a driving test briefing for a driving instructor's students.
 
-The public community feed says the same thing louder. A sample of what people have made: Algebra Basics, The Sky in Norwegian, How to Train Your Puppy, Why We Get Hiccups, Why Ice Floats, The Human Respiratory System. The coding entries in the feed are entry-level general computing, like What is an Operating System and How the Internet Works.
+The public community feed said the same thing louder at launch, with entries like Algebra Basics, The Sky in Norwegian and Why We Get Hiccups. By 20 September 2026 it had tilted technical and multilingual: AWS EBS Explained, Mastering Array.reduce, a five-part Getting Started with RAG playlist, C# Design Patterns, plus French entries next to the puppy training and grammar explainers. The Featured tab Scrimba curates still leans general (The Offside Rule, Newton's First Law, The Magic of Nursing).
 
 So Scrimba built a general learning tool, and the coding integration is the specialised half. For you, that means a free tool you will end up using outside programming too, which is worth more than a narrow one you open twice.
 
 ## How to get Scrimba Explain, and is it free?
 
-Two steps: create a free Scrimba account, then install the plugin in your coding agent if you want the repository side. The <AffiliateLink href="https://scrimba.com/explain" location="explain-product">Explain product page</AffiliateLink> carries install links for Claude Code and for Codex and ChatGPT, and any MCP-capable agent can connect through the endpoint at `scrimba.com/explain/mcp`. The Chrome extension is a separate install and needs no agent at all.
+Two steps: create a free Scrimba account, then install the plugin in your coding agent if you want the repository side. The <AffiliateLink href="https://scrimba.com/explain" location="explain-product">Explain hub</AffiliateLink> links out to the ChatGPT app, the Chrome Web Store listing and Scrimba's Claude Code docs. Codex has no card of its own there. It uses the same @Explain Video Generator plugin as ChatGPT, either from Codex inside the ChatGPT desktop app or from the Codex CLI plugin browser. Only the Codex IDE extension needs the MCP endpoint at `scrimba.com/explain/mcp`, the same one any other MCP-capable agent uses. The Chrome extension is a separate install and needs no agent at all.
 
-It is **free during open beta**, and it needs a free account rather than Scrimba Pro. Worth being direct about why it is free: it is an acquisition funnel. Per says so himself at the end of the Chrome extension video, that it is all free but you need an account on scrimba.com, *"which is a learning platform that we are building"*. Explainers went from 20,000 at launch in mid-August to close to 50,000 in a later update from Scrimba's team.
+The "free during open beta" line from the launch is gone. The <AffiliateLink href="https://docs.scrimba.com/explain/limits-and-plans" location="explain-limits">limits page</AffiliateLink> now gives a **free account 10 explainers for life** (they do not renew) and a **Pro account 100 a month**. Follow-up questions and Go deeper each spend one. Drafts made from ChatGPT or a coding agent are free until you open the link and claim them, and redoing, regenerating or exporting an existing explainer costs nothing. The launch numbers were 20,000 explainers on 13 August; by 20 September the hub listed 150 Featured, 516 Community and 191 Playlist entries in its public tabs.
 
-I don't mean that as a criticism. It means you can use Explain without a subscription decision attached, and nobody should tell you it is a reason to buy Pro. If you want to know whether Pro is worth it, that is a separate question answered by our [pricing breakdown](/docs/pricing/) and by [what makes the platform different](/blog/what-makes-scrimba-different/).
+Worth being direct about why the free tier exists: it is an acquisition funnel. Per says so himself at the end of the Chrome extension video, that it is free but you need an account on scrimba.com, *"which is a learning platform that we are building"*. Ten lifetime explainers is enough to find out whether the format works for you and not enough to study with. Whether the 100 a month tips you into Pro depends on everything else Pro includes, which our [Pro vs Free breakdown](/docs/pricing/pro-vs-free/) covers, and the [reference page on Explain](/docs/how-it-works/scrimba-explain/) has the full limits table.
+
+## The EXPLAIN button inside Scrimba lessons
+
+There is a fifth entry point the launch coverage skipped and I nearly missed: an **EXPLAIN** button in the header of every scrim, next to the timeline. Click it, type what you want explained, and Scrimba builds an explainer using the lesson as context. What gets sent is the lesson title, the files in the editor, any code you have highlighted, the teacher's transcript, and the point where you paused. The result opens in the scrim sidebar, counts toward your 10 or 100, and needs a signed-in account, so it does not work on locked scrims. <AffiliateLink href="https://docs.scrimba.com/explain/scrims" location="explain-scrims">Scrimba's page on Explain in scrims</AffiliateLink> has the details.
+
+<Screenshot
+  src="/img/guides/scrimba-explain-lesson-modal.webp"
+  alt="The Scrimba Explain modal open inside a Learn JavaScript lesson, Setting up our JavaScript file. The scrim editor shows index.html with a highlighted id attribute, the EXPLAIN button sits in the header, and a dialog titled Explain this to me asks What would you like explained more? above a Create explainer button."
+  width={1400}
+  height={660}
+  caption="The EXPLAIN button sits in the scrim header. Highlight a line first and the explainer focuses on it."
+/>
 
 One naming quirk will save you a confused search. In ChatGPT's plugin directory the same product is listed as **Explain Video Generator**, not Scrimba Explain.
 
@@ -238,9 +252,9 @@ One naming quirk will save you a confused search. In ChatGPT's plugin directory 
 
 With MCP, that research is your agent's work rather than Scrimba's. A vague question against a repository your agent has not properly explored produces a confident, well-narrated, shallow video. The production values do not drop when the substance does, and in a learning tool that is a real risk.
 
-### Pricing after the beta is undecided
+### The free quota does not renew
 
-Anything free during a beta may not be free after it, so do not build a study routine that depends on it staying free.
+Ten explainers for life, on the free account, is a trial rather than an allowance. Each follow-up and each Go deeper spends one, so a single curious evening can use half of it. Treat the free tier as a way to test the format, and plan any regular use around the Pro quota or around the agent drafts, which stay free until you claim them.
 
 ### It answers questions but does not plan your learning
 
@@ -262,15 +276,18 @@ Whether it helps depends on a habit the tool cannot enforce. Use it on something
 - <AffiliateLink href="https://docs.scrimba.com/explain/use-cases" location="explain-usecases">Scrimba Docs, Use cases</AffiliateLink> - the eleven domains, including healthcare, finance, real estate and elder care.
 - <AffiliateLink href="https://docs.scrimba.com/explain/privacy-and-sharing" location="explain-privacy">Scrimba Docs, Privacy and sharing</AffiliateLink> - MCP explainers private by default, ChatGPT explainers unlisted.
 - <AffiliateLink href="https://docs.scrimba.com/explain/claude-code" location="explain-claude">Scrimba Docs, Claude Code</AffiliateLink> - the install command and the suggested repository prompts quoted above.
+- <AffiliateLink href="https://docs.scrimba.com/explain/chatgpt-codex" location="explain-codex">Scrimba Docs, ChatGPT and Codex</AffiliateLink> - the @Explain Video Generator plugin route for ChatGPT and Codex, and the MCP fallback for the Codex IDE extension.
 - [Introducing Explain by Scrimba](https://www.youtube.com/watch?v=k6rbHmBxSEs) - the pull request practice, the driving instructor example, and 20,000 explainers as of 13 August 2026.
 - [Turn Complex Articles into Videos with Explain in Chrome](https://www.youtube.com/watch?v=JW6trsvl7HA) - the extension walkthrough, the mermaid diagrams and closing quiz, and the free account framing.
-- [Scrimba on Product Hunt](https://www.producthunt.com/posts/scrimba-explain) - the team's update that explainers were closing in on 50,000.
+- [Scrimba on Product Hunt](https://www.producthunt.com/posts/scrimba-explain) - the 13 August 2026 launch.
+- <AffiliateLink href="https://docs.scrimba.com/explain/limits-and-plans" location="explain-limits-ref">Scrimba Docs, Limits and plans</AffiliateLink> - 10 explainers for life on Free, 100 a month on Pro, what counts and what is free.
+- <AffiliateLink href="https://docs.scrimba.com/explain/scrims" location="explain-scrims-ref">Scrimba Docs, Explain in scrims</AffiliateLink> - the in-lesson EXPLAIN button and what it sends as context.
 - [Stack Overflow 2025 Developer Survey, AI](https://survey.stackoverflow.co/2025/ai) - 20% reporting decreased confidence in their own problem-solving.
 
 <FAQAccordion items={[
-  { q: "What is Scrimba Explain?", a: "It turns a question, article, document or codebase into a short narrated video explainer with diagrams, code walkthroughs and usually a closing quiz. You can use it on the web, through the Chrome extension, by mentioning @Explain in ChatGPT, or from a coding agent like Claude Code via MCP. Unlike most AI coding tools it does not write code, it explains things that already exist." },
-  { q: "Is Scrimba Explain free?", a: "Yes, it is free during open beta and needs only a free Scrimba account rather than a Pro subscription. It is free because it brings people onto the platform, which the founder says openly. Scrimba has not announced post-beta pricing, so it is worth trying now but not worth building a permanent study routine around until the pricing is settled." },
-  { q: "Is Scrimba Explain only for programmers?", a: "No. Scrimba's own documentation lists eleven use-case domains and only two are software, with the rest covering healthcare, finance, real estate, philosophy and elder care among others. The public community feed is mostly non-coding topics like algebra, languages and biology. The developer features are the specialised half, not the main event." },
+  { q: "What is Scrimba Explain?", a: "It turns a question, article, document or codebase into a short narrated video explainer with diagrams, code walkthroughs and, in most cases, a closing quiz. You can use it on the web, from the EXPLAIN button inside a Scrimba lesson, through the Chrome extension, by mentioning @Explain in ChatGPT, or from a coding agent like Claude Code via MCP. Unlike most AI coding tools it does not write code, it explains things that already exist." },
+  { q: "Is Scrimba Explain free?", a: "Partly. A free Scrimba account gets 10 explainers for life, and they do not renew. Pro accounts get 100 a month. Follow-ups and Go deeper each count as one, while explainers drafted from ChatGPT or a coding agent are free until you open and claim them, and redoing or exporting an existing one is free. Ten is enough to test the format, so try it before deciding whether the Pro quota matters to you." },
+  { q: "Is Scrimba Explain only for programmers?", a: "No. Scrimba's own documentation lists eleven use-case domains and only two are software, with the rest covering healthcare, finance, real estate, philosophy and elder care among others. The public community feed launched heavy on non-coding topics like algebra, languages and biology, and by September 2026 had shifted toward technical entries, with the curated Featured tab still leaning general. The developer features are one half of the product, not the whole of it." },
   { q: "How is Explain different from asking ChatGPT?", a: "The output format and the grounding. You get a narrated video with diagrams, a code view and usually a quiz rather than a wall of text, and you can pick a teaching style so the explanation stays at your level. With MCP, your coding agent researches your actual files first. It is not a text-to-video model and uses no avatars or stock footage. In ChatGPT's plugin directory it is listed as Explain Video Generator." },
   { q: "Can Scrimba Explain explain my own codebase?", a: "Yes, through MCP. Connect it to Claude Code, Codex or any MCP-capable agent and it builds the walkthrough around code in your repository rather than a generic example. Those explainers are private by default, which is why this side of the product is largely invisible. Scrimba attaches one to every pull request in their own codebase." },
   { q: "How do I use Scrimba Explain with Claude Code?", a: "Add it as an MCP server with claude mcp add --transport http scrimba-explain https://scrimba.com/explain/mcp, then ask for an explainer in plain words, such as 'make an explainer of what this branch changes'. Claude Code reads your files, calls Explain and returns a link that renders while it builds. The explainer is private by default, and opening the link claims it to your free Scrimba account." },
