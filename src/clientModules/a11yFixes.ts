@@ -43,10 +43,15 @@ function fixScrollableTables() {
   document.querySelectorAll<HTMLElement>(
     '.theme-doc-markdown div[class*="tableWrapper"], .comparison-table-wrapper, .mdx-table-wrapper, article table'
   ).forEach((candidate) => {
-    const region =
-      candidate.tagName.toLowerCase() === 'table'
-        ? candidate.parentElement
-        : candidate;
+    // Our CSS puts `overflow-x: auto` on the <table> element itself (not a
+    // wrapper), so for bare tables the table is the scroll region. Only fall
+    // back to the parent when the parent is the thing that actually scrolls.
+    let region: HTMLElement | null = candidate;
+    if (candidate.tagName.toLowerCase() === 'table') {
+      const parent = candidate.parentElement;
+      const parentScrolls = !!parent && parent.scrollWidth > parent.clientWidth;
+      region = parentScrolls ? parent : candidate;
+    }
     if (!region || region.hasAttribute('tabindex')) return;
 
     const isScrollable = region.scrollWidth > region.clientWidth;

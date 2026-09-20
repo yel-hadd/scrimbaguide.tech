@@ -45,6 +45,7 @@ export default function DesktopStickyCTA(): React.ReactElement | null {
           href="https://scrimba.com/home?pricing&via=u42d4986"
           variant="button"
           className="desktop-sticky-cta__button"
+          location="desktop-sticky"
         >
           Continue to Scrimba
         </AffiliateLink>

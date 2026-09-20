@@ -1,109 +1,132 @@
 ---
-title: "What Is Scrimba? How the Interactive Coding Platform Works"
-description: "Scrimba is an interactive coding platform with courses on React, JavaScript, and AI. Learn how it works, what it costs, and whether it's right for you."
-keywords: [scrimba, what is scrimba, scrimba review, learn to code, interactive coding]
+title: "What Is Scrimba? The Coding Platform Explained (2026)"
+sidebar_label: "What is Scrimba?"
+description: "Scrimba is a browser coding platform where you pause video lessons and edit the code in place. How the editor works, what is free, and who it suits."
+keywords: [scrimba, what is scrimba, scrimba editor, scrimba ide, scrimba official website, what is scrimba used for, scrimba review, interactive coding platform]
 slug: /intro
 hideGlobalPricingCta: true
+last_update:
+  date: 2026-09-20
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import { totalCoursesLabel, freeCount, proCount } from '@site/src/utils/scrimbaFacts';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import { DEMO_SCRIM_URL } from '@site/src/constants';
+import { totalCoursesLabel, freeCount, proCount, totalContentHoursLabel } from '@site/src/utils/scrimbaFacts';
 
 # What is Scrimba?
 
-If you are tired of passive video and “I watched it but I cannot build it,” Scrimba is built for typing inside the lesson: pause the screencast, change the instructor’s code, run it in the same window, no install wall on day one.
+<DisclosureNotice />
 
-**Does it solve your problem?** You get a structured route from first lines of code toward portfolio work and career paths in web dev and AI, with a large free tier so you can prove the format fits before you pay.
+**Scrimba is an interactive coding platform for learning web development and AI engineering in the browser.** Its lessons are "scrims": screencasts you can pause at any moment to edit the instructor's code, run it, and resume. It has {totalCoursesLabel} courses, four career paths (Frontend, Fullstack, Backend, AI Engineer), a permanent free tier of {freeCount} full courses, and a Pro subscription for the paths, unlimited challenges, Discord, and certificates. The official site is <AffiliateLink href="https://scrimba.com" location="intro-official-site">scrimba.com</AffiliateLink>; this guide is an independent, unaffiliated review site.
 
-ScrimbaGuide.tech is an **independent** guide (we may earn a commission if you subscribe through our links, see site disclosures). We cover pricing, paths, courses, comparisons, FAQs, and practice guides. Always confirm current features and prices on Scrimba.
+*Last reviewed: September 20, 2026.*
 
-Interactive scrims + {totalCoursesLabel} courses + 4 career paths (frontend, fullstack, backend, AI). Start on free “Community” courses; upgrade to Pro for paths, unlimited challenges, Discord, and certificates.
+## What Scrimba is used for
 
-## Find your way around
+People use Scrimba for three things, in roughly this order of popularity:
 
-- [Scrimba vs alternatives](/docs/comparisons/) (Codecademy, Udemy, freeCodeCamp, and more)
-- [Learning paths](/docs/paths/) (Frontend, Fullstack, Backend, AI Engineer)
-- [Courses by topic](/docs/courses/) (React, JavaScript, AI, CSS, backend, Python, TypeScript)
-- [Scrimba Explain](/blog/scrimba-explain-review/) (free AI tool that turns a question or your code into a narrated video)
-- [FAQ & help](/docs/faq/)
-- [Practice guides](/docs/practice/practice-react-hooks/) (skills drills and small projects)
+1. **Learning frontend from zero.** The free [Learn HTML and CSS](/docs/courses/css/html-and-css/), [Learn JavaScript](/docs/courses/javascript/learn-javascript/), and [Learn React](/docs/courses/react/learn-react/) courses are the on-ramp most learners take, and the [Frontend Developer Path](/docs/paths/frontend-developer-path/) is the one MDN (Mozilla's web docs) reviewed and endorsed.
+2. **Adding AI engineering to a JavaScript skill set.** The [AI Engineer Path](/docs/paths/ai-engineer-path/) covers agents, RAG, MCP, and the Vercel AI SDK without switching to Python.
+3. **Getting a quick, hands-on refresher** on one topic: TypeScript, Tailwind, Next.js, SQL, or a single React feature, from the [course catalog](/docs/courses/).
 
-**Scrimba** is an interactive coding education platform that teaches web development, AI engineering, and programming through a unique video-meets-IDE format. Instead of passively watching tutorials, you can pause any lesson and edit the instructor's code directly in the browser.
+If none of those fit, Scrimba is probably the wrong tool: it does not teach Java, C#, mobile development, or computer-science theory, and it is not a bootcamp with job placement. See [who Scrimba is for](/docs/for/) for the audience-by-audience breakdown.
 
-## How Scrimba works (without the setup rabbit hole)
+## How the Scrimba editor works
 
-Most courses make you watch, then fight your editor. A **scrim** is a screencast where you pause anytime, edit the code in the player, and run it, hands-on from the first minute, not after a 40‑minute install video.
+The question behind "Scrimba editor" and "Scrimba IDE" searches is usually: *is it a real code editor or a video?* It is both. A scrim records the instructor's keystrokes and voice rather than pixels, so the code on screen is live text in a browser editor with a file tree, a preview pane, and a console. At any point you can:
 
-- **{totalCoursesLabel} courses** covering frontend, backend, fullstack, AI, and career prep
-- **4 structured learning paths**: [Frontend](/docs/paths/frontend-developer-path/), [Fullstack](/docs/paths/fullstack-developer-path/), [Backend](/docs/paths/backend-developer-path/), and [AI Engineer](/docs/paths/ai-engineer-path/)
-- **Interactive challenges** throughout every course
-- **Certificates of completion** for career paths
-- **Discord community** with mentors and peers
+- **Pause and edit** the instructor's code, then run it to see your change.
+- **Resume** and the recording carries on from the instructor's version (your edits are kept in a separate copy).
+- **Save your own version** as a scrim you can share, which is also how challenges and community answers work.
 
-## Who is Scrimba For?
+There is nothing to install, which is the main reason beginners get further on day one than with a local setup. Try it without an account on the <AffiliateLink href={DEMO_SCRIM_URL} location="intro-demo-scrim">demo scrim</AffiliateLink>, or read the longer walkthrough in [how scrims work](/docs/how-it-works/how-scrims-work/). The trade-off is that you are working inside Scrimba's environment, not VS Code, so at some point you still need to learn a real editor and terminal; the [Command Line Basics](/docs/courses/javascript/command-line-basics/) course covers that gap.
 
-| Learner Type | Best Starting Point |
+## What is inside: courses, paths, challenges, Discord
+
+- **{totalCoursesLabel} courses and roughly {totalContentHoursLabel} of lessons** across [React](/docs/courses/react/), [JavaScript](/docs/courses/javascript/), [CSS](/docs/courses/css/), [AI](/docs/courses/ai/), [backend](/docs/courses/backend/), [Python](/docs/courses/python/), and [TypeScript](/docs/courses/typescript/).
+- **Four career paths** that sequence those courses with projects and a certificate: [Frontend](/docs/paths/frontend-developer-path/) (81.6 hrs), [Fullstack](/docs/paths/fullstack-developer-path/) (108.4 hrs), [Backend](/docs/paths/backend-developer-path/) (36.2 hrs), and [AI Engineer](/docs/paths/ai-engineer-path/) (11.4 hrs). Compare them on the [paths hub](/docs/paths/).
+- **Interactive challenges** inside every course (10 total on the free tier, unlimited on Pro).
+- **A Discord community** with instructors and study groups, Pro-only. See [community and events](/docs/help/community-and-events/).
+- **Scrimba Explain**, a separate free AI tool that turns a question, a web page, or your own code into a narrated video explainer. It needs only a free account. We tested it in [What is Scrimba Explain?](/blog/scrimba-explain-review/).
+
+## Is Scrimba free?
+
+Partly, and permanently. {freeCount} full courses (including Learn React, Learn JavaScript, and Learn Python) plus 10 challenges are free with no card; the {proCount}+ Pro courses, the four paths, unlimited challenges, Discord, and path certificates need a subscription. There is no classic free trial, but there is a 7-day refund window and a free month for students through the GitHub Student Developer Pack. Full details: [Is Scrimba free? Pro vs Free](/docs/pricing/pro-vs-free/), [Scrimba pricing](/docs/pricing/), and the [student discount](/docs/pricing/student-discount/).
+
+## Who is behind Scrimba?
+
+Scrimba is a Norwegian company founded by Per Harald Borgen (who teaches several of the beginner courses) and Sindre Aarsaether (who built the scrim recording technology). Its best-known instructor is Bob Ziroll, who teaches the flagship React courses. In July 2024 [Mozilla's MDN reviewed Scrimba's Frontend Developer Path](https://developer.mozilla.org/en-US/blog/mdn-scrimba-partnership/) against MDN's own curriculum and now recommends it as a partner course, which is the strongest third-party endorsement the platform has. Learner reviews on Trustpilot average around 4.3 out of 5; the recurring praise is the format and the recurring complaints are a few dated courses and renewal reminders, both covered in our [Scrimba review](/blog/scrimba-review/).
+
+## Who is Scrimba for?
+
+| You are | Start here |
 |---|---|
-| Complete beginner | [Frontend Developer Path](/docs/paths/frontend-developer-path/) |
-| Career changer | [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) |
-| Backend-focused | [Backend Developer Path](/docs/paths/backend-developer-path/) |
-| Experienced dev exploring AI | [AI Engineer Path](/docs/paths/ai-engineer-path/) |
-| Quick skill boost | [Individual courses](/docs/courses/) |
+| A complete beginner | [Frontend Developer Path](/docs/paths/frontend-developer-path/), or the free Learn HTML and CSS course first |
+| A career changer with a few months to commit | [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) |
+| A frontend dev moving toward backend | [Backend Developer Path](/docs/paths/backend-developer-path/) |
+| A JavaScript developer who wants AI skills | [AI Engineer Path](/docs/paths/ai-engineer-path/) |
+| Someone who wants one skill, fast | [Individual courses](/docs/courses/) |
+| Unsure | The [Path Finder](/tools/which-scrimba-path/) asks five questions and recommends one |
 
-## Free vs Pro
+## How Scrimba compares to the alternatives
 
-Scrimba offers both free and paid content. About {freeCount} courses are available for free (labeled "Community"), while {proCount}+ Pro courses require a subscription. Separately, [Scrimba Explain](/blog/scrimba-explain-review/) is free during its open beta and needs only a free account: you ask a question, or point it at a web page or your own codebase, and it returns a narrated video explainer. See our [complete pricing breakdown](/docs/pricing/) and [Pro vs Free comparison](/docs/pricing/pro-vs-free/). Source: [Scrimba Help Centre](https://scrimba.helpscoutdocs.com/article/73-whats-the-difference-between-pro-and-free).
-
-## What Topics Does Scrimba Cover?
-
-- **Frontend**: [React](/docs/courses/react/), [JavaScript](/docs/courses/javascript/), [CSS](/docs/courses/css/), HTML, Tailwind, Vue
-- **Backend**: [Node.js, Express, SQL, NestJS](/docs/courses/backend/)
-- **AI & ML**: [AI Agents, RAG, LangChain, OpenAI, MCP](/docs/courses/ai/)
-- **Languages**: [Python](/docs/courses/python/), [TypeScript](/docs/courses/typescript/)
-- **Career**: Interview prep, portfolio building, getting hired
-
-## Choose Scrimba when you want outcomes, not more playlists
-
-Pick Scrimba if you want **coding inside the lesson** (not passive video), **structured paths** toward hireable projects, and **web + AI** in one subscription. Start free; move to Pro when you are ready for full paths, unlimited challenges, and Discord backup.
-
-## How Does Scrimba Compare?
-
-We've put together detailed comparisons to help you decide:
+The short version: Scrimba wins on hands-on practice inside the lesson and on React and AI depth; it loses to freeCodeCamp and The Odin Project on price (they are free), to Udemy on catalog breadth, and to Frontend Masters on advanced depth.
 
 - [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy/)
 - [Scrimba vs Udemy](/docs/comparisons/scrimba-vs-udemy/)
 - [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/)
+- [Scrimba vs The Odin Project](/docs/comparisons/scrimba-vs-odin-project/)
 - [Scrimba vs Frontend Masters](/docs/comparisons/scrimba-vs-frontendmasters/)
-- [Scrimba vs Treehouse](/docs/comparisons/scrimba-vs-treehouse/)
+- [All comparisons](/docs/comparisons/)
 
-## Have Questions?
+## Where to go next on this site
 
-Check our [FAQ section](/docs/faq/) covering [billing & payments](/docs/help/billing/), [certificates](/docs/how-it-works/certificates/), [Discord community](/docs/help/community-and-events/), and [platform issues](/docs/help/troubleshooting/).
-
-## Quick answers (PAA-style)
+- [Scrimba review 2026](/blog/scrimba-review/): the full verdict, pros, cons, and who should not pay.
+- [Scrimba pricing](/docs/pricing/) and [student discount](/docs/pricing/student-discount/).
+- [Learning paths](/docs/paths/) and the [12-week study plan](/docs/paths/study-plan/).
+- [FAQ](/docs/faq/), [billing help](/docs/help/billing/), [certificates](/docs/how-it-works/certificates/), and [troubleshooting](/docs/help/troubleshooting/).
 
 <FAQAccordion
   emitSchema={true}
   items={[
     {
+      q: 'What is Scrimba, in one sentence?',
+      a: 'Scrimba is a browser-based coding platform whose video lessons are editable: you pause, change the code, run it, and continue, with courses on frontend, fullstack, backend, and AI engineering.',
+    },
+    {
       q: 'What is a scrim?',
-      a: "A scrim is Scrimba's interactive lesson: you watch guidance, pause, edit the instructor's code in the same window, and run it, no separate editor setup.",
+      a: "A scrim is Scrimba's interactive lesson format. It records the instructor's keystrokes and voice instead of a video file, so the code on screen is live and you can edit and run it at any point without leaving the lesson.",
+    },
+    {
+      q: 'Is Scrimba an IDE?',
+      a: 'Not a full one. It is a browser editor with a file tree, preview, and console that is good enough for every course on the platform, but you will still want VS Code and a terminal for your own projects. Scrimba includes a Command Line Basics course for that step.',
     },
     {
       q: 'Is Scrimba free?',
-      a: `Partially. About ${freeCount} full courses and up to 10 challenges are free. Career paths, unlimited challenges, Discord, and path certificates require Pro. See our dedicated guide for details.`,
+      a: `Partly. About ${freeCount} full courses and up to 10 challenges are free with no card. Career paths, unlimited challenges, Discord, and path certificates require Pro. There is no classic free trial, but there is a 7-day refund window.`,
     },
     {
-      q: 'How do I cancel Scrimba?',
-      a: 'Cancel anytime from your account billing settings. You keep access until the end of the paid period and your progress is saved. For refunds, see the refund policy within seven days of first purchase.',
+      q: 'What is Scrimba used for?',
+      a: 'Mostly for learning frontend development from scratch (HTML, CSS, JavaScript, React), for adding AI engineering to a JavaScript skill set, and for quick hands-on refreshers on single topics like TypeScript or Tailwind.',
+    },
+    {
+      q: 'Is Scrimba legit?',
+      a: "Yes. It is a Norwegian company operating since 2017, its Frontend Developer Path is reviewed and endorsed by Mozilla's MDN, and its Trustpilot rating sits around 4.3 out of 5. It is not accredited and its certificates are completion certificates, not degrees.",
+    },
+    {
+      q: 'What is the official Scrimba website?',
+      a: 'scrimba.com. This site, scrimbaguide.tech, is an independent guide and is not owned by Scrimba.',
     },
   ]}
 />
 
 <PricingCTA
-  title="Ready to start learning?"
-  subtitle={`Get full access to ${totalCoursesLabel} courses, 4 career paths, and a private Discord community.`}
-  buttonText="Try Scrimba Pro"
+  title="Ready to try the format?"
+  subtitle={`Start with the free courses, no card needed. Upgrade to Pro for the paths, unlimited challenges, and Discord when you are ready.`}
+  buttonText="Try Scrimba free"
+  ctaType="free"
+  location="intro-final"
 />

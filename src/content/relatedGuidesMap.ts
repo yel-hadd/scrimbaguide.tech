@@ -130,7 +130,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   ],
   '/blog/is-scrimba-worth-it': [
     { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
-    { title: 'Pro vs Free Comparison', href: '/docs/pricing/pro-vs-free', type: 'doc' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
   ],
   '/blog/why-i-keep-renewing-scrimba-pro': [
@@ -150,7 +150,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Build a Coding Habit', href: '/blog/build-coding-habit-scrimba', type: 'blog' },
   ],
   '/blog/best-free-scrimba-courses': [
-    { title: 'Pro vs Free Comparison', href: '/docs/pricing/pro-vs-free', type: 'doc' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Scrimba for Beginners', href: '/docs/for/beginners', type: 'doc' },
     { title: 'Scrimba vs freeCodeCamp', href: '/docs/comparisons/scrimba-vs-freecodecamp', type: 'comparison' },
   ],
@@ -272,7 +272,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   ],
   '/docs/comparisons/scrimba-vs-freecodecamp': [
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
-    { title: 'Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Scrimba for Beginners', href: '/docs/for/beginners', type: 'doc' },
   ],
   '/docs/comparisons/scrimba-vs-the-odin-project': [
@@ -367,7 +367,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
   '/docs/pricing/scrimba-free-trial': [
-    { title: 'Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Student Discount', href: '/docs/pricing/student-discount', type: 'doc' },
     { title: 'Refund Policy', href: '/docs/pricing/refund-policy', type: 'doc' },
   ],
@@ -421,7 +421,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
 const sectionFallbacks: Record<string, RelatedGuide[]> = {
   '/docs/pricing/': [
     { title: 'Scrimba Free Trial', href: '/docs/pricing/scrimba-free-trial', type: 'doc' },
-    { title: 'Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Scrimba Discount Codes', href: '/blog/scrimba-discount-codes-2026', type: 'blog' },
   ],
   '/docs/courses/': [
@@ -466,8 +466,86 @@ const sectionFallbacks: Record<string, RelatedGuide[]> = {
   ],
 };
 
+/* eslint-disable @typescript-eslint/no-require-imports */
+const catalog = require('../../data/courses.json') as Array<{
+  cleanName: string;
+  docSlug: string;
+  category: string;
+  isPath: boolean;
+  pathMembership?: string[];
+  relatedCourses?: Array<{ docSlug: string; category: string }>;
+}>;
+
+const CATEGORY_HUBS: Record<string, string> = {
+  react: 'Scrimba React Courses',
+  javascript: 'Scrimba JavaScript Courses',
+  css: 'Scrimba CSS Courses',
+  ai: 'Scrimba AI Courses',
+  backend: 'Scrimba Backend Courses',
+  python: 'Scrimba Python Courses',
+  typescript: 'Scrimba TypeScript Courses',
+};
+
+const PATH_TITLES: Record<string, string> = {
+  'frontend-developer-path': 'Frontend Developer Path',
+  'fullstack-developer-path': 'Fullstack Developer Path',
+  'backend-developer-path': 'Backend Developer Path',
+  'ai-engineer-path': 'AI Engineer Path',
+};
+
+const CATEGORY_DEFAULT_PATH: Record<string, string> = {
+  react: 'frontend-developer-path',
+  javascript: 'frontend-developer-path',
+  css: 'frontend-developer-path',
+  ai: 'ai-engineer-path',
+  backend: 'backend-developer-path',
+  python: 'backend-developer-path',
+  typescript: 'fullstack-developer-path',
+};
+
+/**
+ * Category-aware fallback for course leaves (`/docs/courses/<cat>/<slug>`).
+ * Every leaf links back up to its category hub (hub-and-spoke), forward to the
+ * path that contains it, and sideways to one sibling course, so no course page
+ * is a dead end even without a hand-written entry above.
+ */
+function courseLeafFallback(slug: string): RelatedGuide[] | null {
+  const m = /^\/docs\/courses\/([^/]+)\/([^/]+)\/?$/.exec(slug);
+  if (!m) return null;
+  const [, category, docSlug] = m;
+  const hubTitle = CATEGORY_HUBS[category];
+  if (!hubTitle) return null;
+  const course = catalog.find((c) => c.docSlug === docSlug && !c.isPath);
+  const pathSlug =
+    course?.pathMembership?.find((p) => PATH_TITLES[p]) ?? CATEGORY_DEFAULT_PATH[category];
+  const guides: RelatedGuide[] = [
+    { title: PATH_TITLES[pathSlug], href: `/docs/paths/${pathSlug}/`, type: 'doc' },
+    { title: hubTitle, href: `/docs/courses/${category}/`, type: 'doc' },
+  ];
+  const sibling = course?.relatedCourses
+    ?.filter((rc) => rc.category === category && rc.docSlug !== docSlug)
+    .map((rc) => catalog.find((c) => c.docSlug === rc.docSlug && !c.isPath))
+    .find((c) => c);
+  if (sibling) {
+    guides.push({ title: sibling.cleanName, href: `/docs/courses/${sibling.category}/${sibling.docSlug}/`, type: 'doc' });
+  } else {
+    guides.push({ title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free/', type: 'doc' });
+  }
+  return guides;
+}
+
+/** Never suggest the page the reader is already on. */
+function withoutSelf(guides: RelatedGuide[], slug: string): RelatedGuide[] {
+  const norm = (p: string) => p.replace(/\/$/, '');
+  return guides.filter((g) => norm(g.href) !== norm(slug));
+}
+
 // Helper to get guides with fallback logic
 export function getRelatedGuides(slug: string): RelatedGuide[] {
+  return withoutSelf(resolveRelatedGuides(slug), slug);
+}
+
+function resolveRelatedGuides(slug: string): RelatedGuide[] {
   // 1. Direct match
   if (relatedGuidesMap[slug]) return relatedGuidesMap[slug];
 
@@ -475,7 +553,11 @@ export function getRelatedGuides(slug: string): RelatedGuide[] {
   const cleanSlug = slug.replace(/\/$/, '');
   if (relatedGuidesMap[cleanSlug]) return relatedGuidesMap[cleanSlug];
 
-  // 3. Section-level deterministic fallbacks
+  // 3. Course leaves: category hub + containing path + sibling course
+  const courseGuides = courseLeafFallback(slug);
+  if (courseGuides) return courseGuides;
+
+  // 4. Section-level deterministic fallbacks
   for (const sectionPath of Object.keys(sectionFallbacks)) {
     if (slug.startsWith(sectionPath)) {
       return sectionFallbacks[sectionPath];

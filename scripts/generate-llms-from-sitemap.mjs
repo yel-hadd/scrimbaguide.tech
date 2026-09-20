@@ -133,10 +133,6 @@ const PAGE_ANNOTATIONS = {
     title: 'Scrimba vs YouTube for Learning to Code (2026)',
     description: 'Passive video watching vs active coding environment, why structure and accountability matter for career changers.',
   },
-  '/docs/faq/is-scrimba-free': {
-    title: 'Is Scrimba Free? (2026)',
-    description: 'Scrimba\'s free tier covers about 15 courses permanently, details on what is and isn\'t free, and when Pro is worth paying for.',
-  },
   '/docs/faq/how-to-use-scrimba': {
     title: 'How to Use Scrimba: Getting Started Guide',
     description: 'Step-by-step guide to setting up Scrimba, navigating scrims, using the interactive IDE, and choosing a learning path.',
@@ -220,17 +216,52 @@ function uniqueCanonicalUrls(urls) {
   return [...new Set(urls.map(normalizeCanonicalUrl))];
 }
 
-function formatUrlList(urls, siteUrl = DEFAULT_SITE_URL) {
+/**
+ * Title + description for one llms.txt line. The page's own built <title> and
+ * meta description win because they are what the site actually publishes and
+ * they can't go stale; PAGE_ANNOTATIONS is the fallback for pages that have no
+ * built HTML (or when called without a metadata map, e.g. in tests).
+ */
+function annotationFor(url, metaByPath = {}) {
+  const pathname = pathnameKey(url);
+  const live = metaByPath[pathname];
+  if (live && live.title) return live;
+  return PAGE_ANNOTATIONS[pathname] ?? null;
+}
+
+function formatUrlList(urls, metaByPath = {}) {
   return urls.map((url) => {
-    const pathname = pathnameKey(url);
-    const annotation = PAGE_ANNOTATIONS[pathname];
+    const annotation = annotationFor(url, metaByPath);
     if (annotation) {
       const title = escapeMarkdownLinkTitle(annotation.title);
-      const description = stripMdxAndJsxFromLlmsText(annotation.description);
-      return `- [${title}](${url}): ${description}`;
+      const description = stripMdxAndJsxFromLlmsText(annotation.description ?? '');
+      return description ? `- [${title}](${url}): ${description}` : `- [${title}](${url})`;
     }
     return `- ${url}`;
   }).join('\n');
+}
+
+/** Read the published <title> (minus the site suffix) and meta description from built HTML. */
+export function extractPageMeta(html) {
+  const $ = load(html);
+  const title = ($('title').first().text() || '')
+    .replace(/\s*\|\s*Scrimba Guide\s*$/i, '')
+    .trim();
+  const description = ($('meta[name="description"]').attr('content') || '').trim();
+  return { title, description };
+}
+
+/** Build { '/pathname': { title, description } } for every sitemap URL with built HTML. */
+export function collectPageMeta(urls, contentDir) {
+  const meta = {};
+  for (const url of urls) {
+    const pathname = new URL(url).pathname;
+    const file = path.join(contentDir, pathname, 'index.html');
+    if (!fs.existsSync(file)) continue;
+    const parsed = extractPageMeta(fs.readFileSync(file, 'utf8'));
+    if (parsed.title) meta[pathnameKey(url)] = parsed;
+  }
+  return meta;
 }
 
 function sectionByPrefix(urls, prefix) {
@@ -271,6 +302,7 @@ function buildSections(urls) {
 export function renderLlmsTxt(urls, options = {}) {
   const siteName = options.siteName ?? DEFAULT_SITE_NAME;
   const siteUrl = options.siteUrl ?? DEFAULT_SITE_URL;
+  const metaByPath = options.metaByPath ?? {};
   const canonical = uniqueCanonicalUrls(urls).filter((url) => !isLowValuePath(toPathname(url)));
   const keyUrls = findMatchingKeyUrls(canonical);
   const { docs, blog, tools, roadmaps, legal, topPages } = buildSections(canonical);
@@ -289,27 +321,27 @@ export function renderLlmsTxt(urls, options = {}) {
   ];
 
   if (keyUrls.length > 0) {
-    lines.push('## Key Pages', '', formatUrlList(keyUrls), '');
+    lines.push('## Key Pages', '', formatUrlList(keyUrls, metaByPath), '');
   }
   if (docsHubs.length > 0) {
-    lines.push('## Docs', '', formatUrlList(docsHubs), '');
+    lines.push('## Docs', '', formatUrlList(docsHubs, metaByPath), '');
   }
   if (blogHighlights.length > 0) {
-    lines.push('## Blog', '', formatUrlList(blogHighlights), '');
+    lines.push('## Blog', '', formatUrlList(blogHighlights, metaByPath), '');
   }
   if (tools.length > 0) {
-    lines.push('## Tools', '', formatUrlList(tools), '');
+    lines.push('## Tools', '', formatUrlList(tools, metaByPath), '');
   }
   if (roadmaps.length > 0) {
-    lines.push('## Roadmaps', '', formatUrlList(roadmaps), '');
+    lines.push('## Roadmaps', '', formatUrlList(roadmaps, metaByPath), '');
   }
   if (topPages.length > 0) {
-    lines.push('## Pages', '', formatUrlList(topPages), '');
+    lines.push('## Pages', '', formatUrlList(topPages, metaByPath), '');
   }
   // The llms.txt spec reserves `## Optional` for links an LLM may skip under a
   // tight context budget. Legal/contact pages fit that.
   if (legal.length > 0) {
-    lines.push('## Optional', '', formatUrlList(legal), '');
+    lines.push('## Optional', '', formatUrlList(legal, metaByPath), '');
   }
 
   return `${lines.join('\n').trim()}\n`;
@@ -441,7 +473,8 @@ export function generateLlmsFromSitemap({
 
   const xml = fs.readFileSync(sitemapPath, 'utf8');
   const urls = extractLocUrls(xml);
-  const llmsTxt = renderLlmsTxt(urls, { siteName, siteUrl });
+  const metaByPath = collectPageMeta(urls, outputDir);
+  const llmsTxt = renderLlmsTxt(urls, { siteName, siteUrl, metaByPath });
 
   // Inline each page's built HTML content into llms-full.txt.
   const contentDir = outputDir;

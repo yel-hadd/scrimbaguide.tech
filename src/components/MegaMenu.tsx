@@ -116,6 +116,22 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
 
   useEffect(() => {
     if (!isOpen) return;
+
+    // Keyboard users tabbing past the last panel link would otherwise leave the
+    // panel open over the page (mouse users get click-outside; keyboard got nothing).
+    const handleFocusOut = (e: FocusEvent) => {
+      const next = e.relatedTarget as Node | null;
+      if (containerRef.current && next && !containerRef.current.contains(next)) {
+        onClose(menuId);
+      }
+    };
+    const el = containerRef.current;
+    el?.addEventListener('focusout', handleFocusOut);
+    return () => el?.removeEventListener('focusout', handleFocusOut);
+  }, [isOpen, menuId, onClose]);
+
+  useEffect(() => {
+    if (!isOpen) return;
     
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {

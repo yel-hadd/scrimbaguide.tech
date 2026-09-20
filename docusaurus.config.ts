@@ -51,6 +51,8 @@ const SITEMAP_EXCLUDED_PATHS = new Set<string>([
   '/docs/learn-nextjs/routing',
   '/docs/learn-nextjs/rendering',
   '/docs/learn-nextjs/data-fetching',
+  // Cannibalization fix (2026-09-20): merged into /docs/pricing/pro-vs-free.
+  '/docs/how-it-works/is-scrimba-free',
 ]);
 
 /**
@@ -110,10 +112,7 @@ function sitemapPriority(pathname: string): number {
   ) {
     return 0.8;
   }
-  if (
-    pathname === '/docs/how-it-works/is-scrimba-free' ||
-    pathname === '/docs/how-it-works/using-scrimba'
-  ) {
+  if (pathname === '/docs/how-it-works/using-scrimba') {
     return 0.8;
   }
 
@@ -390,7 +389,11 @@ const config: Config = {
           // audience pages consolidated under /for/, discord merged into community.
           { from: '/docs/faq/how-scrims-work', to: '/docs/how-it-works/how-scrims-work/' },
           { from: '/docs/faq/how-to-use-scrimba', to: '/docs/how-it-works/using-scrimba/' },
-          { from: '/docs/faq/is-scrimba-free', to: '/docs/how-it-works/is-scrimba-free/' },
+          // Cannibalization fix (2026-09-20): the thin "Is Scrimba free?" doc got 4
+          // impressions in 90 days while pro-vs-free ranked for the same query, so it
+          // was merged into pro-vs-free. Both legacy slugs redirect there.
+          { from: '/docs/faq/is-scrimba-free', to: '/docs/pricing/pro-vs-free/' },
+          { from: '/docs/how-it-works/is-scrimba-free', to: '/docs/pricing/pro-vs-free/' },
           { from: '/docs/faq/scrimba-accreditation', to: '/docs/how-it-works/accreditation/' },
           { from: '/docs/faq/certificates', to: '/docs/how-it-works/certificates/' },
           { from: '/docs/faq/learning-speed', to: '/docs/how-it-works/learning-speed/' },
