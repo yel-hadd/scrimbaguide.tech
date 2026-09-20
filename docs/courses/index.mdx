@@ -1,14 +1,17 @@
 ---
-title: "All Scrimba Courses: Full Catalog by Topic"
-description: "Browse all Scrimba courses organized by topic. React, JavaScript, AI, CSS, Backend, Python, TypeScript, and more. Free and Pro courses included."
+title: "All Scrimba Courses (2026): Catalog by Topic, Free Marked"
+description: "Every Scrimba course sorted by topic with the free ones marked: React, JavaScript, AI, CSS, backend, Python, and TypeScript, plus which to start with."
 keywords: [scrimba courses, scrimba course list, scrimba catalog, all scrimba courses]
 slug: /courses
 hideGlobalPricingCta: true
+last_update:
+  date: 2026-09-20
 ---
 
 import Head from '@docusaurus/Head';
 import { totalCoursesLabel, freeCount, categoryCounts } from '@site/src/utils/scrimbaFacts';
 import PricingCTA from '@site/src/components/PricingCTA';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 
 <Head>
   <script type="application/ld+json">
@@ -88,6 +91,14 @@ Stop reading documentation and start coding. Check out our interactive practice 
 ## Pick a course or a path?
 
 **One sharp skill** (React, TypeScript, a single AI topic)? Grab a course row above. **A clear line from zero to hireable projects**? Use a [career path](/docs/paths/), Pro unlocks the full sequence, Discord, and certificates.
+
+<FAQAccordion items={[
+  { q: "How many courses does Scrimba have?", a: `${totalCoursesLabel} courses across React, JavaScript, AI, CSS, backend, Python, and TypeScript, plus four career paths that bundle them in order. The count drifts as Scrimba retires and launches courses; this site refreshes it from Scrimba's own data.` },
+  { q: "Which Scrimba courses are free?", a: `${freeCount} courses are free with no card, including Learn React, Learn JavaScript, Learn HTML and CSS, Learn TypeScript, Learn Python, Learn Node.js, Learn Next.js, and Learn SQL. See the ranked list on our best free Scrimba courses page.` },
+  { q: "Can you download Scrimba courses?", a: "No. Scrims are interactive recordings that run in the browser, not video files, so there is no official download and no offline mode. Anything advertising a Scrimba course download is a pirated copy of a course most of which are free to take legitimately anyway." },
+  { q: "Which Scrimba course should I start with?", a: "Complete beginners: Learn HTML and CSS, then Learn JavaScript. If you can already write basic JavaScript: Learn React. JavaScript developers who want AI skills: Learn to Code with AI, then the AI Engineer Path." },
+  { q: "Are Scrimba courses worth it?", a: "For frontend and JavaScript-first AI engineering, yes, and the free ones cost nothing to test. For Java, C#, mobile, or data science, no; Scrimba does not cover them." },
+]} />
 
 ## Related Pages
 

@@ -531,6 +531,14 @@ body {
   color: var(--sg-text-muted);
 }
 
+/* The input's default outline is removed above; keyboard users still need a
+   visible focus indicator (WCAG 2.4.7). */
+.sg-search-input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ifm-color-primary) inset;
+  border-radius: 6px;
+}
+
 .sg-search-clear {
   display: inline-flex;
   align-items: center;
@@ -1255,36 +1263,6 @@ article[class*='searchResultItem'] mark {
 }
 
 /* ── Pro badge ─────────────────────────────────────────────────── */
-.pro-badge {
-  display: inline-block;
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  vertical-align: middle;
-}
-
-.pro-badge--free {
-  background: #d4edda;
-  color: #155724;
-}
-
-.pro-badge--pro {
-  background: #e8daff;
-  color: #4a148c;
-}
-
-[data-theme='dark'] .pro-badge--free {
-  background: #1b4332;
-  color: #95d5b2;
-}
-
-[data-theme='dark'] .pro-badge--pro {
-  background: #311b92;
-  color: #d1c4e9;
-}
 
 /* ── Homepage hero ─────────────────────────────────────────────── */
 /*
@@ -2270,11 +2248,16 @@ article a:not(.cta-link):not(.hash-link):hover {
   font-weight: bold;
 }
 
-.verdict-box__list--pros .verdict-box__list-title { color: var(--sg-green); }
+/* Title text needs 4.5:1 on white (WCAG AA); the brand green/red tokens only
+   pass in dark mode, so the light-mode titles use darker text variants. */
+.verdict-box__list--pros .verdict-box__list-title { color: var(--sg-green-text, #1a8a4d); }
 .verdict-box__list--pros li::before { content: '✓'; color: var(--sg-green); }
 
-.verdict-box__list--cons .verdict-box__list-title { color: var(--sg-red); }
+.verdict-box__list--cons .verdict-box__list-title { color: var(--sg-red-text, #c0392b); }
 .verdict-box__list--cons li::before { content: '×'; color: var(--sg-red); }
+
+[data-theme='dark'] .verdict-box__list--pros .verdict-box__list-title { color: var(--sg-green); }
+[data-theme='dark'] .verdict-box__list--cons .verdict-box__list-title { color: var(--sg-red); }
 
 .verdict-box__cta {
   text-align: center;

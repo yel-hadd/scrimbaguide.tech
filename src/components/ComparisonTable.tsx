@@ -47,8 +47,8 @@ export default function ComparisonTable({
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, i) => (
-            <tr key={i}>
+          {rows.map((row) => (
+            <tr key={row.feature}>
               <th scope="row">{row.feature}</th>
               <td className="comparison-table__highlight">{row.scrimba}</td>
               <td>{row.competitor}</td>
@@ -57,7 +57,7 @@ export default function ComparisonTable({
         </tbody>
       </table>
       <div className="comparison-table__cta-row">
-        <AffiliateLink href={scrimbaUrl} variant="button">
+        <AffiliateLink href={scrimbaUrl} variant="button" location="comparison-table">
           Claim 20% off Pro
         </AffiliateLink>
         {competitorUrl && (

@@ -10,6 +10,7 @@ import {
   htmlToLlmsMarkdown,
   stripMdxAndJsxFromLlmsText,
   escapeMarkdownLinkTitle,
+  extractPageMeta,
 } from '../generate-llms-from-sitemap.mjs';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -129,4 +130,32 @@ test('stripMdxAndJsxFromLlmsText removes component-like markup and import lines 
 
 test('escapeMarkdownLinkTitle escapes brackets for markdown links', () => {
   assert.equal(escapeMarkdownLinkTitle('Title with ] bracket'), 'Title with \\] bracket');
+});
+
+test('extractPageMeta reads the published title (minus site suffix) and meta description', () => {
+  const html = `<html><head><title data-rh="true">Scrimba Pricing 2026 | Scrimba Guide</title>
+    <meta name="description" content="What Free includes and what Pro costs."></head><body></body></html>`;
+  assert.deepEqual(extractPageMeta(html), {
+    title: 'Scrimba Pricing 2026',
+    description: 'What Free includes and what Pro costs.',
+  });
+});
+
+test('renderLlmsTxt annotates every listed URL from live page metadata, falling back to the hand-written map', () => {
+  const urls = [
+    'https://scrimbaguide.tech/',
+    'https://scrimbaguide.tech/docs/courses/backend/',
+    'https://scrimbaguide.tech/docs/pricing/',
+  ];
+  const metaByPath = {
+    '/docs/courses/backend': { title: 'Scrimba Backend Courses', description: 'SQL, Supabase, Firebase, regex.' },
+    // Live metadata wins over the stale hand-written annotation for /docs/pricing.
+    '/docs/pricing': { title: 'Scrimba Pricing 2026: Free vs Pro', description: 'Live description.' },
+  };
+  const out = renderLlmsTxt(urls, { metaByPath });
+  assert.match(out, /- \[Scrimba Backend Courses\]\(https:\/\/scrimbaguide\.tech\/docs\/courses\/backend\/\): SQL, Supabase, Firebase, regex\./);
+  assert.match(out, /- \[Scrimba Pricing 2026: Free vs Pro\]\(https:\/\/scrimbaguide\.tech\/docs\/pricing\/\): Live description\./);
+  // Homepage has no live meta in this test but is in PAGE_ANNOTATIONS, so it is still annotated.
+  assert.match(out, /- \[[^\]]+\]\(https:\/\/scrimbaguide\.tech\/\): /);
+  assert.doesNotMatch(out, /^- https:\/\/scrimbaguide\.tech\/docs\/courses\/backend\/$/m);
 });

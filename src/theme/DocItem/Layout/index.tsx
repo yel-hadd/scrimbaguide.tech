@@ -113,6 +113,7 @@ function DocAffiliateCta({ pathname }: { pathname: string }): React.ReactElement
     subtitle,
     ctaType,
     buttonText: fm.affiliateCtaButtonText,
+    location: 'doc-layout-footer',
   };
   if (typeof fm.affiliateCtaShowDiscountNote === 'boolean') {
     pricingProps.showDiscountNote = fm.affiliateCtaShowDiscountNote;

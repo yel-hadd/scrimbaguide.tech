@@ -1,8 +1,8 @@
 /**
  * Routes where the desktop sticky discount affiliate CTA should appear.
  *
- * Scope is intentionally narrow: pricing pages, the dedicated review post,
- * the worth-it / pro-pricing analyses, and learning path docs. FAQs,
+ * Scope is intentionally narrow: pricing pages, comparison leaves, the
+ * dedicated review post, the worth-it analysis, and learning path docs. FAQs,
  * course catalog pages, and most blog posts stay research-mode, not
  * buy-mode, and aggressive stickies on those pages compete with content
  * instead of converting.
@@ -18,11 +18,14 @@ export function isMoneyPagePath(path: string): boolean {
   return (
     path.includes('/pricing/') ||
     path.startsWith('/docs/paths/') ||
+    // Comparison leaves (not the hub): a reader on "Scrimba vs X" is choosing
+    // between two subscriptions, which is buy-mode. Added 2026-09-20 after GA
+    // showed zero comparison pages in the top affiliate-click list despite
+    // the section being the highest-intent cluster on the site.
+    /^\/docs\/comparisons\/scrimba-vs-[^/]+\/?$/.test(path) ||
     path === '/blog/scrimba-review' ||
     path === '/blog/scrimba-review/' ||
     path === '/blog/is-scrimba-worth-it' ||
-    path === '/blog/is-scrimba-worth-it/' ||
-    path === '/blog/scrimba-pro-pricing-explained-2026' ||
-    path === '/blog/scrimba-pro-pricing-explained-2026/'
+    path === '/blog/is-scrimba-worth-it/'
   );
 }

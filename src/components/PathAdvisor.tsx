@@ -328,7 +328,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
 
           <div className="path-advisor__cta-row">
             <Link
-              className="button button--primary path-advisor__cta-guide"
+              className="button button--secondary path-advisor__cta-guide"
               to={PATHS[result.primary].doc}
               onClick={() =>
                 trackAdvisorEvent('path_advisor_guide_click', { path: result.primary, link: 'primary' })
@@ -340,7 +340,8 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
               <AffiliateLink
                 href={DEMO_SCRIM_URL}
                 variant="button"
-                className="button button--secondary"
+                className="button button--primary"
+                location="path-advisor-result-free"
                 onClick={() => trackAdvisorEvent('path_advisor_scrimba_click', { type: 'free' })}
               >
                 Try a free lesson (2 min, no signup)
@@ -349,7 +350,8 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
               <AffiliateLink
                 href="https://scrimba.com/home?pricing&via=u42d4986"
                 variant="button"
-                className="button button--secondary"
+                className="button button--primary"
+                location="path-advisor-result-pro"
                 onClick={() => trackAdvisorEvent('path_advisor_scrimba_click', { type: 'pro' })}
               >
                 See Scrimba Pro pricing
