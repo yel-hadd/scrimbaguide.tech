@@ -5,9 +5,11 @@ internet. Improve existing content, add new where warranted, add first-hand
 screenshots, aim for #1 on Google and for AI-search citations, and raise
 conversion to Scrimba (affiliate). Start with the docs pages.
 
-Method: `SCRIMBA-BROWSING-GUIDE.md` (logged-in Pro access via Claude in
+Method: the `scrimba-browsing` skill (logged-in Pro access via Claude in
 Chrome: nested curriculum, transcripts, code, chapter title cards, seeked
-screenshots). House rules in `CLAUDE.md` still apply.
+screenshots) and the `scrimba-course-review` skill (archetype + browse, draft,
+fact-check pipeline), both under `.claude/skills/`. House rules in `CLAUDE.md`
+still apply.
 
 ## Why course leaves first
 
@@ -65,6 +67,12 @@ plus the 8 category hubs, the Explain cluster (reference page and four posts,
 skill under `.claude/skills/scrimba-explain/`), the Discord wording sweep, the
 non-course docs sections (comparisons, pricing, for/*, FAQ, help, practice,
 learn-react, learn-nextjs, intro, changelog) and the component UI/UX pass.
+Merged to main 2026-09-21 (#95 then #96); QA on the way: 404 screenshots
+verified against their files, 15 descriptions trimmed to 160 chars, two FAQ
+schemas moved below the truncate marker, the Explain review title and one
+contradiction on the reference page fixed. The browsing guide was converted
+into the `scrimba-browsing` skill and the archetype into `scrimba-course-review`
+(this branch).
 
 Remaining:
 
@@ -74,5 +82,8 @@ Remaining:
 2. `docs/how-it-works/how-scrims-work.mdx` and siblings: transcript panel,
    settings menu, AI-feedback challenge, EXPLAIN modal, dependencies,
    certificate item screenshots from a free Learn JavaScript lesson.
-3. Re-check GSC four to six weeks after merge (baseline in memory) to see
-   whether the leaves leave "crawled, not indexed".
+3. The two flawed explainer slides (A1, A3) noted in the scrimba-explain
+   skill's lessons-learned.
+4. Re-check GSC four to six weeks after 2026-09-21 (baseline in memory) to see
+   whether the leaves leave "crawled, not indexed". Indexing API submissions
+   for the 140 changed URLs started 2026-09-21 (log in memory).

@@ -164,7 +164,7 @@ Grouped by intent so you can extend a cluster without cannibalizing an existing 
 
 ### First-hand Scrimba access
 
-`SCRIMBA-BROWSING-GUIDE.md` documents how to browse scrimba.com with the logged-in Pro account via Claude in Chrome: URL map, curriculum/transcript/code extraction snippets, the Explain feature, and screenshot + alt-text rules. Read it before enriching course, path, or feature pages with first-hand detail.
+Three repo skills under `.claude/skills/` cover first-hand work: `scrimba-browsing` (how to browse scrimba.com with the logged-in Pro account via Claude in Chrome: URL map, curriculum/transcript/code extraction snippets, screenshot + alt-text rules, tool quirks), `scrimba-course-review` (the course-page archetype and the browse → draft → fact-check pipeline), and `scrimba-explain` (generating, grading and embedding explainers). Load the relevant one before enriching course, path, or feature pages with first-hand detail. `SCRIMBA-BROWSING-GUIDE.md` is now a stub pointing at the skill.
 
 ### Content conventions for edits
 
