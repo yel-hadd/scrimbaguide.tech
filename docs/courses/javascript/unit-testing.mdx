@@ -14,6 +14,7 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Introduction to Unit Testing
 
@@ -36,6 +37,17 @@ Introduction to Unit Testing is an 86-minute, Pro-only, intermediate course taug
   href="https://scrimba.com/introduction-to-unit-testing-c01i"
   description="Your first unit tests in Jasmine: grouping, test cases, beforeEach, spies, mocks and matchers, with a challenge after almost every concept."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/introduction-to-unit-testing/course-introduction-to-unit-testing-title-card.webp"
+    alt="Title card of Scrimba's Introduction to Unit Testing course: Introduction To Unit Testing, course teacher Dylan C. Israel, dark text on a lavender and mint background"
+    width={1279}
+    height={720}
+    caption="The course title card, the first slide of the six-minute introduction."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
@@ -82,6 +94,14 @@ The code under test arrives: a `User` class with `firstName`, `lastName` and `mi
 
 The first challenge asks whether there is a more reliable way to name the group. The answer is ``describe(`${User.name} Class`)``, so renaming the class to `Admin` updates the label. Our first test writes the actual test: arrange `{ firstName: null }`, act by constructing `new User(data)`, assert `expect(model.firstName).toBe('')`. Dylan then breaks the class on purpose and watches the test go red. "This is the power of unit testing."
 
+<Screenshot
+  src="/img/scrimba/introduction-to-unit-testing/our-first-test-jasmine-failure-lesson.webp"
+  alt="Scrimba's Our first test scrim paused at 3:26: main.js shows the User class with the firstName default removed on purpose and a describe block whose test expects model.firstName to be an empty string, while the Jasmine reporter in the preview shows 1 spec, 1 failure, Expected null to be ''"
+  width={1400}
+  height={684}
+  caption="Our first test at 3:26. Dylan has just deleted the || '' default from firstName and the Jasmine reporter on the right goes red with Expected null to be ''. The arrange, act, assert comments in the test are the pattern the whole course follows."
+/>
+
 The challenge that follows asks you to write the same test for `lastName` and `middleName` and group all three. The lesson I took from it was the warning about copy-paste. "I can't tell you how many times I've done something like this and accidentally had two tests testing the same one item."
 
 ### 3. Setting up data with beforeEach (11 min, 2 scrims)
@@ -101,6 +121,14 @@ The "challenge" here is unlike anything else on Scrimba. The brief in the commen
 `User` gains a `sayMyName()` method that calls `window.alert(this.fullName)`. Dylan picked it for a Scrimba-specific reason. "Scrimba actually can't call the alert method because of the way the platform is built and nothing's going to pop up, but we can write our test to actually see that it does get called using a spy." The test is `spyOn(window, 'alert')`, then `model.sayMyName()`, then `expect(window.alert).toHaveBeenCalledWith('Dylan Israel')`. He explains what spies are for. "You're not gonna test the library. Typically, what you're gonna test is that your code calls the library and passes the correct data."
 
 The Spy Challenge is the hardest one in the course. It includes a hint for something not yet taught: `spyOn(object, 'key').and.returnValue(value)`. `getCodeName()` calls `window.confirm("Are you a testing god?")` and returns one of two strings. You have to write three tests: the confirmed case, the declined case, and a check on what `confirm` was called with. Dylan anticipates the mood. "You may be getting frustrated at this point saying, Dylan, why don't you just set this up for me instead of doing this in challenges? ... embrace the frustration." At the end he points out that his own test description said "coding god" when the code said "testing god". He turns it into the lesson that "your tests are only as good as your test descriptions."
+
+<Screenshot
+  src="/img/scrimba/introduction-to-unit-testing/spy-challenge-brief-lesson.webp"
+  alt="Scrimba's Spy Challenge scrim at 0:01: main.js opens with a comment block brief, use a spy to test getCodeName fully, use spyOn and toHaveBeenCalledWith, and a hint showing spyOn(object, 'key').and.returnValue(value), above an empty describe('get code name') block; the Jasmine reporter reads Incomplete: No specs found"
+  width={1400}
+  height={684}
+  caption="The Spy Challenge brief as the scrim opens. Three numbered lines, a hint for a method the course has not taught yet, and an empty describe block to fill. The reporter on the right says No specs found until you write one."
+/>
 
 ### 6. Mocks (14 min, 2 scrims)
 

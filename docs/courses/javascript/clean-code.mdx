@@ -14,6 +14,7 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Introduction to Clean Code
 
@@ -38,6 +39,25 @@ It is worth an hour if you can write working JavaScript but nobody has ever revi
   href="https://scrimba.com/introduction-to-clean-code-c025"
   description="A one-hour intro to readable JavaScript: naming, small functions, and when a comment is worth writing, with seven refactoring challenges."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/introduction-to-clean-code/chapter-1-clean-code-introduction-title-card.webp"
+    alt="Title slide of Scrimba's Introduction to Clean Code course: Code Like a Pro, Clean Code Introduction, by Dylan C. Israel, with a circuit-board photo and a portrait of the instructor painted as a nineteenth-century general"
+    width={1279}
+    height={720}
+    caption="The course intro slide. The portrait is Dylan's own running joke."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/introduction-to-clean-code/chapter-3-clean-functions-title-card.webp"
+    alt="Title slide of the Clean Functions section of Scrimba's Introduction to Clean Code course: Code Like a Pro: Functions, by Dylan C. Israel, white text on blue"
+    width={1279}
+    height={720}
+    caption="The Clean Functions section opener. Each section starts with a slide like this before the code scrims."
+    source="Title slides from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
@@ -79,6 +99,14 @@ The first challenge, "Clean Variables Challenge", gives you a one-line function 
 
 The two "Magic Numbers" scrims are the most honest moments in the course. The example is an orbital period calculator full of numbers like 6367.4447, and Dylan admits he "had to go back and rewatch a video" to remember what they were. He extracts earthRadius and gravityMetric, then confesses on camera that when his editor asked him to also rename the a, b, and c variables, he could not remember what c represented. The challenge that follows is a single number, 86400000, and the fix is to write it as 60 * 60 * 24 * 1000 so the calculation documents itself.
 
+<Screenshot
+  src="/img/scrimba/introduction-to-clean-code/magic-numbers-earth-radius-gravity-metric-lesson.webp"
+  alt="Scrimba's Clean Variables: Magic Numbers scrim paused at 1:26: index.js shows the orbitalPeriod function with the two numbers pulled into const earthRadius = 6367.447 and const gravityMetric = 398600.4418, while a, b and c remain single-letter variables inside getOrbPeriod"
+  width={1400}
+  height={684}
+  caption="Magic Numbers at 1:26, right after both constants get names. The a, b and c in getOrbPeriod are still there; that is the part Dylan admits he struggles to rename when the editor asks him to."
+/>
+
 ### 3. Clean organization and functions (16 min, 7 scrims)
 
 A short "Spacing and Returns" scrim links an ESLint rule (padding-line-between-statements) and argues for a blank line before every return and between each case in a switch. The analogy is an essay: "it's not just one giant long run on sentence, and the same goes for your code."
@@ -86,6 +114,14 @@ A short "Spacing and Returns" scrim links an ESLint rule (padding-line-between-s
 The functions section then covers three techniques, each followed by a challenge. "Limit Parameters" turns getUsersFullName(first, middle, last, nickName) into a function that takes one user object; Dylan's threshold is "once you get past about two parameters, you need to start thinking about, is my function too large?" "Naming and Standardization" renames addUser to addAdminUser and makes retrieveAdminById match getUserById, because a codebase should pick one verb per operation. The challenge hands you four badly named functions, including addmessage in the wrong case, and he says up front that "some of our answers here obviously may differ."
 
 "Encapsulating Conditionals" is the longest scrim at 4:29 and the most useful. A function checks user.isActive && user.isPrimaryAccountHolder inline; he moves that check into isUserPrimaryActiveAccount(user), then pulls the two halves into named booleans. His rule: anything with more than one condition goes into a small function, and "if it's greater than two, I definitely do it one hundred percent of the time." The challenge is a loading-state function with three branches, which you rewrite with helpers like hasUserLoadedSuccessfully(state).
+
+<Screenshot
+  src="/img/scrimba/introduction-to-clean-code/encapsulating-conditionals-get-is-user-primary-active-account-lesson.webp"
+  alt="Scrimba's Clean Functions: Encapsulating Conditionals scrim paused at 3:08: index.js shows getNonPrimaryUsers calling a new getIsUserPrimaryActiveAccount function, which stores isPrimaryAccount and isActive in named constants and returns isActive && isPrimaryAccount"
+  width={1400}
+  height={684}
+  caption="Encapsulating Conditionals at 3:08, the finished refactor. The inline check is now a named function with two named booleans and a blank line before the return, the editor setting he recommends turning on."
+/>
 
 ### 4. Clean comments (18 min, 7 scrims)
 

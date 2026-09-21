@@ -14,6 +14,7 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Build Serverless AI Agents with Langbase
 
@@ -38,6 +39,25 @@ It is a good hour if you want to see a complete retrieval-augmented generation (
   href="https://scrimba.com/build-serverless-ai-agents-with-langbase-c0cg73hgmh"
   description="Build a RAG support agent in TypeScript with the Langbase SDK: memory, document upload, retrieval, an agent pipe, and grounded answers with sources."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/build-serverless-ai-agents-with-langbase/chapter-1-building-serverless-ai-agents-title-card.webp"
+    alt="Title card of Scrimba's Build Serverless AI Agents with Langbase course: Building Serverless AI Agents, with Langbase, teacher Maham Codes, on a purple and olive gradient"
+    width={1280}
+    height={720}
+    caption="The course intro card, the first scrim of the course."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/build-serverless-ai-agents-with-langbase/chapter-2-create-a-memory-title-card.webp"
+    alt="Title card of the Create a Memory with Langbase SDK scrim in Scrimba's Build Serverless AI Agents with Langbase course"
+    width={1280}
+    height={720}
+    caption="Create a Memory with Langbase SDK, the first coding scrim and the first challenge."
+    source="Title cards from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
@@ -78,9 +98,25 @@ Setting Up Environment Variables in Scrimba is the practical bridge. You add you
 
 Create a Memory with Langbase SDK is the first coding scrim and the first challenge. You watch her create `create-memory.ts`, import `dotenv/config` and `Langbase`, and instantiate the client. Then the recording pauses: "Create a memory named knowledge base using the memories dot create method and use OpenAI text embedding three large model for embeddings. Finally, log the created memory to the console." The solution is eleven lines. When she runs it, the console prints the new memory with a chunk size of 10,000 and an overlap of 2,048, and it appears in the Memory tab of Langbase Studio.
 
+<Screenshot
+  src="/img/scrimba/build-serverless-ai-agents-with-langbase/create-memory-challenge-brief-lesson.webp"
+  alt="Scrimba's Create a Memory with Langbase SDK scrim paused at 3:02 in Exercise 1 mode: create-memory.ts shows the challenge as a comment asking for a memory named knowledge-base using memories.create and the openai:text-embedding-3-large model, with SKIP and CHECK SOLUTION buttons in the header and an empty terminal below"
+  width={1400}
+  height={684}
+  caption="The first challenge at 3:02. The brief is a comment in create-memory.ts, the header switches to Exercise 1 with a CHECK SOLUTION button, and the terminal waits for your npx tsx run."
+/>
+
 Upload Documents to AI Memory is the longest scrim at six and a half minutes and the second challenge. You create a `docs` folder with a mock `langbase-faq.txt`, read it with `readFile` and `path.join`, and call `memories.documents.upload` with a content type, a document name, the file contents, and optional `meta` tags. The challenge is to finish the upload call and print a success message. She notes that Langbase accepts text, PDF, markdown, and CSV.
 
 Memory Agents on Langbase is a slide lesson with no code, and it is the best explanation in the course. She walks through what happens after upload: parse, chunk, embed, index. Her line on embeddings is the one to remember: "an embedding is basically a numerical representation of the meaning." She then covers the query side, where Langbase can rewrite the query, retrieve, rerank, generate, and evaluate.
+
+<Screenshot
+  src="/img/scrimba/build-serverless-ai-agents-with-langbase/memory-agents-after-document-upload-pipeline-slide.webp"
+  alt="Slide from the Memory Agents on Langbase scrim titled After Document Upload: a hand-drawn flow from Semantic parsing to Chunking to Embedding, with an example vector, then Indexing into a Vector store"
+  width={1280}
+  height={720}
+  caption="The After Document Upload slide at 0:41: parse, chunk, embed, index. This is the diagram she narrates for the next minute and a half."
+/>
 
 ### 3. Retrieve and generate (15 min, 3 scrims)
 
@@ -89,6 +125,14 @@ Perform RAG Retrieval starts in Langbase Studio, where a "retrieval testing" pan
 Create an AI Agent Pipe is the third challenge. You create `create-pipe.ts` and define a pipe with `pipes.create`: a name, a description, and a `messages` array holding the system prompt. She explains the system prompt as "giving the AI its job description before the conversation starts." The challenge is to write that definition yourself; the solution names it `ai-support-agent` with a two sentence system prompt.
 
 Generate RAG Responses closes the loop. Back in `agents.ts` you add `runAiSupportAgent(chunks, query)`, which builds a system prompt from the chunk text (rules: be helpful, use only the given context, always cite sources) and calls `pipes.run` with `stream: false`. `index.ts` now chains the two functions. She runs it and ends with: "You just build a retrieval augmented generation rag agent, and it first retrieves relevant info from memory, then it uses that info to answer questions accurately. And it always cites its sources."
+
+<Screenshot
+  src="/img/scrimba/build-serverless-ai-agents-with-langbase/generate-rag-responses-npx-tsx-output-lesson.webp"
+  alt="Scrimba's Generate RAG Responses scrim paused at 5:06: index.ts chains runMemoryAgent and runAiSupportAgent for the query How do I upgrade to individual plan, and the terminal shows the npx tsx index.ts output, a three-step answer built from the uploaded Langbase FAQ"
+  width={1400}
+  height={684}
+  caption="The finished agent at 5:06. index.ts on top is the whole program; the terminal below is the grounded answer to the billing question, assembled from the chunks retrieved from memory."
+/>
 
 ### 4. Beyond the build (10 min, 2 scrims)
 

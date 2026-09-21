@@ -14,6 +14,7 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Build a Multi-Page Website with HTML and CSS
 
@@ -35,6 +36,14 @@ This is a single-project course for people who already write HTML and CSS and wa
   instructorUrl="https://scrimba.com/@kevin-powell"
   href="https://scrimba.com/build-a-space-travel-website-c014"
   description="Build a multi-page space travel site from a real Frontend Mentor design: design system first, then layout, navigation, and tabs in vanilla JavaScript."
+/>
+
+<Screenshot
+  src="/img/scrimba/build-a-space-travel-website/finished-space-travel-site-homepage-preview.webp"
+  alt="The finished Space Travel homepage as shown in Scrimba's course introduction: a dark starfield with the Earth's night side, a four-item glass navigation bar (00 Home, 01 Destination, 02 Crew, 03 Technology), the heading So, you want to travel to Space, and a large circular Explore button"
+  width={1176}
+  height={789}
+  caption="What you build, as Kevin shows it 26 seconds into the introduction: the desktop homepage of the four-page site, before the course rebuilds it from a design system up."
 />
 
 ## Is it worth your time?
@@ -77,11 +86,27 @@ The homepage module is short because the design system did the work. Scrim 1 wri
 
 The grid container scrim (10 minutes) is the technical center of the module. The page is laid out on four columns, `minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr)`, with content pinned to the two middle tracks and a `--container-gap` property for the gutter. Then comes A layout challenge (scrim 6), which asks you to rebuild the same layout with flexbox so that you feel why grid was chosen: "grid is much more structured and the parent has so much control over everything." Final touches adds `max-width: 45ch` on text, `place-items`, a `.grid-container--home` modifier, and a `padding-bottom: max(6rem, 20vh)` for very tall screens. The module ends with a 77-second cameo from Scrimba's Per Borgen pointing to Netlify deploy guides.
 
+<Screenshot
+  src="/img/scrimba/build-a-space-travel-website/grid-container-red-yellow-outlines-lesson.webp"
+  alt="Scrimba's Setting up a grid container scrim paused at 9:59 with the preview maximised: the homepage text column has a red outline and the Explore column a yellow outline, showing the two middle grid tracks side by side above the empty flexible outer tracks"
+  width={1400}
+  height={684}
+  caption="Setting up a grid container at 9:59. Kevin outlines the two content columns in red and yellow so you can watch the outer 1fr tracks absorb the extra space as the window grows."
+/>
+
 ### 3. Navigation (76 min, 14 scrims)
 
 "Navigation, which are always these little simple components that end up being more work than anything else on the entire page," Kevin says in the first scrim, and the module proves it. The mobile version is a hamburger button whose text is a visually hidden "Menu", with `aria-controls` pointing at the nav's id and `aria-expanded="false"`. You are challenged to lay it out yourself before he does.
 
 Scrim 6, Adding the functionality, is the first JavaScript in the course: a deferred script, two `const` references, a click listener, and a `data-visible` attribute that CSS reads to slide the menu in. Kevin explains his split plainly: "my classes are for styling, and then I know that my data attributes are for JavaScript." He also stops to say what `const` is, which tells you who the code is written for. Later scrims handle the tablet and desktop layouts with a `min-width: 45em` media query, `padding-inline: clamp(3rem, 5vw, 7rem)`, and the decorative line beside the logo, which he builds as a pseudo-element flex item after admitting his first absolute-positioned attempt was a dead end. Accessibility tweaks and a skip-to-content link close the module; the skip link is hidden with `translateY(-100%)` and slides in on focus.
+
+<Screenshot
+  src="/img/scrimba/build-a-space-travel-website/mobile-nav-data-visible-attribute-lesson.webp"
+  alt="Scrimba's Adding the functionality scrim paused at 6:41: index.css shows the mobile-navigation media query with position fixed, inset 0 0 0 30%, transform translateX(100%), and Kevin mid-way through typing the .primary-navigation[data-visible=\"true\"] selector, with the phone-sized preview in the corner"
+  width={1400}
+  height={684}
+  caption="Adding the functionality at 6:41, the first JavaScript-driven moment in the course: the menu is pushed off screen with translateX(100%) and the selector being typed brings it back when the script flips data-visible to true."
+/>
 
 One scrim in this module, Want to become a Scrimbassador?, is a two-minute Per Borgen advert for Scrimba's referral program. It counts toward the 14 but teaches nothing.
 

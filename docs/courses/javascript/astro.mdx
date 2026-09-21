@@ -14,6 +14,7 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Intro to Astro
 
@@ -38,6 +39,17 @@ It is a good use of two evenings if you already write HTML, CSS, and basic JavaS
   href="https://scrimba.com/intro-to-astro-c00ar0fi5u"
   description="Build a personal site with Astro components, a Zod-typed content collection, a Markdown blog with dynamic routes, and a Netlify deploy."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/intro-to-astro/course-intro-to-astro-title-card.webp"
+    alt="Title card of Scrimba's Intro to Astro course: Intro to Astro, the web framework for content-driven websites, teacher James Q Quick, on a blue and purple gradient"
+    width={1280}
+    height={720}
+    caption="The course title card, the first slide of the intro scrim. The course is a flat list of 37 scrims with no chapter cards after this one."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 This course has no chapter title cards to show you: it is a single flat list of scrims with no module headers, and the intro opens on a slide of the finished site rather than a cover slide.
 
@@ -82,6 +94,14 @@ The first challenge, "Create the header section," is plain HTML inside `index.as
 
 "Adding styles" is the lesson to watch if you know React or Vue. James puts a `<style>` in `index.astro`, targets a paragraph inside the `Header` component, and nothing happens, because Astro scopes styles to the component they are written in. The fix is either the `is:global` directive (already used in `Layout.astro`) or moving the style into the component, which is the convention the course follows. Two styling challenges then have you fill in nested CSS for the header, a `.container` with a max width and `margin: 0 auto`, and a media query written with the `&` nesting selector.
 
+<Screenshot
+  src="/img/scrimba/intro-to-astro/adding-styles-scoped-css-should-be-red-lesson.webp"
+  alt="Scrimba's Adding styles scrim in Intro to Astro paused at 2:21: index.astro has a style block setting p.description to red, and the preview shows the header's description paragraph still black while a paragraph placed directly in index.astro, reading Should be red, is red"
+  width={1400}
+  height={684}
+  caption="Adding styles at 2:21. The same p.description rule colours the paragraph that lives in index.astro and ignores the one inside the Header component. That is Astro's scoped styling, shown before it is explained."
+/>
+
 "TypeScript in Astro" introduces the only TypeScript you will write: an `interface Props` for a `ButtonLink` component (`href`, `text`, an optional `variant` of `'primary' | 'secondary'`, an optional `isDownload`), read from `Astro.props` with a default. The challenge that follows has you finish the component: render the `download` attribute only when asked, build the class from a template literal, move the button styles in, and swap the header's raw links for `<ButtonLink>`.
 
 "Slot component" explains `<slot />` in one line: "In React, you hear these called children. In Astro, this is called the slot." The "Create section component" challenge, which James flags as "a little bit bigger than the ones we've done in the past," has you build a `Section` wrapper with a `dark` boolean prop, vertical padding, and the `Container` nested inside it. The section ends with "Frontmatter templating" (mapping an array to `<li>` elements, the same syntax as JSX) and two challenges that build the projects grid and a reusable `SectionHeader`.
@@ -93,6 +113,14 @@ The first challenge, "Create the header section," is plain HTML inside `index.as
 ### 4. Content collections and the blog (36 min, 10 scrims)
 
 This is the section James is most excited about ("one of my absolute favorite features of Astro") and the reason to take the course rather than skim the docs. It uses the newer content layer syntax: a `src/content.config.ts` file, `defineCollection` with a `file()` loader pointed at `projects.json`, and a Zod schema describing each entry. The "Building the blog schema" challenge has you write the blog collection yourself: a `glob()` loader over `src/data/blog/**/*.md` and a schema with `title`, `description` (James adds `.max(200)`), `date` as `z.string().date()`, `tags` as `z.array(z.string())`, and `image`.
+
+<Screenshot
+  src="/img/scrimba/intro-to-astro/content-collections-define-collection-zod-schema-lesson.webp"
+  alt="Scrimba's Content collections in Astro scrim paused at 2:10: content.config.ts defines a project collection with a file loader pointing at src/data/projects.json and a Zod schema of title, optional description, image and slug, exported as collections, with the Astra portfolio site in the preview"
+  width={1400}
+  height={684}
+  caption="Content collections in Astro at 2:10: the whole content.config.ts. A file loader, a Zod schema, one export, and from here on the projects data is typed everywhere you query it."
+/>
 
 "Markdown Intro" is a four-minute primer (headings, lists, links, images, code fences, and the fact that a `.md` file dropped in `pages/` becomes a page). It also opens the three sample posts, which James admits are "kind of AI generated, so don't put a lot of stock in the content itself." "Querying content collections" introduces `getCollection()` and a gotcha James walks straight into: the fields you defined live under `entry.data`, so the projects grid renders empty until `project.image` becomes `project.data.image`.
 
