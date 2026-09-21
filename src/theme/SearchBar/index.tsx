@@ -266,19 +266,23 @@ export default function SearchBar(): React.ReactElement {
           </div>
         )}
 
-        <div className="sg-search-body" id="sg-search-listbox" role="listbox" ref={bodyRef} tabIndex={0}>
-          {loading && (
-            <div className="sg-search-status">Searching&hellip;</div>
-          )}
-          {!loading && !query && (
-            <div className="sg-search-status">Start typing to search&hellip;</div>
-          )}
-          {!loading && query && results && results.length === 0 && (
-            <div className="sg-search-status">No results found for &ldquo;{query}&rdquo;.</div>
-          )}
+        <div className="sg-search-body" ref={bodyRef} tabIndex={0}>
+          <div className="sg-search-status-region" aria-live="polite">
+            {loading && (
+              <div className="sg-search-status">Searching&hellip;</div>
+            )}
+            {!loading && !query && (
+              <div className="sg-search-status">Start typing to search&hellip;</div>
+            )}
+            {!loading && query && results && results.length === 0 && (
+              <div className="sg-search-status">No results found for &ldquo;{query}&rdquo;.</div>
+            )}
+          </div>
+          {/* The listbox holds only option/group children; status text lives above it. */}
+          <div id="sg-search-listbox" role="listbox">
           {!loading && filtered.map((group, gi) => (
-            <div key={group.label} className="sg-search-group">
-              <h2 className="sg-search-group-label">{group.label}</h2>
+            <div key={group.label} className="sg-search-group" role="group" aria-labelledby={`sg-search-group-${gi}`}>
+              <h2 className="sg-search-group-label" id={`sg-search-group-${gi}`}>{group.label}</h2>
               {group.results.map((result, ri) => {
                 const flatIdx = flatItems.findIndex((f) => f.gi === gi && f.ri === ri);
                 const hl = flatIdx === highlightIdx;
@@ -298,7 +302,9 @@ export default function SearchBar(): React.ReactElement {
                       e.preventDefault();
                       navigate(result);
                     }}
-                    onMouseEnter={() => setHighlightIdx(flatIdx)}
+                    // onMouseMove: Docusaurus Link overwrites onMouseEnter with its
+                    // own preload handler, so hover would never move the highlight.
+                    onMouseMove={() => { if (highlightIdx !== flatIdx) setHighlightIdx(flatIdx); }}
                   >
                     <div className="sg-search-result-icon">
                       {group.label === 'Courses' ? (
@@ -331,6 +337,7 @@ export default function SearchBar(): React.ReactElement {
               })}
             </div>
           ))}
+          </div>
         </div>
 
           {query && (

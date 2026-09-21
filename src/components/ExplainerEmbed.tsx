@@ -23,7 +23,7 @@ export default function ExplainerEmbed({ id, title, caption }: ExplainerEmbedPro
           title={title}
           loading="lazy"
           allow="fullscreen"
-         
+          allowFullScreen
           style={{ border: 0 }}
         />
       </div>
