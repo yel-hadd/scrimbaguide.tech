@@ -14,6 +14,7 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Build a React Project: Movie Search App
 
@@ -38,6 +39,17 @@ It is a good ninety minutes if you have just finished a React fundamentals cours
   href="https://scrimba.com/build-a-react-project-movie-search-app-c0u"
   description="A one hour React build: a movie search form, a fetch to the TMDB API, useState for the query and results, and a MovieCard component, with three challenges."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/build-a-react-project-movie-search-app/course-react-movie-search-title-card.webp"
+    alt="Title card of Scrimba's Build a React Project: Movie Search App course: React Movie Search, course teacher James Q Quick, dark text on a lavender and mint background"
+    width={1279}
+    height={720}
+    caption="The course title card. It is the only real chapter card in the course; the outro slides are Scrimba's generic ones."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
@@ -90,9 +102,25 @@ Manage State with React useState Hook is the second challenge. James sets up `co
 
 Display Movie Information is the longest scrim at 7:11 and the one where the app starts to look like something. James wraps the form in a fragment (`<>`), adds a `card-list` div, and maps `movies` to a `card` div with a poster image, an `h3` title, `small` tags for release date and rating, and a paragraph for the overview. Along the way he explains the `key` prop when React warns about it, and filters out movies without a `poster_path` so there are no broken images. The image URL comes from TMDB's image CDN; he admits he "had to do some research to figure out where or what that URL was."
 
+<Screenshot
+  src="/img/scrimba/build-a-react-project-movie-search-app/display-movie-information-card-markup-lesson.webp"
+  alt="Scrimba's Display Movie Information scrim paused at 6:51: searchMovies.js maps the filtered movies to a card with a TMDB poster image, an h3 title, release date, rating and overview, while the preview lists Jurassic Park results with their text but broken poster images"
+  width={1400}
+  height={684}
+  caption="Display Movie Information at 6:51. Title, release date, rating and overview render from the TMDB response; the poster images did not load in the recorded preview when I replayed it, which is worth knowing before you assume your own code is wrong. The dependencies panel shows the React 16.13 the course runs on."
+/>
+
 Style the Movie Cards is under three minutes: padding, a 10px radius, a soft box shadow, a white background, a bigger `card--title`, and `margin: 0 auto` with `display: block` to center the poster.
 
 Create the Movie Card Component (Challenge) is the third and best challenge, because it introduces props for the first time. James explains that every component receives a `props` object, shows how to pass `movie={movie}` in JSX, and asks you to move the card markup into `movieCard.js`. The solution walks through three ways to read the prop: `props.movie`, `const { movie } = props`, and destructuring in the parameter list. It also fixes a real bug: after the move, the `key` prop was left on the inner div instead of on `<MovieCard>` in the map, and React complains until it is moved. "This is definitely a best practice for you as you start building bigger and bigger React applications," he says of splitting components out.
+
+<Screenshot
+  src="/img/scrimba/build-a-react-project-movie-search-app/movie-card-component-challenge-solution-lesson.webp"
+  alt="Scrimba's Create the Movie Card Component challenge scrim paused at 5:04: searchMovies.js now maps movies to a MovieCard component with a movie prop and a key of movie.id, and the console below is empty"
+  width={1400}
+  height={684}
+  caption="The Movie Card challenge solved at 5:04. The key prop has moved from the card's inner div to the MovieCard element the map returns, and the console warning from a minute earlier is gone."
+/>
 
 ### 5. Wrap-up (3 min, 3 scrims)
 

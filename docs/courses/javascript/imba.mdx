@@ -14,6 +14,7 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Imba
 
@@ -38,6 +39,17 @@ It is worth two or three evenings if you already write JavaScript and are curiou
   href="https://scrimba.com/learn-imba-c01h"
   description="A free tour of Imba, the compile-to-JavaScript language Scrimba is built on, ending in a habit-tracker app with icons, persistence and sound."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/learn-imba/course-learn-imba-title-card.webp"
+    alt="Title card of Scrimba's Learn Imba course: Learn Imba, Build apps fast. Build fast apps., course teacher Nathan Manousos, on a lavender background"
+    width={1279}
+    height={720}
+    caption="The course title card. The tagline is Imba's own."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
@@ -75,6 +87,14 @@ The next seven scrims walk the language against JavaScript. In "Intro to Imba Sy
 
 The answer arrives over the following scrims. Conditionals use indentation instead of braces ("Imba is a white space sensitive language") and can trail a statement (`message = "yes" if done === num`). Functions use `def` and return their last line without a `return` keyword. Anonymous functions use `do`, and a callback can trail the call it belongs to.
 
+<Screenshot
+  src="/img/scrimba/learn-imba/conditionals-challenge-brief-lesson.webp"
+  alt="Scrimba's Conditionals scrim in Learn Imba paused at 5:50: index.imba declares num, done and isWeekend? variables and a challenge comment describing what to log on weekends and weekdays, with an empty preview pane"
+  width={1400}
+  height={684}
+  caption="The Conditionals challenge at 5:50. Note the ? in isWeekend?, an Imba convention for booleans, and the # comments that carry the brief. The earlier code is commented out below the empty lines you fill."
+/>
+
 The challenges are small and specific: write the weekend-versus-weekday habit logic, print three days of a habit worksheet with nested loops, add a `toggle` method to a class. The "Imports" scrim answers the ecosystem question: it pulls `nanoid` from npm, a helper file written in Imba, and a JavaScript file that itself imports `date-fns`, to show that "you can use familiar syntax for importing things to import from NPM modules, from Imba files in your project, or from JavaScript or TypeScript files."
 
 ### 2. Tags: HTML inside the language (17 min, 4 scrims)
@@ -106,6 +126,14 @@ Then the app gets real. "Event Modifiers" switches the adder to a form with `@su
 The last stretch is refactoring plus polish. "Move Delete to Dopamine Box" is the best challenge in the course: the delete handler moves up to the root tag, which has no loop index, so you have to find another way to identify the habit ("if you find yourself doing something really complicated changing tons of code you're probably on the wrong track"). His answer is a `nanoid` id and `habits.filter`, and he gets the boolean backwards on the first try.
 
 "LocalStorage" persists the array through three helper functions he wrote. "Lifecycle Methods" logs `setup`, `mount`, `render` and `rendered` so you can see the order, then has you open the drawer on first run from `setup`. "Celebration Sound Effect" plays an mp3 through the Howler library when the last habit is done, and the final coding scrim ends on a real gotcha: a `setTimeout` reset does not repaint because it runs outside an event, and `imba.commit()` is the fix.
+
+<Screenshot
+  src="/img/scrimba/learn-imba/reset-habits-imba-commit-finished-app-lesson.webp"
+  alt="Scrimba's Reset habits and use imba.commit() scrim paused at 2:02: index.imba shows toggleItem counting remaining habits, playing celebrateSound and calling resetAll inside a setTimeout, with the finished habit tracker in the preview showing Toggle, Reset All and Clear Data icons"
+  width={1400}
+  height={684}
+  caption="The last coding scrim at 2:02. The setTimeout around resetAll() is the gotcha: it runs outside an event, so the UI does not repaint until imba.commit() is added on the empty line 57."
+/>
 
 ### 6. Wrap-up (4 min, 3 scrims)
 
