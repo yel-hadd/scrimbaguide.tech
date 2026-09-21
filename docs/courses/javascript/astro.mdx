@@ -1,99 +1,182 @@
 ---
-title: "Intro to Astro: Scrimba Course Review"
+title: "Intro to Astro on Scrimba: 2026 Review"
 sidebar_position: 18
-description: "James Q Quick's Pro course on Astro, the content-focused web framework. What Astro is good at, who should learn it, and where it fits your stack."
-keywords: [scrimba intro to astro, astro course scrimba, james q quick astro, learn astro framework, content website framework]
+toc_max_heading_level: 2
+sidebar_label: "Intro to Astro"
+description: "James Q Quick's Intro to Astro reviewed from inside: 37 scrims in about 2 hours, 18 challenges, a portfolio with a Markdown blog, and what Pro gates."
+keywords: [scrimba intro to astro, intro to astro scrimba review, astro course scrimba, james q quick astro, learn astro framework, astro content collections course, content website framework]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 
 # Intro to Astro
 
-A Pro introduction to Astro, the framework built for fast, content-rich sites, taught by James Q Quick across roughly two hours of hands-on building.
+Scrimba's Pro course on Astro, the framework for content sites, taught by James Q Quick across about two hours and one project: a personal portfolio with a Markdown blog. I read the transcript of every one of its 37 scrims with a Pro account in September 2026, so this page describes what is actually in the course rather than what the listing says.
+
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. It is a standalone Pro course; Scrimba's course page does not list it under any career path.*
 
 ## Quick answer
 
-This is Scrimba's Pro-tier intro to Astro, about 2.1 hours taught by James Q Quick. Astro is a modern web framework aimed at content-heavy sites like blogs, docs, and marketing pages, where it combines components with Markdown and ships very little JavaScript by default. The course gets you building with Astro's component model and content pages quickly, without assuming you have used it before.
+Intro to Astro is a short, hands-on build: you turn a bare Astro starter into a personal site with a header, a projects section, a blog fed by Markdown files, dynamic pages for each post, a contact page, and a Netlify deploy. Scrimba lists it at 2.1 hours, Intermediate, Pro only. I counted 37 scrims, 18 of them challenges where the recording pauses and you write the code. It teaches the current Astro syntax: `.astro` components with scoped styles, a content collection typed with Zod, `getStaticPaths()` for the blog routes, and no client-side JavaScript at all.
+
+It is a good use of two evenings if you already write HTML, CSS, and basic JavaScript and want a fast portfolio, blog, or docs site. It is not a deep course, and it says so: islands, framework integrations, client-side scripts, and server endpoints are named in the wrap-up as things to learn next.
 
 <CourseCard
   title="Intro to Astro"
   duration="2.1 hrs"
   difficulty="Intermediate"
   access="Pro"
-  lessons={45}
+  lessons={37}
   instructor="James Q Quick"
   instructorUrl="https://scrimba.com/@jamesqquick"
   href="https://scrimba.com/intro-to-astro-c00ar0fi5u"
-  description="Build fast, content-focused sites with Astro, combining components and Markdown with minimal shipped JavaScript."
+  description="Build a personal site with Astro components, a Zod-typed content collection, a Markdown blog with dynamic routes, and a Netlify deploy."
 />
+
+This course has no chapter title cards to show you: it is a single flat list of scrims with no module headers, and the intro opens on a slide of the finished site rather than a cover slide.
 
 ## Is it worth your time?
 
-If you build or maintain content sites, blogs, documentation, landing pages, Astro is one of the better tools to know right now, and a focused two-hour intro is a sensible way to find out if it fits how you work. James Q Quick is an energetic, practical instructor, and the course stays hands-on, so you come away having actually built with Astro rather than just heard about it.
+Yes, if Astro is on your list and you learn by typing. Eighteen of the 37 scrims are challenges, and they are not toy exercises. You build the section wrapper, the button component, the blog schema, the blog card, and two whole pages yourself, then watch James's solution. The dev server is already running when each scrim opens, so you save the file and the preview on the right re-renders.
 
-The honest caveat is that this is an introduction, not a deep course. It gets you comfortable with the core model, components, pages, and Markdown content, but it will not cover every integration, advanced rendering mode, or large-project architecture. It is the right length to evaluate Astro and start a small site, not to master it.
+James is a clear teacher with a habit I found useful: he leaves his own slips in. He imports `container` with a lowercase c and gets an error, names a file `HeaderSection` when he meant `SectionHeader` ("do as I say, not as I do"), forgets to mention the post link in one challenge brief and says so ("that's my fault"). You see how a working developer reads an Astro error message and fixes it, which a polished recording would hide.
+
+The caveat is scope. Two hours is enough for components, styling, data, content collections, routing, and deploy, and that is the whole list. There is no interactivity: as James says in the wrap-up, "all the JavaScript that we wrote was only executed on the server, not in the actual browser." If you want React islands, a contact form that sends email, or API routes, this course will point you at them and stop.
 
 ## What you'll learn
 
-You learn Astro's core building blocks: its component syntax, how pages and routing work, and how it pulls Markdown content into a site. The framework's defining trait, shipping almost no client-side JavaScript unless you ask for it, runs through the whole course, so you see why Astro feels fast and where it differs from a typical single-page-app framework. By the end you can scaffold a content site and lay out pages the Astro way.
+Scrimba presents this course as one flat list with no modules. The grouping below is mine, made from the scrim order and what each one covers, so you can see where the time goes.
 
-Because the course is project-driven, you build alongside the instructor in the browser rather than watching slides, which suits a framework you are trying to get a feel for.
+<CourseCurriculum
+  modules={[
+    { name: 'Setup and the starter code', duration: '12 min', lessons: 3 },
+    { name: 'Components, props, and scoped styles', duration: '55 min', lessons: 15 },
+    { name: 'JSON data, routing, navbar and footer', duration: '16 min', lessons: 5 },
+    { name: 'Content collections and the blog', duration: '36 min', lessons: 10 },
+    { name: 'Deploy and wrap-up', duration: '10 min', lessons: 4 },
+  ]}
+  summary="37 scrims, about 2 hours 8 minutes, counted from the expanded table of contents in September 2026."
+/>
+
+My count is 37 scrims, adding up to 2 hours 8 minutes; without the two generic Scrimba outro clips (the Scrimbassador pitch and "How to Utilize Your Certificate") it is 2 hours 5 minutes, which matches the 2.1 hours on the listing. Scrimba's structured data says 45 lessons, a figure that counts something other than the scrims you click on. When other pages on this site quote 45 lessons, that is Scrimba's number.
+
+## Inside the course, section by section
+
+### 1. Setup and the starter code (12 min, 3 scrims)
+
+The first four scrims are free samples, so you can watch this whole section without Pro. The intro is James's case for Astro: "Astro by default does not ship any JavaScript to the browser," and, on content, "Astro is the best framework by far that I found for managing content." He also says the course "is actually in collaboration with the Astro team." Then he tours the finished site you will build: a landing page with header, projects, and blog sections, a projects page, a blog list, a blog post page, and a contact page.
+
+"Project setup" is the only place local setup is covered, in two minutes: `npm create astro@latest`, then `npm run dev`. On Scrimba the runner is already serving the site at `localhost:4321` when each scrim opens. "The starter code" walks the tree: `package.json` with Astro as the only dependency, a config file the course never touches, a `public/` folder pre-loaded with a placeholder headshot, resume PDF, project images, and social icons, and `src/` with a `Layout` (global styles and CSS variables) and `pages/index.astro`. Frontmatter fences and file-based routing get their first mention here.
+
+### 2. Components, props, and scoped styles (55 min, 15 scrims)
+
+This is the core of the course and where most of the challenges are. The pattern repeats: a two- to four-minute explainer, then a challenge that applies it.
+
+The first challenge, "Create the header section," is plain HTML inside `index.astro`: an `h1` with an accented span, a description, two links (`/projects` and `/resume.pdf` with the `download` attribute), and an image from `public/`. Then "Intro to reusable components" creates a throwaway `Test.astro` to show the import path, and the next challenge has you move the header into `Header.astro`. James sets the expectation for every refactor challenge to come: "hopefully what we see is nothing changes because we didn't change anything visually."
+
+"Adding styles" is the lesson to watch if you know React or Vue. James puts a `<style>` in `index.astro`, targets a paragraph inside the `Header` component, and nothing happens, because Astro scopes styles to the component they are written in. The fix is either the `is:global` directive (already used in `Layout.astro`) or moving the style into the component, which is the convention the course follows. Two styling challenges then have you fill in nested CSS for the header, a `.container` with a max width and `margin: 0 auto`, and a media query written with the `&` nesting selector.
+
+"TypeScript in Astro" introduces the only TypeScript you will write: an `interface Props` for a `ButtonLink` component (`href`, `text`, an optional `variant` of `'primary' | 'secondary'`, an optional `isDownload`), read from `Astro.props` with a default. The challenge that follows has you finish the component: render the `download` attribute only when asked, build the class from a template literal, move the button styles in, and swap the header's raw links for `<ButtonLink>`.
+
+"Slot component" explains `<slot />` in one line: "In React, you hear these called children. In Astro, this is called the slot." The "Create section component" challenge, which James flags as "a little bit bigger than the ones we've done in the past," has you build a `Section` wrapper with a `dark` boolean prop, vertical padding, and the `Container` nested inside it. The section ends with "Frontmatter templating" (mapping an array to `<li>` elements, the same syntax as JSX) and two challenges that build the projects grid and a reusable `SectionHeader`.
+
+### 3. JSON data, routing, navbar and footer (16 min, 5 scrims)
+
+"Importing data from JSON files" moves the skills array into `src/data/skills.json` and imports it like a component. James hits the single-quotes error on camera and shrugs it off: "JSON doesn't use single quotes, it only uses double quotes." The "Move Project Data to JSON" challenge has you do the same for the projects array. "File based routing" is the routing lesson: `pages/index.astro` is `/`, a new `contact.astro` is `/contact`, links are ordinary `<a>` tags with no special component, and dynamic routes such as `/blog/[slug]` are previewed for later. Two challenges then build the `Navbar` (logo plus three links, mounted in `Layout` above the slot) and the `Footer` (four icon links inside a dark `Section`, mounted below the slot).
+
+### 4. Content collections and the blog (36 min, 10 scrims)
+
+This is the section James is most excited about ("one of my absolute favorite features of Astro") and the reason to take the course rather than skim the docs. It uses the newer content layer syntax: a `src/content.config.ts` file, `defineCollection` with a `file()` loader pointed at `projects.json`, and a Zod schema describing each entry. The "Building the blog schema" challenge has you write the blog collection yourself: a `glob()` loader over `src/data/blog/**/*.md` and a schema with `title`, `description` (James adds `.max(200)`), `date` as `z.string().date()`, `tags` as `z.array(z.string())`, and `image`.
+
+"Markdown Intro" is a four-minute primer (headings, lists, links, images, code fences, and the fact that a `.md` file dropped in `pages/` becomes a page). It also opens the three sample posts, which James admits are "kind of AI generated, so don't put a lot of stock in the content itself." "Querying content collections" introduces `getCollection()` and a gotcha James walks straight into: the fields you defined live under `entry.data`, so the projects grid renders empty until `project.image` becomes `project.data.image`.
+
+Four challenges then build the blog: the homepage `BlogSection` (query, map, link to `/blog/${post.id}`, and a provided `HorizontalSeparator`), a `BlogCard` component, and the `/blog` list page. "Dynamic Blog Pages" is the lesson where Astro's static generation clicks: a `pages/blog/[slug].astro` file exporting `getStaticPaths()`, which returns one `{ params, props }` object per post, typed with `CollectionEntry<"blog">`. James frames it well: "what if this blog is really, really big? We have hundreds and hundreds of posts. We don't wanna create each one of these pages individually." "Displaying Blog Content" finishes the post page with `const { Content } = await render(post)` and a `<Content />` tag, and the last challenge builds the `/projects` page from the same parts.
+
+### 5. Deploy and wrap-up (10 min, 4 scrims)
+
+"Deploy to Netlify," which James calls "the most exciting video of this series," is slides, not code: right-click the Scrimba sidebar and choose Download as Zip, push it to a GitHub repo, sign in to Netlify with GitHub, import the repo, pick a unique site name, and watch the build. It assumes you already know how to create a repository. "Wrap up and next steps" is a four-minute list of extensions (a timeline, an HTML resume page, a "now" page, a "uses" page, blog search) and the Astro topics the course skipped: island architecture and framework integrations, client-side scripts, server endpoints for a real contact form. The last two scrims are Scrimba's standard outros from Per Borgen about the affiliate program and the certificate.
+
+## What a lesson actually feels like
+
+Scrims run from under a minute to 5:46; the median is about 3:30. James talks over a live editor with the file tree on the left and the running site on the right, and every scrim opens with the runner already serving the project, so you never wait for a dev server. Challenges arrive as a slide with the requirements plus comment placeholders in the code (`<!-- header goes here -->`, `// title, description, date (hint: z.string().date())`), then the line "pause the video, see how you do, and then we'll come back and do it together." Solutions typically take one to two minutes.
+
+The challenges are checked by you looking at the preview, not by an automated grader; I saw no "Challenge with Instant Feedback" icons in this course's table of contents. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed. Slides can be toggled with Cmd+Y or Ctrl+Y, which James points out in the intro because you will want the requirements slide open while you work.
+
+## Free or Pro: exactly what is gated
+
+The first four scrims (the intro, project setup, the starter code, and the first header challenge, about 16 minutes) are marked SAMPLE and open without Pro. Everything from "Intro to reusable components" onward is Pro only, which is all 15 remaining challenges, the content collections and blog section, and the deploy lesson. There are no separate Solo Project items in this course; the gate is the course itself.
+
+Pro also unlocks the Certificate of Completion listed at the end of the table of contents and the Pro-only Discord channels. Basic Discord access is on the free plan according to Scrimba's pricing page, so the server alone is not a reason to upgrade. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro includes in your region.
+
+## How long it really takes
+
+Two hours is video runtime. With 18 challenges to attempt before watching the solution, plan for four to six hours, or two or three evenings. The components section is where pausing pays off most, since every later challenge reuses `Section`, `Container`, `ButtonLink`, and `SectionHeader`. Replacing the placeholder headshot, resume, projects, and posts with your own, which James asks you to do more than once, adds two to four hours. Actually deploying adds an hour the first time for the GitHub and Netlify signup dance.
 
 ## Who it's for, and who should skip it
 
-It fits frontend developers who already know HTML, CSS, and some JavaScript and want a fast, modern tool for content sites. It is a good fit for [marketers](/docs/for/marketers/) and developers who maintain blogs or docs.
+It fits you if you know HTML, CSS, and enough JavaScript to read `array.map()` and an `async` function, and you want a personal site, blog, or docs site that loads fast and is edited in Markdown. It is an especially good fit if you already know React or Vue; the course keeps comparing Astro's scoped styles, slots, and content collections to what you know. It is also a gentle first contact with TypeScript and Zod, since the only types you write are a props interface and a schema.
 
-Skip it if you have never written JavaScript or built a webpage, since the course assumes those basics. Skip it too if your work is heavily interactive app development, where a framework like React is the better primary tool; Astro shines for content, not complex client-side apps.
+Skip it, for now, if you have never built a webpage: the course assumes you can read HTML and CSS and does not teach them. Do [Learn HTML and CSS](/docs/courses/css/html-and-css/) and [Learn JavaScript](/docs/courses/javascript/learn-javascript/) first. Skip it if what you need is an interactive app; this course ships zero client-side JavaScript on purpose, and [Learn React](/docs/courses/react/learn-react/) or [Learn Next.js](/docs/courses/javascript/nextjs/) is the better tool. And if you already use Astro's content collections and dynamic routes, there is nothing new here; the course stops before islands, SSR, and endpoints.
 
 ## Prerequisites
 
-Comfort with HTML, CSS, and basic JavaScript. Familiarity with components from any framework helps but is not required. No prior Astro experience is assumed.
+HTML, CSS, and basic JavaScript, including `import`, `array.map()`, template literals, and `await`. Scrimba's listing asks for comfort with npm and the command line, but inside the course the runner handles that; you only need a terminal, Git, and a GitHub account if you deploy. No prior Astro, TypeScript, or Zod is assumed.
 
 ## Where it fits
 
-This course is a standalone Pro course rather than a named path member, but it complements the fullstack and frontend tooling tracks. If you already know a JavaScript framework, Astro is a useful addition for the content side of a stack.
-
-## Free or Pro
-
-This is a Pro course, so it needs a Scrimba subscription. Pro also covers the full career paths, the coding challenges, the Discord, and certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+Scrimba's course page does not place Intro to Astro in a career path; its structured data tags it as Fullstack. On this site it sits with [Intro to Vite](/docs/courses/javascript/vite/) and [Learn Markdown](/docs/courses/javascript/markdown/) as a tooling course, and it is a natural second step after [Build and Deploy Your Portfolio](/docs/courses/javascript/and-deploy-your-portfolio/) if you want a framework under that portfolio. James also teaches [Build a React Project: Movie Search App](/docs/courses/react/a-react-project-movie-search-app/) on Scrimba, and [Learn TypeScript](/docs/courses/typescript/learn-typescript/) is the follow-on if the Zod schema was the part you liked.
 
 ## Strengths and limits
 
-What it does well: it is a concise, hands-on introduction to a genuinely useful framework, taught by an engaging instructor, and it makes Astro's content-first, low-JavaScript model clear.
+What it does well: it teaches current Astro (content layer loaders, `render()`, `getStaticPaths()`), half the scrims are challenges that build pieces you keep, the scoped-styles and `.data` gotchas are shown as live mistakes rather than warnings, and the finished site is something you can deploy and put on a resume.
 
-Where it is limited: it is introductory by design, so it does not cover advanced integrations or large-app architecture, it sits behind Pro, and Astro itself is a specialised tool best suited to content sites rather than every project.
+Where it is limited: it is Pro only after the first four scrims. It never runs JavaScript in the browser, so there are no islands, no integrations, and no client scripts. The contact page is a stub, the deploy lesson is slides that assume you know Git, and the sample blog posts are AI-generated filler. I also could not confirm the pinned Astro version from the dependencies panel, so check against the current docs if something behaves differently.
 
 ## Related courses and comparisons
 
-- [Intro to Vite](/docs/courses/javascript/vite/), another modern frontend tooling course
+- [Intro to Vite](/docs/courses/javascript/vite/), the other modern frontend tooling course
+- [Learn Markdown](/docs/courses/javascript/markdown/), if the blog section made you want to know Markdown properly
+- [Learn Next.js](/docs/courses/javascript/nextjs/), the React-based alternative for sites that need interactivity
 - [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language foundation Astro builds on
 - [Learn React](/docs/courses/react/learn-react/), if your work leans toward interactive apps
 - [All JavaScript courses](/docs/courses/javascript/), the full category hub
 - [Scrimba vs Udemy](/docs/comparisons/scrimba-vs-udemy/), if you are comparing platforms
 
 <FAQAccordion items={[
-  { q: "Is Intro to Astro free?", a: "No. It is a Scrimba Pro course, so it requires a subscription. Pro also unlocks the career paths, challenges, and certificates." },
-  { q: "What is Astro best used for?", a: "Content-focused sites like blogs, documentation, and marketing pages. It combines components with Markdown and ships minimal JavaScript, which keeps those sites fast." },
-  { q: "Do I need to know a JavaScript framework first?", a: "Not strictly, but you do need HTML, CSS, and some JavaScript. Prior experience with components from any framework makes the course easier." },
-  { q: "Who teaches it?", a: "James Q Quick. The course is hands-on, built around building alongside him in the Scrimba player." },
-  { q: "Will this teach me everything about Astro?", a: "No. It is a focused introduction. You will be able to build a content site, but advanced integrations and large-project patterns are beyond its scope." },
+  { q: "Is Intro to Astro free on Scrimba?", a: "Only the first four scrims (about 16 minutes: the intro, project setup, the starter code, and the first header challenge) are free samples. The other 33 scrims, including all the content collection and blog lessons, need Scrimba Pro. There are no separate solo projects; the gate is the course itself." },
+  { q: "Who teaches it?", a: "James Q Quick, a developer educator who, per his Scrimba teacher card, works as a Developer Educator at Cloudflare in 2026. He recorded the course while at Makeswift, and says in the intro it was made in collaboration with the Astro team. The last two scrims are standard Scrimba outros from Per Borgen." },
+  { q: "What do you build?", a: "One project: a personal site with a header, projects grid, and blog section on the homepage, a /projects page, a /blog list, a dynamic /blog/[slug] page for each Markdown post, a contact page, a navbar and footer, and a Netlify deploy. The placeholder content (headshot, resume, three AI-written posts) is meant to be replaced with yours." },
+  { q: "Which Astro features does it cover?", a: ".astro components and frontmatter, props typed with a TypeScript interface, scoped styles and is:global, slots, JSON imports, file-based routing, content collections with file and glob loaders and a Zod schema, getCollection(), getStaticPaths() for dynamic routes, and render() for Markdown content. It does not cover islands, framework integrations, client scripts, SSR, or API endpoints." },
+  { q: "Do I need to install anything?", a: "Not inside Scrimba: every scrim opens with the dev server already running at localhost:4321. You need Node, npm, Git, and a GitHub account only if you download the zip and follow the Netlify deploy lesson." },
+  { q: "How much TypeScript is there?", a: "Very little. You write a Props interface for two components and a Zod schema for the blog collection; James explains the syntax as it appears. The starter comes with a tsconfig and TypeScript is optional in Astro." },
+  { q: "Are the challenges auto-checked?", a: "No. The 18 challenges pause the recording with a requirements slide and comment placeholders; you write the code, check the live preview, then watch James's solution. I saw no instant-feedback challenge icons in this course." },
+  { q: "How long does it take?", a: "About 2 hours of video. Plan four to six hours if you attempt every challenge, plus two to four more to personalize the content and deploy it." },
+  { q: "Does it have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed control." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/intro-to-astro-c00ar0fi5u" variant="button">
-  View Intro to Astro on Scrimba
+  Try the free Intro to Astro sample scrims
 </AffiliateLink>
 
 <CourseSchema
   name="Intro to Astro"
-  description="Scrimba's Pro-tier introduction to Astro taught by James Q Quick. About 2.1 hours building fast, content-focused sites with components and Markdown."
+  description="Scrimba's Pro introduction to Astro taught by James Q Quick. About 2.1 hours and 37 scrims, building a personal site with components, a Zod-typed content collection, a Markdown blog with dynamic routes, and a Netlify deploy."
   url="https://scrimba.com/intro-to-astro-c00ar0fi5u"
   timeRequired="PT2H5M45S"
   difficulty="Intermediate"
   access="Pro"
   keywords={["Fullstack", "Frontend"]}
+  modules={[
+    { name: 'Setup and the starter code', duration: '12 min' },
+    { name: 'Components, props, and scoped styles', duration: '55 min' },
+    { name: 'JSON data, routing, navbar and footer', duration: '16 min' },
+    { name: 'Content collections and the blog', duration: '36 min' },
+    { name: 'Deploy and wrap-up', duration: '10 min' },
+  ]}
 />

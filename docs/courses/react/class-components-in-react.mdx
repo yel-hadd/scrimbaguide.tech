@@ -1,97 +1,211 @@
 ---
-title: "Learn Class Components in React"
+title: "Learn Class Components in React on Scrimba: 2026 Review"
 sidebar_position: 2
-description: "Bob Ziroll's short Pro course on React class components: lifecycle methods, this binding, and setState. Built for maintaining legacy codebases, not for learning modern React."
-keywords: [scrimba class components react, react class components course, bob ziroll class components, legacy react, react lifecycle methods]
+toc_max_heading_level: 2
+sidebar_label: "Class Components in React"
+description: "Bob Ziroll's 80 minute Pro course on React class components, reviewed from inside: every scrim read, four challenges, React 17, and who actually needs it."
+keywords: [scrimba class components react, learn class components in react review, react class components course, bob ziroll class components, legacy react, react lifecycle methods, scrimba react course review]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Class Components in React
 
-A short, targeted course with Bob Ziroll: about 1.3 hours on the class-based React that modern courses no longer teach, aimed at people maintaining older codebases.
+Bob Ziroll's short Pro course on the older, class-based way of writing React: 18 scrims and about 80 minutes of video. I read the transcript of every scrim, opened the code in each one, and worked through the challenges with a Pro account in September 2026. This is what is inside, and who I think should bother.
 
-*This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. It is sequenced into the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-Learn Class Components in React is Scrimba's Pro, intermediate course, roughly 1.3 hours taught by Bob Ziroll, covering class components: lifecycle methods, `this` binding, and `setState`. Modern React is hooks-based, so most learners should not start here. Take this only if a job or an existing codebase forces you to read or write class components. For learning React itself, do the hooks-based Learn React instead.
+Learn Class Components in React is a Pro course rated Intermediate, taught by Bob Ziroll, with 80 minutes of video across 18 scrims (Scrimba's listing rounds this to 1.3 hours). It teaches the class syntax React used before hooks: `extends React.Component`, `render()`, `this.state` and `this.setState()`, the constructor and `.bind()`, and the three lifecycle methods you meet most often. Every example runs on React 17.0.2. Bob recorded it as an onboarding section for his Advanced React course, and it reads that way: a crash course for people who already know hooks and need to read older code. If you are learning React for the first time, take the free [Learn React](/docs/courses/react/learn-react/) instead and come back only if a codebase forces you to.
 
 <CourseCard
   title="Learn Class Components in React"
   duration="1.3 hrs"
   difficulty="Intermediate"
   access="Pro"
+  lessons={18}
   instructor="Bob Ziroll"
   instructorUrl="https://scrimba.com/@bobziroll"
   href="https://scrimba.com/learn-class-components-in-react-c0h"
-  description="A focused look at React class components, lifecycle methods, and setState, for maintaining legacy codebases."
+  description="An 80 minute crash course in React class components, state, the constructor, and lifecycle methods, built for reading legacy code."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/learn-class-components-in-react/course-intro-title-card.webp"
+    alt="Title card of Scrimba's Learn Class Components in React course: the words Class Components in React on a pale green slide with the Scrimba logo"
+    width={1279}
+    height={720}
+    caption="The only title card in the course, from the intro scrim. The 18 scrims are a flat list with no chapter cards."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-It is worth your time in one specific situation: you have landed in a codebase, or a job, that still uses class components and you need to read and edit them without guessing. For that, an hour with a clear instructor is far more efficient than piecing it together from old blog posts. Bob Ziroll covers the parts that trip people up coming from hooks, namely `this` binding, lifecycle methods, and the older `setState` pattern.
+For one narrow group, yes. If you already write React with hooks and you have just inherited a codebase full of `componentDidMount` and `this.setState`, 80 minutes with Bob will get you reading and editing that code without guessing. He spends most of the time on exactly the two things that trip hooks developers up: why `this` is undefined inside a class method you passed to `onClick`, and how the lifecycle methods map onto `useEffect`. Both are explained with the bug on screen first and the fix second.
 
-The honest verdict is that almost nobody should take this as their introduction to React. The ecosystem moved to function components and hooks years ago, new code is written that way, and learning classes first will give you habits you then have to unlearn. This is a maintenance course, not a foundations course.
+For everyone else, no. Bob says as much in the intro: "With the release of hooks in React sixteen point eight, there's only a small handful of reasons left to actually use class components in React." New React code is not written this way, and learning classes before hooks gives you habits you will have to undo. This is a maintenance course, and a good one, but it is not a place to learn React.
+
+One thing to know before you click: the About text on Scrimba still calls this a "free, one-hour course," but the header stats say Pro, and only the first four scrims carry the free SAMPLE badge. Everything from "State in class components" onward needs a subscription.
 
 ## What you'll learn
 
-There is no multi-module breakdown for this short course. In about 1.3 hours it covers the class component model end to end: defining a component as a class, the `render` method, managing state with `this.state` and `setState`, binding event handlers and the `this` keyword, and the lifecycle methods (`componentDidMount`, `componentDidUpdate`, `componentWillUnmount`) that hooks like `useEffect` later replaced. The goal is fluency in reading and editing existing class-based code, not building new apps this way.
+Scrimba shows the course as one flat list of 18 scrims with no modules. The grouping below is mine, following the three topics Bob works through in order, so the durations are my sums of the scrim lengths.
+
+<CourseCurriculum
+  modules={[
+    { name: 'Classes and converting components', duration: '16 min', lessons: 4 },
+    { name: 'State, setState, and the constructor', duration: '32 min', lessons: 6 },
+    { name: 'Lifecycle methods', duration: '30 min', lessons: 6 },
+    { name: 'Wrap-up: referral clip and certificate', duration: '3 min', lessons: 2 },
+  ]}
+/>
+
+I counted 18 scrims totaling 80 minutes and 50 seconds; Scrimba's structured data says 19 lessons, which adds the Certificate of Completion entry at the bottom of the list, and the course header rounds the runtime to "80 min" while the catalog card says 1.3 hours. Four scrims are labeled as challenges, and two more lessons pause for an optional one.
+
+## Inside the course, section by section
+
+### 1. Classes and converting components (16 min, 4 scrims)
+
+The intro opens with "No. Don't click away. You're in the right place. This is still a part of the advanced React course." Bob explains that his new Learn React course teaches only function components, which left a gap before Advanced React, which assumed classes. The rest of the scrim is his case for learning "old React" anyway: existing codebases and the older tutorials you will hit while debugging.
+
+"ES6 classes review" is five minutes of plain JavaScript, no React. The file defines a `Character` class with a constructor, a class field (`alive = true`), and an `updateHp` method, then `Enemy` and `Hero` classes that extend it. Bob calls it "admittedly a very abbreviated review," skips prototypes entirely, and tells you to "uncomment this code and play with it, pause the screencast, try changing things, see what happens."
+
+"Intro to class components" converts a one-line function component into `class App extends React.Component` with a `render()` method, then shows props as `this.props.type`. As Bob puts it, "the this keyword will be everywhere inside of your class component so you'll get used to it pretty quickly." The first challenge follows immediately: convert three function components (App, a Header that takes a `username` prop, and a Greeting with time-of-day logic) to classes and find "the small bug," which turns out to be a prop nobody passed.
+
+### 2. State, setState, and the constructor (32 min, 6 scrims)
+
+This is the core of the course and where the real confusion lives. "State in class components" takes a "Should I go out tonight?" Yes/No toggle built with `useState` and rebuilds it with a `state` class field. The rule is stated flatly: "in a class component, state will always be an object and every piece of data that we want to save will be a property on that object." It also has to be called `state`, nothing else.
+
+"Setting state in class components" introduces `this.setState()` and then triggers the bug everyone hits. Bob clicks the toggle, the console throws "cannot read properties of undefined (reading setState)," and he calls it "one of the most confusing things to learn, especially when you are a new developer in React." The fix for now is turning the method into an arrow function; the explanation waits two lessons. He also fixes a second bug you will make yourself: the `prevState` callback now has to return an object, not a string.
+
+The challenge scrim converts a counter with plus and minus buttons from `useState` to a class, with a four step brief in the file. Bob's own solution is worth watching for the mistakes: he forgets `extends React.Component` ("Sorry for anyone that was screaming at me for that") and explains why an arrow function returning an object literal needs parentheses.
+
+<Screenshot
+  src="/img/scrimba/learn-class-components-in-react/counter-challenge-brief-lesson.webp"
+  alt="Scrimba Learn Class Components in React, the convert to a class component with state challenge paused at 0:18: App.js shows a four step challenge comment above a function component using React.useState for a counter, and the preview shows a counter reading 0 with minus and plus buttons"
+  width={1400}
+  height={660}
+  caption="The counter challenge at 0:18. Every challenge in the course looks like this: a numbered brief in a comment, the working hooks version below it, and the recording paused until you convert it. Note react@17.0.2 in the dependencies panel."
+/>
+
+"Constructor method in class components" is the longest scrim at nearly eight minutes and the one to rewatch if you maintain older code. Bob shows the older syntax from before class fields existed: a `constructor()`, a `super()` call, `this.state = {...}`, and the line that fixes the undefined `this` without arrow functions, `this.toggleGoOut = this.toggleGoOut.bind(this)`. He refuses to go down the rabbit hole: "I'm going to teach you the quick solution to this, but I'm also gonna recommend that you not be too terribly concerned about why this works." A two minute challenge has you convert the counter back to constructor syntax.
+
+The section ends with "Updating complex state," a contact card with a favorite star. After a third conversion challenge, Bob shows the one thing classes do better: `this.setState()` merges the object you give it into existing state, so you can drop the spread operator you needed with `useState`. He rates the win honestly: "in reality we only avoided writing one line of code. But that being said, we gotta take the wins when we can get them."
+
+### 3. Lifecycle methods (30 min, 6 scrims)
+
+A short slide intro explains mounting, updating, and unmounting, and names the methods the course covers: `render`, `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount`.
+
+"componentDidMount" uses the Star Wars API. Bob logs from `render` and `componentDidMount` so you see the order in the console, fetches a character, then hands you a challenge: save the response in state and render its name. He closes by writing the `useEffect` equivalent with an empty dependency array, commented out because it will not run inside a class.
+
+<Screenshot
+  src="/img/scrimba/learn-class-components-in-react/componentdidmount-luke-skywalker-lesson.webp"
+  alt="Scrimba Learn Class Components in React, the componentDidMount lesson paused at 5:16: App.js shows componentDidMount fetching swapi.dev/api/people/1 and calling this.setState with the character, render returns an h1 with this.state.character.name, the console lists render, componentDidMount, render, and the preview shows Luke Skywalker"
+  width={1400}
+  height={660}
+  caption="The componentDidMount challenge solved at 5:16. The console order (render, componentDidMount, render) is the point of the lesson: the second render comes from setState after the fetch resolves, and componentDidMount does not run again."
+/>
+
+"componentDidUpdate part 1" takes a form Bob "stole" from another lesson and saves its state to localStorage on every change, then repopulates it on refresh. Part 2 is the lesson I would show anyone who thinks they understand `componentDidUpdate`. The counter now drives which Star Wars character to fetch, and putting the fetch inside `componentDidUpdate` sends the app into an infinite loop, on screen, with the console filling up. The fix is the `prevState` argument: only fetch when `prevState.count !== this.state.count`. Bob is candid about the example: "you either need an app that's relatively complex and large in scope, or you have to use an example that's relatively contrived."
+
+<Screenshot
+  src="/img/scrimba/learn-class-components-in-react/componentdidupdate-infinite-loop-lesson.webp"
+  alt="Scrimba Learn Class Components in React, componentDidUpdate part 2 paused at 2:28: App.js shows componentDidUpdate logging Updated and calling this.getStarWarsCharacter, the console shows the word Updated repeated nine times, and the preview shows a counter at 1 above the name Luke Skywalker"
+  width={1400}
+  height={660}
+  caption="The infinite loop at 2:28. setState inside componentDidUpdate triggers another update, which calls setState again. Bob lets it run for a moment before commenting the line out and introducing prevState."
+/>
+
+"componentWillUnmount" reuses a window width tracker with a `resize` listener. Toggling the component off and resizing produces React's "can't perform a React state update on an unmounted component" warning, and the fix is `removeEventListener` in `componentWillUnmount`. "Other Lifecycle Methods" is a three minute slide tour of `shouldComponentUpdate`, `getDerivedStateFromProps`, and `getSnapshotBeforeUpdate`, each with a link to the React docs and a reason he is not teaching it.
+
+### 4. Wrap-up (3 min, 2 scrims)
+
+The last two scrims are not course content: a two minute clip from Per Borgen about the Scrimbassador referral program, and the standard 53 second "How to Utilize Your Certificate" clip that ends most Scrimba courses.
+
+## What a lesson actually feels like
+
+Scrims run from two to eight minutes, and every one is Bob talking over a live editor with the preview on the right. The pattern is consistent: take a working hooks component, break it or rewrite it as a class, hit the error, fix it, then type a comment block summarizing the rules "in case anybody's more of a visual or a reading learner." Challenges arrive as a numbered brief in a comment at the top of the file and a paused recording; Bob's solution follows right after, so you can compare.
+
+Every example is tiny by design, a counter, a toggle, a contact card, a form. There is no project. The dependencies panel shows react and react-dom at 17.0.2 throughout, which is old but fine for this material, since nothing here changed in React 18 or 19. Each scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and speed control.
+
+Bob's tone is the same as in Learn React, calm and a little self-deprecating. Twice he tells you not to chase the "why" of `this` binding, and once he admits an example is contrived. I found that more useful than a longer course pretending the topic deserves more time.
+
+## Free or Pro: exactly what is gated
+
+Four scrims are free previews with the SAMPLE badge: the intro, the ES6 classes review, "Intro to class components," and the first challenge. That is the first 16 minutes, and it covers converting stateless components. The remaining 14 scrims, including everything about state, `setState`, the constructor, and all of the lifecycle methods, are Pro. So is the certificate.
+
+There are no Solo Projects in this course and no separate Pro-only challenge tier; the four conversion challenges are ordinary scrims. The About text on Scrimba still describes the course as free, which is out of date. Pro also unlocks the career paths this course belongs to and the Pro-only channels on Scrimba's Discord (the server itself has a free tier, so the Discord alone is not a reason to upgrade). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what a subscription costs in your region.
+
+## How long it really takes
+
+The video is 80 minutes. If you already know hooks and pause to do the four challenges yourself, budget two to three hours: each conversion takes five to ten minutes of typing, and the two componentDidUpdate lessons are worth a second pass. If your JavaScript classes are rusty, add an hour to work through the `Character`, `Hero`, and `Enemy` example in scrim two until `extends`, `super()`, and class fields feel normal. An afternoon covers it either way.
 
 ## Who it's for, and who should skip it
 
-It fits developers who already know modern React and have to work in a legacy class-based codebase, or who are studying older code they did not write.
+It fits you if you know modern React and have a class-based codebase to maintain, or you are about to start [Advanced React](/docs/courses/react/advanced-react/), the course this section was recorded to prepare you for; Bob says in the intro that it assumed class knowledge. It also helps if older tutorials keep showing you `this.setState` and you want to know what it does.
 
-Skip it if you are learning React for the first time. Do [Learn React](/docs/courses/react/learn-react/), which teaches the hooks-based approach used in all current work, and only come back here if a specific project requires classes.
+Skip it if you are new to React. Do [Learn React](/docs/courses/react/learn-react/) first; it is free and teaches the way React is written now. Skip it too if what you want is deeper React knowledge in general: there is nothing here about routing, performance, or patterns, only the class syntax.
 
 ## Prerequisites
 
-A working grasp of JavaScript classes, `this`, and basic React concepts (components, props, state). It helps to already know hooks, since the course frames class patterns against their modern equivalents.
+You need working JavaScript, including `class`, `extends`, and the arrow function versus regular function distinction, because Bob only touches classes for five minutes and skips prototypes on purpose. You also need basic React: components, props, and `useState`, since every lesson starts from a working hooks component. Knowing `useEffect` is optional but rewarding; Bob compares each lifecycle method to it, and those asides are the best part of the lifecycle section. Nothing needs installing; everything runs in the Scrimba editor with React 17 pre-loaded.
 
 ## Where it fits
 
-This is a side branch rather than a core step. It is listed under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), but the main React track runs through the hooks-based courses; take this only when a legacy requirement comes up.
-
-## Free or Pro
-
-This is a Pro course, so it needs a Scrimba subscription. Pro also unlocks the full career paths, the coding challenges, the private Discord, and path certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+This is a side branch off Scrimba's React track, not a step on it. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), and Bob describes it as an onboarding phase between [Learn React](/docs/courses/react/learn-react/) and [Advanced React](/docs/courses/react/advanced-react/). Take it right before Advanced React, or the week you inherit a legacy codebase.
 
 ## Strengths and limits
 
-What it does well: it is short and to the point, it targets the exact friction (binding, lifecycle, `setState`) that hooks developers hit in old code, and Bob Ziroll explains the why, not just the syntax.
+What it does well: it is short and shows every bug on screen before fixing it, the `this` binding problem and the `componentDidUpdate` infinite loop are demonstrated rather than described, every lifecycle method is mapped onto its `useEffect` equivalent, and Bob is clear about what he is skipping and why.
 
-Where it is limited: it teaches a pattern that is no longer how new React is written, so it has a narrow audience, and on its own it is not a path to building modern apps.
+Where it is limited: it teaches syntax that new React code no longer uses, the examples are deliberately trivial with no project to build, React 17 is the only version you see, the free preview stops before state is introduced, and Scrimba's own listing still calls it free when it is not.
 
 ## Related courses and comparisons
 
-- [Learn React](/docs/courses/react/learn-react/), the modern hooks-based course most people should take
-- [Advanced React](/docs/courses/react/advanced-react/), for production patterns once you know hooks
+- [Learn React](/docs/courses/react/learn-react/), the free, hooks-based course most people should take first
+- [Advanced React](/docs/courses/react/advanced-react/), the course this section was recorded to prepare you for
 - [React Challenges](/docs/courses/react/react-challenges/), to drill modern React
 - [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials/), how it stacks up
 
 <FAQAccordion items={[
-  { q: "Should I learn class components or hooks?", a: "Hooks, for almost everyone. Modern React is written with function components and hooks. Take this class components course only if a legacy codebase or job requires it." },
-  { q: "Is this course free?", a: "No. It is a Scrimba Pro course and requires a subscription. The hooks-based Learn React course is free." },
-  { q: "What does it cover?", a: "The class component model: lifecycle methods, this binding, setState, and reading and editing existing class-based code." },
-  { q: "Do I need to know hooks first?", a: "It helps. The course frames class patterns against their hook equivalents, so prior hooks knowledge makes the comparisons land." },
-  { q: "Who teaches it?", a: "Bob Ziroll, who also teaches Learn React and Advanced React, so the style is consistent across the React courses." },
+  { q: "Should I learn class components or hooks?", a: "Hooks, for almost everyone. Bob Ziroll says in the intro that since React 16.8 there is only a small handful of reasons to use classes. Take this course when a legacy codebase, an older tutorial, or the Advanced React course puts class components in front of you." },
+  { q: "Is Learn Class Components in React free?", a: "No. It is a Pro course. The first four scrims (about 16 minutes, up to the first challenge) are free previews; everything about state, setState, the constructor, and lifecycle methods needs a subscription. The About text on Scrimba still says free, which is out of date." },
+  { q: "What exactly does the course cover?", a: "Converting function components to classes, props via this.props, state as a class field, this.setState with a callback, why this is undefined in a class method and the arrow function and bind fixes, the constructor and super(), setState's automatic merging, and componentDidMount, componentDidUpdate (with prevState), and componentWillUnmount. Three other lifecycle methods get a slide each." },
+  { q: "Do I need to know hooks first?", a: "You need useState at minimum, because every lesson starts from a working hooks component and converts it. Knowing useEffect helps: each lifecycle method is compared to it." },
+  { q: "Who teaches it?", a: "Bob Ziroll, who also teaches Learn React and Advanced React. He recorded this as the onboarding section for Advanced React after his new Learn React course dropped class components." },
+  { q: "Are there challenges, and are they AI-checked?", a: "There are four conversion challenges (three components, a counter with state, the counter with a constructor, and a contact card) plus two optional pauses in the lifecycle lessons. They are ordinary paused scrims with Bob's solution following; I did not see any AI-checked challenges in this course." },
+  { q: "What do you build?", a: "Nothing you would keep. The examples are a Yes/No toggle, a counter, a contact card with a favorite star, a form that persists to localStorage, a Star Wars character fetcher, and a window width tracker. Each exists to show one class feature." },
+  { q: "Which React version does it use?", a: "React 17.0.2 and react-dom 17.0.2 in every scrim. Nothing taught here changed in React 18 or 19, so the version does not matter for the material." },
+  { q: "How long does it take?", a: "80 minutes of video. Plan two to three hours if you do the four challenges yourself, plus an hour if JavaScript classes are new to you." },
+  { q: "Does it have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/learn-class-components-in-react-c0h" variant="button">
-  View Learn Class Components in React on Scrimba
+  Preview Learn Class Components in React on Scrimba
 </AffiliateLink>
 
 <CourseSchema
   name="Learn Class Components in React"
-  description="Scrimba's short, Pro, intermediate course taught by Bob Ziroll. About 1.3 hours on React class components, lifecycle methods, and setState for legacy codebases."
+  description="Scrimba's Pro, intermediate course taught by Bob Ziroll: 18 scrims and about 80 minutes on React class components, this.setState, the constructor, and the componentDidMount, componentDidUpdate, and componentWillUnmount lifecycle methods, for reading legacy React code."
   url="https://scrimba.com/learn-class-components-in-react-c0h"
   timeRequired="PT1H20M1S"
   difficulty="Intermediate"
   access="Pro"
   keywords={["React", "Frontend"]}
+  modules={[
+    { name: 'Classes and converting components', duration: '16 min', lessons: 4 },
+    { name: 'State, setState, and the constructor', duration: '32 min', lessons: 6 },
+    { name: 'Lifecycle methods', duration: '30 min', lessons: 6 },
+    { name: 'Wrap-up: referral clip and certificate', duration: '3 min', lessons: 2 },
+  ]}
 />

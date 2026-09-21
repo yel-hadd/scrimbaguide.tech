@@ -1,10 +1,12 @@
 ---
-title: "Build a Memory Game in React"
+title: "Build a Memory Game in React on Scrimba: 2026 Review"
 sidebar_position: 5
-description: "Ajo Borgvold's 4.4-hour Pro project course: build an accessible memory game in React, with real focus on accessibility and data fetching. Who it fits and what you build."
-keywords: [scrimba memory game react, build memory game react, react project course, accessible react project, ajo borgvold scrimba]
+toc_max_heading_level: 2
+sidebar_label: "Memory Game in React"
+description: "Ajo Borgvold's 4.4-hour Pro project course from inside: 43 scrims, 29 challenges, one emoji memory game, and an accessibility module most React courses skip."
+keywords: [scrimba memory game react, build memory game react review, react project course, accessible react project, ajo borgvold scrimba, scrimba memory game in react review]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -12,16 +14,17 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Build a Memory Game in React
 
-A project course with Ajo Borgvold: about 4.4 hours building one polished memory game in React, with unusual attention to accessibility along the way.
+A Pro project course from Ajo Borgvold: about 4.4 hours building one emoji memory game in React, with a full module on making it work for screen reader and keyboard users. I opened every module and read the transcripts of 26 of its 43 scrims with a Pro account in September 2026, at least a third of every module, including the intro, the outro, and every module's first lesson.
 
-*This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. It is sequenced into the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-Build a Memory Game in React is Scrimba's Pro, intermediate project course, roughly 4.4 hours taught by Ajo Borgvold. You build a single complete game across four modules, covering data fetching, game state, and a full accessibility pass that most project tutorials skip. It is for people who already know React basics and want a guided build that produces something finished rather than a list of disconnected exercises.
+Build a Memory Game in React is a Pro, intermediate project course: 4.4 hours across four modules, 43 scrims by my count, 29 of them challenges you solve before the teacher does. You start from boilerplate that renders ten hardcoded emojis face up, and you end with a game that fetches emojis from the EmojiHub API, shuffles pairs, tracks selections and matches with `useState` and `useEffect`, announces every card and the game status to screen readers, recovers from a failed fetch, and lets the player pick a category and card count from a form built out of reusable components. It runs on React 18.2. It is for people who already know hooks and want practice, and the accessibility module is the reason to pick this project over a generic one.
 
 <CourseCard
   title="Build a Memory Game in React"
@@ -32,83 +35,193 @@ Build a Memory Game in React is Scrimba's Pro, intermediate project course, roug
   instructor="Ajo Borgvold"
   instructorUrl="https://scrimba.com/u0tj0c"
   href="https://scrimba.com/memory-game-in-react-c0a3odsk39"
-  description="A guided React project: build an accessible memory game with real data fetching, in the interactive Scrimba player."
+  description="A guided React project: build an accessible memory game on the EmojiHub API, in 29 challenges inside the interactive Scrimba player."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/memory-game-in-react/course-title-card.webp"
+    alt="Title card of Scrimba's Build a Memory Game in React course: Build a Memory Game, With React and the EmojiHub API, Teacher: Ajo Borgvold"
+    width={1279}
+    height={720}
+    caption="The course title card from the intro scrim. The four modules open straight into code, so this is the only chapter card."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/memory-game-in-react/aria-label-aria-live-aside-title-card.webp"
+    alt="Slide from the aria-label and aria-live aside in Scrimba's Build a Memory Game in React: Accessibility tools: aria-label and aria-live, ensure accessibility by adding humanly intelligible information to otherwise inaccessible elements"
+    width={1279}
+    height={720}
+    caption="The slide that opens module 3's first aside, which is a proper explainer rather than a code-along."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/memory-game-in-react/focus-accessibility-aside-title-card.webp"
+    alt="Slide from the focus aside in Scrimba's Build a Memory Game in React: Accessibility tool: Add focus to new DOM element"
+    width={1279}
+    height={720}
+    caption="The focus aside, the longest scrim in the course at 10:26."
+    source="Slides from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-If you have learned React and now need reps building something whole, project courses like this are the bridge. The standout here is the accessibility module. Most tutorials treat keyboard navigation and screen-reader support as an afterthought, and this one spends a real block on it, which is genuinely useful since accessibility is a common gap in junior portfolios.
+If you have finished [Learn React](/docs/courses/react/learn-react/) and want reps, this is a well built set of them. Two thirds of the scrims are challenges: Ajo pastes a numbered brief into the file, tells you to pause, and comes back with a solution you compare against your own. The briefs are specific (variable names, class names to copy, a hint and a warning), so you are never guessing what "done" looks like. And the solutions are typed live: Ajo's own answer to the first fetch challenge throws a `ReferenceError` from a typo before it works.
 
-The honest caveat is scope. This is one project, not a survey of React. You will not come out knowing routing, state libraries, or testing. It assumes you can already write components and use hooks, so it is a practice course, not a teaching-from-scratch course. If you want the fundamentals, start elsewhere and come back to this to apply them.
+The accessibility module is why you would pick this course over another project build. Most project tutorials add an `aria-label` somewhere and call it done. This one spends 74 minutes on why a screen reader user gets an HTML entity code instead of an emoji, how `aria-live="polite"` decides when to speak, why matched cards should be disabled so the Tab key skips them, and how to move focus to a component that just appeared so it gets announced. If you have never thought about any of that, you will after this.
+
+Two caveats. It is one project, not a survey: no routing, no Context, no testing, no TypeScript, and the CSS is written for you. And there is a seam Ajo owns up to in a "side note" scrim: three module 1 lessons were re-recorded after the rest, so the code you see from module 2 onward has unnecessary `async` keywords and a `reduce` where a `map` would do. Nothing breaks, but you should know why the code shifts.
 
 ## What you'll learn
 
 <CourseCurriculum
   modules={[
-    { name: 'Building the Foundation', duration: '54 min', lessons: 8 },
-    { name: 'Core Game Functionality', duration: '68 min', lessons: 12 },
-    { name: 'Accessibility Enhancements', duration: '74 min', lessons: 10 },
-    { name: 'Advanced Features', duration: '66 min', lessons: 8 },
+    { name: 'Building the Foundation', duration: '54 min', lessons: 10 },
+    { name: 'Core Game Functionality', duration: '68 min', lessons: 10 },
+    { name: 'Accessibility Enhancements', duration: '74 min', lessons: 13 },
+    { name: 'Advanced Features', duration: '66 min', lessons: 10 },
   ]}
 />
 
-The build is sequential. You start by scaffolding the layout and component structure, then add the core game logic: matching cards, tracking turns, and managing the game state with hooks. Data fetching brings in real content rather than hardcoded cards. The accessibility module is the differentiator, wiring up keyboard control and screen-reader semantics. The final module layers on the polish features that make the project feel finished.
+Lesson counts are the scrims I counted in each expanded module in September 2026, including intros, asides, side notes, a "Want to become a Scrimbassador?" promo in module 3, and the outro. Scrimba's module headers show 8, 12, 10, and 8 (38 in total), while the course listing and its structured data say 44 lessons, which adds a standalone one-minute "How to Utilize Your Certificate" clip after the last module. When other pages on this site quote 44, that is Scrimba's number.
+
+## Inside the course, module by module
+
+### 1. Building the Foundation (54 min, 10 scrims)
+
+The intro shows the finished game (a form, face-down cards, a "play again" box) and sets expectations plainly: "when I say familiar with, I mean familiar with. You're not supposed to be an expert because if you were, you wouldn't need to take this course at all," as Ajo puts it at 3:52. Then "Boilerplate code" asks you to pause and read the starter files (`App.jsx`, `Form.jsx`, `MemoryCard.jsx`, `RegularButton.jsx`, a `data.js` you will not touch until module 4) and write comments to yourself before Ajo walks through them. The CSS is all pre-written: "your only job when it comes to styling is to use the class names that I tell you to use."
+
+From there the challenges start and do not stop. "Fetch data from API" has you make `startGame` async, wrap a `fetch` to the EmojiHub API in `try`/`catch`, and throw on a bad response. "Store API data in state" slices the first five emojis into `useState`. An aside on HTML entities explains why an entity stored in a variable does not decode itself, and adds the `html-entities` package to fix it. Then the emojis render, and "Issue with emojisData" stops to plan in plain English: pick five random emojis, duplicate them, shuffle them.
+
+<Screenshot
+  src="/img/scrimba/memory-game-in-react/fetch-data-from-api-reference-error-lesson.webp"
+  alt="Scrimba Build a Memory Game in React lesson Fetch data from API paused at 4:22: App.jsx shows an async startGame function with a try block fetching from the EmojiHub API and a throw new Error on a bad response, the console below reads ReferenceError: reponse is not defined, and the small preview on the right shows the Memory start screen"
+  width={1400}
+  height={660}
+  caption="4:22 of the first challenge: the console shows ReferenceError: reponse is not defined. Ajo typed reponse on line 18 while narrating the solution and fixes it a few seconds later. The dependencies panel confirms React 18.2."
+/>
+
+The two "Get random emojis" scrims open with "mini challenges" (think, no typing: how do you get random indices, how do you keep them in range?) before a `for` loop that pushes five random indices. "Duplicate and shuffle emojis" closes the module with the Fisher-Yates shuffle, which Ajo tells you to Google: "You're not supposed to know this algorithm by heart. You're not supposed to be able to just type it out from memory. I can't do that either." By 5:14 there are ten shuffled cards in the preview.
+
+<Screenshot
+  src="/img/scrimba/memory-game-in-react/duplicate-and-shuffle-emojis-lesson.webp"
+  alt="Scrimba Build a Memory Game in React lesson Duplicate and shuffle emojis paused at 5:22: the preview window shows the Memory heading and ten face-up emoji cards in two rows, five pairs (chick, dragon, shamrock, spider, dog) in a shuffled order, with the editor blurred behind it"
+  width={1400}
+  height={660}
+  caption="End of module 1 at 5:22: ten cards, five pairs, shuffled. They still show their emoji; the face-down question marks come in module 2."
+/>
+
+### 2. Core Game Functionality (68 min, 10 scrims)
+
+It opens with the "side note" about re-recorded lessons ("recordings show no mercy, as you know"), then three "Select a memory card" scrims build the `turnCard` logic step by step. Part 1's mini challenge asks what identifies a clicked card (its index) and a pair (its name), and why the name beats the HTML code "as a service to our fellow developers." Part 3 has you write the rules as pseudocode first: a card can be in the selection once, and there can be at most two selected. Ajo tests it on screen: click a snail, click it again (nothing), click the other snail (two objects), click a tree (selection resets).
+
+"Detect matching cards" is where `useEffect` arrives, with a mini challenge asking which React tool should check for matches whenever two cards are selected, and a clear explanation of the dependency array. "Create EmojiButton component" ("This was a huge challenge") pulls the button into its own component, and the two "Conditional" scrims give each card its content and its classes based on whether it is selected, matched, or neither. Ajo uses chained ternaries and says a `let` with `if`/`else` is fine too.
+
+<Screenshot
+  src="/img/scrimba/memory-game-in-react/conditional-memory-card-styling-lesson.webp"
+  alt="Scrimba Build a Memory Game in React lesson Conditional memory card styling paused at 8:42: the preview window shows the Memory game with eight face-down question-mark cards and a matched pair of goats greyed out, the editor blurred behind"
+  width={1400}
+  height={660}
+  caption="8:42: a matched pair of goats greyed out with a not-allowed cursor. The next module points out these cards still fire the click handler, and disables them."
+/>
+
+### 3. Accessibility Enhancements (74 min, 13 scrims)
+
+The module opens with a slide-based aside on `aria-label` and `aria-live`. Ajo reads the MDN definition, then answers when to use a label: "The short answer is when we have no other option." The memory game is that case: each button's accessible name is an HTML entity, so a screen reader reads a code instead of "monkey face." The aside ends with a detail I had not seen taught elsewhere: end every `aria-label` string with a period so the screen reader pauses.
+
+Back in the game, "Disabled attribute & conditional event handler" shows that the greyed-out matched cards still log "clicked," adds `disabled`, and demonstrates the Tab key skipping them. "Add aria-label to EmojiButton" refactors the button to receive the whole emoji object and labels each card "Position 3:" followed by the emoji's name and a period (index plus one, because "humans tend to start counting from one"). "Create AssistiveTechInfo component" adds a visually hidden section announcing matched pairs and cards left, and walks through the `sr-only` CSS: "If you want to hide something, like really hide it so that nobody will ever find it, then go ahead and use display none or visibility hidden."
+
+The last third builds the GameOver component and then fixes the problem it creates. A new element is not announced when it appears, so the "Focus as an accessibility tool" aside introduces what Ajo calls "a cocktail of tools": `useRef`, `useEffect`, `.focus()`, and `tabIndex="-1"`. "Make GameOver component accessible" has you apply all four, with the warning that Chrome's focus outline only shows if you navigate by keyboard.
+
+### 4. Advanced Features (66 min, 10 scrims)
+
+Error handling first: an `isError` state flipped in the `catch` block, a `resetError` function, and an `ErrorCard` component with a restart button. Then the form. "Create form elements" has you hardcode two `select` menus (emoji category, number of cards) with labels and an `onChange` that logs name and value; "Save form selections in state" stores them. The two "Refactor form" scrims finally use `data.js`: `Object.entries(data).map(...)` builds a reusable `Select` component, then an `Option` component. Ajo calls part 1 "not an easy challenge" for the destructuring and chaining involved.
+
+The final challenge closes the accessibility loop. The form reappears after game over or an error, and is not announced. Focus must move to it, but only on re-render, or the "Memory" heading would be skipped on first load. You add an `isFirstRender` flag and work out yourself where to flip it: "I'm not gonna tell you where because it's now your job to figure that out on your own."
+
+<Screenshot
+  src="/img/scrimba/memory-game-in-react/game-over-play-again-lesson.webp"
+  alt="Scrimba Build a Memory Game in React lesson Improve accessibility of Form component paused at 7:57: the preview window shows the finished game with a focused box reading You've matched all the memory cards! and a Play again button above ten greyed-out matched emoji cards"
+  width={1400}
+  height={660}
+  caption="7:57 of the last challenge: game over, all ten cards matched and greyed, the GameOver box focused so a screen reader announces it. One Tab moves focus to Play again."
+/>
+
+The outro replaces the usual celebration GIF with an emoji story, because "on a bad day, GIFs can cause some level of motion sickness for me. And since this is my course, then I make the rules." It lists ideas for extending the game: a timer or turn counter, Context, React Router, a redesign, a different API.
+
+## What a lesson actually feels like
+
+Scrims run from 1:29 to 10:26; most are five to nine minutes. The pattern is stable: a short recap, sometimes a "mini challenge" you answer in your head, then a numbered challenge pasted into the file with hints and a warning about what you will not see yet. You pause, code, and unpause to compare. Ajo's solutions are typed live, typos included, and end with a run in the preview. The tone is warm without being cloying: "give yourself a pat on the back," "please remember to take a break to not wear yourself down completely," and, on getting stuck, "you can always ask Google or ChatGPT. Remember, there's no shame in doing either of that."
+
+The preview pane is small by default; Ajo pops it into a larger window for demos. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed. Some accessibility results (focus outlines, screen reader output) are not captured in the recording, and Ajo says so and asks you to run the code yourself.
+
+## Free or Pro: exactly what is gated
+
+This is a Pro course. Two scrims are marked SAMPLE and open without a subscription: the 5:31 intro and the 5:49 boilerplate walkthrough. Everything after that, all 29 challenges, the accessibility module, and the certificate, needs Pro. There are no Solo Projects; the whole course is guided.
+
+Pro also unlocks the two career paths this course sits in and the Pro-only Discord channels. Basic Discord access is on the free plan according to <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's pricing page</AffiliateLink>, so the community itself is not the upgrade reason; this course and the paths are.
+
+## How long it really takes
+
+4.4 hours is video runtime. With 29 challenges to attempt before watching the solution, plan for 9 to 13 hours: a week at an hour and a half a day, or two focused weekends. The accessibility module will take longest if the concepts are new, because you should test with a screen reader (VoiceOver on a Mac, NVDA on Windows) rather than take Ajo's word for it. Doing one of the outro's extension ideas adds a few hours more and makes the project yours.
 
 ## Who it's for, and who should skip it
 
-It fits developers who have the React basics down and want a guided, finishable project, especially anyone who wants a portfolio piece that takes accessibility seriously.
+It fits you if you can write a component with `useState`, have fetched from an API before, and want a finished game that shows you understand accessibility. It also suits anyone who learns by solving small briefs rather than watching long builds.
 
-Skip it if you are still learning React fundamentals (do [Learn React](/docs/courses/react/learn-react/) first), or if you want broad coverage of React rather than one deep project. This is applied practice, not a curriculum.
+Skip it for now if hooks and promises are still new; the intro says the course will not teach them, and it does not. Skip it if you want breadth: no routing, state libraries, TypeScript, or testing. And if you are on the fence about Pro, the free [Learn React](/docs/courses/react/learn-react/) capstones give you two complete games first.
 
 ## Prerequisites
 
-Hooks-based React: components, props, `useState`, `useEffect`, and basic data fetching. You do not need any prior accessibility knowledge; the course introduces that as it goes.
+React basics (components, props, `useState`, `useEffect`), JavaScript array methods (`map`, `slice`, `find`, `includes`), destructuring and the spread operator, and `async`/`await` with `fetch`. You do not need any accessibility knowledge; the course teaches `aria-label`, `aria-live`, `aria-atomic`, `tabIndex`, and programmatic focus from scratch. No local install is needed, and no API key: the EmojiHub API is public.
 
 ## Where it fits
 
-This sits in the project-practice stretch of the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), after the React fundamentals and best done once you have some components under your belt.
-
-## Free or Pro
-
-This is a Pro course, so it needs a Scrimba subscription. Pro also unlocks the full career paths, the coding challenges, the private Discord, and path certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+Scrimba lists the course under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). It belongs after [Learn React](/docs/courses/react/learn-react/) and before [Advanced React](/docs/courses/react/advanced-react/), which covers the patterns this course leaves out. If the accessibility module is the part that lands, [Learn Accessible Web Design](/docs/courses/javascript/accessible-web-design/) goes deeper.
 
 ## Strengths and limits
 
-What it does well: it produces one complete, polished project, it treats accessibility as a first-class topic rather than a footnote, and it includes real data fetching instead of static placeholders.
+What it does well: a high ratio of challenges to lecture, briefs that are specific enough to grade yourself against, accessibility taught as engineering rather than a checklist, an honest instructor who shows their own typos and re-recording seams, and a finished game you can show in a portfolio.
 
-Where it is limited: it is narrow by design (one game, not a survey), it assumes existing React knowledge, and like all Pro project courses, fast help depends on the Pro Discord.
+Where it is limited: one project, React 18.2 rather than 19, CSS pre-written so you learn nothing about styling, a small preview pane, some code shown in an older, more verbose form than the re-recorded lessons, and results (focus, screen reader speech) that you have to verify yourself because the recording cannot show them.
 
 ## Related courses and comparisons
 
 - [Learn React](/docs/courses/react/learn-react/), the prerequisite
+- [Advanced React](/docs/courses/react/advanced-react/), the natural next step
 - [Build a React Project: Movie Search App](/docs/courses/react/a-react-project-movie-search-app/), a shorter project build
 - [React Challenges](/docs/courses/react/react-challenges/), to drill skills after this
+- [Learn Accessible Web Design](/docs/courses/javascript/accessible-web-design/), for the accessibility side
 - [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials/), how it stacks up
 
 <FAQAccordion items={[
-  { q: "Is Build a Memory Game in React free?", a: "No. It is a Scrimba Pro course and requires a subscription. The Learn React course is free if you need the fundamentals first." },
-  { q: "What do you build in this course?", a: "One complete memory card game in React, including data fetching, game state, an accessibility pass, and final polish features." },
-  { q: "Do I need React experience first?", a: "Yes. It assumes hooks-based React. It is a practice and build course, not an introduction to React itself." },
-  { q: "Why does it focus on accessibility?", a: "Accessibility is a common gap in junior portfolios. The course dedicates a full module to keyboard navigation and screen-reader support, which makes the finished project stronger." },
-  { q: "Who teaches it?", a: "Ajo Borgvold, a Scrimba instructor. The course is built around editing code directly in the Scrimba player." },
+  { q: "Is Build a Memory Game in React free?", a: "No. It is a Pro course. Two scrims are free samples (the intro and the boilerplate walkthrough); the other 41, including all 29 challenges and the certificate, need a subscription." },
+  { q: "What do you build?", a: "One memory game: a form to pick an emoji category and card count, cards fetched from the EmojiHub API and shuffled into pairs, selection and match logic, a game over box with play again, an error card if the fetch fails, and screen reader support throughout." },
+  { q: "Who teaches it?", a: "Ajo Borgvold, a Scrimba Frontend Path graduate and former bootcamp reviewer who joined Scrimba's teacher program in 2024 and also made the Command Line Basics course. Ajo uses they/them pronouns and says so in the intro." },
+  { q: "Which React version does it use?", a: "React 18.2.0 and react-dom 18.2.0, plus the html-entities package for decoding emoji codes. It uses useState, useEffect, and useRef, no React 19 features." },
+  { q: "Do I need to install anything or get an API key?", a: "No. Everything runs in the Scrimba player, and the EmojiHub API is public. A screen reader (VoiceOver, NVDA) helps for testing the accessibility work but is optional." },
+  { q: "How much is challenge versus lecture?", a: "By my count 29 of 43 scrims are challenges: Ajo pastes a numbered brief, you pause and code, then compare with the solution. Several also open with a mini challenge you answer in your head before typing." },
+  { q: "How long does it take?", a: "4.4 hours of video; plan for 9 to 13 hours if you attempt every challenge, more if you test with a screen reader or extend the game." },
+  { q: "Does it have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript in the settings menu, and subtitles in ten languages." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/memory-game-in-react-c0a3odsk39" variant="button">
-  View Build a Memory Game in React on Scrimba
+  Start Build a Memory Game in React on Scrimba
 </AffiliateLink>
 
 <CourseSchema
   name="Build a Memory Game in React"
-  description="Scrimba's Pro, intermediate project course taught by Ajo Borgvold. About 4.4 hours building an accessible React memory game with data fetching."
+  description="Scrimba's Pro, intermediate project course taught by Ajo Borgvold. About 4.4 hours and 43 scrims building an accessible React memory game on the EmojiHub API, with 29 coding challenges."
   url="https://scrimba.com/memory-game-in-react-c0a3odsk39"
   timeRequired="PT4H21M57S"
   difficulty="Intermediate"
   access="Pro"
   keywords={["React", "Frontend"]}
   modules={[
-    { name: 'Building the Foundation', duration: '54 min', lessons: 8 },
-    { name: 'Core Game Functionality', duration: '68 min', lessons: 12 },
-    { name: 'Accessibility Enhancements', duration: '74 min', lessons: 10 },
-    { name: 'Advanced Features', duration: '66 min', lessons: 8 },
+    { name: 'Building the Foundation', duration: '54 min' },
+    { name: 'Core Game Functionality', duration: '68 min' },
+    { name: 'Accessibility Enhancements', duration: '74 min' },
+    { name: 'Advanced Features', duration: '66 min' },
   ]}
 />

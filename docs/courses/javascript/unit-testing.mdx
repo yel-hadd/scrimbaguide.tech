@@ -1,99 +1,216 @@
 ---
-title: "Introduction to Unit Testing"
+title: "Introduction to Unit Testing on Scrimba: 2026 Review"
 sidebar_position: 6
-description: "Dylan Israel's 1.4-hour Pro intro to testing your JavaScript as you write it. The fundamentals of unit testing and a strong companion to Clean Code."
-keywords: [scrimba unit testing, javascript unit testing course, intro to testing, dylan israel scrimba, test your javascript]
+toc_max_heading_level: 2
+sidebar_label: "Introduction to Unit Testing"
+description: "Dylan Israel's 86-minute Pro course on Jasmine unit testing, reviewed from inside: every transcript read, spies and mocks, what Pro gates, real time cost."
+keywords: [scrimba unit testing, introduction to unit testing scrimba review, javascript unit testing course, jasmine testing course, dylan israel scrimba, test your javascript, scrimba unit testing review]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 
 # Introduction to Unit Testing
 
-Dylan C. Israel's Pro-tier intro to testing your JavaScript as you write it: about 1.4 hours on the fundamentals of unit testing and why they lower your stress.
+Dylan C. Israel's short Pro course on writing your first JavaScript unit tests with Jasmine, one class and one test file at a time. I opened all 23 scrims and read the transcript of every one with a Pro account in September 2026, so this page describes what is actually in the course rather than its listing.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. It is a standalone course, not part of a career path.*
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page does not list it under any career path; it is a standalone course.*
 
 ## Quick answer
 
-Introduction to Unit Testing is a 1.4-hour, Pro-tier, intermediate course taught by Dylan C. Israel. It teaches the fundamentals of writing tests for your JavaScript so you can change code with confidence instead of crossing your fingers. It is a practical, foundational course rather than a deep tooling reference, and it pairs naturally with the same instructor's Clean Code course. Worth it if you write JavaScript and have never tested it.
+Introduction to Unit Testing is an 86-minute, Pro-only, intermediate course taught by Dylan C. Israel. It uses the Jasmine test framework, loaded as plain script files in the browser. The code under test is a small `User` class: default values, a `fullName` getter, a method that calls `window.alert`, and an async method that calls a user service. Eight of the 21 teaching scrims are challenges. It is a fundamentals course by design. Dylan says in the intro that he does not want you to memorize Jasmine. He wants you to understand grouping, test cases, and arrange-act-assert so you can carry them to Jest or any other framework. Worth it if you write JavaScript and have never written a test. Skip it if you already have.
 
 <CourseCard
   title="Introduction to Unit Testing"
   duration="1.4 hrs"
   difficulty="Intermediate"
   access="Pro"
-  lessons={24}
+  lessons={23}
   instructor="Dylan C. Israel"
   instructorUrl="https://scrimba.com/@Dylan-Israel"
   href="https://scrimba.com/introduction-to-unit-testing-c01i"
-  description="A practical intro to unit testing your JavaScript so you can change code with confidence."
+  description="Your first unit tests in Jasmine: grouping, test cases, beforeEach, spies, mocks and matchers, with a challenge after almost every concept."
 />
 
 ## Is it worth your time?
 
-If you have only ever verified your code by running it and clicking around, this is a worthwhile shift in how you work. Testing as you write turns "I think this works" into "I can prove this works," and the course makes that habit approachable in under an hour and a half. For self-taught developers, it is often the missing professional habit.
+Yes, if the phrase "I clicked through it and it works" describes how you currently verify code. Dylan opens the course with exactly that story. A lead asked how he was going to test his code. His answer was "I'm gonna click through and you're gonna see it works just like I know it does." The course is the alternative to that answer.
 
-The honest caveat is that it is an introduction. It establishes the mindset and the fundamentals rather than touring every testing tool, mocking strategy, or framework. You will finish able to write basic unit tests, not as a testing specialist; for that you would keep practicing on real projects.
+What makes it work is the rhythm. Almost every concept is followed by a challenge scrim that starts with a written brief in a comment block, pauses, and then walks through the solution. By the end you have written a nested `describe`, a `beforeEach` that resets a model, a spy on `window.confirm` that returns true and then false, and a mock service with an async method. That is a real, if small, test suite.
+
+The honest limit is scope. The code under test is a `User` class with three name fields; there is no DOM, no React component, no fetch to a real API, and no Jest or Vitest. The final challenge sends you out of Scrimba to add tests to one of your own projects or to Dylan's 100 algorithms repository on GitHub, with no in-browser solo project. If you want a testing course that ends in something you can show, this is not it. If you want to understand what a unit test is and be able to write one tomorrow, 86 minutes is a fair price.
 
 ## What you'll learn
 
-Across 24 lessons the course covers the core of unit testing: what a unit test is, how to write one, how to think about what to test, and how testing as you go lowers the stress of changing code later. The framing throughout is practical, testing your own JavaScript rather than studying testing theory in the abstract.
+Scrimba lists this course as a flat run of 23 scrims with no modules. The groupings below are mine, based on what each scrim covers, so the page has something to navigate by.
 
-It is fundamentals-first. The goal is to make testing a habit you reach for, which is more valuable early on than mastering any one tool.
+<CourseCurriculum
+  modules={[
+    { name: 'Introduction and Jasmine setup', duration: '19 min', lessons: 5 },
+    { name: 'Grouping with describe and your first test', duration: '11 min', lessons: 4 },
+    { name: 'Setting up data with beforeEach', duration: '11 min', lessons: 2 },
+    { name: 'Skipping and focusing tests', duration: '6 min', lessons: 2 },
+    { name: 'Spies', duration: '10 min', lessons: 2 },
+    { name: 'Mocks', duration: '14 min', lessons: 2 },
+    { name: 'Additional matchers, final challenge and outro', duration: '13 min', lessons: 4 },
+    { name: 'Scrimba wrap-up scrims', duration: '3 min', lessons: 2 },
+  ]}
+/>
+
+I counted 23 scrims and about 87.5 minutes by adding per-scrim durations (84.5 minutes for the 21 teaching scrims). Scrimba's header says 86 minutes and its structured data says 1h 26m 49s and 24 lessons. Neither figure matches the rendered table of contents exactly, and one lesson id (~02) is missing from the sequence.
+
+## Inside the course, module by module
+
+### 1. Introduction and Jasmine setup (19 min, 5 scrims)
+
+The six-minute Introduction is a slide talk. Dylan introduces himself as a self-taught frontend engineer at Amazon, then makes the case for testing. "It increases our code confidence, and this is everything." He names the three A's (arrange, act, assert) and mentions test-driven development only to say the course will not cover it. He also explains the choice of Jasmine. Jest, he says, "has been slowly taking a little bit of the market share... and Jest is based off Jasmine."
+
+Introduction to Jasmine is a short second slide talk. Its useful idea is the definition of a unit test. "We don't actually care if you click a button, it fires off something. We care that that method that gets called when that button is clicked does what we think it does."
+
+Setting Up Jasmine from Scratch is the first code scrim. Dylan renames `index.js` to `main.js`, then pastes in four boilerplate files: `jasmine.js`, `jasmine.css`, `jasmine-html.js` and `boot.js`. He calls `jasmine.js` "a six thousand line piece of library". He wires them into `index.html` with script tags. There is no npm and no install; the test runner is an HTML page. He warns that testing a React or TypeScript app needs more configuration and leaves a link to Jasmine's React tutorial.
+
+Understanding the 3 parts of testing shows the whole shape in under two minutes: a `describe`, an `it`, and an `expect(false).toBe(true)` that fails. Dylan sums it up in that lesson. "The typical flow of your test from start to finish is you have a group, you have a test, and you have an expectation for what that test means to pass." Testing Setup Breakdown then tours the files. It also shows that a function without a `return` fails a test because it returns `undefined`.
+
+### 2. Grouping with describe and your first test (11 min, 4 scrims)
+
+The code under test arrives: a `User` class with `firstName`, `lastName` and `middleName`, each defaulting to an empty string. Grouping with describe adds a `describe('User')` block and makes the point Dylan repeats throughout the course. "Don't remember what the describe method does. Remember that you're gonna need a way to group your test."
+
+The first challenge asks whether there is a more reliable way to name the group. The answer is ``describe(`${User.name} Class`)``, so renaming the class to `Admin` updates the label. Our first test writes the actual test: arrange `{ firstName: null }`, act by constructing `new User(data)`, assert `expect(model.firstName).toBe('')`. Dylan then breaks the class on purpose and watches the test go red. "This is the power of unit testing."
+
+The challenge that follows asks you to write the same test for `lastName` and `middleName` and group all three. The lesson I took from it was the warning about copy-paste. "I can't tell you how many times I've done something like this and accidentally had two tests testing the same one item."
+
+### 3. Setting up data with beforeEach (11 min, 2 scrims)
+
+`beforeEach` is introduced as "a test setup method. It does something before each test runs." Dylan moves `model = new User()` into it and deletes the arrange steps from all three tests. He proves the ordering with `console.log` calls.
+
+The challenge is the longest so far at nearly seven minutes. `User` gains a `fullName` getter that returns "Dylan C. Israel" when there is a middle name and "Dylan Israel" when there is not. You write a new `describe('full name')`, a nested `beforeEach` that builds a user with a first and last name, and two tests. Dylan writes the test names before the code and says why. "Oftentimes, when I am writing my code, I'll write the test cases before I actually write the code." He also insists on an explicit arrange step even when it is redundant. "You want to be expressive in your test."
+
+### 4. Skipping and focusing tests (6 min, 2 scrims)
+
+`fit` and `fdescribe` run only the focused test or group; `xit` and `xdescribe` skip one. Dylan's framing is practical. "It's going to get a little overwhelming when you have five thousand tests and a hundred of them are broken."
+
+The "challenge" here is unlike anything else on Scrimba. The brief in the comment block asks you to listen, raise your right hand and say "I will be a quality developer that protects the code and my sanity". Then you type a sentence promising to educate others about testing. It is a four-minute slide talk about why skipping and focusing are "a development only item" and should never ship. Dylan says it was "clean code principles, solid principles, and testing" that doubled his income early on. He calls it a soapbox himself. I found it more persuasive than I expected.
+
+### 5. Spies (10 min, 2 scrims)
+
+`User` gains a `sayMyName()` method that calls `window.alert(this.fullName)`. Dylan picked it for a Scrimba-specific reason. "Scrimba actually can't call the alert method because of the way the platform is built and nothing's going to pop up, but we can write our test to actually see that it does get called using a spy." The test is `spyOn(window, 'alert')`, then `model.sayMyName()`, then `expect(window.alert).toHaveBeenCalledWith('Dylan Israel')`. He explains what spies are for. "You're not gonna test the library. Typically, what you're gonna test is that your code calls the library and passes the correct data."
+
+The Spy Challenge is the hardest one in the course. It includes a hint for something not yet taught: `spyOn(object, 'key').and.returnValue(value)`. `getCodeName()` calls `window.confirm("Are you a testing god?")` and returns one of two strings. You have to write three tests: the confirmed case, the declined case, and a check on what `confirm` was called with. Dylan anticipates the mood. "You may be getting frustrated at this point saying, Dylan, why don't you just set this up for me instead of doing this in challenges? ... embrace the frustration." At the end he points out that his own test description said "coding god" when the code said "testing god". He turns it into the lesson that "your tests are only as good as your test descriptions."
+
+### 6. Mocks (14 min, 2 scrims)
+
+Mocks + Debug with me! is the longest scrim at 9 minutes 19 seconds. A `user-service.js` file with a real API path appears. `User` now takes the service as a second constructor argument, and an async `getMyFullUserData()` calls it. Why mock at all? Because your tests run "hundreds, if not thousands, of times a day, every time you save your code... that gets very expensive very quickly."
+
+Dylan builds a mock user service by hand: a `lastId` property, a `userData` object, and an async `getUserById(id)` that records the id and returns the data. The test awaits the call and expects `lastId` to be 1. It fails. The next three minutes are unscripted debugging until he finds the assignment was not in the right `this` context. He leaves it in on purpose. "I like to leave my mistakes in there so you can kinda see a debugging process... instead of just seeing the happy path." This is the scrim I would point a skeptic to.
+
+The Mocks Challenge asks you to remove the unused parts of that test and write a second one checking the returned user data. It also sets up the next lesson by showing that `expect(result).toBe({...})` fails even when every value matches.
+
+### 7. Additional matchers, final challenge and outro (13 min, 4 scrims)
+
+`toBeDefined()` is presented as the first test a test-driven developer writes ("it exists"). `toEqual()` is the payoff from the mocks challenge. `toBe` on two arrays with the same contents fails because "this array here is never going to be equal to this array". `toEqual` does a deep comparison instead. The matchers challenge sends you to the Jasmine docs to find one the course has not covered, because "else, you'll never escape tutorial hell." Dylan demonstrates `toMatch`, then explains why the course stops at five or six matchers. They cover "the ninety percent of the scenarios."
+
+The Final Challenge is two minutes long and has no code to write in Scrimba. The brief: add tests to one of your existing projects, or clone his 100 algorithms repository and write tests for the methods there. "There's not always gonna be a tutorial for you to go and follow, and you gotta dive deep and do it on your own."
+
+The Outro is a slide talk on being a testing advocate, the testing pyramid, and code coverage. The number to watch, he says, is branches: "did we test all the logic paths of our code?" His personal target is 90 percent or higher.
+
+### 8. Scrimba wrap-up scrims (3 min, 2 scrims)
+
+Two Scrimba-added scrims found at the end of many courses: a two-minute Scrimbassador referral pitch voiced by Per Borgen and a 53-second certificate scrim. Neither is part of Dylan's course.
+
+## What a lesson actually feels like
+
+A typical scrim is two to six minutes. Dylan talks over a split view: `main.js` on the left with the class or test file, and the Jasmine HTML reporter on the right. The reporter shows "1 spec, 1 failure" or "5 specs, 0 failures" every time he saves. Because Jasmine runs in the page, feedback is immediate. You can see a test go red and green as he edits.
+
+Challenges are announced in the file itself. The scrim opens with a comment block ("1. Use a spy and test the method getCodeName() fully"), Dylan reads it aloud, says "pause it", and the rest of the recording is the solution. There is no automatic checking and none of the "Challenge with Instant Feedback" icons that newer Scrimba courses have; you compare your code against his.
+
+Every scrim has captions, a timestamped transcript in the settings menu, and subtitles in ten languages. The delivery is casual and rambles in places (he loses his train of thought mid-debug in the mocks lesson and says so). I count that as a feature: it feels like one working engineer showing another how he does it.
+
+## Free or Pro: exactly what is gated
+
+This is a Pro course. Three scrims carry a SAMPLE badge and can be watched without a subscription: Introduction, Introduction to Jasmine and Setting Up Jasmine from Scratch. That is the pitch and the setup, so you can preview about 15 minutes before deciding. Everything from Understanding the 3 parts of testing onward, including all eight challenges, is Pro, and so is the certificate.
+
+There are no Solo Projects in this course, so the "Pro" gate is the course itself rather than a project at the end. Pro also covers the career paths, other Pro courses, and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as a free feature). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+
+## How long it really takes
+
+The 86 minutes is video runtime. With eight challenges that each need a pause and some typing, budget two to three times that: three to four hours, or two evenings. The spy and mock challenges are the ones that will slow you down, because each needs a `beforeEach`, an `async` test, and a matcher you have just met. If you take the final challenge seriously and add tests to a real project of your own, that is an open-ended afternoon on top.
 
 ## Who it's for, and who should skip it
 
-It fits developers who write JavaScript but have never tested it, especially self-taught coders building the professional habits that team environments expect. It pairs well with [Introduction to Clean Code](/docs/courses/javascript/clean-code/).
+It fits developers who can already write a JavaScript class and an arrow function but have never written a test, especially self-taught developers who want the professional habit before their first team job. It pairs naturally with [Introduction to Clean Code](/docs/courses/javascript/clean-code/) by the same instructor; he mentions clean code principles repeatedly here.
 
-Skip it if you already write tests regularly and want advanced patterns like deep mocking or end-to-end testing, which this introduction does not cover.
+Skip it if you already write tests with Jest, Vitest or Mocha. The concepts will be familiar and the tooling is older than what you use. Also skip it if you specifically want to test React components or an Express API; the course says up front that it only unit tests a class and leaves framework configuration to a link.
 
 ## Prerequisites
 
-Working JavaScript: functions, modules, and the ability to write small programs. You do not need any prior testing experience; that is what the course provides.
+Comfortable JavaScript: classes and constructors, getters, arrow functions, template strings, and `async`/`await`, all of which appear in the code under test without explanation. Nothing to install; Jasmine runs from script tags in the Scrimba editor. No prior testing experience is assumed.
 
 ## Where it fits
 
-This is a standalone career-skills course rather than a step in a specific path. It sits naturally alongside [Introduction to Clean Code](/docs/courses/javascript/clean-code/), since readable code and tested code are two halves of the same professional habit, and it benefits any developer regardless of stack.
-
-## Free or Pro
-
-This is a Pro course, so it requires a Scrimba subscription. Pro also covers the full career paths, the coding challenges, the Discord, and certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+This is a standalone skills course rather than a step in a path. The natural sequence is [Learn JavaScript](/docs/courses/javascript/learn-javascript/) or [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/) first, then this course alongside [Introduction to Clean Code](/docs/courses/javascript/clean-code/). The spies and mocks lessons are also good preparation for the kind of "how would you test this?" question covered in [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/).
 
 ## Strengths and limits
 
-What it does well: it makes a habit that intimidates many self-taught developers feel approachable, and Dylan Israel keeps it grounded in testing real JavaScript rather than abstract theory.
+What it does well:
 
-Where it is limited: it is an introduction, so it stops at the fundamentals and does not cover advanced mocking, integration, or framework-specific tooling in depth.
+- It teaches the concepts (grouping, test cases, arrange-act-assert, setup, spies, mocks) instead of a framework's API.
+- The challenge after almost every concept keeps you typing.
+- The mocks lesson shows a real debugging session instead of a clean take.
+- The three free sample scrims let you try before you pay.
+
+Where it is limited:
+
+- The code under test is a toy `User` class.
+- The Jasmine-in-an-HTML-page setup is not how most teams run tests in 2026. Dylan names Jest as the popular option in the first lesson.
+- There is no in-browser final project.
+- The two slide-only "challenges" (the pledge and the final challenge) may feel thin if you expected to write code.
 
 ## Related courses and comparisons
 
+- [All JavaScript courses](/docs/courses/javascript/), the full category this course belongs to
 - [Introduction to Clean Code](/docs/courses/javascript/clean-code/), the natural companion, same instructor
-- [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), to deepen the JavaScript you'll be testing
-- [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/), more career-skills material from Dylan Israel
+- [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), to deepen the JavaScript you will be testing
+- [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/), more career material from Dylan Israel
+- [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/), if you want more short problems to write tests against
 
 <FAQAccordion items={[
-  { q: "Is Introduction to Unit Testing free?", a: "No. It is a Scrimba Pro course and requires a subscription." },
-  { q: "Do I need prior testing experience?", a: "No. The course teaches the fundamentals from scratch. You only need working JavaScript." },
-  { q: "How deep does it go?", a: "It is an introduction. You learn to write basic unit tests and adopt the habit, not advanced mocking or end-to-end strategies." },
-  { q: "Should I pair it with another course?", a: "Yes. Introduction to Clean Code, by the same instructor, is a natural companion since clean and tested code reinforce each other." },
-  { q: "Who teaches it?", a: "Dylan C. Israel, who also teaches Clean Code and Frontend Interview Tips on Scrimba." },
+  { q: "Is Introduction to Unit Testing free on Scrimba?", a: "No. It is a Pro course. The first three scrims (Introduction, Introduction to Jasmine, and Setting Up Jasmine from Scratch) carry a SAMPLE badge and can be watched free; the remaining 18 teaching scrims and the certificate need Pro." },
+  { q: "Which testing framework does the course use?", a: "Jasmine, loaded as plain script files in an HTML page inside the Scrimba editor. Dylan says in the first lesson that Jest is based on Jasmine and that he wants you to learn the concepts, not memorize the framework." },
+  { q: "What do you actually test in the course?", a: "A small User class: default values for first, middle and last name, a fullName getter, a sayMyName method that calls window.alert, a getCodeName method that calls window.confirm, and an async getMyFullUserData method that calls a user service you mock." },
+  { q: "Are there challenges, and are they checked automatically?", a: "Eight of the 21 teaching scrims are challenges with a brief in a comment block. None use Scrimba's instant-feedback checking; you pause, write your test, then watch Dylan's solution." },
+  { q: "Do I need to install anything?", a: "No. Jasmine runs from script tags in the browser. Nothing in the course uses npm, Node or a terminal." },
+  { q: "How long does it take?", a: "86 minutes of video. Plan for three to four hours if you do every challenge, plus whatever time you spend on the final challenge in your own project." },
+  { q: "Who teaches it?", a: "Dylan C. Israel, a self-taught frontend engineer who also teaches Introduction to Clean Code and Frontend Interview Tips on Scrimba. Two short scrims at the end are Scrimba's own (the Scrimbassador pitch, voiced by Per Borgen, and the certificate scrim)." },
+  { q: "Does it cover test-driven development, React testing or Jest?", a: "No. TDD is mentioned in the intro and outro but not taught. React and TypeScript setups are covered only by a link to Jasmine's docs. Jest is named as the more popular framework but not used." },
+  { q: "Is there a final project?", a: "Not inside Scrimba. The Final Challenge asks you to add tests to one of your own projects, or to clone Dylan's 100 algorithms repository from GitHub and write tests there." },
+  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript in the settings menu, and subtitles in ten languages." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/introduction-to-unit-testing-c01i" variant="button">
-  View Introduction to Unit Testing on Scrimba
+  Preview Introduction to Unit Testing on Scrimba
 </AffiliateLink>
 
 <CourseSchema
   name="Introduction to Unit Testing"
-  description="Scrimba's Pro-tier intro to unit testing taught by Dylan C. Israel. About 1.4 hours on the fundamentals of testing your JavaScript as you write it."
+  description="Scrimba's Pro-only intro to unit testing taught by Dylan C. Israel. About 86 minutes across 21 teaching scrims using Jasmine: describe and it, beforeEach, skipping and focusing, spies, mocks, and matchers, with eight challenges."
   url="https://scrimba.com/introduction-to-unit-testing-c01i"
   timeRequired="PT1H26M49S"
   difficulty="Intermediate"
   access="Pro"
   keywords={["JavaScript"]}
+  modules={[
+    { name: 'Introduction and Jasmine setup', duration: '19 min' },
+    { name: 'Grouping with describe and your first test', duration: '11 min' },
+    { name: 'Setting up data with beforeEach', duration: '11 min' },
+    { name: 'Skipping and focusing tests', duration: '6 min' },
+    { name: 'Spies', duration: '10 min' },
+    { name: 'Mocks', duration: '14 min' },
+    { name: 'Additional matchers, final challenge and outro', duration: '13 min' },
+    { name: 'Scrimba wrap-up scrims', duration: '3 min' },
+  ]}
 />

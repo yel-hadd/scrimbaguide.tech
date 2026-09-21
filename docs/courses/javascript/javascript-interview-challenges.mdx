@@ -1,74 +1,210 @@
 ---
-title: "JavaScript Interview Challenges"
+title: "JavaScript Interview Challenges on Scrimba: 2026 Review"
 sidebar_position: 7
-description: "Treasure Porth's 2.3-hour Pro course of frontend coding-interview drills. Practice-first interview prep that pairs with React Interview Questions."
-keywords: [scrimba javascript interview challenges, javascript coding interview prep, frontend interview practice, treasure porth scrimba, javascript interview course]
+toc_max_heading_level: 2
+sidebar_label: "JavaScript Interview Challenges"
+description: "Treasure Porth's Pro drill pack reviewed from inside: 2.3 hours, 28 challenges from FizzBuzz to an emoji slot machine, what Pro gates, and the real time cost."
+keywords: [scrimba javascript interview challenges, javascript interview challenges review, javascript coding interview prep, frontend interview practice, treasure porth scrimba, javascript interview course]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # JavaScript Interview Challenges
 
-Treasure Porth's Pro-tier interview-prep course: about 2.3 hours of frontend JavaScript coding challenges built to rehearse the kind of problems interviewers actually ask.
+Treasure Porth's Pro-only drill pack: 2.3 hours of short coding problems of the kind frontend interviewers hand you on a whiteboard or in a shared editor. I read the transcript of every one of the 62 scrims with a Pro account in September 2026, opened the code in each challenge, and paused a handful of solutions to see what is on screen. This is what is actually in the course, not the listing rewritten.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. It is sequenced into the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's own course page says it is part of the Front-End Developer Career Path, and the catalog data also lists it under the Fullstack Developer Path; see our [Frontend Developer Path](/docs/paths/frontend-developer-path/) and [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) pages.*
 
 ## Quick answer
 
-JavaScript Interview Challenges is a 2.3-hour, Pro-tier, intermediate course taught by Treasure Porth. It is a set of coding drills aimed squarely at frontend technical interviews, so you practice solving problems rather than learning new concepts. It is worth it if you already know JavaScript and have interviews coming up. It is not a teaching course, and it works best alongside React Interview Questions and Frontend Interview Tips.
+JavaScript Interview Challenges is a 2.3-hour, intermediate, Pro-only course by Treasure Porth. It is not a lecture course. It is 28 challenge scrims, each followed by one or more solution scrims, covering string methods, array methods, objects, `map`, `filter`, `reduce`, `sort`, and two small `fetch` exercises against Scrimba's emoji API. The classics are all here: FizzBuzz (renamed), reverse a string, anagrams, palindromes, remove duplicates, flatten an array, count character frequency.
+
+Treasure writes pseudo code before nearly every solution and says out loud why she picks one approach over another. If you can already write JavaScript and have interviews coming, it is a good two-week warm-up. If you are still learning the language, it will frustrate you before it helps.
 
 <CourseCard
   title="JavaScript Interview Challenges"
   duration="2.3 hrs"
   difficulty="Intermediate"
   access="Pro"
-  lessons={65}
+  lessons={62}
   instructor="Treasure Porth"
   instructorUrl="https://scrimba.com/@trezp"
   href="https://scrimba.com/javascript-interview-challenges-c02c"
-  description="Frontend coding-interview drills in JavaScript: practice solving the problems interviewers actually ask."
+  description="28 frontend interview drills with worked solutions: strings, arrays, objects, reduce, sort, and two fetch challenges."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/javascript-interview-challenges/chapter-intro-title-card.webp"
+    alt="Title slide of Scrimba's JavaScript Interview Challenges course reading JavaScript Interview Challenges, An Introduction, with an illustrated grinning person holding a laptop"
+    width={1279}
+    height={720}
+    caption="The only title card in the course: the intro scrim. The course is a flat list of challenges with no chapter dividers."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-If you have interviews lined up and want to rehearse under realistic conditions, this is a focused way to do it. The challenge format means you are solving problems in the player, which is far closer to a live coding interview than reading solutions, and 65 challenges is enough volume to build real fluency.
+Yes, with one condition: you have to treat each challenge scrim as a stop sign. Most briefs are under a minute. Treasure reads the problem, points at the example input and output written as a comment in the editor, and gives a hint. Then she says "go ahead and get started." If you press play into the solution instead of pausing, you get a 2.3-hour video of someone else solving easy problems, which is worth nothing in an interview.
 
-The honest caveat is that this is practice, not instruction. It assumes you already know the JavaScript it asks you to apply, and it will not teach you a concept you are missing. If you are still learning the language, drilling interview problems will be frustrating before it is useful.
+Used properly, the value is in the reps and in the commentary around them. Treasure does something most drill collections skip: she narrates the decision. In the whisper-function solution she says, "when I'm thinking about how I might go about solving a problem, I like to ask myself, what do I immediately already know how to do?" That habit, plus the pseudo code she writes as comments before typing any real code, is what you are meant to copy.
+
+The honest caveat is the level. These are problems for junior roles. The hardest one, finding anagrams inside an array, comes with the warning "this is a pretty advanced challenge so go easy on yourself." If you are targeting a company that runs data-structures-and-algorithms rounds, this course is the warm-up, not the preparation; see [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) for that.
 
 ## What you'll learn
 
-This is a practice course, so the value is in the reps rather than a syllabus. You work through 65 coding challenges of the type that show up in frontend JavaScript interviews, building speed and pattern recognition for common problem shapes. The point is to make the familiar problems automatic so you can spend interview brainpower on the unfamiliar ones.
+The course has no modules on Scrimba: it is one flat list of 62 scrims. The sections below are my grouping by topic, in the order the scrims appear, so you can see where the time goes.
 
-Treat it as a drill book. The more you have already learned about JavaScript, the more these challenges sharpen rather than teach.
+<CourseCurriculum
+  modules={[
+    { name: 'Intro and how to approach challenges', duration: '6 min', lessons: 1 },
+    { name: 'Strings and the classic problems', duration: '47 min', lessons: 22 },
+    { name: 'Arrays and objects', duration: '18 min', lessons: 9 },
+    { name: 'Working with data: map, filter, reduce, sort', duration: '48 min', lessons: 23 },
+    { name: 'Fetching from an API', duration: '9 min', lessons: 4 },
+    { name: 'Wrap-up: edge cases and certificate', duration: '9 min', lessons: 3 },
+  ]}
+/>
+
+Lesson counts are the scrims I counted in the table of contents in September 2026: 1 intro, 28 challenge scrims, 30 solution scrims (two challenges, Chef Mario's Recipe Book and Collect Unique Genre Tags, have two-part solutions), and 3 closing scrims. Scrimba's structured data says 65 lessons and the About text says "30 code questions"; both are Scrimba's figures, and the difference is that several challenges ask for two functions. The durations add up to 2 hours 16 minutes, which matches the 2.3 hours on the course page.
+
+## Inside the course, section by section
+
+### 1. Intro and how to approach challenges (6 min, 1 scrim)
+
+The intro is one of the two longest scrims in the course and the one to watch twice. Treasure introduces herself as a developer and instructor since 2015 who switched careers through a local bootcamp. She then spends four minutes on method: write pseudo code first, use built-in methods unless told otherwise, look things up on MDN ("all of these challenges are open book"), `console.log` at every stage, and practice talking out loud. She demonstrates a "pure function" by rewriting a `cap()` function that reached into global scope into one that takes a string and returns a string. Her last piece of advice is the one interviewers care about: "value being verbose and readable over being short and clever."
+
+### 2. Strings and the classic problems (47 min, 22 scrims)
+
+Eleven challenges, each a challenge scrim plus a solution scrim. They start gentle: a "panic function" that upper-cases a sentence and puts a screaming emoji between the words (hint: `split` and `join`), a "whisper" function that lower-cases and strips a trailing exclamation mark (`endsWith` and `slice`), and alternating caps. Then a `toTitleCase` that you build in two steps: first capitalise one word, then reuse that function across a sentence. Treasure calls the two-step version "a good exercise for starting to break down more complex problems into smaller steps," and that pattern (write the small function, then loop it) recurs through the whole course.
+
+Then the classics arrive, lightly disguised. "Definitely Not FizzBuzz" has Per Borgen awarding vacations and yachts to employee IDs divisible by 3, 5, or both. The solution is where you learn to check the "both" case first, and it ends with the line that sums up the course's attitude: "This is a very classic problem whether or not it still pops up in interviews or not. It's absolutely something that you'll be expected to know."
+
+<Screenshot
+  src="/img/scrimba/javascript-interview-challenges/definitely-not-fizzbuzz-solution-lesson.webp"
+  alt="Scrimba JavaScript Interview Challenges, solution to Definitely Not FizzBuzz paused at 4:01: the editor shows an awardBonuses function with a for loop and if, else if branches testing i % 15, i % 3 and i % 5, and the console below lists employee IDs 84 to 100 with Vacation!, $100,000 bonus! and JACKPOT! prizes"
+  width={1400}
+  height={660}
+  caption="The FizzBuzz solution paused at 4:01. Notice the order of the branches: the i % 15 check comes first, because employee 30 would otherwise be handed a vacation instead of the jackpot. The console output on the bottom is the whole test suite."
+/>
+
+The remaining six string challenges, in order:
+
+- **Emojify**: turn `:party:` into an emoji via an object lookup. Treasure adds that regex would be the real-world tool but is "definitely not anything that's a must know for junior developers."
+- **Is It an Anagram?**: sort both strings and compare.
+- **Decode an Alien Message**: reverse a string, both with `split().reverse().join()` and with a backwards `for` loop. Her reason: "the interviewer might be curious about how comfortable you are using string methods, or they may wanna know that you can reverse a string manually."
+- **Palindromes**: the same reversal trick, compared against the original.
+- **Save Grandpa's Password**: remove duplicate characters from a string.
+- **Frequency of Letters in Your Name**: count characters using an object as a tally.
+
+The grandpa's-password solution is where Treasure first names what is going on: "we're getting a little more into data structure and algorithm, LeetCode territory, which means that there are going to be what are called, quote, unquote, brute force solutions and optimal solutions." She then shows the brute-force one and moves on. That is a fair summary of the course's ambition.
+
+### 3. Arrays and objects (18 min, 9 scrims)
+
+Four challenges. Chef Mario's Recipe Book (remove duplicates from an array) gets a two-part solution: first `includes` inside a loop, then a rewrite using an object as a lookup table with `filter`. Then comes the one-liner `[...new Set(arr)]`, which she calls "a very short, sort of interesting trick." Why show all three? Because "depending on the nature of your job interview and how they prefer to see you solve the problem," any of them might be what they want.
+
+<Screenshot
+  src="/img/scrimba/javascript-interview-challenges/chef-mario-pseudocode-plan-lesson.webp"
+  alt="Scrimba JavaScript Interview Challenges, Chef Mario's Recipe Book solution part 2 paused at 1:26: the removeDupesFromArray function body contains only pseudo code comments (create a new object to keep track of duplicates, use filter to loop through each item, look up the item in the lookup table, return true or false) and the console shows the deduplicated egg scramble recipe from part 1"
+  width={1400}
+  height={660}
+  caption="Chef Mario, solution part 2, paused at 1:26. This is the course's signature move: the function body is nothing but a pseudo code plan before a line of real code is written. The console still shows the result of the part 1 solution."
+/>
+
+Pumpkin's Prizes flattens nested arrays of Scrimba's cat mascot's cat-show winnings, first with `flat()` and then by hand with `Array.isArray`, "because it could go either way in a job interview situation." Count the Scrimba Students sums an array (a `for` loop, then `forEach`, with a nudge to try `reduce` on your own). Pizza Night loops an object with `for...in` and keeps track of the highest vote so far, which Treasure frames as "a common exercise in job interview challenges to see how well you can keep track of values as your function is running."
+
+### 4. Working with data: map, filter, reduce, sort (48 min, 23 scrims)
+
+The longest section, and the most useful for frontend work. Each challenge imports mock data from a `data.js` file (podcasts, a shopping cart, holiday products, TV shows) and asks you to reshape it. Find Free Podcasts and Candy Sale are `filter` then `map` warm-ups. Shopping Cart introduces `reduce` with a two-minute refresher on the accumulator that walks through `[1, 2, 3]` by hand; Treasure is candid that `reduce` "can be so confusing and weird and hard to wrap your brain around at first," and then makes you use only `reduce` for the Total Savory Items challenge.
+
+Holiday Gift Shopping and Scrimba Airlines cover `sort` with a comparator (`a.price - b.price`), including the reminder that `sort` mutates the array in place. With real data, she says, "you may wanna create a copy of it first." One slip worth knowing about: in the Airlines solution at 0:17 she states the ascending and descending rule the wrong way round, the opposite of what she said in the previous lesson. The code she writes is correct, so trust the code.
+
+Collect Unique Genre Tags gets the most thoughtful two-part solution in the course. Part one uses `map`, `flat`, and `includes`; part two rewrites it with an object lookup, opening with: "If your goal is to maybe work at a larger tech company where they do more of a data structure and algorithm focused interview style, it can be helpful to start thinking about more optimized solutions. One of the red flags for when something could be optimized is when you have nested loops." That is the only place the course talks about efficiency in any depth.
+
+The section closes with four more challenges. Popularity Contest averages likes with `reduce`. Night at the Scrimbies uses `reduce` with `concat` to flatten hosts, then `Math.random` to hand out awards. Save the Weekend uses `map` plus template literals to generate podcast descriptions, with the spread-into-a-new-object pattern shown as "a more modern way." Find Anagrams in an Array combines the earlier anagram trick with `filter`. One loose end: Save the Weekend ends with "join me in the next scrim" for the stretch-goal solution. No such scrim exists in the table of contents; the next item is the anagram challenge.
+
+### 5. Fetching from an API (9 min, 4 scrims)
+
+Two challenges that use `fetch` against Scrimba's own emoji API, so nothing to sign up for. Emoji Flower Bed shows a preview pane full of the wrong emoji ("what is this poor whale doing here? He's probably drowning") and asks you to write a function that filters the response down to bugs and flowers without changing the URL. The hint is the most transferable skill in the course: log the data and look for a property you can filter on. The answer is a `group` field.
+
+<Screenshot
+  src="/img/scrimba/javascript-interview-challenges/emoji-flower-bed-challenge-lesson.webp"
+  alt="Scrimba JavaScript Interview Challenges, Emoji Flower Bed challenge paused at 0:11: the editor shows the brief as a comment, a fetch call to Scrimba's emoji API, an empty clearTheGarden function, and a forEach that appends each emoji as a list item, while the preview pane on the right shows a green flower bed grid full of camels, bears, pandas, birds, fish and only a few flowers"
+  width={1400}
+  height={660}
+  caption="The Emoji Flower Bed brief, paused at 0:11. The preview on the right is the bug you are fixing: the fetch already works, it just renders every animal in the API's nature category. Your job is the empty clearTheGarden function."
+/>
+
+Emoji Slot Machine is the closest thing to a project: request the food category, filter to fruit, pick nine at random, render them into a `<ul>`, and delete the hard-coded fruit from the HTML so every refresh spins the machine. The solution chains four `.then()` calls and a `.catch()`, which is the only promise-handling you will see in the course. There is no `async`/`await` anywhere.
+
+<Screenshot
+  src="/img/scrimba/javascript-interview-challenges/emoji-slot-machine-solution-lesson.webp"
+  alt="Scrimba JavaScript Interview Challenges, Emoji Slot Machine solution paused at 4:36: the editor shows a fetch chain with then calls for response.json, makeFruitArray, getRandomFruits and a forEach that appends list items with fruit.htmlCode, the console logs nine HTML entity codes, and the preview shows the slot machine with rows of grapes, kiwi and strawberry followed by random lemons, bananas and watermelon"
+  width={1400}
+  height={660}
+  caption="The slot machine solution paused at 4:36. The fetch chain works (nine HTML codes in the console) and the random fruit is rendering under the hard-coded rows, which get deleted from index.html a few seconds later."
+/>
+
+### 6. Wrap-up: edge cases and certificate (9 min, 3 scrims)
+
+"Congrats on Finishing" is a six-minute scrim that is better than its title. Treasure reopens the anagram solution and feeds it bad input: extra spaces (fix with `trim`), a number instead of a string (coerce or check `typeof`), two empty strings (decide what you want to return). Then she lists the edge cases interviewers like to ask about. Her advice is what I would want a junior to hear: "I would not think about them at all until you have a working solution," and "depending on where you're interviewing, the interviewer may not want to see you address any edge cases." The last two scrims are Per Borgen's standard Scrimbassador referral pitch and the one-minute "How to Utilize Your Certificate."
+
+## What a lesson actually feels like
+
+Challenge scrims run 35 seconds to two and a half minutes. The brief is a block comment at the top of `index.js` with example input and output, a function stub, and `console.log` test calls, some of them commented out for you to enable one at a time. Treasure reads the brief over the code, points at the examples, gives one hint (often "you'll probably want to look at the built in functions split and join"), and stops. Solution scrims run one to five and a half minutes and nearly all follow the same shape: a pseudo code plan typed as comments, then the code, then a run with the console open, then a second approach if there is one.
+
+The tone is light and a bit silly, and it helps. Problems are dressed up as Per Borgen's bonus scheme, a cat show, a copywriter friend you are trying to get to Hawaii, and an award show called the Scrimbies. Treasure's cat Peggy Porth is the test input for the letter-frequency challenge. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and adjustable playback speed. There are no quizzes and no AI-checked challenges in this course; the table of contents shows none of the "Challenge with Instant Feedback" icons that newer Scrimba courses carry.
+
+## Free or Pro: exactly what is gated
+
+This is a Pro course. Two scrims are marked SAMPLE and open without a subscription: the six-minute intro and the 36-second Panic Function challenge brief. Everything else, all 28 challenges and every solution, needs Pro, as does the certificate of completion. There are no Solo Projects in this course and no partial free tier beyond those two samples.
+
+Pro also unlocks the rest of the Pro-only courses in the career paths this course sits in, plus the Pro-only channels on Scrimba's Discord (basic Discord access is listed as free on the pricing page, so the server itself is not a Pro perk). If the two samples are enough to tell you the format suits you, see <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+
+## How long it really takes
+
+The 2 hours 16 minutes of video is the smallest part. Each challenge deserves ten to twenty minutes of your own typing before you watch the solution, and the ones Treasure asks you to solve two ways (reverse a string, flatten an array) deserve both attempts. Budget five to eight hours in total, which is two to three weeks at twenty minutes a day. If you also do what the closing scrim recommends and revisit each solved problem to try an alternative approach, double that. It is a course you can finish in a weekend, but the point is not to finish it.
 
 ## Who it's for, and who should skip it
 
-It fits developers who already know JavaScript and are preparing for frontend coding interviews, or anyone who wants structured practice to keep their problem-solving sharp.
+It fits you if you already write JavaScript, you have frontend interviews in the next month or two, and you want the standard problems to feel automatic so the unusual ones get your full attention. It is also a decent review for anyone who finished [Learn JavaScript](/docs/courses/javascript/learn-javascript/) a while ago and wants to check that `reduce`, `sort`, and object lookups have not gone rusty.
 
-Skip it if you are still learning the language; do [Learn JavaScript](/docs/courses/javascript/learn-javascript/) and ideally [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/) first. Also skip it if your interviews are framework-specific, where [React Interview Questions](/docs/courses/react/react-interview-questions/) is the better target.
+Skip it if you are still learning the language: the course never explains what a `for` loop or an array method is, it only reminds you. Do [Learn JavaScript](/docs/courses/javascript/learn-javascript/) first and come back. Skip it too if your interviews are LeetCode-style: there is one honest conversation about nested loops and one about brute force versus optimal, and no Big O, recursion, or data structures beyond arrays and objects. And if your interviews are React-specific, [React Interview Questions](/docs/courses/react/react-interview-questions/) is the better target.
 
 ## Prerequisites
 
-Solid working JavaScript: functions, array and object methods, scope, and basic algorithmic thinking. This course asks you to apply those, not learn them.
+Comfortable JavaScript: functions, string and array methods, objects and bracket notation, `for` loops, arrow functions, template literals, and enough `map`/`filter`/`reduce` to follow a chain of them. The last two challenges assume you have seen `fetch` and `.then()` before. Nothing to install; every scrim runs in the browser, and the two API challenges call a Scrimba-hosted endpoint that needs no key.
 
 ## Where it fits
 
-JavaScript Interview Challenges is the interview-prep stop on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), best taken near the end once your fundamentals are in place.
-
-## Free or Pro
-
-This is a Pro course, so it requires a Scrimba subscription. Pro also covers the full career paths, the coding challenges, the Discord, and certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+Scrimba lists this course under the Front-End Developer Career Path, and it belongs near the end of the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), once the JavaScript fundamentals are solid. It pairs naturally with [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/), which covers the questions that are not code, and it is the gentle on-ramp to [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) if you need the harder material.
 
 ## Strengths and limits
 
-What it does well: realistic interview-style practice in the player, enough challenges to build genuine fluency, and a clear focus on the frontend interview context.
+What it does well:
 
-Where it is limited: it teaches nothing new, so your mileage depends entirely on what you already know, and it is JavaScript-general rather than tailored to any specific company or framework interview.
+- The pseudo-code-first habit is modelled in almost every solution rather than just recommended.
+- Most problems are shown two ways, so you can pick the one your interviewer wants to see.
+- The data challenges use realistic mock data rather than abstract arrays.
+- The closing edge-case scrim is good advice.
+- The tone keeps a drill book from feeling like homework.
+
+Where it is limited:
+
+- It is 2.3 hours and stays at junior level throughout.
+- Efficiency gets two short mentions and no Big O.
+- There is no `async`/`await`, no DOM work beyond one `innerHTML`, and no TypeScript.
+- The advertised stretch-goal solution for Save the Weekend is missing from the table of contents.
+- The Airlines solution misstates the sort rule once in narration.
+- It is Pro-only, with just two sample scrims to try.
 
 ## Related courses and comparisons
 
@@ -76,25 +212,39 @@ Where it is limited: it teaches nothing new, so your mileage depends entirely on
 - [React Interview Questions](/docs/courses/react/react-interview-questions/), if you interview for React roles
 - [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), to shore up concepts before drilling
 - [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/), for the algorithmic side of interviews
+- [All JavaScript courses](/docs/courses/javascript/), the full category
 
 <FAQAccordion items={[
-  { q: "Is JavaScript Interview Challenges free?", a: "No. It is a Scrimba Pro course and requires a subscription. The free Learn JavaScript course is where to start without paying." },
-  { q: "Is it a teaching course?", a: "No. It is practice. It assumes you already know JavaScript and gives you 65 interview-style challenges to drill, not lessons on new concepts." },
-  { q: "Who is it for?", a: "Developers preparing for frontend coding interviews who already know JavaScript and want realistic practice." },
-  { q: "Should I pair it with anything?", a: "Yes. Frontend Interview Tips covers the behavioral side, and React Interview Questions covers framework-specific prep." },
-  { q: "Who teaches it?", a: "Treasure Porth, an experienced Scrimba instructor." },
+  { q: "Is JavaScript Interview Challenges free on Scrimba?", a: "No. It is a Pro course. Only two scrims are free samples: the six-minute intro and the first challenge brief (the Panic Function). Every other challenge, every solution, and the certificate need a Pro subscription." },
+  { q: "How many challenges are in the course?", a: "I counted 28 challenge scrims and 30 solution scrims in the table of contents (two challenges have two-part solutions), plus an intro and three closing scrims, 62 in all. Scrimba's About text says 30 code questions because several challenges ask for two functions, and its structured data lists 65 lessons." },
+  { q: "Who teaches it?", a: "Treasure Porth, who introduces herself in the first scrim as a developer and instructor since 2015 who switched careers through a local bootcamp. She teaches every challenge; the two generic closing scrims are Scrimba's standard Scrimbassador and certificate scrims." },
+  { q: "Is it a teaching course or a practice course?", a: "Practice. Each challenge is a brief in the editor plus a hint, and each solution is a pseudo code plan followed by working code. It reminds you how split, join, reduce, and sort work but never teaches them from scratch." },
+  { q: "What do you build?", a: "Small functions, not apps: a panic function, FizzBuzz in disguise, anagram and palindrome checkers, string reversal, duplicate removal, array flattening, vote counting, and map, filter, reduce, and sort exercises over mock podcast and shopping data. The last two challenges fetch from Scrimba's emoji API, ending in an emoji slot machine that re-rolls nine random fruit on refresh." },
+  { q: "Are there AI-checked challenges or quizzes?", a: "No. The table of contents shows none of the Challenge with Instant Feedback icons used in newer Scrimba courses, and there are no quizzes. You check your own work against Treasure's solution scrim." },
+  { q: "Do I need to install anything?", a: "No. Everything runs in Scrimba's in-browser editor, and the two API challenges call a Scrimba-hosted emoji endpoint that needs no key or sign-up." },
+  { q: "How long does it take?", a: "2 hours 16 minutes of video. Plan on five to eight hours if you solve each challenge yourself before watching the solution, or two to three weeks at twenty minutes a day." },
+  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages." },
+  { q: "Does it cover algorithms and Big O?", a: "Only lightly. Two solutions discuss why nested loops are a warning sign and rewrite the code with an object lookup, and one mentions brute force versus optimal solutions. There is no Big O notation, recursion, or data structures beyond arrays and objects; Scrimba's Data Structures and Algorithms course covers that." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/javascript-interview-challenges-c02c" variant="button">
-  View JavaScript Interview Challenges on Scrimba
+  Try the two free sample scrims on Scrimba
 </AffiliateLink>
 
 <CourseSchema
   name="JavaScript Interview Challenges"
-  description="Scrimba's Pro-tier frontend interview-prep course taught by Treasure Porth. About 2.3 hours of JavaScript coding-interview drills."
+  description="Scrimba's Pro-only frontend interview drill course taught by Treasure Porth. About 2.3 hours across 62 scrims: 28 challenges with worked solutions covering string and array methods, objects, map, filter, reduce, sort, and two fetch exercises."
   url="https://scrimba.com/javascript-interview-challenges-c02c"
   timeRequired="PT2H16M25S"
   difficulty="Intermediate"
   access="Pro"
   keywords={["JavaScript", "Career", "Frontend"]}
+  modules={[
+    { name: 'Intro and how to approach challenges', duration: '6 min' },
+    { name: 'Strings and the classic problems', duration: '47 min' },
+    { name: 'Arrays and objects', duration: '18 min' },
+    { name: 'Working with data: map, filter, reduce, sort', duration: '48 min' },
+    { name: 'Fetching from an API', duration: '9 min' },
+    { name: 'Wrap-up: edge cases and certificate', duration: '9 min' },
+  ]}
 />

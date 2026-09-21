@@ -71,6 +71,158 @@ scrimba.com/our-pricing lists "basic access to Discord community" as free and
   Memory challenge pause (`~0235`), the Langbase Studio retrieval-testing panel
   (`~02nq`), and the final `npx tsx index.ts` console output with the cited
   source (`~05qr`). Then re-add the `Screenshot` import and remove this entry.
+- `docs/courses/javascript/astro.mdx` (reviewed 2026-09-20, all 37
+  transcripts read) ships **without images**: archetype items 3 and 5 are
+  outstanding. The drafting run hit the same shared Chrome window problem
+  (agent tab `visibilityState === "hidden"` for the whole session, scrim app
+  never painted, every capture blank). The course has no chapter title cards
+  (flat list, intro opens on a finished-site slide), so there is no grid to
+  build. Retake when the window is free, 2 to 3 lesson moments: the scoped
+  style rule doing nothing in "Adding styles" (`~02cd`, about 1:37), the empty
+  projects grid before `.data` in "Querying content collections" (`~06hs`,
+  about 1:17), and the finished post page at the end of "Displaying Blog
+  Content" (`~05qi`). Save under `static/img/scrimba/intro-to-astro/`, then
+  add the `Screenshot` import and remove this entry.
+- `docs/courses/javascript/a-space-travel-website.mdx` (reviewed 2026-09-21,
+  31 of 67 transcripts read) ships **without images**: archetype items 3 and 5
+  are outstanding. Two capture attempts (drafting run and the review-fix run)
+  hit the same shared-window problem: the agent's tab stayed
+  `visibilityState === "hidden"` while three other agents' tabs were active,
+  `slide-widget svg` never rendered and every screenshot was a blank frame.
+  Retake when the window is free: title cards at `~01` (course intro, 1280x720
+  slide at CSS rect 320,87), `~01f` (destination page intro) and `~01q` (tabs
+  intro) for the grid, plus 2 to 4 lesson moments: the Color challenge at
+  ~3:52 (`~08`, three alpha boxes), Setting up a grid container at ~9:49
+  (`~0o`, yellow outlines on the tracks), Adding the functionality at ~6:51
+  (`~016`, mobile menu sliding in), and The technology page at 0:20 (`~026`,
+  the "on your own" brief). Then add the `Screenshot` import, the grid and the
+  captioned moments, and remove this entry.
+- `docs/courses/javascript/clean-code.mdx` (reviewed 2026-09-20, all 26
+  transcripts read) ships **without images**: archetype items 3 and 5 are
+  outstanding. Two capture attempts (drafting run and the review-fix run on
+  2026-09-21) hit the same shared-window problem: the agent's tab stayed
+  `visibilityState === "hidden"` while three other agents' tabs were active,
+  the app never left `app-splash` and no `slide-widget svg` rendered. Retake
+  when the window is free: title cards at `~00` (course intro, 1280x720 slide
+  at CSS rect 320,86), `~0a` (functions intro) and `~0g` (comments intro) for
+  the grid, plus 2 to 4 lesson moments: Clean Variables Challenge at ~3:30
+  (`~05`, destructured solution), Magic Numbers at ~1:25 (`~07`, earthRadius
+  and gravityMetric extracted), Encapsulating Conditionals at ~3:06 (`~0e`),
+  and Avoiding Comments with Refactoring at ~0:05 (`~0h`, the commented
+  original). Save under `static/img/scrimba/introduction-to-clean-code/`,
+  then add the `Screenshot` import, the grid and the captioned moments, and
+  remove this entry.
+- `docs/courses/javascript/unit-testing.mdx` (reviewed 2026-09-20, all 23
+  transcripts read) ships **without images**: archetype items 3 and 5 are
+  outstanding. The drafting run hit the same shared-window problem: two tabs
+  tried, both stayed `visibilityState === "hidden"` while three or four other
+  agents' tabs were active, the scrim app never painted and every capture
+  (including a zoom of the loaded 1280x720 `slide-widget svg` at `~00`) was a
+  blank frame. Retake when the window is free: title card at `~00` (course
+  intro, 1280x720 slide at CSS rect 320,87; `~01`, `~04`, `~05` and `~0l` also
+  carry slides, `~0d` is a slideshow) for the grid, plus 2 to 3 lesson
+  moments: Our first test at ~3:16 (`~08`, class broken on purpose, Jasmine
+  reporter red), the Spy Challenge brief at 0:00 (`~0f`, comment-block brief
+  with the `.and.returnValue` hint), and Mocks + Debug with me! at ~5:41
+  (`~0g`, "Expected null to be 1" failure before the debug). Save under
+  `static/img/scrimba/introduction-to-unit-testing/`, then add the
+  `Screenshot` import, the grid and the captioned moments, and remove this
+  entry.
+- `docs/courses/javascript/cybersecurity.mdx` (reviewed 2026-09-20, 36 of 81
+  transcripts read) ships **without images**: archetype items 3 and 5 are
+  outstanding. Two capture attempts (drafting run and the review-fix run on
+  2026-09-21) hit the same shared-window problem: the agent's tab stayed
+  `visibilityState === "hidden"` while three other agents' tabs were active,
+  the app never left `app-splash` and no `slide-widget svg` rendered. Retake
+  when the window is free: title cards at `~0z3o` (module 1 intro), `~0jq`
+  (module 2), `~0y6g` (module 3) and `~07yn` (module 4) for the grid (skip the
+  module 4 outro slide, it carries a GIF), plus 2 to 4 lesson moments: XSS
+  part 1 at ~3:00 (`~0zod`, the fake data-breach alert), SQL Injection part 2
+  at ~3:48 (`~0xyp`, "Disaster dropping users table" with the user count at
+  0), Fixed Window Counter "create the limiter" at ~5:04 (`~0xry`, 200s
+  turning into 429s) and Final challenge part 2 at ~1:13 (`~07y4`,
+  out-of-order results). Save under `static/img/scrimba/learn-cybersecurity/`,
+  then add the `Screenshot` import, the grid and the captioned moments, and
+  remove this entry.
+- `docs/courses/javascript/vue.mdx` (reviewed 2026-09-20, all 27 transcripts
+  read) ships **without images**: archetype items 3 and 5 are outstanding. Two
+  capture attempts (drafting run and the review-fix run on 2026-09-21) hit the
+  same shared-window problem: the agent's tab stayed
+  `visibilityState === "hidden"` while three other agents' tabs were active,
+  the app never left `app-splash` (no `editor-widget`, no `browser-widget`)
+  and every capture was a blank frame. The course has no chapter title cards
+  (no `slide-widget svg` in any Vue scrim; only the generic certificate clip
+  has a slide), so there is no grid to build. Retake when the window is free,
+  2 to 4 lesson moments: the three facts rendered from `facts[0..2]` at ~5:13
+  (`~07cp`), the header vanishing from the preview before the import at ~3:15
+  (`~05kv`), the 404 challenge brief at ~1:10 (`~05zy`), and the finished Vue
+  Facts part 1 at ~3:40 (`~0xt3`). Save under `static/img/scrimba/learn-vue/`,
+  then add the `Screenshot` import and the captioned moments, and remove this
+  entry.
+- `docs/courses/javascript/frontend-interview-tips.mdx` (reviewed 2026-09-21,
+  all 24 transcripts read) ships **without images**: archetype items 3 and 5
+  are outstanding. The drafting run hit the same shared-window problem (agent
+  tab `visibilityState === "hidden"` for the whole session, the app never left
+  `app-splash`, every capture black; a reload and two fresh tabs did not help).
+  The course is a flat list with no chapter title cards, so there is no grid to
+  build. Retake when the window is free, 2 to 4 lesson moments: the promises
+  console printing `1, 3, 2` at ~3:16 (`~0d`), the "assignment to constant
+  variable" error at ~3:33 (`~02`), the `#red:hover` rule with the preview at
+  ~2:11 (`~0a`), and one slide from the talking-head scrims (`~0f`, `~0h` or
+  `~0k`). Save under `static/img/scrimba/frontend-interview-tips/`, then add
+  the `Screenshot` import and the captioned moments, and remove this entry.
+- `docs/courses/javascript/firebase.mdx` (reviewed 2026-09-21, all 39
+  transcripts read) ships **without images**: archetype items 3 and 5 are
+  outstanding. Two capture attempts (drafting run and the review-fix run on
+  2026-09-21) hit the same shared-window problem: the agent's tab stayed
+  `visibilityState === "hidden"` while three other agents' tabs were active,
+  and every capture (including a zoom on the loaded `slide-widget svg`) came
+  back a blank frame. Retake when the window is free: title cards at `~01`
+  (welcome, 1280x720 slide at CSS rect 320,86), `~0h` (Firestore intro) and
+  `~0s` (security rules intro) for the grid (skip `~03`, photos of IBM and
+  Corbato, and the `~0j` end slide, a GIF), plus 2 to 4 lesson moments: Adding
+  a document at ~9:05 (`~0j`, the post does nothing because the call is still
+  commented out), onSnapshot at ~5:22 (`~0r`, the red "cannot read properties
+  of null (reading toDate)" error), the first security rules scrim at ~4:05
+  (`~0t`, "Missing or insufficient permissions" after rules set to false) and
+  Add date filters at ~18:45 (`~012`, the filter buttons with backdated
+  posts). Save under `static/img/scrimba/learn-firebase/`, then add the
+  `Screenshot` import, the grid and the captioned moments, and remove this
+  entry.
+- `docs/courses/javascript/imba.mdx` (reviewed 2026-09-20, all 43
+  transcripts read) ships **without images**: archetype items 3 and 5 are
+  outstanding. Two capture attempts (drafting run and the review-fix run on
+  2026-09-21) hit the same shared-window problem: the agent's tab stayed
+  `visibilityState === "hidden"` while four other agents' tabs were active,
+  the app never left `app-splash` after two loads and no `slide-widget svg`
+  rendered. Retake when the window is free: title card at `~00` (course
+  intro, 1280x720 slide at CSS rect 320,86; `~018` also has a slide, `~0f3` is
+  generic) for the grid, plus 2 to 4 lesson moments: the Conditionals
+  challenge brief at ~5:23 (`~02`), the checkbox `bind` fix at ~1:25 (`~0j`),
+  the icon drawer at ~2:56 (`~0v`) and the finished app resetting after the
+  celebration at ~2:10 (`~017`). Save under `static/img/scrimba/learn-imba/`,
+  then add the `Screenshot` import, the grid and the captioned moments, and
+  remove this entry. Note for future audits: the course is a flat list
+  (`modules: []` in courses.json), so the page's `CourseCurriculum` uses an
+  editorial six-part grouping, disclosed in its `summary` prop.
+- `docs/courses/react/a-react-project-movie-search-app.mdx` (reviewed
+  2026-09-20, all 13 transcripts read) ships **without images**: archetype
+  items 3 and 5 are outstanding. The drafting run hit the same shared-window
+  problem: the agent's tab stayed `visibilityState === "hidden"` for the whole
+  session while other agents' tabs were active; the DOM loaded (transcripts,
+  Monaco, dependency panel readable) but every capture was a blank frame.
+  Only one real title card exists (course intro `~00`, slide-widget; `~0b`,
+  `~0c` and `~0yjj` are generic outro slides), so the grid is that card plus a
+  "what you build" shot. Retake when the window is free, 2 to 4 lesson
+  moments: the results array logged in the console at ~4:28 (`~06`), the live
+  "Step Up" results at ~4:06 (`~07`), posters rendering with some missing
+  before the filter at ~3:10 or the full card with title, date, rating and
+  overview at ~6:46 (`~08`), and the finished app via MovieCard with no key
+  warning at ~4:59 (`~0a`). Save under
+  `static/img/scrimba/build-a-react-project-movie-search-app/`, then add the
+  `Screenshot` import, the grid and the captioned moments, and remove this
+  entry. Note for future audits: Scrimba shows a flat list (no modules), so
+  the page's `CourseCurriculum` uses an editorial five-part grouping.
 
 ## Queue (priority = hub impressions × page importance)
 

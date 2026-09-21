@@ -1,99 +1,218 @@
 ---
-title: "Data Structures and Algorithms: Binary Search"
+title: "Data Structures and Algorithms: Binary Search on Scrimba: 2026 Review"
 sidebar_position: 10
-description: "Jonathan Lee Martin's 1.1-hour Pro deep-dive coding six binary search algorithms in JavaScript, each teaching a software-craftsmanship lesson."
-keywords: [scrimba binary search, binary search algorithm course, software craftsmanship javascript, jonathan lee martin scrimba, binary search javascript]
+toc_max_heading_level: 2
+sidebar_label: "DSA: Binary Search"
+description: "Jonathan Lee Martin's 63-minute Pro course from inside: binary search written six ways against a test suite, which scrims are free, and the real time cost."
+keywords: [scrimba binary search, binary search algorithm course, scrimba binary search review, software craftsmanship javascript, jonathan lee martin scrimba, binary search javascript]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Data Structures and Algorithms: Binary Search
 
-Jonathan Lee Martin's Pro-tier deep-dive: about 1.1 hours coding six different binary search algorithms in JavaScript, where each solution teaches a craftsmanship lesson.
+Jonathan Lee Martin's one hour Pro course on a single algorithm, written six different ways in JavaScript. I read the transcript of every scrim and opened the code in the implementation lessons with a Pro account in September 2026; this page is what is actually in the course, including the parts that have aged.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. It is sequenced into the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's catalog data lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-Binary Search is a 1.1-hour, Pro-tier, advanced course taught by Jonathan Lee Martin. Rather than survey many algorithms, it goes deep on one: you code six different binary search implementations, each chosen to illustrate a software-craftsmanship idea. It is a narrow, deliberate deep-dive, the opposite of a broad survey, and it pairs with the same instructor's merge sort course. Worth it if you want to think about how to write algorithms well, not just make them work.
+Data Structures and Algorithms: Binary Search is a 63 minute, Advanced, Pro course taught by Jonathan Lee Martin. It has twelve scrims and no modules: two on the idea and big O notation, six where you implement binary search against a small test suite (loops, recursion, tail recursion, array splitting, an "array view" wrapper, and an "array partition" helper), and four short wrap-up clips. Every implementation lesson is a challenge first and a walkthrough second. It assumes you already write JavaScript fluently. If you want to practice writing one algorithm well rather than memorizing twenty, it is a good hour; if you want a survey of data structures, it is the wrong course.
 
 <CourseCard
   title="Data Structures and Algorithms: Binary Search"
   duration="1.1 hrs"
   difficulty="Advanced"
   access="Pro"
-  lessons={13}
+  lessons={12}
   instructor="Jonathan Lee Martin"
   instructorUrl="https://scrimba.com/@nybblr"
   href="https://scrimba.com/data-structures-and-algorithms-binary-search-c01o"
-  description="Code six different binary search algorithms in JavaScript, each teaching a software-craftsmanship lesson."
+  description="Binary search implemented six ways in JavaScript against a test suite, each version a design lesson."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/data-structures-and-algorithms-binary-search/chapter-binary-search-big-o-title-card.webp"
+    alt="Title slide of the Binary Search lesson in Scrimba's Data Structures and Algorithms: Binary Search course, reading Big-Oh notation and Binary Search on a dark slate background"
+    width={1279}
+    height={720}
+    caption="The only title card in the course: lesson 2, where big O notation and binary search are explained on slides before any code."
+    source="Slide from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-The idea of implementing the same algorithm six different ways sounds repetitive, but that is the point: each version teaches a distinct lesson about writing clean, correct, well-shaped code. If you already understand what binary search does and want to level up how you write algorithms, this depth-over-breadth approach is genuinely instructive.
+Yes, if you are the person it was made for. Jonathan says who that is in the first minute: developers who came through a bootcamp or self-teaching, "who are already great craftsmen and want to step up their software design by thinking algorithmically, but you don't have a background in CS." The course then does one thing well. You write binary search, run the tests, watch his version, and repeat with a new constraint each time. By the sixth version you have written the same algorithm with loops, recursion, and two small data structures you built yourself, and you can feel which one you would want to maintain.
 
-The honest caveat is that it is narrow and assumes a lot. It is marked Advanced, it does not teach the concept of binary search from scratch, and at 13 lessons it is a focused exercise rather than a curriculum. If you want broad algorithmic coverage, this is the wrong shape of course.
+The catch is the shape. Twelve scrims, 63 minutes, one algorithm. There are no data structures in the sense the title suggests, and the course never leaves binary search. It was recorded as a free preview of a longer algorithms course Jonathan planned to release; the intro and the wrap-up both say so, and both point to a feedback form for that course. On Scrimba today it is a Pro course, and the sibling [Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/) course is the closest thing to the follow-up.
 
 ## What you'll learn
 
-Across 13 lessons you implement binary search six different ways in JavaScript. The variety is intentional: each implementation surfaces a different craftsmanship lesson, from edge-case handling to readability to how you structure a recursive versus iterative solution. The takeaway is less "how binary search works" and more "how to write any algorithm thoughtfully."
+<CourseCurriculum
+  summary="12 scrims, no modules; grouping below is mine"
+  modules={[
+    { name: 'The idea: big O and the splitting strategy', duration: '15 min', lessons: 2 },
+    { name: 'Six implementations, each a challenge', duration: '43 min', lessons: 6 },
+    { name: 'Wrap up, certificate, and Scrimba clips', duration: '6 min', lessons: 4 },
+  ]}
+/>
 
-It is a deep-dive by design. The breadth lives in the broader [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course; this one trades range for depth on a single, well-chosen problem.
+Scrimba presents the course as one flat list of twelve scrims plus a certificate item, and its structured data says 13 lessons; the three groups above are my own reading order, and the 63 minutes in the course header is the sum of the twelve scrims.
+
+## Inside the course, lesson by lesson
+
+### Lessons 1 and 2. Course Overview and Binary Search (15 min)
+
+The overview is seven minutes of Jonathan talking over a blank editor. It is worth listening to because it sets the rules: you need to be "fluent in JavaScript," he takes "a decidedly more functional approach," and the code will be written by you first. "I fundamentally believe that valuable learning only happens when you, the learner, are the one writing the code," he says, and then, more bluntly, "don't just skip to the solution. Otherwise, you might as well skip the course."
+
+The second scrim is the only slide lesson. Over 22 slides Jonathan walks through a seven element array, counts lookups for a left to right "sweeper" search, and introduces big O notation with the sweeper as O(n). Then the phone book analogy: open to the middle, decide which half to keep, repeat. He calls that the "splitting strategy," works out that it needs about log base two of n lookups, and only then tells you "splitter is really called binary search." The last line is the rule that matters: it "only works when the list you're searching through has already been sorted."
+
+<Screenshot
+  src="/img/scrimba/data-structures-and-algorithms-binary-search/binary-search-splitting-strategy-slide-lesson.webp"
+  alt="Slide from the Binary Search lesson in Scrimba's binary search course showing a sorted array of the letters a, d, e, h, m, p, x with indexes 0 to 6 and a yellow arrow pointing at the middle element m"
+  width={1279}
+  height={720}
+  caption="Lesson 2 at 7:31: the splitting strategy on a seven element array. Jonathan has just shown that the sweeper takes up to 63 lookups on 63 elements while the splitter takes six."
+/>
+
+### Lesson 3. Imperative (8:22)
+
+The first code lesson opens the real project: `binary-search.js` with a skeleton function that returns -1, `binary-search.test.js` with three assertions (empty array, one element, four elements), and `assert@2.0.0` as the only dependency. The function signature takes the array, the element, and a `compare` callback that returns -1, 0, or 1, the same shape as the callback you pass to `Array.prototype.sort`. Save the file and the console prints an `AssertionError`; when the console goes quiet, the tests pass. That is the feedback loop for the rest of the course.
+
+The constraints for version one are loops and fixed memory. Jonathan's solution is the textbook one: `left` and `right` boundaries, a `while (left <= right)` loop, `Math.floor` for the middle, and a `switch` on the comparison. What I liked is that he does not pretend it was easy. "As I was putting this example together, it took me about five tries to get these conditions right for the while loop," he says, and then lists the questions that bite everyone: less than or less than or equal, round up or down, `length` or `length - 1`.
+
+<Screenshot
+  src="/img/scrimba/data-structures-and-algorithms-binary-search/imperative-challenge-start-failing-test-lesson.webp"
+  alt="Scrimba Imperative lesson at the start: the editor shows binary-search.js with a defaultCompare function and a binarySearchWithLoops skeleton that returns -1, the file list includes binary-search.test.js, the dependencies panel lists assert 2.0.0, and the console shows AssertionError: Expected values to be strictly deep-equal"
+  width={1400}
+  height={660}
+  caption="Lesson 3 at 0:00, the state you pause on. The skeleton returns -1, the test file is one click away, and the console shows the failing assertion. Your job is to make the console go quiet before pressing play."
+/>
+
+### Lesson 4. Recursion (7:41)
+
+Same tests, new rules: no loops, and every variable declared with `const`. Jonathan reuses the signature but adds `left = 0` and `right = array.length - 1` as default parameters, pointing out that a later default can reference an earlier one. Then he replaces the `switch` with a nested ternary, which he admits "isn't quite as common in the production community," and compares it to Haskell's if-else.
+
+The best moment is the bug. He saves the file, expects passing tests, and gets `RangeError: Maximum call stack size exceeded` instead, because the function has a step case and no base case. The fix is a one line guard: if `left > right`, return -1. His verdict on the version: "There are fewer off by one errors just due to looping. However, it is pretty easy to get into some sort of infinite recursion."
+
+<Screenshot
+  src="/img/scrimba/data-structures-and-algorithms-binary-search/recursion-maximum-call-stack-error-lesson.webp"
+  alt="Scrimba Recursion lesson paused after saving: the editor shows binarySearchWithRecursion with default parameters left = 0 and right = array.length - 1 and a nested ternary that recurses left or right, and the console shows RangeError: Maximum call stack size exceeded at binary-search.js line 35"
+  width={1400}
+  height={660}
+  caption="Lesson 4 at 5:57. The recursive version is written but has no base case, so the first save blows the call stack. Jonathan reads the error and adds the guard in the next thirty seconds."
+/>
+
+### Lesson 5. Tail Recursion (5:46)
+
+The challenge is to call the recursive function only once instead of twice. Jonathan warns that the answer "is probably gonna look a little bit worse than the previous two solutions" and it does: the ternary now builds a two element `newBounds` array, which gets spread into the recursive call. He forgets the equality case, the tests fail, and he adds a second guard clause. The lesson ends on a real design point: two guard clauses means three exit points, and "all those different exit points are cases that we have to test."
+
+### Lesson 6. Array Splitting (6:34)
+
+Now memory is allowed to be wasteful. Instead of passing boundaries, each recursive call gets `array.slice(left, right)`, so the base case becomes "the array is empty." Two bugs appear on screen, both instructive: the returned index is relative to the slice, so it has to be offset by `left`, and offsetting -1 turns "not found" into a wrong index, which needs one more ternary. Jonathan closes with the cost: slicing copies the array, so the memory is no longer fixed and the runtime is worse.
+
+### Lesson 7. Array View (8:01)
+
+The longest challenge. You build `ArrayView`, an object wrapping a real array with a `start` and `end`, exposing `length`, `toArray`, `slice`, and `get`. Jonathan writes `length` and `toArray` with you, then hands over `slice` and `get`: "above all, array view should never actually make a copy of the original array." The trap is that `slice` must return a new view whose bounds are offset by the parent's `start`, and `get` must check its bounds and return `undefined` outside them.
+
+This is what the course has been building toward. The array splitting code from lesson 6 stays exactly as it was; you inject the view in place of the array and get fixed memory back. "Often, if we go for the naive solution first, we can find ways after the fact to get back those performance benefits while keeping the better, more readable code," Jonathan says.
+
+<Screenshot
+  src="/img/scrimba/data-structures-and-algorithms-binary-search/array-view-slice-get-challenge-lesson.webp"
+  alt="Scrimba Array View lesson paused at the challenge: the editor shows the finished binarySearchWithArraySplitting function above an exported ArrayView factory with length and toArray implemented and slice and get left as empty arrow functions, and a binarySearchWithArrayView wrapper below"
+  width={1400}
+  height={660}
+  caption="Lesson 7 at 3:17, the challenge brief. length and toArray are done; slice and get are empty arrow functions you have to fill in without copying the array. The tests for ArrayView live in binary-search.test.js."
+/>
+
+### Lesson 8. Array Partition (7:00)
+
+The last implementation lifts the index math out entirely. `ArrayPartition(array, pivot)` returns an object with `left()`, `middle()`, and `right()`. With that in place, binary search reads like the phone book description: compare with the middle, recurse into left or right. This is the challenge Jonathan says you may not finish ("If you get stuck for too long, it's okay to move on"). His own solution needs the view's `start` property to recover the real index, which he calls "a bit tainted." I agree, and I also think this is the most honest lesson in the course: he shows the seam instead of hiding it.
+
+### Lessons 9 to 12. Wrap Up and the closing clips (6 min)
+
+The wrap-up is two minutes and contains the thesis: "the point of deriving all these solutions isn't to say that the last one is the best. In fact, with a little tidying, I'm a big fan of our first solution too." Then a one minute congratulations clip from a Scrimba team member, a two minute Scrimbassador referral pitch from Per Borgen, and a one minute clip on adding the certificate to LinkedIn. None of the three belongs to the course, and you can skip them.
+
+## What a lesson actually feels like
+
+Six of the twelve scrims follow the same loop. Jonathan states the constraints for the new version, writes the skeleton and updates the export, saves so you can see the failing test, and says "pause this lesson." You write the code in the same editor, save, and watch the console. When it goes quiet, you press play and he writes his version, usually in a different style from yours, which is the point. There are no AI-checked challenges here; the test suite is the checker.
+
+Scrims run six to eight minutes, longer than Scrimba's beginner courses, and the talking is dense. Captions and the full transcript panel are there, and playback speed is adjustable. One detail to know: the editor shows the scrim's final state until you scrub, so opening a lesson at 0:00 can already show the finished code. Seek to the start of the challenge before you pause and write.
+
+## Free or Pro: exactly what is gated
+
+The course is Pro. Three scrims are marked SAMPLE and open without a subscription: Course Overview, Binary Search, and Imperative. That is 24 minutes, and it includes the whole conceptual explanation plus the first full challenge with the test suite, so you can find out whether the format suits you before paying. The remaining nine scrims (the five other implementations, the wrap-up, and the closing clips) and the certificate are Pro.
+
+There are no Solo Projects in this course, so there is nothing else to gate. Pro also unlocks the career paths Scrimba lists this course under and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+
+## How long it really takes
+
+Sixty three minutes of video, but six of the scrims stop and wait for you. If you actually write each version before watching the solution, budget two to three hours: twenty minutes for the loop version if off by one errors get you, ten each for the recursive ones, and half an hour or more for Array View and Array Partition, which are the two Jonathan warns about. If you only watch, it is an hour, and it will not stick. He says as much.
 
 ## Who it's for, and who should skip it
 
-It fits developers who already understand basic algorithms and want to sharpen how they write them, treating one familiar problem as a lens on craftsmanship.
+It fits working developers and bootcamp graduates who write JavaScript daily and have never been made to write an algorithm under constraints. It also fits anyone preparing for interviews who wants to be able to talk about the same problem from more than one angle; the six versions give you that vocabulary.
 
-Skip it if you need a broad introduction to data structures and algorithms; start with the general [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course instead. Also skip it if you have never encountered binary search, since this does not teach the concept from zero.
+Skip it if you are still learning JavaScript. The course uses default parameters, spread, destructuring, nested ternaries, and ES module exports without explaining any of them. Skip it too if you want breadth: the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course covers the survey this one deliberately avoids. And if you have a CS degree, Jonathan says himself that you "probably won't find this course as helpful."
 
 ## Prerequisites
 
-Comfortable JavaScript and a basic grasp of what binary search is. The course is about implementing it well, not explaining the idea, so bring that understanding with you.
+Fluent JavaScript, ideally with some exposure to functional style: arrow functions, `const`, spread, and array destructuring all appear in the first three code lessons. You do not need to know binary search in advance; lesson 2 explains it from a blank array. You do not install anything. The test suite runs in the browser through the `assert` package listed in the scrim's dependencies.
 
 ## Where it fits
 
-It is a focused deep-dive that complements the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), best taken after the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course and alongside its sibling [merge sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/) deep-dive.
-
-## Free or Pro
-
-This is a Pro course, so it requires a Scrimba subscription. Pro also covers the full career paths, the coding challenges, the Discord, and certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+Scrimba's catalog data lists the course under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). It pairs with the same instructor's [Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/) course, which uses the same challenge-then-solution format on a sorting algorithm. Take the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course first if you want the vocabulary, and [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) afterwards if the goal is interviews.
 
 ## Strengths and limits
 
-What it does well: the six-implementations approach turns one familiar problem into a focused lesson on writing algorithms well, and Jonathan Lee Martin frames each version around a concrete craftsmanship idea.
+What it does well: every implementation is a real challenge with a test suite, the bugs happen on screen and get read out loud, the array view and partition lessons teach a design idea (inject a data structure instead of rewriting the algorithm) that applies far beyond binary search, and the three free scrims are enough to judge the format.
 
-Where it is limited: it is deliberately narrow, it assumes you already know what binary search is, and at 13 lessons it is an exercise rather than broad coverage.
+Where it is limited: it is one algorithm in one hour, so the title promises more than it delivers. The code comments and the narration in the implementation lessons describe the loop and recursive versions as O(n), right after lesson 2 has carefully derived O(log n); it is a slip, but it will confuse anyone meeting big O for the first time. The intro and wrap-up still talk about the course as a free preview of a bigger course "coming out later this year," which dates it. And the last three scrims are Scrimba marketing, not teaching.
 
 ## Related courses and comparisons
 
+- [All JavaScript courses](/docs/courses/javascript/), the category hub
 - [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/), the broad foundation to take first
-- [Data Structures and Algorithms: Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/), the sibling deep-dive, same instructor
+- [Data Structures and Algorithms: Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/), the sibling course, same instructor and format
 - [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/), for broader interview practice
+- [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), if the functional syntax here felt unfamiliar
 
 <FAQAccordion items={[
-  { q: "Is Binary Search free?", a: "No. It is a Scrimba Pro course and requires a subscription." },
-  { q: "Does it teach binary search from scratch?", a: "Not really. It assumes you know the concept and focuses on implementing it six different ways, each teaching a craftsmanship lesson." },
-  { q: "Why code the same algorithm six times?", a: "Each implementation illustrates a different lesson about writing clean, correct code. The repetition is the teaching device." },
-  { q: "Should I take the general DS&A course first?", a: "Yes, if you want breadth. This is a narrow deep-dive that complements the broad Data Structures and Algorithms course." },
-  { q: "Who teaches it?", a: "Jonathan Lee Martin, who also teaches the companion Merge Sort course on Scrimba." },
+  { q: "Is Data Structures and Algorithms: Binary Search free on Scrimba?", a: "No, it is a Pro course. Three scrims are free samples: Course Overview, Binary Search (the slide explanation), and Imperative (the first coding challenge). The other nine scrims and the certificate need Pro." },
+  { q: "Does it teach binary search from scratch?", a: "Yes. Lesson 2 explains it on slides from a seven element array, introduces big O, and derives O(log n) before any code. What it does not teach is JavaScript itself." },
+  { q: "What are the six implementations?", a: "Loops (imperative), recursion, tail recursion, array splitting with slice, an ArrayView wrapper that avoids copying, and an ArrayPartition helper with left, middle and right methods. Each one is a challenge you write against the same test suite before watching the solution." },
+  { q: "Do the lessons have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript panel in the player settings, and subtitles in ten languages according to the course header." },
+  { q: "Are there AI-checked challenges?", a: "No. The checker is a small assert-based test suite in binary-search.test.js. When the console stops printing AssertionError, your version passes." },
+  { q: "Do I need to install anything?", a: "No. The code, tests and the assert dependency run in the browser inside the scrim." },
+  { q: "How long does it take?", a: "63 minutes of video. Writing all six versions yourself before watching the solutions takes two to three hours." },
+  { q: "Who teaches it?", a: "Jonathan Lee Martin (@nybblr on Scrimba), who also teaches the Merge Sort course. The three closing clips are by Scrimba staff." },
+  { q: "Is there a project or certificate?", a: "There is no project beyond the six implementations. A certificate of completion is listed at the end of the course and is part of Pro." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/data-structures-and-algorithms-binary-search-c01o" variant="button">
-  View Data Structures and Algorithms: Binary Search on Scrimba
+  Try the three free scrims of Binary Search on Scrimba
 </AffiliateLink>
 
 <CourseSchema
   name="Data Structures and Algorithms: Binary Search"
-  description="Scrimba's Pro-tier deep-dive taught by Jonathan Lee Martin. About 1.1 hours coding six binary search algorithms in JavaScript, each a craftsmanship lesson."
+  description="Scrimba's Pro course taught by Jonathan Lee Martin. About 63 minutes and twelve scrims: binary search explained on slides, then implemented six ways in JavaScript against a test suite, each version a challenge you write first."
   url="https://scrimba.com/data-structures-and-algorithms-binary-search-c01o"
   timeRequired="PT1H3M46S"
   difficulty="Advanced"
   access="Pro"
   keywords={["JavaScript", "Algorithms"]}
+  modules={[
+    { name: 'The idea: big O and the splitting strategy', duration: '15 min' },
+    { name: 'Six implementations, each a challenge', duration: '43 min' },
+    { name: 'Wrap up, certificate, and Scrimba clips', duration: '6 min' },
+  ]}
 />
