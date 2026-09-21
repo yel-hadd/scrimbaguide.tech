@@ -11,3 +11,4 @@ export { default as ReviewSchema } from './ReviewSchema';
 export { default as VerdictBox } from './VerdictBox';
 export { default as DisclosureNotice } from './DisclosureNotice';
 export { default as HowToSchema } from './HowToSchema';
+export { default as Screenshot } from './Screenshot';

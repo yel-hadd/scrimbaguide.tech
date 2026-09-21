@@ -10,6 +10,8 @@ export interface CurriculumModule {
 interface CourseCurriculumProps {
   modules: CurriculumModule[];
   title?: string;
+  /** Replace the automatic "N modules · N lessons" line (e.g. when the grouping is editorial). */
+  summary?: string;
 }
 
 /** Parse a Scrimba duration string ("2.4 hrs" / "108 min") into minutes. */
@@ -30,6 +32,7 @@ function toMinutes(duration?: string): number {
 export default function CourseCurriculum({
   modules,
   title = 'Course curriculum',
+  summary,
 }: CourseCurriculumProps): React.ReactElement | null {
   if (!modules || modules.length === 0) return null;
 
@@ -48,7 +51,7 @@ export default function CourseCurriculum({
     <section className="curriculum" aria-label={title || 'Course curriculum'}>
       <div className="curriculum__head">
         {title ? <h3 className="curriculum__title">{title}</h3> : null}
-        <p className="curriculum__summary">{summaryParts.join(' · ')}</p>
+        <p className="curriculum__summary">{summary ?? summaryParts.join(' · ')}</p>
       </div>
       <ol className="curriculum__list">
         {modules.map((m, i) => {

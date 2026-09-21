@@ -1,10 +1,11 @@
 ---
-title: "Learn HTML and CSS"
+title: "Learn HTML and CSS on Scrimba: 2026 Review"
 sidebar_position: 1
-description: "Scrimba's free beginner anchor: HTML and CSS through five build-and-deploy projects, taught by Per Borgen. The best true starting point on the site."
-keywords: [scrimba learn html and css, free html css course, per borgen html css, beginner web development course, interactive html css]
+sidebar_label: "Learn HTML and CSS"
+description: "Per Borgen's free Learn HTML and CSS course reviewed from inside: 5.7 hours, 115 scrims, five sites you deploy, one free solo project, and the real time cost."
+keywords: [scrimba learn html and css, scrimba html css review, free html css course, per borgen html css, beginner web development course, interactive html css course]
 last_update:
-  date: 2026-07-23
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -12,14 +13,15 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Learn HTML and CSS
 
-Scrimba's free beginner anchor, taught by Per Borgen: about 5.7 hours that take you from your first tag to five real websites you build and deploy yourself.
+Scrimba's free beginner anchor, taught by Per Borgen: about 5.7 hours of short scrims in which you build and deploy five websites, then build a sixth on your own. I opened every module and worked through lessons from each with a Pro account in September 2026; this is what the course actually contains.
 
 ## Quick answer
 
-Learn HTML and CSS is Scrimba's free, beginner-level course: roughly 5.7 hours across six project modules and 120 lessons, taught by Per Borgen. You learn by building and deploying five websites, with 75+ coding challenges along the way. It assumes nothing. If you are new to web development, this is the single best place on the site to begin, and it is free.
+Learn HTML and CSS is Scrimba's free, beginner-level course, made in partnership with MDN: roughly 5.7 hours across six modules and 115 scrims, taught by Per Borgen. You build a personal website, a Google.com clone, a digital business card, a space exploration landing page, and a birthday site with hover-reveal "gifts," deploying most of them to the web as you go, and you finish with a free solo project (a hometown homepage) built from a skeleton and a color palette. It assumes nothing. If you are new to web development, this is the single best place on the site to begin.
 
 <CourseCard
   title="Learn HTML and CSS"
@@ -33,52 +35,132 @@ Learn HTML and CSS is Scrimba's free, beginner-level course: roughly 5.7 hours a
   description="A free, project-based introduction to HTML and CSS built around five build-and-deploy websites and 75+ challenges."
 />
 
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/learn-html-and-css/chapter-lets-learn-css-title-card.webp"
+    alt="Title card of the Let's learn CSS! chapter in Scrimba's Learn HTML and CSS course, with two illustrated students looking at a laptop"
+    width={1279}
+    height={720}
+    caption="Module 2 opens with CSS and the Google.com clone."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/learn-html-and-css/space-exploration-site-preview.webp"
+    alt="The finished Space Exploration landing page from Scrimba's Learn HTML and CSS course shown in the Scrimba preview pane: a galaxy background image, a Join the exploration heading with an underlined word, an Apply button and a Terms and conditions section"
+    width={960}
+    height={594}
+    caption="Module 4's finished space site, as shown in the first scrim of that module."
+    source="Images from scrimba.com."
+  />
+</div>
+
 ## Is it worth your time?
 
-It is free and it is the right first course, so the answer is an easy yes. The project-first structure is what sets it apart: instead of memorising tags in the abstract, you build and ship real pages from the very first module, which keeps motivation high and makes the concepts stick. For a complete beginner, editing the instructor's code in the browser and seeing the page change instantly is exactly the right way in.
+It is free and it is the right first course, so the answer is an easy yes. What sets it apart is that you ship something in the first module: the twelfth scrim is "Build a Personal Website" and the thirteenth is "Deploy your Personal Website." Instead of memorizing tags in the abstract, you write HTML in the editor, see the page change in the preview beside it, and put it on the web before you have learned any CSS at all.
 
-The honest caveat is that it is genuinely a beginner course, not a comprehensive one. It gets you building and confident, but it does not go deep on responsive design, advanced layout, or the harder corners of CSS. That is fine; those come next. Just do not expect to finish this and be a complete CSS developer. Expect to finish it able to build and deploy real pages, which at this stage is exactly what you want.
+Per's teaching voice is playful to the point of silly, and it works for a first course. His explanation of the three web languages is a car: HTML is the tires, doors, and steering wheel, CSS is the paint, JavaScript is the engine. The second CSS lesson is titled "Let's destroy wikipedia" and has you open DevTools on the Wikipedia article "List of helicopter prison escapes" and set its background to red. You learn `margin` "via flags," meaning you recreate national flags with boxes and spacing.
+
+The honest caveat is that it is genuinely a beginner course, not a comprehensive one. Flexbox appears in every module from the Google clone onward, but only the parts you need (`display: flex`, `justify-content`, `align-items`, `flex-direction`); there is no CSS Grid, no media queries, no responsive design, and no CSS variables. Per says as much when flexbox first appears: "if you are a little bit confused about Flexbox, that is totally okay as well. We're going to work with that several times throughout this course." Deeper layout is what [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) and [Learn CSS Grid](/docs/courses/css/css-grid/) are for.
 
 ## What you'll learn
 
 <CourseCurriculum
   modules={[
-    { name: 'Build & Deploy Your First Website', duration: '74 min' },
-    { name: 'Build a Google.com clone', duration: '82 min' },
-    { name: 'Build a Digital Business Card', duration: '72 min' },
-    { name: 'Build a Space Exploration Site', duration: '44 min' },
-    { name: 'Build a Birthday GIFt Site', duration: '99 min' },
-    { name: 'Solo Project: Hometown Homepage', duration: '8 min' },
+    { name: 'Build & Deploy Your First Website', duration: '75 min', lessons: 20 },
+    { name: 'Build a Google.com clone', duration: '82 min', lessons: 27 },
+    { name: 'Build a Digital Business Card', duration: '72 min', lessons: 22 },
+    { name: 'Build a Space Exploration Site', duration: '44 min', lessons: 15 },
+    { name: 'Build a Birthday GIFt Site', duration: '99 min', lessons: 28 },
+    { name: 'Solo Project: Hometown Homepage', duration: '8 min', lessons: 3 },
   ]}
 />
 
-The structure is project after project, each adding skills you immediately use. You start by building and deploying a first site, which front-loads the satisfying part: something real, live on the web, in the first session. The Google clone and business card drill layout and styling, the space site adds structure and imagery, and the birthday site is the largest build. The course ends with a solo project, a hometown homepage you assemble yourself, which is where it stops holding your hand and checks that the skills landed.
+Lesson counts are the scrims I counted in each expanded module in September 2026. Scrimba's own module headers show 14, 19, 18, 9, 20, and 0 (they exclude intros, recaps, asides, and the solo project briefs), and the course listing says 121 lessons, which counts clips inside scrims. When other pages on this site quote 121, that is Scrimba's number.
 
-Scrimba also publishes a free written <AffiliateLink href="https://docs.scrimba.com/html/introduction" location="companion-docs">HTML reference</AffiliateLink> (with a matching CSS one) in its docs, a textbook companion to these build-along projects. A Beginner, Intermediate, and Deep Dive switcher lets you look up a tag or property quickly, then reread it in more depth later.
+Scrimba also publishes a free written <AffiliateLink href="https://docs.scrimba.com/html/introduction" location="companion-docs">HTML reference</AffiliateLink> (with a matching CSS one) in its docs, and the course links to it in a "Scrimba Docs" scrim at the end of module one. A Beginner, Intermediate, and Deep Dive switcher lets you look up a tag or property quickly, then reread it in more depth later.
+
+## Inside the course, module by module
+
+### 1. Build and deploy your first website (75 min, 20 scrims)
+
+HTML only, and faster than you would expect. Tags, a "Write a news article!" challenge, the `<img>` tag, nesting, then "Internet superpowers: Change the BBC news!", where you edit a live news site's headlines in DevTools. Buttons and input tags lead into "Let's build Google!" (the HTML of the Google homepage, restyled in module two), anchor tags, proper document structure, lists, and an aside on description lists. Then you build a one-page personal site and deploy it, get a short introduction to semantic HTML, and finish with a recap, a "Learning in public" nudge, and a pointer to the Scrimba Docs.
+
+### 2. Build a Google.com clone (82 min, 27 scrims)
+
+CSS starts here. The first challenge, "Write your first lines of CSS!", is a sample scrim you can try without an account. After the Wikipedia demolition, you link a stylesheet, set widths, learn inline vs block, and then margins, first "via flags," then to space out and center the Google elements. Divs ("Divs rule the world"), classes, padding, borders and border-radius, an aside challenge to style a Twitter button, and finally the reason flexbox exists: "Why we can't have two block-level buttons," followed by "Flexbox" and "Centering both buttons with flexbox."
+
+<Screenshot
+  src="/img/scrimba/learn-html-and-css/google-clone-flexbox-centering-lesson.webp"
+  alt="Scrimba Learn HTML and CSS lesson Centering both buttons with flexbox, paused at 2:04: styles.css shows a .btn-wrapper rule with display: flex and justify-content: center, and the preview shows the Google clone with the Google Search and I'm Feeling Lucky buttons centered but touching each other"
+  width={1400}
+  height={660}
+  caption="The Google clone at 2:04 of the flexbox lesson: the buttons are centered with display: flex and justify-content: center, but 'totally crammed into each other,' as Per says, until he adds margin-left and margin-right a few seconds later."
+/>
+
+The module closes with "Why are Solo Projects important?" and the first Pro solo project, The Daily Dribble Newsletter.
+
+### 3. Build a Digital Business Card (72 min, 22 scrims)
+
+A card with your photo, name, and links, and the module where the CSS gets more deliberate: fixing an image path (with a lesson on relative paths), the `alt` attribute, sizing, borders and padding, flexbox child containers and flex items, a first utility class, `justify-content`, centering the card, an aside on inheritance (marked "Updated"), colors, web-safe fonts, and the margin and padding shorthands. "Make it your own!" then "Deploy your Digital Business Card," followed by a "Git & GitHub Intro" scrim, a recap, and the second Pro solo project, an Amazon product page.
+
+### 4. Build a Space Exploration Site (44 min, 15 scrims)
+
+The shortest module and the most visual. A background image from Unsplash, centering and a styled button, Google Fonts and `@font-face`, an aside on spans, an underline via a span, an ID for the logo, replacing a JPG with a WebP, choosing a color palette from an image, a terms and conditions section, and text shadows for readability. The Pro solo project here is a web agency hero section.
+
+### 5. Build a Birthday GIFt Site (99 min, 28 scrims)
+
+The largest build: a page that says "Today is Nick's birthday" with a photo, age and date badges, and a column of "gifts" that reveal a GIF when you hover. It starts with header styling, colors, and text shadow, then "We have a problem that flexbox can fix," `align-items`, `flex-direction`, and turning the header into a flexbox. You create the first gift, swap an `<img>` for a `<div>`, add the hover effect, then three more gifts, a footer, and a background gradient. The tail of the module is the most practical part of the course: `<em>` and `<strong>`, publishing with GitHub Desktop, deploying, editing in VS Code, a three-part intro to HTML audio and video, HTML tables, and personalizing the site so you can actually send it to someone.
+
+### 6. Solo Project: Hometown Homepage (8 min, 3 scrims)
+
+Three scrims: "It's time to go solo!", the brief, and "Congrats on completing the course!" The brief is a four minute walkthrough of the finished site (a hero with a background image, a three-column activities section, and a guide card) and Per maps each part back to a module: "this hero section here with a background image ... that's pretty similar to what we did in the space exploration site," the coloured headings are from the birthday site, the guide card "resembles our business card quite a lot," and the three columns are "a job for Flexbox if you ask me." You get a skeleton with the images and almost no styling, and the requirements are to use classes, flexbox, `background-image`, and the provided palette.
+
+<Screenshot
+  src="/img/scrimba/learn-html-and-css/hometown-homepage-solo-project-finished.webp"
+  alt="The finished Hometown Homepage solo project from Scrimba's Learn HTML and CSS course: a Visit Torshov hero over a photo of Oslo apartment blocks, a Top three activities section with three image columns, and a Your guide card with a photo of Per Borgen"
+  width={521}
+  height={631}
+  narrow
+  caption="The finished Hometown Homepage, shown at 0:06 of the solo project brief. Everything in it maps to a module you have just completed, which is the point."
+/>
+
+Unlike the three Pro solo projects, this one is free and inside the course itself.
+
+## What a lesson actually feels like
+
+Scrims are short, mostly two to four minutes. Per talks over a live editor with the preview on the right, and challenges arrive as comments in the file plus a paused recording: "please take over here, do this challenge, and then return back to me when you've done it or when you feel you need some guidance." Every scrim has captions, a full timestamped transcript under the settings menu, subtitles in ten languages, playback speed, and a "Download as Zip" for the project files.
+
+The tone is deliberately low-stakes. "If you didn't do this, no worries at all," after the flexbox challenge. The course also keeps sending you outside the sandbox: DevTools on the BBC and Wikipedia, Unsplash for images, Google Fonts, Netlify and GitHub Desktop for deploying. By the end you have used the same tools a working front end developer uses, which is unusual for a course this short.
+
+## Free or Pro: exactly what is gated
+
+All six modules, every challenge, the deploys, and the Hometown Homepage solo project are free, with no card required.
+
+Pro gates three Solo Projects, one at the end of modules two, three, and four: The Daily Dribble Newsletter, an Amazon product page, and a web agency hero. Each is a build-from-a-design exercise with no walkthrough. Pro also unlocks the certificate, the career paths this course belongs to, and the Pro-only Discord channels (basic Discord access is free). If you only want this course, you never have to pay. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you later want the path structure around it.
+
+## How long it really takes
+
+5.7 hours is video runtime. With 75+ challenges, five deploys, and a solo project, plan for 12 to 18 hours: two to three weeks at an hour a day. The birthday site module alone is 99 minutes of video and will take most beginners three or four sessions. Add three to five hours if you build the hometown homepage properly from the palette rather than the skeleton.
 
 ## Who it's for, and who should skip it
 
-It fits absolute beginners: people who have never written a line of HTML, who want to learn by building real things rather than watching slides. It is the natural anchor for anyone on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the obvious first stop for [beginners](/docs/for/beginners/).
+It fits absolute beginners: people who have never written a line of HTML, who want to learn by building real things rather than watching slides. It is the first course on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), and the obvious first stop for [beginners](/docs/for/beginners/) and [designers](/docs/for/designers/) who want to ship their own pages.
 
-There is almost no one who should skip it outright. If you already write HTML and CSS confidently, you can move past it to layout-focused courses like [Learn Flexbox](/docs/courses/css/flexbox/), [Learn CSS Grid](/docs/courses/css/css-grid/), or the deeper [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/).
+There is almost no one who should skip it outright. If you already write HTML and CSS confidently, move past it to [Learn Flexbox](/docs/courses/css/flexbox/), [Learn CSS Grid](/docs/courses/css/css-grid/), or [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/).
 
 ## Prerequisites
 
-None. You need a web browser and the willingness to type along. No prior programming, no setup, no maths.
+None. You need a browser and the willingness to type along. No prior programming, no setup, no maths. A free Netlify or GitHub account helps for the deploy scrims, and the course shows you how to make one.
 
 ## Where it fits
 
-This is the foundation course on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), and the recommended starting point for [beginners](/docs/for/beginners/). The natural next step is [Learn JavaScript](/docs/courses/javascript/learn-javascript/), after which the front-end work opens up.
-
-## Free or Pro
-
-The course is free, with no subscription required to start or finish it. Scrimba Pro is a separate decision: it covers the structured career paths, the challenges, the Discord, and certificates. If you only want this course, you never have to pay. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you later want the path structure around it.
+This is the foundation course on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), and the recommended starting point for [beginners](/docs/for/beginners/). The natural next step is [Learn JavaScript](/docs/courses/javascript/learn-javascript/), also taught by Per, whose first project (a passenger counter) picks up with the same HTML you learn here.
 
 ## Strengths and limits
 
-What it does well: it is free, it assumes nothing, and it gets a true beginner building and deploying real sites fast. The project-first design keeps you moving, and Per Borgen is a clear, patient instructor.
+What it does well: it is free, it assumes nothing, it gets a true beginner deploying a real site inside the first module, the projects are memorable (a Google clone, a birthday page you can actually send), and it introduces DevTools, Unsplash, Google Fonts, GitHub, and Netlify along the way.
 
-Where it is limited: it is a beginner course by design. Deep responsive layout, advanced CSS, and the harder topics come in later courses, not here.
+Where it is limited: it is a beginner course by design. Flexbox is taught only as far as each project needs it, and CSS Grid, media queries, responsive layout, and CSS variables are absent. Three of the four solo projects are Pro.
 
 ## Related courses and comparisons
 
@@ -89,11 +171,14 @@ Where it is limited: it is a beginner course by design. Deep responsive layout, 
 - [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are choosing a platform to start with
 
 <FAQAccordion items={[
-  { q: "Is Learn HTML and CSS free on Scrimba?", a: "Yes. The full course is free with no credit card or Pro subscription required. Pro is only needed for the career paths, certificates, and Discord, not for this course." },
-  { q: "Is it good for complete beginners?", a: "Yes. It is rated Beginner and assumes no prior experience. It is the best true starting point on the site." },
-  { q: "What do you build in the course?", a: "Five websites you build and deploy, including a Google clone, a digital business card, and a space exploration site, plus a solo hometown homepage project." },
+  { q: "Is Learn HTML and CSS free on Scrimba?", a: "Yes. All six modules, every challenge, the deploys, and the Hometown Homepage solo project are free with no card required. Only the three Solo Projects at the end of modules two to four, the certificate, and the Pro Discord channels need Pro." },
+  { q: "Is it good for complete beginners?", a: "Yes. It is rated Beginner, assumes no prior experience, and has you deploy a personal website before you have written any CSS. It is the best true starting point on the site." },
+  { q: "What do you build in the course?", a: "A personal website, a Google.com clone, a digital business card, a space exploration landing page, and a birthday site with hover-reveal gifts, plus a free solo hometown homepage at the end. Three more (a newsletter page, an Amazon product page, and an agency hero) are Pro solo projects." },
+  { q: "Does it cover flexbox, grid, or responsive design?", a: "Flexbox, yes, as far as each project needs it: display flex, justify-content, align-items, and flex-direction. CSS Grid, media queries, and responsive design are not covered; Scrimba has separate courses for those." },
+  { q: "How long does Learn HTML and CSS take?", a: "About 5.7 hours of video, but plan for 12 to 18 hours including the challenges, deploys, and the solo project, or two to three weeks at an hour a day." },
+  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
   { q: "What should I do after this course?", a: "Learn JavaScript is the natural next step. For deeper CSS, Learn Responsive Web Design and the focused flexbox and grid courses follow well." },
-  { q: "Do I need to install anything?", a: "No. You code directly in the Scrimba browser player, so there is no setup beyond a browser." },
+  { q: "Do I need to install anything?", a: "No. You code directly in the Scrimba browser player. The deploy lessons use Netlify and GitHub Desktop, and the birthday module shows how to open the project in VS Code if you want to." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/learn-html-and-css-c0p" variant="button">
@@ -102,14 +187,14 @@ Where it is limited: it is a beginner course by design. Deep responsive layout, 
 
 <CourseSchema
   name="Learn HTML and CSS"
-  description="Scrimba's free, beginner HTML and CSS course taught by Per Borgen. About 5.7 hours across six project modules, building and deploying five websites."
+  description="Scrimba's free, beginner HTML and CSS course taught by Per Borgen. About 5.7 hours and 115 short scrims across six project modules, building and deploying five websites plus a solo hometown homepage."
   url="https://scrimba.com/learn-html-and-css-c0p"
   timeRequired="PT5H40M38S"
   difficulty="Beginner"
   access="Free"
   keywords={["HTML", "CSS", "Frontend"]}
   modules={[
-    { name: 'Build & Deploy Your First Website', duration: '74 min' },
+    { name: 'Build & Deploy Your First Website', duration: '75 min' },
     { name: 'Build a Google.com clone', duration: '82 min' },
     { name: 'Build a Digital Business Card', duration: '72 min' },
     { name: 'Build a Space Exploration Site', duration: '44 min' },
