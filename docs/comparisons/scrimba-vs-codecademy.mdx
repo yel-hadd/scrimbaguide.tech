@@ -3,7 +3,7 @@ title: "Scrimba vs Codecademy"
 description: "Codecademy has more languages and a mobile app; Scrimba lets you code inside the video player. Which one fits which learner, with the trade-offs neither marketing page mentions."
 keywords: [scrimba vs codecademy, codecademy vs scrimba, scrimba or codecademy, best coding platform]
 last_update:
-  date: 2026-05-28
+  date: 2026-09-21
 ---
 
 import ComparisonTable from '@site/src/components/ComparisonTable';
@@ -32,7 +32,7 @@ If your goal is anything not on Scrimba, this article ends here for you and Code
 
 ### 2. Do you learn by watching, or by reading?
 
-Scrimba's lessons are video first. Bob Ziroll, Per Borgen, Kevin Powell, and Tom Chant talk you through concepts, type code in front of you, and break things on purpose so you watch them fix them. When the explanation finishes, you pause the screencast and the player becomes an editor where you can change their code and run it.
+Scrimba's lessons are video first. Bob Ziroll, Per Borgen, Kevin Powell, and Tom Chant talk you through concepts, type code in front of you, and break things on purpose so you watch them fix them. When a challenge comes, the brief is written as numbered comments in the file, the recording pauses, and you type into the same editor before pressing play to see their solution. Every scrim also has a timestamped transcript panel, so you can skim ahead the way you would in a text lesson.
 
 Codecademy lessons are text first. Instructions sit in a left-hand panel, your editor in the middle, the output on the right. You read, you type, you submit. The exercises are interactive but text-driven, [without video instruction by default](https://hackr.io/blog/codecademy-review).
 
@@ -74,10 +74,10 @@ If you want one ordered track that ends with a hireable portfolio in web dev or 
   scrimbaUrl="https://scrimba.com/?via=u42d4986"
   competitorUrl="https://www.codecademy.com/"
   rows={[
-    { feature: "Teaching format", scrimba: "Interactive video scrims (pause, edit, run)", competitor: "Text instructions plus inline editor" },
+    { feature: "Teaching format", scrimba: "Video scrims that pause at each challenge; you type in the same editor, with a transcript panel for skimming", competitor: "Text instructions plus inline editor" },
     { feature: "Languages covered", scrimba: "JS, TypeScript, Python, plus HTML and CSS", competitor: "14+ including Java, C++, Go, R, SQL" },
     { feature: "Catalog size", scrimba: `${totalCoursesLabel} focused courses`, competitor: "300+ shorter modules" },
-    { feature: "Free-tier scope", scrimba: `~${freeCount} full courses including Learn React (15 hrs)`, competitor: "Limited intros, most advanced content gated" },
+    { feature: "Free-tier scope", scrimba: `~${freeCount} full courses including Learn React (15.1 hrs; only its two Solo Projects are Pro)`, competitor: "Limited intros, most advanced content gated" },
     { feature: "Career paths", scrimba: "4 paths (11 to 108 hrs)", competitor: "10+ paths across many fields" },
     { feature: "Web/AI depth", scrimba: "Deep, primary focus", competitor: "Moderate, one track among many" },
     { feature: "Mobile experience", scrimba: "Desktop-focused", competitor: "Mobile app available" },
@@ -90,17 +90,17 @@ The Trustpilot number on Codecademy (2.7/5 across roughly 1,500 reviews) is the 
 
 ## React specifically: Bob Ziroll vs Codecademy's text format
 
-React is the topic learners most often switch platforms over. Scrimba's flagship React course is **Learn React by Bob Ziroll**: 357 lessons, fifteen hours, free in full, built with input from Mozilla MDN. It covers components, hooks, effects, conditional rendering, and two capstone projects.
+React is the topic learners most often switch platforms over. Scrimba's flagship React course is **[Learn React by Bob Ziroll](/docs/courses/react/learn-react/)**: 358 lessons, 15.1 hours, free in full apart from two Solo Projects, built with input from Mozilla MDN. It runs six projects: a ReactFacts page, a Travel Journal, Chef Claude (a recipe app that calls the Claude API), a Meme Generator, and two capstones, Tenzies and Assembly: Endgame. One caveat from inside the course: the Chef Claude project pins a July 2024 React 19 release candidate (the capstones run 18.3), and that section needs your own API key plus, per Bob's own update scrim, an SDK upgrade.
 
 A representative third-party review of Ziroll's **Advanced React** course on Medium describes the pacing as "just right" and the explanations as "easy to understand" ([Hassan Tanveer on Medium](https://medium.com/@hassan.tanveer0097/review-advanced-react-by-bob-ziroll-c86e09e20614)). The same review highlights what is genuinely different about Scrimba: "almost as if you and the instructor are pair programming together."
 
-Codecademy's React course is text-with-editor in their three-panel IDE, roughly 13 hours on the catalogue, with the early lessons free and the rest gated behind Plus or Pro. The exercises are fill-in-the-blank or write-this-component style. There is no instructor voice. For learners who want to understand *why* a hook works the way it does, Scrimba's narrated approach (15 hours, 357 lessons, Bob Ziroll, free in full) tends to land better. For learners who already know JavaScript well and just want syntax reps, Codecademy's format is faster.
+Codecademy's React course is text-with-editor in their three-panel IDE, roughly 13 hours on the catalogue, with the early lessons free and the rest gated behind Plus or Pro. The exercises are fill-in-the-blank or write-this-component style. There is no instructor voice. For learners who want to understand *why* a hook works the way it does, Scrimba's narrated approach (15.1 hours, 358 lessons, Bob Ziroll, free in full) tends to land better, and when Bob's explanation does not land, the EXPLAIN button in the scrim header builds a narrated video from the code in front of you ([Scrimba Explain](/docs/how-it-works/scrimba-explain/), 10 free for life). For learners who already know JavaScript well and just want syntax reps, Codecademy's format is faster.
 
 ## A low-risk sequence if you want to use both
 
 Decision paralysis is the real enemy here. If you cannot commit to one, run them in this order so you spend nothing until the format proves itself:
 
-1. **Start on Scrimba Free for one week.** Open Learn React with Bob Ziroll or Learn JavaScript with Per Borgen. No card needed.
+1. **Start on Scrimba Free for one week.** Open Learn React with Bob Ziroll or Learn JavaScript with Per Borgen. Both are free in full; only the Solo Projects carry a PRO label. No card needed.
 2. **If the pause-and-edit loop clicks, upgrade to Pro** and take the Frontend Developer Path as your spine.
 3. **If you also need a language Scrimba does not cover** (Java, C++, Go, R, SQL deep dives), add Codecademy Plus for that one track only, and set a 48-hour pre-renewal calendar reminder the day you subscribe.
 

@@ -3,6 +3,8 @@ title: "Practice TypeScript"
 description: "Master TypeScript through hands-on practice. Interactive courses that let you write, test, and debug TypeScript code directly in the browser."
 keywords: [practice typescript, learn typescript, interactive typescript course, typescript exercises]
 hideGlobalPricingCta: true
+last_update:
+  date: 2026-09-21
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -11,40 +13,36 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 
 # Practice TypeScript
 
-Scrimba runs **TypeScript in the browser player**, pause a cast, widen a type, watch the compiler yell, fix it. Pair **[Learn TypeScript](/docs/courses/typescript/learn-typescript/)** with **free JavaScript** + **React** scrims so types meet real components, not toy `.ts` files.
+Scrimba runs **TypeScript in the browser player**, pause a cast, widen a type, watch the compiler yell, fix it. One quirk from the course: the editor's hover popups are not part of the recording, so you have to be in the editor with the mouse to read the error messages. Pair **[Learn TypeScript](/docs/courses/typescript/learn-typescript/)** with **free JavaScript** + **React** scrims so types meet real components, not toy `.ts` files.
 
 ## Who this is for
 
 JS devs who pasted `any` to ship a feature and now need **confidence** before the next code review.
 
-TypeScript catches bugs before production; interactive lessons catch misunderstandings before your PR.
-
 
 ## Why Practice TypeScript on Scrimba?
 
-Scrimba's interactive format is ideal for TypeScript because:
-
-1. **Pause and edit**, stop the video and modify type annotations to see what happens
-2. **Instant feedback**, see TypeScript errors in real-time as you code
-3. **Real projects**, build actual applications, not isolated exercises
-4. **No setup required**, TypeScript runs in the browser, no local toolchain needed
+1. **Pause and edit**, change a type annotation and see what happens
+2. **Instant feedback**, TypeScript errors appear as you code
+3. **Real projects**, applications, not isolated exercises
+4. **No setup required**, no local toolchain needed
 
 ## Top Courses to Practice TypeScript
 
 ### [Learn TypeScript](/docs/courses/typescript/learn-typescript/)
 **Level**: Intermediate | **Duration**: 4.2 hrs | **Access**: Free
 
-Master TypeScript fundamentals: types, interfaces, generics, type narrowing, and utility types. Build real applications while learning type safety.
+Three sections: Bob Ziroll's pizza-restaurant fundamentals (32 scrims, where Exercises 1 to 3 below live as object types, a seven-minute generics scrim, and unions narrowed with `typeof`), Rachel Johnson retyping Assembly: Endgame from Learn React (21 scrims), and a typed Express pet-shelter API (24 scrims). All three opened without a paywall; the certificate is Pro.
 
 ### [Learn JavaScript](/docs/courses/javascript/learn-javascript/)
 **Level**: Beginner | **Duration**: 9.4 hrs | **Access**: Free
 
-TypeScript builds on JavaScript. If you're new to both, start here to learn the language fundamentals before adding types.
+TypeScript builds on JavaScript. If you're new to both, start here: four builds (a passenger counter, blackjack, a Chrome extension, a mobile app) and 140+ challenges, all free; Pro gates three Solo Projects.
 
 ### [Learn React](/docs/courses/react/learn-react/)
 **Level**: Intermediate | **Duration**: 15.1 hrs | **Access**: Free
 
-Modern React projects increasingly use TypeScript. Learn React fundamentals first, then apply TypeScript to your React components.
+Finish the Assembly: Endgame capstone (2.2 hrs, 28 scrims) in particular, because the TypeScript course's React section takes that exact game and types it file by file. All six sections are free; Pro gates the two Solo Projects.
 
 ## TypeScript Practice Exercises
 
@@ -67,7 +65,7 @@ function getFirst(items) {
   return items[0];
 }
 ```
-Generics are one of TypeScript's most powerful features. Practice using `<T>` to create flexible, type-safe functions.
+Practice using `<T>` to create flexible, type-safe functions.
 
 ### Exercise 3: Union Types for API Responses
 ```typescript
@@ -84,10 +82,10 @@ Discriminated unions teach you how TypeScript narrows types based on conditions,
 
 ## How to Practice Effectively
 
-1. **Start with JavaScript you know**, take existing JS code and add types incrementally
+1. **Start with JavaScript you know**, add types to existing code a file at a time
 2. **Use strict mode**, `"strict": true` in tsconfig.json forces you to handle edge cases
-3. **Read the errors**, TypeScript errors are verbose but informative. Learn to read them
-4. **Build something real**, a todo app, an API client, or a CLI tool in TypeScript
+3. **Read the errors**, they are verbose but informative
+4. **Build something real**, a todo app, an API client, or a CLI tool
 
 ## Use this guide when…
 
