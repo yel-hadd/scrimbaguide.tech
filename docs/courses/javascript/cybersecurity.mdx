@@ -14,6 +14,7 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Cybersecurity
 
@@ -38,6 +39,25 @@ It is application security for people who already build backends, not a cybersec
   href="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9"
   description="Threat modelling, authentication models, input validation with Zod, and rate limiting, taught in Node by Rachel Johnson and Jonathan Hill."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/learn-cybersecurity/module-1-backend-security-stride-owasp-title-card.webp"
+    alt="Title card of module 1 of Scrimba's Learn Cybersecurity course: Backend Security, thinking like a security-minded developer with STRIDE and OWASP, teacher Rachel Johnson"
+    width={1280}
+    height={720}
+    caption="Module 1: threat modelling with STRIDE and OWASP."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/learn-cybersecurity/module-2-authentication-and-identity-title-card.webp"
+    alt="Title card of module 2 of Scrimba's Learn Cybersecurity course: Backend Security, Authentication and Identity, teacher Rachel Johnson"
+    width={1280}
+    height={720}
+    caption="Module 2: authentication and identity. Modules 3 and 4 switch to Jonathan Hill and open straight into code."
+    source="Title cards from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
@@ -88,6 +108,14 @@ Jonathan Hill takes over, and the format changes to a real project. Form Project
 
 Three attacks come first. Cross-Site Scripting is two scrims: a demo where an `<img onerror>` payload in the name field fires ("Oh, blimey. Data breach. XSS successful"), then a challenge where you paste a div, an SVG and an iframe into the form, change `innerHTML` to `textContent` in `app.ts`, restart the front end and confirm they render as text. Denial of Service is a six minute slide lecture on SYN floods, botnets and the defences (redundancy, rate limiting, hardening, patching, monitoring). SQL Injection ends in the drop-table challenge described above, followed by parameterised queries as the fix.
 
+<Screenshot
+  src="/img/scrimba/learn-cybersecurity/sql-injection-drop-table-users-lesson.webp"
+  alt="Scrimba's SQL Injection part 2 scrim paused at 3:53: server.ts shows the challenge brief to craft an email input that drops the users table, and the Create Your Account form in the preview holds the payload '); DROP TABLE users; -- with the banner reading We currently have 0 signed up users"
+  width={1400}
+  height={684}
+  caption="SQL Injection part 2 at 3:53, seconds after Jonathan submits the payload. The signup counter above the form has gone to zero. Nothing is really deleted (the app hard-codes the drop), but you typed the attack yourself."
+/>
+
 Then a short Zod course inside the course, seven scrims in a separate mini project. The Star Wars challenge is representative: import Zod, write a `characterSchema` with a string name and a number episode, validate `{ name: "Luke Skywalker", episode: 4 }`, then break it with `"4"` to see the ZodError. Jonathan's recurring metaphor is a machine you calibrate with a schema and feed data through. From there you `npm install zod` in the form project, write a `validate(schema)` middleware factory (the challenge is remembering `schema.safeParse(req.body)`), mount it on a new endpoint, render its 400 errors in the form, and build the register schema out field by field until the final challenge: a name of 2 to 50 characters with a regex, an optional bio of up to 500, and a trim.
 
 The lesson underneath all of it, from the XSS challenge: "It's not just the front end that shouldn't trust any input. The back end also shouldn't trust inputs. Other consumers of the API may render it unsafely."
@@ -97,6 +125,14 @@ The lesson underneath all of it, from the XSS challenge: "It's not just the fron
 The longest module by scrim count and the most hands-on. It starts with a definition you will use: "Rate limiting is like a hard cap on requests per time period, whereas throttling is slowing down responses when the limit approaches." The project is a single Express endpoint plus a `test-requests.js` script that fires bursts at it, so every change is visible as a column of 200s turning into 429s in the terminal.
 
 Fixed Window Counter is ten scrims of building with `express-rate-limit`. The first challenge is to read the package docs and configure five requests per sixty seconds with a "Too many requests" message; the second is to mount the limiter between the path and the handler and expose `req.rateLimit?.remaining` in the response. Then three scrims on client identification: by IP, by user ID (a mock `x-user-id` header and a `keyGenerator` that returns `req.user.id`, with three users interleaving so you can watch each one get its own window), and by API key or session ID.
+
+<Screenshot
+  src="/img/scrimba/learn-cybersecurity/fixed-window-rate-limiter-429-lesson.webp"
+  alt="Scrimba's Fixed Window Counter, Create the limiter scrim paused at 5:08: server.js configures rateLimit with limit 5 and windowMs 60000 and applies it to the /api/data route, while the terminal below shows requests 14 and 15 answered with 429 Too many requests, please try again later"
+  width={1400}
+  height={684}
+  caption="Create the limiter at 5:08. Five requests succeed, then every one after returns 429 until the one-minute window resets. The remainingRequests property with optional chaining is the challenge's last step."
+/>
 
 The next three algorithms are theory with a parking garage analogy: sliding window log, sliding window counter, and token bucket. Token bucket then becomes a terminal game (`token_bucket_game.js`) where each round is one second, you type how many requests to send, and you finish the `TokenBucket` class yourself across several challenges. Leaky bucket gets the shortest treatment, and Jonathan's summary is the one to remember: "token bucket as here are tokens, spend them whenever you want, and this leaky bucket as get in line. I'll process you at my pace."
 

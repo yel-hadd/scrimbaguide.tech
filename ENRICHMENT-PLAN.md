@@ -60,49 +60,6 @@ scrimba.com/our-pricing lists "basic access to Discord community" as free and
 
 ## Accepted exceptions (follow-ups)
 
-- `docs/courses/javascript/cybersecurity.mdx` (reviewed 2026-09-20, 36 of 81
-  transcripts read) ships **without images**: archetype items 3 and 5 are
-  outstanding. Two capture attempts (drafting run and the review-fix run on
-  2026-09-21) hit the same shared-window problem: the agent's tab stayed
-  `visibilityState === "hidden"` while three other agents' tabs were active,
-  the app never left `app-splash` and no `slide-widget svg` rendered. Retake
-  when the window is free: title cards at `~0z3o` (module 1 intro), `~0jq`
-  (module 2), `~0y6g` (module 3) and `~07yn` (module 4) for the grid (skip the
-  module 4 outro slide, it carries a GIF), plus 2 to 4 lesson moments: XSS
-  part 1 at ~3:00 (`~0zod`, the fake data-breach alert), SQL Injection part 2
-  at ~3:48 (`~0xyp`, "Disaster dropping users table" with the user count at
-  0), Fixed Window Counter "create the limiter" at ~5:04 (`~0xry`, 200s
-  turning into 429s) and Final challenge part 2 at ~1:13 (`~07y4`,
-  out-of-order results). Save under `static/img/scrimba/learn-cybersecurity/`,
-  then add the `Screenshot` import, the grid and the captioned moments, and
-  remove this entry.
-- `docs/courses/javascript/vue.mdx` (reviewed 2026-09-20, all 27 transcripts
-  read) ships **without images**: archetype items 3 and 5 are outstanding. Two
-  capture attempts (drafting run and the review-fix run on 2026-09-21) hit the
-  same shared-window problem: the agent's tab stayed
-  `visibilityState === "hidden"` while three other agents' tabs were active,
-  the app never left `app-splash` (no `editor-widget`, no `browser-widget`)
-  and every capture was a blank frame. The course has no chapter title cards
-  (no `slide-widget svg` in any Vue scrim; only the generic certificate clip
-  has a slide), so there is no grid to build. Retake when the window is free,
-  2 to 4 lesson moments: the three facts rendered from `facts[0..2]` at ~5:13
-  (`~07cp`), the header vanishing from the preview before the import at ~3:15
-  (`~05kv`), the 404 challenge brief at ~1:10 (`~05zy`), and the finished Vue
-  Facts part 1 at ~3:40 (`~0xt3`). Save under `static/img/scrimba/learn-vue/`,
-  then add the `Screenshot` import and the captioned moments, and remove this
-  entry.
-- `docs/courses/javascript/frontend-interview-tips.mdx` (reviewed 2026-09-21,
-  all 24 transcripts read) ships **without images**: archetype items 3 and 5
-  are outstanding. The drafting run hit the same shared-window problem (agent
-  tab `visibilityState === "hidden"` for the whole session, the app never left
-  `app-splash`, every capture black; a reload and two fresh tabs did not help).
-  The course is a flat list with no chapter title cards, so there is no grid to
-  build. Retake when the window is free, 2 to 4 lesson moments: the promises
-  console printing `1, 3, 2` at ~3:16 (`~0d`), the "assignment to constant
-  variable" error at ~3:33 (`~02`), the `#red:hover` rule with the preview at
-  ~2:11 (`~0a`), and one slide from the talking-head scrims (`~0f`, `~0h` or
-  `~0k`). Save under `static/img/scrimba/frontend-interview-tips/`, then add
-  the `Screenshot` import and the captioned moments, and remove this entry.
 - `docs/courses/javascript/firebase.mdx` (reviewed 2026-09-21, all 39
   transcripts read) ships **without images**: archetype items 3 and 5 are
   outstanding. Two capture attempts (drafting run and the review-fix run on

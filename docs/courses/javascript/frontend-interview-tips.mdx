@@ -14,6 +14,7 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Frontend Interview Tips
 
@@ -73,7 +74,23 @@ Fourteen scrims, each with an `index.html` and `index.js` (or `index.css` for th
 
 The JavaScript ones are the strongest. In const vs let vs var he declares `var firstName` inside an `if (false)` block, logs it outside and gets `undefined` (hoisting), then repeats it with `let` and gets a reference error. He reassigns a `const pi` to trigger "assignment to a constant variable," then mutates a `const user` object to show that const does not mean frozen. It also has the aside that makes the course likeable: "My mother called me and said, Dylan, I wanna see on the Internet that you're referring to yourself as d money." Double vs triple equals compares `5 == '5'` with `5 === '5'` and comes with a warning: "if you don't answer, for whatever reason you don't know the answer, you're probably gonna get eliminated from a lot of JavaScript roles."
 
+<Screenshot
+  src="/img/scrimba/frontend-interview-tips/const-vs-let-vs-var-assignment-to-constant-error-lesson.webp"
+  alt="Scrimba's const vs let vs var scrim in Frontend Interview Tips paused at 3:37: index.js declares const PI = 3.14 and then PI = 3.145, and the console shows TypeError: Assignment to constant variable"
+  width={1400}
+  height={684}
+  caption="const vs let vs var at 3:37. The whole scrim is this small: a file with the interview question as a comment at the top, and Dylan typing the mistakes an interviewer wants you to explain."
+/>
+
 The promises scrim is the longest of the fourteen at 5:20 and the one I would send someone to first. Dylan logs `1`, fires a `fetch` to jsonplaceholder, logs `3`, and puts `2` inside the `.then` chain, so the console prints 1, 3, 2. Then he rewrites it with `async`/`await` in a `try`/`catch` and the order comes right. The story behind it: he has sat in interviews where a candidate could not explain a GET call, the hiring manager decided they needed someone comfortable with REST services, and "they've ended the interview."
+
+<Screenshot
+  src="/img/scrimba/frontend-interview-tips/promises-console-one-three-two-lesson.webp"
+  alt="Scrimba's Interview Question: Promises scrim paused at 3:18: getPost logs 1, calls fetch on jsonplaceholder with two chained .then callbacks that log 2, then logs 3, and the console shows 1, 3, 2"
+  width={1400}
+  height={684}
+  caption="Promises at 3:18. The console reads 1, 3, 2, which is the moment the question is really asking about. The async/await rewrite that fixes the order comes right after."
+/>
 
 The rest is lighter. CSS selectors shows why `h1:hover` cannot override an `#red` id and `#red:hover` can, and opens with a tactic worth keeping: "answer the next question or a follow-up question while answering a current question because it shows your mastery of the subject." Responsive design is a two minute talk (media queries, flexbox and grid, rem units) that points you to Scrimba's responsive design course for the real material. Git fundamentals lists branch, add, commit, pull and push, with the detail that at his first dev job the team "were passing around code on a USB drive." Agile and Scrum is four and a half minutes with no code, on sprints, standups and retrospectives, framed as a "somewhat unfair" question for people who have never worked on a team; "it's okay to speak to the tenets" if you have no experience to draw on.
 

@@ -14,6 +14,7 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Vue
 
@@ -66,6 +67,14 @@ The welcome scrim (the one free preview lesson) lays out the six-project plan an
 
 Code starts in "Your First Vue App." You add the unpkg script tag, wrap the body in a `div` with `id="app"`, replace "world" with `{{ name }}`, and write `createApp` with a `setup()` function that returns `ref('Rachel')`. Rachel keeps the theory minimal: "Ref is something that we'll explore later. But for now, think of it as a view variable." The next scrim is your first proper challenge: a static 404 page with an emoji, a status code, a message, and a button, and you turn all four into refs. A `hint.md` file holds the exact syntax if you get stuck. Her solution swaps in a monkey emoji, a 500, and "Server is sleeping."
 
+<Screenshot
+  src="/img/scrimba/learn-vue/first-solo-vue-app-404-challenge-brief-lesson.webp"
+  alt="Scrimba's Your First Solo Vue App scrim paused at 1:15: index.html holds a static 404 page and a five-step challenge comment (include the Vue CDN, wrap everything in #app, import createApp and ref, create and mount an app, replace four texts with ref variables), with the 404 page rendered in the preview"
+  width={1400}
+  height={684}
+  caption="Your First Solo Vue App at 1:15. The brief is a five-step comment under a static 404 page; hint.md in the tab bar holds the syntax if you get stuck. Rachel walks through her own solution from 1:36."
+/>
+
 "Installing Vue Locally" runs `npm create vue@latest` inside Scrimba's terminal, walks through the prompts, and ends with `npm run dev` showing the starter page in the preview. She warns about the `@latest`: without it, "npm might actually resolve to a cached or outdated version." "Using create vue" is a 90 second challenge to do the same yourself, and "Vue Project Anatomy" tours the generated folders: `src/assets`, `src/components`, `App.vue` ("the heart of your application"), `main.js`, `index.html`, and `vite.config.js`, where she deletes the Vue DevTools plugin for now.
 
 The section ends with a recap and a two minute ad for Scrimba's referral program, recorded by Per Borgen. Skip that one.
@@ -79,6 +88,14 @@ Scrims 2 to 8 cover components. "Vue Component Basics" rebuilds the section one 
 The two-part "Vue Components Challenge" is what she calls "a mix between a tutorial and a challenge." You scaffold a fresh project, strip the starter files, then turn a provided HTML and CSS mockup of a Quote Generator into three components. Part 2 has the lesson I would keep: base styles belong in `src/assets/main.css` (imported by `main.js`), because a scoped style block in `App.vue` "has nothing to select." She also shows why long selectors shrink inside a scoped component, then admits, "I'm really over exaggerating here." "PROJECT - Vue Components" applies all of it to the Vue Facts mockup, with the logo `img` commented out until the assets lesson.
 
 Scrims 9 to 13 cover reactivity and template syntax. "Vue Reactivity Basics" is the clearest definition in the course: "When something is made reactive in Vue, like a variable, Vue watches it. If the value of a reactive variable changes like this, Vue will automatically rerender parts of the UI as needed." You create refs for the quote, author, title, and year in the Quote Generator, and they do nothing yet. "Text Interpolation" renders them with mustache syntax and explains the `.value` rule: you write `title.value` in the script, but "Vue automatically unwraps the dot value property for us when we use refs inside of the template."
+
+<Screenshot
+  src="/img/scrimba/learn-vue/reactivity-template-syntax-vue-facts-lesson.webp"
+  alt="Scrimba's PROJECT Reactivity and Template Syntax scrim paused at 5:14: Main.vue renders three sections from facts[0], facts[1] and facts[2] with text interpolation, and the green Vue Facts preview shows Hi, I'm Vue with the Lightweight, Approachable and Versatile cards"
+  width={1400}
+  height={684}
+  caption="The project scrim at 5:14, the three facts now coming from the facts array by index. Rachel admits the copy-paste is clumsy ('hold your horses') and defers v-for to a section that does not exist yet."
+/>
 
 "Attribute Binding" shows why `href="{{ href }}"` fails (the browser gets the literal braces) and introduces `v-bind:href`, your first directive. "v-bind - Booleans Attributes and Shorthands" disables a Share button with `:disabled="isButtonDisabled"`, then teaches the `:` shorthand and the same-name shorthand where `:href="href"` becomes just `:href`. "PROJECT - Reactivity and Template Syntax" has the section's hardest challenge: build a `facts` ref holding an array of three objects with `adjective` and `description` keys, then render `{{ facts[0].adjective }}` and so on by hand. Rachel frames it as "a combination of your existing JavaScript knowledge and Vue."
 
