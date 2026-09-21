@@ -1,8 +1,10 @@
 ---
 title: "React Practice Projects"
-description: "Build real React projects on Scrimba: Tenzies, Assembly Endgame, and the course capstones, plus three portfolio ideas (API search, typed cart, realtime chat) that get past the to-do-app pile."
+description: "Build real React projects on Scrimba: Tenzies, Assembly Endgame, the course capstones, plus three portfolio ideas that get past the to-do-app pile."
 keywords: [react projects, react practice projects, build react apps, scrimba react projects, react portfolio projects, react project ideas for portfolio]
 hideGlobalPricingCta: true
+last_update:
+  date: 2026-09-21
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -11,80 +13,77 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 
 # React Practice Projects
 
-Recommended Scrimba courses to practice this topic. Interactive format included.
+Tutorials teach concepts. Projects teach you how to build things, and a portfolio of working applications is what proves your React skills to employers. Scrimba's courses include capstone projects you build from scratch.
 
-Tutorials teach concepts. Projects teach you how to actually build things. The best way to prove your React skills to employers is with a portfolio of real, working applications. Scrimba's courses include capstone projects you build from scratch.
+## Who this is for
 
-## Who This Is For
-
-Developers wanting hands-on practice with this topic.
-
+Developers who have finished a React tutorial and need repos to show.
 
 ## Featured React Projects on Scrimba
 
 ### Tenzies (Learn React Course)
 **Difficulty**: Beginner-Intermediate | **What you build**: A dice-rolling game
 
-Build a complete game where players roll dice to match all values. Covers: `useState`, `useEffect`, conditional rendering, event handlers, and CSS styling. This project teaches you how React components interact in a real application.
+Roll ten dice, hold the ones you want, keep rolling until they match. Capstone 1 in Learn React (86 min, 19 scrims): a Die component, holding dice in three parts, lazy state initialization, a ref that moves focus to the button when you win, and confetti. Free.
 
 [Start the Learn React course](/docs/courses/react/learn-react) (Free)
 
 ### Assembly: Endgame (Learn React Course)
 **Difficulty**: Intermediate | **What you build**: A word-guessing game
 
-Build a hangman-style game with programming languages as the theme. Covers: component composition, state management across multiple components, and dynamic class rendering. More complex than Tenzies, great for leveling up.
+A hangman-style game where each wrong guess wipes a programming language off the board. Capstone 2 (2.2 hrs, 28 scrims): component composition, state across components, `clsx` for the keyboard classes, two accessibility passes. Free; the Quizzical Solo Project after it is Pro.
 
 [Start the Learn React course](/docs/courses/react/learn-react) (Free)
 
 ### Movie Search App (React Search Tutorial)
 **Difficulty**: Intermediate | **What you build**: A movie database search
 
-Build an app that queries the OMDB API, displays results in a responsive grid, and handles loading/error states. Covers: API integration, `useEffect` for data fetching, and search debouncing.
+Query the TMDB API and render the results as cards: an async `fetch` in try/catch on submit, `useState` for the query and the list, and a `MovieCard` props challenge. Eight coding scrims by James Q Quick; you need a free TMDB key before scrim 6. The first four scrims are free, the rest Pro.
 
-[Start the Movie Search course](/docs/courses/react/a-react-project-movie-search-app)
+[Start the Movie Search course](/docs/courses/react/a-react-project-movie-search-app) (Pro)
 
 ### Advanced React Projects
 **Difficulty**: Advanced | **What you build**: Multiple production-quality apps
 
-The Advanced React course (18.8 hrs) includes projects covering: compound components, render props, custom hooks, performance optimization, and context API patterns.
+Compound components, render props, custom hooks, and performance. The big build is VanLife, 86 scrims on React Router 6 with a mock API, protected routes and a fake login, then a Supabase sales dashboard with auth and a Component Library++ solo project from Figma. Three sample scrims are free.
 
 [Start the Advanced React course](/docs/courses/react/advanced-react) (Pro)
 
 ## How to Get the Most From Project-Based Learning
 
-1. **Build first, watch second**, try to implement each feature yourself before watching the solution
-2. **Extend the project**, add features the instructor doesn't cover (dark mode, local storage, animations)
-3. **Deploy it**, put your projects on Netlify or Vercel and add them to your portfolio
-4. **Write about it**, a blog post explaining what you built and what you learned impresses hiring managers
+1. **Build first, watch second**, try each feature yourself before the solution
+2. **Extend the project**, add features the instructor skips (dark mode, local storage, animations)
+3. **Deploy it**, on Netlify or Vercel, and link it from your portfolio
+4. **Write about it**, a short post on what you built and learned
 
 ## Portfolio Checklist for React Developers
 
 A strong React portfolio should include:
 
-- [ ] **A CRUD app** (create, read, update, delete), shows you can build business logic
-- [ ] **An API-powered app**, shows you can integrate external data
-- [ ] **A game or interactive tool**, shows creativity and state management skills
-- [ ] **A styled project**, shows you care about design and user experience
+- [ ] **A CRUD app** (create, read, update, delete), for business logic
+- [ ] **An API-powered app**, for external data
+- [ ] **A game or interactive tool**, for state management
+- [ ] **A styled project**, for design and user experience
 
 Scrimba's React courses collectively cover all four categories.
 
 ## Three portfolio project ideas beyond the course capstones
 
-Hiring managers skim past identical to-do apps. Once you have shipped the course capstones above, these three builds add the API, state, and backend complexity that junior React postings actually ask for. Each one maps onto a Scrimba course so you are never starting from a blank editor.
+Hiring managers skim past identical to-do apps. Once you have shipped the capstones above, these three builds add the API, state, and backend complexity that junior React postings ask for. Each maps onto a Scrimba course so you never start from a blank editor.
 
 ### 1. Movie search with a real API
 
-Scrimba's short Pro scrim [Build a React Project: Movie Search App](/docs/courses/react/a-react-project-movie-search-app/) walks through this exact build with the OMDB API. To make it portfolio-grade, add a debounced search input, a proper empty state for zero results, and a responsive card grid. Why it lands: a search interface is a core feature of almost every B2B product, and it proves you can work with a large external dataset.
+Scrimba's short Pro course [Build a React Project: Movie Search App](/docs/courses/react/a-react-project-movie-search-app/) walks through this exact build with the TMDB API (the search fires on submit, so debouncing is yours to add). To make it portfolio-grade, add a debounced search input, a proper empty state for zero results, and a responsive card grid. Why it lands: a search interface is a core feature of almost every B2B product, and it proves you can work with a large external dataset.
 
 ### 2. Type-safe shopping cart
 
-A cart with `useReducer` or Context for global state, quantity updates that recalculate totals, and strict TypeScript interfaces for products and line items. Take [Learn TypeScript](/docs/courses/typescript/learn-typescript/) (free, 4.2 hrs) first if your React is still untyped. Why it lands: anything that touches money implies you write careful, bug-free code, and TypeScript is on most React job posts.
+A cart with `useReducer` or Context for global state, quantity updates that recalculate totals, and strict TypeScript interfaces for products and line items. Take [Learn TypeScript](/docs/courses/typescript/learn-typescript/) (free, 4.2 hrs) first if your React is still untyped; its React section retypes Assembly: Endgame with `useState<string[]>` and `() => void` function props, the same moves a typed cart needs. Why it lands: money implies careful code, and TypeScript is on most React job posts.
 
 ### 3. Real-time chat on Supabase or Firebase
 
-A chat app that subscribes to a database channel in `useEffect`, handles login and logout, and renders new messages without a refresh. [Intro to Supabase](/docs/courses/backend/supabase/) (free, 4.8 hrs) covers the Postgres, auth, and realtime pieces; [Learn Firebase](/docs/courses/javascript/firebase/) is the Pro alternative. Why it lands: most beginner frontends are stateless, so a persistent backend connection separates you from the entry-level pile.
+A chat app that subscribes to a database channel in `useEffect`, handles login and logout, and renders new messages without a refresh. [Intro to Supabase](/docs/courses/backend/supabase/) (free, 4.8 hrs) covers the Postgres, auth, and realtime pieces: the realtime subscription is one `supabase.channel()` inside a `useEffect`, and the 3.8-hour authentication section is where the time goes. [Learn Firebase](/docs/courses/javascript/firebase/) is the Pro alternative (four free sample scrims), a journal app with `onSnapshot` live updates and security rules. Why it lands: most beginner frontends are stateless, so a persistent backend connection separates you from the entry-level pile.
 
-For non-React ideas, including the AI-flavoured ones recruiters ask about in 2026, see [5 portfolio projects that get you hired](/blog/portfolio-projects-get-hired-2026/).
+For non-React ideas, including AI-flavoured ones, see [5 portfolio projects that get you hired](/blog/portfolio-projects-get-hired-2026/).
 
 ## Choose This If
 

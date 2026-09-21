@@ -3,7 +3,7 @@ title: "Scrimba vs Boot.dev"
 description: "Frontend scrims vs gamified backend quests: when Scrimba is the right primary subscription, when Boot.dev is, and when you actually want both."
 keywords: [scrimba vs boot.dev, boot.dev vs scrimba, boot.dev alternative, scrimba backend, boot.dev review 2026]
 last_update:
-  date: 2026-05-23
+  date: 2026-09-21
 ---
 
 import ComparisonTable from '@site/src/components/ComparisonTable';
@@ -75,7 +75,7 @@ Skip the broader "Where Boot.dev wins" framing for a moment. The five learners w
 
 1. **You bounced off Codecademy or freeCodeCamp because you stopped opening the tab.** If gamified streaks have worked for you in other apps (Duolingo, fitness apps), the same mechanic will likely work here.
 2. **You want a backend role at a Python or Go shop.** Stripe, HashiCorp, Twitch infra, Uber, Cloudflare, plus thousands of smaller companies pay well for Go. Boot.dev is one of the few non-bootcamp resources that takes Go seriously end to end.
-3. **You want to interview at companies that ask algorithm questions.** Boot.dev's CS fundamentals (data structures, Big-O, recursion, trees, graphs) directly map to LeetCode-style screens. Scrimba does not cover this seriously.
+3. **You want to interview at companies that ask algorithm questions.** Boot.dev's CS fundamentals (data structures, Big-O, recursion, trees, graphs) directly map to LeetCode-style screens. Scrimba has one 2.5-hour [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course (Big O, linked lists, trees, graphs, eleven challenges with Vitest test files, Pro after the first four scrims). It is a primer, not a track.
 4. **You learn well from one opinionated linear path and dislike browsing a catalog.** Boot.dev tells you what to do next; you do it. If decision fatigue is the thing that derails you, a single track helps.
 5. **You are okay paying for the full year up front.** Boot.dev's free tier will not get you far enough to evaluate the curriculum properly. You are effectively committing on faith based on third-party reviews.
 
@@ -83,13 +83,13 @@ If none of those five fit, you are probably better off with a different platform
 
 ### 3. Python and Go focus vs JS and TS focus
 
-The language stack is the cleanest split between these platforms. Boot.dev's primary languages are Python and Go, with SQL throughout. JavaScript is minimal. Scrimba is primarily JavaScript and TypeScript, with Python appearing in the AI engineering courses where the ecosystem demands it.
+The language stack is the cleanest split between these platforms. Boot.dev's primary languages are Python and Go, with SQL throughout. JavaScript is minimal. Scrimba is primarily JavaScript and TypeScript. Python is one course, Treasure Porth's 4.1-hour Learn Python (free, three small terminal apps: an expense splitter, a word game and a karaoke queue, with a Runner pane rather than a browser preview). The AI engineering track is JavaScript: Intro to AI Engineering uses the OpenAI JavaScript library against Groq, OpenRouter or OpenAI.
 
 This is not a small detail. The job market in 2026 still pays well for both stacks, but the day-to-day work is genuinely different. Go backends use different patterns than Node backends. Python data work uses different libraries than JS data work. Pick the language stack you want to spend the next two to five years writing.
 
 ## Where Boot.dev clearly wins
 
-- **CS fundamentals.** Algorithms, data structures, Big-O, recursion, trees, graphs, linked lists. Scrimba does not cover this seriously.
+- **CS fundamentals.** Algorithms, data structures, Big-O, recursion, trees, graphs, linked lists. Scrimba's single DSA course is a 2.5-hour primer.
 - **Go.** If you want to write Go backends, Boot.dev is one of the few non-bootcamp resources that teaches it well end to end.
 - **Curriculum depth in one path.** Boot.dev's Backend Path is roughly 12 months of structured study, longer than any single Scrimba path. The opinionated single-track design is a feature if you want to be told what to study next.
 - **Linux, Docker, CI/CD basics.** Real backend operational concerns rather than a quick mention.
@@ -112,21 +112,21 @@ Sources: [Boot.dev Pricing](https://www.boot.dev/pricing), [Boot.dev Curriculum 
   rows={[
     { feature: "Primary focus", scrimba: "Frontend, fullstack, AI engineering", competitor: "Backend, CS fundamentals" },
     { feature: "Languages", scrimba: "JS, TypeScript, Python, HTML/CSS", competitor: "Python, Go, SQL, C (for CS fundamentals)" },
-    { feature: "Teaching format", scrimba: "Interactive video scrims (pause and edit code)", competitor: "Gamified browser exercises with XP and quests" },
+    { feature: "Teaching format", scrimba: "Video scrims that pause at each challenge; you type in the same editor", competitor: "Gamified browser exercises with XP and quests" },
     { feature: "Monthly price", scrimba: "Check current pricing", competitor: "~$49/mo or ~$349/yr" },
     { feature: "Free tier", scrimba: `~${freeCount} full courses, no card`, competitor: "Very limited; most content paywalled" },
     { feature: "Catalog shape", scrimba: `${totalCoursesLabel} courses, 4 paths`, competitor: "One opinionated linear backend path (~23 courses, 8 projects)" },
     { feature: "Time to complete primary path", scrimba: "11-108 hrs depending on path", competitor: "~12 months for most beginners" },
     { feature: "AI engineering", scrimba: "12 courses (agents, RAG, MCP, Vercel AI SDK)", competitor: "Minimal" },
-    { feature: "Algorithms / CS theory", scrimba: "Minimal", competitor: "Strong (Big-O, trees, graphs, linked lists)" },
+    { feature: "Algorithms / CS theory", scrimba: "One 2.5-hr DSA course (Pro)", competitor: "Strong (Big-O, trees, graphs, linked lists)" },
     { feature: "Gamification", scrimba: "None", competitor: "XP, streaks, achievements, RPG framing" },
-    { feature: "Community", scrimba: "Discord (Pro)", competitor: "Discord" },
+    { feature: "Community", scrimba: "Discord (basic free, Pro-only channels)", competitor: "Discord" },
   ]}
 />
 
 ## Curriculum comparison: backend
 
-**Scrimba Backend Developer Path** (~39 hours): Node.js, Express, SQL, TypeScript, basic cybersecurity, DevOps fundamentals. Assumes JavaScript going in. Optimized for someone who already did the Frontend Path and now wants Node APIs to ship fullstack work.
+**Scrimba Backend Developer Path** (~39 hours): Node.js, Express, SQL, TypeScript, basic cybersecurity, DevOps fundamentals. Assumes JavaScript going in. The Node, Express and SQL courses inside it are free in full (Tom Chant's Node course builds a REST API with no framework; the SQL course is three modules and 62 challenges on a classic-car dealership's database, with a Runner pane in place of a browser preview), so you can sample the backend half before paying. Optimized for someone who already did the Frontend Path and now wants Node APIs to ship fullstack work.
 
 **Boot.dev Backend Developer Path** (~12 months at typical pace): Python and C for fundamentals, then Go for production backends, SQL, HTTP, Docker, plus a real CS fundamentals layer (algorithms, data structures, recursion). Closer in scope to the practical half of a CS degree [(Boot.dev Curriculum)](https://github.com/bootdotdev/curriculum).
 

@@ -127,12 +127,16 @@ export default function LayoutWrapper(props: any): React.ReactElement {
   const guides = getRelatedGuides(location.pathname);
 
   return (
-    <Layout {...props}>
-      <DocSeoHead />
-      {props.children}
-      {guides.length > 0 && <RelatedGuides guides={guides} />}
-      <DocAffiliateCta pathname={location.pathname} />
+    <>
+      <Layout {...props}>
+        <DocSeoHead />
+        {props.children}
+        {guides.length > 0 && <RelatedGuides guides={guides} />}
+        <DocAffiliateCta pathname={location.pathname} />
+      </Layout>
+      {/* Fixed-position card: rendered outside .theme-doc-markdown so the
+          markdown p/h resets never restyle it. */}
       <DesktopStickyCTA />
-    </Layout>
+    </>
   );
 }

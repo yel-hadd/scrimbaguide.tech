@@ -1,26 +1,30 @@
 ---
-title: "React Challenges"
+title: "React Challenges on Scrimba: 2026 Review"
 sidebar_position: 6
-description: "Daniel Rose's 9.8-hour Pro course: around 40 real-world React problem-solving challenges to drill your skills after the fundamentals. Who it fits and how to pair it."
-keywords: [scrimba react challenges, react challenges course, react practice problems, daniel rose react, react coding challenges]
+toc_max_heading_level: 2
+sidebar_label: "React Challenges"
+description: "Daniel Rose's React Challenges from inside: 9.8 hours, 40 briefs from a synth keyboard to a Game Boy game, what is free to preview, and the real time cost."
+keywords: [scrimba react challenges, react challenges scrimba review, react challenges course, react practice problems, daniel rose react, react coding challenges, react practice projects]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # React Challenges
 
-A challenge-based course with Daniel Rose: about 9.8 hours of roughly 40 real-world problems to solve, built to turn React knowledge into React fluency.
+Scrimba's Pro practice course for people who already know React: 40 problems, each with a brief and a recorded solution, taught by Daniel Rose across 9.8 hours. I opened 49 of the 84 scrims with a Pro account in September 2026: every one of the 40 challenge briefs, seven of the solution walkthroughs, the intro and the outro. I read the code and transcripts in each.
 
-*This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. It is sequenced into the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-React Challenges is Scrimba's Pro, intermediate course, roughly 9.8 hours taught by Daniel Rose. It is around 40 real-world problem-solving challenges rather than lectures, designed to drill React skills after you have learned the fundamentals. It is for people who already know React and learn best by doing, especially anyone preparing for interviews or trying to close the gap between understanding React and reaching for it without hesitation.
+React Challenges is a Pro, intermediate course built from 40 small apps that are each broken or unfinished in one specific way. You get a comment block at the top of `App.jsx` describing what to fix and a few hint files in the explorer. Then comes a solution scrim where Daniel Rose builds it and explains his reasoning. The briefs add up to 2.7 hours of video; the solutions are the other 6.9 hours, and 17 of them run past ten minutes. It uses React 18.2 throughout, function components and hooks only. If you have finished [Learn React](/docs/courses/react/learn-react/) and want to find out what you can build without a walkthrough, this is the course to do next. If you have not, the briefs will read as a wall.
 
 <CourseCard
   title="React Challenges"
@@ -30,68 +34,190 @@ React Challenges is Scrimba's Pro, intermediate course, roughly 9.8 hours taught
   instructor="Daniel Rose"
   instructorUrl="https://scrimba.com/@dbr2586"
   href="https://scrimba.com/react-challenges-c02n"
-  description="Around 40 real-world React challenges to solve hands-on, drilling skills after the fundamentals."
+  description="Forty broken or unfinished React apps to fix, each with a written brief, hint files and a recorded solution. React 18, hooks only."
+/>
+
+The course has no chapter title cards to show you. It is one flat list of scrims, and the intro slides carry a Homer Simpson GIF and a hamster GIF I am not going to republish. So here is what the final challenge looks like the moment you open it instead.
+
+<Screenshot
+  src="/img/scrimba/react-challenges/space-warrior-start-screen-lesson.webp"
+  alt="Scrimba React Challenges, Space Warrior challenge at 0:00: the preview pane shows a pixel-art arcade game with a 60 second Time counter, a Space Warrior title, a Score of 0, a starfield play area over blue clouds, and a pink Play button"
+  width={668}
+  height={628}
+  narrow
+  caption="Challenge 40, Space Warrior, at 0:00. The ships, lasers and scoring are already written; your job is the Play button and the 60 second timer that nobody wired up."
 />
 
 ## Is it worth your time?
 
-There is a gap between watching someone build React and being able to build it yourself under a blank file. This course exists to close that gap. Instead of teaching new concepts, it hands you problems and makes you solve them, which is the only thing that actually builds recall and speed. For developers who finished a fundamentals course and still feel slow, this is the right kind of work.
+Yes, if you are in the gap between "I followed a React course" and "I can start from a blank handler." Every one of the 40 briefs is written the way a ticket would be. Here is the state object, here is the div, make these four things happen, do not touch anything else. That constraint is the point. You are practicing the reach-for-it moment rather than learning new hooks.
 
-The honest caveat is that it teaches nothing new. If you do not already know hooks, state, and effects, the challenges will frustrate rather than train you. It is also less structured than a build-along course by design; you are meant to struggle a bit before each solution. People who want a guided narrative will find that uncomfortable. That discomfort is the mechanism, but it is worth knowing going in.
+The one thing to know before paying is the split between briefs and solutions. Only 2.7 of the 9.8 hours are Daniel setting the problem. The rest is him solving it slowly, on purpose. He says in the intro that the solution scrims are "meant to make things understandable to someone who was totally baffled by a challenge." If you were not baffled, he tells you to skim them: "It's not cheating, and it's not going to hurt my feelings." Take him at his word. The value is in the minutes you spend stuck.
+
+The other caveat is that it teaches nothing in order. Forms come up in challenge 4, again in 13, again in 24 and 37. If you want a syllabus, this is the wrong course. If you want to be surprised by what you cannot do yet, it is the right one.
 
 ## What you'll learn
 
-This is a challenge course, so there is no lecture-style module breakdown. Across roughly 40 challenges and about 9.8 hours, you work through common real-world React tasks: managing component state, handling forms and inputs, fetching and displaying data, composing reusable components, and debugging behavior that does not match intent. Each challenge is a self-contained problem you solve in the Scrimba player, then compare against the worked solution. The cumulative effect is fluency: reaching for the right pattern quickly instead of reasoning it out from scratch every time.
+<CourseCurriculum
+  summary="84 scrims in a flat list (intro, 40 challenge and solution pairs, three wrap-up clips), grouped here into six editorial parts"
+  modules={[
+    { name: 'Intro and challenges 1 to 6: buttons, state objects and controlled forms', duration: '60 min', lessons: 13 },
+    { name: 'Challenges 7 to 13: converting, refactoring and passing props', duration: '95 min', lessons: 14 },
+    { name: 'Challenges 14 to 20: localStorage, derived values, iteration and styles', duration: '96 min', lessons: 14 },
+    { name: 'Challenges 21 to 27: mouse events, files, CSS variables and event delegation', duration: '98 min', lessons: 14 },
+    { name: 'Challenges 28 to 34: fetching, search, timestamps and sorting', duration: '104 min', lessons: 14 },
+    { name: 'Challenges 35 to 40 and wrap-up: intervals, games and the big builds', duration: '135 min', lessons: 15 },
+  ]}
+/>
+
+Scrimba presents the course as one flat list with no modules, so the six parts above are my grouping and the durations are the summed scrim lengths from each lesson header. My count of 84 scrims and 9.8 hours matches the course listing exactly. The teacher card on the same page says "82 lessons," which leaves out the affiliate clip and the generic certificate clip at the end.
+
+The course page lists 35 learning objectives. In practice four skills keep coming back. You update a state object or an array of objects without losing the other properties, control form elements, wire mouse and keyboard events, and turn hard-coded JSX into a `map`. Nothing here needs a router, a data library or TypeScript.
+
+## Inside the course, part by part
+
+### 1. Intro and challenges 1 to 6 (60 min, 13 scrims): buttons, state objects and controlled forms
+
+The intro is six minutes of advice and it is worth watching. Daniel lists what you will build: a synth keyboard, a drawing app, an amusement park game for your mouse finger, a spaceship blaster and "a parody of a certain Nintendo franchise that shall remain nameless." Then he sets expectations. Most challenges "assume that you have completed Scrimba's React Basics course," and some "go into more advanced territory or things that aren't covered in any of the Scrimba courses." His rules are to read the brief closely, plan in plain language before typing, and not to overbuild. "If your code is feeling like a Rube Goldberg contraption powered by a pack of dogs, it is probably a sign that you are overthinking."
+
+Challenge 1, Video Game Button, is the pattern for everything after. A `gameRunning` boolean already exists; you add a button that toggles it and reads Play or Pause. The brief is a comment block with an ASCII diagram, and the hints folder has three files (Handling clicks, Changing the state, Changing the text). In the solution Daniel shows the inline arrow and the named `handleClick` versions. Then he deliberately writes `onClick={setGameRunning(!gameRunning)}` to trigger the infinite render loop and explain why. As he puts it in lesson 3, "the parentheses are basically an instruction to invoke the function."
+
+<Screenshot
+  src="/img/scrimba/react-challenges/video-game-button-challenge-brief-lesson.webp"
+  alt="Scrimba React Challenges, Video Game Button challenge paused at 0:46: App.jsx shows a gameRunning useState and a comment block brief with four numbered tasks and an ASCII diagram of a Play button turning into a Pause button on click, with a Hints folder in the file explorer and a small preview of the workshop background in the corner"
+  width={1400}
+  height={605}
+  caption="The first brief at 0:46, with Daniel's cursor on the initial state. Every challenge is written like this: a numbered comment in App.jsx, a Hints folder top left, and a preview you can pop open."
+/>
+
+The next five briefs widen out. React Study Buddy is a flashcard that flips by toggling a class. RPG Character Creator asks for a state object with nested stats and six attack names, which the pre-built components then render. World's Most Annoying Form gives you eight uncontrolled inputs (text, email, three radios, a select, a checkbox) and a table mapping each to a `formData` property. Once they are controlled, code you never touch sabotages your answers "in humorous ways." The Legend of Scrimba is one controlled name input with `maxLength`, `required` and a disabled state. Math-o-Matic Quiz Generator is conditional rendering. Daniel's solution walks from a ternary to `&&` before pointing out the two `useEffect`s that already hide the answer message for you.
+
+### 2. Challenges 7 to 13 (95 min, 14 scrims): converting, refactoring and passing props
+
+This block is about code shape rather than features. Simple Food Restaurant hands you a page built by the "Cheeky Coding Company" with `innerHTML` and `appendChild` and asks for a React app of well organized components. The 15 minute solution starts from `createRoot`, hits the "JSX expressions must have one parent element" error, and ends by splitting Header, Main and Footer into files. Haunted House Real Estate is the opposite move: pull the JSX inside a `map` out into a `HouseCard` component and pass at most four props. The brief is explicit: "You should not manually pass every piece of houseData as a separate prop." Word Power pushes the same idea further, collapsing a "laundry list" of props into one per element. Its brief admits the setup is "a bit contrived."
+
+Original Calculator is the heaviest of the seven. Three numbered tasks, each an update to a `currentCalc` state object under one of six conditions (building a number, starting a new calculation, continuing one). A spoiler banner in the file warns you not to scroll past the tasks because the code below is nearly the answer. Top 100 Colors and Enemies in the Castle are quick maps over data (100 hex codes, three walking enemies). Million Dollar Bank Account is a four character passcode form. The ask is a single change handler that works for all four inputs because the input names match the state keys.
+
+### 3. Challenges 14 to 20 (96 min, 14 scrims): localStorage, derived values, iteration and styles
+
+Save the Dashboard is a draggable widget layout (using `react-draggable`) where the save button does nothing. You write the config to localStorage and read it back, with lazy state initialization as the bonus. Daniel's setup line is typical of his humour. He saves the layout "in order to show it to my parents so that they will finally be proud of me," refreshes, loses it, and concludes "I guess I'm still gonna be a disappointment."
+
+Stock Tracker is the one to slow down on. A `setInterval` inside a `useEffect` (already written) fakes price changes every four seconds. Your job in `Stock.jsx` is to replace eight hard-coded variables with values derived from a `stock` prop: the difference, the percentage, a color class and an arrow, rounded to two decimals. Weird Wikipedia Articles and Mood Tracker are the iteration drills. The first turns four hand-written list items into a `map` over real links (including "list of people who died on the toilet"). The second turns two hard-coded cards into 14 from a data file, with a hint titled Key Error Message. Fire Starter uses mouse-down, mouse-up, mouse-enter and mouse-leave across three nested divs to light a campfire. AutoComplete is `onFocus`, `onBlur` and a check-all button that Daniel admits is "making fun of some of the hype surrounding artificial intelligence right now." Anti-Motivational Quote App applies inline style objects that live inside the state.
+
+### 4. Challenges 21 to 27 (98 min, 14 scrims): mouse events, files, CSS variables and event delegation
+
+Frontend Birthday Cards replaces a click with a simulated swipe: mouse down on the cover, drag 50 pixels left, card opens. File Uploader is a real `<input type="file">` with `multiple`, `accept` and `required`, turning the `FileList` into an array of `{ fileName, fileType, fileSize }` objects. Photo Editor is three range sliders feeding a `filter` state and then `--brightness`, `--contrast` and `--saturation` custom properties in the stylesheet. Spam Newsletter is a subscribe form with a case-insensitive duplicate check and a hint file named Refresh Problem for anyone who forgets `preventDefault`. Weather App cycles a local three-day array through state. There is no live API, despite the name.
+
+Read-Me-Later is the standout. You add one `onClick` to the container and route four buttons through `dataset.buttonType` and `dataset.articleId`. Then you fix a `toggleExpand` function that is broken by a one-line mistake, and the bonus asks what "the React Documentation warns against" in the four handlers. The 18 minute solution spends its last three minutes on mutation, and Daniel is more nuanced than most instructors. "People say that you can't mutate state and that's not actually true. You can mutate state, and sometimes it does actually work." The caveat follows: shipped code "would probably want to refactor it to avoid mutating state." Finger Strength Test closes the block. A hacker "deleted two of its states and four of its event handlers" from an amusement park game, and the bonus is to handle all four events with one function.
+
+### 5. Challenges 28 to 34 (104 min, 14 scrims): fetching, search, timestamps and sorting
+
+Boredom Blaster 3000 is the only network challenge: 20 saved keys, one fetch each against the Bored API on page load, and a hint file called Multiple Fetches. The API documentation is included as a markdown file. This is the one brief I could not verify still runs end to end, because that API has been unreliable in recent years. Sonnet Central searches all 154 Shakespeare sonnets for a word and renders a `div` per match with an `h3` and a `p` per line. The bonus wraps matching words in a `span` and, for empty results, prints "Alas, thy search hath yielded no results."
+
+Three briefs are about capturing event details into a state object. Virtual Reality Site Enter Button logs a `Date` plus `offsetX` and `offsetY` from the click. Employee Spying Program is a textarea that logs every keystroke with a timestamp and quietly replaces "Evil Corp." with "Good Corp." Legit File Sharing Site Download Button uses `detect-browser` and an IP lookup to log the user's browser and city, beneath a fine-print joke about a "totally not pirated software file." Emoji Personality Test is array spreading in one `handleClick`. ScrimbaFest is filter-then-sort: bands by day, ordered by an importance rank of 1 to 4, each with a size class.
+
+### 6. Challenges 35 to 40 and wrap-up (135 min, 15 scrims): intervals, games and the big builds
+
+The last six are where the "twenty minutes, thirty minutes, or even more" from the intro applies. Broken Clock is a frozen iPhone clock. The fix is a `setInterval` in a `useEffect` with a cleanup, and the project ships an on-screen counter that must never exceed 1 so you can see when you forget the cleanup. Sketch-o-Matic is an etch-a-sketch grid where holding the mouse and entering a cell flips that cell's `filled` property without touching the other cells. Debatable is a comment form on a mock social network, and its 24 minute solution is the longest in the course. It opens with "A lot of people have trouble with forms in React because, well, they are tricky to do." Then it covers computed property names, the checkbox `checked` versus `value` trap, and why a shared array reference broke the thread.
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/react-challenges/pookemon-game-boy-prison-lesson.webp"
+    alt="Scrimba React Challenges, Pookemon challenge at 0:14: the preview shows a Game Boy styled handheld with a Pookemon logo, a stone prison room with a small orange character and a door at the top, a black directional pad, purple A and B buttons, and Select and Start buttons"
+    width={302}
+    height={564}
+    narrow
+    caption="Pookemon at 0:14. Pookachu faces the way you press but does not move; updatePosition is yours to write, within the boundaries object."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/react-challenges/scrimbatronic-synth-keyboard-lesson.webp"
+    alt="Scrimba React Challenges, Scrimbatronic challenge at 0:32: the preview shows a dark synthesizer panel with piano, strings, synth, drum, marimba and harp instrument buttons, a loop button, volume and tempo controls, and a one octave keyboard whose keys are labelled with the computer keys a to k and w, e, t, y, u"
+    width={526}
+    height={427}
+    caption="Scrimbatronic at 0:32, with the computer-key labels switched on. The keys press down but make no sound until you write three event handlers."
+    source="Screenshots of scrimba.com, taken by scrimbaguide.tech."
+  />
+</div>
+
+Pookémon and Scrimbatronic are the two builds Daniel is proudest of. Pookémon is a Game Boy screen where you finish `updatePosition` so the character moves within a `boundaries` object and can reach the door to bomb it. It ships with `use-sound`, two music tracks and a Pokemon font. In the outro Daniel says it started as a Pokedex parody grafted onto the Word Power app before he thought, "What if I actually just made a little video game?" Scrimbatronic is a synth keyboard with six instruments. You write mouse-down, key-down and key-up handlers that set `active` and `keyPressed` on the matching object in a `synthKeys` array. The brief tells you to "play some music on it" before calling it done.
+
+Space Warrior finishes the course. The gameplay is written. You build the start button and a 60 second countdown, stop it at zero, reset the score on restart and fade the button in and out. The solution changes the timer to six seconds to test faster and hits a real bug where the effect keeps setting `timerRunning` to false once the clock reaches zero. It closes with Daniel pointing at an article on making `setInterval` behave with hooks as a bonus refactor. The outro then recommends redoing whichever challenges hurt, then [Advanced React](/docs/courses/react/advanced-react/) and [React Router](/docs/courses/react/react-router/). Above all, it recommends solo projects: "the single best way to consolidate your knowledge and understanding of React."
+
+## What a lesson actually feels like
+
+A challenge scrim is a two to seven minute tour of a working (or half-working) app in the preview pane, then a read-through of the comment block. Daniel narrates a fictional client for each one (a video game workshop, a haunted house realtor, an evil corporation) and the jokes are dry enough to keep you reading. Then the recording ends and you are in the editor with the brief, the Hints folder and a Run button. Hints are plain text files, usually two to four. A few challenges have a single one called Big Spoiler Hint or Big Hint instead.
+
+Solution scrims are Daniel typing and thinking aloud, testing after each change, and going down a wrong path on purpose to show the error. The long ones (Debatable at 24 minutes, Space Warrior at 21, Scrimbatronic at 19, Read-Me-Later at 18) each contain a section on a general principle. Mutation, shared references, intervals in effects: things you would not get from the brief alone. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages (the course header lists "10 languages") and playback speed. There are no quizzes, no AI-checked challenges and no solo project briefs. The whole course is the solo project.
+
+## Free or Pro: exactly what is gated
+
+This is a Pro course. Two scrims carry the SAMPLE badge and open without a subscription: the intro and the Video Game Button challenge brief. Everything from the first solution onward is Pro. So is the Certificate of Completion at the end of the list, and so are the two career paths that include the course. Scrimba's pricing page lists basic Discord access under the free plan and the Pro-only channels under Pro, so the community is not something you are buying here. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+
+## How long it really takes
+
+9.8 hours is video. The briefs are 2.7 hours of it, and each brief is followed by your own attempt. Daniel prices that at "a few minutes" for the easy ones and "twenty minutes, thirty minutes, or even more" for the hard ones. Budget 20 to 30 hours if you attempt every challenge before watching the solution and skim the solutions you did not need. Budget closer to 40 if you watch all 6.9 hours of solutions in full and try the bonus challenges (several briefs have one). At an hour a day that is four to six weeks. Doing only the last six, which is a defensible way to use the course, is a weekend.
 
 ## Who it's for, and who should skip it
 
-It fits developers who already know React and want deliberate practice, and it is strong interview preparation since interview rounds reward exactly this kind of speed and recall.
+It fits you if you have finished [Learn React](/docs/courses/react/learn-react/) or the equivalent, can write `useState` and `useEffect` without looking them up, and want to find out where you stall. It is also good interview preparation of the practical kind. The briefs look like take-home tasks, not trivia. And it suits people who like Daniel's approach of open-ended problems with "usually not a single right answer."
 
-Skip it if you have not learned React yet (do [Learn React](/docs/courses/react/learn-react/) first), or if you prefer guided build-alongs over open-ended problems. This rewards struggling through challenges, which is not how everyone likes to learn.
+Skip it if `map`, object spread and controlled inputs are still new. The briefs assume them from challenge 1 and there is no teaching to fall back on except the solutions. Skip it if you want React 19 features, since it pins React 18.2 and never uses form actions. And skip it if you want a guided build. Every app here is already built, and your part is the repair.
 
 ## Prerequisites
 
-Solid hooks-based React: components, props, `useState`, `useEffect`, and data fetching. The challenges assume you can already write these; they test application, not introduction.
+Working React with hooks: components, props, `useState` with objects and arrays, `useEffect` with a cleanup, controlled inputs and event handlers. Solid JavaScript underneath it: `map`, `filter`, `find`, spread, destructuring, `Date`, `setInterval`, `fetch`. You need no local setup. Everything runs in the Scrimba editor with React 18.2 and small packages already listed under Dependencies (`nanoid` in most projects, `react-draggable`, `use-sound`, `detect-browser` and `time-events-manager` in a few). A QWERTY keyboard helps for Scrimbatronic, and the brief tells you which property to change if you do not have one.
 
 ## Where it fits
 
-React Challenges sits in the practice and interview-prep stretch of the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), best taken after [Learn React](/docs/courses/react/learn-react/) and ideally alongside or after [Advanced React](/docs/courses/react/advanced-react/).
-
-## Free or Pro
-
-This is a Pro course, so it needs a Scrimba subscription. Pro also unlocks the full career paths, the coding challenges across the platform, the private Discord, and path certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+Scrimba's course page lists React Challenges under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). Take it straight after [Learn React](/docs/courses/react/learn-react/). Daniel's own recommendation in the outro is [Advanced React](/docs/courses/react/advanced-react/) and [React Router](/docs/courses/react/react-router/) next. "They are how I learned React myself." For interview drilling of the question-and-answer kind, pair it with [React Interview Questions](/docs/courses/react/react-interview-questions/).
 
 ## Strengths and limits
 
-What it does well: it is pure practice, it covers real-world tasks rather than toy examples, and it builds the speed and recall that interviews and real work both demand.
+What it does well: the briefs are specific and honest about scope (most say you only need to write code below the comments), and the projects are more fun than they need to be. The hint files give you a middle option between struggling and watching, and the long solutions explain mutation, references and intervals rather than just showing the answer.
 
-Where it is limited: it teaches no new concepts, it assumes you already know React, and its open-ended format will not suit people who want a tightly guided narrative.
+Where it is limited: about 70 percent of the runtime is solutions, so the headline hours flatter the amount of practice. The order is deliberately unstructured, so forms appear four times while routing, context, reducers and tests never do (despite "Writing tests" in the objectives list). It is React 18 with no React 19 material, and one challenge depends on an outside API I could not confirm still answers.
 
 ## Related courses and comparisons
 
 - [Learn React](/docs/courses/react/learn-react/), the prerequisite
 - [Advanced React](/docs/courses/react/advanced-react/), to deepen patterns before drilling them
 - [React Interview Questions](/docs/courses/react/react-interview-questions/), pairs well for interview prep
+- [What's New in React 19](/docs/courses/react/whats-new-in-react-19/), for the features this course does not cover
 - [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials/), how it stacks up
 
 <FAQAccordion items={[
-  { q: "Is React Challenges free?", a: "No. It is a Scrimba Pro course and requires a subscription. The Learn React course is free if you need the fundamentals first." },
-  { q: "How many challenges are there?", a: "Around 40 real-world problem-solving challenges, totaling about 9.8 hours of content you work through at your own pace." },
-  { q: "Do I need React experience first?", a: "Yes. The challenges test application, not introduction. Learn the fundamentals in Learn React before starting." },
-  { q: "Is it good for interview prep?", a: "Yes. The speed and recall it builds are exactly what coding interviews reward. Pair it with the React Interview Questions course." },
-  { q: "Who teaches it?", a: "Daniel Rose, a Scrimba instructor. The challenges are solved directly in the interactive Scrimba player." },
+  { q: "Is React Challenges free on Scrimba?", a: "No. It is a Pro course. Two scrims are free previews (the intro and the first challenge brief, Video Game Button); the other 82, the certificate and the two paths that include it need a subscription. Learn React, the prerequisite, is free." },
+  { q: "How many challenges are there, and how long is each?", a: "Forty, each as a challenge scrim and a solution scrim, 84 scrims in all at 9.8 hours. Briefs run 1.5 to 7 minutes and total 2.7 hours; solutions run 3 to 24 minutes and total 6.9 hours. Your own attempts are on top of that." },
+  { q: "What do you build?", a: "Forty small apps that each need one fix or feature: a play/pause button, a flashcard, an RPG character creator, a calculator, a draggable dashboard, a stock tracker, a file uploader, a photo editor, a weather app, a read-later app, a Shakespeare sonnet search, a synth keyboard, an etch-a-sketch, a comment form, a Game Boy game and an arcade shooter, among others." },
+  { q: "Which React version does it use?", a: "React 18.2 with react-dom 18.2 in every project I opened, function components and hooks only. There are no React 19 features such as form actions." },
+  { q: "Do I need React experience first?", a: "Yes. The intro says most challenges assume you have completed Scrimba's React basics course, and the first brief already expects useState, a ternary in JSX and an onClick handler. There is no teaching before the briefs." },
+  { q: "Are there hints if I get stuck?", a: "Every challenge has a Hints folder at the top of the file explorer with one to seven plain text hint files, and a few offer a single Big Spoiler Hint instead. The solution scrim follows each brief, and Daniel tells you to watch it and retry if you are completely stuck." },
+  { q: "Who teaches it?", a: "Daniel Rose, a Scrimba teacher who came to the platform as a student, changed career from a non-technical creative field, and lives in Barcelona. He wrote all 40 projects himself and narrates both the briefs and the solutions." },
+  { q: "Does it need any local setup or API keys?", a: "No. Everything runs in the Scrimba editor with the dependencies preinstalled. One challenge (Boredom Blaster 3000) fetches from the public Bored API with no key; another (Legit File Sharing Site) calls an IP lookup service. Neither brief asks you to sign up for anything." },
+  { q: "Is it good for interview prep?", a: "For practical interviews and take-home tasks, yes: the briefs read like tickets and reward speed with state updates, forms and events. For conceptual questions, pair it with the React Interview Questions course." },
+  { q: "How long does React Challenges take?", a: "Plan for 20 to 30 hours if you attempt every brief and skim the solutions you did not need, up to 40 if you watch every solution and try the bonus challenges. That is four to six weeks at an hour a day." },
+  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, subtitles in ten languages and playback speed control." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/react-challenges-c02n" variant="button">
-  View React Challenges on Scrimba
+  See React Challenges on Scrimba
 </AffiliateLink>
 
 <CourseSchema
   name="React Challenges"
-  description="Scrimba's Pro, intermediate React course taught by Daniel Rose. About 9.8 hours across roughly 40 real-world challenges to drill React skills after the fundamentals."
+  description="Scrimba's Pro, intermediate React practice course taught by Daniel Rose: 40 challenge briefs with recorded solutions, 84 scrims and 9.8 hours, on React 18 with hooks."
   url="https://scrimba.com/react-challenges-c02n"
   timeRequired="PT9H45M41S"
   difficulty="Intermediate"
   access="Pro"
   keywords={["React", "Career", "Frontend"]}
+  modules={[
+    { name: 'Intro and challenges 1 to 6: buttons, state objects and controlled forms', duration: '60 min' },
+    { name: 'Challenges 7 to 13: converting, refactoring and passing props', duration: '95 min' },
+    { name: 'Challenges 14 to 20: localStorage, derived values, iteration and styles', duration: '96 min' },
+    { name: 'Challenges 21 to 27: mouse events, files, CSS variables and event delegation', duration: '98 min' },
+    { name: 'Challenges 28 to 34: fetching, search, timestamps and sorting', duration: '104 min' },
+    { name: 'Challenges 35 to 40 and wrap-up: intervals, games and the big builds', duration: '135 min' },
+  ]}
 />

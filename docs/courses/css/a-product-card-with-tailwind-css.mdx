@@ -1,86 +1,208 @@
 ---
-title: "Build a Product Card with Tailwind CSS"
+title: "Build a Product Card with Tailwind CSS on Scrimba: 2026 Review"
 sidebar_position: 8
-description: "A short, focused Scrimba project: build a responsive product card in Tailwind. Who it suits, what it assumes, and how it pairs with the full Tailwind course."
-keywords: [scrimba tailwind product card, build a product card tailwind, tailwind css project, rachel johnson tailwind, scrimba tailwind tutorial]
+sidebar_label: "Product Card with Tailwind"
+toc_max_heading_level: 2
+description: "Rachel Johnson's 75 minute Tailwind project reviewed from inside: all 23 scrims, the config object, custom fonts, a responsive card, and what Pro gates."
+keywords: [scrimba tailwind product card, build a product card tailwind review, tailwind css project, rachel johnson tailwind, scrimba tailwind tutorial, tailwind config object]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Build a Product Card with Tailwind CSS
 
-A small, single-purpose Scrimba project with Rachel Johnson: about 1.3 hours spent building one responsive product card in Tailwind, end to end.
+A 75 minute Scrimba project with Rachel Johnson: you take a client's two mockups (one desktop, one mobile) and build a product card for a single orange, priced at $1.35, using nothing but Tailwind utility classes. I read the transcript of every scrim, all 23 of them plus the three Scrimba housekeeping clips at the end, with a Pro account in September 2026. This page is what is actually in the course, not the listing rewritten.
+
+*This page is part of our [Scrimba CSS courses](/docs/courses/css/) catalog. Scrimba's course page lists it under the Frontend Developer Path, the Fullstack Developer Path and the AI Engineer Path.*
 
 ## Quick answer
 
-This is a Pro-tier, intermediate mini-project: roughly 1.3 hours and 25 lessons that build a single responsive product card with Tailwind CSS. It is not a survey of the framework; it is one realistic component done well. Take it when you already know the Tailwind basics and want to drill the workflow on something concrete rather than learn the syntax from scratch.
+This is a short, Pro-only, intermediate project, not a Tailwind course. It assumes you already know what `p-4`, `flex` and `md:` mean. Its 75 minutes go on the things a beginner course skips: editing the `tailwind.config` object, loading custom fonts, gradients, list markers, grid, responsive background images, transforms and transitions, and square-bracket arbitrary values. Every concept is taught twice: once on a throwaway demo page (an "Aside" scrim), then again as a task on the real card. The first four scrims are free previews. If you have finished [Learn Tailwind CSS](/docs/courses/css/tailwind-css/) and want one evening of practice that ends in a finished component, this is a good pick. If you have never used Tailwind, start there instead.
 
 <CourseCard
   title="Build a Product Card with Tailwind CSS"
   duration="1.3 hrs"
   difficulty="Intermediate"
   access="Pro"
-  lessons={25}
+  lessons={23}
   instructor="Rachel Johnson"
   instructorUrl="https://scrimba.com/@rachelktyjohnson"
   href="https://scrimba.com/build-a-product-card-with-tailwind-css-c07sjqf1ak"
-  description="A short project course that builds one responsive product card in Tailwind, from layout to polish."
+  description="A 75 minute project: build one responsive product card from client mockups, learning the Tailwind config object, custom fonts, gradients, grid and arbitrary values on the way."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/build-a-product-card-with-tailwind-css/course-title-card.webp"
+    alt="Title card of Scrimba's Build a Product Card with Tailwind CSS course: the words Build a Product Card, With TailwindCSS, and Teacher: Rachel Johnson over a grainy blue and yellow gradient"
+    width={1279}
+    height={720}
+    caption="The only title card in the course. It has no chapters, just 23 scrims in a row."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-If you have done some Tailwind and want reps rather than theory, yes. Building a real component in the browser, tweaking utility classes and watching the layout respond, is exactly where the Scrimba format earns its keep. At 1.3 hours it is an easy evening, and the product card is a pattern you will reach for in real work.
+Yes, if you are the right reader. The course does one thing well: it shows you the step after "I know the utility classes," which is bending Tailwind to a design you did not choose. The client's oranges are not in Tailwind's palette. The fonts are Josefin Sans and Playfair Display SC, not the default sans. The drop shadow is a hard `5px 5px 0` in a custom colour. Each of those is a real problem you will hit at work, and each one gets a short aside and then a task on the card.
 
-The honest caveat is scope. This teaches one component, not the framework. If you do not yet know how Tailwind's utility classes and responsive prefixes work, you will spend the course copying rather than understanding. Learn the basics in [Learn Tailwind CSS](/docs/courses/css/tailwind-css/) first, then use this as a practice rep.
+The honest caveat is size. Seventy five minutes is not much, the card has maybe a dozen elements, and the "intermediate" label mostly means "not a beginner course," not "hard." Several tasks are one class long. If you want depth, the [Learn Tailwind CSS](/docs/courses/css/tailwind-css/) course is the better buy. This one is a rep.
+
+One more thing worth knowing: the course uses the Tailwind CDN script and a `tailwind.config` object in a `config.js` file. That is the Tailwind 3 way of customizing the framework. Tailwind 4 moved most of that configuration into CSS, so what you learn here about the config object transfers as an idea (extend the theme, name your own colours and fonts) more than as exact syntax. The utility classes themselves are the same.
 
 ## What you'll learn
 
-The whole course is one build: a responsive product card with imagery, pricing, and a call to action, styled entirely with Tailwind utility classes. Along the way you practise the responsive prefixes, spacing scale, and the small composition decisions that make a card look finished rather than functional. Because it is project-shaped, you finish with something you could adapt straight into a portfolio or a real store.
+Scrimba does not split this course into chapters. The 23 scrims run in one list, so the groups below are mine, made from where the topic changes. Durations come from each scrim's player.
 
-It pairs naturally with the longer [Learn Tailwind CSS](/docs/courses/css/tailwind-css/) course, which covers the framework's fundamentals and several other projects. Think of this as one more rep in that set.
+<CourseCurriculum
+  modules={[
+    { name: 'Introduction and Tailwind recap', duration: '10 min', lessons: 2 },
+    { name: 'The config object: colours, fonts, max width', duration: '17 min', lessons: 6 },
+    { name: 'Text classes, gradients and lists', duration: '20 min', lessons: 5 },
+    { name: 'Grid, responsive layout and background images', duration: '14 min', lessons: 4 },
+    { name: 'Transforms, transitions, arbitrary values and the finish', duration: '14 min', lessons: 6 },
+  ]}
+/>
+
+Those 23 scrims add up to 75 minutes, which matches the "75 min" on Scrimba's course header. Scrimba's structured data says 26 lessons because it also counts three platform clips at the end (Scrimba Docs, the Scrimbassador referral pitch, and How to Utilize Your Certificate), which are not about Tailwind.
+
+## Inside the course, module by module
+
+### 1. Introduction and Tailwind recap (10 min, 2 scrims)
+
+The intro is three minutes. Rachel introduces herself as "a developer and lifelong learner," shows the two mockups, and explains that the starter has the unstyled HTML, Tailwind via the CDN, and the Google Fonts links already in place. She also warns you about the yellow warning that pops up on every save: "This warning just reminds us that the CDN isn't recommended for production use," and it fades after a few seconds. You will see it a lot.
+
+The second scrim is the longest in the course, almost seven minutes, and it is a speed run through the basics on three coloured sections: colour shades from 50 to 950, `font-sans`, `font-serif` and `font-mono`, padding and margin numbers, flex direction and alignment, the `md:` breakpoint, and `hover:`. If any of that is new, this recap will not be enough, and Rachel says as much: "If you're new to Tailwind, I highly recommend checking out Scrimba's Learn Tailwind CSS course."
+
+### 2. The config object: colours, fonts, max width (17 min, 6 scrims)
+
+This is the part of the course that justifies the "intermediate" label. The aside on the `tailwind.config` object starts from a real problem: the mockup's orange "is most likely not one of the oranges that Tailwind provides." Her fix is a `config.js` file loaded after the CDN script, holding `tailwind.config = { theme: { extend: { colors: {...} } } }`. As Rachel puts it in that scrim, "Think of it like a control center for all of your tailwind styles."
+
+Then you do it yourself. The Adding custom colours scrim gives you three tasks in a comment block at the top of `index.html`: create `config.js`, add the three oranges from the slide (`pale_orange`, `light_orange`, `orange`), and turn the page background pale orange. This is also where the course sets its tone for solutions: "Here's how I would do it, but just remember that you could have done things differently, and that's totally fine."
+
+<Screenshot
+  src="/img/scrimba/build-a-product-card-with-tailwind-css/adding-custom-colours-challenge-brief-lesson.webp"
+  alt="Scrimba Build a Product Card with Tailwind CSS, the Adding custom colours scrim paused at 0:43: the editor shows a TASKS comment with three numbered steps above the unstyled index.html, the preview on the right shows the raw orange photo and plain text, and a small slide with the three hex codes sits bottom left"
+  width={1400}
+  height={660}
+  caption="The Adding custom colours challenge at 0:43. The brief is the three numbered comments at the top of the file, the hex codes are on the slide thumbnail bottom left, and the preview is still completely unstyled. This is the state you work from before pressing play."
+/>
+
+Fonts follow the same pattern. The aside overrides `sans` with Bebas Neue and adds a new `slab` family, and explains that the array you type is the same font stack you would write in CSS. Then the project scrim has you override `sans` with Josefin Sans and add a `title` family for Playfair Display SC, and apply `font-title` to the heading and subtitle. The max width aside tries `max-w-72`, `max-w-96`, `max-w-lg` and `max-w-4xl` on a demo card so you can see the container stop growing. Rachel's reason for caring is practical: "Nowadays, there are monitors that are super super wide so we have to account for that."
+
+Crafting the card puts it together: white background, `w-full`, `max-w-xs`, and `flex justify-center` on the body to center it. By the end of scrim 8 you have a floating white card on a pale orange page.
+
+### 3. Text classes, gradients and lists (20 min, 5 scrims)
+
+Font and Text Classes is a small, useful lesson about naming. Rachel's rule for remembering which prefix does what: "'fonts' for family and figures, and 'text' for traits." So `font-bold` and `font-title` change the typeface and weight; `text-2xl`, `text-gray-500` and `text-lg` change size, colour and the rest. The task is to style the title, subtitle, price and description to match the mockup, including the small `.35` on the price.
+
+The gradient aside teaches the three-class recipe (`bg-gradient-to-b`, `from-`, `to-`) and lets you finish two of three demo sections yourself. Styling the buttons is the longest project scrim at almost six minutes, and it has the busiest task list. You add a gradient from light orange to orange, white uppercase text, uneven top and bottom padding, and an orange heart icon via `fill-orange`. Then you put button and heart side by side in a flex row with `flex-grow` on the button, and add a hover that flips the gradient with `hover:bg-gradient-to-t`. The hint that you "may want to alter the HTML just a little bit" means wrapping the button and the SVG in a new section.
+
+<Screenshot
+  src="/img/scrimba/build-a-product-card-with-tailwind-css/styling-the-buttons-gradient-lesson.webp"
+  alt="Scrimba Build a Product Card with Tailwind CSS, the Styling the buttons scrim paused at 5:30: the editor shows a button with the classes bg-gradient-to-b from-light_orange to-orange text-white uppercase pt-2 pb-1 px-4 flex-grow hover:bg-gradient-to-t, and the preview shows the white card with the orange Add to Cart button and an orange heart beside it"
+  width={1400}
+  height={660}
+  caption="Styling the buttons at 5:30, just after the flex row gets its vertical margin. Read the button's class list in the editor: that one line is the whole lesson. The features list under it is still unstyled, which is the next task."
+/>
+
+The lists aside is the one I would point a Tailwind skeptic at. "By default, Tailwind removes all the expected styling we're used to with vanilla CSS," so the demo's ingredients and recipe steps look like paragraphs until you add `list-disc` and `list-decimal`, then `ml-5 pl-3` to pull the markers inside the box, then `marker:text-green-400` to colour the bullets. It has three mini challenges. Styling the features section applies all of it to the card's five-item feature list, with orange markers and a medium-weight span at the start of each item.
+
+### 4. Grid, responsive layout and background images (14 min, 4 scrims)
+
+The grid aside is short and shows why people like Tailwind: `grid grid-cols-3 grid-rows-3 gap-1` replaces two lines of `repeat(3, minmax(0, 1fr))`, and `col-span-2` stretches the eighth of eight boxes. Then Mobile and desktop views is the most satisfying task in the course. On phones the card stays a single stack; from the `md` breakpoint up it becomes a two-column grid with the photo on the left, a `max-w-3xl` container, a gap, more padding, and larger type. You have to wrap the text content in a new section for the grid to work, and Rachel walks through why.
+
+<Screenshot
+  src="/img/scrimba/build-a-product-card-with-tailwind-css/mobile-and-desktop-views-grid-lesson.webp"
+  alt="Scrimba Build a Product Card with Tailwind CSS, the Mobile and desktop views scrim paused at 4:18: the main element in the editor carries md:grid md:grid-cols-2 md:max-w-3xl md:gap-4 md:p-5, and the widened preview shows the card in two columns with the orange photo on the left and the title, price, button and features list on the right"
+  width={1400}
+  height={660}
+  caption="Mobile and desktop views at 4:18, after the save. The five md: classes on the main element are what turned the stacked card into this two-column layout. Drag the preview narrower and it stacks again."
+/>
+
+Background images get an aside of their own because the config object comes back: you register `mobile` and `desktop` image paths under `backgroundImage`, then use `bg-mobile md:bg-desktop`, plus `bg-no-repeat`, `bg-right-top` and `bg-fixed` to control placement. The project version adds the two subtle patterns the client supplied, pinned to the bottom of the card.
+
+### 5. Transforms, transitions, arbitrary values and the finish (14 min, 6 scrims)
+
+Two asides on four icons: `scale-50`, `scale-x-50`, `rotate-45`, `-rotate-45` and `translate-y-4`, each moved behind a `hover:` prefix as a mini challenge, then `transition-transform`, `duration-1000` and `delay-500` to animate them. The card task is a single line: on hover, the wishlist heart should grow to 1.25 times and take 300 milliseconds to do it. At 1:23 it is one of the shortest scrims in the course.
+
+The arbitrary values aside is the last new idea and a good one to leave on. "Tailwind's square bracket notation allows us to generate a class on the fly with any arbitrary value," so `top-[-40px]`, `text-[1.3em]` and a `shadow-[0_10px_2px_...]` with underscores standing in for spaces. The final task uses it for the mockup's hard-edged shadow: `shadow-[5px_5px_0_orange]`, where `orange` is the custom colour from your config. Rachel's send-off in that scrim: "Super easy task for your last one!"
+
+<Screenshot
+  src="/img/scrimba/build-a-product-card-with-tailwind-css/adding-the-dropshadow-finished-card-lesson.webp"
+  alt="Scrimba Build a Product Card with Tailwind CSS, the Adding the dropshadow scrim paused at 1:11: the finished product card in the preview shows the orange photo, the Playfair Display title A Single Orange, the price, an orange gradient Add to Cart button, a features list with orange bullets, a faint background pattern and a solid orange offset shadow, while the editor shows the main element's full class list including shadow-[5px_5px_0_orange]"
+  width={1400}
+  height={660}
+  caption="The finished card at 1:11 of the last task. Compare it with the unstyled preview in the first screenshot: everything in between is utility classes and one small config file."
+/>
+
+Congratulations! is a 1:23 recap that lists the ten topics and sends you to the Tailwind docs, which "are a treasure trove of information and inspiration." After that come the three platform clips and the certificate.
+
+## What a lesson actually feels like
+
+Scrims here run two to four minutes, with the recap (6:51) and the buttons task (5:53) as the outliers. The rhythm never changes. An aside opens on a small demo page, and Rachel types the new classes while the preview updates. The next scrim opens on the product card with a numbered TASKS comment at the top of `index.html` and a slide bottom left holding hex codes or syntax. She says "give it a go, and I'll be right here when you get back," you pause, you type, you press play, and she shows her version. All ten project scrims work this way, and most asides also have a mini challenge in the middle.
+
+There is no AI feedback on any of these tasks. I looked for the "Challenge with Instant Feedback" badge that some Scrimba courses show in the table of contents, and this course has none. You check your work against the mockup and against Rachel's solution, which she is careful to call one solution: "let's walk through one solution together."
+
+Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and speed controls. Rachel's delivery is calm and slightly formal, with a habit of explaining her reasoning ("personally I think the best way to do this is to use a flex container") rather than just typing. She also hides the preview pane while typing long class lists and brings it back on save, which is worth copying.
+
+## Free or Pro: exactly what is gated
+
+The first four scrims carry a SAMPLE badge and open without Pro: the introduction, the Tailwind recap, the config object aside, and the Adding custom colours task. That is about 16 minutes, and it is enough to judge the teaching style and to learn the config object trick.
+
+Everything from Aside - Fonts in TailwindCSS onward, 19 scrims and roughly an hour, needs Scrimba Pro, and so does the certificate of completion at the end. There are no solo projects in this course, so there is nothing extra to unlock beyond the scrims themselves. Pro also unlocks the career paths this course is listed under and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as a free feature, so the server itself is not gated. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+
+## How long it really takes
+
+The 75 minutes is video runtime. With ten project tasks and the mini challenges inside the asides, budget two to three hours: one sitting if you know Tailwind well, two evenings if you keep pausing to check the mockup or read the docs on a class you have not met. The tasks are small enough that you will rarely be stuck for more than a few minutes. If you want more from it, rebuild the card afterwards from the mockups alone without the task comments; that turns a two hour course into a four hour one and is where the learning sticks.
 
 ## Who it's for, and who should skip it
 
-It fits developers who already understand CSS and have at least touched Tailwind, and who learn best by building one real thing. It is a good warm-up before a larger Tailwind project.
+It fits people who have finished a Tailwind basics course and want to see how the framework handles a design that does not match its defaults. It also suits developers who already use Tailwind at work but have never touched the config object or arbitrary values, because those two ideas are most of the course. If you learn best by copying a mockup, the two client designs are a nice touch.
 
-Skip it if you have never used Tailwind (start with [Learn Tailwind CSS](/docs/courses/css/tailwind-css/)), or if you want a broad tour of the framework rather than a single component.
+Skip it if you have never used Tailwind; the seven minute recap will not carry you. Skip it too if you want a large project or a portfolio piece; one card on one page is what you get. And if your team is on Tailwind 4, expect to translate the config object parts into the CSS-first setup yourself.
 
 ## Prerequisites
 
-Working HTML and CSS, plus a basic familiarity with Tailwind's utility-class approach. You do not need any JavaScript.
+Working HTML and CSS, including flexbox, and enough Tailwind to read a class like `md:grid-cols-2` without help. Rachel points to Scrimba's Learn Tailwind CSS course twice in the first ten minutes as the place to get that. There is no JavaScript to write: `config.js` is a single object literal. Nothing to install either, because Tailwind loads from the CDN inside the Scrimba editor.
 
 ## Where it fits
 
-This project sits among the CSS and styling courses on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), and it appears on the [AI Engineer Path](/docs/paths/ai-engineer-path/) where front-end polish matters. It is supplementary, not a milestone.
-
-## Free or Pro
-
-This is a Pro course, so it needs a Scrimba subscription. Pro also covers the career paths, challenges, certificates, and Discord. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+Take it straight after [Learn Tailwind CSS](/docs/courses/css/tailwind-css/). Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/), the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) and the [AI Engineer Path](/docs/paths/ai-engineer-path/); on any of those it is a short supplementary build, not a milestone. If you liked the transforms and transitions asides, [CSS Animations](/docs/courses/css/css-animations/) goes much further on that topic, and [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) covers the breakpoint thinking in plain CSS.
 
 ## Strengths and limits
 
-What it does well: a tight, realistic build; a clear instructor; and the kind of immediate feedback the Scrimba player is built for. You leave with a finished component.
+What it does well: it teaches the config object and arbitrary values, which most intro material skips; every idea is taught on a demo page and then applied to the real card; the tasks are written as comments in the file so you always know what to do; and the two mockups give you a real target to check against.
 
-Where it is limited: it is narrow by design. It will not teach you Tailwind, and on its own it covers very little ground. Its value is as practice attached to a fuller course.
+Where it is limited: it is 75 minutes long and one component wide; there is no AI feedback and no solo project, so nobody checks your work but you; the CDN-plus-config-object setup is the Tailwind 3 approach and will need translating on Tailwind 4; and only the first four scrims are free.
 
 ## Related courses and comparisons
 
 - [All Scrimba CSS courses](/docs/courses/css/), the full CSS category hub
-- [Learn Tailwind CSS](/docs/courses/css/tailwind-css/), the full framework course this complements
+- [Learn Tailwind CSS](/docs/courses/css/tailwind-css/), the fundamentals course this project assumes
 - [CSS Challenges](/docs/courses/css/css-challenges/), more build-from-scratch practice
 - [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), the deep CSS layout course
+- [CSS Animations](/docs/courses/css/css-animations/), if the transforms and transitions asides left you wanting more
 - [Scrimba vs Udemy](/docs/comparisons/scrimba-vs-udemy/), if you are choosing a platform
 
 <FAQAccordion items={[
-  { q: "Is this product card course free?", a: "No. It is a Scrimba Pro course and needs a subscription. The fundamentals it assumes are taught in the Learn Tailwind CSS course, which is also Pro." },
-  { q: "Do I need to know Tailwind before starting?", a: "Effectively yes. This is a single project, not an introduction. Take Learn Tailwind CSS first if the utility-class approach is new to you." },
-  { q: "What do you actually build?", a: "One responsive product card with imagery, pricing, and a call to action, styled entirely with Tailwind utility classes." },
-  { q: "How is this different from the full Tailwind course?", a: "Learn Tailwind CSS teaches the framework across several projects. This course is one focused build you can use as extra practice." },
+  { q: "Is Build a Product Card with Tailwind CSS free?", a: "Partly. The first four scrims (introduction, Tailwind recap, the config object aside, and the Adding custom colours task) are free samples. The remaining 19 scrims and the certificate need Scrimba Pro." },
+  { q: "Who teaches it?", a: "Rachel Johnson, who also teaches Scrimba's Learn Tailwind CSS, Learn Vue and Learn Cybersecurity courses. She introduces herself in the first scrim as a developer and lifelong learner." },
+  { q: "What do you actually build?", a: "One product card for a single orange, from a desktop and a mobile mockup: photo, title in Playfair Display SC, price, description, a gradient Add to Cart button with a wishlist heart, a features list with orange bullets, a background pattern, and a hard orange drop shadow. From the md breakpoint up it becomes a two-column grid." },
+  { q: "Do I need to know Tailwind first?", a: "Yes. The seven minute recap in scrim two covers colours, fonts, spacing, flex, breakpoints and hover, but Rachel says twice to take Learn Tailwind CSS first if any of that is new." },
+  { q: "How long does it take?", a: "75 minutes of video. Plan two to three hours with the ten project tasks and the mini challenges inside the asides." },
+  { q: "Are there AI-checked challenges?", a: "No. None of the scrims carry Scrimba's Challenge with Instant Feedback badge. You compare your card with the mockup and with Rachel's solution." },
+  { q: "Do I need to install anything?", a: "No. Tailwind loads from the CDN inside the Scrimba editor, and the only extra file you create is config.js with a tailwind.config object. There are no npm dependencies." },
+  { q: "Which Tailwind version does it use?", a: "The course does not name a version. It uses the CDN script and a JavaScript tailwind.config object, which is the Tailwind 3 way of customizing the theme. Tailwind 4 moved that configuration into CSS, so treat the config object lessons as the idea rather than the exact syntax." },
+  { q: "Does the course have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript in the settings menu, and subtitles in ten languages." },
+  { q: "How is this different from Learn Tailwind CSS?", a: "Learn Tailwind CSS teaches the framework from scratch across several projects. This course is one 75 minute build that assumes those basics and adds the config object, custom fonts, gradients, grid, background images, transforms, transitions and arbitrary values." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/build-a-product-card-with-tailwind-css-c07sjqf1ak" variant="button">
@@ -89,7 +211,7 @@ Where it is limited: it is narrow by design. It will not teach you Tailwind, and
 
 <CourseSchema
   name="Build a Product Card with Tailwind CSS"
-  description="A short Scrimba Pro project taught by Rachel Johnson: build one responsive product card in Tailwind across about 1.3 hours."
+  description="A 75 minute Scrimba Pro project taught by Rachel Johnson: build one responsive product card from client mockups while learning the Tailwind config object, custom fonts, gradients, lists, grid, background images, transforms, transitions and arbitrary values."
   url="https://scrimba.com/build-a-product-card-with-tailwind-css-c07sjqf1ak"
   timeRequired="PT1H15M52S"
   difficulty="Intermediate"

@@ -1,10 +1,12 @@
 ---
-title: "Command Line Basics: Free Scrimba Course"
+title: "Command Line Basics on Scrimba: 2026 Review"
 sidebar_position: 2
-description: "Ajo Borgvold's free beginner course on essential CLI skills: navigating files and automating tasks. Foundational tooling before git and backend work."
-keywords: [scrimba command line basics, cli course for beginners, learn command line scrimba, terminal basics course, free cli course]
+toc_max_heading_level: 2
+sidebar_label: "Command Line Basics"
+description: "Ajo Borgvold's free Command Line Basics course from inside: 101 minutes, 24 scrims, seven terminal challenges, and why half of it needs your own terminal."
+keywords: [scrimba command line basics, command line basics scrimba review, cli course for beginners, learn command line scrimba, terminal basics course, free cli course, ajo borgvold]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -12,14 +14,19 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Command Line Basics
 
-A free beginner course that gets you comfortable in the terminal, taught by Ajo Borgvold across about 1.7 hours of practical, hands-on lessons.
+Scrimba's free introduction to the terminal, taught by Ajo Borgvold in 101 minutes across two short sections. I opened every module and read the transcript of every scrim with a Pro account in September 2026, and the most useful thing I can tell you is that the two halves of this course are built differently: the first half is hands-on in Scrimba's terminal, the second half is slides you follow along with on your own machine.
+
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. The course page shows no path badge, but the module list of Scrimba's [Backend Developer Path](/docs/paths/backend-developer-path/) includes a 103 minute "Command Line Interface" module that matches this course.*
 
 ## Quick answer
 
-This is Scrimba's free, beginner-level command line course, about 1.7 hours taught by Ajo Borgvold. You learn the essential terminal skills every developer needs: navigating the filesystem, creating and moving files, and using the command line to automate small tasks. It is foundational dev tooling, the kind of thing worth doing before git, Node, or any backend work, and it assumes no prior experience.
+Command Line Basics is a free, beginner course of 24 short scrims, none longer than eight minutes. Section one puts a real terminal inside the Scrimba editor and walks you through `pwd`, `ls`, `cd`, `touch`, `rm`, `mkdir`, `echo` and `cat`, with a graded challenge in six of its ten scrims. Section two covers `find`, `grep`, `sed`, `mv`, `cp`, `wc`, `sort`, `uniq` and the pipe, but Scrimba's browser terminal cannot run most of those, so it is slides plus a walkthrough for setting up a terminal on your own computer. The framing is a running joke: you are the unpaid intern at Ajo's geography quiz game startup, tidying up the file system after a chaotic night of brainstorming.
+
+If you have never typed a command, take it. It costs nothing, the first hour is well drilled, and it removes the fear that makes Git and Node courses feel harder than they are. If you already move around a terminal comfortably, you will learn nothing new here.
 
 <CourseCard
   title="Command Line Basics"
@@ -30,64 +37,160 @@ This is Scrimba's free, beginner-level command line course, about 1.7 hours taug
   instructor="Ajo Borgvold"
   instructorUrl="https://scrimba.com/u0tj0c"
   href="https://scrimba.com/command-line-basics-c08b87ogl0"
-  description="Get comfortable in the terminal: navigate files, run commands, and automate small tasks from scratch."
+  description="Navigate, create, read and write files in a real terminal, then learn the search, replace, move and sort commands that make the command line worth using."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/command-line-basics/chapter-1-command-line-basics-title-card.webp"
+    alt="Title card of Scrimba's Command Line Basics course, white text reading Command Line Basics and Teacher: Ajo Borgvold over an orange and purple gradient with hexagon outlines"
+    width={1377}
+    height={775}
+    caption="Section 1: Command Line Fundamentals, the hands-on half."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/command-line-basics/chapter-2-command-line-basics-pt-2-title-card.webp"
+    alt="Title card of section two of Scrimba's Command Line Basics course, reading Command Line Basics pt. 2, Teacher: Ajo Borgvold, on the same gradient background"
+    width={1377}
+    height={775}
+    caption="Section 2: Command Line Power Tools, the slide-based half."
+    source="Title cards from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-The command line is one of those skills that pays off everywhere. Git, deployment, package managers, and backend tooling all assume you can move around a terminal, and learners who skip it tend to hit walls later that feel mysterious until you realise they are just CLI gaps. At under two hours and free, this course is a cheap way to close that gap before it slows you down.
+For a complete beginner, yes, and mostly because of the first 46 minutes. Ajo hides Scrimba's file sidebar at the start of the first real lesson ("in a command line course, that will basically be cheating") and makes you find every file by typing. Each challenge is a numbered brief in a `challenge.md` file, and the solution walkthrough is where the teaching happens: you watch the wrong command fail, read the error, and see the fix. That loop is the thing most terminal tutorials skip.
 
-The honest caveat is that it is genuinely a basics course. It covers the fundamentals and a handful of power tools well, but it will not turn you into a shell scripting expert or cover advanced topics like complex pipelines, environment management, or writing real automation scripts. Take it as the foundation it is meant to be.
+The honest caveat is section two. Ajo says it plainly in its intro: "Many of the commands that I'll be teaching you in this section are unfortunately not supported by the shell that we can run in the Scrimba terminal," and that the workaround the team "settled on was to make this section focused on theory rather than practice." There are no challenges in that hour. You get a project zip, setup instructions for Mac and Windows, and slides with screenshots of Ajo's own terminal. If you skip the local setup, the second half is a lecture.
+
+The course is also limited by design. It is file management: moving around, creating, reading, searching, sorting. There is no shell scripting, no environment variables, no permissions, no package managers. Ajo lists those as reasons the command line matters and then says the focus "will be on file management." Take it as a foundation and nothing more.
 
 ## What you'll learn
 
 <CourseCurriculum
   modules={[
-    { name: 'Command Line Fundamentals', duration: '46 min' },
-    { name: 'Command Line Power Tools', duration: '57 min' },
+    { name: 'Command Line Fundamentals', duration: '46 min', lessons: 10 },
+    { name: 'Command Line Power Tools', duration: '57 min', lessons: 13 },
   ]}
 />
 
-The two modules split cleanly. Fundamentals covers the core: moving through directories, listing and inspecting files, and creating, copying, moving, and deleting things from the terminal instead of a file browser. Power Tools builds on that with the commands that start to save you real time, the kind of shortcuts and utilities that make the command line faster than clicking. Together they get you from intimidated to fluent in the basics.
+Lesson counts are the scrims I counted in each expanded module, plus a 56 second "How to Utilize Your Certificate" scrim that sits outside both, for 24 in total. Scrimba's own figures measure something else: the module headers read "0/7" and "0/5", which is the number of challenge checkpoints in each section (the small badge next to a scrim's duration shows a "Challenge" tooltip), and the course's structured data says 26 lessons.
+
+## Inside the course, module by module
+
+### 1. Command Line Fundamentals (46 min, 10 scrims)
+
+The intro scrim is two and a half minutes of setup for the running story. Ajo has a startup idea (a geography quiz game, "the next Minecraft or Candy Crush, I assure you"), spent a night brainstorming on post-its, and made "a bit of a mess of the file system." You are offered an unpaid internship to sort it out. It is silly on purpose, and it gives every challenge a reason.
+
+"Demystifying the command line" is the theory lesson: what a command line is, why Scrimba calls it the terminal, and a side-by-side of the same project folder in Finder and in a terminal ("kind of like the screwdriver and the power drill"). It ends by showing how to open a terminal inside Scrimba: click the plus next to "Runner" at the bottom of the editor and choose "add a terminal."
+
+Then the drills start. "Getting Oriented" teaches `pwd`, `ls`, `cd` and `clear`, and its challenge asks you to do exactly what Ajo just did, after Ajo clears the screen "because now you cannot just copy paste my code." "Relative Paths" introduces `..` with a tree metaphor (in the file tree "we are not birds and we are not monkeys either. Actually, we are much more like tiny tiny ants"), and its challenge sends you hunting for three files that were saved in the wrong folders. "Creating and Deleting Files" brings in `touch` and `rm`; the challenge is to find and delete a `virus.exe` that Ajo's uncle left behind after borrowing the laptop.
+
+"Creating and Deleting Directories" covers `mkdir`, `rmdir` and `rm -r`, and the solution deliberately runs `rmdir` on a folder that is not empty so you see the error before the fix.
+
+<Screenshot
+  src="/img/scrimba/command-line-basics/rmdir-not-empty-error-lesson.webp"
+  alt="Scrimba Command Line Basics lesson on mkdir, rmdir and rm -r paused at 3:02: the editor shows the two-step challenge brief in challenge.md, and the terminal below shows ls listing family_photos_1988 and then rmdir family_photos_1988 failing with rmdir: ENOTEMPTY: directory not empty"
+  width={1400}
+  height={660}
+  caption="Lesson 'Creating and Deleting Directories' at 3:02. Ajo runs rmdir on the family_photos_1988 folder first, gets ENOTEMPTY, and only then switches to rm -r. The challenge brief stays open in the editor above the terminal."
+/>
+
+"Writing to Files" is the longest scrim at seven minutes and has two challenges: a warm-up with `echo 'Hello, name!'`, then creating an `about_the_game` folder, writing a team file with `>` and appending yourself to it with `>>`. Ajo also flags a Scrimba quirk here: "there is an issue in the Scrimba IDE" where `echo` creating a new file "does not always work as expected," so you `touch` the file first. "Reading from Files" introduces `cat` (with a dog-versus-cat mnemonic that Ajo admits may not land), and its challenge chains everything: read a file, append it to another with a relative path, print the result, delete the original.
+
+<Screenshot
+  src="/img/scrimba/command-line-basics/cat-team-members-challenge-lesson.webp"
+  alt="Scrimba Command Line Basics lesson Reading from Files: cat paused at 5:09, with the four-step challenge brief in the editor and the terminal showing cat team_members.txt printing five lines: AB, CEO and creative genius; NN, hard-working intern; IP, visual design; VK, translation services; TC, sound design"
+  width={1400}
+  height={660}
+  caption="Lesson 'Reading from Files: cat' at 5:09, the moment of truth in the challenge solution. The three external people have been appended to team_members.txt with cat and >>, and cat prints the merged team."
+/>
+
+The section closes with a short outro (you are named employee of the month) and a two minute Scrimbassador promo from Per Borgen that has nothing to do with the terminal. One line in the outro explains the shape of the course: "At the time of recording this scrim, section two of this course is still in the making." Section two was added later, and it shows.
+
+### 2. Command Line Power Tools (57 min, 13 scrims)
+
+The intro sets expectations, and I would watch it before deciding whether to continue. Ajo explains that the Scrimba shell cannot run most of what follows, that "the whole section is slide based," and that "there won't be any actual challenges for you to solve." The alternative is to follow along locally, and Ajo is direct about the stakes: "Listening to me and watching my examples is not enough if you really want to master this."
+
+"Terminology crash course" is seven minutes on three words: Linux, shell and command line interface. The shell is "a program that lets you interact with the operating system," and the CLI "is a concept. It is not a technology and it is not a specific app." It is more theory than the rest of the course, but it answers the question beginners actually have, which is why Mac Terminal, VS Code's terminal and Git Bash all seem to do the same thing.
+
+"Local Setup" is the practical hinge of the section. You download the project as a zip from the settings wheel, unzip it into your dev folder, and open a terminal: on a Mac the built-in Terminal app is enough (Ajo has you run `echo $0` to check you are on bash or zsh), on Windows you install VS Code and Git and pick "Git Bash" from the terminal dropdown. The five badge icons on this scrim in the table of contents are pause points for those steps, not graded challenges.
+
+From there it is one command per scrim. "Aside: Options" explains `-r` and `ls -l` and the short-versus-long dash convention ("The short one is faster to type and the long one is more readable"). "Finding Files" covers `find . -name 'forest*'`, `-iname`, `-type f` and `-type d`, with a warning that searching from `/` or `~` "is a very expensive operation." "Terminating a Process" is three minutes on the `quote>` prompt you get after a missing closing quote and why Ctrl+C "should be your new best friend."
+
+"Rename, move and copy" teaches `mv` for both renaming and moving, with the trap spelled out: if the destination folder does not exist, "it will be renamed" instead of moved. Copying a folder needs `cp -r`, which gets what Ajo calls a "mini lecture on recursion."
+
+The text tools follow. `grep` gets `-n`, `-i` and `-r`. `sed 's/,/:/'` swaps commas for colons, with the `g` and `I` flags placed after the last slash, and Ajo recommends redirecting the output to a new file rather than editing in place because "we are all just human beings and we do tend to make silly mistakes." `wc -l` counts team members by counting lines. `sort` gets `-r` and `-n` (so eleven does not sort before two), and `uniq` only removes duplicates that sit next to each other, which is why the two need combining.
+
+The pipe lesson ties the last three together with `sort team_members.txt | uniq > sorted_team.txt`, shown as a screenshot of Ajo's own zsh terminal.
+
+<Screenshot
+  src="/img/scrimba/command-line-basics/sort-uniq-pipe-slide-lesson.webp"
+  alt="Scrimba Command Line Basics lesson Combining Commands with the Pipe at 2:21: a slide showing a macOS zsh terminal window where cat team_members.txt prints a list with duplicates, sort team_members.txt groups the duplicates together, and sort team_members.txt | uniq, circled in pink, prints the five unique team members"
+  width={1400}
+  height={660}
+  caption="Lesson 'Combining Commands with the Pipe' at 2:21. This is what section two looks like: a screenshot of Ajo's local terminal on a slide, annotated live. The pink circle marks the pipe; the left circle marks the de-duplicated output."
+/>
+
+The outro recaps every command and the five options used across the section (`r`, `n`, `g`, `I`, `l`), and the course ends with a generic 53 second scrim on how to use the certificate.
+
+## What a lesson actually feels like
+
+In section one, a scrim is two to seven minutes of Ajo talking over a live Scrimba terminal, with the brief in a `challenge.md` tab above it. When the recording reaches the challenge, you type your own commands in the same terminal, then press play and watch the solution. Ajo's solutions always verify: after every `rm`, `touch` or `mkdir` you run `ls` because "the terminal does not provide us with any kind of user message to tell us how this went." That habit is the best thing you take away from the course.
+
+Section two scrims are slides. Ajo draws on them (circles, underlines) and pastes in screenshots from a Mac terminal. There is a Scrimba terminal in the project, but nothing in these lessons asks you to use it. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages.
+
+The voice is warm and a little goofy. The uncle who keeps borrowing the laptop, the CEO who is "terrible with names" and writes your initials as NN, the "moment of truth" before every `cat`. If that grates, the transcript panel lets you skim.
+
+## Free or Pro: exactly what is gated
+
+The whole course is free: both sections, all seven challenges, the downloadable project and the transcripts. There are no Solo Projects and no Pro-only scrims. The only gated item is the certificate of completion at the end, which is a Pro feature across Scrimba. Scrimba's pricing page lists basic access to the Discord community as free and the Pro-only channels as Pro, so the Discord itself is not gated either. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if the certificate matters to you.
+
+## How long it really takes
+
+The runtime is 101 minutes. Section one has seven challenges and you should stop and type for each one, so budget about two hours for it. Section two takes as long as the local setup takes: on a Mac, ten minutes; on Windows with VS Code and Git to install, maybe half an hour, plus the hour of slides and however long you spend running the commands on the downloaded project yourself. Call it three to five hours total across two or three sittings, or an evening and a morning.
 
 ## Who it's for, and who should skip it
 
-It fits complete beginners and anyone self-taught who has been getting by without the terminal and keeps tripping over it. It is a sensible early stop for [beginners](/docs/for/beginners/) and for [CS students](/docs/for/cs-students/) who want practical fluency to match the theory.
+It fits people who have never opened a terminal, or who have copied commands from tutorials without knowing what `cd ..` does. That includes most [beginners](/docs/for/beginners/) and a fair share of [CS students](/docs/for/cs-students/) who learned theory before tooling. It is a sensible warm-up before [Learn Git and GitHub](/docs/courses/javascript/git-and-github/), whose local sections assume you can navigate a terminal.
 
-Skip it if you already live in the terminal and write shell scripts comfortably; there is little new here for you. Otherwise, even a quick run through is worthwhile insurance.
+Skip it if you already use `grep` and `find` without thinking, or if you want scripting, permissions, SSH or package managers; none of those are here. Also skip section two if you cannot or will not install anything on your machine, because without a local terminal it is an hour of slides.
 
 ## Prerequisites
 
-None. No prior programming or terminal experience is required. A computer with a terminal and a willingness to type commands are all you need.
+None. No programming, no prior terminal use, no installs for section one. Section two wants a computer where you can install VS Code and Git (Windows) or open the Terminal app (Mac). Linux users are not addressed in the setup lesson, but any bash or zsh shell works for what is taught.
 
 ## Where it fits
 
-This course is a standalone foundation rather than a named path member, but it underpins almost everything that comes after. It pairs directly with [Learn Git and Github](/docs/courses/javascript/git-and-github/), which assumes terminal comfort, and it smooths the way into backend work like [Learn Node.js](/docs/courses/javascript/nodejs/).
-
-## Free or Pro
-
-The course is free, with no subscription needed to start or finish it. Scrimba Pro is a separate decision that unlocks the structured career paths, coding challenges, and certificates. If you only want this course, you never have to pay.
+This is a tooling course rather than a language course. It sits before [Learn Git and GitHub](/docs/courses/javascript/git-and-github/) (which lives in the terminal from its third section) and before [Learn Node.js](/docs/courses/javascript/nodejs/), where you start running your own code from a command line. Scrimba's Backend Developer Path lists a Command Line Interface module of the same length, and Ajo's teacher card mentions work on that path, so backend learners are the intended audience. Frontend learners can take it any time; it does not depend on [Learn JavaScript](/docs/courses/javascript/learn-javascript/).
 
 ## Strengths and limits
 
-What it does well: it is free, short, and beginner-friendly, and it teaches a skill that quietly unlocks git, deployment, and backend tooling. The two-module structure moves from fundamentals to genuinely useful shortcuts.
+What it does well: section one drills the basics in a real terminal with verification after every step, the challenges build one file tree across the whole section so nothing is abstract, the errors are shown on purpose, and the local setup lesson is the clearest Mac-and-Windows terminal setup I have seen in a beginner course.
 
-Where it is limited: it stops at the basics, so advanced shell scripting and automation are out of scope, and fast peer help depends on the Pro Discord rather than the free tier.
+Where it is limited: section two has no challenges and depends entirely on you setting up locally, the scope stops at file management, the `echo` bug in Scrimba's IDE is still worked around rather than fixed, and one of the ten scrims in section one is a promo for the referral program.
 
 ## Related courses and comparisons
 
-- [Learn Git and Github](/docs/courses/javascript/git-and-github/), the natural next step
+- [Learn Git and GitHub](/docs/courses/javascript/git-and-github/), the natural next step
 - [Learn Node.js](/docs/courses/javascript/nodejs/), where terminal fluency starts to matter
 - [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language foundation
+- [Backend Developer Path](/docs/paths/backend-developer-path/), the path that carries a matching module
 - [All JavaScript courses](/docs/courses/javascript/), the full category hub
 - [Scrimba for beginners](/docs/for/beginners/), if you are just starting out
 
 <FAQAccordion items={[
-  { q: "Is Command Line Basics free on Scrimba?", a: "Yes. The full course is free with no credit card or Pro subscription required. Pro is only needed for the career paths and certificates." },
-  { q: "Do I need any experience to take it?", a: "No. It is a beginner course that starts from scratch. No prior programming or terminal experience is assumed." },
-  { q: "Why should I learn the command line?", a: "Git, deployment, package managers, and backend tooling all assume basic terminal fluency. Learning it early avoids confusing walls later." },
-  { q: "Who teaches it?", a: "Ajo Borgvold. The course is hands-on, so you run commands alongside the lessons rather than just watching." },
-  { q: "Does it cover shell scripting?", a: "Not in depth. It covers the fundamentals and some power tools. Advanced shell scripting and automation are beyond its scope." },
+  { q: "Is Command Line Basics free on Scrimba?", a: "Yes. Both sections, all seven challenges and the downloadable project are free with no card required. The only Pro item is the certificate of completion." },
+  { q: "Who teaches it?", a: "Ajo Borgvold, a Scrimba Frontend Path graduate and teacher talent program graduate who works as an IT engineer in Denmark. The course page's teacher card also credits Ajo with Build a Memory Game in React." },
+  { q: "Do I need to install anything?", a: "Not for section one, which runs in a terminal inside Scrimba. Section two asks you to download the project zip and use a local terminal: the Terminal app on a Mac, or VS Code with Git Bash on Windows." },
+  { q: "Are there challenges?", a: "Seven in section one, spread over six scrims (the echo lesson has two). Each is a numbered brief in a challenge.md file that you solve in the Scrimba terminal before watching Ajo's solution. Section two has no challenges because the Scrimba shell cannot run most of its commands." },
+  { q: "Are the challenges checked by AI?", a: "No. The badge next to those scrims reads Challenge, not Challenge with Instant Feedback. You compare your result with the solution walkthrough yourself." },
+  { q: "What do you build?", a: "Nothing that runs. You organise the file tree of a fictional geography quiz game: creating folders like cities and about_the_game, writing a team_members.txt with echo, merging files with cat, and in section two sorting and de-duplicating them locally." },
+  { q: "Which commands does it cover?", a: "pwd, ls, cd, clear, touch, rm, mkdir, rmdir, rm -r, echo with > and >>, cat, find, grep, sed, mv, cp, wc, sort, uniq, the pipe, and Ctrl+C. It does not cover shell scripting, permissions, environment variables or package managers." },
+  { q: "Does it have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages." },
+  { q: "How long does it take?", a: "101 minutes of video. Plan on about two hours for section one with the challenges, and three to five hours in total if you do the local setup and run the section two commands yourself." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/command-line-basics-c08b87ogl0" variant="button">
@@ -96,7 +199,7 @@ Where it is limited: it stops at the basics, so advanced shell scripting and aut
 
 <CourseSchema
   name="Command Line Basics"
-  description="Scrimba's free, beginner-level command line course taught by Ajo Borgvold. About 1.7 hours of essential CLI skills across two modules."
+  description="Scrimba's free, beginner command line course taught by Ajo Borgvold. About 101 minutes and 24 scrims across two sections: hands-on terminal fundamentals with seven challenges, then a slide-based tour of find, grep, sed, mv, cp, wc, sort, uniq and the pipe for local practice."
   url="https://scrimba.com/command-line-basics-c08b87ogl0"
   timeRequired="PT1H41M50S"
   difficulty="Beginner"

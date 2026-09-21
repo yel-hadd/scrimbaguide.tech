@@ -21,7 +21,7 @@ screenshots) is what makes them index-worthy and citable.
 
 ## Per-page archetype (what "enriched" means)
 
-1. Title: `<Course> on Scrimba: Review From Inside the Course (2026)`; short
+1. Title: `<Course> on Scrimba: 2026 Review`; short
    `sidebar_label`; `toc_max_heading_level: 2`; `last_update` = day reviewed.
 2. Intro states the method in one sentence ("opened every module, worked
    through a sample of lessons with a Pro account in <month year>").
@@ -60,53 +60,19 @@ scrimba.com/our-pricing lists "basic access to Discord community" as free and
 
 ## Queue (priority = hub impressions × page importance)
 
-1. ~~learn-react, html-and-css, ai-engineering~~ done
-4. `docs/courses/javascript/nextjs.mdx` (leaf already ranks pos 7.7, 473 impr)
-5. `docs/courses/javascript/expressjs.mdx` (528 impr, pos 20.6, needs depth)
-6. Path pages `docs/paths/*` (money pages; extract nested curriculum + hours)
-7. Category hubs: add one first-hand line + title card per course, link to
-   enriched leaves; keep them pillar length.
-8. `docs/how-it-works/how-scrims-work.mdx`: transcript panel, Explain, AI
-   challenges screenshots (feature coverage; also feeds comparison pages).
-9. Remaining 46 course leaves without `CourseCurriculum` (see inventory).
+Done 2026-09-20/21 (PR #96): every course leaf under `docs/courses/**` (66 pages)
+plus the 8 category hubs, the Explain cluster (reference page and four posts,
+skill under `.claude/skills/scrimba-explain/`), the Discord wording sweep, the
+non-course docs sections (comparisons, pricing, for/*, FAQ, help, practice,
+learn-react, learn-nextjs, intro, changelog) and the component UI/UX pass.
 
-## Component inventory (2026-09-20) and review to-do
+Remaining:
 
-Usage across `docs/`, `blog/`, `src/pages` + auto-mounted swizzles. Counts are
-files using the component.
-
-| Component | docs | blog | pages/theme | Notes / review items |
-|---|---|---|---|---|
-| AffiliateLink | 113 | 36 | 3 | Core. Check `variant="button"` contrast + focus ring in dark mode. |
-| FAQAccordion | 128 | 49 | 0 | Emits FAQ schema? verify vs `DocFaqSchema` duplication on 24 blog posts. |
-| PricingCTA | 63 | 74 | 2 | 9 course leaves carry it; CLAUDE.md says research pages stay CTA-light. Audit which 63 docs. |
-| DisclosureNotice | 24 | 74 | 0 | Blog has it on every post; docs only 24. Decide a rule. |
-| CourseCard | 76 | 1 | 0 | Add optional `image` (chapter title card) prop? Review mobile stacking. |
-| CourseSchema | 72 | 0 | 0 | OK. Consider `image` from title card. |
-| CourseCurriculum | 25 | 0 | 0 | **46 course leaves lack it.** Bars use module duration; add `lessons`. |
-| DocFaqSchema | 1 | 24 | 0 | See FAQAccordion. |
-| VerdictBox | 13 | 3 | 0 | Contrast fixed in PR #93; re-check dark mode. |
-| ComparisonTable | 15 | 1 | 0 | Mobile: horizontal scroll affordance? |
-| CodePreview | 2 | 0 | 0 | Practice pages only. |
-| HowToSchema | 4 | 7 | 0 | |
-| ItemListSchema | 2 | 6 | 0 | |
-| ReviewSchema | 0 | 3 | 0 | Only 3 blog posts; course pages could carry editor rating (Wave 3 item in PLAN.md). |
-| VideoSchema | 0 | 1 | 0 | |
-| PersonSchema | 0 | 0 | 1 | About page. |
-| LearningTimeCalculator | 0 | 2 | 0 | Candidate for path pages. |
-| PathAdvisor | 1 | 0 | 0 | Tools page. |
-| ScrimSandbox | 0 | 0 | 1 | Homepage demo scrim. |
-| ScrimbaBlocksArt | 0 | 0 | 1 | Homepage art. |
-| Screenshot | 1 | 0 | 0 | New (this program). |
-| WhyScrimba | 0 | 0 | 0 | **Unused.** Delete or mount. |
-
-Swizzles (auto-mounted on every page of their type): `DocItem/Layout` (RelatedGuides,
-sticky CTA on money pages), `DocItem/Metadata`, `BlogPostItem/{Header,Footer}`,
-`BlogPostPage`, `BlogListPage`, `BlogTagsListPage`, `BlogTagsPostsPage`,
-`BlogArchivePage`, `Navbar/Content`, `NavbarItem/DropdownNavbarItem`, `SearchBar`,
-`SearchPage`.
-
-UI/UX review pass (not started): open one page per component in light and dark
-mode at 390px and 1280px, check contrast, tap targets, focus states, and whether
-each component earns its place on the page type it is on. Deliver as a table of
-findings + fixes.
+1. Path pages `docs/paths/*` (money pages; extract nested curriculum + hours,
+   title cards and path-only scrims). Browser work; one tab at a time with the
+   Chrome window in front.
+2. `docs/how-it-works/how-scrims-work.mdx` and siblings: transcript panel,
+   settings menu, AI-feedback challenge, EXPLAIN modal, dependencies,
+   certificate item screenshots from a free Learn JavaScript lesson.
+3. Re-check GSC four to six weeks after merge (baseline in memory) to see
+   whether the leaves leave "crawled, not indexed".

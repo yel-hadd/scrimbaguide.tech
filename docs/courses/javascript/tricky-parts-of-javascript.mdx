@@ -1,26 +1,32 @@
 ---
-title: "The Tricky Parts of JavaScript"
+title: "The Tricky Parts of JavaScript on Scrimba: 2026 Review"
 sidebar_position: 3
-description: "Zack Wilson's hour-long Pro course on JavaScript gotchas: closures, this, hoisting, and coercion. A focused top-up after Learn JavaScript, not a first course."
-keywords: [scrimba tricky parts of javascript, javascript closures course, javascript this keyword, javascript hoisting, portexe javascript]
+toc_max_heading_level: 2
+sidebar_label: "Tricky Parts of JavaScript"
+description: "Zack Wilson's hour-long Pro course reviewed from inside: 18 scrims on scope, hoisting, IIFEs and promises, which six are free, and who should skip it."
+keywords: [scrimba tricky parts of javascript, tricky parts of javascript review, javascript hoisting course, javascript scope course, javascript promises course, portexe javascript, scrimba javascript review]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # The Tricky Parts of JavaScript
 
-A short, focused Pro course from Zack Wilson on the JavaScript concepts that trip people up: closures, `this`, hoisting, and type coercion, in under an hour.
+A one-hour Pro course from Zack Wilson (PortEXE) on the parts of JavaScript that a first course skips: how scope and hoisting really behave, the three ways to write a function, and promises through to async/await. I read the transcript of every scrim and captured the moments below with a Pro account in September 2026, so this page describes what is actually in the course rather than what its title suggests.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. It is sequenced into the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-The Tricky Parts of JavaScript is a 59-minute, Pro-tier, intermediate course taught by Zack Wilson (PortEXE). It zeroes in on the language behaviors that confuse self-taught developers, like closures, the `this` keyword, hoisting, and coercion. It is best used as a targeted top-up after a beginner course, not as your first encounter with JavaScript. If those four topics make you uneasy, this is an efficient hour.
+The Tricky Parts of JavaScript is an intermediate, Pro-tier course: 58 minutes of video (listed as 59 on Scrimba) across 18 short scrims, four of them challenges. It has three topics, in this order: scope and hoisting (`var` versus `let`, block scope, the global object, the temporal dead zone), functions (declarations, expressions, IIFEs, arrow functions), and asynchronous code (the Promise constructor, `fetch`, `Promise.all`, `async`/`await`). There is no project. The first six scrims, the whole scope block, are free previews; the rest need Pro.
+
+It does not cover closures, `this`, or type coercion. Closures and `this` are mentioned as "coming later" and then never arrive, because the course ends after promises. If you want the explanation behind `undefined` versus `ReferenceError`, or you have been writing `.then()` chains without knowing what a promise is, this is a tight hour. If you want the classic interview trio of closures, `this` and coercion, look elsewhere.
 
 <CourseCard
   title="The Tricky Parts of JavaScript"
@@ -31,70 +37,184 @@ The Tricky Parts of JavaScript is a 59-minute, Pro-tier, intermediate course tau
   instructor="Zack Wilson (PortEXE)"
   instructorUrl="https://scrimba.com/@portexe"
   href="https://scrimba.com/the-tricky-parts-of-javascript-c0i"
-  description="A focused hour on JavaScript gotchas: closures, this, hoisting, and type coercion."
+  description="An hour on scope, hoisting, function styles and promises, taught by reading and running small examples, with four pause-and-predict challenges."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/the-tricky-parts-of-javascript/course-intro-title-card.webp"
+    alt="Title slide of Scrimba's The Tricky Parts of JavaScript course, white text on a peach background with two lilac blobs"
+    width={1279}
+    height={720}
+    caption="The only title card in the course: the intro slide. The other 17 scrims open straight into the editor."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-If you can build small JavaScript apps but still get surprised when `this` points somewhere unexpected or a closure captures a value you did not mean, this is an hour well spent. It is narrow on purpose, and that focus is the value: no padding, just the concepts that quietly cause bugs.
+Yes, for a specific reader: someone who can build small things in JavaScript but still gets surprised by the language. Zack says so himself in the intro: "This course is for junior to mid level JavaScript developers who are looking to level up. JavaScript developers who feel as though they've hit a plateau." The course delivers exactly that for three topics, and it does it in less time than most YouTube playlists on any one of them.
 
-The honest caveat is that it assumes you already know the basics. It is not a teaching-from-zero course, and at 20 lessons it is a supplement, not a curriculum. If you have never written JavaScript, this will feel like answers to questions you have not asked yet.
+The format is what makes it work. Nearly every scrim is Zack pasting in a five-line example, asking you what it will log, running it, and explaining the result. The four challenges push the same idea further: you pause, predict the output (or write the conversion), then watch the answer. For scope and hoisting, which are about the interpreter's rules rather than about building anything, that is the right way to teach.
+
+Two caveats. The course was published in 2020 and the examples show it (one promise example uses jQuery-style `$.ajax`, and the relief he expresses about promises assumes you remember callback nesting). And the title promises more than the hour holds. Read the module list below before you buy expecting closures.
 
 ## What you'll learn
 
-The course is built as a set of focused lessons and challenges around JavaScript's most misunderstood mechanics. Expect closures and lexical scope, the rules that decide what `this` refers to, hoisting of variables and functions, and the type coercion behind JavaScript's surprising equality comparisons. Each is the kind of topic that beginner courses gloss over and interviewers love to probe.
+Scrimba presents the course as one flat list of scrims with no modules. The three groups below are mine, split where the topic changes; the intro sits with scope and the outro with promises.
 
-Because it is short and concept-driven, it pairs well with practice elsewhere. Think of it as the explanation layer that makes your existing JavaScript click.
+<CourseCurriculum
+  modules={[
+    { name: 'Scope and hoisting (intro through Scope Challenge)', duration: '17 min', lessons: 6 },
+    { name: 'Functions: declarations, expressions, IIFEs, arrows', duration: '19 min', lessons: 6 },
+    { name: 'Promises, fetch, Promise.all, async/await (plus outro)', duration: '22 min', lessons: 6 },
+  ]}
+/>
+
+I counted 18 video scrims totalling 58 minutes 11 seconds, plus a certificate item and Scrimba's generic "How to Utilize Your Certificate" scrim; Scrimba's own figure is 20 lessons and 59 minutes, which counts those two extra items.
+
+## Inside the course, module by module
+
+### 1. Scope and hoisting (17 min, 6 scrims)
+
+The intro is 78 seconds of Zack introducing himself (a YouTube channel, a website) and setting expectations: JavaScript specifically, not "object oriented programming, functional programming, web APIs." What Is Scope? defines scope as "the area in which a variable is visible". It then runs three examples in under two minutes: a `var` inside a function that throws a `ReferenceError` outside it, a `let` read before its line (also a `ReferenceError`), and the same code with `var` (prints `undefined`). That last contrast is the hook for the whole block.
+
+Hoisting is the best scrim in the course. The rule comes first, "variable declarations are figuratively hoisted to the top of its scope," and then he proves that `let` is hoisted too, which most explanations skip. He writes `let char = 'a'`, an `if (true)` block that logs `char`, and a second `let char = 'b'` inside the block after the log. It throws.
+
+As Zack puts it in lesson 3, "This is how we know that let is being hoisted here. Because if it wasn't, if we got rid of this, this would be logging a." He names the temporal dead zone and, sensibly, tells you not to worry about it beyond debugging. The scrim ends with function declarations being hoisted with their bodies, so `square(4)` works before `function square` is written.
+
+<Screenshot
+  src="/img/scrimba/the-tricky-parts-of-javascript/hoisting-temporal-dead-zone-lesson.webp"
+  alt="Scrimba The Tricky Parts of JavaScript, Hoisting lesson paused: the editor shows let char = 'a', an if (true) block that logs char and then declares let char = 'b', and the console reads ReferenceError: Cannot access 'char' before initialization"
+  width={1400}
+  height={660}
+  caption="Hoisting at 1:35. The inner let is declared after the console.log, yet the log throws instead of printing the outer 'a'. That error is the proof that let declarations are hoisted; Zack names it the temporal dead zone a few seconds later."
+/>
+
+Global Scope covers top-level variables, overriding them locally, and setting properties on `window` from inside a function. Block Scope shows that `let` and `const` are trapped inside curly braces and `var` is not, then flips an `if (true)` to `if (false)` to show `var x` is still hoisted (as `undefined`) even when the block never runs.
+
+The Scope Challenge is the payoff. Zack pastes 32 lines with six `console.log` calls and says "Don't run the code. I want you to figure out what each of the console dot logs is going to do." Every rule from the previous four scrims is in there. There is a `var hoisted = true` at the bottom of the file, a `var` assigned inside an `if` that never runs, a `let` at global scope written from inside a function, `window.str`, and a `var ten` that stays locked inside its function. Getting all six right without running it means you understood the block.
+
+<Screenshot
+  src="/img/scrimba/the-tricky-parts-of-javascript/scope-challenge-results-lesson.webp"
+  alt="Scrimba The Tricky Parts of JavaScript, Scope Challenge paused after running: the editor shows six console.log calls and a var hoisted = true on the last line, and the console prints 1: (empty), 2: banana, 3: 15, 4: carrot, 5: Hello World, then ReferenceError: ten is not defined"
+  width={1400}
+  height={660}
+  caption="Scope Challenge at 1:00, just after Zack runs the file. The six answers are on screen; the next three minutes explain each one. Line 32, var hoisted = true, is why the first log prints nothing."
+/>
+
+### 2. Functions (19 min, 6 scrims)
+
+Function Declarations is short: the `function` keyword syntax, a `squareNum(9)` that logs 81, and a reminder that a declaration can be called before the line that defines it. Function Expressions is where the ideas start: a function assigned to a `const`, then a `timedFunction` that accepts another function and measures how long a 100,000-iteration loop takes. Zack cuts the named loop out and passes an anonymous function inline to show why expressions exist. He finishes by converting a declaration into an expression and getting a `ReferenceError`, because expressions "are hoisted without their definition in the same way that standard variable bindings are."
+
+IIFE's (immediately invoked function expressions) is the longest scrim at five minutes and the one most likely to be new to a self-taught reader. Two reasons to use them: encapsulation, so an `add` function inside one script cannot collide with an `add` in another. The second is what he calls function factories, where a recursive Fibonacci is wrapped and invoked with 10 to produce `tenthFib`, then generalised into `fibFactory(n)`. He is candid that "this one is a little bit more of an advanced concept, and you may not run into this very often, if ever."
+
+Arrow Functions walks through the syntax reductions one at a time: drop `function`, add the arrow, drop the braces and `return` for a one-liner, drop the parentheses for a single argument. He shows where you cannot shorten (two arguments, more than one line) and ends with the one real difference: "Arrow functions do not have this, arguments, super, or new dot target keyword bindings." That is the only time `this` appears in the course, and it is a warning, not a lesson.
+
+The Functions Challenge asks you to rewrite the `fib` declaration as a function expression and as an arrow function, then Part 2 asks you to turn the expression into an IIFE that assigns the tenth Fibonacci number (55). Both are quick, and both are the kind of thing you should be able to do with your eyes closed after this block.
+
+### 3. Promises and async/await (22 min, 6 scrims)
+
+What Are Promises? opens with a definition ("a class that aims to simplify asynchronous programming") and a `waitMs` function that wraps `setTimeout` in `new Promise((resolve, reject) => ...)`. Zack admits up front that the example "is not a super practical example," runs it, waits the full five seconds on camera, and then walks through a `callApi` example that resolves or rejects on an HTTP result. That second example uses `$.ajax`, and he does not run it; it dates the course more than anything else in it.
+
+Fetch is the practical version: `fetch` a todo from JSONPlaceholder, `.then(response => response.json())`, `.then` the result. Then he breaks the URL on purpose to show `.catch` printing "TypeError: Failed to fetch." Promise.all is the most memorable scrim in the block. Three promises go into an array: two fetches and a hand-made promise that resolves when you click a button in the preview. Nothing logs until all three are done, and Zack has to run it twice because the requests were still in flight the first time. The result arrives as an array "in the order in which you write it, not in the order in which they are completed."
+
+<Screenshot
+  src="/img/scrimba/the-tricky-parts-of-javascript/promise-all-click-me-result-lesson.webp"
+  alt="Scrimba The Tricky Parts of JavaScript, Promise.all lesson paused: the editor shows Promise.all with two fetch calls to jsonplaceholder and a new Promise that resolves 'CLICKED!' on a button click, a small preview pane shows a Click Me! button, and the console prints an array of two todo objects followed by 'CLICKED!'"
+  width={1400}
+  height={660}
+  caption="Promise.all at 3:55. Two fetches and one click-driven promise in a single array; the console shows the three results in array order after the button in the preview pane was pressed."
+/>
+
+Async/Await takes the fetch example from two scrims earlier and rewrites it with `await`. He hits the "cannot use keyword await outside of an async function" error first and fixes it with an `async` IIFE, which ties the functions block back in. The Promises Challenge then hands you two promises that resolve to "Hello" and "World" and asks for "Hello World." Zack shows three solutions: nested `.then`, `Promise.all` with array indexes, and an async arrow IIFE with two `await`s, and says which he prefers (the second).
+
+<Screenshot
+  src="/img/scrimba/the-tricky-parts-of-javascript/promises-challenge-async-await-lesson.webp"
+  alt="Scrimba The Tricky Parts of JavaScript, Promises Challenge paused: the editor shows helloPromise and worldPromise resolving to Hello and World, then a one-line async arrow IIFE that logs await helloPromise + ' ' + await worldPromise, and the console prints Hello World"
+  width={1400}
+  height={660}
+  caption="Promises Challenge at 3:00, the third of three solutions. One line of async/await replaces the nested .then version from a minute earlier; the console shows Hello World."
+/>
+
+The Outro is 77 seconds. Zack lists what to learn next, "iterators, generators, closures, recursion," which confirms that closures are homework, not content, and points to his Twitter and YouTube.
+
+## What a lesson actually feels like
+
+A scrim here is one to five minutes, and the pattern barely changes: an empty `index.js`, Zack pastes a short example, asks what it will print, runs it, explains. There is no project to keep in your head between scrims and no CSS or HTML to speak of; `index.html` exists but only the Promise.all scrim uses it (for the button). You can pause at any point and edit the code yourself, which is the main advantage over watching the same material on YouTube.
+
+The challenges are pause-and-predict rather than pause-and-build. Zack says "pause this cast, look at the code, think carefully about it," and then gives the answer. Nothing checks your work: you compare your answer with his. I did not see any of the "Challenge with Instant Feedback" markers that newer Scrimba courses show in their table of contents.
+
+The delivery is relaxed and slightly unpolished. He pastes the wrong snippet once in the IIFE scrim ("I pasted in the wrong part"), mixes up "synchronous" and "asynchronous" once, and says "um" more than a scripted course would. I did not mind; it sounds like a developer explaining something at a desk.
+
+Every scrim has captions, a timestamped transcript in the settings menu, and subtitles in ten languages.
+
+## Free or Pro: exactly what is gated
+
+Six scrims carry the SAMPLE badge and play without a subscription: the intro, the four scope scrims (What Is Scope?, Hoisting, Global Scope, Block Scope) and the Scope Challenge. That is the entire scope and hoisting block, 17 minutes, free. It is also the strongest part of the course, so you can judge the teaching style before paying.
+
+Pro unlocks the other 12 scrims (functions and promises, 41 minutes), the certificate of completion, and the two paths this course belongs to. Scrimba's pricing page lists basic Discord access as free and Pro-only channels as Pro, so the community itself is not gated. There are no Solo Projects in this course; nothing else inside it is locked. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+
+## How long it really takes
+
+The runtime is 58 minutes of video, listed as 59 on Scrimba because its count includes the certificate items (see the note under the curriculum above). If you only watch, that is an evening. If you do what the course asks, which is to pause at every "what do you think this logs?" and actually decide before he runs it, and to write the two function conversions and the promise challenge yourself, plan for two to three hours. The Scope Challenge alone is worth ten minutes of honest thinking before you press play. Spread it over two sittings, one for scope and functions and one for promises, and you will keep more of it.
 
 ## Who it's for, and who should skip it
 
-It fits developers who have finished a beginner course like [Learn JavaScript](/docs/courses/javascript/learn-javascript/) and keep hitting confusing behavior, or anyone prepping for interviews where these topics come up constantly.
+Take it if you have finished [Learn JavaScript](/docs/courses/javascript/learn-javascript/) or its equivalent, can write functions and loops, and have hit the wall where the language does something you cannot explain. It is also a fast refresher before an interview that might ask "what does this log?" style questions about `var` and hoisting, and a gentle first pass at promises for someone who has been copying `fetch` snippets without understanding them.
 
-Skip it if you are a complete beginner; do Learn JavaScript first. Also skip it if you want broad coverage rather than a targeted fix, where [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/) is the fuller course.
+Skip it if you are a complete beginner (the intro says so; nothing is explained from zero), or if you already know why `let` throws in the temporal dead zone and how `Promise.all` orders its results. Skip it too if you came for closures, `this`, prototypes, or coercion; none of those are in the hour, whatever the title implies. [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/) is the fuller course for that ground.
 
 ## Prerequisites
 
-A working knowledge of JavaScript basics: variables, functions, and scope. You do not need to be advanced, but you should have written some JavaScript before this will make sense.
+Comfortable basic JavaScript: variables, functions, `if` blocks, arrays, and `console.log`. Zack assumes you have seen `fetch` at least once and know what an HTTP request is, but not that you understand promises. Nothing needs installing; every example runs in Scrimba's browser editor with a console pane.
 
 ## Where it fits
 
-The Tricky Parts of JavaScript is a supplemental stop on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), best taken after the JavaScript fundamentals and before interview prep.
-
-## Free or Pro
-
-This is a Pro course, so it requires a Scrimba subscription. Pro also covers the full career paths, the coding challenges, the Discord, and certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). In practice it sits between a first JavaScript course and anything that leans on asynchronous code. The promises block is direct preparation for the data fetching in [Learn React](/docs/courses/react/learn-react/) and for [Learn Node.js](/docs/courses/javascript/nodejs/), where nearly everything returns a promise. The scope block pairs well with [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/), which drills the same "predict the output" skill under time pressure.
 
 ## Strengths and limits
 
-What it does well: it is short, focused, and targets the exact concepts that cause subtle bugs and interview stumbles. Zack Wilson keeps it concrete rather than academic.
+What it does well: it proves each rule with a runnable example instead of stating it, it shows the errors (`ReferenceError`, "cannot use keyword await outside of an async function", "Failed to fetch") on screen rather than describing them, the Scope Challenge is a real test of understanding, and the scope block is free.
 
-Where it is limited: it is a supplement, not a course you can start from zero with, the 20-lesson runtime is genuinely brief, and it assumes you bring the basics yourself.
+Where it is limited: the title oversells it (no closures, `this`, or coercion), the promise intro leans on a 2020-era `$.ajax` example, there is no project and nothing checks your challenge answers, and at 18 scrims it is a supplement you will finish in an evening rather than a course you grow with.
 
 ## Related courses and comparisons
 
+- [All JavaScript courses](/docs/courses/javascript/), the full category
 - [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the free prerequisite
-- [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), the fuller deep-dive
+- [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), the fuller deep-dive that does cover closures and `this`
 - [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/), to drill these concepts under interview pressure
+- [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/), if the goal is a job interview
 - [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are choosing a platform
 
 <FAQAccordion items={[
-  { q: "Is The Tricky Parts of JavaScript free?", a: "No. It is a Scrimba Pro course and requires a subscription. The free Learn JavaScript course is the place to start without paying." },
-  { q: "Is it a good first JavaScript course?", a: "No. It assumes you already know the basics and targets confusing behavior. Do Learn JavaScript first, then come back." },
-  { q: "What topics does it cover?", a: "JavaScript gotchas: closures, the this keyword, hoisting, and type coercion, across 20 focused lessons and challenges." },
-  { q: "How long does it take?", a: "About 59 minutes of content. Because it is concept-heavy, most people pause and replay sections, so allow a bit more." },
-  { q: "Who teaches it?", a: "Zack Wilson, known as PortEXE, an experienced Scrimba instructor." },
+  { q: "Is The Tricky Parts of JavaScript free?", a: "Partly. The first six scrims (the intro and the whole scope and hoisting block, about 17 minutes) are marked SAMPLE and play without a subscription. The functions and promises scrims, and the certificate, need Scrimba Pro." },
+  { q: "What does the course actually cover?", a: "Three topics: scope and hoisting (var vs let and const, block scope, the global object, the temporal dead zone), functions (declarations, expressions, IIFEs, arrow functions), and asynchronous code (the Promise constructor, fetch, Promise.all, async/await). It does not cover closures, this, prototypes, or type coercion." },
+  { q: "Is it a good first JavaScript course?", a: "No. The intro says it is for junior to mid-level developers who have hit a plateau, and nothing is taught from zero. Do Learn JavaScript first." },
+  { q: "How long does it take?", a: "58 minutes of video across 18 scrims, listed as 59 minutes and 20 lessons on Scrimba because that count includes the certificate items. If you pause and predict the output every time Zack asks, and write the four challenges yourself, plan for two to three hours." },
+  { q: "Who teaches it?", a: "Zack Wilson, who publishes as PortEXE on YouTube. The teacher card on scrimba.com credits him, and he introduces himself in the first scrim." },
+  { q: "Are there projects or graded challenges?", a: "No project. There are four challenges (Scope, Functions parts 1 and 2, Promises) where you pause, work it out, then watch the answer. Nothing is checked automatically; I saw none of the AI-checked challenge markers that newer Scrimba courses carry." },
+  { q: "Do I need to install anything?", a: "No. Every scrim runs in Scrimba's browser editor with an index.js file and a console pane. The Promise.all scrim uses a small index.html with one button." },
+  { q: "Does the course have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages. I read all 18 transcripts for this review." },
+  { q: "Is it still up to date?", a: "The concepts are stable and everything in the scope and functions blocks is current. The promises intro includes a jQuery-style $.ajax example from 2020 that Zack talks through but does not run; the fetch and async/await scrims are fine." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/the-tricky-parts-of-javascript-c0i" variant="button">
-  View The Tricky Parts of JavaScript on Scrimba
+  Try the free scope lessons on Scrimba
 </AffiliateLink>
 
 <CourseSchema
   name="The Tricky Parts of JavaScript"
-  description="Scrimba's short, Pro-tier course on JavaScript gotchas taught by Zack Wilson. About 59 minutes on closures, this, hoisting, and coercion."
+  description="Scrimba's short, Pro-tier course on JavaScript internals taught by Zack Wilson (PortEXE). About 59 minutes across 18 scrims on scope and hoisting, function declarations, expressions, IIFEs and arrow functions, and promises through async/await. The first six scrims are free."
   url="https://scrimba.com/the-tricky-parts-of-javascript-c0i"
   timeRequired="PT59M12S"
   difficulty="Intermediate"
   access="Pro"
   keywords={["JavaScript", "Frontend"]}
+  modules={[
+    { name: 'Scope and hoisting', duration: '17 min' },
+    { name: 'Functions: declarations, expressions, IIFEs, arrows', duration: '19 min' },
+    { name: 'Promises, fetch, Promise.all, async/await', duration: '22 min' },
+  ]}
 />

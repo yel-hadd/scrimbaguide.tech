@@ -1,26 +1,32 @@
 ---
-title: "Learn Imba"
+title: "Learn Imba on Scrimba: 2026 Review"
 sidebar_position: 29
-description: "A free 2.9-hour Imba course on Scrimba: the niche compile-to-JS language that powers Scrimba itself. Honestly, who it's for and why it isn't a career skill."
-keywords: [scrimba learn imba, imba course, imba language, compile to javascript, niche programming language]
+toc_max_heading_level: 2
+sidebar_label: "Learn Imba"
+description: "Nathan Manousos's free Learn Imba course reviewed from inside: 2.9 hours, 43 scrims, the Dopamine Box habit app you build, and who should skip it."
+keywords: [scrimba learn imba, learn imba scrimba review, imba course, imba language, compile to javascript, niche programming language, nathan manousos imba]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Imba
 
-Scrimba's free, 2.9-hour course on Imba, taught by Nathan Manousos: a fast, unusual compile-to-JavaScript language that, notably, powers Scrimba itself.
+Scrimba's free course on Imba, the language Scrimba itself is written in, taught by Nathan Manousos across 2.9 hours and 43 short scrims. I read the transcript of every scrim and the code in each one with a Pro account in September 2026; this page is what the course actually contains, including the parts the listing does not mention.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. It is a standalone course, not part of a career path.*
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page does not list it under any career path.*
 
 ## Quick answer
 
-Learn Imba is a free, intermediate, roughly 2.9-hour course on Imba, a niche programming language that compiles to JavaScript and is built for very fast web apps. Imba is the language Scrimba's own platform is written in, which is part of why this course exists. It is a curiosity course, well worth the time if the language interests you, but it is not a mainstream career skill and we will not pretend otherwise.
+Learn Imba is a free, intermediate, 2.9 hour course on Imba, a language that compiles to JavaScript and has HTML tags and CSS built into its syntax. Nathan Manousos, a designer and developer who has shipped a commercial product in Imba, teaches it as a flat list of 43 scrims. About 40 minutes cover syntax, an hour covers tags, styling and events, and the last hour builds the Dopamine Box, a habit tracker with an icon picker, localStorage persistence and a celebration sound. Twenty-six of the scrims end in a "give that a try" challenge. Nothing in the course is Pro-gated except the certificate.
+
+It is worth two or three evenings if you already write JavaScript and are curious how a language can fold components and styling into itself. It is not a career skill, and the course never claims to be one.
 
 <CourseCard
   title="Learn Imba"
@@ -31,56 +37,166 @@ Learn Imba is a free, intermediate, roughly 2.9-hour course on Imba, a niche pro
   instructor="Nathan Manousos"
   instructorUrl="https://scrimba.com/@trafnar"
   href="https://scrimba.com/learn-imba-c01h"
-  description="A free tour of Imba, the fast, niche compile-to-JavaScript language that Scrimba itself is built on."
+  description="A free tour of Imba, the compile-to-JavaScript language Scrimba is built on, ending in a habit-tracker app with icons, persistence and sound."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/learn-imba/course-learn-imba-title-card.webp"
+    alt="Title card of Scrimba's Learn Imba course: Learn Imba, Build apps fast. Build fast apps., course teacher Nathan Manousos, on a lavender background"
+    width={1279}
+    height={720}
+    caption="The course title card. The tagline is Imba's own."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-It depends entirely on why you are here. If you are intrigued by language design, by an unusually terse syntax, or by the fact that Scrimba's whole product runs on Imba, then 2.9 free hours is a genuinely interesting detour. The language has clever ideas about reactivity and performance that are fun to see worked through.
+The pitch in the intro is unusually personal. Nathan opens by saying Scrimba "was originally built as a way to teach people Imba," that he uses it "every day for all my projects," and that for him "it's replaced HTML, CSS, JavaScript, and React." He then apologizes in advance, because "after you learn it, going back to writing regular HTML, CSS, and JS is just painful." That enthusiasm is the course's main asset. He is not reading a script; he is showing you a tool he likes and explaining why each feature exists.
 
-The honest caveat, and it is a big one, is that Imba is niche. The job market for it is effectively nonexistent compared to JavaScript, TypeScript, React, or Vue. Learning it will not move the needle on employability. Take this course for curiosity or for the ideas it exposes you to, not as a step toward a developer job. If your time is limited and career-focused, spend it elsewhere.
+The second asset is the format. Almost every scrim stops with a written challenge prompt pasted into the editor ("Go ahead and give that a try, and then I'll show you how to do it") and picks up with his solution. Because each scrim is two to eight minutes, you are typing every few minutes rather than watching for half an hour.
+
+The caveat is the one the old version of this page already made: Imba is niche. Nathan says it himself in the wrap-up, "there's not enough content about Imba out there on the Internet," and asks graduates to write blog posts and improve the docs. Nobody is hiring for it. Take the course because the ideas are interesting (styles scoped by default, a UI that re-renders on every event) and because some of them will make you look at React and Vue differently. Do not take it as a step toward a job.
+
+One more thing to know: the intro says the course is "about two hours and forty lessons." The listing says 2.9 hours and 43 lessons. The listing is right; the intro was recorded before the final edit.
 
 ## What you'll learn
 
-This course walks through Imba's syntax, its reactive rendering model, and the way it builds fast web apps, taught hands-on in Scrimba's player. Because Imba is designed around speed and a compact way of describing UI, much of the course is about getting comfortable with a style that looks quite different from mainstream JavaScript frameworks.
+<CourseCurriculum
+  summary="43 scrims in a flat list, grouped here into six editorial parts"
+  modules={[
+    { name: 'Imba syntax basics', duration: '38 min', lessons: 8 },
+    { name: 'Tags: HTML inside the language', duration: '17 min', lessons: 4 },
+    { name: 'Styling in Imba', duration: '32 min', lessons: 7 },
+    { name: 'Binding, events and components', duration: '21 min', lessons: 5 },
+    { name: 'Building the Dopamine Box', duration: '64 min', lessons: 16 },
+    { name: 'Wrap-up', duration: '4 min', lessons: 3 },
+  ]}
+/>
 
-By the end you can read and write Imba and understand the design choices behind it. What you will not get is a transferable, widely demanded skill; the value here is conceptual and platform-specific rather than vocational.
+Scrimba presents this course as one flat list of 43 scrims with no modules, so the six parts above are my grouping, not Scrimba's; the 43 scrims and 2.9 hours match the course listing and its structured data exactly, and the part durations are the sum of the scrim lengths shown in each lesson's header.
+
+## Inside the course, module by module
+
+### 1. Imba syntax basics (38 min, 8 scrims)
+
+The intro is the only scrim marked SAMPLE (free preview) in the list and it opens on the finished Dopamine Box: a row of icon tiles for your daily habits, a drawer of icons to pick from, and a sound effect when you check off the last one. Nathan explains that the idea comes from a Mike Boyd YouTube video about a hardware box with lights, then sets expectations: "you should be confident with basic HTML, CSS, and JavaScript. If you know those, you'll be right at home, but if you don't, this course is going to be hard to keep up with."
+
+The next seven scrims walk the language against JavaScript. In "Intro to Imba Syntax" he types the compiled JavaScript under each Imba line so you can see the difference is mostly semicolons, optional parentheses and `"{name}"` string interpolation, then asks the fair question: "what's the point of writing imba code if all it does is save us from writing semicolons?"
+
+The answer arrives over the following scrims. Conditionals use indentation instead of braces ("Imba is a white space sensitive language") and can trail a statement (`message = "yes" if done === num`). Functions use `def` and return their last line without a `return` keyword. Anonymous functions use `do`, and a callback can trail the call it belongs to.
+
+<Screenshot
+  src="/img/scrimba/learn-imba/conditionals-challenge-brief-lesson.webp"
+  alt="Scrimba's Conditionals scrim in Learn Imba paused at 5:50: index.imba declares num, done and isWeekend? variables and a challenge comment describing what to log on weekends and weekdays, with an empty preview pane"
+  width={1400}
+  height={684}
+  caption="The Conditionals challenge at 5:50. Note the ? in isWeekend?, an Imba convention for booleans, and the # comments that carry the brief. The earlier code is commented out below the empty lines you fill."
+/>
+
+The challenges are small and specific: write the weekend-versus-weekday habit logic, print three days of a habit worksheet with nested loops, add a `toggle` method to a class. The "Imports" scrim answers the ecosystem question: it pulls `nanoid` from npm, a helper file written in Imba, and a JavaScript file that itself imports `date-fns`, to show that "you can use familiar syntax for importing things to import from NPM modules, from Imba files in your project, or from JavaScript or TypeScript files."
+
+### 2. Tags: HTML inside the language (17 min, 4 scrims)
+
+"Tags" is the turning point. Nathan admits "I'm getting really tired of logging things to the console," builds a div with the DOM API, then with `React.createElement` (React is a dependency of that scrim purely for the comparison), and then in Imba: `imba.mount <div> "hello from imba"`. Tags are values in the language. Nesting is indentation, there are no closing tags, text goes in quotes, unquoted values are code, and classes use a dot (`<ul.my-list>`). The challenge is to convert a small block of HTML (a `details` and `summary` with a link) into Imba syntax.
+
+"Defining Custom Tags" introduces `tag habit-item` with a `prop name` and a `render` method that returns `<self>`, and shows that props automatically become attributes. The next two scrims put a `for` loop and an `if` directly inside the template; as Nathan puts it, "you use the exact same looping syntax within your HTML templates that you do anywhere else." By the end you have a `habit-group` rendering a list of `habit-item`s from an array of objects, and a checkbox that does not yet update the data, which sets up the binding lessons later.
+
+### 3. Styling in Imba (32 min, 7 scrims)
+
+This is the most opinionated stretch and the one most likely to split readers. Nathan says up front that "writing styles in Imba is the best way to write CSS." Inline styles go in square brackets on a tag (`<label[display:flex gap:5px]>`). Then come property shorthands: `d` for display, `ai` for align-items, `bgc` for background-color, `rd` for border-radius. He knows how that lands: "a lot of people see this and they hate it, but I really wanna encourage you not to be so quick to judge it, and I wanna say it's optional."
+
+"Scoped Styles" is the scrim I would point a skeptic to. A `css` block inside a tag applies only to that tag's template, a file-level block only to that file, and `global css` to everything; "In Imba, the default is that styles are scoped." "Imba-Defined CSS Values" adds a built-in palette (`gray3`, `cooler2`, `emerald4`) and size tokens that he says are "heavily inspired by the Tailwind CSS project."
+
+"CSS Modifiers" replaces pseudo-classes with `@hover`, adds `@dark` and breakpoints like `@xs`, and lets you write them inline after a value (`bgc:cooler2 @hover:cooler3`). The challenge is a responsive tweak: bigger tiles and a wider gap at the `xs` breakpoint. The eight minute "Bonus" scrim has no challenge and tours conditional classes, interpolated style values and `$primary-color` variables.
+
+### 4. Binding, events and components (21 min, 5 scrims)
+
+"Binding" fixes the checkbox from part two with a `bind=done` attribute; "updating that input will update the variable and Imba handles all of that including re rendering the view." Two challenges in one scrim: turn the label into a bound button, then add a text input bound to the name. "Binding Custom Tags" shows `bind:name=habit.name` so a child tag's changes flow back to the parent's array.
+
+"Event Handling" introduces `@click=completeAll` and the mental model that matters most: "every time an event is handled in your app, Imba re renders everything." He claims this is faster than React and Vue in most common cases; I could not verify that from inside the course, so treat it as the instructor's claim. "Emitting Custom Events" contrasts the React habit of passing a handler down with Imba's `emit("deleteItem")` and `@deleteItem` on the parent. "Local vs Global Components" explains a naming rule you will otherwise trip over: a tag named in lowercase with dashes is global once its file is imported anywhere, while a CamelCase tag must be exported and imported where it is used.
+
+### 5. Building the Dopamine Box (64 min, 16 scrims)
+
+The second half is the project, and the challenges get looser. The first three scrims split the tags into their own files, wrap everything in a `dopamine-box` tag, and hand you a written spec to build the `habit-adder` tag yourself (header, bound input, Add button, CSS supplied).
+
+Then the app gets real. "Event Modifiers" switches the adder to a form with `@submit.prevent` and shows off `.throttle(1000)`, `.log` and `.alt` ("imagine that you needed to throttle an event... What a pain. You don't want to have to do that"). "Sending Data with Events" passes the habit name as the second argument to `emit` and reads it back from `e.detail`, which he admits "is not the easiest to remember name." "Adding SVG Icons" brings in about a hundred open-source Health Icons and Imba's non-standard `<svg src=...>` attribute, and "Add the Icon Chooser" turns them into a scrolling drawer of buttons, then leaves the click handler to you with a warning that "this challenge could be a little bit tricky because I haven't specified exactly how to do it."
+
+The last stretch is refactoring plus polish. "Move Delete to Dopamine Box" is the best challenge in the course: the delete handler moves up to the root tag, which has no loop index, so you have to find another way to identify the habit ("if you find yourself doing something really complicated changing tons of code you're probably on the wrong track"). His answer is a `nanoid` id and `habits.filter`, and he gets the boolean backwards on the first try.
+
+"LocalStorage" persists the array through three helper functions he wrote. "Lifecycle Methods" logs `setup`, `mount`, `render` and `rendered` so you can see the order, then has you open the drawer on first run from `setup`. "Celebration Sound Effect" plays an mp3 through the Howler library when the last habit is done, and the final coding scrim ends on a real gotcha: a `setTimeout` reset does not repaint because it runs outside an event, and `imba.commit()` is the fix.
+
+<Screenshot
+  src="/img/scrimba/learn-imba/reset-habits-imba-commit-finished-app-lesson.webp"
+  alt="Scrimba's Reset habits and use imba.commit() scrim paused at 2:02: index.imba shows toggleItem counting remaining habits, playing celebrateSound and calling resetAll inside a setTimeout, with the finished habit tracker in the preview showing Toggle, Reset All and Clear Data icons"
+  width={1400}
+  height={684}
+  caption="The last coding scrim at 2:02. The setTimeout around resetAll() is the gotcha: it runs outside an event, so the UI does not repaint until imba.commit() is added on the empty line 57."
+/>
+
+### 6. Wrap-up (4 min, 3 scrims)
+
+Nathan's "Wrap Up" is 70 seconds: build a small project of your own, use the docs and the Imba Discord, and write about what you learn. The final two scrims are Scrimba boilerplate from Per Borgen, a two minute Scrimbassador referral pitch and a 53 second "How to Utilize Your Certificate." Neither is about Imba.
+
+## What a lesson actually feels like
+
+A scrim here is a code editor with one to eight Imba files, a narrow preview pane on the right, and a console. Nathan talks while typing, saves, and the preview reloads. He works in the actual project files, so the code you scroll through at any point is the state of the app at that lesson, and the challenge prompt is pasted into the file as a comment with numbered steps. When the recording stops, you type into the same editor, run it, then press play to watch his version.
+
+The pace is brisk and the voice is dry. He tells you when he dislikes something ("the syntax here is kind of a mess" about native CSS variables) and leaves his own mistakes in, like the filter that keeps the wrong items and the `setTimeout` that never repaints. He also tells you to use the speed control under the gear icon and skip what you already know. Every scrim has a full timestamped transcript and captions, with subtitles in ten languages according to the course header.
+
+## Free or Pro: exactly what is gated
+
+All 43 scrims are free, and the whole Dopamine Box project is built in the free scrims. There are no Solo Project (PRO) items in this course and I saw no "Challenge with Instant Feedback" markers in the lesson list, so there is nothing to unlock mid-course.
+
+What Pro gates is the certificate of completion, which sits at the end of the list, plus the Pro-only channels on Scrimba's Discord (the pricing page lists basic access to the Discord community as free, so the server itself is not gated). Pro also unlocks the career paths, but this course is not on one. If you only want Imba, you never need a subscription; see <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you want the certificate.
+
+## How long it really takes
+
+The 2.9 hours is video runtime. With 26 scrims that stop for a challenge, most of them under five minutes to solve, plan for six to nine hours: two or three evenings, or a weekend. The syntax part goes fast if you know JavaScript. The styling part is where you will pause to reread, because the shorthands and modifiers are new vocabulary.
+
+The project part is where the time goes, especially the two open-ended challenges in "Add the Icon Chooser" and "Move Delete to Dopamine Box." If you then take Nathan's advice and rebuild something small on your own, add another few hours.
 
 ## Who it's for, and who should skip it
 
-It fits the curious: developers who enjoy exploring languages, people interested in how Scrimba is built, and anyone who wants a low-stakes look at a different approach to web UI.
+It fits developers who already write JavaScript and want to see a different answer to the questions React, Vue and Tailwind answer: how to describe UI, scope styles, and update the screen. It also fits anyone curious how Scrimba's own player is built, since this is the language behind it. The whole course runs in the browser, so it is an easy weekend detour.
 
-Skip it if you are early in your learning and focused on getting hired. Your hours are better spent on [Learn JavaScript](/docs/courses/javascript/learn-javascript/) and a mainstream framework like [Learn React](/docs/courses/react/learn-react/). Imba is a treat to come back to later, not a foundation to build a career on.
+Skip it if you are still learning JavaScript; Nathan says so in the first three minutes, and the challenges assume you know `map`, `filter`, objects and callbacks. Skip it if every hour you have is aimed at getting hired: [Learn JavaScript](/docs/courses/javascript/learn-javascript/), then [Learn React](/docs/courses/react/learn-react/) or [Learn Vue](/docs/courses/javascript/vue/), will do more for a job search. And skip it if terse syntax bothers you on principle; `bgc:cooler2 @hover:cooler3` is the house style and the course does not hide it.
 
 ## Prerequisites
 
-A working grasp of JavaScript and general web concepts (HTML, the DOM, how UI updates) makes Imba far easier to appreciate, since you will recognize what it is doing differently. No prior Imba is needed; almost nobody has it.
+Comfortable HTML, CSS and JavaScript. You need to recognize `array.map`, `setTimeout`, `JSON.stringify`, the `filter` method and how a form submit event works, because the course uses them without explanation. No Imba knowledge is assumed and nothing needs installing; the scrims compile Imba in the browser. If you later want to work locally, the styling scrims mention the VS Code Imba extension for autocomplete on the shorthands.
 
 ## Where it fits
 
-Learn Imba does not sit on any of Scrimba's career paths, and that is appropriate. Treat it as an optional curiosity alongside the [Frontend Developer Path](/docs/paths/frontend-developer-path/) rather than a step within it.
-
-## Free or Pro
-
-This course is free, with no subscription required. Scrimba Pro is a separate decision that unlocks the career paths, coding challenges, the private Discord, and certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro includes.
+Learn Imba is not on any Scrimba career path and does not lead into another course. It sits beside the [Frontend Developer Path](/docs/paths/frontend-developer-path/) as an optional curiosity. The closest relatives in the catalog are the framework courses it keeps comparing itself to, [Learn React](/docs/courses/react/learn-react/) and [Learn Vue](/docs/courses/javascript/vue/), and [Learn Tailwind CSS](/docs/courses/css/tailwind-css/), whose design tokens Imba's built-in CSS values borrow from.
 
 ## Strengths and limits
 
-What it does well: it is free, it is taught well, and it is a rare chance to learn a language directly from people close to it, on the very platform built with it. For the curious, that is a unique offering.
+What it does well: it is free end to end, and it is taught by someone who ships real software in the language. Most scrims end in a challenge you can solve in a few minutes, and the project is a working app you could use. The last third teaches the ideas that transfer: events over passed-down callbacks, lifecycle methods, and why a timer needs a manual commit.
 
-Where it is limited: Imba is niche with negligible job demand, so the skill does not transfer to most work, and fast peer help depends on the Pro Discord. This is a course you take knowing it is a detour.
+Where it is limited: the language has almost no job market, and Nathan says the Internet has little Imba content. The styling shorthands are a taste some people will never acquire, and the layout CSS for the drawer and icon grid is pasted in rather than taught. The intro's "two hours and forty lessons" is stale, and the last two scrims are generic Scrimba promotion.
 
 ## Related courses and comparisons
 
+- [All JavaScript courses](/docs/courses/javascript/), the category this course sits in
 - [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the mainstream language to learn first
-- [Learn React](/docs/courses/react/learn-react/), the career-relevant frontend skill
+- [Learn React](/docs/courses/react/learn-react/), the framework the course keeps comparing itself to
 - [Learn Vue](/docs/courses/javascript/vue/), another reactive framework worth more job-wise
+- [Learn Tailwind CSS](/docs/courses/css/tailwind-css/), the design tokens Imba's CSS values borrow from
+- [How scrims work](/docs/how-it-works/how-scrims-work/), if the challenge-and-solution format is new to you
 
 <FAQAccordion items={[
-  { q: "Is Learn Imba free on Scrimba?", a: "Yes. The full course is free with no credit card or Pro subscription required. Pro is only needed for the career paths, certificates, and private Discord." },
-  { q: "Is Imba worth learning for a job?", a: "Honestly, no. Imba is a niche language with almost no job market. Learn it out of curiosity or for its ideas, but spend career-focused hours on JavaScript and a mainstream framework." },
-  { q: "Why does Scrimba teach Imba?", a: "Scrimba's own platform is built in Imba, so the company has deep expertise in it. The course is part curiosity, part a look behind the scenes of the product." },
-  { q: "Do I need JavaScript first?", a: "It helps a great deal. Knowing JavaScript lets you see what Imba is doing differently. The course is far more rewarding with that background." },
+  { q: "Is Learn Imba free on Scrimba?", a: "Yes. All 43 scrims and the full Dopamine Box project are free with no card required. Only the certificate at the end and the Pro-only Discord channels need a subscription." },
+  { q: "Who teaches Learn Imba?", a: "Nathan Manousos, a designer and developer at Flinto who maintains Imba open-source projects and built a commercial product, tasktxt, in Imba. The last two scrims are generic Scrimba clips from Per Borgen." },
+  { q: "What do you build in the course?", a: "The Dopamine Box, a habit tracker: you pick habits from a drawer of about a hundred SVG icons, check them off during the day, hear a celebration sound when the last one is done, and the list resets and persists in localStorage." },
+  { q: "Is Imba worth learning for a job?", a: "No. Imba has almost no job market and the instructor himself says there is little Imba content online. Take it for the ideas, and spend career hours on JavaScript and a mainstream framework." },
+  { q: "Do I need JavaScript first?", a: "Yes. The intro says the course will be hard to keep up with otherwise, and the challenges use map, filter, callbacks, JSON.stringify and form events without explaining them." },
+  { q: "How long does Learn Imba take?", a: "2.9 hours of video and 26 scrims with challenges. Plan for six to nine hours, or two to three evenings." },
+  { q: "Are there transcripts and subtitles?", a: "Yes. Every scrim has captions and a timestamped transcript panel, and the course header lists ten subtitle languages." },
+  { q: "Are there AI-checked challenges or solo projects?", a: "No. Challenges are the classic Scrimba kind: a prompt pasted into the editor, the recording pauses, and the instructor's solution follows. There are no Solo Project (PRO) items and no instant-feedback markers in the lesson list." },
+  { q: "Do I need to install anything?", a: "No. Imba is compiled in Scrimba's browser editor. The course mentions the VS Code Imba extension only as an optional extra for autocomplete." },
+  { q: "Why does Scrimba teach Imba?", a: "Scrimba is written in Imba, and the intro says the platform was originally built as a way to teach the language." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/learn-imba-c01h" variant="button">
@@ -89,7 +205,7 @@ Where it is limited: Imba is niche with negligible job demand, so the skill does
 
 <CourseSchema
   name="Learn Imba"
-  description="Scrimba's free, intermediate course on Imba, the niche compile-to-JavaScript language that powers Scrimba itself. About 2.9 hours, taught by Nathan Manousos."
+  description="Scrimba's free, intermediate course on Imba, the compile-to-JavaScript language Scrimba is built on. About 2.9 hours and 43 scrims taught by Nathan Manousos, covering syntax, tags, scoped styling, binding and events, and building the Dopamine Box habit-tracker app."
   url="https://scrimba.com/learn-imba-c01h"
   timeRequired="PT2H52M19S"
   difficulty="Intermediate"

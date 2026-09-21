@@ -1,26 +1,30 @@
 ---
-title: "React Interview Questions"
+title: "React Interview Questions on Scrimba: 2026 Review"
 sidebar_position: 7
-description: "Cassidy Williams' short Pro course: a ~41-minute walk through common React interview questions, from the virtual DOM to hooks. Who it fits and how to pair it."
-keywords: [scrimba react interview questions, react interview prep, cassidy williams react, react interview course, frontend interview react]
+toc_max_heading_level: 2
+sidebar_label: "React Interview Questions"
+description: "Cassidy Williams' 41-minute Pro course from inside: every transcript read, the 25 questions it asks, the one coding task, and what has aged since React 16."
+keywords: [scrimba react interview questions, react interview questions review, react interview prep, cassidy williams react, react interview course, frontend interview react, scrimba react course review]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # React Interview Questions
 
-A short interview-prep course with Cassidy Williams: around 41 minutes on the React questions that come up most in interviews, from the virtual DOM to hooks.
+Scrimba's shortest React course: 41 minutes in which Cassidy Williams asks you the questions a React interviewer asks, gives you a beat to answer, then answers them herself. I read the transcript of every scrim (all 13) and worked through the one coding exercise with a Pro account in September 2026. Here is what is inside and what has aged.
 
-*This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. It is sequenced into the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-React Interview Questions is Scrimba's Pro, intermediate course, around 41 minutes taught by Cassidy Williams, a developer known for her developer-experience work and widely-read tech newsletter. It walks through common React interview questions: the virtual DOM, hooks, state, and the conceptual answers interviewers look for. It is a focused refresher, not a way to learn React. It suits someone who already knows React and has an interview coming up and wants to sharpen how they explain the concepts out loud.
+React Interview Questions is a Pro, intermediate-level course of about 41 minutes: nine topic scrims between an intro and an outro, plus two generic Scrimba clips at the end. Each topic scrim is a slide deck with two to five questions on it (what is the virtual DOM, can you modify props, when does useEffect run) and Cassidy's model answer for each. There is exactly one piece of code you write: converting a class-based counter into a function component with useState. If you already know React and an interview is a week away, it is a well spent lunch break. If you are still learning React, it will not teach you.
 
 <CourseCard
   title="React Interview Questions"
@@ -30,65 +34,188 @@ React Interview Questions is Scrimba's Pro, intermediate course, around 41 minut
   instructor="Cassidy Williams"
   instructorUrl="https://scrimba.com/@cassidoo"
   href="https://scrimba.com/react-interview-questions-c01t"
-  description="A focused ~41-minute run through common React interview questions, from the virtual DOM to hooks, with Cassidy Williams."
+  description="Nine short question-and-answer scrims on the React concepts interviewers ask about, from the virtual DOM to context, with one class-to-hooks conversion exercise."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/react-interview-questions/course-intro-title-card.webp"
+    alt="Title slide of Scrimba's React Interview Questions course: a yellow code-editor styled card reading React Interview Questions, // cassidy williams"
+    width={1279}
+    height={720}
+    caption="The course title slide. Every scrim opens on a card in this style."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/react-interview-questions/virtual-dom-title-card.webp"
+    alt="Title slide of the Virtual DOM scrim in Scrimba's React Interview Questions course, reading The Virtual DOM on a yellow card"
+    width={1279}
+    height={720}
+    caption="Scrim 2, The Virtual DOM: the first of the nine topics and one of the two free previews."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/react-interview-questions/miscellaneous-questions-title-card.webp"
+    alt="Title slide of the Miscellaneous (but important!) Questions scrim in Scrimba's React Interview Questions course"
+    width={1279}
+    height={720}
+    caption="Scrim 10, the longest at just under eight minutes, where the only coding exercise lives."
+    source="Scrim title slides from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-Knowing React and explaining React under interview pressure are different skills. This short course targets the second one. In around 41 minutes Cassidy Williams runs through the questions that come up repeatedly (how the virtual DOM works, what hooks actually do, how state and re-renders behave) and models clear, concise answers. For the night before an interview, that is a high-value 41 minutes.
+Knowing React and explaining React out loud are different skills, and the second one is what a phone screen tests. That is the gap this course fills. Cassidy tells you in the first topic scrim how to use it: "As I ask each of the questions, please feel free to pause the video and think about your answer. Write down your answer even. Say it out loud." Then, a few seconds later: "It's gonna seem like we're drilling you, but, hey, that's what interviews are like." If you treat the pauses as real pauses, 41 minutes of video becomes a genuine mock interview, with a model answer after each attempt.
 
-The honest caveat is scope. It is short and conceptual, not a coding bootcamp. It will not teach you React, and it will not replace hands-on practice if you freeze on live-coding rounds. Pair it with [React Challenges](/docs/courses/react/react-challenges/) for the build-it-fast side of interviews. On its own it covers the talk-about-it side well.
+The answers are good. They are short, they name the one thing an interviewer wants to hear (for the virtual DOM question, "the key thing to bring up is diffing"), and they carry Cassidy's opinions rather than textbook neutrality. Class components? "In my very humble opinion, you should almost never use class based components." The context API? "You shouldn't overuse the context API, and that is really the key part of this question."
+
+Two caveats. Scope first: this is talk-about-it preparation. It will not help you if your interviews are live-coding rounds; pair it with [React Challenges](/docs/courses/react/react-challenges/) for that. Then age: the project pins React 16.13.1, the code uses `ReactDOM.render`, and a few answers describe the world as it was around 2020. I list the specific ones below so you can update them before you repeat them in an interview.
 
 ## What you'll learn
 
-There is no module breakdown for this short course. Over roughly 41 minutes it covers the React concepts interviewers ask about most: what the virtual DOM is and why it matters, how hooks work and why React moved to them, how state and re-rendering behave, and the kind of trade-off reasoning interviewers want to hear rather than rote definitions. The real lesson is articulation: turning knowledge you already have into clean, confident answers.
+<CourseCurriculum
+  summary="1 flat section · 13 scrims (11 course scrims plus two generic Scrimba clips), grouped here by topic"
+  modules={[
+    { name: 'Course introduction', duration: '2 min', lessons: 1 },
+    { name: 'The virtual DOM and React limitations', duration: '9 min', lessons: 2 },
+    { name: 'JSX and props', duration: '7 min', lessons: 2 },
+    { name: 'State, lifecycle, and effects', duration: '8 min', lessons: 2 },
+    { name: 'Refs and context', duration: '6 min', lessons: 2 },
+    { name: 'Miscellaneous (but important!) questions', duration: '8 min', lessons: 1 },
+    { name: 'Conclusion and Scrimba clips', duration: '4 min', lessons: 3 },
+  ]}
+/>
+
+Scrimba presents the course as one flat list of 13 scrims with no sections, so the grouping above is mine. The 11 course scrims, intro through conclusion, add up to 40 minutes 33 seconds of video, which Scrimba's header rounds to 40 min and this site to 41. The two generic Scrimba clips at the end add about three more minutes, which is why the rounded section times above come to 44.
+
+## Inside the course, scrim by scrim
+
+### 1. Course introduction (1:54, 1 scrim)
+
+Cassidy introduces herself as a principal developer experience engineer at Netlify, which dates the recording (her Scrimba teacher card now describes a developer advocacy role at GitHub). She sets expectations plainly: "this is for people who want a job doing React, and this is for people who generally already know React." Then the format: "I'm not going to be teaching you how to write React at all in this course, but rather I'll be kind of pushing your knowledge and asking you questions." The intro is a free preview, so you can hear the tone before paying.
+
+### 2. The virtual DOM and React limitations (8:37, 2 scrims)
+
+The Virtual DOM scrim (also a free preview) asks two questions. The first, what is the difference between the virtual DOM and the real DOM, gets a comparison table on the slide and a clear priority: "you can talk all you want about what I just showed you but the key thing to bring up is diffing." She also covers the React versus ReactDOM split, which is a common follow-up. The second question, is the virtual DOM the same as the shadow DOM, gets a quick no and the input-slider example of what the shadow DOM is for.
+
+<Screenshot
+  src="/img/scrimba/react-interview-questions/virtual-dom-vs-real-dom-table-lesson.webp"
+  alt="Scrimba React Interview Questions, The Virtual DOM scrim paused at 1:35: a yellow slide with a two-column table comparing Virtual DOM (can't directly update HTML, acts as a copy of the real DOM, more of a pattern than a technology, synced with react-dom) and the real DOM (directly updates HTML, full repaint on update, an object-based representation of an HTML document)"
+  width={1045}
+  height={588}
+  caption="The comparison table at 1:35 of the Virtual DOM scrim. Cassidy walks the rows, then tells you the one word to lead with in an interview: diffing."
+/>
+
+React Limitations is the scrim that has aged most. The four points (React is a library, not a framework; it is fairly large; it is owned by Facebook; the documentation) are still reasonable interview talking points. The details are from another era. The framework examples are Gatsby and Next.js, the smaller alternative is Preact, and the documentation complaint is that the docs "doesn't really touch on function components nearly as much as it touches on class based components." That was true of the old docs. React's rewritten documentation has been hooks-first for years, and the company is Meta. Give the modern versions of these answers.
+
+### 3. JSX and props (7:14, 2 scrims)
+
+JSX is the first scrim where Cassidy leaves the slides for the editor. Three questions: what is JSX ("a lot of people say, oh, JSX is just putting HTML in your JavaScript, and that is not true"), what is the difference between an element and a component, and can you write React without JSX. For the second she types a `<div>` element holding a stretched-out hello, renders it, then wraps it in a function to show that "a component is a function that returns an element." For the third she replaces the JSX with `React.createElement('div', null, 'Hellllooooo!')` and runs it, then leaves you with "it is totally possible to write React without JSX, but why would you?"
+
+<Screenshot
+  src="/img/scrimba/react-interview-questions/jsx-create-element-without-jsx-lesson.webp"
+  alt="Scrimba React Interview Questions, JSX scrim paused at 3:33: index.js shows const Component = () => React.createElement('div', null, 'Hellllooooo!') rendered with ReactDOM.render, the dependencies panel lists react and react-dom 16.13.1, and the preview shows the text Hellllooooo!"
+  width={1400}
+  height={690}
+  caption="3:33 of the JSX scrim: the same component with React.createElement instead of JSX, and the preview still rendering. Note react@16.13.1 in the dependencies panel on the left."
+/>
+
+Props opens with the course's worst joke ("I gotta give you props for getting this far because I'm a component that would give you props, I guess"), which Cassidy immediately disowns, and then covers three questions in three minutes. Parent to child is props; child to parent is a function passed as a prop and called by the child. Prop drilling is passing a value down through grandparent, parent, child, and, in her example, "atom." Can you modify props? "Props are read only," with an `add(x, y)` example to explain why components must act like pure functions with respect to their props.
+
+### 4. State, lifecycle, and effects (8:00, 2 scrims)
+
+State and Lifecycle is, in Cassidy's words, "probably the most misunderstood section of React," and she asks you to answer these "without referring to your notes." Props versus state is framed as function parameters versus variables declared inside a function. The next question is the one I found most useful, and least often taught: how state differs between a class component and a function component. Her answer: "State and a class component is something that persists like an object. State in a function component is something that is recalled and reinstantiated because the function component is recalled and reinstantiated." Then the lifecycle: mounting, updating, and unmounting, with `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` named, and the punchline that in function components all of it becomes `useEffect`.
+
+Effects goes deeper on that hook. It takes two parameters, a function and a dependency array. The timing depends on the array. An empty array runs on mount. An array with a variable runs on mount and whenever that variable changes. No array runs "on mount and then on every single state change that happens in the application, which you could use that, you might hate that." The return value is the cleanup function; Cassidy admits "this is something that tripped me up when I first learned about useEffect" and uses a window resize listener to show what needs cleaning up.
+
+### 5. Refs and context (5:39, 2 scrims)
+
+Refs starts with a disclaimer that "refs are something that you probably won't be asked a lot about in a job interview" and then covers the three questions you might get: refs versus state ("state variables are something that can trigger a rerender. Meanwhile, refs don't"), when to use them (managing focus, which she says is "probably ninety nine percent of the time" she uses them, plus animations and outside DOM libraries that need a real node to attach to), and how to update one in a function component (inside an effect).
+
+Context asks two questions: context API versus prop drilling, and when you should not use context. The answer to the second is the line to use in an interview: "I would only put what's absolutely necessary at the top level of my application with context." Auth and theme yes, click counters no. She also mentions that Redux was built on an early, unofficial version of context, which is worth having in your pocket if the interviewer brings Redux up.
+
+### 6. Miscellaneous (but important!) questions (7:49, 1 scrim)
+
+The longest scrim runs through five definitions and then the exercise. Fragments are "kinda nothing." Class components are for almost never, except error boundaries, which "at the time of the creation of this course" need a class. A higher-order component is "a function that takes in a component and it returns a new component." Portals render children into a DOM node outside the parent's hierarchy, as modals do. Controlled versus uncontrolled components closes the list, and she calls it "one of my favorite questions."
+
+Then, at 4:53: "The last thing I wanted to do is not on a slide." The editor holds a class-based `Counter` with `this.state = { count: 0 }` and two buttons calling `this.setState`. "I'd like you to convert this counter component into a function component. Go ahead and pause your video." The solution takes two minutes: drop `extends React.Component`, import `useState`, replace the constructor with `let [count, setCount] = useState(0)`, and swap every `this.state.count` for `count`.
+
+<Screenshot
+  src="/img/scrimba/react-interview-questions/convert-class-counter-challenge-lesson.webp"
+  alt="Scrimba React Interview Questions, Miscellaneous questions scrim paused at 4:59: index.js shows a class Counter extends React.Component with this.state count and two buttons that call this.setState to decrement and increment, and the preview on the right shows a minus button, 0, and a plus button"
+  width={1400}
+  height={690}
+  caption="The one coding task, at 4:59: a class-based counter to convert into a function component with useState. Pause here and do it yourself before the solution starts at 5:19."
+/>
+
+This is the only place the course checks whether you can write hooks rather than describe them, and it is a fair proxy for a common screening task.
+
+### 7. Conclusion and Scrimba clips (4:15, 3 scrims)
+
+An 80-second recap ("If you could answer all of these questions in this course, then you are all set for your React interviews"). Then come two clips from Scrimba staff that appear at the end of many courses: a two-minute pitch for the Scrimbassador referral program and a one-minute "How to Utilize Your Certificate." Neither is course content.
+
+## What a lesson actually feels like
+
+Each topic scrim is a yellow slide deck styled like a code editor. A question appears, the audio goes quiet for a second or two, and then Cassidy answers it, sometimes with a table or a list on the slide, sometimes by closing the slide and typing in the editor. The scrubber shows a marker at each question, so it is easy to jump back and re-answer. Two scrims (JSX and the miscellaneous one) have real code running in the preview pane; the rest are slides and voice.
+
+The built-in pauses are short. If you want the mock-interview effect, you have to hit pause yourself, and Cassidy tells you to. Every scrim has captions, a full timestamped transcript under the settings menu, subtitles in several languages, and playback speed controls. At 1.5x speed the whole thing fits in under half an hour.
+
+## Free or Pro: exactly what is gated
+
+The first two scrims, the course introduction and The Virtual DOM, carry a SAMPLE badge and play without a subscription. The other nine course scrims, the coding exercise, and the certificate need Pro. The listing shows challenge markers on the topic scrims (26 in total, roughly one per question asked), but there is no AI-checked challenge here; the check is your own answer. The Discord server is open to free accounts, with Pro-only channels for subscribers. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro includes in your region.
+
+## How long it really takes
+
+41 minutes of video. Done properly, with a real pause and a spoken or written answer for each of the 25 or so questions, plan on 90 minutes to two hours. Add another 30 to 60 minutes if you stop to look up the modern answers to the dated points (Meta instead of Facebook, the rewritten docs, `createRoot` instead of `ReactDOM.render`). A second pass the night before an interview, just replaying the questions and answering from memory, takes about an hour.
 
 ## Who it's for, and who should skip it
 
-It fits developers who already know React and have an interview coming up, and anyone who can write React but stumbles when asked to explain it in words.
+It fits you if you can already build things in React and have a technical screen or a first-round interview coming up. It also fits developers who learned React by doing and never learned the vocabulary; the course names the concepts you have been using without naming.
 
-Skip it if you are still learning React (do [Learn React](/docs/courses/react/learn-react/) first), or if your interviews are heavily live-coding-based, in which case practice-focused work like [React Challenges](/docs/courses/react/react-challenges/) matters more than concept review.
+Skip it, for now, if you are still learning React. Do [Learn React](/docs/courses/react/learn-react/) first; this course assumes hooks, props, and state are familiar. Skip it if your interviews are mostly live coding, where [React Challenges](/docs/courses/react/react-challenges/) matters more. And do not expect senior-level material: there is nothing on performance, concurrent rendering, server components, or testing.
 
 ## Prerequisites
 
-Working React knowledge: components, props, state, hooks, and a general sense of how React renders. The course refreshes and frames these for interviews rather than teaching them.
+Working React: components, props, state, `useState`, `useEffect`, and a general sense of rendering. Cassidy references class components throughout (lifecycle methods, `this.setState`), so if you have never seen a class component, the [Class Components in React](/docs/courses/react/class-components-in-react/) course is a useful 80-minute detour first. No setup is needed; everything runs in the browser.
 
 ## Where it fits
 
-This is an interview-prep slot in the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), best used near the end, once you know React and are preparing to apply for roles.
-
-## Free or Pro
-
-This is a Pro course, so it needs a Scrimba subscription. Pro also unlocks the full career paths, the coding challenges, the private Discord, and path certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+Scrimba's course page lists it under the Frontend Developer Path and the Fullstack Developer Path. It pairs with [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/), which covers the JavaScript and CSS side of the same interviews, and with the [four-week frontend interview plan](/blog/frontend-interview-prep-scrimba/) on this site if you want a schedule. For depth behind the answers, [Advanced React](/docs/courses/react/advanced-react/) is the follow-up.
 
 ## Strengths and limits
 
-What it does well: it is short and high-yield for interview prep, it is taught by an experienced developer with real hiring-side perspective, and it models how to answer rather than just listing facts.
+What it does well: it is short and focused, the questions are the ones that come up, the model answers name the one point to lead with, and Cassidy's opinions (function components over classes, do not overuse context) are the ones a 2026 interviewer holds too. The counter conversion is a realistic screening task.
 
-Where it is limited: it is brief and conceptual, it will not teach React, and it does not cover the live-coding side of interviews, which needs separate practice.
+Where it is limited: it is 41 minutes and Pro-only, it was recorded in the React 16 era and a handful of answers need updating, the pauses are too short to force you to answer, and it covers none of the live-coding or system-design side of a React interview.
 
 ## Related courses and comparisons
 
 - [Learn React](/docs/courses/react/learn-react/), the prerequisite
 - [React Challenges](/docs/courses/react/react-challenges/), for the live-coding side of interviews
+- [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/), the JavaScript and CSS interview companion
+- [Class Components in React](/docs/courses/react/class-components-in-react/), if the lifecycle methods are unfamiliar
 - [Advanced React](/docs/courses/react/advanced-react/), to deepen the concepts behind the answers
 - [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials/), how it stacks up
 
 <FAQAccordion items={[
-  { q: "Is React Interview Questions free?", a: "No. It is a Scrimba Pro course and requires a subscription. The Learn React course is free if you need the fundamentals first." },
-  { q: "How long is it?", a: "About 41 minutes. It is a focused interview refresher you can finish in a single sitting." },
-  { q: "What topics does it cover?", a: "Common React interview questions: the virtual DOM, hooks, state and re-rendering, and how to explain these clearly under pressure." },
-  { q: "Will this prepare me for a live-coding interview?", a: "Only partly. It covers the conceptual, talk-about-it side. For live coding, pair it with React Challenges." },
-  { q: "Who teaches it?", a: "Cassidy Williams, an experienced developer, which brings real hiring-side perspective to the answers." },
+  { q: "Is React Interview Questions free on Scrimba?", a: "No. It is a Pro course. The introduction and the Virtual DOM scrim are free previews (marked SAMPLE); the other nine course scrims, the coding exercise, and the certificate need a subscription." },
+  { q: "How long is it, really?", a: "41 minutes of video across 13 scrims. Pausing to answer each of the roughly 25 questions yourself takes it to 90 minutes or two hours." },
+  { q: "What questions does it cover?", a: "Virtual DOM vs real DOM and shadow DOM, React's limitations, what JSX is, element vs component, React without JSX, passing values parent to child and back, prop drilling, why props are read only, props vs state, state in class vs function components, the component lifecycle, useEffect's parameters, timings and cleanup, refs vs state and when to use refs, context vs prop drilling and when not to use context, fragments, error boundaries, higher-order components, portals, and controlled vs uncontrolled components." },
+  { q: "Is there any coding?", a: "One exercise. In the Miscellaneous scrim you convert a class-based counter with this.state and this.setState into a function component with useState. The JSX scrim also has live code in the editor, but Cassidy types it." },
+  { q: "Who teaches it?", a: "Cassidy Williams. She introduces herself as a principal developer experience engineer at Netlify, which is when it was recorded; her Scrimba teacher card now describes a developer advocacy role at GitHub." },
+  { q: "Is it up to date?", a: "The concepts are, the details are not all. The project pins React 16.13.1 and uses ReactDOM.render, the Limitations scrim calls the owner Facebook and criticizes the old docs for favoring class components, and error boundaries are described as class-only. Update those answers before an interview." },
+  { q: "Does it have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in several languages." },
+  { q: "Will it prepare me for a live-coding interview?", a: "Only for the talking part. For coding under time pressure, pair it with React Challenges." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/react-interview-questions-c01t" variant="button">
-  View React Interview Questions on Scrimba
+  Preview React Interview Questions on Scrimba
 </AffiliateLink>
 
 <CourseSchema
   name="React Interview Questions"
-  description="Scrimba's short, Pro, intermediate course taught by Cassidy Williams. About 40 minutes on common React interview questions, from the virtual DOM to hooks."
+  description="Scrimba's short, Pro, intermediate course taught by Cassidy Williams. About 41 minutes and 13 scrims of common React interview questions with model answers, from the virtual DOM to context, plus one class-to-hooks conversion exercise."
   url="https://scrimba.com/react-interview-questions-c01t"
   timeRequired="PT40M39S"
   difficulty="Intermediate"

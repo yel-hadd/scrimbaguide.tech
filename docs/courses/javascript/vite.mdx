@@ -1,26 +1,32 @@
 ---
-title: "Intro to Vite"
+title: "Intro to Vite on Scrimba: 2026 Review"
 sidebar_position: 19
-description: "A free 39-minute intro to Vite on Scrimba: the fast modern build tool and dev server behind today's frontend frameworks. A quick, practical tooling skill."
-keywords: [scrimba intro to vite, vite scrimba, free vite course, vite build tool, vite dev server]
+toc_max_heading_level: 2
+sidebar_label: "Intro to Vite"
+description: "Shant Dashjian's free Intro to Vite reviewed from inside: 39 minutes, 14 scrims, React 19 on Vite 6, five challenges, and what Pro actually gates."
+keywords: [scrimba intro to vite, intro to vite review, vite scrimba, free vite course, vite build tool course, vite dev server, shant dashjian vite]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Intro to Vite
 
-Scrimba's free, 39-minute introduction to Vite, taught by Shant Dashjian: the fast build tool and dev server that most modern frontend projects now start with.
+Intro to Vite is Scrimba's free, 39 minute course on the build tool that most React and Vue projects now start from. Shant Dashjian teaches it as a flat run of 14 scrims. I read the transcript of every scrim with a Pro account in September 2026. This page covers what each scrim teaches, which versions it runs on, and where it stops.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. It is a standalone course, not part of a career path.*
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page does not list it under any career path; it is a standalone elective.*
 
 ## Quick answer
 
-Intro to Vite is a free, intermediate, 39-minute course on Vite, the modern build tool and development server that powers project setup for frameworks like React and Vue. It is deliberately short: a focused, practical tooling skill rather than a full course. You learn what Vite does, why it is fast, and how to use it day to day.
+Take it if you already use React or Vue and treat `npm run dev`, the `dist/` folder, and `vite.config.js` as magic. By the end you can scaffold a React app from the terminal and explain why a saved edit shows up without a page reload. You can also put a logo in the right folder, read an API key from a `.env` file, build for production, and add a plugin from its docs. Five of the 14 scrims stop for a challenge.
+
+Skip it if you have never written a React component. The course is rated Intermediate because it assumes you can read one and use a terminal, and it never explains either.
 
 <CourseCard
   title="Intro to Vite"
@@ -31,56 +37,198 @@ Intro to Vite is a free, intermediate, 39-minute course on Vite, the modern buil
   instructor="Shant Dashjian"
   instructorUrl="https://scrimba.com/@shantdashjian"
   href="https://scrimba.com/intro-to-vite-c03p6pbbdq"
-  description="A quick, practical tour of Vite, the fast build tool and dev server behind modern frontend frameworks."
+  description="A short, hands-on tour of Vite: scaffold a React app, feel HMR, handle assets and env vars, build for production, configure and extend it."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/intro-to-vite/course-intro-to-vite-title-card.webp"
+    alt="Title card of Scrimba's Intro to Vite course on a purple and gold gradient with outlined hexagons, reading Intro to Vite, The Build Tool for the Web, Teacher: Shant Dashjian"
+    width={1378}
+    height={775}
+    caption="The only title card in the course, from the Welcome scrim. There are no chapters, so there are no chapter cards."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-It is free and it is 39 minutes, so the bar for "worth it" is low and this clears it easily. Vite is the tool sitting underneath most new React and Vue projects, and many developers use it without understanding it. Half an hour to demystify the dev server, the build step, and why everything feels instant is a good trade.
+Yes, for a narrower audience than the listing suggests: people who already use a framework and want to understand the tool underneath it. It is not a place to learn React. The app is Vite's own boilerplate, and the React you write is a header and a footer. It is not a deep dive into bundlers either, although the optional last lesson is a decent four minute version of one.
 
-The honest caveat is that this is scope-limited by design. It is an intro, not a deep dive into configuration, plugins, or advanced build optimization. You will come out comfortable using Vite, not an expert in tuning it. For most developers that is exactly the right amount.
+What sold me is that the course shows rather than tells. Shant's pitch in the Welcome scrim is about the seconds you lose waiting for a slow dev server: "if this takes three more seconds every single time, that quickly adds up to tons of wasted time, losing focus and dropping productivity. This is what Vite solves." Two scrims later you see it. You add a component, press save, and the header appears while the counter in the preview still reads three.
+
+That is hot module replacement (HMR), and it lands better as something you watched than as a paragraph in the docs. The limit is scope. You leave knowing how to use Vite. You do not leave knowing how to tune it or debug a broken build, and a 39 minute course could not teach that anyway.
 
 ## What you'll learn
 
-This short course covers what Vite is and the problem it solves: a development server that starts almost instantly and updates the browser the moment you save, plus a fast production build step. The emphasis is practical, getting you comfortable spinning up and running a Vite project rather than reading about its internals.
+The course has no modules; Scrimba's page shows one flat list of 14 scrims. The grouping below is mine, so the bars mean something.
 
-By the end you understand why Vite has become the default tooling choice for modern frontend frameworks and how to use it in your own projects, which is all a 39-minute intro should aim for.
+<CourseCurriculum
+  summary="14 scrims, about 41 minutes including the two Scrimba house scrims at the end; editorial grouping"
+  modules={[
+    { name: 'Getting started: Welcome, scaffold a React app, experience HMR', duration: '12 min', lessons: 3 },
+    { name: 'Static assets and environment variables', duration: '10 min', lessons: 3 },
+    { name: 'TypeScript and building for production', duration: '4 min', lessons: 2 },
+    { name: 'Configure with options and extend with plugins', duration: '8 min', lessons: 2 },
+    { name: 'Extra: Vite internals, outro, Scrimbassador and certificate scrims', duration: '7 min', lessons: 4 },
+  ]}
+/>
+
+I counted 14 scrims in the table of contents in September 2026, about 41 minutes in total. Drop the two generic Scrimba scrims at the end (the Scrimbassador pitch and the certificate tip) and you get the 39 minutes the course header shows. Scrimba's structured data says 19 lessons. That number counts clips inside scrims rather than the scrims you click, and it is the number other pages on this site quote.
+
+## Inside the course, scrim by scrim
+
+### 1. Getting started (12 min, 3 scrims)
+
+The Welcome scrim is slides, not code. Shant covers who made Vite (Evan You, in 2020, six years after he made Vue) and why it is called Vite, "which means fast in French." He introduces himself as a Scrimba teacher and a mentor at Pro Coding Mentor, and points you to the Discord. He closes with "Vite is a build tool. So let's start building."
+
+"Create your first React project with Vite" opens on an empty directory and a terminal. You check `node --version` (20) and `npm --version` (10), then run `npm create vite@latest`. The prompts ask for a folder (a dot means the current one), a framework (React), and a language (JavaScript). Then `npm install` and `npm run dev`, and the dev server comes up in about four seconds inside the Scrimba sandbox.
+
+You open the mini browser on port 5173 to see the boilerplate. The scrim ends with a tour of what was generated. `index.html` is the entry point, `src/assets/` holds files you want optimized, `public/` holds files you do not, and `vite.config.js` is where settings go later.
+
+The scaffolded `package.json` pins `react` and `react-dom` at `^19.0.0` and `vite` at `^6.2.0`; the terminal banner reads Vite v6.2.6. Newer Vite releases have shipped since. Nothing in the course depends on the difference, so do not worry when your own scaffold reports a higher number.
+
+<Screenshot
+  src="/img/scrimba/intro-to-vite/create-react-project-dev-server-lesson.webp"
+  alt="Scrimba Intro to Vite lesson Create your first React project with Vite, paused at 2:17: the file explorer lists node_modules, public, src, index.html and vite.config.js, the terminal shows VITE v6.2.6 ready in 4204 ms with a Local localhost:5173 URL, and the mini browser on the right shows the default Vite + React page"
+  width={1400}
+  height={660}
+  caption="Paused at 2:17, right after npm run dev. The terminal banner shows the version the course was recorded on (Vite 6.2.6), and the mini browser is Scrimba's stand-in for localhost:5173. Every later scrim starts from this project."
+/>
+
+"Experience fast development" is the first challenge and the longest scrim at six minutes. It opens on a blank directory again: "This is Scrimba and here we learn by doing. So let's start off with a challenge to get your hands on the keyboard." You redo the scaffold yourself, from `npm create vite@latest` to a running dev server.
+
+Then Shant adds a `Header` component and saves. The header appears "instantly" while the counter in the preview still shows three, which he uses to explain that HMR "did not blow away the application state." Adding a `Footer` on your own is the second half of the same challenge. Why HMR works (Vite swaps "the part of the code that got changed" instead of rebuilding everything) is left shallow here and picked up in the extra lesson.
+
+### 2. Static assets and environment variables (10 min, 3 scrims)
+
+"Handle static assets" is the most useful scrim in the course if you have ever copied a Vite project without understanding it. Static assets are the images, fonts, and SVGs your app ships alongside its code. Vite has two rules for them, and this scrim is the first place I have seen both stated plainly.
+
+Files in `src/assets/` imported with a relative path get optimized. That means a content hash in the filename (a fingerprint that changes whenever the file does, so browsers never serve a stale copy), inlining as base64 text under four kilobytes, and any further processing by plugins. Files in `public/` referenced with an absolute path are copied as they are.
+
+You run `npm run build` and read the output: `dist/assets/react-CHdo91hT.svg` has a hash, `vite.svg` does not. The challenge is to add a Scrimba logo the first way and build again to see where it lands.
+
+<Screenshot
+  src="/img/scrimba/intro-to-vite/handle-static-assets-build-output-lesson.webp"
+  alt="Scrimba Intro to Vite lesson Handle static assets, paused at 1:26: App.jsx imports reactLogo from ./assets/react.svg and viteLogo from /vite.svg, and the terminal shows vite v6.2.6 building for production with 32 modules transformed and a dist/assets/react-CHdo91hT.svg output line"
+  width={1400}
+  height={660}
+  caption="Paused at 1:26. The two import lines at the top are the whole lesson: the relative import from src/assets gets a hashed filename in the build output below, the absolute /vite.svg import from public does not."
+/>
+
+"Use environment variables" covers `import.meta.env`, the object Vite exposes for settings that change between machines. It has built-in constants (`BASE_URL`, `MODE`, `DEV`, `PROD`, `SSR`), and your own variables go in a `.env` file with a `VITE_` prefix so they reach the browser. Shant adds `VITE_GREETING=howdy` and renders it.
+
+The challenge is to put an IP lookup API URL in an environment variable and use it inside a `useEffect` he has already written, with `const apiUrl = "?"` marking the spot. The brief sits in a `CHALLENGE.md` file in the editor, which is how every challenge in the course is delivered.
+
+<Screenshot
+  src="/img/scrimba/intro-to-vite/use-environment-variables-challenge-lesson.webp"
+  alt="Scrimba Intro to Vite lesson Use environment variables, paused at 3:03: App.jsx shows const greeting = import.meta.env.VITE_GREETING, a useState for ipAddress, and a useEffect with a fetchIpAddress function containing the comment Use the environment variable here above const apiUrl equals question mark; tabs for .env and CHALLENGE.md are open and the terminal shows a stopped Vite dev server"
+  width={1400}
+  height={660}
+  caption="Paused at 3:03, the moment the challenge is handed over. The useEffect and the fetch are written for you; your job is the .env entry and the import.meta.env line that replaces the question mark."
+/>
+
+The one minute "Using Scrimba's built-in environment variables" scrim is a side note. `.env` files are for your own machine. If you build scrims on Scrimba later, the gear menu has an "edit environment" option that stores keys centrally instead. Skip it if you never plan to publish scrims.
+
+### 3. TypeScript and production (4 min, 2 scrims)
+
+"TypeScript development with Vite" is two and a half minutes and makes one point. Vite transpiles TypeScript (strips the types and emits JavaScript) but does not type check, "to maintain the same fast developer experience." Type checking is left to your editor and `tsc`. The demo renames `main.jsx` to `main.tsx`, updates the script tag in `index.html`, and the app keeps running.
+
+For real type checking Shant gives two routes. Pick TypeScript at scaffold time and get `tsconfig.json` and `vite-env.d.ts` for free. Or scaffold a throwaway TypeScript project and copy its config into an existing JavaScript one. No challenge.
+
+"Build for production" is under two minutes. `npm run build` writes the optimized site to `dist/`, and `npm run preview` serves that folder on port 4173 so you can check the production bundle in the mini browser. That is the whole scrim, and it is enough.
+
+### 4. Configure and extend (8 min, 2 scrims)
+
+"Configure with options" opens with an opinion I share: Vite "just works out of the box," and configuration is for when you need it. The demo moves the dev server to port 3000 through a `server` block in `vite.config.js`. The challenge is to change the build output directory from `dist` to `out`.
+
+Shant refuses to name the option: "You can click on this image which will take you to the Vite docs page for the build options and try to find that out." The answer (`build.outDir`) is at the bottom of `CHALLENGE.md` if you get stuck.
+
+"Extend with plugins" is the best five minutes in the course. A plugin is a package that hooks into Vite's build to add a capability. Vite's core stays small "to keep Vite maintainable in the long term," and its plugins follow Rollup's interface, so most Rollup plugins work too.
+
+The demo installs `vite-plugin-qrcode`, adds `qrcode()` to the `plugins` array, and adds `--host` to the dev script. A QR code prints in the terminal so you can open the app on your phone. The challenge is the hardest in the course: read the `vite-plugin-svgr` docs, install it, and turn the React logo SVG into a component with the `?react` import suffix.
+
+Shant frames that as the real lesson: "Being able to read and follow online documentation is a key skill to have as a developer." He also leaves a note in `CHALLENGE.md` about why the logo renders smaller afterwards. The SVG component loses its width, and the fix is a CSS width matching the height.
+
+<Screenshot
+  src="/img/scrimba/intro-to-vite/extend-with-plugins-qrcode-lesson.webp"
+  alt="Scrimba Intro to Vite lesson Extend with plugins, paused at 1:55: package.json is open with the dev script changed to vite --host and react 19.0.0 in dependencies, a vite.config.js tab is open beside it, and the terminal below shows a large QR code printed by vite-plugin-qrcode after npm run dev"
+  width={1400}
+  height={660}
+  caption="Paused at 1:55. The dev script now reads vite --host (the plugin needs it) and the terminal has printed the QR code. In the sandbox it goes nowhere; on your own machine it opens the dev server on your phone."
+/>
+
+### 5. Extra lesson and wrap-up (7 min, 4 scrims)
+
+"Extra: Vite today, Vite tomorrow!" is flagged optional in its first twenty seconds ("You can skip this if it feels too technical for you"). Do not skip it. It is the only scrim that explains what Vite is made of.
+
+Vite sits on two bundlers, the tools that turn many source files into a few browser-ready ones. In development it uses esbuild, written in Go, to pre-bundle your dependencies "ten to a hundred times faster than JavaScript based bundlers." For production builds and the plugin interface it uses Rollup. SWC, a Rust-based transpiler, is an optional alternative.
+
+Shant contrasts older dev servers, which "eagerly crawl and build your entire application before it can be served," with Vite serving source files over native ES modules. ES modules are the browser's own `import` syntax, so the browser does part of the bundler's work. He closes on Rolldown, the Rust bundler VoidZero is building to replace esbuild and Rollup. The transcript has a few speech-to-text slips on names here, so listen rather than read.
+
+The Outro is 51 seconds of recap. Then two house scrims, "Want to become a Scrimbassador?" (the referral program) and "How to Utilize Your Certificate," and the Certificate of Completion item.
+
+## What a lesson actually feels like
+
+Most scrims run two to five minutes, and the pattern holds throughout. Shant states the concept, then does it in the terminal or editor with the mini browser docked on the right. He either sets a challenge or recaps and hands off ("In the next lesson, we'll learn how to..."). Challenges are announced out loud ("Go ahead and do that right now"), written up in a `CHALLENGE.md` tab, and solved on screen afterwards.
+
+There are five of them. You rescaffold the project and add a footer, import and build a static asset, wire an environment variable into a fetch, find the build output option in the Vite docs, and read plugin docs to add SVGR. None are AI-checked; there are no "Challenge with Instant Feedback" icons in this course's table of contents.
+
+The project is a real Node process in Scrimba's sandbox, so you type actual npm commands and wait actual seconds for installs. That makes the "fast" claim easier to judge than a slide would. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in several languages, and speed control. Shant is upbeat to the point of "Super duper" and "You now have the power, Vite power." I found it more endearing than not.
+
+## Free or Pro: exactly what is gated
+
+Nothing inside the course. All 14 scrims are free, and most carry the SAMPLE badge, which means they play without an account. There are no Solo Projects, so there is no Pro-only material to hit.
+
+Pro gates the Certificate of Completion at the end, the career paths, and the Pro-only channels on Scrimba's Discord. The Discord server itself is not gated. Scrimba's pricing page lists basic Discord access under the free plan, and Shant points you there in the Welcome scrim.
+
+For a 39 minute elective there is no reason to upgrade. Look at <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> only if you want the certificate or you are already on a path. Our [Pro vs free](/docs/pricing/pro-vs-free/) page has the full split.
+
+## How long it really takes
+
+39 minutes of video; budget 75 minutes to two hours. The scaffold and `npm install` steps run for real. Three of the five challenges (the env variable fetch, the build output option, and the SVGR plugin) send you into external docs, and that reading is where the extra time goes.
+
+If you follow along on your own machine instead of the sandbox, add time for installing Node and your first `npm create vite@latest`. It is one sitting. Doing it twice, once in the browser and once locally, is a reasonable use of a second hour.
 
 ## Who it's for, and who should skip it
 
-It fits anyone building with modern frontend frameworks who wants to understand the tool already running under their projects, and developers setting up a new project from scratch who want to do it cleanly.
+It fits developers who have started a React or Vue project from a template and want to understand the dev server, the `dist` folder, and `vite.config.js`. It also fits anyone about to move a project off webpack or Create React App who wants the mental model first. If you did [Learn React](/docs/courses/react/learn-react/) and skipped its "Local Setup w/ Vite" scrim, this is the longer version.
 
-Skip it if you are an absolute beginner who has not written any JavaScript or used a framework yet; tooling makes more sense once you have a project that needs it. Also skip it if you are deep into webpack or another bundler on a legacy project and not switching, since the value here is in actually using Vite.
+Skip it if you want configuration depth, custom plugins, server-side rendering (SSR), or monorepo setups. None of that is here.
 
 ## Prerequisites
 
-A basic grasp of JavaScript and some familiarity with frontend projects (running commands in a terminal, the idea of a build step). You do not need any prior build-tool experience; that is the point of the course.
+Comfort with a terminal (`node`, `npm`, running scripts), and enough JavaScript and React to read a component with `useState` and `useEffect`. [Learn JavaScript](/docs/courses/javascript/learn-javascript/) plus the first sections of [Learn React](/docs/courses/react/learn-react/) is more than enough. Nothing to install if you stay in the browser; Node.js 20 or newer and npm if you follow along locally.
 
 ## Where it fits
 
-Intro to Vite is a small, practical elective rather than a step on Scrimba's career paths. Slot it in alongside a framework course like [Learn React](/docs/courses/react/learn-react/) or [Learn Vue](/docs/courses/javascript/vue/), where understanding the build tool makes the rest of the setup click.
-
-## Free or Pro
-
-This course is free, with no subscription required. Scrimba Pro is a separate decision that unlocks the career paths, coding challenges, the private Discord, and certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro includes.
+The natural time to take it is right after your first framework course, when you have a project and are curious what `npm run dev` does. It pairs with [Learn React](/docs/courses/react/learn-react/), [Learn Vue](/docs/courses/javascript/vue/), and [Learn TypeScript](/docs/courses/typescript/learn-typescript/); the TypeScript scrim here is the bridge. If the extra lesson's bundler talk was the part you liked, [Learn Astro](/docs/courses/javascript/astro/) is another tooling-first course in the same category.
 
 ## Strengths and limits
 
-What it does well: it is free, it is short, and it targets a genuinely useful gap, the tooling that beginners often treat as magic. A high return on a small time investment.
+Strengths: it is free and short, and the real Node sandbox makes the speed claims visible instead of asserted. The static assets and plugins scrims fix two things most people get wrong. The optional internals lesson is a compact, accurate account of esbuild, Rollup, native ESM, and Rolldown.
 
-Where it is limited: the 39-minute scope keeps it introductory, so deep configuration, plugins, and build tuning are not covered, and fast peer help depends on the Pro Discord.
+Limits: the course is flat with no chapters, and the React content is minimal by design. Two of the 14 scrims are generic Scrimba material rather than Vite.
 
 ## Related courses and comparisons
 
-- [Learn React](/docs/courses/react/learn-react/), a framework Vite commonly powers
-- [Learn Vue](/docs/courses/javascript/vue/), another framework that defaults to Vite
+- [All JavaScript courses](/docs/courses/javascript/), the category this course belongs to
+- [Learn React](/docs/courses/react/learn-react/), the framework the course scaffolds
+- [Learn Vue](/docs/courses/javascript/vue/), Evan You's other project, which also defaults to Vite
+- [Learn TypeScript](/docs/courses/typescript/learn-typescript/), if the TypeScript scrim left you wanting more
 - [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language underneath it all
 
 <FAQAccordion items={[
-  { q: "Is Intro to Vite free on Scrimba?", a: "Yes. The course is free with no credit card or Pro subscription required. Pro is only needed for the career paths, certificates, and private Discord." },
-  { q: "What is Vite used for?", a: "Vite is a build tool and development server. It starts a project almost instantly, updates the browser the moment you save, and produces a fast production build. Most new React and Vue projects use it by default." },
-  { q: "Do I need to know a framework first?", a: "It helps. Vite makes the most sense once you have a project that needs a dev server and build step, so pairing it with a React or Vue course works well." },
-  { q: "Is 39 minutes really enough?", a: "For getting comfortable using Vite, yes. It is an intro by design and does not cover deep configuration or plugins, which most developers do not need early on." },
+  { q: "Is Intro to Vite free on Scrimba?", a: "Yes. All 14 scrims are free with no card required, most of them play without an account, and there are no Pro-only Solo Projects inside the course. Only the Certificate of Completion needs Pro." },
+  { q: "Who teaches Intro to Vite?", a: "Shant Dashjian, a Scrimba teacher who also mentors at Pro Coding Mentor. The teacher card, the title slide, and the transcript all agree; he introduces himself in the Welcome scrim." },
+  { q: "What do you build in the course?", a: "Not an app in the usual sense. You scaffold Vite's React boilerplate with npm create vite@latest, then modify it: add Header and Footer components, import a logo through src/assets, read a VITE_ environment variable into a fetch, rename main.jsx to main.tsx, change the dev port and build directory, and add the QR code and SVGR plugins." },
+  { q: "Which versions does it use?", a: "The scaffolded package.json pins react and react-dom at ^19.0.0 and vite at ^6.2.0; the terminal shows Vite v6.2.6 on Node 20 with npm 10. Newer Vite releases have shipped since, and nothing in the course depends on the difference." },
+  { q: "Does it have challenges?", a: "Five: rescaffold the project and add a footer component, import and build a static asset, use an environment variable inside a useEffect fetch, find the build output directory option in the Vite docs and set it, and read the vite-plugin-svgr docs to add it. Each is described in a CHALLENGE.md file in the editor. None are AI-checked." },
+  { q: "Do I need to install anything?", a: "No. The project runs in a real Node sandbox in the browser, including npm install. If you follow along locally you need Node.js 20 or newer and npm." },
+  { q: "How long does Intro to Vite take?", a: "39 minutes of video; plan 75 minutes to two hours including the installs and the five challenges, in one sitting." },
+  { q: "Does it have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in several languages. The transcript has a few speech-to-text slips on names." },
+  { q: "Do I need to know React first?", a: "Some. You edit small React components with useState and useEffect and never get them explained. Anyone who has finished the first sections of Learn React is fine." },
+  { q: "Is it part of a career path?", a: "No. Scrimba lists it as a standalone course; it is not in the Frontend, Fullstack, Backend, or AI Engineer paths." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/intro-to-vite-c03p6pbbdq" variant="button">
@@ -89,10 +237,10 @@ Where it is limited: the 39-minute scope keeps it introductory, so deep configur
 
 <CourseSchema
   name="Intro to Vite"
-  description="Scrimba's free, intermediate introduction to Vite, the fast modern build tool and dev server. About 39 minutes, taught by Shant Dashjian."
+  description="Scrimba's free, intermediate introduction to Vite, taught by Shant Dashjian. About 39 minutes and 14 scrims: scaffold a React 19 app on Vite 6, hot module replacement, static assets, environment variables, TypeScript, production builds, configuration, and plugins."
   url="https://scrimba.com/intro-to-vite-c03p6pbbdq"
   timeRequired="PT39M25S"
   difficulty="Intermediate"
   access="Free"
-  keywords={["Vite", "Frontend", "Tooling"]}
+  keywords={["Vite", "Frontend", "Tooling", "React"]}
 />

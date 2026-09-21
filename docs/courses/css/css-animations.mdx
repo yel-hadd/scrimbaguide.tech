@@ -1,98 +1,232 @@
 ---
-title: "Learn CSS Animations"
+title: "Learn CSS Animations on Scrimba: 2026 Review"
 sidebar_position: 5
-description: "Scrimba's two-hour course on CSS animations and transitions, taught by Jad Khalili with real coding challenges. Who it suits and what it assumes."
-keywords: [scrimba learn css animations, css animations course, css transitions tutorial, jad khalili css, interactive css animation course]
+toc_max_heading_level: 2
+sidebar_label: "Learn CSS Animations"
+description: "Jad Khalili's Learn CSS Animations reviewed from inside every scrim: 2 hours, 27 lessons, three real-world challenges, and what Pro gates."
+keywords: [scrimba learn css animations, learn css animations review, css animations course, css transitions tutorial, jad khalili css, interactive css animation course, scrimba css course]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Learn CSS Animations
 
-A focused, two-hour Scrimba course with Jad Khalili on making interfaces move: transitions, keyframe animations, and the timing that makes motion feel intentional.
+A two hour Scrimba course on transitions, keyframe animations, and transforms, taught by Jad Khalili and built around three "real-world" challenges. I read the transcript of every one of its 27 scrims with a Pro account in September 2026, and what follows is what is in there, lesson by lesson.
+
+*This page is part of our [Scrimba CSS courses](/docs/courses/css/) catalog. Scrimba's course data lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-Learn CSS Animations is a Pro-tier, intermediate course: about 2 hours and 28 lessons, taught by Jad Khalili. It gives you a working foundation in CSS transitions and keyframe animations, reinforced with real coding challenges rather than passive demos. It is aimed at developers who already know CSS and want to add motion skills, not at people learning CSS from zero.
+Learn CSS Animations is a Pro, intermediate-level course: about 2 hours of video in 27 short scrims, most between 2 and 7 minutes. It covers the `transition` property, `@keyframes` animations, the `transform` functions (scale, translate, rotate, skew), and then three extras: vendor prefixes, CSS variables, and custom `cubic-bezier()` timing curves.
+
+Most lessons end with a small challenge, and each of the three main sections ends with a bigger one: a menu with hover effects, a landing page that fades in, and an animated four-bar logo. You need to know basic HTML and CSS first. If you can already write a stylesheet and want a fast, practical introduction to motion, this does the job in an afternoon. If you want the deeper craft of animation (performance, choreography), it stops well short of that.
 
 <CourseCard
   title="Learn CSS Animations"
   duration="2.0 hrs"
   difficulty="Intermediate"
   access="Pro"
-  lessons={28}
+  lessons={27}
   instructor="Jad Khalili"
   instructorUrl="https://scrimba.com/u0d5q5"
   href="https://scrimba.com/learn-css-animations-c02g"
-  description="A practical foundation in CSS transitions and keyframe animations, taught with hands-on coding challenges."
+  description="Transitions, keyframe animations, and transforms in two hours, with a mini challenge in most scrims and three real-world challenges."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/learn-css-animations/chapter-01-welcome-title-card.webp"
+    alt="Title card of the first scrim of Scrimba's Learn CSS Animations course: the words Learn CSS Animations and Videolab in black on a peach background"
+    width={1279}
+    height={720}
+    caption="The welcome scrim's title card. Videolab is the brand printed on both title cards."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/learn-css-animations/chapter-05-custom-timing-functions-title-card.webp"
+    alt="Title card of the Custom Timing Functions scrim in Scrimba's Learn CSS Animations course, black text on a peach background"
+    width={1279}
+    height={720}
+    caption="The last lesson, on cubic-bezier timing curves. Only these two scrims open on a title slide; the rest open straight into code."
+    source="Title cards from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-Motion is one of the things that separates a competent layout from a polished one, and it is genuinely hard to learn from static articles. Watching a transition curve change as you edit the timing function, right there in the player, is where this format helps most. The challenges push you to write the animations yourself instead of nodding along, which is the difference between recognising the syntax and being able to use it.
+Yes, if you already write CSS and have never sat down with animations properly. The course is narrow on purpose. Jad says in the welcome video that the early challenges "may seem a little bit easy and kind of remedial, but that's what they're kind of intended to do. They're meant to build some muscle memory." That is an accurate description of the whole thing: you type `transition: all 0.5s ease` and `animation: grow 2s ease-out 0s 4 alternate` enough times that you stop looking them up.
 
-The honest caveat is that animation is a deep, taste-driven topic and two hours is a foundation, not mastery. You will come out able to build solid transitions and keyframe sequences, but the harder parts (performance, orchestrating complex sequences, restraint) come from practice afterward. Treat it as the on-ramp it is.
+The caveat is age. The prefixes lesson talks about Internet Explorer 7 and 8 and tells you to add `-o-` for Opera. Nobody needs that in 2026, and the course does not mention `prefers-reduced-motion`, `will-change`, the Web Animations API, or which properties are cheap to animate. Treat this as a fast on-ramp to the syntax, not a guide to motion design. Two hours of video, three or four hours of doing, and you will have the vocabulary.
 
 ## What you'll learn
 
-The course builds from transitions (hover states, state changes, easing functions) up to keyframe animations with `@keyframes`, then into the timing and sequencing choices that make motion feel deliberate rather than gimmicky. The coding challenges are the spine: you implement each technique on a real element and see the result immediately. By the end you can add purposeful motion to a UI without reaching for a library.
+<CourseCurriculum
+  summary="6 sections (editorial grouping), 27 scrims"
+  modules={[
+    { name: 'Welcome and the Scrimba workspace', duration: '7 min', lessons: 2 },
+    { name: 'Transitions', duration: '25 min', lessons: 6 },
+    { name: 'Animations and keyframes', duration: '34 min', lessons: 7 },
+    { name: 'Transforms', duration: '33 min', lessons: 6 },
+    { name: 'Tips and tricks', duration: '20 min', lessons: 3 },
+    { name: 'Wrap-up and certificate', duration: '4 min', lessons: 3 },
+  ]}
+/>
 
-It assumes you can already write CSS comfortably, so it spends its time on motion specifically rather than re-covering selectors and the box model.
+Scrimba shows this course as one flat list of 27 scrims with no module headers, so the six sections above are my grouping, following the four topic sections Jad lays out in the welcome video plus the intro and the wrap-up. The durations are the per-scrim times from the table of contents added up. Scrimba's listing says 28 lessons, which is the 27 scrims plus the certificate row at the bottom of the list.
+
+## Inside the course, module by module
+
+### 1. Welcome and the Scrimba workspace (7 min, 2 scrims)
+
+The welcome scrim is a five minute tour of the course plan. It includes one practical warning worth knowing before you start: the preview pane renders your HTML and CSS in real time. In Jad's words, "so if you speed up the video, or pause it, or skip through it, just beware that it will still be playing in real time. It won't be playing with the video." In practice, that means a paused scrim can still have a box bouncing in the preview.
+
+The second scrim is a walk around the editor. Jad keeps the preview collapsed to a thumbnail in the bottom-right corner and pops it open when he wants to check something, which is how most of the course looks on screen. He also says you will hardly touch the HTML file: "this CSS file is where we're gonna be doing most of our coding."
+
+### 2. Transitions (25 min, 6 scrims)
+
+The sequence is: see a transition, build one, customise it, learn the shorthand, then two challenges. "What are Transitions?" shows a heading that changes colour and size on hover, first choppy, then smooth. "Adding Transitions" builds it up: the `:hover` pseudo-class (explained from scratch), then `transition: color 0.5s`, then comma-separated properties with different durations, then `all`. Its mini challenge asks for a green, 20px, letter-spaced heading that transitions over half a second.
+
+"Customizing Transitions" splits the shorthand into `transition-property`, `transition-duration`, `transition-delay`, and `transition-timing-function`, with a note that setting a property without a duration silently does nothing. "Transition Shorthand" puts them back together in the right order. The "Transition Challenge" asks you to write all of it from a blank `.heading` rule.
+
+The section ends with the first real-world challenge: a small website with a title and a five-item menu. The brief is written as an HTML comment in the file. Jad's summary afterwards is honest about where the work is. "Most of the work was really in just adding those pseudo selectors and knowing where to add them, and once you get that done, it's quite easy to just add the shorthand."
+
+### 3. Animations and keyframes (34 min, 7 scrims)
+
+This is the longest and best section. "Animations in Action" shows the target: a box that grows and changes colour on a loop, all in CSS. "Defining Animations" (7:33, the longest teaching scrim) introduces `@keyframes` with both syntaxes, `from`/`to` and percentages, and hammers one rule: be explicit about every property in every step, because "sometimes, over time things may change that you don't expect them to."
+
+<Screenshot
+  src="/img/scrimba/learn-css-animations/defining-animations-keyframes-lesson.webp"
+  alt="Scrimba Learn CSS Animations lesson Defining Animations paused at 5:32: the editor shows a .box rule with animation-name grow and animation-duration 2s, and a @keyframes grow block with 0%, 50% and 100% steps that change width, height and background; a small preview thumbnail with a red box sits in the bottom-right corner"
+  width={1400}
+  height={660}
+  caption="Defining Animations at 5:32. The three-step keyframes block is the whole lesson; notice the preview collapsed to a thumbnail in the corner, which is how Jad works for most of the course."
+/>
+
+"Animations: Timing" adds `animation-name`, `animation-duration`, `animation-delay`, and `animation-iteration-count` (including `infinite`). "Animations: Other Properties" covers `animation-timing-function`, `animation-direction` (`normal`, `reverse`, `alternate`, `alternate-reverse`), and `animation-fill-mode`, which Jad admits is "a little bit complicated because it can depend on the conditions." He is right, and the demo of `forwards`, `backwards`, and `both` is the clearest bit of teaching in the course. "Animation Shorthand" folds six properties into one line and points out that fill mode is not part of it.
+
+The "Animation Challenge" asks for a three-step animation called `supersize` with a specific duration, timing function, iteration count, and direction. The real-world challenge is a landing page: fade in and expand a background image, then fade in the headline. The lesson worth remembering is the one about delays. A second animation's delay counts from page load, not from the end of the first. As Jad puts it, "what our true delay actually needs to be is two seconds since we want half a second on top of that already 1.5 elapsed seconds."
+
+### 4. Transforms (33 min, 6 scrims)
+
+Jad frames transforms as things "that aren't actually focused on animations directly, but they are very useful when it comes to animating things." Each scrim follows the same pattern: the x function, the y function, then the shorthand. "Introduction to Transforms & Scaling" covers `scaleX`, `scaleY`, and `scale`, plus the rule that multiple transforms go on one line separated by spaces. "Translation" does the same for `translate` with pixels and percentages. "Rotation" uses degrees and a clock-face explanation for direction.
+
+"Skew" is the one scrim not taught by Jad. It opens with Leanne from Scrimba explaining that "there was a technical glitch on Jad's original skew cast, so I have re-recorded it for you here." It is 2 minutes and covers `skewX`, `skewY`, and the shorthand.
+
+The "Transform Challenge" combines the section with the previous one: an infinite two second animation that shrinks a box by half, rotates it 45 degrees, and moves it 50px right. Then the last real-world challenge: animate a four-bar logo into the middle of the page, stretch it on the x axis, and skew it about 80 degrees. This is the most open-ended brief in the course ("experiment with the values! Play around and see what looks best") and the only one where Jad shows how a wrong choice looks, by swapping `skew` for `skewX` and then `skewY` and comparing the results.
+
+<Screenshot
+  src="/img/scrimba/learn-css-animations/logo-transforms-challenge-lesson.webp"
+  alt="Scrimba Learn CSS Animations lesson Real-World Transforms Challenge: Logo paused at 8:16: the editor shows index.html with four div elements with classes box-red, box-blue, box-green and box-orange and the challenge brief written as an HTML comment; the preview thumbnail in the corner shows the finished logo as four skewed coloured bars"
+  width={1400}
+  height={660}
+  caption="The logo challenge at 8:16. The brief lives in an HTML comment in the file, which is how all three real-world challenges are set; the finished, skewed logo is in the preview thumbnail."
+/>
+
+### 5. Tips and tricks (20 min, 3 scrims)
+
+Jad calls this section "quite unorganized" in the welcome video, and it is three unrelated lessons. "Prefixes" explains `-webkit-`, `-ms-`, `-moz-`, and `-o-` and tells you to add all four for maximum support. This is the lesson that has aged worst; modern browsers do not need prefixes for transitions or animations, and Opera has not used `-o-` for over a decade. "CSS Variables" is a sound short introduction to `:root`, `--main-color`, and `var()`, with a challenge to replace a repeated hex colour.
+
+"Custom Timing Functions" is the best of the three and the one to keep. It explains `cubic-bezier()` with the visualiser at cubic-bezier.com, shows what happens when a control point goes past 1 (the animation overshoots and bounces back), and replaces `ease-out` in the running animation with a hand-picked curve. The challenge asks you to design a curve that starts slow and keeps accelerating.
+
+<Screenshot
+  src="/img/scrimba/learn-css-animations/custom-timing-functions-preview-lesson.webp"
+  alt="Scrimba Learn CSS Animations lesson Custom Timing Functions paused at 4:44: the preview window is popped open over a blurred editor and shows the text Hover over me! and a small purple box mid-animation"
+  width={1400}
+  height={660}
+  caption="Custom Timing Functions at 4:44, right after the cubic-bezier curve replaces ease-out. When Jad opens the preview it takes over the screen like this, and the box keeps animating even while the scrim is paused."
+/>
+
+### 6. Wrap-up and certificate (4 min, 3 scrims)
+
+Three short Scrimba-standard scrims: a congratulations video from Leanne that recommends Kevin Powell's [Responsive Web Design](/docs/courses/css/responsive-web-design/) course as the next step. Then come a pitch for the Scrimbassador referral programme from Per Borgen and a one minute "How to Utilize Your Certificate" scrim. Nothing to learn here, but the certificate row sits below them.
+
+## What a lesson actually feels like
+
+A typical scrim is three to six minutes. Jad talks over the editor, types a property, then opens the preview to show the effect. Nearly every teaching scrim ends with a mini challenge; the two demo scrims that open the transitions and animations sections are the exceptions. Jad states the spec out loud ("modify this transition so that it only targets the font size, has a one second delay, takes 0.5 seconds to run through, and has an ease-in timing function") and says "Good luck." The recording pauses for a few seconds before he solves it. You are expected to stop, type into the same editor, and press play when you are done.
+
+The three real-world challenges are different. The brief is a written comment at the bottom of the HTML file, the starter project is already styled, and your job is the animation layer only. These scrims run 5 to 9 minutes including the solution.
+
+Jad's delivery is plain and a little repetitive ("Alright. Let's move on." closes almost every scrim). He explains things once and moves on, which suits a syntax course. Every scrim has captions, a timestamped transcript, and subtitles in ten languages. The table of contents marks the scrims that contain a challenge with a small icon, the same one Scrimba labels "Challenge with Instant Feedback" on other course pages; I did not submit solutions to check how that feedback behaves here.
+
+## Free or Pro: exactly what is gated
+
+The course is Pro. The first four scrims are marked SAMPLE and open without a subscription: the welcome, the workspace tour, "What are Transitions?", and "Adding Transitions." That is enough to see Jad's style and one full mini challenge before paying.
+
+Everything from "Customizing Transitions" onwards (23 scrims, including all three real-world challenges) needs Pro, and so does the certificate. There are no Solo Projects in this course; the challenges are all inside the scrims. Pro also covers the career paths this course belongs to and the Pro-only channels on Scrimba's Discord (basic Discord access is free, according to the pricing page). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+
+## How long it really takes
+
+Two hours of video. The mini challenges are 30 seconds to a minute each if you already know the answer, and two or three minutes if you have to think. The real-world challenges take ten to twenty minutes each if you experiment with the values as Jad asks. Budget four to six hours in total, or two evenings. If you already know transitions and only want animations and transforms, skip to "Animations in Action" and you are down to about three hours.
 
 ## Who it's for, and who should skip it
 
-It fits developers who know their way around CSS and want to make interfaces feel alive: front-end developers, designers who code, anyone building portfolios where polish counts.
+It fits people who can write CSS but have only ever copied an animation from a blog post. That includes anyone on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) who wants some motion in a portfolio project. The mini-challenge rhythm works well if you learn by typing.
 
-Skip it if your CSS fundamentals are still shaky (do [Learn HTML and CSS](/docs/courses/css/html-and-css/) or [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) first), or if you only need a single hover effect and can grab it from documentation.
+Skip it if you are still learning selectors and the box model; do [Learn HTML and CSS](/docs/courses/css/html-and-css/) first, since the course explains `:hover` but nothing else about selectors. Also skip it if you already use `@keyframes` and `transform` comfortably. The only lesson that would be new to you is the cubic-bezier one, and ten minutes on the cubic-bezier.com page he uses teaches the same thing.
 
 ## Prerequisites
 
-Comfortable HTML and CSS, including selectors, the box model, and positioning. No JavaScript is needed.
+Basic HTML and CSS: selectors, classes, and how a stylesheet links to a page. Jad's own prerequisites note says "a basic understanding of HTML and CSS." No JavaScript is used anywhere in the course. Nothing to install; everything runs in the browser.
 
 ## Where it fits
 
-This sits among the styling and polish courses on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). It is an enhancement skill, best taken after you can build static layouts confidently.
-
-## Free or Pro
-
-This is a Pro course, so it needs a Scrimba subscription. Pro also covers the career paths, challenges, certificates, and Discord. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+It sits in both the Frontend and Fullstack paths (see the note at the top). The natural order is [Learn HTML and CSS](/docs/courses/css/html-and-css/), then this, then [Responsive Web Design](/docs/courses/css/responsive-web-design/), which the closing video itself recommends and which revisits transitions and animations inside real layouts. The CSS variables lesson overlaps with the free [CSS Variables](/docs/courses/css/css-variables/) course, and the challenge format is a good warm-up for [CSS Challenges](/docs/courses/css/css-challenges/).
 
 ## Strengths and limits
 
-What it does well: it makes an inherently visual, hard-to-read-about topic genuinely interactive, and the challenge-driven structure forces you to write the code.
+What it does well: the mini challenge in nearly every scrim, the three written challenge briefs, the fill-mode and delay explanations in the animations section, and the cubic-bezier lesson. It is short, and it never wanders.
 
-Where it is limited: two hours is a foundation, not a deep dive. Advanced sequencing, performance tuning, and the design judgement around motion are left to your own practice.
+Where it is limited: it is old. The prefixes lesson is out of date, and there is nothing on reduced motion, performance, or which properties to animate. The preview is collapsed for most of the course, so you see less of the result than you might expect. The brief on the logo challenge is loose enough that you cannot be sure you got it right. And "Alright. Let's move on." gets tiring by scrim twenty.
 
 ## Related courses and comparisons
 
 - [All Scrimba CSS courses](/docs/courses/css/), the full CSS category hub
-- [Learn UI Design](/docs/courses/css/ui-design/), which covers UI animation in a broader design context
-- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), the deep CSS foundation
-- [CSS Challenges](/docs/courses/css/css-challenges/), to keep your CSS sharp
+- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), the deeper CSS course the closing video recommends
+- [Learn CSS Variables](/docs/courses/css/css-variables/), the free course that expands the variables lesson
+- [CSS Challenges](/docs/courses/css/css-challenges/), more drills in the same challenge format
+- [Learn UI Design](/docs/courses/css/ui-design/), for the design judgement this course does not cover
 - [Intro to UI Design Fundamentals](/docs/courses/css/ui-design-fundamentals/), the free design taster
 
 <FAQAccordion items={[
-  { q: "Is Learn CSS Animations free?", a: "No. It is a Scrimba Pro course and requires a subscription. Several free CSS courses, such as Learn HTML and CSS, sit alongside it." },
-  { q: "Do I need to know CSS before starting?", a: "Yes. It is rated Intermediate and assumes comfortable CSS. Learn HTML and CSS or Learn Responsive Web Design make better starting points if you are new." },
-  { q: "Does it cover both transitions and keyframe animations?", a: "Yes. It starts with transitions and easing, then moves into @keyframes animations and the timing choices that make motion feel intentional." },
-  { q: "Will two hours make me an expert in CSS animation?", a: "No. It gives you a solid working foundation. Mastery of complex sequencing and performance comes from practice afterward." },
+  { q: "Is Learn CSS Animations free on Scrimba?", a: "No. It is a Pro course. The first four scrims (the welcome, the workspace tour, What are Transitions?, and Adding Transitions) are free samples; the other 23 scrims and the certificate need a subscription." },
+  { q: "Who teaches Learn CSS Animations?", a: "Jad Khalili teaches 23 of the 27 scrims. The Skew lesson was re-recorded by Leanne from Scrimba after a technical glitch, and the three wrap-up scrims are Scrimba's standard ones from Leanne and Per Borgen." },
+  { q: "What do you build in the course?", a: "Three real-world challenges: a menu with hover transitions, a landing page whose background and headline fade in, and a four-bar logo animated with transforms. Everything else is small demos on a heading or a box." },
+  { q: "Does it cover both transitions and keyframe animations?", a: "Yes. Transitions first (property, duration, delay, timing function, shorthand), then @keyframes with from/to and percentages, then the six animation properties, then transforms, then cubic-bezier timing curves." },
+  { q: "Does it need any JavaScript?", a: "No. Every lesson is CSS only, and you barely touch the HTML file." },
+  { q: "Do I need to install anything?", a: "No. Everything runs in Scrimba's browser editor. Each project is an index.html and an index.css file." },
+  { q: "How long does Learn CSS Animations take?", a: "Two hours of video. With the mini challenges and the three real-world challenges, plan on four to six hours." },
+  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript in the settings menu, and subtitles in ten languages." },
+  { q: "Is the content up to date?", a: "Mostly. The CSS it teaches still works, but the prefixes lesson (Internet Explorer, Opera's -o- prefix) is out of date, and it does not cover reduced motion or animation performance." },
+  { q: "What should I take after it?", a: "The closing video recommends Kevin Powell's Responsive Web Design course, which uses transitions and animations inside full layouts. CSS Challenges is a good option if you want more drills." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/learn-css-animations-c02g" variant="button">
-  View Learn CSS Animations on Scrimba
+  Preview the free sample lessons on Scrimba
 </AffiliateLink>
 
 <CourseSchema
   name="Learn CSS Animations"
-  description="A Scrimba Pro course taught by Jad Khalili: about 2 hours building a foundation in CSS transitions and keyframe animations with hands-on challenges."
+  description="A Scrimba Pro course taught by Jad Khalili: about 2 hours and 27 scrims on CSS transitions, keyframe animations, transforms, and cubic-bezier timing, with a mini challenge in most lessons and three real-world challenges."
   url="https://scrimba.com/learn-css-animations-c02g"
   timeRequired="PT2H2M37S"
   difficulty="Intermediate"
   access="Pro"
+  instructor="Jad Khalili"
+  instructorUrl="https://scrimba.com/u0d5q5"
   keywords={["CSS", "Frontend"]}
+  modules={[
+    { name: 'Welcome and the Scrimba workspace', duration: '7 min', lessons: 2 },
+    { name: 'Transitions', duration: '25 min', lessons: 6 },
+    { name: 'Animations and keyframes', duration: '34 min', lessons: 7 },
+    { name: 'Transforms', duration: '33 min', lessons: 6 },
+    { name: 'Tips and tricks', duration: '20 min', lessons: 3 },
+    { name: 'Wrap-up and certificate', duration: '4 min', lessons: 3 },
+  ]}
 />

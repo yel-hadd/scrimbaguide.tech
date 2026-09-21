@@ -3,7 +3,7 @@ title: "Scrimba vs Udemy"
 description: "Subscription with curated paths vs a 250,000-course marketplace you own forever. Which one is actually right for web dev and AI, and where Udemy still wins."
 keywords: [scrimba vs udemy, udemy vs scrimba, scrimba or udemy, best coding platform 2026]
 last_update:
-  date: 2026-05-23
+  date: 2026-09-21
 ---
 
 import ComparisonTable from '@site/src/components/ComparisonTable';
@@ -53,7 +53,7 @@ This comparison is for someone weighing a curated subscription against a 250,000
   scrimbaUrl="https://scrimba.com/?via=u42d4986"
   competitorUrl="https://www.udemy.com/"
   rows={[
-    { feature: "Teaching format", scrimba: "Interactive scrims (you type inside the video)", competitor: "Passive video lectures" },
+    { feature: "Teaching format", scrimba: "Scrims: the recording pauses at each challenge and you type in the same editor (170+ challenges in Learn React alone)", competitor: "Passive video lectures" },
     { feature: "Pricing model", scrimba: "Monthly or annual subscription", competitor: "Per-course purchase, often $10 to $15 on sale" },
     { feature: "Catalogue size", scrimba: `${totalCoursesLabel} curated courses`, competitor: "~250,000 courses across all topics" },
     { feature: "Free content", scrimba: `~${freeCount} full courses`, competitor: "Some free courses; quality varies" },
@@ -62,7 +62,7 @@ This comparison is for someone weighing a curated subscription against a 250,000
     { feature: "Structured paths", scrimba: "4 career paths up to 108 hours", competitor: "None native; some instructors bundle their own" },
     { feature: "Ownership", scrimba: "Access while subscribed", competitor: "Lifetime access per course you buy" },
     { feature: "Refund policy", scrimba: "7 days", competitor: "30 days, with limits on heavy consumption" },
-    { feature: "Community", scrimba: "Active Discord (Pro)", competitor: "Per-course Q&A; no central community" },
+    { feature: "Community", scrimba: "Active Discord (basic free, Pro-only channels)", competitor: "Per-course Q&A; no central community" },
   ]}
 />
 
@@ -78,7 +78,7 @@ Worth saying out loud, because most comparison pages skip it.
 
 ## Where Scrimba wins
 
-**The interactive format.** Scrim videos let you pause the instructor mid-sentence and edit code in the same player. Active-learning research ([Freeman et al., 2014, PNAS](https://www.pnas.org/doi/10.1073/pnas.1319030111)) found students retain and perform better when they practise actively rather than watch passively. On Udemy you watch, then switch to your IDE, which is the gap where tutorial hell starts.
+**The interactive format.** Scrim videos let you pause the instructor mid-sentence and edit code in the same player. In Learn React the challenges arrive as numbered comments in the file with the recording paused, and every scrim has a timestamped transcript you can search instead of scrubbing. Active-learning research ([Freeman et al., 2014, PNAS](https://www.pnas.org/doi/10.1073/pnas.1319030111)) found students retain and perform better when they practise actively rather than watch passively. On Udemy you watch, then switch to your IDE, which is the gap where tutorial hell starts.
 
 **Curated floor.** When Udemy's distribution is around 27% five-star and 52% one-star, picking the right course is itself a research project. Scrimba's catalogue is commissioned, so Bob Ziroll's React, the AI Engineer path, and the newer MCP and Langbase agent courses share a consistent floor.
 
@@ -96,11 +96,13 @@ The recurring pattern across Trustpilot and consumer-affairs threads is consiste
 
 These do not apply to top instructors actively maintaining their work. They are a tax on the marketplace model itself, and the three mitigations above are how marketplace veterans avoid paying it.
 
+For fairness: Scrimba's courses age too. The Chef Claude project in Learn React pins a July 2024 React 19 release candidate (the capstones run 18.3), and the course's "Quick AI Update" scrim tells you to upgrade the Anthropic SDK if the Chef Claude challenge errors. The difference is that the course flags it from inside.
+
 ## How to combine them, low-risk sequence
 
 Many web learners benefit from both. Run them in this order so you commit cash only after the format proves itself:
 
-1. **Start Scrimba Free for one week.** Open Learn React with Bob Ziroll or Learn JavaScript with Per Borgen. No card required.
+1. **Start Scrimba Free for one week.** Open [Learn React](/docs/courses/react/learn-react/) with Bob Ziroll (all six sections and both capstones are free; only the two Solo Projects need Pro) or Learn JavaScript with Per Borgen. No card required.
 2. **If the pause-and-edit format clicks, upgrade to Scrimba Pro** and commit to the first three modules of the Frontend or AI Engineer Path.
 3. **After those three modules, buy exactly one focused Udemy course on sale** (filter for 4.5+ stars, 4,000+ recent ratings, "Last updated" within 18 months) for depth on one specific topic Scrimba covered too quickly, or a niche it does not touch at all.
 4. **Set a Udemy auto-renewal reminder** if you bought a Personal Plan rather than a single course.

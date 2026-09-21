@@ -11,6 +11,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'how-it-works/how-scrims-work',
         'how-it-works/using-scrimba',
+        'how-it-works/scrimba-explain',
         'how-it-works/accreditation',
         'how-it-works/certificates',
         'how-it-works/learning-speed',

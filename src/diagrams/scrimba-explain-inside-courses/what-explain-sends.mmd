@@ -1,0 +1,24 @@
+flowchart LR
+  subgraph IN["Collected from the paused scrim"]
+    direction TB
+    A["Scrim title and course"]
+    B["All editor files"]
+    C["Highlighted code"]
+    D["Narration up to the pause"]
+  end
+  E["Your question (the only thing you type)"]
+  X["EXPLAIN button"]
+  subgraph OUT["What comes back"]
+    direction TB
+    F["Overlay player on the lesson"]
+    G["Entry under Explainers in the sidebar"]
+    H["Standalone page (Unlisted in my test)"]
+  end
+  A --> X
+  B --> X
+  C --> X
+  D --> X
+  E --> X
+  X --> F
+  X --> G
+  X --> H

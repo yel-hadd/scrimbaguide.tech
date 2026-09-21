@@ -1,0 +1,15 @@
+sequenceDiagram
+  participant U as You
+  participant C as Claude Code
+  participant M as Scrimba MCP server
+  participant B as Browser
+  U->>C: "Explain this PR as a video"
+  C->>C: Read the diff and files
+  C->>M: start_explainer_stream
+  M-->>C: draft URL + authoring rules
+  C->>M: append_explainer_chunk (slides + narration)
+  C->>M: finish_explainer_stream
+  C-->>U: explainer link
+  U->>B: open link, signed in
+  B->>M: claim the draft
+  M-->>B: images and voice render, video plays

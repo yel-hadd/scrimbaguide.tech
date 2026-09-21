@@ -1,10 +1,12 @@
 ---
-title: "Learn Next.js"
+title: "Learn Next.js on Scrimba: 2026 Review"
 sidebar_position: 15
-description: "Bob Ziroll's free Next.js course on Scrimba: about 8.5 hours across three modules on routing, layouts, data fetching, rendering strategies, and server actions."
-keywords: [scrimba learn nextjs, learn nextjs scrimba, free nextjs course, bob ziroll nextjs, nextjs after react]
+sidebar_label: "Learn Next.js"
+description: "Learn Next.js on Scrimba from inside: 8.5 hours, 123 scrims, two teachers, one PrintForge app on Next 15 and SQLite, and six early scrims that no longer run."
+keywords: [scrimba learn nextjs, learn nextjs scrimba review, free nextjs course, bob ziroll nextjs, rachel johnson scrimba, nextjs after react, scrimba nextjs review]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
+toc_max_heading_level: 2
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -12,16 +14,17 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Next.js
 
-Scrimba's free Next.js course, taught by Bob Ziroll across roughly 8.5 hours: the framework most React developers reach for when a single-page app is no longer enough. A third module shipped in 2026 and nearly doubled its length.
+Scrimba's free Next.js course, about 8.5 hours long, builds one project from a blank folder to a catalog backed by a database with search, sorting, and pagination. I opened every section and worked through a sample of lessons from each one with a Pro account in September 2026. Two things the listing does not tell you: the third section has a different teacher, and six scrims near the start no longer run inside Scrimba.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. It is sequenced into the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page lists it under both the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-Learn Next.js is Scrimba's free, intermediate course on Next.js, the most popular React fullstack framework. About 8.5 hours across three modules, taught by Bob Ziroll. You cover file-based routing, shared layouts, data fetching, the rendering strategies (server, static, client) that define how a Next.js app behaves, and a third module on moving data through an app with server actions and mutations. It assumes you already know React. If you do, this is the natural next step.
+Learn Next.js is Scrimba's free, intermediate Next.js course: about 8.5 hours across three sections, 123 scrims by my count, taught by Bob Ziroll for the first two sections and Rachel Johnson for the third. You build PrintForge, a site where 3D printing enthusiasts browse models, first as static pages with the App Router, then with a SQLite database, a data layer, and search, sort, and pagination driven by the URL. It runs Next 15.2.4 on React 19 with TypeScript and Tailwind. It assumes you already know React. If you do, and you keep being told to learn Next.js next, this is the course to take; just plan to do six of the early challenges in a local editor.
 
 <CourseCard
   title="Learn Next.js"
@@ -29,54 +32,147 @@ Learn Next.js is Scrimba's free, intermediate course on Next.js, the most popula
   difficulty="Intermediate"
   access="Free"
   modules={3}
-  lessons={127}
+  lessons={123}
   instructor="Bob Ziroll"
   instructorUrl="https://scrimba.com/@bobziroll"
   href="https://scrimba.com/learn-nextjs-c02moisq6a"
-  description="File-based routing, layouts, data fetching, and rendering strategies for React developers moving to the Next.js framework."
+  description="App Router routing, layouts, rendering strategies, and a SQLite data layer, built into one PrintForge project on Next 15."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/learn-nextjs/printforge-what-you-build-card.webp"
+    alt="Slide from the introduction of Scrimba's Learn Next.js course titled PrintForge, showing mobile and desktop mockups of the home page and the 3D models catalog you build"
+    width={1377}
+    height={775}
+    caption="Section 1 intro: PrintForge, the one project the whole course builds."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/learn-nextjs/chapter-2-rendering-strategies-title-card.webp"
+    alt="Title card reading Rendering Strategies from section 2 of Scrimba's Learn Next.js course"
+    width={1377}
+    height={775}
+    caption="Section 2: the rendering strategies lessons, the most slide-heavy part."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/learn-nextjs/chapter-3-making-data-flow-title-card.webp"
+    alt="Title card for section 3 of Scrimba's Learn Next.js course reading Section 3, How data flows through a Next app, Teacher: Rachel Johnson"
+    width={1377}
+    height={775}
+    caption="Section 3: Making Data Flow, where Rachel Johnson takes over."
+    source="Slides from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-It is free and it is taught by the same instructor as [Learn React](/docs/courses/react/learn-react/), so the style and notation carry over cleanly. For a React developer, that continuity matters: you are not relearning how the player works or how the teacher thinks, just adding the framework layer on top of what you already know.
+Yes, with two caveats. The format fits Next.js unusually well because a real `next dev` server runs inside the scrim: the Runner pane at the bottom prints `GET /3d-models?page=12 200 in 52ms` as you click through the preview, so you see server rendering happen instead of being told about it. The course is also built around one codebase. Bob says in the intro that he "decided to really hone in on one project and build it completely from scratch from beginning all the way to the end," and by the last scrim PrintForge has a `lib/` data layer, thirteen components, and a `printforge.db` file. That is closer to a real app than most free courses get.
 
-The honest caveat is that Next.js moves fast as a project, and a recorded course is a snapshot. The routing and rendering concepts here are durable, but specific API surface around the App Router and server components shifts between releases. Treat this as the conceptual foundation, then check the official docs for the exact current syntax.
+The first caveat is the "Bug Alert!" scrim, 48 seconds long, that appears second in the table of contents. Tom Chant explains that "a change to a service provided to Scrimba by a third party means that currently what Bob shows does not work in Scrims," and puts a red box around six scrims, from "A Minimal Next.js Setup" through "Running create-next-app." His advice is to watch them and "take the code offline and do the challenges in your local IDE." Once the course switches to Scrimba's Runner, at scrim nine, everything runs again. It is a real gap, and the course has not been re-recorded around it.
+
+The second is continuity. Bob teaches sections 1 and 2, then Rachel Johnson opens section 3 with "if we haven't met yet, I'm Rachel, and I'll be your instructor for the rest of the course." She rebuilds PrintForge from a finished HTML mockup with slightly different folder names, so the project you finish is not the one you started. Her section is the best material in the course, but if you expected 8.5 hours of Bob, adjust.
 
 ## What you'll learn
 
 <CourseCurriculum
   modules={[
-    { name: 'Build a Next.js App', duration: '2 hrs', lessons: 16 },
-    { name: 'Rendering Strategies and More', duration: '2.4 hrs', lessons: 16 },
-    { name: 'Making Data Flow', duration: '3.9 hrs', lessons: 64 },
+    { name: 'Build a Next.js App', duration: '2 hrs', lessons: 27 },
+    { name: 'Rendering Strategies and More', duration: '2.4 hrs', lessons: 25 },
+    { name: 'Making Data Flow', duration: '3.9 hrs', lessons: 71 },
   ]}
 />
 
-The first module gets you building a working app: routing, layouts, navigation, and pulling in data. The second is where Next.js earns its reputation, walking through the rendering strategies that decide whether a page is generated on the server, built statically, or hydrated on the client, and why that choice affects speed and SEO. That second module is the part you cannot get from a plain React course. The third, Making Data Flow, is the largest at 3.9 hours and the newest: it covers moving data through a Next.js app with server actions and mutations, which is where most real projects get stuck.
+Lesson counts are the scrims I counted in each expanded section in September 2026, 123 in total plus a one minute "How to Utilize Your Certificate" scrim that sits outside the sections. Scrimba's own figures differ: the section headers show 16, 16, and 64 (they leave out intros, asides, recaps, and the bug alert), while the course listing and its structured data say 127 lessons. Where other pages on this site quote 127, that is Scrimba's number. Eighty of the 123 scrims carry the "Challenge with Instant Feedback" icon, meaning an AI checks your code when you submit.
+
+## Inside the course, section by section
+
+### 1. Build a Next.js App (2 hrs, 27 scrims)
+
+Bob's intro sets the prerequisites plainly, "a solid foundation in HTML, CSS, JavaScript, and React," and names two tools he uses without teaching: Tailwind CSS and TypeScript. Then comes the bug alert, then the six scrims that no longer run: a minimal Next.js setup, a challenge to create an app from scratch, adding a page, file-based routing, and two scrims on `create-next-app`. Scrimba's "Runner" is where the working part of the course begins: a pane that runs `npm run dev` for you, with the Next.js compile log underneath the editor.
+
+From there the PrintForge build is a run of challenges. The home page challenge opens with a slide of the Figma design, mobile and desktop, and a note in the file that says "I won't expect you to put much effort into the CSS of the challenges." Bob explains the choice: "I've decided to use Tailwind CSS to do a majority of the styling for this project. I do wanna caution that I don't want Tailwind to become a distraction for you." The `package.json` in that scrim pins `next` 15.2.4 with React 19, Tailwind 3.4, and TypeScript 5.
+
+<Screenshot
+  src="/img/scrimba/learn-nextjs/printforge-home-page-challenge-lesson.webp"
+  alt="Scrimba Learn Next.js lesson Challenge, PrintForge Home Page paused at 0:09: a slide over the editor shows the Figma design of the home page on mobile and desktop, with the heading Discover what's possible with 3D printing, a Browse Models button and a hero image, while the file explorer on the left lists the app folder, layout.tsx and page.tsx"
+  width={1400}
+  height={656}
+  caption="The challenge brief at 0:09 of the home page scrim: the Figma mockup on a slide, then you write app/page.tsx yourself. The takeaway is that a top-level page.tsx inside app is your home route."
+/>
+
+After the home and about pages come nested routes, two scrims on layouts, a header challenge, and two long lessons (nine minutes each) on optimizing fonts and images with `next/font` and `next/image`. Links get their own scrim and a navbar challenge. Two asides follow, one on how TypeScript types are organized in PrintForge and one on client versus server components, before the models list challenge, a nine minute "Dynamic Routes" lesson, and the model detail page. A recap closes the section. Fourteen of the 27 scrims are AI-checked challenges.
+
+### 2. Rendering Strategies and More (2.4 hrs, 25 scrims)
+
+The first ten scrims are still PrintForge: a categories page challenge, a categories nav bar, an aside on `usePathname`, link refactors, two more lessons on client components, and challenges to style the active link and build category pages. Then the section changes gear. "Rendering Strategies Intro" is, in Bob's words, "a little bit slide heavy and is going to include some new terminology that you may not be familiar with." He frames the whole topic as giving your app "the ability to decide when and where a page's HTML is built," walks through build time, request time, and in-browser rendering, and then names the three strategies: SSG, ISR, and SSR.
+
+<Screenshot
+  src="/img/scrimba/learn-nextjs/rendering-strategies-ssg-isr-ssr-lesson.webp"
+  alt="Scrimba Learn Next.js lesson Rendering Strategies Intro paused at 6:59: a slide titled Rendering Strategies shows a table with rows for Static Site Generation, Incremental Static Regeneration and Server-side Rendering, columns for when and where each is rendered, and the note depending on your code"
+  width={1400}
+  height={656}
+  caption="The summary table at 6:59. Notice that every row says on server: Bob's point is that Next.js renders routes on the server by default and the strategy only changes when."
+/>
+
+The practical half uses a separate, smaller project, Cat Facts, written in plain `.jsx` rather than TypeScript. Bob turns the Runner off and uses the terminal instead, so you type `npm run build` and `npm start` yourself and read the build output, where a circle marks a static route and an "f" marks a dynamic one. Then you add `export const dynamic = 'force-dynamic'` and build again. He is candid about the dev overlay that claims to show static or dynamic: "I haven't actually found it to be the most reliable way to tell." The remaining scrims add a fetch, a "Structured Play" exercise, a lesson on why HTML form submissions are navigation events, two scrims on `searchParams`, a PrintForge search bar using a native form, and an upgrade to Next's `Form` component. A "Tiny Library Solo" scrim, a recap, and a two minute Scrimbassador (affiliate program) pitch close the section.
+
+Scrimba's own description of this section on the course page talks about SQLite, seeding, search, sorting, and pagination. That text describes section 3, not this one. Twelve of the 25 scrims are AI-checked challenges.
+
+### 3. Making Data Flow (3.9 hrs, 71 scrims)
+
+Rachel Johnson's section is almost as long as the other two combined, and it is built from short scrims, most between two and four minutes. It opens with what she calls a "recap gauntlet": three challenge scrims that rebuild the PrintForge shell, the models section, and the dynamic routes from a static mockup. Her reason is a good one: "Instead of building everything step by step from scratch, you'll be working from a finished HTML and tailwind mock up. This happens quite a lot in real life where you're handed static code and your job is to bring it to life." This version of PrintForge is on Tailwind 4.
+
+Then the data work starts. "Setting Up the PrintForge Database" installs `sqlite` 5.1.1 and `sqlite3` 5.1.7 (she pins the versions because "only version five of SQLite three works reliably in the Scrimba environment") and creates `lib/db.ts` with a `getDBConnection()` function. The `lib` folder, she explains, "is where our data layer will live," the middle layer between the UI in `app/` and the `printforge.db` file. Two seeding scrims fill the models and categories tables, then a run of scrims reads from the database, renders category links from data, makes the model cards dynamic, filters with SQL `WHERE`, and builds dynamic category and single-model pages.
+
+The rest of the section adds features one URL parameter at a time. Search reads `searchParams` on the server and matches on name or description. Sorting moves the controls into a client component and refactors `getModels()` to take an options object. Loading states get a `loading.tsx` per route and pending UI with `useTransition`. Pagination, the longest run, goes from `LIMIT` and `OFFSET` to styled buttons on the category pages as well. The last few scrims get defensive: out-of-bounds page params, invalid sort params, and a redirect bug to debug.
+
+<Screenshot
+  src="/img/scrimba/learn-nextjs/final-pagination-challenge-lesson.webp"
+  alt="Scrimba Learn Next.js lesson Final Pagination Challenge paused at 4:49: the editor shows PaginationButton.tsx with usePathname, useRouter and useSearchParams, a handlePageChange function that sets the page param and pushes the URL, and a button rendering label or page; the preview on the right shows the PrintForge catalog at /3d-models?page=12 with pagination buttons for previous, 11, 12, 13 and next, and the Runner logs GET requests"
+  width={1400}
+  height={656}
+  caption="The solution at 4:49 of the final challenge: a label prop turns the first and last buttons into arrows, and the preview shows page 12 of the catalog. The Runner log underneath is the real Next.js dev server responding to each click."
+/>
+
+The final challenge is typical of her style. The brief is a markdown file in the project, she describes the target ("two arrows back takes us to the first page, two arrows forward takes us to the last page, and the middle buttons show the current page and its two closest neighbors"), and then: "It would be interesting to see how you go about it. Afterwards, I'll walk you through how I would do it." Fifty-four of the 71 scrims are AI-checked challenges. The outro recaps nine parts and ends with "in the next section, we will build on top of this foundation," so the course is still growing.
+
+## What a lesson actually feels like
+
+Bob's scrims run two to ten minutes and mix slides with live editing; Rachel's are shorter and almost all code, usually one function or one component per scrim. In both, a challenge is a comment block or a markdown file in the project plus a pause in the recording. You write the code, save, watch the preview and the Runner log, then resume to see the walkthrough. Eighty scrims have AI feedback on your submission.
+
+The preview pane is a real Next.js app served on port 3000 inside the scrim, which is the difference from a React course: you watch the Runner compile, see the request log, and in section 2 you run the production build yourself in a terminal. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed. Both teachers point you outward when you get stuck. Bob suggests the Discord or "open up ChatGPT or your AI of choice and ask questions to it. It turns out it's very good at explaining these different concepts."
+
+## Free or Pro: exactly what is gated
+
+The whole course is free: all three sections, every challenge, and the AI feedback on them. There are no "Solo Project (PRO)" items in this course's table of contents, which makes it unusual among Scrimba's flagship courses. Only the introduction carries the SAMPLE badge, but every other scrim opened for me without a wall, and the catalog lists the course under Free.
+
+Pro gates the certificate (the one minute "How to Utilize Your Certificate" scrim sits outside the sections), the two career paths this course belongs to, and the Pro-only Discord help channels. Bob is precise about the last one in the intro: "although these specific help channels are dedicated for Scrimba Pro members, there are many other community channels in the Scrimba Discord server that you could ask questions in." Scrimba's pricing page lists basic Discord access as free, so the server alone is not a reason to upgrade. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you want the path structure around the course.
+
+## How long it really takes
+
+8.5 hours is video runtime. With 80 AI-checked challenges, a build-and-inspect exercise in section 2, and a 71 scrim data section where nearly every lesson asks you to type, plan for 20 to 25 hours: three to four weeks at an hour a day. Add two or three hours if you do the six broken scrims properly in a local editor, which means installing Node and running `create-next-app` yourself. Section 3 alone is 3.9 hours of video and took the largest share of my time because each scrim ends with a save-and-check loop.
 
 ## Who it's for, and who should skip it
 
-It fits React developers who want to ship real, multi-page, SEO-friendly apps rather than client-only SPAs. If you have finished a React course and keep hearing "just use Next.js," this answers why.
+It fits you if you have finished [Learn React](/docs/courses/react/learn-react/) or the equivalent and want to ship multi-page apps rendered on the server with real data. It is also a good fit if you learn best by extending one codebase rather than starting a new toy project every module; PrintForge is the only project in sections 1 and 3.
 
-Skip it if you have not learned React yet. Next.js is a React framework, not a starting point; do [Learn React](/docs/courses/react/learn-react/) first. Also skip it if your project is a small client-side widget that never needs server rendering, because the framework's weight would not pay off.
+Skip it, for now, if you have not written React. Next.js is a framework on top of React, and Bob says the prerequisites out loud in the first scrim. Skip it if you want the current server actions, authentication, or deployment story; none of that is here yet, and the data layer is SQLite in the browser sandbox, not a hosted database. And if the six non-running scrims would bother you, know that they cover the local setup story, which the [Next.js roadmap](/docs/learn-nextjs/) on this site also outlines.
 
 ## Prerequisites
 
-Working React: components, props, hooks, and data fetching. A basic grasp of how HTTP requests and URLs work helps, since routing and server rendering lean on both. No prior Next.js needed.
+Working React: components, props, hooks, and `async`/`await`. Enough TypeScript to read a typed function signature; Bob keeps the types in a dedicated file so they do not become the focus. Enough Tailwind to recognize utility classes, or a willingness to ignore them. For section 3, basic SQL helps but is taught as you go: `WHERE`, `ORDER BY`, `LIMIT`, `OFFSET`, and `COUNT()` each get their own scrim. Nothing to install unless you choose to do the six early challenges locally.
 
 ## Where it fits
 
-Learn Next.js sits after the React fundamentals on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), where it becomes the bridge from frontend React into fullstack territory.
-
-## Free or Pro
-
-The course itself is free, with no subscription required. Scrimba Pro is a separate decision that unlocks the structured career paths, coding challenges, the private Discord, and certificates. If you only want this course, you never have to pay. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you later want the path structure.
+Learn Next.js is the Next.js module of the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), where it sits after the React, Node, Express, SQL, and TypeScript blocks, and it is the bridge from frontend React into fullstack work. Do [Learn React](/docs/courses/react/learn-react/) first. If section 3's SQL was the part you liked, [Learn SQL](/docs/courses/backend/sql/) goes deeper. If you would rather build the server yourself, [Learn Express.js](/docs/courses/javascript/expressjs/) and [Learn Node.js](/docs/courses/javascript/nodejs/) are the alternatives. For the type annotations you will see throughout, [Learn TypeScript](/docs/courses/typescript/learn-typescript/).
 
 ## Strengths and limits
 
-What it does well: it is free, it is taught by a strong, familiar instructor, and it focuses on the two things that actually distinguish Next.js from plain React, routing and rendering. The interactive format suits a framework you learn by building.
+What it does well: it is free with no Pro-gated projects, a real Next.js dev server runs inside the scrims from the Runner onward, the versions are recent (Next 15.2.4, React 19), section 3 builds a data layer with search, sort, pagination, loading states, and URL validation, and both teachers are clear about what they are skipping and why.
 
-Where it is limited: a fast-moving framework means some syntax will drift from the recording, the two-module scope keeps it introductory rather than exhaustive, and fast peer help depends on the Pro Discord.
+Where it is limited: six early scrims error inside Scrimba and have not been re-recorded, the teacher and the project structure change at section 3, the section 2 description on Scrimba's own page is wrong, and there is no coverage of server actions, auth, or deploying to a host. The outro promises another section, so treat the current scope as version one.
 
 ## Related courses and comparisons
 
@@ -84,12 +180,19 @@ Where it is limited: a fast-moving framework means some syntax will drift from t
 - [Advanced React](/docs/courses/react/advanced-react/), deeper React patterns
 - [Learn Node.js](/docs/courses/javascript/nodejs/), backend fundamentals for fullstack work
 - [Learn Express.js](/docs/courses/javascript/expressjs/), a lighter server alternative
+- [Learn SQL](/docs/courses/backend/sql/), for the queries section 3 introduces
+- [Next.js roadmap](/docs/learn-nextjs/), the free study plan around this course
 
 <FAQAccordion items={[
-  { q: "Is Learn Next.js free on Scrimba?", a: "Yes. The full course is free with no credit card or Pro subscription required. Pro is only needed for the career paths, certificates, and private Discord." },
-  { q: "Do I need to know React first?", a: "Yes. Next.js is a framework built on React. Finish Learn React or have equivalent experience before starting this one." },
-  { q: "Who teaches Learn Next.js?", a: "Bob Ziroll, the same instructor as the free Learn React course, so the style and notation carry over." },
-  { q: "Will the syntax match the current Next.js version?", a: "Mostly. The routing and rendering concepts are durable, but Next.js evolves quickly, so check the official docs for the exact current API around the App Router and server components." },
+  { q: "Is Learn Next.js free on Scrimba?", a: "Yes. All three sections, all 123 scrims, and the AI feedback on the 80 challenge scrims are free. There are no Pro-only solo projects in this course. Pro is needed only for the certificate, the career paths, and the Pro-only Discord channels." },
+  { q: "Who teaches Learn Next.js?", a: "Bob Ziroll teaches sections 1 and 2 (about 4.4 hours). Rachel Johnson teaches section 3, Making Data Flow (3.9 hours), and introduces herself as the instructor for the rest of the course. Tom Chant appears in a 48 second Bug Alert scrim." },
+  { q: "Do I need to know React first?", a: "Yes. The intro lists HTML, CSS, JavaScript, and React as prerequisites, and the first challenge already assumes you can write a component. Finish Learn React or the equivalent before starting." },
+  { q: "What do you build in the course?", a: "PrintForge, a site for browsing 3D printing models. Sections 1 and 3 build it: static pages, layouts, dynamic routes, image and font optimization, then a SQLite database, a data layer, search, sorting, pagination, loading states, and URL validation. Section 2 uses a small Cat Facts app to demonstrate rendering strategies." },
+  { q: "Which Next.js version does it use?", a: "Next 15.2.4 on React 19 with TypeScript 5, in every package.json I opened. Section 1 uses Tailwind 3.4; section 3 uses Tailwind 4. Section 3 adds sqlite 5.1.1 and sqlite3 5.1.7. The rendering strategies lessons use plain JSX." },
+  { q: "Do all the scrims run inside Scrimba?", a: "No. A Bug Alert scrim in section 1 marks six scrims, from A Minimal Next.js Setup through Running create-next-app, whose code errors in the browser because a third-party service changed after recording. Scrimba's advice is to watch them and do those challenges locally. From the Scrimba Runner scrim onward everything runs." },
+  { q: "Does it cover server actions or authentication?", a: "Not as of September 2026. Section 3 is about reading data: SQLite, a lib data layer, and search, sort, and pagination driven by URL params. The outro says another section will build on this foundation." },
+  { q: "How long does Learn Next.js take?", a: "About 8.5 hours of video, but plan for 20 to 25 hours with the challenges, or three to four weeks at an hour a day. Section 3 alone is 71 scrims." },
+  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/learn-nextjs-c02moisq6a" variant="button">
@@ -98,15 +201,15 @@ Where it is limited: a fast-moving framework means some syntax will drift from t
 
 <CourseSchema
   name="Learn Next.js"
-  description="Scrimba's free, intermediate Next.js course taught by Bob Ziroll. About 8.5 hours across three modules on routing, layouts, data fetching, rendering strategies, and server actions."
+  description="Scrimba's free, intermediate Next.js course taught by Bob Ziroll and Rachel Johnson. About 8.5 hours and 123 scrims building PrintForge on Next 15: App Router routing, layouts, rendering strategies, and a SQLite data layer with search, sorting, and pagination."
   url="https://scrimba.com/learn-nextjs-c02moisq6a"
   timeRequired="PT8H29M44S"
   difficulty="Intermediate"
   access="Free"
   keywords={["Next.js", "React", "Fullstack"]}
   modules={[
-    { name: 'Build a Next.js App', duration: '2 hrs', lessons: 16 },
-    { name: 'Rendering Strategies and More', duration: '2.4 hrs', lessons: 16 },
-    { name: 'Making Data Flow', duration: '3.9 hrs', lessons: 64 },
+    { name: 'Build a Next.js App', duration: '2 hrs', lessons: 27 },
+    { name: 'Rendering Strategies and More', duration: '2.4 hrs', lessons: 25 },
+    { name: 'Making Data Flow', duration: '3.9 hrs', lessons: 71 },
   ]}
 />

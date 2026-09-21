@@ -1,86 +1,186 @@
 ---
-title: "OpenAI Assistants API on Scrimba"
+title: "Learn OpenAI's Assistants API on Scrimba: 2026 Review"
 sidebar_position: 12
-description: "An honest look at Scrimba's Pro course on OpenAI's Assistants API: 30 minutes, 7 lessons on threads, file retrieval, and tool calling in JavaScript."
-keywords: [scrimba openai assistants api, openai assistants tutorial, assistants api javascript, ai assistant course, openai threads and tools]
+sidebar_label: "OpenAI Assistants API"
+toc_max_heading_level: 2
+description: "Inside Scrimba's 30 minute Pro course on OpenAI's Assistants API: every scrim read, the movie chatbot you build, and why the 2023 code has aged."
+keywords: [scrimba openai assistants api review, openai assistants tutorial, assistants api javascript, guil hernandez scrimba, openai threads runs messages, scrimba ai course review]
 last_update:
-  date: 2026-05-29
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
-# OpenAI Assistants API on Scrimba
+# Learn OpenAI's Assistants API
 
-Scrimba has a short Pro course on OpenAI's Assistants API, the toolkit for building assistant-style AI apps in JavaScript using threads, file retrieval, and tool calling. Taught by Guil Hernandez in about 30 minutes across 7 lessons, it sits on the applied end of the AI Engineer track.
+Scrimba's shortest AI course: about 30 minutes with Guil Hernandez, in which you turn a movie recommendation chatbot into an OpenAI "assistant" that answers from a text file. I read the transcript of every scrim and the code in each one with a Pro account in September 2026. The course is clear and quick, and it is also built on an API version that OpenAI has since moved away from, so read the age warning below before you spend a Pro slot on it.
 
-*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. It is a standalone course, not part of a career path.*
+*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. I saw no career path listed on Scrimba's course page; it is a standalone Pro course.*
 
 ## Quick answer
 
-The OpenAI Assistants API course is a Scrimba Pro course: roughly 30 minutes across 7 lessons, taught by Guil Hernandez, at an intermediate level. You build a knowledge-retrieval chatbot using the Assistants API's four primitives (Assistants, Threads, Messages, and Runs). It is a fast, focused introduction rather than a deep course, and it assumes you can already write JavaScript and call an API. The first lesson is a free sample; the rest needs Pro.
+Learn OpenAI's Assistants API is a 30 minute Pro course at an intermediate level. It has nine scrims in a flat list (no modules): seven taught by Guil Hernandez, plus Scrimba's standard Scrimbassador pitch and certificate scrims. You watch Guil build "ReelRecs," a chatbot that recommends movies from a `movies.txt` file, using the four pieces of the Assistants API: an Assistant, a Thread, Messages, and Runs. There are no challenges or solo projects; you type only if you choose to. The first scrim is free; the other eight need Pro.
+
+The catch is age. The code targets the original beta of the Assistants API from November 2023 (a `retrieval` tool, `file_ids`, and the `gpt-4-1106-preview` model), and OpenAI has since replaced that surface and announced it will retire the Assistants API in favor of its Responses API. Take it to understand the threads and runs model in half an hour. Do not take it expecting to paste the code into a 2026 project.
 
 <CourseCard
   title="Learn OpenAI's Assistants API"
   duration="30 min"
   difficulty="Intermediate"
   access="Pro"
-  lessons={7}
+  lessons={9}
   instructor="Guil Hernandez"
+  instructorUrl="https://scrimba.com/@Guilh"
   href="https://scrimba.com/learn/openaiassistants"
-  description="Build assistant-style AI apps in JavaScript with threads, file retrieval, and tool calling, in about 30 minutes."
-/>
-
-<CourseSchema
-  name="Learn OpenAI's Assistants API"
-  description="Scrimba's Pro course on OpenAI's Assistants API: build assistant-style AI apps in JavaScript using threads, file retrieval, and tool calling, taught by Guil Hernandez in about 30 minutes."
-  url="https://scrimba.com/learn/openaiassistants"
-  timeRequired="PT30M"
-  difficulty="Intermediate"
-  access="Pro"
-  keywords={["OpenAI Assistants API", "AI assistants", "tool calling", "JavaScript", "RAG"]}
+  description="Watch a movie chatbot get rebuilt on OpenAI's Assistants API in 30 minutes: assistant, thread, messages, run, and the polling loop that ties them together."
 />
 
 ## Is it worth your time?
 
-If you are already on the AI Engineer Path or paying for Pro, yes: 30 minutes to a working knowledge-retrieval assistant is a good trade, and the interactive scrims mean you build it rather than watch. It is one of the quickest ways to see the Assistants API end to end.
+If you already pay for Pro and want to know what "threads" and "runs" mean before you meet them in someone else's code, yes. Thirty minutes is a fair price for that. Guil moves fast, explains each object the API returns, and shows the response in the console every time. By the end you can read any Assistants API codebase and know which call does what.
 
-The honest caveats are length and platform specificity. At 7 lessons it is an orientation, not a thorough treatment, so do not expect production patterns like streaming, cost control, or evaluation. It is also tied to OpenAI's Assistants API specifically; the concepts (threads, retrieval, tool calling) transfer, but the code is OpenAI's surface. If you want a platform-neutral take on agents, [Learn AI Agents](/docs/courses/ai/ai-agents/) is broader.
+If you are choosing what to spend an evening on, I would pick something else first. This is a screencast, not a workshop. Guil says so in the third scrim: "if you're not set up just yet, no worries. Feel free to kick back and watch for now and experiment with the examples on your own time." Nothing in the course checks your work. Scrimba's other AI courses, such as [Learn AI Agents](/docs/courses/ai/ai-agents/) and [Learn RAG](/docs/courses/ai/rag/), make you build.
 
-One freshness note worth knowing before you start: OpenAI is migrating away from the Assistants API toward its newer Responses API, and the Assistants API is on a deprecation path. That does not waste the course. The mental model it teaches (managing conversation with threads, grounding answers with file retrieval, and letting the model trigger your functions via tool calling) is exactly what carries over to the Responses API and to other providers. Learn it for the primitives, and expect to port the specific calls when you build for production.
+The bigger issue is that the API moved. The scrims were recorded in November 2023 (the timestamps in the console output say so), during the first beta. OpenAI later renamed the `retrieval` tool to `file_search`, replaced `file_ids` with vector stores, and in 2025 said the whole Assistants API would be retired in favor of its Responses API. I did not run the code with my own key, so I cannot tell you which of these exact calls still succeed today. What still holds is the mental model: a persistent conversation the provider stores for you, a file the provider indexes for you, and a job you poll until it finishes. That is the part worth 30 minutes.
 
 ## What you'll learn
 
-The course works through the Assistants API's building blocks and ties them together into a movie chatbot that answers from an underlying dataset:
+<CourseCurriculum
+  summary="9 scrims in a flat list on Scrimba; the three groups below are my own reading of the sequence"
+  modules={[
+    { name: 'What the Assistants API is', duration: '7 min', lessons: 2 },
+    { name: 'Build ReelRecs: assistant, thread, messages, run, UI', duration: '23 min', lessons: 4 },
+    { name: 'Wrap-up and Scrimba house scrims', duration: '4 min', lessons: 3 },
+  ]}
+/>
 
-- **Assistants, Threads, Messages, and Runs**, the four primitives the API is built on
-- **Threads** so conversation history is managed for you instead of by hand
-- **File retrieval** so the assistant can answer from documents you supply
-- **Tool calling** so the assistant can trigger your own functions rather than only generating text
-- **Bringing it together** into a working, knowledge-aware assistant
+Scrimba's course page and its structured data both say nine lessons, which matches the nine scrims I counted; the scrim durations add up to about 33.5 minutes, of which 30.5 is Guil's teaching, so the "30 min" label is accurate for the course itself. The older version of this page said seven lessons, which is the count without the two Scrimba house scrims.
+
+## Inside the course, scrim by scrim
+
+### 1. What the Assistants API is (7 min, 2 scrims)
+
+The intro, "Introducing the Assistants API," is the free sample and a slide video rather than a coding scrim. Guil frames the API as RAG with the plumbing removed: "They've built RAG right into the Assistants API." If RAG is new to you, it stands for retrieval augmented generation, the pattern where you search your own documents and hand the matching text to the model. He also sets the expectation that matters most in hindsight, at 2:33: "keep in mind that it's still in beta and under active development."
+
+"How OpenAI Assistants work" covers the three tools an assistant can be given: code interpreter (Python in a sandbox), knowledge retrieval, and function calling. Then Guil walks through OpenAI's flow diagram: create the assistant, create a thread, add messages, run it. He ends by showing the ReelRecs chatbot from his embeddings course, built the long way with chunking, an embeddings model, and a vector database. The point of the next four scrims is to rebuild it with fewer steps.
+
+### 2. Build ReelRecs (23 min, 4 scrims)
+
+The project is five files: `config.js`, `index.html`, `index.css`, `index.js`, and `movies.txt`, with one dependency, `openai@4.17.4`. Before anything runs you need your own OpenAI API key saved as an environment variable in Scrimba; the third scrim points you to a separate scrim on how to do that.
+
+"Create an Assistant" (5:32) is the densest lesson. Guil calls `openai.beta.assistants.create` with instructions ("You are great at recommending movies..."), a name, `tools: [{ type: "retrieval" }]`, the model, and a `file_ids` array. To get a file ID he uploads `movies.txt` with `openai.files.create`, using `fetch` because the scrim runs in a browser and cannot read a file system. The line worth remembering comes at 4:18: "once a file is uploaded and passed to the assistant, OpenAI will automatically chunk your document, index, and store the embeddings," and then, "That's more than half of the usual RAG process right there."
+
+"Create a Thread and Messages" (2:43) is short. A thread is "initiated by the user, and it's where the message history gets stored." He creates one, copies its ID into a variable, and adds a user message with `role: "user"` and the content "Can you recommend a comedy?". The assistant does not reply yet, and that is the setup for the next scrim.
+
+"Running Assistants" (5:44) introduces the piece that makes this API different from chat completions. As Guil puts it at 0:12, "A run is what makes the assistant read the thread and decide how to best answer the user's query by either calling certain tools or simply using the model." He creates a run, shows its status starting at `queued`, walks the lifecycle chart (queued, in progress, completed, expired, failed), retrieves the run to confirm it completed, then lists the thread's messages.
+
+<Screenshot
+  src="/img/scrimba/openaiassistants/running-assistants-barbie-reply-lesson.webp"
+  alt="Scrimba Learn OpenAI's Assistants API, lesson Running Assistants paused at 4:28: index.js shows the thread messages array pasted in as a comment, with the assistant's reply beginning I recommend Barbie highlighted, the asstID and threadID variables, and a listMessages function calling openai.beta.threads.messages.list; the sidebar lists openai@4.17.4 as the only dependency"
+  width={1400}
+  height={617}
+  caption="4:28 of Running Assistants. Guil pastes the console output into the file so you can read the message object: the assistant's reply (it recommends Barbie and The Menu, both from movies.txt) sits at index 0 of the data array, the user's question at index 1. Note the created_at timestamps from November 2023 and the [source] annotations he removes in the next scrim."
+/>
+
+"Bring it all together" (8:50) is the longest scrim and the one that teaches you something the docs did not. Guil wires the calls to a form: create a message from the input, create a run, list messages, put the newest one on the page. It fails. The reply is the user's own question echoed back, because the run has not finished when the messages are read. "This is where the Assistants API and threads currently gets a bit weird," he says at 3:45.
+
+<Screenshot
+  src="/img/scrimba/openaiassistants/reelrecs-run-lifecycle-echo-bug-lesson.webp"
+  alt="Scrimba Learn OpenAI's Assistants API, lesson Bring it all together paused at 3:44: the ReelRecs preview window shows the input How can I help and, where the answer should be, the user's own question What's a good action movie? echoed back, with the blurred index.js editor behind it"
+  width={1400}
+  height={617}
+  caption="3:44 of Bring it all together: the first bug. The page reads the thread before the run finishes, so the newest message is still the user's question. This is the moment the run lifecycle stops being a diagram."
+/>
+
+The fix is a polling loop: retrieve the run, wait 1.5 seconds, check again, until the status is `completed`. Guil is honest that he improvised it: "the OpenAI API docs doesn't exactly provide any snippets or even tips about polling for updates, but I did manage to put together some code that works for our app." He then adds run-level instructions to strip the `[source]` annotations, keep answers short, and refuse off-topic questions. The final demo asks for a follow-up ("which ones are great for children?"), an ambiguous query ("the movie with the actress from Her"), a memory check ("do you remember my name?"), an off-topic question about the sun, and finally "something that gives an adrenaline rush."
+
+<Screenshot
+  src="/img/scrimba/openaiassistants/reelrecs-finished-assistant-top-gun-lesson.webp"
+  alt="Scrimba Learn OpenAI's Assistants API, lesson Bring it all together paused at 8:41: the finished ReelRecs chatbot in the preview window recommends Top Gun: Maverick for an adrenaline-pumping experience in a short paragraph with no source annotations; a green completed check shows in the lesson header"
+  width={1400}
+  height={617}
+  caption="8:41, the finished app. Short reply, no annotations, and the recommendation comes from movies.txt. Everything you see was done with about 50 lines of index.js."
+/>
+
+### 3. Wrap-up and house scrims (4 min, 3 scrims)
+
+"More to explore" (1:02) is a slide with links into the docs: modify and delete assistants, modify threads and messages, create-and-run in one request, cancel a run. Guil signs off with "Thanks, and happy building." The remaining two scrims are not his. "Want to become a Scrimbassador?" is a two minute pitch for Scrimba's referral program by Per from Scrimba, and "How to Utilize Your Certificate" is the one minute LinkedIn nudge that closes most Scrimba courses.
+
+## What a lesson actually feels like
+
+Every scrim is Guil narrating over the editor with the ReelRecs preview floating in front of it when he tests. The pattern is the same each time: copy a snippet from OpenAI's API reference, paste it into `index.js`, fill in the IDs, run it, read the returned object in the console, copy the ID you need into a variable. Because it is a scrim and not a video, you can pause at any point, click into the editor, and run his code with your own key, and the transcript panel under the settings menu gives you every line with timestamps. Subtitles come in ten languages.
+
+There are no challenge scrims in the list and no "Challenge with Instant Feedback" icons on any of them. The tone is relaxed; Guil's most-used word is "Alright." If you like Scrimba because it makes you type, this course will feel passive. If you want a fast, well-narrated walkthrough you can scrub through, it is exactly that.
+
+## Free or Pro: exactly what is gated
+
+The first scrim, "Introducing the Assistants API," carries the SAMPLE badge and plays without Pro. That scrim is the slide intro with no code. The other eight scrims, including every build step, need Pro, and so does the Certificate of Completion listed at the end of the course. There are no Solo Project items in this course, so Pro is not gating an extra project here, just the course itself.
+
+Scrimba's Discord is not a Pro feature: the pricing page lists basic access under the free plan and the Pro-only channels under Pro. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro includes across the catalog.
+
+## How long it really takes
+
+The teaching runs 30.5 minutes. Watching once, pausing to read each returned object, takes about 45 minutes. If you set up your own OpenAI key in Scrimba's environment variables and run each step yourself, plan for 60 to 90 minutes, mostly spent waiting on runs and reading console output. If you then try to port the code to the current API, that is a separate afternoon and the course will not help you with it.
 
 ## Who it's for, and who should skip it
 
-It fits JavaScript developers who want a fast, practical first build on the Assistants API, especially anyone prototyping an internal copilot or a retrieval-backed chatbot.
+Take it if you are already on Scrimba Pro, you know what `async`/`await` and `fetch` do, and you want the assistant, thread, message, and run vocabulary explained once, properly, by someone who shows the response objects. It also fits anyone maintaining an older codebase that still uses `openai.beta.assistants` and needs to understand it quickly.
 
-Skip it if you are new to coding: it assumes working JavaScript and API familiarity. Start with the free options first: [Learn to Code with AI](/docs/courses/ai/to-code-with-ai/), [Intro to Mistral AI](/docs/courses/ai/mistral-ai/), and [Build Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase/).
+Skip it if you want to build something you will ship in 2026; start with [Learn AI Agents](/docs/courses/ai/ai-agents/) or [Learn RAG](/docs/courses/ai/rag/), which teach the same ideas on surfaces that are still current. Skip it too if you are new to JavaScript. The code is short but Guil assumes you can read an async function, a promise, and a nested object path like `data[0].content[0].text.value` without help.
+
+## Prerequisites
+
+Working JavaScript, including `async`/`await` and `fetch`. An OpenAI API account with a key you can add to Scrimba's environment variables; the third scrim expects it and points to a setup scrim. Guil twice refers to his embeddings and vector databases course as the place ReelRecs came from, so having done [Learn RAG](/docs/courses/ai/rag/) or something similar makes the "this replaces the vector database" argument land, but it is not required.
 
 ## Where it fits
 
-This course sits within the [AI Engineer Path](/docs/paths/ai-engineer-path/), alongside the other applied AI courses, and is taken after the fundamentals rather than as a first step.
+This is a standalone Pro course under Scrimba's AI topic; I did not see it listed in the [AI Engineer Path](/docs/paths/ai-engineer-path/). On this site it sits at the applied end of the [AI courses catalog](/docs/courses/ai/), next to [Learn RAG](/docs/courses/ai/rag/), which teaches the manual pipeline this API was designed to hide, and [Learn AI Agents](/docs/courses/ai/ai-agents/), which covers tool calling in a provider-neutral way. Read it as historical context for those two rather than as a prerequisite.
+
+## Strengths and limits
+
+What it does well: it is short and honest about its scope, Guil shows every object the API returns instead of describing it, the polling bug in the final scrim is a real lesson about asynchronous jobs that most tutorials skip, and the whole thing fits in a lunch break.
+
+Where it is limited: the code targets the November 2023 beta (`retrieval`, `file_ids`, `gpt-4-1106-preview`), OpenAI has since changed and then deprecated that API, there are no challenges or projects of your own, and you need your own OpenAI API key to run anything. Nothing about streaming, cost, or evaluation is covered.
+
+## Related courses and comparisons
+
+- [Learn RAG](/docs/courses/ai/rag/), the manual version of what the Assistants API automates
+- [Learn AI Agents](/docs/courses/ai/ai-agents/), tool calling and agent loops without the OpenAI-specific surface
+- [Intro to AI Engineering](/docs/courses/ai/ai-engineering/), the broader starting point
+- [Learn to Code with AI](/docs/courses/ai/to-code-with-ai/), [Intro to Mistral AI](/docs/courses/ai/mistral-ai/), and [Build Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase/), the free AI courses
+- [AI Engineer Path](/docs/paths/ai-engineer-path/), if you want the full sequence
 
 <FAQAccordion items={[
-  { q: "Is this course free?", a: "It is a Scrimba Pro course with a free sample lesson. The full 7-lesson course needs Pro. For fully free starting points, try Learn to Code with AI, Intro to Mistral AI, or Build Serverless AI Agents with Langbase." },
-  { q: "How long is the course?", a: "About 30 minutes across 7 lessons, taught by Guil Hernandez at an intermediate level." },
-  { q: "What does the Assistants API let you build?", a: "Assistant-style AI apps in JavaScript using threads for conversation history, file retrieval for documents, and tool calling so the assistant can run your functions. It is a common way to prototype internal copilots and retrieval chatbots." },
-  { q: "Do I need prior experience?", a: "Yes. It assumes working JavaScript and familiarity with calling an API. Newcomers should start with the free AI courses on the path first." },
-  { q: "Where does it fit on the AI Engineer Path?", a: "It is one of the applied AI courses on the path, taken after the fundamentals rather than as a first step." },
+  { q: "Is Learn OpenAI's Assistants API free on Scrimba?", a: "Only the first scrim, the slide introduction, is free (it carries the SAMPLE badge). The eight remaining scrims, including all four build steps, and the certificate need Scrimba Pro." },
+  { q: "How long is the course?", a: "Nine scrims totalling about 33 minutes, of which 30.5 minutes is Guil Hernandez teaching; the last two scrims are Scrimba's referral pitch and certificate reminder. Budget 45 minutes to watch with pauses, or 60 to 90 minutes if you run every step with your own key." },
+  { q: "Who teaches it?", a: "Guil Hernandez, who also teaches Scrimba's embeddings and vector database material; he refers back to it twice. The two closing scrims are voiced by Scrimba staff." },
+  { q: "What do you build?", a: "ReelRecs, a one-input chatbot that recommends movies from a movies.txt file. You create an assistant with the retrieval tool, a thread, a user message, and a run, then wire it to a form with a polling loop that waits for the run to complete." },
+  { q: "Is the code still current?", a: "No. It was recorded in November 2023 on the first beta, using the retrieval tool, file_ids, and gpt-4-1106-preview. OpenAI later replaced those with file_search and vector stores and has announced the Assistants API will be retired in favor of the Responses API. I did not run the code with my own key, so treat the calls as historical and the concepts as the takeaway." },
+  { q: "Do I need an OpenAI API key?", a: "Yes, if you want to run anything. The third scrim tells you to add your key as an environment variable in Scrimba before starting and points to a setup scrim; without it you can still watch." },
+  { q: "Are there challenges or a solo project?", a: "No. There are no challenge scrims, no quizzes, and no Solo Project items. It is a watch-and-follow screencast you can pause and edit." },
+  { q: "Does it have transcripts?", a: "Yes. Every scrim has a timestamped transcript under the settings menu and subtitles in ten languages." },
 ]} />
 
-<div className="mdx-widget-center-cta mdx-widget-center-cta--spaced-bottom">
-  <AffiliateLink href="https://scrimba.com/learn/openaiassistants" variant="button" location="openai-assistants-cta">
-    View the course on Scrimba
-  </AffiliateLink>
-</div>
+<AffiliateLink href="https://scrimba.com/learn/openaiassistants" variant="button" location="openai-assistants-cta">
+  View Learn OpenAI's Assistants API on Scrimba
+</AffiliateLink>
+
+<CourseSchema
+  name="Learn OpenAI's Assistants API"
+  description="Scrimba's 30 minute Pro course on OpenAI's Assistants API, taught by Guil Hernandez. Nine scrims rebuilding a movie recommendation chatbot with an assistant, thread, messages, and runs on the 2023 beta surface."
+  url="https://scrimba.com/learn/openaiassistants"
+  timeRequired="PT30M40S"
+  difficulty="Intermediate"
+  access="Pro"
+  keywords={["OpenAI Assistants API", "AI assistants", "threads and runs", "JavaScript", "RAG"]}
+  modules={[
+    { name: 'What the Assistants API is', duration: '7 min' },
+    { name: 'Build ReelRecs: assistant, thread, messages, run, UI', duration: '23 min' },
+    { name: 'Wrap-up and Scrimba house scrims', duration: '4 min' },
+  ]}
+/>

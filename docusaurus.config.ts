@@ -113,7 +113,10 @@ function sitemapPriority(pathname: string): number {
   ) {
     return 0.8;
   }
-  if (pathname === '/docs/how-it-works/using-scrimba') {
+  if (
+    pathname === '/docs/how-it-works/using-scrimba' ||
+    pathname === '/docs/how-it-works/scrimba-explain'
+  ) {
     return 0.8;
   }
 
@@ -554,6 +557,7 @@ const config: Config = {
           position: 'left',
           items: [
             { to: '/docs/intro', label: 'What is Scrimba?', icon: 'BookOpen', description: "How Scrimba's interactive scrims work and why they're different" },
+            { to: '/docs/how-it-works/scrimba-explain/', label: 'Scrimba Explain', icon: 'Sparkles', description: 'The AI explainer tool: free quota, entry points, and how it works' },
             { to: '/docs/comparisons/', label: 'Comparisons', icon: 'Scale', description: 'How Scrimba stacks up against Codecademy, Udemy, and others' },
             { to: '/docs/pricing/', label: 'Pricing', icon: 'Tag', description: 'Compare Pro vs Free plans and find the best value' },
             { to: '/docs/faq/', label: 'FAQ', icon: 'CircleHelp', description: 'Answers to the most common questions about Scrimba' },

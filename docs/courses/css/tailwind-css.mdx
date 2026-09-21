@@ -1,10 +1,12 @@
 ---
-title: "Learn Tailwind CSS"
+title: "Learn Tailwind CSS on Scrimba: 2026 Review"
 sidebar_position: 7
-description: "Scrimba's hands-on Tailwind course, taught by Rachel Johnson: the essentials plus five real projects. Who it suits and what it assumes about your CSS."
-keywords: [scrimba learn tailwind css, tailwind css course, rachel johnson tailwind, tailwind utility classes course, interactive tailwind course]
+toc_max_heading_level: 2
+sidebar_label: "Learn Tailwind CSS"
+description: "Rachel Johnson's Learn Tailwind CSS course reviewed from inside: 2.2 hours, 33 scrims, a plant blog build and five challenges, what Pro gates, real time cost."
+keywords: [scrimba learn tailwind css, learn tailwind css scrimba review, tailwind css course, rachel johnson tailwind, tailwind utility classes course, interactive tailwind course]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -12,16 +14,17 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Tailwind CSS
 
-Scrimba's main Tailwind course, taught by Rachel Johnson: about 2.2 hours that take you from the utility-class essentials into five real projects.
+Scrimba's Tailwind course, taught by Rachel Johnson: about 2.2 hours that walk you from `w-64` and `bg-slate-700` to a responsive blog and five styling challenges. I opened both modules and read the transcript of every scrim with a Pro account in September 2026; what follows is what is in there, not the listing rewritten.
 
-*This page is part of our [Scrimba CSS courses](/docs/courses/css/) catalog. It is sequenced into the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*This page is part of our [Scrimba CSS courses](/docs/courses/css/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/), the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), and the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
 
 ## Quick answer
 
-Learn Tailwind CSS is a Pro-tier, intermediate course: roughly 2.2 hours across two modules and 65 lessons, taught by Rachel Johnson. It teaches Tailwind's utility-first approach, then puts it to work across five real projects. This is the main Tailwind course in the catalog; the standalone product-card project is a smaller companion to it. It assumes you already know CSS and want to learn the framework on top.
+Learn Tailwind CSS is a short, Pro-tier course: 2.2 hours across two modules and 33 scrims, taught by Rachel Johnson. The first module teaches Tailwind one utility family at a time (sizing, colors, spacing, typography, flexbox, borders, modifiers, breakpoints) and applies each one to a plant-lovers' blog you style from a mockup. The second module is five challenges, each with a mockup brief and a recorded solution: a Pomodoro layout, a cattery testimonials section, a neon pricing table, a tea subscription preferences form, and a 404 page with header and footer. It assumes you already know CSS, flexbox in particular. If you do, it is a quick, clearly sequenced way to get comfortable reading and writing utility classes.
 
 <CourseCard
   title="Learn Tailwind CSS"
@@ -32,73 +35,177 @@ Learn Tailwind CSS is a Pro-tier, intermediate course: roughly 2.2 hours across 
   instructor="Rachel Johnson"
   instructorUrl="https://scrimba.com/@rachelktyjohnson"
   href="https://scrimba.com/learn-tailwind-css-c010"
-  description="A hands-on Tailwind course covering the utility-first essentials and then five real projects."
+  description="Tailwind's utility classes taught one family at a time, applied to a responsive blog, then tested in five mockup-to-code challenges."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/learn-tailwind-css/chapter-1-learn-tailwind-css-title-card.webp"
+    alt="Title card of Scrimba's Learn Tailwind CSS course: Scrimba Course, Learn Tailwind CSS, Teacher: Rachel Johnson, on a grainy purple and olive gradient"
+    width={1279}
+    height={720}
+    caption="Module 1: the course intro slide."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/learn-tailwind-css/chapter-2-tailwind-css-challenges-title-card.webp"
+    alt="Title card of the Tailwind CSS Challenges module in Scrimba's Learn Tailwind CSS course, Teacher: Rachel Johnson"
+    width={1279}
+    height={720}
+    caption="Module 2: the five challenges."
+    source="Module title cards from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-Tailwind is one of the most in-demand front-end skills right now, and this is an efficient, hands-on way to pick it up. The course does the sensible thing: teach the utility-class mental model first, then immediately apply it to real projects so the approach stops feeling like a pile of cryptic class names and starts feeling like a faster way to build. Doing it in the player, where you watch styles apply as you type classes, suits the framework well.
+Yes, if your CSS is already solid and you want to stop squinting at class strings like `flex items-center justify-between gap-4`. The course is built around a single idea: every Tailwind class maps to a CSS property you already know, so the job is learning the naming scheme, not learning layout. Rachel says as much before the flexbox lesson: "I'm going to assume that you're already familiar with how Flexbox works, and we're going to focus on how to use Tailwind to apply Flexbox properties quickly and efficiently."
 
-The honest caveat is the prerequisite. Tailwind is a layer over CSS, not a replacement for understanding it. If you do not already know what `flex`, `grid`, and the box model do, the utility classes will be names without meaning. Make sure your CSS is solid first. And at 2.2 hours it teaches the framework well but does not chase every advanced configuration topic; that depth comes from building real projects afterward.
+The format suits Tailwind unusually well. You type a class into the editor, save, and the preview beside it changes. That feedback loop is the whole pitch of utility-first CSS, and the player gives it to you without a build step. The project loads Tailwind from the `cdn.tailwindcss.com` script tag, and the intro warns you about the "CDN isn't optimized for production" notice you will see on every save.
+
+Two caveats. First, it is short and it knows it: the outro says "this course was just an introduction to Tailwind" and points you to the docs for everything it skipped (grid utilities, custom configuration, dark mode, arbitrary values, and any build tooling). Second, the CDN it uses is the Tailwind 3 Play CDN. If you install Tailwind 4 locally afterwards, the classes still work but the setup looks different, and the course does not cover installing anything.
 
 ## What you'll learn
 
 <CourseCurriculum
   modules={[
-    { name: 'Learn Tailwind CSS', duration: '83 min' },
-    { name: 'Tailwind CSS Challenges', duration: '48 min' },
+    { name: 'Learn Tailwind CSS', duration: '83 min', lessons: 21 },
+    { name: 'Tailwind CSS Challenges', duration: '48 min', lessons: 12 },
   ]}
 />
 
-The first module teaches the framework: the utility-class approach, the spacing and sizing scale, responsive prefixes, and how to compose classes into real layouts without writing custom CSS. The second module is challenges, where you apply what you learned across projects rather than following along passively. That build-and-apply half is where the framework actually clicks, and it is what separates knowing the syntax from being productive in it.
+Lesson counts are the scrims I counted in each expanded module in September 2026, plus one 53 second "How to Utilize Your Certificate" clip that sits after the certificate outside both modules. Scrimba's own figures differ. The module headers read 0/13 and 0/0, which match neither the scrims you click nor the challenge icons. The course listing and its structured data say 65 lessons, which counts the clips inside scrims rather than the scrims you click. When other pages on this site quote 65 lessons, that is Scrimba's number.
 
-For one more focused rep, the shorter [Build a Product Card with Tailwind CSS](/docs/courses/css/a-product-card-with-tailwind-css/) project pairs well as a companion piece.
+Twelve scrims in module one carry the small "Challenge with Instant Feedback" icon (Element Sizing through Flexbox, plus Layout and Extra Styling). The challenges live as comments in the HTML, and Rachel's solution follows in the same scrim after a pause.
+
+## Inside the course, module by module
+
+### 1. Learn Tailwind CSS (83 min, 21 scrims): utilities, then the plant blog
+
+The first two scrims are free previews. The welcome shows the finished project, "a simple blog that plant lovers can contribute to," and lists the concept order. "What is Tailwind CSS?" is a live demo: Rachel drops `h-screen flex items-center justify-center` on a body and `bg-red-500 text-white px-4 py-2 rounded-full font-bold text-2xl hover:bg-red-700 hover:uppercase` on a button, then makes the case for utility classes ("no more switching between HTML and CSS files").
+
+Element Sizing (the third free preview) introduces the numbering scale with the line that unlocks the rest of the course: "one unit is equal to zero point two five rem, And if a browser uses default settings, zero point two five rem will equal four pixels." You get fixed units (`w-64`), fractions (`w-1/2`, `h-1/3`), and viewport units (`w-screen`), and a first challenge written as HTML comments: make one section full viewport height, another a third tall and half wide. Colours covers the 50 to 950 shade scale and a four-part challenge that turns a plain page into something that "really looks like pizza." Padding and Margin adds `p-`, `m-`, side and axis variants, and `mx-auto`.
+
+<Screenshot
+  src="/img/scrimba/learn-tailwind-css/header-and-footer-raw-starter-lesson.webp"
+  alt="Scrimba Learn Tailwind CSS lesson Header and Footer paused at 0:23: the editor shows a YOUR TASKS comment listing header and footer colors, logo, padding and card widths above an unstyled index.html with the cdn.tailwindcss.com script, while the preview on the right shows the raw blog: two nav links, a plant photo and an author avatar with no styling"
+  width={1400}
+  height={660}
+  caption="The starter file at 0:23 of Header and Footer: the tasks for the scrim are a comment at the top of index.html, the preview is the unstyled blog ('so raw that our preview looks pretty subpar'). Every project scrim starts this way."
+/>
+
+Header and Footer is where the project starts: "Our client would like us to style their plant enthusiasts' blog using Tailwind CSS." You get a plain HTML file, an `img` folder, a mockup slide, and a task list. The pattern for the rest of the module is set here. A theory scrim comes with a small throwaway exercise (a stack of book spines, a game character card, a newspaper preview, potion bottles on shelves, a cafe menu). Then a project scrim applies those classes to the blog against the mockup.
+
+The typography run is three theory scrims (font families and weights, text size and alignment, then tracking, leading and `line-clamp`, which Rachel calls "one of my favorites") followed by the Typography project scrim, where the blog's excerpt gets `line-clamp-3`. Display and Position is short; Flexbox is the longest theory scrim at six minutes and the one to watch closely, because almost every layout in the challenges is `flex flex-col items-center` plus `gap`.
+
+<Screenshot
+  src="/img/scrimba/learn-tailwind-css/flexbox-coffee-menu-challenge-lesson.webp"
+  alt="Scrimba Learn Tailwind CSS Flexbox lesson paused at 5:05: index.html shows a section with class flex gap-8 for the latte prices and a section with class flex flex-wrap for the extras, while the preview shows a dark green cafe menu on a crimson page with the extras run together as CreamWaferShortbreadMarshmellow"
+  width={1400}
+  height={660}
+  caption="The coffee menu solution at 5:05 of Flexbox, one step from done: the extras are wrapping but have no gap yet, so they read as one word. Rachel adds gap-x-6 and justify-center in the next few seconds."
+/>
+
+Borders has no challenge, just a demo (an orange photo with `border-8 border-orange-400 rounded-full border-dashed`, and a typo she catches on save). Layout takes those borders back to the blog: rounded cards, a double border under the header, and the newsletter form built with `w-full flex` and a `flex-grow` input. Other common utilities and Modifiers are demos with a polaroid of Rachel's cat Pickle: `shadow-md`, `fill-`, `opacity-`, `cursor-pointer`, `sr-only`, then `hover:`, `focus:`, `placeholder:` and stacking them ("the real power of tailwind modifiers come when you start combining them"). Extra Styling applies all of that to the blog, and by 2:53 "our web page matches the mobile mock up already, minus four missing blog posts."
+
+Responsive Design introduces the five breakpoint prefixes with a breakpoint visualizer that changes color as you widen the preview (slate, then `sm:` rose, `md:` blue, `lg:` lime). Desktop layout finishes the project: the four remaining cards are pre-filled for you, and your tasks are `flex flex-wrap gap-8 justify-center` on the card container, `sm:flex sm:justify-between` on the header, and a fixed `sm:w-96` footer form.
+
+<Screenshot
+  src="/img/scrimba/learn-tailwind-css/desktop-layout-finished-blog-lesson.webp"
+  alt="Scrimba Learn Tailwind CSS Desktop layout lesson paused at 3:55: the preview pane is enlarged over the editor and shows the finished plant blog with a dark slate header, a BLOG heading, and three white cards in a row with plant photos, author avatars, titles, three-line excerpts and like counts"
+  width={1400}
+  height={660}
+  caption="The finished blog at 3:55 of Desktop layout, after the cards' mx-auto is replaced by justify-center on the container. This is the state you compare against the mockup in the Congrats scrim."
+/>
+
+The module closes with Congrats (a recap and "five challenges that ramp up in difficulty") and a two minute Scrimbassador referral pitch from Per Borgen that you can skip.
+
+### 2. Tailwind CSS Challenges (48 min, 12 scrims): five mockups, five solutions
+
+The one minute welcome sets the rules: "Each one will come with mobile, desktop, and state mock ups for you to replicate using Tailwind CSS," and the challenges "are designed to be completable with just the content from that course." Each challenge is a pair of scrims: a brief of under two and a half minutes that walks through the mockups and the provided HTML, then a "Possible Solution" where Rachel styles it top to bottom.
+
+The Pomodoro App Challenge is the warm-up: a white card with a red bottom border, a motivational line, a big timer, three SVG buttons that turn red on hover. "Since we're only working with Tailwind CSS, these buttons won't actually function," she says, and that holds for all five: no JavaScript anywhere in this course. The solution is three and a half minutes.
+
+Testimonials Section is a cattery site with three cards (`rounded-tr-2xl rounded-bl-2xl`, `opacity-50` images that go opaque on hover) and a six minute solution. Pricing Table is "TerminalLux," a black and cyan table styled like a terminal window, where the card header mimics a window title bar with an absolutely positioned circle. The solution runs eight minutes and is where `lg:grow` and `lg:mt-auto` appear to push buttons to the bottom of unequal cards.
+
+<Screenshot
+  src="/img/scrimba/learn-tailwind-css/pricing-table-challenge-solution-lesson.webp"
+  alt="Scrimba Learn Tailwind CSS Pricing Table Challenge Possible Solution paused at 7:41: the enlarged preview shows the finished TerminalLux pricing table on black with three cyan-bordered cards, Basic Opal $49, Platinum Debug $149 and Diamond Console $249, the middle Buy Now button filled cyan on hover, with sparkle icons above and below"
+  width={1400}
+  height={660}
+  caption="TerminalLux at 7:41 of the pricing table solution, hover state included. The three cards are lg:w-1/3 inside a lg:flex-row container; the middle button is mid-hover with hover:bg-cyan-300 hover:text-black."
+/>
+
+Preferences Form is the hardest and the longest scrim in the course at ten minutes. It is a form for a tea subscription box with fieldsets, radio and checkbox groups, and card icons faded with `opacity-20`. The two-column `md:` layout needs `md:order-4` and `-top-12` placement. The brief says so plainly: "this challenge may require some Tailwind classes that we didn't cover in the Learn Tailwind CSS course. So check out Flexbox order and negative positioning values in the documentation." The 404 Page Layout finishes with a full header (hamburger hidden with `lg:hidden`, nav shown with `lg:flex`), a centered 404 block, and a footer with five sections that reflows into rows at `lg:`.
+
+Every solution ends with the same disclaimer, which I think is the right one for Tailwind: "this is just my solution, and there are plenty of ways to achieve the same result." One correction to the listing: the About text promises Grid utilities, transitions and transforms in this module, but every solution I read is flexbox, and none of the five uses a `grid-`, `transition-` or `transform` class.
+
+## What a lesson actually feels like
+
+Scrims run from under a minute to ten minutes; the theory scrims in module one are three to six minutes, and the challenge solutions are three to ten. Rachel talks over a live editor with the preview on the right. Theory scrims open on a slide (a table of classes with a link to the docs), then move into a small HTML file where she types classes and saves. Challenges are HTML comments in the file, or a "YOUR TASKS" comment at the top of the project, followed by "give it a go" and a pause; her solution comes next in the same recording, sometimes sped up ("I'll do this now, but I'll speed it up for you").
+
+The course is entirely one `index.html` per scrim plus a few images. There are no dependencies, no CSS file of your own, and no terminal. The editor state is the finished state when you open a scrim, so scrub to the start if you want to attempt the challenge blind. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed.
+
+Rachel's voice is friendly and unhurried, with a few running jokes (her cat Pickle, "my favorite combo" for `flex flex-col items-center`). She does not test you, and she repeats that different class choices are fine.
+
+## Free or Pro: exactly what is gated
+
+The first three scrims are free previews marked SAMPLE: the welcome, What is Tailwind CSS?, and Element Sizing. Everything else, from Colours onward and all five challenges, needs Pro. There are no Solo Projects in this course; the five challenges are the practice, and their solutions are included.
+
+Pro also unlocks the certificate (the "How to Utilize Your Certificate" clip at the end is Per Borgen's usual LinkedIn pitch) and the Pro-only Discord channels. Basic Discord access is free on Scrimba's pricing page, so the server alone is not a reason to upgrade. If Tailwind is the only thing you want, three free scrims give you a fair sample of the pace before you decide. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro includes in your region.
+
+## How long it really takes
+
+2.2 hours is video runtime. Plan for five to seven hours: the theory challenges are two to five minutes each if you know CSS, but the five module-two challenges are the real cost. Each brief hands you mobile, desktop and hover mockups and a bare HTML file, and matching them takes 20 to 45 minutes before you watch the solution. That is one weekend, or a week at 45 minutes a day. If your flexbox is shaky, double it, because every solution leans on it.
 
 ## Who it's for, and who should skip it
 
-It fits developers who already know CSS and want the framework that a lot of modern front-end work now uses: people building portfolios, joining Tailwind-based teams, or who simply want to build UIs faster.
+It fits you if you write CSS comfortably and are joining a codebase that uses Tailwind, or you keep seeing utility classes in React and Next.js projects and want them to stop looking like noise. It is also a sensible pick if you want to prototype faster: the whole course is proof that a styled card is ten classes and no stylesheet.
 
-Skip it if your CSS fundamentals are not yet solid (do [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) or the free [Learn HTML and CSS](/docs/courses/css/html-and-css/) first), or if you are tied to a different styling approach for a specific project.
+Skip it, for now, if `flex`, `justify-content`, and the box model are not second nature. The course names the property, gives you the class, and moves on; it does not teach the property. Do [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) or [Learn Flexbox](/docs/courses/css/flexbox/) first. Skip it too if you want Tailwind's configuration side (custom themes, plugins, `@apply`, dark mode, grid utilities, the build pipeline). None of that is here, and the outro sends you to the documentation for it.
 
 ## Prerequisites
 
-Working HTML and CSS, including flexbox, grid, and the box model. Tailwind builds directly on that understanding. No JavaScript needed for the styling itself.
+Working HTML and CSS: the box model, `rem` units, flexbox, and the `position` values. Rachel assumes all of these and says so for flexbox. No JavaScript is used anywhere in the course. No install is needed either; every scrim loads Tailwind from the CDN script tag inside the browser editor.
 
 ## Where it fits
 
-This is the Tailwind course on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), and it appears on the [AI Engineer Path](/docs/paths/ai-engineer-path/) where front-end polish matters. Take it after your core CSS is solid. The [product-card project](/docs/courses/css/a-product-card-with-tailwind-css/) is an optional companion.
-
-## Free or Pro
-
-This is a Pro course, so it needs a Scrimba subscription. Pro also covers the career paths, challenges, certificates, and Discord. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+This is the Tailwind course on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), and Scrimba's course page also lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/). Take it after your core CSS and before you start a React or Next.js project that ships with Tailwind. The [product card course](/docs/courses/css/a-product-card-with-tailwind-css/) is the follow-up Rachel names in the outro, where "we dive into more intermediate utility classes."
 
 ## Strengths and limits
 
-What it does well: it teaches the mental model and then makes you apply it, the format suits utility-first styling, and Rachel Johnson keeps the projects practical.
+What it does well: it teaches the naming scheme in the order you will need it, applies each family to a real mockup within a scrim or two, and gives you five practice briefs with recorded solutions. It is compact enough to finish in a weekend and the free previews are representative.
 
-Where it is limited: it assumes solid CSS, and 2.2 hours is enough to get productive but not to cover every advanced configuration topic. Deeper fluency comes from building afterward.
+Where it is limited: it is Pro-only past scrim three, and it does not cover configuration, grid, dark mode or installation. It uses the Tailwind 3 Play CDN rather than a local build, and the module-two briefs occasionally need classes the course never taught (the form challenge says so). The referral and certificate pitches at the end of each module are padding.
 
 ## Related courses and comparisons
 
-- [Build a Product Card with Tailwind CSS](/docs/courses/css/a-product-card-with-tailwind-css/), the companion project
-- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), the deep CSS foundation underneath Tailwind
+- [Build a Product Card with Tailwind CSS](/docs/courses/css/a-product-card-with-tailwind-css/), the follow-up Rachel points to
+- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), the CSS foundation underneath Tailwind
+- [Learn Flexbox](/docs/courses/css/flexbox/), the layout model every solution here leans on
 - [Learn HTML and CSS](/docs/courses/css/html-and-css/), the free CSS starting point
-- [Learn Bootstrap](/docs/courses/css/bootstrap/), the older alternative framework
+- [Learn Bootstrap](/docs/courses/css/bootstrap/), the component framework alternative
+- [Scrimba pricing: Pro vs free](/docs/pricing/pro-vs-free/), if the Pro gate is the question
 
 <FAQAccordion items={[
-  { q: "Is Learn Tailwind CSS free?", a: "No. It is a Scrimba Pro course and requires a subscription. The free Learn HTML and CSS course is a good place to build the CSS basics it assumes." },
-  { q: "Do I need to know CSS before learning Tailwind?", a: "Yes. Tailwind is a layer over CSS, so the utility classes only make sense if you already understand flexbox, grid, and the box model." },
-  { q: "How does this differ from the product card course?", a: "This is the main course: the framework essentials plus five projects. The product card course is one smaller, focused project that pairs with it." },
-  { q: "What do you build in the course?", a: "After the essentials, you apply Tailwind across five real projects and a set of challenges in the second module." },
+  { q: "Is Learn Tailwind CSS free on Scrimba?", a: "No. Only the first three scrims (the welcome, What is Tailwind CSS?, and Element Sizing) are free previews. Colours onward and all five challenges need a Pro subscription. There are no Solo Projects; the challenges and their recorded solutions are the practice." },
+  { q: "Who teaches Learn Tailwind CSS?", a: "Rachel Johnson, who also teaches the shorter Build a Product Card with Tailwind CSS course. The course page notes that an older Tailwind course by Victor Gonzalez still exists separately." },
+  { q: "What do you build in the course?", a: "One build-along project, a responsive blog for plant lovers styled from a mobile and desktop mockup across five project scrims, plus five challenges in module two: a Pomodoro timer layout, a cattery testimonials section, a TerminalLux pricing table, a tea subscription preferences form, and a 404 page with reusable header and footer." },
+  { q: "Do I need to know CSS before learning Tailwind?", a: "Yes. Every lesson names a CSS property and gives you the Tailwind class for it without teaching the property. Rachel says outright that she assumes you already know flexbox. If you do not, do Learn Responsive Web Design or Learn Flexbox first." },
+  { q: "Which Tailwind version does it use, and do I need to install anything?", a: "Nothing to install. Every scrim loads Tailwind from the cdn.tailwindcss.com script tag, which is the Tailwind 3 Play CDN, and the intro warns about the production notice it prints on save. The classes taught also work in Tailwind 4, but the course does not cover a local setup or configuration." },
+  { q: "Does the course have challenges?", a: "Yes. Twelve scrims in module one carry Scrimba's Challenge with Instant Feedback icon, with the tasks written as HTML comments and Rachel's solution in the same scrim. Module two is five mockup-to-code challenges, each followed by a Possible Solution scrim of three to ten minutes." },
+  { q: "How long does Learn Tailwind CSS take?", a: "About 2.2 hours of video. Plan for five to seven hours if you attempt each challenge before watching the solution, roughly a weekend or a week at 45 minutes a day." },
+  { q: "Does it cover CSS grid, dark mode, or Tailwind configuration?", a: "No. The outro calls the course an introduction and sends you to the Tailwind documentation for everything else. Layout in every lesson and solution is flexbox; the form challenge is the only place grid-style two-column layout appears, and it is done with flex-wrap and md:w-1/2." },
+  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, subtitles in ten languages, and playback speed." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/learn-tailwind-css-c010" variant="button">
-  View Learn Tailwind CSS on Scrimba
+  Preview Learn Tailwind CSS on Scrimba
 </AffiliateLink>
 
 <CourseSchema
   name="Learn Tailwind CSS"
-  description="A Scrimba Pro course taught by Rachel Johnson: about 2.2 hours covering Tailwind's utility-first essentials and then five real projects."
+  description="Scrimba's Pro Tailwind CSS course taught by Rachel Johnson: about 2.2 hours and 33 scrims, teaching utility classes one family at a time on a responsive plant blog, then five mockup-to-code challenges with recorded solutions."
   url="https://scrimba.com/learn-tailwind-css-c010"
   timeRequired="PT2H12M25S"
   difficulty="Intermediate"

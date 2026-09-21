@@ -1,9 +1,9 @@
 ---
 title: "Scrimba Troubleshooting: Fix Editor, Login & Progress"
-description: "Practical fixes for common Scrimba issues: editor not loading, code freezing the browser, progress not updating, offline access, captions, mobile, and how to contact support."
+description: "Fixes for common Scrimba issues: editor not loading, code freezing the browser, progress not updating, offline access, captions, mobile, and contacting support."
 keywords: [scrimba not working, scrimba problems, scrimba troubleshooting, scrimba offline, scrimba editor]
 last_update:
-  date: 2026-07-22
+  date: 2026-09-21
 hideGlobalPricingCta: true
 ---
 
@@ -12,9 +12,9 @@ import PricingCTA from '@site/src/components/PricingCTA';
 
 # Scrimba Troubleshooting
 
-**Quick answer:** Most platform issues come from one of four things: an old browser tab, a problem extension, an infinite loop in your own code, or a sync delay on progress. Use a recent Chrome or Firefox on a desktop or laptop, refresh the page, clear cache, or open the lesson in an incognito window with extensions off. If your code froze the tab, close it and click reset when you reopen. For anything that persists after those steps, email `help@scrimba.com`. Scrimba is a web-only platform; there is no native mobile app and no offline mode.
+**Quick answer:** Most platform issues come from one of five things: an old browser tab, a problem extension, an infinite loop in your own code, a sync delay on progress, or a package in an older lesson that has moved on since recording. Use a recent Chrome or Firefox on a desktop or laptop, refresh the page, clear cache, or open the lesson in an incognito window with extensions off. If your code froze the tab, close it and click reset when you reopen. For anything that persists after those steps, email `help@scrimba.com`. Scrimba is a web-only platform; there is no native mobile app and no offline mode.
 
-*Last reviewed: July 2026. Steps below mirror official Scrimba help-centre articles.*
+*Last reviewed: September 2026. Steps below mirror official Scrimba help-centre articles, plus the gotchas we hit while reviewing courses with a Pro account.*
 
 ## Who this page is for
 
@@ -64,6 +64,14 @@ If a specific lesson reliably freezes even with the original code, that is a con
 
 Reference: [My code crashes or freezes the browser](https://scrimba.helpscoutdocs.com/article/52-my-code-crashes-or-freezes-the-browser)
 
+## When a lesson's package is out of date
+
+Older scrims pin the package versions they were recorded with, and some have since been deprecated. When a package is the problem, the fix is inside the editor: right-click it in the dependencies panel and choose upgrade, in each scrim you open. Three places where an older lesson no longer runs as recorded, as of September 2026:
+
+- **[Learn React](/docs/courses/react/learn-react/), Chef Claude section.** A 35 second "Quick AI Update" scrim warns that the Anthropic SDK has moved on. If the AI challenge errors, right-click `@anthropic-ai/sdk` and upgrade it. You also need your own API key.
+- **[Learn RAG](/docs/courses/ai/rag/), after "Vector databases".** A 44 second scrim says the Supabase package "has been superseded and deprecated". Right-click it and choose "upgrade package".
+- **[Learn Next.js](/docs/courses/javascript/nextjs/), the first six scrims.** A "Bug Alert!" scrim marks six early lessons, from "A Minimal Next.js Setup" through "Running create-next-app", that no longer run in the browser. Watch them and do those challenges in a local editor; from the Scrimba Runner scrim onward, everything runs.
+
 ## When progress does not update
 
 Progress tracking occasionally lags after a quick session, especially if your network dropped briefly mid-lesson, or if you have multiple tabs open on the same account.
@@ -83,8 +91,8 @@ Reference: [How to sign in / sign up](https://scrimba.helpscoutdocs.com/article/
 
 ## Captions and language
 
-- Captions and subtitles are available on some lessons, not all. Support varies by course.
-- Scrimba's instruction language is English only. There is no multi-language audio or translated lessons.
+- Scrimba's help centre says caption coverage varies by course. Nearly every scrim we opened while reviewing courses in September 2026 had captions, a timestamped transcript (settings menu, then "Show Transcript"), and subtitles in ten languages.
+- Scrimba's instruction language is English only. There is no multi-language audio or translated lessons; the ten-language subtitles are the only translation.
 
 References: [Do your lessons have captions?](https://scrimba.helpscoutdocs.com/article/18-do-you-support-captions-subtitles) · [Can I change the language of the lesson?](https://scrimba.helpscoutdocs.com/article/74-can-i-change-the-language-of-the-lesson)
 
@@ -112,8 +120,8 @@ Reference: [How do I delete my account?](https://scrimba.helpscoutdocs.com/artic
   { q: "Is there a native Scrimba mobile app?", a: "No. Scrimba is web-only. The interactive editor needs a keyboard and a desktop-sized screen, so even the mobile browser experience is limited." },
   { q: "What devices work with Scrimba?", a: "Recent Chrome or Firefox on a desktop or laptop is the recommended setup. Safari works but sometimes lags. Mobile and tablet support is limited.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/50-device-compatibility-for-scrimba" },
   { q: "Can I watch courses offline?", a: "No. The interactive editor needs a live server connection. There is no offline mode and no downloadable lessons.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/75-can-i-watch-courses-offline" },
-  { q: "Do lessons have captions?", a: "Some lessons include captions; coverage varies by course. Check the individual lesson for caption availability.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/18-do-you-support-captions-subtitles" },
-  { q: "Can I change the language of the lesson?", a: "Scrimba's instruction is English only. There is no translated audio or alternate-language version of the lessons.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/74-can-i-change-the-language-of-the-lesson" },
+  { q: "Do lessons have captions?", a: "Nearly every scrim in the courses we reviewed had captions, a timestamped transcript under the settings menu, and subtitles in ten languages; two short Advanced React scrims had no transcript. Scrimba's help centre still says coverage varies.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/18-do-you-support-captions-subtitles" },
+  { q: "Can I change the language of the lesson?", a: "Scrimba's instruction is English only. There is no translated audio or alternate-language version of the lessons, but the subtitles come in ten languages.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/74-can-i-change-the-language-of-the-lesson" },
   { q: "How do I sign in or sign up?", a: "Go to scrimba.com and click Sign In. You can use email and password, Google, or GitHub. Use the same method you signed up with, or you may end up in a second account.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/67-sign-in-sign-up" },
 ]} />
 
@@ -128,7 +136,8 @@ Reference: [How do I delete my account?](https://scrimba.helpscoutdocs.com/artic
 <FAQAccordion emitSchema={false} title="Account and content" items={[
   { q: "Where do I find free courses?", a: "Look for the Community label on the Scrimba home page. We also keep a curated list of the best free Scrimba courses." },
   { q: "How do free challenges work?", a: "Free users can complete up to 10 interactive challenges total across the platform. Pro users get unlimited challenges.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/69-what-are-free-challenges-for-free-users" },
-  { q: "What is Instant Feedback?", a: "Instant Feedback checks your code against the expected solution and tells you immediately whether it is correct. It is available on some lessons.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/84-what-is-instant-feedback" },
+  { q: "What is Instant Feedback?", a: "An AI check on your challenge solution. These scrims carry a Challenge with Instant Feedback icon in the table of contents; you submit, and the AI tells you whether you met the spec even when your code looks nothing like the instructor's.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/84-what-is-instant-feedback" },
+  { q: "A lesson says a package is deprecated, or the code errors on an old dependency", a: "Right-click the package in the dependencies panel and choose upgrade. Learn React (Anthropic SDK) and Learn RAG (Supabase) both warn you in a short update scrim. Repeat it in each scrim." },
   { q: "I see red error lines in my TypeScript code", a: "That is the TypeScript compiler doing its job. Read the highlighted error and the lesson instructions to fix the type issue." },
   { q: "How do I delete my account?", a: "Email help@scrimba.com and request account deletion. Cancel any active subscription first so you are not billed during the deletion window.", sourceUrl: "https://scrimba.helpscoutdocs.com/article/88-how-do-i-delete-my-account" },
 ]} />

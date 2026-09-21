@@ -6,7 +6,7 @@ keywords: [scrimba, what is scrimba, scrimba editor, scrimba ide, scrimba offici
 slug: /intro
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-09-20
+  date: 2026-09-21
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -20,9 +20,9 @@ import { totalCoursesLabel, freeCount, proCount, totalContentHoursLabel } from '
 
 <DisclosureNotice />
 
-**Scrimba is an interactive coding platform for learning web development and AI engineering in the browser.** Its lessons are "scrims": screencasts you can pause at any moment to edit the instructor's code, run it, and resume. It has {totalCoursesLabel} courses, four career paths (Frontend, Fullstack, Backend, AI Engineer), a permanent free tier of {freeCount} full courses, and a Pro subscription for the paths, unlimited challenges, Discord, and certificates. The official site is <AffiliateLink href="https://scrimba.com" location="intro-official-site">scrimba.com</AffiliateLink>; this guide is an independent, unaffiliated review site.
+**Scrimba is an interactive coding platform for learning web development and AI engineering in the browser.** Its lessons are "scrims": screencasts you can pause at any moment to edit the instructor's code, run it, and resume. It has {totalCoursesLabel} courses, four career paths (Frontend, Fullstack, Backend, AI Engineer), a permanent free tier of {freeCount} full courses, and a Pro subscription for the paths, unlimited challenges, Pro-only Discord channels, and certificates. The official site is <AffiliateLink href="https://scrimba.com" location="intro-official-site">scrimba.com</AffiliateLink>; this guide is an independent, unaffiliated review site.
 
-*Last reviewed: September 20, 2026.*
+*Last reviewed: September 21, 2026.*
 
 ## What Scrimba is used for
 
@@ -41,6 +41,8 @@ The question behind "Scrimba editor" and "Scrimba IDE" searches is usually: *is 
 - **Pause and edit** the instructor's code, then run it to see your change.
 - **Resume** and the recording carries on from the instructor's version (your edits are kept in a separate copy).
 - **Save your own version** as a scrim you can share, which is also how challenges and community answers work.
+- **Read instead of listen.** Nearly every scrim we opened had captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed, and project courses add a Download as Zip option for the files.
+- **Ask about the code in front of you.** The EXPLAIN button in the scrim header pauses the lesson and builds a short narrated video from the lesson's files and the lines you highlighted. Each one uses one explainer from your allowance.
 
 There is nothing to install, which is the main reason beginners get further on day one than with a local setup. Try it without an account on the <AffiliateLink href={DEMO_SCRIM_URL} location="intro-demo-scrim">demo scrim</AffiliateLink>, or read the longer walkthrough in [how scrims work](/docs/how-it-works/how-scrims-work/). The trade-off is that you are working inside Scrimba's environment, not VS Code, so at some point you still need to learn a real editor and terminal; the [Command Line Basics](/docs/courses/javascript/command-line-basics/) course covers that gap.
 
@@ -48,13 +50,13 @@ There is nothing to install, which is the main reason beginners get further on d
 
 - **{totalCoursesLabel} courses and roughly {totalContentHoursLabel} of lessons** across [React](/docs/courses/react/), [JavaScript](/docs/courses/javascript/), [CSS](/docs/courses/css/), [AI](/docs/courses/ai/), [backend](/docs/courses/backend/), [Python](/docs/courses/python/), and [TypeScript](/docs/courses/typescript/).
 - **Four career paths** that sequence those courses with projects and a certificate: [Frontend](/docs/paths/frontend-developer-path/) (81.6 hrs), [Fullstack](/docs/paths/fullstack-developer-path/) (108.4 hrs), [Backend](/docs/paths/backend-developer-path/) (36.2 hrs), and [AI Engineer](/docs/paths/ai-engineer-path/) (11.4 hrs). Compare them on the [paths hub](/docs/paths/).
-- **Interactive challenges** inside every course (10 total on the free tier, unlimited on Pro).
-- **A Discord community** with instructors and study groups, Pro-only. See [community and events](/docs/help/community-and-events/).
-- **Scrimba Explain**, a separate free AI tool that turns a question, a web page, or your own code into a narrated video explainer. It needs only a free account. We tested it in [What is Scrimba Explain?](/blog/scrimba-explain-review/).
+- **Interactive challenges** inside every course (10 total on the free tier, unlimited on Pro). Some are AI-checked: the table of contents marks them "Challenge with Instant Feedback", and the AI tells you whether your solution meets the spec even when it differs from the instructor's. Learn Next.js has 80 of them.
+- **A Discord community** with instructors and study groups. Basic access is free; Pro adds the Pro-only channels for code reviews and instructor help. See [community and events](/docs/help/community-and-events/).
+- **Scrimba Explain**, an AI tool that turns a question, a web page, a lesson you are stuck on, or your own code into a narrated video explainer. A free account gets 10 explainers for life, Pro gets 100 a month. The [Scrimba Explain reference](/docs/how-it-works/scrimba-explain/) covers the entry points and limits, and we tested it in [What is Scrimba Explain?](/blog/scrimba-explain-review/).
 
 ## Is Scrimba free?
 
-Partly, and permanently. {freeCount} full courses (including Learn React, Learn JavaScript, and Learn Python) plus 10 challenges are free with no card; the {proCount}+ Pro courses, the four paths, unlimited challenges, Discord, and path certificates need a subscription. There is no classic free trial, but there is a 7-day refund window and a free month for students through the GitHub Student Developer Pack. Full details: [Is Scrimba free? Pro vs Free](/docs/pricing/pro-vs-free/), [Scrimba pricing](/docs/pricing/), and the [student discount](/docs/pricing/student-discount/).
+Partly, and permanently. {freeCount} full courses (including Learn React, Learn JavaScript, and Learn Python) plus 10 challenges are free with no card; the {proCount}+ Pro courses, the four paths, unlimited challenges, the Pro-only Discord channels, and path certificates need a subscription. Basic Discord access is free, and so are your first 10 Scrimba Explain videos (Pro gets 100 a month). There is no classic free trial, but there is a 7-day refund window and a free month for students through the GitHub Student Developer Pack. Full details: [Is Scrimba free? Pro vs Free](/docs/pricing/pro-vs-free/), [Scrimba pricing](/docs/pricing/), and the [student discount](/docs/pricing/student-discount/).
 
 ## Who is behind Scrimba?
 
@@ -98,7 +100,7 @@ The short version: Scrimba wins on hands-on practice inside the lesson and on Re
     },
     {
       q: 'What is a scrim?',
-      a: "A scrim is Scrimba's interactive lesson format. It records the instructor's keystrokes and voice instead of a video file, so the code on screen is live and you can edit and run it at any point without leaving the lesson.",
+      a: "A scrim is Scrimba's interactive lesson format. It records the instructor's keystrokes and voice instead of a video file, so the code on screen is live and you can edit and run it at any point without leaving the lesson. Each scrim also has captions, a timestamped transcript under the settings menu, and subtitles in ten languages.",
     },
     {
       q: 'Is Scrimba an IDE?',
@@ -106,7 +108,7 @@ The short version: Scrimba wins on hands-on practice inside the lesson and on Re
     },
     {
       q: 'Is Scrimba free?',
-      a: `Partly. About ${freeCount} full courses and up to 10 challenges are free with no card. Career paths, unlimited challenges, Discord, and path certificates require Pro. There is no classic free trial, but there is a 7-day refund window.`,
+      a: `Partly. About ${freeCount} full courses and up to 10 challenges are free with no card. Career paths, unlimited challenges, the Pro-only Discord channels, and path certificates require Pro. Basic Discord access is free, and a free account also gets 10 Scrimba Explain videos for life against 100 a month on Pro. There is no classic free trial, but there is a 7-day refund window.`,
     },
     {
       q: 'What is Scrimba used for?',
@@ -125,7 +127,7 @@ The short version: Scrimba wins on hands-on practice inside the lesson and on Re
 
 <PricingCTA
   title="Ready to try the format?"
-  subtitle={`Start with the free courses, no card needed. Upgrade to Pro for the paths, unlimited challenges, and Discord when you are ready.`}
+  subtitle={`Start with the free courses, no card needed. Upgrade to Pro for the paths, unlimited challenges, and the Pro-only Discord channels when you are ready.`}
   buttonText="Try Scrimba free"
   ctaType="free"
   location="intro-final"

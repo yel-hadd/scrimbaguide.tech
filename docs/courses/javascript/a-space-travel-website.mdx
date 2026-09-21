@@ -1,10 +1,12 @@
 ---
-title: "Build a Multi-Page Website with HTML and CSS"
+title: "Build a Multi-Page Website with HTML and CSS on Scrimba: 2026 Review"
 sidebar_position: 25
-description: "Kevin Powell's free, project-based HTML and CSS course building a multi-page space travel site with a real design system. Who it fits and what it skips."
-keywords: [scrimba space travel website, kevin powell css course, multi-page website html css, free css course scrimba, frontend mentor project]
+toc_max_heading_level: 2
+sidebar_label: "Multi-Page Website (Space Travel)"
+description: "Kevin Powell's free space travel site course from inside: 6.8 hours, a CSS design system first, tabs in vanilla JS, and one page you build alone."
+keywords: [scrimba space travel website, build a multi-page website with html and css review, kevin powell scrimba course, kevin powell css course, frontend mentor space tourism, free css course scrimba, css design system course]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -12,14 +14,17 @@ import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Build a Multi-Page Website with HTML and CSS
 
-A free, project-led course where Kevin Powell turns a Frontend Mentor design into a full multi-page space travel website, building a reusable design system along the way.
+Kevin Powell's free, project-only course: 6.8 hours of scrims in which you turn a Frontend Mentor space tourism design into a working multi-page site, starting with a CSS design system and ending with tabs written in plain JavaScript. I expanded every module and opened 31 of the 67 scrims, at least a third of each module, with a Pro account in September 2026, reading the full transcript of each one. This is what is actually inside.
+
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page does not list it under any career path.*
 
 ## Quick answer
 
-This is Scrimba's free, intermediate HTML and CSS course taught by Kevin Powell. Across about 6.8 hours you take a real Frontend Mentor design and build it out into a multi-page site, starting with a proper design system (custom properties, type and spacing scales) before laying out the homepage, navigation, destination page, and tabbed content. Despite living in the JavaScript folder, it is pure frontend layout work, not a JavaScript course.
+This is a single-project course for people who already write HTML and CSS and want practice building a real design. Kevin Powell spends the first two hours on a design system (custom properties, utility classes, typography and spacing rules), then builds the homepage, a mobile-to-desktop navigation, the destination and crew pages, and an accessible tab system. The last page, technology, is left for you to build alone. It is rated Intermediate, it is free, and, despite the old description on this site and the course's spot in the JavaScript category, it does contain JavaScript: two small files, `navigation.js` and `tabs.js`, written slowly enough for a CSS person to follow.
 
 <CourseCard
   title="Build a Multi-Page Website with HTML and CSS"
@@ -30,67 +35,152 @@ This is Scrimba's free, intermediate HTML and CSS course taught by Kevin Powell.
   instructor="Kevin Powell"
   instructorUrl="https://scrimba.com/@kevin-powell"
   href="https://scrimba.com/build-a-space-travel-website-c014"
-  description="Build a multi-page space travel site from a real Frontend Mentor design, starting with a reusable CSS design system."
+  description="Build a multi-page space travel site from a real Frontend Mentor design: design system first, then layout, navigation, and tabs in vanilla JavaScript."
+/>
+
+<Screenshot
+  src="/img/scrimba/build-a-space-travel-website/finished-space-travel-site-homepage-preview.webp"
+  alt="The finished Space Travel homepage as shown in Scrimba's course introduction: a dark starfield with the Earth's night side, a four-item glass navigation bar (00 Home, 01 Destination, 02 Crew, 03 Technology), the heading So, you want to travel to Space, and a large circular Explore button"
+  width={1176}
+  height={789}
+  caption="What you build, as Kevin shows it 26 seconds into the introduction: the desktop homepage of the four-page site, before the course rebuilds it from a design system up."
 />
 
 ## Is it worth your time?
 
-If you can write basic HTML and CSS but freeze when handed a finished design and told to build it, this course is exactly the bridge you need. Kevin Powell is one of the most respected CSS teachers around, and the standout choice here is starting from a design system rather than styling page by page. You learn to set up tokens once and reuse them, which is how real projects stay maintainable.
+Yes, if you sit in the gap this course is aimed at. You can style a page, but when someone hands you a Figma file with four pages and three breakpoints you do not know where to start. Kevin's answer is to not start with a page at all. In the design system overview he says the point is to avoid "trying to style everything page by page," so you build the tokens and utilities once and "work really fast when we wanna start working on the actual pages." Two hours in, you have a `design-system.html` page that shows every color, font size, button and indicator in the design, and the homepage then comes together in under an hour.
 
-The honest caveat is that this is single-project, layout-focused work. You will not touch JavaScript, interactivity beyond CSS, or any build tooling. If you wanted a broad survey of frontend, this is narrower than that on purpose; it goes deep on translating a design into clean, responsive CSS.
+The second thing that earns the time is accessibility, which is not a bolt-on module here. It arrives in the reset (a `prefers-reduced-motion` rule), in the first utility classes (`.sr-only`), in the navigation (`aria-controls`, `aria-expanded`, a skip link), and in the tabs (roles, keyboard arrows, the `hidden` attribute instead of visual hiding). You pick it up as a habit rather than a topic.
+
+The caveat is scope. It is one layout, and the techniques are tied to it. There is no build tooling, no framework, and the JavaScript is deliberately basic. Kevin also says in the intro that "this course is not for people at the very beginning of their front end journey," and I agree: if you have not built a responsive page before, the pace will lose you.
 
 ## What you'll learn
 
 <CourseCurriculum
   modules={[
-    { name: 'The design system', duration: '2.1 hrs' },
-    { name: 'The homepage', duration: '59 min' },
-    { name: 'Navigation', duration: '76 min' },
-    { name: 'The destination page', duration: '71 min' },
-    { name: 'The tabs', duration: '75 min' },
+    { name: 'The design system', duration: '2.1 hrs', lessons: 20 },
+    { name: 'The homepage', duration: '59 min', lessons: 9 },
+    { name: 'Navigation', duration: '76 min', lessons: 14 },
+    { name: 'The destination page', duration: '71 min', lessons: 10 },
+    { name: 'The tabs', duration: '75 min', lessons: 13 },
   ]}
 />
 
-The order is deliberate and the first module is the largest for good reason: you spend over two hours building the design system before laying out a single page. Once those tokens exist, the homepage, navigation, destination page, and tabbed interface come together quickly because the hard decisions are already made. That sequencing is the real lesson, more than any single CSS property.
+Lesson counts are the scrims I counted after expanding each module in September 2026, which comes to 66 plus a one-minute certificate scrim after the last module; Scrimba's own module headers show far fewer (11, 3, 7, 8 and 0, and I could not work out what they count), while the course listing says 68 lessons.
+
+## Inside the course, module by module
+
+### 1. The design system (2.1 hrs, 20 scrims)
+
+The eight-minute introduction explains the setup: the design and assets come from Frontend Mentor's free tier (Figma and Sketch files included), Kevin provides a GitHub repo with the start and end state of every lesson, and everything else happens in Scrimba's editor. He also sets expectations early. Basic JavaScript "will definitely be helpful," he says, "though it is not a prerequisite," and he encourages you not to copy him: "I would actually encourage you not to follow along exactly as I'm doing things."
+
+The work starts with a reset (scrim 3), which is a variation of Andy Bell's modern CSS reset explained line by line: `box-sizing` on pseudo-elements too, margins zeroed on headings and paragraphs, `font: inherit` on form controls, and the reduced-motion media query. Then come the general utilities (scrim 4): `.flex` and `.grid` with `gap: var(--gap, 1rem)`, a `.container` using `padding-inline` and `margin-inline` (Kevin points out that Scrimba's editor underlines these logical properties because they were new at the time), and `.sr-only`.
+
+Colors are where the course gets clever. Custom properties store HSL triplets (`231 77% 90%`) rather than finished colors, so a component can write `hsl(var(--clr-light) / .2)` and get a 20 percent alpha without a second variable. The Color challenge (scrim 7) tests exactly that: three boxes to style with utilities, the third needing the alpha trick. Typography follows the same pattern with a `--fs-200` to `--fs-900` scale in rems, three Google font families (Bellefair, Barlow, Barlow Condensed), and utility classes for each. Kevin refuses the `62.5%` font-size hack on the grounds that "you're just remembering five, six, seven, eight, or nine hundred."
+
+The spacing scrim introduces the `.flow` utility (`* + *`, which Kevin calls "the lobotomized owl") and then wraps it in `:where()` so it adds no specificity, with a `--flow-space` property you can override per component. The remaining scrims build the interactive pieces: the round Explore button (`display: grid`, `aspect-ratio: 1`, `place-items: center`, then a challenge to create its glow), and the underline, dot and number indicators shared by the navigation and the tabs. Scrim 20 is a three-minute pause where Kevin lays out the three ways to handle the multi-page content (separate HTML pages, one page with JavaScript tabs, or rendering from the provided `data.json`) and says which one he will take.
+
+### 2. The homepage (59 min, 9 scrims)
+
+The homepage module is short because the design system did the work. Scrim 1 writes the markup, with a semantic argument worth remembering: "So you want to travel to space" is one `h1`, with a span for the big word, "not a heading five followed by an heading one of space." Kevin also explains his habit: he writes HTML looking at the desktop design and writes CSS mobile first.
+
+The grid container scrim (10 minutes) is the technical center of the module. The page is laid out on four columns, `minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr)`, with content pinned to the two middle tracks and a `--container-gap` property for the gutter. Then comes A layout challenge (scrim 6), which asks you to rebuild the same layout with flexbox so that you feel why grid was chosen: "grid is much more structured and the parent has so much control over everything." Final touches adds `max-width: 45ch` on text, `place-items`, a `.grid-container--home` modifier, and a `padding-bottom: max(6rem, 20vh)` for very tall screens. The module ends with a 77-second cameo from Scrimba's Per Borgen pointing to Netlify deploy guides.
+
+<Screenshot
+  src="/img/scrimba/build-a-space-travel-website/grid-container-red-yellow-outlines-lesson.webp"
+  alt="Scrimba's Setting up a grid container scrim paused at 9:59 with the preview maximised: the homepage text column has a red outline and the Explore column a yellow outline, showing the two middle grid tracks side by side above the empty flexible outer tracks"
+  width={1400}
+  height={684}
+  caption="Setting up a grid container at 9:59. Kevin outlines the two content columns in red and yellow so you can watch the outer 1fr tracks absorb the extra space as the window grows."
+/>
+
+### 3. Navigation (76 min, 14 scrims)
+
+"Navigation, which are always these little simple components that end up being more work than anything else on the entire page," Kevin says in the first scrim, and the module proves it. The mobile version is a hamburger button whose text is a visually hidden "Menu", with `aria-controls` pointing at the nav's id and `aria-expanded="false"`. You are challenged to lay it out yourself before he does.
+
+Scrim 6, Adding the functionality, is the first JavaScript in the course: a deferred script, two `const` references, a click listener, and a `data-visible` attribute that CSS reads to slide the menu in. Kevin explains his split plainly: "my classes are for styling, and then I know that my data attributes are for JavaScript." He also stops to say what `const` is, which tells you who the code is written for. Later scrims handle the tablet and desktop layouts with a `min-width: 45em` media query, `padding-inline: clamp(3rem, 5vw, 7rem)`, and the decorative line beside the logo, which he builds as a pseudo-element flex item after admitting his first absolute-positioned attempt was a dead end. Accessibility tweaks and a skip-to-content link close the module; the skip link is hidden with `translateY(-100%)` and slides in on focus.
+
+<Screenshot
+  src="/img/scrimba/build-a-space-travel-website/mobile-nav-data-visible-attribute-lesson.webp"
+  alt="Scrimba's Adding the functionality scrim paused at 6:41: index.css shows the mobile-navigation media query with position fixed, inset 0 0 0 30%, transform translateX(100%), and Kevin mid-way through typing the .primary-navigation data-visible selector, with the phone-sized preview in the corner"
+  width={1400}
+  height={684}
+  caption="Adding the functionality at 6:41, the first JavaScript-driven moment in the course: the menu is pushed off screen with translateX(100%) and the selector being typed brings it back when the script flips data-visible to true."
+/>
+
+One scrim in this module, Want to become a Scrimbassador?, is a two-minute Per Borgen advert for Scrimba's referral program. It counts toward the 14 but teaches nothing.
+
+### 4. The destination page (71 min, 10 scrims)
+
+The module name undersells it: it covers both the destination page and the crew page. The two-minute intro is where Kevin commits to the middle route, one HTML page per section with JavaScript switching the content, and asks you to "do as much coding on this as possible and not just sitting back and enjoying the ride."
+
+Getting the destination page started (11 minutes) reuses the header, turns "Pick your destination" into a numbered title, wraps the planet content in an `article`, and ends with a warning that `grid-template-areas` will be used "quite heavily." The three layout scrims that follow (mobile, medium, large) each redefine only the areas, which is the cleanest demonstration of that property I have seen in a course. The layout scrim (scrim 8) repeats the exercise for the crew page, with two small challenges left open. The picture element scrim compares the moon PNG (71 KB) with its WebP (28 KB) and builds `<picture>` with a WebP `source` and a PNG fallback, then challenges you to do the same for the crew images.
+
+### 5. The tabs (75 min, 13 scrims)
+
+Setting the stage duplicates the four planets' content on one page and hides three of them with the `hidden` attribute, not `.sr-only`, because hidden "hides it from both screen readers and assistive technologies as well as from visually hiding the content." Kevin moves the nav code into `navigation.js` and starts `tabs.js`, selecting the tab list by `role="tablist"` so that the script only works on markup with correct roles.
+
+Keyboard navigation comes before clicking: three scrims on a `keydown` listener, the arrow key codes, and moving focus between tabs. Activating the tab then uses the button's `aria-controls` value to find the matching panel, walks up the DOM to the shared container, and removes `hidden`. Hiding the previous tab, Changing the image and Highlighting the active tab finish the loop, and Refactoring folds the repeated code into `hideContent()` and `showContent()` helpers. Cleaning up some loose ends fixes the shifting image with `align-self: start`, mentions `scrollbar-gutter`, and gives the crew page its own column widths.
+
+The final scrim is 97 seconds long and is the course's real test. "You are on your own for this one," Kevin says of the technology page. "I am not holding your hand." He adds that "watching something and understanding it is very different from being able to apply it yourself." The starter files for that page are there; the solution is not.
+
+## What a lesson actually feels like
+
+Scrims run from two to thirteen minutes, most between five and nine, which is long by Scrimba standards. Kevin talks over a live editor with the preview beside it, and he tests every change in the preview as he goes, often adding a temporary red outline or a pink background to show what a rule is doing. Challenges are frequent but informal: he says "go ahead and give it a try" or "I'll leave you to your own devices," you pause, write, and press play for his version. I counted a challenge prompt in roughly two thirds of the scrims I opened. The table of contents also shows a small icon beside 23 scrims; on other courses that icon marks challenges with instant AI feedback, but none of the transcripts I read mention AI feedback, so treat it as unconfirmed here.
+
+The voice is patient and a little digressive. He will stop a spacing lesson to explain why `:where()` exists, or a picture-element lesson to tell you that a trip to Titan would take seven years. Every scrim has captions, a timestamped transcript panel under the settings menu, subtitles in ten languages, and speed controls.
+
+## Free or Pro: exactly what is gated
+
+The whole course is free: all five modules, every challenge, the design files (from Frontend Mentor, not Scrimba), the GitHub repo, and the technology page exercise. There are no Solo Project items and only one scrim carries a SAMPLE badge, which is the free-preview marker on the introduction. The single Pro item is the Certificate of Completion at the bottom of the table of contents; Scrimba's pricing page lists certificates as a Pro feature. Pro also unlocks the Pro-only Discord channels, but the pricing page lists basic Discord access as free, so asking questions in the community does not require a subscription.
+
+If you only want this course, stay free. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you want the certificate or the career paths.
+
+## How long it really takes
+
+The 6.8 hours is video runtime. Because most scrims stop for a challenge and the layout scrims expect you to keep the Figma file open, budget two to three times that: 14 to 20 hours, or two to three weeks at an hour a day. The technology page has no video, so add three to six hours to build it properly, and more if you take Kevin's suggestion to render the content from `data.json`. The design system module alone is a weekend.
 
 ## Who it's for, and who should skip it
 
-It fits anyone comfortable with HTML and CSS basics who wants to practice building a full, multi-page layout from a professional design rather than from scratch. It is a strong fit for self-taught developers and for [designers](/docs/for/designers/) moving toward code.
+It fits self-taught developers who have finished a first HTML and CSS course and want one substantial, portfolio-ready project built the way a working front-end developer would build it. It is a good fit for [designers moving toward code](/docs/for/designers/), because the whole course is about translating a design faithfully, and for anyone who wants their first look at custom properties, logical properties, `clamp()`, `aspect-ratio` and `grid-template-areas` in one place.
 
-Skip it if you are still learning what a div or a class is; the pacing assumes you can read CSS already. Skip it too if you specifically want JavaScript or interactivity, since this course stays in HTML and CSS the whole way.
+Skip it if you are still learning what a class or a media query is; start with [Learn HTML and CSS](/docs/courses/css/html-and-css/) or [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) instead. Skip it too if you want a JavaScript course: the JavaScript here is two small files in service of the layout. And if you want to learn a framework, Kevin says you can use this design as a project for that, but the lessons will not help you with it.
 
 ## Prerequisites
 
-Basic HTML and CSS: you should know selectors, the box model, and how to apply styles. Familiarity with flexbox or grid helps but is not strictly required, since the course works through layout as it goes. No JavaScript is needed.
+Comfortable HTML and CSS, including one responsive layout you have built before. Flexbox and grid basics help; Kevin says grid is used lightly enough that "it could be a nice introduction to it." A little JavaScript helps in the navigation and tabs modules, but he explains `const`, event listeners and `querySelector` as he goes. You will want a Figma or Sketch viewer for the design files, and nothing installed on your machine.
 
 ## Where it fits
 
-This course is a standalone project rather than part of a named path, but it pairs naturally with portfolio and deployment work. A sensible follow-up is [Build and Deploy Your Portfolio](/docs/courses/javascript/and-deploy-your-portfolio/), also taught by Kevin Powell, which takes you from building a site to getting it live.
-
-## Free or Pro
-
-The course is free, with no subscription needed to start or finish it. Scrimba Pro is a separate decision that unlocks the structured career paths, coding challenges, and certificates. If you only want this project, you never have to pay.
+Scrimba does not sequence this course into a path. It works best as the project you build after [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) and before [Learn JavaScript](/docs/courses/javascript/learn-javascript/), or alongside [Learn CSS Variables](/docs/courses/css/css-variables/) if the custom property tricks in module 1 are new to you. The natural follow-up is Kevin's own [Build and Deploy Your Portfolio](/docs/courses/javascript/and-deploy-your-portfolio/), and [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/) is the guide Per points to in module 2.
 
 ## Strengths and limits
 
-What it does well: it is free, taught by a genuine CSS authority, and built around a real design rather than a toy example. The design-system-first approach is a habit worth forming early.
+What it does well: a real, four-page design from Frontend Mentor rather than a toy; a design system built before any page, which is how the course stays fast later; accessibility woven through every module instead of a separate lecture; a GitHub repo with the state of every lesson; and an ending that makes you build a page without help.
 
-Where it is limited: it is one project, so the techniques are tied to this particular layout, and it covers no JavaScript or tooling. Fast peer help depends on the Pro Discord rather than the free tier.
+Where it is limited: it is one layout, so the utilities and grid setup are tuned to it; the JavaScript is basic and Kevin never builds the version that reads `data.json`, though he mentions it three times; some scrims run long and a few of the leftover Frontend Mentor HTML files sit unused in the file tree; and two of the 67 scrims are Scrimba promos rather than lessons.
 
 ## Related courses and comparisons
 
 - [Build and Deploy Your Portfolio](/docs/courses/javascript/and-deploy-your-portfolio/), the natural Kevin Powell follow-up
+- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), Kevin's larger CSS course, the better first stop if this one feels fast
+- [Learn CSS Variables](/docs/courses/css/css-variables/), for the custom property techniques used in module 1
 - [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/), to get the finished site online
-- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), when you are ready to add interactivity
+- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), when you are ready to go past two small scripts
 - [All JavaScript courses](/docs/courses/javascript/), the full category hub
 - [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are choosing a platform
 
 <FAQAccordion items={[
-  { q: "Is this course free on Scrimba?", a: "Yes. The full course is free with no credit card or Pro subscription required. Pro is only needed for the career paths and certificates, not for this course." },
-  { q: "Is it a JavaScript course?", a: "No. Despite its place in the JavaScript section, it is a pure HTML and CSS course. You build layout and styling, not interactivity." },
-  { q: "Who teaches it?", a: "Kevin Powell, a widely followed CSS educator. The course is built around editing his code in the Scrimba player as you go." },
-  { q: "What do you build?", a: "A multi-page space travel website based on a Frontend Mentor design, including a homepage, navigation, a destination page, and a tabbed interface, all driven by a design system you set up first." },
-  { q: "Do I need design skills to take it?", a: "No. The design is provided. The course is about translating an existing design into clean, responsive CSS." },
+  { q: "Is Build a Multi-Page Website with HTML and CSS free on Scrimba?", a: "Yes. All five modules, every challenge and the technology page exercise are free, with no card required. The only Pro item is the Certificate of Completion at the end of the table of contents." },
+  { q: "Is it a JavaScript course?", a: "No, but it is not JavaScript-free either. Modules 3 and 5 write two small vanilla JavaScript files, navigation.js for the mobile menu and tabs.js for the accessible tab system. Kevin explains const, event listeners and querySelector as he uses them." },
+  { q: "Who teaches it?", a: "Kevin Powell, the CSS educator, teaches every lesson. Per Borgen from Scrimba appears in three short scrims: a Netlify deployment pointer, a referral program advert, and the certificate wrap-up." },
+  { q: "What do you build?", a: "A four-page space tourism site from a Frontend Mentor design: a homepage, a responsive navigation with a mobile menu, a destination page and a crew page with tabs, and a technology page that you build on your own at the end." },
+  { q: "How many lessons are there?", a: "I counted 66 scrims across the five modules after expanding each one, plus a one-minute certificate scrim, 67 in all. Scrimba's module headers add up to 29 and the course listing says 68, so the number you see depends on where you look." },
+  { q: "How long does it take?", a: "6.8 hours of video. Plan for 14 to 20 hours including the challenges, plus three to six hours for the technology page, which has no video." },
+  { q: "Do I need to install anything?", a: "No. Everything runs in Scrimba's editor. Kevin also provides a GitHub repo with the start and end of every lesson if you prefer to work locally, and the design files come from Frontend Mentor." },
+  { q: "Do I need design skills?", a: "No. The design, assets and Figma or Sketch files are provided. The course is about turning that design into clean, responsive HTML and CSS." },
+  { q: "Does it have transcripts and subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu and subtitles in ten languages." },
+  { q: "Are there AI-checked challenges?", a: "Not in any transcript I read. The challenges are Kevin pausing the recording and asking you to try something before he shows his solution. The table of contents shows a small icon beside 23 scrims that on other courses means instant AI feedback, but I could not confirm it here." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/build-a-space-travel-website-c014" variant="button">
@@ -99,12 +189,12 @@ Where it is limited: it is one project, so the techniques are tied to this parti
 
 <CourseSchema
   name="Build a Multi-Page Website with HTML and CSS"
-  description="Scrimba's free, intermediate HTML and CSS course taught by Kevin Powell. About 6.8 hours building a multi-page space travel site from a real design system."
+  description="Scrimba's free, intermediate HTML and CSS course taught by Kevin Powell. About 6.8 hours building a multi-page space travel site from a Frontend Mentor design: a CSS design system, responsive layouts, an accessible navigation and tabs in vanilla JavaScript."
   url="https://scrimba.com/build-a-space-travel-website-c014"
   timeRequired="PT6H48M35S"
   difficulty="Intermediate"
   access="Free"
-  keywords={["CSS", "HTML", "Frontend"]}
+  keywords={["CSS", "HTML", "UI Design", "Frontend"]}
   modules={[
     { name: 'The design system', duration: '2.1 hrs' },
     { name: 'The homepage', duration: '59 min' },

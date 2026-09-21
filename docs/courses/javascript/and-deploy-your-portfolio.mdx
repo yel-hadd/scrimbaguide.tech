@@ -1,87 +1,214 @@
 ---
-title: "Build and Deploy Your Portfolio"
+title: "Build and Deploy Your Portfolio on Scrimba: 2026 Review"
 sidebar_position: 27
-description: "Kevin Powell's free course building and shipping a developer portfolio site to show employers. What you build, who it fits, and where it stops."
-keywords: [scrimba build portfolio, developer portfolio course, free portfolio website course, kevin powell portfolio, deploy portfolio scrimba]
+toc_max_heading_level: 2
+sidebar_label: "Build and Deploy Your Portfolio"
+description: "Kevin Powell's free portfolio course from inside: 2.4 hours, 23 scrims, a BEM and custom-property build, a DigitalOcean deploy, and what has aged."
+keywords: [scrimba build portfolio, build and deploy your portfolio review, developer portfolio course, free portfolio website course, kevin powell portfolio, deploy portfolio scrimba, digitalocean droplet portfolio]
 last_update:
-  date: 2026-05-27
+  date: 2026-09-20
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
+import CourseCurriculum from '@site/src/components/CourseCurriculum';
 import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import Screenshot from '@site/src/components/Screenshot';
 
 # Build and Deploy Your Portfolio
 
-A free, career-focused course where Kevin Powell walks you through building a clean developer portfolio site and getting it live so employers can actually see it.
+Kevin Powell's free course on building a one-page developer portfolio in HTML and CSS, then putting it on a DigitalOcean server. It is short, so I opened all 23 scrims and read the transcript of every one with a Pro account in September 2026. What follows is what the course actually does, lesson by lesson, including the parts that show their age.
+
+*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba files it under Career rather than in any path; it is not listed as part of the [Frontend Developer Path](/docs/paths/frontend-developer-path/).*
 
 ## Quick answer
 
-This is Scrimba's free portfolio course, about 2.4 hours taught by Kevin Powell. You build a polished portfolio site in HTML and CSS and then deploy it, ending with a live URL you can put on a resume or share with recruiters. It is as much a career move as a coding exercise: the point is a finished, public site that showcases your work, not just another practice project.
+Build and Deploy Your Portfolio is a free, 2.4 hour follow-along course by Kevin Powell. Across 23 scrims you build a "Jane Smith, front-end dev" portfolio: header with a hamburger menu, intro, services, about me, a responsive grid of work samples, a footer with social icons, plus a template page for individual projects. The last two lessons are slide walkthroughs of renting a DigitalOcean droplet and uploading the files over SFTP. There are no challenges and no solo project; you type along or you watch. It is a good two hours if you already know HTML and CSS and want to see how an experienced CSS teacher structures a real site with BEM class names, custom properties, Grid and Flexbox. It is not a course for learning those things from scratch, and the deploy section is a 2020 recording of DigitalOcean's dashboard.
 
 <CourseCard
   title="Build and Deploy Your Portfolio"
   duration="2.4 hrs"
   difficulty="Intermediate"
   access="Free"
-  lessons={24}
+  lessons={23}
   instructor="Kevin Powell"
   instructorUrl="https://scrimba.com/@kevin-powell"
   href="https://scrimba.com/build-and-deploy-your-portfolio-c012"
-  description="Build a clean developer portfolio in HTML and CSS, then deploy it to a live URL you can share with employers."
+  description="Build a customizable one-page developer portfolio in HTML, CSS and a few lines of JavaScript, then deploy it to a DigitalOcean droplet."
 />
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/build-and-deploy-your-portfolio/intro-create-a-portfolio-website-title-card.webp"
+    alt="Opening slide of Scrimba's Build and Deploy Your Portfolio course, reading Scrimba + DigitalOcean present, Create a portfolio website, on a white and navy background"
+    width={1279}
+    height={720}
+    caption="The only title card in the course, from the Introduction scrim. DigitalOcean co-sponsors it, which explains the deploy target."
+    source="Title card from scrimba.com."
+  />
+</div>
 
 ## Is it worth your time?
 
-If you have learned some HTML and CSS and have nothing public to show for it, this is a high-leverage couple of hours. A live portfolio is one of the most concrete things you can hand a hiring manager, and Kevin Powell keeps the build clean and professional rather than flashy. The deploy step is what makes it worth it: plenty of learners can build a site but stall before it goes live, and this course closes that gap.
+If you can already write HTML and CSS and have nothing online to show for it, yes. Two and a half hours gets you a clean, responsive site with a real structure. Kevin builds it as a template on purpose: every color, font and size lives in a custom property at the top of the stylesheet, so swapping the green for your brand color is a one-line change. He says it plainly in the intro: "this is going to be about building our site. It's not going to be teaching you HTML and CSS."
 
-The honest caveat is that the portfolio you build follows the course's design and structure. It gets you a real, shippable site, but you will want to personalise the content, projects, and styling afterward so it represents you and not the tutorial. Treat the finished site as a strong starting template, not a final destination.
+The part that earned my respect is the CSS reasoning. He explains why the logo gets an empty alt attribute, why headings are not used as subtitles, why a sibling selector beats margins on every column, and why focus states should look different from hover states. Those are the habits that separate a tutorial site from a professional one, and they are cheap to pick up here.
+
+Two caveats. First, this is a 2020 recording. Kevin mentions that "flexbox gap is coming. It's in Firefox, but it's not in the other ones yet," and the DigitalOcean lessons are slides of a dashboard that has since been redesigned. Second, the deploy method (rent a Linux server, upload files with FileZilla) is heavier than a static site needs in 2026. Nothing in the build depends on it, so you can just as easily push the folder to Netlify or GitHub Pages.
 
 ## What you'll learn
 
-You build a developer portfolio from the markup up: structuring the page with semantic HTML, styling it cleanly with CSS, and making it responsive. The back half is the part many tutorials skip, taking the finished site and deploying it so it lives at a real URL. Along the way you pick up the practical habits of shipping: organising your files, checking how the site looks on different screens, and getting it online without a complicated toolchain.
+Scrimba lists this course as one flat run of scrims with no modules, so the grouping below is mine, made from the lesson order. The counts are the scrims I opened.
 
-Because it is project-based, you are building the actual site you will use, not a throwaway demo. That is the difference between finishing with a portfolio and finishing with notes about portfolios.
+<CourseCurriculum
+  summary="4 editorial groups · 23 scrims · about 2 h 27 min of video"
+  modules={[
+    { name: 'Introduction and HTML structure', duration: '29 min', lessons: 5 },
+    { name: 'Styling the site section by section', duration: '68 min', lessons: 8 },
+    { name: 'Navigation, JavaScript and the project page', duration: '31 min', lessons: 5 },
+    { name: 'Deploying to DigitalOcean and wrap-up', duration: '18 min', lessons: 5 },
+  ]}
+/>
+
+The course page and its structured data say 24 lessons; that figure includes the Certificate of Completion entry at the bottom of the list, which is not a scrim. My total of the 23 scrim durations comes to 2 hours 27 minutes, which matches the 2.4 hours Scrimba shows.
+
+## Inside the course, module by module
+
+### 1. Introduction and HTML structure (29 min, 5 scrims)
+
+The 5:32 Introduction is a slide deck. Kevin shows the finished design on desktop, laptop and phone mockups, explains that the course is sponsored by DigitalOcean, and sets expectations: "I am assuming you're already comfortable with both HTML and CSS." He links an Adobe XD file with every color, font and spacing value, and says the same link sits in the notes under every lesson.
+
+The next four scrims write all of the HTML. "Setting things up" is the boilerplate: doctype, viewport meta tag, normalize.css and a Font Awesome CDN link. "The header area" adds a logo, a `nav-toggle` button with an aria-label and an empty `hamburger` span, and introduces the BEM naming Kevin uses everywhere (`nav__list`, `nav__item`, `section__title--intro`). He is candid that "that might drive some people a little bit crazy having the double underscore there," then explains why the modifier classes will make the template easier to edit later. "Intro section" and "About me, Work and Footer" write the rest. Each section gets an ID that the nav links anchor to. The `services` block holds three `service` items, the `portfolio` holds ten linked images, and the footer has a mailto link and a list of social icons that stays as placeholder letters until Font Awesome comes in.
+
+One line from the header lesson sums up the tone: "You don't need to put logo because if the person hears logo, it doesn't help them if they cannot see it in the first place."
+
+### 2. Styling the site section by section (68 min, 8 scrims)
+
+This is the heart of the course and the longest stretch of typing. "Setting up the custom properties and general styles" (10:38) creates `css/style.css` and links two Google Fonts (Source Sans Pro and Source Code Pro). It then defines a `:root` block of custom properties: two font families, two weights, light, dark and accent colors, four font sizes in rem, and a layered box shadow. An 800px media query redefines the font sizes. Kevin uses that to show why native custom properties beat Sass variables: "you can actually change them within a media query." His verdict on the setup cost: "they do take a little bit more time to actually set up. But then once you're using things and creating things, man, it can just go so so much faster."
+
+The next three scrims style the typography, the intro and the services. The intro section is a CSS Grid with `grid-template-areas`, `min-content` and `max-content` columns, and a green subtitle bar that pokes out to the left of the photo. Kevin first considers absolute positioning, then uses relative positioning with `width: calc(100% + 1.5em)` instead, and adds a two-layer box shadow via the `--bs` property. The services section gets a background image with `background-blend-mode: multiply`, a pseudo-element underline on the heading, a three-column Flexbox layout with a `.service + .service` margin, and a button with a scale transition. It also gets the site-wide focus style: a 3px accent outline with an offset, "so it's not a hover state. It's really just for my focus state."
+
+"The About me section" (10:58) repeats the grid idea mirrored, with a 200px image column and a padding-right calc so the subtitle text can never run under the photo. "The portfolio" (8:45) is where the grid pays off: `grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))` makes the work samples reflow from three columns to two to one with no media query at all. As Kevin puts it, "you could have one hundred pieces in there, you could have five pieces in there, it's always going to work." A hover effect scales each image inside an `overflow: hidden` link with a cubic-bezier transition and lets the accent color bleed through at 75% opacity. He mirrors it on `:focus` so keyboard users get the same effect.
+
+<Screenshot
+  src="/img/scrimba/build-and-deploy-your-portfolio/the-portfolio-auto-fit-grid-lesson.webp"
+  alt="Scrimba Build and Deploy Your Portfolio lesson The portfolio, paused with the preview open over the blurred editor: a dark My work section with the subtitle A selection of my range of work and a three-column grid of laptop photos"
+  width={1400}
+  height={660}
+  caption="The portfolio lesson at 3:22, right after Kevin types the auto-fit grid rule. He drags the preview narrower and the ten images drop to two columns, then one, with no media query."
+/>
+
+The block closes with two short scrims. "Adding the social icons with Font Awesome" (2:56) is a tour of fontawesome.com and pasting `<i class="fab fa-codepen">` markup into the footer. "Styling the footer" makes the icons a Flexbox row, sets `color: inherit` on every footer link, and gives the social links padding "so it makes it easier to press on them if you're using your finger."
+
+### 3. Navigation, JavaScript and the project page (31 min, 5 scrims)
+
+Kevin left the navigation for last because "it is often one of the ones that actually takes the most styling to set up." "Setting up the navigation styles" turns the nav into a fixed, full-screen dark panel with the links spaced evenly in a Flexbox column, then slides it off screen with `transform: translateX(100%)`. "Creating the hamburger" builds the icon from a span and its `::before` and `::after` pseudo-elements rather than an icon font, "the more complicated way," because each bar can then animate on its own.
+
+"Adding the JS" (9:10) is the only JavaScript in the course, and it is about twelve lines. A click on the toggle button runs `document.body.classList.toggle('nav-open')`. A `.nav-open .nav` rule slides the panel in. A `.nav-open .hamburger` rule rotates the bars into an X, and Kevin does it with the `turn` unit: "I learned about the turn unit and I like showing people that it exists." Finally, a `forEach` over the links removes the class again so the menu closes when you pick a section. He finishes with `scroll-behavior: smooth` on the `html` element and notes it misbehaved inside Scrimba's editor while recording, so it may be commented out in the downloaded files.
+
+<Screenshot
+  src="/img/scrimba/build-and-deploy-your-portfolio/adding-the-js-mobile-nav-open-lesson.webp"
+  alt="Scrimba Build and Deploy Your Portfolio lesson Adding the JS, paused with the preview showing the full-screen dark navigation panel open, four white links Home, My Services, About me and My Work, and the hamburger turned into a green X in the top right"
+  width={1400}
+  height={660}
+  caption="Adding the JS at 5:05: the nav-open class is on the body, the panel has slid in from the right, and the three hamburger bars have become an X. This is the whole interactive part of the site."
+/>
+
+"Creating the portfolio item page" (6:09) copies `index.html` to `portfolio-item.html`, keeps the header and footer, reuses the intro section with a project image, and adds a `portfolio-item-individual` block with paragraphs capped at 600px wide and full-bleed images. The nav links are rewritten to `index.html#about` and so on so they work from the second page. Kevin's advice on the content is the best career note in the course: "Don't just talk about what the project was, but talk about what you did on the project and why that was a good thing."
+
+"Customizing your page" (1:59) is the payoff for all the custom properties. Kevin swaps the Google Fonts link, changes `--ff-primary` and `--ff-secondary` to Lora and Roboto Slab, and the whole site re-renders. Then he changes `--clr-accent` to red, and finally swaps the light and dark values to invert the theme. "Your design is your own design after that."
+
+<Screenshot
+  src="/img/scrimba/build-and-deploy-your-portfolio/customizing-your-page-red-accent-lesson.webp"
+  alt="Scrimba Build and Deploy Your Portfolio lesson Customizing your page, paused with the preview open: the intro section now uses a serif font and a red accent bar reading front-end dev next to the Jane Smith photo, and the What I do heading below is red"
+  width={1400}
+  height={660}
+  caption="Customizing your page at 1:04. Two custom properties changed (fonts and accent color) and the entire site follows. This is the moment that shows why the setup lesson spent ten minutes on variables."
+/>
+
+### 4. Deploying to DigitalOcean and wrap-up (18 min, 5 scrims)
+
+The two DigitalOcean lessons are slides, not code. "What they are and how to set one up" (10:14) explains a droplet as a Linux virtual server you pay for only while it exists, then walks through the 2020 dashboard. The steps are:
+
+- Pick the LEMP stack from the Marketplace instead of a bare distribution.
+- Choose the cheapest starter plan and a region.
+- Choose a one-time password over an SSH key "because it's faster and simpler to set up."
+- Create the droplet, then use the browser console to log in as root and reset the password.
+
+"Uploading files via FTP" (4:10) opens FileZilla and connects over SFTP on port 22. Kevin navigates to `/var/www/html` and replaces the default index file with the files downloaded from Scrimba's gear menu ("Download as Zip"). Refreshing the IP address shows the live site: "It's as easy as that to get a site up on a DigitalOcean droplet."
+
+Two things to know before you follow these. The course page promises a DigitalOcean credit for new accounts, but the video quotes a smaller figure than the listing does now, so check the current offer rather than either number. And the dashboard screenshots are six years old; the steps are still the same in outline, but the buttons will not be where the slides show them.
+
+The last three scrims are Scrimba's standard wrap-up. There is a one-minute "Congratulations" from Leanne pitching the Frontend Developer Career Path, a two-minute Scrimbassador referral pitch from Per, and a 53-second "How to Utilize Your Certificate" scrim, followed by the certificate entry.
+
+## What a lesson actually feels like
+
+A scrim here is Kevin talking over the editor for four to twelve minutes while he types. The preview pane sits in the bottom corner and he pops it open to check each change, often dragging it narrower to test the mobile layout. When text needs pasting in, he does it "off screen" between scrims, so the next lesson opens with the filler paragraphs already there. The slide thumbnail in the corner holds the section of the design he is currently building, and the design file link is in the notes under every scrim.
+
+There are no challenge pauses. Not one of the 23 scrims stops and asks you to write something, and none carry Scrimba's "Challenge with Instant Feedback" icon. That makes it different from most Scrimba courses: the value is in pausing yourself, retyping what he wrote, and reading the reasoning as he goes. Every scrim has captions, a timestamped transcript panel under the settings gear, subtitles in ten languages, and adjustable playback speed. You can also download the project as a zip from the same gear menu at any point, which is how Kevin himself gets the files out for the deploy.
+
+## Free or Pro: exactly what is gated
+
+The whole course is free. All 23 scrims, including the two DigitalOcean lessons, play without a subscription, and only the Introduction carries a SAMPLE badge. There is no Solo Project in this course, so there is no Pro-only exercise hidden inside it.
+
+What Pro adds is the Certificate of Completion listed at the end, the career paths, and the Pro-only channels on Scrimba's Discord. The pricing page lists basic access to the Discord community as free, so the server itself is not gated. For this course specifically, I would not pay for anything: the site you end up with is the credential. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you want the certificate or the paths.
+
+## How long it really takes
+
+The 2.4 hours is video runtime and the scrims are long, so budget two to three times that. Five to seven hours is realistic if you type along and pause to check the preview at each step. Two evenings is realistic. Then add your own time for the part that matters: replacing Jane Smith's photos, text and ten placeholder projects with yours, which is an hour or two if your content is ready and much longer if it is not. If you deploy the DigitalOcean way, allow another hour for the account, the droplet and the first FileZilla session.
 
 ## Who it's for, and who should skip it
 
-It fits self-taught and bootcamp learners who can write basic HTML and CSS and need a public site to point employers at. It is a natural fit for [busy professionals](/docs/for/busy-professionals/) changing careers and for anyone job-hunting in frontend.
+It fits people who have finished a beginner HTML and CSS course, can write a Flexbox layout without looking it up, and need a live site with their name on it. That includes [career changers](/docs/for/busy-professionals/) who have projects but no portfolio, and anyone who wants to watch how Kevin Powell organizes a stylesheet. It also suits [beginners](/docs/for/beginners/) who have done [Learn HTML and CSS](/docs/courses/css/html-and-css/) and want a second project, as long as they accept that some grid and calc moments will go past quickly.
 
-Skip it if you have not learned HTML and CSS yet; start there first. Skip it too if you already have a polished, deployed portfolio, since this is about getting to that point rather than advanced portfolio tactics.
+Skip it if you have never written CSS; nothing here is explained from first principles, and Kevin says so. Skip it too if you already have a deployed portfolio, or if you want a JavaScript-driven site: the dozen or so lines of JavaScript here toggle a class and nothing more. And if you specifically want the deploy walkthrough, [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/) covers a simpler and more current route.
 
 ## Prerequisites
 
-Basic HTML and CSS. You should be able to write markup and apply styles. No JavaScript, frameworks, or prior deployment experience is required; the deploy step is taught from scratch.
+Comfortable HTML and CSS. You should recognize Flexbox, know roughly what CSS Grid does, and not be scared by a media query. Kevin uses custom properties, `calc()`, `grid-template-areas`, pseudo-elements and BEM, and links to deeper lessons in the notes rather than teaching them. No JavaScript is required; the dozen or so lines are explained as he writes them. For the deploy lessons you need a DigitalOcean account and an FTP client such as FileZilla, and the course does not need either until the final quarter.
 
 ## Where it fits
 
-This course is a standalone career project rather than a named path member, but it complements the frontend fundamentals on the [Frontend Developer Path](/docs/paths/frontend-developer-path/). It pairs especially well with layout practice and a dedicated deployment walkthrough.
-
-## Free or Pro
-
-The course is free, with no subscription needed to start or finish it. Scrimba Pro is a separate decision that unlocks the structured career paths, coding challenges, and certificates. If you only want to build and ship your portfolio, you never have to pay.
+This is a standalone career project, not a path course. It sits naturally after [Learn HTML and CSS](/docs/courses/css/html-and-css/) and before or alongside [Learn JavaScript](/docs/courses/javascript/learn-javascript/), which is where you would go to make the site do more than open a menu. Kevin's other Scrimba courses, [Build a Multi-Page Website with HTML and CSS](/docs/courses/javascript/a-space-travel-website/) and [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), go deeper on the layout ideas he uses here without explaining. [Learn CSS Variables](/docs/courses/css/css-variables/) is the short course on the custom properties that make this template customizable.
 
 ## Strengths and limits
 
-What it does well: it is free, it ends in a real deployed site, and it covers the deploy step that so many tutorials leave out. Kevin Powell keeps the result clean and professional.
+What it does well:
 
-Where it is limited: the design and content follow the course, so the result needs personalising to truly be yours, and it covers HTML and CSS only, no JavaScript or interactivity. Fast peer help depends on the Pro Discord.
+- It produces a finished, responsive site in one sitting.
+- The code is organized the way a working developer would organize it.
+- The custom-property setup makes personalizing the result trivial.
+- The accessibility details (aria-label on the toggle, empty alt on the logo, visible focus states, tap-sized social links) come as standard rather than as an afterthought.
+
+Where it is limited:
+
+- There is nothing to solve yourself, so passive watchers will finish with Kevin's site rather than skills.
+- The recording is from 2020, which shows in the flexbox gap comment and the DigitalOcean screenshots.
+- The deploy target is a paid server for a static site that could be hosted for free.
+- The ten portfolio images are stock photos you will need to replace with real work before the site is worth sending to anyone.
 
 ## Related courses and comparisons
 
-- [Build a Multi-Page Website with HTML and CSS](/docs/courses/javascript/a-space-travel-website/), the deeper Kevin Powell layout course
-- [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/), a focused look at the deploy step
+- [Build a Multi-Page Website with HTML and CSS](/docs/courses/javascript/a-space-travel-website/), Kevin Powell's deeper layout course
+- [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/), a simpler deploy route than a droplet
+- [Learn CSS Variables](/docs/courses/css/css-variables/), the custom properties this template relies on
 - [Learn JavaScript](/docs/courses/javascript/learn-javascript/), to add interactivity to your site
 - [All JavaScript courses](/docs/courses/javascript/), the full category hub
+- [Portfolio projects that get you hired](/blog/portfolio-projects-get-hired-2026/), on what to put in the ten slots
 - [Scrimba for beginners](/docs/for/beginners/), if you are just starting out
 
 <FAQAccordion items={[
-  { q: "Is this course free on Scrimba?", a: "Yes. The full course is free with no credit card or Pro subscription required. Pro is only needed for the career paths and certificates." },
-  { q: "Do you actually deploy the site?", a: "Yes. The course covers getting the finished portfolio live at a real URL, not just building it locally. That deploy step is a core part of the course." },
-  { q: "Who teaches it?", a: "Kevin Powell, a well-known CSS educator. You build the site by editing his code in the Scrimba player." },
-  { q: "Is it a JavaScript course?", a: "No. It is an HTML and CSS course focused on building and shipping a portfolio. There is no JavaScript involved." },
-  { q: "Can I use the result as my real portfolio?", a: "Yes, with personalisation. The finished site is real and deployable, but you will want to swap in your own projects, copy, and styling so it represents you." },
+  { q: "Is Build and Deploy Your Portfolio free on Scrimba?", a: "Yes. All 23 scrims, including the two DigitalOcean deploy lessons, are free with no card required. The only Pro item is the Certificate of Completion at the end of the list." },
+  { q: "Who teaches it?", a: "Kevin Powell, the CSS educator behind the YouTube channel of the same name. The teacher card on the course page credits him, and it is his voice in every build lesson; only the three wrap-up scrims are Scrimba staff." },
+  { q: "What do you build?", a: "A one-page portfolio for a fictional front-end developer, Jane Smith: header with a slide-in hamburger menu, intro, services, about, a responsive grid of ten work samples, and a footer with Font Awesome social icons, plus a second template page for individual projects. Everything is themed through CSS custom properties so you can restyle it." },
+  { q: "Is there JavaScript in it?", a: "A little. The Adding the JS lesson writes about twelve lines of vanilla JavaScript that toggle a nav-open class on the body and remove it when a link is clicked. Everything else is HTML and CSS." },
+  { q: "Are there coding challenges?", a: "No. None of the 23 scrims pause for a challenge and none use Scrimba's AI-checked Challenge with Instant Feedback format. It is a follow-along build, so the practice comes from typing along and then personalizing the result." },
+  { q: "How do you deploy the site?", a: "Kevin rents a DigitalOcean droplet with the LEMP stack from the Marketplace, resets the root password in the browser console, and uploads the files with FileZilla over SFTP to /var/www/html. The lessons are slides recorded in 2020, so the dashboard looks different today. The site itself is static, so Netlify or GitHub Pages work just as well." },
+  { q: "Do I need to install anything?", a: "Not for the build; it all runs in Scrimba's editor and you can download the project as a zip from the gear menu. For the deploy lessons you need a DigitalOcean account and an FTP client such as FileZilla." },
+  { q: "How long does it take?", a: "About 2.4 hours of video. Plan five to seven hours to type along, plus whatever time your own photos, copy and project write-ups need." },
+  { q: "Does it have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings gear, and subtitles in ten languages." },
+  { q: "Can I use the result as my real portfolio?", a: "Yes, once you replace the Jane Smith photos, the filler text and the ten stock project images. Kevin designed it as a template and shows how to change the fonts, colors and theme in under two minutes in the Customizing your page lesson." },
 ]} />
 
 <AffiliateLink href="https://scrimba.com/build-and-deploy-your-portfolio-c012" variant="button">
@@ -90,10 +217,16 @@ Where it is limited: the design and content follow the course, so the result nee
 
 <CourseSchema
   name="Build and Deploy Your Portfolio"
-  description="Scrimba's free, career-focused course taught by Kevin Powell. About 2.4 hours building a developer portfolio in HTML and CSS and deploying it to a live URL."
+  description="Scrimba's free, career-focused course taught by Kevin Powell. About 2.4 hours and 23 scrims building a customizable one-page developer portfolio in HTML, CSS and a few lines of JavaScript, then deploying it to a DigitalOcean droplet."
   url="https://scrimba.com/build-and-deploy-your-portfolio-c012"
   timeRequired="PT2H26M21S"
   difficulty="Intermediate"
   access="Free"
-  keywords={["Frontend", "HTML", "CSS"]}
+  keywords={["Frontend", "Career", "HTML", "CSS"]}
+  modules={[
+    { name: 'Introduction and HTML structure', duration: '29 min' },
+    { name: 'Styling the site section by section', duration: '68 min' },
+    { name: 'Navigation, JavaScript and the project page', duration: '31 min' },
+    { name: 'Deploying to DigitalOcean and wrap-up', duration: '18 min' },
+  ]}
 />

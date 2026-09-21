@@ -10,6 +10,7 @@ import {
   Compass,
   Calculator,
   Map,
+  Sparkles,
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -21,6 +22,7 @@ const ICON_MAP = {
   Compass,
   Calculator,
   Map,
+  Sparkles,
 } as const;
 
 interface MegaMenuItem {

@@ -55,7 +55,10 @@ export default function HeaderWrapper(props: Props): React.JSX.Element {
           <img
             src={image}
             alt={imageAlt}
-            loading="lazy"
+            width={1200}
+            height={630}
+            loading="eager"
+            fetchPriority="high"
             decoding="async"
           />
         </figure>

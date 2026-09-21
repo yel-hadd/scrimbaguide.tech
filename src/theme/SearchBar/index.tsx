@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { createPortal } from 'react-dom';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useHistory } from '@docusaurus/router';
+import Link from '@docusaurus/Link';
 import { searchByWorker } from '@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker';
 
 const PER_GROUP_LIMIT = 4;
@@ -232,6 +233,11 @@ export default function SearchBar(): React.ReactElement {
             onChange={(e) => { setQuery(e.target.value); setHighlightIdx(-1); }}
             onKeyDown={handleKeyDown}
             autoComplete="off"
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded={!loading && !!query && flatItems.length > 0}
+            aria-controls="sg-search-listbox"
+            aria-activedescendant={highlightIdx >= 0 ? `sg-search-opt-${highlightIdx}` : undefined}
           />
           <button
             className="sg-search-clear"
@@ -261,27 +267,44 @@ export default function SearchBar(): React.ReactElement {
         )}
 
         <div className="sg-search-body" ref={bodyRef} tabIndex={0}>
-          {loading && (
-            <div className="sg-search-status">Searching&hellip;</div>
-          )}
-          {!loading && !query && (
-            <div className="sg-search-status">Start typing to search&hellip;</div>
-          )}
-          {!loading && query && results && results.length === 0 && (
-            <div className="sg-search-status">No results found for &ldquo;{query}&rdquo;.</div>
-          )}
+          <div className="sg-search-status-region" aria-live="polite">
+            {loading && (
+              <div className="sg-search-status">Searching&hellip;</div>
+            )}
+            {!loading && !query && (
+              <div className="sg-search-status">Start typing to search&hellip;</div>
+            )}
+            {!loading && query && results && results.length === 0 && (
+              <div className="sg-search-status">No results found for &ldquo;{query}&rdquo;.</div>
+            )}
+          </div>
+          {/* The listbox holds only option/group children; status text lives above it. */}
+          <div id="sg-search-listbox" role="listbox">
           {!loading && filtered.map((group, gi) => (
-            <div key={group.label} className="sg-search-group">
-              <h2 className="sg-search-group-label">{group.label}</h2>
+            <div key={group.label} className="sg-search-group" role="group" aria-labelledby={`sg-search-group-${gi}`}>
+              <h2 className="sg-search-group-label" id={`sg-search-group-${gi}`}>{group.label}</h2>
               {group.results.map((result, ri) => {
                 const flatIdx = flatItems.findIndex((f) => f.gi === gi && f.ri === ri);
                 const hl = flatIdx === highlightIdx;
                 return (
-                  <div
+                  <Link
                     key={`${gi}-${ri}`}
+                    to={hitUrl(result.document)}
+                    id={`sg-search-opt-${flatIdx}`}
+                    role="option"
+                    aria-selected={hl}
+                    tabIndex={-1}
                     className={'sg-search-result' + (hl ? ' sg-search-result--hl' : '')}
-                    onClick={() => navigate(result)}
-                    onMouseEnter={() => setHighlightIdx(flatIdx)}
+                    onClick={(e) => {
+                      // Plain click: close the modal and route; modifier/middle
+                      // clicks fall through to the real href (new tab, etc.).
+                      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+                      e.preventDefault();
+                      navigate(result);
+                    }}
+                    // onMouseMove: Docusaurus Link overwrites onMouseEnter with its
+                    // own preload handler, so hover would never move the highlight.
+                    onMouseMove={() => { if (highlightIdx !== flatIdx) setHighlightIdx(flatIdx); }}
                   >
                     <div className="sg-search-result-icon">
                       {group.label === 'Courses' ? (
@@ -309,11 +332,12 @@ export default function SearchBar(): React.ReactElement {
                         <div className="sg-search-result-path">{result.document.b.slice(result.document.b[0] === 'Courses' ? 2 : 1).join(' / ')}</div>
                       )}
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
           ))}
+          </div>
         </div>
 
           {query && (
