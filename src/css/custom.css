@@ -4539,12 +4539,17 @@ html[data-theme='dark'] .curriculum__index {
   margin: 1.25rem 0 1.75rem;
 }
 
-.screenshot a {
+.screenshot > a {
   display: block;
   text-decoration: none;
 }
 
-.screenshot a:focus-visible {
+.screenshot figcaption a {
+  display: inline;
+  text-decoration: underline;
+}
+
+.screenshot > a:focus-visible {
   outline: 3px solid var(--ifm-color-primary);
   outline-offset: 3px;
   border-radius: 10px;
