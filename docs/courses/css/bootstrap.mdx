@@ -6,7 +6,7 @@ toc_max_heading_level: 2
 description: "Neil Rowe's 56 minute Bootstrap 4 course reviewed from inside: 13 scrims, no challenges, a 2018 CDN build, four free previews, and who still needs it."
 keywords: [scrimba learn bootstrap, learn bootstrap scrimba review, bootstrap 4 course, neil rowe bootstrap, bootstrap scrimba tutorial, learn bootstrap interactive, scrimba bootstrap review]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,17 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Bootstrap
 
-Scrimba's Bootstrap course is a 56 minute tour of Bootstrap 4 by Neil Rowe: ten short screencasts, no modules, and nothing to build. I read the transcript of every scrim (all 13, with a Pro account in September 2026) and typed along with the longer ones. This page is what is inside, including the parts that have aged since it was recorded.
+Scrimba's Learn Bootstrap is a 56 minute tour of Bootstrap 4 by Neil Rowe: 13 scrims on the grid, navbars, modals, forms, and the rest of the component set, with nothing to build and no challenges. It's an hour well spent for a Bootstrap 4 codebase, skippable if you're choosing a framework for new work.
 
-*This page is part of our [Scrimba CSS courses](/docs/courses/css/) catalog. Scrimba's course page does not list it under any career path.*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Learn Bootstrap is a Pro course, labeled Intermediate, made of 13 scrims that add up to about 56 minutes. A scrim is Scrimba's unit of a lesson: a recorded screencast whose code you can pause and edit. Ten of the 13 are Neil Rowe's lessons, an intro plus nine components. The other three are Scrimba house scrims tacked onto the end. Four scrims carry a SAMPLE badge and play without a subscription.
-
-Every lesson loads Bootstrap 4.0.0 from a CDN, a content delivery network that serves the framework's files from a link tag rather than a download. That is the January 2018 release, not Bootstrap 5. What you get is a fast, clear walkthrough of the classes you will meet in a Bootstrap codebase, and that is all you get.
-
-If you need Bootstrap for a job, an hour here is well spent. If you are choosing a CSS framework for new work, look at [Tailwind](/docs/courses/css/tailwind-css/) first.
+It's a fast, Pro-gated primer on Bootstrap 4 classes, best for anyone who already has a Bootstrap codebase to read or extend. The catch: it teaches the January 2018 release with jQuery and Popper, and Bootstrap 5 renamed several of the classes it uses. For a framework worth learning today, start with [Tailwind](/docs/courses/css/tailwind-css/) instead.
 
 <CourseCard
   title="Learn Bootstrap"
@@ -125,7 +121,7 @@ The close cross in the corner is pasted in rather than typed. Neil waves off its
 
 Forms (6:18) is a login form built up from plain HTML that Neil describes as "looking a little bit Windows XP." The fix comes in the order you would apply it on a real project. First `btn btn-primary` on the button and `form-control` on the inputs. Then a `form-group row` around each label and input, split `col-sm-3 col-form-label` and `col-sm-9`. Finally a `row` with `col-sm-9 offset-sm-3` so the button lines up under the inputs.
 
-He makes an honest mistake on the way. He types `col-md-9` "by habit," notices the button jumping at the medium breakpoint, and corrects it to `sm`. That slip is more useful than a clean take, because it shows what a mismatched breakpoint looks like. The lesson ends on `for` attributes and matching ids, which is the right note.
+He makes a real mistake on the way. He types `col-md-9` "by habit," notices the button jumping at the medium breakpoint, and corrects it to `sm`. That slip is more useful than a clean take, because it shows what a mismatched breakpoint looks like. The lesson ends on `for` attributes and matching ids, which is the right note.
 
 Cards (5:08) is the one I would rewrite if I ran the course. It opens on a finished card with an image, title, text, a flush list group and two links, and Neil rebuilds it from a bare `card` div. In order: `card-body` for padding, `card-title` (with a detour into `mb-0`, the utility that removes bottom margin), `card-text`, two buttons, then `card-img-top`. A `list-group list-group-flush` goes between two `card-body` blocks so the list runs edge to edge. The teaching is fine. The problem is the placeholder image host, which is gone.
 
@@ -161,7 +157,7 @@ After it come three Scrimba house scrims. Two of them have ids outside the ~00 t
 
 "Want to become a Scrimbassador?" (1:59) is the affiliate program. "How to Utilize Your Certificate" (0:56) is the generic certificate scrim that closes most Scrimba courses.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Every lesson is one `index.html` with Bootstrap, jQuery, and Popper linked from CDNs in the head. A floating preview window sits beside the code, and Neil resizes it by hand to show the breakpoints. He types nearly everything, narrates the class he is about to add, refreshes, and points at what changed.
 
@@ -175,7 +171,7 @@ The four SAMPLE scrims play without a subscription: the introduction, Responsive
 
 There are no solo projects to gate because there are none in the course. Scrimba's pricing page lists basic Discord access as free and the Pro-only channels as Pro; see <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what is included in your region.
 
-## How long it really takes
+## How long it takes
 
 Runtime is 56 minutes. If you pause each lesson, retype the classes into the editor, and resize the preview yourself to check the breakpoints, plan on two to two and a half hours. The grid, navbar, and forms lessons are the ones worth slowing down for.
 
@@ -186,6 +182,10 @@ Watching straight through takes an hour and teaches you the names of things and 
 It fits you if you already write HTML and CSS and need to become useful in a Bootstrap 4 project quickly: an inherited site or a company template. It also works as a preview of what a component framework does before you commit to learning one, and the free sample scrims cover that on their own.
 
 Skip it if you are picking a framework for new work. [Tailwind](/docs/courses/css/tailwind-css/) is the framework Scrimba puts on its paths now, and its Tailwind course is more than twice as long. Skip it if your project is on Bootstrap 5 and you need exact syntax; the concepts transfer but you will be translating class names from the moment you start. And skip it if you have not learned CSS yet, because the course never explains what its classes do underneath. Take [Learn HTML and CSS](/docs/courses/css/html-and-css/) first, then this.
+
+<AffiliateLink href="https://scrimba.com/learn-bootstrap-c0o" variant="button">
+  Watch the free sample scrims of Learn Bootstrap
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -221,10 +221,6 @@ Where it is limited: it teaches Bootstrap 4.0.0 with jQuery, two major versions 
   { q: "Does it have transcripts or subtitles?", a: "Yes. Every scrim has a full timestamped transcript under the player's gear menu, captions, and subtitles in ten languages." },
   { q: "Is Bootstrap still worth learning in 2026?", a: "Only with a reason: a legacy project, a team standard, or a job that lists it. For new work with a free choice, Tailwind is the more current skill and Scrimba's Tailwind course is the one to take." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-bootstrap-c0o" variant="button">
-  Watch the free sample scrims of Learn Bootstrap
-</AffiliateLink>
 
 <CourseSchema
   name="Learn Bootstrap"

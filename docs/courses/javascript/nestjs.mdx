@@ -6,7 +6,7 @@ sidebar_label: "Intro to NestJS"
 description: "DonTheDeveloper's free Intro to NestJS from inside: 83 minutes, 22 scrims, a DevMatch profile API on NestJS 11, and 12 checked challenges you test with curl."
 keywords: [scrimba nestjs, intro to nestjs scrimba, intro to nestjs review, free nestjs course, nestjs vs express, typescript node framework, donthedeveloper nestjs]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,17 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Intro to NestJS
 
-Scrimba's free, 83 minute introduction to NestJS is taught by DonTheDeveloper (Don Hansen on the title card). You build the profile feature of a dating app for developers. I read the transcript of 21 of the 22 scrims with a Pro account in September 2026 and worked the challenges in a handful of them. The one scrim whose transcript would not load, Pipes (Validation), I opened and describe from its finished code and network tab. This page describes what is in the course, not what the listing says.
+Scrimba's free Intro to NestJS is an 83-minute, 22-scrim course from DonTheDeveloper (Don Hansen on the title card). You build the profile API of DevMatch, a dating app for developers, on NestJS 11, adding controllers, services, DTOs, exception handling, pipes, and a guard. If you already know Express, it's a solid, fast look at a structured, TypeScript-first framework.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page lists it under the [Backend Developer Path](/docs/paths/backend-developer-path/), and our course data also places it in the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Intro to NestJS is a free, intermediate course of 22 scrims and about 83 minutes of video. It is one flat list of lessons, not a set of modules. You scaffold a real NestJS 11 project with the Nest CLI (the command line tool that generates files for you) inside Scrimba's browser IDE, which has a terminal, a runner, a console, and a network request tab.
-
-The project is the `profiles` feature of DevMatch. By the end you have a module, a controller with GET, POST, PUT, and DELETE routes, a service that owns an in-memory array, DTOs, exception handling, transformation and validation pipes, and a guard. Twelve of the 22 scrims carry Scrimba's "Challenge with Instant Feedback" icon, meaning they stop and check your solution.
-
-It assumes you already know Node and have built something with Express. If that is you and you want to see what an opinionated, TypeScript-first framework looks like in an afternoon, it is a good use of 83 minutes. It does not touch databases, authentication, or tests.
+Intro to NestJS fits developers who've already built an Express API and want a fast tour of a structured, TypeScript-first framework: modules, controllers, services, DTOs, pipes, and guards, with 12 checked challenges. The catch is scope: no databases, authentication, or tests, just the DevMatch profile API in 83 minutes. Start with [Learn Express.js](/docs/courses/javascript/expressjs/) first if you haven't built a Node API yet.
 
 <CourseCard
   title="Intro to NestJS"
@@ -59,7 +55,7 @@ Yes, if you meet the prerequisite. The whole course is one project, and every le
 
 By the outro you have a working REST API. It returns 404s with custom messages, rejects ids that are not UUIDs, and has a guard on the delete route.
 
-The two caveats are scope and level. Scope: the data lives in an array in the service. Don says in the outro to "try the TypeORM or Prisma guides in the docs to persist profiles instead of using an in memory array," and he keeps authentication out on purpose: "I wanted to avoid diving deep into authorization in this course and just focus on the fundamentals of Nest."
+Scope and level are the two limits. Scope: the data lives in an array in the service. Don says in the outro to "try the TypeORM or Prisma guides in the docs to persist profiles instead of using an in memory array," and he keeps authentication out on purpose: "I wanted to avoid diving deep into authorization in this course and just focus on the fundamentals of Nest."
 
 Level: the second scrim tells you plainly to have "familiarity with building personal projects with Express" and to "think of this as the next step after you build a few basic Express apps." If you have never written a route handler, the pace will lose you by lesson five.
 
@@ -86,7 +82,7 @@ The 22 scrim durations add up to 87 minutes when summed one by one. Scrimba's he
 
 ### 1. Getting started (10 min, 4 scrims)
 
-"Why NestJS?" is the free sample lesson and the only one with a pitch in it. Don frames Nest as the step after Express: "Nest actually uses Express under the hood, so it's compatible with a lot of Express middleware," with Fastify as an option. He is candid about the job-market angle, which I did not expect in a framework intro. "Most aspiring developers are just building basic Express apps," he says, and "being able to demonstrate that you're familiar with and can build things with a more scalable framework like Nest looks way better than piecing together a simple Express app." Take that as one instructor's opinion, but it is an honest reason to be here.
+"Why NestJS?" is the free sample lesson and the only one with a pitch in it. Don frames Nest as the step after Express: "Nest actually uses Express under the hood, so it's compatible with a lot of Express middleware," with Fastify as an option. He is candid about the job-market angle, which I did not expect in a framework intro. "Most aspiring developers are just building basic Express apps," he says, and "being able to demonstrate that you're familiar with and can build things with a more scalable framework like Nest looks way better than piecing together a simple Express app." Take that as one instructor's opinion, not a universal truth, but it is a real reason to be here.
 
 "DevMatch" is a 90 second brief for the project, plus the prerequisites and a version note: "at the time of this recording, you'll need at least version twenty of Node to run Nest." "Setup" is two minutes.
 
@@ -192,6 +188,10 @@ It fits developers who have built an Express API or two and are curious whether 
 
 Skip it if you have not done Node yet; start with [Learn Node.js](/docs/courses/javascript/nodejs/) and [Learn Express.js](/docs/courses/javascript/expressjs/). Skip it if you need databases, authentication, or testing covered; none of those is in here. And skip it if you want a full-length build. At 22 scrims this is an orientation with a working API at the end, not a capstone.
 
+<AffiliateLink href="https://scrimba.com/nestjs-c0n7djgjma" variant="button">
+  Start Intro to NestJS for free
+</AffiliateLink>
+
 ## Prerequisites
 
 Node fundamentals and an Express project of your own. TypeScript helps but is not required. Don says "we won't be diving that deep into TypeScript, and you'll still be able to learn how to use Nest," though Scrimba's course page recommends [Learn TypeScript](/docs/courses/typescript/learn-typescript/) first.
@@ -230,10 +230,6 @@ Where it is limited: the data is an in-memory array. Authentication and database
   { q: "Where should errors be thrown, the service or the controller?", a: "The course shows both. Exception Filters throws NotFoundException from the service and lets it bubble up; Handling exceptions in the controller shows the try/catch version in the controller. Don's advice for a first app is to throw the HTTP exception in the service and keep it simple." },
   { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/nestjs-c0n7djgjma" variant="button">
-  Start Intro to NestJS for free
-</AffiliateLink>
 
 <CourseSchema
   name="Intro to NestJS"

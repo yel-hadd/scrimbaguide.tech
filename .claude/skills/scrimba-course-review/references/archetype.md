@@ -32,7 +32,8 @@ last_update:
    Then the provenance line: `*Reviewed inside the course with a Pro account,
    <Month Year>.*` No other method statement anywhere on the page.
 2. `## Quick answer`: two or three sentences. Who it is for, the one catch,
-   and the natural next course (internal link).
+   and the natural next course (internal link). It never repeats the
+   opening's facts (instructor, runtime, module count).
 3. `<CourseCard title duration difficulty access modules instructor instructorUrl href description />`.
    `duration`, `difficulty`, `access` and `modules` are copied from the course's
    entry in `data/courses.json` (same strings), so the card and the site-wide
