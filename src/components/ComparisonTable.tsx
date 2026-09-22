@@ -13,6 +13,9 @@ interface ComparisonTableProps {
   rows: ComparisonRow[];
   scrimbaUrl?: string;
   competitorUrl?: string;
+  /** Drop the CTA row when the page already has a CTA nearby (e.g. a
+   *  VerdictBox right above the table on comparison leaves). */
+  hideCta?: boolean;
 }
 
 export default function ComparisonTable({
@@ -21,6 +24,7 @@ export default function ComparisonTable({
   rows,
   scrimbaUrl = 'https://scrimba.com/?via=u42d4986',
   competitorUrl,
+  hideCta = false,
 }: ComparisonTableProps): React.ReactElement {
   const captionId = useId();
   const helpId = useId();
@@ -56,6 +60,7 @@ export default function ComparisonTable({
           ))}
         </tbody>
       </table>
+      {!hideCta && (
       <div className="comparison-table__cta-row">
         <AffiliateLink href={scrimbaUrl} variant="button" location="comparison-table">
           Claim 20% off Pro
@@ -67,6 +72,7 @@ export default function ComparisonTable({
           </a>
         )}
       </div>
+      )}
     </div>
   );
 }

@@ -851,6 +851,24 @@ textarea {
   .navbar__title {
     font-size: 0.95rem;
   }
+
+  /* Six top-level items: the logo mark carries the brand and search
+     collapses to its icon so nothing wraps. */
+  .navbar__title,
+  .sg-search-pill-text {
+    display: none;
+  }
+
+  .mega-menu__toggle {
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 1151px) and (max-width: 1199px) {
+  .sg-search-pill-text,
+  .sg-search-pill-kbd {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2497,6 +2515,13 @@ article a:not(.cta-link):not(.hash-link):hover {
   animation: desktopCtaFade 0.35s ease-out;
 }
 
+/* Keep the right-rail TOC clear of the sticky card (card bottom 5.5rem +
+   card height ~9.5rem). The TOC scrolls within the shortened column. */
+html.has-sticky-cta .thin-scrollbar:has(> .table-of-contents) {
+  max-height: calc(100vh - var(--ifm-navbar-height) - 17rem);
+  overflow-y: auto;
+}
+
 @keyframes desktopCtaFade {
   from {
     opacity: 0;
@@ -2675,21 +2700,20 @@ article a:not(.cta-link):not(.hash-link):hover {
 /* Featured "next step" card: visually dominant so the reader sees ONE obvious
    path forward (Hick's Law). Secondary links sit in a subtle list beneath. */
 .related-guides__featured {
+  /* Navigation, not a CTA: neutral border and surface so it never reads as a
+     second conversion box next to a PricingCTA. */
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.5rem 1.75rem;
-  border: 2px solid var(--ifm-color-primary);
-  border-radius: 12px;
-  background: linear-gradient(
-    135deg,
-    var(--ifm-background-surface-color),
-    var(--ifm-color-emphasis-100)
-  );
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+  color: inherit;
   text-decoration: none !important;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .related-guides__featured:hover {
@@ -3111,44 +3135,6 @@ article table:focus,
 
 [class*='authorSocials'] a + a {
   margin-left: 0;
-}
-
-/* ── Why Scrimba component ───────────────────────────────────── */
-.why-scrimba {
-  margin: 2.5rem 0;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  padding: 1.5rem;
-  background: var(--ifm-background-surface-color);
-}
-
-.why-scrimba__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.why-scrimba__item {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 10px;
-  padding: 1rem;
-  background: var(--ifm-background-color);
-}
-
-.why-scrimba__item h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1rem;
-}
-
-.why-scrimba__item p {
-  margin: 0;
-  color: var(--sg-text-muted);
-  font-size: 0.95rem;
-}
-
-.why-scrimba__cta {
-  margin-top: 1rem;
 }
 
 /* ── Tool and roadmap page polish ────────────────────────────── */
