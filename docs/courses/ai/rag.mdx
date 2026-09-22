@@ -6,7 +6,7 @@ sidebar_label: "Learn RAG"
 description: "Guil Hernandez's Pro RAG course reviewed from inside: 94 minutes, 22 scrims, embeddings to a Supabase vector store to a movie chatbot, and what has aged."
 keywords: [scrimba learn rag, learn rag scrimba review, rag course scrimba, retrieval augmented generation tutorial, embeddings vector store, supabase pgvector course, guil hernandez rag]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,15 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn RAG
 
-Scrimba's Pro course on Retrieval-Augmented Generation, or RAG: the technique of fetching relevant text from your own data and handing it to a language model before it answers. Guil Hernandez teaches it in an hour and a half of scrims, from "what is an embedding" to a movie-recommendation chatbot on a Supabase vector database. I read the transcript of every scrim, all 22 of them, with a Pro account in September 2026, and opened the code in each one. This is what is in there, including what has aged.
+Learn RAG is Scrimba's Pro course on Retrieval-Augmented Generation: fetching text from your data and feeding it to a language model before it answers. Guil Hernandez teaches it in about 94 minutes and 22 scrims, from embeddings to a movie-recommendation chatbot on Supabase, the fastest route to retrieval if you already call the OpenAI API from JavaScript.
+
+*Reviewed inside the course with a Pro account, September 2026: every scrim's transcript read and its code opened.*
 
 *This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
 
 ## Quick answer
 
-Learn RAG is a short, intermediate, Pro-only course: 94 minutes across 22 scrims in one flat list. You turn text into embeddings with OpenAI, store them in Supabase with the pgvector extension, run similarity searches with a SQL function pasted from the docs, and split a file into chunks with LangChain. It ends with "ReelRecs," a small chat UI that recommends films from your own data.
-
-Three scrims are AI-checked challenges, and the last is a Pro solo project called PopChoice. By the end you can build a "chat with my data" bot for any fixed body of text: product docs, a support knowledge base, a catalog. If you already call the OpenAI chat API from JavaScript, this is the most direct route to the retrieval half of that job. If you have never called a language model from code, start with [Intro to AI Engineering](/docs/courses/ai/ai-engineering/).
+Learn RAG is a short, intermediate, Pro-only course: 94 minutes across 22 scrims in one flat list, turning text into OpenAI embeddings, storing them in Supabase with the pgvector extension, and running similarity searches with a SQL function pasted from the docs before it ends with "ReelRecs," a movie-recommendation chat UI. Three scrims are AI-checked challenges, and the last is a Pro solo project called PopChoice. If you already call the OpenAI chat API from JavaScript this is the most direct route to the retrieval half of that job; if you have never sent a chat completion from code, start with [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) first.
 
 <CourseCard
   title="Learn RAG"
@@ -67,7 +67,7 @@ Yes, if you fit the prerequisites, and they are real. Guil says it in the intro:
 
 What I liked is how little theory sits between you and a working pipeline. One six-minute slide lesson covers embeddings; after that, everything is code you run in the scrim. When cosine similarity comes up (the math that scores how close two embeddings are), Guil shows the formula, says "I don't know about you, but this makes my head spin," and pastes a SQL function from the Supabase docs instead. That is the right call for a 94-minute course.
 
-The honest caveat is age. The scrims pin `openai@4.11.1` and `langchain@0.0.167`, and the models are `text-embedding-ada-002` and `gpt-4`. A 44-second scrim after "Vector databases" has a Scrimba staffer "popping in from the future" because the Supabase package "has been superseded and deprecated." The fix is a right-click and "upgrade package." You will, he warns, need to do that in each scrim. The RAG pattern itself is unchanged.
+The code is old. The scrims pin `openai@4.11.1` and `langchain@0.0.167`, and the models are `text-embedding-ada-002` and `gpt-4`. A 44-second scrim after "Vector databases" has a Scrimba staffer "popping in from the future" because the Supabase package "has been superseded and deprecated." The fix is a right-click and "upgrade package," and he warns you will need to do that in each scrim. The RAG pattern itself is unchanged.
 
 ## What you'll learn
 
@@ -195,6 +195,10 @@ It fits JavaScript developers who already call the OpenAI chat API and now need 
 
 Skip it, for now, if `async`/`await` and `Promise.all` are shaky, or if you have never sent a chat completion from code; do [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) first. Skip it if you need Python, a dedicated vector database such as Pinecone, or production concerns like re-ranking and evaluation; none of that is here. LangChain appears only as its text splitters.
 
+<AffiliateLink href="https://scrimba.com/learn-rag-c033" variant="button">
+  View Learn RAG on Scrimba
+</AffiliateLink>
+
 ## Prerequisites
 
 Comfortable JavaScript including asynchronous code, and prior experience with the OpenAI API and chat completions. No prior knowledge of embeddings, vector databases, SQL, or Supabase is assumed. You will need an OpenAI API key with billing enabled and a free Supabase account.
@@ -207,7 +211,7 @@ This is the retrieval course on the [AI Engineer Path](/docs/paths/ai-engineer-p
 
 What it does well: a complete RAG pipeline in under two hours of video. The similarity-search lesson shows both the hits and the false match, so you understand thresholds. The chunking lesson gives concrete numbers (50 vs 47 vs 78 chunks) rather than hand-waving. The challenges are AI-checked, and the solo project is a real portfolio piece with a design file.
 
-Where it is limited: the packages and models are from late 2023 and need translating to current names. It covers one vector store and one embedding provider, and it stops at a proof of concept with in-memory chat history.
+Where it is limited: the scrims pin `openai@4.11.1` and `langchain@0.0.167`, so package and model names need translating to current ones. It covers one vector store and one embedding provider, and it stops at a proof of concept with in-memory chat history.
 
 ## Related courses and comparisons
 
@@ -229,10 +233,6 @@ Where it is limited: the packages and models are from late 2023 and need transla
   { q: "Does it use LangChain?", a: "Only for chunking. One lesson uses CharacterTextSplitter and RecursiveCharacterTextSplitter from langchain@0.0.167 with a 150-character chunk size and 15-character overlap, and the challenge that follows uses 250 and 35. The embeddings, database calls, and chat requests use the OpenAI and Supabase clients directly." },
   { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-rag-c033" variant="button">
-  View Learn RAG on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Learn RAG"
