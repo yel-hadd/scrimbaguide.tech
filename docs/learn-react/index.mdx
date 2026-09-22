@@ -5,121 +5,87 @@ description: "A complete guide to learning React on Scrimba. Maps the official R
 keywords: [learn react, react roadmap, scrimba react guide, react documentation, how to learn react]
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-09-21
+  date: 2026-09-22
 ---
 
-import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 
 # React Learning Roadmap
 
-You are reading [react.dev](https://react.dev) (or Next.js docs) and want **hands-on reps in the same sitting**. This roadmap maps each major docs area to **specific Scrimba scrims**, interactive screencasts where you edit the code in the player, so "read the concept" and "type it" stay connected.
+Scrimba's React lineup is three courses: the free <AffiliateLink href="https://scrimba.com/learn-react-c0e">Learn React</AffiliateLink> ([review](/docs/courses/react/learn-react/), 15.1 hours), Pro-only <AffiliateLink href="https://scrimba.com/advanced-react-c02h">Advanced React</AffiliateLink> ([review](/docs/courses/react/advanced-react/), 18.8 hours), and the free React 19 update (about 69 minutes). This roadmap lines each one up against the matching section of [react.dev](https://react.dev), quick start through escape hatches, so you read a concept and type it in the same sitting.
 
-This roadmap connects the [official React documentation](https://react.dev) to Scrimba's interactive lessons. Each block below matches a major docs area, quick start, describing UI, interactivity, state, escape hatches, and React 19, so you can read on react.dev and practice in the browser. Use it for React alone or alongside Next.js.
+> **Rules of React:** Components and hooks must be pure, same inputs, same output. Props and state are immutable, never mutate them directly. See [react.dev/reference/rules](https://react.dev/reference/rules) for the full rules.
 
-> **Rules of React:** Components and hooks must be **pure** (same inputs → same output). Props and state are **immutable**, never mutate them directly. See [react.dev/reference/rules](https://react.dev/reference/rules) for the full rules.
+## 1. Quick start
 
-## Who This Is For
+**Goal:** build your first component, understand JSX, and handle basic state.
 
-Learners following the React or Next.js roadmap.
-
-
-## 1. Quick Start
-
-**Goal:** Build your first component, understand JSX, and handle basic state.
-
-| Concept | Official Docs | Scrimba Lesson |
+| Concept | Official docs | Scrimba lesson |
 |---|---|---|
-| **Thinking in React** | [Read Docs](https://react.dev/learn/thinking-in-react) | <AffiliateLink href="https://scrimba.com/learn/learnreact/intro-to-react-c0e">Intro to React</AffiliateLink> |
-| **Your First Component** | [Read Docs](https://react.dev/learn/your-first-component) | <AffiliateLink href="https://scrimba.com/learn/learnreact/custom-components-c0b">Custom Components</AffiliateLink> |
-| **Import/Export** | [Read Docs](https://react.dev/learn/importing-and-exporting-components) | <AffiliateLink href="https://scrimba.com/learn/learnreact/organizing-components-c0d">Organizing Components</AffiliateLink> |
-| **JSX** | [Read Docs](https://react.dev/learn/writing-markup-with-jsx) | <AffiliateLink href="https://scrimba.com/learn/learnreact/jsx-c0a">JSX</AffiliateLink> |
+| **Thinking in React** | [Read docs](https://react.dev/learn/thinking-in-react) | <AffiliateLink href="https://scrimba.com/learn/learnreact/intro-to-react-c0e">Intro to React</AffiliateLink> |
+| **Your first component** | [Read docs](https://react.dev/learn/your-first-component) | <AffiliateLink href="https://scrimba.com/learn/learnreact/custom-components-c0b">Custom Components</AffiliateLink> |
+| **Import/export** | [Read docs](https://react.dev/learn/importing-and-exporting-components) | <AffiliateLink href="https://scrimba.com/learn/learnreact/organizing-components-c0d">Organizing Components</AffiliateLink> |
+| **JSX** | [Read docs](https://react.dev/learn/writing-markup-with-jsx) | <AffiliateLink href="https://scrimba.com/learn/learnreact/jsx-c0a">JSX</AffiliateLink> |
 
-<CourseCard
-  title="Learn React (Free)"
-  duration="15.1 hrs"
-  difficulty="Intermediate"
-  access="Free"
-  href="https://scrimba.com/learn-react-c0e?via=u42d4986"
-  description="The comprehensive free course that covers all these Quick Start topics and more."
-/>
-
-Section 1, Static pages (2.4 hrs, 29 scrims), builds a one-page ReactFacts site ([review](/docs/courses/react/learn-react/)).
+Section 1, Static pages (2.4 hrs, 29 scrims), builds a one-page ReactFacts site.
 
 ## 2. Describing the UI
 
-**Goal:** Master the fundamentals of rendering.
+**Goal:** master the fundamentals of rendering.
 
-- **Props:** Learn how to pass data between components, <AffiliateLink href="https://scrimba.com/learn/learnreact/props-part-1-c0f">Scrimba Lesson: Props Part 1</AffiliateLink>
-- **Conditional Rendering:** Show/hide elements based on state, <AffiliateLink href="https://scrimba.com/learn/learnreact/conditional-rendering-%26%26-c010">Scrimba Lesson: Conditional Rendering</AffiliateLink>
-- **Rendering Lists:** Display data from arrays (using `.map()`), <AffiliateLink href="https://scrimba.com/learn/learnreact/mapping-components-c012">Scrimba Lesson: Mapping Components</AffiliateLink>
+- **Props** pass data between components: <AffiliateLink href="https://scrimba.com/learn/learnreact/props-part-1-c0f">Props Part 1</AffiliateLink>
+- **Conditional rendering** shows or hides elements based on state: <AffiliateLink href="https://scrimba.com/learn/learnreact/conditional-rendering-%26%26-c010">Conditional Rendering</AffiliateLink>
+- **Rendering lists** displays array data with `.map()`: <AffiliateLink href="https://scrimba.com/learn/learnreact/mapping-components-c012">Mapping Components</AffiliateLink>
 
-## 3. Adding Interactivity
+## 3. Adding interactivity
 
-**Goal:** Make your app respond to user input.
+**Goal:** make your app respond to user input.
 
-This is where `state` comes in, React's most important concept. Section 3, React State (5.2 hrs, 58 scrims), is the longest: nine lessons on forms and the Chef Claude project on the Claude API.
+This is where state comes in, React's core concept. Section 3, React State (5.2 hrs, 58 scrims), is the longest: nine lessons on forms and the Chef Claude project on the Claude API.
 
-| Concept | Explanation | Scrimba Lesson |
+| Concept | Explanation | Scrimba lesson |
 |---|---|---|
 | **Events** | Handling clicks, form submits, etc. | <AffiliateLink href="https://scrimba.com/learn/learnreact/event-listeners-c014">Event Listeners</AffiliateLink> |
 | **State** | Data that changes over time. | <AffiliateLink href="https://scrimba.com/learn/learnreact/usestate-array-destructuring-c016">useState Hook</AffiliateLink> |
-| **State Updates** | Changing complex state objects. | <AffiliateLink href="https://scrimba.com/learn/learnreact/complex-state-objects-c018">Complex State (Objects)</AffiliateLink> |
+| **State updates** | Changing complex state objects. | <AffiliateLink href="https://scrimba.com/learn/learnreact/complex-state-objects-c018">Complex State (Objects)</AffiliateLink> |
 
-## 4. Managing State
+## 4. Managing state
 
-**Goal:** Handle complex data flows across your application.
+**Goal:** handle complex data flows across your application.
 
-As your app grows, you need better ways to manage state than just passing props down.
+As your app grows, passing props down gets unwieldy and you need better ways to manage state.
 
-- **Passing Data Deeply:** Avoid "prop drilling" with Context, <AffiliateLink href="https://scrimba.com/learn/learnreact/context-provider-c020">Scrimba Lesson: Context API</AffiliateLink>
-- **Scaling Up:** Manage complex state logic with `useReducer`, covered in **<AffiliateLink href="https://scrimba.com/advanced-react-c02h">Advanced React</AffiliateLink>**
+- **Passing data deeply** avoids prop drilling with Context: <AffiliateLink href="https://scrimba.com/learn/learnreact/context-provider-c020">Context API</AffiliateLink>
+- **Scaling up** with `useReducer` for complex state logic is covered in <AffiliateLink href="https://scrimba.com/advanced-react-c02h">Advanced React</AffiliateLink> ([review](/docs/courses/react/advanced-react/))
 
-Advanced React's Reusability module (5 hrs, 68 scrims) builds a component library with compound components, context, and custom hooks ([review](/docs/courses/react/advanced-react/)).
+Advanced React's Reusability module (5 hrs, 68 scrims) builds a component library with compound components, context, and custom hooks.
 
-## 5. Escape Hatches
+## 5. Escape hatches
 
-**Goal:** Synchronize with external systems (APIs, DOM).
+**Goal:** synchronize with external systems, APIs, the DOM.
 
-This is primarily about `useEffect` and `useRef`. Learn React section 4, Side Effects (108 min, 22 scrims), builds the Meme Generator before the two capstones, Tenzies and Assembly: Endgame.
+This is mainly `useEffect` and `useRef`. Learn React section 4, Side Effects (108 min, 22 scrims), builds the Meme Generator before the two capstones, Tenzies and Assembly: Endgame.
 
-- **Effects:** Run code when components mount/update/unmount, <AffiliateLink href="https://scrimba.com/learn/learnreact/useeffect-syntax-c022">Scrimba Lesson: useEffect</AffiliateLink>, <AffiliateLink href="https://scrimba.com/learn/learnreact/async-javascript-c024">Scrimba Lesson: Async / API Calls</AffiliateLink>
+- **Effects** run code when components mount, update, or unmount: <AffiliateLink href="https://scrimba.com/learn/learnreact/useeffect-syntax-c022">useEffect</AffiliateLink>, <AffiliateLink href="https://scrimba.com/learn/learnreact/async-javascript-c024">Async / API Calls</AffiliateLink>
 
-<CourseCard
-  title="Advanced React (Pro)"
-  duration="18.8 hrs"
-  difficulty="Advanced"
-  access="Pro"
-  href="https://scrimba.com/advanced-react-c02h?via=u42d4986"
-  description="Six modules, 239 scrims: reusability, VanLife routing, performance, Supabase, auth, TypeScript in React."
-/>
+<AffiliateLink href="https://scrimba.com/advanced-react-c02h">Advanced React</AffiliateLink> ([review](/docs/courses/react/advanced-react/)) picks up from here: 18.8 hours, six modules, 239 scrims on reusability, VanLife routing, performance, Supabase, auth, and TypeScript in React.
 
-## 6. React 19 & The Future
+## 6. React 19 and what's next
 
-**Goal:** Learn the newest features like Server Components and Actions.
+**Goal:** learn the newest features, Server Components and Actions.
 
-React 19 introduces major changes to how we handle data mutations and server-client communication.
+React 19 changes how you handle data mutations and server-client communication: Actions handle form submissions automatically, `useActionState` manages pending states, and Server Components render on the server for performance.
 
-- **Actions:** Handle form submissions automatically.
-- **`useActionState`:** Manage pending states easily.
-- **Server Components:** Render components on the server for performance.
-
-**<AffiliateLink href="https://scrimba.com/whats-new-in-react-19-c03d">Start the React 19 Course</AffiliateLink>**
-
-Free, about 69 minutes, 15 scrims: one form rebuilt with the `action` prop, `useActionState`, `useOptimistic`, and `useFormStatus`, then `use()`. Server Components are absent; see the [Next.js roadmap](/docs/learn-nextjs/) and [our React 19 review](/docs/courses/react/whats-new-in-react-19/).
+<AffiliateLink href="https://scrimba.com/whats-new-in-react-19-c03d">What's New in React 19</AffiliateLink> ([review](/docs/courses/react/whats-new-in-react-19/)) is free, about 69 minutes, 15 scrims: one form rebuilt with the `action` prop, `useActionState`, `useOptimistic`, and `useFormStatus`, then `use()`. Server Components are absent from the course; see the [Next.js roadmap](/docs/learn-nextjs/) for those.
 
 ---
 
-## Choose This If
+## Related Scrimba courses
 
-**Choose this page if:** You're learning React or Next.js and want a docs-to-Scrimba roadmap.
-
-## Related Scrimba Courses
-
-- [Learn React Course](/docs/courses/react/learn-react/)
-- [Advanced React Course](/docs/courses/react/advanced-react/)
-- [What's New in React 19 Course](/docs/courses/react/whats-new-in-react-19/)
+- [Learn React](/docs/courses/react/learn-react/)
+- [Advanced React](/docs/courses/react/advanced-react/)
+- [What's New in React 19](/docs/courses/react/whats-new-in-react-19/)
 - [Frontend Developer Path](/docs/paths/frontend-developer-path/)
 - [Practice React Hooks](/docs/practice/practice-react-hooks/)
 - [Practice React Projects](/docs/practice/practice-react-projects/)
