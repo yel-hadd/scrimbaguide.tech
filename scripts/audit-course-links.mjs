@@ -7,6 +7,7 @@
  *      bare text). URLs inside AffiliateLink, inside components that wrap it
  *      (CourseCard, ScrimPoster, PricingCTA, ...), inside schema components,
  *      and scrimba.com/explain/* links (bare on purpose) are not flagged.
+ *      scrimba.com/articles|blog links are plain on purpose (CLAUDE.md).
  *   2. Named Scrimba courses and paths (from data/courses.json) mentioned in
  *      prose without a link. Mentions inside links, headings, code, component
  *      props and the page's own course are counted separately, not flagged.
@@ -180,6 +181,7 @@ function scanFile(abs) {
     const tag = inTagProps(idx);
     let kind;
     if (/scrimba\.com\/explain\b/.test(url)) kind = /via=/.test(url) ? 'explain-with-via' : 'explain-bare-ok';
+    else if (/scrimba\.com\/(articles|blog)\b/.test(url) && !tag) kind = /via=/.test(url) ? 'article-with-via' : 'article-plain-ok';
     else if (tag && WRAPPERS.has(tag.name)) kind = 'affiliate-ok';
     else if (tag && SCHEMA.has(tag.name)) kind = 'schema-ok';
     else if (tag && tag.name === 'a') kind = 'raw-a-tag';
@@ -215,7 +217,7 @@ const results = files.map(scanFile);
 const tally = (arr) => arr.reduce((o, x) => ((o[x.kind] = (o[x.kind] || 0) + 1), o), {});
 const allUrls = results.flatMap((r) => r.urls.map((u) => ({ ...u, file: r.file })));
 const allMentions = results.flatMap((r) => r.mentions.map((u) => ({ ...u, file: r.file })));
-const rawUrls = allUrls.filter((u) => u.kind.startsWith('raw') || u.kind === 'explain-with-via' || u.kind.startsWith('prop-of'));
+const rawUrls = allUrls.filter((u) => u.kind.startsWith('raw') || u.kind.endsWith('-with-via') || u.kind.startsWith('prop-of'));
 const unlinked = allMentions.filter((u) => u.kind === 'UNLINKED');
 // "First unlinked mention per entity per file" is the actionable subset: link the first one.
 const firstUnlinked = [];

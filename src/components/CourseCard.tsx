@@ -17,6 +17,8 @@ interface CourseCardProps {
    *  derived from `href` so per-card conversion can be measured across 100+
    *  generated course-detail pages without touching the generator. */
   location?: string;
+  /** Button text override, e.g. "Start the Frontend Path" on path pages. */
+  ctaLabel?: string;
 }
 
 /** Derive a stable analytics slug from a Scrimba course URL.
@@ -43,10 +45,11 @@ export default function CourseCard({
   href,
   description,
   location,
+  ctaLabel: ctaLabelProp,
 }: CourseCardProps): React.ReactElement {
   const ctaLocation = location || `course-card-${slugFromHref(href)}`;
   const isFree = access === 'Free';
-  const ctaLabel = isFree ? 'Start free on Scrimba' : 'View on Scrimba';
+  const ctaLabel = ctaLabelProp || (isFree ? 'Start free on Scrimba' : 'View on Scrimba');
 
   return (
     <article className="course-card" aria-label={title}>
