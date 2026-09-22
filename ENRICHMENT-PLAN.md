@@ -74,16 +74,25 @@ contradiction on the reference page fixed. The browsing guide was converted
 into the `scrimba-browsing` skill and the archetype into `scrimba-course-review`
 (this branch).
 
+Done 2026-09-21/22 (PR #98): the four path pages and the paths hub (every
+module expanded with the Pro account; 8 screenshots under
+`static/img/scrimba/paths/`; AI path Deployment corrected to Render),
+how-scrims-work (ghosts, scribbles, transcript panel and settings menu from the
+public demo scrim), the A1/A3 explainer slides fixed with Redo slide, and the
+`ScrimPoster` component (homepage hero poster made reusable; on the four path
+pages and how-scrims-work, each with its own GA `cta_location`).
+
 Remaining:
 
-1. Path pages `docs/paths/*` (money pages; extract nested curriculum + hours,
-   title cards and path-only scrims). Browser work; one tab at a time with the
-   Chrome window in front.
-2. `docs/how-it-works/how-scrims-work.mdx` and siblings: transcript panel,
-   settings menu, AI-feedback challenge, EXPLAIN modal, dependencies,
-   certificate item screenshots from a free Learn JavaScript lesson.
-3. The two flawed explainer slides (A1, A3) noted in the scrimba-explain
-   skill's lessons-learned.
-4. Re-check GSC four to six weeks after 2026-09-21 (baseline in memory) to see
-   whether the leaves leave "crawled, not indexed". Indexing API submissions
-   for the 140 changed URLs started 2026-09-21 (log in memory).
+1. how-it-works siblings still without screenshots: the AI-feedback challenge
+   icon, the EXPLAIN modal, the DEPENDENCIES panel and the certificate row.
+   These need the logged-in scrim IDE, which stopped booting in the Chrome
+   profile on 2026-09-21 (see the browsing skill's tool-quirks); restart Chrome
+   first. Optional: the pages read fine without them.
+2. Compare `cta_location` clicks for the `*-poster` placements in GA4 after
+   two to four weeks; if posters beat the text CTAs, add them to the remaining
+   money pages (pricing, comparison verdicts).
+3. Re-check GSC four to six weeks after 2026-09-21 (baseline in memory) to see
+   whether the leaves leave "crawled, not indexed". Indexing API: 120 URLs on
+   2026-09-21, 28 more on 2026-09-22 (paths, how-scrims-work, the rest of the
+   day-2 list).
