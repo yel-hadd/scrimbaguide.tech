@@ -4,7 +4,7 @@ description: "Scrimba's 108.4-hour Fullstack Path reviewed: every module, a real
 keywords: [scrimba fullstack path, scrimba fullstack developer, fullstack career path, scrimba fullstack review]
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-05-28
+  date: 2026-09-21
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -12,6 +12,8 @@ import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import CourseSchema from '@site/src/components/CourseSchema';
+import Screenshot from '@site/src/components/Screenshot';
+import ScrimPoster from '@site/src/components/ScrimPoster';
 
 # Scrimba Fullstack Developer Path
 
@@ -46,6 +48,18 @@ Completing the path is a nice-to-have. Portfolio projects beyond what the path p
   lessons={1957}
   href="https://scrimba.com/fullstack-path-c0fullstack?via=u42d4986"
   description="JavaScript end to end: React, Node, Express, SQL, TypeScript, Next.js, testing, deployment, plus an AI module, all in one Pro path."
+/>
+
+<ScrimPoster
+  href="https://scrimba.com/fullstack-path-c0fullstack/~02c7"
+  src="/img/scrimba/paths/fullstack-welcome-people-who-know-fullstack.webp"
+  alt="Slide from the Welcome to the Fullstack Path scrim on Scrimba: a large translucent circle labelled People who use fullstack apps next to a tiny circle labelled People who know fullstack"
+  width={1250}
+  height={707}
+  badge="Free sample lesson"
+  caption={<>Press play to open "Welcome to the Fullstack Path", the two-minute sample lesson that opens the path.</>}
+  location="path-fullstack-poster"
+  className="scrim-poster--inline"
 />
 
 <div className="mdx-widget-center-cta mdx-widget-center-cta--spaced-bottom">
@@ -89,7 +103,30 @@ Twenty modules covering web fundamentals, then a Frontend-style React arc, then 
 | Next.js | SSR, routing, full-stack React | Common production choice for React. |
 | Launching Your Career | Portfolio, interviews, job search | Same career closure as Frontend, with full-stack angles. |
 
-**Total: 108.4 hours across 1,957 lessons.**
+**Total: 108.4 hours across 1,957 lessons.** When I expanded every group on the path page with a Pro account on 21 September 2026, 1,684 scrim rows rendered across the 20 modules and their 60-odd sub-modules; the listing's larger number counts clips inside scrims. The module names and hours above are Scrimba's.
+
+## What I found inside (21 September 2026)
+
+The table is Scrimba's. This is what the expanded table of contents actually contains, and where the path differs from the Frontend path it shares most of its first half with.
+
+- **Nested, not flat.** Almost every module is two or three sub-modules that map to a standalone course: HTML and CSS Fundamentals is Intro to HTML, Intro to CSS, Business Card, Space Exploration Layout, Birthday Website and the Hometown Homepage solo project; JavaScript Fundamentals is the counter app, Blackjack and Chrome extension builds with "JavaScript challenges" drills nested inside each. Node.js is "Build a Node API" (19 scrims) and "Build a Fullstack Node App" (26 scrims: `writeHead()`, routing and paths, the `path` and `fs` modules, serving the frontend, a JSON API, an explainer on adding POST).
+- **Tools of the Trade (2.2 hrs)** is path-only in this form: Command Line Fundamentals (9 scrims), Command Line Power Tools (13) and Essential Git and GitHub Skills (8), with a "Welcome to Tools of the Trade" intro.
+- **Testing (56 min, 12 scrims)** is a module the Frontend path does not have: set up the tooling, write your first test, test user interactions, mock external services, view code coverage, "Accessibility testing with a side of TDD", types of testing. The app under test is the Meme Generator from Essential JavaScript.
+- **Express.js (3.9 hrs)** ends in a 24-scrim Authentication sub-module: users table, `/register` route, validation, hashing with bcryptjs, `express-session`, environment variables, login. This is where the path stops being "frontend plus a bit of Node".
+- **Advanced React.js (16.4 hrs)** is bigger here than in the Frontend path (13.3 hrs) because it adds Persistence (10 scrims) and Authentication (36 scrims) on top of Reusability, Performance and Routing.
+- **Launching Your Career (5.3 hrs)** has different framing from the Frontend path's Getting hired: General Tips and Strategies (five scrims, including the same Bob Ziroll "What are hiring managers looking for?" talk and two "Proven Tactics" scrims), Improving Your Online Presence (the twelve LinkedIn scrims plus resume and GitHub), then JavaScript, React and Frontend interview challenges.
+- **AI Engineering (5.9 hrs)** is three sub-modules: AI Engineering Fundamentals (updated, 32 scrims), RAG and Vector Databases (18) and AI Agents (27). That is the same material as the [Intro to AI Engineering](/docs/courses/ai/ai-engineering/), [Learn RAG](/docs/courses/ai/rag/) and [Learn AI Agents](/docs/courses/ai/ai-agents/) courses, so if you have done those you can skip the module.
+
+
+<Screenshot
+  src="/img/scrimba/paths/fullstack-express-auth-hash-password-terminal.webp"
+  alt="Scrimba's Hash the password lesson in the Fullstack Path Express.js module, paused at 1:20: authController.js shows a registerUser function with a duplicate-user check and const hashed = await bcrypt.hash, and the terminal pane below shows npm install bcryptjs adding one package"
+  width={1568}
+  height={688}
+  caption="Express.js, Authentication, 'Hash the password' at 1:20. The lower pane is a real terminal inside the scrim: the challenge is to install bcryptjs, hash the incoming password with a cost factor of ten, and check the users table with logTable.js."
+/>
+
+The later backend scrims run in a Node environment with a terminal pane, a file tree with `node_modules` and a `database.db`, which is a different experience from the browser-only HTML and JavaScript lessons at the start of the path. The "Hash the password" scrim above is typical: a challenge brief in a comment, a `hint.md` if you forget the syntax, then the instructor's solution.
 
 ## Realistic time budget
 

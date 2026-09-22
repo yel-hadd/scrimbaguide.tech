@@ -37,3 +37,22 @@
   `/op/pub/<courseId>/data` (course JSON), `/op/stream/<scrimId>/stream`
   (scrim recording), `/slide-image/…`, `/v1/cdn/*.webm` (video).
 
+
+## Splash that never clears, and a profile that stops booting scrims (2026-09-21)
+
+- **Splash left over.** Sometimes the scrim app finishes booting (the DOM has
+  `ide-header`, the transcript modal and the editor) but `<app-splash>` stays on
+  top, so screenshots are a blank dark frame. Hide it:
+  `document.querySelector('app-splash').style.display='none'`.
+- **Scrim pages stop booting in the logged-in Chrome** after a long session
+  (body text length stays 0, `app-splash` only, every data request 200, no
+  console errors), while course, path and Explain pages still load. New tabs and
+  reloads did not fix it. A headless Chromium on the same machine booted the
+  same scrim in 5 s, so it is profile state, not Scrimba. Logged out, course
+  scrims show "Only available to signed in users" after one locked scrim, but
+  the public demo scrim `s0v687325e` works fully, which is enough for UI shots
+  (transcript panel, settings menu, editor and preview). For course content you
+  still need the logged-in profile; ask the user to restart Chrome.
+- Path pages with long TOCs can freeze the renderer on a heavy
+  `javascript_tool` call (45 s CDP timeout); take a screenshot to check the page
+  really rendered before concluding it is empty, and re-run the read.

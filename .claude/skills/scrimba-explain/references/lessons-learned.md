@@ -15,8 +15,8 @@ Made on the user's Pro account: five web singles (three RAG runs across styles, 
 | `guide0j3tt3irh` | Playlist L1 | 1:15, 8 | 4 5 4 4 5 3 | JSON not JS; "tool results" dropped; unrequested quiz |
 | `guide0ih5ernr6` | Playlist L2 | 1:14, 7 | 4 4 3 4 3 4 | ambiguous quiz on a comparison; floating subgraph label |
 | `guide0bnbt17e2` | Playlist L3 | 0:51, 6 | 4 5 4 5 5 3 | "state outside the window" dropped; stray arrow at 44 s |
-| `guide0niu04ksn` | Web, RAG, Explain style | 1:20, 7 | 4 3 2 4 4 5 | dot product labelled cosine similarity (Redo candidate) |
-| `guide050741s62` | Web, RAG, Professor | 1:26, 7 | 4 3 3 4 5 5 | `[0.1, 0.9, ...]` SyntaxError; undefined `userQuery` |
+| `guide0niu04ksn` | Web, RAG, Explain style | 1:20, 7 | 4 3 2 4 4 5 | dot product labelled cosine similarity (fixed by Redo slide 2026-09-21) |
+| `guide050741s62` | Web, RAG, Professor | 1:26, 7 | 4 3 3 4 5 5 | `[0.1, 0.9, ...]` SyntaxError; undefined `userQuery` (both fixed 2026-09-21) |
 
 ### What the strong ones shared
 
@@ -60,6 +60,9 @@ Made on the user's Pro account: five web singles (three RAG runs across styles, 
 
 ### Open items
 
-- A1 slide 5 comment `// A simple dot product for cosine similarity`: Redo with "rename to dot product, or normalise the vectors and keep the name", pending the user's go-ahead.
 - Untested: `?via=` on an iframe src; the `portrait` MCP mode in the web player; whether a pasted scrimbaguide.tech URL reliably produces a Sources pill; whether a 3-lesson playlist meters as 3 units.
 - Untested wording: "left-to-right diagram ... (one row, no subgraphs)" was proposed by the verification report but never sent. The tested phrase is the bare arrow chain ("one short diagram slide: document -> chunks -> embeddings -> vector store -> query match", in-lesson V5). Keep the arrow chain as the template phrase until "left-to-right" is tried.
+
+## 2026-09-21: Redo slide on A1 and A3
+
+Three Redo slide runs, each one instruction naming the exact change and "keep the same slide layout": A1 slide 5 renamed `similarity` to `dotProduct` with the comment "Dot product: works as a similarity score because the embeddings are normalised"; A3's similarity slide got complete three-element vector literals and a literal `queryVector` instead of `await embed()`; A3's augmented-prompt slide got `const userQuery = "How do I deploy?";` as its first line. Each redo took about 20 s, showed a "Slide redone." toast, changed only the requested lines, and regenerated that slide's narration, which moved the totals (A1 1:20 to 1:22, A3 1:26 to 1:32). Menu path: right-click the slide, "Redo slide" sits directly above "Delete explainer", so zoom before clicking.

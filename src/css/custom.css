@@ -1660,6 +1660,53 @@ article[class*='searchResultItem'] mark {
   color: var(--sg-text-soft);
 }
 
+/* Tag on the frame ("Free sample lesson" / "Pro lesson"). */
+.hero-scrim-poster__badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  background: rgba(20, 14, 40, 0.82);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* In-page poster (docs and blog): a real screenshot, so give it the rounded,
+   bordered edge the laptop art on the homepage has baked in. */
+.scrim-poster--inline {
+  max-width: 760px;
+  margin: 1.75rem auto 2rem;
+}
+.scrim-poster--inline .hero-scrim-poster__img {
+  border-radius: 12px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+.scrim-poster--inline .hero-scrim-poster__play {
+  top: 50%;
+}
+.hero-scrim-poster__play.hero-scrim-poster__play--corner,
+.scrim-poster--inline .hero-scrim-poster__play--corner {
+  top: auto;
+  left: auto;
+  right: 1rem;
+  bottom: 1rem;
+  transform: none;
+}
+.hero-scrim-poster:hover .hero-scrim-poster__play--corner {
+  transform: scale(1.09);
+}
+@media (max-width: 600px) {
+  .scrim-poster--inline .hero-scrim-poster__play {
+    width: 52px;
+    height: 52px;
+    font-size: 1.15rem;
+  }
+}
+
 /* The poster is the affiliate link itself; hide the inline ↗ glyph here. */
 .hero-scrim-poster .cta-link__external-icon {
   display: none;
