@@ -5,6 +5,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import AffiliateLink from '../components/AffiliateLink';
 import ScrimSandbox from '../components/ScrimSandbox';
+import ScrimPoster from '../components/ScrimPoster';
 import ScrimbaBlocksArt from '../components/ScrimbaBlocksArt';
 import AffiliateDisclosureClient from '../components/AffiliateDisclosureClient';
 import {
@@ -75,29 +76,16 @@ function HeroSection() {
         </div>
 
         <div className="hero-section__media">
-          <AffiliateLink
+          <ScrimPoster
             href={DEMO_SCRIM_URL}
-            variant="card"
-            className="hero-scrim-poster"
+            src="/img/scrimba-lesson-preview.webp"
+            alt="A real Scrimba lesson open in the browser: an in-browser code editor showing index.js that you can pause and edit."
+            width={859}
+            height={450}
+            caption="Press play. A real lesson opens in your browser, no signup."
             location="home-hero-poster"
-          >
-            <span className="hero-scrim-poster__frame">
-              <img
-                className="hero-scrim-poster__img"
-                src="/img/scrimba-lesson-preview.webp"
-                alt="A real Scrimba lesson open in the browser: an in-browser code editor showing index.js that you can pause and edit."
-                width={859}
-                height={450}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-              />
-              <span className="hero-scrim-poster__play" aria-hidden="true">▶</span>
-            </span>
-            <span className="hero-scrim-poster__caption">
-              Press play. A real lesson opens in your browser, no signup.
-            </span>
-          </AffiliateLink>
+            priority
+          />
         </div>
       </div>
 

@@ -4,7 +4,7 @@ description: "Node, Express, SQL, TypeScript, security, and deployment in ~39h. 
 keywords: [scrimba backend path, scrimba backend developer, backend career path, scrimba node express]
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-05-28
+  date: 2026-09-21
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -12,6 +12,8 @@ import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import CourseSchema from '@site/src/components/CourseSchema';
+import Screenshot from '@site/src/components/Screenshot';
+import ScrimPoster from '@site/src/components/ScrimPoster';
 
 # Scrimba Backend Developer Path
 
@@ -29,7 +31,7 @@ import CourseSchema from '@site/src/components/CourseSchema';
 
 **Realistic time budget.** Roughly 8 to 10 weeks at 6 to 8 hours per week, 3 to 5 weeks at 12 to 15 hours per week, 2 to 3 weeks full-time. Lesson time alone is about 40 hours; real project builds push the calendar further.
 
-*Last reviewed: May 28, 2026. Duration, lesson count, and modules verified against Scrimba's live course page.*
+*Last reviewed: September 21, 2026. Method: opened the path with a Pro account, expanded all twelve modules and their sub-modules on the path page (598 scrim rows), and worked through the entry "Super Challenge" and a DevOps lesson. The module table is Scrimba's; the section after it is what the expanded contents show.*
 
 <CourseCard
   title="The Backend Developer Path"
@@ -40,6 +42,19 @@ import CourseSchema from '@site/src/components/CourseSchema';
   lessons={943}
   href="https://scrimba.com/the-backend-developer-path-c0tbi0l98f?via=u42d4986"
   description="Node, Express, SQL, TypeScript, cybersecurity baselines, Git, deployment. Pro path for devs adding server skills."
+/>
+
+<ScrimPoster
+  href="https://scrimba.com/the-backend-developer-path-c0tbi0l98f/~0zl3"
+  src="/img/scrimba/paths/backend-super-challenge-title-card.webp"
+  alt="Super Challenge title card from the Stock Ticker scrim at the start of Scrimba's Backend Developer Path, white text over an orange and purple gradient with three floating cubes"
+  width={1214}
+  height={684}
+  badge="Pro lesson"
+  caption={<>Press play to open the path's first Super Challenge: wire up a live stock ticker from a fake API. A fair test of whether you are ready for an Intermediate path.</>}
+  location="path-backend-poster"
+  play="corner"
+  className="scrim-poster--inline"
 />
 
 :::note Who this is for, and who should skip
@@ -94,7 +109,26 @@ Skewed toward shipping APIs, not abstract CS theory.
 | DevOps | Deployment, CI/CD basics | From `localhost` to something public. |
 | Launching Your Career | Backend-focused job search | Positioning projects for API-heavy roles. |
 
-**Total: 36.2 hours across 943 lessons.**
+**Total: 36.2 hours across 943 lessons.** The path page header reads "36.2 hrs, Intermediate, Pro, 7,000+ students, 10 languages"; with every group expanded, 598 scrim rows render (Scrimba's lesson count includes clips inside scrims).
+
+## What the expanded modules actually contain
+
+- **Welcome to the Backend Path (40 min)** is a 1:45 welcome plus "How's your JavaScript?", a 38-minute self-check built around a **Super Challenge: Stock Ticker**. Tom Chant explains the idea in the brief: "throughout this course, I'm aiming to break everything down into bite sized chunks. But of course, real life isn't like that." You get a fake stock API file and an `index.js`, and have to render a ticker that refreshes every 1.5 seconds with a green, red or grey triangle for the price change, using a list of JavaScript concepts he keeps on a hidden slide until you have tried. If that challenge is hard, the path's Intermediate label is telling you something.
+- **Command Line Interface (103 min)** is Command Line Fundamentals (10 scrims) and Command Line Power Tools (13), the same material as the standalone [Command Line Basics](/docs/courses/javascript/command-line-basics/) course.
+- **Web Architecture Fundamentals (72 min)** is path-only: "How the Internet Works" (web and IP addresses, ports, DNS, nine scrims) and "CLI Network Tools" (resolving DNS records, testing connectivity, ten scrims).
+- **Node (3.6 hrs)** is "Build a REST API" (Wild Horizons, 19 scrims) and "Routes & Paths" (26 scrims). **Databases (3.7 hrs)** is four sub-modules: an intro (SQL vs NoSQL, managed vs self-hosted), Fundamentals of SQL (25), Creating and Joining Tables (11) and Advanced Logic and Conditions (nine: `ANY`, `ALL`, and friends), plus a scrim on ORMs.
+- **Frameworks (6.7 hrs)** is Express (Build an Express API, Build a Fullstack Express App, Authentication with 25 scrims, TypeScript & Express with 24) and Nest (21 scrims: "DevMatch, a dating app for developers").
+- **Cybersecurity (5 hrs)** is four sub-modules: Think Like a Security-Minded Developer (STRIDE threat model), Input & Data Safety (25 scrims, starts with cross-site scripting), Authentication & Identity (stateful, stateless and delegated), and Rate limiting & throttling (27 scrims, fixed-window counters and up).
+- **DevOps (5.6 hrs)** is the module you will not find in the Fullstack path: Containers & Docker (14 scrims), Deployment (15), Continuous Integration (23, GitHub Actions), Continuous Delivery (20) and Content Delivery Networks (nine, including DDoS protection).
+- **Launching Your Career (4.4 hrs)** here is Data Structures and Algorithms (33 scrims, opening with "Mission: Save the Dinosaurs" and Big O) plus DSA Practice (55 scrims). No LinkedIn or interview-tips block; that lives in the Frontend and Fullstack paths.
+
+<Screenshot
+  src="/img/scrimba/paths/backend-devops-github-actions-ci-yaml.webp"
+  alt="Scrimba's GitHub Actions lesson in the Backend Path DevOps module, paused at 1:11: the editor shows .github/workflows/ci.yml with push and pull_request triggers on main, a build-and-test job on ubuntu-latest, actions/checkout@v6, actions/setup-node@v6 with node-version 24, npm ci and npm test"
+  width={1568}
+  height={688}
+  caption="DevOps, Continuous Integration, 'Create Your First YAML File' at 1:11. The workflow is current (checkout and setup-node v6, Node 24), which is a good sign for a module that ages fast."
+/>
 
 ## Realistic time budget, in detail
 

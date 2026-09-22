@@ -10,7 +10,7 @@ keywords: [how to use scrimba explain, scrimba explain prompts, scrimba explain 
 hideFooterPricingCta: true
 date: 2026-09-20
 last_update:
-  date: 2026-09-20
+  date: 2026-09-21
   author: Ayoub El Haddad
 ---
 
@@ -81,13 +81,13 @@ RAG (retrieval-augmented generation) is the pattern where you search your own do
 
 | Style | Explainer | Length | Transcript headings |
 |---|---|---|---|
-| Explain (default) | [Retrieval-Augmented Generation (RAG)](https://scrimba.com/explain/guide0niu04ksn) | 1:20 | The context window problem, Chunking your data, The RAG Pipeline, Finding the right chunks, The final prompt, Test your knowledge |
+| Explain (default) | [Retrieval-Augmented Generation (RAG)](https://scrimba.com/explain/guide0niu04ksn) | 1:22 | The context window problem, Chunking your data, The RAG Pipeline, Finding the right chunks, The final prompt, Test your knowledge |
 | Standard | [How RAG Works](https://scrimba.com/explain/guide0sp3ljm85) | 1:28 | The context window problem, The RAG pipeline, Chunking and Embeddings, Similarity search, Finding similar chunks, The final prompt, Test your knowledge |
-| Professor | [How RAG Works](https://scrimba.com/explain/guide050741s62) | 1:26 | The context window limit, The RAG pipeline, What is an embedding?, Similarity search in JS, The augmented prompt, Your turn |
+| Professor | [How RAG Works](https://scrimba.com/explain/guide050741s62) | 1:32 | The context window limit, The RAG pipeline, What is an embedding?, Similarity search in JS, The augmented prompt, Your turn |
 
 All three delivered the requested slides: an animation, a pipeline diagram, a `search.js` code slide, a second code slide that builds the prompt, and a quiz. All three stayed in JavaScript. The differences were smaller than the taglines suggest.
 
-The Explain version leaned on an analogy (an exam desk with too many books) and used shorter sentences. It also had the one slip of the batch: the code comment calls a plain dot product "cosine similarity", which is only true when the vectors are normalised. The concept explanation around it was fine, but if you copied that snippet you would ship a subtle bug.
+The Explain version leaned on an analogy (an exam desk with too many books) and used shorter sentences. It also had the one slip of the batch: the code comment calls a plain dot product "cosine similarity", which is only true when the vectors are normalised. The concept explanation around it was fine, but if you copied that snippet you would ship a subtle bug. The Professor version had two of its own: a vector written as `[0.1, 0.9, ...]`, which is a SyntaxError, and a prompt template that used a `userQuery` it never defined. I fixed all three the next day with Redo slide (right-click the slide, one sentence of instruction, about 20 seconds each, free), so the links below now play the corrected slides; the durations in the table are after the fix. The lesson stands: without code you give it, Explain will write plausible code that does not run.
 
 The Standard version fixed that. Its `cosineSimilarity(vecA, vecB)` divides by both magnitudes, and its ingest and query paths were the clearest of the three. It is embedded below, so you can watch the one I would keep without leaving the page.
 

@@ -4,13 +4,15 @@ description: "Learn how Scrimba's unique interactive scrims merge a code editor 
 keywords: [scrimba interactive ide, what are scrims, scrimba code editor, how scrimba works, scrimba interactive tutorials]
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-09-20
+  date: 2026-09-21
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import PricingCTA from '@site/src/components/PricingCTA';
 import HowToSchema from '@site/src/components/HowToSchema';
+import Screenshot from '@site/src/components/Screenshot';
+import ScrimPoster from '@site/src/components/ScrimPoster';
 
 # How Scrimba Scrims Work
 
@@ -65,6 +67,8 @@ Here's what a typical learning session looks like:
 
 This tight loop, watch, pause, edit, run, resume, is what reviewers describe as "escaping tutorial hell." You're never passively watching. You're always coding.
 
+Two details you only notice once you are inside a lesson. Challenges show up as small purple **ghosts** on the timeline, and the recording pauses by itself when it reaches one; in the Frontend Path's platform tutorial Tom Chant warns "you do have an option to skip", then adds "if you don't take advantage of that, you just won't learn." And the moment you type in the editor, a **yellow dot** appears on the timeline where you are. Scrimba calls that a scribble: your version of the code at that point, saved to the lesson "for your eyes only" so you can come back to it. Run your edit with the run icon or Cmd+S (Ctrl+S on Windows), and resume with the play button.
+
 ## Why Zero Setup Matters
 
 One of the most-praised aspects of Scrimba is that there's **nothing to install**. Reviewers consistently highlight this:
@@ -80,7 +84,19 @@ On other platforms, following along with a tutorial requires:
 
 On Scrimba, you open a lesson in your browser and start coding. The barrier between "I want to learn" and "I'm writing code" is measured in seconds, not minutes.
 
-**Next step:** Try a real scrim with no signup at <AffiliateLink href="https://scrimba.com/s0v687325e">this interactive demo</AffiliateLink>. Two minutes settles the format question faster than any review.
+**Next step:** try a real scrim with no signup. Two minutes settles the format question faster than any review.
+
+<ScrimPoster
+  href="https://scrimba.com/s0v687325e"
+  src="/img/scrimba/how-it-works/demo-scrim-editor-and-preview.webp"
+  alt="Scrimba's public Welcome to Scrimba scrim paused at 0:30: index.html in the editor with CSS variables for glow, speed, height and twist highlighted, a mini browser on the right rendering HELLO PER! on a teal background, and a caption line at the bottom"
+  width={1600}
+  height={900}
+  badge="No signup"
+  caption={<>Press play to open "Welcome to Scrimba" (1:46). At 0:30 it asks you to change the highlighted values, press Cmd+S, and watch the preview on the right update.</>}
+  location="how-scrims-work-poster"
+  className="scrim-poster--inline"
+/>
 
 ## What the Editor Supports
 
@@ -93,6 +109,16 @@ The built-in scrim editor includes:
 - **Multiple file support** for projects that span HTML, CSS, and JS files
 - **Code persistence**, your edits are saved so you can return to a lesson later
 - **An EXPLAIN button** in the header: when a line makes no sense, highlight it, press EXPLAIN, and [Scrimba Explain](/docs/how-it-works/scrimba-explain/) builds a short narrated video from that lesson's files and transcript (10 explainers for life on Free, 100 a month on Pro)
+
+The player bar has more than play and pause. Its settings menu holds Continue to Next, Autoplay, Show Captions, Show Transcript, Playback speed, Font Size and Download as Zip (the lesson's files, for working locally). The transcript opens as a panel over the editor with every line timestamped and the current line highlighted. Captions are on by default, and course lessons offer subtitles in ten languages.
+
+<Screenshot
+  src="/img/scrimba/how-it-works/demo-scrim-transcript-and-settings.webp"
+  alt="Scrimba's Welcome to Scrimba scrim with the transcript panel open over the editor, timestamped lines from 0:00 to 0:54 with the 0:27 line highlighted, and the settings menu open at bottom right listing Continue to Next, Autoplay, Show Captions, Show Transcript, Playback speed, Font Size and Download as Zip"
+  width={1600}
+  height={900}
+  caption="Transcript panel and the settings menu on the public demo scrim. Every course lesson has the same controls."
+/>
 
 ## Challenges and Solo Projects
 

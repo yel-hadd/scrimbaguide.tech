@@ -1,10 +1,10 @@
 ---
 title: "Scrimba AI Engineer Path Review (2026): Worth 11 Hours?"
-description: "Scrimba's 11.4-hour AI Engineer Path reviewed: agents, RAG, MCP, the Vercel AI SDK, and Cloudflare deploy for JavaScript developers, plus what it skips."
+description: "Scrimba's 11.4-hour AI Engineer Path reviewed: agents, RAG, MCP, the Vercel AI SDK, and a Render deploy for JavaScript developers, plus what it skips."
 keywords: [scrimba ai engineer path, scrimba ai course, learn ai engineering javascript, ai agents course, rag tutorial javascript, mcp tutorial, vercel ai sdk course, scrimba ai review 2026]
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-07-23
+  date: 2026-09-21
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -12,6 +12,8 @@ import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import CourseSchema from '@site/src/components/CourseSchema';
+import Screenshot from '@site/src/components/Screenshot';
+import ScrimPoster from '@site/src/components/ScrimPoster';
 
 # Scrimba AI Engineer Path
 
@@ -29,9 +31,9 @@ import CourseSchema from '@site/src/components/CourseSchema';
 
 **Path size, in plain numbers.** The AI Engineer Path is the smallest and fastest-moving on Scrimba. It runs 11.4 hours today, and new modules ship as the tooling evolves (the Intro and Deployment modules already carry an "updated" tag; MCP and Context Engineering were added recently). If you already ship in TypeScript, this is your on-ramp. It is not a complete AI curriculum yet.
 
-**Realistic time budget.** A focused weekend or roughly two weeks at an hour a day clears the lesson runtime. Add a small portfolio project on top (a retrieval app, a tool-using agent, a Cloudflare deploy) and budget another week.
+**Realistic time budget.** A focused weekend or roughly two weeks at an hour a day clears the lesson runtime. Add a small portfolio project on top (a retrieval app, a tool-using agent, a deploy to Render) and budget another week.
 
-*Last reviewed: May 28, 2026. Duration, lesson count, and modules verified against Scrimba's live course page.*
+*Last reviewed: September 21, 2026. Method: opened the path with a Pro account and expanded all nine modules on the path page (162 scrims); the Deployment and MCP rows below were corrected from what the expanded contents show. The path is the standalone AI courses in order, so the lesson-level notes and screenshots live on those course pages, linked from each row.*
 
 <CourseCard
   title="The AI Engineer Path"
@@ -41,7 +43,19 @@ import CourseSchema from '@site/src/components/CourseSchema';
   modules={9}
   lessons={257}
   href="https://scrimba.com/the-ai-engineer-path-c02v?via=u42d4986"
-  description="Agents, RAG, MCP, Vercel AI SDK, embeddings, Cloudflare deployment, and multimodal patterns. JS-first, no PyTorch."
+  description="Agents, RAG, MCP, Vercel AI SDK, embeddings, a Render deployment, and multimodal patterns. JS-first, no PyTorch."
+/>
+
+<ScrimPoster
+  href="https://scrimba.com/the-ai-engineer-path-c02v/~01j"
+  src="/img/scrimba/learn-rag/what-are-embeddings-vector-graph-lesson.webp"
+  alt="Scrimba's What are embeddings lesson from the AI Engineer Path, showing a two-axis graph with sentences plotted as points near each other by meaning"
+  width={1277}
+  height={719}
+  badge="Pro lesson"
+  caption={<>Press play to open "What are embeddings?", the second lesson of the Embeddings and Vector Databases module and the start of the path's RAG block.</>}
+  location="path-ai-poster"
+  className="scrim-poster--inline"
 />
 
 :::note Who this is for, and who should skip
@@ -72,17 +86,26 @@ The marketing copy lists agents, RAG, and MCP. Here is the actual module breakdo
 
 | Module | Length | What you really do |
 |---|---|---|
-| Intro to AI Engineering (updated) | ~2.4 hrs | OpenAI API basics, key handling, prompt structure. Taught with Tom Chant. |
-| Deployment (updated) | ~52 min | One end-to-end deploy via Cloudflare Workers. |
-| Open-source Models | included | Hugging Face APIs and JS interop, with Arsala Khan. |
-| Embeddings and Vector Databases | ~95 min | The data side of RAG: what gets stored, what gets queried. |
-| Agents | ~117 min | Tool-calling loops, retries, where they fail in production. |
-| Context Engineering | ~58 min | Token budgets, system prompt design, what to send vs. what to pay for. Taught by Arsala Khan. |
-| Vercel AI SDK | ~113 min | Streaming UI, `useChat`, the patterns Vercel has propagated across the JS ecosystem. |
-| Model Context Protocol | ~37 min | MCP: the emerging standard for exposing tools and data to models. |
-| Multimodality | ~62 min | Images and audio inputs alongside text. |
+| Intro to AI Engineering (updated) | 2.5 hrs, 34 scrims | OpenAI API basics, the messages array, streaming, few-shot prompting, temperature; the Gift Genie build. Same scrims as [Intro to AI Engineering](/docs/courses/ai/ai-engineering/). |
+| Deployment (updated) | 71 min, 14 scrims | One Node app taken from `localhost` to Render: push to GitHub, build command, smoke test, domain names, database problems, staging, merging, alerts, a health endpoint, process signals. |
+| Open-source Models | 40 min, 9 scrims | Hugging Face Inference (summarisation, classification, image transforms), Transformers.js in the browser, running models locally with Ollama. |
+| Embeddings and Vector Databases | 95 min, 20 scrims | The data side of RAG: create embeddings, store them in Supabase, similarity search, chunking, the PopChoice solo project. Same scrims as [Learn RAG](/docs/courses/ai/rag/). |
+| Agents | 117 min, 28 scrims | A ReAct agent built by hand in nine parts, then an OpenAI functions agent. Same scrims as [Learn AI Agents](/docs/courses/ai/ai-agents/). |
+| Context Engineering | 58 min, 12 scrims | System prompts, managing and summarising the context window, with a super challenge. Same scrims as [Learn Context Engineering](/docs/courses/ai/context-engineering/); two scrims still carry a "Review Needed" tag in their titles. |
+| Vercel AI SDK | 113 min, 20 scrims | A customer-support agent: retrieval, structured outputs, tool calling, agentic routing, web search. Same scrims as [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/). |
+| Model Context Protocol | 43 min, 14 scrims | MCP concepts, a server with tools and resources, transports, trust boundaries, clients. Same scrims as [Intro to MCP](/docs/courses/ai/model-context-protocol-mcp/). |
+| Multimodality | 62 min, 11 scrims | Image generation (prompting, sizes, editing) and GPT-4 with Vision. Same scrims as [DALL-E and GPT Vision](/docs/courses/ai/dall-e-and-gpt-vision/). |
 
-Total: about 11.4 hours across roughly 257 lessons (Scrimba counts each short scrim as a lesson, so the number is large relative to runtime).
+Total: 11.4 hours. The path page header says "11.4 hrs, Intermediate, Pro, 10,000+ students, 10 languages"; with all nine modules expanded, the modules hold 162 scrims (Scrimba's own lesson count is higher because it counts clips inside scrims). The module headers themselves add up to about 12.5 hours, an hour more than the path header says; this page uses the 11.4-hour headline everywhere else. Unlike the Frontend and Fullstack paths there is no nesting: each module is one flat list, and there is no welcome module, no solo-project wrapper and no career block. Seven of the nine modules are standalone courses you can also take on their own; only Deployment and Open-source Models exist in this form only inside the path.
+
+<Screenshot
+  src="/img/scrimba/learn-ai-agents/react-loop-flowchart-title-card.webp"
+  alt="Slide from the Agents module of Scrimba's AI Engineer Path titled ReAct, a flowchart: pass query to LLM, LLM thinks about the next step, determines what data it needs and calls a function, observes the data and decides whether it has enough to answer"
+  width={1279}
+  height={720}
+  caption="Agents module: the ReAct loop you build by hand over nine scrims."
+/>
+
 
 The order is the useful part. You learn the API surface first, deploy something early, then build the data layer for retrieval, then add tool-calling, then learn to manage context across it all. That is roughly the order a real project is built in, which is rare for an introductory course.
 
@@ -164,7 +187,7 @@ These standalone AI courses sit alongside or feed into the path, roughly beginne
   { q: "Do I need AI experience?", a: "No prior AI experience is needed. You do need comfort with JavaScript or TypeScript and a working knowledge of fetch, async, and basic web app structure before starting." },
   { q: "Is this path Python or JavaScript?", a: "JavaScript and TypeScript throughout. The path is explicitly aimed at web developers wiring LLM features into apps they already build, not at Python-first ML practitioners." },
   { q: "Is the path up to date in 2026?", a: "The Intro to AI Engineering and Deployment modules carry an 'updated' tag, and Model Context Protocol and Context Engineering modules were added recently. Expect periodic refreshes because the underlying tooling moves fast." },
-  { q: "What will I build?", a: "Small production-shaped apps: a chat UI with streaming responses, retrieval over your own documents, a tool-using agent calling at least one external API, and a Cloudflare Workers deployment." },
+  { q: "What will I build?", a: "Small production-shaped apps: a chat UI with streaming responses, retrieval over your own documents, a tool-using agent calling at least one external API, and a Node app deployed to Render with a staging environment and a health endpoint." },
   { q: "Who teaches it?", a: "Tom Chant opens the path with Intro to AI Engineering. Arsala Khan teaches Open Source Models and Context Engineering. Bob Ziroll, Guil Hernandez, and Per Borgen contribute the remaining modules." }
 ]} />
 

@@ -4,7 +4,7 @@ description: "An honest review of Scrimba's 81.6-hour MDN-endorsed Frontend Path
 keywords: [scrimba frontend path, scrimba frontend developer path, scrimba frontend review, frontend career path, mdn scrimba partnership, bob ziroll react]
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-05-28
+  date: 2026-09-21
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
@@ -12,6 +12,8 @@ import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import CourseSchema from '@site/src/components/CourseSchema';
+import Screenshot from '@site/src/components/Screenshot';
+import ScrimPoster from '@site/src/components/ScrimPoster';
 
 # Scrimba Frontend Developer Path
 
@@ -33,7 +35,7 @@ import CourseSchema from '@site/src/components/CourseSchema';
 The certificate is a nice-to-have. The portfolio is the actual hiring signal. [Read why the certificate doesn't move the needle](#does-the-certificate-matter-for-hiring).
 :::
 
-*Last reviewed: May 28, 2026. Author note: I have not completed the path end-to-end. I sampled Bob Ziroll's free React module, watched the public scrim demo, and verified the duration, lesson count, and modules against Scrimba's live course page.*
+*Last reviewed: September 21, 2026. Method: I opened the path with a Pro account, expanded every one of its 62 groups (the 13 modules and their sub-modules), and worked through the welcome lessons, the first solo project brief and the Getting Hired module. I have not completed the path end-to-end; the module table below is Scrimba's own numbers, and the sections after it are what I saw inside.*
 
 <CourseCard
   title="The Frontend Developer Path"
@@ -44,6 +46,18 @@ The certificate is a nice-to-have. The portfolio is the actual hiring signal. [R
   lessons={1492}
   href="https://scrimba.com/frontend-path-c0j?via=u42d4986"
   description="Frontend career track endorsed by Mozilla MDN: HTML, CSS, JavaScript, React, accessibility, APIs, and a 73-lesson getting-hired module."
+/>
+
+<ScrimPoster
+  href="https://scrimba.com/frontend-path-c0j/~06l6"
+  src="/img/scrimba/paths/frontend-cake-lesson-ghost-challenges.webp"
+  alt="Scrimba's Let's Make a Cake lesson in the Frontend Developer Path, paused at 1:39: the editor shows index.html with a comment asking to change the egg's class from scared to excited, the preview shows the cake recipe page, and two purple ghost markers sit on the timeline"
+  width={1568}
+  height={688}
+  badge="Free sample lesson"
+  caption={<>Press play to open "Let's Make a Cake!", the path's platform tutorial. The two purple ghosts on the timeline are where the recording stops and you edit the code.</>}
+  location="path-frontend-poster"
+  className="scrim-poster--inline"
 />
 
 <div className="mdx-widget-center-cta mdx-widget-center-cta--spaced-bottom">
@@ -79,18 +93,57 @@ These numbers come straight from Scrimba's course page (`scrimba.com/frontend-pa
 | Essential CSS concepts | 4.5 hrs | 50 | Grid, Flexbox, layout patterns you'll reuse forever. |
 | Essential JavaScript concepts | 10.6 hrs | 121 | Closures, array methods, the patterns React assumes you know. |
 | Responsive design | 4.6 hrs | 54 | Mobile-first layouts and breakpoints. |
-| Code reviews | 22 min | 4 | Reading other people's code and commenting without being a jerk. |
+| Code reviews | 22 min | 4 | Branching, pull requests and merge conflicts with GitHub Desktop (seven scrims). |
 | Working with APIs | 7.6 hrs | 96 | async/await, fetch, REST shapes. |
 | User interface design | 2.5 hrs | 13 | Enough typography and hierarchy that portfolios don't all look identical. |
 | React basics | 15.3 hrs | 157 | Components, props, state, with Bob Ziroll. |
 | Advanced React | 13.2 hrs | 125 | Hooks, context, routing. The "mid-level React" interviewers ask about. |
 | Getting hired | 5.1 hrs | 73 | Portfolio, GitHub, LinkedIn, interview prep, salary talk. |
 
-**Total: 81.6 hours.** Scrimba's live page counts 1,492 individual scrims across these 13 modules (the per-module rows above group them). That is lesson time only. Real builds on top push the calendar further.
+**Total: 81.6 hours.** Scrimba's listing says 1,492 lessons across these 13 modules. When I expanded every group on the path page in September 2026, 1,244 scrim rows rendered; the difference is Scrimba counting clips inside scrims and a few nested items that only appear once you open a sub-module. Either way, that is lesson time only. Real builds on top push the calendar further.
+
+## What is only in the path (and not in the standalone courses)
+
+Most of the 81.6 hours is the standalone courses stitched together in order. These are the pieces you cannot get by taking the courses one by one:
+
+- **Welcome to the career path (28 min, three sub-groups).** Per Borgen's intro explains the MDN collaboration and the design of the curriculum: it "balances between the timeless and neutral web standards you need to know through the entirety of your career as a developer and the more modern tools that give you immediate employability." Then "Let's Make a Cake!", a 5:48 scrim by Tom Chant that exists purely to teach the platform, and "Your own personalized web app", six short scrims where you edit a page with your name, photos and colours before you have learned any HTML.
+- **Solo projects at the end of the fundamentals modules.** "Solo Project: Hometown Homepage" closes Web dev basics: a three-section site (hero with background image, three-column activities, a guide card) with a colour palette in the CSS and a bare skeleton to start from, and a checklist of what you must use (classes, Flexbox, `background-image`, the palette). "Solo Project: Learning Journal" closes Responsive design, with a deploy step. The standalone HTML and CSS course has its own solo project, but these two are path-only.
+- **Code reviews (22 min)** is not about reviewing other people's code. It is "Branching and Pull Requests with GitHub Desktop": seven scrims on issues, branches, pull requests, merge conflicts, pulling and SSH/GPG keys. Useful, but name it for what it is.
+- **Getting hired (5.1 hrs)**, five sub-modules, covered below.
+- **The certificate item** sits as the last row of the table of contents, after "Congratulations on completing The Frontend Developer Career Path!".
+
+
+<div className="screenshot-grid">
+  <Screenshot
+    src="/img/scrimba/paths/frontend-solo-project-hometown-title-card.webp"
+    alt="Title card of the Solo Project: The Hometown Homepage scrim in Scrimba's Frontend Developer Path, on a pale green background with an illustrated student"
+    width={1002}
+    height={564}
+    caption="The first solo project, at the end of Web dev basics."
+    source=""
+  />
+  <Screenshot
+    src="/img/scrimba/paths/frontend-solo-project-hometown-finished.webp"
+    alt="The finished Hometown Homepage example shown at the start of the solo project scrim: a Visit Torshov hero photo, three activity columns with round images, and a guide card with Per Borgen's photo"
+    width={1214}
+    height={684}
+    caption="What you are asked to build, shown at 0:13 of the brief: Per's own Torshov page."
+  />
+</div>
 
 ## Inside "Getting Hired" (the part most reviews skip)
 
-The final 5.1-hour module is the one I think is most underrated. 73 lessons, broken into a sequence that mirrors a real job hunt: writing a portfolio README, cleaning up GitHub, building a developer-style resume, polishing LinkedIn, asking for referrals, then mock technical and behavioral interviews. It is not enough on its own to land a role in a tight 2026 junior market, but it is far more practical than the "we built five projects, good luck" ending most paths give you.
+The final 5.1-hour module is the one I think is most underrated. Expanded, it is five sub-modules: **Getting hired** (four scrims by Bob Ziroll: module intro, what hiring managers look for, problem solving, getting a portfolio), **Using LinkedIn to get a job** (twelve scrims, from the headline and summary to headshot, cover image, keywords and recommendations), **Frontend job interview tips** (21 scrims, mostly "Interview Question:" drills on falsy values, `const` vs `let` vs `var`, `==` vs `===`, `undefined` vs `null`, spread and rest, destructuring, promises, pass by value vs reference, plus Git, GitHub, resume and job-search tips), **JavaScript Interview Challenges** (57 scrims) and **React interview questions** (twelve). It is the same material as the standalone [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/), [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) and [React Interview Questions](/docs/courses/react/react-interview-questions/) courses, wrapped by the hiring-manager talk.
+
+That opening talk is worth the price of the module. Bob draws on his time at V School, where he "had the chance to speak with dozens of hiring managers", and his first slide contrasts what people think managers want (a specific framework, "super geek, spends all free time coding", clever whiteboard solutions, credentials) with what they told him they actually want: people who solve problems, are "personable, humble, easy to work with", write easy-to-maintain code, and admit what they do not know. His line on stacks: "a specific skill or a specific framework or a specific language really meant almost nothing to them." It is not enough on its own to land a role in a tight 2026 junior market, but it is far more practical than the "we built five projects, good luck" ending most paths give you.
+
+<Screenshot
+  src="/img/scrimba/paths/frontend-getting-hired-hiring-managers-slide.webp"
+  alt="Slide from the Getting Hired lesson in Scrimba's Frontend Developer Path titled What are hiring managers looking for, with a left column of what people think they want and a right column of what they actually want: solve problems, personable and humble, easy-to-understand solutions, able to admit when you don't know something"
+  width={1214}
+  height={684}
+  caption="Bob Ziroll's hiring-manager slide at 4:22 of the Getting Hired lesson, fully revealed."
+/>
 
 If that section interests you and you want a preview before committing, the [Frontend Interview Prep guide](/blog/frontend-interview-prep-scrimba/) walks through what to study after the path finishes.
 
@@ -151,7 +204,7 @@ If you want raw Reddit chatter, search r/learnprogramming and r/webdev for "Scri
 - No live cohort, no career coach, no 1:1 mentorship. The legacy Scrimba Bootcamp service that offered this was retired.
 - JavaScript-centric. No mobile (iOS/Android), no Java, no C#. If you want Node/Express in the same subscription, see [Fullstack Path](/docs/paths/fullstack-developer-path/).
 - Hireability depends on portfolio depth and local market, not the certificate.
-- The "Code reviews" module is only 22 minutes. Useful, but you will need outside code review for real growth.
+- The "Code reviews" module is 22 minutes of GitHub Desktop branching and pull requests, not code review. You will need outside review (the Pro Discord channels, or a peer) for real growth.
 
 ## Does the certificate matter for hiring?
 
