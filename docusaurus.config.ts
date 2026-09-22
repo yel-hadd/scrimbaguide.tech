@@ -589,25 +589,25 @@ const config: Config = {
           items: [
             { label: 'Courses', to: '/docs/courses/' },
             { label: 'Paths', to: '/docs/paths/' },
-            { label: 'Pricing', to: '/docs/pricing' },
+            { label: 'Pricing', to: '/docs/pricing/' },
             { label: 'FAQ', to: '/docs/faq/' },
-            { label: 'Changelog', to: '/docs/changelog' },
+            { label: 'Changelog', to: '/docs/changelog/' },
           ],
         },
         {
           title: 'Company',
           items: [
-            { label: 'About Us', to: '/about' },
-            { label: 'Contact', to: '/contact' },
-            { label: 'Blog', to: '/blog' },
+            { label: 'About Us', to: '/about/' },
+            { label: 'Contact', to: '/contact/' },
+            { label: 'Blog', to: '/blog/' },
           ],
         },
         {
           title: 'Legal',
           items: [
-            { label: 'Affiliate Disclosure', to: '/legal/affiliate-disclosure' },
-            { label: 'Privacy Policy', to: '/legal/privacy-policy' },
-            { label: 'Terms of Service', to: '/legal/terms-of-service' },
+            { label: 'Affiliate Disclosure', to: '/legal/affiliate-disclosure/' },
+            { label: 'Privacy Policy', to: '/legal/privacy-policy/' },
+            { label: 'Terms of Service', to: '/legal/terms-of-service/' },
           ],
         },
       ],

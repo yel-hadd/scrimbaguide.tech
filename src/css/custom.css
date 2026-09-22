@@ -1636,7 +1636,6 @@ article[class*='searchResultItem'] mark {
   height: 66px;
   display: grid;
   place-items: center;
-  padding-left: 0.18em; /* optically center the triangle */
   border-radius: 999px;
   /* Fixed saturated violet in both themes: the laptop art is always dark, and
      a theme-variable primary would go pale lavender in dark mode and wash out
@@ -1678,19 +1677,30 @@ article[class*='searchResultItem'] mark {
   color: var(--sg-text-soft);
 }
 
-/* Tag on the frame ("Free sample lesson" / "Pro lesson"). */
+/* Tag on the frame ("Free sample lesson" / "Pro lesson"). Same pill system
+   as the CourseCard FREE/PRO badges, kept light in both themes because it sits
+   on a screenshot, not on the page background. */
 .hero-scrim-poster__badge {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
-  padding: 0.2rem 0.55rem;
-  border-radius: 6px;
-  background: rgba(20, 14, 40, 0.82);
-  color: #fff;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  box-shadow: 0 2px 8px rgba(20, 12, 50, 0.25);
+}
+.hero-scrim-poster__badge--pro {
+  background: #e8daff;
+  color: #3a0d75;
+  border-color: #b39ddb;
+}
+.hero-scrim-poster__badge--free {
+  background: #d4edda;
+  color: #0e4a1d;
+  border-color: #95d5b2;
 }
 
 /* In-page poster (docs and blog): a real screenshot, so give it the rounded,
@@ -1706,22 +1716,14 @@ article[class*='searchResultItem'] mark {
 .scrim-poster--inline .hero-scrim-poster__play {
   top: 50%;
 }
-.hero-scrim-poster__play.hero-scrim-poster__play--corner,
-.scrim-poster--inline .hero-scrim-poster__play--corner {
-  top: auto;
-  left: auto;
-  right: 1rem;
-  bottom: 1rem;
-  transform: none;
-}
-.hero-scrim-poster:hover .hero-scrim-poster__play--corner {
-  transform: scale(1.09);
-}
 @media (max-width: 600px) {
   .scrim-poster--inline .hero-scrim-poster__play {
     width: 52px;
     height: 52px;
-    font-size: 1.15rem;
+  }
+  .scrim-poster--inline .hero-scrim-poster__play svg {
+    width: 21px;
+    height: 21px;
   }
 }
 
