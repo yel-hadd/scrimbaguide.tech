@@ -1,5 +1,8 @@
 # Content enrichment program (started 2026-09-20)
 
+Phase 1 (first-hand facts, screenshots, PRs #95 to #99) is done history below.
+Phase 2 (voice, links, CTA placement, sidebar labels) is at the end.
+
 Goal (user, verbatim intent): have the best Scrimba course reviews on the
 internet. Improve existing content, add new where warranted, add first-hand
 screenshots, aim for #1 on Google and for AI-search citations, and raise
@@ -21,34 +24,17 @@ rewritten; nothing in them required taking a lesson. First-hand detail
 (lesson sequence, transcript quotes, what Pro gates, real time to complete,
 screenshots) is what makes them index-worthy and citable.
 
-## Per-page archetype (what "enriched" means)
+## Per-page archetype
 
-1. Title: `<Course> on Scrimba: 2026 Review`; short
-   `sidebar_label`; `toc_max_heading_level: 2`; `last_update` = day reviewed.
-2. Intro states the method in one sentence ("opened every module, worked
-   through a sample of lessons with a Pro account in <month year>").
-3. Chapter title-card grid (`<div className="screenshot-grid">` + `<Screenshot>`),
-   only where chapters have title cards.
-4. `CourseCurriculum` with `lessons:` counts from the expanded TOC, plus a
-   one-line note on how counts were taken.
-5. "Inside the course, module by module": H3 per module with lesson-level
-   sequence, concept order, and at least one transcript quote per major module.
-   2 to 4 `<Screenshot>`s at transcript-chosen moments, each with alt text that
-   names the product + lesson + what is visible, and a caption that says what
-   to notice and the timestamp.
-6. "What a lesson actually feels like" (format, scrim length, challenge loop,
-   captions/transcript/speed).
-7. "Free or Pro: exactly what is gated" (named Solo Projects, certificate).
-8. "How long it really takes" (runtime × 2–3 with reasoning).
-9. FAQ expanded with first-hand answers (transcripts, AI challenges, install
-   needs, time), CTA button, `CourseSchema`.
+The archetype lives in `.claude/skills/scrimba-course-review/references/archetype.md`;
+voice, links and CTA rules in `CLAUDE.md`. This file no longer restates them.
 
 Done (2026-09-20): `docs/courses/javascript/learn-javascript.mdx`,
 `docs/courses/react/learn-react.mdx`, `docs/courses/css/html-and-css.mdx`,
 `docs/courses/ai/ai-engineering.mdx`. Images under `static/img/scrimba/<course>/`
 (17 WebP files, all visually checked via a contact sheet). New component
 `src/components/Screenshot.tsx` (+ `.screenshot`, `.screenshot-grid`,
-`.screenshot--narrow` in custom.css). Not yet committed.
+`.screenshot--narrow` in custom.css). Merged in PR #95.
 
 Factual corrections made on the way: Intro to AI Engineering is a build-along
 (Gift Genie + PollyGlot solo project), not "fundamentals only"; its page title on
@@ -96,3 +82,14 @@ Remaining:
    whether the leaves leave "crawled, not indexed". Indexing API: 120 URLs on
    2026-09-21, 28 more on 2026-09-22 (paths, how-scrims-work, the rest of the
    day-2 list).
+
+## Phase 2 (started 2026-09-22): voice, links, CTAs, sidebar
+
+Pages had first-hand facts but a cautious-outsider voice, unlinked course
+names, stacked CTAs on money pages and SEO titles leaking into the sidebar.
+The rules are now in `CLAUDE.md` (Voice, Links, Sidebar labels, CTA and
+component placement) and the `scrimba-course-review` skill (style guide,
+archetypes). Link checklist: `node scripts/audit-course-links.mjs`.
+Batches: instructions, components + sidebar, pricing and comparisons, paths
+and top pages, hubs, course leaves by GSC impressions, remaining docs, blog
+links. Branch `content/voice-cta-sidebar-2026-09`.

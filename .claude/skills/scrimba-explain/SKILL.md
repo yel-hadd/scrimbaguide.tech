@@ -7,7 +7,7 @@ description: Produce a high-quality Scrimba Explain explainer (narrated slide vi
 
 An explainer is a streamed deck of typed slides (code, diff, diagram, animation, cards, quiz) with synthesized narration. Explain decides layout; the prompt decides content. The rules below come from 11 explainers made and stepped slide by slide on 2026-09-20 (`references/lessons-learned.md`) and from the docs (`references/docs-index.md`); the evidence for each rule lives in those files, not here.
 
-House rules for anything this skill writes: no em-dashes; never quote a Scrimba price (link to the pricing page); explainer URLs never carry `?via=`, on scrimbaguide.tech or anywhere else. The affiliate parameter belongs on course and pricing CTAs only. The full rule, with the reasons and the exceptions for API endpoints and verification URLs, is in `references/affiliate-and-cta-rules.md`; read it before writing any link.
+House rules for anything this skill writes: no em-dashes; never quote a Scrimba price (link to the pricing page); explainer URLs and the `scrimba.com/explain` hub never carry `?via=`, on scrimbaguide.tech or anywhere else. The affiliate parameter belongs on course and pricing CTAs only. The full rule, with the reasons and the exceptions for API endpoints and verification URLs, is in `references/affiliate-and-cta-rules.md`; read it before writing any link.
 
 Generating an explainer spends the user's allowance and, by default, publishes under their name. Create only when the user asked for an explainer, and on their account only through the surfaces they named.
 

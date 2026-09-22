@@ -1,174 +1,87 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+scrimbaguide.tech is a first-hand review site for Scrimba courses and paths (Docusaurus 3, React 19, TypeScript), deployed to GitHub Pages on push to `main`. The docs and blog are the product; revenue is Scrimba affiliate clicks.
 
 ## Commands
 
-Day-to-day work goes through the Makefile; npm scripts are the underlying implementation.
+    make install        # Node + Python deps (.venv, node_modules); Node 20+
+    make dev            # localhost:3000
+    make build          # check:content, docusaurus build, llms.txt
+    make typecheck
+    npm run check:content                               # content gate, also the prebuild step
+    node scripts/audit-course-links.mjs --file <path>   # unlinked course names and raw scrimba.com URLs
+    node --test scripts/__tests__/<file>.test.mjs
 
-```bash
-make install         # Node + Python deps (creates .venv and node_modules)
-make dev             # docusaurus start on localhost:3000
-make build           # docusaurus build + generate llms.txt/llms-full.txt
-make typecheck       # tsc (no emit)
-make serve           # build then serve the static output
+Everything else is in `package.json` and the `Makefile`. Local social-card builds need `rsvg-convert` (librsvg2-bin).
 
-make scrape          # full Selenium crawl of scrimba.com → output/
-make scrape-resume   # resume interrupted scrape
-make generate-data   # output/index.json → data/*.json
-make generate        # generate-data (data/*.json only; pages are hand-authored)
-make pipeline        # scrape → generate → build (end-to-end)
-```
+## Architecture you cannot see at a glance
 
-Tests (Node's built-in runner, no Jest):
+- Every page is hand-authored MDX: edit `docs/**`, `blog/**`, `src/pages/**` directly. Page generation was retired on purpose.
+- Catalog facts flow `scraper/scrape.py` -> `output/` -> `scripts/build-data.mjs` -> `data/courses.json` -> `CourseCard`, `CourseCurriculum`, `src/utils/scrimbaFacts.ts`. Fix a duration, lesson count or module name in `data/courses.json` (re-scrape one URL with `.venv/bin/python scraper/scrape.py --urls <file>`), then copy it into component props. The four path durations are hardcoded in the `PATHS` table in `build-data.mjs`.
+- `src/content/relatedGuidesMap.ts` owns the auto-mounted "Related guides" block, keyed by route. Update it when you add or move a page. Prose mentions are still links (see Links).
+- `src/utils/moneyPagePaths.ts` is the only list of money pages (they get the desktop sticky CTA). Read it; never restate it.
+- `src/theme/DocItem/Layout` auto-injects a `PricingCTA` at the end of every doc except `/docs/pricing/*`, `/docs/courses/*` and comparison leaves. A page that authors its own end CTA sets `hideGlobalPricingCta: true`.
+- `src/constants.ts` holds the affiliate id and demo-scrim URL for code that cannot use `<AffiliateLink>` (navbar, config).
+- Docs URLs are the file path minus numeric prefixes unless frontmatter `slug:` overrides; blog files are `YYYY-MM-DD-name.mdx` with an explicit `slug:`. Sidebar order and category labels live in `sidebars.ts`.
 
-```bash
-npm run test:llms                                                    # llms.txt generator tests
-node --test scripts/__tests__/<file>.test.mjs                        # single test file
-```
+## SEO invariants
 
-Other useful scripts: `npm run generate:social-cards`, `npm run generate:llms`, `npm run assert-sitemap-url`, `npm run submit-indexnow`.
+- `trailingSlash: true`. Every canonical, og:url, JSON-LD URL, internal link and llms.txt entry ends in `/`.
+- Sitemap exclusions go in `SITEMAP_EXCLUDED_PATHS` / `SITEMAP_EXCLUDED_DOC_ALIASES`, priority in `sitemapPriority()` (both in `docusaurus.config.ts`).
+- Consolidate with a redirect (inline in the config, or `data/course-redirects.json` for courses) plus a `draft: true` stub. Pages are merged, never deleted; URLs and slugs never change without a redirect.
+- Blog JSON-LD components (`ReviewSchema`, `HowToSchema`, `ItemListSchema`) sit below `{/* truncate */}`, or they duplicate onto every list page.
+- `<FAQAccordion>` emits the page's only FAQPage schema. A page that also uses `DocFaqSchema` passes `emitSchema={false}`.
+- Frontmatter `description` is 160 characters or fewer; set `last_update.date` to today on every page whose content you change.
+- A red post-deploy step usually means a sitemap or canonical regression, not a build failure.
 
-`npm run check:content` (`scripts/check-content.mjs`) runs automatically as `prebuild`, so **every `make build` is gated by it**. It fails the build on em-dashes, exact Scrimba prices, and stale path durations. Run it directly before pushing content changes; don't bypass it.
+## Affiliate and pricing
 
-Node 20+ is required (see `engines` in package.json). CI runs on Node 22.
+- Every scrimba.com and docs.scrimba.com link goes through `<AffiliateLink>` (adds `?via=`, `rel="nofollow"`); write the bare URL. `CourseCard`, `ScrimPoster`, `PricingCTA`, `VerdictBox`, `ComparisonTable`, `CodePreview` do it for you. docs.scrimba.com links carry `location="companion-docs"`.
+- Exception: `scrimba.com/explain` and `scrimba.com/explain/*` are plain links without `via`; embed explainers with `<ExplainerEmbed>` (scrimba-explain skill).
+- Affiliate links point at a course, a path, the demo scrim or `/our-pricing`: pages where a reader can start. Scrimba's blog and articles are plain links, if linked at all.
+- Never quote a Scrimba price; link `https://scrimba.com/our-pricing`. The discount travels with the link; the code never appears as text.
 
-## Architecture
+## Voice
 
-This is a **Docusaurus 3** site (React 19, TypeScript) for scrimbaguide.tech, deployed to GitHub Pages via `.github/workflows/deploy.yml` on push to `main`.
+Write as the reviewer who has been inside every Scrimba course and path with a Pro account. Answer first, then the evidence: the module, the scrim count, the project, the instructor, the lesson you quote ("module 4 has you build a blackjack game in 55 scrims"). Short sentences, plain words, a verdict in every section, one next step at the end.
 
-### Content pipeline
+Two limits, both absolute: you reviewed the courses and never completed or graduated from one ("reviewed", "went through module 3"); every claim traces to the page's own screenshots and transcript quotes, `data/courses.json`, or a scrimba-browsing facts file. A fact you cannot trace is cut, not hedged. State provenance once per page.
 
-The scraper feeds a normalized data layer that runtime React components read. Pages themselves are hand-authored.
+Before writing prose, load `marketing-skills:copywriting`, `marketing-skills:copy-editing` and `humanizer`. The style guide with before/after examples is in the `scrimba-course-review` skill (Voice). No em-dashes.
 
-```
-scrimba.com  →  output/        →  data/*.json     →  (runtime React components)
-              scraper/scrape.py    scripts/             CourseCurriculum, scrimbaFacts, …
-              (Python, Selenium)   build-data.mjs
-```
+## Links
 
-- `scraper/` is Python+Selenium, run via `.venv`. Outputs raw `index.json` and per-page markdown/PNG into `output/`.
-- `scripts/build-data.mjs` transforms scraped output into normalized `data/courses.json`, `data/help-articles.json`, `data/topics.json`, `data/practice-pages.json`. `data/courses.json` is consumed at runtime by `src/components/CourseCurriculum.tsx` and `src/utils/scrimbaFacts.ts` (not by a page generator).
-- **All MDX under `docs/` (including `docs/courses/**` and `docs/practice/**`) is hand-authored — edit the MDX directly.** The old `generate-course-pages.mjs` / `generate-practice-pages.mjs` generators were retired: the live pages were rewritten by hand into a stronger archetype the generators never produced, so running them would clobber the real content. Do not reintroduce page generation.
-- `scripts/generate-llms-from-sitemap.mjs` runs as part of `npm run build` to emit `llms.txt` / `llms-full.txt` from the built sitemap. It has its own test suite under `scripts/__tests__/` (the only tests in the repo).
-- Blog post social cards (1200x630) are generated by `scripts/generate-social-cards.mjs`, which shells out to `librsvg2-bin` (`rsvg-convert`). CI installs that system package before building.
+- Every named Scrimba course or path in prose is a link: to our review page on first mention in a section, and to Scrimba through `<AffiliateLink>` where the reader decides. Headings, component props and the page's own course are exempt.
+- Run `node scripts/audit-course-links.mjs --file <path>` on every page you touch; leave zero UNLINKED mentions and zero raw URLs.
 
-### Deploy
+## Sidebar labels
 
-`.github/workflows/deploy.yml` runs on push to `main`: generate social cards → build → deploy to GitHub Pages → verify a key file is live → `assert-sitemap-url` → `submit-indexnow` (IndexNow ping; Bing's endpoint is flaky so Yandex/shared is prioritized). A red post-deploy step usually means a sitemap or canonical-URL regression, not a build failure.
+Every doc sets `sidebar_label`: 1 to 4 words, Title Case, no year, no "Scrimba", no question, no verdict. Course leaves use the course name as Scrimba lists it; paths are "<X> Path"; comparisons "vs <Competitor>"; category hub docs "Overview" at `sidebar_position: 0`. The frontmatter `title` stays the SERP title. Category labels live in `sidebars.ts` and match the navbar.
 
-### Site config & SEO invariants
+## CTA and component placement
 
-`docusaurus.config.ts` is where most cross-cutting concerns live and is worth reading before changing URL or sitemap behavior:
+One primary CTA where intent peaks, at most one secondary, at least two prose paragraphs between any two. Counted: button `AffiliateLink`, `PricingCTA`, `ScrimPoster`, `CourseCard`, `VerdictBox`, `ComparisonTable` with its CTA row. Not counted: inline text links, the sticky, RelatedGuides, screenshots, FAQ, schema.
 
-- `trailingSlash: true` is canonical. Canonical URLs, og:url, JSON-LD, and the llms.txt files all must emit trailing-slash URLs to match. See `plugins/normalize-canonical-urls/` and recent commits `1f14a9f`, `9ed1d8d`.
-- `SITEMAP_EXCLUDED_PATHS` / `SITEMAP_EXCLUDED_DOC_ALIASES` in the config exclude legacy redirect stubs and duplicate scraped slugs from the sitemap — add new exclusions there, not by deleting pages.
-- `sitemapPriority()` assigns per-path priority; tweak there rather than hand-editing the generated sitemap.
-- `@docusaurus/plugin-client-redirects` handles legacy URLs. New legacy slugs should be added as redirects, not new pages. Old course-page redirects are loaded in bulk from `data/course-redirects.json` rather than listed inline in the config.
+| Page type | Primary | Secondary |
+|---|---|---|
+| Course leaf | start button closing "Who it's for" | `CourseCard` in the opening |
+| Course hub | free-start button to the first course, end of "Where to start" | `PricingCTA ctaType="free"` at the end |
+| Path page | path `CourseCard` after the verdict | `ScrimPoster` (free sample lesson) in the opening |
+| Paths hub | button right after the comparison matrix | `PricingCTA` at the end |
+| Comparison leaf | `PricingCTA` after "Bottom line" | `VerdictBox` near the top; `ComparisonTable hideCta` |
+| Pricing pages | `PricingCTA` right after the decision section | one more, far from the primary |
+| FAQ, help | demo button at the end (`hideGlobalPricingCta: true`) | none |
+| How-it-works, for/*, intro, practice, roadmaps | one end CTA (auto or authored, never both) | `ScrimPoster` where the page shows a scrim |
+| Blog | `PricingCTA` after the conclusion (`ctaType="free"` unless a money post) | one inline link on money posts |
 
-### Editorial content as code
+Research-mode pages carry nothing in the first screen. `ScrimPoster` uses existing images only and links the lesson its frame shows.
 
-Some on-page content lives in typed TS modules under `src/content/`, not MDX, because it's reused across many pages by React components:
+## Gates before a commit
 
-- `relatedGuidesMap.ts` — per-slug "related guides" lists, read by `RelatedGuides.tsx` (mounted in `DocItem/Layout` and the blog footer swizzle).
-- Blog posts author their own after-post conversion CTA as an inline `<PricingCTA>` in the MDX body. (The old per-slug `blogContextualCtas.ts` / `BlogContextualCta.tsx` auto-injection system was removed — it was never actually mounted.)
-- `whichScrimbaPath.ts` — pure scoring + copy for the interactive `PathAdvisor.tsx` path recommender.
+`npm run check:content` (em-dashes, Scrimba prices, stale Backend hours), `npm run typecheck`, the link audit on touched files, and `make build` when links changed (broken links fail the build).
 
-Edit these files to change that content; they're keyed by route slug.
+## Skills
 
-### Affiliate links
-
-All outbound links to scrimba.com go through `<AffiliateLink>` (in `src/components/`), which appends `?via=u42d4986` and sets `rel="nofollow"`. Don't hand-write `https://scrimba.com/...` anchors in MDX. `scripts/inject-affiliate-links.mjs` exists to retrofit raw links.
-
-### Pricing
-
-Never quote exact Scrimba prices in content — they vary by region and drift. Link to `https://scrimba.com/our-pricing` instead.
-
-### Theming
-
-Customizations to Docusaurus components live in `src/theme/` (swizzles). Global styles are `src/css/custom.css`. Reusable components are `src/components/`. The homepage is `src/pages/index.tsx`.
-
-## Site & content map
-
-This is a content/SEO site: the docs and blog *are* the product. This section is the map for reviewing, improving, or extending that content. Counts are accurate as of 2026-06; treat them as "what exists," not a cap.
-
-### Routing model
-
-Three content surfaces, three URL roots:
-
-- **`docs/`** → served under `/docs/…` (default `routeBasePath`). A doc's URL is its file path minus the numeric prefix, unless its frontmatter `slug:` overrides it. Section index pages set a clean `slug` (e.g. `courses/index.mdx` → `/docs/courses`, `pricing/index.mdx` → `/docs/pricing`). Sidebar order lives in `sidebars.ts`; course leaves are `autogenerated` per category dir, everything else is hand-ordered.
-- **`blog/`** → served under `/blog/…`. Files are `YYYY-MM-DD-name.mdx` with an explicit `slug:` in frontmatter (the URL drops the date). Authors in `blog/authors.yml`, tags in `blog/tags.yml`.
-- **`src/pages/`** → served at the root: `/` (homepage `index.tsx`), `/about`, `/contact`, `/tools/*`, `/roadmaps/*`, `/legal/*`. These are React/MDX pages, not docs.
-
-`trailingSlash: true` everywhere (see SEO invariants above).
-
-### Navigation (conversion funnel)
-
-- **Header**: Paths · Courses · Learn ▾ (What is Scrimba?, Comparisons, Pricing, FAQ) · Blog · Tools ▾ (All Tools, Path Finder, Cost Calculator, Frontend Roadmap) · **Get Scrimba Pro** (right, affiliate CTA).
-- **Footer**: Learn / Company / Legal columns.
-- **Money pages** (where the desktop sticky affiliate CTA shows) are defined in `src/utils/moneyPagePaths.ts`: all `/pricing/*`, all `/docs/paths/*`, and the `scrimba-review` / `is-scrimba-worth-it` / `scrimba-pro-pricing-explained-2026` blog posts. Everything else is intentionally "research mode," not "buy mode" — keep aggressive CTAs off catalog/FAQ/most-blog pages.
-
-### Docs tree (137 files)
-
-Word counts below are rough current depth — useful for spotting thin pages to strengthen vs. pillar pages to preserve.
-
-```
-/docs
-├── intro                      "What is Scrimba?" (top-of-funnel explainer)
-├── how-it-works/ (7)          how-scrims-work*, certificates, accreditation, learning-speed,
-│                              tutorial-hell, is-scrimba-free, using-scrimba   (*pillar ~1.5k)
-├── for/ (6)                   index hub + beginners, cs-students, designers, marketers,
-│                              busy-professionals  (audience landing pages, ~1.1–1.4k)
-├── paths/ (6)                 index hub + frontend*, fullstack, backend, ai-engineer*, study-plan
-│                              (HIGH-INTENT money pages; frontend/ai ~2.4k, have CourseSchema)
-├── courses/ (79)              index hub + 7 category hubs, each hub = pillar, leaves = ~850–1.1k
-│   ├── react/ (11)            learn-react, advanced-react, react-router, react-19, challenges, …
-│   ├── javascript/ (31)       largest category; learn-javascript, node, next, vue, DSA, interview, …
-│   ├── css/ (13)              html-and-css, flexbox, css-grid, tailwind, ui-design, …
-│   ├── ai/ (13)               ai-engineering, rag, prompt-engineering, mcp, ai-agents, …
-│   ├── backend/ (5)           sql, supabase, firebase-mobile, regex
-│   ├── python/ (3)            learn-python + best-python-courses-for-beginners
-│   └── typescript/ (2)        learn-typescript
-├── comparisons/ (14)          index hub + 13 "scrimba-vs-X" (codecademy, udemy, freecodecamp,
-│                              coursera, odin, youtube, frontendmasters, boot-dev, treehouse,
-│                              zerotomastery, pluralsight, educative, fireship)  HIGHEST-intent, ~1.6–2.4k
-├── pricing/ (5)               index* + pro-vs-free, student-discount, refund-policy,
-│                              scrimba-vs-bootcamps  (money cluster; HowTo/comparison schema)
-├── practice/ (12)             index hub + interactive-drill pages (~300–700w, long-tail)
-├── learn-react/ + learn-nextjs/  free-roadmap landing pages (concept stubs were consolidated in;
-│                              do NOT re-split — see redirects in docusaurus.config.ts)
-├── faq/index               site FAQ (FAQPage schema)
-├── help/ (3)                  billing, troubleshooting, community-and-events
-└── changelog               Scrimba platform changelog
-```
-
-### Blog clusters (51 posts)
-
-Grouped by intent so you can extend a cluster without cannibalizing an existing post. Slugs are date-stripped (`/blog/<slug>`).
-
-- **Scrimba evaluation (money/pillar):** `scrimba-review`, `is-scrimba-worth-it`, `why-i-keep-renewing-scrimba-pro`, `scrimba-success-stories`, `what-makes-scrimba-different`, `scrimba-instant-practice-no-setup`.
-- **Paths & study guides:** `scrimba-react-learning-path`, `scrimba-frontend-vs-fullstack-path`, `scrimba-fullstack-path-reviews`, `scrimba-backend-path-review`, `scrimba-ai-engineer-path-guide`, `learn-ai-engineering-scrimba`, `how-to-learn-typescript-scrimba`, `frontend-interview-prep-scrimba`.
-- **Pricing/value:** `scrimba-discount-codes-2026`, `scrimba-vs-coding-bootcamps-cost`, `complete-guide-scrimba-certificates`, `scrimba-for-teams`.
-- **Career / job market (top-of-funnel SEO):** `junior-developer-job-market-2026`, `career-change-to-coding-2026`, `developer-job-without-degree-2026`, `how-to-get-first-developer-job-2026`, `developer-salary-guide-2026`, `is-web-development-worth-it-2026`, `web-development-roadmap-2026`, `how-long-to-learn-web-development-2026`, `best-coding-bootcamp-alternatives-2026`, `best-scrimba-courses-career-changers`.
-- **AI & the future of coding:** `ai-tools-every-developer-should-know-2026`, `ai-tools-for-learning-to-code-2026`, `can-ai-replace-junior-developers-2026`, `what-is-vibe-coding-2026`, `vibe-coder-to-real-developer-2026`.
-- **Language/skill explainers:** `typescript-for-beginners-scrimba`, `should-javascript-developers-learn-typescript-2026`, `frontend-developer-skills-2026`, `javascript-projects-for-beginners-2026`, `portfolio-projects-get-hired-2026`, `projects-youll-build-on-scrimba`, `build-coding-habit-scrimba`, `scrimba-neurodivergent-learners`, `how-to-escape-tutorial-hell-2026`.
-- **Comparison/discovery:** `scrimba-vs-youtube-coding`, `best-free-scrimba-courses`, `scrimba-roadmap-whats-coming`.
-- **Udemy series (2026-05-24, cross-platform):** `best-udemy-{coding,javascript,react,python,ai,web-development}-courses`.
-
-### Internal linking & content-as-code
-
-- **Hub-and-spoke** is the model: section index pages (`*/index.mdx`) are pillars; leaves link up to their hub and across to the relevant path/comparison/pricing page. Avoid orphan pages.
-- **`src/content/relatedGuidesMap.ts`** drives the per-slug "Related guides" block (keyed by route). When you add or move a page, update its entry here, not by hand-linking in MDX.
-- The after-post CTA on each blog post is an inline `<PricingCTA>` authored in that post's MDX (the per-slug `blogContextualCtas.ts` system was removed).
-- Tools (`src/pages/tools/`): `which-scrimba-path` (Path Advisor, logic in `src/content/whichScrimbaPath.ts`), `bootcamp-cost-calculator`, plus `roadmaps/frontend-roadmap-2026`.
-
-### First-hand Scrimba access
-
-Three repo skills under `.claude/skills/` cover first-hand work: `scrimba-browsing` (how to browse scrimba.com with the logged-in Pro account via Claude in Chrome: URL map, curriculum/transcript/code extraction snippets, screenshot + alt-text rules, tool quirks), `scrimba-course-review` (the course-page archetype and the browse → draft → fact-check pipeline), and `scrimba-explain` (generating, grading and embedding explainers). Load the relevant one before enriching course, path, or feature pages with first-hand detail. `SCRIMBA-BROWSING-GUIDE.md` is now a stub pointing at the skill.
-
-### Content conventions for edits
-
-- Course catalog facts (durations, lesson counts, module names) come from `data/courses.json`, surfaced by `CourseCurriculum`/`CourseCard`/`scrimbaFacts` — fix data there, not by editing prose numbers.
-- Author voice: **independent reviewer, never a course graduate** — don't claim completion/graduation.
-- Edits enhance existing pages; consolidation is done via redirects, never deletion (the retired generators mean course/practice MDX is hand-maintained — see Content pipeline above).
-- All edits must pass `check:content` (em-dashes, exact prices, stale durations) — it gates the build.
+- `scrimba-course-review`: course leaves, hubs and path pages, and any voice/CTA rewrite of a docs page (loads `scrimba-browsing`).
+- `scrimba-browsing`: anything that needs a fact or screenshot from inside Scrimba.
+- `scrimba-explain`: creating, grading or embedding explainers.

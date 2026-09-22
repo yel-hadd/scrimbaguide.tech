@@ -12,9 +12,9 @@ lessons. Selectors are custom elements (`toc-group`, `ide-transcript-modal`,
 `slide-widget`), verified 2026-09-20; class names are hashed, never rely on
 them. If a selector stops matching, re-derive it with `read_page` / `find`.
 
-House rules from `CLAUDE.md` still apply to what you write: no em-dashes, no
-prices, independent-reviewer voice (never "I completed the course"),
-`<AffiliateLink>` on every scrimba.com link except explainer links.
+House rules from `CLAUDE.md` apply to what you write (Voice, Affiliate, Links):
+no em-dashes, no prices, "reviewed" never "completed", `<AffiliateLink>` on
+every scrimba.com link except `scrimba.com/explain` links.
 
 ## Session rules
 
@@ -25,7 +25,8 @@ prices, independent-reviewer voice (never "I completed the course"),
    page: stop and tell the user; never attempt to log in.
 3. Own one tab. Work in the tab `navigate` created and close it with
    `tabs_close_mcp` when done. Parallel agents each get their own tab and never
-   touch another's (see `parallel-scrimba-browser-agents` in memory).
+   touch another's; screenshots need a visible tab (`references/tool-quirks.md`,
+   Parallel agents and tab visibility).
 4. Never trigger `alert`/`confirm`. Never click Delete, Unenroll, Reset
    progress, Cancel subscription, or anything under account settings.
 5. Playing a scrim marks progress on the user's account. Transcript, code and
