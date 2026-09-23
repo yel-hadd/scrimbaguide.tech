@@ -6,7 +6,7 @@ sidebar_label: "Learn React Router"
 description: "Bob Ziroll's React Router 6 course from inside: 9.7 hours, 139 scrims, one VanLife app with three levels of nested routes, loaders, actions, and Firebase."
 keywords: [scrimba react router, learn react router scrimba review, react router v6 course, bob ziroll react router, react routing tutorial, scrimba react router review]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn React Router
 
-Scrimba's dedicated routing course, taught by Bob Ziroll across about 9.7 hours and 139 scrims, all of it spent building one app called VanLife. I opened every module and read the transcripts of 64 of the 139 scrims, at least a third of each module, with a Pro account in September 2026. This page is what is actually in there.
+Bob Ziroll teaches Scrimba's dedicated routing course in 9.7 hours and 139 scrims, all of it spent building one app: VanLife, a camper van rental site with three levels of nested routes. It is the most complete routing course on Scrimba, and the most current one, since it covers the data router that React Router 7 is built on.
 
-*This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Learn React Router is a Pro, intermediate-level course on React Router 6, including the 6.4 data APIs (loaders, actions, and deferred data). It runs about 9.7 hours across six modules and 139 scrims, and the first five scrims are free previews. You build VanLife, a camper van rental site with a public catalog, a filterable list, a fake login, and a host dashboard that goes three navigation levels deep. Bob's condition for starting is a "pretty solid foundation in React"; if you have finished [Learn React](/docs/courses/react/learn-react/), you have it. If routing is the one gap in your React, this is the most complete treatment of it on Scrimba. It is also more current than the routing lessons in older React courses, because it covers the data router that React Router 7 is built on.
+It fits you if you already have a solid foundation in React, the bar Bob sets before you start; finishing [Learn React](/docs/courses/react/learn-react/) clears it. The one catch is overlap: if you already own [Advanced React](/docs/courses/react/advanced-react/), you already have most of this material as its routing module. Once you finish, [React Challenges](/docs/courses/react/react-challenges/) is where to drill routing in practice.
 
 <CourseCard
   title="Learn React Router"
@@ -69,9 +69,9 @@ Learn React Router is a Pro, intermediate-level course on React Router 6, includ
 
 Yes, if you build React apps and your navigation still means swapping components with state. React Router is the routing library almost every React codebase without a framework uses, and version 6.4 changed how data loading works. Bob teaches both halves: the classic `BrowserRouter` with `Routes`, `Link`, and `Outlet` first, then `createBrowserRouter` with loaders, actions, `redirect`, and `defer`. That order is the right one, because you feel the pain the data APIs fix before you learn them. He builds up a loading state and an error state by hand in module 3, breaks the app on purpose, and then deletes most of that code in module 4.
 
-The honest caveat is age, and it is a mild one. The scrims pin `react-router-dom` 6.4.3 and 6.4.4 with React 18.2. React Router 7 has since shipped, but its routing model is the 6.4 data router this course teaches, so everything transfers. The one part that has moved is the last module. v7 deprecates `defer()` in favor of returning promises straight from a loader, and the "middleware" Bob says he hopes to record an update about has since landed in v7, first as an unstable API. Neither invalidates a lesson; you will just write slightly shorter code today.
+The code is mildly dated. The scrims pin `react-router-dom` 6.4.3 and 6.4.4 with React 18.2. React Router 7 has since shipped, but its routing model is the 6.4 data router this course teaches, so everything transfers. The one part that has moved is the last module. v7 deprecates `defer()` in favor of returning promises straight from a loader, and the "middleware" Bob says he hopes to record an update about has since landed in v7, first as an unstable API. Neither invalidates a lesson; you will just write slightly shorter code today.
 
-The second caveat is heritage. Bob twice refers to "the full advanced React course," and in the NavLink lesson he says render props are something "you have already learned about" if you are taking it there. This course started life as the routing module of [Advanced React](/docs/courses/react/advanced-react/). If you own that course, you own most of this one. If you want routing on its own, this is the cheaper way in.
+This course started life as the routing module of [Advanced React](/docs/courses/react/advanced-react/). Bob twice refers to "the full advanced React course," and in the NavLink lesson he says render props are something "you have already learned about" if you are taking it there. If you own Advanced React, you own most of this one. If you want routing on its own, this is the cheaper way in.
 
 ## What you'll learn
 
@@ -192,6 +192,10 @@ It fits you if you are comfortable with hooks-based React, have built at least o
 
 Skip it, for now, if React itself is new. Bob says in the first minute that "this course will not be a good starting point for that." Skip it if you already own [Advanced React](/docs/courses/react/advanced-react/), which contains most of this material. And skip it if you use Next.js or Remix routing day to day; the concepts overlap, but the API does not.
 
+<AffiliateLink href="https://scrimba.com/learn-react-router-c06" variant="button">
+  Preview Learn React Router on Scrimba
+</AffiliateLink>
+
 ## Prerequisites
 
 Solid React: components, props, `useState`, `useEffect`, and fetching data in an effect, since that is the code you will be replacing. Comfort with `async`/`await` and promises matters more here than in most React courses; loaders and actions are async functions, and the deferred data module depends on understanding that an un-awaited async call is a promise. Render props appear twice (`NavLink` and `Await`) and are only briefly explained. For the last module you will want a free Firebase account and a local Node install.
@@ -204,7 +208,7 @@ Take it straight after [Learn React](/docs/courses/react/learn-react/), whose Ch
 
 What it does well:
 
-- One app carried across all 139 scrims, with three levels of nested layouts you actually build.
+- One app carried across all 139 scrims, with three levels of nested layouts you build.
 - The classic router taught before the data router, so the improvement is felt rather than asserted.
 - Two short accessibility updates.
 - A steady challenge loop, with demo-app rehearsals before each VanLife task.
@@ -214,7 +218,7 @@ Where it is limited:
 - Authentication is faked with localStorage from start to finish.
 - The CSS is pasted in for you.
 - The code is pinned to React Router 6.4, so `defer()` and the per-loader auth checks look dated next to v7.
-- It duplicates the routing module of Advanced React.
+- It duplicates the routing module of [Advanced React](/docs/courses/react/advanced-react/).
 
 ## Related courses and comparisons
 
@@ -235,10 +239,6 @@ Where it is limited:
   { q: "Who teaches it?", a: "Bob Ziroll, who also teaches Learn React, Advanced React, and What's New in React 19 on Scrimba. This course was originally recorded as the routing section of Advanced React." },
   { q: "Are there transcripts and subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages. The transcripts are how I reviewed 64 of the 139 scrims for this page." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-react-router-c06" variant="button">
-  Preview Learn React Router on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Learn React Router"

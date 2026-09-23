@@ -6,7 +6,7 @@ sidebar_label: "Learn TypeScript"
 description: "Scrimba's free Learn TypeScript from inside: 4.2 hours, Bob Ziroll's bug-ridden pizza app, then Rachel Johnson typing a React game and an Express API."
 keywords: [scrimba learn typescript, learn typescript scrimba review, learn typescript free, bob ziroll typescript, rachel johnson scrimba, typescript react express course, interactive typescript course]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,15 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn TypeScript
 
-Scrimba's free TypeScript course: about 4.2 hours in three sections, the first taught by Bob Ziroll and the other two by Rachel Johnson. I opened 41 of its 79 scrims with a Pro account in September 2026, at least a third of every section, and read their transcripts. This is what is inside, who teaches what, and where it stops.
+Scrimba's free Learn TypeScript course runs about 4.2 hours in three sections. Bob Ziroll teaches TypeScript fundamentals by rewriting a buggy pizza app, then Rachel Johnson converts a React game to TypeScript and builds a typed Express API. It is worth the time if your JavaScript is solid, and it stops short of interfaces, classes and declaration files.
+
+*Reviewed inside the course with a Pro account, September 2026: 41 of its 79 scrims opened, at least a third of every section, transcripts read.*
 
 *This page is part of our [Scrimba TypeScript courses](/docs/courses/typescript/) catalog. Scrimba's path pages list it in the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) and the [Backend Developer Path](/docs/paths/backend-developer-path/).*
 
 ## Quick answer
 
-Learn TypeScript is a free, intermediate course of about 4.2 hours. Bob Ziroll teaches the 2.1 hour fundamentals section by writing a deliberately buggy pizza restaurant in JavaScript, moving it to TypeScript, and fixing what the compiler flags. Rachel Johnson then spends 52 minutes converting the Assembly: Endgame game from Learn React to TypeScript, and 73 minutes building a typed pet shelter API in Express 5. Around two thirds of the scrims stop for a pause-and-code challenge. If you already write JavaScript and want to know why TypeScript is worth the extra typing, it is the best short answer on Scrimba.
+It fits a JavaScript developer who wants the case for TypeScript made before the syntax lesson starts, or anyone who has finished [Learn React](/docs/courses/react/learn-react/) or [Learn Express.js](/docs/courses/javascript/expressjs/) and wants to see those exact projects typed. The catch: sections two and three assume you already know both frameworks and do not re-teach them. From here, Learn React or Learn Express.js covers what those sections build on.
 
 <CourseCard
   title="Learn TypeScript"
@@ -69,9 +71,9 @@ Learn TypeScript is a free, intermediate course of about 4.2 hours. Bob Ziroll t
 
 Yes, if your JavaScript is solid. The course is free, it is short, and it does the one thing most TypeScript tutorials skip: it shows you the bugs first. Bob's opening project is a console pizza restaurant written in plain JavaScript, with three small challenges to get you typing. Then he runs it and the console prints "TypeError: Assignment to constant variable" three times. Only after that does he create the `.ts` file, and the red squiggles that appear are the same bugs, caught before the code ran. That order makes the "why" land in a way a list of type syntax never does.
 
-The first caveat is the name. Scrimba's course title and our catalog data credit Bob Ziroll, and he does teach the fundamentals. The React and Express sections are taught by Rachel Johnson, whose teacher card sits next to Bob's further down the course page. Both are clear, but they have different styles: Bob talks through his reasoning and gets on the odd soapbox ("I'll get off my high horse now"), while Rachel is brisker, with a challenge every second scrim.
+The course title only credits Bob Ziroll, though he teaches just the fundamentals section. Rachel Johnson teaches the React and Express sections, and her teacher card sits next to Bob's further down the course page. Their styles differ: Bob talks through his reasoning and gets on the odd soapbox ("I'll get off my high horse now"), while Rachel is brisker, with a challenge every second scrim.
 
-The second caveat is depth. Bob says in his conclusion that "what you've watched is everything that we have," and that more topics were planned. Enums get a one-line mention, `unknown` appears only in passing, and in the 41 scrims I opened there were no interfaces, classes, or declaration files; no scrim title mentions them either. Rachel's sections assume you already know React and Express; she says so in the Express intro. If you want those tools taught, take [Learn React](/docs/courses/react/learn-react/) and [Learn Express.js](/docs/courses/javascript/expressjs/) first.
+Depth is limited too. Bob says in his conclusion that "what you've watched is everything that we have," and more topics were planned. Enums get a one-line mention, `unknown` appears only in passing, and in the 41 scrims I opened there were no interfaces, classes, or declaration files; no scrim title mentions them either. Rachel's sections assume you already know React and Express; she says so in the Express intro. If you want those tools taught, take [Learn React](/docs/courses/react/learn-react/) and [Learn Express.js](/docs/courses/javascript/expressjs/) first.
 
 ## What you'll learn
 
@@ -137,7 +139,7 @@ The rest is one component per scrim: `JSX.Element | null` for the confetti conta
 
 Rachel's Express intro states the project and the prerequisite in one breath: "you'll build a simple read only but fully typed pet shelter API," and "this course does assume you already know the basics of Express and TypeScript." The setup scrim installs Express, `typescript` and `@types/express` as dev dependencies, and extends `@tsconfig/node20` because "the Scrimba editor uses version twenty at the moment." The very next scrim makes you repeat the setup from a `challenge.md` file with no walkthrough until the solution.
 
-Running the project is taught honestly: `node src/index.ts` fails, so you compile with `npx tsc` and run `node dist/index.js`, and a later challenge turns that into an npm `start` script. The package.json I saw shows Express 5.1 and TypeScript 5.9. Requests are sent from a Network panel inside Scrimba's editor, so there is no Postman to install.
+Running the project shows the real failure first: `node src/index.ts` fails, so you compile with `npx tsc` and run `node dist/index.js`, and a later challenge turns that into an npm `start` script. The package.json I saw shows Express 5.1 and TypeScript 5.9. Requests are sent from a Network panel inside Scrimba's editor, so there is no Postman to install.
 
 The typing progression is the useful part. `req` and `res` start as `any`; you import `Request` and `Response`. Adding `cors` throws "Could not find a declaration file for module 'cors'," and Rachel turns the fix into a challenge ("read the entire error message a bit more closely") before showing `@types/cors`. Then the generics: a `Response<Pet[]>` for the list route, a `Request<{ id: string }>` for path params, and, after a filter by `?species=cat` fails to compile, the four-slot `Request<{}, unknown, {}, { species?: string }>` for query strings.
 
@@ -173,9 +175,13 @@ Runtime is 4.2 hours, but almost every scrim stops for a challenge and the React
 
 ## Who it's for, and who should skip it
 
-It fits a JavaScript developer who has been told to learn TypeScript and wants the argument made concretely before the syntax. The pizza app does that in twenty minutes. It also fits anyone who has finished Learn React or Learn Express.js and wants to see their own project types applied to a framework, since sections two and three reuse those exact projects.
+It fits a JavaScript developer who has been told to learn TypeScript and wants the argument made concretely before the syntax. The pizza app does that in twenty minutes. It also fits anyone who has finished [Learn React](/docs/courses/react/learn-react/) or [Learn Express.js](/docs/courses/javascript/expressjs/) and wants to see their own project types applied to a framework, since sections two and three reuse those exact projects.
 
 Skip it for now if you are still learning JavaScript; the first challenge assumes you can write `array.find` with a callback without thinking. Skip it if you want TypeScript for the DOM, for classes, or for library authoring; none of that is here. And if you have written TypeScript in a React or Node codebase for a few months, most of this will be review, apart from the Express `Request` generic slots, which Rachel explains better than the Express docs do.
+
+<AffiliateLink href="https://scrimba.com/learn-typescript-c03c" variant="button">
+  Start Learn TypeScript for free
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -211,10 +217,6 @@ Where it is limited: it is an introduction and says so, with no interfaces, clas
   { q: "Are there transcripts and subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript in the settings menu, and subtitles in ten languages. One warning: a lot of the teaching relies on hovering over red squiggles to read the editor's popups, which the recording does not capture, so you need to be in the editor rather than just reading along." },
   { q: "Does it cover interfaces, enums, or classes?", a: "No. Bob covers basic, literal, and custom types, optional properties, unions, narrowing, function return types, void and any, Partial and Omit, and generics. Enums get a one-line mention. I saw no interfaces, classes, or declaration files in the 41 scrims I opened, and no scrim title mentions them." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-typescript-c03c" variant="button">
-  Start Learn TypeScript for free
-</AffiliateLink>
 
 <CourseSchema
   name="Learn TypeScript"
