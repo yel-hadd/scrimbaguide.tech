@@ -31,6 +31,38 @@ interface ImageLightboxProps {
 
 const FOCUSABLE = 'a[href], button:not([disabled])';
 
+/* Icons are SVG rather than text glyphs (x, <, >). A glyph is centred by its
+   line box, not by its ink, so in a round button it sits visibly off-centre
+   and the offset changes with the font. An SVG box centres exactly. */
+function CloseIcon(): React.ReactElement {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+      <path
+        d="M6 6 L18 18 M18 6 L6 18"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ChevronIcon({ direction }: { direction: 'left' | 'right' }): React.ReactElement {
+  return (
+    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
+      <path
+        d={direction === 'left' ? 'M15 5 L9 12 L15 19' : 'M9 5 L15 12 L9 19'}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 /**
  * Full-screen viewer for the screenshots on a page.
  *
@@ -141,7 +173,7 @@ export default function ImageLightbox({
           </span>
         )}
         <button ref={closeRef} type="button" className="lightbox__close" onClick={onClose} aria-label="Close image viewer">
-          <span aria-hidden="true">×</span>
+          <CloseIcon />
         </button>
       </div>
 
@@ -152,7 +184,7 @@ export default function ImageLightbox({
           onClick={() => go(-1)}
           aria-label="Previous image"
         >
-          <span aria-hidden="true">‹</span>
+          <ChevronIcon direction="left" />
         </button>
       )}
 
@@ -197,7 +229,7 @@ export default function ImageLightbox({
           onClick={() => go(1)}
           aria-label="Next image"
         >
-          <span aria-hidden="true">›</span>
+          <ChevronIcon direction="right" />
         </button>
       )}
     </div>

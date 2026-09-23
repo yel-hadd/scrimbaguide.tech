@@ -4712,8 +4712,8 @@ html[data-theme='dark'] .curriculum__index {
   height: 44px;
   display: grid;
   place-items: center;
-  font-size: 1.9rem;
-  line-height: 1;
+  /* The icon is an SVG, so no font metrics are involved in centring it. */
+  padding: 0;
   color: #fff;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -4822,8 +4822,7 @@ html[data-theme='dark'] .curriculum__index {
   height: 64px;
   display: grid;
   place-items: center;
-  font-size: 2.2rem;
-  line-height: 1;
+  padding: 0;
   color: #fff;
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.22);
@@ -4858,7 +4857,6 @@ html[data-theme='dark'] .curriculum__index {
     transform: none;
     width: 52px;
     height: 44px;
-    font-size: 1.8rem;
   }
   .lightbox__nav--prev { left: 0.5rem; }
   .lightbox__nav--next { right: 0.5rem; }
@@ -4867,4 +4865,11 @@ html[data-theme='dark'] .curriculum__index {
   .lightbox__desc { font-size: 0.78rem; }
   /* Leave room for the bottom-corner arrows. */
   .lightbox__figure { padding-bottom: 3rem; }
+}
+
+/* The viewer's icons sit in a grid cell; `display: block` keeps the SVG from
+   carrying the inline-box descender space that would shift it off centre. */
+.lightbox__close svg,
+.lightbox__nav svg {
+  display: block;
 }
