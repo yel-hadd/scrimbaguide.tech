@@ -159,3 +159,26 @@ test('renderLlmsTxt annotates every listed URL from live page metadata, falling 
   assert.match(out, /- \[[^\]]+\]\(https:\/\/scrimbaguide\.tech\/\): /);
   assert.doesNotMatch(out, /^- https:\/\/scrimbaguide\.tech\/docs\/courses\/backend\/$/m);
 });
+
+test('renderLlmsTxt lists course leaves in their own section and does not cap the blog', () => {
+  const urls = [
+    'https://scrimbaguide.tech/docs/courses/',
+    'https://scrimbaguide.tech/docs/courses/react/',
+    'https://scrimbaguide.tech/docs/courses/react/learn-react/',
+    'https://scrimbaguide.tech/docs/courses/javascript/learn-javascript/',
+    ...Array.from({ length: 25 }, (_, i) => `https://scrimbaguide.tech/blog/post-${i}/`),
+  ];
+  const out = renderLlmsTxt(urls);
+
+  // Course leaves (depth 4) get a ## Courses section; hubs stay under ## Docs.
+  assert.match(out, /^## Courses$/m);
+  const courses = out.split(/^## /m).find((s) => s.startsWith('Courses'));
+  assert.match(courses, /\/docs\/courses\/react\/learn-react\//);
+  assert.match(courses, /\/docs\/courses\/javascript\/learn-javascript\//);
+  assert.doesNotMatch(courses, /\/docs\/courses\/react\/\)/);
+
+  // Every blog post is listed, not just the first 20.
+  for (const i of [0, 19, 20, 24]) {
+    assert.match(out, new RegExp(`https://scrimbaguide\\.tech/blog/post-${i}/`));
+  }
+});
