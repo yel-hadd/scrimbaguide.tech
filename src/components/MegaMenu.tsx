@@ -11,6 +11,7 @@ import {
   Calculator,
   Map,
   Sparkles,
+  PlayCircle,
 } from 'lucide-react';
 
 const ICON_MAP = {
@@ -23,6 +24,7 @@ const ICON_MAP = {
   Calculator,
   Map,
   Sparkles,
+  PlayCircle,
 } as const;
 
 interface MegaMenuItem {

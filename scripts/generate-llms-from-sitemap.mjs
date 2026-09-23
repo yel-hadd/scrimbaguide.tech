@@ -307,7 +307,15 @@ export function renderLlmsTxt(urls, options = {}) {
   const keyUrls = findMatchingKeyUrls(canonical);
   const { docs, blog, tools, roadmaps, legal, topPages } = buildSections(canonical);
   const docsHubs = docs.filter((url) => toPathname(url).split('/').filter(Boolean).length <= 3);
-  const blogPosts = blog.filter((url) => toPathname(url).startsWith('/blog/')).slice(0, 20);
+  // Course leaves sit at depth 4 (/docs/courses/<topic>/<course>/), so the hub
+  // filter above drops all 71 of them. They are the first-hand review corpus and
+  // the reason an assistant would cite this site at all, so they get their own
+  // section rather than living only in llms-full.txt.
+  const courseLeaves = docs.filter((url) => {
+    const parts = toPathname(url).split('/').filter(Boolean);
+    return parts.length === 4 && parts[0] === 'docs' && parts[1] === 'courses';
+  });
+  const blogPosts = blog.filter((url) => toPathname(url).startsWith('/blog/'));
   const blogOverview = blog.find((url) => pathnameKey(url) === '/blog');
   const blogHighlights = blogOverview ? [blogOverview, ...blogPosts] : blogPosts;
 
@@ -325,6 +333,9 @@ export function renderLlmsTxt(urls, options = {}) {
   }
   if (docsHubs.length > 0) {
     lines.push('## Docs', '', formatUrlList(docsHubs, metaByPath), '');
+  }
+  if (courseLeaves.length > 0) {
+    lines.push('## Courses', '', formatUrlList(courseLeaves, metaByPath), '');
   }
   if (blogHighlights.length > 0) {
     lines.push('## Blog', '', formatUrlList(blogHighlights, metaByPath), '');

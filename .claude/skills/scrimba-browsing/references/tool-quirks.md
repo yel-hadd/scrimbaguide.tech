@@ -56,3 +56,19 @@
 - Path pages with long TOCs can freeze the renderer on a heavy
   `javascript_tool` call (45 s CDP timeout); take a screenshot to check the page
   really rendered before concluding it is empty, and re-run the read.
+
+## Parallel agents and tab visibility (2026-09-21)
+
+Reading (curriculum, transcripts, code) runs fine in parallel, one tab per
+agent, about 400k tokens per course including review and fix. Screenshots do
+not: the scrim player renders only in a tab that is the active tab of a window
+that is on screen (GNOME/Wayland; the extension's window can sit behind the
+user's other Chrome window), and `javascript_tool` does not activate tabs.
+With 6 to 8 tabs open, background tabs stayed `hidden` and captures came back
+blank. Run capture agents one at a time, check
+`document.visibilityState === 'visible'` before every capture, and if it is
+hidden ask the user to press Ctrl+Shift+A in Chrome and pick the tab. Keep the
+"Claude is active in this page" pill out of saved shots. Hand the fixer the
+drafting report, or it strips first-hand facts as untraceable. Non-Scrimba UI
+review uses Playwright against `docusaurus serve --port 3050` so it does not
+compete for Chrome.

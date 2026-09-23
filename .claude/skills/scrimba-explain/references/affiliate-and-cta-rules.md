@@ -37,7 +37,7 @@ This overrides the general "every scrimba.com link goes through `<AffiliateLink>
 ## Never
 
 - `?via=u42d4986` on any explainer URL, anywhere (see The rule above). Reports of `via` inside Scrimba's product go straight to Scrimba support.
-- The discount code as typeable text anywhere (memory rule: discount stays link-only).
+- The discount code as typeable text anywhere (CLAUDE.md, Affiliate: the discount travels with the link).
 - Converting (upgrade, purchase) through your own link while logged in.
 - Names that read as official Scrimba content.
 

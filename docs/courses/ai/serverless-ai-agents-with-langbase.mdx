@@ -2,11 +2,11 @@
 title: "Build Serverless AI Agents with Langbase on Scrimba: 2026 Review"
 sidebar_position: 6
 toc_max_heading_level: 2
-sidebar_label: "Serverless AI Agents with Langbase"
+sidebar_label: "Langbase AI Agents"
 description: "Maham Codes's free Langbase course from inside: 49 minutes, 13 scrims, three challenges, a RAG support agent in TypeScript, and what you need before you start."
 keywords: [scrimba langbase course, build serverless ai agents with langbase review, serverless ai agents scrimba, langbase tutorial, maham codes scrimba, agentic rag course, free ai agents course]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Build Serverless AI Agents with Langbase
 
-Scrimba's free, 49 minute course on building a memory-backed AI agent with the Langbase SDK, taught by Maham Codes. It is short enough that I read the transcript of every one of its 13 scrims with a Pro account in September 2026, so this page covers the whole course, not a sample of it.
+Maham Codes's free Build Serverless AI Agents with Langbase course runs 49 minutes across 13 scrims, and it builds one thing: a support agent that retrieves answers from an uploaded FAQ file using the Langbase SDK in TypeScript. It is a clean, complete RAG loop in under an hour, though everything you learn runs through Langbase's own methods.
 
-*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Build Serverless AI Agents with Langbase is a free, intermediate course of 13 short scrims. In about 50 minutes you build one thing: a support agent that answers questions from a text file you upload. You create a memory on Langbase, upload a mock FAQ document, retrieve the most relevant chunks for a question, create an agent (Langbase calls it a pipe), and connect the two so the agent answers with citations. Three of the scrims are challenges with instant feedback. The whole thing is TypeScript run from the terminal with the `langbase` package.
-
-It is a good hour if you want to see a complete retrieval-augmented generation (RAG) loop end to end without setting up a vector database. It is a product tutorial, though: everything you learn is expressed through Langbase's SDK, and you need a Langbase account plus an LLM provider key before scrim 4.
+This fits you if you already know what retrieval-augmented generation (RAG) is and want to see the full loop, chunking, embedding, retrieval, and generation, working end to end without setting up a vector database. The catch is that every concept runs through a Langbase method, so if Langbase is not part of your plans, take the transferable mental model to [Learn RAG](/docs/courses/ai/rag/) instead.
 
 <CourseCard
   title="Build Serverless AI Agents with Langbase"
@@ -120,7 +118,7 @@ Memory Agents on Langbase is a slide lesson with no code, and it is the best exp
 
 ### 3. Retrieve and generate (15 min, 3 scrims)
 
-Perform RAG Retrieval starts in Langbase Studio, where a "retrieval testing" panel lets you type a question and see chunks come back with similarity percentages. Then the code: an `agents.ts` file exporting `runMemoryAgent(query)`, which calls `memories.retrieve` with the query, `topK: 4`, and the memory name, and an `index.ts` that prints the chunks. Her tip here is worth noting: "You can adjust chunk size and overlap under the settings to improve retrieval accuracy."
+Perform RAG Retrieval starts in Langbase Studio, where a "retrieval testing" panel lets you type a question and see chunks come back with similarity percentages. Then the code: an `agents.ts` file exporting `runMemoryAgent(query)`, which calls `memories.retrieve` with the query, `topK: 4`, and the memory name, and an `index.ts` that prints the chunks. Her tip: "You can adjust chunk size and overlap under the settings to improve retrieval accuracy."
 
 Create an AI Agent Pipe is the third challenge. You create `create-pipe.ts` and define a pipe with `pipes.create`: a name, a description, and a `messages` array holding the system prompt. She explains the system prompt as "giving the AI its job description before the conversation starts." The challenge is to write that definition yourself; the solution names it `ai-support-agent` with a two sentence system prompt.
 
@@ -144,7 +142,7 @@ Vibe Coding AI Agents with Command.new is a six minute screen recording of Langb
 
 The last two scrims are not part of the course content. Per Borgen of Scrimba pitches the Scrimbassador referral program, then a 53 second scrim tells you to put your certificate on LinkedIn. Both appear at the end of many Scrimba courses.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Every scrim is between one and six and a half minutes. Five of the thirteen are slide lessons with no code (intro, Core Concepts, environment variables, Memory Agents, AI Primitives), one is a screen recording of a third-party site (Command.new), and five are coding scrims where you can pause, edit the file, and run it in Scrimba's built-in terminal. The three challenges follow the same pattern: she demonstrates a method, states the task in one sentence, and says "I'll pause here so you can do it on your own," then walks through the solution.
 
@@ -160,15 +158,19 @@ What Pro adds around it: the Certificate of Completion listed at the end of the 
 
 Separately from Scrimba, you need a Langbase account and an LLM provider key for the code to run. I did not test what Langbase's free tier covers, so check that before you start.
 
-## How long it really takes
+## How long it takes
 
 Video runtime is 49 minutes. Plan for two to three hours: fifteen minutes of setup (Langbase account, API keys, Scrimba environment variables), around an hour to type along with the five coding scrims and do the three challenges yourself, and time to poke at the retrieval testing panel with your own questions. If you swap the mock FAQ for a document of your own, which is the obvious next step, add another hour.
 
 ## Who it's for, and who should skip it
 
-It fits you if you can write basic TypeScript, you know what an LLM API call looks like, and you want to see a full RAG agent run in one sitting. It is also a reasonable first look at Langbase specifically if you are evaluating it against a framework.
+It fits you if you can write basic TypeScript, you know what an LLM API call looks like, and you want to see a full RAG agent run in one sitting. It also works as a first look at Langbase if you are evaluating it against a framework.
 
 Skip it if you have never called an LLM from code; [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) is the right start. Skip it if you want platform-neutral agent design; [Learn AI Agents](/docs/courses/ai/ai-agents/) covers tool calling and agent loops without tying you to a vendor. And if what you want is to understand RAG itself, [Learn RAG](/docs/courses/ai/rag/) goes deeper on chunking and embeddings than this course has room for.
+
+<AffiliateLink href="https://scrimba.com/build-serverless-ai-agents-with-langbase-c0cg73hgmh" variant="button">
+  Start Build Serverless AI Agents with Langbase for free
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -204,10 +206,6 @@ Where it is limited: everything is expressed through the Langbase SDK, so little
   { q: "Does it have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript panel, playback speed control, and subtitles in ten languages. The transcripts are a fast way to skim the slide lessons." },
   { q: "How does it compare to Learn AI Agents?", a: "This is a short, Langbase-specific RAG build. Learn AI Agents is longer and platform-neutral, covering tool calling and agent loops. Take this one to see a memory-backed agent work quickly, and the other to learn agent design you can apply anywhere." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/build-serverless-ai-agents-with-langbase-c0cg73hgmh" variant="button">
-  Start Build Serverless AI Agents with Langbase for free
-</AffiliateLink>
 
 <CourseSchema
   name="Build Serverless AI Agents with Langbase"

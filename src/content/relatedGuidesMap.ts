@@ -326,14 +326,14 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
   ],
   '/docs/comparisons/scrimba-vs-youtube': [
-    { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
     { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free/', type: 'doc' },
   ],
   '/docs/comparisons/scrimba-vs-coursera': [
     { title: 'Scrimba for CS Students', href: '/docs/for/cs-students', type: 'doc' },
     { title: 'Certificates Guide', href: '/blog/complete-guide-scrimba-certificates', type: 'blog' },
-    { title: 'Career Change Guide', href: '/blog/career-change-to-coding-2026', type: 'blog' },
+    { title: 'Scrimba Student Discount', href: '/docs/pricing/student-discount/', type: 'doc' },
   ],
   '/docs/comparisons/scrimba-vs-boot-dev': [
     { title: 'All Comparisons', href: '/docs/comparisons/', type: 'doc' },
@@ -392,7 +392,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   '/docs/for/beginners': [
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
     { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
-    { title: 'Frontend Roadmap', href: '/roadmaps/frontend-roadmap-2026', type: 'doc' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path/', type: 'doc' },
   ],
 
   // --- Docs: Practice Pages ---
@@ -465,28 +465,28 @@ const sectionFallbacks: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba Discount Codes', href: '/blog/scrimba-discount-codes-2026', type: 'blog' },
   ],
   '/docs/courses/': [
-    { title: 'All Courses', href: '/docs/courses/', type: 'doc' },
     { title: 'Learning Paths', href: '/docs/paths/', type: 'doc' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free/', type: 'doc' },
     { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
   ],
   '/docs/faq/': [
-    { title: 'Scrimba FAQ', href: '/docs/faq/', type: 'doc' },
     { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba Student Discount', href: '/docs/pricing/student-discount/', type: 'doc' },
     { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
   ],
   '/docs/learn-react/': [
-    { title: 'Learn React Roadmap', href: '/docs/learn-react/', type: 'doc' },
     { title: 'React Course Catalog', href: '/docs/courses/react/', type: 'doc' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path/', type: 'doc' },
     { title: 'Scrimba React Learning Path', href: '/blog/scrimba-react-learning-path', type: 'blog' },
   ],
   '/docs/learn-nextjs/': [
-    { title: 'Learn Next.js Roadmap', href: '/docs/learn-nextjs/', type: 'doc' },
     { title: 'JavaScript Courses', href: '/docs/courses/javascript/', type: 'doc' },
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path/', type: 'doc' },
     { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
   '/blog/best-udemy-coding-courses': [
-    { title: 'Best Udemy coding courses', href: '/blog/best-udemy-coding-courses', type: 'blog' },
     { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
+    { title: 'Learning Paths', href: '/docs/paths/', type: 'doc' },
     { title: 'JavaScript courses (Scrimba)', href: '/docs/courses/javascript/', type: 'doc' },
   ],
   '/docs/practice/': [

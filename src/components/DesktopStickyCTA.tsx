@@ -34,7 +34,17 @@ export default function DesktopStickyCTA(): React.ReactElement | null {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMoneyPage, isDesktop]);
 
-  if (!isMoneyPage || !isDesktop || !isVisible || isDismissed) return null;
+  const isShown = isMoneyPage && isDesktop && isVisible && !isDismissed;
+
+  // While the card is on screen, the right-rail TOC is shortened so its last
+  // entries scroll above the card instead of sitting underneath it.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle('has-sticky-cta', isShown);
+    return () => root.classList.remove('has-sticky-cta');
+  }, [isShown]);
+
+  if (!isShown) return null;
 
   return (
     <div className="desktop-sticky-cta" role="complementary" aria-label="Scrimba Pro discount">

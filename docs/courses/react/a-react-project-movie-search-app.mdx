@@ -6,7 +6,7 @@ sidebar_label: "Movie Search App"
 description: "James Q Quick's 56 minute Pro React project reviewed from inside: 13 scrims, three challenges, a TMDB search app on React 16, and what has aged."
 keywords: [scrimba movie search app review, scrimba movie search app react, react project movie search, james q quick react, react api project, short react project course, useState fetch project]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,15 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Build a React Project: Movie Search App
 
-A one hour Pro project with James Q Quick: a search box, a call to The Movie Database API, and a list of poster cards, built in React with hooks. I read the transcript of every one of its 13 scrims and the code in each one with a Pro account in September 2026, so this page describes what is in the course, including the parts that have aged.
+James Q Quick's Build a React Project: Movie Search App runs 56 minutes for Pro subscribers: you build a search form, fetch results from The Movie Database API, and render poster cards with two functional components and `useState`. It is a solid rep between React fundamentals and a full project, not a place to learn React from scratch.
+
+*Reviewed inside the course with a Pro account, September 2026.*
 
 *This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's catalog data lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-Build a React Project: Movie Search App is a 56 minute, Intermediate, Pro-only build taught by James Q Quick. You write two functional components, `SearchMovies` and `MovieCard`, wire a form to `useState`, fetch results from The Movie Database (TMDB) with `async`/`await`, and map the response to styled cards. Three of the 13 scrims are challenges where the recording stops and you write the component or the state yourself. The first four scrims are free samples.
-
-It is a good ninety minutes if you have just finished a React fundamentals course and want to rehearse the input, fetch, render loop once on your own. It is not a place to learn React from scratch, and it runs on React 16.13 with `ReactDOM.render`, so treat the code as a drill rather than a template for a new project.
+It fits you if you have just finished a React fundamentals course and want one supervised rep of the input, fetch, render loop before a bigger build. The catch: the code runs on React 16.13 with `ReactDOM.render`, so treat it as a drill, not a template for a new project. Once you are done, the [Memory Game in React](/docs/courses/react/memory-game-in-react/) is the next step up.
 
 <CourseCard
   title="Build a React Project: Movie Search App"
@@ -55,7 +55,7 @@ It is a good ninety minutes if you have just finished a React fundamentals cours
 
 For the right person, yes, and the right person is narrow: you know what a component and a hook are, you have not yet built anything that talks to a real API, and you want to do it once with someone watching. The course delivers exactly that loop. By the end of scrim 8 you type "Jurassic Park", press Search, and a list of posters with release dates, ratings, and overviews appears in the preview pane. James's own summary in the wrap-up is fair: "relatively simple, but I think covers some of the core concepts of React."
 
-The honest caveat is age. The starter pins `react` and `react-dom` at 16.13.1, the root component is a class with a `render()` method, and mounting is done with `ReactDOM.render`, which React 18 replaced with `createRoot`. In the intro James introduces himself as a developer advocate at Auth0; the teacher card on the same page now says Cloudflare. Nothing here is wrong for React 16, and hooks, `fetch`, and `map` work the same way today, but you will not see React 18 or 19 patterns. The closing clip even pitches a "React Bootcamp" that no longer exists under that name.
+The code shows its age. The starter pins `react` and `react-dom` at 16.13.1, the root component is a class with a `render()` method, and mounting is done with `ReactDOM.render`, which React 18 replaced with `createRoot`. In the intro James introduces himself as a developer advocate at Auth0; the teacher card on the same page now says Cloudflare. Nothing here is wrong for React 16, and hooks, `fetch`, and `map` work the same way today, but you will not see React 18 or 19 patterns. The closing clip even pitches a "React Bootcamp" that no longer exists under that name.
 
 The second caveat is size. There is one screen, no routing, no loading state, no error message for the user, and the API key is pasted straight into the fetch URL. That is fine for an hour of practice. It is not a portfolio piece unless you keep building after the last scrim.
 
@@ -126,7 +126,7 @@ Create the Movie Card Component (Challenge) is the third and best challenge, bec
 
 Wrap Up is a 74 second recap of components, hooks, `fetch`, and reusable components. Then two clips Scrimba adds to every course: Congratulations!, in which a Scrimba staffer points you at Bob Ziroll's React course (under its old "React Bootcamp" name), and How to Utilize Your Certificate, a one minute nudge to add the certificate to LinkedIn.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 The eight coding scrims run from three to seven minutes; the other five are the slide intro, the TMDB API-key walkthrough and three outros. James narrates over a live editor with the preview on the right, and he writes the CSS and the JavaScript in front of you rather than pasting finished files; the two things he does paste (the TMDB URL and the poster CDN URL) he says so. He makes small mistakes and fixes them on camera, which is more useful than it sounds when you are learning what a missing `./` looks like.
 
@@ -138,7 +138,7 @@ The first four scrims are marked SAMPLE and open without Pro: the intro, the API
 
 Everything after that is Pro: the form styling, the fetch function, the `useState` challenge, rendering and styling the cards, the `MovieCard` challenge, the wrap-up, and the certificate of completion. The Discord server is not part of this gate; Scrimba's pricing page lists basic Discord access as free and only the Pro channels as paid. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if the two paths this course belongs to are what you are after.
 
-## How long it really takes
+## How long it takes
 
 Fifty-six minutes is video runtime. Plan for two to three hours: ten to fifteen minutes to register at TMDB and find the API key page, the three challenges at ten to twenty minutes each if you write them before watching the solution, and some time pausing to retype the CSS. If you already have a TMDB key and just want the React parts, ninety minutes is realistic.
 
@@ -147,6 +147,10 @@ Fifty-six minutes is video runtime. Plan for two to three hours: ten to fifteen 
 It fits you if you have done the state and side effects sections of [Learn React](/docs/courses/react/learn-react/) or the equivalent elsewhere and want one small, complete, API-backed app under your belt before something bigger. It also fits someone who learned React with class components and wants to see `useState` and a functional component in a project rather than a slide.
 
 Skip it if you have never written React; the intro assumes you know what a component is, and the About text on Scrimba says so itself. Skip it if you want modern React specifically: no React 18, no `createRoot`, no `useEffect`, no environment variables for the key, no loading or error UI. And skip it if you want a longer build; the [Memory Game in React](/docs/courses/react/memory-game-in-react/) is the bigger project on this track.
+
+<AffiliateLink href="https://scrimba.com/build-a-react-project-movie-search-app-c0u" variant="button">
+  Try the free sample scrims on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -181,10 +185,6 @@ Where it is limited: React 16.13 and `ReactDOM.render` date it, the root `Main` 
   { q: "Who teaches it?", a: "James Q Quick, a developer educator (Cloudflare as of 2026, Auth0 when this was recorded) who also teaches Scrimba's Intro to Astro course and runs the Compressed.fm podcast." },
   { q: "Does it have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript in the settings menu, and subtitles in ten languages, and you can read the finished code in the editor without pressing play." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/build-a-react-project-movie-search-app-c0u" variant="button">
-  Try the free sample scrims on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Build a React Project: Movie Search App"

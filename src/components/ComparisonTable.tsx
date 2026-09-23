@@ -13,6 +13,9 @@ interface ComparisonTableProps {
   rows: ComparisonRow[];
   scrimbaUrl?: string;
   competitorUrl?: string;
+  /** Drop the CTA row when the page already has a CTA nearby (e.g. a
+   *  VerdictBox right above the table on comparison leaves). */
+  hideCta?: boolean;
 }
 
 export default function ComparisonTable({
@@ -21,6 +24,7 @@ export default function ComparisonTable({
   rows,
   scrimbaUrl = 'https://scrimba.com/?via=u42d4986',
   competitorUrl,
+  hideCta = false,
 }: ComparisonTableProps): React.ReactElement {
   const captionId = useId();
   const helpId = useId();
@@ -56,17 +60,21 @@ export default function ComparisonTable({
           ))}
         </tbody>
       </table>
-      <div className="comparison-table__cta-row">
-        <AffiliateLink href={scrimbaUrl} variant="button" location="comparison-table">
-          Claim 20% off Pro
-        </AffiliateLink>
-        {competitorUrl && (
-          <a href={competitorUrl} target="_blank" rel="noopener noreferrer" className="comparison-table__secondary-cta">
-            Visit {competitorName}
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
-        )}
-      </div>
+      {(!hideCta || competitorUrl) && (
+        <div className="comparison-table__cta-row">
+          {!hideCta && (
+            <AffiliateLink href={scrimbaUrl} variant="button" location="comparison-table">
+              Claim 20% off Pro
+            </AffiliateLink>
+          )}
+          {competitorUrl && (
+            <a href={competitorUrl} target="_blank" rel="noopener noreferrer" className="comparison-table__secondary-cta">
+              Visit {competitorName}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 }

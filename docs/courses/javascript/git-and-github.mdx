@@ -6,7 +6,7 @@ sidebar_label: "Learn Git and GitHub"
 description: "Gregor Thomson's Pro Git and GitHub course from inside: 103 minutes, 40 screencast scrims, you work on your own machine from lesson 14, and what Pro gates."
 keywords: [scrimba learn git and github, learn git and github scrimba review, git and github course, branching and merging course, version control course scrimba, github workflow course, gregor thomson git course]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,24 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Git and GitHub
 
-Scrimba's Pro course on version control, taught by Gregor Thomson in 40 short screencasts that add up to about 103 minutes. I watched all 40 scrims with a Pro account in September 2026, with the transcript panel open, and went back to the course page to check the table of contents for this write-up. This page is what is in there, including one thing the listing does not tell you: from lesson 14 onward you are working in your own terminal, not Scrimba's.
+Gregor Thomson teaches Scrimba's Pro-only Learn Git and GitHub course in 40 screencast scrims, about 103 minutes total. You push a project to GitHub three ways, branch, review a pull request, and fix a merge conflict, though from scrim 14 you work in your own terminal instead of Scrimba's. It's short and worth a weekend if you already have Pro.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page shows no path badge, but the same material is the Git & Github module of the [Backend Developer Path](/docs/paths/backend-developer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Learn Git and GitHub is a 103 minute, Pro-only course rated Intermediate. The first four scrims are free samples. A scrim is Scrimba's name for one lesson: normally a recording you can pause and type into, but not here. In this course the editor pane holds nothing to type into, and the practice happens on your own computer with your own projects.
-
-By the end you can put a project on GitHub three different ways (the website, GitHub Desktop, and the terminal), work on a branch, open and review a pull request, and fix a merge conflict without panic. You will also have met fetch, stash, revert, reset and rebase, at least once each.
-
-There are no modules in the Scrimba sense, just a flat list of 40 scrims, but the course's own intro scrims split it into six sections plus a two-scrim wrap-up:
-
-- **Intro**: what version control is, then uploading a project through GitHub's website
-- **Coding locally**: GitHub Desktop and VS Code's source control panel
-- **Become a Git Pro**: the terminal (init, add, commit, diff, push, branches)
-- **Collaboration**: pull requests, code reviews, merge conflicts
-- **Gits and Pieces**: fetch, log, stash, revert, reset, rebase
-- **Other GitHub features**: profiles, stars, forks, issues, projects
+Learn Git and GitHub fits anyone who has finished a first coding course and never pushed a project to GitHub; the first four scrims (about 14 minutes) are free, the other 36 need Pro. The catch is the format: the editor pane holds nothing to type into, so from scrim 14 the practice happens on your own machine, not inside Scrimba. Take it after [Learn JavaScript](/docs/courses/javascript/learn-javascript/) or right before [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/).
 
 <CourseCard
   title="Learn Git and Github"
@@ -80,7 +69,7 @@ There are no modules in the Scrimba sense, just a flat list of 40 scrims, but th
 
 If you use Git by copying the same four commands and hoping, yes. The course is short and the order makes sense: website upload first, then a desktop app, then the editor, then the terminal. Gregor keeps returning to one diagram of the workflow: initialize, branch, change, stage, commit, push, pull request, merge, pull. By the time the terminal section starts you have already done that loop twice with a mouse, so the commands land on a mental model rather than on nothing.
 
-The caveat is the format. Every lesson Gregor teaches has a single `package-lock.json` in the file explorer and nothing else. Only the two Scrimba house scrims, the Docs promo and the certificate one, carry a stub project, and you never touch it. There is no code to edit in the player, no challenge that stops the recording and waits for you, and no AI check.
+Every lesson Gregor teaches has a single `package-lock.json` in the file explorer and nothing else. Only the two Scrimba house scrims, the Docs promo and the certificate one, carry a stub project, and you never touch it. There is no code to edit in the player, no challenge that stops the recording and waits for you, and no AI check.
 
 The three "NEW" practice scrims tell you to export one of your Scrimba projects, put it on your own computer, and push it to GitHub. That is the right way to learn Git. It also means the course only works if you leave the browser and do the homework. If you want the usual Scrimba loop of pause, type, compare, this is not that.
 
@@ -180,7 +169,7 @@ The best section, and the reason to take this course rather than any random Git 
 
 ### 5. Gits and Pieces (18 min, 7 scrims)
 
-Six commands, one lesson each, after an intro that is honest that these are "not things that we'll use necessarily every day." "git fetch" (3:36) is explained as pull without the merge: it downloads what changed on GitHub but leaves your files alone, and `git diff main origin/main` lets you compare before you integrate. "git log" (0:38) is the history command, and it gets 38 seconds.
+Six commands, one lesson each, after an intro that admits these are "not things that we'll use necessarily every day." "git fetch" (3:36) is explained as pull without the merge: it downloads what changed on GitHub but leaves your files alone, and `git diff main origin/main` lets you compare before you integrate. "git log" (0:38) is the history command, and it gets 38 seconds.
 
 "git stash" (2:42) has the best setup in the section. Gregor is half way through a contact form when he notices a missing closing tag, on the wrong branch. Stash puts the unfinished work aside, he fixes the tag on main, then `git stash apply` brings the form back. That is the exact situation stash exists for, and seeing it happen makes the command stick.
 
@@ -190,7 +179,7 @@ Six commands, one lesson each, after an intro that is honest that these are "not
 
 ### 6. Other GitHub features (13 min, 5 scrims)
 
-A tour rather than a lesson. "GitHub Profiles" (2:26) is the profile README trick: a repository named after your username, edited in Markdown, shown at the top of your profile. "Stars, forking and cloning" (3:54) uses Scrimba's own Learn HTML and CSS repository as the example. A fork is your own copy of someone else's repository on GitHub; cloning pulls a copy to your machine with `git clone`. The scrim ends with Gregor following "the man, the myth, the legend, Linus Torvalds."
+A tour rather than a lesson. "GitHub Profiles" (2:26) is the profile README trick: a repository named after your username, edited in Markdown, shown at the top of your profile. "Stars, forking and cloning" (3:54) uses Scrimba's own [Learn HTML and CSS](/docs/courses/css/html-and-css/) repository as the example. A fork is your own copy of someone else's repository on GitHub; cloning pulls a copy to your machine with `git clone`. The scrim ends with Gregor following "the man, the myth, the legend, Linus Torvalds."
 
 "GitHub Issues" (2:35) opens a booking form enhancement on the surf site, then reads a real bug report on the React repository so you see what a good issue looks like. "GitHub Projects" (3:40) builds a Kanban board (columns for to do, in progress, done) from the template and moves that issue from backlog to done. Worth it if you have never used issues or GitHub Projects, skippable if you have.
 
@@ -198,7 +187,7 @@ A tour rather than a lesson. "GitHub Profiles" (2:26) is the profile README tric
 
 Two scrims from Scrimba's founder Per Borgen rather than Gregor. The two minute "Want to become a Scrimbassador?" pitch is the referral program the course page also advertises. The standard one minute "How to utilize your certificate" scrim comes next, then the certificate of completion.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 A typical scrim is two to five minutes and is a recorded screen: a macOS terminal, VS Code, GitHub Desktop, or github.com, framed inside a gradient slide with a Scrimba watermark. Conceptual lessons use animated slides instead. Gregor narrates in a calm, slightly formal voice. Nothing goes wrong on screen unless it is the point of the lesson (the missing closing tag that sets up `git stash`), which is the opposite of the "write the bug, then fix it" style in [Learn JavaScript](/docs/courses/javascript/learn-javascript/).
 
@@ -212,7 +201,7 @@ The remaining 36 scrims are Pro, which is everything from "Coding locally" onwar
 
 My read: the course is a reason to have Pro for a month, not a reason to buy it on its own. If you already subscribe for a path, this is an obvious weekend add-on.
 
-## How long it really takes
+## How long it takes
 
 The 103 minutes is video runtime and you can watch all of it in an afternoon. That would be a waste. Plan for the three homework prompts and for repeating each section's workflow on a project of your own. That means: install Git and GitHub Desktop, set up a GitHub account, upload a project three different ways, open a pull request against yourself, and manufacture one merge conflict so the resolution lesson sticks.
 
@@ -223,6 +212,10 @@ That is four to six hours in total, or a week of evenings. The collaboration sec
 It fits anyone who has finished a first coding course and has never pushed a project to GitHub. It also fits anyone who uses GitHub Desktop or VS Code buttons without knowing what they do. Self-taught developers heading for a first team job get the most from section 4, because the code review and merge conflict lessons show the exact screens you will see in a real pull request. [CS students](/docs/for/cs-students/) who learned Git from a lecture slide will get the most out of that section too.
 
 Skip it if you already branch, open pull requests, and resolve conflicts without thinking; you will learn nothing new in 103 minutes. Also skip it if you were hoping to learn Git without leaving the browser. The course says itself that Scrimba's terminal cannot install Git, and from lesson 14 the work is on your own machine.
+
+<AffiliateLink href="https://scrimba.com/learn-git-and-github-c0eh4kd7df" variant="button">
+  Watch the free sample lessons of Learn Git and GitHub
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -261,10 +254,6 @@ Where it is limited: the player has nothing to type into, so all practice is sel
   { q: "How long does it take?", a: "103 minutes of video. With the homework and a project of your own, plan four to six hours, and a second GitHub account or a friend for the code review lesson." },
   { q: "Does it have transcripts and subtitles?", a: "Yes. Every scrim has a timestamped transcript panel and captions, and the course lists subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-git-and-github-c0eh4kd7df" variant="button">
-  Watch the free sample lessons of Learn Git and GitHub
-</AffiliateLink>
 
 <CourseSchema
   name="Learn Git and Github"

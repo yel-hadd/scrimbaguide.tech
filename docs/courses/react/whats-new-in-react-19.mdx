@@ -2,11 +2,11 @@
 title: "What's New in React 19? on Scrimba: 2026 Review"
 sidebar_position: 9
 toc_max_heading_level: 2
-sidebar_label: "What's New in React 19?"
+sidebar_label: "What's New in React 19"
 description: "Bob Ziroll's free React 19 catch-up from inside: 69 minutes, 15 scrims, one username form rebuilt with form actions, useActionState, useOptimistic and use()."
 keywords: [scrimba react 19, whats new react 19, whats new in react 19 review, react 19 features, bob ziroll react 19, react use api, useactionstate scrimba, scrimba react 19 course review]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,15 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # What's New in React 19?
 
-Scrimba's free, 69 minute catch-up on React 19, taught by Bob Ziroll as a flat run of 15 short scrims. I read the transcript of every scrim and the code in each one with a Pro account in September 2026; this page is what the course actually teaches, where it has aged, and who should bother.
+What's New in React 19? is Bob Ziroll's free, 69-minute catch-up course, a flat run of 15 scrims that rebuild one username form four times with the `action` prop, `useActionState`, `useOptimistic` and `useFormStatus`. It is the fastest way to see React 19's actions model in working code if you already write hooks-based React.
 
-*This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
+
+This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).
 
 ## Quick answer
 
-What's New in React 19? is a free, advanced-level mini course from Bob Ziroll, about 69 minutes long. It starts with a two-scrim refresher on `useTransition` (a React 18 hook Bob never covered in his other courses), spends one short scrim on the React Compiler, then rebuilds a single username form four times. The four rewrites use the `action` prop, `useActionState`, `useOptimistic`, and `useFormStatus`. It closes with refs as props, the `use()` API, and document metadata. Three scrims are hands-on challenges.
-
-If you already write hooks-based React and want the React 19 changes explained with working code rather than a blog post, it is the quickest way to get there. If you are still learning React, do [Learn React](/docs/courses/react/learn-react/) instead; Bob says as much in the intro scrim and again in the conclusion.
+What's New in React 19? is a free, advanced-level mini course: a two-scrim `useTransition` refresher, a short React Compiler scrim, then a single username form rebuilt four times with form actions, `useActionState`, `useOptimistic` and `useFormStatus`, closing on refs as props, the `use()` API and document metadata. It fits you if you already write hooks-based React and want the changes explained in working code; if you are still learning React, take [Learn React](/docs/courses/react/learn-react/) first, as Bob says himself in the intro and conclusion scrims.
 
 <CourseCard
   title="What's New in React 19?"
@@ -54,7 +54,7 @@ If you already write hooks-based React and want the React 19 changes explained w
 
 Yes, if you fit the audience. An hour of Bob's time gets you a working mental model of actions, which is the concept the rest of React 19 hangs on, and you end up with one form that you have rewritten four ways in your own hands. The teaching choice that makes it work is the single running example: a "Current user" label, a text input and an Update button, wired to a fake `updateNameInDB` call that waits 1.5 seconds and throws if you type the word "error". Every new hook is applied to that same form, so you see exactly what each one removes from the previous version.
 
-Two caveats. First, it was recorded in May 2024 against a React 19 release candidate (the dependency panel shows `19.0.0-rc-915b914b3a-20240515`), and Bob says several times that the official docs had not caught up yet, so the slide links point at the React 19 announcement post instead. Everything he teaches shipped in the final React 19, but the framing ("coming with React 19") reads as a preview now. Second, the `use()` lesson ends on a limitation: creating a promise inside a component and passing it to `use()` refetches on every render, and Bob leaves the caching fix as out of scope. You learn what `use()` is, not how to use it in production without a framework.
+It was recorded in May 2024 against a React 19 release candidate (the dependency panel shows `19.0.0-rc-915b914b3a-20240515`), and Bob says several times that the official docs had not caught up yet, so the slide links point at the React 19 announcement post instead. Everything he teaches shipped in the final React 19, but the framing ("coming with React 19") reads as a preview now. The `use()` lesson also ends on a limitation: creating a promise inside a component and passing it to `use()` refetches on every render, and Bob leaves the caching fix out of scope. You learn what `use()` is, not how to use it in production without a framework.
 
 ## What you'll learn
 
@@ -139,9 +139,9 @@ refs as props is under three minutes and has no runnable demo (Bob does not crea
 
 The metadata scrim shows a `BlogPost` component rendering `<title>`, `<meta>` and `<link>` tags inside an `<article>`, which React 19 hoists into the document head; Bob proves it with a dev tools screenshot he took before recording rather than a live demo. The one minute conclusion sends people who found it hard back to [Learn React](/docs/courses/react/learn-react/) (which he was "just about to start rerecording from scratch" at the time, and has since) and people who want more to [Advanced React](/docs/courses/react/advanced-react/).
 
-## What a lesson actually feels like
+## What a lesson feels like
 
-Every scrim is Bob talking over a live editor, with the running form in a small preview window on the right and a slide thumbnail in the corner. Scrims run from about a minute to nine minutes; most are three to five. Bob ends most scrims with "feel free to play with the code", and here it is worth doing: the same form carries through nine scrims, so you can pause anywhere, break it, and see what the hook you just added actually changed.
+Every scrim is Bob talking over a live editor, with the running form in a small preview window on the right and a slide thumbnail in the corner. Scrims run from about a minute to nine minutes; most are three to five. Bob ends most scrims with "feel free to play with the code", and here it is worth doing: the same form carries through nine scrims, so you can pause anywhere, break it, and see what the hook you just added changed.
 
 The three challenges (loading paragraph, error message, optimistic update) each arrive as a comment block in the file and a "Pause now and work on this challenge" from Bob, followed a few seconds later by his solution. They are short, five to ten minutes each if you type them. Every scrim has captions, a timestamped transcript in the settings menu, subtitles in ten languages, and speed control.
 
@@ -151,15 +151,19 @@ All 15 scrims are free, including the three challenges: the header stats say "fr
 
 What Pro adds around it: the Certificate of Completion row at the bottom of the table of contents, the two career paths that include this course, and the Pro-only Discord channels. Basic Discord access is free according to Scrimba's pricing page, so the server itself is not a reason to upgrade. One thing I could not verify: Scrimba caps free accounts at 10 interactive challenges in total, and the three "Challenge with Instant Feedback" scrims here may count toward that cap. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if the paths or the certificate matter to you.
 
-## How long it really takes
+## How long it takes
 
 The runtime is 69 minutes, of which 67 is course content. If you watch and type along with the three challenges, plan for two to three hours: the `useActionState` trio is 18 minutes of video that deserves a second pass, and the `use()` scrim rewards the experiment Bob suggests at the end. An experienced React developer who only wants the deltas can skim it in an evening; someone who has never seen `useTransition` should budget the full three hours and treat the first two scrims as a real lesson rather than a recap.
 
 ## Who it's for, and who should skip it
 
-It fits you if you learned React on 18 (or on Bob's older courses) and want to know what `action={fn}`, `useActionState`, `useOptimistic`, `useFormStatus` and `use()` actually do, with a form you can break. It is also a good primer before the forms section of the current [Learn React](/docs/courses/react/learn-react/), which now uses form actions.
+It fits you if you learned React on 18 (or on Bob's older courses) and want to know what `action={fn}`, `useActionState`, `useOptimistic`, `useFormStatus` and `use()` do, with a form you can break. It is also a good primer before the forms section of the current [Learn React](/docs/courses/react/learn-react/), which now uses form actions.
 
 Skip it if you have never written React; Bob says as much in the intro, and he assumes you know `useState`, `useEffect`, async functions and what a promise is. If you took the re-recorded Learn React you already know the `action` prop; the rest of this course (`useActionState`, `useOptimistic`, `useFormStatus`, `use()`) is still new. And if you are here for the React Compiler or server components, this is not the course: the compiler gets two minutes and server components are not covered.
+
+<AffiliateLink href="https://scrimba.com/whats-new-in-react-19-c03d" variant="button">
+  Start What's New in React 19 for free
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -175,7 +179,7 @@ What it does well:
 
 - One running example that you refactor four times.
 - Three short challenges with instant feedback.
-- An honest `use()` lesson that shows the limitation instead of hiding it.
+- A `use()` lesson that shows the limitation instead of hiding it.
 - Bob's habit of saying which parts he personally finds confusing (the actions definition, the `use` name, the "name" attribute on a name field).
 
 Where it is limited:
@@ -205,10 +209,6 @@ Where it is limited:
   { q: "Who teaches it?", a: "Bob Ziroll, who is responsible for Scrimba's React curriculum and also teaches Learn React and Advanced React. The teacher card on the course page confirms it." },
   { q: "Does it have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed control." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/whats-new-in-react-19-c03d" variant="button">
-  Start What's New in React 19 for free
-</AffiliateLink>
 
 <CourseSchema
   name="What's New in React 19?"

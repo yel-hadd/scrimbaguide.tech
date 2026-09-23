@@ -1,11 +1,12 @@
 ---
 title: "All Scrimba Courses (2026): Catalog by Topic, Free Marked"
+sidebar_label: "Courses"
 description: "Every Scrimba course sorted by topic with the free ones marked: React, JavaScript, AI, CSS, backend, Python, and TypeScript, plus which to start with."
 keywords: [scrimba courses, scrimba course list, scrimba catalog, all scrimba courses]
 slug: /courses
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-09-21
+  date: 2026-09-22
 ---
 
 import Head from '@docusaurus/Head';
@@ -13,6 +14,7 @@ import { totalCoursesLabel, freeCount, categoryCounts } from '@site/src/utils/sc
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import Screenshot from '@site/src/components/Screenshot';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
 <Head>
   <script type="application/ld+json">
@@ -40,22 +42,21 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # All Scrimba Courses
 
-{totalCoursesLabel} interactive courses, React, JavaScript, AI, CSS, backend, Python, TypeScript. About **{freeCount} full courses are free**; the rest need [Scrimba Pro](/docs/pricing/). Use this page to grab one skill or jump to a path.
+Scrimba runs {totalCoursesLabel} interactive courses across React, JavaScript, AI, CSS, backend, Python, and TypeScript. **{freeCount} full courses are free** with no card, including [Learn React](/docs/courses/react/learn-react/) and [Learn JavaScript](/docs/courses/javascript/learn-javascript/); the rest need [Scrimba Pro](/docs/pricing/). New to code? Start with a free course below. Want a structured sequence to a portfolio? Use a [learning path](/docs/paths/) instead.
 
-## Who this is for
-The catalog is huge; you do not know whether to buy Pro, cherry-pick one course, or commit to a path. Scan by topic below, or open [Learning paths](/docs/paths/) when you want a single ordered track to a job-ready portfolio.
+*Reviewed inside each course with a Pro account, September 2026.*
 
 ## Browse by Topic
 
 | Topic | Courses | Highlights |
 |---|---|---|
-| [React](/docs/courses/react/) | {(categoryCounts.react ?? 0) > 1 ? `${categoryCounts.react}+` : categoryCounts.react} courses | Learn React, Advanced React, React 19, Router |
+| [React](/docs/courses/react/) | {(categoryCounts.react ?? 0) > 1 ? `${categoryCounts.react}+` : categoryCounts.react} courses | [Learn React](/docs/courses/react/learn-react/), [Advanced React](/docs/courses/react/advanced-react/), React 19, Router |
 | [JavaScript](/docs/courses/javascript/) | {(categoryCounts.javascript ?? 0)}+ courses | Beginner to advanced, interview prep, ES6+ |
 | [AI & Machine Learning](/docs/courses/ai/) | {(categoryCounts.ai ?? 0)}+ courses | Agents, RAG, LangChain, OpenAI, Claude, MCP |
 | [CSS & Design](/docs/courses/css/) | {(categoryCounts.css ?? 0)}+ courses | Tailwind, Grid, Flexbox, animations, UI design |
 | [Backend & Databases](/docs/courses/backend/) | {(categoryCounts.backend ?? 0) > 1 ? `${categoryCounts.backend}+` : (categoryCounts.backend ?? 0)} courses | SQL, Supabase, Firebase, Regex |
-| [Python](/docs/courses/python/) | {(categoryCounts.python ?? 0) === 1 ? '1 course' : `${categoryCounts.python ?? 0}+ courses`} | Learn Python (4.1 hrs, beginner) |
-| [TypeScript](/docs/courses/typescript/) | {(categoryCounts.typescript ?? 0) === 1 ? '1 course' : `${categoryCounts.typescript ?? 0}+ courses`} | Learn TypeScript (4.2 hrs, intermediate) |
+| [Python](/docs/courses/python/) | {(categoryCounts.python ?? 0) === 1 ? '1 course' : `${categoryCounts.python ?? 0}+ courses`} | [Learn Python](/docs/courses/python/learn-python/) (4.1 hrs, beginner) |
+| [TypeScript](/docs/courses/typescript/) | {(categoryCounts.typescript ?? 0) === 1 ? '1 course' : `${categoryCounts.typescript ?? 0}+ courses`} | [Learn TypeScript](/docs/courses/typescript/learn-typescript/) (4.2 hrs, intermediate) |
 
 ## Inside the courses
 
@@ -160,9 +161,11 @@ Stop reading documentation and start coding. Check out our interactive practice 
 - **[Practice JavaScript Arrays](/docs/practice/practice-javascript-arrays/)**
 - **[Practice API Calls](/docs/practice/practice-api-calls/)**
 
-## Pick a course or a path?
+## Where to start
 
-**One sharp skill** (React, TypeScript, a single AI topic)? Grab a course row above. **A clear line from zero to hireable projects**? Use a [career path](/docs/paths/), Pro unlocks the full sequence, Discord, and certificates.
+New to code? Start with [Learn HTML and CSS](/docs/courses/css/html-and-css/): free, no prerequisites. Already writing basic JavaScript? Go straight to [Learn React](/docs/courses/react/learn-react/). Want one sharp skill instead of a full sequence (React, TypeScript, a single AI topic)? Grab a course row from the topic table above.
+
+A [career path](/docs/paths/) bundles courses in order toward hireable projects. Pro unlocks the full sequence, Discord, and certificates.
 
 <FAQAccordion items={[
   { q: "How many courses does Scrimba have?", a: `${totalCoursesLabel} courses across React, JavaScript, AI, CSS, backend, Python, and TypeScript, plus four career paths that bundle them in order. The count drifts as Scrimba retires and launches courses; this site refreshes it from Scrimba's own data.` },

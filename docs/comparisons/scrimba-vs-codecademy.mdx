@@ -1,9 +1,10 @@
 ---
 title: "Scrimba vs Codecademy"
+sidebar_label: "vs Codecademy"
 description: "Codecademy has more languages and a mobile app; Scrimba lets you code inside the video. Which fits which learner, and the trade-offs neither site mentions."
 keywords: [scrimba vs codecademy, codecademy vs scrimba, scrimba or codecademy, best coding platform]
 last_update:
-  date: 2026-09-21
+  date: 2026-09-22
 ---
 
 import ComparisonTable from '@site/src/components/ComparisonTable';
@@ -18,11 +19,9 @@ import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
 
 <DisclosureNotice />
 
-Most "X vs Y" coding-platform pages list twelve feature rows and end with a non-answer. This page is built around the three decisions that actually matter when you are choosing between Scrimba and Codecademy, then the trade-offs that come out of those decisions.
+**Scrimba** is built around one feature, the scrim: pause the instructor's screencast and edit their code in the same window. **Codecademy** is built around a three-panel browser IDE (instructions, code, output) and a much wider language catalog. Learning web development or AI engineering and you prefer being shown things? Scrimba's format does something Codecademy's does not. Learning Java, C++, Go, or anything else Scrimba doesn't cover? Scrimba isn't on the shortlist.
 
-The short version: **Scrimba** is built around one feature, the scrim, which lets you pause the instructor's screencast and edit their code in the same window. **Codecademy** is built around a three-panel browser IDE (instructions, code, output) and a much wider language catalog. If you are learning web development or AI engineering and you prefer being shown things, Scrimba's format does something Codecademy's does not. If you are learning Java, C++, Go, or anything Scrimba does not cover, Scrimba is not on the shortlist.
-
-## The three decisions that actually matter
+## Which one fits how you learn?
 
 ### 1. Are you learning web/AI, or one of the other 14 languages Codecademy covers?
 
@@ -42,7 +41,7 @@ This is the largest preference difference and the one most learners get wrong. I
 
 Scrimba sells four pre-built career paths: Frontend (about 82 hours), Fullstack (about 108 hours), Backend (about 39 hours), and AI Engineer (about 11 hours). Each path is curated by the platform and ends with portfolio projects and a job-search module.
 
-Codecademy publishes more career paths but they are broader in topic (Data Scientist, Back-End Engineer, Front-End Engineer, Cybersecurity, Game Development). Coverage is wider, depth is generally lower per topic.
+Codecademy publishes more career paths but they are broader in topic (Data Scientist, Back-End Engineer, Front-End Engineer, Cybersecurity, Game Development). Coverage is wider, depth is lower per topic.
 
 If you want one ordered track that ends with a hireable portfolio in web dev or AI, Scrimba is set up for that. If you are sampling several careers before committing, Codecademy's catalog gives you more to sample.
 
@@ -73,6 +72,7 @@ If you want one ordered track that ends with a hireable portfolio in web dev or 
   competitorName="Codecademy"
   scrimbaUrl="https://scrimba.com/?via=u42d4986"
   competitorUrl="https://www.codecademy.com/"
+  hideCta
   rows={[
     { feature: "Teaching format", scrimba: "Video scrims that pause at each challenge; you type in the same editor, with a transcript panel for skimming", competitor: "Text instructions plus inline editor" },
     { feature: "Languages covered", scrimba: "JS, TypeScript, Python, plus HTML and CSS", competitor: "14+ including Java, C++, Go, R, SQL" },
@@ -86,22 +86,22 @@ If you want one ordered track that ends with a hireable portfolio in web dev or 
   ]}
 />
 
-The Trustpilot number on Codecademy (2.7/5 across roughly 1,500 reviews) is the kind of detail every other comparison page omits because it is uncomfortable. Scrimba sits around 4.3/5 on Trustpilot for context, on a smaller review base. The complaint pattern on Codecademy is consistent across third-party reviews: aggressive billing and unwanted renewals, plus reports of course material that feels outdated in the more popular tracks. Practical mitigation if you sign up: the moment your trial or first month begins, set a calendar reminder 48 hours before the auto-renewal date so you can cancel from billing settings if the format is not working for you. That single step neutralises the most common refund dispute on the platform.
+Codecademy sits at 2.7/5 on Trustpilot across roughly 1,500 reviews. Scrimba sits around 4.3/5, on a smaller review base. Third-party reviews name two recurring complaints on Codecademy: aggressive billing and unwanted auto-renewals, plus course material that feels outdated in the more popular tracks. Mitigation: the moment your trial or first month begins, set a calendar reminder 48 hours before the auto-renewal date and cancel from billing settings if the format is not working for you. That single step neutralises the most common refund dispute on the platform.
 
 ## React specifically: Bob Ziroll vs Codecademy's text format
 
 React is the topic learners most often switch platforms over. Scrimba's flagship React course is **[Learn React by Bob Ziroll](/docs/courses/react/learn-react/)**: 358 lessons, 15.1 hours, free in full apart from two Solo Projects, built with input from Mozilla MDN. It runs six projects: a ReactFacts page, a Travel Journal, Chef Claude (a recipe app that calls the Claude API), a Meme Generator, and two capstones, Tenzies and Assembly: Endgame. One caveat from inside the course: the Chef Claude project pins a July 2024 React 19 release candidate (the capstones run 18.3), and that section needs your own API key plus, per Bob's own update scrim, an SDK upgrade.
 
-A representative third-party review of Ziroll's **Advanced React** course on Medium describes the pacing as "just right" and the explanations as "easy to understand" ([Hassan Tanveer on Medium](https://medium.com/@hassan.tanveer0097/review-advanced-react-by-bob-ziroll-c86e09e20614)). The same review highlights what is genuinely different about Scrimba: "almost as if you and the instructor are pair programming together."
+A representative third-party review of Ziroll's **[Advanced React](/docs/courses/react/advanced-react/)** course on Medium describes the pacing as "just right" and the explanations as "easy to understand" ([Hassan Tanveer on Medium](https://medium.com/@hassan.tanveer0097/review-advanced-react-by-bob-ziroll-c86e09e20614)). The same review highlights what is genuinely different about Scrimba: "almost as if you and the instructor are pair programming together."
 
-Codecademy's React course is text-with-editor in their three-panel IDE, roughly 13 hours on the catalogue, with the early lessons free and the rest gated behind Plus or Pro. The exercises are fill-in-the-blank or write-this-component style. There is no instructor voice. For learners who want to understand *why* a hook works the way it does, Scrimba's narrated approach (15.1 hours, 358 lessons, Bob Ziroll, free in full) tends to land better, and when Bob's explanation does not land, the EXPLAIN button in the scrim header builds a narrated video from the code in front of you ([Scrimba Explain](/docs/how-it-works/scrimba-explain/), 10 free for life). For learners who already know JavaScript well and just want syntax reps, Codecademy's format is faster.
+Codecademy's React course is text-with-editor in their three-panel IDE, roughly 13 hours on the catalogue, with the early lessons free and the rest gated behind Plus or Pro. The exercises are fill-in-the-blank or write-this-component style. There is no instructor voice. For learners who want to understand *why* a hook works the way it does, Scrimba's narrated approach (15.1 hours, 358 lessons, Bob Ziroll, free in full) lands better, and when Bob's explanation does not land, the EXPLAIN button in the scrim header builds a narrated video from the code in front of you ([Scrimba Explain](/docs/how-it-works/scrimba-explain/), 10 free for life). For learners who already know JavaScript well and just want syntax reps, Codecademy's format is faster.
 
 ## A low-risk sequence if you want to use both
 
-Decision paralysis is the real enemy here. If you cannot commit to one, run them in this order so you spend nothing until the format proves itself:
+If you cannot commit to one, run them in this order and spend nothing until the format proves itself:
 
-1. **Start on Scrimba Free for one week.** Open Learn React with Bob Ziroll or Learn JavaScript with Per Borgen. Both are free in full; only the Solo Projects carry a PRO label. No card needed.
-2. **If the pause-and-edit loop clicks, upgrade to Pro** and take the Frontend Developer Path as your spine.
+1. **Start on Scrimba Free for one week.** Open Learn React with Bob Ziroll or [Learn JavaScript](/docs/courses/javascript/learn-javascript/) with Per Borgen. Both are free in full; only the Solo Projects carry a PRO label. No card needed.
+2. **If the pause-and-edit loop clicks, upgrade to Pro** and take the [Frontend Developer Path](/docs/paths/frontend-developer-path/) as your spine.
 3. **If you also need a language Scrimba does not cover** (Java, C++, Go, R, SQL deep dives), add Codecademy Plus for that one track only, and set a 48-hour pre-renewal calendar reminder the day you subscribe.
 
 This sequence keeps your worst case at zero dollars and one cancellation reminder.
@@ -112,7 +112,7 @@ Scrimba publishes free, Pro monthly, and Pro annual tiers. Annual is the better 
 
 Codecademy publishes Free, Plus (formerly Basic), and Pro tiers. Pricing is in a similar ballpark to Scrimba month-on-month. The [Codecademy 2026 review at BitDegree](https://www.bitdegree.org/online-learning-platforms/codecademy-review) has a current breakdown.
 
-Neither platform charges bootcamp prices and neither replaces a bootcamp. The relevant comparison for both is "subscription costing a few hundred dollars a year" not "five-figure career program."
+Both are subscriptions, not bootcamps. Compare them against other subscriptions, not five-figure career programs.
 
 ## Where Codecademy clearly wins
 
@@ -128,12 +128,12 @@ Four scenarios where Scrimba is the right answer:
 
 1. **You are learning React, JavaScript, TypeScript, or modern AI engineering.** The instructors are good, the curriculum is current, the scrim format suits these topics.
 2. **You learn best by watching someone code and immediately trying to reproduce it.** This is what the pause-and-edit loop is for.
-3. **You want one curated path from beginner to portfolio.** The Frontend Path is the strongest career track Scrimba ships; the AI Engineer Path is the smallest but most current.
-4. **You have been getting through Codecademy lessons without retaining anything.** Several Reddit and forum threads converge on the same observation: the text-then-type loop on Codecademy is easy to skim past without really learning. Scrimba's format makes that harder.
+3. **You want one curated path from beginner to portfolio.** The Frontend Path is the strongest career track Scrimba ships; the [AI Engineer Path](/docs/paths/ai-engineer-path/) is the smallest but most current.
+4. **You have been getting through Codecademy lessons without retaining anything.** Several Reddit and forum threads converge on the same observation: the text-then-type loop on Codecademy is easy to skim past without learning. Scrimba's format makes that harder.
 
 ## Bottom line
 
-Both platforms are reasonable. Pick on language coverage and learning style. If you are learning web or AI and prefer instructor-led video that you can pause and modify, Scrimba is the stronger choice and the free tier is wide enough that you can verify this before spending. If you are sampling multiple programming languages or strongly prefer reading, Codecademy is the better fit.
+Pick on two things: what you're learning and how you learn. Web development or AI plus watch-and-edit means Scrimba, and the free tier is wide enough to verify that before spending. Anything else, or you prefer reading, means Codecademy.
 
 The single best thing you can do before deciding is open a real scrim and a Codecademy lesson side-by-side for ten minutes each. The format difference is felt, not described.
 

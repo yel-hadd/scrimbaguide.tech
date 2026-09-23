@@ -6,7 +6,7 @@ sidebar_label: "Intro to AI Engineering"
 description: "Arsala Khan's Pro AI engineering course from inside: 2.5 hours, 36 scrims building Gift Genie from first API call to Node backend, and which provider you need."
 keywords: [scrimba intro to ai engineering, ai engineering course scrimba, scrimba ai engineer path review, build ai apps with llms, arsala khan scrimba, llm app development javascript]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Intro to AI Engineering
 
-Scrimba's core Pro course on building software around large language models, taught by Arsala Khan in about 2.5 hours. I opened every scrim and worked through a sample of them with a Pro account in September 2026. It is a build-along, not a lecture series: you build one app, Gift Genie, from a first API call to a streaming, tool-using, backend-secured product.
+Scrimba's core Pro course on building software around large language models, taught by Arsala Khan in about 2.5 hours across 36 scrims. It's a build-along: you take Gift Genie, a gift-suggestion app, from a first API call to a streaming, tool-using, backend-secured product, and it's the foundation course on Scrimba's AI track.
 
-*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. It is sequenced into the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Intro to AI Engineering is Scrimba's intermediate, Pro-tier course on integrating LLMs into real apps: roughly 2.5 hours across 36 scrims, taught by Arsala Khan. You build Gift Genie, a gift-suggestion app, and along the way learn the messages array, system prompts, token limits, error handling, safe markdown rendering, streaming, few-shot prompting, temperature and top-p, JSON and structured outputs, a web search tool, and finally moving the API key to a Node backend. It uses the OpenAI JavaScript library but is deliberately provider-agnostic: Arsala recommends OpenAI as the default and Groq or OpenRouter as free alternatives. The first five scrims are free samples. If you can already write JavaScript and want to ship an AI feature that works outside a demo, this is the foundation course on the AI track.
+Intro to AI Engineering suits developers with working JavaScript who want to build real LLM features rather than a playground demo: you leave knowing the messages array, streaming, structured output, and how to keep an API key off the client. The catch is the prerequisite, it assumes JavaScript and a model-provider account and doesn't reteach either. It's sequenced first into the [AI Engineer Path](/docs/paths/ai-engineer-path/); if you're new to programming, start with [Learn to Code with AI](/docs/courses/ai/to-code-with-ai/) instead.
 
 <CourseCard
   title="Intro to AI Engineering"
@@ -44,7 +44,7 @@ If you are going to take the AI Engineer Path, yes, and take it first. It is sho
 
 Arsala's framing in the first scrim is the right one: "this course isn't about chasing trends, it's about learning how to build with these tools responsibly, same way we think about our APIs interacting with our application code." He also promises not to say "AI superpower" again ("Probably.") and then does, which tells you the tone.
 
-Two honest caveats. It assumes working JavaScript and the ability to call an API, and it does not reteach either. And it needs a model-provider account: OpenAI is "the safest default" but requires a small minimum credit purchase, which Arsala says comfortably covers the whole path; Groq and OpenRouter are offered as free alternatives, and an `api-urls.txt` file in the setup scrim lists the endpoints.
+It assumes working JavaScript and the ability to call an API, and it does not reteach either. And it needs a model-provider account: OpenAI is "the safest default" but requires a small minimum credit purchase, which Arsala says comfortably covers the whole path; Groq and OpenRouter are offered as free alternatives, and an `api-urls.txt` file in the setup scrim lists the endpoints.
 
 ## What you'll learn
 
@@ -116,7 +116,7 @@ The course's real ending. "Backend Orientation" explains why the key cannot live
 
 An outro, then "Solo Project: PollyGlot," a translation app briefed by Per Borgen: type English text, pick a language, guess the translation yourself, then press the button. You get a blank CSS file, a blank JavaScript file, and a near-empty HTML file, and build the rest, including the API call, from scratch. The remaining scrims are a Scrimba Docs pointer, an affiliate-program note, and "How to Utilize Your Certificate."
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Scrims run one to seven minutes. Arsala explains with slides and diagrams (request "shape," the frontend-server-provider flow), then switches to the editor and runs the code so you see the console output. Challenges are written into files as comments or as a `challenge.md`, and the recording pauses. The AI calls are live: when Arsala streams a response in the console, you can see the chunks arrive. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed.
 
@@ -126,7 +126,7 @@ Because the app talks to a real provider, your own runs cost real (tiny) money o
 
 The first five scrims (through "Setting Up Your AI Client") are free samples. Everything from "Your First AI Request" onward, the streaming and backend challenges, and the PollyGlot solo project need Pro. Pro also covers the whole [AI Engineer Path](/docs/paths/ai-engineer-path/), certificates, unlimited challenges, and the Pro Discord channels. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
 
-## How long it really takes
+## How long it takes
 
 2.5 hours of video, but the challenges are substantial: budget 8 to 12 hours, plus a couple of hours for provider sign-up and the environment variables the first time. The backend super challenge alone is a two to three hour session if you use the hints sparingly, and PollyGlot is another three to five hours built properly.
 
@@ -135,6 +135,10 @@ The first five scrims (through "Setting Up Your AI Client") are free samples. Ev
 It fits developers with JavaScript under their belt who want to build with LLMs and would rather understand the mechanics than copy snippets. It is the natural first technical stop on the AI track, and a good fit for people coming off [Learn React](/docs/courses/react/learn-react/), whose Chef Claude project is a smaller version of exactly this.
 
 Skip it if you have never coded. Start with [Learn to Code with AI](/docs/courses/ai/to-code-with-ai/) or [Learn JavaScript](/docs/courses/javascript/learn-javascript/) first. Also skip it, for now, if you only want one specific technique like RAG; you can come here later.
+
+<AffiliateLink href="https://scrimba.com/intro-to-ai-engineering-c032" variant="button">
+  Start Intro to AI Engineering on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -167,10 +171,6 @@ Where it is limited: it firmly assumes prior JavaScript, it needs a provider acc
   { q: "How long does it take?", a: "About 2.5 hours of video; plan for 8 to 12 hours with the challenges, more if you do the backend super challenge and PollyGlot properly." },
   { q: "Where does it sit on the AI Engineer Path?", a: "It is the foundation. Most other AI courses assume the concepts taught here, so it is usually the first technical course you take on the path." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/intro-to-ai-engineering-c032" variant="button">
-  Preview Intro to AI Engineering on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Intro to AI Engineering"

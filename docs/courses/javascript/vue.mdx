@@ -6,7 +6,7 @@ sidebar_label: "Learn Vue"
 description: "Rachel Johnson's free Learn Vue reviewed from inside every scrim: 96 minutes, Vue 3.5 with Vite 7, one finished project, and four more still unpublished."
 keywords: [scrimba learn vue, learn vue scrimba review, rachel johnson vue course, free vue course, vue 3 course for beginners, vue vs react]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Vue
 
-Scrimba's free Vue 3 course, taught by Rachel Johnson in 96 minutes of scrims. I opened all 27 scrims and read the transcript of every one with a Pro account in September 2026. The short version: it is a clean, well-paced start, and it is not finished yet.
+Rachel Johnson's free Learn Vue runs 96 minutes across two sections and teaches Vue 3 through one project, a Vue Facts app with a header, three fact cards, and a footer built from single-file components and reactivity. It is a clean, well-paced start, but only that one project is live out of the six the welcome scrim promises.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page does not list it under any career path.*
+*Reviewed inside the course with a Pro account, September 2026: all 26 teaching scrims opened and transcripts read.*
 
 ## Quick answer
 
-Learn Vue is a free, two-section introduction to Vue 3 (version 3.5.17 at recording time) using the official create-vue tool and Vite 7. Section one gets Vue running through a CDN script tag, then installs it properly. Section two teaches single-file components, the `@` alias, refs and reactivity, text interpolation, `v-bind`, and three ways to load images, and you apply each one to a small Vue Facts page. There are about two dozen short challenges along the way.
-
-The catch is scope. In the welcome scrim Rachel promises six projects, and Scrimba's own course page has a "Still to come" list covering props, events, conditional and list rendering, computed properties, `v-model`, and the four bigger builds (a pet shelter, a gratitude journal, a Pokedex, and a capstone). None of that exists yet. What is published is a solid 96 minute foundation, not a complete Vue course.
+Learn Vue fits you if you already know JavaScript and want to see how Vue handles state and templates before you pick a framework, or if a job has already chosen Vue for you. The catch: the welcome scrim promises six projects and only the Vue Facts app is published so far, so you finish knowing how to display data, not how to change it. Once you want the build tool create-vue sets up for you, [Intro to Vite](/docs/courses/javascript/vite/) covers it next.
 
 <CourseCard
   title="Learn Vue"
@@ -46,7 +44,7 @@ Yes, if you want to find out whether Vue clicks for you, and you can spare an af
 
 The other thing it does well is explain the "why" behind Vue's odd-looking choices. A whole scrim, "The Concern of a Separation of Concerns," exists to answer the question every HTML-first learner asks when they see CSS and JavaScript in the same `.vue` file. Her answer, borrowed from the Vue docs: "Separation of concerns is not equal to the separation of file types." The component is the concern.
 
-The honest caveat is that you finish knowing how to display data, not how to change it. There is no click handler, no `v-if`, no `v-for`, no props between components. When the Vue Facts app needs three fact cards, Rachel has you copy and paste the section three times and index into an array by hand, then says, "And you'd be absolutely right. But hold your horses," and defers the proper way (`v-for`) to a later section. That later section has not been published as of September 2026, over a year after the course went live.
+You finish knowing how to display data, not how to change it. There is no click handler, no `v-if`, no `v-for`, no props between components. When the Vue Facts app needs three fact cards, Rachel has you copy and paste the section three times and index into an array by hand, then says, "And you'd be absolutely right. But hold your horses," and defers the proper way (`v-for`) to a later section that has not been published as of September 2026, over a year after the course went live.
 
 ## What you'll learn
 
@@ -103,7 +101,7 @@ Scrims 14 to 16 cover images and assets. "Images and Assets in Vue" uses paired 
 
 The section recap promises the next section will cover "passing data around, responding to user input, and showing just the right things at just the right time." That is exactly the list on the course page's "Still to come" section.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Scrims run from under a minute to just under eight; most are between three and five. Rachel talks over a live editor with the preview on the right, and every concept scrim contains at least one pause where a challenge appears as a comment in the file or a `challenge.md` in the explorer. I counted about 25 challenge prompts across 16 of the 26 scrims. Most are one-liners ("Create a reactive variable to house the author"); the two-part components challenge and the three PROJECT scrims are the ones that take real minutes.
 
@@ -117,7 +115,7 @@ The whole course is free. All 26 teaching scrims open without a subscription, an
 
 What Pro adds is the Certificate of Completion listed at the bottom of the course page, the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free), and the career paths, none of which include this course. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you want the certificate.
 
-## How long it really takes
+## How long it takes
 
 96 minutes of video. Budget two to three hours if you do the challenges, so three to four hours total. The 404 page challenge, the create-vue challenge, and the three PROJECT scrims each take five to fifteen minutes of your own typing, and the components challenge needs you to copy code between files while paused. One long evening or two short ones covers it.
 
@@ -126,6 +124,10 @@ What Pro adds is the Certificate of Completion listed at the bottom of the cours
 It fits you if you know JavaScript and want to see how Vue handles state and templates before choosing between Vue and React, or if a job or codebase has already chosen Vue for you and you need the mental model fast. Scrimba labels it Intermediate, but Rachel calls it "a beginner friendly journey" in the first scrim, and the label is right about JavaScript, not Vue: refs, `import`, and arrays of objects are assumed.
 
 Skip it, for now, if you have never written JavaScript; do [Learn JavaScript](/docs/courses/javascript/learn-javascript/) first. Skip it if you need events, lists, forms, routing, or Pinia this month; nothing past attribute binding is published, and the [Vue documentation](https://vuejs.org/guide/) will carry you further right now. And if React is your target, [Learn React](/docs/courses/react/learn-react/) is 15 hours and complete.
+
+<AffiliateLink href="https://scrimba.com/learn-vue-c0jrrpaasr" variant="button">
+  Start Learn Vue for free
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -159,10 +161,6 @@ Where it is limited: only two of the promised sections exist, so there is no use
   { q: "Should I learn Vue or React first?", a: "If you only want to sample Vue, this course does that in an afternoon. If you want a complete path to a first job, Scrimba's React material is far deeper and sits inside its career paths, while this course stops before user interaction." },
   { q: "Does it have transcripts and subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-vue-c0jrrpaasr" variant="button">
-  Start Learn Vue for free
-</AffiliateLink>
 
 <CourseSchema
   name="Learn Vue"

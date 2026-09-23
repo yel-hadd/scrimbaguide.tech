@@ -2,11 +2,11 @@
 title: "Build a Multi-Page Website with HTML and CSS on Scrimba: 2026 Review"
 sidebar_position: 25
 toc_max_heading_level: 2
-sidebar_label: "Multi-Page Website (Space Travel)"
+sidebar_label: "Space Travel Website"
 description: "Kevin Powell's free space travel site course from inside: 6.8 hours, a CSS design system first, tabs in vanilla JS, and one page you build alone."
 keywords: [scrimba space travel website, build a multi-page website with html and css review, kevin powell scrimba course, kevin powell css course, frontend mentor space tourism, free css course scrimba, css design system course]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,15 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Build a Multi-Page Website with HTML and CSS
 
-Kevin Powell's free, project-only course: 6.8 hours of scrims in which you turn a Frontend Mentor space tourism design into a working multi-page site, starting with a CSS design system and ending with tabs written in plain JavaScript. I expanded every module and opened 31 of the 67 scrims, at least a third of each module, with a Pro account in September 2026, reading the full transcript of each one. This is what is actually inside.
+Kevin Powell's free, project-only course runs 6.8 hours and turns a Frontend Mentor space tourism design into a working multi-page site: a CSS design system first, then the homepage, navigation, destination and crew pages, and an accessible tab system in vanilla JavaScript. It's a strong, real-project pick for a developer who already writes HTML and CSS.
+
+*Reviewed inside the course with a Pro account, September 2026: every module expanded, 31 of the 67 scrims opened and transcribed.*
 
 *This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page does not list it under any career path.*
 
 ## Quick answer
 
-This is a single-project course for people who already write HTML and CSS and want practice building a real design. Kevin Powell spends the first two hours on a design system (custom properties, utility classes, typography and spacing rules), then builds the homepage, a mobile-to-desktop navigation, the destination and crew pages, and an accessible tab system. The last page, technology, is left for you to build alone. It is rated Intermediate, it is free, and, despite the old description on this site and the course's spot in the JavaScript category, it does contain JavaScript: two small files, `navigation.js` and `tabs.js`, written slowly enough for a CSS person to follow.
+This fits developers who already write HTML and CSS and want practice turning a real design into a site. The catch: it's tied to a single layout, and the JavaScript is two small files in service of the design, not a language lesson. Finish it and [Learn JavaScript](/docs/courses/javascript/learn-javascript/) is the natural next stop.
 
 <CourseCard
   title="Build a Multi-Page Website with HTML and CSS"
@@ -52,7 +54,7 @@ Yes, if you sit in the gap this course is aimed at. You can style a page, but wh
 
 The second thing that earns the time is accessibility, which is not a bolt-on module here. It arrives in the reset (a `prefers-reduced-motion` rule), in the first utility classes (`.sr-only`), in the navigation (`aria-controls`, `aria-expanded`, a skip link), and in the tabs (roles, keyboard arrows, the `hidden` attribute instead of visual hiding). You pick it up as a habit rather than a topic.
 
-The caveat is scope. It is one layout, and the techniques are tied to it. There is no build tooling, no framework, and the JavaScript is deliberately basic. Kevin also says in the intro that "this course is not for people at the very beginning of their front end journey," and I agree: if you have not built a responsive page before, the pace will lose you.
+It is one layout, and the techniques are tied to it. There is no build tooling, no framework, and the JavaScript is deliberately basic. Kevin also says in the intro that "this course is not for people at the very beginning of their front end journey," and the pace backs him up: if you have not built a responsive page before, it will lose you.
 
 ## What you'll learn
 
@@ -124,7 +126,7 @@ Keyboard navigation comes before clicking: three scrims on a `keydown` listener,
 
 The final scrim is 97 seconds long and is the course's real test. "You are on your own for this one," Kevin says of the technology page. "I am not holding your hand." He adds that "watching something and understanding it is very different from being able to apply it yourself." The starter files for that page are there; the solution is not.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Scrims run from two to thirteen minutes, most between five and nine, which is long by Scrimba standards. Kevin talks over a live editor with the preview beside it, and he tests every change in the preview as he goes, often adding a temporary red outline or a pink background to show what a rule is doing. Challenges are frequent but informal: he says "go ahead and give it a try" or "I'll leave you to your own devices," you pause, write, and press play for his version. I counted a challenge prompt in roughly two thirds of the scrims I opened. The table of contents also shows a small icon beside 23 scrims; on other courses that icon marks challenges with instant AI feedback, but none of the transcripts I read mention AI feedback, so treat it as unconfirmed here.
 
@@ -136,7 +138,7 @@ The whole course is free: all five modules, every challenge, the design files (f
 
 If you only want this course, stay free. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you want the certificate or the career paths.
 
-## How long it really takes
+## How long it takes
 
 The 6.8 hours is video runtime. Because most scrims stop for a challenge and the layout scrims expect you to keep the Figma file open, budget two to three times that: 14 to 20 hours, or two to three weeks at an hour a day. The technology page has no video, so add three to six hours to build it properly, and more if you take Kevin's suggestion to render the content from `data.json`. The design system module alone is a weekend.
 
@@ -145,6 +147,10 @@ The 6.8 hours is video runtime. Because most scrims stop for a challenge and the
 It fits self-taught developers who have finished a first HTML and CSS course and want one substantial, portfolio-ready project built the way a working front-end developer would build it. It is a good fit for [designers moving toward code](/docs/for/designers/), because the whole course is about translating a design faithfully, and for anyone who wants their first look at custom properties, logical properties, `clamp()`, `aspect-ratio` and `grid-template-areas` in one place.
 
 Skip it if you are still learning what a class or a media query is; start with [Learn HTML and CSS](/docs/courses/css/html-and-css/) or [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) instead. Skip it too if you want a JavaScript course: the JavaScript here is two small files in service of the layout. And if you want to learn a framework, Kevin says you can use this design as a project for that, but the lessons will not help you with it.
+
+<AffiliateLink href="https://scrimba.com/build-a-space-travel-website-c014" variant="button">
+  Start Build a Multi-Page Website for free
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -182,10 +188,6 @@ Where it is limited: it is one layout, so the utilities and grid setup are tuned
   { q: "Does it have transcripts and subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu and subtitles in ten languages." },
   { q: "Are there AI-checked challenges?", a: "Not in any transcript I read. The challenges are Kevin pausing the recording and asking you to try something before he shows his solution. The table of contents shows a small icon beside 23 scrims that on other courses means instant AI feedback, but I could not confirm it here." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/build-a-space-travel-website-c014" variant="button">
-  Start Build a Multi-Page Website for free
-</AffiliateLink>
 
 <CourseSchema
   name="Build a Multi-Page Website with HTML and CSS"

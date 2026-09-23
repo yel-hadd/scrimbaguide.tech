@@ -2,11 +2,11 @@
 title: "Intro to Dall-E and GPT Vision on Scrimba: 2026 Review"
 sidebar_position: 11
 toc_max_heading_level: 2
-sidebar_label: "Dall-E and GPT Vision"
+sidebar_label: "DALL-E and GPT Vision"
 description: "Guil Hernandez's one-hour Pro course from inside: 15 scrims, DALL-E 2 and 3, a FilmFusion poster app, GPT-4 Vision, and the parts that have aged."
 keywords: [scrimba dall-e course, dall-e gpt vision scrimba review, gpt vision tutorial scrimba, dall-e image generation, multimodal ai course, guil hernandez ai]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Intro to Dall-E and GPT Vision
 
-Scrimba's short Pro course on making and reading images with OpenAI's models, taught by Guil Hernandez in about an hour. I opened all 15 scrims and read the transcript of every one with a Pro account in September 2026; this page is what is in there, including the parts that have aged since it was recorded.
+Guil Hernandez's Intro to Dall-E and GPT Vision is a 62 minute Pro course: seven scrims on generating and editing images with DALL-E, two on reading images with GPT-4 Vision, and a small FilmFusion poster app in between. It is a clear hour, but the vision code needs a model swap before it runs today.
 
-*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Intro to Dall-E and GPT Vision is a 62 minute, intermediate Pro course with five free preview scrims: 15 scrims in total, no modules. Seven scrims cover DALL-E 2 and 3 (generating, prompting, sizes and styles, editing with a mask, variations). Then you build FilmFusion, a small app that turns a movie title and an art style into a poster. Two scrims cover GPT-4 with Vision, where you send a photo to the chat endpoint and ask questions about it. The last four are a recap and three Scrimba housekeeping clips.
-
-It is a clear, well made hour. The caveat is age: it was recorded around the `openai@4.20.0` SDK and calls `gpt-4-vision-preview`, a model name OpenAI has since retired, so the vision code needs a model swap before it runs today.
+It fits you if you already call the OpenAI chat API and want to add image generation or image reading to a project. The catch: the two vision lessons request a model name OpenAI has since retired, so you need a one-line fix before they run. If you have no image use case yet, [Learn RAG](/docs/courses/ai/rag/) or [Learn AI Agents](/docs/courses/ai/ai-agents/) will teach you more.
 
 <CourseCard
   title="Intro to Dall-E and GPT Vision"
@@ -63,9 +61,9 @@ It is a clear, well made hour. The caveat is age: it was recorded around the `op
 
 If you already call OpenAI from JavaScript and you want to add images to an app, yes. An hour gets you every image endpoint (generate, edit, variations) plus the vision side of chat completions, with a tiny project in the middle. Guil's examples are concrete and a little personal: he fixes an unfinished Orlando building with inpainting, feeds his own photo to the variations endpoint, and asks the vision model what laid the blue egg he found in his yard.
 
-The honest caveat is age, and it matters more here than in most Scrimba courses. The image lessons still make sense, but the two vision scrims will not run as recorded (the Vision section below has the details), and nothing in the course tells you that.
+The code has aged, and it matters more here than in most Scrimba courses. The image lessons still hold up, but the two vision scrims will not run as recorded (the Vision section below has the details), and nothing in the course flags it.
 
-The second caveat is scope. Most AI apps never generate or read images. If you have no image use case, [Learn RAG](/docs/courses/ai/rag/) or [Learn AI Agents](/docs/courses/ai/ai-agents/) will change what you can build more than this will.
+Scope is the other limit. Most AI apps never generate or read images. Without an image use case, [Learn RAG](/docs/courses/ai/rag/) or [Learn AI Agents](/docs/courses/ai/ai-agents/) will change what you can build more than this will.
 
 ## What you'll learn
 
@@ -138,7 +136,7 @@ The model name is the problem. Guil names it in the transcript as "GPT four visi
 
 The recap (1:48) lists what you did and points you to the Discord "today I did" channel. The last three scrims are Scrimba clips, not course content: Tom Chant on Scrimba Docs (1:18), Per Borgen on the Scrimbassador referral program (1:59), and Per again on using your certificate (0:53).
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Every scrim opens on a title slide, then Guil talks over a small `index.js` with a preview popup. Scrims run from under a minute to eight and a half minutes. Because image URLs from the API die after an hour, he often shows results on slides or uploads a saved copy into the scrim, then resets the code at the end so you can run it live with your own key. Expect more slides than live output.
 
@@ -148,11 +146,11 @@ There are two challenge moments: the landscape regeneration inside "Size, qualit
 
 This is a Pro course. The first five scrims carry the SAMPLE badge and play without a subscription: the introduction, generating from a text prompt, response formats, prompting, and size, quality and style. That is 30 minutes and covers the whole generation side. Everything from "Editing images" on is Pro: inpainting, variations, the FilmFusion challenge and solution, both GPT-4 with Vision scrims, the recap, and the certificate.
 
-Pro also unlocks the AI Engineer Path this course belongs to and the Pro-only Discord channels. Basic Discord access is free on Scrimba's pricing page, so the server alone is not a reason to upgrade. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro includes in your region.
+Pro also unlocks the [AI Engineer Path](/docs/paths/ai-engineer-path/) this course belongs to and the Pro-only Discord channels. Basic Discord access is free on Scrimba's pricing page, so the server alone is not a reason to upgrade. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro includes in your region.
 
 There is one cost the course does not gate but you should budget for: your own OpenAI API key. Every example calls the real API, and DALL-E 3 HD images cost more per image than standard ones, which Guil shows on a pricing chart in scrim 5.
 
-## How long it really takes
+## How long it takes
 
 62 minutes is video runtime. Plan for two and a half to four hours: an hour of watching, an hour of running each example with your own key and swapping prompts, and one to two hours on FilmFusion if you do the stretch goals and style it.
 
@@ -161,6 +159,10 @@ There is one cost the course does not gate but you should budget for: your own O
 It fits you if you have built something with the OpenAI chat API, want to add image generation or image understanding to it, and would rather see every parameter demonstrated once than read the docs cold. It is also a gentle first look at multimodal models (models that accept more than one kind of input, here text and images).
 
 Skip it if you have never called an AI model from code; do [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) first, since this course assumes the chat completions basics. Skip it if you need the current OpenAI image model, because only DALL-E 2 and 3 appear here. And skip it if you want image work outside OpenAI; no other provider is mentioned.
+
+<AffiliateLink href="https://scrimba.com/intro-to-dall-e-and-gpt-vision-c036" variant="button">
+  Preview the first five scrims free on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -194,10 +196,6 @@ Where it is limited: the code has not been updated since it was recorded, editin
   { q: "Are there challenges?", a: "Two, both of the pause-and-try kind: regenerate an image in landscape inside the size, quality and style scrim, and the FilmFusion project with a full solution walkthrough. Nothing is autograded." },
   { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/intro-to-dall-e-and-gpt-vision-c036" variant="button">
-  Preview the first five scrims free on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Intro to Dall-E and GPT Vision"

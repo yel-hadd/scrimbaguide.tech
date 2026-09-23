@@ -20,8 +20,8 @@ interface ScrimPosterProps {
   priority?: boolean;
   /** Extra class on the link, e.g. to size the poster inside a layout. */
   className?: string;
-  /** "corner" moves the play button off frames whose title sits in the middle. */
-  play?: 'center' | 'corner';
+  /** Pill colour. Defaults to reading the badge text ("Pro lesson" -> pro). */
+  badgeTone?: 'free' | 'pro';
 }
 
 /**
@@ -41,7 +41,7 @@ export default function ScrimPoster({
   location,
   priority = false,
   className = '',
-  play = 'center',
+  badgeTone,
 }: ScrimPosterProps): React.ReactElement {
   return (
     <AffiliateLink
@@ -61,8 +61,18 @@ export default function ScrimPoster({
           fetchPriority={priority ? 'high' : undefined}
           decoding="async"
         />
-        {badge ? <span className="hero-scrim-poster__badge">{badge}</span> : null}
-        <span className={`hero-scrim-poster__play${play === 'corner' ? ' hero-scrim-poster__play--corner' : ''}`} aria-hidden="true">▶</span>
+        {badge ? (
+          <span className={`hero-scrim-poster__badge hero-scrim-poster__badge--${badgeTone ?? (/\bpro\b/i.test(badge) ? 'pro' : 'free')}`}>
+            {badge}
+          </span>
+        ) : null}
+        <span className="hero-scrim-poster__play" aria-hidden="true">
+          {/* Geometric triangle, nudged right so its visual centre (not its
+              bounding box) sits on the circle's centre. */}
+          <svg viewBox="0 0 24 24" width="26" height="26" focusable="false">
+            <path d="M8.5 5.2v13.6a.8.8 0 0 0 1.2.7l10.4-6.8a.8.8 0 0 0 0-1.4L9.7 4.5a.8.8 0 0 0-1.2.7z" fill="currentColor" />
+          </svg>
+        </span>
       </span>
       <span className="hero-scrim-poster__caption">{caption}</span>
     </AffiliateLink>

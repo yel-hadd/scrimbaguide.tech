@@ -6,7 +6,7 @@ sidebar_label: "Introduction to Unit Testing"
 description: "Dylan Israel's 86-minute Pro course on Jasmine unit testing, reviewed from inside: every transcript read, spies and mocks, what Pro gates, real time cost."
 keywords: [scrimba unit testing, introduction to unit testing scrimba review, javascript unit testing course, jasmine testing course, dylan israel scrimba, test your javascript, scrimba unit testing review]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Introduction to Unit Testing
 
-Dylan C. Israel's short Pro course on writing your first JavaScript unit tests with Jasmine, one class and one test file at a time. I opened all 23 scrims and read the transcript of every one with a Pro account in September 2026, so this page describes what is actually in the course rather than its listing.
+Dylan C. Israel's 86-minute Pro course teaches your first JavaScript unit tests in Jasmine, testing a single `User` class one method at a time across 23 scrims. Eight of the 21 teaching scrims are challenges you write yourself. Worth it if you've never written a test; skip it if you already write tests in Jest or Vitest.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page does not list it under any career path; it is a standalone course.*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Introduction to Unit Testing is an 86-minute, Pro-only, intermediate course taught by Dylan C. Israel. It uses the Jasmine test framework, loaded as plain script files in the browser. The code under test is a small `User` class: default values, a `fullName` getter, a method that calls `window.alert`, and an async method that calls a user service. Eight of the 21 teaching scrims are challenges. It is a fundamentals course by design. Dylan says in the intro that he does not want you to memorize Jasmine. He wants you to understand grouping, test cases, and arrange-act-assert so you can carry them to Jest or any other framework. Worth it if you write JavaScript and have never written a test. Skip it if you already have.
+It fits developers who write JavaScript but have never tested it, especially self-taught developers heading into their first team job. The catch: you test a toy `User` class, not a React component or an API, so there's no in-browser final project. Pair it with [Introduction to Clean Code](/docs/courses/javascript/clean-code/), the natural next course from the same instructor.
 
 <CourseCard
   title="Introduction to Unit Testing"
@@ -55,7 +55,7 @@ Yes, if the phrase "I clicked through it and it works" describes how you current
 
 What makes it work is the rhythm. Almost every concept is followed by a challenge scrim that starts with a written brief in a comment block, pauses, and then walks through the solution. By the end you have written a nested `describe`, a `beforeEach` that resets a model, a spy on `window.confirm` that returns true and then false, and a mock service with an async method. That is a real, if small, test suite.
 
-The honest limit is scope. The code under test is a `User` class with three name fields; there is no DOM, no React component, no fetch to a real API, and no Jest or Vitest. The final challenge sends you out of Scrimba to add tests to one of your own projects or to Dylan's 100 algorithms repository on GitHub, with no in-browser solo project. If you want a testing course that ends in something you can show, this is not it. If you want to understand what a unit test is and be able to write one tomorrow, 86 minutes is a fair price.
+The scope is limited. The code under test is a `User` class with three name fields; there is no DOM, no React component, no fetch to a real API, and no Jest or Vitest. The final challenge sends you out of Scrimba to add tests to one of your own projects or to Dylan's 100 algorithms repository on GitHub, with no in-browser solo project. If you want a testing course that ends in something you can show, this is not it. If you want to understand what a unit test is and be able to write one tomorrow, 86 minutes is a fair price.
 
 ## What you'll learn
 
@@ -150,7 +150,7 @@ The Outro is a slide talk on being a testing advocate, the testing pyramid, and 
 
 Two Scrimba-added scrims found at the end of many courses: a two-minute Scrimbassador referral pitch voiced by Per Borgen and a 53-second certificate scrim. Neither is part of Dylan's course.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 A typical scrim is two to six minutes. Dylan talks over a split view: `main.js` on the left with the class or test file, and the Jasmine HTML reporter on the right. The reporter shows "1 spec, 1 failure" or "5 specs, 0 failures" every time he saves. Because Jasmine runs in the page, feedback is immediate. You can see a test go red and green as he edits.
 
@@ -164,7 +164,7 @@ This is a Pro course. Three scrims carry a SAMPLE badge and can be watched witho
 
 There are no Solo Projects in this course, so the "Pro" gate is the course itself rather than a project at the end. Pro also covers the career paths, other Pro courses, and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as a free feature). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
 
-## How long it really takes
+## How long it takes
 
 The 86 minutes is video runtime. With eight challenges that each need a pause and some typing, budget two to three times that: three to four hours, or two evenings. The spy and mock challenges are the ones that will slow you down, because each needs a `beforeEach`, an `async` test, and a matcher you have just met. If you take the final challenge seriously and add tests to a real project of your own, that is an open-ended afternoon on top.
 
@@ -173,6 +173,10 @@ The 86 minutes is video runtime. With eight challenges that each need a pause an
 It fits developers who can already write a JavaScript class and an arrow function but have never written a test, especially self-taught developers who want the professional habit before their first team job. It pairs naturally with [Introduction to Clean Code](/docs/courses/javascript/clean-code/) by the same instructor; he mentions clean code principles repeatedly here.
 
 Skip it if you already write tests with Jest, Vitest or Mocha. The concepts will be familiar and the tooling is older than what you use. Also skip it if you specifically want to test React components or an Express API; the course says up front that it only unit tests a class and leaves framework configuration to a link.
+
+<AffiliateLink href="https://scrimba.com/introduction-to-unit-testing-c01i" variant="button">
+  Preview Introduction to Unit Testing on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -218,10 +222,6 @@ Where it is limited:
   { q: "Is there a final project?", a: "Not inside Scrimba. The Final Challenge asks you to add tests to one of your own projects, or to clone Dylan's 100 algorithms repository from GitHub and write tests there." },
   { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript in the settings menu, and subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/introduction-to-unit-testing-c01i" variant="button">
-  Preview Introduction to Unit Testing on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Introduction to Unit Testing"

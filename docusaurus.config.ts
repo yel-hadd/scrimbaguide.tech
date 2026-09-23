@@ -546,33 +546,27 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
-        // Paths and Courses are the two primary content pillars (and the main
-        // conversion funnel), so they sit top-level rather than buried in a
-        // dropdown. Secondary info pages stay grouped under "Learn".
+        // Top level = the decision funnel: pick a path or course, check the
+        // price, compare alternatives. Everything else sits under Resources.
+        // Labels match the docs sidebar categories.
         { to: '/docs/paths/', label: 'Paths', position: 'left' },
         { to: '/docs/courses/', label: 'Courses', position: 'left' },
+        { to: '/docs/pricing/', label: 'Pricing', position: 'left' },
+        { to: '/docs/comparisons/', label: 'Compare', position: 'left' },
+        { to: '/blog/', label: 'Blog', position: 'left' },
         {
           type: 'dropdown',
-          label: 'Learn',
+          label: 'Resources',
           position: 'left',
           items: [
-            { to: '/docs/intro', label: 'What is Scrimba?', icon: 'BookOpen', description: "How Scrimba's interactive scrims work and why they're different" },
-            { to: '/docs/how-it-works/scrimba-explain/', label: 'Scrimba Explain', icon: 'Sparkles', description: 'The AI explainer tool: free quota, entry points, and how it works' },
-            { to: '/docs/comparisons/', label: 'Comparisons', icon: 'Scale', description: 'How Scrimba stacks up against Codecademy, Udemy, and others' },
-            { to: '/docs/pricing/', label: 'Pricing', icon: 'Tag', description: 'Compare Pro vs Free plans and find the best value' },
-            { to: '/docs/faq/', label: 'FAQ', icon: 'CircleHelp', description: 'Answers to the most common questions about Scrimba' },
-          ] as any,
-        },
-        { to: '/blog', label: 'Blog', position: 'left' },
-        {
-          type: 'dropdown',
-          label: 'Tools',
-          position: 'left',
-          items: [
+            { to: '/docs/intro/', label: 'What is Scrimba?', icon: 'BookOpen', description: "How Scrimba's interactive scrims work and why they're different" },
+            { to: '/docs/how-it-works/how-scrims-work/', label: 'How Scrims Work', icon: 'PlayCircle', description: 'Pause the video, edit the instructor\'s code, run it' },
+            { to: '/docs/how-it-works/scrimba-explain/', label: 'Scrimba Explain', icon: 'Sparkles', description: 'The AI explainer tool: free quota, entry points, how it works' },
+            { to: '/docs/faq/', label: 'FAQ', icon: 'CircleHelp', description: 'Is it legit, is it worth it, what it costs' },
+            { to: '/docs/paths/#path-advisor', label: 'Path Finder', icon: 'Compass', description: 'A short quiz that picks the path to start with' },
+            { to: '/tools/bootcamp-cost-calculator/', label: 'Cost Calculator', icon: 'Calculator', description: 'Compare bootcamp costs vs Scrimba Pro' },
+            { to: '/roadmaps/frontend-roadmap-2026/', label: 'Frontend Roadmap', icon: 'Map', description: 'Step-by-step frontend development learning path' },
             { to: '/tools/', label: 'All Tools', icon: 'LayoutGrid', description: 'Browse every interactive tool and calculator' },
-            { to: '/docs/paths/#path-advisor', label: 'Path Finder', icon: 'Compass', description: "Not sure where to start? Get a personalized recommendation" },
-            { to: '/tools/bootcamp-cost-calculator', label: 'Cost Calculator', icon: 'Calculator', description: 'Compare bootcamp costs vs Scrimba Pro' },
-            { to: '/roadmaps/frontend-roadmap-2026', label: 'Frontend Roadmap', icon: 'Map', description: 'Step-by-step frontend development learning path' },
           ] as any,
         },
         {
@@ -593,27 +587,27 @@ const config: Config = {
         {
           title: 'Learn',
           items: [
-            { label: 'All Courses', to: '/docs/courses' },
-            { label: 'Learning Paths', to: '/docs/paths' },
-            { label: 'Scrimba Pricing', to: '/docs/pricing' },
+            { label: 'Courses', to: '/docs/courses/' },
+            { label: 'Paths', to: '/docs/paths/' },
+            { label: 'Pricing', to: '/docs/pricing/' },
             { label: 'FAQ', to: '/docs/faq/' },
-            { label: 'Changelog', to: '/docs/changelog' },
+            { label: 'Changelog', to: '/docs/changelog/' },
           ],
         },
         {
           title: 'Company',
           items: [
-            { label: 'About Us', to: '/about' },
-            { label: 'Contact', to: '/contact' },
-            { label: 'Blog', to: '/blog' },
+            { label: 'About Us', to: '/about/' },
+            { label: 'Contact', to: '/contact/' },
+            { label: 'Blog', to: '/blog/' },
           ],
         },
         {
           title: 'Legal',
           items: [
-            { label: 'Affiliate Disclosure', to: '/legal/affiliate-disclosure' },
-            { label: 'Privacy Policy', to: '/legal/privacy-policy' },
-            { label: 'Terms of Service', to: '/legal/terms-of-service' },
+            { label: 'Affiliate Disclosure', to: '/legal/affiliate-disclosure/' },
+            { label: 'Privacy Policy', to: '/legal/privacy-policy/' },
+            { label: 'Terms of Service', to: '/legal/terms-of-service/' },
           ],
         },
       ],

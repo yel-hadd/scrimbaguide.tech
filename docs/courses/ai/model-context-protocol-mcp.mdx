@@ -2,11 +2,11 @@
 title: "Intro to Model Context Protocol (MCP) on Scrimba: 2026 Review"
 sidebar_position: 10
 toc_max_heading_level: 2
-sidebar_label: "Model Context Protocol (MCP)"
+sidebar_label: "Intro to MCP"
 description: "Maham Codes's 37 minute Pro course on MCP, reviewed from inside: 17 scrims, a weather MCP server you build in TypeScript, three challenges, and what is free."
 keywords: [scrimba mcp course, scrimba mcp course review, model context protocol scrimba, mcp tutorial, build mcp server typescript, connect ai to tools, maham codes scrimba]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Intro to Model Context Protocol (MCP)
 
-Scrimba's short Pro course on MCP, the open standard that lets an AI model call tools and read data your app exposes. Maham Codes teaches it in about 37 minutes. I opened all 17 scrims and read the transcript of every one with a Pro account in September 2026; this is what is inside.
+Maham Codes teaches Intro to Model Context Protocol (MCP) in about 37 minutes across 17 scrims. You build a small weather MCP server in Node.js and TypeScript, with one tool, one resource, and a STDIO transport. It's Pro, and it's the fastest way to get a working MCP server rather than just watch one explained.
 
-*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page does not list it under any career path; it is a standalone course.*
+*Reviewed inside the course with a Pro account, September 2026: all 17 scrims and transcripts.*
 
 ## Quick answer
 
-Intro to Model Context Protocol (MCP) is a 37 minute, intermediate, Pro course. You learn what MCP is, then build a small "weather" MCP server in Node.js and TypeScript. It has one tool that returns mock weather for New York or London, one resource that lists those cities, and a transport that runs the server from the terminal. Three of the scrims are challenges where you write the code yourself. The course then shows, on slides, how to test the server with MCP Inspector and plug it into Claude Desktop.
-
-If you already build AI apps in JavaScript and keep hearing "MCP," this is the fastest way to understand it and have a working server by the end of an afternoon. If you have never called an AI model from code, the course will feel abstract; start with [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) instead.
+This fits developers who already build with an LLM API in JavaScript or TypeScript and want a working MCP server by the end of an afternoon. The catch: the MCP Inspector and Claude Desktop parts are shown on slides, not built in the browser, and the third MCP building block, prompts, is explained but never coded. If you have never called an AI model from code, start with [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) instead; this course will feel abstract without that foundation.
 
 <CourseCard
   title="Intro to Model Context Protocol (MCP)"
@@ -61,9 +59,9 @@ If you already build AI apps in JavaScript and keep hearing "MCP," this is the f
 
 ## Is it worth your time?
 
-Yes, if MCP is a gap you need to close quickly. The whole thing is shorter than a lunch break. By scrim 7 you have a server that starts, prints the tool and resource it registered, and says "Server ready!" in Scrimba's built-in terminal. It is a small build, not just a slide deck.
+Yes, if MCP is a gap you need to close quickly. The whole thing is shorter than a lunch break. By scrim 7 you have a server that starts, prints the tool and resource it registered, and says "Server ready!" in Scrimba's built-in terminal, a small working build rather than a slide deck.
 
-The limits are real, though. The server is deliberately tiny (two hardcoded cities, no real API). The MCP Inspector and Claude Desktop parts are shown on slides and screen recordings, so you watch them rather than do them in the browser. And the third MCP building block, prompts, is explained but never coded. Maham says it outright in lesson 7: "prompts are optional." If you want a deeper tool-using build, [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/) goes much further.
+The server is tiny on purpose: two hardcoded cities, no real API. The MCP Inspector and Claude Desktop parts are shown on slides and screen recordings, so you watch them rather than do them in the browser. And the third MCP building block, prompts, is explained but never coded. Maham says it outright in lesson 7: "prompts are optional." If you want a deeper tool-using build, [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/) goes much further.
 
 One thing that surprised me: four of the 17 scrims are not Maham's. They are short AI-generated explainers with a quiz at the end, added by Scrimba in September 2026. More on those below.
 
@@ -148,7 +146,7 @@ Each is 75 to 90 seconds, ends with a quiz question, and carries the line "Expla
 
 Maham's "Wrap Up" restates the course in two and a half minutes and lists what you can now do: explain MCP, build a server with tools and resources, connect it to a client, and debug it with Inspector. The remaining three scrims are not about MCP. Tom Chant introduces Scrimba Docs, Per Borgen pitches the Scrimbassador referral program, and a 53 second note tells you how to use the certificate on LinkedIn.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 There are two kinds of scrim here. The concept lessons (intro, importance, core concepts, transports, clients, wrap up) are narrated slide decks with the occasional screen recording, and there is no code to touch. The three build lessons open a real editor and terminal. Maham types in `server.ts`, and when the challenge comes, the recording pauses with the brief as a comment in the file. You write in the same editor, then press play to watch her version. Those three scrims carry Scrimba's "Challenge with Instant Feedback" icon, which means an AI check of your solution is available.
 
@@ -160,7 +158,7 @@ The course is Pro. Four scrims are marked SAMPLE and open without a subscription
 
 Everything after that is Pro: registering the resource, running the server, transports, the explainers, the clients lesson, the wrap up, and the certificate of completion. Pro also unlocks the rest of the AI catalog. It adds the Pro-only channels on Scrimba's Discord too (the pricing page lists basic Discord access as free). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs where you live.
 
-## How long it really takes
+## How long it takes
 
 Scrimba says 37 minutes; the 17 scrims add up to about 47. Budget one and a half to two hours to do it properly. The three challenges will take most people ten to fifteen minutes each if they type rather than watch, and the explainer quizzes add a few minutes. Add another hour if you want to run the server on your own machine and connect it to Claude Desktop or Cursor. The course shows that part but does not let you do it in the browser. It is a one-sitting course.
 
@@ -169,6 +167,10 @@ Scrimba says 37 minutes; the 17 scrims add up to about 47. Budget one and a half
 It fits JavaScript or TypeScript developers who already build with an LLM API and want to expose their own tools to Claude, Cursor, or another MCP host. It also works as a quick briefing for people on the [AI Engineer Path](/docs/paths/ai-engineer-path/) who want to know what MCP is before they meet it in a bigger project.
 
 Skip it if you have never called a model from code; the problem MCP solves will not feel real yet. Skip it, too, if you want production depth: authentication, remote servers, and the streamable HTTP transport are named but not built.
+
+<AffiliateLink href="https://scrimba.com/intro-to-model-context-protocol-mcp-c0sake4uir" variant="button">
+  Start Intro to Model Context Protocol (MCP) on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -215,10 +217,6 @@ Where it is limited:
   { q: "How long does it take?", a: "About 47 minutes of video, or one and a half to two hours if you do the three challenges yourself. Add an hour to run it locally with Claude Desktop or Cursor." },
   { q: "Does it have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript in the settings menu, and subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/intro-to-model-context-protocol-mcp-c0sake4uir" variant="button">
-  View Intro to Model Context Protocol (MCP) on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Intro to Model Context Protocol (MCP)"
