@@ -36,3 +36,20 @@ export function plainText(value: string): string {
     .replace(/\s+/g, ' ')
     .trim();
 }
+
+/**
+ * True for the blog's list-style routes, where Docusaurus renders each post's
+ * excerpt. A schema component mounted above a post's truncate marker
+ * renders once per excerpt on these pages, so every such component must bail
+ * out here or the list page ships one copy of the schema per post shown.
+ */
+export function isBlogListPath(pathname: string): boolean {
+  const path = toCanonicalPath(pathname);
+  return (
+    path === '/blog' ||
+    path.startsWith('/blog/page') ||
+    path.startsWith('/blog/tags') ||
+    path.startsWith('/blog/authors') ||
+    path.startsWith('/blog/archive')
+  );
+}

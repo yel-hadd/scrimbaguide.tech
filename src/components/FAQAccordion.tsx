@@ -2,7 +2,7 @@ import React, { useState, useId, Fragment } from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import { useRef } from 'react';
-import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
+import { isBlogListPath, plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
 
 export interface FAQItem {
   q: string;
@@ -27,11 +27,7 @@ export default function FAQAccordion({
   const { pathname } = useLocation();
   const canonicalPath = toCanonicalPath(pathname);
   const pageUrl = toAbsoluteUrl(canonicalPath);
-  const isBlogListPage =
-    canonicalPath === '/blog' ||
-    canonicalPath.startsWith('/blog/page') ||
-    canonicalPath.startsWith('/blog/tags') ||
-    canonicalPath.startsWith('/blog/archive');
+  const isBlogListPage = isBlogListPath(canonicalPath);
   const shouldEmitSchema = emitSchema && !isBlogListPage;
 
   const toggle = (index: number) => {
