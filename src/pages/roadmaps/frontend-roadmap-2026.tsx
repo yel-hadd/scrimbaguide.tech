@@ -8,7 +8,7 @@ export default function FrontendRoadmap(): React.ReactElement {
     {
       title: '1. HTML & CSS',
       desc: 'The building blocks of the web.',
-      link: '/docs/courses/css/html-and-css',
+      link: '/docs/courses/css/html-and-css/',
       detail:
         'Semantic HTML, the box model, Flexbox and Grid, responsive breakpoints, and enough accessibility to avoid the common mistakes. Skip CSS frameworks for now.',
       done: 'You can rebuild a landing page you like from scratch, responsive, without copying layout code.',
@@ -38,7 +38,7 @@ export default function FrontendRoadmap(): React.ReactElement {
     {
       title: '4. Advanced React',
       desc: 'Hooks, Context, Performance.',
-      link: '/docs/courses/react/advanced-react',
+      link: '/docs/courses/react/advanced-react/',
       detail:
         'Custom hooks, context, routing, and the performance work that separates a demo from a product: memoisation and spotting needless re-renders.',
       done: 'You can explain why a component re-rendered and fix it.',
@@ -58,7 +58,7 @@ export default function FrontendRoadmap(): React.ReactElement {
     {
       title: '6. Portfolio',
       desc: 'Build real projects.',
-      link: '/docs/paths/frontend-developer-path',
+      link: '/docs/paths/frontend-developer-path/',
       detail:
         'Two or three projects you can talk about in depth, deployed, with a readable README. Depth beats count: three finished projects outperform ten abandoned ones.',
       done: 'A stranger can open your project, understand what it does, and use it without you present.',

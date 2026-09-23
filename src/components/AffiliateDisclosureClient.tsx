@@ -7,8 +7,11 @@ import React, { useEffect, useState } from 'react';
  * and LLM scrapers that do not execute JavaScript never pick it up.
  *
  * Used in the homepage hero, where the full <DisclosureNotice> would be heavy
- * and the line is not something we want surfaced in a SERP snippet. Pages that
- * should disclose to crawlers (docs money pages) keep the SSR DisclosureNotice.
+ * and the line is not something we want surfaced in a SERP snippet. There is no
+ * server-rendered disclosure variant: <DisclosureNotice> gates on the same
+ * `mounted` flag, so both are client-only and neither reaches a crawler or
+ * llms-full.txt. That is by design; do not "fix" it by rendering either on the
+ * server.
  */
 export default function AffiliateDisclosureClient({
   className = '',

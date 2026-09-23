@@ -24,7 +24,6 @@ affiliateCtaShowDiscountNote: false
 
 import PathAdvisor from '@site/src/components/PathAdvisor';
 import FAQAccordion from '@site/src/components/FAQAccordion';
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import ItemListSchema from '@site/src/components/ItemListSchema';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
@@ -130,17 +129,7 @@ All career paths require **Scrimba Pro**. Check [Scrimba pricing](/docs/pricing/
 
 ## Frequently asked questions
 
-<DocFaqSchema questions={[
-  { q: "Which Scrimba path should I choose if I am a complete beginner?", a: "Start with the Frontend Developer path. It is designed from zero to hireable React fundamentals and includes practical projects. Pick Fullstack only if you are sure you want the longest, broadest track and can keep weekly momentum." },
-  { q: "Frontend vs Fullstack on Scrimba, which is better?", a: "Frontend is shorter and more focused on UI and React hiring signals. Fullstack adds backend, databases, TypeScript, Next.js, and AI-related modules. Fullstack is better if you want one end-to-end track and can commit the extra time." },
-  { q: "Can beginners take the AI Engineer path?", a: "You can enroll, but the AI Engineer path assumes you can build web apps. Beginners usually move faster by learning JavaScript and React fundamentals first, then taking AI Engineer as a second track." },
-  { q: "Do I need the Backend path if I chose Fullstack?", a: "Usually no. Fullstack already includes backend modules. Choose the Backend path when you want a tighter, backend-focused track without repeating all frontend content." },
-  { q: "How many hours a week do I need for Scrimba?", a: "There is no magic number. Consistency beats bursts, especially if you work full-time. Aim for 10-15 hours a week to maintain momentum without burning out." },
-  { q: "Are Scrimba paths worth Pro?", a: "If you will follow a structured track for several months, Pro is usually worth it because paths bundle the curriculum and projects you would otherwise assemble manually." },
-  { q: "Is Scrimba better than a bootcamp?", a: "Scrimba is far cheaper than most bootcamps (a flat annual Pro subscription versus five figures for many bootcamps) and the material can overlap. Bootcamps add cohort pressure and live help; Scrimba leaves pacing and accountability to you." }
-]} />
-
-<FAQAccordion emitSchema={false}
+<FAQAccordion
   title="FAQs: Scrimba paths"
   items={[
     {

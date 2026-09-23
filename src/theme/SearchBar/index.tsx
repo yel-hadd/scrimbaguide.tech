@@ -152,7 +152,7 @@ export default function SearchBar(): React.ReactElement {
     const params = new URLSearchParams();
     params.set('q', query);
     if (activeFilter !== 'All') params.set('category', activeFilter);
-    const url = `/search?${params.toString()}`;
+    const url = `/search/?${params.toString()}`;
     setOpen(false);
     setQuery('');
     setResults(null);
@@ -282,7 +282,7 @@ export default function SearchBar(): React.ReactElement {
           <div id="sg-search-listbox" role="listbox">
           {!loading && filtered.map((group, gi) => (
             <div key={group.label} className="sg-search-group" role="group" aria-labelledby={`sg-search-group-${gi}`}>
-              <h2 className="sg-search-group-label" id={`sg-search-group-${gi}`}>{group.label}</h2>
+              <h2 className="sg-search-group-label" id={`sg-search-group-${gi}`} role="presentation">{group.label}</h2>
               {group.results.map((result, ri) => {
                 const flatIdx = flatItems.findIndex((f) => f.gi === gi && f.ri === ri);
                 const hl = flatIdx === highlightIdx;
@@ -328,9 +328,14 @@ export default function SearchBar(): React.ReactElement {
                     </div>
                     <div className="sg-search-result-info">
                       <div className="sg-search-result-title">{result.document.t}</div>
-                      {result.document.b && (
-                        <div className="sg-search-result-path">{result.document.b.slice(result.document.b[0] === 'Courses' ? 2 : 1).join(' / ')}</div>
-                      )}
+                      {(() => {
+                        // b is an array, so a truthiness check passes for [] and for
+                        // slices that empty it; gate on the joined string instead.
+                        const crumb = (result.document.b ?? [])
+                          .slice(result.document.b?.[0] === 'Courses' ? 2 : 1)
+                          .join(' / ');
+                        return crumb ? <div className="sg-search-result-path">{crumb}</div> : null;
+                      })()}
                     </div>
                   </Link>
                 );
