@@ -5,64 +5,43 @@ description: "Stop watching coding tutorials and build a real weather app by wri
 keywords: [build a weather app interactively, react weather app tutorial, weather app project, scrimba weather app]
 sidebar_position: 10
 last_update:
-  date: 2026-09-21
+  date: 2026-09-22
 hideGlobalPricingCta: true
 ---
 
+import Link from '@docusaurus/Link';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import CourseCard from '@site/src/components/CourseCard';
 
 # Build a Weather App in React
 
-Build a **real weather UI** on Scrimba,**geolocation, OpenWeather-style `fetch`, state for loading/errors, and dynamic styling**, by typing inside the same player as the instructor. It is the portfolio pattern hiring managers recognize.
+Neither [Learn React](/docs/courses/react/learn-react/) nor [Advanced React](/docs/courses/react/advanced-react/) builds a weather app end to end, but Learn React's free Side Effects section teaches the exact pattern one needs: fetch data inside `useEffect`, store it in state, render it conditionally. Type that pattern yourself in Scrimba's in-browser editor, then point it at a weather API instead of a meme API for a portfolio piece that proves you can connect a UI to the real world.
 
-One of the most requested React portfolio projects is the classic **Weather App**. Why? Because it proves you understand three critical skills:
+## Why Watching Isn't Enough
 
-1. **Fetching external data** (working with real REST APIs).
-2. **Managing complex state** (storing geographic coordinates, temperatures, and error states).
-3. **Dynamic UI rendering** (changing backgrounds based on rain, sun, or snow).
+A YouTube tutorial teaches the tutorial illusion: you follow along, nod at each step, then open a blank VS Code file the next day and freeze. The code made sense while someone else typed it. It stops making sense the moment you have to type it yourself.
 
-But reading a tutorial isn't enough to learn these concepts. You need to write the code yourself.
+Scrimba fixes this by making the video the editor. The instructor says "now let's write the `fetch()` call," the video pauses, and you write the line yourself, on the instructor's own screen. Get it wrong and you press play; the instructor types the exact fix on the exact line you were stuck on.
 
-<div className="text-center margin-vert--lg">
-  <AffiliateLink href="https://scrimba.com/learn-react-c0e?via=u42d4986" variant="button" size="lg">
-    Build It Interactively on Scrimba
-  </AffiliateLink>
-</div>
+## Three Skills a Weather App Tests
 
-## Who This Is For
+A weather app is a favorite portfolio project because it forces three things at once:
 
-Developers wanting hands-on practice with this topic.
+1. **Fetching external data.** Calling a real REST API and handling what comes back.
+2. **Managing state that can fail.** Coordinates, temperature, loading, and error all live in state at the same time.
+3. **Rendering conditionally.** Sun renders one background, rain another; a loading flag swaps in a spinner.
 
+## Where to Learn the Fetch Pattern
 
-## The Problem with Video Tutorials
+<AffiliateLink href="https://scrimba.com/learn-react-c0e?via=u42d4986">Learn React</AffiliateLink>'s Side Effects section runs 108 minutes across 22 scrims. It fetches meme templates from an API inside `useEffect`, works through the dependencies array and the cleanup function, and ends with the Chef Claude project wiring a form to a live API call. Everything in that section is free, and it is the same shape of code a weather fetch needs: swap the meme endpoint for a weather endpoint and the pattern holds.
 
-When you watch a YouTube tutorial on "How to build a React weather app," you fall into the **tutorial illusion**. You understand what the instructor is typing, but when you open a blank VS Code editor the next day, your mind goes blank.
+<Link to="/docs/courses/react/advanced-react/">Advanced React</Link> (Pro) covers the piece Learn React does not: loading and error states built with `try`/`catch`/`finally`, worked through in its VanLife build. Start it through <AffiliateLink href="https://scrimba.com/advanced-react-c02h?via=u42d4986">Scrimba</AffiliateLink>. A weather app needs both, since an API call can be slow or can fail.
 
-### The Interactive Solution 
+Push the finished app to GitHub and deploy it. A weather app that fetches real data, handles a failed request, and changes its own background is the kind of thing a hiring manager reads the code of, not just the demo.
 
-On Scrimba, you don't just watch videos. The video *is* the code editor. When the instructor says, "Okay, now let's write the `fetch()` call to the OpenWeather API," the video pauses, and **you write the code directly inside the player**. 
+## Who This Fits
 
-If you get stuck, you press play, and the instructor types the EXACT solution on the exact lines of code you were just looking at.
-
-## Key Concepts You Will Master
-
-### 1. The `useEffect` Hook for Data Fetching
-You'll learn how to trigger API calls as soon as your component mounts without causing infinite re-render loops.
-
-### 2. The `useState` Hook for UI Updates
-You'll manage multiple pieces of state:
-- `city` (string)
-- `weatherData` (object)
-- `isLoading` (boolean)
-- `error` (string)
-
-### 3. Conditional Rendering
-If the API returns "clouds", you render the cloud icon. If `isLoading` is true, you show a spinner. This is how professional frontend applications are built.
-
-## Ready to Build?
-
-Neither Learn React nor Advanced React builds a weather app; you take the fetch pattern from [Learn React](/docs/courses/react/learn-react/) and apply it here. Its Side Effects section (108 min, 22 scrims) fetches meme templates from an API inside `useEffect` and works through the dependencies array and the cleanup function, and the Chef Claude project wires a form to a live API call. All free. [Advanced React](/docs/courses/react/advanced-react/) (Pro) adds the loading and error states with `try`/`catch`/`finally` in its VanLife build.
+This project fits anyone who already knows basic React and wants a `useEffect`/`useState` project with a real API behind it, not another to-do list. If `useEffect` and dependency arrays are still new, work through Learn React's Side Effects section first; the weather app is the exercise, not the lesson.
 
 <CourseCard
   title="Learn React (Free)"
@@ -74,12 +53,3 @@ Neither Learn React nor Advanced React builds a weather app; you take the fetch 
   href="https://scrimba.com/learn-react-c0e?via=u42d4986"
   description="Master the fundamentals required to build complex apps like a Weather Dashboard."
 />
-
-### Why This Project Gets You Hired
-
-Hiring managers want to see that you can take an empty screen and connect it to the real world. A polished weather app demonstrates full technical competence in rendering server data dynamically. Build it interactively, push it to GitHub, and deploy it to Vercel to make your portfolio stand out.
-
-## Choose This If
-
-**Choose this guide if:** You want course recommendations for hands-on practice. Most require Pro.
-
