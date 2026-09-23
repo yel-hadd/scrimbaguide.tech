@@ -43,41 +43,6 @@ It fits developers who can build a layout but cannot say why it looks unfinished
   description="Seven design fundamentals applied through 45 fix-it challenges in HTML and CSS, ending in a multi-page cabin rental site."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-ui-design/chapter-2-ui-design-fundamentals-title-card.webp"
-    alt="Title card for chapter 2 of Scrimba's Learn UI Design course: Understanding UI Design Fundamentals"
-    width={1279}
-    height={720}
-    caption="Chapter 2: the seven fundamentals the rest of the course keeps coming back to."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-ui-design/chapter-4-responsive-ui-design-title-card.webp"
-    alt="Title card for chapter 4 of Scrimba's Learn UI Design course: Responsive UI Design"
-    width={1279}
-    height={720}
-    caption="Chapter 4: mobile-first responsive design on a food site."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-ui-design/chapter-10-designing-forms-title-card.webp"
-    alt="Title card for chapter 10 of Scrimba's Learn UI Design course: Designing Forms"
-    width={1279}
-    height={720}
-    caption="Chapter 10: a three-step signup form with custom radios and checkboxes."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-ui-design/chapter-12-final-project-title-card.webp"
-    alt="Title card for chapter 12 of Scrimba's Learn UI Design course: Final Project Introduction"
-    width={1279}
-    height={720}
-    caption="Chapter 12: the Scenic Forests cabin rental site, landing page plus sub page."
-    source="Chapter title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if you are a developer whose interfaces work but look amateur, and you want a fix you can apply in the code you already write. The course's whole method is repetition: Gary puts a bad design in front of you, asks you to pause and improve it, then walks through his own version. By the fourth or fifth round you start seeing the problems before he names them, which is the skill the course is selling. He says as much in the first challenge: "We're gonna go through so many more of these, and you're really going to start developing that eye."
@@ -117,6 +82,15 @@ The third scrim answers the question everyone asks. "How on earth am I going to 
 
 ### 2. UI Design Fundamentals (72 min, 17 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-ui-design/chapter-2-ui-design-fundamentals-title-card.webp"
+  alt="Title card for chapter 2 of Scrimba's Learn UI Design course: Understanding UI Design Fundamentals"
+  width={1279}
+  height={720}
+  caption="Seventeen scrims cover white space, alignment, contrast, scale, typography, color, and visual hierarchy on small standalone examples."
+  source=""
+/>
+
 The core of the course and the module the rest of it refers back to. It opens with three scrims Scrimba added later for the Frontend Path. There is a narrated Welcome ("Your teacher for this module is Gary Simon, who you might know from YouTube"), an aside by Guil from Scrimba on design roles (user researchers, UX designers, UI designers, and the tools each uses), and a short Frontend Career Path scrim, which I did not open. Nine of the 17 scrims here are free previews, so you can try most of this module before paying.
 
 Then Gary takes the fundamentals one at a time, each on its own small example: White Space (two identical cards, one fixed with `padding`, `margin-bottom`, and `line-height`), Alignment, Contrast, Scale, Typography (a testimonial section using three typefaces, cut down to one), Color, and Visual Hierarchy. That last one is a mailing list form where nothing stands out until the heading grows and the button turns yellow. Four Design Challenges are threaded between them, and The Final Challenge hands you a purple dashboard panel that breaks four fundamentals at once.
@@ -138,6 +112,15 @@ The first time you build rather than fix, and Gary keeps the materials deliberat
 Keeping it Ultra Simple centers a label and a headline with `display: grid` and `place-content: center`, then walks through all seven fundamentals to check the result. Making our Layout Dark, Challenge 1, Multi-Columns, and Working with Photographs add one ingredient each. The Final Chapter Lesson is the payoff: a title, a paragraph, and a photo of a stop sign become a two-column layout with a 5em headline, a `::before` underline picked from a color in the photo, and a `::after` circle. He also shows how to handle a busy photo: darken it into a watermark, or give the text its own column.
 
 ### 4. Responsive Design (52 min, 9 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-ui-design/chapter-4-responsive-ui-design-title-card.webp"
+  alt="Title card for chapter 4 of Scrimba's Learn UI Design course: Responsive UI Design"
+  width={1279}
+  height={720}
+  caption="Nine scrims build Tasty Bites mobile-first, then add media queries and a grid-template-areas challenge for wider screens."
+  source=""
+/>
 
 A mobile-first build of a small food site called Tasty Bites. Defining the HTML comes first, then three Mobile First CSS scrims: Nunito as the font, a `.wrapper` class for padding, a pink logo, and a horizontal nav of pill-shaped links. Gary's reasoning for not using a hamburger here is typical of the course: "we have enough room, and then that reduces the amount of clicks a person has to take."
 
@@ -187,6 +170,15 @@ Same shape as Shadows: a short intro on why gradients vanished with flat design 
 
 ### 10. Forms (52 min, 7 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-ui-design/chapter-10-designing-forms-title-card.webp"
+  alt="Title card for chapter 10 of Scrimba's Learn UI Design course: Designing Forms"
+  width={1279}
+  height={720}
+  caption="Seven scrims build a three-step signup form with an error state, then swap the native radio buttons and checkboxes for custom ones."
+  source=""
+/>
+
 Forms 101 lists the rules: consistent styling, labels rather than placeholders ("you should always use a label instead of relying on the placeholder value"), multi-step forms with a progress bar for anything long, inline validation, and keeping custom controls accessible to screen readers. The next six scrims build exactly that: a three-step "become a member" signup with a step indicator across `index.html`, `step2.html`, and `step3.html`.
 
 Challenge 1 has you style the fields and design an error state (a softer red border with a "This field is required" badge, because "if it's too red, it just breaks the design"). Challenge 2 makes it responsive, Challenge 3 replaces the native radio buttons with `appearance: none` circles and a `:checked::before` dot, and Challenge 4 does the same for checkboxes. Challenges 1 and 3 both run past ten minutes, among the longest scrims in the course.
@@ -196,6 +188,15 @@ Challenge 1 has you style the fields and design an error state (a softer red bor
 Shorter on animation than the title suggests. The intro is the useful part: keep most animations under a second, mind your easing, only animate what the user interacts with, and stick to `opacity` and `transform` for performance. The next three scrims build a landing page with a phone illustration (HTML, mobile CSS, an 11-minute responsive challenge), and only the last scrim animates anything. In A Simple Hover, Gary rejects a black hover background ("way too much of a jolt"), rejects `transform: scale(1.2)`, tries a one-second transition that becomes "almost unnoticeable," and settles on an instant, slightly darker color. His summary, once he untangles the sentence, is that less is more when it comes to animation.
 
 ### 12. Final Project (86 min, 15 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-ui-design/chapter-12-final-project-title-card.webp"
+  alt="Title card for chapter 12 of Scrimba's Learn UI Design course: Final Project Introduction"
+  width={1279}
+  height={720}
+  caption="Fifteen scrims build the Scenic Forests cabin rental site and its sub page, ending in a GSAP entrance animation."
+  source="Chapter title cards from scrimba.com."
+/>
 
 Scenic Forests, "a fictional project for a company that rents cabins in the woods": responsive nav, a hero over a forest photo, three featured cabin cards, a testimonial, and a cabins.html sub page. Gary writes the HTML across two scrims, then the mobile CSS across five (navigation, two hero scrims, features, finishing). The challenges are the responsive steps: Small Tablet at 550 pixels (inline nav, three-column cabin grid), Desktop, Testimonials on Desktop, and Style the Sub Page. He gives fewer hints now: "I'm not gonna really help you that much this time because we're at the end of the course."
 

@@ -41,33 +41,6 @@ It fits you if you already have a solid foundation in React, the bar Bob sets be
   description="React Router 6 from the first route to loaders, actions, protected routes, and deferred data, built into one VanLife app across 139 scrims."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-react-router/chapter-2-nested-routes-title-card.webp"
-    alt="Title card for the Nested Routes module of Scrimba's Learn React Router course, reading Nested Routes next to a bird's nest illustration"
-    width={1279}
-    height={720}
-    caption="Module 2: Nested Routes, the longest and most important part of the course."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-react-router/chapter-4-loaders-title-card.webp"
-    alt="Title card for the Loaders module of Scrimba's Learn React Router course, reading Loaders above a screenshot of the React Router documentation page for the loader prop"
-    width={1279}
-    height={720}
-    caption="Module 4: Loaders, where the course switches to the 6.4 data router."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-react-router/chapter-5-protected-routes-title-card.webp"
-    alt="Title card for the Protected Routes section of Scrimba's Learn React Router course, reading Protected Routes between two shield emojis"
-    width={1279}
-    height={720}
-    caption="Module 5: Protected Routes, taught before actions."
-    source="Module title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if you build React apps and your navigation still means swapping components with state. React Router is the routing library almost every React codebase without a framework uses, and version 6.4 changed how data loading works. Bob teaches both halves: the classic `BrowserRouter` with `Routes`, `Link`, and `Outlet` first, then `createBrowserRouter` with loaders, actions, `redirect`, and `defer`. That order is the right one, because you feel the pain the data APIs fix before you learn them. He builds up a loading state and an error state by hand in module 3, breaks the app on purpose, and then deletes most of that code in module 4.
@@ -111,6 +84,15 @@ The module closes with route params (`/vans/:id` and `useParams`), a two-part ch
 
 ### 2. Nested Routes (2.1 hrs, 23 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-react-router/chapter-2-nested-routes-title-card.webp"
+  alt="Title card for the Nested Routes module of Scrimba's Learn React Router course, reading Nested Routes next to a bird's nest illustration"
+  width={1279}
+  height={720}
+  caption="23 scrims build three levels of nested navigation for VanLife's host section, fixing the broken relative paths with a layout route and an index route."
+  source=""
+/>
+
 Bob calls this "one of the more complex topics about React Router," and it gets the most time. The intro uses the Remix "Fakebooks" demo to show nested URLs mapping to nested UI, then lays out the host section you are about to build. That is `/host` with a dashboard, income, and reviews pages, then `/host/vans`, then `/host/vans/:id` with its own details, pricing, and photos tabs. Three levels of navigation, each with a shared layout.
 
 The sequence is careful. A layout route with `Outlet` fixes the copy-pasted nav bar first. Then a challenge to build `HostLayout`, where Bob briefly duplicates a `/host` path to make the dashboard show up. He says "you would never see this in production React Router six code." Relative paths break the dashboard again (you end up at `/host/host`), and index routes fix it. A "To nest or not to nest?" lesson is a thought experiment on nesting `/vans/:id` when there is no shared UI, and he concludes you should not. `NavLink` and its `isActive` render prop come in a standalone mini app before being applied to VanLife.
@@ -143,11 +125,29 @@ The last five scrims set up module 4. "Happy Path vs. Sad Path" opens on a "Data
 
 ### 4. Loaders and Errors (42 min, 13 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-react-router/chapter-4-loaders-title-card.webp"
+  alt="Title card for the Loaders module of Scrimba's Learn React Router course, reading Loaders above a screenshot of the React Router documentation page for the loader prop"
+  width={1279}
+  height={720}
+  caption="13 scrims swap the useEffect fetch for a route loader and useLoaderData, then add errorElement and useRouteError for error handling."
+  source=""
+/>
+
 The shortest module and the turning point. The "Loaders" title card credits Remix, and Bob explains the change in one line. A loader runs before the route renders, so the component "gets to treat this much more synchronously." Opting in means `createBrowserRouter`, `createRoutesFromElements`, and `RouterProvider`, shown on the Star Wars app and then done by you on VanLife. Next come a loader that returns a string and `useLoaderData`. Then the payoff lesson, "Use the loader data instead of the useEffect," where you comment out the effect, delete the loading state, and delete the `useState`. Bob calls it "one of the most cathartic things that I think you'll ever do as a programmer."
 
 Errors get three scrims: `errorElement`, then `useRouteError` with the message, status, and statusText thrown from `api.js`. The third demonstrates that errors bubble to the nearest `errorElement` in the route tree, so you can choose where the error UI lives.
 
 ### 5. Actions and Protected Routes (2.7 hrs, 40 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-react-router/chapter-5-protected-routes-title-card.webp"
+  alt="Title card for the Protected Routes section of Scrimba's Learn React Router course, reading Protected Routes between two shield emojis"
+  width={1279}
+  height={720}
+  caption="40 scrims build protected routes with a requireAuth loader check, then replace controlled form state with React Router's Form, actions, and useNavigation."
+  source="Module title cards from scrimba.com."
+/>
 
 The biggest module, and it needs a login form to work with. Bob says plainly that "this isn't a course about authentication," so the form is prebuilt, the mock server gets one user, and a "Better (but still fake) auth" lesson stores a `loggedin` flag in localStorage. There is no real auth anywhere in the course.
 

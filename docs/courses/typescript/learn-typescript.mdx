@@ -43,33 +43,6 @@ It fits a JavaScript developer who wants the case for TypeScript made before the
   description="TypeScript fundamentals through a console pizza app, then the same ideas applied to a React game and an Express API, all in the browser."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-typescript/chapter-1-typescript-fundamentals-title-card.webp"
-    alt="Title card for section 1 of Scrimba's Learn TypeScript course: TypeScript, An Introduction, with the TS logo and Teacher: Bob Ziroll"
-    width={1279}
-    height={720}
-    caption="Section 1: TypeScript fundamentals, taught by Bob Ziroll."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-typescript/chapter-2-typescript-in-react-title-card.webp"
-    alt="Title card for section 2 of Scrimba's Learn TypeScript course: TypeScript and React, with the TS and React logos and Teacher: Rachel Johnson"
-    width={1377}
-    height={775}
-    caption="Section 2: TypeScript in React, where Rachel Johnson takes over."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-typescript/chapter-3-typescript-in-express-title-card.webp"
-    alt="Title card for section 3 of Scrimba's Learn TypeScript course: Express and TypeScript, with the Express and TS logos and Teacher: Rachel Johnson"
-    width={1377}
-    height={775}
-    caption="Section 3: Express and TypeScript, a typed pet shelter API."
-    source="Section title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if your JavaScript is solid. The course is free, it is short, and it does the one thing most TypeScript tutorials skip: it shows you the bugs first. Bob's opening project is a console pizza restaurant written in plain JavaScript, with three small challenges to get you typing. Then he runs it and the console prints "TypeError: Assignment to constant variable" three times. Only after that does he create the `.ts` file, and the red squiggles that appear are the same bugs, caught before the code ran. That order makes the "why" land in a way a list of type syntax never does.
@@ -93,6 +66,15 @@ Lesson counts are the scrims I counted in each expanded section in September 202
 ## Inside the course, section by section
 
 ### 1. TypeScript Fundamentals (2.1 hrs, 32 scrims): the pizza restaurant
+
+<Screenshot
+  src="/img/scrimba/learn-typescript/chapter-1-typescript-fundamentals-title-card.webp"
+  alt="Title card for section 1 of Scrimba's Learn TypeScript course: TypeScript, An Introduction, with the TS logo and Teacher: Bob Ziroll"
+  width={1279}
+  height={720}
+  caption="A buggy pizza app run first in JavaScript, then moved to TypeScript so its crashes turn into red squiggles you fix before running."
+  source=""
+/>
 
 The section opens with a six minute talk (the only scrim marked SAMPLE) where Bob gives three reasons to learn TypeScript: confidence, productivity, and employability. He is direct about the last one: "learning TypeScript is oftentimes considered table stakes by many companies, even if it's not explicitly listed in their job descriptions." He also warns that the language "can be challenging to learn at first," quotes Kent C. Dodds ("TypeScript is not going to be making your life terrible. It's simply going to be showing you how terrible your life already is"), and holds up a steel stud guard as a metaphor for planning ahead.
 
@@ -124,6 +106,15 @@ The last third covers function return types, `void`, a short tangent on `any` ("
 
 ### 2. TypeScript in React (52 min, 21 scrims): typing Assembly: Endgame
 
+<Screenshot
+  src="/img/scrimba/learn-typescript/chapter-2-typescript-in-react-title-card.webp"
+  alt="Title card for section 2 of Scrimba's Learn TypeScript course: TypeScript and React, with the TS and React logos and Teacher: Rachel Johnson"
+  width={1377}
+  height={775}
+  caption="A finished React game gets typed state, props and components one at a time, ending in a solo challenge on the Keyboard component."
+  source=""
+/>
+
 Rachel Johnson opens by explaining the plan: take the finished Assembly: Endgame hangman game from Learn React and "rework this project with TypeScript." She is explicit that "we're not gonna be spending a lot of time tweaking or extending the game itself." The setup scrim runs `npm create vite@latest` with the React and TypeScript template rather than adding TypeScript to the old project, because "there's a lot of config involved to get everything working smoothly." The new project's package.json lists React 19.1, TypeScript 5.8, and Vite 6; the original game it copies from ran React 18.3.
 
 Three refresher scrims re-type the data files (`words.ts` as `string[]`, `languages.ts` with a custom `Language` type) and the utility functions. Then the React-specific part starts with `useState`. Rachel shows that state infers its type from the initial value, so `useState([])` becomes `any[]`, and the fix is the generic argument: `useState<string[]>([])`. Components get a return type of `JSX.Element`, imported as a type from React; she mentions `React.FC` and explains why she avoids it (it "does include children in props by default even if it's not used").
@@ -139,6 +130,15 @@ The rest is one component per scrim: `JSX.Element | null` for the confetti conta
 />
 
 ### 3. TypeScript in Express (73 min, 24 scrims): a typed pet shelter API
+
+<Screenshot
+  src="/img/scrimba/learn-typescript/chapter-3-typescript-in-express-title-card.webp"
+  alt="Title card for section 3 of Scrimba's Learn TypeScript course: Express and TypeScript, with the Express and TS logos and Teacher: Rachel Johnson"
+  width={1377}
+  height={775}
+  caption="A read-only pet shelter API types req and res, then the Request and Response generics for path params, query strings and middleware."
+  source="Section title cards from scrimba.com."
+/>
 
 Rachel's Express intro states the project and the prerequisite in one breath: "you'll build a simple read only but fully typed pet shelter API," and "this course does assume you already know the basics of Express and TypeScript." The setup scrim installs Express, `typescript` and `@types/express` as dev dependencies, and extends `@tsconfig/node20` because "the Scrimba editor uses version twenty at the moment." The very next scrim makes you repeat the setup from a `challenge.md` file with no walkthrough until the solution.
 

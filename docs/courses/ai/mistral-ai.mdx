@@ -41,32 +41,6 @@ It fits developers who already know JavaScript and want a free, hands-on build o
   description="Chat completions, a handbook RAG bot on Supabase, a function-calling agent loop, and local inference with Ollama, all in JavaScript and all free."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/intro-to-mistral-ai/chapter-1-intro-to-mistral-ai-title-card.webp"
-    alt="Title card of Scrimba's Intro to Mistral AI course: Scrimba Course, Intro to Mistral AI, course teacher Per Borgen"
-    width={1278}
-    height={718}
-    caption="The welcome scrim's title card. Per, Gil Hernandez and Mistral's Sophia Yang share the teaching."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/intro-to-mistral-ai/chapter-4-function-calling-title-card.webp"
-    alt="Title card for the function calling section of Scrimba's Intro to Mistral AI course, with three floating cubes"
-    width={1278}
-    height={718}
-    caption="The function calling section: six scrims that end in a working agent loop."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/intro-to-mistral-ai/chapter-5-running-mistral-locally-title-card.webp"
-    alt="Title card for the Running Mistral locally scrim in Scrimba's Intro to Mistral AI course"
-    width={1278}
-    height={718}
-    caption="The Ollama scrim, where the course leaves the browser and runs on your laptop."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if you can write JavaScript and want to see RAG and function calling built end to end without paying for a course. For 84 minutes it covers a lot of ground, and it does so with the two projects that matter most on the AI track. One is a question-answering bot grounded in your own documents. The other is an agent that turns a sentence into a function call. Both are the same patterns you meet later in the paid AI courses, here in their simplest form.
@@ -98,6 +72,15 @@ Group durations are added up from the timer in each scrim's header and come to 8
 ## Inside the course, module by module
 
 ### 1. Welcome, Mistral intro, and La Plateforme signup (6 min, 3 scrims)
+
+<Screenshot
+  src="/img/scrimba/intro-to-mistral-ai/chapter-1-intro-to-mistral-ai-title-card.webp"
+  alt="Title card of Scrimba's Intro to Mistral AI course: Scrimba Course, Intro to Mistral AI, course teacher Per Borgen"
+  width={1278}
+  height={718}
+  caption="Per lays out the plan, then the La Plateforme signup and its pay-per-use pricing, no fixed subscription."
+  source=""
+/>
 
 Per's welcome explains what Mistral is (a company that "twice managed to stun the AI community by launching small open source foundational models") and lays out the plan. In order: API basics, models, embeddings and vector databases, RAG, function calling, then local models. He also says the course "has been created in partnership with the company itself."
 
@@ -141,6 +124,15 @@ Retrieval uses a similarity function that Supabase supplies. Per is upfront that
 
 ### 4. Function calling: from a tool schema to an agent loop (17 min, 6 scrims)
 
+<Screenshot
+  src="/img/scrimba/intro-to-mistral-ai/chapter-4-function-calling-title-card.webp"
+  alt="Title card for the function calling section of Scrimba's Intro to Mistral AI course, with three floating cubes"
+  width={1278}
+  height={718}
+  caption="Six scrims build a customer-service agent, from a tool schema to reading tool_calls and looping to an answer."
+  source=""
+/>
+
 The agent is a customer-service bot over a tiny array of transactions in `tools.js`. Per's opening point is the one people miss: the model never runs your code. "This is all our AI sees. It never sees the content of this function. It just looks at the description and tries to decide whether or not it should be invoked."
 
 The first scrim sends the prompt "Is the transaction T1001 paid?" with a `tools` array, and the reply has an empty `content` and a `tool_calls` entry naming `getPaymentStatus`.
@@ -164,6 +156,14 @@ The next five scrims each add one piece, and each is a challenge:
 Per explains the cap: a `while` loop or recursion "could be better solutions, but they also open up for the possibility of infinite loops." The last run prints "The transaction T1001 was paid on October 5, 2021."
 
 ### 5. Running Mistral locally with Ollama, and the recap (5 min, 2 scrims)
+
+<Screenshot
+  src="/img/scrimba/intro-to-mistral-ai/chapter-5-running-mistral-locally-title-card.webp"
+  alt="Title card for the Running Mistral locally scrim in Scrimba's Intro to Mistral AI course"
+  width={1278}
+  height={718}
+  caption="The one scrim outside the browser: ollama run mistral, then a small Express server that talks to it locally."
+/>
 
 The Ollama scrim is the only one that leaves the browser. You install Ollama, run `ollama run mistral` (a 4.1 GB download), chat with it in the terminal, then download the scrim as a zip, `npm install`, and start a 24-line Express server that passes a URL query to `ollama.chat`.
 

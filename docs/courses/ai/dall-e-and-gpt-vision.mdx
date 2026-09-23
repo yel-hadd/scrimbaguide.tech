@@ -41,25 +41,6 @@ It fits you if you already call the OpenAI chat API and want to add image genera
   description="Generate, edit and vary images with DALL-E, then ask GPT-4 with Vision questions about a photo, all from a browser scrim with your own OpenAI key."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/intro-to-dall-e-and-gpt-vision/editing-images-title-card.webp"
-    alt="Title slide for the Editing images scrim in Scrimba's Intro to Dall-E and GPT Vision course: white text on a purple gradient with three floating cubes"
-    width={1277}
-    height={718}
-    caption="Scrim 6, Editing images: inpainting with a mask."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/intro-to-dall-e-and-gpt-vision/gpt-4-with-vision-title-card.webp"
-    alt="Title slide for the GPT-4 with Vision scrim in Scrimba's Intro to Dall-E and GPT Vision course: white text on a purple gradient with three floating cubes"
-    width={1277}
-    height={718}
-    caption="Scrim 10, GPT-4 with Vision: the course switches from making images to reading them."
-    source="Lesson title slides from scrimba.com. The course has no chapter cards; each scrim opens on its own slide."
-  />
-</div>
-
 ## Is it worth your time?
 
 If you already call OpenAI from JavaScript and you want to add images to an app, yes. An hour gets you every image endpoint (generate, edit, variations) plus the vision side of chat completions, with a tiny project in the middle. Guil's examples are concrete and a little personal: he fixes an unfinished Orlando building with inpainting, feeds his own photo to the variations endpoint, and asks the vision model what laid the blue egg he found in his yard.
@@ -84,6 +65,15 @@ Scrimba's course page has no modules, just 15 scrims in a row, so the grouping a
 ## Inside the course, scrim by scrim
 
 ### 1. Image generation with DALL-E (41 min, 7 scrims)
+
+<Screenshot
+  src="/img/scrimba/intro-to-dall-e-and-gpt-vision/editing-images-title-card.webp"
+  alt="Title slide for the Editing images scrim in Scrimba's Intro to Dall-E and GPT Vision course: white text on a purple gradient with three floating cubes"
+  width={1277}
+  height={718}
+  caption="This module covers generating, prompting, sizing, inpainting and varying images with DALL-E 2 and 3."
+  source=""
+/>
 
 The two minute introduction is a slide deck. Guil explains why you would generate images (speed, originality, imaginary people instead of real ones) and sets the one prerequisite: "make sure you're comfortable with the basics of working with the OpenAI API using the text generation models." He also asks you to save your own OpenAI key as an environment variable in Scrimba, because every later scrim runs against the real API.
 
@@ -122,6 +112,15 @@ The challenge brief (2:17) hands you a form with a movie title input, an art sty
 The solution (6:33, not the 2:17 the table of contents shows) builds the prompt as a template literal, `An imaginative poster inspired by the movie "${movieTitle.value.trim()}" rendered in the ${artStyles.value} art style`, passes it to `generatePoster(prompt)`, and drops the returned URL into an `img`. Guil tests with Back to the Future in Art Deco and admits the poster text "reads as sort of gibberish," which the prompting scrim warned about. The stretch goals become a status line and a `try`/`catch` around the request.
 
 ### 3. GPT-4 with Vision, recap and wrap-up (18 min, 6 scrims)
+
+<Screenshot
+  src="/img/scrimba/intro-to-dall-e-and-gpt-vision/gpt-4-with-vision-title-card.webp"
+  alt="Title slide for the GPT-4 with Vision scrim in Scrimba's Intro to Dall-E and GPT Vision course: white text on a purple gradient with three floating cubes"
+  width={1277}
+  height={718}
+  caption="This module switches from generating images to reading them, sending a text-and-image content array to chat completions."
+  source="Lesson title slides from scrimba.com."
+/>
 
 "GPT-4 with Vision, Part 1" (7:32) switches endpoints. Vision goes through `openai.chat.completions.create`, and the user message's `content` becomes an array with two objects: `{ type: "text", text: ... }` and `{ type: "image_url", image_url: { url } }`. The image must be a hosted URL, not a local path; Guil uploads his photos to the scrim and links to them. The egg example is the one to watch: the first answer says "thrush family, like the American Robin," so he adds "small egg" and "during spring" to the prompt and gets northern mockingbird, which matches his yard.
 

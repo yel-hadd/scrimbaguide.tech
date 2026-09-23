@@ -41,25 +41,6 @@ It suits developers who already understand RAG (retrieval augmented generation, 
   description="A Supabase-backed support agent that classifies each question and routes it to retrieval, web search, or a direct answer."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/chapter-1-intro-title-card.webp"
-    alt="Title slide of Scrimba's Build a Support Agent with Vercel AI SDK course reading Building a Customer Support AI Agent, With Vercel AI SDK and OpenAI, Teacher: Mayo Oshin"
-    width={1377}
-    height={775}
-    caption="The course title slide from the intro scrim. The course has no chapters, so this is the only title card."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/chapter-4-basic-agent-routing-slide.webp"
-    alt="Build a Support Agent with Vercel AI SDK, Agentic Retrieval Routing slide: a flowchart splits a question into two answer paths."
-    width={1377}
-    height={775}
-    caption="The routing diagram that opens the Agentic Retrieval Routing lesson, the idea the whole course builds toward."
-    source="Slides from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if you are the person it was made for. The course runs just under two hours and spends almost none of that on theory. Every scrim after the first three is a working Node project in Scrimba's runner. You press RUN, `npm install` and `node index.js` execute in the terminal pane, and the output appears next to the code.
@@ -92,6 +73,15 @@ I counted 23 scrims in the table of contents in September 2026, including the fo
 ## Inside the course, scrim by scrim
 
 ### 1. Intro and RAG refresher (12 min, 3 scrims)
+
+<Screenshot
+  src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/chapter-1-intro-title-card.webp"
+  alt="Title slide of Scrimba's Build a Support Agent with Vercel AI SDK course reading Building a Customer Support AI Agent, With Vercel AI SDK and OpenAI, Teacher: Mayo Oshin"
+  width={1377}
+  height={775}
+  caption="This module recaps RAG in slides, then embeds a sample text file with OpenAI's text-embedding-3-small model."
+  source=""
+/>
 
 The intro is a slide deck, not code. Mayo makes the case for support as the use case ("customer support is at the heartbeat of every company"). He then shows the finished app answering "How do I join the Scrimba Discord?" with sources, follows it with a web search question, and lists the prerequisites. He introduces himself as an AI engineering educator and "the coauthor of Learning Langchain published by O'Reilly."
 
@@ -134,6 +124,15 @@ Tool Calling is the longest lesson in the group at nearly ten minutes. It builds
 The tool-calling challenge mirrors the lesson exactly. You write a `priceLookup` tool over a five-item grocery table, then a `deliveryEta` tool, then add `stopWhen(stepCountIs(3))` to get a summary ("The total cost for eggs is three point two nine dollars ... the estimated delivery time to the address is twenty six minutes"). Each of the three parts has TODO comments where you fill in the Zod schema and the `execute` body.
 
 ### 4. Agentic routing and web search (28 min, 5 scrims)
+
+<Screenshot
+  src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/chapter-4-basic-agent-routing-slide.webp"
+  alt="Build a Support Agent with Vercel AI SDK, Agentic Retrieval Routing slide: a flowchart splits a question into two answer paths."
+  width={1377}
+  height={775}
+  caption="This module classifies each question as GENERAL or RETRIEVAL, then adds OpenAI's web search tool alongside the knowledge base."
+  source="Slides from scrimba.com."
+/>
 
 Agentic Retrieval Routing is the longest scrim in the course at 13:45 and the one where the project becomes a support agent. The docs folder now holds nine markdown files scraped from Scrimba's help center (joining Discord, student discounts, resetting progress, deleting your account). `agenticRetrieval.js` adds a `classifyAndRetrieve` function. A classification prompt with `maxOutputTokens: 20` and `temperature: 0` returns either `GENERAL` or `RETRIEVAL`, and the code branches on that word, with a fallback prompt if retrieval returns nothing. Mayo explains the settings plainly: "I want zero because I just want retrieval or just give me general. I don't want the model to express any creativity whatsoever."
 

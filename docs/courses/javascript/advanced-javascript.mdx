@@ -50,22 +50,6 @@ Take it if you can already write JavaScript but could not explain the event loop
     caption="The course intro slide. Every module opens with a card in this style."
     source=""
   />
-  <Screenshot
-    src="/img/scrimba/advanced-javascript/chapter-04-asynchronous-js-title-card.webp"
-    alt="Title card for module 4 of Scrimba's Advanced JavaScript course, reading Asynchronous JS, Teacher: Tom Chant"
-    width={1279}
-    height={720}
-    caption="Module 4: asynchronous JavaScript and APIs, the longest module by scrim count."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/advanced-javascript/chapter-09-advanced-function-patterns-title-card.webp"
-    alt="Title card for module 9 of Scrimba's Advanced JavaScript course, reading Advanced Function Patterns, Teacher: Tom Chant"
-    width={1279}
-    height={720}
-    caption="Module 9: closures, recursion, currying, throttling, debouncing, and generators."
-    source="Chapter title cards from scrimba.com."
-  />
 </div>
 
 ## Is it worth your time?
@@ -126,6 +110,15 @@ The Real Estate super challenge asks for property cards from an array of listing
 
 ### 4. Asynchronous JavaScript & APIs (84 min, 24 scrims)
 
+<Screenshot
+  src="/img/scrimba/advanced-javascript/chapter-04-asynchronous-js-title-card.webp"
+  alt="Title card for module 4 of Scrimba's Advanced JavaScript course, reading Asynchronous JS, Teacher: Tom Chant"
+  width={1279}
+  height={720}
+  caption="Twenty-four scrims cover APIs, promises, async/await, and callback hell before you build your own promises."
+  source=""
+/>
+
 The module most people buy the course for, and the only one with two teachers. Tom frames it in the intro as the step toward the back end: "Learning to work with APIs takes you in the direction of becoming a full stack developer." The first four scrims are Bob Ziroll's theory. What is an API? runs eight minutes on Bob's definition: "any tool that will help connect your program with someone else's program." The restaurant analogy that goes with it casts the waiter as the API between your table and the kitchen. Clients & Servers, Requests & Responses, and a JSON review follow.
 
 Then Tom takes over with code. You fetch a random dog image twice, first with `.then()` chains and then with `async/await`, and learn along the way why top-level `await` only works with `type="module"`. The Promises scrim explains the three states (pending, fulfilled, rejected) with a job interview analogy Tom credits to Bob. "We'll let you know within a week" is fulfilled whether or not you got the job, and rejected only if they never call. Handling Rejected Promises adds `.catch()`, `.finally()`, and a try/catch challenge. The dog API is reached through a Scrimba proxy so the course cannot break if the real endpoint changes, which is a small sign of care.
@@ -183,6 +176,15 @@ Three concepts, each with a challenge, and no super challenge. Tom's framing is 
 Symbols are unique identifiers you can use as object keys. The use case Tom picks is adding a hidden property to an object your code does not own, so `for...in`, `Object.keys`, and `JSON.stringify` all skip it. The Map scrim is the longest at seven minutes: a race-finishers app where each key is an athlete object rather than a string, and you learn `set`, `get`, `has`, `delete`, and `size`. The part I did not know is at the end: plain objects reorder integer-like string keys to the front, while a `Map` keeps insertion order no matter what. Set closes the module as an array-like collection where every value is unique.
 
 ### 9. Advanced Function Patterns & Generators (78 min, 22 scrims)
+
+<Screenshot
+  src="/img/scrimba/advanced-javascript/chapter-09-advanced-function-patterns-title-card.webp"
+  alt="Title card for module 9 of Scrimba's Advanced JavaScript course, reading Advanced Function Patterns, Teacher: Tom Chant"
+  width={1279}
+  height={720}
+  caption="Twenty-two scrims cover closures, recursion, currying, throttling, debouncing, and generators, ending in two super challenges."
+  source="Chapter title cards from scrimba.com."
+/>
 
 The intro to this module has the line that best sums up Tom's teaching voice: "When I say advanced, I really do mean advanced. We're getting into the kind of stuff here where you can stick your nose up at other junior developers." The topics are closures, IIFEs, recursion, currying, throttling and debouncing, and generators, and two super challenges close the course.
 

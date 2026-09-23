@@ -43,33 +43,6 @@ Learn React fits you if you already write JavaScript and want to build real UI w
   description="Modern, hooks-first React taught by editing the instructor's code in the browser, ending in two capstone projects."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-react/chapter-03-chef-claude-title-card.webp"
-    alt="Title card for section 3 of Scrimba's Learn React course: Chef Claude project, Interactive web apps in React"
-    width={1279}
-    height={720}
-    caption="Section 3: Chef Claude, where state, forms, and the AI call come in."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-react/chapter-05-tenzies-title-card.webp"
-    alt="Title card for section 5 of Scrimba's Learn React course: Capstone Project 1, Tenzies"
-    width={1279}
-    height={720}
-    caption="Section 5: the Tenzies dice game capstone."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-react/chapter-06-assembly-endgame-title-card.webp"
-    alt="Title card for section 6 of Scrimba's Learn React course: Capstone Project 2, Assembly: Endgame"
-    width={1279}
-    height={720}
-    caption="Section 6: Assembly: Endgame, the final capstone."
-    source="Section title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 It is free, so the only thing it costs you is time, and the format earns that time. Editing the instructor's code directly in the player suits React especially well: you change a piece of state and watch the component re-render in the preview beside it, which is the thing static tutorials cannot show you. Bob's intro sets the tone in one line: "nobody ever becomes a concert pianist by simply watching YouTubes about playing piano." The course is structured to make you type.
@@ -105,6 +78,15 @@ Props, in five numbered lessons, followed by the quiz Bob could not resist titli
 
 ### 3. React State (5.2 hrs, 58 scrims): Chef Claude
 
+<Screenshot
+  src="/img/scrimba/learn-react/chapter-03-chef-claude-title-card.webp"
+  alt="Title card for section 3 of Scrimba's Learn React course: Chef Claude project, Interactive web apps in React"
+  width={1279}
+  height={720}
+  caption="Fifty-eight scrims build useState, forms, and conditional rendering, then wire the Chef Claude form to the Claude API."
+  source=""
+/>
+
 The longest section by far and the one that changes what you can build. It opens with the Chef Claude project overview: a form where the user adds ingredients, a rendered "Ingredients on hand" list, and a "Get a recipe" button that, in Bob's words, "will send the list of ingredients embedded in a prompt that we send to the Claude API from Anthropic."
 
 Before the AI call comes the core of React: event listeners, props vs state, `useState` and array destructuring, updating state with a callback, complex state with arrays and objects, then a nine lesson run on forms (basics, submission, form action, textarea, radio, checkbox, select, `Object.fromEntries`). Conditional rendering gets seven scrims including "Why does && work?". Then state moves between components (passing state as props, setting state from children) through a four part "Sound pads" challenge. The AI part arrives at the end: an "API Sign Ups" lesson, an AI code walkthrough of the pre-written helper, and the challenge to wire it up yourself. The helper offers two functions, `getRecipeFromChefClaude` and `getRecipeFromMistral` (via Hugging Face), so you can pick a provider.
@@ -125,6 +107,15 @@ A meme generator that fetches meme templates from an API. Controlled components 
 
 ### 5. Capstone 1: Tenzies (86 min, 19 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-react/chapter-05-tenzies-title-card.webp"
+  alt="Title card for section 5 of Scrimba's Learn React course: Capstone Project 1, Tenzies"
+  width={1279}
+  height={720}
+  caption="Nineteen scrims build the Tenzies dice game, from the Die component to lazy state and two accessibility passes."
+  source=""
+/>
+
 Bob's framing: "although we won't necessarily be learning much new content in these remaining two sections, they do represent the most important parts of this entire course. Do not under any circumstances skip these capstone projects." Tenzies is a dice game: roll ten dice, hold the ones you want, keep rolling until all ten match. You build a Die component, generate ten random dice, map them to components, hold dice in three parts, end the game in three parts, then add lazy state initialization, a "new game" button, and two accessibility passes (including moving focus to the button with a ref when the game is won). Confetti drops from `react-confetti` when you win.
 
 <Screenshot
@@ -136,6 +127,15 @@ Bob's framing: "although we won't necessarily be learning much new content in th
 />
 
 ### 6. Capstone 2: Assembly: Endgame (2.2 hrs, 28 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-react/chapter-06-assembly-endgame-title-card.webp"
+  alt="Title card for section 6 of Scrimba's Learn React course: Capstone Project 2, Assembly: Endgame"
+  width={1279}
+  height={720}
+  caption="Twenty-eight scrims build the Assembly: Endgame hangman game, from the keyboard to farewell messages and a reset."
+  source="Section title cards from scrimba.com."
+/>
 
 "Okay, let's be real. It's just a rebranded version of hangman," Bob says in the intro, and then makes it a good one: each wrong guess wipes a programming language off the board, with only Assembly surviving if you lose. Twenty-plus scrims walk through planning, a header, a status section, the languages list, the word display, an on-screen keyboard, tracking guessed letters, styling keys by guess, counting wrong guesses, "lost languages," an `isGameOver` flag, won/lost status, conditional rendering with a helper function, farewell messages per language, disabling the keyboard at game over, two accessibility passes, random word selection, and a new game reset. It uses `clsx` for class names and `react-confetti` again. The section ends with the second Solo Project (Pro), Quizzical, a trivia quiz app, then the course outro and a one minute "Turn your certificate into an asset."
 

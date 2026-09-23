@@ -44,41 +44,6 @@ It fits you if you have finished [Learn React](/docs/courses/react/learn-react/)
   description="Reusability patterns, React Router 6, performance, then Supabase persistence and auth and a TypeScript conversion, for people who already know the React basics."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/advanced-react/chapter-1-reusability-title-card.webp"
-    alt="Title card of Scrimba's Advanced React course: the words Advanced React on a pale blue slide with a React atom logo in the corner"
-    width={1279}
-    height={720}
-    caption="The course title card that opens module 1, Reusability."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/advanced-react/chapter-2-react-router-6-title-card.webp"
-    alt="Title card for module 2 of Scrimba's Advanced React course: React Router 6, for client-side routing"
-    width={1279}
-    height={720}
-    caption="Module 2: React Router 6, the VanLife project."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/advanced-react/chapter-3-performance-title-card.webp"
-    alt="Title card for module 3 of Scrimba's Advanced React course: Performance, for improving app speed, with a racing car emoji"
-    width={1279}
-    height={720}
-    caption="Module 3: Performance, where Bob's original course ends."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/advanced-react/chapter-4-persistence-title-card.webp"
-    alt="Title card for module 4 of Scrimba's Advanced React course: Section 1, Persistence, Teacher: Jonathan Hill, on a purple gradient"
-    width={1375}
-    height={768}
-    caption="Module 4: Persistence, the first of Jonathan Hill's two Supabase sections."
-    source="Module title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes. The Reusability module alone is the reason to take it. Bob builds a menu component the naive way first, with props for everything, then spends five hours showing why that breaks and rebuilding it with compound components, context, a headless Toggle, render props, and finally custom hooks.
@@ -108,6 +73,15 @@ Lesson counts are the scrims I counted in each expanded module in September 2026
 
 ### 1. Reusability (5 hrs, 68 scrims): a component library
 
+<Screenshot
+  src="/img/scrimba/advanced-react/chapter-1-reusability-title-card.webp"
+  alt="Title card of Scrimba's Advanced React course: the words Advanced React on a pale blue slide with a React atom logo in the corner"
+  width={1279}
+  height={720}
+  caption="Ten scrims build a Button, then a Menu, a headless Toggle, and custom hooks that replace it, ending in the Component Library++ solo project."
+  source=""
+/>
+
 The module starts with a warning. In the second scrim, a props review challenge to build a Button, Bob says "if this challenge is, well, really challenging for you, then you're probably not ready to jump into this advanced react course." The Button grows over ten scrims: children instead of a text prop, props spreading, and a size prop. Along the way there is a bug where spreading `...rest` after `className` silently wipes the size class, which he leaves broken for a lesson before fixing it.
 
 Then comes the Mega Challenge: an "overloaded" Avatar component that renders a photo if it gets a `src`, initials if it gets children, and a person icon otherwise. Bob gives you a `hints.md` file and ten minutes, and admits that overloaded components are "not usually best practice in your regular day to day life with React, but in our case because we're building a component library things are a little bit different."
@@ -136,6 +110,15 @@ The module ends with the only solo project in the course, Component Library++: a
 
 ### 2. Routing (6.4 hrs, 86 scrims): VanLife on React Router 6
 
+<Screenshot
+  src="/img/scrimba/advanced-react/chapter-2-react-router-6-title-card.webp"
+  alt="Title card for module 2 of Scrimba's Advanced React course: React Router 6, for client-side routing"
+  width={1279}
+  height={720}
+  caption="Eighty-six scrims build VanLife: nested routes, search params, protected routes, and a swap from a mock API to Firestore."
+  source=""
+/>
+
 The first scrim opens with "Welcome to this course on React Router six," which tells you what this module is. It pins `react-router-dom` 6.4.3 and Bob says up front "we will not be going into the data layer APIs that come with six point four." Eight short scrims cover BrowserRouter, Routes, Route, and Link on a hello-world page, then VanLife starts. It opens with home and about pages from a Figma design and an early "Initial Deploy to Netlify" lesson (GitHub Desktop, a `.gitignore`, the forgotten viewport meta tag). Then a Mirage JS mock server comes in so you `fetch("/api/vans")` like a real frontend developer would.
 
 From there the module is one long build. Route params and `useParams` for the van detail page. Nested routes explained through the Remix "Fakebooks" demo, then a host section with its own layout route, index routes, relative paths, and a third level of nesting at `/host/vans/:id/pricing` and `/photos`. NavLink active styling. Outlet context, which Bob sets as a challenge from the docs alone: "I'm not going to teach you how to do this before I ask you to try and do it." Then search params, which take a dozen scrims because he wants them to be "a single source of truth" you can share by URL.
@@ -152,11 +135,29 @@ The back half handles the "sad path" (loading and error states with `try`/`catch
 
 ### 3. Performance (109 min, 19 scrims): rendering, memo, and code splitting
 
+<Screenshot
+  src="/img/scrimba/advanced-react/chapter-3-performance-title-card.webp"
+  alt="Title card for module 3 of Scrimba's Advanced React course: Performance, for improving app speed, with a racing car emoji"
+  width={1279}
+  height={720}
+  caption="Nineteen scrims cover rendering phases, code splitting with lazy and Suspense, React.memo, and useCallback."
+  source=""
+/>
+
 Bob opens with two caveats that most performance courses skip: "React is already very fast" and "you should be able to measure a performance problem before you jump into using these techniques." Then he explains rendering as three phases (render, reconciliation, commit) with an architect-and-contractor analogy. He points out that "it's the commit phase where usually the bottlenecks occur."
 
 The practical scrims use a small product-list app with a Faker.js dependency that weighs 3.2 MB. StrictMode's double rendering exposes a component that mutates an imported array with `.push`. Code splitting with `React.lazy` and `Suspense` shows the 23-second load in his screenshots dropping to instant, though he admits that inside Scrimba the fallback flashes by too fast to see. `React.memo` cuts a grandparent-to-grandchild tree from 31 renders per click to one, and `useCallback` fixes the case where a re-created `increment` function defeats the memo. The challenges here are "redo what I just deleted," and Bob asks for "no copying and pasting, please." The module ends with the original Course Outro: "You made it to the end of the advanced React course."
 
 ### 4. Persistance (54 min, 10 scrims): a Supabase sales dashboard
+
+<Screenshot
+  src="/img/scrimba/advanced-react/chapter-4-persistence-title-card.webp"
+  alt="Title card for module 4 of Scrimba's Advanced React course: Section 1, Persistence, Teacher: Jonathan Hill, on a purple gradient"
+  width={1375}
+  height={768}
+  caption="Ten scrims build a Supabase sales dashboard: a deals table, a live bar chart, and a realtime subscription."
+  source="Module title cards from scrimba.com."
+/>
 
 New teacher, new stack. Jonathan Hill, a School of Code graduate and former cruise-ship guitarist by his own intro, builds a sales dashboard (later branded "Paper Like A Boss") for a fictional user story: a bar chart of deals per rep that updates live, plus a form to add deals. The project is a real Vite app with `node_modules` and `npm run dev` running in Scrimba's terminal, on React 19, `@supabase/supabase-js` 2.49, and `react-charts`. You need a free Supabase account; he says "no need to dig out those credit cards," and your keys go into Scrimba environment variables so the challenges hit your own database.
 

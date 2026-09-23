@@ -41,33 +41,6 @@ This fits developers who write HTML and CSS but have never audited their own mar
   description="Write accessible HTML by fixing a real, broken website through short interactive coding challenges."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-accessible-web-design/course-intro-accessible-development-title-card.webp"
-    alt="Title slide of the first scrim in Scrimba's Learn Accessible Web Design course, reading Accessible Development on a lilac and mint background"
-    width={1279}
-    height={665}
-    caption="The opening slide. The course has no chapters, so this is the only title card."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-accessible-web-design/wcag-levels-title-card.webp"
-    alt="Slide from the Aside: Text contrast scrim in Scrimba's Learn Accessible Web Design course showing three blobs labelled A, AA and AAA, with sparkles around AAA"
-    width={1279}
-    height={720}
-    caption="The WCAG levels slide from scrim 3. The course pushes for AAA wherever possible."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-accessible-web-design/lets-acquire-a-new-superpower-title-card.webp"
-    alt="Closing slide of the intro scrim in Scrimba's Learn Accessible Web Design course, reading Let's acquire a new superpower with a flying superhero emoji"
-    width={1279}
-    height={720}
-    caption="The intro's closing slide. The superhero framing runs through the whole course."
-    source="Slides from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 For most frontend learners, yes, because it is short and the format fits the topic. Accessibility is a list of habits, and habits stick when you practice them, not when you read about them. Nearly every scrim here ends with "pause here and give this a go" and a concrete fix to make on a page you can see in the preview pane. By the end you have made the same kinds of edits eight or nine times, which is enough for them to become reflexes.
@@ -100,11 +73,38 @@ Scrim counts are the items I counted in the table of contents in September 2026,
 
 ### 1. Intro and how assistive tech reads a page (6 min, 2 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-accessible-web-design/course-intro-accessible-development-title-card.webp"
+  alt="Title slide of the first scrim in Scrimba's Learn Accessible Web Design course, reading Accessible Development on a lilac and mint background"
+  width={1279}
+  height={665}
+  caption="This module sets up the Skynet Eats premise and introduces the accessibility tree, the simplified version of a page that screen readers rely on."
+  source=""
+/>
+
+<Screenshot
+  src="/img/scrimba/learn-accessible-web-design/lets-acquire-a-new-superpower-title-card.webp"
+  alt="Closing slide of the intro scrim in Scrimba's Learn Accessible Web Design course, reading Let's acquire a new superpower with a flying superhero emoji"
+  width={1279}
+  height={720}
+  caption="The intro frames fixing Skynet Eats as your first mission before the second scrim explains the accessibility tree."
+  source="Slides from scrimba.com."
+/>
+
 The intro is a minute long. It defines accessible content as content whose "functionality can be operated by anyone", then sets up the premise: "Here's a website which is currently suffering a lot of accessibility issues. In this course, it'll be your job to save this website," as Fredrik puts it in the first scrim. The site is Skynet Eats, a company that delivers groceries to your window by drone.
 
 The second scrim is the only theory lesson. It introduces the accessibility tree (the simplified version of your page that the browser hands to screen readers), shows two identical-looking buttons where the `div` one has no meaning in that tree, and explains that a real `button` gets keyboard focus for free. It also shows where the accessibility tree and the Lighthouse tab live in Chrome DevTools. Fredrik mentions that he uses ChatGPT daily to check his code for missing labels and poor contrast, which tells you how the course treats tooling: as a helper, not a subject.
 
 ### 2. Color contrast and use of color (12 min, 3 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-accessible-web-design/wcag-levels-title-card.webp"
+  alt="Slide from the Aside: Text contrast scrim in Scrimba's Learn Accessible Web Design course showing three blobs labelled A, AA and AAA, with sparkles around AAA"
+  width={1279}
+  height={720}
+  caption="This module covers the three WCAG contrast levels, contrast ratios from 1:1 to 21:1, and why color alone should never carry meaning."
+  source=""
+/>
 
 Scrim 3 is where the challenges start. Fredrik explains the three WCAG levels (A, AA, AAA), shows contrast ratios from 1:1 up to 21:1, and hands you a rainbow of stripes with dark blue text. Your first task is to change the text colours so every stripe hits 4.5:1. The follow-up point is the useful one: no text colour reaches AAA on the red and green stripes, so "you would need to either change the background color or make the text bigger."
 

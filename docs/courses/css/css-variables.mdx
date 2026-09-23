@@ -41,17 +41,6 @@ It fits anyone who writes CSS and still copies hex values around, or has seen `v
   description="Eight short scrims on CSS custom properties: declaring, scoping, theming, changing them with JavaScript, and using them in media queries, with four checked exercises."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-css-variables/chapter-1-introduction-to-css-variables-title-card.webp"
-    alt="Title slide of Scrimba's Learn CSS Variables course: the words Introduction to CSS Variables in coral red on a pale yellow background"
-    width={1280}
-    height={720}
-    caption="The only title card in the course, from the intro scrim. The three colors on it are the three variables you will write."
-    source="Title card from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 For the topic, yes. Custom properties are the feature that turns a stylesheet full of repeated hex codes into something you can change in one place. This course teaches them in the order you will use them: global first, then scoped, then themed, then driven by JavaScript and media queries. Per's pitch in the intro is the whole argument: "the obvious benefit here is that now you can simply update this value here, and these two will be automatically updated."
@@ -74,6 +63,15 @@ My count is 11 scrims totalling 32 minutes. Scrimba's header says 29 minutes, wh
 ## Inside the course, module by module
 
 ### 1. Declaring, using and scoping variables (14 min, 4 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-css-variables/chapter-1-introduction-to-css-variables-title-card.webp"
+  alt="Title slide of Scrimba's Learn CSS Variables course: the words Introduction to CSS Variables in coral red on a pale yellow background"
+  width={1280}
+  height={720}
+  caption="This module declares a variable on :root, scopes one to a class, then scopes another inside a single selector."
+  source="Title card from scrimba.com."
+/>
 
 The intro (3:08, the free sample) is a slide deck, not code. Per shows the same red hex value repeated across a stylesheet, then the same rules with `--red` declared once on `:root` and referenced with `var(--red)`. He then lists what preprocessor variables cannot do: "CSS variables have access to the DOM. So you can create local scopes, meaning CSS variables that only work in a certain section of your app," plus changing them with JavaScript and inside media queries. The last slides show the portfolio page and its `index.css`, "the CSS which we'll be working with."
 

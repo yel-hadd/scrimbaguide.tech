@@ -41,17 +41,6 @@ Take it if you know basic CSS and want grid to click in an evening. It runs as a
   description="One hour on CSS Grid, taught by building a 12-column page layout and a responsive image grid, ending in a BBC News clone solo project."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-css-grid/solo-project-bbc-news-clone-title-card.webp"
-    alt="Title slide of the Solo Project in Scrimba's Learn CSS Grid course, reading BBC News Clone, Article Grid, on a pale green background with the Scrimba logo"
-    width={1277}
-    height={719}
-    caption="The only title card in the course: the Pro solo project, a BBC News article grid."
-    source="Title card from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Grid is the CSS feature the scrim format was made for. You change `grid-template-columns` from `100px auto 100px` to `repeat(12, 1fr)` and the preview on the right reflows before Per has finished the sentence. By the end of the fourth scrim you have a header, sidebar, content area, and footer sitting on a 12-column grid. You also understand why `grid-column: 1 / -1` is the trick that survives you changing the column count later. That is a lot of working knowledge for 23 minutes of video.
@@ -143,6 +132,15 @@ Two short scrims cover alignment, which in grid means where items sit inside cel
 "Grid vs. Flexbox" (5:02) is the scrim to send to anyone who asks which to learn. Per's rule: "if you're going to create layout which has a direction, either row or column, then use flexbox," and grid for anything with rows and columns. He then drops a flexbox nav inside the grid header, with `margin-left: auto` on the logout link, and calls that "the best of both worlds". Flexbox is not taught here; the lesson assumes you have it, which is why [Learn Flexbox](/docs/courses/css/flexbox/) is the natural companion.
 
 ### 4. Wrap-up and Solo Project: BBC News Clone (10 min, 4 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-css-grid/solo-project-bbc-news-clone-title-card.webp"
+  alt="Title slide of the Solo Project in Scrimba's Learn CSS Grid course, reading BBC News Clone, Article Grid, on a pale green background with the Scrimba logo"
+  width={1277}
+  height={719}
+  caption="Starter files with no grid rule at all, and a target design you lay out yourself with no walkthrough."
+  source="Title card from scrimba.com."
+/>
 
 A slide-based "Why are Solo Projects important?" clip (2:31) leads into the Solo Project (3:10). It is the only Pro-gated lesson and the only scrim with a title card. The starter files are an `index.html` with one featured article (a "LIVE" headline and a large hospital photo), a "Who are the royal family?" bullet, and five regular articles with images. The `index.css` already handles fonts, colors, and the small clock icon.
 

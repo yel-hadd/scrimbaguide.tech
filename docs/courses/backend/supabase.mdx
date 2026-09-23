@@ -41,25 +41,6 @@ It suits React developers who have never wired up a backend, not Supabase newcom
   description="A free, project-based course building a React sales dashboard on Supabase: queries, realtime updates, auth, row level security, and a database trigger."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/intro-to-supabase/chapter-1-intro-to-supabase-title-card.webp"
-    alt="Title card of the Course introduction scrim in Scrimba's Intro to Supabase course: a white lightning bolt above the words Intro to Supabase and Teacher: Jonathan Hill on a purple and gold gradient"
-    width={1377}
-    height={774}
-    caption="Section 1: the course introduction, which doubles as the Persistence intro."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/intro-to-supabase/chapter-2-authentication-title-card.webp"
-    alt="Title card of the Introduction to Auth scrim in Scrimba's Intro to Supabase course, reading Section 2 - Authentication, Teacher: Jonathan Hill, on the same purple gradient"
-    width={1378}
-    height={775}
-    caption="Section 2: Authentication, the 3.8-hour half of the course."
-    source="Chapter title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if you are a React developer who stalls the moment an app needs data that survives a refresh. The course is short, free, and built around one app that grows in a sensible order. By the end you can create a table, query it from React, and keep a chart in sync with the database. You can also sign users up and in, and lock rows down with policies that live in the database rather than in your JavaScript.
@@ -83,6 +64,15 @@ Lesson counts are the scrims I counted in each expanded section in September 202
 
 ### 1. Persistence (60 min, 11 scrims)
 
+<Screenshot
+  src="/img/scrimba/intro-to-supabase/chapter-1-intro-to-supabase-title-card.webp"
+  alt="Title card of the Course introduction scrim in Scrimba's Intro to Supabase course: a white lightning bolt above the words Intro to Supabase and Teacher: Jonathan Hill on a purple and gold gradient"
+  width={1377}
+  height={774}
+  caption="Eleven scrims wire up a Supabase project, query it from React, and add a realtime subscription that updates the chart live."
+  source=""
+/>
+
 The first two scrims are near duplicates: a course introduction (the free sample lesson) and a section introduction that repeats it. Both set up the "user story": the sales team wants a bar chart of each rep's total sales for the quarter, updating in real time, plus a form to add a deal. Jonathan also states the prerequisites plainly at 3:33: "Some SQL basics, some essential JavaScript concepts, some React basics ... and, hopefully, you've worked with APIs before."
 
 The eleven-minute "Supabase project setup" scrim is the one you cannot skip. You create your own Supabase project and a `sales_deals` table (name and value columns), turn row level security off for now, enable realtime, and seed a few rows by hand. Back in the Vite app you install `@supabase/supabase-js` and create the client with `createClient(url, key)`. The URL and anon key go into environment variables inside Scrimba, and because the app is Vite you read them as `import.meta.env.VITE_SUPABASE_URL`. From here on, every challenge runs against your database, not the instructor's.
@@ -102,6 +92,15 @@ The querying scrims are where the course finds its rhythm. Jonathan writes SQL i
 The last three scrims (the new deal form, inserting data, and a 37-second recap) have no transcript, which is unusual for Scrimba. From the code, the form uses React 19's `useActionState`, and the insert is one line: `supabase.from('sales_deals').insert(newDeal)`.
 
 ### 2. Authentication (3.8 hrs, 37 scrims)
+
+<Screenshot
+  src="/img/scrimba/intro-to-supabase/chapter-2-authentication-title-card.webp"
+  alt="Title card of the Introduction to Auth scrim in Scrimba's Intro to Supabase course, reading Section 2 - Authentication, Teacher: Jonathan Hill, on the same purple gradient"
+  width={1378}
+  height={775}
+  caption="Thirty-seven scrims add sign up, sign in, row level security policies, and a profiles table with a trigger that copies account type on sign-up."
+  source="Chapter title cards from scrimba.com."
+/>
 
 A second user story opens the section: users sign up as a rep or an admin, reps can only add their own deals, logged-out visitors must not see the chart, and the header should show who is signed in. Jonathan lists what that means at 0:39: "setting up a router and context, listening for a session, learning about JSON Web Tokens, signing users up and in and, I guess, out as well, and writing some low level security policies and a database trigger."
 

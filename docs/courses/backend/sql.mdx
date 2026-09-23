@@ -43,33 +43,6 @@ Take it if you have never written SQL, or want a hands-on refresher before touch
   description="A free, beginner SQL course: queries, joins, subqueries and CASE, all practiced on a classic car dealership's database in the browser."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-sql/chapter-1-intro-to-sql-title-card.webp"
-    alt="Title card of Scrimba's Learn SQL course reading Intro to SQL, How to work with databases, Teacher: Gregor Thomson, on a purple gradient"
-    width={1279}
-    height={712}
-    caption="Module 1 opens with the course title card."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-sql/chapter-2-using-multiple-tables-title-card.webp"
-    alt="Title card for module 2 of Scrimba's Learn SQL course, a large 02 with the text Module 2, Using multiple tables"
-    width={1279}
-    height={712}
-    caption="Module 2: creating and joining tables."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-sql/chapter-3-advanced-operators-title-card.webp"
-    alt="Title card for module 3 of Scrimba's Learn SQL course, a large 03 with the text Module 3, Advanced operators and expressions"
-    width={1279}
-    height={712}
-    caption="Module 3: ANY, ALL, EXISTS and CASE."
-    source="Chapter title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if SQL is new to you. The whole course is free, the runtime is under four hours, and almost every scrim stops at least once and hands you a query to write. That is the right way to learn a language whose entire difficulty is in the details: which table comes first in a join, what happens when a value is null, where the brackets go in a WHERE clause.
@@ -96,6 +69,15 @@ Lesson counts are the scrims I counted in each expanded module in September 2026
 
 ### 1. Fundamentals of SQL (92 min, 27 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-sql/chapter-1-intro-to-sql-title-card.webp"
+  alt="Title card of Scrimba's Learn SQL course reading Intro to SQL, How to work with databases, Teacher: Gregor Thomson, on a purple gradient"
+  width={1279}
+  height={712}
+  caption="27 scrims run through filtering, aggregates and CRUD one keyword at a time, each on the same 41-car dealership table."
+  source=""
+/>
+
 The intro is the only lesson you can watch without signing in. Gregor spends it on what SQL is and why it is worth learning; he cites the 2024 Stack Overflow survey, where SQL was the second most used language among professional developers. Then he shows the project: one `cars` table with 41 classic cars. Each car has a brand, model, year, price, color, a condition score from 0 to 5, and a `sold` flag. He also introduces himself: a full stack developer at the University of Greenwich who spent three years at the Founders and Coders bootcamp in London as a developer, mentor and program manager.
 
 Lesson two, Project setup, shows the mechanics. Every scrim has a `query.sql` file you type into and an `index.js` file you rarely touch (module 2 has you add a few lines to it). Saving runs `node index.js` in a Runner pane, which creates the database, runs your query, and prints the result as a table. That loop is the whole course.
@@ -119,6 +101,15 @@ The last stretch is INSERT, UPDATE and DELETE (Gregor calls them CRUD commands a
 One oddity: the Section 1 recap says "you've reached the end of this course". Module 1 was clearly the whole course at some point. Modules 2 and 3 were added later, and it shows in their longer, more ambitious scrims.
 
 ### 2. Creating and Joining Tables (68 min, 12 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-sql/chapter-2-using-multiple-tables-title-card.webp"
+  alt="Title card for module 2 of Scrimba's Learn SQL course, a large 02 with the text Module 2, Using multiple tables"
+  width={1279}
+  height={712}
+  caption="12 scrims add three new tables, teach primary and foreign keys, and cover all four join types on the dealership's sales data."
+  source=""
+/>
 
 Retro Rides has had a good year, so the story expands: new dealerships in Atlanta, Detroit and Philadelphia, a `staff` table, and a `sold_cars` table that records the price, date and seller of each sale. The whole module is about relating those tables to each other.
 
@@ -149,6 +140,15 @@ Aggregates (7:04) is three challenges in a row combining joins with GROUP BY: av
 The module ends with a 36 second recap and a two minute Scrimba affiliate program ad by Per, which you can skip.
 
 ### 3. Advanced Logic and Conditions (45 min, 10 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-sql/chapter-3-advanced-operators-title-card.webp"
+  alt="Title card for module 3 of Scrimba's Learn SQL course, a large 03 with the text Module 3, Advanced operators and expressions"
+  width={1279}
+  height={712}
+  caption="10 scrims cover subqueries with ANY, ALL and EXISTS, then CASE inside SELECT, WHERE and UPDATE."
+  source="Chapter title cards from scrimba.com."
+/>
 
 The shortest module, and the one with the highest ratio of challenge to explanation. It covers four things: `ANY`, `ALL`, `EXISTS`, and `CASE`. A subquery, in case the word is new, is a query inside the brackets of another query; the first three keywords compare a value against whatever the inner query returns.
 

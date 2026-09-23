@@ -50,22 +50,6 @@ This course fits developers who already know hooks and fetch calls and want reps
     caption="The course title card from the intro scrim. The four modules open straight into code, so this is the only chapter card."
     source=""
   />
-  <Screenshot
-    src="/img/scrimba/memory-game-in-react/aria-label-aria-live-aside-title-card.webp"
-    alt="Slide from the aria-label and aria-live aside in Scrimba's Build a Memory Game in React: Accessibility tools: aria-label and aria-live, ensure accessibility by adding humanly intelligible information to otherwise inaccessible elements"
-    width={1279}
-    height={720}
-    caption="The slide that opens module 3's first aside, which is a proper explainer rather than a code-along."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/memory-game-in-react/focus-accessibility-aside-title-card.webp"
-    alt="Slide from the focus aside in Scrimba's Build a Memory Game in React: Accessibility tool: Add focus to new DOM element"
-    width={1279}
-    height={720}
-    caption="The focus aside, the longest scrim in the course at 10:26."
-    source="Slides from scrimba.com."
-  />
 </div>
 
 ## Is it worth your time?
@@ -130,6 +114,24 @@ It opens with the "side note" about re-recorded lessons ("recordings show no mer
 />
 
 ### 3. Accessibility Enhancements (74 min, 13 scrims)
+
+<Screenshot
+  src="/img/scrimba/memory-game-in-react/aria-label-aria-live-aside-title-card.webp"
+  alt="Slide from the aria-label and aria-live aside in Scrimba's Build a Memory Game in React: Accessibility tools: aria-label and aria-live, ensure accessibility by adding humanly intelligible information to otherwise inaccessible elements"
+  width={1279}
+  height={720}
+  caption="This aside explains aria-label and aria-live, and why each card needs a label instead of relying on its HTML entity code for its accessible name."
+  source=""
+/>
+
+<Screenshot
+  src="/img/scrimba/memory-game-in-react/focus-accessibility-aside-title-card.webp"
+  alt="Slide from the focus aside in Scrimba's Build a Memory Game in React: Accessibility tool: Add focus to new DOM element"
+  width={1279}
+  height={720}
+  caption="This 10:26 aside covers useRef, useEffect, .focus(), and tabIndex, the four tools that move focus to a new element so a screen reader announces it."
+  source="Slides from scrimba.com."
+/>
 
 The module opens with a slide-based aside on `aria-label` and `aria-live`. Ajo reads the MDN definition, then answers when to use a label: "The short answer is when we have no other option." The memory game is that case: each button's accessible name is an HTML entity, so a screen reader reads a code instead of "monkey face." The aside ends with a detail I had not seen taught elsewhere: end every `aria-label` string with a period so the screen reader pauses.
 

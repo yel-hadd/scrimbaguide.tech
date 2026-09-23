@@ -41,25 +41,6 @@ It fits a frontend developer who has only ever been on the receiving end of an A
   description="Backend fundamentals with no framework: build a REST API and a routed site with Node's http, fs, path and events modules."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-nodejs/chapter-1-build-a-rest-api-title-card.webp"
-    alt="Title card of the first project in Scrimba's Learn Node.js course, reading Build a REST API, The Wild Horizons API, Teacher: Tom Chant, on a purple and gold gradient"
-    width={1376}
-    height={772}
-    caption="Project 1: the Wild Horizons API."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-nodejs/chapter-2-build-a-routed-site-title-card.webp"
-    alt="Title card of the second project in Scrimba's Learn Node.js course, reading Build a Routed Site, From the Other Side, Teacher: Tom Chant, on a blue gradient with a ghost emoji"
-    width={1376}
-    height={772}
-    caption="Project 2: From the Other Side, the ghost sightings site."
-    source="Project title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if you are a frontend developer who has only ever been on the receiving end of an API. Tom's argument for learning bare Node before a framework is the one that convinced me: "Imagine as a front end equivalent, imagine knowing jQuery without knowing JavaScript," he says in the intro. The course delivers on that. By the end of the first project you have written, by hand, the routing, status codes, headers and query-string parsing that Express does for you in one line, and you know why it does them.
@@ -86,6 +67,15 @@ Lesson counts are the scrims I counted in each expanded module in September 2026
 A four-minute history of Node (Ryan Dahl, 2009, the V8 engine bundled outside the browser), a preview of the two projects, and the prerequisites stated plainly. Tom says you should ideally have finished "Scrimba's front end developer career path or something similar," and that "if you're confident with the main array methods in JavaScript like map, reduce, and filter, and you've made a fetch request and worked with async await, you're going to be absolutely fine." No React needed; all the frontend code is vanilla.
 
 ### 1. Build a REST API (81 min, 20 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-nodejs/chapter-1-build-a-rest-api-title-card.webp"
+  alt="Title card of the first project in Scrimba's Learn Node.js course, reading Build a REST API, The Wild Horizons API, Teacher: Tom Chant, on a purple and gold gradient"
+  width={1376}
+  height={772}
+  caption="Twenty scrims build a JSON API by hand, from a bare http.createServer to path parameters, query strings and CORS headers."
+  source=""
+/>
 
 The project is the Wild Horizons API: a `data.js` file of destinations (the Waitomo Glowworm Caves, the Door to Hell in Turkmenistan, an underwater waterfall in Mauritius) with a name, country, continent, an `is_open_to_public` boolean and a UUID. Three ways to query it: `/api` for everything, `/api/continent/Asia` or `/api/country/India` for path parameters, and `/api?country=Turkey&is_open_to_public=true` for query strings.
 
@@ -118,6 +108,15 @@ Query strings take three scrims. The aside shows the honest vanilla way, `new UR
 The module ends with "CORS", a slide-driven explanation of same-origin policy and the two `Access-Control-Allow-*` headers you add to `sendJSONResponse`, with the caveat that "working here in Scrimba it's not gonna make any difference," and a wrap-up that suggests stretch goals (friendlier errors, POST support, keyword search). The last scrim, "Learning in public", is a generic Per Borgen talk about commenting on Reddit that appears in several Scrimba courses.
 
 ### 2. Routes & Paths (2.3 hrs, 27 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-nodejs/chapter-2-build-a-routed-site-title-card.webp"
+  alt="Title card of the second project in Scrimba's Learn Node.js course, reading Build a Routed Site, From the Other Side, Teacher: Tom Chant, on a blue gradient with a ghost emoji"
+  width={1376}
+  height={772}
+  caption="Twenty-seven scrims serve static files, parse and sanitize a POST body, then stream server-sent events for a ghost-sighting site."
+  source="Project title cards from scrimba.com."
+/>
 
 The second project is From the Other Side, a site "where users can share paranormal sightings." It has a home page, a Read page that renders each sighting as a card, and an Upload form that POSTs to the server. The HTML, CSS and frontend JavaScript are all written for you; Tom says you will spend "ninety nine percent of the time" in the server code. The plan is three jobs (serve the static files, serve the sightings as JSON, accept new sightings) plus a section on events.
 

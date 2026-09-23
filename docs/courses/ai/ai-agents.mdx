@@ -43,25 +43,6 @@ It fits developers who already call an LLM from JavaScript and want to see what 
   description="Build an LLM agent from scratch with a ReAct prompt and a loop, then rebuild it with OpenAI function calling."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-ai-agents/react-loop-flowchart-title-card.webp"
-    alt="Slide from Scrimba's Learn AI Agents course titled ReAct, a flowchart: pass query to LLM, LLM thinks about the next step, LLM determines what data it needs and calls a function, LLM observes the data and determines if it is ready to answer, with a NO arrow looping back and a YES arrow to respond to user"
-    width={1279}
-    height={720}
-    caption="The ReAct loop slide from lesson 6, the diagram the first half of the course turns into code."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-ai-agents/openai-functions-title-card.webp"
-    alt="Slide from Scrimba's Learn AI Agents course titled OpenAI Functions, showing a screenshot of OpenAI's function calling documentation page"
-    width={1279}
-    height={720}
-    caption="The OpenAI Functions section opens on a screenshot of the docs Bob borrows his example from."
-    source="Slides from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 The thing this course does that most agent tutorials skip is make you build the loop by hand before any SDK does it for you. Bob is explicit about why. In lesson 6 he says the LLM "will tell us what function it wants to call or what action it wants to perform, and then we will write our code in a way that can then actually perform that action."
@@ -104,6 +85,15 @@ All five of these are marked SAMPLE, so you can watch them without Pro. "AI Agen
 
 ### 2. ReAct agent from scratch (47 min, 11 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-ai-agents/react-loop-flowchart-title-card.webp"
+  alt="Slide from Scrimba's Learn AI Agents course titled ReAct, a flowchart: pass query to LLM, LLM thinks about the next step, LLM determines what data it needs and calls a function, LLM observes the data and determines if it is ready to answer, with a NO arrow looping back and a YES arrow to respond to user"
+  width={1279}
+  height={720}
+  caption="Nine numbered parts turn this reason-act-observe flowchart into a hand-written loop with regex parsing and a five-iteration cap."
+  source=""
+/>
+
 The core of the course. "Introduction to ReAct prompting" argues against hardcoding a chain (call the weather function, pass the result into the prompt) because, as Bob puts it, "I've predetermined in the code a chain of events that need to occur in order to get a very specific response." Instead the LLM gets three phases, reasoning, acting and observing, and the flowchart in the grid above. ReAct is short for reason and act; Bob links a Medium article for the theory and moves on.
 
 "Build action functions" creates `tools.js` with two async stubs. `getLocation` returns "Salt Lake City, Utah" (Bob's real location; by part 7 he has changed it to New York City) and `getCurrentWeather` returns a JSON string with 72 degrees and sunny. Bob first wires them into the prompt the naive way, as a chain, and gets a working answer. Then he says the sentence that starts the real work: "Let's refactor this so that we turn our manual chain of events into an agent that is aware of the tools at its disposal and able to reason, act, and observe."
@@ -135,6 +125,15 @@ Part 8, "Housekeeping", hoists `messages` out of the call so it can be pushed to
 />
 
 ### 3. OpenAI functions agent (41 min, 9 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-ai-agents/openai-functions-title-card.webp"
+  alt="Slide from Scrimba's Learn AI Agents course titled OpenAI Functions, showing a screenshot of OpenAI's function calling documentation page"
+  width={1279}
+  height={720}
+  caption="The hand-written loop gets rebuilt with a tools schema, a finish_reason check, and the beta runFunctions helper."
+  source="Slides from scrimba.com."
+/>
 
 Function calling is OpenAI's built-in version of what you just hand-rolled: you describe your functions in the request, and the model replies with a structured `tool_calls` array instead of prose. Bob's framing in the one minute intro: "we don't have to do the same kind of string parsing that we were doing before. I could be wrong but it feels like this is going to be quite a bit more error prone than something that's built into OpenAI." The plan is to "gut everything that we've done here and rewrite it from scratch using OpenAI functions," pulling from OpenAI's documentation example.
 

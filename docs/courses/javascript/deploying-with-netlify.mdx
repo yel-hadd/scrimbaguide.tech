@@ -41,33 +41,6 @@ Deploying with Netlify fits anyone who has finished a project and never put it o
   description="Two ways to deploy to Netlify, drag-and-drop and Git-based, for plain sites and for React, Vue, and Next.js projects with a build step."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/deploying-with-netlify/course-intro-title-card.webp"
-    alt="Title card of Scrimba's Deploying with Netlify course, reading Deploying with Netlify next to an illustrated person in a striped shirt and hat"
-    width={1279}
-    height={720}
-    caption="The course intro card."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/deploying-with-netlify/section-1-netlify-drop-title-card.webp"
-    alt="Title card reading Deploy a plain JavaScript project with Netlify Drop, from the drag-and-drop section of Scrimba's Deploying with Netlify course"
-    width={1279}
-    height={720}
-    caption="Section 1: drag-and-drop deploys with Netlify Drop."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/deploying-with-netlify/section-2-continuous-deployment-title-card.webp"
-    alt="Title card reading Continuous Deployment with Netlify, from the second section of Scrimba's Deploying with Netlify course"
-    width={1279}
-    height={720}
-    caption="Section 2: continuous deployment from GitHub."
-    source="Title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if you fit the target reader: you have built something and it only exists on your laptop or inside a scrim. Deployment is the step beginners put off because it sounds like infrastructure, and this course makes it feel like uploading a file. The first live URL arrives at about the one-minute mark of the second scrim, which is the whole pitch of the course.
@@ -94,11 +67,29 @@ Scrimba's listing says 23 minutes and its structured data says 10 lessons; the e
 
 ### 1. Intro and Netlify sign-up (3 min, 1 scrim)
 
+<Screenshot
+  src="/img/scrimba/deploying-with-netlify/course-intro-title-card.webp"
+  alt="Title card of Scrimba's Deploying with Netlify course, reading Deploying with Netlify next to an illustrated person in a striped shirt and hat"
+  width={1279}
+  height={720}
+  caption="One scrim names drag-and-drop and continuous deployment, explains what a build step is, and walks through creating a free Netlify account."
+  source=""
+/>
+
 The intro does three jobs in under three minutes. It names the two methods, drag-and-drop and continuous deployment, and says who each is for: "I recommend drag and drop deployment if you're not super familiar or comfortable with Git and GitHub yet," Treasure says at 1:06, and continuous deployment "if you're comfortable pushing a project to Git." It explains the one distinction the rest of the course hangs on: projects with a build step (anything scaffolded with Vite, Create React App, Vue CLI, or Next.js) have to be "minified, bundled, transpiled, basically prepared for production" before Netlify can serve them. And it walks you through creating a Netlify account, which you can do with an email address or your GitHub login.
 
 If you do not know what a build step is, this is the scrim that explains it. If you do, skip straight to your case.
 
 ### 2. Drag-and-drop deploys with Netlify Drop (9 min, 3 scrims)
+
+<Screenshot
+  src="/img/scrimba/deploying-with-netlify/section-1-netlify-drop-title-card.webp"
+  alt="Title card reading Deploy a plain JavaScript project with Netlify Drop, from the drag-and-drop section of Scrimba's Deploying with Netlify course"
+  width={1279}
+  height={720}
+  caption="Three scrims drag a folder onto Netlify Drop: a plain JavaScript project, a built React or Next.js project, and a React project downloaded from a scrim."
+  source=""
+/>
 
 Scrim 2, "Drop Deploy a Plain JavaScript Project," is the shortest useful lesson in the course at 1:41. The demo project is a small row counter app on a yarn background, loaded in the scrim so you can download it yourself (gear icon, "Download as ZIP"). Treasure then opens Netlify's drop page: "You're going to drag and drop the folder you want to deploy into this circle, and the rest just happens." Netlify generates a random URL, you refresh, and the site is live. She frames this as the method for prototypes and small finished projects you will not touch again, and says at 0:20 that anyone comfortable with GitHub should skip ahead to continuous deployment instead.
 
@@ -115,6 +106,15 @@ Scrim 3, "Drop Deploy a React/Vue/Next.js Project," is the longest in the course
 Scrim 4, "Drop Deploy a React app from a Scrim," covers the case most Scrimba learners have: a React project built inside a scrim. The downloaded ZIP needs a `webpack.config.js` (the scrim's dependencies panel lists React 16.13.1, which dates the setup). If the HTML head loads Babel standalone instead, you can skip the build and drag the folder as-is. Otherwise it is `npm install`, then `npm run build`, which produces an `index.pack.js`, then drag the whole folder. Treasure is candid about the sample: "this is a not very pretty and unfinished React project, but it's just an example."
 
 ### 3. Continuous deployment and deploy previews (11 min, 4 scrims)
+
+<Screenshot
+  src="/img/scrimba/deploying-with-netlify/section-2-continuous-deployment-title-card.webp"
+  alt="Title card reading Continuous Deployment with Netlify, from the second section of Scrimba's Deploying with Netlify course"
+  width={1279}
+  height={720}
+  caption="Four scrims connect a GitHub repo so pushes to main redeploy automatically, then add a deploy preview with the Netlify bot commenting on pull requests."
+  source="Title cards from scrimba.com."
+/>
 
 This is the section Treasure calls "one of my favorite Netlify features." Scrim 5, "Intro to Continuous Deployment," defines it in one sentence at 0:04: "every time you update your main branch on GitHub with changes, Netlify will automatically redeploy your application." The scrim itself is a GitHub Desktop walkthrough: add the row counter folder as a repository, let GitHub Desktop create one when it says the folder is not a repo yet, initialize with a README, and publish. There is no Git command line anywhere in the course; if you use the terminal for Git, translate as you go.
 

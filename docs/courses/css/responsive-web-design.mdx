@@ -41,33 +41,6 @@ It fits developers who already write CSS but still cannot predict what it will d
   description="Kevin Powell's 15-hour CSS course: units, flexbox, grid, media queries and mobile-first layout, taught by building four sites."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-responsive-web-design/chapter-2-starting-to-think-responsively-title-card.webp"
-    alt="Title card of module 2 of Scrimba's Learn Responsive Web Design course, white text on a blue bar reading Starting to think Responsively"
-    width={1279}
-    height={720}
-    caption="Module 2: the mindset shift the course is named after."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-responsive-web-design/chapter-5-css-grid-title-card.webp"
-    alt="Title card of module 5 of Scrimba's Learn Responsive Web Design course, reading CSS Grid, The ultimate layout tool"
-    width={1279}
-    height={720}
-    caption="Module 5: CSS Grid."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-responsive-web-design/chapter-6-taking-it-to-the-next-level-title-card.webp"
-    alt="Title card of module 6 of Scrimba's Learn Responsive Web Design course, reading Taking it to the next level, Introduction"
-    width={1279}
-    height={720}
-    caption="Module 6: the final three-page site."
-    source="Chapter title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if you have written CSS before and still cannot predict what it will do. That is the exact gap this course fills. Kevin does not teach properties in isolation; he builds a layout, hits a problem on screen, and then introduces the property that fixes it. Collapsing margins arrive because a heading moves its whole card down. `box-sizing: border-box` arrives in module 3 because a page grows a scrollbar it should not have. He says so himself in that lesson: he held it back "until you run into a situation where it actually becomes useful."
@@ -103,6 +76,15 @@ Then comes a 22-minute Practice Time scrim where you build a blog card page from
 
 ### 2. Starting to think responsively (4.1 hrs, 45 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-responsive-web-design/chapter-2-starting-to-think-responsively-title-card.webp"
+  alt="Title card of module 2 of Scrimba's Learn Responsive Web Design course, white text on a blue bar reading Starting to think Responsively"
+  width={1279}
+  height={720}
+  caption="This module rebuilds a three-page blog mobile-first, deleting a desktop-first query and adding columns with min-width."
+  source=""
+/>
+
 This is the longest module and the one the course is named after. It opens with the pitch: a design now has to work "from sometimes a watch screen up to an eighty inch television." Units come first. Percentages, then `em`, then a two-and-a-half minute lesson that nests `em` font sizes three levels deep until a list item balloons to several times its size.
 
 <Screenshot
@@ -133,6 +115,15 @@ The build is a single card component that stacks on phones and goes side by side
 
 ### 5. CSS Grid: The ultimate layout tool (97 min, 19 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-responsive-web-design/chapter-5-css-grid-title-card.webp"
+  alt="Title card of module 5 of Scrimba's Learn Responsive Web Design course, reading CSS Grid, The ultimate layout tool"
+  width={1279}
+  height={720}
+  caption="This module covers grid-template-areas, minmax(), the fr unit, repeat(), and auto-fit versus auto-fill."
+  source=""
+/>
+
 Grid gets the same one-property-per-scrim treatment. `display: grid`, `grid-template-columns` and `rows`, line-based placement, spans, the gap property, implicit versus explicit tracks, then the lessons Kevin clearly loves: `grid-template-areas`, where you draw the layout as strings, and the follow-up where a media query only needs to redraw those strings. "I love this so much. I'm excited just thinking about this. And that's maybe a little sad."
 
 `minmax()`, the `fr` unit, `repeat()` and `auto-fit` versus `auto-fill` close the module, and the last one is the moment grid earns its subtitle.
@@ -148,6 +139,15 @@ Grid gets the same one-property-per-scrim treatment. `display: grid`, `grid-temp
 Two "Putting grid to use" lessons rebuild the blog article component from module 2 with grid instead of flexbox and negative margins, and the module ends there with no wrap-up scrim. One slip to know about: in the `minmax()` lesson he calls it "exclusive to Flexbox" when he means grid.
 
 ### 6. Taking it to the next level (2.2 hrs, 30 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-responsive-web-design/chapter-6-taking-it-to-the-next-level-title-card.webp"
+  alt="Title card of module 6 of Scrimba's Learn Responsive Web Design course, reading Taking it to the next level, Introduction"
+  width={1279}
+  height={720}
+  caption="This module builds a three-page company site with a hero image, a Font Awesome footer, and a slide-in mobile navigation."
+  source="Chapter title cards from scrimba.com."
+/>
 
 The final project is a three-page company site (home, about, contact) with a hero image, a footer with Font Awesome icons, and a mobile navigation that slides in from the side. Kevin starts with a lesson on analysing the design before touching code: "the biggest mistake people do is they just start building without really thinking about it." Every section then reuses one grid, `minmax(1em, 1fr) minmax(260px, 500px) minmax(1em, 1fr)`, with children placed on column 2 to -2, which is how he handles side gutters without a container div.
 

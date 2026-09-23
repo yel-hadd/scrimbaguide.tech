@@ -42,33 +42,6 @@ Take it once you know React. PrintForge is a site where 3D printing enthusiasts 
   description="App Router routing, layouts, rendering strategies, and a SQLite data layer, built into one PrintForge project on Next 15."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-nextjs/printforge-what-you-build-card.webp"
-    alt="Learn Next.js, course intro: a slide showing mobile and desktop mockups of the PrintForge app."
-    width={1377}
-    height={775}
-    caption="Section 1 intro: PrintForge, the one project the whole course builds."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-nextjs/chapter-2-rendering-strategies-title-card.webp"
-    alt="Title card reading Rendering Strategies from section 2 of Scrimba's Learn Next.js course"
-    width={1377}
-    height={775}
-    caption="Section 2: the rendering strategies lessons, the most slide-heavy part."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-nextjs/chapter-3-making-data-flow-title-card.webp"
-    alt="Title card for section 3 of Scrimba's Learn Next.js course reading Section 3, How data flows through a Next app, Teacher: Rachel Johnson"
-    width={1377}
-    height={775}
-    caption="Section 3: Making Data Flow, where Rachel Johnson takes over."
-    source="Slides from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, with two caveats. The format fits Next.js unusually well because a real `next dev` server runs inside the scrim: the Runner pane at the bottom prints `GET /3d-models?page=12 200 in 52ms` as you click through the preview, so you see server rendering happen instead of being told about it. The course is also built around one codebase. Bob says in the intro that he "decided to really hone in on one project and build it completely from scratch from beginning all the way to the end," and by the last scrim PrintForge has a `lib/` data layer, thirteen components, and a `printforge.db` file. That is closer to a real app than most free courses get.
@@ -93,6 +66,15 @@ Lesson counts are the scrims I counted in each expanded section in September 202
 
 ### 1. Build a Next.js App (2 hrs, 27 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-nextjs/printforge-what-you-build-card.webp"
+  alt="Learn Next.js, course intro: a slide showing mobile and desktop mockups of the PrintForge app."
+  width={1377}
+  height={775}
+  caption="This module builds PrintForge's static pages, layouts, and the App Router routing that every later section builds on."
+  source=""
+/>
+
 Bob's intro sets the prerequisites plainly, "a solid foundation in HTML, CSS, JavaScript, and React," and names two tools he uses without teaching: Tailwind CSS and TypeScript. Then comes the bug alert, then the six scrims that no longer run: a minimal Next.js setup, a challenge to create an app from scratch, adding a page, file-based routing, and two scrims on `create-next-app`. Scrimba's "Runner" is where the working part of the course begins: a pane that runs `npm run dev` for you, with the Next.js compile log underneath the editor.
 
 From there the PrintForge build is a run of challenges. The home page challenge opens with a slide of the Figma design, mobile and desktop, and a note in the file that says "I won't expect you to put much effort into the CSS of the challenges." Bob explains the choice: "I've decided to use Tailwind CSS to do a majority of the styling for this project. I do wanna caution that I don't want Tailwind to become a distraction for you." The `package.json` in that scrim pins `next` 15.2.4 with React 19, Tailwind 3.4, and TypeScript 5.
@@ -109,6 +91,15 @@ After the home and about pages come nested routes, two scrims on layouts, a head
 
 ### 2. Rendering Strategies and More (2.4 hrs, 25 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-nextjs/chapter-2-rendering-strategies-title-card.webp"
+  alt="Title card reading Rendering Strategies from section 2 of Scrimba's Learn Next.js course"
+  width={1377}
+  height={775}
+  caption="This module covers SSG, ISR, and SSR, then a separate Cat Facts app where you run the production build yourself and read the static-versus-dynamic output."
+  source=""
+/>
+
 The first ten scrims are still PrintForge: a categories page challenge, a categories nav bar, an aside on `usePathname`, link refactors, two more lessons on client components, and challenges to style the active link and build category pages. Then the section changes gear. "Rendering Strategies Intro" is, in Bob's words, "a little bit slide heavy and is going to include some new terminology that you may not be familiar with." He frames the whole topic as giving your app "the ability to decide when and where a page's HTML is built," walks through build time, request time, and in-browser rendering, and then names the three strategies: SSG, ISR, and SSR.
 
 <Screenshot
@@ -124,6 +115,15 @@ The practical half uses a separate, smaller project, Cat Facts, written in plain
 Scrimba's own description of this section on the course page talks about SQLite, seeding, search, sorting, and pagination. That text describes section 3, not this one. Twelve of the 25 scrims are AI-checked challenges.
 
 ### 3. Making Data Flow (3.9 hrs, 71 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-nextjs/chapter-3-making-data-flow-title-card.webp"
+  alt="Title card for section 3 of Scrimba's Learn Next.js course reading Section 3, How data flows through a Next app, Teacher: Rachel Johnson"
+  width={1377}
+  height={775}
+  caption="This module rebuilds PrintForge on a SQLite data layer, then adds search, sorting, pagination, loading states, and URL param validation."
+  source="Slides from scrimba.com."
+/>
 
 Rachel Johnson's section is almost as long as the other two combined, and it is built from short scrims, most between two and four minutes. It opens with what she calls a "recap gauntlet": three challenge scrims that rebuild the PrintForge shell, the models section, and the dynamic routes from a static mockup. Her reason is a good one: "Instead of building everything step by step from scratch, you'll be working from a finished HTML and tailwind mock up. This happens quite a lot in real life where you're handed static code and your job is to bring it to life." This version of PrintForge is on Tailwind 4.
 

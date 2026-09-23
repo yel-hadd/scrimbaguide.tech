@@ -41,25 +41,6 @@ It fits developers who already build Node or Express APIs and want to stop shipp
   description="Threat modelling, authentication models, input validation with Zod, and rate limiting, taught in Node by Rachel Johnson and Jonathan Hill."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-cybersecurity/module-1-backend-security-stride-owasp-title-card.webp"
-    alt="Title card of module 1 of Scrimba's Learn Cybersecurity course: Backend Security, thinking like a security-minded developer with STRIDE and OWASP, teacher Rachel Johnson"
-    width={1280}
-    height={720}
-    caption="Module 1: threat modelling with STRIDE and OWASP."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-cybersecurity/module-2-authentication-and-identity-title-card.webp"
-    alt="Title card of module 2 of Scrimba's Learn Cybersecurity course: Backend Security, Authentication and Identity, teacher Rachel Johnson"
-    width={1280}
-    height={720}
-    caption="Module 2: authentication and identity. Modules 3 and 4 switch to Jonathan Hill and open straight into code."
-    source="Title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Most developers learn security from an incident. This course is the cheaper route, and the reason it works is that it makes you do the attack before the defence. In the input safety module you paste an `<img onerror>` payload into a name field and watch the page pop a fake "data breach" alert. Two scrims later you type `'); DROP TABLE users; --` into an email field and the runner terminal prints "Disaster dropping users table" while the user counter at the top of the form drops to zero. Nothing real is deleted, but you have now written a SQL injection, and that memory sticks better than a slide about parameterised queries.
@@ -85,6 +66,15 @@ Lesson counts are the scrims I counted in each expanded module in September 2026
 
 ### 1. Think Like a Security-Minded Developer (30 min, 10 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-cybersecurity/module-1-backend-security-stride-owasp-title-card.webp"
+  alt="Title card of module 1 of Scrimba's Learn Cybersecurity course: Backend Security, thinking like a security-minded developer with STRIDE and OWASP, teacher Rachel Johnson"
+  width={1280}
+  height={720}
+  caption="This module has you classify six QuickBite threats with STRIDE, then map six bug reports onto the OWASP top ten."
+  source=""
+/>
+
 Rachel opens with a confession: her first student portal was broken into by "a curious seven year old" who changed the student ID in the URL and saw another student's profile. "The code worked exactly like I wrote it," she says in the intro, "I just hadn't written it with attackers or even accidentally curious users in mind." The phrase she repeats through the module is "Think like an attacker. Design like a defender."
 
 The module has two halves. STRIDE first: six categories (spoofing, tampering, repudiation, information disclosure, denial of service, elevation of privilege), each illustrated on the QuickBite delivery app. Then the Potential Threat Modelling scrim opens a `stride_challenge.md` file with six threats; Rachel classifies the first one with you, the screen pauses at 1:06, and you label the other five. OWASP follows the same shape: the Meet OWASP scrim walks through the broken access control page and its "how to prevent" list, then Bug Triage Challenge gives you six QuickBite bug reports (an uploaded `menu.js` that executed, webhooks arriving with fake "paid" statuses, card numbers in the logs) to map onto OWASP categories and fix.
@@ -92,6 +82,15 @@ The module has two halves. STRIDE first: six categories (spoofing, tampering, re
 As Rachel puts it at the end of that challenge, "If you can name the problem, OWASP will point you straight to the right solution." All Together Now closes the module with the line that summarises it: "Stride predicts and OWASP diagnoses." The first three scrims are free previews, the rest need Pro.
 
 ### 2. Authentication and Identity (67 min, 19 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-cybersecurity/module-2-authentication-and-identity-title-card.webp"
+  alt="Title card of module 2 of Scrimba's Learn Cybersecurity course: Backend Security, Authentication and Identity, teacher Rachel Johnson"
+  width={1280}
+  height={720}
+  caption="This module teaches sessions, stateless JWTs and delegated OAuth identity, each ending in a challenge that fixes broken code."
+  source="Title cards from scrimba.com."
+/>
 
 This is the module I would send someone to if they only had an hour. Rachel separates authentication (who are you) from authorization (what may you do), then teaches three identity models in three arcs, each ending in a challenge.
 

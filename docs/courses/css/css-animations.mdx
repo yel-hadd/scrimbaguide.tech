@@ -41,25 +41,6 @@ It fits anyone who can already write CSS and wants the motion syntax fast, not t
   description="Transitions, keyframe animations, and transforms in two hours, with a mini challenge in most scrims and three real-world challenges."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-css-animations/chapter-01-welcome-title-card.webp"
-    alt="Title card of the first scrim of Scrimba's Learn CSS Animations course: the words Learn CSS Animations and Videolab in black on a peach background"
-    width={1279}
-    height={720}
-    caption="The welcome scrim's title card. Videolab is the brand printed on both title cards."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-css-animations/chapter-05-custom-timing-functions-title-card.webp"
-    alt="Title card of the Custom Timing Functions scrim in Scrimba's Learn CSS Animations course, black text on a peach background"
-    width={1279}
-    height={720}
-    caption="The last lesson, on cubic-bezier timing curves. Only these two scrims open on a title slide; the rest open straight into code."
-    source="Title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if you already write CSS and have never sat down with animations properly. The course is narrow on purpose. Jad says in the welcome video that the early challenges "may seem a little bit easy and kind of remedial, but that's what they're kind of intended to do. They're meant to build some muscle memory." That is an accurate description of the whole thing: you type `transition: all 0.5s ease` and `animation: grow 2s ease-out 0s 4 alternate` enough times that you stop looking them up.
@@ -85,6 +66,15 @@ Scrimba shows this course as one flat list of 27 scrims with no module headers, 
 ## Inside the course, module by module
 
 ### 1. Welcome and the Scrimba workspace (7 min, 2 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-css-animations/chapter-01-welcome-title-card.webp"
+  alt="Title card of the first scrim of Scrimba's Learn CSS Animations course: the words Learn CSS Animations and Videolab in black on a peach background"
+  width={1279}
+  height={720}
+  caption="A tour of the course plan and one practical warning: the preview keeps animating in real time even when the video is paused."
+  source=""
+/>
 
 The welcome scrim is a five minute tour of the course plan. It includes one practical warning worth knowing before you start: the preview pane renders your HTML and CSS in real time. In Jad's words, "so if you speed up the video, or pause it, or skip through it, just beware that it will still be playing in real time. It won't be playing with the video." In practice, that means a paused scrim can still have a box bouncing in the preview.
 
@@ -131,6 +121,15 @@ The "Transform Challenge" combines the section with the previous one: an infinit
 />
 
 ### 5. Tips and tricks (20 min, 3 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-css-animations/chapter-05-custom-timing-functions-title-card.webp"
+  alt="Title card of the Custom Timing Functions scrim in Scrimba's Learn CSS Animations course, black text on a peach background"
+  width={1279}
+  height={720}
+  caption="Three unrelated tips: outdated browser prefixes, CSS custom properties, and cubic-bezier timing curves you shape yourself."
+  source="Title cards from scrimba.com."
+/>
 
 Jad calls this section "quite unorganized" in the welcome video, and it is three unrelated lessons. "Prefixes" explains `-webkit-`, `-ms-`, `-moz-`, and `-o-` and tells you to add all four for maximum support. This is the lesson that has aged worst; modern browsers do not need prefixes for transitions or animations, and Opera has not used `-o-` for over a decade. "CSS Variables" is a sound short introduction to `:root`, `--main-color`, and `var()`, with a challenge to replace a repeated hex colour.
 

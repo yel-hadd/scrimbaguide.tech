@@ -41,25 +41,6 @@ This fits you if you already know what retrieval-augmented generation (RAG) is a
   description="Build a RAG support agent in TypeScript with the Langbase SDK: memory, document upload, retrieval, an agent pipe, and grounded answers with sources."
 />
 
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/build-serverless-ai-agents-with-langbase/chapter-1-building-serverless-ai-agents-title-card.webp"
-    alt="Title card of Scrimba's Build Serverless AI Agents with Langbase course: Building Serverless AI Agents, with Langbase, teacher Maham Codes, on a purple and olive gradient"
-    width={1280}
-    height={720}
-    caption="The course intro card, the first scrim of the course."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/build-serverless-ai-agents-with-langbase/chapter-2-create-a-memory-title-card.webp"
-    alt="Title card of the Create a Memory with Langbase SDK scrim in Scrimba's Build Serverless AI Agents with Langbase course"
-    width={1280}
-    height={720}
-    caption="Create a Memory with Langbase SDK, the first coding scrim and the first challenge."
-    source="Title cards from scrimba.com."
-  />
-</div>
-
 ## Is it worth your time?
 
 Yes, if you already know what RAG is and want to see one working in under an hour. The build is small but real. By scrim 9 you type one command, `npx tsx index.ts`, and the console prints an answer to "How do I upgrade my individual plan?" that is grounded in the FAQ file you uploaded, with the source cited. Nothing is skipped over: every step is a file you create and a command you run.
@@ -89,6 +70,15 @@ The 13 scrims add up to 52 minutes 48 seconds; take away the two Scrimba house s
 
 ### 1. Orientation (10 min, 3 scrims)
 
+<Screenshot
+  src="/img/scrimba/build-serverless-ai-agents-with-langbase/chapter-1-building-serverless-ai-agents-title-card.webp"
+  alt="Title card of Scrimba's Build Serverless AI Agents with Langbase course: Building Serverless AI Agents, with Langbase, teacher Maham Codes, on a purple and olive gradient"
+  width={1280}
+  height={720}
+  caption="This module defines agentic RAG and Langbase's pipes and memory agents, then sets up the API key in Scrimba's environment variables."
+  source=""
+/>
+
 The intro is the free preview scrim. Maham sets out the premise in one sentence: "AI agents without frameworks, and these agents are going to be context aware." She then defines an agent as "autonomous software powered by LLMs that can perceive, reason, decide, and act," names the prerequisites (JavaScript and TypeScript, with a pointer to [Learn JavaScript](/docs/courses/javascript/learn-javascript/)), and tells you to sign up on Langbase and get an API key, because "we'll need it for the upcoming lessons."
 
 Core Concepts is a four minute slide lesson that defines agentic RAG and Langbase's two main building blocks. Pipes are "serverless AI agents that run online"; memory agents are "AI agents with human like long term memory." The useful part is the last minute, where she walks the full pipeline you are about to build: create a memory, upload data, retrieve chunks for a question, pass them to a pipe, return the answer.
@@ -96,6 +86,15 @@ Core Concepts is a four minute slide lesson that defines agentic RAG and Langbas
 Setting Up Environment Variables in Scrimba is the practical bridge. You add your Langbase key in Scrimba's settings under "scrim environment" and read it as `process.env.LANGBASE_API_KEY`. She also tells you how every code scrim will run: `npm install`, then `npx tsx filename.ts` in the terminal.
 
 ### 2. Build the memory (15 min, 3 scrims)
+
+<Screenshot
+  src="/img/scrimba/build-serverless-ai-agents-with-langbase/chapter-2-create-a-memory-title-card.webp"
+  alt="Title card of the Create a Memory with Langbase SDK scrim in Scrimba's Build Serverless AI Agents with Langbase course"
+  width={1280}
+  height={720}
+  caption="This module creates a Langbase memory, uploads the FAQ file to it, then explains the parse, chunk, embed and index pipeline behind that upload."
+  source="Title cards from scrimba.com."
+/>
 
 Create a Memory with Langbase SDK is the first coding scrim and the first challenge. You watch her create `create-memory.ts`, import `dotenv/config` and `Langbase`, and instantiate the client. Then the recording pauses: "Create a memory named knowledge base using the memories dot create method and use OpenAI text embedding three large model for embeddings. Finally, log the created memory to the console." The solution is eleven lines. When she runs it, the console prints the new memory with a chunk size of 10,000 and an overlap of 2,048, and it appears in the Memory tab of Langbase Studio.
 
