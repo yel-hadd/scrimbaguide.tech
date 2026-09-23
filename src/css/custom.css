@@ -3737,7 +3737,7 @@ article table:focus,
 }
 
 .curriculum__item {
-  padding: 0.6rem 0;
+  padding: 0.5rem 0;
   border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
@@ -3767,6 +3767,7 @@ article table:focus,
 
 .curriculum__name {
   flex: 1 1 auto;
+  min-width: 0;
   font-weight: 600;
   color: var(--sg-text-strong);
 }
@@ -3784,19 +3785,14 @@ article table:focus,
   font-variant-numeric: tabular-nums;
 }
 
-.curriculum__bar {
-  margin: 0.45rem 0 0 2.25rem;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--ifm-color-emphasis-200);
-  overflow: hidden;
-}
-
-.curriculum__bar-fill {
-  display: block;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
+/* Optional one clause on what the module has you build. This is the row's
+   only optional ink, and unlike the duration bar it replaced, it is
+   information a reader can act on. */
+.curriculum__note {
+  margin: 0.2rem 0 0 2.25rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--sg-text-soft);
 }
 
 @media (max-width: 600px) {
@@ -3815,6 +3811,11 @@ article table:focus,
     padding-left: 2.25rem;
     gap: 0.5rem;
     font-size: 0.75rem;
+  }
+
+  .curriculum__note {
+    margin-left: 2.25rem;
+    font-size: 0.8rem;
   }
 }
 
