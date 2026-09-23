@@ -5,6 +5,7 @@ description: "Scrimba is a browser coding platform where you pause video lessons
 keywords: [scrimba, what is scrimba, scrimba editor, scrimba ide, scrimba official website, what is scrimba used for, scrimba review, interactive coding platform]
 slug: /intro
 hideGlobalPricingCta: true
+reviewed: 2026-09
 last_update:
   date: 2026-09-23
 ---
@@ -13,6 +14,7 @@ import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 import { DEMO_SCRIM_URL } from '@site/src/constants';
 import { totalCoursesLabel, freeCount, proCount, totalContentHoursLabel } from '@site/src/utils/scrimbaFacts';
 
@@ -22,7 +24,7 @@ import { totalCoursesLabel, freeCount, proCount, totalContentHoursLabel } from '
 
 **Scrimba is an interactive coding platform for learning web development and AI engineering in the browser.** The official site is <AffiliateLink href="https://scrimba.com" location="intro-official-site">scrimba.com</AffiliateLink>. This guide, scrimbaguide.tech, is an independent, unaffiliated review site. Scrimba's lessons are "scrims": screencasts you can pause at any moment to edit the instructor's code, run it, and resume. It has {totalCoursesLabel} courses, four career paths (Frontend, Fullstack, Backend, AI Engineer), a permanent free tier of {freeCount} full courses, and a Pro subscription for the paths, unlimited challenges, Pro-only Discord channels, and certificates. Its newest feature is [Scrimba Explain](/docs/how-it-works/scrimba-explain/), an AI tool that turns a lesson, a question or your own code into a short narrated video.
 
-*Reviewed inside Scrimba with a Pro account, September 2026.*
+<Provenance subject="platform" date={frontMatter.reviewed} />
 
 ## What Scrimba is used for
 
