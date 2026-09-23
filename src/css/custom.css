@@ -821,50 +821,37 @@ textarea {
 }
 
 /* ── Mid-range: tighten navbar between mobile and full desktop ─ */
+/* Six top-level items: the logo mark carries the brand and search collapses
+   to its icon so nothing wraps. */
 @media (min-width: 997px) and (max-width: 1150px) {
   .navbar__inner {
     column-gap: 0.35rem;
   }
 
-  .navbar__items .navbar__item {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
+  .navbar__items .navbar__item,
   .mega-menu__toggle {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
 
-  .sg-search-pill-kbd {
-    display: none;
-  }
-
-  .sg-search-pill-text {
-    font-size: 0.8rem;
+  .mega-menu__toggle {
+    white-space: nowrap;
   }
 
   .navbar__brand {
     margin-right: 0.5rem;
   }
 
-  .navbar__title {
-    font-size: 0.95rem;
-  }
-
-  /* Six top-level items: the logo mark carries the brand and search
-     collapses to its icon so nothing wraps. */
   .navbar__title,
-  .sg-search-pill-text {
+  .sg-search-pill-text,
+  .sg-search-pill-kbd {
     display: none;
-  }
-
-  .mega-menu__toggle {
-    white-space: nowrap;
   }
 }
 
-@media (min-width: 1151px) and (max-width: 1199px) {
+/* Above that, the title fits again but the search pill's text and shortcut
+   still crowd the CTA. No gap between the two queries at fractional widths. */
+@media (min-width: 1150.02px) and (max-width: 1199px) {
   .sg-search-pill-text,
   .sg-search-pill-kbd {
     display: none;

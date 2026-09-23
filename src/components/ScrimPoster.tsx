@@ -20,6 +20,8 @@ interface ScrimPosterProps {
   priority?: boolean;
   /** Extra class on the link, e.g. to size the poster inside a layout. */
   className?: string;
+  /** Pill colour. Defaults to reading the badge text ("Pro lesson" -> pro). */
+  badgeTone?: 'free' | 'pro';
 }
 
 /**
@@ -39,6 +41,7 @@ export default function ScrimPoster({
   location,
   priority = false,
   className = '',
+  badgeTone,
 }: ScrimPosterProps): React.ReactElement {
   return (
     <AffiliateLink
@@ -59,7 +62,7 @@ export default function ScrimPoster({
           decoding="async"
         />
         {badge ? (
-          <span className={`hero-scrim-poster__badge hero-scrim-poster__badge--${/\bpro\b/i.test(badge) ? 'pro' : 'free'}`}>
+          <span className={`hero-scrim-poster__badge hero-scrim-poster__badge--${badgeTone ?? (/\bpro\b/i.test(badge) ? 'pro' : 'free')}`}>
             {badge}
           </span>
         ) : null}

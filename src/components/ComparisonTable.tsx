@@ -60,18 +60,20 @@ export default function ComparisonTable({
           ))}
         </tbody>
       </table>
-      {!hideCta && (
-      <div className="comparison-table__cta-row">
-        <AffiliateLink href={scrimbaUrl} variant="button" location="comparison-table">
-          Claim 20% off Pro
-        </AffiliateLink>
-        {competitorUrl && (
-          <a href={competitorUrl} target="_blank" rel="noopener noreferrer" className="comparison-table__secondary-cta">
-            Visit {competitorName}
-            <span className="sr-only"> (opens in a new tab)</span>
-          </a>
-        )}
-      </div>
+      {(!hideCta || competitorUrl) && (
+        <div className="comparison-table__cta-row">
+          {!hideCta && (
+            <AffiliateLink href={scrimbaUrl} variant="button" location="comparison-table">
+              Claim 20% off Pro
+            </AffiliateLink>
+          )}
+          {competitorUrl && (
+            <a href={competitorUrl} target="_blank" rel="noopener noreferrer" className="comparison-table__secondary-cta">
+              Visit {competitorName}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          )}
+        </div>
       )}
     </div>
   );
