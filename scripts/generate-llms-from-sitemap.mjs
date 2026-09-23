@@ -389,13 +389,162 @@ export function htmlToLlmsMarkdown(html, { siteUrl = DEFAULT_SITE_URL } = {}) {
   if (!$root.length) $root = $('main').first();
   if (!$root.length) $root = $('body').first();
 
-  // Strip non-content chrome before walking.
+  // Strip non-content chrome before walking. `button` is NOT blanket-removed:
+  // FAQAccordion renders each question as a <button>, so dropping every button
+  // left ~1300 answers with no questions attached. Drop the interactive chrome
+  // by class instead, and keep the FAQ questions.
   $root
-    .find('script, style, noscript, svg, nav, header, footer, button, .theme-doc-toc-mobile, .tableOfContents, .pagination-nav, .theme-doc-breadcrumbs, .breadcrumbs, .theme-doc-sidebar-container, .clean-btn')
+    .find('script, style, noscript, svg, nav, header, footer, .theme-doc-toc-mobile, .tableOfContents, .pagination-nav, .theme-doc-breadcrumbs, .breadcrumbs, .theme-doc-sidebar-container, .clean-btn')
     .remove();
+  $root.find('button').not('.faq-accordion__question').remove();
+  // Screen-reader-only text and decorative glyphs are assistive chrome, not
+  // content: without this every affiliate link reads "Title↗ (opens in a new tab)".
+  $root.find('.sr-only, [aria-hidden="true"]').remove();
   // The page's own <h1> is already captured as the section title; drop it here
   // so the inlined body doesn't repeat the heading.
   $root.find('h1').first().remove();
+
+  /**
+   * Turn one of the site's own components into labelled markdown.
+   * Returns null when `$el` is not a component this understands, so the
+   * generic walker handles it as before.
+   */
+  const componentMarkdown = ($el, tag, walk) => {
+    const cls = ($el.attr('class') || '').split(/\s+/);
+    const has = (name) => cls.includes(name);
+    const txt = (sel) => $el.find(sel).first().text().replace(/\s+/g, ' ').trim();
+    const deep = ($node) =>
+      $node
+        .contents()
+        .map((_, c) => walk(c))
+        .get()
+        .join('')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    // FAQAccordion: each question is a <button>, each answer the panel after it.
+    if (has('faq-accordion')) {
+      const heading = txt('.faq-accordion__title');
+      const out = [];
+      if (heading) out.push(`\n\n### ${heading}\n`);
+      $el.find('.faq-accordion__question').each((_, q) => {
+        const $q = $(q);
+        const question = $q.text().replace(/\s+/g, ' ').trim();
+        const $answer = $q
+          .closest('.faq-accordion__item, li, div')
+          .find('.faq-accordion__answer')
+          .first();
+        const answer = $answer.length ? deep($answer) : '';
+        if (question) out.push(`\n**Q: ${question}**\n${answer ? `\n${answer}\n` : ''}`);
+      });
+      return out.length ? `${out.join('')}\n` : '';
+    }
+
+    // CourseCurriculum row: index, name, duration and lesson count are separate
+    // spans that otherwise collide into "...base styles12 min3 lessons".
+    if (has('curriculum__item')) {
+      const name = txt('.curriculum__name');
+      const meta = [txt('.curriculum__duration'), txt('.curriculum__lessons')].filter(Boolean);
+      if (!name) return null;
+      /* The rendered index span is aria-hidden (the <ol> already conveys order),
+         so it is stripped above. Recover the number from the row's position. */
+      const index = $el.index() + 1;
+      return `\n- Module ${index}: ${name}${meta.length ? ` (${meta.join(', ')})` : ''}`;
+    }
+
+    // CourseCard: the page's restatement of data/courses.json.
+    if (has('course-card')) {
+      const title = txt('.course-card__title');
+      const description = txt('.course-card__description');
+      const instructor = deep($el.find('.course-card__instructor').first());
+      const meta = $el
+        .find('.course-card__meta-item')
+        .map((_, m) => $(m).text().replace(/\s+/g, ' ').trim())
+        .get()
+        .filter(Boolean);
+      /* The CTA element IS the anchor, so walk the node itself: walking its
+         contents would skip the <a> handler and drop the link. */
+      const $cta = $el.find('.course-card__cta').first();
+      const cta = $cta.length ? walk($cta.get(0)).replace(/\s+/g, ' ').trim() : '';
+      const out = [];
+      if (title) out.push(`\n\n**${title}**\n`);
+      if (description) out.push(`\n${description}\n`);
+      if (meta.length) out.push(`\n${meta.map((m) => `- ${m}`).join('\n')}\n`);
+      if (instructor) out.push(`\n- ${instructor}\n`);
+      if (cta) out.push(`\n${cta}\n`);
+      return out.length ? `${out.join('')}\n` : null;
+    }
+
+    // Screenshot: keep the alt (the description of the evidence) and separate
+    // the caption from the source note instead of welding them together.
+    if (tag === 'figure' && (has('screenshot') || $el.find('img').length)) {
+      const $img = $el.find('img').first();
+      const alt = ($img.attr('alt') || '').replace(/\s+/g, ' ').trim();
+      const src = absoluteLink($img.attr('src'), siteUrl);
+      const caption = txt('.screenshot__caption');
+      const source = txt('.screenshot__source');
+      if (!alt && !caption) return null;
+      const parts = [];
+      if (alt) parts.push(`\n\n![${alt}](${src || ''})\n`);
+      if (caption) parts.push(`\n*${caption}*\n`);
+      if (source) parts.push(`\n${source}\n`);
+      return `${parts.join('')}\n`;
+    }
+
+    // Tables need a header separator row or no markdown parser sees a table.
+    if (tag === 'table') {
+      /* Use toArray(), not .map().get(): cheerio flattens one level, which
+         would collapse the rows into a single list of cells. */
+      const rows = $el
+        .find('tr')
+        .toArray()
+        .map((tr) =>
+          $(tr)
+            .find('th, td')
+            .toArray()
+            .map((cell) => deep($(cell)).replace(/\|/g, '\\|')),
+        )
+        .filter((r) => r.length);
+      if (!rows.length) return null;
+      const caption = txt('caption');
+      const width = Math.max(...rows.map((r) => r.length));
+      const pad = (r) => [...r, ...Array(width - r.length).fill('')];
+      const lines = [];
+      if (caption) lines.push(`\n\n${caption}\n`);
+      lines.push(`\n| ${pad(rows[0]).join(' | ')} |`);
+      lines.push(`\n| ${Array(width).fill('---').join(' | ')} |`);
+      for (const r of rows.slice(1)) lines.push(`\n| ${pad(r).join(' | ')} |`);
+      return `${lines.join('')}\n\n`;
+    }
+
+    // RelatedGuides: badge and title are adjacent spans, so the generic walker
+    // produced link text like "DocsScrimba Pricing".
+    if (has('related-guides')) {
+      const heading = txt('.related-guides__title');
+      const out = [heading ? `\n\n### ${heading}\n` : '\n\n### Related guides\n'];
+      $el.find('a').each((_, a) => {
+        const $a = $(a);
+        const href = absoluteLink($a.attr('href'), siteUrl);
+        const label = $a
+          .find('.related-guides__featured-title, .related-guides__list-title')
+          .first()
+          .text()
+          .replace(/\s+/g, ' ')
+          .trim();
+        const name = label || $a.text().replace(/\s+/g, ' ').trim();
+        const description = $a
+          .find('.related-guides__description')
+          .first()
+          .text()
+          .replace(/\s+/g, ' ')
+          .trim();
+        if (name && href) out.push(`\n- [${name}](${href})${description ? `: ${description}` : ''}`);
+      });
+      return `${out.join('')}\n\n`;
+    }
+
+    return null;
+  };
 
   const walk = (node) => {
     if (!node) return '';
@@ -404,6 +553,14 @@ export function htmlToLlmsMarkdown(html, { siteUrl = DEFAULT_SITE_URL } = {}) {
     const tag = node.tagName.toLowerCase();
     const $el = $(node);
     const inner = () => $el.contents().map((_, c) => walk(c)).get().join('');
+
+    /* Component-aware parsers. The generic walker concatenates sibling <span>s
+       with no separator, which turned the site's structured blocks into runs
+       like "Duration: 56 minLevel: Intermediate13 lessons". Each handler below
+       emits the component's own fields as labelled markdown instead. */
+    const component = componentMarkdown($el, tag, walk);
+    if (component !== null) return component;
+
     if (/^h([1-6])$/.test(tag)) {
       const level = Number(tag[1]);
       const text = inner().trim();
@@ -440,6 +597,8 @@ export function htmlToLlmsMarkdown(html, { siteUrl = DEFAULT_SITE_URL } = {}) {
   };
 
   const body = walk($root.get(0))
+    // Docusaurus heading anchors leave a zero-width space in the heading text.
+    .replace(/[​-‍﻿]/g, '')
     .replace(/[ \t]+\n/g, '\n')
     .replace(/\n{3,}/g, '\n\n')
     .trim();

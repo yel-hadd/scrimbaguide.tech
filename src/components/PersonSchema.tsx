@@ -29,10 +29,17 @@ export default function PersonSchema({
   const { pathname } = useLocation();
   const canonicalPath = toCanonicalPath(pathname);
   const pageUrl = toAbsoluteUrl(canonicalPath);
+  /* The @id identifies the entity, not the page. Two people described on the
+     same page (see /about/) must not share one, or consumers merge them into a
+     single entity with conflicting names. */
+  const entitySlug = plainText(name)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
   const base: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': schemaType,
-    '@id': `${toAbsoluteUrl(url)}#${schemaType.toLowerCase()}`,
+    '@id': `${toAbsoluteUrl(url)}#${schemaType.toLowerCase()}-${entitySlug}`,
     name: plainText(name),
     url: toAbsoluteUrl(url),
     mainEntityOfPage: pageUrl,
