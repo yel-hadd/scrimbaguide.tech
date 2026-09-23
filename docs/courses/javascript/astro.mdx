@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Intro to Astro"
 description: "James Q Quick's Intro to Astro reviewed from inside: 37 scrims in about 2 hours, 18 challenges, a portfolio with a Markdown blog, and what Pro gates."
 keywords: [scrimba intro to astro, intro to astro scrimba review, astro course scrimba, james q quick astro, learn astro framework, astro content collections course, content website framework]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Intro to Astro
 
+<DisclosureNotice />
+
 James Q Quick teaches this Pro course on Astro, the framework for content sites, in about two hours across 37 scrims. You build one project: a personal portfolio with a header, a projects section, a Markdown blog with dynamic post pages, a contact page, and a Netlify deploy. It is a tight, worthwhile two evenings if you already write HTML, CSS, and basic JavaScript.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,17 +42,6 @@ It fits you if you want a fast portfolio, blog, or docs site and already write H
   href="https://scrimba.com/intro-to-astro-c00ar0fi5u"
   description="Build a personal site with Astro components, a Zod-typed content collection, a Markdown blog with dynamic routes, and a Netlify deploy."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/intro-to-astro/course-intro-to-astro-title-card.webp"
-    alt="Title card of Scrimba's Intro to Astro course: Intro to Astro, the web framework for content-driven websites, teacher James Q Quick, on a blue and purple gradient"
-    width={1280}
-    height={720}
-    caption="The course title card, the first slide of the intro scrim. The course is a flat list of 37 scrims with no chapter cards after this one."
-    source="Title card from scrimba.com."
-  />
-</div>
 
 This course has no chapter title cards to show you: it is a single flat list of scrims with no module headers, and the intro opens on a slide of the finished site rather than a cover slide.
 
@@ -80,6 +74,15 @@ My count is 37 scrims, adding up to 2 hours 8 minutes; without the two generic S
 
 ### 1. Setup and the starter code (12 min, 3 scrims)
 
+<Screenshot
+  src="/img/scrimba/intro-to-astro/course-intro-to-astro-title-card.webp"
+  alt="Title card of Scrimba's Intro to Astro course: the name and teacher James Q Quick on a blue and purple gradient."
+  width={1280}
+  height={720}
+  caption="The opening scrim: James's case for Astro and a tour of the finished site, before setup with npm create astro@latest."
+  source="Title card from scrimba.com."
+/>
+
 The first four scrims are free samples, so you can watch this whole section without Pro. The intro is James's case for Astro: "Astro by default does not ship any JavaScript to the browser," and, on content, "Astro is the best framework by far that I found for managing content." He also says the course "is actually in collaboration with the Astro team." Then he tours the finished site you will build: a landing page with header, projects, and blog sections, a projects page, a blog list, a blog post page, and a contact page.
 
 "Project setup" is the only place local setup is covered, in two minutes: `npm create astro@latest`, then `npm run dev`. On Scrimba the runner is already serving the site at `localhost:4321` when each scrim opens. "The starter code" walks the tree: `package.json` with Astro as the only dependency, a config file the course never touches, a `public/` folder pre-loaded with a placeholder headshot, resume PDF, project images, and social icons, and `src/` with a `Layout` (global styles and CSS variables) and `pages/index.astro`. Frontmatter fences and file-based routing get their first mention here.
@@ -94,7 +97,7 @@ The first challenge, "Create the header section," is plain HTML inside `index.as
 
 <Screenshot
   src="/img/scrimba/intro-to-astro/adding-styles-scoped-css-should-be-red-lesson.webp"
-  alt="Scrimba's Adding styles scrim in Intro to Astro paused at 2:21: index.astro has a style block setting p.description to red, and the preview shows the header's description paragraph still black while a paragraph placed directly in index.astro, reading Should be red, is red"
+  alt="Intro to Astro, Adding styles lesson: browser preview showing one red paragraph and one still black despite the same CSS rule."
   width={1400}
   height={684}
   caption="Adding styles at 2:21. The same p.description rule colours the paragraph that lives in index.astro and ignores the one inside the Header component. That is Astro's scoped styling, shown before it is explained."
@@ -114,7 +117,7 @@ This is the section James is most excited about ("one of my absolute favorite fe
 
 <Screenshot
   src="/img/scrimba/intro-to-astro/content-collections-define-collection-zod-schema-lesson.webp"
-  alt="Scrimba's Content collections in Astro scrim paused at 2:10: content.config.ts defines a project collection with a file loader pointing at src/data/projects.json and a Zod schema of title, optional description, image and slug, exported as collections, with the Astra portfolio site in the preview"
+  alt="Intro to Astro, Content collections lesson: code editor showing a schema file beside a preview of the portfolio site."
   width={1400}
   height={684}
   caption="Content collections in Astro at 2:10: the whole content.config.ts. A file loader, a Zod schema, one export, and from here on the projects data is typed everywhere you query it."
@@ -205,4 +208,7 @@ Where it is limited: it is Pro only after the first four scrims. It never runs J
     { name: 'Content collections and the blog', duration: '36 min' },
     { name: 'Deploy and wrap-up', duration: '10 min' },
   ]}
+  instructor="James Q Quick"
+  instructorUrl="https://scrimba.com/@jamesqquick"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/intro-to-astro/course-intro-to-astro-title-card.webp"
 />

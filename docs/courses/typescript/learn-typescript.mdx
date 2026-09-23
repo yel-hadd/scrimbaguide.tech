@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn TypeScript"
 description: "Scrimba's free Learn TypeScript from inside: 4.2 hours, Bob Ziroll's bug-ridden pizza app, then Rachel Johnson typing a React game and an Express API."
 keywords: [scrimba learn typescript, learn typescript scrimba review, learn typescript free, bob ziroll typescript, rachel johnson scrimba, typescript react express course, interactive typescript course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn TypeScript
 
+<DisclosureNotice />
+
 Scrimba's free Learn TypeScript course runs about 4.2 hours in three sections. Bob Ziroll teaches TypeScript fundamentals by rewriting a buggy pizza app, then Rachel Johnson converts a React game to TypeScript and builds a typed Express API. It is worth the time if your JavaScript is solid, and it stops short of interfaces, classes and declaration files.
 
-*Reviewed inside the course with a Pro account, September 2026: 41 of its 79 scrims opened, at least a third of every section, transcripts read.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="41 of its 79 scrims opened, at least a third of every section, transcripts read" />
 
 *This page is part of our [Scrimba TypeScript courses](/docs/courses/typescript/) catalog. Scrimba's path pages list it in the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) and the [Backend Developer Path](/docs/paths/backend-developer-path/).*
 
@@ -39,33 +44,6 @@ It fits a JavaScript developer who wants the case for TypeScript made before the
   href="https://scrimba.com/learn-typescript-c03c"
   description="TypeScript fundamentals through a console pizza app, then the same ideas applied to a React game and an Express API, all in the browser."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-typescript/chapter-1-typescript-fundamentals-title-card.webp"
-    alt="Title card for section 1 of Scrimba's Learn TypeScript course: TypeScript, An Introduction, with the TS logo and Teacher: Bob Ziroll"
-    width={1279}
-    height={720}
-    caption="Section 1: TypeScript fundamentals, taught by Bob Ziroll."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-typescript/chapter-2-typescript-in-react-title-card.webp"
-    alt="Title card for section 2 of Scrimba's Learn TypeScript course: TypeScript and React, with the TS and React logos and Teacher: Rachel Johnson"
-    width={1377}
-    height={775}
-    caption="Section 2: TypeScript in React, where Rachel Johnson takes over."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-typescript/chapter-3-typescript-in-express-title-card.webp"
-    alt="Title card for section 3 of Scrimba's Learn TypeScript course: Express and TypeScript, with the Express and TS logos and Teacher: Rachel Johnson"
-    width={1377}
-    height={775}
-    caption="Section 3: Express and TypeScript, a typed pet shelter API."
-    source="Section title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -91,13 +69,22 @@ Lesson counts are the scrims I counted in each expanded section in September 202
 
 ### 1. TypeScript Fundamentals (2.1 hrs, 32 scrims): the pizza restaurant
 
+<Screenshot
+  src="/img/scrimba/learn-typescript/chapter-1-typescript-fundamentals-title-card.webp"
+  alt="Title card for section 1 of Scrimba's Learn TypeScript course: TypeScript, An Introduction, with the TS logo and Teacher: Bob Ziroll"
+  width={1279}
+  height={720}
+  caption="A buggy pizza app run first in JavaScript, then moved to TypeScript so its crashes turn into red squiggles you fix before running."
+  source=""
+/>
+
 The section opens with a six minute talk (the only scrim marked SAMPLE) where Bob gives three reasons to learn TypeScript: confidence, productivity, and employability. He is direct about the last one: "learning TypeScript is oftentimes considered table stakes by many companies, even if it's not explicitly listed in their job descriptions." He also warns that the language "can be challenging to learn at first," quotes Kent C. Dodds ("TypeScript is not going to be making your life terrible. It's simply going to be showing you how terrible your life already is"), and holds up a steel stud guard as a metaphor for planning ahead.
 
 Then comes the ten minute "Intro to Pizza app," the longest scrim in the course. You write `addNewPizza`, `placeOrder`, and `completeOrder` as three challenges in plain JavaScript, in a file that Bob has quietly seeded with bugs: a `cost` property where the menu uses `price`, a `const` that gets reassigned, and a string passed where a number is expected. As he puts it near the end, "if you've actually been following along you'd know that this code is pretty full of some minor bugs."
 
 <Screenshot
   src="/img/scrimba/learn-typescript/pizza-app-typeerror-console-lesson.webp"
-  alt="Scrimba Learn TypeScript lesson Intro to Pizza app, paused at 9:15: index.js shows placeOrder and completeOrder functions and calls to addNewPizza with a cost property, while the console below prints TypeError: Assignment to constant variable three times"
+  alt="Learn TypeScript, Pizza app lesson: the console shows the same runtime error printed three times in a row."
   width={1400}
   height={630}
   caption="9:15 of Intro to Pizza app: the JavaScript version runs and crashes with the TypeError that TypeScript will flag before you run anything. Note cost on line 30 where the menu uses price."
@@ -107,7 +94,7 @@ Then comes the ten minute "Intro to Pizza app," the longest scrim in the course.
 
 <Screenshot
   src="/img/scrimba/learn-typescript/move-code-to-ts-red-squiggles-lesson.webp"
-  alt="Scrimba Learn TypeScript lesson Move code to TS, paused at 0:47: index.ts contains the pizza restaurant code pasted from index.js, with red underlines under orderQueue, pizzaObj, pizzaName, cashInRegister, selectedPizza, nextOrderId and orderId, and red error markers in the scrollbar"
+  alt="Learn TypeScript, Move code to TS lesson: the same file now shows several variables underlined in red."
   width={1400}
   height={630}
   caption="0:47 of Move code to TS: the same code, now in a .ts file, with seven red underlines and no code changed yet. Bob: 'Nothing about using TypeScript here is introducing new bugs, it's just showing me where the bugs already existed.'"
@@ -121,6 +108,15 @@ The last third covers function return types, `void`, a short tangent on `any` ("
 
 ### 2. TypeScript in React (52 min, 21 scrims): typing Assembly: Endgame
 
+<Screenshot
+  src="/img/scrimba/learn-typescript/chapter-2-typescript-in-react-title-card.webp"
+  alt="Title card for section 2 of Scrimba's Learn TypeScript course: TypeScript and React, with the TS and React logos and Teacher: Rachel Johnson"
+  width={1377}
+  height={775}
+  caption="A finished React game gets typed state, props and components one at a time, ending in a solo challenge on the Keyboard component."
+  source=""
+/>
+
 Rachel Johnson opens by explaining the plan: take the finished Assembly: Endgame hangman game from Learn React and "rework this project with TypeScript." She is explicit that "we're not gonna be spending a lot of time tweaking or extending the game itself." The setup scrim runs `npm create vite@latest` with the React and TypeScript template rather than adding TypeScript to the old project, because "there's a lot of config involved to get everything working smoothly." The new project's package.json lists React 19.1, TypeScript 5.8, and Vite 6; the original game it copies from ran React 18.3.
 
 Three refresher scrims re-type the data files (`words.ts` as `string[]`, `languages.ts` with a custom `Language` type) and the utility functions. Then the React-specific part starts with `useState`. Rachel shows that state infers its type from the initial value, so `useState([])` becomes `any[]`, and the fix is the generic argument: `useState<string[]>([])`. Components get a return type of `JSX.Element`, imported as a type from React; she mentions `React.FC` and explains why she avoids it (it "does include children in props by default even if it's not used").
@@ -129,13 +125,22 @@ The rest is one component per scrim: `JSX.Element | null` for the confetti conta
 
 <Screenshot
   src="/img/scrimba/learn-typescript/keyboard-final-challenge-brief-lesson.webp"
-  alt="Scrimba Learn TypeScript lesson The Final Challenge, paused at 0:30: Keyboard.tsx opens with a comment block reading FINAL CHALLENGE, fully type the Keyboard component, with three numbered steps, and the destructured props alphabet, guessedLetters, currentWord, isGameOver and addGuessedLetter are underlined in red; the file tree shows the components folder and tsconfig files"
+  alt="Learn TypeScript, Final Challenge lesson: a comment brief sits above five untyped props underlined in red."
   width={1400}
   height={630}
   caption="0:30 of The Final Challenge: the brief lives in a comment at the top of Keyboard.tsx and the five untyped props are underlined. The solution needs a KeyboardProps type with addGuessedLetter typed as (letter: string) => void."
 />
 
 ### 3. TypeScript in Express (73 min, 24 scrims): a typed pet shelter API
+
+<Screenshot
+  src="/img/scrimba/learn-typescript/chapter-3-typescript-in-express-title-card.webp"
+  alt="Title card for section 3 of Scrimba's Learn TypeScript course: Express and TypeScript, with the Express and TS logos and Teacher: Rachel Johnson"
+  width={1377}
+  height={775}
+  caption="A read-only pet shelter API types req and res, then the Request and Response generics for path params, query strings and middleware."
+  source="Section title cards from scrimba.com."
+/>
 
 Rachel's Express intro states the project and the prerequisite in one breath: "you'll build a simple read only but fully typed pet shelter API," and "this course does assume you already know the basics of Express and TypeScript." The setup scrim installs Express, `typescript` and `@types/express` as dev dependencies, and extends `@tsconfig/node20` because "the Scrimba editor uses version twenty at the moment." The very next scrim makes you repeat the setup from a `challenge.md` file with no walkthrough until the solution.
 
@@ -145,7 +150,7 @@ The typing progression is the useful part. `req` and `res` start as `any`; you i
 
 <Screenshot
   src="/img/scrimba/learn-typescript/string-query-params-ts2339-error-lesson.webp"
-  alt="Scrimba Learn TypeScript lesson String query params, paused at 2:46: the Runner panel shows npm run start failing with error TS2339, Property toLowerCase does not exist on type string | ParsedQs | (string | ParsedQs)[], pointing at pet.species.toLowerCase() === species.toLowerCase() on line 34 of src/index.ts, while the Network panel on the right shows a GET to localhost:8000/?species=cat returning a JSON list of pets"
+  alt="Learn TypeScript, String query params lesson: the terminal shows a type error next to a successful API request in the network panel."
   width={1400}
   height={630}
   caption="2:46 of String query params: the filter is correct JavaScript, but Express types req.query values as string | ParsedQs | arrays, so the build fails with TS2339. The next scrim fixes it with the Request generic's fourth slot."
@@ -233,4 +238,5 @@ Where it is limited: it is an introduction and says so, with no interfaces, clas
     { name: 'TypeScript in React', duration: '52 min', lessons: 21 },
     { name: 'TypeScript in Express', duration: '73 min', lessons: 24 },
   ]}
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-typescript/chapter-1-typescript-fundamentals-title-card.webp"
 />

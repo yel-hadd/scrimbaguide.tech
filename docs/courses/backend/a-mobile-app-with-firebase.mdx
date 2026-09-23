@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Firebase Mobile App"
 description: "Rafid Hoda's two-hour Firebase project course reviewed from inside: 38 scrims, a realtime shopping list you install on your phone, and what Pro gates."
 keywords: [scrimba firebase course, build a mobile app with firebase review, rafid hoda firebase, firebase realtime database course, firebase project course, pwa course scrimba]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Build a Mobile App with Firebase
 
+<DisclosureNotice />
+
 Rafid Hoda's Build a Mobile App with Firebase is a two-hour Pro project course. You build a shopping list app in plain HTML, CSS and JavaScript, store its items in a Firebase Realtime Database, and finish by installing it on your phone's home screen. It's a tight, well-sequenced two hours if you already write basic JavaScript.
 
-*Reviewed inside the course with a Pro account, September 2026: all 38 scrims and transcripts.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="all 38 scrims and transcripts" />
 
 ## Quick answer
 
@@ -37,17 +42,6 @@ Build a Mobile App with Firebase suits anyone who has finished a beginner JavaSc
   href="https://scrimba.com/build-a-mobile-app-with-firebase-c0g"
   description="A guided build of a realtime shopping list with vanilla JavaScript and the Firebase Realtime Database, finished as a progressive web app on your phone."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/build-a-mobile-app-with-firebase/course-intro-title-card.webp"
-    alt="Title slide of Scrimba's Build a Mobile App with Firebase course, reading Mobile App with Firebase, with Rafid Hoda, next to an illustrated instructor"
-    width={1279}
-    height={720}
-    caption="The only title card in the course: it has no chapters, so this is the opening slide of scrim 1."
-    source="Title card from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -80,6 +74,15 @@ I counted 38 scrims on the course page in September 2026, adding up to 2 hours 3
 
 ### 1. Getting set up (12 min, 3 scrims)
 
+<Screenshot
+  src="/img/scrimba/build-a-mobile-app-with-firebase/course-intro-title-card.webp"
+  alt="Title slide of Scrimba's Build a Mobile App with Firebase course, reading Mobile App with Firebase, with Rafid Hoda, next to an illustrated instructor"
+  width={1279}
+  height={720}
+  caption="This module sets expectations, then has you log an input's value and copy a finished CSS design for the Add to Cart shell."
+  source="Title card from scrimba.com."
+/>
+
 The intro scrim is the pitch: you are cooking, you are out of an ingredient, you cannot remember what else you needed. The app is called Add to Cart. Rafid is upfront in the first two minutes that "what we'll be building is not technically a native mobile app. It's a web app that's disguised as a mobile app," and he tells you to go do the free HTML and CSS and JavaScript courses first if you cannot build a form on your own.
 
 Scrim 2 hands you an input and a button and asks you to log the input's value on click, which is the level the course starts at. Scrim 3 is a CSS challenge with a finished design to copy: a 320px column, a cat image, a rounded input and a red button. Both of these scrims are free previews.
@@ -98,7 +101,7 @@ Scrim 10 is the second ten-minute aside, on `onValue`. It uses a separate book-l
 
 <Screenshot
   src="/img/scrimba/build-a-mobile-app-with-firebase/onvalue-aside-duplicate-render-bug-lesson.webp"
-  alt="Scrimba Build a Mobile App with Firebase, the onValue aside paused at 8:03: the editor shows onValue(booksInDB, function(snapshot)) with a for loop calling appendBookToBooksListEl, and the bestreads preview on the right lists Make Time, Animal Farm, Make Timed, Animal Farm, the list duplicated after a database edit"
+  alt="Build a Mobile App with Firebase, onValue aside: the book list preview shows duplicated entries after a database edit."
   width={1400}
   height={660}
   caption="The onValue aside at 8:03. Rafid edits a book title in the Firebase console and the preview shows four books instead of two, because the loop appends without clearing first. Fixing it is the scrim's last challenge."
@@ -114,7 +117,7 @@ Two one-minute flexbox asides (`flex-wrap` on a row of video thumbnails, `gap` o
 
 <Screenshot
   src="/img/scrimba/build-a-mobile-app-with-firebase/add-to-cart-app-css-finished-lesson.webp"
-  alt="Scrimba Build a Mobile App with Firebase, the CSS-for-list-items scrim paused at 3:47: the editor shows the ul and ul li rules with flex-wrap, gap, border-radius and flex-grow, and the preview shows the Add to Cart app with a cat illustration, an input, a red Add to cart button and wrapped item chips reading Oranges, Chocolate, Red bull, Bread, Coffee, Solo, Salad"
+  alt="Build a Mobile App with Firebase, CSS for list items lesson: the finished Add to Cart app preview with wrapped item chips."
   width={1400}
   height={660}
   caption="Scrim 16 at 3:47, after the list CSS challenge. This is the finished look of the app; everything after this point is behaviour and packaging, not design."
@@ -128,7 +131,7 @@ Scrim 19 is another aside project, a fake news list called The Scrimba Times, wh
 
 <Screenshot
   src="/img/scrimba/build-a-mobile-app-with-firebase/snapshot-exists-null-error-lesson.webp"
-  alt="Scrimba Build a Mobile App with Firebase, scrim 21 paused at 0:53: the editor shows the index.js imports from firebasejs 9.15.0 and the push and onValue code, the preview shows the app with one item, Red bull, and the console panel shows a Firebase warning and the error TypeError: Cannot convert undefined or null to object"
+  alt="Build a Mobile App with Firebase, lesson 21: the console shows a TypeError after an item is deleted from the list."
   width={1400}
   height={660}
   caption="Scrim 21 at 0:53. Rafid deletes the last item and the console fills with a Firebase warning ending in TypeError: Cannot convert undefined or null to object. You are asked to pause and explain it before he does."
@@ -150,7 +153,7 @@ Scrim 36 is Per Borgen's two-minute pitch for the Scrimbassador referral program
 
 <Screenshot
   src="/img/scrimba/build-a-mobile-app-with-firebase/solo-project-we-are-the-champions-requirements.webp"
-  alt="Requirements slide from the We are the Champions solo project in Scrimba's Build a Mobile App with Firebase course, listing Build it from scratch, Follow the design, Firebase Realtime Database, Update in realtime, next to a phone mockup of the endorsements app with a Publish button and three endorsement cards"
+  alt="Build a Mobile App with Firebase, We Are the Champions project brief: a requirements list beside a phone mockup of the app."
   width={1279}
   height={720}
   caption="The solo project brief at 2:16 of scrim 37. Four core requirements, a Figma design, and the starter contains only an h1: you write everything else."
@@ -239,4 +242,7 @@ Where it is limited: it is one project and six functions, security rules get two
     { name: 'Deploy, install, share', duration: '11 min' },
     { name: 'Solo project and wrap-up', duration: '7 min' },
   ]}
+  instructor="Rafid Hoda"
+  instructorUrl="https://scrimba.com/@rafidhoda"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/build-a-mobile-app-with-firebase/course-intro-title-card.webp"
 />

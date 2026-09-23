@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Code with AI"
 description: "Guil Hernandez's free Learn to Code with AI course from inside: 4.5 hours, 42 scrims read, 23 ChatGPT-driven challenges, 15 mini projects, and what has aged."
 keywords: [scrimba learn to code with ai, learn to code with ai scrimba review, free ai course scrimba, build projects with chatgpt, guil hernandez ai course, chatgpt coding course for beginners]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn to Code with AI
 
+<DisclosureNotice />
+
 Guil Hernandez's free Learn to Code with AI runs about 4.5 hours across three modules. You paste ChatGPT prompts into the Scrimba editor, edit the code it returns, and ship about 15 small projects, from a drum kit to a Firebase-backed expense splitter. It works well for a first project this weekend; it will not teach you to program.
 
-*Reviewed inside the course with a Pro account, September 2026: all 42 scrims opened, 40 transcripts read.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="all 42 scrims opened, 40 transcripts read" />
 
 *This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
 
@@ -39,33 +44,6 @@ It fits someone with an idea, no coding background, and a ChatGPT account open i
   href="https://scrimba.com/learn-to-code-with-ai-c02m"
   description="Build and deploy 15 small web projects by prompting ChatGPT for HTML, CSS, and JavaScript, then wiring four of them to a Firebase database."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-to-code-with-ai/chapter-1-learn-to-code-with-ai-title-card.webp"
-    alt="Title card for module 1 of Scrimba's Learn to Code with AI course: the words Learn to code with AI beside an illustrated figure in a polka-dot sweater"
-    width={1279}
-    height={720}
-    caption="Module 1: first projects with ChatGPT, from a login button to a drum kit."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-to-code-with-ai/chapter-2-next-level-projects-title-card.webp"
-    alt="Title card for module 2 of Scrimba's Learn to Code with AI course: Next-level Projects with AI"
-    width={1279}
-    height={720}
-    caption="Module 2: FaceBomp, a personal homepage, a smart home app, and a Chrome extension."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-to-code-with-ai/chapter-3-build-projects-with-firebase-title-card.webp"
-    alt="Title card for module 3 of Scrimba's Learn to Code with AI course: Build Projects with Firebase"
-    width={1279}
-    height={720}
-    caption="Module 3: four apps that save data to a Firebase Realtime Database."
-    source="Module title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -91,6 +69,15 @@ Lesson counts are the scrims I counted in each expanded module in September 2026
 
 ### 1. Build and deploy your first projects with ChatGPT (116 min, 16 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-to-code-with-ai/chapter-1-learn-to-code-with-ai-title-card.webp"
+  alt="Title card for module 1 of Scrimba's Learn to Code with AI course: the words Learn to code with AI beside an illustrated figure in a polka-dot sweater"
+  width={1279}
+  height={720}
+  caption="A login button, a hero section, a signup form, and a drum kit teach the paste-run-edit loop, ending in a Netlify deploy."
+  source=""
+/>
+
 Three short scrims set the scene: a course welcome (the free preview), a two minute case for ChatGPT as "a stellar problem solver," and a sign-up walkthrough for OpenAI. Then "What you need to know about HTML and CSS" explains the two with a car analogy (HTML is the frame, CSS is the paint job) and shows the workflow you will repeat all course: copy a prompt from `prompts.md`, paste it into ChatGPT, paste the code back, click run.
 
 The projects start small and grow. "Build a login button" makes a Login with Twitter button, then challenges you to turn it into a GitHub button by editing one line of HTML and two of CSS. "Website hero section" builds a landing page for a fictional Hover Chair with a Google Font and a product image. "Subscription signup form" builds a BarkerBox dog-toy signup with three challenges: add a name field, add an image, then style it round with a border. Along the way Guil points out Flexbox and explains `alt` text properly.
@@ -101,7 +88,7 @@ The projects start small and grow. "Build a login button" makes a Login with Twi
 
 <Screenshot
   src="/img/scrimba/learn-to-code-with-ai/debug-with-chatgpt-assignment-vs-equality-lesson.webp"
-  alt="Scrimba Learn to Code with AI lesson Debug, get feedback, and improve your code, paused at 6:31: a slide shows ChatGPT explaining that applyDiscount uses the assignment operator = instead of === to compare userCode with HALF, with corrected JavaScript below, over the prompts.md file in the editor and a small ReelRewards preview pane"
+  alt="Learn to Code with AI, Debug lesson: a slide shows ChatGPT explaining a bug, above the code editor and a small preview pane."
   width={1400}
   height={605}
   caption="The debugging challenge answer at 6:31. ChatGPT spots that if (userCode = 'HALF') assigns instead of compares. Note the ChatGPT interface on the slide: it is the May 2023 version, which is how old the recordings are."
@@ -111,11 +98,20 @@ The module ends with a "Drum kit app" (four challenges: name it, add a ride soun
 
 ### 2. Next-level projects with AI (107 min, 14 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-to-code-with-ai/chapter-2-next-level-projects-title-card.webp"
+  alt="Title card for module 2 of Scrimba's Learn to Code with AI course: Next-level Projects with AI"
+  width={1279}
+  height={720}
+  caption="FaceBomp, a personal homepage, a smart home interface, and a Chrome extension move from one big prompt to many small ones."
+  source=""
+/>
+
 The intro promises that "with AI at your side, you can quickly get off the ground with plain conversational English, and then gradually become more technical." The projects back that up. FaceBomp, a whack-a-mole game with your own photo as the mole, takes two scrims and 26 minutes. ChatGPT generates the grid, the timer, and the scoring. Your challenges are to shrink and hide the images with CSS `transform: scale(0)`, change the button text while a round is running, fix a doubled "Time left" label, and add a bump sound plus a different end sound for high scores.
 
 <Screenshot
   src="/img/scrimba/learn-to-code-with-ai/facebomp-whac-a-mole-game-running-lesson.webp"
-  alt="Scrimba Learn to Code with AI lesson Build a Whac-a-Mole style game called FaceBomp, paused at 12:05: the preview pane shows the FaceBomp game mid-round with Score 2, a timer reading Time left: Time left: 21 seconds seconds, and the instructor's photo popping out of one of six blue holes, while script.js on the left declares score, time, and a displayImage function"
+  alt="Learn to Code with AI, FaceBomp lesson: the whack-a-mole game runs in the preview pane next to the code editor."
   width={1400}
   height={617}
   caption="FaceBomp running at 12:05 of part 1. The doubled 'Time left' label is a real bug in ChatGPT's code; you fix it in part 2 by pointing the variable at the right element."
@@ -131,13 +127,22 @@ The last scrim in the module is a two minute ad for Scrimba's affiliate program 
 
 ### 3. Build projects with Firebase (50 min, 10 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-to-code-with-ai/chapter-3-build-projects-with-firebase-title-card.webp"
+  alt="Title card for module 3 of Scrimba's Learn to Code with AI course: Build Projects with Firebase"
+  width={1279}
+  height={720}
+  caption="Four apps, a reconnected GIF Gala, Kudos Delight, LunchVote, and RoadWallet, save and sync data through Firebase's Realtime Database."
+  source="Module title cards from scrimba.com."
+/>
+
 Firebase is Google's hosted database. This module uses its Realtime Database, which pushes changes to every open copy of your app the moment they happen. Two short explainers and a setup scrim get you a project (you need a Google account) and show Scrimba's Firebase template, which hides your database URL behind an environment variable so you are not publishing it.
 
 "Add Firebase to a project" reconnects the GIF Gala invite from module 1 so guests' messages are saved and listed live. Then come three apps, each built from starter code plus one or two prompts. Kudos Delight is a compliment generator that stores kudos and shows a random one; both of its parts are challenges you complete with ChatGPT. LunchVote is a poll where colleagues add lunch spots and vote; part 2 adds a delete button and debugs a missing `set` import. RoadWallet splits trip expenses.
 
 <Screenshot
   src="/img/scrimba/learn-to-code-with-ai/roadwallet-firebase-expense-history-lesson.webp"
-  alt="Scrimba Learn to Code with AI lesson RoadWallet app, paused at 8:19: index.js imports initializeApp and database functions from firebasejs 9.20.0 and reads databaseURL from process.env.ROAD_WALLET_DB, while the preview pane shows the RoadWallet form with an Accommodations expense of 600 and an Expense History listing Food $500 and Accommodations $600 with delete buttons"
+  alt="Learn to Code with AI, RoadWallet lesson: the preview pane shows an expense form and a saved expense history list."
   width={1400}
   height={617}
   caption="RoadWallet at 8:19, after ChatGPT rewrote the whole file to save expenses and travelers to Firebase. Note the pinned Firebase 9.20.0 import and the environment variable holding the database URL."
@@ -224,4 +229,7 @@ Where it is limited: the recordings are from 2023 and the ChatGPT screenshots ar
     { name: 'Next-level projects with AI', duration: '107 min' },
     { name: 'Build projects with Firebase', duration: '50 min' },
   ]}
+  instructor="Guil Hernandez"
+  instructorUrl="https://scrimba.com/@Guilh"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-to-code-with-ai/chapter-1-learn-to-code-with-ai-title-card.webp"
 />

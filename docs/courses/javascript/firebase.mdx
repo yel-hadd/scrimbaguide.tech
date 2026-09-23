@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn Firebase"
 description: "Rafid Hoda's Pro Firebase course reviewed from inside: 3.4 hours, 39 scrims, a mood journal with Google login, Firestore and security rules, and what it skips."
 keywords: [scrimba learn firebase, learn firebase scrimba review, firebase course scrimba, rafid hoda firebase, firestore course, firebase security rules course, backend as a service course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Firebase
 
+<DisclosureNotice />
+
 Rafid Hoda teaches Scrimba's Pro course on Firebase, Google's hosted backend, in about 3.4 hours. You build one app, a private mood journal called Moody, adding email and Google login, a Firestore database, and the security rules that keep entries private. It is the fastest catalog route from a static frontend to an app with logins and live data.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -87,7 +92,7 @@ That realtime scrim also contains the best bug in the course. The first live pos
 
 <Screenshot
   src="/img/scrimba/learn-firebase/onsnapshot-todate-null-error-lesson.webp"
-  alt="Scrimba's Fetching data in realtime with onSnapshot scrim paused at 5:24: index.js shows onAuthStateChanged calling fetchInRealtimeAndRenderPostsFromDB, and the console reads TypeError: Cannot read properties of null (reading 'toDate') above Document written with ID"
+  alt="Learn Firebase, onSnapshot lesson: a code editor beside a console showing a type error message."
   width={1400}
   height={684}
   caption="onSnapshot at 5:24. The post was written (the ID line proves it) and the listener fired before the server timestamp existed, so toDate is called on null. Rafid invites you to pause and work it out before he does."
@@ -97,7 +102,7 @@ That leads into security rules, which Rafid chose to teach inside this module "b
 
 <Screenshot
   src="/img/scrimba/learn-firebase/security-rules-missing-or-insufficient-permissions-lesson.webp"
-  alt="Scrimba's Only let authenticated users read and write scrim paused at 4:07: rules.txt holds a Firestore rule set with allow read, write: if false, and the console shows FirebaseError code permission-denied, Missing or insufficient permissions"
+  alt="Learn Firebase, Security Rules lesson: a rules file beside a console showing a permission denied error."
   width={1400}
   height={684}
   caption="The first security rules scrim at 4:07. With every rule set to false the app cannot even read its own posts, which is the point: you lock the door first, then let signed-in users back in."
@@ -181,4 +186,7 @@ Where it is limited: it teaches Firebase specifically, not backend concepts; the
     { name: 'Authentication', duration: '62 min' },
     { name: 'Cloud Firestore', duration: '2.4 hrs' },
   ]}
+  instructor="Rafid Hoda"
+  instructorUrl="https://scrimba.com/@rafidhoda"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-firebase/onsnapshot-todate-null-error-lesson.webp"
 />

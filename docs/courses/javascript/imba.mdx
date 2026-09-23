@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn Imba"
 description: "Nathan Manousos's free Learn Imba course reviewed from inside: 2.9 hours, 43 scrims, the Dopamine Box habit app you build, and who should skip it."
 keywords: [scrimba learn imba, learn imba scrimba review, imba course, imba language, compile to javascript, niche programming language, nathan manousos imba]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Imba
 
+<DisclosureNotice />
+
 Scrimba's free Learn Imba course teaches Imba, the compile-to-JavaScript language Scrimba itself runs on, across 2.9 hours and 43 scrims with Nathan Manousos. You build the Dopamine Box, a habit tracker with an icon picker, localStorage persistence and a celebration sound. It rewards a JavaScript developer curious about folding UI, styling and events into one syntax.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -85,7 +90,7 @@ The answer arrives over the following scrims. Conditionals use indentation inste
 
 <Screenshot
   src="/img/scrimba/learn-imba/conditionals-challenge-brief-lesson.webp"
-  alt="Scrimba's Conditionals scrim in Learn Imba paused at 5:50: index.imba declares num, done and isWeekend? variables and a challenge comment describing what to log on weekends and weekdays, with an empty preview pane"
+  alt="Learn Imba, Conditionals lesson: the code editor showing the challenge brief in comments above an empty preview."
   width={1400}
   height={684}
   caption="The Conditionals challenge at 5:50. Note the ? in isWeekend?, an Imba convention for booleans, and the # comments that carry the brief. The earlier code is commented out below the empty lines you fill."
@@ -125,7 +130,7 @@ The last stretch is refactoring plus polish. "Move Delete to Dopamine Box" is th
 
 <Screenshot
   src="/img/scrimba/learn-imba/reset-habits-imba-commit-finished-app-lesson.webp"
-  alt="Scrimba's Reset habits and use imba.commit() scrim paused at 2:02: index.imba shows toggleItem counting remaining habits, playing celebrateSound and calling resetAll inside a setTimeout, with the finished habit tracker in the preview showing Toggle, Reset All and Clear Data icons"
+  alt="Learn Imba, Reset habits lesson: the code editor beside the finished habit tracker app preview."
   width={1400}
   height={684}
   caption="The last coding scrim at 2:02. The setTimeout around resetAll() is the gotcha: it runs outside an event, so the UI does not repaint until imba.commit() is added on the empty line 57."
@@ -207,4 +212,7 @@ Where it is limited: the language has almost no job market, and Nathan says the 
   difficulty="Intermediate"
   access="Free"
   keywords={["Imba", "Frontend"]}
+  instructor="Nathan Manousos"
+  instructorUrl="https://scrimba.com/@trafnar"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-imba/course-learn-imba-title-card.webp"
 />

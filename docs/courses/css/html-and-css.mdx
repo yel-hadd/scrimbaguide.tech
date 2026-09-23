@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn HTML and CSS"
 description: "Per Borgen's free Learn HTML and CSS course reviewed from inside: 5.7 hours, 115 scrims, five sites you deploy, one free solo project, and the real time cost."
 keywords: [scrimba learn html and css, scrimba html css review, free html css course, per borgen html css, beginner web development course, interactive html css course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn HTML and CSS
 
+<DisclosureNotice />
+
 Learn HTML and CSS is Scrimba's free beginner course, taught by Per Borgen: about 5.7 hours of short scrims in which you build and deploy five websites, then build a sixth on your own from a skeleton. It is the strongest starting point on the site for someone who has never written a line of code.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,25 +42,6 @@ It fits absolute beginners: no prior HTML, CSS, or coding experience needed, and
   href="https://scrimba.com/learn-html-and-css-c0p"
   description="A free, project-based introduction to HTML and CSS built around five build-and-deploy websites and 75+ challenges."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-html-and-css/chapter-lets-learn-css-title-card.webp"
-    alt="Title card of the Let's learn CSS! chapter in Scrimba's Learn HTML and CSS course, with two illustrated students looking at a laptop"
-    width={1279}
-    height={720}
-    caption="Module 2 opens with CSS and the Google.com clone."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-html-and-css/space-exploration-site-preview.webp"
-    alt="The finished Space Exploration landing page from Scrimba's Learn HTML and CSS course shown in the Scrimba preview pane: a galaxy background image, a Join the exploration heading with an underlined word, an Apply button and a Terms and conditions section"
-    width={960}
-    height={594}
-    caption="Module 4's finished space site, as shown in the first scrim of that module."
-    source="Images from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -90,11 +76,20 @@ HTML only, and faster than you would expect. Tags, a "Write a news article!" cha
 
 ### 2. Build a Google.com clone (82 min, 27 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-html-and-css/chapter-lets-learn-css-title-card.webp"
+  alt="Title card of the Let's learn CSS! chapter in Scrimba's Learn HTML and CSS course, with two illustrated students looking at a laptop"
+  width={1279}
+  height={720}
+  caption="CSS starts here: styling the Google clone leads into margins, divs, classes, and why flexbox exists."
+  source=""
+/>
+
 CSS starts here. The first challenge, "Write your first lines of CSS!", is a sample scrim you can try without an account. After the Wikipedia demolition, you link a stylesheet, set widths, learn inline vs block, and then margins, first "via flags," then to space out and center the Google elements. Divs ("Divs rule the world"), classes, padding, borders and border-radius, an aside challenge to style a Twitter button, and finally the reason flexbox exists: "Why we can't have two block-level buttons," followed by "Flexbox" and "Centering both buttons with flexbox."
 
 <Screenshot
   src="/img/scrimba/learn-html-and-css/google-clone-flexbox-centering-lesson.webp"
-  alt="Scrimba Learn HTML and CSS lesson Centering both buttons with flexbox, paused at 2:04: styles.css shows a .btn-wrapper rule with display: flex and justify-content: center, and the preview shows the Google clone with the Google Search and I'm Feeling Lucky buttons centered but touching each other"
+  alt="Learn HTML and CSS, flexbox centering lesson: a code editor and preview of the Google clone with two buttons centered but touching."
   width={1400}
   height={660}
   caption="The Google clone at 2:04 of the flexbox lesson: the buttons are centered with display: flex and justify-content: center, but 'totally crammed into each other,' as Per says, until he adds margin-left and margin-right a few seconds later."
@@ -108,6 +103,15 @@ A card with your photo, name, and links, and the module where the CSS gets more 
 
 ### 4. Build a Space Exploration Site (44 min, 15 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-html-and-css/space-exploration-site-preview.webp"
+  alt="Learn HTML and CSS, Space Exploration project: the preview pane shows the finished landing page over a galaxy background."
+  width={960}
+  height={594}
+  caption="A background image, Google Fonts, a color palette pulled from the photo, and text shadows for readability."
+  source="Images from scrimba.com."
+/>
+
 The shortest module and the most visual. A background image from Unsplash, centering and a styled button, Google Fonts and `@font-face`, an aside on spans, an underline via a span, an ID for the logo, replacing a JPG with a WebP, choosing a color palette from an image, a terms and conditions section, and text shadows for readability. The Pro solo project here is a web agency hero section.
 
 ### 5. Build a Birthday GIFt Site (99 min, 28 scrims)
@@ -120,7 +124,7 @@ Three scrims: "It's time to go solo!", the brief, and "Congrats on completing th
 
 <Screenshot
   src="/img/scrimba/learn-html-and-css/hometown-homepage-solo-project-finished.webp"
-  alt="The finished Hometown Homepage solo project from Scrimba's Learn HTML and CSS course: a Visit Torshov hero over a photo of Oslo apartment blocks, a Top three activities section with three image columns, and a Your guide card with a photo of Per Borgen"
+  alt="Learn HTML and CSS, solo project brief: the finished Hometown Homepage site with a hero photo and three activity columns."
   width={521}
   height={631}
   narrow
@@ -204,4 +208,7 @@ Where it is limited: it is a beginner course by design. Flexbox is taught only a
     { name: 'Build a Birthday GIFt Site', duration: '99 min' },
     { name: 'Solo Project: Hometown Homepage', duration: '8 min' },
   ]}
+  instructor="Per Borgen"
+  instructorUrl="https://scrimba.com/@perborgen"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-html-and-css/chapter-lets-learn-css-title-card.webp"
 />

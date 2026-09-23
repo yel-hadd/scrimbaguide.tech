@@ -98,7 +98,7 @@ That contract is the interesting part. It is about 67 KB of rules for the OPML s
 
 <Screenshot
   src="/img/blog/scrimba-explain-claude-code-pr-explainers/mcp-stream-flow.webp"
-  alt="Sequence diagram of Scrimba Explain over MCP: you prompt Claude Code, it reads the diff and files, calls start_explainer_stream on the Scrimba MCP server and gets a draft URL plus authoring rules, pushes slides and narration with append_explainer_chunk, calls finish_explainer_stream, and returns the link; opening it signed in claims the draft and Scrimba renders images and voice"
+  alt="Scrimba Explain, MCP flow diagram: an agent writes the lesson, Scrimba only renders it after you claim the link."
   width={1400}
   height={770}
   caption="The agent does the reading and writing. Scrimba's servers only render after you open and claim the link."
@@ -117,7 +117,7 @@ The result is at [scrimba.com/explain/guide049ig84ai](https://scrimba.com/explai
 
 <Screenshot
   src="/img/blog/scrimba-explain-claude-code-pr-explainers/agent-loop-diagram-slide.webp"
-  alt="A Scrimba Explain player in fullscreen showing the slide One turn of the agent loop: a sequence diagram with three columns, Agent loop, Claude API and Tool, and arrows labelled messages plus tools, content with tool_use block, execute(**input), result string, messages plus tool_result, content with text only, ending in a note no tool_use, return. The timeline reads 0:40 of 5:12 and the header has Redo this slide and Publish to community buttons"
+  alt="Scrimba Explain, fullscreen player on a diagram slide: a sequence chart of an agent calling a tool and getting a result back."
   width={1568}
   height={739}
   caption="The diagram slide at 0:40. Claude Code wrote it as Mermaid; Scrimba rendered it. The Publish to community button in the corner is the owner view of an unlisted explainer."

@@ -182,3 +182,86 @@ test('renderLlmsTxt lists course leaves in their own section and does not cap th
     assert.match(out, new RegExp(`https://scrimbaguide\\.tech/blog/post-${i}/`));
   }
 });
+
+test('htmlToLlmsMarkdown keeps FAQ questions, which render as <button>', () => {
+  const html = `<!doctype html><html><head><title>FAQ | Scrimba Guide</title></head>
+    <body><main><div class="markdown"><h1>FAQ Page</h1>
+      <div class="faq-accordion">
+        <h2 class="faq-accordion__title">Common questions</h2>
+        <div class="faq-accordion__item">
+          <button class="faq-accordion__question">Is Scrimba free?<span class="faq-accordion__icon" aria-hidden="true">+</span></button>
+          <div class="faq-accordion__answer"><p>There is a free tier with around 24 full courses.</p></div>
+        </div>
+      </div>
+    </div></main></body></html>`;
+
+  const { markdown } = htmlToLlmsMarkdown(html);
+
+  assert.match(markdown, /\*\*Q: Is Scrimba free\?\*\*/);
+  assert.match(markdown, /around 24 full courses/);
+  // The decorative +/- glyph is aria-hidden and must not ride along.
+  assert.doesNotMatch(markdown, /Is Scrimba free\?\+/);
+});
+
+test('htmlToLlmsMarkdown labels CourseCurriculum rows instead of running fields together', () => {
+  const html = `<!doctype html><html><head><title>Course | Scrimba Guide</title></head>
+    <body><main><div class="markdown"><h1>Course</h1>
+      <ol class="curriculum__list">
+        <li class="curriculum__item">
+          <span class="curriculum__index" aria-hidden="true">1</span>
+          <span class="curriculum__name">Getting started</span>
+          <span class="curriculum__duration">12 min</span>
+          <span class="curriculum__lessons">3 lessons</span>
+        </li>
+      </ol>
+    </div></main></body></html>`;
+
+  const { markdown } = htmlToLlmsMarkdown(html);
+
+  assert.match(markdown, /- Module 1: Getting started \(12 min, 3 lessons\)/);
+  assert.doesNotMatch(markdown, /started12 min/);
+});
+
+test('htmlToLlmsMarkdown emits tables as valid markdown with a header separator', () => {
+  const html = `<!doctype html><html><head><title>Compare | Scrimba Guide</title></head>
+    <body><main><div class="markdown"><h1>Compare</h1>
+      <table><thead><tr><th>Feature</th><th>Scrimba</th></tr></thead>
+      <tbody><tr><td>Free tier</td><td>Around 24 courses</td></tr></tbody></table>
+    </div></main></body></html>`;
+
+  const { markdown } = htmlToLlmsMarkdown(html);
+
+  assert.match(markdown, /\| Feature \| Scrimba \|/);
+  assert.match(markdown, /\| --- \| --- \|/);
+  assert.match(markdown, /\| Free tier \| Around 24 courses \|/);
+});
+
+test('htmlToLlmsMarkdown keeps screenshot alt text and separates caption from source', () => {
+  const html = `<!doctype html><html><head><title>Course | Scrimba Guide</title></head>
+    <body><main><div class="markdown"><h1>Course</h1>
+      <figure class="screenshot">
+        <img src="/img/scrimba/demo.webp" alt="The React editor mid-lesson" width="800" height="450">
+        <figcaption><span class="screenshot__caption">Module 4 at 2:15.</span><span class="screenshot__source">Screenshot of scrimba.com.</span></figcaption>
+      </figure>
+    </div></main></body></html>`;
+
+  const { markdown } = htmlToLlmsMarkdown(html);
+
+  assert.match(markdown, /!\[The React editor mid-lesson\]\(https:\/\/scrimbaguide\.tech\/img\/scrimba\/demo\.webp\)/);
+  assert.match(markdown, /\*Module 4 at 2:15\.\*/);
+  // Caption and source must not weld into "...2:15.Screenshot of scrimba.com."
+  assert.doesNotMatch(markdown, /2:15\.Screenshot/);
+});
+
+test('htmlToLlmsMarkdown drops screen-reader-only chrome from link text', () => {
+  const html = `<!doctype html><html><head><title>Demo | Scrimba Guide</title></head>
+    <body><main><div class="markdown"><h1>Demo</h1>
+      <p><a href="https://scrimba.com/?via=x">Try Scrimba free<span class="cta-link__external-icon" aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></a></p>
+    </div></main></body></html>`;
+
+  const { markdown } = htmlToLlmsMarkdown(html);
+
+  assert.match(markdown, /\[Try Scrimba free\]\(https:\/\/scrimba\.com\/\?via=x\)/);
+  assert.doesNotMatch(markdown, /opens in a new tab/);
+  assert.doesNotMatch(markdown, /↗/);
+});

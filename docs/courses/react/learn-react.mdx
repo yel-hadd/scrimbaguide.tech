@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn React"
 description: "Bob Ziroll's free Learn React course from inside: 15 hours, six projects including Chef Claude on the Claude API, what Pro gates, and the real time cost."
 keywords: [scrimba learn react, learn react scrimba review, bob ziroll react course, free react course, interactive react course, scrimba react course 2026]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn React
 
+<DisclosureNotice />
+
 Scrimba's free, hooks-first React course, taught by Bob Ziroll across about 15 hours and six projects, two of them full capstones. You need working JavaScript going in, but once you have it, this is the strongest free starting point for modern React and the anchor of Scrimba's React track.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 *This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. It is sequenced into the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
@@ -39,33 +44,6 @@ Learn React fits you if you already write JavaScript and want to build real UI w
   href="https://scrimba.com/learn-react-c0e"
   description="Modern, hooks-first React taught by editing the instructor's code in the browser, ending in two capstone projects."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-react/chapter-03-chef-claude-title-card.webp"
-    alt="Title card for section 3 of Scrimba's Learn React course: Chef Claude project, Interactive web apps in React"
-    width={1279}
-    height={720}
-    caption="Section 3: Chef Claude, where state, forms, and the AI call come in."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-react/chapter-05-tenzies-title-card.webp"
-    alt="Title card for section 5 of Scrimba's Learn React course: Capstone Project 1, Tenzies"
-    width={1279}
-    height={720}
-    caption="Section 5: the Tenzies dice game capstone."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-react/chapter-06-assembly-endgame-title-card.webp"
-    alt="Title card for section 6 of Scrimba's Learn React course: Capstone Project 2, Assembly: Endgame"
-    width={1279}
-    height={720}
-    caption="Section 6: Assembly: Endgame, the final capstone."
-    source="Section title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -102,13 +80,22 @@ Props, in five numbered lessons, followed by the quiz Bob could not resist titli
 
 ### 3. React State (5.2 hrs, 58 scrims): Chef Claude
 
+<Screenshot
+  src="/img/scrimba/learn-react/chapter-03-chef-claude-title-card.webp"
+  alt="Title card for section 3 of Scrimba's Learn React course: Chef Claude project, Interactive web apps in React"
+  width={1279}
+  height={720}
+  caption="Fifty-eight scrims build useState, forms, and conditional rendering, then wire the Chef Claude form to the Claude API."
+  source=""
+/>
+
 The longest section by far and the one that changes what you can build. It opens with the Chef Claude project overview: a form where the user adds ingredients, a rendered "Ingredients on hand" list, and a "Get a recipe" button that, in Bob's words, "will send the list of ingredients embedded in a prompt that we send to the Claude API from Anthropic."
 
 Before the AI call comes the core of React: event listeners, props vs state, `useState` and array destructuring, updating state with a callback, complex state with arrays and objects, then a nine lesson run on forms (basics, submission, form action, textarea, radio, checkbox, select, `Object.fromEntries`). Conditional rendering gets seven scrims including "Why does && work?". Then state moves between components (passing state as props, setting state from children) through a four part "Sound pads" challenge. The AI part arrives at the end: an "API Sign Ups" lesson, an AI code walkthrough of the pre-written helper, and the challenge to wire it up yourself. The helper offers two functions, `getRecipeFromChefClaude` and `getRecipeFromMistral` (via Hugging Face), so you can pick a provider.
 
 <Screenshot
   src="/img/scrimba/learn-react/chef-claude-recipe-from-claude-api.webp"
-  alt="Scrimba Learn React lesson Get recipe from the AI chef, paused at 6:59: Main.jsx shows an async getRecipe function awaiting getRecipeFromChefClaude(ingredients) and a form using action={addIngredient}, while the preview on the right shows Chef Claude rendering a raw markdown recipe for Creamy Chicken and Pasta Bake returned by the Claude API"
+  alt="Learn React, Chef Claude lesson: a code editor beside a preview showing an AI recipe rendered as raw markdown."
   width={1400}
   height={660}
   caption="The AI challenge solution at 6:59. The recipe on the right is the real response from the Claude API, still raw markdown ('we're going to format it in a really easy way using a third party package'). Note the form's action={addIngredient}, a React 19 feature, and the @anthropic-ai/sdk dependency in the sidebar."
@@ -122,11 +109,20 @@ A meme generator that fetches meme templates from an API. Controlled components 
 
 ### 5. Capstone 1: Tenzies (86 min, 19 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-react/chapter-05-tenzies-title-card.webp"
+  alt="Title card for section 5 of Scrimba's Learn React course: Capstone Project 1, Tenzies"
+  width={1279}
+  height={720}
+  caption="Nineteen scrims build the Tenzies dice game, from the Die component to lazy state and two accessibility passes."
+  source=""
+/>
+
 Bob's framing: "although we won't necessarily be learning much new content in these remaining two sections, they do represent the most important parts of this entire course. Do not under any circumstances skip these capstone projects." Tenzies is a dice game: roll ten dice, hold the ones you want, keep rolling until all ten match. You build a Die component, generate ten random dice, map them to components, hold dice in three parts, end the game in three parts, then add lazy state initialization, a "new game" button, and two accessibility passes (including moving focus to the button with a ref when the game is won). Confetti drops from `react-confetti` when you win.
 
 <Screenshot
   src="/img/scrimba/learn-react/tenzies-game-held-dice-lesson.webp"
-  alt="Scrimba Learn React Tenzies capstone intro, paused at 1:35: App.jsx shows useState, useRef and useEffect imports, a gameWon check using dice.every, and generateAllNewDice using nanoid, while the preview shows the Tenzies game with nine held green dice showing 4 and a Roll button"
+  alt="Learn React, Tenzies capstone lesson: a code editor beside a dice game preview with nine dice held on the same number."
   width={1400}
   height={660}
   caption="The finished Tenzies app at 1:35 of the capstone intro, mid-game with nine dice held on 4. The code on the left is the complete App.jsx you build over the next 18 scrims: useState with a lazy initializer, a derived gameWon value, and a useEffect that focuses the button when you win."
@@ -134,11 +130,20 @@ Bob's framing: "although we won't necessarily be learning much new content in th
 
 ### 6. Capstone 2: Assembly: Endgame (2.2 hrs, 28 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-react/chapter-06-assembly-endgame-title-card.webp"
+  alt="Title card for section 6 of Scrimba's Learn React course: Capstone Project 2, Assembly: Endgame"
+  width={1279}
+  height={720}
+  caption="Twenty-eight scrims build the Assembly: Endgame hangman game, from the keyboard to farewell messages and a reset."
+  source="Section title cards from scrimba.com."
+/>
+
 "Okay, let's be real. It's just a rebranded version of hangman," Bob says in the intro, and then makes it a good one: each wrong guess wipes a programming language off the board, with only Assembly surviving if you lose. Twenty-plus scrims walk through planning, a header, a status section, the languages list, the word display, an on-screen keyboard, tracking guessed letters, styling keys by guess, counting wrong guesses, "lost languages," an `isGameOver` flag, won/lost status, conditional rendering with a helper function, farewell messages per language, disabling the keyboard at game over, two accessibility passes, random word selection, and a new game reset. It uses `clsx` for class names and `react-confetti` again. The section ends with the second Solo Project (Pro), Quizzical, a trivia quiz app, then the course outro and a one minute "Turn your certificate into an asset."
 
 <Screenshot
   src="/img/scrimba/learn-react/assembly-endgame-hangman-lesson.webp"
-  alt="Scrimba Learn React Assembly: Endgame capstone intro, paused at 0:38: App.jsx shows the AssemblyEndgame component's JSX for the current word, keyboard section and a conditional New Game button, while the preview shows the game with HTML, CSS and JavaScript already eliminated, a partially guessed word, and a color-coded on-screen keyboard"
+  alt="Learn React, Assembly Endgame lesson: a code editor beside a hangman style game with a partly guessed word and keyboard."
   width={1400}
   height={660}
   caption="The finished Assembly: Endgame at 0:38 of the intro, three wrong guesses in: HTML, CSS, and JavaScript are already gone from the languages row. The JSX on the left is the end state of the component you build across the section."
@@ -219,4 +224,7 @@ Where it is limited: the Intermediate pacing is unforgiving if your JavaScript i
     { name: 'Capstone Project #1: Tenzies', duration: '86 min' },
     { name: 'Capstone Project #2: Assembly: Endgame', duration: '2.2 hrs' },
   ]}
+  instructor="Bob Ziroll"
+  instructorUrl="https://scrimba.com/@bobziroll"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-react/chapter-03-chef-claude-title-card.webp"
 />

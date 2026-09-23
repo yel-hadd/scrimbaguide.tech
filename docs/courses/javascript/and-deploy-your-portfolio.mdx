@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Deploy Your Portfolio"
 description: "Kevin Powell's free portfolio course from inside: 2.4 hours, 23 scrims, a BEM and custom-property build, a DigitalOcean deploy, and what has aged."
 keywords: [scrimba build portfolio, build and deploy your portfolio review, developer portfolio course, free portfolio website course, kevin powell portfolio, deploy portfolio scrimba, digitalocean droplet portfolio]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Build and Deploy Your Portfolio
 
+<DisclosureNotice />
+
 Kevin Powell's free course builds a one-page developer portfolio in HTML and CSS, then deploys it to a DigitalOcean server, in 2.4 hours across 23 scrims. You get a clean, responsive template with custom-property theming, not a lesson in HTML and CSS from scratch, and the deploy section is a dated 2020 recording of DigitalOcean's dashboard.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,17 +42,6 @@ It fits developers who already write HTML and CSS and want to see how an experie
   href="https://scrimba.com/build-and-deploy-your-portfolio-c012"
   description="Build a customizable one-page developer portfolio in HTML, CSS and a few lines of JavaScript, then deploy it to a DigitalOcean droplet."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/build-and-deploy-your-portfolio/intro-create-a-portfolio-website-title-card.webp"
-    alt="Opening slide of Scrimba's Build and Deploy Your Portfolio course, reading Scrimba + DigitalOcean present, Create a portfolio website, on a white and navy background"
-    width={1279}
-    height={720}
-    caption="The only title card in the course, from the Introduction scrim. DigitalOcean co-sponsors it, which explains the deploy target."
-    source="Title card from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -77,6 +71,15 @@ The course page and its structured data say 24 lessons; that figure includes the
 
 ### 1. Introduction and HTML structure (29 min, 5 scrims)
 
+<Screenshot
+  src="/img/scrimba/build-and-deploy-your-portfolio/intro-create-a-portfolio-website-title-card.webp"
+  alt="Opening slide of Scrimba's Build and Deploy Your Portfolio course: Scrimba plus DigitalOcean present Create a portfolio website."
+  width={1279}
+  height={720}
+  caption="The Introduction slide deck that sets expectations for the build and links the Adobe XD file with every color, font, and spacing value."
+  source="Title card from scrimba.com."
+/>
+
 The 5:32 Introduction is a slide deck. Kevin shows the finished design on desktop, laptop and phone mockups, explains that the course is sponsored by DigitalOcean, and sets expectations: "I am assuming you're already comfortable with both HTML and CSS." He links an Adobe XD file with every color, font and spacing value, and says the same link sits in the notes under every lesson.
 
 The next four scrims write all of the HTML. "Setting things up" is the boilerplate: doctype, viewport meta tag, normalize.css and a Font Awesome CDN link. "The header area" adds a logo, a `nav-toggle` button with an aria-label and an empty `hamburger` span, and introduces the BEM naming Kevin uses everywhere (`nav__list`, `nav__item`, `section__title--intro`). He is candid that "that might drive some people a little bit crazy having the double underscore there," then explains why the modifier classes will make the template easier to edit later. "Intro section" and "About me, Work and Footer" write the rest. Each section gets an ID that the nav links anchor to. The `services` block holds three `service` items, the `portfolio` holds ten linked images, and the footer has a mailto link and a list of social icons that stays as placeholder letters until Font Awesome comes in.
@@ -93,7 +96,7 @@ The next three scrims style the typography, the intro and the services. The intr
 
 <Screenshot
   src="/img/scrimba/build-and-deploy-your-portfolio/the-portfolio-auto-fit-grid-lesson.webp"
-  alt="Scrimba Build and Deploy Your Portfolio lesson The portfolio, paused with the preview open over the blurred editor: a dark My work section with the subtitle A selection of my range of work and a three-column grid of laptop photos"
+  alt="Build and Deploy Your Portfolio, The portfolio lesson: a browser preview of a dark work section with a grid of project photos."
   width={1400}
   height={660}
   caption="The portfolio lesson at 3:22, right after Kevin types the auto-fit grid rule. He drags the preview narrower and the ten images drop to two columns, then one, with no media query."
@@ -109,7 +112,7 @@ Kevin left the navigation for last because "it is often one of the ones that act
 
 <Screenshot
   src="/img/scrimba/build-and-deploy-your-portfolio/adding-the-js-mobile-nav-open-lesson.webp"
-  alt="Scrimba Build and Deploy Your Portfolio lesson Adding the JS, paused with the preview showing the full-screen dark navigation panel open, four white links Home, My Services, About me and My Work, and the hamburger turned into a green X in the top right"
+  alt="Build and Deploy Your Portfolio, Adding the JS lesson: a browser preview with the mobile navigation menu open full screen."
   width={1400}
   height={660}
   caption="Adding the JS at 5:05: the nav-open class is on the body, the panel has slid in from the right, and the three hamburger bars have become an X. This is the whole interactive part of the site."
@@ -121,7 +124,7 @@ Kevin left the navigation for last because "it is often one of the ones that act
 
 <Screenshot
   src="/img/scrimba/build-and-deploy-your-portfolio/customizing-your-page-red-accent-lesson.webp"
-  alt="Scrimba Build and Deploy Your Portfolio lesson Customizing your page, paused with the preview open: the intro section now uses a serif font and a red accent bar reading front-end dev next to the Jane Smith photo, and the What I do heading below is red"
+  alt="Build and Deploy Your Portfolio, Customizing your page lesson: a browser preview of the portfolio site now in a red accent color."
   width={1400}
   height={660}
   caption="Customizing your page at 1:04. Two custom properties changed (fonts and accent color) and the entire site follows. This is the moment that shows why the setup lesson spent ten minutes on variables."
@@ -229,4 +232,7 @@ Where it is limited:
     { name: 'Navigation, JavaScript and the project page', duration: '31 min' },
     { name: 'Deploying to DigitalOcean and wrap-up', duration: '18 min' },
   ]}
+  instructor="Kevin Powell"
+  instructorUrl="https://scrimba.com/@kevin-powell"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/build-and-deploy-your-portfolio/intro-create-a-portfolio-website-title-card.webp"
 />

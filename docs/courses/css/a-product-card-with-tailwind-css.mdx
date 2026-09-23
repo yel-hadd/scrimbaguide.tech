@@ -5,8 +5,9 @@ sidebar_label: "Product Card with Tailwind"
 toc_max_heading_level: 2
 description: "Rachel Johnson's 75 minute Tailwind project reviewed from inside: all 23 scrims, the config object, custom fonts, a responsive card, and what Pro gates."
 keywords: [scrimba tailwind product card, build a product card tailwind review, tailwind css project, rachel johnson tailwind, scrimba tailwind tutorial, tailwind config object]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Build a Product Card with Tailwind CSS
 
+<DisclosureNotice />
+
 Rachel Johnson's 75 minute Scrimba project has you take a client's two mockups, one desktop and one mobile, and build a responsive product card for a single orange using only Tailwind utility classes. Across 23 scrims it teaches what beginner courses skip: the config object, custom fonts, gradients, grid, arbitrary values. Worth an evening once you know Tailwind basics.
 
-*Reviewed inside the course with a Pro account, September 2026: all 23 scrims plus the three housekeeping clips at the end.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="all 23 scrims plus the three housekeeping clips at the end" />
 
 ## Quick answer
 
@@ -41,7 +46,7 @@ This is an intermediate, Pro-only project, not a Tailwind course: it assumes you
 <div className="screenshot-grid">
   <Screenshot
     src="/img/scrimba/build-a-product-card-with-tailwind-css/course-title-card.webp"
-    alt="Title card of Scrimba's Build a Product Card with Tailwind CSS course: the words Build a Product Card, With TailwindCSS, and Teacher: Rachel Johnson over a grainy blue and yellow gradient"
+    alt="Title card of Scrimba's Build a Product Card with Tailwind CSS course, with teacher Rachel Johnson on a blue and yellow gradient."
     width={1279}
     height={720}
     caption="The only title card in the course. It has no chapters, just 23 scrims in a row."
@@ -89,7 +94,7 @@ Then you do it yourself. The Adding custom colours scrim gives you three tasks i
 
 <Screenshot
   src="/img/scrimba/build-a-product-card-with-tailwind-css/adding-custom-colours-challenge-brief-lesson.webp"
-  alt="Scrimba Build a Product Card with Tailwind CSS, the Adding custom colours scrim paused at 0:43: the editor shows a TASKS comment with three numbered steps above the unstyled index.html, the preview on the right shows the raw orange photo and plain text, and a small slide with the three hex codes sits bottom left"
+  alt="Build a Product Card with Tailwind CSS, Adding custom colours challenge: code editor with a task list beside an unstyled preview."
   width={1400}
   height={660}
   caption="The Adding custom colours challenge at 0:43. The brief is the three numbered comments at the top of the file, the hex codes are on the slide thumbnail bottom left, and the preview is still completely unstyled. This is the state you work from before pressing play."
@@ -107,7 +112,7 @@ The gradient aside teaches the three-class recipe (`bg-gradient-to-b`, `from-`, 
 
 <Screenshot
   src="/img/scrimba/build-a-product-card-with-tailwind-css/styling-the-buttons-gradient-lesson.webp"
-  alt="Scrimba Build a Product Card with Tailwind CSS, the Styling the buttons scrim paused at 5:30: the editor shows a button with the classes bg-gradient-to-b from-light_orange to-orange text-white uppercase pt-2 pb-1 px-4 flex-grow hover:bg-gradient-to-t, and the preview shows the white card with the orange Add to Cart button and an orange heart beside it"
+  alt="Build a Product Card with Tailwind CSS, Styling the buttons lesson: code editor beside a preview of the orange gradient Add to Cart button."
   width={1400}
   height={660}
   caption="Styling the buttons at 5:30, just after the flex row gets its vertical margin. Read the button's class list in the editor: that one line is the whole lesson. The features list under it is still unstyled, which is the next task."
@@ -121,7 +126,7 @@ The grid aside is short and shows why people like Tailwind: `grid grid-cols-3 gr
 
 <Screenshot
   src="/img/scrimba/build-a-product-card-with-tailwind-css/mobile-and-desktop-views-grid-lesson.webp"
-  alt="Scrimba Build a Product Card with Tailwind CSS, the Mobile and desktop views scrim paused at 4:18: the main element in the editor carries md:grid md:grid-cols-2 md:max-w-3xl md:gap-4 md:p-5, and the widened preview shows the card in two columns with the orange photo on the left and the title, price, button and features list on the right"
+  alt="Build a Product Card with Tailwind CSS, Mobile and desktop views lesson: code editor beside a two-column preview of the product card."
   width={1400}
   height={660}
   caption="Mobile and desktop views at 4:18, after the save. The five md: classes on the main element are what turned the stacked card into this two-column layout. Drag the preview narrower and it stacks again."
@@ -137,7 +142,7 @@ The arbitrary values aside is the last new idea and a good one to leave on. "Tai
 
 <Screenshot
   src="/img/scrimba/build-a-product-card-with-tailwind-css/adding-the-dropshadow-finished-card-lesson.webp"
-  alt="Scrimba Build a Product Card with Tailwind CSS, the Adding the dropshadow scrim paused at 1:11: the finished product card in the preview shows the orange photo, the Playfair Display title A Single Orange, the price, an orange gradient Add to Cart button, a features list with orange bullets, a faint background pattern and a solid orange offset shadow, while the editor shows the main element's full class list including shadow-[5px_5px_0_orange]"
+  alt="Build a Product Card with Tailwind CSS, Adding the dropshadow lesson: code editor beside the finished product card with its orange shadow."
   width={1400}
   height={660}
   caption="The finished card at 1:11 of the last task. Compare it with the unstyled preview in the first screenshot: everything in between is utility classes and one small config file."
@@ -217,4 +222,7 @@ Where it is limited: it is 75 minutes long and one component wide; there is no A
   difficulty="Intermediate"
   access="Pro"
   keywords={["Tailwind", "CSS", "Frontend"]}
+  instructor="Rachel Johnson"
+  instructorUrl="https://scrimba.com/@rachelktyjohnson"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/build-a-product-card-with-tailwind-css/course-title-card.webp"
 />

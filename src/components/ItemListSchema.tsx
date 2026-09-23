@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from '@docusaurus/router';
-import { plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
+import { isBlogListPath, plainText, schemaScriptId, toAbsoluteUrl, toCanonicalPath } from './schemaUtils';
 
 export interface ListItem {
   name: string;
@@ -29,6 +29,13 @@ export default function ItemListSchema({
   const { pathname } = useLocation();
   const canonicalPath = toCanonicalPath(pathname);
   const pageUrl = toAbsoluteUrl(canonicalPath);
+
+  /* Roundup posts mount this below their truncate marker, but guard anyway:
+     above it, the blog list pages would carry one ItemList per excerpt shown. */
+  if (isBlogListPath(canonicalPath)) {
+    return <></>;
+  }
+
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',

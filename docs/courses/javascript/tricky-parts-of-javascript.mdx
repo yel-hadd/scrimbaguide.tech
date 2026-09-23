@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Tricky Parts of JavaScript"
 description: "Zack Wilson's hour-long Pro course reviewed from inside: 18 scrims on scope, hoisting, IIFEs and promises, which six are free, and who should skip it."
 keywords: [scrimba tricky parts of javascript, tricky parts of javascript review, javascript hoisting course, javascript scope course, javascript promises course, portexe javascript, scrimba javascript review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # The Tricky Parts of JavaScript
 
+<DisclosureNotice />
+
 The Tricky Parts of JavaScript is a one-hour Pro course from Zack Wilson (PortEXE) covering how scope and hoisting behave, the three ways to write a function, and promises through async/await. It skips closures, `this`, and coercion despite the title, but earns an hour of your time if you already write JavaScript and still get surprised by it.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,17 +42,6 @@ The Tricky Parts of JavaScript is an intermediate, Pro-tier course: 58 minutes a
   href="https://scrimba.com/the-tricky-parts-of-javascript-c0i"
   description="An hour on scope, hoisting, function styles and promises, taught by reading and running small examples, with four pause-and-predict challenges."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/the-tricky-parts-of-javascript/course-intro-title-card.webp"
-    alt="Title slide of Scrimba's The Tricky Parts of JavaScript course, white text on a peach background with two lilac blobs"
-    width={1279}
-    height={720}
-    caption="The only title card in the course: the intro slide. The other 17 scrims open straight into the editor."
-    source="Title card from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -75,6 +69,15 @@ I counted 18 video scrims totalling 58 minutes 11 seconds, plus a certificate it
 
 ### 1. Scope and hoisting (17 min, 6 scrims)
 
+<Screenshot
+  src="/img/scrimba/the-tricky-parts-of-javascript/course-intro-title-card.webp"
+  alt="Title slide of Scrimba's The Tricky Parts of JavaScript course, white text on a peach background with two lilac blobs"
+  width={1279}
+  height={720}
+  caption="Six scrims on var, let, const and hoisting, ending in a challenge that mixes every rule from the block."
+  source="Title card from scrimba.com."
+/>
+
 The intro is 78 seconds of Zack introducing himself (a YouTube channel, a website) and setting expectations: JavaScript specifically, not "object oriented programming, functional programming, web APIs." What Is Scope? defines scope as "the area in which a variable is visible". It then runs three examples in under two minutes: a `var` inside a function that throws a `ReferenceError` outside it, a `let` read before its line (also a `ReferenceError`), and the same code with `var` (prints `undefined`). That last contrast is the hook for the whole block.
 
 Hoisting is the best scrim in the course. The rule comes first, "variable declarations are figuratively hoisted to the top of its scope," and then he proves that `let` is hoisted too, which most explanations skip. He writes `let char = 'a'`, an `if (true)` block that logs `char`, and a second `let char = 'b'` inside the block after the log. It throws.
@@ -83,7 +86,7 @@ As Zack puts it in lesson 3, "This is how we know that let is being hoisted here
 
 <Screenshot
   src="/img/scrimba/the-tricky-parts-of-javascript/hoisting-temporal-dead-zone-lesson.webp"
-  alt="Scrimba The Tricky Parts of JavaScript, Hoisting lesson paused: the editor shows let char = 'a', an if (true) block that logs char and then declares let char = 'b', and the console reads ReferenceError: Cannot access 'char' before initialization"
+  alt="The Tricky Parts of JavaScript, Hoisting lesson: the console shows a ReferenceError instead of the expected value."
   width={1400}
   height={660}
   caption="Hoisting at 1:35. The inner let is declared after the console.log, yet the log throws instead of printing the outer 'a'. That error is the proof that let declarations are hoisted; Zack names it the temporal dead zone a few seconds later."
@@ -95,7 +98,7 @@ The Scope Challenge is the payoff. Zack pastes 32 lines with six `console.log` c
 
 <Screenshot
   src="/img/scrimba/the-tricky-parts-of-javascript/scope-challenge-results-lesson.webp"
-  alt="Scrimba The Tricky Parts of JavaScript, Scope Challenge paused after running: the editor shows six console.log calls and a var hoisted = true on the last line, and the console prints 1: (empty), 2: banana, 3: 15, 4: carrot, 5: Hello World, then ReferenceError: ten is not defined"
+  alt="The Tricky Parts of JavaScript, Scope Challenge lesson: the console prints six answers after running the code."
   width={1400}
   height={660}
   caption="Scope Challenge at 1:00, just after Zack runs the file. The six answers are on screen; the next three minutes explain each one. Line 32, var hoisted = true, is why the first log prints nothing."
@@ -119,7 +122,7 @@ Fetch is the practical version: `fetch` a todo from JSONPlaceholder, `.then(resp
 
 <Screenshot
   src="/img/scrimba/the-tricky-parts-of-javascript/promise-all-click-me-result-lesson.webp"
-  alt="Scrimba The Tricky Parts of JavaScript, Promise.all lesson paused: the editor shows Promise.all with two fetch calls to jsonplaceholder and a new Promise that resolves 'CLICKED!' on a button click, a small preview pane shows a Click Me! button, and the console prints an array of two todo objects followed by 'CLICKED!'"
+  alt="The Tricky Parts of JavaScript, Promise.all lesson: a Click Me button in the preview and an array in the console."
   width={1400}
   height={660}
   caption="Promise.all at 3:55. Two fetches and one click-driven promise in a single array; the console shows the three results in array order after the button in the preview pane was pressed."
@@ -129,7 +132,7 @@ Async/Await takes the fetch example from two scrims earlier and rewrites it with
 
 <Screenshot
   src="/img/scrimba/the-tricky-parts-of-javascript/promises-challenge-async-await-lesson.webp"
-  alt="Scrimba The Tricky Parts of JavaScript, Promises Challenge paused: the editor shows helloPromise and worldPromise resolving to Hello and World, then a one-line async arrow IIFE that logs await helloPromise + ' ' + await worldPromise, and the console prints Hello World"
+  alt="The Tricky Parts of JavaScript, Promises Challenge lesson: the code editor with an async await one-liner and its console output."
   width={1400}
   height={660}
   caption="Promises Challenge at 3:00, the third of three solutions. One line of async/await replaces the nested .then version from a minute earlier; the console shows Hello World."
@@ -215,4 +218,7 @@ Where it is limited: the title oversells it (no closures, `this`, or coercion), 
     { name: 'Functions: declarations, expressions, IIFEs, arrows', duration: '19 min' },
     { name: 'Promises, fetch, Promise.all, async/await', duration: '22 min' },
   ]}
+  instructor="Zack Wilson (PortEXE)"
+  instructorUrl="https://scrimba.com/@portexe"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/the-tricky-parts-of-javascript/course-intro-title-card.webp"
 />

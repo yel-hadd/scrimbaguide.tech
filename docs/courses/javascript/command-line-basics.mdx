@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Command Line Basics"
 description: "Ajo Borgvold's free Command Line Basics course from inside: 101 minutes, 24 scrims, seven terminal challenges, and why half of it needs your own terminal."
 keywords: [scrimba command line basics, command line basics scrimba review, cli course for beginners, learn command line scrimba, terminal basics course, free cli course, ajo borgvold]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Command Line Basics
 
+<DisclosureNotice />
+
 Ajo Borgvold teaches this free command line course in 101 minutes across two sections: a hands-on terminal built into Scrimba, then slides once the browser terminal can't run what's taught. You organize a fictional startup's messy file system through seven graded challenges, and it's the right first stop if you have never typed a command.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,25 +42,6 @@ It fits complete beginners: section one drills real terminal commands with grade
   href="https://scrimba.com/command-line-basics-c08b87ogl0"
   description="Navigate, create, read and write files in a real terminal, then learn the search, replace, move and sort commands that make the command line worth using."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/command-line-basics/chapter-1-command-line-basics-title-card.webp"
-    alt="Title card of Scrimba's Command Line Basics course, white text reading Command Line Basics and Teacher: Ajo Borgvold over an orange and purple gradient with hexagon outlines"
-    width={1377}
-    height={775}
-    caption="Section 1: Command Line Fundamentals, the hands-on half."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/command-line-basics/chapter-2-command-line-basics-pt-2-title-card.webp"
-    alt="Title card of section two of Scrimba's Command Line Basics course, reading Command Line Basics pt. 2, Teacher: Ajo Borgvold, on the same gradient background"
-    width={1377}
-    height={775}
-    caption="Section 2: Command Line Power Tools, the slide-based half."
-    source="Title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -80,6 +66,15 @@ Lesson counts are the scrims I counted in each expanded module, plus a 56 second
 
 ### 1. Command Line Fundamentals (46 min, 10 scrims)
 
+<Screenshot
+  src="/img/scrimba/command-line-basics/chapter-1-command-line-basics-title-card.webp"
+  alt="Title card of Scrimba's Command Line Basics course: the name and teacher Ajo Borgvold on an orange and purple gradient."
+  width={1377}
+  height={775}
+  caption="Ten scrims drill pwd, ls, cd, touch, rm and mkdir through seven graded challenges that sort a fictional startup's file system."
+  source=""
+/>
+
 The intro scrim is two and a half minutes of setup for the running story. Ajo has a startup idea (a geography quiz game, "the next Minecraft or Candy Crush, I assure you"), spent a night brainstorming on post-its, and made "a bit of a mess of the file system." You are offered an unpaid internship to sort it out. It is silly on purpose, and it gives every challenge a reason.
 
 "Demystifying the command line" is the theory lesson: what a command line is, why Scrimba calls it the terminal, and a side-by-side of the same project folder in Finder and in a terminal ("kind of like the screwdriver and the power drill"). It ends by showing how to open a terminal inside Scrimba: click the plus next to "Runner" at the bottom of the editor and choose "add a terminal."
@@ -90,7 +85,7 @@ Then the drills start. "Getting Oriented" teaches `pwd`, `ls`, `cd` and `clear`,
 
 <Screenshot
   src="/img/scrimba/command-line-basics/rmdir-not-empty-error-lesson.webp"
-  alt="Scrimba Command Line Basics lesson on mkdir, rmdir and rm -r paused at 3:02: the editor shows the two-step challenge brief in challenge.md, and the terminal below shows ls listing family_photos_1988 and then rmdir family_photos_1988 failing with rmdir: ENOTEMPTY: directory not empty"
+  alt="Command Line Basics, Creating and Deleting Directories lesson: the terminal shows an error after rmdir fails on a full folder."
   width={1400}
   height={660}
   caption="Lesson 'Creating and Deleting Directories' at 3:02. Ajo runs rmdir on the family_photos_1988 folder first, gets ENOTEMPTY, and only then switches to rm -r. The challenge brief stays open in the editor above the terminal."
@@ -100,7 +95,7 @@ Then the drills start. "Getting Oriented" teaches `pwd`, `ls`, `cd` and `clear`,
 
 <Screenshot
   src="/img/scrimba/command-line-basics/cat-team-members-challenge-lesson.webp"
-  alt="Scrimba Command Line Basics lesson Reading from Files: cat paused at 5:09, with the four-step challenge brief in the editor and the terminal showing cat team_members.txt printing five lines: AB, CEO and creative genius; NN, hard-working intern; IP, visual design; VK, translation services; TC, sound design"
+  alt="Command Line Basics, Reading from Files lesson: the terminal prints a merged team list after the challenge solution runs."
   width={1400}
   height={660}
   caption="Lesson 'Reading from Files: cat' at 5:09, the moment of truth in the challenge solution. The three external people have been appended to team_members.txt with cat and >>, and cat prints the merged team."
@@ -109,6 +104,15 @@ Then the drills start. "Getting Oriented" teaches `pwd`, `ls`, `cd` and `clear`,
 The section closes with a short outro (you are named employee of the month) and a two minute Scrimbassador promo from Per Borgen that has nothing to do with the terminal. One line in the outro explains the shape of the course: "At the time of recording this scrim, section two of this course is still in the making." Section two was added later, and it shows.
 
 ### 2. Command Line Power Tools (57 min, 13 scrims)
+
+<Screenshot
+  src="/img/scrimba/command-line-basics/chapter-2-command-line-basics-pt-2-title-card.webp"
+  alt="Title card of section two of Scrimba's Command Line Basics course: Command Line Basics pt. 2, teacher Ajo Borgvold."
+  width={1377}
+  height={775}
+  caption="Thirteen slide-based scrims cover find, grep, sed, mv, cp, wc, sort, uniq and the pipe, with no challenges inside Scrimba."
+  source="Title cards from scrimba.com."
+/>
 
 The intro sets expectations, and I would watch it before deciding whether to continue. Ajo explains that the Scrimba shell cannot run most of what follows, that "the whole section is slide based," and that "there won't be any actual challenges for you to solve." The alternative is to follow along locally, and Ajo is direct about the stakes: "Listening to me and watching my examples is not enough if you really want to master this."
 
@@ -126,7 +130,7 @@ The pipe lesson ties the last three together with `sort team_members.txt | uniq 
 
 <Screenshot
   src="/img/scrimba/command-line-basics/sort-uniq-pipe-slide-lesson.webp"
-  alt="Scrimba Command Line Basics lesson Combining Commands with the Pipe at 2:21: a slide showing a macOS zsh terminal window where cat team_members.txt prints a list with duplicates, sort team_members.txt groups the duplicates together, and sort team_members.txt | uniq, circled in pink, prints the five unique team members"
+  alt="Command Line Basics, Combining Commands with the Pipe lesson: an annotated slide of a real terminal shows duplicates removed."
   width={1400}
   height={660}
   caption="Lesson 'Combining Commands with the Pipe' at 2:21. This is what section two looks like: a screenshot of Ajo's local terminal on a slide, annotated live. The pink circle marks the pipe; the left circle marks the de-duplicated output."
@@ -207,4 +211,7 @@ Where it is limited: section two has no challenges and depends entirely on you s
     { name: 'Command Line Fundamentals', duration: '46 min' },
     { name: 'Command Line Power Tools', duration: '57 min' },
   ]}
+  instructor="Ajo Borgvold"
+  instructorUrl="https://scrimba.com/u0tj0c"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/command-line-basics/chapter-1-command-line-basics-title-card.webp"
 />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
+import { isBlogListPath } from './schemaUtils';
 
 export default function DisclosureNotice(): React.ReactElement | null {
   const { pathname } = useLocation();
@@ -14,11 +15,7 @@ export default function DisclosureNotice(): React.ReactElement | null {
     setMounted(true);
   }, []);
 
-  const isBlogListPreviewPage =
-    pathname === '/blog/' ||
-    pathname.startsWith('/blog/page/') ||
-    pathname.startsWith('/blog/tags') ||
-    pathname.startsWith('/blog/archive');
+  const isBlogListPreviewPage = isBlogListPath(pathname);
 
   if (!mounted || isBlogListPreviewPage) {
     return null;

@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn Markdown"
 description: "Dylan Israel's 37 minute Pro Markdown course from inside: 26 scrims, seven challenges that build a dev.to article, four free samples, and the real time cost."
 keywords: [scrimba learn markdown, learn markdown scrimba review, markdown course, markdown for blogging, markdown basics, dylan israel markdown, markdown tutorial dev.to]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Markdown
 
+<DisclosureNotice />
+
 Dylan C. Israel teaches this 37 minute Pro course in 26 scrims, all under three minutes, built around one real project: you write and publish a technical article on dev.to, then open a pull request adding it to a shared GitHub repo. It is a pleasant first hour with Markdown, not a course worth subscribing for alone.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,33 +42,6 @@ It fits anyone who has never written Markdown and wants a reason to write a firs
   href="https://scrimba.com/learn-markdown-c01j"
   description="Markdown essentials in 26 short scrims, taught by writing and publishing a technical article on dev.to."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-markdown/chapter-1-course-overview-title-card.webp"
-    alt="Title slide of Scrimba's Learn Markdown course reading Markdown, Course Overview and Setup, Course teacher: Dylan Israel, on a pale green and lilac background"
-    width={1279}
-    height={720}
-    caption="Lesson 2: the course overview slide, where the dev.to project is set out."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-markdown/chapter-3-extended-syntax-title-card.webp"
-    alt="Slide from the Extended Syntax introduction in Scrimba's Learn Markdown course showing the Markdown logo, a black M with a down arrow, above links to the basic and extended syntax pages on markdownguide.org"
-    width={1279}
-    height={720}
-    caption="Lesson 18: the extended syntax intro, with the two cheat sheet links Dylan refers back to."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-markdown/chapter-4-final-challenge-part-2-title-card.webp"
-    alt="Title slide reading Markdown, Final Challenge Part 2, Course teacher: Dylan Israel, from Scrimba's Learn Markdown course"
-    width={1279}
-    height={720}
-    caption="Lesson 23: the second half of the final challenge, the GitHub pull request."
-    source="Title slides from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -93,6 +71,15 @@ I counted 26 scrims in the table of contents in September 2026, and the duration
 
 ### 1. Introduction and setup (5 min, 3 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-markdown/chapter-1-course-overview-title-card.webp"
+  alt="Title slide of Scrimba's Learn Markdown course: Course Overview and Setup, teacher Dylan Israel, on pale green and lilac."
+  width={1279}
+  height={720}
+  caption="Three scrims cover what Markdown is, set the dev.to article as the project, and explain the README boilerplate you never touch."
+  source=""
+/>
+
 The intro is a minute and a half: what Markdown is, where you meet it (README files, blogs, forums, documentation, chat), and a look at the preview pane, where the README already renders an image, bold text and a list. "I use Markdown almost every single day," Dylan says at the top, and the whole course is pitched at that level of practicality.
 
 The course overview sets out the project. The README in that scrim is a four step list: create a dev.to account, write an article in Markdown on a subject of your choice, share it on Scrimba's Discord, and open a pull request adding it to a GitHub repo of student articles. Dylan wants the subject to be technical, ideally something you learned on Scrimba, "because at the end of the day, I want you to have a portfolio item," as he puts it in lesson 2.
@@ -109,7 +96,7 @@ Bold, italic and strikethrough is where he gives the advice that runs through th
 
 <Screenshot
   src="/img/scrimba/learn-markdown/challenge-2nd-paragraph-bold-italic-strikethrough-lesson.webp"
-  alt="Scrimba Learn Markdown lesson Challenge: 2nd Paragraph paused at 0:47. The editor shows README.md with **Markdown**, ~~right~~ and _Readability_ in the text and a four step challenge brief below; the preview pane on the right renders the same paragraph with bold Markdown, a struck-through right and italic Readability"
+  alt="Learn Markdown, 2nd Paragraph challenge: a split editor and preview showing bold, struck-through and italic text."
   width={1400}
   height={633}
   caption="Challenge: 2nd Paragraph at 0:47. The brief is the four numbered steps in the README itself, and the preview on the right is the check: Markdown in bold, right struck through, Readability in italics. Every challenge in the course looks like this."
@@ -125,7 +112,7 @@ Links and emails close the section, and then the biggest challenge in the course
 
 <Screenshot
   src="/img/scrimba/learn-markdown/challenge-about-yourself-image-link-lesson.webp"
-  alt="Scrimba Learn Markdown lesson Challenge: About Yourself paused at 2:16. The editor shows an About Me section with a bolded name, a YouTube link with a title attribute, and on line 9 an image wrapped in a link, [![Podcast](image url)](podcast url); the preview pane renders the About Me heading, paragraphs and links"
+  alt="Learn Markdown, About Yourself challenge: a split editor and preview of an About Me section with an image link."
   width={1400}
   height={633}
   caption="Challenge: About Yourself at 2:16. Line 9 is the one construction in the course that trips people up: an image inside a link. The preview on the right shows the About Me section rendered."
@@ -133,13 +120,22 @@ Links and emails close the section, and then the biggest challenge in the course
 
 ### 3. Extended syntax (5 min, 4 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-markdown/chapter-3-extended-syntax-title-card.webp"
+  alt="Slide from Scrimba's Learn Markdown course: the Markdown logo above links to the basic and extended syntax guides."
+  width={1279}
+  height={720}
+  caption="Four scrims cover tables, task lists and automatic URLs, and warn that support for each varies between GitHub and dev.to."
+  source=""
+/>
+
 The introduction is the most useful minute in the course for understanding why Markdown behaves differently in different places. Dylan's explanation: "Markdown, at the end of the day, is nothing more than a library that compiles shorthand HTML for us," and different libraries add different extras. GitHub has its own flavor, dev.to another. He warns that what follows "may not work in all scenarios," and links the basic and extended syntax pages on markdownguide.org as the references to keep.
 
 Tables get the longest of the four scrims: pipes, a row of dashes under the header, then colons on either side of the dashes to set alignment. He also shows what happens if you type underscores instead of dashes (nothing renders) and his summary is fair: "Quite a bit of setup to get it going, but that's just really tables and HTML in general."
 
 <Screenshot
   src="/img/scrimba/learn-markdown/extended-syntax-tables-alignment-lesson.webp"
-  alt="Scrimba Learn Markdown lesson Extended Syntax: Tables paused at 1:28. The editor shows a three column Markdown table with :--- , :----: and ----: alignment markers under the Left, Center and Right headers; the preview on the right renders the table with the columns aligned left, center and right"
+  alt="Learn Markdown, Extended Syntax Tables lesson: a split editor and preview of a three column aligned table."
   width={1400}
   height={633}
   caption="Extended Syntax: Tables at 1:28. The colons in the second row of the source set the alignment, and the preview on the right is the whole lesson in one image."
@@ -148,6 +144,15 @@ Tables get the longest of the four scrims: pipes, a row of dashes under the head
 Task lists are the checkboxes you see in pull request templates. Dylan is candid that to make them render he "had to actually go and update our marked.min.js to a later version," and that "this syntax doesn't work on dev.to either." Automatic URLs is the shortest scrim in the course at 37 seconds: paste a bare URL and some renderers link it, wrap it in backticks if you want it left alone.
 
 ### 4. Final challenge and wrap-up (7 min, 5 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-markdown/chapter-4-final-challenge-part-2-title-card.webp"
+  alt="Title slide reading Markdown, Final Challenge Part 2, Course teacher: Dylan Israel, from Scrimba's Learn Markdown course"
+  width={1279}
+  height={720}
+  caption="The final challenge publishes the dev.to article, then clones the student repo, adds a link to the README, and opens a pull request."
+  source="Title slides from scrimba.com."
+/>
 
 The final challenge is in two parts. Part one is a final edit and publish. Dylan's tone here is the tone of the whole course: "Don't worry too much about grammar. Do your best. We're not here because we are professional blog writers. We're here because we wanna learn Markdown." Then you share the post on Discord.
 
@@ -231,4 +236,7 @@ Where it is limited: the subject is small enough that the course is padded by Sc
     { name: 'Extended syntax', duration: '5 min' },
     { name: 'Final challenge and wrap-up', duration: '7 min' },
   ]}
+  instructor="Dylan C. Israel"
+  instructorUrl="https://scrimba.com/@Dylan-Israel"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-markdown/chapter-1-course-overview-title-card.webp"
 />

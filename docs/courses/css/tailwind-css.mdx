@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn Tailwind CSS"
 description: "Rachel Johnson's Learn Tailwind CSS course reviewed from inside: 2.2 hours, 33 scrims, a plant blog build and five challenges, what Pro gates, real time cost."
 keywords: [scrimba learn tailwind css, learn tailwind css scrimba review, tailwind css course, rachel johnson tailwind, tailwind utility classes course, interactive tailwind course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Tailwind CSS
 
+<DisclosureNotice />
+
 Scrimba's Learn Tailwind CSS, taught by Rachel Johnson, runs about 2.2 hours across two modules and 33 scrims: you go from `w-64` and `bg-slate-700` to a responsive plant blog and five mockup-to-code challenges. It is a quick, clearly sequenced way to get fluent in utility classes if your CSS, flexbox especially, is already solid.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,25 +42,6 @@ It fits you if you write CSS comfortably and want to stop translating class stri
   href="https://scrimba.com/learn-tailwind-css-c010"
   description="Tailwind's utility classes taught one family at a time, applied to a responsive blog, then tested in five mockup-to-code challenges."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-tailwind-css/chapter-1-learn-tailwind-css-title-card.webp"
-    alt="Title card of Scrimba's Learn Tailwind CSS course: Scrimba Course, Learn Tailwind CSS, Teacher: Rachel Johnson, on a grainy purple and olive gradient"
-    width={1279}
-    height={720}
-    caption="Module 1: the course intro slide."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-tailwind-css/chapter-2-tailwind-css-challenges-title-card.webp"
-    alt="Title card of the Tailwind CSS Challenges module in Scrimba's Learn Tailwind CSS course, Teacher: Rachel Johnson"
-    width={1279}
-    height={720}
-    caption="Module 2: the five challenges."
-    source="Module title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -82,13 +68,22 @@ Twelve scrims in module one carry the small "Challenge with Instant Feedback" ic
 
 ### 1. Learn Tailwind CSS (83 min, 21 scrims): utilities, then the plant blog
 
+<Screenshot
+  src="/img/scrimba/learn-tailwind-css/chapter-1-learn-tailwind-css-title-card.webp"
+  alt="Title card of Scrimba's Learn Tailwind CSS course: Scrimba Course, Learn Tailwind CSS, Teacher: Rachel Johnson, on a grainy purple and olive gradient"
+  width={1279}
+  height={720}
+  caption="From the sizing scale through colours, typography and flexbox, styling a plant blog against a mockup as you go."
+  source=""
+/>
+
 The first two scrims are free previews. The welcome shows the finished project, "a simple blog that plant lovers can contribute to," and lists the concept order. "What is Tailwind CSS?" is a live demo: Rachel drops `h-screen flex items-center justify-center` on a body and `bg-red-500 text-white px-4 py-2 rounded-full font-bold text-2xl hover:bg-red-700 hover:uppercase` on a button, then makes the case for utility classes ("no more switching between HTML and CSS files").
 
 Element Sizing (the third free preview) introduces the numbering scale with the line that unlocks the rest of the course: "one unit is equal to zero point two five rem, And if a browser uses default settings, zero point two five rem will equal four pixels." You get fixed units (`w-64`), fractions (`w-1/2`, `h-1/3`), and viewport units (`w-screen`), and a first challenge written as HTML comments: make one section full viewport height, another a third tall and half wide. Colours covers the 50 to 950 shade scale and a four-part challenge that turns a plain page into something that "really looks like pizza." Padding and Margin adds `p-`, `m-`, side and axis variants, and `mx-auto`.
 
 <Screenshot
   src="/img/scrimba/learn-tailwind-css/header-and-footer-raw-starter-lesson.webp"
-  alt="Scrimba Learn Tailwind CSS lesson Header and Footer paused at 0:23: the editor shows a YOUR TASKS comment listing header and footer colors, logo, padding and card widths above an unstyled index.html with the cdn.tailwindcss.com script, while the preview on the right shows the raw blog: two nav links, a plant photo and an author avatar with no styling"
+  alt="Learn Tailwind CSS, Header and Footer lesson: an unstyled blog preview beside the starter code editor."
   width={1400}
   height={660}
   caption="The starter file at 0:23 of Header and Footer: the tasks for the scrim are a comment at the top of index.html, the preview is the unstyled blog ('so raw that our preview looks pretty subpar'). Every project scrim starts this way."
@@ -100,7 +95,7 @@ The typography run is three theory scrims (font families and weights, text size 
 
 <Screenshot
   src="/img/scrimba/learn-tailwind-css/flexbox-coffee-menu-challenge-lesson.webp"
-  alt="Scrimba Learn Tailwind CSS Flexbox lesson paused at 5:05: index.html shows a section with class flex gap-8 for the latte prices and a section with class flex flex-wrap for the extras, while the preview shows a dark green cafe menu on a crimson page with the extras run together as CreamWaferShortbreadMarshmellow"
+  alt="Learn Tailwind CSS, Flexbox challenge: a dark green cafe menu preview beside the code editor."
   width={1400}
   height={660}
   caption="The coffee menu solution at 5:05 of Flexbox, one step from done: the extras are wrapping but have no gap yet, so they read as one word. Rachel adds gap-x-6 and justify-center in the next few seconds."
@@ -112,7 +107,7 @@ Responsive Design introduces the five breakpoint prefixes with a breakpoint visu
 
 <Screenshot
   src="/img/scrimba/learn-tailwind-css/desktop-layout-finished-blog-lesson.webp"
-  alt="Scrimba Learn Tailwind CSS Desktop layout lesson paused at 3:55: the preview pane is enlarged over the editor and shows the finished plant blog with a dark slate header, a BLOG heading, and three white cards in a row with plant photos, author avatars, titles, three-line excerpts and like counts"
+  alt="Learn Tailwind CSS, Desktop layout lesson: an enlarged preview of the finished plant blog with three cards."
   width={1400}
   height={660}
   caption="The finished blog at 3:55 of Desktop layout, after the cards' mx-auto is replaced by justify-center on the container. This is the state you compare against the mockup in the Congrats scrim."
@@ -122,6 +117,15 @@ The module closes with Congrats (a recap and "five challenges that ramp up in di
 
 ### 2. Tailwind CSS Challenges (48 min, 12 scrims): five mockups, five solutions
 
+<Screenshot
+  src="/img/scrimba/learn-tailwind-css/chapter-2-tailwind-css-challenges-title-card.webp"
+  alt="Title card of the Tailwind CSS Challenges module in Scrimba's Learn Tailwind CSS course, Teacher: Rachel Johnson"
+  width={1279}
+  height={720}
+  caption="Five mockup-to-code challenges, each a brief scrim followed by Rachel's full solution."
+  source="Module title cards from scrimba.com."
+/>
+
 The one minute welcome sets the rules: "Each one will come with mobile, desktop, and state mock ups for you to replicate using Tailwind CSS," and the challenges "are designed to be completable with just the content from that course." Each challenge is a pair of scrims: a brief of under two and a half minutes that walks through the mockups and the provided HTML, then a "Possible Solution" where Rachel styles it top to bottom.
 
 The Pomodoro App Challenge is the warm-up: a white card with a red bottom border, a motivational line, a big timer, three SVG buttons that turn red on hover. "Since we're only working with Tailwind CSS, these buttons won't actually function," she says, and that holds for all five: no JavaScript anywhere in this course. The solution is three and a half minutes.
@@ -130,7 +134,7 @@ Testimonials Section is a cattery site with three cards (`rounded-tr-2xl rounded
 
 <Screenshot
   src="/img/scrimba/learn-tailwind-css/pricing-table-challenge-solution-lesson.webp"
-  alt="Scrimba Learn Tailwind CSS Pricing Table Challenge Possible Solution paused at 7:41: the enlarged preview shows the finished TerminalLux pricing table on black with three cyan-bordered cards, Basic Opal $49, Platinum Debug $149 and Diamond Console $249, the middle Buy Now button filled cyan on hover, with sparkle icons above and below"
+  alt="Learn Tailwind CSS, Pricing Table challenge solution: a black and cyan terminal-style pricing table preview."
   width={1400}
   height={660}
   caption="TerminalLux at 7:41 of the pricing table solution, hover state included. The three cards are lg:w-1/3 inside a lg:flex-row container; the middle button is mid-hover with hover:bg-cyan-300 hover:text-black."
@@ -215,4 +219,7 @@ Where it is limited: it is Pro-only past scrim three, and it does not cover conf
     { name: 'Learn Tailwind CSS', duration: '83 min' },
     { name: 'Tailwind CSS Challenges', duration: '48 min' },
   ]}
+  instructor="Rachel Johnson"
+  instructorUrl="https://scrimba.com/@rachelktyjohnson"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-tailwind-css/chapter-1-learn-tailwind-css-title-card.webp"
 />

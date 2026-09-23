@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn JavaScript"
 description: "Per Borgen's free Learn JavaScript course reviewed from inside: 9.4 hours, about 200 scrims, four builds, what Pro gates, and how long it really takes."
 keywords: [scrimba learn javascript, learn javascript scrimba review, free javascript course, per borgen javascript, interactive javascript course, scrimba javascript course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn JavaScript
 
+<DisclosureNotice />
+
 Per Borgen teaches Scrimba's free flagship JavaScript course: about 9.4 hours across eight modules, roughly 200 scrims and 140+ challenges, building a passenger counter, a blackjack game, a Chrome extension, and a Firebase-backed mobile app. It is the strongest free, project-first introduction to JavaScript in the catalog, and the practical prerequisite for [Learn React](/docs/courses/react/learn-react/).
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,33 +42,6 @@ Take it if you have never programmed: nothing is assumed, and most challenges st
   href="https://scrimba.com/learn-javascript-c0v"
   description="Beginner JavaScript taught through 140+ challenges, building a counter, a blackjack game, a Chrome extension, and a mobile app."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-javascript/chapter-passenger-counter-title-card.webp"
-    alt="Title card of the first chapter of Scrimba's Learn JavaScript course, reading Let's build a Passenger Counter, with two illustrated students at a laptop"
-    width={1279}
-    height={684}
-    caption="Chapter 1: the passenger counter app."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-javascript/chapter-blackjack-title-card.webp"
-    alt="Title card of the Building Blackjack chapter in Scrimba's Learn JavaScript course, surrounded by playing cards"
-    width={1279}
-    height={684}
-    caption="Chapter 4: the blackjack game."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-javascript/chapter-chrome-extension-title-card.webp"
-    alt="Title card of the Let's build a Chrome Extension chapter in Scrimba's Learn JavaScript course"
-    width={1279}
-    height={684}
-    caption="Chapter 6: the Chrome extension."
-    source="Chapter title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -94,6 +72,15 @@ Lesson counts are the scrims I counted in each expanded module in September 2026
 
 ### 1. Build a Passenger Counter App (82 min, 30 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-javascript/chapter-passenger-counter-title-card.webp"
+  alt="Title card of the first chapter of Scrimba's Learn JavaScript course: Let's build a Passenger Counter, with two illustrated students."
+  width={1279}
+  height={684}
+  caption="Your first variable, your first function and an innerText render, ending with a personalized app deployed to Netlify."
+  source=""
+/>
+
 The opening lesson is under a minute and explains why you are building a people counter: Per's first job at nineteen was standing outside a subway entrance in the cold, counting passengers with a pen and paper. The app fixes that problem, and everything in the module serves it. You write your first variable (`let count = 0`), meet `console.log`, add a button with an `onclick`, write your first function, and render the count with `innerText`. Strings arrive halfway through, with the classic "8" + "2" gotcha called out explicitly.
 
 The module ends further than most beginner intros: you personalize the app, download it, and deploy it to Netlify so it has a real URL. There is also a short "Learning in public" scrim nudging you to share it. That is a deliberate habit the course keeps building.
@@ -106,7 +93,7 @@ This is also where Scrimba is testing a feature called AI challenges. The module
 
 <Screenshot
   src="/img/scrimba/learn-javascript/calculator-challenge-string-concatenation-bug.webp"
-  alt="Scrimba Learn JavaScript calculator challenge paused mid-solution: the code editor shows sumEl.textContent = 'Sum: ' + num1 + num2 and the live preview on the right displays Sum: 82 instead of 10, while the caption reads they're all turned into strings"
+  alt="Learn JavaScript, calculator challenge: code editor beside a preview showing the wrong sum onscreen."
   width={1400}
   height={660}
   caption="The calculator challenge, paused at 3:39. Per deliberately writes the bug first: 'Sum: ' + 8 + 2 renders 'Sum: 82' in the preview on the right, then fixes it by computing the result before concatenating. The mistakes are part of the teaching."
@@ -118,13 +105,22 @@ Four scrims, all optional in the sense that the course itself never needs them: 
 
 ### 4. Build a Blackjack Game (2.7 hrs, 55 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-javascript/chapter-blackjack-title-card.webp"
+  alt="Title card of the Building Blackjack chapter in Scrimba's Learn JavaScript course, surrounded by playing cards"
+  width={1279}
+  height={684}
+  caption="Conditionals, arrays and Math.random build a playable blackjack game, ending with a player object holding chips."
+  source=""
+/>
+
 The biggest jump in the course. Blackjack needs conditionals, so you get if/else, else-if, booleans (`hasBlackJack`, `isAlive`), and a first pass at "state." Then the game needs cards, so arrays arrive: indexes, `push` and `pop`, a for loop that renders each card into the DOM. Then random cards need `Math.random()` and `Math.floor()`, which you build up into a dice function first. Then the "new card" button needs `&&` and `||`. Objects come last, with a `player` object holding a name and chips.
 
 Roughly a third of the scrims here are labeled "Aside," which is Per's word for a concept detour before applying it in the game. The rhythm is aside, apply, challenge, and it works because the game gives every concept a reason to exist.
 
 <Screenshot
   src="/img/scrimba/learn-javascript/blackjack-render-game-recap.webp"
-  alt="Scrimba Learn JavaScript blackjack recap lesson showing the renderGame and newCard functions with if, else if and else branches in the editor, and the green Blackjack game preview with Start Game and New Card buttons on the right"
+  alt="Learn JavaScript, blackjack recap lesson: code editor beside a playable blackjack game preview."
   width={1400}
   height={660}
   caption="The blackjack recap at 2:09, walking back through renderGame(): a for loop over the cards array, the if/else-if/else that sets the message, and the && check that guards newCard(). The playable game sits in the preview pane the whole time."
@@ -138,13 +134,22 @@ Objects and functions, if/else, loops and arrays, `push`/`pop`/`unshift`/`shift`
 
 ### 6. Build a Chrome Extension (2.7 hrs, 54 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-javascript/chapter-chrome-extension-title-card.webp"
+  alt="Title card of the Let's build a Chrome Extension chapter in Scrimba's Learn JavaScript course"
+  width={1279}
+  height={684}
+  caption="A leads-tracker extension: event listeners, localStorage arrays and the Chrome tabs API, deployed twice."
+  source="Chapter title cards from scrimba.com."
+/>
+
 The most "real" project in the course. The extension is a leads tracker: paste a URL or click "save tab" and it stores the link in a list that survives closing the browser. Per explains the idea came from watching a sales team at a shipping-data company spend hours collecting prospect links by hand.
 
 What it teaches, in order: `addEventListener` (and refactoring away from `onclick`), `let` vs `const`, rendering a list with `innerHTML` and then with `createElement`/`append`, template strings, styling, packaging and deploying the extension to Chrome, localStorage (four scrims, including storing arrays with `JSON.stringify`), truthy and falsy values, a delete button, function parameters (six scrims), and finally the Chrome tabs API to grab the current tab's URL. You deploy it twice: once mid-module, once with the final version.
 
 <Screenshot
   src="/img/scrimba/learn-javascript/chrome-extension-leads-tracker-lesson.webp"
-  alt="Scrimba Learn JavaScript lesson Make the delete button work: the editor shows the leads tracker code with localStorage.getItem, addEventListener and a renderLeads function using a template string, and the preview shows the extension popup with Save Input and Delete All buttons above a list of saved URLs"
+  alt="Learn JavaScript, Chrome extension lesson: code editor beside the extension popup listing saved leads."
   width={1400}
   height={660}
   caption="Lesson 'Make the delete button work' in the Chrome extension module. The three numbered comments at the top of the file are the challenge brief; the preview on the right is the extension popup with four saved leads. This is the state you edit before Per shows his solution."
@@ -240,4 +245,7 @@ Where it is limited: it is foundations only and stops short of async and object-
     { name: 'Practice Time - Part 3', duration: '26 min' },
     { name: 'Build a Mobile App', duration: '59 min' },
   ]}
+  instructor="Per Borgen"
+  instructorUrl="https://scrimba.com/@perborgen"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-javascript/chapter-passenger-counter-title-card.webp"
 />

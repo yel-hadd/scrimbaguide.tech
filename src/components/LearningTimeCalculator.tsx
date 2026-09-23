@@ -246,6 +246,8 @@ export default function LearningTimeCalculator(): React.ReactElement {
           color: var(--ifm-color-content-secondary, #4a5568);
         }
         .ltc-field select {
+          /* 44px minimum touch target (WCAG 2.5.8). */
+          min-height: 44px;
           padding: 0.5rem 0.75rem;
           border: 1px solid var(--ifm-color-emphasis-300, #cbd5e0);
           border-radius: 6px;
@@ -256,6 +258,8 @@ export default function LearningTimeCalculator(): React.ReactElement {
         }
         .ltc-field input[type="range"] {
           width: 100%;
+          /* The thumb is the target; give the control a 44px hit area. */
+          min-height: 44px;
           cursor: pointer;
           accent-color: var(--ifm-color-primary, #2b6cb0);
         }
@@ -345,6 +349,9 @@ export default function LearningTimeCalculator(): React.ReactElement {
           filter: brightness(0.94);
         }
         .ltc-cta-link {
+          display: inline-flex;
+          align-items: center;
+          min-height: 44px;
           font-size: 0.82rem;
           color: var(--ifm-color-primary, #2b6cb0);
           text-decoration: none;

@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Class Components in React"
 description: "Bob Ziroll's 80 minute Pro course on React class components, reviewed from inside: every scrim read, four challenges, React 17, and who needs it."
 keywords: [scrimba class components react, learn class components in react review, react class components course, bob ziroll class components, legacy react, react lifecycle methods, scrimba react course review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Class Components in React
 
+<DisclosureNotice />
+
 Bob Ziroll's Pro course teaches React's class-based syntax in 18 scrims and about 80 minutes: you convert small hooks components (a toggle, a counter, a contact card, a Star Wars fetcher) into classes and map each lifecycle method to its useEffect equivalent. It's worth your time if a legacy codebase or [Advanced React](/docs/courses/react/advanced-react/) puts class components in front of you.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,17 +42,6 @@ This course fits React developers who already know hooks and now need to read or
   href="https://scrimba.com/learn-class-components-in-react-c0h"
   description="An 80 minute crash course in React class components, state, the constructor, and lifecycle methods, built for reading legacy code."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-class-components-in-react/course-intro-title-card.webp"
-    alt="Title card of Scrimba's Learn Class Components in React course: the words Class Components in React on a pale green slide with the Scrimba logo"
-    width={1279}
-    height={720}
-    caption="The only title card in the course, from the intro scrim. The 18 scrims are a flat list with no chapter cards."
-    source="Title card from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -76,6 +70,15 @@ I counted 18 scrims totaling 80 minutes and 50 seconds; Scrimba's structured dat
 
 ### 1. Classes and converting components (16 min, 4 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-class-components-in-react/course-intro-title-card.webp"
+  alt="Title card of Scrimba's Learn Class Components in React course: the words Class Components in React on a pale green slide with the Scrimba logo"
+  width={1279}
+  height={720}
+  caption="This module reviews ES6 classes in five minutes, converts a one-line function component to a class, then hands you the first challenge: convert three components and find the missing prop."
+  source="Title card from scrimba.com."
+/>
+
 The intro opens with "No. Don't click away. You're in the right place. This is still a part of the advanced React course." Bob explains that his new [Learn React](/docs/courses/react/learn-react/) course teaches only function components, which left a gap before [Advanced React](/docs/courses/react/advanced-react/), which assumed classes. The rest of the scrim is his case for learning "old React" anyway: existing codebases and the older tutorials you will hit while debugging.
 
 "ES6 classes review" is five minutes of plain JavaScript, no React. The file defines a `Character` class with a constructor, a class field (`alive = true`), and an `updateHp` method, then `Enemy` and `Hero` classes that extend it. Bob calls it "admittedly a very abbreviated review," skips prototypes entirely, and tells you to "uncomment this code and play with it, pause the screencast, try changing things, see what happens."
@@ -92,7 +95,7 @@ The challenge scrim converts a counter with plus and minus buttons from `useStat
 
 <Screenshot
   src="/img/scrimba/learn-class-components-in-react/counter-challenge-brief-lesson.webp"
-  alt="Scrimba Learn Class Components in React, the convert to a class component with state challenge paused at 0:18: App.js shows a four step challenge comment above a function component using React.useState for a counter, and the preview shows a counter reading 0 with minus and plus buttons"
+  alt="Learn Class Components in React, counter challenge: the preview shows a counter with minus and plus buttons."
   width={1400}
   height={660}
   caption="The counter challenge at 0:18. Every challenge in the course looks like this: a numbered brief in a comment, the working hooks version below it, and the recording paused until you convert it. Note react@17.0.2 in the dependencies panel."
@@ -110,7 +113,7 @@ A short slide intro explains mounting, updating, and unmounting, and names the m
 
 <Screenshot
   src="/img/scrimba/learn-class-components-in-react/componentdidmount-luke-skywalker-lesson.webp"
-  alt="Scrimba Learn Class Components in React, the componentDidMount lesson paused at 5:16: App.js shows componentDidMount fetching swapi.dev/api/people/1 and calling this.setState with the character, render returns an h1 with this.state.character.name, the console lists render, componentDidMount, render, and the preview shows Luke Skywalker"
+  alt="Learn Class Components in React, componentDidMount lesson: the console lists render order and the preview shows a character name."
   width={1400}
   height={660}
   caption="The componentDidMount challenge solved at 5:16. The console order (render, componentDidMount, render) is the point of the lesson: the second render comes from setState after the fetch resolves, and componentDidMount does not run again."
@@ -120,7 +123,7 @@ A short slide intro explains mounting, updating, and unmounting, and names the m
 
 <Screenshot
   src="/img/scrimba/learn-class-components-in-react/componentdidupdate-infinite-loop-lesson.webp"
-  alt="Scrimba Learn Class Components in React, componentDidUpdate part 2 paused at 2:28: App.js shows componentDidUpdate logging Updated and calling this.getStarWarsCharacter, the console shows the word Updated repeated nine times, and the preview shows a counter at 1 above the name Luke Skywalker"
+  alt="Learn Class Components in React, componentDidUpdate lesson: the console repeats a log line during an infinite update loop."
   width={1400}
   height={660}
   caption="The infinite loop at 2:28. setState inside componentDidUpdate triggers another update, which calls setState again. Bob lets it run for a moment before commenting the line out and introducing prevState."
@@ -208,4 +211,7 @@ Where it is limited: it teaches syntax that new React code no longer uses, the e
     { name: 'Lifecycle methods', duration: '30 min', lessons: 6 },
     { name: 'Wrap-up: referral clip and certificate', duration: '3 min', lessons: 2 },
   ]}
+  instructor="Bob Ziroll"
+  instructorUrl="https://scrimba.com/@bobziroll"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-class-components-in-react/course-intro-title-card.webp"
 />

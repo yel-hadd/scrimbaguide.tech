@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Figma to HTML and CSS"
 description: "Gary Simon's Pro design-to-code course reviewed from inside: 3.6 hours, five Figma mockups built as websites, what is free to preview, and the real time cost."
 keywords: [scrimba figma html css, build websites with figma html and css review, design to code course, figma to html css, gary simon scrimba, build websites figma scrimba review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Build Websites with Figma, HTML, and CSS
 
+<DisclosureNotice />
+
 Gary Simon's Pro design-to-code course on Scrimba runs about 3.6 hours across five modules: you open a Figma mockup, try to build it yourself, then watch Gary rebuild it mobile first with media queries, turning five Figma mockups into responsive websites with a little vanilla JavaScript for the menus. It is the most direct design-to-code practice in the catalog.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,41 +42,6 @@ Take it if you already write basic HTML and CSS and want to get good at matching
   href="https://scrimba.com/build-websites-with-figma-html-and-css-c02f"
   description="Five Figma mockups built as responsive websites, mobile first, with a little vanilla JavaScript for the menus."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/build-websites-with-figma-html-and-css/chapter-0-from-figma-to-code-title-card.webp"
-    alt="Title card of the introduction to Scrimba's Build Websites with Figma, HTML, and CSS course, reading From Figma to Code, Making High Quality Mockups a Reality in the browser, course teacher Gary Simon"
-    width={1279}
-    height={720}
-    caption="The course intro: Gary's own name for it is From Figma to Code."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/build-websites-with-figma-html-and-css/chapter-1-simple-card-title-card.webp"
-    alt="Title card of the first challenge in Scrimba's Build Websites with Figma, HTML, and CSS course, reading A Simple Card, Make this Card a Reality in the Browser"
-    width={1279}
-    height={720}
-    caption="Module 1: the simple card, your first build."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/build-websites-with-figma-html-and-css/chapter-3-data-analytics-dashboard-title-card.webp"
-    alt="Title card of the Data Analytics Dashboard challenge in Scrimba's Build Websites with Figma, HTML, and CSS course, with a View the Prototype link"
-    width={1279}
-    height={720}
-    caption="Module 3: the dashboard. Every challenge intro slide links to its Figma prototype."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/build-websites-with-figma-html-and-css/chapter-5-drone-site-title-card.webp"
-    alt="Title card of the Drone Site challenge in Scrimba's Build Websites with Figma, HTML, and CSS course, with a View the Prototype link"
-    width={1279}
-    height={720}
-    caption="Module 5: the drone event site, the final and longest project."
-    source="Chapter title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -99,6 +69,24 @@ Lesson counts are the scrims I counted in each expanded module in September 2026
 
 ### 1. Welcome and first project: simple card (32 min, 9 scrims)
 
+<Screenshot
+  src="/img/scrimba/build-websites-with-figma-html-and-css/chapter-0-from-figma-to-code-title-card.webp"
+  alt="Title card of Scrimba's Build Websites with Figma, HTML, and CSS course: From Figma to Code, teacher Gary Simon."
+  width={1279}
+  height={720}
+  caption="This module opens with the Figma setup scrims, then the em and rem conversion rule the rest of the course reuses."
+  source=""
+/>
+
+<Screenshot
+  src="/img/scrimba/build-websites-with-figma-html-and-css/chapter-1-simple-card-title-card.webp"
+  alt="Title card of the first challenge in Scrimba's Build Websites with Figma, HTML, and CSS course: A Simple Card."
+  width={1279}
+  height={720}
+  caption="The first build: a mobile-first card that gains a two-column layout and a scaling root font size at a 550 pixel media query."
+  source=""
+/>
+
 Four short setup scrims, then the first build. The intro states the requirement in one line: "the only requirement that we have is that you should have a basic understanding of HTML and CSS." Gary points anyone who lacks it to "this Scrimba course by my friend Kevin Powell." The beginner course in the current catalog that covers that ground is [Learn HTML and CSS](/docs/courses/css/html-and-css/). "Using Figma" shows you the property inspector, the font panel, and the orange spacing lines that appear when you hover between elements. "Saving the Figma Prototypes Locally" is 48 seconds on making your own copy so other students' cursors stop wandering across the design.
 
 "ems and rems" is the lesson that pays off for the rest of the course. Gary builds a gray box, sets `margin: 1em`, then bumps the root font size from 16 to 20 pixels so you can watch the margin grow with it. His rule: em for margin and padding, rem for font sizes. "So that sounds a little bit word salad," he admits at 0:55, and then makes it concrete: 32 pixels in Figma, divided by 16, is 2em.
@@ -107,7 +95,7 @@ The card itself takes three scrims. The HTML wraps the whole card in an `a` tag 
 
 <Screenshot
   src="/img/scrimba/build-websites-with-figma-html-and-css/simple-card-media-query-lesson.webp"
-  alt="Scrimba Build Websites with Figma, HTML, and CSS lesson Simple Card Finishing Up: the editor shows index.css with p.title, p.description and a media query for min-width 550px setting a 600px max-width and a 9rem photo, while the preview on the right shows the finished mobile card with a mountain photo, the heading An Above Average Experience and a description"
+  alt="Build Websites with Figma, HTML, and CSS, Simple Card Finishing Up lesson: code editor beside a preview of the finished mobile card."
   width={1400}
   height={660}
   caption="Simple Card, Finishing Up, paused at 4:49. The mobile card on the right already matches the Figma file; the 550px media query being written on the left is what turns it into two columns on wider screens."
@@ -125,13 +113,22 @@ The desktop lesson reads the breakpoints straight off the Figma frame widths (77
 
 ### 3. Data analytics dashboard (44 min, 7 scrims)
 
+<Screenshot
+  src="/img/scrimba/build-websites-with-figma-html-and-css/chapter-3-data-analytics-dashboard-title-card.webp"
+  alt="Title card of the Data Analytics Dashboard challenge in Scrimba's Build Websites with Figma, HTML, and CSS course, with a View the Prototype link"
+  width={1279}
+  height={720}
+  caption="This module builds a sidebar that slides in on mobile and sits fixed on desktop, plus fluid typography with clamp()."
+  source=""
+/>
+
 "This one's going to be a little bit more challenging than the previous two." The design has a sidebar navigation that slides in from the left on mobile and sits in place on desktop, plus hover states. Gary suggests either building the whole thing in one go or taking it lesson by lesson.
 
 The CSS lessons introduce a CSS variable for the brand blue, a gradient background built with a visual gradient tool and pasted in, and `background-blend-mode: screen` to match the Figma layer. Then comes fluid typography with `clamp(2.5rem, -0.875rem + 8.333vw, 4rem)`. In "CSS: typography, buttons and more" the heading grows and then stops on its own, and Gary's reaction is "Very, very cool for a fluid typography." He also adds a fallback `font-size` for browsers that do not support `clamp()`, a caution that has aged.
 
 <Screenshot
   src="/img/scrimba/build-websites-with-figma-html-and-css/dashboard-slide-out-nav-javascript-lesson.webp"
-  alt="Scrimba Build Websites with Figma, HTML, and CSS lesson JS: Adding functionality to the nav bar: the editor shows thirteen lines of index.js with menuBtn, backBtn and menu constants and two click listeners that set menu.style.transform to translateX(0) and translateX(-100%), while the preview shows the dark dashboard with the sidebar navigation slid open over it, Home highlighted in blue above My Stats, Members, Settings and Help"
+  alt="Build Websites with Figma, HTML, and CSS, dashboard JavaScript lesson: code editor beside a preview of the sidebar slid open."
   width={1400}
   height={660}
   caption="The only JavaScript in module 3, paused at 3:13. Thirteen lines: grab three elements, set a transform on click. The sidebar on the right has just slid in over the dashboard."
@@ -149,13 +146,22 @@ The desktop lesson lays the listings out with `grid-template-columns: 40% 30% 20
 
 ### 5. Drone event landing page (71 min, 15 scrims)
 
+<Screenshot
+  src="/img/scrimba/build-websites-with-figma-html-and-css/chapter-5-drone-site-title-card.webp"
+  alt="Title card of the Drone Site challenge in Scrimba's Build Websites with Figma, HTML, and CSS course, with a View the Prototype link"
+  width={1279}
+  height={720}
+  caption="The final project: an animated hero, a slide-in mobile nav, a quote section, a grid-template-areas photo gallery, and a registration form."
+  source="Chapter title cards from scrimba.com."
+/>
+
 "Welcome to the final project here. And this one's going to be the most involved." A full landing page: an overlapping hero with an animated drone, a slide-in mobile nav with a close button, a quote section over a stadium photo, a staggered photo gallery, and a registration form. Each comes in a mobile and a desktop version. The intro gives hints rather than answers. Use `position: absolute` for the overlapping hero, make the dash before the quote's author with a pseudo element instead of an extra tag, and build the gallery with CSS grid and `grid-template-areas`. If you have not met that property, Gary's advice in the intro is to "just go to Google, research it."
 
 The hero lesson stacks a drone image over a blurred copy of itself, then the animation lesson makes both move. `@keyframes hover` translates the drone up 30 pixels and `@keyframes pulse` fades the shadow, both `2s alternate-reverse infinite`. Gary admits the animation name is a placeholder ("maybe we could think of something better, but that's what I used").
 
 <Screenshot
   src="/img/scrimba/build-websites-with-figma-html-and-css/drone-gallery-grid-template-areas-lesson.webp"
-  alt="Scrimba Build Websites with Figma, HTML, and CSS lesson Styling the Photo Gallery: the editor shows .gallery-container with display grid and grid-template-areas of dot a b, c d dot, dot e dot, plus object-fit cover on the images and nth-of-type rules assigning grid areas, while the preview on the right shows the Last Year's Footage section with five drone photos arranged in a staggered grid above the registration form"
+  alt="Build Websites with Figma, HTML, and CSS, Styling the Photo Gallery lesson: code editor beside a preview of a staggered drone photo grid."
   width={1400}
   height={660}
   caption="Styling the Photo Gallery, paused at 5:26. The three quoted strings on the left are the grid, dots marking empty cells; the five photos on the right have just snapped into that shape after each image got its grid-area."
@@ -165,7 +171,7 @@ The gallery lesson is the one I would show someone who thinks grid is hard. Thre
 
 <Screenshot
   src="/img/scrimba/build-websites-with-figma-html-and-css/drone-site-finished-quote-section-lesson.webp"
-  alt="Scrimba Build Websites with Figma, HTML, and CSS lesson Finishing the Project, with the preview pane enlarged to desktop width: the finished drone site's quote section reads The stadium is simply unreal, Scrimba Hall will make this the best drone racing event ever, period, attributed to Anonymous Person, over a faded stadium photo, with the photo gallery overlapping its bottom right corner and the heading Last Year's below"
+  alt="Build Websites with Figma, HTML, and CSS, Finishing the Project lesson: browser preview of the finished drone site's quote section and photo gallery."
   width={900}
   height={624}
   caption="The finished drone site at desktop width, Finishing the Project at 6:18. The gallery deliberately overlaps the quote block: a negative top margin plus a z-index, both written in this lesson."
@@ -251,4 +257,7 @@ Where it is limited: it is a Pro course with only the first project free. The re
     { name: 'Car Sales Site', duration: '41 min' },
     { name: 'Drone Event Landing Page', duration: '71 min' },
   ]}
+  instructor="Gary Simon"
+  instructorUrl="https://scrimba.com/@designcourse"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/build-websites-with-figma-html-and-css/chapter-0-from-figma-to-code-title-card.webp"
 />

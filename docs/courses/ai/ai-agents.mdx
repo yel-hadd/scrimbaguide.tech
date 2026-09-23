@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn AI Agents"
 description: "Bob Ziroll's Learn AI Agents reviewed from every transcript: 117 minutes, 31 scrims, a ReAct loop built by hand, then OpenAI function calling, and what aged."
 keywords: [scrimba learn ai agents, learn ai agents scrimba review, ai agents course scrimba, bob ziroll ai agents, react prompting tutorial, openai function calling agents, llm agents javascript]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn AI Agents
 
+<DisclosureNotice />
+
 Learn AI Agents is Bob Ziroll's Pro course on LLM agents: 31 scrims, just under two hours, where you build the same weather-and-location agent twice, first with a hand-written ReAct loop, then with OpenAI function calling. The loop logic holds up; the SDK and the models it runs on are late 2023.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 *This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
 
@@ -39,25 +44,6 @@ It fits developers who already call an LLM from JavaScript and want to see what 
   href="https://scrimba.com/learn-ai-agents-c034"
   description="Build an LLM agent from scratch with a ReAct prompt and a loop, then rebuild it with OpenAI function calling."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-ai-agents/react-loop-flowchart-title-card.webp"
-    alt="Slide from Scrimba's Learn AI Agents course titled ReAct, a flowchart: pass query to LLM, LLM thinks about the next step, LLM determines what data it needs and calls a function, LLM observes the data and determines if it is ready to answer, with a NO arrow looping back and a YES arrow to respond to user"
-    width={1279}
-    height={720}
-    caption="The ReAct loop slide from lesson 6, the diagram the first half of the course turns into code."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-ai-agents/openai-functions-title-card.webp"
-    alt="Slide from Scrimba's Learn AI Agents course titled OpenAI Functions, showing a screenshot of OpenAI's function calling documentation page"
-    width={1279}
-    height={720}
-    caption="The OpenAI Functions section opens on a screenshot of the docs Bob borrows his example from."
-    source="Slides from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -101,6 +87,15 @@ All five of these are marked SAMPLE, so you can watch them without Pro. "AI Agen
 
 ### 2. ReAct agent from scratch (47 min, 11 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-ai-agents/react-loop-flowchart-title-card.webp"
+  alt="Slide from Scrimba's Learn AI Agents course: a ReAct flowchart of think, call a function, observe, then answer or loop."
+  width={1279}
+  height={720}
+  caption="Nine numbered parts turn this reason-act-observe flowchart into a hand-written loop with regex parsing and a five-iteration cap."
+  source=""
+/>
+
 The core of the course. "Introduction to ReAct prompting" argues against hardcoding a chain (call the weather function, pass the result into the prompt) because, as Bob puts it, "I've predetermined in the code a chain of events that need to occur in order to get a very specific response." Instead the LLM gets three phases, reasoning, acting and observing, and the flowchart in the grid above. ReAct is short for reason and act; Bob links a Medium article for the theory and moves on.
 
 "Build action functions" creates `tools.js` with two async stubs. `getLocation` returns "Salt Lake City, Utah" (Bob's real location; by part 7 he has changed it to New York City) and `getCurrentWeather` returns a JSON string with 72 degrees and sunny. Bob first wires them into the prompt the naive way, as a chain, and gets a working answer. Then he says the sentence that starts the real work: "Let's refactor this so that we turn our manual chain of events into an agent that is aware of the tools at its disposal and able to reason, act, and observe."
@@ -113,7 +108,7 @@ Parts 5 to 7 are the parsing. Part 5 notices that the model separates its lines 
 
 <Screenshot
   src="/img/scrimba/learn-ai-agents/react-agent-calling-the-function-lesson.webp"
-  alt="Scrimba Learn AI Agents lesson ReAct Agent part 7 Calling the function, paused at 4:04: index.js shows a challenge comment, a regex matching Action lines, array destructuring into action and actionArg, and await availableFunctions[action](actionArg), while the console prints the parsed array Action: getLocation: null, getLocation, null"
+  alt="Learn AI Agents, ReAct Agent part 7: code editor and console panel showing the parsed function call."
   width={1400}
   height={660}
   caption="Part 7 at 4:04, just after the challenge: the regex has pulled getLocation and null out of the model's text and availableFunctions[action](actionArg) is about to call the stub. The console shows the raw match array."
@@ -125,13 +120,22 @@ Part 8, "Housekeeping", hoists `messages` out of the call so it can be pushed to
 
 <Screenshot
   src="/img/scrimba/learn-ai-agents/react-agent-loop-iterations-lesson.webp"
-  alt="Scrimba Learn AI Agents lesson ReAct Agent part 9 Finally! The loop!, paused at 4:40: the editor shows the else branch that logs Agent finished with task and returns responseText, and the console lists Iteration #2 with the model's Thought and Action getCurrentWeather: New York City, Calling function getCurrentWeather, Iteration #3, and the final Answer that the weather in New York City is sunny and 72 degrees"
+  alt="Learn AI Agents, ReAct Agent part 9: the console lists each loop iteration next to the code editor."
   width={1400}
   height={660}
   caption="Part 9 at 4:40, the run for 'What is the current weather in my location?': iterations 2 and 3 are in frame; iteration 1, which called getLocation, has scrolled off the top. Iteration 2 calls getCurrentWeather with the city it just learned, iteration 3 answers. This is the whole course in one console."
 />
 
 ### 3. OpenAI functions agent (41 min, 9 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-ai-agents/openai-functions-title-card.webp"
+  alt="Slide from Scrimba's Learn AI Agents course titled OpenAI Functions, showing a screenshot of OpenAI's function calling documentation page"
+  width={1279}
+  height={720}
+  caption="The hand-written loop gets rebuilt with a tools schema, a finish_reason check, and the beta runFunctions helper."
+  source="Slides from scrimba.com."
+/>
 
 Function calling is OpenAI's built-in version of what you just hand-rolled: you describe your functions in the request, and the model replies with a structured `tool_calls` array instead of prose. Bob's framing in the one minute intro: "we don't have to do the same kind of string parsing that we were doing before. I could be wrong but it feels like this is going to be quite a bit more error prone than something that's built into OpenAI." The plan is to "gut everything that we've done here and rewrite it from scratch using OpenAI functions," pulling from OpenAI's documentation example.
 
@@ -151,7 +155,7 @@ Function calling is OpenAI's built-in version of what you just hand-rolled: you 
 
 <Screenshot
   src="/img/scrimba/learn-ai-agents/agent-chat-ui-proof-of-concept-lesson.webp"
-  alt="Scrimba Learn AI Agents lesson Adding UI to agent proof of concept, paused at 3:20: index.js shows messages.push for the user query, openai.beta.chat.completions.runFunctions with model gpt-4-1106-preview, a .on message listener, await runner.finalContent(), and a form submit handler, while the preview on the right shows a chat window with the user message Please suggest some outdoor activities and the assistant's reply suggesting hiking and cycling"
+  alt="Learn AI Agents, Adding UI lesson: a chat window preview beside the code editor showing the agent's reply."
   width={1400}
   height={660}
   caption="The proof-of-concept UI at 3:20 of the last build scrim. Note the dependency panel: openai@4.19.1, up from the 4.14.2 visible in the two ReAct screenshots above, and the runFunctions call that replaced the hand-written loop."
@@ -237,4 +241,7 @@ Where it is limited: the code is late 2023 (an `openai` 4.x SDK, `gpt-3.5-turbo-
     { name: 'OpenAI functions agent', duration: '41 min' },
     { name: 'UI, solo project and wrap-up', duration: '15 min' },
   ]}
+  instructor="Bob Ziroll"
+  instructorUrl="https://scrimba.com/@bobziroll"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-ai-agents/react-loop-flowchart-title-card.webp"
 />

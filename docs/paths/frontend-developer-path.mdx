@@ -4,6 +4,7 @@ sidebar_label: "Frontend Path"
 description: "A first-hand review of Scrimba's 81.6-hour MDN-endorsed Frontend Path: module durations, Bob Ziroll's teaching, realistic timelines, and where it falls short."
 keywords: [scrimba frontend path, scrimba frontend developer path, scrimba frontend review, frontend career path, mdn scrimba partnership, bob ziroll react]
 hideGlobalPricingCta: true
+reviewed: 2026-09
 last_update:
   date: 2026-09-23
 ---
@@ -14,8 +15,12 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 import CourseSchema from '@site/src/components/CourseSchema';
 import Screenshot from '@site/src/components/Screenshot';
 import ScrimPoster from '@site/src/components/ScrimPoster';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Scrimba Frontend Developer Path
+
+<DisclosureNotice />
 
 <CourseSchema
   name="Scrimba Frontend Developer Path"
@@ -25,6 +30,8 @@ import ScrimPoster from '@site/src/components/ScrimPoster';
   difficulty="Beginner"
   access="Pro"
   keywords={["Frontend", "HTML", "CSS", "JavaScript", "React", "Career"]}
+  instructor="Per Borgen"
+  instructorUrl="https://scrimba.com/@perborgen"
 />
 
 **What it is.** 81.6 hours of interactive lessons, 13 modules, 1,493 scrims that start at "what is HTML" and end with a portfolio plus interview prep. Mozilla MDN reviewed the curriculum in 2024 and now officially recommends it. You write code inside almost every lesson instead of just watching. Most learners finish in 4 to 6 months on 10 to 15 hrs/week (full-time learners in 10 to 14 weeks; see the [realistic timeline](#realistic-time-budgets) below).
@@ -35,7 +42,7 @@ import ScrimPoster from '@site/src/components/ScrimPoster';
 The certificate is a nice-to-have. Your portfolio is the hiring signal, and building one is what this path is for: two path-only solo projects (Hometown Homepage and Learning Journal), then a 5.1-hour Getting hired module of 73 scrims on portfolio, GitHub, LinkedIn and interview drills. [What the certificate is and is not](#does-the-certificate-matter-for-hiring).
 :::
 
-*Reviewed inside the path with a Pro account, September 2026: all 13 modules and 62 groups expanded.*
+<Provenance subject="path" date={frontMatter.reviewed} detail="all 13 modules and 62 groups expanded" />
 
 <ScrimPoster
   href="https://scrimba.com/frontend-path-c0j/~06l6"
@@ -93,7 +100,7 @@ Most of the 81.6 hours is the standalone courses stitched together in order. The
 <div className="screenshot-grid">
   <Screenshot
     src="/img/scrimba/paths/frontend-solo-project-hometown-title-card.webp"
-    alt="Title card of the Solo Project: The Hometown Homepage scrim in Scrimba's Frontend Developer Path, on a pale green background with an illustrated student"
+    alt="Title card of the Hometown Homepage solo project in Scrimba's Frontend Developer Path, an illustrated student on pale green."
     width={1002}
     height={564}
     caption="The first solo project, at the end of Web dev basics."
@@ -101,7 +108,7 @@ Most of the 81.6 hours is the standalone courses stitched together in order. The
   />
   <Screenshot
     src="/img/scrimba/paths/frontend-solo-project-hometown-finished.webp"
-    alt="The finished Hometown Homepage example shown at the start of the solo project scrim: a Visit Torshov hero photo, three activity columns with round images, and a guide card with Per Borgen's photo"
+    alt="Frontend Developer Path, solo project brief: a finished homepage site with a hero photo and activity columns."
     width={1214}
     height={684}
     caption="What you are asked to build, shown at 0:13 of the brief: Per's own Torshov page."
@@ -116,7 +123,7 @@ That opening talk is worth the price of the module. Bob draws on his time at V S
 
 <Screenshot
   src="/img/scrimba/paths/frontend-getting-hired-hiring-managers-slide.webp"
-  alt="Slide from the Getting Hired lesson in Scrimba's Frontend Developer Path titled What are hiring managers looking for, with a left column of what people think they want and a right column of what they actually want: solve problems, personable and humble, easy-to-understand solutions, able to admit when you don't know something"
+  alt="Frontend Developer Path, Getting Hired lesson: a slide listing what hiring managers actually want in a candidate."
   width={1214}
   height={684}
   caption="Bob Ziroll's hiring-manager slide at 4:22 of the Getting Hired lesson, fully revealed."

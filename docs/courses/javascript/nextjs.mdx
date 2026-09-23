@@ -4,6 +4,7 @@ sidebar_position: 15
 sidebar_label: "Learn Next.js"
 description: "Learn Next.js on Scrimba from inside: 8.5 hours, 123 scrims, two teachers, one PrintForge app on Next 15 and SQLite, and six early scrims that no longer run."
 keywords: [scrimba learn nextjs, learn nextjs scrimba review, free nextjs course, bob ziroll nextjs, rachel johnson scrimba, nextjs after react, scrimba nextjs review]
+reviewed: 2026-09
 last_update:
   date: 2026-09-23
 toc_max_heading_level: 2
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Next.js
 
+<DisclosureNotice />
+
 Scrimba's free Learn Next.js course runs about 8.5 hours: Bob Ziroll teaches the first two sections, Rachel Johnson the third. You build PrintForge, a 3D-model catalog, first with static pages and the App Router, then a SQLite database with search, sort, and pagination. It assumes React already, and six early scrims no longer run inside Scrimba.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -38,33 +43,6 @@ Take it once you know React. PrintForge is a site where 3D printing enthusiasts 
   href="https://scrimba.com/learn-nextjs-c02moisq6a"
   description="App Router routing, layouts, rendering strategies, and a SQLite data layer, built into one PrintForge project on Next 15."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-nextjs/printforge-what-you-build-card.webp"
-    alt="Slide from the introduction of Scrimba's Learn Next.js course titled PrintForge, showing mobile and desktop mockups of the home page and the 3D models catalog you build"
-    width={1377}
-    height={775}
-    caption="Section 1 intro: PrintForge, the one project the whole course builds."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-nextjs/chapter-2-rendering-strategies-title-card.webp"
-    alt="Title card reading Rendering Strategies from section 2 of Scrimba's Learn Next.js course"
-    width={1377}
-    height={775}
-    caption="Section 2: the rendering strategies lessons, the most slide-heavy part."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-nextjs/chapter-3-making-data-flow-title-card.webp"
-    alt="Title card for section 3 of Scrimba's Learn Next.js course reading Section 3, How data flows through a Next app, Teacher: Rachel Johnson"
-    width={1377}
-    height={775}
-    caption="Section 3: Making Data Flow, where Rachel Johnson takes over."
-    source="Slides from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -90,13 +68,22 @@ Lesson counts are the scrims I counted in each expanded section in September 202
 
 ### 1. Build a Next.js App (2 hrs, 27 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-nextjs/printforge-what-you-build-card.webp"
+  alt="Learn Next.js, course intro: a slide showing mobile and desktop mockups of the PrintForge app."
+  width={1377}
+  height={775}
+  caption="This module builds PrintForge's static pages, layouts, and the App Router routing that every later section builds on."
+  source=""
+/>
+
 Bob's intro sets the prerequisites plainly, "a solid foundation in HTML, CSS, JavaScript, and React," and names two tools he uses without teaching: Tailwind CSS and TypeScript. Then comes the bug alert, then the six scrims that no longer run: a minimal Next.js setup, a challenge to create an app from scratch, adding a page, file-based routing, and two scrims on `create-next-app`. Scrimba's "Runner" is where the working part of the course begins: a pane that runs `npm run dev` for you, with the Next.js compile log underneath the editor.
 
 From there the PrintForge build is a run of challenges. The home page challenge opens with a slide of the Figma design, mobile and desktop, and a note in the file that says "I won't expect you to put much effort into the CSS of the challenges." Bob explains the choice: "I've decided to use Tailwind CSS to do a majority of the styling for this project. I do wanna caution that I don't want Tailwind to become a distraction for you." The `package.json` in that scrim pins `next` 15.2.4 with React 19, Tailwind 3.4, and TypeScript 5.
 
 <Screenshot
   src="/img/scrimba/learn-nextjs/printforge-home-page-challenge-lesson.webp"
-  alt="Scrimba Learn Next.js lesson Challenge, PrintForge Home Page paused at 0:09: a slide over the editor shows the Figma design of the home page on mobile and desktop, with the heading Discover what's possible with 3D printing, a Browse Models button and a hero image, while the file explorer on the left lists the app folder, layout.tsx and page.tsx"
+  alt="Learn Next.js, PrintForge Home Page challenge: a Figma mockup slide over the code editor."
   width={1400}
   height={656}
   caption="The challenge brief at 0:09 of the home page scrim: the Figma mockup on a slide, then you write app/page.tsx yourself. The takeaway is that a top-level page.tsx inside app is your home route."
@@ -106,11 +93,20 @@ After the home and about pages come nested routes, two scrims on layouts, a head
 
 ### 2. Rendering Strategies and More (2.4 hrs, 25 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-nextjs/chapter-2-rendering-strategies-title-card.webp"
+  alt="Title card reading Rendering Strategies from section 2 of Scrimba's Learn Next.js course"
+  width={1377}
+  height={775}
+  caption="This module covers SSG, ISR, and SSR, then a separate Cat Facts app where you run the production build yourself and read the static-versus-dynamic output."
+  source=""
+/>
+
 The first ten scrims are still PrintForge: a categories page challenge, a categories nav bar, an aside on `usePathname`, link refactors, two more lessons on client components, and challenges to style the active link and build category pages. Then the section changes gear. "Rendering Strategies Intro" is, in Bob's words, "a little bit slide heavy and is going to include some new terminology that you may not be familiar with." He frames the whole topic as giving your app "the ability to decide when and where a page's HTML is built," walks through build time, request time, and in-browser rendering, and then names the three strategies: SSG, ISR, and SSR.
 
 <Screenshot
   src="/img/scrimba/learn-nextjs/rendering-strategies-ssg-isr-ssr-lesson.webp"
-  alt="Scrimba Learn Next.js lesson Rendering Strategies Intro paused at 6:59: a slide titled Rendering Strategies shows a table with rows for Static Site Generation, Incremental Static Regeneration and Server-side Rendering, columns for when and where each is rendered, and the note depending on your code"
+  alt="Learn Next.js, Rendering Strategies Intro: a slide with a comparison table of three rendering strategies."
   width={1400}
   height={656}
   caption="The summary table at 6:59. Notice that every row says on server: Bob's point is that Next.js renders routes on the server by default and the strategy only changes when."
@@ -122,6 +118,15 @@ Scrimba's own description of this section on the course page talks about SQLite,
 
 ### 3. Making Data Flow (3.9 hrs, 71 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-nextjs/chapter-3-making-data-flow-title-card.webp"
+  alt="Title card for section 3 of Scrimba's Learn Next.js course reading Section 3, How data flows through a Next app, Teacher: Rachel Johnson"
+  width={1377}
+  height={775}
+  caption="This module rebuilds PrintForge on a SQLite data layer, then adds search, sorting, pagination, loading states, and URL param validation."
+  source="Slides from scrimba.com."
+/>
+
 Rachel Johnson's section is almost as long as the other two combined, and it is built from short scrims, most between two and four minutes. It opens with what she calls a "recap gauntlet": three challenge scrims that rebuild the PrintForge shell, the models section, and the dynamic routes from a static mockup. Her reason is a good one: "Instead of building everything step by step from scratch, you'll be working from a finished HTML and tailwind mock up. This happens quite a lot in real life where you're handed static code and your job is to bring it to life." This version of PrintForge is on Tailwind 4.
 
 Then the data work starts. "Setting Up the PrintForge Database" installs `sqlite` 5.1.1 and `sqlite3` 5.1.7 (she pins the versions because "only version five of SQLite three works reliably in the Scrimba environment") and creates `lib/db.ts` with a `getDBConnection()` function. The `lib` folder, she explains, "is where our data layer will live," the middle layer between the UI in `app/` and the `printforge.db` file. Two seeding scrims fill the models and categories tables, then a run of scrims reads from the database, renders category links from data, makes the model cards dynamic, filters with SQL `WHERE`, and builds dynamic category and single-model pages.
@@ -130,7 +135,7 @@ The rest of the section adds features one URL parameter at a time. Search reads 
 
 <Screenshot
   src="/img/scrimba/learn-nextjs/final-pagination-challenge-lesson.webp"
-  alt="Scrimba Learn Next.js lesson Final Pagination Challenge paused at 4:49: the editor shows PaginationButton.tsx with usePathname, useRouter and useSearchParams, a handlePageChange function that sets the page param and pushes the URL, and a button rendering label or page; the preview on the right shows the PrintForge catalog at /3d-models?page=12 with pagination buttons for previous, 11, 12, 13 and next, and the Runner logs GET requests"
+  alt="Learn Next.js, Final Pagination challenge: a code editor beside a live preview of paginated catalog buttons."
   width={1400}
   height={656}
   caption="The solution at 4:49 of the final challenge: a label prop turns the first and last buttons into arrows, and the preview shows page 12 of the catalog. The Runner log underneath is the real Next.js dev server responding to each click."
@@ -212,4 +217,7 @@ Where it is limited: six early scrims error inside Scrimba and have not been re-
     { name: 'Rendering Strategies and More', duration: '2.4 hrs', lessons: 25 },
     { name: 'Making Data Flow', duration: '3.9 hrs', lessons: 71 },
   ]}
+  instructor="Bob Ziroll"
+  instructorUrl="https://scrimba.com/@bobziroll"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-nextjs/chapter-2-rendering-strategies-title-card.webp"
 />

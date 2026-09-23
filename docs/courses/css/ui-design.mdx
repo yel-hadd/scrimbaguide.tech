@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn UI Design"
 description: "Gary Simon's Learn UI Design from inside: 8.6 hours, 100 scrims, 45 pause-and-fix challenges, no Figma needed, what Pro gates, and the real time cost."
 keywords: [scrimba learn ui design, learn ui design scrimba review, gary simon ui design course, ui design for developers, html css ui design course, ui design course review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn UI Design
 
+<DisclosureNotice />
+
 Gary Simon's Learn UI Design runs about 8.6 hours of fixing bad interfaces in plain HTML and CSS, no design tool required. You build a refactored dashboard, a tea shop landing page, a signup form, and the Scenic Forests cabin rental site. It is the fastest way to learn why your layouts look unfinished and how to fix them.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 *This page is part of our [Scrimba CSS courses](/docs/courses/css/) catalog.*
 
@@ -39,41 +44,6 @@ It fits developers who can build a layout but cannot say why it looks unfinished
   href="https://scrimba.com/learn-ui-design-c024"
   description="Seven design fundamentals applied through 45 fix-it challenges in HTML and CSS, ending in a multi-page cabin rental site."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-ui-design/chapter-2-ui-design-fundamentals-title-card.webp"
-    alt="Title card for chapter 2 of Scrimba's Learn UI Design course: Understanding UI Design Fundamentals"
-    width={1279}
-    height={720}
-    caption="Chapter 2: the seven fundamentals the rest of the course keeps coming back to."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-ui-design/chapter-4-responsive-ui-design-title-card.webp"
-    alt="Title card for chapter 4 of Scrimba's Learn UI Design course: Responsive UI Design"
-    width={1279}
-    height={720}
-    caption="Chapter 4: mobile-first responsive design on a food site."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-ui-design/chapter-10-designing-forms-title-card.webp"
-    alt="Title card for chapter 10 of Scrimba's Learn UI Design course: Designing Forms"
-    width={1279}
-    height={720}
-    caption="Chapter 10: a three-step signup form with custom radios and checkboxes."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-ui-design/chapter-12-final-project-title-card.webp"
-    alt="Title card for chapter 12 of Scrimba's Learn UI Design course: Final Project Introduction"
-    width={1279}
-    height={720}
-    caption="Chapter 12: the Scenic Forests cabin rental site, landing page plus sub page."
-    source="Chapter title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -114,13 +84,22 @@ The third scrim answers the question everyone asks. "How on earth am I going to 
 
 ### 2. UI Design Fundamentals (72 min, 17 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-ui-design/chapter-2-ui-design-fundamentals-title-card.webp"
+  alt="Title card for chapter 2 of Scrimba's Learn UI Design course: Understanding UI Design Fundamentals"
+  width={1279}
+  height={720}
+  caption="Seventeen scrims cover white space, alignment, contrast, scale, typography, color, and visual hierarchy on small standalone examples."
+  source=""
+/>
+
 The core of the course and the module the rest of it refers back to. It opens with three scrims Scrimba added later for the Frontend Path. There is a narrated Welcome ("Your teacher for this module is Gary Simon, who you might know from YouTube"), an aside by Guil from Scrimba on design roles (user researchers, UX designers, UI designers, and the tools each uses), and a short Frontend Career Path scrim, which I did not open. Nine of the 17 scrims here are free previews, so you can try most of this module before paying.
 
 Then Gary takes the fundamentals one at a time, each on its own small example: White Space (two identical cards, one fixed with `padding`, `margin-bottom`, and `line-height`), Alignment, Contrast, Scale, Typography (a testimonial section using three typefaces, cut down to one), Color, and Visual Hierarchy. That last one is a mailing list form where nothing stands out until the heading grows and the button turns yellow. Four Design Challenges are threaded between them, and The Final Challenge hands you a purple dashboard panel that breaks four fundamentals at once.
 
 <Screenshot
   src="/img/scrimba/learn-ui-design/white-space-two-cards-lesson.webp"
-  alt="Scrimba Learn UI Design lesson White Space, paused at 4:44: the editor shows .secondary rules for padding 1.9em, h1 margin-bottom .5em and p line-height 1.5em, and the preview shows two My Title cards side by side, the left one cramped and the right one with generous spacing"
+  alt="Learn UI Design, White Space lesson: two identical cards side by side, one cramped and one with generous spacing."
   width={1400}
   height={660}
   caption="White Space at 4:44. Same HTML on both cards; the right one has three CSS rules added. 'The only UI design fundamental that we changed is white space.'"
@@ -135,6 +114,15 @@ The first time you build rather than fix, and Gary keeps the materials deliberat
 Keeping it Ultra Simple centers a label and a headline with `display: grid` and `place-content: center`, then walks through all seven fundamentals to check the result. Making our Layout Dark, Challenge 1, Multi-Columns, and Working with Photographs add one ingredient each. The Final Chapter Lesson is the payoff: a title, a paragraph, and a photo of a stop sign become a two-column layout with a 5em headline, a `::before` underline picked from a color in the photo, and a `::after` circle. He also shows how to handle a busy photo: darken it into a watermark, or give the text its own column.
 
 ### 4. Responsive Design (52 min, 9 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-ui-design/chapter-4-responsive-ui-design-title-card.webp"
+  alt="Title card for chapter 4 of Scrimba's Learn UI Design course: Responsive UI Design"
+  width={1279}
+  height={720}
+  caption="Nine scrims build Tasty Bites mobile-first, then add media queries and a grid-template-areas challenge for wider screens."
+  source=""
+/>
 
 A mobile-first build of a small food site called Tasty Bites. Defining the HTML comes first, then three Mobile First CSS scrims: Nunito as the font, a `.wrapper` class for padding, a pink logo, and a horizontal nav of pill-shaped links. Gary's reasoning for not using a hamburger here is typical of the course: "we have enough room, and then that reduces the amount of clicks a person has to take."
 
@@ -152,7 +140,7 @@ My favorite module. Gary writes the HTML for a company dashboard, applies what h
 
 <Screenshot
   src="/img/scrimba/learn-ui-design/refactored-dashboard-desktop-lesson.webp"
-  alt="Scrimba Learn UI Design lesson Desktop Media Query, paused at 8:09: the preview shows the refactored Company dashboard at desktop width with a purple sidebar listing Dashboard, Settings, Profile, Reset Access and Contact, a panel of Monthly, Quarterly and Annually figures, and a Monthly Visitors text block beside a second grid of figures"
+  alt="Learn UI Design, Desktop Media Query lesson: the refactored dashboard preview shows a sidebar and data panels at desktop width."
   width={1400}
   height={660}
   caption="Desktop Media Query at 8:09, the end state of the refactoring module. Gary deletes all the added CSS at 0:14 and again at 8:22 so you can see the 'ugly' version it started from."
@@ -168,7 +156,7 @@ Three challenges cover mobile, tablet, and desktop, each followed by a "My Solut
 
 <Screenshot
   src="/img/scrimba/learn-ui-design/teaplace-desktop-solution-lesson.webp"
-  alt="Scrimba Learn UI Design lesson Challenge 3: My Solution, paused at 5:06: the preview shows the finished TeaPlace landing page at desktop width, a mint green left column with the headline The Ultimate Tea, a paragraph, Browse our Tea and Buy Now buttons, and a white right column with a fern leaf in a glass and the HOME BROWSE CART CONTACT menu"
+  alt="Learn UI Design, TeaPlace solution: the preview shows the finished tea shop landing page at desktop width."
   width={1400}
   height={660}
   caption="Challenge 3: My Solution at 5:06. The TeaPlace page at 850 pixels and up. The plant PNG overlaps the two columns on purpose."
@@ -184,6 +172,15 @@ Same shape as Shadows: a short intro on why gradients vanished with flat design 
 
 ### 10. Forms (52 min, 7 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-ui-design/chapter-10-designing-forms-title-card.webp"
+  alt="Title card for chapter 10 of Scrimba's Learn UI Design course: Designing Forms"
+  width={1279}
+  height={720}
+  caption="Seven scrims build a three-step signup form with an error state, then swap the native radio buttons and checkboxes for custom ones."
+  source=""
+/>
+
 Forms 101 lists the rules: consistent styling, labels rather than placeholders ("you should always use a label instead of relying on the placeholder value"), multi-step forms with a progress bar for anything long, inline validation, and keeping custom controls accessible to screen readers. The next six scrims build exactly that: a three-step "become a member" signup with a step indicator across `index.html`, `step2.html`, and `step3.html`.
 
 Challenge 1 has you style the fields and design an error state (a softer red border with a "This field is required" badge, because "if it's too red, it just breaks the design"). Challenge 2 makes it responsive, Challenge 3 replaces the native radio buttons with `appearance: none` circles and a `:checked::before` dot, and Challenge 4 does the same for checkboxes. Challenges 1 and 3 both run past ten minutes, among the longest scrims in the course.
@@ -194,11 +191,20 @@ Shorter on animation than the title suggests. The intro is the useful part: keep
 
 ### 12. Final Project (86 min, 15 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-ui-design/chapter-12-final-project-title-card.webp"
+  alt="Title card for chapter 12 of Scrimba's Learn UI Design course: Final Project Introduction"
+  width={1279}
+  height={720}
+  caption="Fifteen scrims build the Scenic Forests cabin rental site and its sub page, ending in a GSAP entrance animation."
+  source="Chapter title cards from scrimba.com."
+/>
+
 Scenic Forests, "a fictional project for a company that rents cabins in the woods": responsive nav, a hero over a forest photo, three featured cabin cards, a testimonial, and a cabins.html sub page. Gary writes the HTML across two scrims, then the mobile CSS across five (navigation, two hero scrims, features, finishing). The challenges are the responsive steps: Small Tablet at 550 pixels (inline nav, three-column cabin grid), Desktop, Testimonials on Desktop, and Style the Sub Page. He gives fewer hints now: "I'm not gonna really help you that much this time because we're at the end of the course."
 
 <Screenshot
   src="/img/scrimba/learn-ui-design/scenic-forests-final-project-lesson.webp"
-  alt="Scrimba Learn UI Design lesson Challenge: Animating the UI, paused at 0:09: the preview shows the finished Scenic Forests landing page at desktop width, a forest photo background, the subtitle Forest Vacations, the headline Scenic Beauties Await you, a green All Rentals button, and three Whispering Willows cabin cards with photos, descriptions and Cabin Info links"
+  alt="Learn UI Design, final project lesson: the preview shows the Scenic Forests landing page with a forest photo hero and cabin cards."
   width={1400}
   height={660}
   caption="Challenge: Animating the UI at 0:09. The finished landing page before the GSAP entrance animation is added; each word of the headline is wrapped in a span so it can be revealed with a clip-path."
@@ -289,4 +295,7 @@ Where it is limited: it is Pro-only with a small free sample, and the recordings
     { name: 'UI Animation', duration: '32 min' },
     { name: 'Final Project', duration: '86 min' },
   ]}
+  instructor="Gary Simon"
+  instructorUrl="https://scrimba.com/@designcourse"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-ui-design/chapter-2-ui-design-fundamentals-title-card.webp"
 />

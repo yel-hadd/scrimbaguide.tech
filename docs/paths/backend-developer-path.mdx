@@ -4,6 +4,7 @@ sidebar_label: "Backend Path"
 description: "Node, Express, SQL, TypeScript, security, and deployment in ~39h. See who the Backend path fits, what you actually build, and where it stops."
 keywords: [scrimba backend path, scrimba backend developer, backend career path, scrimba node express]
 hideGlobalPricingCta: true
+reviewed: 2026-09
 last_update:
   date: 2026-09-23
 ---
@@ -14,8 +15,12 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 import CourseSchema from '@site/src/components/CourseSchema';
 import Screenshot from '@site/src/components/Screenshot';
 import ScrimPoster from '@site/src/components/ScrimPoster';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Scrimba Backend Developer Path
+
+<DisclosureNotice />
 
 <CourseSchema
   name="Scrimba Backend Developer Path"
@@ -25,13 +30,15 @@ import ScrimPoster from '@site/src/components/ScrimPoster';
   difficulty="Intermediate"
   access="Pro"
   keywords={["Backend", "Node", "Express", "SQL", "TypeScript", "Databases", "Career"]}
+  instructor="Tom Chant"
+  instructorUrl="https://scrimba.com/@DoubleNemesis"
 />
 
 **Quick verdict.** For a JS frontend dev, this is the missing half of fullstack: 36.2 hours of Node, Express, SQL, and Supabase. It is not the path for Python, Java, Go, or Rust backends.
 
 **Realistic time budget.** Roughly 8 to 10 weeks at 6 to 8 hours per week, 3 to 5 weeks at 12 to 15 hours per week, 2 to 3 weeks full-time. Lesson time alone is about 40 hours; real project builds push the calendar further.
 
-*Reviewed inside the path with a Pro account, September 2026: all twelve modules and their sub-modules expanded on the path page.*
+<Provenance subject="path" date={frontMatter.reviewed} detail="all twelve modules and their sub-modules expanded on the path page" />
 
 <ScrimPoster
   href="https://scrimba.com/the-backend-developer-path-c0tbi0l98f/~0zl3"
@@ -94,7 +101,7 @@ Skewed toward shipping APIs, not abstract CS theory.
 
 <Screenshot
   src="/img/scrimba/paths/backend-devops-github-actions-ci-yaml.webp"
-  alt="Scrimba's GitHub Actions lesson in the Backend Path DevOps module, paused at 1:11: the editor shows .github/workflows/ci.yml with push and pull_request triggers on main, a build-and-test job on ubuntu-latest, actions/checkout@v6, actions/setup-node@v6 with node-version 24, npm ci and npm test"
+  alt="Backend Developer Path, GitHub Actions lesson: code editor showing a CI workflow YAML file."
   width={1568}
   height={688}
   caption="DevOps, Continuous Integration, 'Create Your First YAML File' at 1:11. The workflow is current (checkout and setup-node v6, Node 24), which is a good sign for a module that ages fast."

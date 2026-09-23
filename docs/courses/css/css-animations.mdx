@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn CSS Animations"
 description: "Jad Khalili's Learn CSS Animations reviewed from inside every scrim: 2 hours, 27 lessons, three real-world challenges, and what Pro gates."
 keywords: [scrimba learn css animations, learn css animations review, css animations course, css transitions tutorial, jad khalili css, interactive css animation course, scrimba css course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn CSS Animations
 
+<DisclosureNotice />
+
 Learn CSS Animations is Jad Khalili's two-hour Scrimba course on CSS transitions, keyframe animations, and transforms, built around three real-world challenges: a hover menu, a fading landing page, and a skewed four-bar logo. It's a fast, practical primer on the syntax if you already write CSS, and it stops well short of real motion design.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,25 +42,6 @@ It fits anyone who can already write CSS and wants the motion syntax fast, not t
   href="https://scrimba.com/learn-css-animations-c02g"
   description="Transitions, keyframe animations, and transforms in two hours, with a mini challenge in most scrims and three real-world challenges."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-css-animations/chapter-01-welcome-title-card.webp"
-    alt="Title card of the first scrim of Scrimba's Learn CSS Animations course: the words Learn CSS Animations and Videolab in black on a peach background"
-    width={1279}
-    height={720}
-    caption="The welcome scrim's title card. Videolab is the brand printed on both title cards."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-css-animations/chapter-05-custom-timing-functions-title-card.webp"
-    alt="Title card of the Custom Timing Functions scrim in Scrimba's Learn CSS Animations course, black text on a peach background"
-    width={1279}
-    height={720}
-    caption="The last lesson, on cubic-bezier timing curves. Only these two scrims open on a title slide; the rest open straight into code."
-    source="Title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -83,6 +69,15 @@ Scrimba shows this course as one flat list of 27 scrims with no module headers, 
 
 ### 1. Welcome and the Scrimba workspace (7 min, 2 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-css-animations/chapter-01-welcome-title-card.webp"
+  alt="Title card of the first scrim of Scrimba's Learn CSS Animations course: the words Learn CSS Animations and Videolab in black on a peach background"
+  width={1279}
+  height={720}
+  caption="A tour of the course plan and one practical warning: the preview keeps animating in real time even when the video is paused."
+  source=""
+/>
+
 The welcome scrim is a five minute tour of the course plan. It includes one practical warning worth knowing before you start: the preview pane renders your HTML and CSS in real time. In Jad's words, "so if you speed up the video, or pause it, or skip through it, just beware that it will still be playing in real time. It won't be playing with the video." In practice, that means a paused scrim can still have a box bouncing in the preview.
 
 The second scrim is a walk around the editor. Jad keeps the preview collapsed to a thumbnail in the bottom-right corner and pops it open when he wants to check something, which is how most of the course looks on screen. He also says you will hardly touch the HTML file: "this CSS file is where we're gonna be doing most of our coding."
@@ -101,7 +96,7 @@ This is the longest and best section. "Animations in Action" shows the target: a
 
 <Screenshot
   src="/img/scrimba/learn-css-animations/defining-animations-keyframes-lesson.webp"
-  alt="Scrimba Learn CSS Animations lesson Defining Animations paused at 5:32: the editor shows a .box rule with animation-name grow and animation-duration 2s, and a @keyframes grow block with 0%, 50% and 100% steps that change width, height and background; a small preview thumbnail with a red box sits in the bottom-right corner"
+  alt="Learn CSS Animations, Defining Animations lesson: a keyframes rule sits in the editor beside a small preview thumbnail."
   width={1400}
   height={660}
   caption="Defining Animations at 5:32. The three-step keyframes block is the whole lesson; notice the preview collapsed to a thumbnail in the corner, which is how Jad works for most of the course."
@@ -121,7 +116,7 @@ The "Transform Challenge" combines the section with the previous one: an infinit
 
 <Screenshot
   src="/img/scrimba/learn-css-animations/logo-transforms-challenge-lesson.webp"
-  alt="Scrimba Learn CSS Animations lesson Real-World Transforms Challenge: Logo paused at 8:16: the editor shows index.html with four div elements with classes box-red, box-blue, box-green and box-orange and the challenge brief written as an HTML comment; the preview thumbnail in the corner shows the finished logo as four skewed coloured bars"
+  alt="Learn CSS Animations, Real-World Transforms Challenge: the preview thumbnail shows a finished logo made of skewed color bars."
   width={1400}
   height={660}
   caption="The logo challenge at 8:16. The brief lives in an HTML comment in the file, which is how all three real-world challenges are set; the finished, skewed logo is in the preview thumbnail."
@@ -129,13 +124,22 @@ The "Transform Challenge" combines the section with the previous one: an infinit
 
 ### 5. Tips and tricks (20 min, 3 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-css-animations/chapter-05-custom-timing-functions-title-card.webp"
+  alt="Title card of the Custom Timing Functions scrim in Scrimba's Learn CSS Animations course, black text on a peach background"
+  width={1279}
+  height={720}
+  caption="Three unrelated tips: outdated browser prefixes, CSS custom properties, and cubic-bezier timing curves you shape yourself."
+  source="Title cards from scrimba.com."
+/>
+
 Jad calls this section "quite unorganized" in the welcome video, and it is three unrelated lessons. "Prefixes" explains `-webkit-`, `-ms-`, `-moz-`, and `-o-` and tells you to add all four for maximum support. This is the lesson that has aged worst; modern browsers do not need prefixes for transitions or animations, and Opera has not used `-o-` for over a decade. "CSS Variables" is a sound short introduction to `:root`, `--main-color`, and `var()`, with a challenge to replace a repeated hex colour.
 
 "Custom Timing Functions" is the best of the three and the one to keep. It explains `cubic-bezier()` with the visualiser at cubic-bezier.com, shows what happens when a control point goes past 1 (the animation overshoots and bounces back), and replaces `ease-out` in the running animation with a hand-picked curve. The challenge asks you to design a curve that starts slow and keeps accelerating.
 
 <Screenshot
   src="/img/scrimba/learn-css-animations/custom-timing-functions-preview-lesson.webp"
-  alt="Scrimba Learn CSS Animations lesson Custom Timing Functions paused at 4:44: the preview window is popped open over a blurred editor and shows the text Hover over me! and a small purple box mid-animation"
+  alt="Learn CSS Animations, Custom Timing Functions lesson: an enlarged preview window shows a box mid-animation over a blurred editor."
   width={1400}
   height={660}
   caption="Custom Timing Functions at 4:44, right after the cubic-bezier curve replaces ease-out. When Jad opens the preview it takes over the screen like this, and the box keeps animating even while the scrim is paused."
@@ -227,4 +231,5 @@ Where it is limited: it is old. The prefixes lesson is out of date, and there is
     { name: 'Tips and tricks', duration: '20 min', lessons: 3 },
     { name: 'Wrap-up and certificate', duration: '4 min', lessons: 3 },
   ]}
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-css-animations/chapter-01-welcome-title-card.webp"
 />

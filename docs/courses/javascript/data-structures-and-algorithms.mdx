@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Data Structures and Algorithms"
 description: "Shant Dashjian's DSA course reviewed from inside: 35 scrims in 2.5 hours, 11 test-driven challenges, dinosaur data, and what the free sample covers."
 keywords: [scrimba data structures and algorithms, scrimba dsa course review, data structures and algorithms review, shant dashjian scrimba, technical interview prep, big o notation course, dsa course javascript]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Data Structures and Algorithms
 
+<DisclosureNotice />
+
 Shant Dashjian teaches Scrimba's Data Structures and Algorithms course in about two and a half hours, framed as a story about saving the dinosaurs. You build a stack, a queue, a linked list, a binary search tree, merge sort and binary search, then analyze each with Big O. A solid first pass at the theory, thin past the basics.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 *This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's catalog data does not list it under a path, but the welcome lesson addresses learners "taking this course as part of Scrimba's backend developer path", and the teacher card says Shant contributes to the [Backend Developer Path](/docs/paths/backend-developer-path/).*
 
@@ -39,33 +44,6 @@ It fits self-taught developers and bootcamp graduates who have never been taught
   href="https://scrimba.com/data-structures-and-algorithms-c0shn6ckdm"
   description="Big O, the core data structures, sorting, searching and graph traversal in JavaScript, taught through eleven test-driven challenges about dinosaur data."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/data-structures-and-algorithms/course-intro-title-card.webp"
-    alt="Title card of Scrimba's Data Structures and Algorithms course on a purple and gold gradient, reading Scrimba Course, Data Structures and Algorithms, Teacher: Shant Dashjian"
-    width={1378}
-    height={775}
-    caption="The course title card that opens the Welcome scrim."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/data-structures-and-algorithms/chapter-big-o-notation-title-card.webp"
-    alt="Title slide of the Big O Notation lesson in Scrimba's Data Structures and Algorithms course, reading Understand Big O Notation with three floating cubes"
-    width={1378}
-    height={775}
-    caption="Lesson 3, Big O Notation: the first slide."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/data-structures-and-algorithms/chapter-graphs-title-card.webp"
-    alt="Title slide of the Graphs lesson in Scrimba's Data Structures and Algorithms course, reading Graphs with three floating cubes on a gradient"
-    width={1378}
-    height={775}
-    caption="Lesson 30, Graphs: the last data structure in the course."
-    source="Lesson title slides from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -97,6 +75,24 @@ My count is 35 scrims adding up to 2 hours 30 minutes; without the two generic S
 
 ### 1. Welcome, the dinosaur mission, and Big O (26 min, 6 scrims)
 
+<Screenshot
+  src="/img/scrimba/data-structures-and-algorithms/course-intro-title-card.webp"
+  alt="Title card of Scrimba's Data Structures and Algorithms course: the name and teacher Shant Dashjian on a purple and gold gradient."
+  width={1378}
+  height={775}
+  caption="The Welcome scrim: what a data structure and an algorithm are, and why backend interviews test for both."
+  source=""
+/>
+
+<Screenshot
+  src="/img/scrimba/data-structures-and-algorithms/chapter-big-o-notation-title-card.webp"
+  alt="Title slide of the Big O Notation lesson in Scrimba's Data Structures and Algorithms course, with three floating cubes."
+  width={1378}
+  height={775}
+  caption="Three small scripts classified as O(1), O(n) and O(n squared), with a table showing why the gap matters at scale."
+  source=""
+/>
+
 The Welcome scrim sets expectations in under three minutes: what a data structure is, what an algorithm is, and why "as a back end developer, you are expected to have a good foundation in DSA and problem solving, and as such, you will likely be tested in job interviews on this foundation". Then comes the odd part. "Mission: Save the Dinosaurs" is a three-minute story with no code: Shant wonders whether the dinosaurs died out "not because of the asteroid, but because they didn't use efficient data structures and algorithms to organize and manage all that data", borrows a beta time machine from a physicist friend, and announces that every challenge from here on will use dinosaur data. It is silly, and it works, because every later problem has a concrete story instead of "given an array of integers".
 
 Big O Notation is the longest teaching scrim in the course at seven minutes and the best one. You run three small Node scripts in the terminal (`printOneToN`, `printPairs`, `printGroupMessage`) and classify them as O(n), O(n squared) and O(1). The table that follows is the moment the idea lands: if each step took one second, an O(n) algorithm on a million items runs for twelve days and an O(n squared) one for 31,710 years. "Big O notation is a way to describe how fast an algorithm runs in relation to the input", as Shant puts it at 1:26, and the rest of the course keeps asking you to apply that sentence.
@@ -109,7 +105,7 @@ Arrays explains why index access is O(1) (contiguous memory, address arithmetic)
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms/dinosaur-age-range-challenge-brief-lesson.webp"
-  alt="Scrimba Data Structures and Algorithms lesson Challenge: Dinosaur Age Range paused at 1:52, showing the challenge.md file with the constraint ages.length >= 1 and four numbered tasks: write the algorithm in plain English, implement getAgeRange in JavaScript, run npm test, and write down the time and space complexity in Big O notation"
+  alt="Data Structures and Algorithms, Dinosaur Age Range challenge: a markdown file listing four numbered tasks."
   width={1400}
   height={660}
   caption="The Dinosaur Age Range challenge at 1:52. Every challenge in the course has this four-task shape: plain-English steps first, then code, then npm test against a prepared test file, then a Big O analysis. The file list on the left shows getAgeRange.test.js waiting for you."
@@ -129,7 +125,7 @@ Maps is where the course starts paying off. Shant introduces JavaScript's `Map` 
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms/tag-sum-lottery-map-solution-lesson.webp"
-  alt="Scrimba Data Structures and Algorithms lesson Challenge: Tag Sum Lottery paused at 5:26, showing the finished tagSumLottery function in the editor: a single for loop that computes the difference between the lottery number and each tag, checks a Map called tagName, and pushes sorted name pairs into a winners array, with the numbered plain-English steps in a comment above it"
+  alt="Data Structures and Algorithms, Tag Sum Lottery challenge: code editor showing the finished solution using a Map."
   width={1400}
   height={660}
   caption="Tag Sum Lottery at 5:26. The numbered steps in the comment are written before the code, and the inner loop of the starting version is gone: one pass, one Map, O(n). This is the pattern the course wants you to leave with."
@@ -145,11 +141,20 @@ Depth-First Search and Breadth-First Search is the second-best scrim in the cour
 
 ### 6. Graphs and wrap-up (19 min, 6 scrims)
 
+<Screenshot
+  src="/img/scrimba/data-structures-and-algorithms/chapter-graphs-title-card.webp"
+  alt="Title slide of the Graphs lesson in Scrimba's Data Structures and Algorithms course, reading Graphs with three floating cubes on a gradient"
+  width={1378}
+  height={775}
+  caption="Vertices, edges and adjacency lists, then two challenges: the friendliest dinosaur and whether two dinosaurs connect."
+  source="Lesson title slides from scrimba.com."
+/>
+
 Graphs is terminology (vertex, edge, degree, directed, weighted, cycle, path) and the adjacency list, with the observation that "both linked lists and trees, two data structures we already studied, are special cases of the graph". Two challenges follow. The Friendliest Dinosaur is "relatively straightforward": find the vertex with the highest degree, and express the complexity in terms of V and E.
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms/are-they-connected-graph-slide-lesson.webp"
-  alt="Scrimba Data Structures and Algorithms lesson Challenge: Are They Connected? at 0:00, showing a slide of the dinosaur social network as a graph: Eddie, Brie, Tim, Vinnie and Sam form one connected cluster with a cycle, while Lori, Maddie, Amber and Cassie form a second cluster with no edge to the first"
+  alt="Data Structures and Algorithms, Are They Connected challenge: a slide showing two separate graph clusters."
   width={1400}
   height={660}
   caption="Are They Connected? at 0:00. The question is whether there is a path from Eddie to Sam (yes, through Vinnie) and from Eddie to Amber (no). The Eddie, Brie, Tim, Vinnie loop is the cycle you have to guard against with a visited set."
@@ -236,4 +241,7 @@ Where it is limited: two and a half hours cannot cover heaps, hash table interna
     { name: 'Linked lists and trees', duration: '24 min' },
     { name: 'Graphs and wrap-up', duration: '19 min' },
   ]}
+  instructor="Shant Dashjian"
+  instructorUrl="https://scrimba.com/@shantdashjian"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/data-structures-and-algorithms/course-intro-title-card.webp"
 />

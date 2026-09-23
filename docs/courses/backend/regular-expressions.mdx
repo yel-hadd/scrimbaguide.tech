@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn Regular Expressions"
 description: "Beau Carnes' free regex course reviewed from inside: 46 minutes, 34 short scrims on JavaScript regular expressions, nothing gated behind Pro, and who it suits."
 keywords: [scrimba regex course, learn regular expressions scrimba review, regex javascript course, freecodecamp regex, beau carnes regex, free regex tutorial, review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Regular Expressions
 
+<DisclosureNotice />
+
 Learn Regular Expressions is a free, 46-minute Scrimba course on JavaScript regex, recorded by Beau Carnes of freeCodeCamp as 34 short screencasts. There's no project, just one symbol or method per scrim, building from `.test()` to lookaheads and capture groups. If you already write JavaScript and want regex to finally click, it does the job in under an hour.
 
-*Reviewed every scrim's transcript inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,17 +42,6 @@ This one fits anyone who writes JavaScript and has been copying regex patterns o
   href="https://scrimba.com/learn-regular-expressions-c0d"
   description="freeCodeCamp's regex curriculum as short Scrimba screencasts: test, match, flags, character classes, quantifiers, anchors, lookaheads, and capture groups."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-regular-expressions/regular-expressions-title-card.webp"
-    alt="Title slide of Scrimba's Learn Regular Expressions course: the words Regular Expressions in white monospace text on a plain green background"
-    width={1279}
-    height={720}
-    caption="The only title card in the course, from the intro scrim. The green is freeCodeCamp's, not Scrimba's."
-    source="Title card from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -78,6 +72,15 @@ I counted 36 scrims in the table of contents: 34 freeCodeCamp screencasts (the n
 
 ### 1. First patterns: test, match, or, and flags (7 min, 7 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-regular-expressions/regular-expressions-title-card.webp"
+  alt="Title slide of Scrimba's Learn Regular Expressions course: the words Regular Expressions in white monospace text on a plain green background"
+  width={1279}
+  height={720}
+  caption="Two methods, two flags, one operator: test, match, i, g and the pipe, the building blocks for everything after."
+  source="Title card from scrimba.com."
+/>
+
 The intro is 78 seconds. Beau says the course focuses on JavaScript but that "almost everything you learn about regular expressions in this course can also apply if you're using regular expressions in another programming language," and he points people who do not know JavaScript to Scrimba's basic JavaScript course first. Then it is straight into code.
 
 "Using the Test Method" introduces the `/the/` syntax and the first method: as Beau puts it, "the test method takes the regex, applies it to a string, and then returns true or false if the pattern matches something." The next five scrims add one thing each. Matching is case sensitive, so `/Waldo/` fails on lowercase. The pipe `|` means or (`/dog|cat|bird|fish/`). The `i` flag ignores case. `.match()` gives you the matched text instead of true or false. The `g` flag returns every match as an array, and the "Twinkle twinkle" example shows `i` and `g` used together.
@@ -98,7 +101,7 @@ Beau's definition is the clearest sentence in the course: "A greedy match finds 
 
 <Screenshot
   src="/img/scrimba/learn-regular-expressions/lazy-matching-lesson.webp"
-  alt="Scrimba Learn Regular Expressions lesson Find Characters with Lazy Matching, paused at 3:14: the editor shows let myRegex = /<.*?>/ applied to an h1 string, and the console below prints an array containing only the opening h1 tag"
+  alt="Learn Regular Expressions, lazy matching lesson: a code editor and console show a pattern now matching only the first tag."
   width={1400}
   height={625}
   caption="Lazy matching at 3:14. The question mark has just been added to the pattern and the console now shows only the opening tag; two seconds earlier, without it, the same line printed the entire h1 element."
@@ -114,7 +117,7 @@ The scrim that matters here is "Restrict Possible Usernames," at 2:45 the one pl
 
 <Screenshot
   src="/img/scrimba/learn-regular-expressions/username-validator-lesson.webp"
-  alt="Scrimba Learn Regular Expressions lesson Restrict Possible Usernames, paused at 2:41: a comment block lists the three username rules, and below it the finished pattern userCheck = /^[A-Za-z]{2,}\d*$/ is highlighted in the editor"
+  alt="Learn Regular Expressions, username validator lesson: a code editor shows the finished pattern highlighted below the rules."
   width={1400}
   height={625}
   caption="The username validator at 2:41, complete. The three rules sit in the comment at the top and the finished pattern is selected on line 8. This is the scrim to pause and rewrite yourself with a different set of rules."
@@ -132,7 +135,7 @@ Three scrims on curly-brace quantifiers: `{3,6}` for a range, `{4,}` for a minim
 
 <Screenshot
   src="/img/scrimba/learn-regular-expressions/capture-groups-lesson.webp"
-  alt="Scrimba Learn Regular Expressions lesson Reuse Patterns Using Capture Groups, paused at 4:59: the editor shows repeatRegex = /(\w+)\s\1/ with comments noting it returns true and the array regex regex, regex, and below it the finished reRegex = /^(\d+)\s\1\s\1$/ for matching a number repeated three times"
+  alt="Learn Regular Expressions, capture groups lesson: a code editor shows a warm-up pattern and the finished exercise pattern."
   width={1400}
   height={625}
   caption="Capture groups at 4:59, the end of the longest scrim. Line 2 is the warm-up (a word followed by itself); line 7 is the finished exercise with the anchors that stop it matching four repeats."
@@ -218,4 +221,7 @@ Where it is limited: Beau solves both "challenges" himself, so nothing tests you
   difficulty="Intermediate"
   access="Free"
   keywords={["Regex", "JavaScript"]}
+  instructor="freeCodeCamp"
+  instructorUrl="https://scrimba.com/u0hu18"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-regular-expressions/regular-expressions-title-card.webp"
 />

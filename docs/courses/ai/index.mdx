@@ -6,6 +6,7 @@ description: "All Scrimba AI courses, free and Pro: coding with AI, prompt engin
 keywords: [scrimba ai course, learn ai engineering, scrimba ai agents, scrimba rag, scrimba mcp, ai engineer path]
 slug: /courses/ai
 hideGlobalPricingCta: true
+reviewed: 2026-09
 last_update:
   date: 2026-09-23
 ---
@@ -13,13 +14,17 @@ last_update:
 import PricingCTA from '@site/src/components/PricingCTA';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 import Link from '@docusaurus/Link';
 
 # Scrimba AI Courses
 
+<DisclosureNotice />
+
 Scrimba runs 12 AI courses in JavaScript and TypeScript, covering prompt engineering, agents, RAG, MCP, and the Vercel AI SDK for web developers who want to ship AI features, not train models. Start with the free [Learn to Code with AI](/docs/courses/ai/to-code-with-ai/). Several sequence into the 11.4-hour [AI Engineer Path](/docs/paths/ai-engineer-path/) on Scrimba Pro.
 
-*Reviewed inside each course with a Pro account, September 2026.*
+<Provenance subject="courses" date={frontMatter.reviewed} />
 
 :::tip Looking for the full path review?
 [The AI Engineer Path review](/docs/paths/ai-engineer-path/) covers all nine modules, the 162 scrims, and what the path skips.
@@ -81,7 +86,7 @@ The OpenAI Assistants API course covers a legacy API that OpenAI is winding down
   />
   <Screenshot
     src="/img/scrimba/learn-ai-agents/react-loop-flowchart-title-card.webp"
-    alt="ReAct loop flowchart slide from Scrimba's Learn AI Agents course: the model thinks, calls a function, observes the result, and loops until it can answer"
+    alt="ReAct loop flowchart slide from Scrimba's Learn AI Agents course: the model thinks, calls a function, observes, then loops."
     width={1279}
     height={720}
     caption={<>Learn AI Agents: the ReAct loop you hand-code before switching to function calling (<Link to="/docs/courses/ai/ai-agents/">review</Link>).</>}

@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Intro to Supabase"
 description: "Jonathan Hill's free Supabase course reviewed from inside: 4.8 hours, 49 scrims, a React sales dashboard with auth, realtime and row level security."
 keywords: [scrimba supabase course, intro to supabase review, jonathan hill supabase, supabase react course, free supabase tutorial, supabase row level security course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Intro to Supabase
 
+<DisclosureNotice />
+
 Jonathan Hill's free Intro to Supabase runs about 4.8 hours and puts you inside a React sales dashboard: you query a live Postgres database, chart the results in real time, then add sign up, sign in, and row level security policies that lock rows down by account type.
 
-*Reviewed inside the course with a Pro account, September 2026: all 49 scrims and the 46 that carry a transcript.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="all 49 scrims and the 46 that carry a transcript" />
 
 ## Quick answer
 
@@ -37,25 +42,6 @@ It suits React developers who have never wired up a backend, not Supabase newcom
   href="https://scrimba.com/intro-to-supabase-c0abltfqed"
   description="A free, project-based course building a React sales dashboard on Supabase: queries, realtime updates, auth, row level security, and a database trigger."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/intro-to-supabase/chapter-1-intro-to-supabase-title-card.webp"
-    alt="Title card of the Course introduction scrim in Scrimba's Intro to Supabase course: a white lightning bolt above the words Intro to Supabase and Teacher: Jonathan Hill on a purple and gold gradient"
-    width={1377}
-    height={774}
-    caption="Section 1: the course introduction, which doubles as the Persistence intro."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/intro-to-supabase/chapter-2-authentication-title-card.webp"
-    alt="Title card of the Introduction to Auth scrim in Scrimba's Intro to Supabase course, reading Section 2 - Authentication, Teacher: Jonathan Hill, on the same purple gradient"
-    width={1378}
-    height={775}
-    caption="Section 2: Authentication, the 3.8-hour half of the course."
-    source="Chapter title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -80,6 +66,15 @@ Lesson counts are the scrims I counted in each expanded section in September 202
 
 ### 1. Persistence (60 min, 11 scrims)
 
+<Screenshot
+  src="/img/scrimba/intro-to-supabase/chapter-1-intro-to-supabase-title-card.webp"
+  alt="Title card of the course introduction in Scrimba's Intro to Supabase course: a lightning bolt and teacher Jonathan Hill."
+  width={1377}
+  height={774}
+  caption="Eleven scrims wire up a Supabase project, query it from React, and add a realtime subscription that updates the chart live."
+  source=""
+/>
+
 The first two scrims are near duplicates: a course introduction (the free sample lesson) and a section introduction that repeats it. Both set up the "user story": the sales team wants a bar chart of each rep's total sales for the quarter, updating in real time, plus a form to add a deal. Jonathan also states the prerequisites plainly at 3:33: "Some SQL basics, some essential JavaScript concepts, some React basics ... and, hopefully, you've worked with APIs before."
 
 The eleven-minute "Supabase project setup" scrim is the one you cannot skip. You create your own Supabase project and a `sales_deals` table (name and value columns), turn row level security off for now, enable realtime, and seed a few rows by hand. Back in the Vite app you install `@supabase/supabase-js` and create the client with `createClient(url, key)`. The URL and anon key go into environment variables inside Scrimba, and because the app is Vite you read them as `import.meta.env.VITE_SUPABASE_URL`. From here on, every challenge runs against your database, not the instructor's.
@@ -90,7 +85,7 @@ The querying scrims are where the course finds its rhythm. Jonathan writes SQL i
 
 <Screenshot
   src="/img/scrimba/intro-to-supabase/realtime-subscription-challenge-lesson.webp"
-  alt="Scrimba Intro to Supabase lesson Realtime subscription paused at the challenge: the editor shows a five-step challenge brief in a comment and a supabase.channel('').on('postgres_changes', { event: '', schema: '', table: '' }) skeleton with blanks to fill, and the preview on the right shows the Sales Team Dashboard bar chart with bars for Andy, Dwight and Jim"
+  alt="Intro to Supabase, Realtime subscription challenge: a code editor with a fill-in-the-blank brief beside a live bar chart preview."
   width={1400}
   height={660}
   caption="The realtime challenge at 2:56. The brief is the numbered comment at the top, the blanks in the channel() call are yours to fill, and the bar chart from the previous scrim is already running in the preview. This is the shape of most challenges in the course."
@@ -99,6 +94,15 @@ The querying scrims are where the course finds its rhythm. Jonathan writes SQL i
 The last three scrims (the new deal form, inserting data, and a 37-second recap) have no transcript, which is unusual for Scrimba. From the code, the form uses React 19's `useActionState`, and the insert is one line: `supabase.from('sales_deals').insert(newDeal)`.
 
 ### 2. Authentication (3.8 hrs, 37 scrims)
+
+<Screenshot
+  src="/img/scrimba/intro-to-supabase/chapter-2-authentication-title-card.webp"
+  alt="Title card of the Introduction to Auth scrim in Scrimba's Intro to Supabase course: Section 2, Authentication, teacher Jonathan Hill."
+  width={1378}
+  height={775}
+  caption="Thirty-seven scrims add sign up, sign in, row level security policies, and a profiles table with a trigger that copies account type on sign-up."
+  source="Chapter title cards from scrimba.com."
+/>
 
 A second user story opens the section: users sign up as a rep or an admin, reps can only add their own deals, logged-out visitors must not see the chart, and the header should show who is signed in. Jonathan lists what that means at 0:39: "setting up a router and context, listening for a session, learning about JSON Web Tokens, signing users up and in and, I guess, out as well, and writing some low level security policies and a database trigger."
 
@@ -116,7 +120,7 @@ The refactor is the course's best stretch, and it is eleven scrims long. "Databa
 
 <Screenshot
   src="/img/scrimba/intro-to-supabase/user-profiles-schema-slide-lesson.webp"
-  alt="Slide from the Trigger lesson in Scrimba's Intro to Supabase course showing an entity relationship diagram: an orange users table with id, email, role and user_metadata, a green user_profiles table with id, name and account_type, and a green sales_deals table with id, created_at, user_id and value, connected by foreign key lines"
+  alt="Intro to Supabase, Trigger lesson: a slide diagram of three database tables connected by foreign key lines."
   width={1400}
   height={788}
   caption="The schema the refactor builds, shown again at 9:08 of the Trigger scrim. user_profiles.id points at auth.users.id, and sales_deals.user_id points at user_profiles.id, which is what lets a policy ask who owns a row."
@@ -126,7 +130,7 @@ The refactor is the course's best stretch, and it is eleven scrims long. "Databa
 
 <Screenshot
   src="/img/scrimba/intro-to-supabase/trigger-challenge-lesson.webp"
-  alt="Scrimba Intro to Supabase Trigger lesson paused at the challenge: trigger.sql in the editor shows create function with the name blanked out, returns trigger, language plpgsql, security definer, an insert into with the table and columns left as a comment to complete, and new.raw_user_meta_data ->> 'name'; the preview on the right shows the Paper Like A Boss sign-up form with Admin and Sales Rep radio buttons"
+  alt="Intro to Supabase, Trigger challenge: a code editor with a partly blanked SQL function beside a sign-up form preview."
   width={1400}
   height={660}
   caption="The trigger challenge at 8:06. Jonathan has removed the function name, the target table and columns, and the account_type extraction; the sign-up form in the preview already has the Admin and Sales Rep radio buttons from the previous scrim."
@@ -136,7 +140,7 @@ The three "Refactor deals table" scrims replace the broad policy with three narr
 
 <Screenshot
   src="/img/scrimba/intro-to-supabase/rls-insert-policy-lesson.webp"
-  alt="Scrimba Intro to Supabase lesson Refactor deals table part 2 at 7:20: policy.sql in the editor shows an EXISTS example on an extended_family table, then CREATE policy 'Reps can only add their own deals' ON public.sales_deals FOR insert TO authenticated WITH CHECK (auth.uid() = user_id AND EXISTS (SELECT 1 FROM user_profiles WHERE user_profiles.id = auth.uid() AND user_profiles.account_type = 'rep'))"
+  alt="Intro to Supabase, Refactor deals table lesson: a code editor with a finished SQL policy written in a scratch file."
   width={1400}
   height={660}
   caption="The finished rep policy at 7:20, written out in a scratch policy.sql file before you copy it into the Supabase policy editor. The extended_family example above it is how Jonathan explains EXISTS and SELECT 1 first."
@@ -238,4 +242,7 @@ Where it is limited:
     { name: 'Persistence', duration: '60 min' },
     { name: 'Authentication', duration: '3.8 hrs' },
   ]}
+  instructor="Jonathan Hill"
+  instructorUrl="https://scrimba.com/@MrHighViolet"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/intro-to-supabase/chapter-1-intro-to-supabase-title-card.webp"
 />

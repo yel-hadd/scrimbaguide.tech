@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Advanced JavaScript"
 description: "Tom Chant's Pro Advanced JavaScript course reviewed from inside: 9.8 hours, 156 scrims, 94 challenges, callback hell to generators, and the real time cost."
 keywords: [scrimba advanced javascript, advanced javascript scrimba review, advanced javascript course, tom chant javascript, javascript generators course, async javascript course, scrimba pro javascript course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Advanced JavaScript
 
+<DisclosureNotice />
+
 Tom Chant's Pro follow-up to [Learn JavaScript](/docs/courses/javascript/learn-javascript/) runs about 9.8 hours across nine modules, from the ternary operator to generators, with no single project: you work concept by concept in the console through 94 challenges. It closes the gap between writing JavaScript and understanding it, if you already have the basics down.
 
-*Reviewed inside the course with a Pro account, September 2026: 65 of the 156 scrims opened, at least a third of every module, transcripts read in full.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="65 of the 156 scrims opened, at least a third of every module, transcripts read in full" />
 
 ## Quick answer
 
@@ -41,27 +46,11 @@ Take it if you can already write JavaScript but could not explain the event loop
 <div className="screenshot-grid">
   <Screenshot
     src="/img/scrimba/advanced-javascript/course-title-card.webp"
-    alt="Title card of Scrimba's Advanced JavaScript course on an orange and purple gradient, reading Scrimba Pro Course, Advanced JavaScript, Teacher: Tom Chant"
+    alt="Title card of Scrimba's Advanced JavaScript course: Scrimba Pro Course, Advanced JavaScript, teacher Tom Chant, on an orange gradient."
     width={1279}
     height={720}
     caption="The course intro slide. Every module opens with a card in this style."
     source=""
-  />
-  <Screenshot
-    src="/img/scrimba/advanced-javascript/chapter-04-asynchronous-js-title-card.webp"
-    alt="Title card for module 4 of Scrimba's Advanced JavaScript course, reading Asynchronous JS, Teacher: Tom Chant"
-    width={1279}
-    height={720}
-    caption="Module 4: asynchronous JavaScript and APIs, the longest module by scrim count."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/advanced-javascript/chapter-09-advanced-function-patterns-title-card.webp"
-    alt="Title card for module 9 of Scrimba's Advanced JavaScript course, reading Advanced Function Patterns, Teacher: Tom Chant"
-    width={1279}
-    height={720}
-    caption="Module 9: closures, recursion, currying, throttling, debouncing, and generators."
-    source="Chapter title cards from scrimba.com."
   />
 </div>
 
@@ -123,13 +112,22 @@ The Real Estate super challenge asks for property cards from an array of listing
 
 ### 4. Asynchronous JavaScript & APIs (84 min, 24 scrims)
 
+<Screenshot
+  src="/img/scrimba/advanced-javascript/chapter-04-asynchronous-js-title-card.webp"
+  alt="Title card for module 4 of Scrimba's Advanced JavaScript course, reading Asynchronous JS, Teacher: Tom Chant"
+  width={1279}
+  height={720}
+  caption="Twenty-four scrims cover APIs, promises, async/await, and callback hell before you build your own promises."
+  source=""
+/>
+
 The module most people buy the course for, and the only one with two teachers. Tom frames it in the intro as the step toward the back end: "Learning to work with APIs takes you in the direction of becoming a full stack developer." The first four scrims are Bob Ziroll's theory. What is an API? runs eight minutes on Bob's definition: "any tool that will help connect your program with someone else's program." The restaurant analogy that goes with it casts the waiter as the API between your table and the kitchen. Clients & Servers, Requests & Responses, and a JSON review follow.
 
 Then Tom takes over with code. You fetch a random dog image twice, first with `.then()` chains and then with `async/await`, and learn along the way why top-level `await` only works with `type="module"`. The Promises scrim explains the three states (pending, fulfilled, rejected) with a job interview analogy Tom credits to Bob. "We'll let you know within a week" is fulfilled whether or not you got the job, and rejected only if they never call. Handling Rejected Promises adds `.catch()`, `.finally()`, and a try/catch challenge. The dog API is reached through a Scrimba proxy so the course cannot break if the real endpoint changes, which is a small sign of care.
 
 <Screenshot
   src="/img/scrimba/advanced-javascript/callback-hell-pyramid-of-doom-lesson.webp"
-  alt="Scrimba Advanced JavaScript lesson Callback Hell paused near the end: the editor shows uploadFile, processFile and notifyUser nested inside each other as arrow-function callbacks, and the console below prints Step 1: Uploading file, Step 2: Processing file, Step 3: Notifying user, All steps completed"
+  alt="Advanced JavaScript, Callback Hell lesson: code editor showing deeply nested callback functions."
   width={1400}
   height={660}
   caption="Callback Hell at 5:17. Three fake async steps chained the old way, each callback nested inside the previous one, with the console proving the order and the one-second delays. Tom calls the shape 'the pyramid of doom' and rewrites it with promises in the next scrim."
@@ -163,7 +161,7 @@ The middle of the module is inheritance, meaning one object taking properties an
 
 <Screenshot
   src="/img/scrimba/advanced-javascript/super-challenge-game-characters-lesson.webp"
-  alt="Scrimba Advanced JavaScript Super Challenge: Game Characters paused at the brief: the editor shows an empty class Character with a long comment spec asking for a name property, a private health field initialized to 100, a static count, incrementCount and getCount static methods, a health getter and setter, takeDamage, an isAlive getter and getStatus"
+  alt="Advanced JavaScript, Super Challenge Game Characters: code editor showing an empty class with a challenge comment."
   width={1400}
   height={660}
   caption="Game Characters at 1:08. The whole brief lives in comments inside the empty classes: a Character base class with a private #health field, static counters, getters and setters, then Hero and Villain subclasses. Test calls with expected output sit at the bottom of the file."
@@ -181,6 +179,15 @@ Symbols are unique identifiers you can use as object keys. The use case Tom pick
 
 ### 9. Advanced Function Patterns & Generators (78 min, 22 scrims)
 
+<Screenshot
+  src="/img/scrimba/advanced-javascript/chapter-09-advanced-function-patterns-title-card.webp"
+  alt="Title card for module 9 of Scrimba's Advanced JavaScript course, reading Advanced Function Patterns, Teacher: Tom Chant"
+  width={1279}
+  height={720}
+  caption="Twenty-two scrims cover closures, recursion, currying, throttling, debouncing, and generators, ending in two super challenges."
+  source="Chapter title cards from scrimba.com."
+/>
+
 The intro to this module has the line that best sums up Tom's teaching voice: "When I say advanced, I really do mean advanced. We're getting into the kind of stuff here where you can stick your nose up at other junior developers." The topics are closures, IIFEs, recursion, currying, throttling and debouncing, and generators, and two super challenges close the course.
 
 Closures get two scrims and a challenge. A closure is a function that remembers the variables of the function that created it, even after that outer function has finished running. Tom builds one from an `outerFunction` that returns an `innerFunction`. The definition he lands on is worth writing down: "a closure allows a function to remember and continue to access variables from the lexical scope of its outer function even after that function has executed." IIFEs (functions that run the moment they are defined) get a single scrim with a use case, reading a saved theme preference once when the page loads, and a challenge that makes one async.
@@ -189,7 +196,7 @@ Recursion is four scrims, and Tom warns that "recursion gets harder from here on
 
 <Screenshot
   src="/img/scrimba/advanced-javascript/debouncing-generators-super-challenge-lesson.webp"
-  alt="Scrimba Advanced JavaScript Debouncing and Generators Super Challenge paused mid-solution: the editor shows a function* fetchDataGenerator with a while loop that now yields a new Promise wrapping setTimeout, and a handleScroll function that calls generator.next() and appends a section to the page"
+  alt="Advanced JavaScript, Debouncing and Generators Super Challenge: code editor mid-fix on a generator function."
   width={1400}
   height={660}
   caption="The Debouncing and Generators super challenge at 4:16, just after the first real bug is fixed: the generator was using return instead of yield. More bugs follow, including a result.done check and an off-by-one in the section counter."
@@ -285,4 +292,7 @@ Where it is limited: there is no project to show for it, and the intermediate la
     { name: 'Collections & Symbols', duration: '21 min' },
     { name: 'Advanced Function Patterns & Generators', duration: '78 min' },
   ]}
+  instructor="Tom Chant"
+  instructorUrl="https://scrimba.com/@DoubleNemesis"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/advanced-javascript/course-title-card.webp"
 />

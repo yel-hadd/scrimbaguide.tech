@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Vercel AI SDK Agent"
 description: "Mayo Oshin's Pro course from inside: 114 minutes, 23 scrims, a Supabase-backed support bot that picks retrieval or web search, and what Pro gates."
 keywords: [scrimba vercel ai sdk course, build a support agent scrimba review, vercel ai sdk tutorial, mayo oshin scrimba, ai support agent project, vercel ai sdk review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Build a Support Agent with Vercel AI SDK
 
+<DisclosureNotice />
+
 Build a Support Agent with Vercel AI SDK is Mayo Oshin's Pro project course on Scrimba: 114 minutes across 23 scrims, ending in a Supabase-backed support agent that routes each question to retrieval, web search, or a direct answer. It teaches the Vercel AI SDK v5 API, and it earns two evenings if you already know RAG and function calling.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,25 +42,6 @@ It suits developers who already understand RAG (retrieval augmented generation, 
   href="https://scrimba.com/build-a-support-agent-with-vercel-ai-sdk-c0lk05ahir"
   description="A Supabase-backed support agent that classifies each question and routes it to retrieval, web search, or a direct answer."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/chapter-1-intro-title-card.webp"
-    alt="Title slide of Scrimba's Build a Support Agent with Vercel AI SDK course reading Building a Customer Support AI Agent, With Vercel AI SDK and OpenAI, Teacher: Mayo Oshin"
-    width={1377}
-    height={775}
-    caption="The course title slide from the intro scrim. The course has no chapters, so this is the only title card."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/chapter-4-basic-agent-routing-slide.webp"
-    alt="Slide titled Basic Agent Routing from the Agentic Retrieval Routing lesson: a flowchart from User question to Does this query require retrieval, with a Yes branch to Retrieve relevant documents from Vector Store and Answer question based on context, and a No branch to Answer question directly"
-    width={1377}
-    height={775}
-    caption="The routing diagram that opens the Agentic Retrieval Routing lesson, the idea the whole course builds toward."
-    source="Slides from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -90,6 +76,15 @@ I counted 23 scrims in the table of contents in September 2026, including the fo
 
 ### 1. Intro and RAG refresher (12 min, 3 scrims)
 
+<Screenshot
+  src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/chapter-1-intro-title-card.webp"
+  alt="Title slide of Scrimba's Build a Support Agent with Vercel AI SDK course: Building a Customer Support AI Agent, teacher Mayo Oshin."
+  width={1377}
+  height={775}
+  caption="This module recaps RAG in slides, then embeds a sample text file with OpenAI's text-embedding-3-small model."
+  source=""
+/>
+
 The intro is a slide deck, not code. Mayo makes the case for support as the use case ("customer support is at the heartbeat of every company"). He then shows the finished app answering "How do I join the Scrimba Discord?" with sources, follows it with a web search question, and lists the prerequisites. He introduces himself as an AI engineering educator and "the coauthor of Learning Langchain published by O'Reilly."
 
 The RAG refresher is three minutes of slides: store information, retrieve the relevant pieces, pass them to the model. The embeddings model for the whole course is OpenAI's `text-embedding-3-small`. This scrim is also where you are told to create an OpenAI key and save it as `OPENAI_API_KEY` in the scrim's gear menu.
@@ -122,7 +117,7 @@ Tool Calling is the longest lesson in the group at nearly ten minutes. It builds
 
 <Screenshot
   src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/tool-calling-challenge-brief-lesson.webp"
-  alt="Scrimba lesson Challenge: Vercel AI SDK Tool Calling paused at 0:30: index.js shows imports of generateText, tool and stepCountIs from ai, a comment block titled Exercise: Tool Calling with Vercel AI SDK listing three goals (a single priceLookup tool, priceLookup plus deliveryEta, and stopWhen with stepCountIs), an in-memory PRICE_TABLE with milk, bread, eggs, apple and banana prices, and a main function with three commented-out exercise calls"
+  alt="Build a Support Agent with Vercel AI SDK, tool-calling challenge: code editor showing a commented exercise brief and price table."
   width={1400}
   height={660}
   caption="The tool-calling challenge at 0:30. The whole brief is a comment block in index.js, with a fake price table instead of a database and three exercises you uncomment one at a time. Note the purple dot on the scrubber marking where the recording pauses for you."
@@ -132,11 +127,20 @@ The tool-calling challenge mirrors the lesson exactly. You write a `priceLookup`
 
 ### 4. Agentic routing and web search (28 min, 5 scrims)
 
+<Screenshot
+  src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/chapter-4-basic-agent-routing-slide.webp"
+  alt="Build a Support Agent with Vercel AI SDK, Agentic Retrieval Routing slide: a flowchart splits a question into two answer paths."
+  width={1377}
+  height={775}
+  caption="This module classifies each question as GENERAL or RETRIEVAL, then adds OpenAI's web search tool alongside the knowledge base."
+  source="Slides from scrimba.com."
+/>
+
 Agentic Retrieval Routing is the longest scrim in the course at 13:45 and the one where the project becomes a support agent. The docs folder now holds nine markdown files scraped from Scrimba's help center (joining Discord, student discounts, resetting progress, deleting your account). `agenticRetrieval.js` adds a `classifyAndRetrieve` function. A classification prompt with `maxOutputTokens: 20` and `temperature: 0` returns either `GENERAL` or `RETRIEVAL`, and the code branches on that word, with a fallback prompt if retrieval returns nothing. Mayo explains the settings plainly: "I want zero because I just want retrieval or just give me general. I don't want the model to express any creativity whatsoever."
 
 <Screenshot
   src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/agentic-retrieval-routing-general-classification-lesson.webp"
-  alt="Scrimba lesson Agentic Retrieval Routing paused at 13:07: index.js has the query changed to What is the capital of france and calls classifyAndRetrieve, while the Runner pane below prints Classification result: GENERAL, Answering as a general question, Generated answer: Paris, and Retrieval docs: null"
+  alt="Build a Support Agent with Vercel AI SDK, Agentic Retrieval Routing lesson: code editor and terminal output showing the classifier's result."
   width={1400}
   height={660}
   caption="At 13:07 the same agent answers an off-topic question without touching the vector store: the classifier returns GENERAL and the sources come back null."
@@ -154,7 +158,7 @@ Complete Customer Support AI Agent is a six-minute tour rather than a build. Eve
 
 <Screenshot
   src="/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/complete-support-agent-knowledge-base-answer-lesson.webp"
-  alt="Scrimba lesson Complete Customer Support AI Agent paused at 0:57: server.js shows an Express app with a POST /api/ask route, the Runner pane logs Tool:KB Retrieved 3 document chunks and Knowledge base tool call detected in steps, and the preview on the right shows the Support AI Chatbot answering how do i access scrimba discord with a link and a View Sources panel listing the help center article and its similarity score of 0.7275"
+  alt="Build a Support Agent with Vercel AI SDK, finished agent lesson: code editor beside a live chatbot preview answering a support question with sources."
   width={1400}
   height={660}
   caption="The finished app at 0:57: the Discord question is routed to the knowledge base tool, three chunks come back, and View Sources shows the markdown article and its 0.7275 similarity. The Express route on the left is the entire backend."
@@ -243,4 +247,5 @@ Where it is limited. It depends on two external accounts and a paid API key. It 
     { name: 'Agentic routing and web search', duration: '28 min' },
     { name: 'The finished agent and wrap-up', duration: '12 min' },
   ]}
+  imageUrl="https://scrimbaguide.tech/img/scrimba/build-a-support-agent-with-vercel-ai-sdk/chapter-1-intro-title-card.webp"
 />

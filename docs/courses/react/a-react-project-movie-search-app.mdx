@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Movie Search App"
 description: "James Q Quick's 56 minute Pro React project reviewed from inside: 13 scrims, three challenges, a TMDB search app on React 16, and what has aged."
 keywords: [scrimba movie search app review, scrimba movie search app react, react project movie search, james q quick react, react api project, short react project course, useState fetch project]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Build a React Project: Movie Search App
 
+<DisclosureNotice />
+
 James Q Quick's Build a React Project: Movie Search App runs 56 minutes for Pro subscribers: you build a search form, fetch results from The Movie Database API, and render poster cards with two functional components and `useState`. It is a solid rep between React fundamentals and a full project, not a place to learn React from scratch.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 *This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's catalog data lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
@@ -43,7 +48,7 @@ It fits you if you have just finished a React fundamentals course and want one s
 <div className="screenshot-grid">
   <Screenshot
     src="/img/scrimba/build-a-react-project-movie-search-app/course-react-movie-search-title-card.webp"
-    alt="Title card of Scrimba's Build a React Project: Movie Search App course: React Movie Search, course teacher James Q Quick, dark text on a lavender and mint background"
+    alt="Title card of Scrimba's Build a React Project: Movie Search App course, with teacher James Q Quick on a lavender and mint background."
     width={1279}
     height={720}
     caption="The course title card. It is the only real chapter card in the course; the outro slides are Scrimba's generic ones."
@@ -104,7 +109,7 @@ Display Movie Information is the longest scrim at 7:11 and the one where the app
 
 <Screenshot
   src="/img/scrimba/build-a-react-project-movie-search-app/display-movie-information-card-markup-lesson.webp"
-  alt="Scrimba's Display Movie Information scrim paused at 6:51: searchMovies.js maps the filtered movies to a card with a TMDB poster image, an h3 title, release date, rating and overview, while the preview lists Jurassic Park results with their text but broken poster images"
+  alt="Movie Search App, Display Movie Information lesson: a results list shows movie details with poster images missing."
   width={1400}
   height={684}
   caption="Display Movie Information at 6:51. Title, release date, rating and overview render from the TMDB response; the poster images did not load in the recorded preview when I replayed it, which is worth knowing before you assume your own code is wrong. The dependencies panel shows the React 16.13 the course runs on."
@@ -116,7 +121,7 @@ Create the Movie Card Component (Challenge) is the third and best challenge, bec
 
 <Screenshot
   src="/img/scrimba/build-a-react-project-movie-search-app/movie-card-component-challenge-solution-lesson.webp"
-  alt="Scrimba's Create the Movie Card Component challenge scrim paused at 5:04: searchMovies.js now maps movies to a MovieCard component with a movie prop and a key of movie.id, and the console below is empty"
+  alt="Movie Search App, Movie Card Component challenge: the code now renders movie cards with no console warnings left."
   width={1400}
   height={684}
   caption="The Movie Card challenge solved at 5:04. The key prop has moved from the card's inner div to the MovieCard element the map returns, and the console warning from a minute earlier is gone."
@@ -201,4 +206,7 @@ Where it is limited: React 16.13 and `ReactDOM.render` date it, the root `Main` 
     { name: 'Rendering results: cards, styles, MovieCard', duration: '16 min' },
     { name: 'Wrap-up and Scrimba outros', duration: '3 min' },
   ]}
+  instructor="James Q Quick"
+  instructorUrl="https://scrimba.com/@jamesqquick"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/build-a-react-project-movie-search-app/course-react-movie-search-title-card.webp"
 />

@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Intro to Vite"
 description: "Shant Dashjian's free Intro to Vite reviewed from inside: 39 minutes, 14 scrims, React 19 on Vite 6, five challenges, and what Pro gates."
 keywords: [scrimba intro to vite, intro to vite review, vite scrimba, free vite course, vite build tool course, vite dev server, shant dashjian vite]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Intro to Vite
 
+<DisclosureNotice />
+
 Intro to Vite is Scrimba's free, 39-minute course on the build tool behind most React and Vue projects. Shant Dashjian runs it in a real Node sandbox across 14 flat scrims: scaffold a React app on Vite 6, watch hot module replacement, handle assets and env vars, and build for production. Worth an hour if you already use a framework.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -41,7 +46,7 @@ Take it if you already use React or Vue and treat `npm run dev`, `dist/`, and `v
 <div className="screenshot-grid">
   <Screenshot
     src="/img/scrimba/intro-to-vite/course-intro-to-vite-title-card.webp"
-    alt="Title card of Scrimba's Intro to Vite course on a purple and gold gradient with outlined hexagons, reading Intro to Vite, The Build Tool for the Web, Teacher: Shant Dashjian"
+    alt="Title card of Scrimba's Intro to Vite course: the name, The Build Tool for the Web, and teacher Shant Dashjian on a purple gradient."
     width={1378}
     height={775}
     caption="The only title card in the course, from the Welcome scrim. There are no chapters, so there are no chapter cards."
@@ -88,7 +93,7 @@ The scaffolded `package.json` pins `react` and `react-dom` at `^19.0.0` and `vit
 
 <Screenshot
   src="/img/scrimba/intro-to-vite/create-react-project-dev-server-lesson.webp"
-  alt="Scrimba Intro to Vite lesson Create your first React project with Vite, paused at 2:17: the file explorer lists node_modules, public, src, index.html and vite.config.js, the terminal shows VITE v6.2.6 ready in 4204 ms with a Local localhost:5173 URL, and the mini browser on the right shows the default Vite + React page"
+  alt="Intro to Vite, Create your first React project lesson: terminal showing the dev server running."
   width={1400}
   height={660}
   caption="Paused at 2:17, right after npm run dev. The terminal banner shows the version the course was recorded on (Vite 6.2.6), and the mini browser is Scrimba's stand-in for localhost:5173. Every later scrim starts from this project."
@@ -108,7 +113,7 @@ You run `npm run build` and read the output: `dist/assets/react-CHdo91hT.svg` ha
 
 <Screenshot
   src="/img/scrimba/intro-to-vite/handle-static-assets-build-output-lesson.webp"
-  alt="Scrimba Intro to Vite lesson Handle static assets, paused at 1:26: App.jsx imports reactLogo from ./assets/react.svg and viteLogo from /vite.svg, and the terminal shows vite v6.2.6 building for production with 32 modules transformed and a dist/assets/react-CHdo91hT.svg output line"
+  alt="Intro to Vite, Handle static assets lesson: code editor beside a terminal showing the production build output."
   width={1400}
   height={660}
   caption="Paused at 1:26. The two import lines at the top are the whole lesson: the relative import from src/assets gets a hashed filename in the build output below, the absolute /vite.svg import from public does not."
@@ -120,7 +125,7 @@ The challenge is to put an IP lookup API URL in an environment variable and use 
 
 <Screenshot
   src="/img/scrimba/intro-to-vite/use-environment-variables-challenge-lesson.webp"
-  alt="Scrimba Intro to Vite lesson Use environment variables, paused at 3:03: App.jsx shows const greeting = import.meta.env.VITE_GREETING, a useState for ipAddress, and a useEffect with a fetchIpAddress function containing the comment Use the environment variable here above const apiUrl equals question mark; tabs for .env and CHALLENGE.md are open and the terminal shows a stopped Vite dev server"
+  alt="Intro to Vite, Use environment variables challenge: code editor showing fetch code with a gap to fill in."
   width={1400}
   height={660}
   caption="Paused at 3:03, the moment the challenge is handed over. The useEffect and the fetch are written for you; your job is the .env entry and the import.meta.env line that replaces the question mark."
@@ -150,7 +155,7 @@ Shant frames that as the real lesson: "Being able to read and follow online docu
 
 <Screenshot
   src="/img/scrimba/intro-to-vite/extend-with-plugins-qrcode-lesson.webp"
-  alt="Scrimba Intro to Vite lesson Extend with plugins, paused at 1:55: package.json is open with the dev script changed to vite --host and react 19.0.0 in dependencies, a vite.config.js tab is open beside it, and the terminal below shows a large QR code printed by vite-plugin-qrcode after npm run dev"
+  alt="Intro to Vite, Extend with plugins lesson: terminal showing a QR code printed after starting the dev server."
   width={1400}
   height={660}
   caption="Paused at 1:55. The dev script now reads vite --host (the plugin needs it) and the terminal has printed the QR code. In the sandbox it goes nowhere; on your own machine it opens the dev server on your phone."
@@ -241,4 +246,7 @@ Limits: the course is flat with no chapters, and the React content is minimal by
   difficulty="Intermediate"
   access="Free"
   keywords={["Vite", "Frontend", "Tooling", "React"]}
+  instructor="Shant Dashjian"
+  instructorUrl="https://scrimba.com/@shantdashjian"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/intro-to-vite/course-intro-to-vite-title-card.webp"
 />

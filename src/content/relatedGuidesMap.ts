@@ -315,11 +315,6 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Scrimba for Beginners', href: '/docs/for/beginners', type: 'doc' },
   ],
-  '/docs/comparisons/scrimba-vs-the-odin-project': [
-    { title: 'Scrimba for CS Students', href: '/docs/for/cs-students', type: 'doc' },
-    { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
-    { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
-  ],
   '/docs/comparisons/scrimba-vs-odin-project': [
     { title: 'Scrimba for CS Students', href: '/docs/for/cs-students', type: 'doc' },
     { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
@@ -493,16 +488,6 @@ const sectionFallbacks: Record<string, RelatedGuide[]> = {
     { title: 'Practice Guides', href: '/docs/practice/practice-react-projects', type: 'doc' },
     { title: 'All Courses', href: '/docs/courses/', type: 'doc' },
     { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
-  ],
-  '/roadmaps/': [
-    { title: 'Learning Paths', href: '/docs/paths/', type: 'doc' },
-    { title: 'All Courses', href: '/docs/courses/', type: 'doc' },
-    { title: 'Frontend Interview Prep', href: '/blog/frontend-interview-prep-scrimba', type: 'blog' },
-  ],
-  '/tools/': [
-    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
-    { title: 'Scrimba vs Bootcamps', href: '/docs/pricing/scrimba-vs-bootcamps', type: 'doc' },
-    { title: 'Is Scrimba Worth It?', href: '/blog/is-scrimba-worth-it', type: 'blog' },
   ],
 };
 

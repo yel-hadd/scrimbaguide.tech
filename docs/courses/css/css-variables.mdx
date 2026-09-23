@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn CSS Variables"
 description: "Per Borgen's 29 minute Learn CSS Variables reviewed from inside every scrim: eight lessons on one portfolio page, four checked exercises, and what Pro gates."
 keywords: [scrimba learn css variables, learn css variables review, css custom properties course, per borgen css variables, css variables tutorial, scrimba css top-up, css variables scrimba review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn CSS Variables
 
+<DisclosureNotice />
+
 Per Borgen's Learn CSS Variables is a 29 minute Scrimba course that teaches CSS custom properties on one portfolio page: declaring a variable, scoping it to a card, re-theming with two lines, and changing one from JavaScript. It fixes a real gap in half an hour if you have not used custom properties, and teaches nothing new if you have.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,17 +42,6 @@ It fits anyone who writes CSS and still copies hex values around, or has seen `v
   href="https://scrimba.com/learn-css-variables-c026"
   description="Eight short scrims on CSS custom properties: declaring, scoping, theming, changing them with JavaScript, and using them in media queries, with four checked exercises."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-css-variables/chapter-1-introduction-to-css-variables-title-card.webp"
-    alt="Title slide of Scrimba's Learn CSS Variables course: the words Introduction to CSS Variables in coral red on a pale yellow background"
-    width={1280}
-    height={720}
-    caption="The only title card in the course, from the intro scrim. The three colors on it are the three variables you will write."
-    source="Title card from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -72,11 +66,20 @@ My count is 11 scrims totalling 32 minutes. Scrimba's header says 29 minutes, wh
 
 ### 1. Declaring, using and scoping variables (14 min, 4 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-css-variables/chapter-1-introduction-to-css-variables-title-card.webp"
+  alt="Title slide of Scrimba's Learn CSS Variables course: the words Introduction to CSS Variables in coral red on a pale yellow background"
+  width={1280}
+  height={720}
+  caption="This module declares a variable on :root, scopes one to a class, then scopes another inside a single selector."
+  source="Title card from scrimba.com."
+/>
+
 The intro (3:08, the free sample) is a slide deck, not code. Per shows the same red hex value repeated across a stylesheet, then the same rules with `--red` declared once on `:root` and referenced with `var(--red)`. He then lists what preprocessor variables cannot do: "CSS variables have access to the DOM. So you can create local scopes, meaning CSS variables that only work in a certain section of your app," plus changing them with JavaScript and inside media queries. The last slides show the portfolio page and its `index.css`, "the CSS which we'll be working with."
 
 <Screenshot
   src="/img/scrimba/learn-css-variables/intro-the-new-way-slide-lesson.webp"
-  alt="Slide from the Scrimba Learn CSS Variables intro titled The new way: a :root block declaring --red: #ff6f69 labelled Declaring a variable, and #title and .quote rules using color: var(--red) labelled Referencing it"
+  alt="Learn CSS Variables, intro slide: a diagram showing how to declare a variable on :root and reference it with var()."
   width={1280}
   height={720}
   caption="Intro scrim at 0:36. The whole course is this slide, applied: declare on :root, reference with var(). Notice the two-dash prefix, which Per calls 'this weird syntax'."
@@ -108,7 +111,7 @@ Every lesson is the same screen: the file explorer on the left, `index.css` in t
 
 <Screenshot
   src="/img/scrimba/learn-css-variables/intro-portfolio-project-lesson.webp"
-  alt="Scrimba Learn CSS Variables intro scrim at 2:56 showing index.html in the editor with the portfolio markup highlighted, and the preview pane with a home, about, contact nav, the heading my awesome portfolio, and four yellow project cards with learn more buttons on a beige background"
+  alt="Learn CSS Variables, intro scrim: a code editor beside a portfolio preview with a nav, heading and four project cards."
   width={1400}
   height={737}
   caption="The project at 2:56 of the intro: the markup on the left, the page on the right. This is the only page you touch in the course; every lesson edits its index.css."
@@ -196,4 +199,7 @@ Where it is limited:
     { name: 'Theming, JavaScript, responsiveness and inheritance', duration: '14 min' },
     { name: 'Wrap-up: congratulations, Scrimbassador, certificate', duration: '4 min' },
   ]}
+  instructor="Per Borgen"
+  instructorUrl="https://scrimba.com/@perborgen"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-css-variables/chapter-1-introduction-to-css-variables-title-card.webp"
 />

@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn Responsive Web Design"
 description: "Kevin Powell's 15-hour Pro CSS course reviewed from inside: 175 scrims, four sites built mobile first, what Pro gates, and how long it really takes."
 keywords: [scrimba responsive web design, learn responsive web design review, kevin powell css course, responsive css course, learn css scrimba, kevin powell scrimba review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Responsive Web Design
 
+<DisclosureNotice />
+
 Kevin Powell teaches Scrimba's biggest CSS course: about 15 hours across six modules, building four sites from a phone-width layout up to desktop, ending with a three-page company site that has a slide-out mobile menu. It is the strongest bridge from knowing some CSS to controlling layout on purpose, once you accept that a few details show their age.
 
-*Reviewed inside the course with a Pro account, September 2026: all six modules opened, transcripts read for 62 of the 174 scrims.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="all six modules opened, transcripts read for 62 of the 174 scrims" />
 
 ## Quick answer
 
@@ -37,33 +42,6 @@ It fits developers who already write CSS but still cannot predict what it will d
   href="https://scrimba.com/learn-responsive-web-design-c029"
   description="Kevin Powell's 15-hour CSS course: units, flexbox, grid, media queries and mobile-first layout, taught by building four sites."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-responsive-web-design/chapter-2-starting-to-think-responsively-title-card.webp"
-    alt="Title card of module 2 of Scrimba's Learn Responsive Web Design course, white text on a blue bar reading Starting to think Responsively"
-    width={1279}
-    height={720}
-    caption="Module 2: the mindset shift the course is named after."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-responsive-web-design/chapter-5-css-grid-title-card.webp"
-    alt="Title card of module 5 of Scrimba's Learn Responsive Web Design course, reading CSS Grid, The ultimate layout tool"
-    width={1279}
-    height={720}
-    caption="Module 5: CSS Grid."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-responsive-web-design/chapter-6-taking-it-to-the-next-level-title-card.webp"
-    alt="Title card of module 6 of Scrimba's Learn Responsive Web Design course, reading Taking it to the next level, Introduction"
-    width={1279}
-    height={720}
-    caption="Module 6: the final three-page site."
-    source="Chapter title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -100,11 +78,20 @@ Then comes a 22-minute Practice Time scrim where you build a blog card page from
 
 ### 2. Starting to think responsively (4.1 hrs, 45 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-responsive-web-design/chapter-2-starting-to-think-responsively-title-card.webp"
+  alt="Title card of module 2 of Scrimba's Learn Responsive Web Design course, white text on a blue bar reading Starting to think Responsively"
+  width={1279}
+  height={720}
+  caption="This module rebuilds a three-page blog mobile-first, deleting a desktop-first query and adding columns with min-width."
+  source=""
+/>
+
 This is the longest module and the one the course is named after. It opens with the pitch: a design now has to work "from sometimes a watch screen up to an eighty inch television." Units come first. Percentages, then `em`, then a two-and-a-half minute lesson that nests `em` font sizes three levels deep until a list item balloons to several times its size.
 
 <Screenshot
   src="/img/scrimba/learn-responsive-web-design/problem-with-ems-lesson.webp"
-  alt="Scrimba Learn Responsive Web Design lesson The problem with ems, paused with the preview window open over the editor: a page titled The CSS Unit em shows a bulleted list whose items render far larger than the heading above them because nested em font sizes multiply"
+  alt="Learn Responsive Web Design, The problem with ems lesson: browser preview showing a bulleted list rendered larger than the heading above it."
   width={1400}
   height={560}
   caption="The problem with ems, paused at 1:33. The body is 10px, the section is 2em, the list is 1.5em and the items are 1.5em again, so the list items end up bigger than the heading. Kevin's conclusion two minutes later: use rem for font size, em for padding and margin."
@@ -130,13 +117,22 @@ The build is a single card component that stacks on phones and goes side by side
 
 ### 5. CSS Grid: The ultimate layout tool (97 min, 19 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-responsive-web-design/chapter-5-css-grid-title-card.webp"
+  alt="Title card of module 5 of Scrimba's Learn Responsive Web Design course, reading CSS Grid, The ultimate layout tool"
+  width={1279}
+  height={720}
+  caption="This module covers grid-template-areas, minmax(), the fr unit, repeat(), and auto-fit versus auto-fill."
+  source=""
+/>
+
 Grid gets the same one-property-per-scrim treatment. `display: grid`, `grid-template-columns` and `rows`, line-based placement, spans, the gap property, implicit versus explicit tracks, then the lessons Kevin clearly loves: `grid-template-areas`, where you draw the layout as strings, and the follow-up where a media query only needs to redraw those strings. "I love this so much. I'm excited just thinking about this. And that's maybe a little sad."
 
 `minmax()`, the `fr` unit, `repeat()` and `auto-fit` versus `auto-fill` close the module, and the last one is the moment grid earns its subtitle.
 
 <Screenshot
   src="/img/scrimba/learn-responsive-web-design/auto-fill-grid-reflow-lesson.webp"
-  alt="Scrimba Learn Responsive Web Design lesson auto-fit and auto-fill, paused with the preview open over the editor: a dark page titled Some of my work shows six white project cards laid out four across and two below by a repeat auto-fill grid"
+  alt="Learn Responsive Web Design, auto-fit and auto-fill lesson: browser preview showing a grid of project cards reflowing into columns."
   width={1400}
   height={590}
   caption="auto-fit and auto-fill, paused at 1:58. One line, grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)), and the cards reflow from one column to four as the preview widens. His words at that moment: 'I don't have a media query in here. It's just magically working.'"
@@ -146,13 +142,22 @@ Two "Putting grid to use" lessons rebuild the blog article component from module
 
 ### 6. Taking it to the next level (2.2 hrs, 30 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-responsive-web-design/chapter-6-taking-it-to-the-next-level-title-card.webp"
+  alt="Title card of module 6 of Scrimba's Learn Responsive Web Design course, reading Taking it to the next level, Introduction"
+  width={1279}
+  height={720}
+  caption="This module builds a three-page company site with a hero image, a Font Awesome footer, and a slide-in mobile navigation."
+  source="Chapter title cards from scrimba.com."
+/>
+
 The final project is a three-page company site (home, about, contact) with a hero image, a footer with Font Awesome icons, and a mobile navigation that slides in from the side. Kevin starts with a lesson on analysing the design before touching code: "the biggest mistake people do is they just start building without really thinking about it." Every section then reuses one grid, `minmax(1em, 1fr) minmax(260px, 500px) minmax(1em, 1fr)`, with children placed on column 2 to -2, which is how he handles side gutters without a container div.
 
 The navigation is where positioning finally appears. He has held it back on purpose: "the problem with teaching people it early on is they start abusing it." The nav becomes `position: fixed` with all four sides at zero, a flex column, and links at 3rem.
 
 <Screenshot
   src="/img/scrimba/learn-responsive-web-design/mobile-navigation-position-fixed-lesson.webp"
-  alt="Scrimba Learn Responsive Web Design lesson on the small-screen navigation, paused with the preview open over the editor: a black full-screen menu with a magenta debug border shows three centered links reading home, about us and contact"
+  alt="Learn Responsive Web Design, mobile navigation lesson: browser preview showing a full-screen menu with centered links."
   width={1400}
   height={590}
   caption="Setting up our navigation for small screens with positioning, paused at 5:18. The nav is position: fixed with top, right, bottom and left at 0, and the magenta border is a debugging aid he removes later. The next scrim adds the JavaScript that opens and closes it."
@@ -241,4 +246,7 @@ Where it is limited: it is Pro-only apart from a handful of samples, the challen
     { name: 'CSS Grid: The ultimate layout tool', duration: '97 min' },
     { name: 'Taking it to the next level', duration: '2.2 hrs' },
   ]}
+  instructor="Kevin Powell"
+  instructorUrl="https://scrimba.com/@kevin-powell"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-responsive-web-design/chapter-2-starting-to-think-responsively-title-card.webp"
 />

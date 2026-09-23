@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn Git and GitHub"
 description: "Gregor Thomson's Pro Git and GitHub course from inside: 103 minutes, 40 screencast scrims, you work on your own machine from lesson 14, and what Pro gates."
 keywords: [scrimba learn git and github, learn git and github scrimba review, git and github course, branching and merging course, version control course scrimba, github workflow course, gregor thomson git course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Git and GitHub
 
+<DisclosureNotice />
+
 Gregor Thomson teaches Scrimba's Pro-only Learn Git and GitHub course in 40 screencast scrims, about 103 minutes total. You push a project to GitHub three ways, branch, review a pull request, and fix a merge conflict, though from scrim 14 you work in your own terminal instead of Scrimba's. It's short and worth a weekend if you already have Pro.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,33 +42,6 @@ Learn Git and GitHub fits anyone who has finished a first coding course and neve
   href="https://scrimba.com/learn-git-and-github-c0eh4kd7df"
   description="Track changes, branch safely, and collaborate on GitHub using the same version control workflows professional teams rely on."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-git-and-github/chapter-1-git-and-github-title-card.webp"
-    alt="Title card of Scrimba's Learn Git and GitHub course: Git and GitHub, version control for your projects, teacher Gregor Thomson, on an orange and purple gradient with hexagon outlines"
-    width={1318}
-    height={741}
-    caption="The course title card, which opens the intro and each section intro."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-git-and-github/chapter-2-coding-locally-title-card.webp"
-    alt="Expectations slide from the Coding locally section of Scrimba's Learn Git and GitHub course, listing GitHub Desktop as GitHub's dedicated application for source control and VS Code's source control panel for staging, committing and pushing"
-    width={1318}
-    height={741}
-    caption="Section 2, Coding locally: the expectations slide from its intro scrim."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-git-and-github/chapter-4-collaboration-title-card.webp"
-    alt="Slide from the Collaboration intro of Scrimba's Learn Git and GitHub course: Git and GitHub help us to work seamlessly with other developers, listing branching, code reviews and merge conflicts"
-    width={1318}
-    height={741}
-    caption="Section 4, Collaboration: branching, code reviews, merge conflicts."
-    source="Slides from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -95,6 +73,15 @@ Scrimba shows this course as one flat list of 40 scrims with no module headers, 
 
 ### 1. Git and GitHub course intro (14 min, 4 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-git-and-github/chapter-1-git-and-github-title-card.webp"
+  alt="Title card of Scrimba's Learn Git and GitHub course: version control for your projects, teacher Gregor Thomson."
+  width={1318}
+  height={741}
+  caption="This module covers version control, the stage-commit-push workflow, and uploading a project through GitHub's website with no Git installed."
+  source=""
+/>
+
 Four scrims, all marked SAMPLE, so you can watch this whole section without paying. The one minute intro is Gregor introducing himself as "a full time developer and coding tutor" and listing what is coming.
 
 "Introducing Git and GitHub" (6:53) is the conceptual lesson. It covers what version control is: a record of every change to a project, so you can go back. It then separates the copy on your machine from the copy on GitHub, and names the three verbs you will use all day: stage, commit, push. Gregor's analogy is a video game. As he puts it in lesson 2, "in a video game, we'll reach these different save points and we can record our progress," and a commit is the same thing for your project. He also gives the Linus Torvalds origin story and a 2024 statistic on GitHub's size.
@@ -105,11 +92,20 @@ Four scrims, all marked SAMPLE, so you can watch this whole section without payi
 
 ### 2. Coding locally: GitHub Desktop and VS Code (30 min, 9 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-git-and-github/chapter-2-coding-locally-title-card.webp"
+  alt="Expectations slide from Scrimba's Learn Git and GitHub course: GitHub Desktop and VS Code's source control panel."
+  width={1318}
+  height={741}
+  caption="This module repeats the stage-commit-push workflow in GitHub Desktop and in VS Code's source control panel, then opens a pull request."
+  source=""
+/>
+
 The longest section and the first that needs software on your machine. "Git Workflow" (4:22) is the lesson to remember. An animated diagram walks through the whole loop, and Gregor's framing is that "whichever way we're using git and github, then the general workflow that we follow is going to be the same." Everything after this is that diagram again in a different tool.
 
 <Screenshot
   src="/img/scrimba/learn-git-and-github/git-workflow-push-changes-lesson.webp"
-  alt="Scrimba Learn Git and GitHub lesson Git Workflow paused on a slide titled Push changes, with a diagram of two commits on a main branch and a yellow commit on a feature branch with an arrow pointing back toward main"
+  alt="Learn Git and GitHub, Git Workflow lesson: a diagram shows a feature branch commit pointing back toward the main branch."
   width={1400}
   height={635}
   caption="The Git Workflow lesson at 3:30. The yellow circle is the commit you just made on a feature branch; the next slides cover the pull request, the merge commit, and pulling main back down. This diagram is the spine of the course."
@@ -127,7 +123,7 @@ Two short scrims round out the section. ".gitignore" (2:08) is about keeping API
 
 <Screenshot
   src="/img/scrimba/learn-git-and-github/source-control-in-vs-code-lesson.webp"
-  alt="Scrimba Learn Git and GitHub lesson Source Control in VS Code paused at 1:51: a recorded VS Code window shows the Source Control panel with a commit message and one changed file, a side by side diff of index.html with a new projects section highlighted in green, and a commit graph below"
+  alt="Learn Git and GitHub, Source Control lesson: a recorded VS Code window shows a staged file and a side by side diff."
   width={1400}
   height={635}
   caption="Source Control in VS Code at 1:51, right after the 'no staged changes to commit' warning. It is a recording of VS Code framed inside the Scrimba player; Scrimba's own file panel on the left holds only package-lock.json."
@@ -139,7 +135,7 @@ The section intro is where the course says the quiet part out loud. As Gregor pu
 
 <Screenshot
   src="/img/scrimba/learn-git-and-github/become-a-git-pro-own-device-lesson.webp"
-  alt="Slide from the Become a Git Pro intro in Scrimba's Learn Git and GitHub course with a warning icon and the text: in these lessons, we'll work on our own device; Scrimba's terminal does not support installing Git"
+  alt="Learn Git and GitHub, Become a Git Pro intro: a warning slide tells you to switch to your own device for this section."
   width={1318}
   height={741}
   caption="The slide at 0:34 of the Become a Git Pro intro. Sections 3, 4 and 5 assume a local Git install, a GitHub account, and VS Code."
@@ -153,6 +149,15 @@ The next three scrims are one command each. "git diff" (0:42) adds a footer, sho
 
 ### 4. Collaboration (18 min, 4 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-git-and-github/chapter-4-collaboration-title-card.webp"
+  alt="Slide from Scrimba's Learn Git and GitHub course: branching, code reviews and merge conflicts for working with others."
+  width={1318}
+  height={741}
+  caption="This module walks a two-account pull request through comments and an approval, then resolves a deliberate merge conflict by hand."
+  source="Slides from scrimba.com."
+/>
+
 The best section, and the reason to take this course rather than any random Git tutorial. After the one minute intro comes "Collaborative branching" (2:21), a diagram walkthrough of two developers cloning the same repository, branching separately, and opening two pull requests.
 
 "Code Reviews" (7:22) is the lesson that shows the screens you will meet in a first team job. Gregor sets up two GitHub accounts, his own (Albadylic) and a second one, and asks you in lesson 25 to "imagine there are two developers." He then plays both sides of a pull request: adding a collaborator, commenting on specific lines, requesting changes, approving and merging. He also pushes a second pull request from the other account that touches the same CSS, on purpose, so that the next lesson has something to fix.
@@ -161,7 +166,7 @@ The best section, and the reason to take this course rather than any random Git 
 
 <Screenshot
   src="/img/scrimba/learn-git-and-github/merge-conflicts-lesson.webp"
-  alt="Scrimba Learn Git and GitHub lesson Merge Conflicts paused at 3:05: a recorded VS Code window shows index.html with a green Current Change block containing the team section under a HEAD marker, a blue Incoming Change block with a contact details section, and a Resolve in Merge Editor button"
+  alt="Learn Git and GitHub, Merge Conflicts lesson: VS Code shows two conflicting code blocks with a resolve button between them."
   width={1076}
   height={605}
   caption="Merge Conflicts at 3:05, cropped to the recording. The green block is the team section from the feature branch, the blue block is the contact section that came in from main, and the <<<<<<< HEAD marker sits between them. Gregor accepts both here, then hand edits the CSS conflict that follows."
@@ -274,4 +279,5 @@ Where it is limited: the player has nothing to type into, so all practice is sel
     { name: 'Other GitHub features', duration: '13 min', lessons: 5 },
     { name: 'Wrap-up and certificate', duration: '3 min', lessons: 2 },
   ]}
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-git-and-github/chapter-1-git-and-github-title-card.webp"
 />

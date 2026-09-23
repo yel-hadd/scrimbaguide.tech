@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "UI Design Fundamentals"
 description: "Gary Simon's free Intro to UI Design Fundamentals reviewed from inside: 70 minutes, seven principles, five CSS-only design challenges, and what Pro gates."
 keywords: [scrimba ui design fundamentals, intro to ui design fundamentals review, gary simon ui design, free ui design course, ui design for developers, scrimba ui design course review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Intro to UI Design Fundamentals
 
+<DisclosureNotice />
+
 Gary Simon's free Intro to UI Design Fundamentals runs 70 minutes across 20 scrims, fixing one bad layout at a time with plain CSS. You get seven design principles and five pause-and-fix challenges, no Figma, no JavaScript. It's the fastest way to learn why your CSS-correct pages still look off.
 
-*Reviewed inside the course with a Pro account, September 2026: every transcript, and a sample of the lessons stepped through firsthand.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="every transcript, and a sample of the lessons stepped through firsthand" />
 
 *This page is part of our [Scrimba CSS courses](/docs/courses/css/) catalog. Scrimba's course page does not list it under any career path; it is a standalone free course and the taster for the Pro-only [Learn UI Design](/docs/courses/css/ui-design/).*
 
@@ -39,33 +44,6 @@ Take it if your pages look slightly wrong and you do not know why. Each principl
   href="https://scrimba.com/intro-to-ui-design-fundamentals-c0q"
   description="Seven UI design principles, each shown by fixing a bad layout in CSS, with five pause-and-fix design challenges."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/intro-to-ui-design-fundamentals/chapter-00-learn-ui-design-title-card.webp"
-    alt="Title slide of the first scrim in Scrimba's Intro to UI Design Fundamentals, reading Learn UI design on a pale green background with the Scrimba logo"
-    width={1278}
-    height={719}
-    caption="The welcome scrim's title slide. The narration calls the course a module with three parts, so this slide was recorded for a larger path module, not for this course alone."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/intro-to-ui-design-fundamentals/chapter-white-space-title-card.webp"
-    alt="Slide from the White Space lesson in Scrimba's Intro to UI Design Fundamentals: Understanding White space, with the definition that white space is the empty space between the elements in your user interface"
-    width={1278}
-    height={719}
-    caption="Each principle lesson opens on a one line definition slide like this one."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/intro-to-ui-design-fundamentals/chapter-visual-hierarchy-title-card.webp"
-    alt="Slide from the Visual Hierarchy lesson in Scrimba's Intro to UI Design Fundamentals: Understanding Visual Hierarchy, with the definition that every element on a user interface has a level of importance"
-    width={1278}
-    height={719}
-    caption="Visual hierarchy, the last and longest of the seven principle lessons."
-    source="Lesson slides from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -99,6 +77,15 @@ I counted 20 `toc-scrim-item` rows in the expanded table of contents in Septembe
 
 ### 1. Welcome, design roles, course introduction (7 min, 3 scrims)
 
+<Screenshot
+  src="/img/scrimba/intro-to-ui-design-fundamentals/chapter-00-learn-ui-design-title-card.webp"
+  alt="Title slide of the first scrim in Scrimba's Intro to UI Design Fundamentals, reading Learn UI design on a pale green background with the Scrimba logo"
+  width={1278}
+  height={719}
+  caption="Three scrims frame the fundamentals as one part of a larger module, cover non-dev design roles, and set the audience as developers who already know basic HTML and CSS."
+  source=""
+/>
+
 The course does not open with Gary. "Welcome to Learn UI Design" (2:16, marked SAMPLE) is a Scrimba narrator introducing a three part module: "the fundamentals of UI design, specifically the seven core principles", then "experimenting with a very simple layout", then "a full project refactoring" of a company dashboard. Only the first of those three parts is in this free course. The module framing was recorded for a path, which is why the slide says "Learn UI design" rather than the course name.
 
 The narrator also sets the goal, and it is a good one: the module should "help you speak the design language more effectively, enabling productive conversations with designers." Gary is introduced as having "roughly one million followers" and "over one hundred courses".
@@ -109,13 +96,22 @@ Gary arrives in "Course Introduction" (1:06) with twenty years as a UI designer 
 
 ### 2. White space and alignment, then Design Challenge 1 (12 min, 3 scrims)
 
+<Screenshot
+  src="/img/scrimba/intro-to-ui-design-fundamentals/chapter-white-space-title-card.webp"
+  alt="Slide from Scrimba's Intro to UI Design Fundamentals course: white space is the empty space between interface elements."
+  width={1278}
+  height={719}
+  caption="White Space and Alignment fix two identical cards with padding, margin and line-height, then Design Challenge 1 asks you to do the same to a card of your own."
+  source=""
+/>
+
 "White Space" (4:45) is the template for every principle lesson. A definition slide, a mini browser with a broken example, then Gary types into `index.css` under a comment while the preview updates. Here it is two identical cards, and he says up front that "there isn't one UI design fundamental that's more important than the other"; he just starts here.
 
 He adds `padding` to the second card and argues for `em` units, which scale with the body font size, so one change to `font-size` later resizes every gap. Then he tunes it out loud: "zero em would be objectively horrible", and anything from 1.3 to 1.9 is "a sweet spot". Then `margin-bottom` on the `h1` and `line-height` on the paragraph, which he names as leading, the printer's word for the space between lines. The framing of the whole course is in this lesson: "there is a lot of subjectivity in terms of the choices you make... But there's also objectivity."
 
 <Screenshot
   src="/img/scrimba/intro-to-ui-design-fundamentals/white-space-two-cards-lesson.webp"
-  alt="Scrimba Intro to UI Design Fundamentals White Space lesson paused at 4:37: index.css shows .secondary rules with padding 1.9em, an h1 margin-bottom of .5em and a p line-height of 1.5em, and the preview on the right shows two My Title cards, the left one cramped and the right one with even padding and looser line spacing"
+  alt="Intro to UI Design Fundamentals, White Space lesson: two identical cards side by side, one cramped and one evenly spaced."
   width={1400}
   height={635}
   caption="White Space at 4:37. Both cards share the same HTML; only the three rules under the Overwrite CSS comment differ. Gary settled on 1.9em of padding after trying 1em and 1.5em on screen."
@@ -141,7 +137,7 @@ He also flags, for the first time, that a headline that is barely bigger than it
 
 <Screenshot
   src="/img/scrimba/intro-to-ui-design-fundamentals/design-challenge-2-before-lesson.webp"
-  alt="Scrimba Intro to UI Design Fundamentals Design Challenge 2 at 0:14: the preview is enlarged over the blurred editor and shows three bright blue November Rain cards with a circle avatar, the date and title touching and no padding around the text"
+  alt="Intro to UI Design Fundamentals, Design Challenge 2: three bright blue cards with no padding, the starting point to fix."
   width={1400}
   height={635}
   caption="Design Challenge 2 at 0:14, the starting state you are asked to fix. Scrimba enlarges the preview while Gary talks about it, then shrinks it when he returns to the editor."
@@ -149,7 +145,7 @@ He also flags, for the first time, that a headline that is barely bigger than it
 
 <Screenshot
   src="/img/scrimba/intro-to-ui-design-fundamentals/design-challenge-2-after-lesson.webp"
-  alt="Scrimba Intro to UI Design Fundamentals Design Challenge 2 at 6:33: the preview shows the same three cards after Gary's solution, dark grey card backgrounds on a near-black page, 1.5em of padding, an uppercase letter-spaced date in muted grey and a large pale blue November Rain title"
+  alt="Intro to UI Design Fundamentals, Design Challenge 2: the same three cards redesigned with dark backgrounds and even spacing."
   width={1400}
   height={635}
   caption="The same cards at 6:33 after his solution. Note the low contrast of the card against the page (he argues containers do not need much) versus the high contrast of the title, which does."
@@ -169,6 +165,15 @@ Then the visual hierarchy work: the heading grows to 2em, the quote gets `line-h
 
 ### 5. Visual hierarchy, then Design Challenge 4 (14 min, 2 scrims)
 
+<Screenshot
+  src="/img/scrimba/intro-to-ui-design-fundamentals/chapter-visual-hierarchy-title-card.webp"
+  alt="Slide from Scrimba's Intro to UI Design Fundamentals course: every element on an interface has a level of importance."
+  width={1278}
+  height={719}
+  caption="The longest lesson combines white space, contrast, color and scale to make one element on a mailing list form stand out, then Design Challenge 4 applies the same idea to a card."
+  source="Lesson slides from scrimba.com."
+/>
+
 "Visual Hierarchy" (7:42) is the longest lesson and the one that ties the others together. It opens on slides of five identical squares, then makes one stand out in turn with white space, contrast, color, scale, and finally all of them at once. Then the real example: a "Join the mailing list" form where, as Gary says, "you're not exactly sure which text element you should be looking at."
 
 Each fix reuses a principle from earlier in the course. The `h1` goes to 3em, the form gets a background one shade lighter than the page, and the label is bolded at 1.2em. The submit button turns a saturated yellow with dark bold text and no border, and the "we won't share your email" note is dimmed. Afterwards you know where to look, which is the whole point.
@@ -185,7 +190,7 @@ His answer is `grid-gap: 2em` (the gutter between grid columns), a content backg
 
 <Screenshot
   src="/img/scrimba/intro-to-ui-design-fundamentals/final-challenge-dashboard-lesson.webp"
-  alt="Scrimba Intro to UI Design Fundamentals The Final Challenge at 5:21: index.css shows the three completed rule sets, body grid-gap 2em, .content background #0044B9 with padding 1.5em, and h1 margin-left 0 with font-size 2.3em, each annotated with the principle it improves, while the preview shows a blue dashboard with a Sales Report card listing earnings, refunds, chargebacks and net income"
+  alt="Intro to UI Design Fundamentals, The Final Challenge: a finished dashboard preview beside its completed CSS rules."
   width={1400}
   height={635}
   caption="The Final Challenge at 5:21, solution complete. Every property in the brief carries a comment naming the principle it fixes, which is the whole course in nine lines of CSS."
@@ -276,4 +281,7 @@ Where it is limited: it is an hour, and it stops at the seven principles. Two of
     { name: 'Visual hierarchy, Design Challenge 4', duration: '14 min' },
     { name: 'The Final Challenge, deploy, closing and three wrap-up scrims', duration: '12 min' },
   ]}
+  instructor="Gary Simon"
+  instructorUrl="https://scrimba.com/@designcourse"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/intro-to-ui-design-fundamentals/chapter-00-learn-ui-design-title-card.webp"
 />

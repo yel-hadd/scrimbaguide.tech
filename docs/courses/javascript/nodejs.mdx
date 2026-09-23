@@ -6,7 +6,7 @@ sidebar_label: "Learn Node.js"
 description: "Tom Chant's free Learn Node.js course from inside: 3.5 hours, 49 scrims, a REST API and a routed site with no framework, and what Pro gates."
 keywords: [scrimba learn nodejs, learn nodejs scrimba review, free nodejs course, node rest api course, tom chant node, scrimba node course 2026]
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn Node.js
+
+<DisclosureNotice />
 
 Tom Chant teaches Scrimba's free Node.js course in about 3.5 hours across two projects: a JSON REST API built with nothing but Node's built-in `http` module, and a small ghost-sightings site with static files, POST handling and server-sent events. No Express, no framework. It's the course to take before you learn one, so you see what the framework hides.
 
@@ -37,25 +40,6 @@ It fits a frontend developer who has only ever been on the receiving end of an A
   href="https://scrimba.com/learn-nodejs-c00ho9qqh6"
   description="Backend fundamentals with no framework: build a REST API and a routed site with Node's http, fs, path and events modules."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-nodejs/chapter-1-build-a-rest-api-title-card.webp"
-    alt="Title card of the first project in Scrimba's Learn Node.js course, reading Build a REST API, The Wild Horizons API, Teacher: Tom Chant, on a purple and gold gradient"
-    width={1376}
-    height={772}
-    caption="Project 1: the Wild Horizons API."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-nodejs/chapter-2-build-a-routed-site-title-card.webp"
-    alt="Title card of the second project in Scrimba's Learn Node.js course, reading Build a Routed Site, From the Other Side, Teacher: Tom Chant, on a blue gradient with a ghost emoji"
-    width={1376}
-    height={772}
-    caption="Project 2: From the Other Side, the ghost sightings site."
-    source="Project title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -84,6 +68,15 @@ A four-minute history of Node (Ryan Dahl, 2009, the V8 engine bundled outside th
 
 ### 1. Build a REST API (81 min, 20 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-nodejs/chapter-1-build-a-rest-api-title-card.webp"
+  alt="Title card of the first project in Scrimba's Learn Node.js course: Build a REST API, The Wild Horizons API, teacher Tom Chant."
+  width={1376}
+  height={772}
+  caption="Twenty scrims build a JSON API by hand, from a bare http.createServer to path parameters, query strings and CORS headers."
+  source=""
+/>
+
 The project is the Wild Horizons API: a `data.js` file of destinations (the Waitomo Glowworm Caves, the Door to Hell in Turkmenistan, an underwater waterfall in Mauritius) with a name, country, continent, an `is_open_to_public` boolean and a UUID. Three ways to query it: `/api` for everything, `/api/continent/Asia` or `/api/country/India` for path parameters, and `/api?country=Turkey&is_open_to_public=true` for query strings.
 
 The first two scrims are the only setup you get, and they are enough. In "The package.json file" you run `node server.js`, meet the Node REPL ("the novelty does actually wear off after just a few seconds," Tom admits), and get your first challenge: `npm init`, answering the prompts from a `project_details.md` file. "Aside: The HTTP module" hits the ES module error on purpose, fixes it with `"type": "module"` in package.json, and builds the smallest possible server: `http.createServer((req, res) => res.end('...'))` listening on port 8000. Tom uses `import http from 'node:http'` throughout and explains why the `node:` prefix is good practice. Then "Recreate the server" deletes it all and makes you rebuild it from a `hint.md` of pseudocode.
@@ -92,7 +85,7 @@ From there the API grows one concept per scrim. "Routing and the req object" add
 
 <Screenshot
   src="/img/scrimba/learn-nodejs/serve-stringified-json-missing-await-lesson.webp"
-  alt="Scrimba Learn Node.js lesson Serve stringified JSON paused at 3:01: server.js shows const destinations = getDataFromDB() without await inside http.createServer, the challenge comments above the if block, and the network panel on the right shows a GET to localhost:8000/api returning an empty object"
+  alt="Learn Node.js, Serve Stringified JSON lesson: the network panel shows an empty response caused by a missing await."
   width={1400}
   height={660}
   caption="Serve stringified JSON at 3:01. The response panel on the right says {} because line 7 is missing its await. Tom writes the bug, reads the error, then fixes it; the runner at the bottom is Scrimba's replacement for your own terminal."
@@ -106,7 +99,7 @@ Query strings take three scrims. The aside shows the honest vanilla way, `new UR
 
 <Screenshot
   src="/img/scrimba/learn-nodejs/filter-by-query-parameters-boolean-string-bug-lesson.webp"
-  alt="Scrimba Learn Node.js lesson Filter by Query Parameters paused at 4:46: getDataByQueryParams.js shows a filter comparing destination.is_open_to_public to is_open_to_public with a console.log above it, the network panel shows a request for continent=asia and is_open_to_public=true returning an empty array, and the runner prints pairs of true true and false true in two different colors"
+  alt="Learn Node.js, Filter by Query Parameters lesson: the terminal highlights a boolean and a string that look equal but are not."
   width={1400}
   height={660}
   caption="Filter by Query Parameters at 4:46. The response is [] even though the data has open destinations in Asia. The runner prints the two values side by side in different colors, which is how Tom spots that one is a boolean and the other a string; JSON.parse fixes it a minute later."
@@ -115,6 +108,15 @@ Query strings take three scrims. The aside shows the honest vanilla way, `new UR
 The module ends with "CORS", a slide-driven explanation of same-origin policy and the two `Access-Control-Allow-*` headers you add to `sendJSONResponse`, with the caveat that "working here in Scrimba it's not gonna make any difference," and a wrap-up that suggests stretch goals (friendlier errors, POST support, keyword search). The last scrim, "Learning in public", is a generic Per Borgen talk about commenting on Reddit that appears in several Scrimba courses.
 
 ### 2. Routes & Paths (2.3 hrs, 27 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-nodejs/chapter-2-build-a-routed-site-title-card.webp"
+  alt="Title card of the second project in Scrimba's Learn Node.js course: Build a Routed Site, From the Other Side, with a ghost emoji."
+  width={1376}
+  height={772}
+  caption="Twenty-seven scrims serve static files, parse and sanitize a POST body, then stream server-sent events for a ghost-sighting site."
+  source="Project title cards from scrimba.com."
+/>
 
 The second project is From the Other Side, a site "where users can share paranormal sightings." It has a home page, a Read page that renders each sighting as a card, and an Upload form that POSTs to the server. The HTML, CSS and frontend JavaScript are all written for you; Tom says you will spend "ninety nine percent of the time" in the server code. The plan is three jobs (serve the static files, serve the sightings as JSON, accept new sightings) plus a section on events.
 
@@ -128,7 +130,7 @@ Data comes next. "Getting the JSON Data" writes `getData()`, which reads `data.j
 
 <Screenshot
   src="/img/scrimba/learn-nodejs/handling-post-upload-sighting-form-lesson.webp"
-  alt="Scrimba Learn Node.js lesson Handling POST part 2 paused at 4:36: story.md in the editor holds a ghost story titled The Ghost in Accounting, and the mini browser on the right shows the From the Other Side site's Add Sighting page with Home, Read and Upload links and a form with Title, Time/Date and Location fields"
+  alt="Learn Node.js, Handling POST lesson: a browser preview shows the sighting upload form beside the story being submitted."
   width={1400}
   height={660}
   caption="Handling POST part 2 at 4:36, just before Tom submits his own test story. The form on the right is the finished frontend you are given; the server code that receives it, sanitizes it and writes it to data.json is what you build."
@@ -138,7 +140,7 @@ Then security. "Aside: Sanitization" explains cross-site scripting and installs 
 
 <Screenshot
   src="/img/scrimba/learn-nodejs/sanitize-input-xss-button-rendered-lesson.webp"
-  alt="Scrimba Learn Node.js lesson sanitizeInput paused at 0:43: story.md in the editor shows a ghost story that begins with a button element whose onclick logs the word hacked, and the mini browser on the right shows the From the Other Side sightings page rendering a card titled The Bathroom Mirror Incident with a real Click me button inside the story text"
+  alt="Learn Node.js, sanitizeInput lesson: an unsanitized story renders a real clickable button inside the sightings page."
   width={1400}
   height={660}
   caption="sanitizeInput at 0:43. The button in story.md has made it through the server and into the sightings page as a working element. Your job for the rest of the scrim is to make sure that never happens again."
@@ -233,4 +235,7 @@ Where it is limited:
     { name: 'Build a REST API', duration: '81 min' },
     { name: 'Routes & Paths', duration: '2.3 hrs' },
   ]}
+  instructor="Tom Chant"
+  instructorUrl="https://scrimba.com/@DoubleNemesis"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-nodejs/chapter-1-build-a-rest-api-title-card.webp"
 />

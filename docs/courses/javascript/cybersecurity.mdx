@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn Cybersecurity"
 description: "Reviewed from inside: 5 hours on STRIDE, sessions vs JWTs, XSS, SQL injection, Zod and rate limiting by Rachel Johnson and Jonathan Hill. What Pro gates."
 keywords: [scrimba learn cybersecurity, learn cybersecurity scrimba review, app security course for developers, authentication course scrimba, web security fundamentals, rate limiting course, zod validation course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Cybersecurity
 
+<DisclosureNotice />
+
 Learn Cybersecurity is Scrimba's 5-hour Pro course on the security work that lands on a working developer's desk. Rachel Johnson teaches threat modelling and authentication; Jonathan Hill has you attack your own registration form with XSS and SQL injection, then build Express rate limiters. It is the most practical five hours on app security in the catalog.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,25 +42,6 @@ It fits developers who already build Node or Express APIs and want to stop shipp
   href="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9"
   description="Threat modelling, authentication models, input validation with Zod, and rate limiting, taught in Node by Rachel Johnson and Jonathan Hill."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-cybersecurity/module-1-backend-security-stride-owasp-title-card.webp"
-    alt="Title card of module 1 of Scrimba's Learn Cybersecurity course: Backend Security, thinking like a security-minded developer with STRIDE and OWASP, teacher Rachel Johnson"
-    width={1280}
-    height={720}
-    caption="Module 1: threat modelling with STRIDE and OWASP."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-cybersecurity/module-2-authentication-and-identity-title-card.webp"
-    alt="Title card of module 2 of Scrimba's Learn Cybersecurity course: Backend Security, Authentication and Identity, teacher Rachel Johnson"
-    width={1280}
-    height={720}
-    caption="Module 2: authentication and identity. Modules 3 and 4 switch to Jonathan Hill and open straight into code."
-    source="Title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -82,6 +68,15 @@ Lesson counts are the scrims I counted in each expanded module in September 2026
 
 ### 1. Think Like a Security-Minded Developer (30 min, 10 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-cybersecurity/module-1-backend-security-stride-owasp-title-card.webp"
+  alt="Title card of module 1 in Scrimba's Learn Cybersecurity course: Backend Security, thinking with STRIDE and OWASP."
+  width={1280}
+  height={720}
+  caption="This module has you classify six QuickBite threats with STRIDE, then map six bug reports onto the OWASP top ten."
+  source=""
+/>
+
 Rachel opens with a confession: her first student portal was broken into by "a curious seven year old" who changed the student ID in the URL and saw another student's profile. "The code worked exactly like I wrote it," she says in the intro, "I just hadn't written it with attackers or even accidentally curious users in mind." The phrase she repeats through the module is "Think like an attacker. Design like a defender."
 
 The module has two halves. STRIDE first: six categories (spoofing, tampering, repudiation, information disclosure, denial of service, elevation of privilege), each illustrated on the QuickBite delivery app. Then the Potential Threat Modelling scrim opens a `stride_challenge.md` file with six threats; Rachel classifies the first one with you, the screen pauses at 1:06, and you label the other five. OWASP follows the same shape: the Meet OWASP scrim walks through the broken access control page and its "how to prevent" list, then Bug Triage Challenge gives you six QuickBite bug reports (an uploaded `menu.js` that executed, webhooks arriving with fake "paid" statuses, card numbers in the logs) to map onto OWASP categories and fix.
@@ -89,6 +84,15 @@ The module has two halves. STRIDE first: six categories (spoofing, tampering, re
 As Rachel puts it at the end of that challenge, "If you can name the problem, OWASP will point you straight to the right solution." All Together Now closes the module with the line that summarises it: "Stride predicts and OWASP diagnoses." The first three scrims are free previews, the rest need Pro.
 
 ### 2. Authentication and Identity (67 min, 19 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-cybersecurity/module-2-authentication-and-identity-title-card.webp"
+  alt="Title card of module 2 of Scrimba's Learn Cybersecurity course: Backend Security, Authentication and Identity, teacher Rachel Johnson"
+  width={1280}
+  height={720}
+  caption="This module teaches sessions, stateless JWTs and delegated OAuth identity, each ending in a challenge that fixes broken code."
+  source="Title cards from scrimba.com."
+/>
 
 This is the module I would send someone to if they only had an hour. Rachel separates authentication (who are you) from authorization (what may you do), then teaches three identity models in three arcs, each ending in a challenge.
 
@@ -108,7 +112,7 @@ Three attacks come first. Cross-Site Scripting is two scrims: a demo where an `<
 
 <Screenshot
   src="/img/scrimba/learn-cybersecurity/sql-injection-drop-table-users-lesson.webp"
-  alt="Scrimba's SQL Injection part 2 scrim paused at 3:53: server.ts shows the challenge brief to craft an email input that drops the users table, and the Create Your Account form in the preview holds the payload '); DROP TABLE users; -- with the banner reading We currently have 0 signed up users"
+  alt="Learn Cybersecurity, SQL Injection lesson: the signup form preview shows a malicious payload and a signup counter dropped to zero."
   width={1400}
   height={684}
   caption="SQL Injection part 2 at 3:53, seconds after Jonathan submits the payload. The signup counter above the form has gone to zero. Nothing is really deleted (the app hard-codes the drop), but you typed the attack yourself."
@@ -126,7 +130,7 @@ Fixed Window Counter is ten scrims of building with `express-rate-limit`. The fi
 
 <Screenshot
   src="/img/scrimba/learn-cybersecurity/fixed-window-rate-limiter-429-lesson.webp"
-  alt="Scrimba's Fixed Window Counter, Create the limiter scrim paused at 5:08: server.js configures rateLimit with limit 5 and windowMs 60000 and applies it to the /api/data route, while the terminal below shows requests 14 and 15 answered with 429 Too many requests, please try again later"
+  alt="Learn Cybersecurity, rate limiter lesson: the terminal shows repeated requests getting blocked with a 429 error."
   width={1400}
   height={684}
   caption="Create the limiter at 5:08. Five requests succeed, then every one after returns 429 until the one-minute window resets. The remainingRequests property with optional chaining is the challenge's last step."
@@ -212,4 +216,7 @@ Where it is limited: the first two modules are mostly slides with little code, t
     { name: 'Input & Data Safety', duration: '101 min' },
     { name: 'Rate Limiting & Throttling', duration: '98 min' },
   ]}
+  instructor="Rachel Johnson"
+  instructorUrl="https://scrimba.com/@rachelktyjohnson"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-cybersecurity/module-1-backend-security-stride-owasp-title-card.webp"
 />

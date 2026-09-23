@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Advanced React"
 description: "Advanced React on Scrimba from inside: 18.8 hours, three teachers, VanLife and a Supabase dashboard, what Pro gates, and the real time cost."
 keywords: [scrimba advanced react, advanced react review, advanced react course, bob ziroll advanced react, react performance course, react reusability patterns, scrimba advanced react 2026]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Advanced React
 
+<DisclosureNotice />
+
 Scrimba's Pro follow-up to Learn React: about 18.8 hours across six modules, most taught by Bob Ziroll, ending in a component library, a camper van rental site, and a Supabase sales dashboard. It assumes hooks-based React, and it is the most complete React course on Scrimba, the closest to day-to-day frontend work.
 
-*Reviewed inside the course with a Pro account, September 2026: every module opened, transcripts read for 86 of the 240 scrims, at least a third of each module.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="every module opened, transcripts read for 86 of the 240 scrims, at least a third of each module" />
 
 *This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
@@ -40,41 +45,6 @@ It fits you if you have finished [Learn React](/docs/courses/react/learn-react/)
   href="https://scrimba.com/advanced-react-c02h"
   description="Reusability patterns, React Router 6, performance, then Supabase persistence and auth and a TypeScript conversion, for people who already know the React basics."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/advanced-react/chapter-1-reusability-title-card.webp"
-    alt="Title card of Scrimba's Advanced React course: the words Advanced React on a pale blue slide with a React atom logo in the corner"
-    width={1279}
-    height={720}
-    caption="The course title card that opens module 1, Reusability."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/advanced-react/chapter-2-react-router-6-title-card.webp"
-    alt="Title card for module 2 of Scrimba's Advanced React course: React Router 6, for client-side routing"
-    width={1279}
-    height={720}
-    caption="Module 2: React Router 6, the VanLife project."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/advanced-react/chapter-3-performance-title-card.webp"
-    alt="Title card for module 3 of Scrimba's Advanced React course: Performance, for improving app speed, with a racing car emoji"
-    width={1279}
-    height={720}
-    caption="Module 3: Performance, where Bob's original course ends."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/advanced-react/chapter-4-persistence-title-card.webp"
-    alt="Title card for module 4 of Scrimba's Advanced React course: Section 1, Persistence, Teacher: Jonathan Hill, on a purple gradient"
-    width={1375}
-    height={768}
-    caption="Module 4: Persistence, the first of Jonathan Hill's two Supabase sections."
-    source="Module title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -105,13 +75,22 @@ Lesson counts are the scrims I counted in each expanded module in September 2026
 
 ### 1. Reusability (5 hrs, 68 scrims): a component library
 
+<Screenshot
+  src="/img/scrimba/advanced-react/chapter-1-reusability-title-card.webp"
+  alt="Title card of Scrimba's Advanced React course: the words Advanced React on a pale blue slide with a React atom logo in the corner"
+  width={1279}
+  height={720}
+  caption="Ten scrims build a Button, then a Menu, a headless Toggle, and custom hooks that replace it, ending in the Component Library++ solo project."
+  source=""
+/>
+
 The module starts with a warning. In the second scrim, a props review challenge to build a Button, Bob says "if this challenge is, well, really challenging for you, then you're probably not ready to jump into this advanced react course." The Button grows over ten scrims: children instead of a text prop, props spreading, and a size prop. Along the way there is a bug where spreading `...rest` after `className` silently wipes the size class, which he leaves broken for a lesson before fixing it.
 
 Then comes the Mega Challenge: an "overloaded" Avatar component that renders a photo if it gets a `src`, initials if it gets children, and a person icon otherwise. Bob gives you a `hints.md` file and ten minutes, and admits that overloaded components are "not usually best practice in your regular day to day life with React, but in our case because we're building a component library things are a little bit different."
 
 <Screenshot
   src="/img/scrimba/advanced-react/overloaded-avatar-mega-challenge-lesson.webp"
-  alt="Scrimba Advanced React lesson Mega Challenge, Overloaded Avatar Component, paused at 8:25: Avatar.js shows three if branches returning an img, the children as initials, or an IoPersonSharp icon, while the preview on the right stacks a photo avatar, a red BZ initials avatar, and an anonymous icon avatar"
+  alt="Advanced React, Mega Challenge lesson: the preview shows one Avatar component rendering a photo, initials, and an icon."
   width={1400}
   height={625}
   caption="The Avatar solution at 8:25 of the Mega Challenge: one component, three render paths, and all three showing in the preview. The dependencies panel shows what this module runs on: react 18.2.0 and react-icons 4.4.0."
@@ -123,7 +102,7 @@ The last third builds a headless Toggle (Toggle.Button, Toggle.On, Toggle.Off, T
 
 <Screenshot
   src="/img/scrimba/advanced-react/intro-to-refs-infinite-render-loop-lesson.webp"
-  alt="Scrimba Advanced React lesson Intro to Refs, paused at 2:33: index.js shows a useEffect with no dependency array calling setRenderCount, and the preview on the right shows the heading Understanding refs with a Render count that has become a long string of repeated digits"
+  alt="Advanced React, Intro to Refs lesson: the preview shows a render counter spiraling out of control in an infinite loop."
   width={1400}
   height={625}
   caption="Intro to Refs at 2:33: the render counter kept in useState inside a useEffect with no dependencies, and the render count in the preview running away. Bob triggers the maximum update depth error on purpose, then fixes it with useRef."
@@ -133,13 +112,22 @@ The module ends with the only solo project in the course, Component Library++: a
 
 ### 2. Routing (6.4 hrs, 86 scrims): VanLife on React Router 6
 
+<Screenshot
+  src="/img/scrimba/advanced-react/chapter-2-react-router-6-title-card.webp"
+  alt="Title card for module 2 of Scrimba's Advanced React course: React Router 6, for client-side routing"
+  width={1279}
+  height={720}
+  caption="Eighty-six scrims build VanLife: nested routes, search params, protected routes, and a swap from a mock API to Firestore."
+  source=""
+/>
+
 The first scrim opens with "Welcome to this course on React Router six," which tells you what this module is. It pins `react-router-dom` 6.4.3 and Bob says up front "we will not be going into the data layer APIs that come with six point four." Eight short scrims cover BrowserRouter, Routes, Route, and Link on a hello-world page, then VanLife starts. It opens with home and about pages from a Figma design and an early "Initial Deploy to Netlify" lesson (GitHub Desktop, a `.gitignore`, the forgotten viewport meta tag). Then a Mirage JS mock server comes in so you `fetch("/api/vans")` like a real frontend developer would.
 
 From there the module is one long build. Route params and `useParams` for the van detail page. Nested routes explained through the Remix "Fakebooks" demo, then a host section with its own layout route, index routes, relative paths, and a third level of nesting at `/host/vans/:id/pricing` and `/photos`. NavLink active styling. Outlet context, which Bob sets as a challenge from the docs alone: "I'm not going to teach you how to do this before I ask you to try and do it." Then search params, which take a dozen scrims because he wants them to be "a single source of truth" you can share by URL.
 
 <Screenshot
   src="/img/scrimba/advanced-react/vanlife-filter-vans-search-params-lesson.webp"
-  alt="Scrimba Advanced React lesson Challenge: Filter the vans with Links, paused at 2:53: Vans.jsx shows useSearchParams, a typeFilter read from the search params, and displayedVans filtered by van.type, while the preview on the right shows the VanLife Explore our van options page with Simple, Luxury, and Rugged filter buttons and two van photos"
+  alt="Advanced React, VanLife lesson: the preview shows the van listing page with filter buttons above two van photos."
   width={1400}
   height={625}
   caption="VanLife at 2:53 of the Links filtering challenge: the type filter comes from the URL, not from state, and the Simple, Luxury, and Rugged buttons are just Links with a query string. The file tree on the left is the whole app at this point, pages and components."
@@ -149,11 +137,29 @@ The back half handles the "sad path" (loading and error states with `try`/`catch
 
 ### 3. Performance (109 min, 19 scrims): rendering, memo, and code splitting
 
+<Screenshot
+  src="/img/scrimba/advanced-react/chapter-3-performance-title-card.webp"
+  alt="Title card for module 3 of Scrimba's Advanced React course: Performance, for improving app speed, with a racing car emoji"
+  width={1279}
+  height={720}
+  caption="Nineteen scrims cover rendering phases, code splitting with lazy and Suspense, React.memo, and useCallback."
+  source=""
+/>
+
 Bob opens with two caveats that most performance courses skip: "React is already very fast" and "you should be able to measure a performance problem before you jump into using these techniques." Then he explains rendering as three phases (render, reconciliation, commit) with an architect-and-contractor analogy. He points out that "it's the commit phase where usually the bottlenecks occur."
 
 The practical scrims use a small product-list app with a Faker.js dependency that weighs 3.2 MB. StrictMode's double rendering exposes a component that mutates an imported array with `.push`. Code splitting with `React.lazy` and `Suspense` shows the 23-second load in his screenshots dropping to instant, though he admits that inside Scrimba the fallback flashes by too fast to see. `React.memo` cuts a grandparent-to-grandchild tree from 31 renders per click to one, and `useCallback` fixes the case where a re-created `increment` function defeats the memo. The challenges here are "redo what I just deleted," and Bob asks for "no copying and pasting, please." The module ends with the original Course Outro: "You made it to the end of the advanced React course."
 
 ### 4. Persistance (54 min, 10 scrims): a Supabase sales dashboard
+
+<Screenshot
+  src="/img/scrimba/advanced-react/chapter-4-persistence-title-card.webp"
+  alt="Title card for module 4 of Scrimba's Advanced React course: Section 1, Persistence, Teacher: Jonathan Hill, on a purple gradient"
+  width={1375}
+  height={768}
+  caption="Ten scrims build a Supabase sales dashboard: a deals table, a live bar chart, and a realtime subscription."
+  source="Module title cards from scrimba.com."
+/>
 
 New teacher, new stack. Jonathan Hill, a School of Code graduate and former cruise-ship guitarist by his own intro, builds a sales dashboard (later branded "Paper Like A Boss") for a fictional user story: a bar chart of deals per rep that updates live, plus a form to add deals. The project is a real Vite app with `node_modules` and `npm run dev` running in Scrimba's terminal, on React 19, `@supabase/supabase-js` 2.49, and `react-charts`. You need a free Supabase account; he says "no need to dig out those credit cards," and your keys go into Scrimba environment variables so the challenges hit your own database.
 
@@ -161,7 +167,7 @@ The ten scrims go: create the project and a `sales_deals` table, seed it with na
 
 <Screenshot
   src="/img/scrimba/advanced-react/supabase-realtime-subscription-challenge-lesson.webp"
-  alt="Scrimba Advanced React lesson Realtime subscription, paused at 4:18: Dashboard.jsx shows a five-step challenge in comments above supabase.channel('deal-changes').on('postgres_changes', ...) with a cleanup that calls removeChannel, a Runner panel below shows npm run dev output, and the preview on the right shows the Sales Team Dashboard bar chart of total sales this quarter for Andy, Dwight, and Jim"
+  alt="Advanced React, Realtime subscription lesson: the preview shows a sales dashboard bar chart next to a running dev server."
   width={1400}
   height={625}
   caption="The realtime challenge brief at 4:18: fill in the channel name, event type, schema, and table, then insert a row in Supabase and watch the console. Notice the Runner tab: this module runs a real Vite dev server inside Scrimba, unlike Bob's modules."
@@ -265,4 +271,7 @@ Where it is limited:
     { name: 'Authentication', duration: '3.8 hrs' },
     { name: 'TypeScript in React', duration: '50 min' },
   ]}
+  instructor="Bob Ziroll"
+  instructorUrl="https://scrimba.com/@bobziroll"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/advanced-react/chapter-1-reusability-title-card.webp"
 />

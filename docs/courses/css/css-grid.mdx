@@ -5,8 +5,9 @@ sidebar_position: 3
 toc_max_heading_level: 2
 description: "Per Borgen's Learn CSS Grid reviewed from inside: 63 minutes, 17 scrims, a 12-column layout by lesson four, and a BBC News clone solo project behind Pro."
 keywords: [scrimba learn css grid, learn css grid scrimba review, css grid course, per borgen css grid, css grid layout tutorial, interactive css grid, css grid review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn CSS Grid
 
+<DisclosureNotice />
+
 Per Borgen's Learn CSS Grid is an hour-long, 17-scrim Pro course that takes you from `display: grid` to a 12-column page layout, a responsive image grid, and named grid lines, ending in a BBC News clone solo project. It teaches grid well for its length, but the framing around it is dated.
 
-*Reviewed inside the course with a Pro account, September 2026: all 17 scrims and their transcripts.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="all 17 scrims and their transcripts" />
 
 ## Quick answer
 
@@ -37,17 +42,6 @@ Take it if you know basic CSS and want grid to click in an evening. It runs as a
   href="https://scrimba.com/learn-css-grid-c02k"
   description="One hour on CSS Grid, taught by building a 12-column page layout and a responsive image grid, ending in a BBC News clone solo project."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-css-grid/solo-project-bbc-news-clone-title-card.webp"
-    alt="Title slide of the Solo Project in Scrimba's Learn CSS Grid course, reading BBC News Clone, Article Grid, on a pale green background with the Scrimba logo"
-    width={1277}
-    height={719}
-    caption="The only title card in the course: the Pro solo project, a BBC News article grid."
-    source="Title card from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -85,7 +79,7 @@ He also tells you, in the first minute, to edit the CSS in the running scrim "so
 
 <Screenshot
   src="/img/scrimba/learn-css-grid/your-first-grid-lesson.webp"
-  alt="Scrimba Learn CSS Grid lesson Your first grid paused at 2:27: the editor shows a .container rule with display: grid, grid-template-columns: 100px auto, grid-template-rows: 50px 50px 200px and grid-gap: 3px, and the preview on the right shows six colored numbered cells in two columns and three rows, with the last row much taller"
+  alt="Learn CSS Grid, Your First Grid lesson: the code editor and a preview of colored numbered grid cells."
   width={1400}
   height={635}
   caption="Lesson 2 at 2:27. Per has just deleted a column and added a 200px row; the preview on the right reflows to two columns and three rows. The whole grid is the five lines inside the style tag."
@@ -99,7 +93,7 @@ The payoff comes when he switches to `repeat(12, 1fr)`. The `-1` versions keep w
 
 <Screenshot
   src="/img/scrimba/learn-css-grid/positioning-items-grid-row-lesson.webp"
-  alt="Scrimba Learn CSS Grid lesson Positioning items paused at 6:01: index.css shows a 12-column grid with repeat(12, 1fr), header and content set to grid-column: 2 / -1, footer to 1 / -1 and menu to grid-row: 1 / 3, while the preview shows a red MENU block spanning the left of the first two rows beside HEADER and CONTENT, with FOOTER along the bottom"
+  alt="Learn CSS Grid, Positioning Items lesson: the preview shows a red menu block spanning two rows beside the header."
   width={1400}
   height={635}
   caption="Lesson 4 at 6:01, the moment grid-row: 1 / 3 pulls the menu up beside the header. Everything else on the page is positioned with -1, so the layout would survive changing repeat(12, 1fr) to any other count."
@@ -109,7 +103,7 @@ The payoff comes when he switches to `repeat(12, 1fr)`. The `-1` versions keep w
 
 <Screenshot
   src="/img/scrimba/learn-css-grid/template-areas-lesson.webp"
-  alt="Scrimba Learn CSS Grid lesson Template areas paused at 3:56: the editor shows grid-template-areas with three strings of letters, h for header, m and c for menu and content, f for footer, with a dot at each end of the first and last strings, and the preview shows the header and footer inset from the corners while the menu and content fill the middle row"
+  alt="Learn CSS Grid, Template Areas lesson: the preview shows a layout with header and footer inset from the corners."
   width={1400}
   height={635}
   caption="Lesson 5 at 3:56. The dots in the template strings are blank cells, so the header and footer no longer touch the corners. Per calls it a 'weird experimental layout', which is the point: you get there by editing three strings."
@@ -140,6 +134,15 @@ Two short scrims cover alignment, which in grid means where items sit inside cel
 "Grid vs. Flexbox" (5:02) is the scrim to send to anyone who asks which to learn. Per's rule: "if you're going to create layout which has a direction, either row or column, then use flexbox," and grid for anything with rows and columns. He then drops a flexbox nav inside the grid header, with `margin-left: auto` on the logout link, and calls that "the best of both worlds". Flexbox is not taught here; the lesson assumes you have it, which is why [Learn Flexbox](/docs/courses/css/flexbox/) is the natural companion.
 
 ### 4. Wrap-up and Solo Project: BBC News Clone (10 min, 4 scrims)
+
+<Screenshot
+  src="/img/scrimba/learn-css-grid/solo-project-bbc-news-clone-title-card.webp"
+  alt="Title slide of the Solo Project in Scrimba's Learn CSS Grid course: BBC News Clone, Article Grid, with the Scrimba logo."
+  width={1277}
+  height={719}
+  caption="Starter files with no grid rule at all, and a target design you lay out yourself with no walkthrough."
+  source="Title card from scrimba.com."
+/>
 
 A slide-based "Why are Solo Projects important?" clip (2:31) leads into the Solo Project (3:10). It is the only Pro-gated lesson and the only scrim with a title card. The starter files are an `index.html` with one featured article (a "LIVE" headline and a large hospital photo), a "Who are the royal family?" bullet, and five regular articles with images. The `index.css` already handles fonts, colors, and the small clock icon.
 
@@ -233,4 +236,7 @@ Where it is limited: it is old, and the Bootstrap 3 comparison, the `grid-gap` p
     { name: 'Bonus: Named lines, alignment, and grid with flexbox', duration: '18 min' },
     { name: 'Wrap-up and Solo Project: BBC News Clone', duration: '10 min' },
   ]}
+  instructor="Per Borgen"
+  instructorUrl="https://scrimba.com/@perborgen"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-css-grid/solo-project-bbc-news-clone-title-card.webp"
 />

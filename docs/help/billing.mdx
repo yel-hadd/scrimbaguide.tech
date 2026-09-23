@@ -4,20 +4,25 @@ sidebar_label: "Billing"
 description: "Answers to Scrimba billing questions: pricing, refunds, payment methods, student discounts, subscription management, and more."
 keywords: [scrimba billing, scrimba payment, scrimba refund, scrimba subscription]
 hideGlobalPricingCta: true
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import PricingCTA from '@site/src/components/PricingCTA';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 import { freeCount } from '@site/src/utils/scrimbaFacts';
 
 # Scrimba Billing & Payments
 
+<DisclosureNotice />
+
 Pro is subscription-only: monthly or annual, no one-off course purchases. Refunds are honored within 7 days of first purchase. Student discounts and the GitHub Student Pack are available. Cancel anytime from account settings; your progress stays on your account.
 
-*Verified against Scrimba's help centre, September 2026.*
+<Provenance subject="help-centre" date={frontMatter.reviewed} />
 
 For the full plan breakdown, see [Pro vs Free](/docs/pricing/pro-vs-free/). Current numbers live at <AffiliateLink href="https://scrimba.com/our-pricing">scrimba.com/our-pricing</AffiliateLink>.
 

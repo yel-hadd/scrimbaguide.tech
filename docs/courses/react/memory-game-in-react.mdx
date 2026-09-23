@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Memory Game in React"
 description: "Ajo Borgvold's 4.4-hour Pro project course from inside: 43 scrims, 29 challenges, one emoji memory game, and an accessibility module most React courses skip."
 keywords: [scrimba memory game react, build memory game react review, react project course, accessible react project, ajo borgvold scrimba, scrimba memory game in react review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Build a Memory Game in React
 
+<DisclosureNotice />
+
 Ajo Borgvold's Pro project course has you build one emoji memory game in React over about 4.4 hours, with a full module on making it work for screen reader and keyboard users. It is the project to pick over a generic React build if accessibility is the skill you came for.
 
-*Reviewed inside the course with a Pro account, September 2026: every module opened, transcripts read for 26 of the 43 scrims, including the intro, outro and each module's first lesson.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="every module opened, transcripts read for 26 of the 43 scrims, including the intro, outro and each module's first lesson" />
 
 ## Quick answer
 
@@ -46,22 +51,6 @@ This course fits developers who already know hooks and fetch calls and want reps
     height={720}
     caption="The course title card from the intro scrim. The four modules open straight into code, so this is the only chapter card."
     source=""
-  />
-  <Screenshot
-    src="/img/scrimba/memory-game-in-react/aria-label-aria-live-aside-title-card.webp"
-    alt="Slide from the aria-label and aria-live aside in Scrimba's Build a Memory Game in React: Accessibility tools: aria-label and aria-live, ensure accessibility by adding humanly intelligible information to otherwise inaccessible elements"
-    width={1279}
-    height={720}
-    caption="The slide that opens module 3's first aside, which is a proper explainer rather than a code-along."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/memory-game-in-react/focus-accessibility-aside-title-card.webp"
-    alt="Slide from the focus aside in Scrimba's Build a Memory Game in React: Accessibility tool: Add focus to new DOM element"
-    width={1279}
-    height={720}
-    caption="The focus aside, the longest scrim in the course at 10:26."
-    source="Slides from scrimba.com."
   />
 </div>
 
@@ -96,7 +85,7 @@ From there the challenges start and do not stop. "Fetch data from API" has you m
 
 <Screenshot
   src="/img/scrimba/memory-game-in-react/fetch-data-from-api-reference-error-lesson.webp"
-  alt="Scrimba Build a Memory Game in React lesson Fetch data from API paused at 4:22: App.jsx shows an async startGame function with a try block fetching from the EmojiHub API and a throw new Error on a bad response, the console below reads ReferenceError: reponse is not defined, and the small preview on the right shows the Memory start screen"
+  alt="Build a Memory Game in React, Fetch data from API lesson: code editor beside a console reference error."
   width={1400}
   height={660}
   caption="4:22 of the first challenge: the console shows ReferenceError: reponse is not defined. Ajo typed reponse on line 18 while narrating the solution and fixes it a few seconds later. The dependencies panel confirms React 18.2."
@@ -106,7 +95,7 @@ The two "Get random emojis" scrims open with "mini challenges" (think, no typing
 
 <Screenshot
   src="/img/scrimba/memory-game-in-react/duplicate-and-shuffle-emojis-lesson.webp"
-  alt="Scrimba Build a Memory Game in React lesson Duplicate and shuffle emojis paused at 5:22: the preview window shows the Memory heading and ten face-up emoji cards in two rows, five pairs (chick, dragon, shamrock, spider, dog) in a shuffled order, with the editor blurred behind it"
+  alt="Build a Memory Game in React, Duplicate and shuffle emojis lesson: preview showing ten face-up emoji cards."
   width={1400}
   height={660}
   caption="End of module 1 at 5:22: ten cards, five pairs, shuffled. They still show their emoji; the face-down question marks come in module 2."
@@ -120,13 +109,31 @@ It opens with the "side note" about re-recorded lessons ("recordings show no mer
 
 <Screenshot
   src="/img/scrimba/memory-game-in-react/conditional-memory-card-styling-lesson.webp"
-  alt="Scrimba Build a Memory Game in React lesson Conditional memory card styling paused at 8:42: the preview window shows the Memory game with eight face-down question-mark cards and a matched pair of goats greyed out, the editor blurred behind"
+  alt="Build a Memory Game in React, Conditional memory card styling lesson: preview showing a greyed-out matched card pair."
   width={1400}
   height={660}
   caption="8:42: a matched pair of goats greyed out with a not-allowed cursor. The next module points out these cards still fire the click handler, and disables them."
 />
 
 ### 3. Accessibility Enhancements (74 min, 13 scrims)
+
+<Screenshot
+  src="/img/scrimba/memory-game-in-react/aria-label-aria-live-aside-title-card.webp"
+  alt="Slide from Scrimba's Build a Memory Game in React course: aria-label and aria-live make elements accessible to screen readers."
+  width={1279}
+  height={720}
+  caption="This aside explains aria-label and aria-live, and why each card needs a label instead of relying on its HTML entity code for its accessible name."
+  source=""
+/>
+
+<Screenshot
+  src="/img/scrimba/memory-game-in-react/focus-accessibility-aside-title-card.webp"
+  alt="Slide from the focus aside in Scrimba's Build a Memory Game in React: Accessibility tool: Add focus to new DOM element"
+  width={1279}
+  height={720}
+  caption="This 10:26 aside covers useRef, useEffect, .focus(), and tabIndex, the four tools that move focus to a new element so a screen reader announces it."
+  source="Slides from scrimba.com."
+/>
 
 The module opens with a slide-based aside on `aria-label` and `aria-live`. Ajo reads the MDN definition, then answers when to use a label: "The short answer is when we have no other option." The memory game is that case: each button's accessible name is an HTML entity, so a screen reader reads a code instead of "monkey face." The aside ends with a detail I had not seen taught elsewhere: end every `aria-label` string with a period so the screen reader pauses.
 
@@ -142,7 +149,7 @@ The final challenge closes the accessibility loop. The form reappears after game
 
 <Screenshot
   src="/img/scrimba/memory-game-in-react/game-over-play-again-lesson.webp"
-  alt="Scrimba Build a Memory Game in React lesson Improve accessibility of Form component paused at 7:57: the preview window shows the finished game with a focused box reading You've matched all the memory cards! and a Play again button above ten greyed-out matched emoji cards"
+  alt="Build a Memory Game in React, final lesson: preview showing the game-over screen with a Play again button."
   width={1400}
   height={660}
   caption="7:57 of the last challenge: game over, all ten cards matched and greyed, the GameOver box focused so a screen reader announces it. One Tab moves focus to Play again."
@@ -224,4 +231,7 @@ Where it is limited: one project, React 18.2 rather than 19, CSS pre-written so 
     { name: 'Accessibility Enhancements', duration: '74 min' },
     { name: 'Advanced Features', duration: '66 min' },
   ]}
+  instructor="Ajo Borgvold"
+  instructorUrl="https://scrimba.com/u0tj0c"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/memory-game-in-react/course-title-card.webp"
 />

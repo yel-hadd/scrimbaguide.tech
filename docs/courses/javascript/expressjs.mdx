@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Learn Express.js"
 description: "Tom Chant's free Express.js course reviewed from inside: 4 hours, a startup API, a vinyl store with sessions and bcrypt, what Pro gates, real time cost."
 keywords: [scrimba learn express, learn express.js scrimba review, express.js course scrimba, tom chant express course, free backend course, node express api course, express session bcrypt course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Express.js
 
+<DisclosureNotice />
+
 Scrimba's free Express course is taught by Tom Chant across about four hours and two projects: Startup Planet, a REST API with query and path parameter filtering, and Spiral Sounds, a SQLite-backed vinyl store with sessions and hashed passwords. It's a solid four hours if you want to understand what a backend framework does, not copy a boilerplate.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,33 +42,6 @@ Take it if you write comfortable JavaScript (array methods, fetch, async/await);
   href="https://scrimba.com/learn-expressjs-c062las154"
   description="Build a REST API and a database-backed vinyl store with sessions, bcrypt, and protected routes, in Express 4 and 5."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-expressjs/chapter-1-learn-expressjs-title-card.webp"
-    alt="Title card of the first module of Scrimba's Learn Express.js course, reading Learn Express.js, Teacher: Tom Chant, on a purple and gold gradient"
-    width={1279}
-    height={720}
-    caption="Module 1: the Startup Planet API."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-expressjs/chapter-2-build-a-fullstack-app-title-card.webp"
-    alt="Title card of the second module of Scrimba's Learn Express.js course, reading Build a Fullstack App, Spiral Sounds Vinyl Store, Teacher: Tom Chant"
-    width={1279}
-    height={720}
-    caption="Module 2: the Spiral Sounds store."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/learn-expressjs/chapter-3-authentication-title-card.webp"
-    alt="Title card of the third module of Scrimba's Learn Express.js course, reading Authentication in Express.js, Teacher: Tom Chant"
-    width={1279}
-    height={720}
-    caption="Module 3: authentication."
-    source="Module title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -87,6 +65,15 @@ Lesson counts are the scrims I counted in each expanded module in September 2026
 
 ### 1. Build an Express API (69 min, 18 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-expressjs/chapter-1-learn-expressjs-title-card.webp"
+  alt="Title card of the first module of Scrimba's Learn Express.js course, reading Learn Express.js, Teacher: Tom Chant, on a purple and gold gradient"
+  width={1279}
+  height={720}
+  caption="Eighteen scrims build Startup Planet, a REST API with query and path parameter filtering, a router, and CORS."
+  source=""
+/>
+
 The project is Startup Planet, a REST API serving a hard-coded array of fictional startups (name, industry, founding year, founders, employees, two booleans for `is_seeking_funding` and `has_mvp`). Tom's pitch, in the second scrim: "the best way to make a quick buck is to position yourself between a dreamer and their dreams."
 
 The sequence is npm before Express. "Setting Things Up" has you run `npm init` from a `project_details.md` file, then `npm install express`, then swap `node server.js` for `npm start`, with Tom explaining what `package-lock.json` and `node_modules` are for and why Scrimba does not show the latter in the editor. The `package.json` you end up with pins `express ^5.1.0`, so this half of the course is on Express 5. Then "A Basic Server," an aside on the request/response cycle, an aside on sending a response (status codes, headers, `res.json`), and "Serving Data."
@@ -95,7 +82,7 @@ Query parameters get an aside and then the module's biggest challenge, "Filterin
 
 <Screenshot
   src="/img/scrimba/learn-expressjs/filtering-by-query-params-lesson.webp"
-  alt="Scrimba Learn Express.js lesson Filtering by Query Params paused at 6:44: the editor shows the challenge comment with three test-case URLs, the first one highlighted, and Scrimba's Network tool on the right shows a GET request to /api with industry, country and has_mvp query params returning the GreenGrid Energy JSON object"
+  alt="Learn Express.js, Filtering by Query Params challenge: code editor beside a network request tool showing a filtered JSON result."
   width={1400}
   height={629}
   caption="Filtering by Query Params at 6:44. The Network tool on the right is Scrimba's own request client, so you test the API without leaving the scrim: the first test case (renewable energy, Germany, has_mvp=true) returns exactly one object, GreenGrid Energy, as the brief said it should."
@@ -105,6 +92,15 @@ Path parameters follow (an aside and two build scrims), then `express.Router()` 
 
 ### 2. Build a Fullstack Express App (57 min, 15 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-expressjs/chapter-2-build-a-fullstack-app-title-card.webp"
+  alt="Title card of the second module of Scrimba's Learn Express.js course, reading Build a Fullstack App, Spiral Sounds Vinyl Store, Teacher: Tom Chant"
+  width={1279}
+  height={720}
+  caption="Fifteen scrims wire the Spiral Sounds vinyl store to a SQLite database, with a genre dropdown and a partial-match search."
+  source=""
+/>
+
 Spiral Sounds is a vinyl shop: a grid of records, a genre dropdown, and a search box, with the frontend already written and sitting in a `public` folder. The intro explains why SQLite: "zero setup involved and we don't need a third party server. It's going to run right here in the browser." This project's `package.json` is on `express ^4.21.2` with `"type": "module"`, so you write `import` rather than `require`, and both halves of the course use ES module syntax.
 
 The aside on middleware (7:49) is the centre of the course. Tom builds two custom `app.use` functions that log and call `next()`, shows the middleware stack running top to bottom, then points back at the CORS import and the 404 handler from module one and says you were already using middleware, you "just didn't know about it at the time." His summary: "middleware is not just some extra add on with Express. It's the framework's architecture." Then `express.static` in one line, and a challenge to serve the shop's files.
@@ -113,7 +109,7 @@ The database section is four asides and four challenges. "Setting up the Databas
 
 <Screenshot
   src="/img/scrimba/learn-expressjs/add-search-functionality-lesson.webp"
-  alt="Scrimba Learn Express.js lesson Add Search Functionality paused at 3:21: the editor shows the getProducts controller with a WHERE title LIKE ? OR artist LIKE ? clause and a searchPattern built from percent signs, and the mini browser on the right shows the Spiral Sounds store with the letters ec typed into the search box and three matching records"
+  alt="Learn Express.js, Add Search Functionality lesson: code editor beside a browser preview of the vinyl store's search results."
   width={1400}
   height={629}
   caption="Add Search Functionality at 3:21, the last challenge of module two. Typing 'ec' into the search box narrows the grid live; the controller on the left builds a '%ec%' pattern and pushes it three times for the title, artist and genre placeholders, which Tom admits 'looks super clunky but it is the way to do it.'"
@@ -123,6 +119,15 @@ The last challenge, search with partial matching across title, artist, and genre
 
 ### 3. Authentication (117 min, 25 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-expressjs/chapter-3-authentication-title-card.webp"
+  alt="Title card of the third module of Scrimba's Learn Express.js course, reading Authentication in Express.js, Teacher: Tom Chant"
+  width={1279}
+  height={720}
+  caption="Twenty-five scrims add sign up, hashed passwords, sessions, a cart, and a requireAuth middleware that protects every cart route."
+  source="Module title cards from scrimba.com."
+/>
+
 Half the course by runtime, and the reason to take it. The intro demos the finished app: welcome guest, sign up, welcome by name, log out, add records to a cart, a cart count in the header, delete from the cart, checkout ("we are not adding a payment gateway to this app"). Tom explains why sessions rather than a library: "Express session is the easiest way to add authentication to our site while getting to know how authentication works under the hood. There are plenty of other options, but they add unneeded functionality while abstracting away complexity."
 
 The order is careful. A `users` table, then a `/register` route, then an aside on validation and a challenge using the `validator` package and a regex for usernames, then adding the user to the database. Only then hashing: an aside on hashes and bcrypt, a `bcryptjs` demo, and a two minute challenge to hash the password with a cost of 10 before the insert. Then `express-session` (aside, then a challenge to configure the middleware with `httpOnly` and `sameSite` cookie options), a scrim on environment variables for the session secret, and "Display a User's Name," which adds a `/api/auth/me` route the frontend asks to decide whether to show sign up and log in or log out.
@@ -131,7 +136,7 @@ The order is careful. A `users` table, then a `/register` route, then an aside o
 
 <Screenshot
   src="/img/scrimba/learn-expressjs/login-bcrypt-compare-lesson.webp"
-  alt="Scrimba Learn Express.js lesson Login paused at 7:18: the editor shows the loginUser function with a SELECT * FROM users WHERE username = ? query, a 401 Invalid credentials response and const isValid = await bcrypt.compare(password, user.password), while the mini browser on the right shows the Spiral Sounds store header reading Welcome, Test Account!"
+  alt="Learn Express.js, Login challenge: code editor beside a browser preview showing a signed-in welcome message."
   width={1400}
   height={629}
   caption="Login at 7:18, right after Tom signs in with the test account and the page redirects. The header now reads Welcome, Test Account! because the frontend asked /api/auth/me and the session cookie answered. The bcrypt.compare line on the left is the whole password check."
@@ -219,4 +224,7 @@ Where it is limited: the course listing promises SSE, uploads, task queues, and 
     { name: 'Build a Fullstack Express App', duration: '57 min' },
     { name: 'Authentication', duration: '117 min' },
   ]}
+  instructor="Tom Chant"
+  instructorUrl="https://scrimba.com/@DoubleNemesis"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-expressjs/chapter-1-learn-expressjs-title-card.webp"
 />

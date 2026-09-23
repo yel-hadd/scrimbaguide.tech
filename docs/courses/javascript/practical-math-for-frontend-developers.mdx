@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Practical Math"
 description: "Ryan Gonyon's 65-minute Pro course reviewed from inside: all 15 transcripts read, the roll() function, calc() layouts, Date and reduce, and who can skip it."
 keywords: [scrimba practical math frontend, practical math for frontend developers review, math for frontend developers, css calc course, javascript date object course, javascript reduce tutorial, ryan gonyon scrimba, frontend math course]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Practical Math for Frontend Developers
 
+<DisclosureNotice />
+
 Scrimba's Practical Math for Frontend Developers is a 65-minute Pro course, taught by Ryan Gonyon, built around three tiny apps: a shopping cart, a weekly schedule, and a monthly expense sheet. The math is modest on purpose, mostly `reduce()`, CSS `calc()`, and the `Date` object, with one short detour into the algebra behind a `roll()` function. Skip it if those already come easily; otherwise it is a solid hour.
 
-*Reviewed inside the course with a Pro account, September 2026: all 15 scrims and transcripts read.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="all 15 scrims and transcripts read" />
 
 ## Quick answer
 
@@ -37,25 +42,6 @@ This fits developers who still write `for` loops where `reduce()` would do, who 
   href="https://scrimba.com/practical-math-for-frontend-developers-c02b"
   description="Random data with a roll() function, calc() layouts, the Date object, and reduce(), taught through a shopping cart, a weekly schedule, and an expense sheet."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/practical-math-for-frontend-developers/course-intro-title-card.webp"
-    alt="Title card of Scrimba's Practical Math for Front-End Developers course: the course name in white on dark blue above a cluster of light blue math symbols including sigma, infinity, pi, percent and omega"
-    width={1279}
-    height={720}
-    caption="The course intro card, from the first scrim."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/practical-math-for-frontend-developers/roll-function-title-card.webp"
-    alt="Title card reading Your roll() Function with a single white die below it, from the third scrim of Scrimba's Practical Math for Frontend Developers course"
-    width={1279}
-    height={720}
-    caption="Scrim 3: the roll() function, the tool the rest of the course is built on."
-    source="Title cards from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -86,13 +72,31 @@ Scrimba's header says 65 minutes and its listing rounds that to 1.1 hours; the 1
 
 ### 1. Intro, calc() layout, and the roll() function (17 min, 3 scrims)
 
+<Screenshot
+  src="/img/scrimba/practical-math-for-frontend-developers/course-intro-title-card.webp"
+  alt="Title card of Scrimba's Practical Math for Front-End Developers course: the name above sigma, infinity, pi and other symbols."
+  width={1279}
+  height={720}
+  caption="This scrim lays out the four tools the course teaches: roll(), calc(), Math.random() and Math.floor(), and the Date object."
+  source=""
+/>
+
+<Screenshot
+  src="/img/scrimba/practical-math-for-frontend-developers/roll-function-title-card.webp"
+  alt="Title card reading Your roll() Function with a single white die, from Scrimba's Practical Math for Frontend Developers course."
+  width={1279}
+  height={720}
+  caption="This scrim derives roll() from the algebra behind a die roll, then reuses it to generate a fake name, age and height."
+  source="Title cards from scrimba.com."
+/>
+
 The two-minute intro sets the tone: "the course where we attempt to answer the age old question, when are we ever gonna use this?" Ryan lists the tools (a `roll()` function, CSS `calc()`, `Math.random()` and `Math.floor()`, and the `Date` object) and introduces himself as a developer with ten years of programming, a computer science degree with a minor in mathematics, and experience tutoring K-12 and university math. He closes with a joke about solving a Rubik's cube in under thirty seconds, "so you know I'm trustworthy." These three scrims are the ones Scrimba marks SAMPLE, so you can watch them without Pro.
 
 "App Layout and CSS calc() Introduction" is the layout lesson the other two apps reuse. You have a header, a main and a footer, and the goal is a header pinned to the top, a footer pinned to the bottom, and a main that fills the gap and scrolls. Ryan first sets `main` to `height: 100vh`, which pushes the footer off screen, then subtracts the header's font size and padding with `calc()`, then does the same for the footer. When that leaves the numbers duplicated in two places, he moves them into CSS variables on `:root` so that changing the header padding once resizes the main automatically. The last minute pastes in five paragraphs of lorem ipsum to show the overflow and fixes it with `overflow-y: auto`. There are three "pause the cast and try it" moments in four and a half minutes.
 
 <Screenshot
   src="/img/scrimba/practical-math-for-frontend-developers/css-calc-main-100vh-footer-hidden-lesson.webp"
-  alt="Scrimba Practical Math for Frontend Developers lesson App Layout and CSS calc() Introduction paused with main set to height: 100vh in the editor, and the preview pane on the right showing a green Header and a blue Main with a scrollbar but no footer"
+  alt="Practical Math for Frontend Developers, CSS layout lesson: the preview shows a page with its footer pushed off screen."
   width={1400}
   height={660}
   caption="Scrim 2 at 0:59. The first attempt, height: 100vh on main, and the footer has vanished below the fold in the preview. The next two minutes subtract the header and footer with calc() and then move the numbers into variables."
@@ -102,7 +106,7 @@ The two-minute intro sets the tone: "the course where we attempt to answer the a
 
 <Screenshot
   src="/img/scrimba/practical-math-for-frontend-developers/roll-function-algebra-slide-lesson.webp"
-  alt="Slide from the Your roll() Function lesson in Scrimba's Practical Math for Frontend Developers course, reading Goal: 0 <= r < 1, We want a formula for r in terms of n, followed by three numbered steps: 1 <= n < 7, then subtracting 1 from each side, then 0 <= n - 1 < 6"
+  alt="Practical Math for Frontend Developers, dice roll formula lesson: a slide walks through the algebra behind rolling a die."
   width={1046}
   height={588}
   caption="Scrim 3 at 2:23. The only slide-driven algebra in the course: three steps from a six-sided die to the shape Math.random() returns. The general min and max version follows the same steps two minutes later."
@@ -116,7 +120,7 @@ The two-minute intro sets the tone: "the course where we attempt to answer the a
 
 <Screenshot
   src="/img/scrimba/practical-math-for-frontend-developers/shopping-cart-reduce-string-concatenation-bug-lesson.webp"
-  alt="Scrimba Practical Math for Frontend Developers lesson Shopping Cart Calculate Total paused on a reduce function returning accumulator + product.price, with the console showing the accumulator growing as the string 09.087.307.239.80 and the preview showing a Shopping Cart list of five emoji products with prices and quantities"
+  alt="Practical Math for Frontend Developers, Shopping Cart lesson: the console shows a reduce bug concatenating prices as text."
   width={1400}
   height={660}
   caption="Scrim 5 at 1:29. The accumulator is a string: 0 + '9.08' + '7.30' becomes 09.087.30 in the console. Ryan fixes it with parseFloat in the next ten seconds, then discovers he forgot to multiply by the count."
@@ -142,7 +146,7 @@ The 93-second "Bonus Challenge" adds a random weight in ounces to each product, 
 
 <Screenshot
   src="/img/scrimba/practical-math-for-frontend-developers/monthly-expense-sheet-finished-app-lesson.webp"
-  alt="Scrimba Practical Math for Frontend Developers final lesson paused on the displayMonth function, with the preview showing the finished Monthly Expense Sheet: a summary bar reading Budget $1152.05 and Net Value $441.57 above a three-column grid of days with red negative expense amounts"
+  alt="Practical Math for Frontend Developers, expense sheet lesson: the preview shows a finished calendar grid with a budget summary bar."
   width={1400}
   height={660}
   caption="Scrim 12 at 7:43, the finished expense sheet. Every number on the right came from roll(): the income, the rent, how many expenses each day has, and their amounts. The editor shows the reduce that turns the month array into the grid."
@@ -230,4 +234,7 @@ Where it is limited: the title promises more math than the course contains, ther
     { name: 'CSS shapes and the monthly expense sheet', duration: '18 min' },
     { name: 'Scrimba wrap-up (recap, path pitch, certificate)', duration: '3 min' },
   ]}
+  instructor="Ryan Gonyon"
+  instructorUrl="https://scrimba.com/@Radical-Coder"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/practical-math-for-frontend-developers/course-intro-title-card.webp"
 />

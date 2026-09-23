@@ -5,8 +5,9 @@ toc_max_heading_level: 2
 sidebar_label: "Introduction to Unit Testing"
 description: "Dylan Israel's 86-minute Pro course on Jasmine unit testing, reviewed from inside: every transcript read, spies and mocks, what Pro gates, real time cost."
 keywords: [scrimba unit testing, introduction to unit testing scrimba review, javascript unit testing course, jasmine testing course, dylan israel scrimba, test your javascript, scrimba unit testing review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Introduction to Unit Testing
 
+<DisclosureNotice />
+
 Dylan C. Israel's 86-minute Pro course teaches your first JavaScript unit tests in Jasmine, testing a single `User` class one method at a time across 23 scrims. Eight of the 21 teaching scrims are challenges you write yourself. Worth it if you've never written a test; skip it if you already write tests in Jest or Vitest.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,17 +42,6 @@ It fits developers who write JavaScript but have never tested it, especially sel
   href="https://scrimba.com/introduction-to-unit-testing-c01i"
   description="Your first unit tests in Jasmine: grouping, test cases, beforeEach, spies, mocks and matchers, with a challenge after almost every concept."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/introduction-to-unit-testing/course-introduction-to-unit-testing-title-card.webp"
-    alt="Title card of Scrimba's Introduction to Unit Testing course: Introduction To Unit Testing, course teacher Dylan C. Israel, dark text on a lavender and mint background"
-    width={1279}
-    height={720}
-    caption="The course title card, the first slide of the six-minute introduction."
-    source="Title card from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -80,6 +74,15 @@ I counted 23 scrims and about 87.5 minutes by adding per-scrim durations (84.5 m
 
 ### 1. Introduction and Jasmine setup (19 min, 5 scrims)
 
+<Screenshot
+  src="/img/scrimba/introduction-to-unit-testing/course-introduction-to-unit-testing-title-card.webp"
+  alt="Title card of Scrimba's Introduction to Unit Testing course: the name and teacher Dylan C. Israel on lavender and mint."
+  width={1279}
+  height={720}
+  caption="Five scrims make the case for testing, define a unit test, and wire up Jasmine from script tags with no npm install."
+  source="Title card from scrimba.com."
+/>
+
 The six-minute Introduction is a slide talk. Dylan introduces himself as a self-taught frontend engineer at Amazon, then makes the case for testing. "It increases our code confidence, and this is everything." He names the three A's (arrange, act, assert) and mentions test-driven development only to say the course will not cover it. He also explains the choice of Jasmine. Jest, he says, "has been slowly taking a little bit of the market share... and Jest is based off Jasmine."
 
 Introduction to Jasmine is a short second slide talk. Its useful idea is the definition of a unit test. "We don't actually care if you click a button, it fires off something. We care that that method that gets called when that button is clicked does what we think it does."
@@ -96,7 +99,7 @@ The first challenge asks whether there is a more reliable way to name the group.
 
 <Screenshot
   src="/img/scrimba/introduction-to-unit-testing/our-first-test-jasmine-failure-lesson.webp"
-  alt="Scrimba's Our first test scrim paused at 3:26: main.js shows the User class with the firstName default removed on purpose and a describe block whose test expects model.firstName to be an empty string, while the Jasmine reporter in the preview shows 1 spec, 1 failure, Expected null to be ''"
+  alt="Introduction to Unit Testing, first test lesson: a code editor beside a test reporter turning red on a failed check."
   width={1400}
   height={684}
   caption="Our first test at 3:26. Dylan has just deleted the || '' default from firstName and the Jasmine reporter on the right goes red with Expected null to be ''. The arrange, act, assert comments in the test are the pattern the whole course follows."
@@ -124,7 +127,7 @@ The Spy Challenge is the hardest one in the course. It includes a hint for somet
 
 <Screenshot
   src="/img/scrimba/introduction-to-unit-testing/spy-challenge-brief-lesson.webp"
-  alt="Scrimba's Spy Challenge scrim at 0:01: main.js opens with a comment block brief, use a spy to test getCodeName fully, use spyOn and toHaveBeenCalledWith, and a hint showing spyOn(object, 'key').and.returnValue(value), above an empty describe('get code name') block; the Jasmine reporter reads Incomplete: No specs found"
+  alt="Introduction to Unit Testing, spy challenge lesson: a code editor shows an empty test block and a no specs found reporter."
   width={1400}
   height={684}
   caption="The Spy Challenge brief as the scrim opens. Three numbered lines, a hint for a method the course has not taught yet, and an empty describe block to fill. The reporter on the right says No specs found until you write one."
@@ -241,4 +244,7 @@ Where it is limited:
     { name: 'Additional matchers, final challenge and outro', duration: '13 min' },
     { name: 'Scrimba wrap-up scrims', duration: '3 min' },
   ]}
+  instructor="Dylan C. Israel"
+  instructorUrl="https://scrimba.com/@Dylan-Israel"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/introduction-to-unit-testing/course-introduction-to-unit-testing-title-card.webp"
 />

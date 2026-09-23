@@ -19,6 +19,7 @@ import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import ItemListSchema from '@site/src/components/ItemListSchema';
 import { freeCount } from '@site/src/utils/scrimbaFacts';
 
 # Best Free Scrimba Courses in 2026
@@ -38,6 +39,18 @@ Anyone trying Scrimba without paying: budget-conscious learners, people who want
 {/* truncate */}
 
 These are full courses, not previews. You don't need a credit card. The list below is sorted by what I'd actually recommend taking first.
+
+<ItemListSchema
+  name="Best Free Scrimba Courses"
+  description="The free Scrimba courses ranked by what to take first, with real durations and instructors."
+  items={[
+    { name: "Learn React", description: "Free 15.1-hour course with Bob Ziroll, 357 lessons and two capstone projects." },
+    { name: "Learn JavaScript", url: "/docs/courses/javascript/learn-javascript", description: "Free 9.4-hour beginner course with Per Borgen, 140+ challenges and three small projects." },
+    { name: "Learn HTML and CSS", description: "Free 5.7-hour fundamentals course with Per Borgen plus five deployable projects." },
+    { name: "Learn TypeScript", description: "Free 4.2-hour course with Bob Ziroll, 79 lessons covering types, interfaces and React and Express integration." },
+    { name: "Learn CSS Grid", description: "Free 63-minute focused course with Per Borgen on CSS Grid." },
+  ]}
+/>
 
 ## The two free courses worth your time first
 

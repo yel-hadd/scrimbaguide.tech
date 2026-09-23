@@ -5,8 +5,9 @@ sidebar_position: 10
 toc_max_heading_level: 2
 description: "Treasure Porth's CSS Challenges from inside: 2.6 hours, 25 recreate-this challenges (GitHub, CodePen, Instagram, seven flags), what Pro gates, real time cost."
 keywords: [scrimba css challenges, scrimba css challenges review, css practice challenges, css interview prep, treasure porth css, recreate ui components css, scrimba css course review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # CSS Challenges
 
+<DisclosureNotice />
+
 Scrimba's CSS Challenges, taught by Treasure Porth, hands you 25 recreate-this-component briefs and recorded solutions in about 2.6 hours: a gradient button, GitHub's expanding search bar, seven country flags, Instagram's stories menu, and more. It won't teach you CSS, but as a way to pressure-test what you already know, it delivers.
 
-*Reviewed inside the course with a Pro account, September 2026: 43 of its 54 scrims opened (every challenge brief, most solutions, the intro and outro), with transcripts read throughout.*
+<Provenance subject="course" date={frontMatter.reviewed} detail="43 of its 54 scrims opened (every challenge brief, most solutions, the intro and outro), with transcripts read throughout" />
 
 ## Quick answer
 
@@ -37,25 +42,6 @@ This fits you if you already know flexbox, grid and positioning and want to find
   href="https://scrimba.com/css-challenges-c02p"
   description="Twenty-five recreate-this-component CSS challenges, each with a brief and a recorded solution, from GitHub's search bar to seven country flags."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/css-challenges/course-intro-title-card.webp"
-    alt="Title slide of Scrimba's CSS Challenges course: the words CSS Challenges on an orange blob over a pale blue background, with two illustrated people"
-    width={1280}
-    height={684}
-    caption="The welcome scrim's title slide. The course has no chapters, so this is the only title card."
-    source=""
-  />
-  <Screenshot
-    src="/img/scrimba/css-challenges/colorful-button-requirements-slide.webp"
-    alt="Requirements slide from the Colorful Button challenge in Scrimba's CSS Challenges: gradient border at 115 degrees, hover state where the gradient flips horizontally, the button grows and text turns from gray to white, and center the button on the page"
-    width={1280}
-    height={720}
-    caption="Every challenge brief has a slide like this one (Colorful Button, 0:56). The requirements are short and testable."
-    source="Slides from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -87,13 +73,31 @@ Nearly every solution I watched starts with the same flexbox centering, and from
 
 ### 1. Welcome and first components (30 min, 9 scrims)
 
+<Screenshot
+  src="/img/scrimba/css-challenges/course-intro-title-card.webp"
+  alt="Title slide of Scrimba's CSS Challenges course: the words CSS Challenges on an orange blob over a pale blue background, with two illustrated people"
+  width={1280}
+  height={684}
+  caption="The three-minute welcome scrim breaks an archery target, a playing card and a progress bar down into shapes and columns before writing any code."
+  source=""
+/>
+
+<Screenshot
+  src="/img/scrimba/css-challenges/colorful-button-requirements-slide.webp"
+  alt="CSS Challenges, Colorful Button brief: a slide lists the gradient, hover and centering requirements to build."
+  width={1280}
+  height={720}
+  caption="The Colorful Button brief asks for a gradient border at 115 degrees that flips to a different angle on hover."
+  source="Slides from scrimba.com."
+/>
+
 The welcome scrim (3:18) is the most useful three minutes in the course, because it teaches the method. Treasure takes an empty progress bar, an archery target and a playing card and describes each before writing a line: the target is "actually a larger circle with a smaller circle on top with yet a smaller circle on top of that," and the card "I might break it down into columns and rows." She also sets expectations: she provides most of the HTML, the colors and fonts arrive as CSS variables, and "your approach, the way that you solve these challenges will likely be different than my solution, and that's totally okay."
 
 Then four challenges. Spoiler Revealer hides movie spoilers behind black bars that fade on hover ("you have had forty to fifty years to watch these films," she notes); the solution sets background and text to the same variable and adds `transition: all .5s ease-in`. Colorful Button asks for a gradient border at 115 degrees that flips on hover; the solution builds it with a wrapping div, then shows the `border-image` alternative and explains why she avoids it: "it's a little hard to grok if you ask me" and "it isn't compatible with border radius." Expanding Search Bar is modeled on GitHub's and is the one challenge with an accessibility requirement, a visually hidden label copied from the W3C. Treasure calls it "a research challenge, if you will." CodePen Tile adds `object-fit: cover` and a hover-only stats row, and ends with a warning: "this is a project that seems pretty simple at first but can actually be pretty fiddly."
 
 <Screenshot
   src="/img/scrimba/css-challenges/colorful-button-solution-hover-lesson.webp"
-  alt="Scrimba CSS Challenges, Solution: Colorful Button paused at 6:06: index.css shows a .button-border wrapper with a 115-degree linear-gradient background, a .button rule with border none and font-family inherit, and hover rules that switch the gradient to 230 degrees and enlarge the padding; the preview shows the Start Coding button with its gradient border"
+  alt="CSS Challenges, Colorful Button solution: the code editor sits beside a preview of the finished gradient button."
   width={1400}
   height={660}
   caption="The finished Colorful Button solution at 6:06. Notice the two hover rules: one on the wrapper to flip the gradient (230deg instead of reversing the color list) and one on the button inside it, plus font-family: inherit, which Treasure explains buttons need because they keep the browser default font."
@@ -105,7 +109,7 @@ Loading Animation 1 introduces `@keyframes` with the smallest possible example: 
 
 <Screenshot
   src="/img/scrimba/css-challenges/loading-animation-1-keyframes-lesson.webp"
-  alt="Scrimba CSS Challenges, Solution: Loading Animation 1 paused at 2:43: index.css shows a .circle rule with animation: pulse infinite alternate 1s and a @keyframes pulse block going from a dark background to a light one at 1.6em, while the preview shows three gray dots centered in a white pane"
+  alt="CSS Challenges, Loading Animation 1 solution: the editor shows a short keyframes block next to the pulsing dots preview."
   width={1400}
   height={660}
   caption="The complete Loading Animation 1 solution at 2:43. The whole thing is one animation line and one keyframes block; the alternate keyword is what turns a snap-back into a pulse."
@@ -135,7 +139,7 @@ The Animated Progress Bar reuses the fake-pause idea from the carousel: the keyf
 
 <Screenshot
   src="/img/scrimba/css-challenges/codepen-tile-solution-lesson.webp"
-  alt="Scrimba CSS Challenges, Solution: Codepen Tile paused at 5:44: index.css shows the :root variables for the Noto Sans font and the card, stats and username colors, plus a body rule that applies them; the preview shows the finished tile with a purple gradient thumbnail, the title Abstract Gradient Project, a cat avatar and the username Scrimsbee McScrimslee"
+  alt="CSS Challenges, CodePen Tile solution: the preview shows the finished tile beside CSS variables in the editor."
   width={1400}
   height={660}
   caption="The finished CodePen tile at 5:44 of its solution. The stats row only appears on hover, so it is not visible here; what you can see is the pattern every challenge shares: colors and the font handed to you as CSS variables at the top of index.css."
@@ -222,4 +226,5 @@ Where it is limited: there is no grading or instant feedback, so you are your ow
     { name: 'GitHub profile, toggle, playing cards, progress bar, flashcard', duration: '40 min', lessons: 12 },
     { name: 'Spinner, Instagram stories, animated bar, contributions graph, wrap-up', duration: '31 min', lessons: 10 },
   ]}
+  imageUrl="https://scrimbaguide.tech/img/scrimba/css-challenges/course-intro-title-card.webp"
 />

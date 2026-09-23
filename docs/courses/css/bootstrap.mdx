@@ -5,8 +5,9 @@ sidebar_position: 9
 toc_max_heading_level: 2
 description: "Neil Rowe's 56 minute Bootstrap 4 course reviewed from inside: 13 scrims, no challenges, a 2018 CDN build, four free previews, and who still needs it."
 keywords: [scrimba learn bootstrap, learn bootstrap scrimba review, bootstrap 4 course, neil rowe bootstrap, bootstrap scrimba tutorial, learn bootstrap interactive, scrimba bootstrap review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn Bootstrap
 
+<DisclosureNotice />
+
 Scrimba's Learn Bootstrap is a 56 minute tour of Bootstrap 4 by Neil Rowe: 13 scrims on the grid, navbars, modals, forms, and the rest of the component set, with nothing to build and no challenges. It's an hour well spent for a Bootstrap 4 codebase, skippable if you're choosing a framework for new work.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -37,17 +42,6 @@ It's a fast, Pro-gated primer on Bootstrap 4 classes, best for anyone who alread
   href="https://scrimba.com/learn-bootstrap-c0o"
   description="Ten short screencasts on Bootstrap 4: the twelve column grid, collapsing navbars, modals, forms, cards, and the rest of the component set."
 />
-
-<div className="screenshot-grid">
-  <Screenshot
-    src="/img/scrimba/learn-bootstrap/course-intro-title-card.webp"
-    alt="Title card of the first scrim in Scrimba's Learn Bootstrap course: white text reading Bootstrap 4 Course, By Neil Rowe, on a purple background"
-    width={1279}
-    height={720}
-    caption="The only title card in the course, from the introduction scrim. There are no chapters, so there are no chapter cards."
-    source="Title card from scrimba.com."
-  />
-</div>
 
 ## Is it worth your time?
 
@@ -80,6 +74,15 @@ By the end you can read a Bootstrap 4 template and know what each class does. Yo
 
 ### 1. Intro, grid, navbars, and modals (23 min, 4 scrims)
 
+<Screenshot
+  src="/img/scrimba/learn-bootstrap/course-intro-title-card.webp"
+  alt="Title card of the first scrim in Scrimba's Learn Bootstrap course: white text reading Bootstrap 4 Course, By Neil Rowe, on a purple background"
+  width={1279}
+  height={720}
+  caption="The introduction demos the grid stacking on mobile, a collapsing navbar, buttons, cards, and modals."
+  source="Title card from scrimba.com."
+/>
+
 All four of these are SAMPLE scrims, so you can watch this whole block before paying. The introduction (3:21) opens on the title card above and is Neil talking over a demo site: the grid stacking on mobile, a collapsing navbar, buttons, cards, modals. His pitch for version 4 is that it is customizable. "I always saw Bootstrap two and three as prototyping tools, but now Bootstrap four is actually a full fledged framework that you can really customize."
 
 Responsive Grid Systems (7:42) is the longest lesson and the one to do carefully, because everything else builds on it. Bootstrap's grid divides any row into twelve columns, and a `col-4` class means "take four of the twelve." Neil arrives with six prebuilt examples in one file, each under an `h5`:
@@ -95,7 +98,7 @@ Then he codes the one that matters live. Four `col-6` boxes make a two by two gr
 
 <Screenshot
   src="/img/scrimba/learn-bootstrap/responsive-grid-col-sm-6-col-md-3-lesson.webp"
-  alt="Scrimba Learn Bootstrap lesson Responsive Grid Systems paused at 6:45: the editor shows a row of four columns, the first already changed to class col-sm-6 col-md-3 and the other three still col-6, while the preview window on the right shows the four boxes laid out as a two by two grid"
+  alt="Learn Bootstrap, Responsive Grid Systems lesson: a code editor beside a preview of four boxes in a grid."
   width={1400}
   height={660}
   caption="6:45 of the grid lesson, mid-edit. Line 20 has the col-sm-6 col-md-3 combination, lines 21 to 23 are still col-6, and the preview is still two by two because it has not been refreshed yet. This is the moment to pause and copy the class yourself before Neil does it."
@@ -107,7 +110,7 @@ The last three minutes are polish. Neil swaps the button text for `navbar-toggle
 
 <Screenshot
   src="/img/scrimba/learn-bootstrap/responsive-navbar-collapsed-burger-lesson.webp"
-  alt="Scrimba Learn Bootstrap lesson Responsive Navbars paused at 5:33: the editor is dimmed behind a centered preview window showing a light navbar with the brand My Website on the left and a burger menu icon on the right"
+  alt="Learn Bootstrap, Responsive Navbars lesson: a preview window showing a navbar collapsed behind a burger icon."
   width={1400}
   height={660}
   caption="5:33 of the navbar lesson, just after the navbar-toggler-icon class goes in. Scrimba dims the editor when the recording focuses the preview; at this narrow width the four links have collapsed behind the burger."
@@ -127,7 +130,7 @@ Cards (5:08) is the one I would rewrite if I ran the course. It opens on a finis
 
 <Screenshot
   src="/img/scrimba/learn-bootstrap/cards-kitchen-sink-broken-placeholder-lesson.webp"
-  alt="Scrimba Learn Bootstrap lesson Cards at 0:00: the editor shows a card with card-img-top pointing at placeimg.com, a card-body with title and text, a list-group list-group-flush with three items and two card-link anchors, while the preview shows the rendered card with the broken image alt text Card image cap where the photo should be"
+  alt="Learn Bootstrap, Cards lesson: a preview card with a broken image icon where the photo should load."
   width={1400}
   height={660}
   caption="The Cards lesson at 0:00, before Neil clears the file. The img src on line 16 points at placeimg.com, a placeholder service that shut down, so the preview shows the alt text where the header photo used to load. Swap in any other image URL and the rest of the card works."
@@ -230,4 +233,7 @@ Where it is limited: it teaches Bootstrap 4.0.0 with jQuery, two major versions 
   difficulty="Intermediate"
   access="Pro"
   keywords={["CSS", "Frontend"]}
+  instructor="Neil Rowe"
+  instructorUrl="https://scrimba.com/@roweneil"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/learn-bootstrap/course-intro-title-card.webp"
 />

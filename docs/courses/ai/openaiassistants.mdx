@@ -5,8 +5,9 @@ sidebar_label: "OpenAI Assistants API"
 toc_max_heading_level: 2
 description: "Inside Scrimba's 30 minute Pro course on OpenAI's Assistants API: every scrim read, the movie chatbot you build, and why the 2023 code has aged."
 keywords: [scrimba openai assistants api review, openai assistants tutorial, assistants api javascript, guil hernandez scrimba, openai threads runs messages, scrimba ai course review]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-22
+  date: 2026-09-23
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -15,12 +16,16 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import Provenance from '@site/src/components/Provenance';
 
 # Learn OpenAI's Assistants API
 
+<DisclosureNotice />
+
 Scrimba's shortest AI course: about 30 minutes with Guil Hernandez, in which you turn a movie recommendation chatbot into an OpenAI "assistant" that answers from a text file. The course is clear and quick, but it runs on an API version OpenAI has since moved away from, so weigh that before you spend a Pro slot on it.
 
-*Reviewed inside the course with a Pro account, September 2026.*
+<Provenance subject="course" date={frontMatter.reviewed} />
 
 ## Quick answer
 
@@ -79,7 +84,7 @@ The project is five files: `config.js`, `index.html`, `index.css`, `index.js`, a
 
 <Screenshot
   src="/img/scrimba/openaiassistants/running-assistants-barbie-reply-lesson.webp"
-  alt="Scrimba Learn OpenAI's Assistants API, lesson Running Assistants paused at 4:28: index.js shows the thread messages array pasted in as a comment, with the assistant's reply beginning I recommend Barbie highlighted, the asstID and threadID variables, and a listMessages function calling openai.beta.threads.messages.list; the sidebar lists openai@4.17.4 as the only dependency"
+  alt="Learn OpenAI's Assistants API, Running Assistants lesson: a code editor showing a chatbot's message reply pasted in as a comment."
   width={1400}
   height={617}
   caption="4:28 of Running Assistants. Guil pastes the console output into the file so you can read the message object: the assistant's reply (it recommends Barbie and The Menu, both from movies.txt) sits at index 0 of the data array, the user's question at index 1. Note the created_at timestamps from November 2023 and the [source] annotations he removes in the next scrim."
@@ -89,7 +94,7 @@ The project is five files: `config.js`, `index.html`, `index.css`, `index.js`, a
 
 <Screenshot
   src="/img/scrimba/openaiassistants/reelrecs-run-lifecycle-echo-bug-lesson.webp"
-  alt="Scrimba Learn OpenAI's Assistants API, lesson Bring it all together paused at 3:44: the ReelRecs preview window shows the input How can I help and, where the answer should be, the user's own question What's a good action movie? echoed back, with the blurred index.js editor behind it"
+  alt="Learn OpenAI's Assistants API, Bring it all together lesson: a chatbot preview echoing the user's own question back as the answer."
   width={1400}
   height={617}
   caption="3:44 of Bring it all together: the first bug. The page reads the thread before the run finishes, so the newest message is still the user's question. This is the moment the run lifecycle stops being a diagram."
@@ -99,7 +104,7 @@ The fix is a polling loop: retrieve the run, wait 1.5 seconds, check again, unti
 
 <Screenshot
   src="/img/scrimba/openaiassistants/reelrecs-finished-assistant-top-gun-lesson.webp"
-  alt="Scrimba Learn OpenAI's Assistants API, lesson Bring it all together paused at 8:41: the finished ReelRecs chatbot in the preview window recommends Top Gun: Maverick for an adrenaline-pumping experience in a short paragraph with no source annotations; a green completed check shows in the lesson header"
+  alt="Learn OpenAI's Assistants API, Bring it all together lesson: the finished chatbot preview recommending a movie."
   width={1400}
   height={617}
   caption="8:41, the finished app. Short reply, no annotations, and the recommendation comes from movies.txt. Everything you see was done with about 50 lines of index.js."
@@ -181,4 +186,7 @@ Where it is limited: the code targets the November 2023 beta (`retrieval`, `file
     { name: 'Build ReelRecs: assistant, thread, messages, run, UI', duration: '23 min' },
     { name: 'Wrap-up and Scrimba house scrims', duration: '4 min' },
   ]}
+  instructor="Guil Hernandez"
+  instructorUrl="https://scrimba.com/@Guilh"
+  imageUrl="https://scrimbaguide.tech/img/scrimba/openaiassistants/running-assistants-barbie-reply-lesson.webp"
 />
