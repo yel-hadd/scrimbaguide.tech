@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # What's New in React 19?
+
+<DisclosureNotice />
 
 What's New in React 19? is Bob Ziroll's free, 69-minute catch-up course, a flat run of 15 scrims that rebuild one username form four times with the `action` prop, `useActionState`, `useOptimistic` and `useFormStatus`. It is the fastest way to see React 19's actions model in working code if you already write hooks-based React.
 
@@ -81,7 +84,7 @@ Part 1 is a guided reading of the code and the bug: click Products and then Abou
 
 <Screenshot
   src="/img/scrimba/whats-new-in-react-19/usetransition-ispending-loading-lesson.webp"
-  alt="Scrimba What's New in React 19 lesson React 18 Catch up useTransition (2), paused at 4:19: index.jsx shows the tab buttons and four lines that render Loading..., Home page, Products or About page depending on isPending and the tab state, while the preview on the right shows the Home, Products and About buttons with the text Loading... underneath"
+  alt="What's New in React 19, useTransition lesson: the preview shows a Loading message while a slow tab switch is pending."
   width={1400}
   height={660}
   caption="4:19 of useTransition (2): the Products tab has just been clicked and isPending is true, so the preview shows Loading... instead of the 1,500-item list. The dependency panel on the left still says react@18.3.1 for these two scrims."
@@ -101,7 +104,7 @@ Part 2 fixes the `(prevState, formData)` signature, returns the new name instead
 
 <Screenshot
   src="/img/scrimba/whats-new-in-react-19/useactionstate-loading-challenge-lesson.webp"
-  alt="Scrimba What's New in React 19 lesson useActionState() Part 2, paused at 2:10: index.jsx shows a useActionState call returning name, actionFunction and isPending, an async formAction taking prevState and formData, and a comment block reading Challenge: figure out how you can display a Loading paragraph when the action is in the process of running, while the preview shows Current user: bobziroll above the form"
+  alt="What's New in React 19, useActionState Part 2 challenge: a comment brief asks for a loading message during the action."
   width={1400}
   height={660}
   caption="2:10 of useActionState() Part 2: the challenge brief is a comment block in the editor, and the isPending value on line 7 is the only hint you get. Note the useActionState import: this is the React 19 release candidate."
@@ -111,7 +114,7 @@ Part 3 is where the pattern earns its keep. Bob turns the state from a bare stri
 
 <Screenshot
   src="/img/scrimba/whats-new-in-react-19/useactionstate-error-state-lesson.webp"
-  alt="Scrimba What's New in React 19 lesson useActionState() Part 3, paused at 6:15: index.jsx shows the updateName action returning name and error objects from its try and catch blocks and a paragraph that renders state.error.message, while the preview shows Current user: bobziroll, the word error typed into the input, and a red Failed to update name message under the Update button"
+  alt="What's New in React 19, useActionState Part 3 lesson: the form shows a red error message after a failed update."
   width={1400}
   height={660}
   caption="About 6:15 of useActionState() Part 3: typing the word error into the form makes the fake database throw, and the message now renders in the UI instead of the console. The highlighted username is Bob's own selection in the recording."
@@ -131,7 +134,7 @@ refs as props is under three minutes and has no runnable demo (Bob does not crea
 
 <Screenshot
   src="/img/scrimba/whats-new-in-react-19/use-api-suspense-error-lesson.webp"
-  alt="Scrimba What's New in React 19 lesson use(), paused at 6:00: index.jsx shows a fetch to the Pokemon API stored in fetchPromise and the line const pokemon = use(fetchPromise) with no Suspense boundary, the preview pane on the right is blank, and the console below reads Error: async/await is not yet supported in Client Components, only Server Components"
+  alt="What's New in React 19, use() lesson: the preview is blank and the console shows a Suspense related client error."
   width={1400}
   height={660}
   caption="6:00 of use(): the component has suspended with nothing to catch it, so the preview is blank and the console shows the cryptic client-components error. The Suspense boundary comes 20 seconds later, and the uncached-promise warning after that."

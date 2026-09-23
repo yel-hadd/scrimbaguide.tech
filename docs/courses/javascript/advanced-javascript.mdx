@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Advanced JavaScript
+
+<DisclosureNotice />
 
 Tom Chant's Pro follow-up to [Learn JavaScript](/docs/courses/javascript/learn-javascript/) runs about 9.8 hours across nine modules, from the ternary operator to generators, with no single project: you work concept by concept in the console through 94 challenges. It closes the gap between writing JavaScript and understanding it, if you already have the basics down.
 
@@ -129,7 +132,7 @@ Then Tom takes over with code. You fetch a random dog image twice, first with `.
 
 <Screenshot
   src="/img/scrimba/advanced-javascript/callback-hell-pyramid-of-doom-lesson.webp"
-  alt="Scrimba Advanced JavaScript lesson Callback Hell paused near the end: the editor shows uploadFile, processFile and notifyUser nested inside each other as arrow-function callbacks, and the console below prints Step 1: Uploading file, Step 2: Processing file, Step 3: Notifying user, All steps completed"
+  alt="Advanced JavaScript, Callback Hell lesson: code editor showing deeply nested callback functions."
   width={1400}
   height={660}
   caption="Callback Hell at 5:17. Three fake async steps chained the old way, each callback nested inside the previous one, with the console proving the order and the one-second delays. Tom calls the shape 'the pyramid of doom' and rewrites it with promises in the next scrim."
@@ -163,7 +166,7 @@ The middle of the module is inheritance, meaning one object taking properties an
 
 <Screenshot
   src="/img/scrimba/advanced-javascript/super-challenge-game-characters-lesson.webp"
-  alt="Scrimba Advanced JavaScript Super Challenge: Game Characters paused at the brief: the editor shows an empty class Character with a long comment spec asking for a name property, a private health field initialized to 100, a static count, incrementCount and getCount static methods, a health getter and setter, takeDamage, an isAlive getter and getStatus"
+  alt="Advanced JavaScript, Super Challenge Game Characters: code editor showing an empty class with a challenge comment."
   width={1400}
   height={660}
   caption="Game Characters at 1:08. The whole brief lives in comments inside the empty classes: a Character base class with a private #health field, static counters, getters and setters, then Hero and Villain subclasses. Test calls with expected output sit at the bottom of the file."
@@ -189,7 +192,7 @@ Recursion is four scrims, and Tom warns that "recursion gets harder from here on
 
 <Screenshot
   src="/img/scrimba/advanced-javascript/debouncing-generators-super-challenge-lesson.webp"
-  alt="Scrimba Advanced JavaScript Debouncing and Generators Super Challenge paused mid-solution: the editor shows a function* fetchDataGenerator with a while loop that now yields a new Promise wrapping setTimeout, and a handleScroll function that calls generator.next() and appends a section to the page"
+  alt="Advanced JavaScript, Debouncing and Generators Super Challenge: code editor mid-fix on a generator function."
   width={1400}
   height={660}
   caption="The Debouncing and Generators super challenge at 4:16, just after the first real bug is fixed: the generator was using return instead of yield. More bugs follow, including a result.done check and an off-by-one in the section counter."

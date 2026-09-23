@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Data Structures and Algorithms: Merge Sort
+
+<DisclosureNotice />
 
 Jonathan Lee Martin's Data Structures and Algorithms: Merge Sort is a 64 minute Pro course that has you write one sorting algorithm seven ways in JavaScript, from a raw imperative version to a queue, a cursor and an ArrayView wrapper, each one graded out loud on readability and cost. It is a tight, well-built hour for anyone who already codes.
 
@@ -84,7 +87,7 @@ The recursion bottoms out at one element lists, which are sorted by definition. 
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms-merge-sort/merge-sort-recursion-tree-slide-lesson.webp"
-  alt="Slide from the Merge Sort lesson in Scrimba's Data Structures and Algorithms: Merge Sort course showing a recursion tree: the list 2,8,5,3,4,8,6 split into 2,8,5 and 3,4,8,6, then into 2 and 8,5 and 3,4 and 8,6, with the single element list 2 highlighted in yellow"
+  alt="Data Structures and Algorithms: Merge Sort, recursion lesson: a tree diagram splitting a list down to single elements."
   width={1279}
   height={720}
   caption="The Merge Sort lesson at 6:34: the moment the recursion finds its first list that is sorted by definition, the single element [2] highlighted in yellow. Everything above it is still waiting to be merged."
@@ -100,7 +103,7 @@ The starting file is a `mergesort(array, start = 0, end = array.length, compare 
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms-merge-sort/imperative-challenge-failing-test-lesson.webp"
-  alt="Scrimba Data Structures and Algorithms: Merge Sort, Imperative lesson paused at the challenge brief: the test runner popup shows passes 0, failures 1, the test sorts an array marked with a red cross, and an AssertionError expecting 1,2 but receiving 2,1, with the blurred editor behind it"
+  alt="Data Structures and Algorithms: Merge Sort, imperative lesson: a test runner popup shows one failing test over the editor."
   width={1400}
   height={660}
   caption="Imperative, paused at 2:03. The test runner shows the one failing test (expected [1, 2], got [2, 1]) right before Jonathan says to pause the lesson and make it pass. This is what every implementation lesson starts from."
@@ -120,7 +123,7 @@ The target is the merge loop. Treat `left` and `right` as queues: replace the fo
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms-merge-sort/queue-map-ternary-shift-lesson.webp"
-  alt="Scrimba Data Structures and Algorithms: Merge Sort, Queue lesson at 6:22: the editor shows mergesortWithQueue with a Divide, Conquer and Combine comment, and the combine step is return array.map with a ternary calling left.shift() or right.shift()"
+  alt="Data Structures and Algorithms: Merge Sort, queue lesson: a code editor shows a short merge step using map and a ternary."
   width={1400}
   height={660}
   caption="Queue, paused at 6:22, just before he saves. The for loop and the i, j and k counters from the first version are gone; the whole combine step is array.map and a ternary over shift(). The file list on the left shows merge-sort.test.js and the assert dependency."
@@ -140,7 +143,7 @@ The last one turns on the previous six. Define `split(array, mid)`, `merge(left,
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms-merge-sort/simple-split-merge-final-code-lesson.webp"
-  alt="Scrimba Data Structures and Algorithms: Merge Sort, Simple lesson at 6:21: the editor shows the merge function wrapping left and right in Cursor and looping with times, the five line mergesortSimple that calls split and merge, and a mergesortSimpleWithArrayView wrapper as the default export, with lodash.times 4.3.2 in the dependencies panel"
+  alt="Data Structures and Algorithms: Merge Sort, simple lesson: a code editor shows the final merge sort file with tests green."
   width={1400}
   height={660}
   caption="Simple, paused at 6:21 with the tests green. mergesortSimple is five lines: a base case, a destructured split, and a merge of two recursive calls. The clever parts (Cursor, ArrayView, lodash.times) are pushed down into merge and the wrapper."

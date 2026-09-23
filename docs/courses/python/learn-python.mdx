@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn Python
+
+<DisclosureNotice />
 
 Scrimba's free beginner Python course, taught by Treasure Porth, runs about 4.1 hours across three modules and three terminal apps: an expense splitter, a word-scramble game and a karaoke queue manager. Each module ends in a working program, and the challenge-per-scrim rhythm makes this a strong, slow-paced first language for someone who has never written code.
 
@@ -52,7 +55,7 @@ It fits complete beginners who want a first language with immediate feedback and
   />
   <Screenshot
     src="/img/scrimba/learn-python/payup-finished-app-lesson.webp"
-    alt="Scrimba Learn Python lesson What We'll Build: the editor shows payup.py with input() calls wrapped in float() and int(), and the terminal below shows the finished PayUp run for Paul's Pizza with cost 345, a 20 percent service charge, group size 8, grand total 414.00 and each person must PayUp 51.75"
+    alt="Learn Python, What We'll Build lesson: a code editor beside a terminal running the finished PayUp app."
     width={1400}
     height={625}
     caption="Module 1's target, shown at 0:52 of What We'll Build: the finished PayUp app running in the terminal pane. This course uses a terminal pane where Scrimba's web courses use a browser preview."
@@ -96,7 +99,7 @@ The expense-split challenge is the module's real test. The file opens with the f
 
 <Screenshot
   src="/img/scrimba/learn-python/payup-expense-split-challenge-lesson.webp"
-  alt="Scrimba Learn Python lesson PayUp App: Calculate the Expense Split, paused during the solution: the editor shows the three-step challenge brief in comments above service_charge_total = cost * service_charge / 100, and the terminal shows a run for Karaoke at the Waypost with Service charges: $15, Grand total: $230.0 and Each person must PayUp: $76.66666666666667"
+  alt="Learn Python, PayUp expense split challenge: code editor beside a terminal printing the split totals."
   width={1400}
   height={625}
   caption="The expense split solution at 3:57. Two things to notice: the service charge prints as $15 because the summary still uses the raw percentage instead of the new total (Treasure spots it and fixes it), and the per-person amount has fourteen decimal places. The next scrim, on formatting floats inside f-strings, exists to fix that."
@@ -112,7 +115,7 @@ The longest module and the one where the course starts to feel like programming.
 
 <Screenshot
   src="/img/scrimba/learn-python/jargon-jumble-finished-game-lesson.webp"
-  alt="Scrimba Learn Python module 2 intro showing the finished Jargon Jumble game in the terminal: round 1 answered deadline and marked Correct, round 2 answered zebra and marked Sorry the word was bandwidth, round 3 skipped, round 4 quit, then Thanks for playing, Final score: 1/5 and the line Have you tried turning it off and on again?"
+  alt="Learn Python, module 2 intro: a terminal running the finished Jargon Jumble word game."
   width={1400}
   height={625}
   caption="The finished word game at 1:09 of the module 2 intro, after typing quit in round 4. The commentary line under the score changes with how badly you did. This is the state you build toward over the next twenty scrims."
@@ -132,7 +135,7 @@ The game loop challenge is a good example of the course's style. The brief is th
 
 <Screenshot
   src="/img/scrimba/learn-python/jargon-jumble-game-loop-challenge-lesson.webp"
-  alt="Scrimba Learn Python lesson Project: Add Game Loop at 1:44: the editor shows ROUNDS = 5, round_num = 1 and a while round_num <= ROUNDS loop around the game code, and the terminal shows a correct guess of server followed by Round 1 printing a second time instead of Round 2"
+  alt="Learn Python, Add Game Loop lesson: a code editor beside a terminal showing a round-counter bug."
   width={1400}
   height={625}
   caption="The game loop solution at 1:44, with the bug on screen: the loop works but the round counter never moves, so a second Round 1 follows the correct guess. The fix (round_num += 1 at the bottom of the loop) comes a few seconds later."
@@ -148,7 +151,7 @@ The intro opens with a scene rather than a slide: a karaoke night where "some be
 
 <Screenshot
   src="/img/scrimba/learn-python/sing-out-karaoke-queue-guardrails-lesson.webp"
-  alt="Scrimba Learn Python module 3 intro showing the finished Sing Out karaoke queue app in the terminal: a numbered queue of four singers and songs, the next command announcing NOW UP: Mike, I Will Survive, then the top command answered with the word apple and the app replying Please enter a number and reprinting the queue"
+  alt="Learn Python, module 3 intro: a terminal running the finished Sing Out karaoke queue app."
   width={1400}
   height={612}
   caption="The finished karaoke queue at 1:25 of the module 3 intro. The host has typed apple where a position number was expected; the app answers with Please enter a number and carries on. Building that resilience is what the last third of the module is about."

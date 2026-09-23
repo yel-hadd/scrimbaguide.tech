@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Build a React Project: Movie Search App
+
+<DisclosureNotice />
 
 James Q Quick's Build a React Project: Movie Search App runs 56 minutes for Pro subscribers: you build a search form, fetch results from The Movie Database API, and render poster cards with two functional components and `useState`. It is a solid rep between React fundamentals and a full project, not a place to learn React from scratch.
 
@@ -104,7 +107,7 @@ Display Movie Information is the longest scrim at 7:11 and the one where the app
 
 <Screenshot
   src="/img/scrimba/build-a-react-project-movie-search-app/display-movie-information-card-markup-lesson.webp"
-  alt="Scrimba's Display Movie Information scrim paused at 6:51: searchMovies.js maps the filtered movies to a card with a TMDB poster image, an h3 title, release date, rating and overview, while the preview lists Jurassic Park results with their text but broken poster images"
+  alt="Movie Search App, Display Movie Information lesson: a results list shows movie details with poster images missing."
   width={1400}
   height={684}
   caption="Display Movie Information at 6:51. Title, release date, rating and overview render from the TMDB response; the poster images did not load in the recorded preview when I replayed it, which is worth knowing before you assume your own code is wrong. The dependencies panel shows the React 16.13 the course runs on."
@@ -116,7 +119,7 @@ Create the Movie Card Component (Challenge) is the third and best challenge, bec
 
 <Screenshot
   src="/img/scrimba/build-a-react-project-movie-search-app/movie-card-component-challenge-solution-lesson.webp"
-  alt="Scrimba's Create the Movie Card Component challenge scrim paused at 5:04: searchMovies.js now maps movies to a MovieCard component with a movie prop and a key of movie.id, and the console below is empty"
+  alt="Movie Search App, Movie Card Component challenge: the code now renders movie cards with no console warnings left."
   width={1400}
   height={684}
   caption="The Movie Card challenge solved at 5:04. The key prop has moved from the card's inner div to the MovieCard element the map returns, and the console warning from a minute earlier is gone."

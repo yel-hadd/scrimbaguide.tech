@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn Context Engineering
+
+<DisclosureNotice />
 
 Arsala Khan's Learn Context Engineering is a one-hour Pro course built around a single chat app on the Vercel AI SDK and OpenRouter. You add a system prompt, then trim old messages by token count, then replace them with an AI-written summary so the app stops forgetting. It is small, focused, and worth the hour once your own app has hit the wall it demonstrates.
 
@@ -41,7 +44,7 @@ This fits developers who already call a model from JavaScript and want to know w
 <div className="screenshot-grid">
   <Screenshot
     src="/img/scrimba/learn-context-engineering/system-prompt-challenge-personas-slide.webp"
-    alt="What We'll Build slide from the System Prompt Challenge in Scrimba's Learn Context Engineering course: three phone-shaped chat windows labeled Assistant, ELI5 and Coach show the same question answered in three different tones"
+    alt="Learn Context Engineering, System Prompt Challenge slide: three chat windows show the same question in three tones."
     width={1377}
     height={775}
     caption="The System Prompt Challenge brief: the same model, three personas, three very different answers."
@@ -49,7 +52,7 @@ This fits developers who already call a model from JavaScript and want to know w
   />
   <Screenshot
     src="/img/scrimba/learn-context-engineering/summarizing-context-super-challenge-what-you-build-slide.webp"
-    alt="What We'll Build slide from the Summarizing Context Super Challenge in Scrimba's Learn Context Engineering course: on the left a chat where the AI says it has no information about the user's education, an arrow, and on the right the same question answered with Economics at Queen's University"
+    alt="Learn Context Engineering, Summarizing Context Super Challenge slide: side-by-side chats show the AI forgetting, then recalling, a fact."
     width={1377}
     height={775}
     caption="The final challenge: before summarization the model has forgotten where you studied; after it, it remembers."
@@ -99,7 +102,7 @@ Then the first mini challenge: add a `system` property to the `streamText` call 
 
 <Screenshot
   src="/img/scrimba/learn-context-engineering/context-window-demo-sliding-window-slide.webp"
-  alt="Slide from the Context Window Demo lesson in Scrimba's Learn Context Engineering course titled So we can slide the context window: messages A, B and C are greyed out, messages D, E and F sit inside a box connected to a brain icon labeled Context Window = 3 Messages"
+  alt="Learn Context Engineering, Context Window Demo slide: a diagram shows older messages greyed out outside the context window box."
   width={1377}
   height={775}
   caption="The sliding window diagram at 2:14 of the Context Window Demo. The code version is one line: messages.slice(-10)."
@@ -113,7 +116,7 @@ Your job is to implement `getTrimmedContext(messages, tokenLimit)`: a `while` lo
 
 <Screenshot
   src="/img/scrimba/learn-context-engineering/context-window-challenge-tokens-diagram-slide.webp"
-  alt="Slide from the Context Window Challenge in Scrimba's Learn Context Engineering course titled Context Window In Tokens: a stack of boxes labeled user prompt, AI output, system prompt and future messages, with a bracket marking the part that fits in the context window and older messages lost above it"
+  alt="Learn Context Engineering, Context Window Challenge slide: a stacked diagram shows the token budget filling up and overflowing."
   width={1377}
   height={775}
   caption="At 1:45 of the Context Window Challenge: the window as a fixed-size container that every user prompt and every AI reply eats into."
@@ -121,7 +124,7 @@ Your job is to implement `getTrimmedContext(messages, tokenLimit)`: a `while` lo
 
 <Screenshot
   src="/img/scrimba/learn-context-engineering/context-window-challenge-brief-lesson.webp"
-  alt="Scrimba Learn Context Engineering Context Window Challenge paused at 5:24: the editor shows a comment block headed Challenge: Token-Based Context Management with three numbered tasks, then the start of the getTrimmedContext function with tokenCount and a copied trimmedMessages array, and a Vite dev server running below"
+  alt="Learn Context Engineering, Context Window Challenge: the code editor shows a numbered task list above an unfinished function."
   width={1400}
   height={660}
   caption="The challenge brief lives in a comment above the function you have to write. Paused at 5:24, just after Arsala starts the solution walkthrough."

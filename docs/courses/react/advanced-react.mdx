@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Advanced React
+
+<DisclosureNotice />
 
 Scrimba's Pro follow-up to Learn React: about 18.8 hours across six modules, most taught by Bob Ziroll, ending in a component library, a camper van rental site, and a Supabase sales dashboard. It assumes hooks-based React, and it is the most complete React course on Scrimba, the closest to day-to-day frontend work.
 
@@ -111,7 +114,7 @@ Then comes the Mega Challenge: an "overloaded" Avatar component that renders a p
 
 <Screenshot
   src="/img/scrimba/advanced-react/overloaded-avatar-mega-challenge-lesson.webp"
-  alt="Scrimba Advanced React lesson Mega Challenge, Overloaded Avatar Component, paused at 8:25: Avatar.js shows three if branches returning an img, the children as initials, or an IoPersonSharp icon, while the preview on the right stacks a photo avatar, a red BZ initials avatar, and an anonymous icon avatar"
+  alt="Advanced React, Mega Challenge lesson: the preview shows one Avatar component rendering a photo, initials, and an icon."
   width={1400}
   height={625}
   caption="The Avatar solution at 8:25 of the Mega Challenge: one component, three render paths, and all three showing in the preview. The dependencies panel shows what this module runs on: react 18.2.0 and react-icons 4.4.0."
@@ -123,7 +126,7 @@ The last third builds a headless Toggle (Toggle.Button, Toggle.On, Toggle.Off, T
 
 <Screenshot
   src="/img/scrimba/advanced-react/intro-to-refs-infinite-render-loop-lesson.webp"
-  alt="Scrimba Advanced React lesson Intro to Refs, paused at 2:33: index.js shows a useEffect with no dependency array calling setRenderCount, and the preview on the right shows the heading Understanding refs with a Render count that has become a long string of repeated digits"
+  alt="Advanced React, Intro to Refs lesson: the preview shows a render counter spiraling out of control in an infinite loop."
   width={1400}
   height={625}
   caption="Intro to Refs at 2:33: the render counter kept in useState inside a useEffect with no dependencies, and the render count in the preview running away. Bob triggers the maximum update depth error on purpose, then fixes it with useRef."
@@ -139,7 +142,7 @@ From there the module is one long build. Route params and `useParams` for the va
 
 <Screenshot
   src="/img/scrimba/advanced-react/vanlife-filter-vans-search-params-lesson.webp"
-  alt="Scrimba Advanced React lesson Challenge: Filter the vans with Links, paused at 2:53: Vans.jsx shows useSearchParams, a typeFilter read from the search params, and displayedVans filtered by van.type, while the preview on the right shows the VanLife Explore our van options page with Simple, Luxury, and Rugged filter buttons and two van photos"
+  alt="Advanced React, VanLife lesson: the preview shows the van listing page with filter buttons above two van photos."
   width={1400}
   height={625}
   caption="VanLife at 2:53 of the Links filtering challenge: the type filter comes from the URL, not from state, and the Simple, Luxury, and Rugged buttons are just Links with a query string. The file tree on the left is the whole app at this point, pages and components."
@@ -161,7 +164,7 @@ The ten scrims go: create the project and a `sales_deals` table, seed it with na
 
 <Screenshot
   src="/img/scrimba/advanced-react/supabase-realtime-subscription-challenge-lesson.webp"
-  alt="Scrimba Advanced React lesson Realtime subscription, paused at 4:18: Dashboard.jsx shows a five-step challenge in comments above supabase.channel('deal-changes').on('postgres_changes', ...) with a cleanup that calls removeChannel, a Runner panel below shows npm run dev output, and the preview on the right shows the Sales Team Dashboard bar chart of total sales this quarter for Andy, Dwight, and Jim"
+  alt="Advanced React, Realtime subscription lesson: the preview shows a sales dashboard bar chart next to a running dev server."
   width={1400}
   height={625}
   caption="The realtime challenge brief at 4:18: fill in the channel name, event type, schema, and table, then insert a row in Supabase and watch the console. Notice the Runner tab: this module runs a real Vite dev server inside Scrimba, unlike Bob's modules."

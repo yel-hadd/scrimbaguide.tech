@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Practical Math for Frontend Developers
+
+<DisclosureNotice />
 
 Scrimba's Practical Math for Frontend Developers is a 65-minute Pro course, taught by Ryan Gonyon, built around three tiny apps: a shopping cart, a weekly schedule, and a monthly expense sheet. The math is modest on purpose, mostly `reduce()`, CSS `calc()`, and the `Date` object, with one short detour into the algebra behind a `roll()` function. Skip it if those already come easily; otherwise it is a solid hour.
 
@@ -92,7 +95,7 @@ The two-minute intro sets the tone: "the course where we attempt to answer the a
 
 <Screenshot
   src="/img/scrimba/practical-math-for-frontend-developers/css-calc-main-100vh-footer-hidden-lesson.webp"
-  alt="Scrimba Practical Math for Frontend Developers lesson App Layout and CSS calc() Introduction paused with main set to height: 100vh in the editor, and the preview pane on the right showing a green Header and a blue Main with a scrollbar but no footer"
+  alt="Practical Math for Frontend Developers, CSS layout lesson: the preview shows a page with its footer pushed off screen."
   width={1400}
   height={660}
   caption="Scrim 2 at 0:59. The first attempt, height: 100vh on main, and the footer has vanished below the fold in the preview. The next two minutes subtract the header and footer with calc() and then move the numbers into variables."
@@ -102,7 +105,7 @@ The two-minute intro sets the tone: "the course where we attempt to answer the a
 
 <Screenshot
   src="/img/scrimba/practical-math-for-frontend-developers/roll-function-algebra-slide-lesson.webp"
-  alt="Slide from the Your roll() Function lesson in Scrimba's Practical Math for Frontend Developers course, reading Goal: 0 <= r < 1, We want a formula for r in terms of n, followed by three numbered steps: 1 <= n < 7, then subtracting 1 from each side, then 0 <= n - 1 < 6"
+  alt="Practical Math for Frontend Developers, dice roll formula lesson: a slide walks through the algebra behind rolling a die."
   width={1046}
   height={588}
   caption="Scrim 3 at 2:23. The only slide-driven algebra in the course: three steps from a six-sided die to the shape Math.random() returns. The general min and max version follows the same steps two minutes later."
@@ -116,7 +119,7 @@ The two-minute intro sets the tone: "the course where we attempt to answer the a
 
 <Screenshot
   src="/img/scrimba/practical-math-for-frontend-developers/shopping-cart-reduce-string-concatenation-bug-lesson.webp"
-  alt="Scrimba Practical Math for Frontend Developers lesson Shopping Cart Calculate Total paused on a reduce function returning accumulator + product.price, with the console showing the accumulator growing as the string 09.087.307.239.80 and the preview showing a Shopping Cart list of five emoji products with prices and quantities"
+  alt="Practical Math for Frontend Developers, Shopping Cart lesson: the console shows a reduce bug concatenating prices as text."
   width={1400}
   height={660}
   caption="Scrim 5 at 1:29. The accumulator is a string: 0 + '9.08' + '7.30' becomes 09.087.30 in the console. Ryan fixes it with parseFloat in the next ten seconds, then discovers he forgot to multiply by the count."
@@ -142,7 +145,7 @@ The 93-second "Bonus Challenge" adds a random weight in ounces to each product, 
 
 <Screenshot
   src="/img/scrimba/practical-math-for-frontend-developers/monthly-expense-sheet-finished-app-lesson.webp"
-  alt="Scrimba Practical Math for Frontend Developers final lesson paused on the displayMonth function, with the preview showing the finished Monthly Expense Sheet: a summary bar reading Budget $1152.05 and Net Value $441.57 above a three-column grid of days with red negative expense amounts"
+  alt="Practical Math for Frontend Developers, expense sheet lesson: the preview shows a finished calendar grid with a budget summary bar."
   width={1400}
   height={660}
   caption="Scrim 12 at 7:43, the finished expense sheet. Every number on the right came from roll(): the income, the rent, how many expenses each day has, and their amounts. The editor shows the reduce that turns the month array into the grid."

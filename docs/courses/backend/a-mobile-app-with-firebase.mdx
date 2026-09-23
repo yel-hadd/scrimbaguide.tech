@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Build a Mobile App with Firebase
+
+<DisclosureNotice />
 
 Rafid Hoda's Build a Mobile App with Firebase is a two-hour Pro project course. You build a shopping list app in plain HTML, CSS and JavaScript, store its items in a Firebase Realtime Database, and finish by installing it on your phone's home screen. It's a tight, well-sequenced two hours if you already write basic JavaScript.
 
@@ -98,7 +101,7 @@ Scrim 10 is the second ten-minute aside, on `onValue`. It uses a separate book-l
 
 <Screenshot
   src="/img/scrimba/build-a-mobile-app-with-firebase/onvalue-aside-duplicate-render-bug-lesson.webp"
-  alt="Scrimba Build a Mobile App with Firebase, the onValue aside paused at 8:03: the editor shows onValue(booksInDB, function(snapshot)) with a for loop calling appendBookToBooksListEl, and the bestreads preview on the right lists Make Time, Animal Farm, Make Timed, Animal Farm, the list duplicated after a database edit"
+  alt="Build a Mobile App with Firebase, onValue aside: the book list preview shows duplicated entries after a database edit."
   width={1400}
   height={660}
   caption="The onValue aside at 8:03. Rafid edits a book title in the Firebase console and the preview shows four books instead of two, because the loop appends without clearing first. Fixing it is the scrim's last challenge."
@@ -114,7 +117,7 @@ Two one-minute flexbox asides (`flex-wrap` on a row of video thumbnails, `gap` o
 
 <Screenshot
   src="/img/scrimba/build-a-mobile-app-with-firebase/add-to-cart-app-css-finished-lesson.webp"
-  alt="Scrimba Build a Mobile App with Firebase, the CSS-for-list-items scrim paused at 3:47: the editor shows the ul and ul li rules with flex-wrap, gap, border-radius and flex-grow, and the preview shows the Add to Cart app with a cat illustration, an input, a red Add to cart button and wrapped item chips reading Oranges, Chocolate, Red bull, Bread, Coffee, Solo, Salad"
+  alt="Build a Mobile App with Firebase, CSS for list items lesson: the finished Add to Cart app preview with wrapped item chips."
   width={1400}
   height={660}
   caption="Scrim 16 at 3:47, after the list CSS challenge. This is the finished look of the app; everything after this point is behaviour and packaging, not design."
@@ -128,7 +131,7 @@ Scrim 19 is another aside project, a fake news list called The Scrimba Times, wh
 
 <Screenshot
   src="/img/scrimba/build-a-mobile-app-with-firebase/snapshot-exists-null-error-lesson.webp"
-  alt="Scrimba Build a Mobile App with Firebase, scrim 21 paused at 0:53: the editor shows the index.js imports from firebasejs 9.15.0 and the push and onValue code, the preview shows the app with one item, Red bull, and the console panel shows a Firebase warning and the error TypeError: Cannot convert undefined or null to object"
+  alt="Build a Mobile App with Firebase, lesson 21: the console shows a TypeError after an item is deleted from the list."
   width={1400}
   height={660}
   caption="Scrim 21 at 0:53. Rafid deletes the last item and the console fills with a Firebase warning ending in TypeError: Cannot convert undefined or null to object. You are asked to pause and explain it before he does."
@@ -150,7 +153,7 @@ Scrim 36 is Per Borgen's two-minute pitch for the Scrimbassador referral program
 
 <Screenshot
   src="/img/scrimba/build-a-mobile-app-with-firebase/solo-project-we-are-the-champions-requirements.webp"
-  alt="Requirements slide from the We are the Champions solo project in Scrimba's Build a Mobile App with Firebase course, listing Build it from scratch, Follow the design, Firebase Realtime Database, Update in realtime, next to a phone mockup of the endorsements app with a Publish button and three endorsement cards"
+  alt="Build a Mobile App with Firebase, We Are the Champions project brief: a requirements list beside a phone mockup of the app."
   width={1279}
   height={720}
   caption="The solo project brief at 2:16 of scrim 37. Four core requirements, a Figma design, and the starter contains only an h1: you write everything else."

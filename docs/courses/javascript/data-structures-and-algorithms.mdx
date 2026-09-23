@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Data Structures and Algorithms
+
+<DisclosureNotice />
 
 Shant Dashjian teaches Scrimba's Data Structures and Algorithms course in about two and a half hours, framed as a story about saving the dinosaurs. You build a stack, a queue, a linked list, a binary search tree, merge sort and binary search, then analyze each with Big O. A solid first pass at the theory, thin past the basics.
 
@@ -109,7 +112,7 @@ Arrays explains why index access is O(1) (contiguous memory, address arithmetic)
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms/dinosaur-age-range-challenge-brief-lesson.webp"
-  alt="Scrimba Data Structures and Algorithms lesson Challenge: Dinosaur Age Range paused at 1:52, showing the challenge.md file with the constraint ages.length >= 1 and four numbered tasks: write the algorithm in plain English, implement getAgeRange in JavaScript, run npm test, and write down the time and space complexity in Big O notation"
+  alt="Data Structures and Algorithms, Dinosaur Age Range challenge: a markdown file listing four numbered tasks."
   width={1400}
   height={660}
   caption="The Dinosaur Age Range challenge at 1:52. Every challenge in the course has this four-task shape: plain-English steps first, then code, then npm test against a prepared test file, then a Big O analysis. The file list on the left shows getAgeRange.test.js waiting for you."
@@ -129,7 +132,7 @@ Maps is where the course starts paying off. Shant introduces JavaScript's `Map` 
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms/tag-sum-lottery-map-solution-lesson.webp"
-  alt="Scrimba Data Structures and Algorithms lesson Challenge: Tag Sum Lottery paused at 5:26, showing the finished tagSumLottery function in the editor: a single for loop that computes the difference between the lottery number and each tag, checks a Map called tagName, and pushes sorted name pairs into a winners array, with the numbered plain-English steps in a comment above it"
+  alt="Data Structures and Algorithms, Tag Sum Lottery challenge: code editor showing the finished solution using a Map."
   width={1400}
   height={660}
   caption="Tag Sum Lottery at 5:26. The numbered steps in the comment are written before the code, and the inner loop of the starting version is gone: one pass, one Map, O(n). This is the pattern the course wants you to leave with."
@@ -149,7 +152,7 @@ Graphs is terminology (vertex, edge, degree, directed, weighted, cycle, path) an
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms/are-they-connected-graph-slide-lesson.webp"
-  alt="Scrimba Data Structures and Algorithms lesson Challenge: Are They Connected? at 0:00, showing a slide of the dinosaur social network as a graph: Eddie, Brie, Tim, Vinnie and Sam form one connected cluster with a cycle, while Lori, Maddie, Amber and Cassie form a second cluster with no edge to the first"
+  alt="Data Structures and Algorithms, Are They Connected challenge: a slide showing two separate graph clusters."
   width={1400}
   height={660}
   caption="Are They Connected? at 0:00. The question is whether there is a path from Eddie to Sam (yes, through Vinnie) and from Eddie to Amber (no). The Eddie, Brie, Tim, Vinnie loop is the cycle you have to guard against with a visited set."

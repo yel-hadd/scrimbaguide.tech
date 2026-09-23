@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn to Code with AI
+
+<DisclosureNotice />
 
 Guil Hernandez's free Learn to Code with AI runs about 4.5 hours across three modules. You paste ChatGPT prompts into the Scrimba editor, edit the code it returns, and ship about 15 small projects, from a drum kit to a Firebase-backed expense splitter. It works well for a first project this weekend; it will not teach you to program.
 
@@ -101,7 +104,7 @@ The projects start small and grow. "Build a login button" makes a Login with Twi
 
 <Screenshot
   src="/img/scrimba/learn-to-code-with-ai/debug-with-chatgpt-assignment-vs-equality-lesson.webp"
-  alt="Scrimba Learn to Code with AI lesson Debug, get feedback, and improve your code, paused at 6:31: a slide shows ChatGPT explaining that applyDiscount uses the assignment operator = instead of === to compare userCode with HALF, with corrected JavaScript below, over the prompts.md file in the editor and a small ReelRewards preview pane"
+  alt="Learn to Code with AI, Debug lesson: a slide shows ChatGPT explaining a bug, above the code editor and a small preview pane."
   width={1400}
   height={605}
   caption="The debugging challenge answer at 6:31. ChatGPT spots that if (userCode = 'HALF') assigns instead of compares. Note the ChatGPT interface on the slide: it is the May 2023 version, which is how old the recordings are."
@@ -115,7 +118,7 @@ The intro promises that "with AI at your side, you can quickly get off the groun
 
 <Screenshot
   src="/img/scrimba/learn-to-code-with-ai/facebomp-whac-a-mole-game-running-lesson.webp"
-  alt="Scrimba Learn to Code with AI lesson Build a Whac-a-Mole style game called FaceBomp, paused at 12:05: the preview pane shows the FaceBomp game mid-round with Score 2, a timer reading Time left: Time left: 21 seconds seconds, and the instructor's photo popping out of one of six blue holes, while script.js on the left declares score, time, and a displayImage function"
+  alt="Learn to Code with AI, FaceBomp lesson: the whack-a-mole game runs in the preview pane next to the code editor."
   width={1400}
   height={617}
   caption="FaceBomp running at 12:05 of part 1. The doubled 'Time left' label is a real bug in ChatGPT's code; you fix it in part 2 by pointing the variable at the right element."
@@ -137,7 +140,7 @@ Firebase is Google's hosted database. This module uses its Realtime Database, wh
 
 <Screenshot
   src="/img/scrimba/learn-to-code-with-ai/roadwallet-firebase-expense-history-lesson.webp"
-  alt="Scrimba Learn to Code with AI lesson RoadWallet app, paused at 8:19: index.js imports initializeApp and database functions from firebasejs 9.20.0 and reads databaseURL from process.env.ROAD_WALLET_DB, while the preview pane shows the RoadWallet form with an Accommodations expense of 600 and an Expense History listing Food $500 and Accommodations $600 with delete buttons"
+  alt="Learn to Code with AI, RoadWallet lesson: the preview pane shows an expense form and a saved expense history list."
   width={1400}
   height={617}
   caption="RoadWallet at 8:19, after ChatGPT rewrote the whole file to save expenses and travelers to Firebase. Note the pinned Firebase 9.20.0 import and the environment variable holding the database URL."

@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Frontend Interview Tips
+
+<DisclosureNotice />
 
 Dylan C. Israel's Frontend Interview Tips is a short Pro course for developers about to sit a technical screen: 104 minutes across 24 scrims, more than half of it code. Fourteen scrims answer screener questions like falsy values, promises and CSS selectors in the editor, then three teardowns fix your GitHub, LinkedIn and resume. Worth an afternoon before an interview.
 
@@ -76,7 +79,7 @@ The JavaScript ones are the strongest. In const vs let vs var he declares `var f
 
 <Screenshot
   src="/img/scrimba/frontend-interview-tips/const-vs-let-vs-var-assignment-to-constant-error-lesson.webp"
-  alt="Scrimba's const vs let vs var scrim in Frontend Interview Tips paused at 3:37: index.js declares const PI = 3.14 and then PI = 3.145, and the console shows TypeError: Assignment to constant variable"
+  alt="Frontend Interview Tips, const vs let vs var lesson: the console shows a type error from reassigning a constant."
   width={1400}
   height={684}
   caption="const vs let vs var at 3:37. The whole scrim is this small: a file with the interview question as a comment at the top, and Dylan typing the mistakes an interviewer wants you to explain."
@@ -86,7 +89,7 @@ The promises scrim is the longest of the fourteen at 5:20 and the one I would se
 
 <Screenshot
   src="/img/scrimba/frontend-interview-tips/promises-console-one-three-two-lesson.webp"
-  alt="Scrimba's Interview Question: Promises scrim paused at 3:18: getPost logs 1, calls fetch on jsonplaceholder with two chained .then callbacks that log 2, then logs 3, and the console shows 1, 3, 2"
+  alt="Frontend Interview Tips, Promises lesson: the console prints numbers out of order, showing async code resolving later."
   width={1400}
   height={684}
   caption="Promises at 3:18. The console reads 1, 3, 2, which is the moment the question is really asking about. The async/await rewrite that fixes the order comes right after."

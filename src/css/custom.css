@@ -1166,6 +1166,10 @@ article[class*='searchResultItem'] mark {
 }
 
 .comparison-table__secondary-cta {
+  /* 44px minimum touch target (WCAG 2.5.8); inline-flex so the row keeps its layout. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--sg-text-muted);
   text-decoration: underline;
 }
@@ -4635,6 +4639,10 @@ html[data-theme='dark'] .curriculum__index {
 }
 
 .explainer-embed__link {
+  /* 44px minimum touch target (WCAG 2.5.8). */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-size: 0.8rem;
   color: var(--ifm-color-emphasis-700);
 }

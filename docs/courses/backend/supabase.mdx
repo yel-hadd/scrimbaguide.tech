@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Intro to Supabase
+
+<DisclosureNotice />
 
 Jonathan Hill's free Intro to Supabase runs about 4.8 hours and puts you inside a React sales dashboard: you query a live Postgres database, chart the results in real time, then add sign up, sign in, and row level security policies that lock rows down by account type.
 
@@ -90,7 +93,7 @@ The querying scrims are where the course finds its rhythm. Jonathan writes SQL i
 
 <Screenshot
   src="/img/scrimba/intro-to-supabase/realtime-subscription-challenge-lesson.webp"
-  alt="Scrimba Intro to Supabase lesson Realtime subscription paused at the challenge: the editor shows a five-step challenge brief in a comment and a supabase.channel('').on('postgres_changes', { event: '', schema: '', table: '' }) skeleton with blanks to fill, and the preview on the right shows the Sales Team Dashboard bar chart with bars for Andy, Dwight and Jim"
+  alt="Intro to Supabase, Realtime subscription challenge: a code editor with a fill-in-the-blank brief beside a live bar chart preview."
   width={1400}
   height={660}
   caption="The realtime challenge at 2:56. The brief is the numbered comment at the top, the blanks in the channel() call are yours to fill, and the bar chart from the previous scrim is already running in the preview. This is the shape of most challenges in the course."
@@ -116,7 +119,7 @@ The refactor is the course's best stretch, and it is eleven scrims long. "Databa
 
 <Screenshot
   src="/img/scrimba/intro-to-supabase/user-profiles-schema-slide-lesson.webp"
-  alt="Slide from the Trigger lesson in Scrimba's Intro to Supabase course showing an entity relationship diagram: an orange users table with id, email, role and user_metadata, a green user_profiles table with id, name and account_type, and a green sales_deals table with id, created_at, user_id and value, connected by foreign key lines"
+  alt="Intro to Supabase, Trigger lesson: a slide diagram of three database tables connected by foreign key lines."
   width={1400}
   height={788}
   caption="The schema the refactor builds, shown again at 9:08 of the Trigger scrim. user_profiles.id points at auth.users.id, and sales_deals.user_id points at user_profiles.id, which is what lets a policy ask who owns a row."
@@ -126,7 +129,7 @@ The refactor is the course's best stretch, and it is eleven scrims long. "Databa
 
 <Screenshot
   src="/img/scrimba/intro-to-supabase/trigger-challenge-lesson.webp"
-  alt="Scrimba Intro to Supabase Trigger lesson paused at the challenge: trigger.sql in the editor shows create function with the name blanked out, returns trigger, language plpgsql, security definer, an insert into with the table and columns left as a comment to complete, and new.raw_user_meta_data ->> 'name'; the preview on the right shows the Paper Like A Boss sign-up form with Admin and Sales Rep radio buttons"
+  alt="Intro to Supabase, Trigger challenge: a code editor with a partly blanked SQL function beside a sign-up form preview."
   width={1400}
   height={660}
   caption="The trigger challenge at 8:06. Jonathan has removed the function name, the target table and columns, and the account_type extraction; the sign-up form in the preview already has the Admin and Sales Rep radio buttons from the previous scrim."
@@ -136,7 +139,7 @@ The three "Refactor deals table" scrims replace the broad policy with three narr
 
 <Screenshot
   src="/img/scrimba/intro-to-supabase/rls-insert-policy-lesson.webp"
-  alt="Scrimba Intro to Supabase lesson Refactor deals table part 2 at 7:20: policy.sql in the editor shows an EXISTS example on an extended_family table, then CREATE policy 'Reps can only add their own deals' ON public.sales_deals FOR insert TO authenticated WITH CHECK (auth.uid() = user_id AND EXISTS (SELECT 1 FROM user_profiles WHERE user_profiles.id = auth.uid() AND user_profiles.account_type = 'rep'))"
+  alt="Intro to Supabase, Refactor deals table lesson: a code editor with a finished SQL policy written in a scratch file."
   width={1400}
   height={660}
   caption="The finished rep policy at 7:20, written out in a scratch policy.sql file before you copy it into the Supabase policy editor. The extended_family example above it is how Jonathan explains EXISTS and SELECT 1 first."

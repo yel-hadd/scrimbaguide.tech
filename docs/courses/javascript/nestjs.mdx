@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Intro to NestJS
+
+<DisclosureNotice />
 
 Scrimba's free Intro to NestJS is an 83-minute, 22-scrim course from DonTheDeveloper (Don Hansen on the title card). You build the profile API of DevMatch, a dating app for developers, on NestJS 11, adding controllers, services, DTOs, exception handling, pipes, and a guard. If you already know Express, it's a solid, fast look at a structured, TypeScript-first framework.
 
@@ -90,7 +93,7 @@ The 22 scrim durations add up to 87 minutes when summed one by one. Scrimba's he
 
 <Screenshot
   src="/img/scrimba/nestjs/modules-and-decorators-cli-generate-lesson.webp"
-  alt="Scrimba Intro to NestJS lesson Modules & Decorators paused at 1:20: the editor shows profiles.module.ts with an @Module decorator listing ProfilesController, the file tree shows the generated profiles folder, and the terminal below shows npx @nestjs/cli generate controller profiles creating the controller and spec files"
+  alt="Intro to NestJS, Modules & Decorators lesson: code editor beside a terminal running the CLI generate commands."
   width={1400}
   height={630}
   caption="Modules & Decorators at 1:20. The terminal shows the two CLI generate commands and the files they created; the module file above already imports the controller because the CLI wired it in. This is a real Nest project running in the browser, not a mock."
@@ -108,7 +111,7 @@ Then he ships a bug. The DTO import points at the wrong folder, the curl respons
 
 <Screenshot
   src="/img/scrimba/nestjs/controller-post-dto-challenge-lesson.webp"
-  alt="Scrimba Intro to NestJS lesson Controller (POST) paused at 4:11 on the challenge brief: profiles.controller.ts shows the finished GET routes and a three-step comment asking you to create a DTO file for the create route's body, give the class name and description string fields, and return the body to the client, with an empty terminal below"
+  alt="Intro to NestJS, Controller (POST) challenge: code editor showing a numbered task list above the existing GET routes."
   width={1400}
   height={630}
   caption="Controller (POST) at 4:11. The three numbered comments are the challenge brief you work from; the routes above them are the ones you already wrote. Don resets the file to this state before handing over, then solves it on camera after 4:33."
@@ -126,7 +129,7 @@ The solution is short: `{ id: randomUUID(), ...createProfileDto }`, push, return
 
 <Screenshot
   src="/img/scrimba/nestjs/service-create-profile-network-tab-lesson.webp"
-  alt="Scrimba Intro to NestJS lesson Service (Create Profile) paused at 8:29: profiles.service.ts shows the finished create method building a profile with randomUUID and spreading the DTO, pushing it to the array and returning it, while the network tab below shows a GET to localhost:3000/profiles whose JSON response ends with a fourth profile named Kai"
+  alt="Intro to NestJS, Service (Create Profile) lesson: code editor beside a network tab showing a new profile in the API response."
   width={1400}
   height={630}
   caption="Service (Create Profile) at 8:29, after both bugs are fixed. The create() method on top is the entire solution; the network tab underneath is Scrimba's built-in request tool showing the GET /profiles response with the fourth profile, Kai, that the bash script just created."
@@ -140,7 +143,7 @@ An exception filter is the layer in Nest that catches whatever your code throws 
 
 <Screenshot
   src="/img/scrimba/nestjs/exception-filters-404-not-found-lesson.webp"
-  alt="Scrimba Intro to NestJS lesson Exception Filters - Bubbling Up paused at 6:05: profiles.controller.ts shows findOne returning this.profilesService.findOne(id) with no error handling of its own, and the network tab shows a GET to /profiles/aksldjlaksdfasdf returning a 404 JSON body with the message Profile with ID aksldjlaksdfasdf not found"
+  alt="Intro to NestJS, Exception Filters lesson: code editor beside a network tab showing a 404 response with a custom message."
   width={1400}
   height={630}
   caption="Exception Filters at 6:05. Notice the controller's findOne has no try/catch; the NotFoundException thrown inside the service is what produced the 404 body in the network tab, custom message included. That is the bubbling-up behavior the lesson is named for."

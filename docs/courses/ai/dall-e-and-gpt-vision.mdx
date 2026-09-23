@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Intro to Dall-E and GPT Vision
+
+<DisclosureNotice />
 
 Guil Hernandez's Intro to Dall-E and GPT Vision is a 62 minute Pro course: seven scrims on generating and editing images with DALL-E, two on reading images with GPT-4 Vision, and a small FilmFusion poster app in between. It is a clear hour, but the vision code needs a model swap before it runs today.
 
@@ -96,7 +99,7 @@ The two minute introduction is a slide deck. Guil explains why you would generat
 
 <Screenshot
   src="/img/scrimba/intro-to-dall-e-and-gpt-vision/editing-images-edit-call-lesson.webp"
-  alt="Scrimba Intro to Dall-E and GPT Vision, Editing images scrim paused at 5:15: index.js shows an openai.images.edit call with image and mask fetched from the images folder, a prompt for a modern building with an eco-friendly entrance, response_format b64_json and size 256x256, then a line that sets document.body.innerHTML to an img tag with the base64 data"
+  alt="Intro to Dall-E and GPT Vision, Editing images lesson: the code editor showing an image-edit API call before it runs."
   width={1400}
   height={660}
   caption="5:15 in Editing images, just before Guil runs it. The whole inpainting request is 15 lines: image and mask come in through fetch, the prompt describes the finished building, and response_format is b64_json at 256 by 256 so the result can be embedded in the mini browser without crashing it."
@@ -110,7 +113,7 @@ The challenge brief (2:17) hands you a form with a movie title input, an art sty
 
 <Screenshot
   src="/img/scrimba/intro-to-dall-e-and-gpt-vision/filmfusion-challenge-brief-lesson.webp"
-  alt="Scrimba Intro to Dall-E and GPT Vision, Image generation challenge scrim paused at 1:15: index.js shows the project requirements and stretch goals as a comment, a submit listener that calls preventDefault and reset, and an empty async generatePoster function"
+  alt="Intro to Dall-E and GPT Vision, FilmFusion challenge lesson: the code editor showing the project brief as a comment."
   width={1400}
   height={635}
   caption="1:15 in the challenge brief. Everything you need is in the comment; the form listener already prevents the default submit. The dependency panel shows the one package the whole course uses."
@@ -124,7 +127,7 @@ The solution (6:33, not the 2:17 the table of contents shows) builds the prompt 
 
 <Screenshot
   src="/img/scrimba/intro-to-dall-e-and-gpt-vision/gpt-4-vision-egg-analysis-lesson.webp"
-  alt="Scrimba Intro to Dall-E and GPT Vision, GPT-4 with Vision Part 1 paused at 4:56: index.js shows a chat completions request whose content array holds a text question about an egg found in South Florida and an image_url object, the console shows the assistant's answer about a blue speckled egg from the thrush family, and the preview pane shows the photo of the egg on the ground"
+  alt="Intro to Dall-E and GPT Vision, GPT-4 with Vision lesson: the code editor, console answer and a photo of an egg."
   width={1400}
   height={635}
   caption="4:56 in Vision Part 1. Left: the two-part content array. Bottom: the model's first answer in the console. Right: the egg photo the model is describing."

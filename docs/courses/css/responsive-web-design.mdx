@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn Responsive Web Design
+
+<DisclosureNotice />
 
 Kevin Powell teaches Scrimba's biggest CSS course: about 15 hours across six modules, building four sites from a phone-width layout up to desktop, ending with a three-page company site that has a slide-out mobile menu. It is the strongest bridge from knowing some CSS to controlling layout on purpose, once you accept that a few details show their age.
 
@@ -104,7 +107,7 @@ This is the longest module and the one the course is named after. It opens with 
 
 <Screenshot
   src="/img/scrimba/learn-responsive-web-design/problem-with-ems-lesson.webp"
-  alt="Scrimba Learn Responsive Web Design lesson The problem with ems, paused with the preview window open over the editor: a page titled The CSS Unit em shows a bulleted list whose items render far larger than the heading above them because nested em font sizes multiply"
+  alt="Learn Responsive Web Design, The problem with ems lesson: browser preview showing a bulleted list rendered larger than the heading above it."
   width={1400}
   height={560}
   caption="The problem with ems, paused at 1:33. The body is 10px, the section is 2em, the list is 1.5em and the items are 1.5em again, so the list items end up bigger than the heading. Kevin's conclusion two minutes later: use rem for font size, em for padding and margin."
@@ -136,7 +139,7 @@ Grid gets the same one-property-per-scrim treatment. `display: grid`, `grid-temp
 
 <Screenshot
   src="/img/scrimba/learn-responsive-web-design/auto-fill-grid-reflow-lesson.webp"
-  alt="Scrimba Learn Responsive Web Design lesson auto-fit and auto-fill, paused with the preview open over the editor: a dark page titled Some of my work shows six white project cards laid out four across and two below by a repeat auto-fill grid"
+  alt="Learn Responsive Web Design, auto-fit and auto-fill lesson: browser preview showing a grid of project cards reflowing into columns."
   width={1400}
   height={590}
   caption="auto-fit and auto-fill, paused at 1:58. One line, grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)), and the cards reflow from one column to four as the preview widens. His words at that moment: 'I don't have a media query in here. It's just magically working.'"
@@ -152,7 +155,7 @@ The navigation is where positioning finally appears. He has held it back on purp
 
 <Screenshot
   src="/img/scrimba/learn-responsive-web-design/mobile-navigation-position-fixed-lesson.webp"
-  alt="Scrimba Learn Responsive Web Design lesson on the small-screen navigation, paused with the preview open over the editor: a black full-screen menu with a magenta debug border shows three centered links reading home, about us and contact"
+  alt="Learn Responsive Web Design, mobile navigation lesson: browser preview showing a full-screen menu with centered links."
   width={1400}
   height={590}
   caption="Setting up our navigation for small screens with positioning, paused at 5:18. The nav is position: fixed with top, right, bottom and left at 0, and the magenta border is a debugging aid he removes later. The next scrim adds the JavaScript that opens and closes it."

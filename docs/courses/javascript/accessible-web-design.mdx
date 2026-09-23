@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn Accessible Web Design
+
+<DisclosureNotice />
 
 Fredrik Ridderfalk teaches Scrimba's Learn Accessible Web Design in 96 minutes across 27 scrims, no modules. You repair a broken drone-delivery site called Skynet Eats: fixing contrast, alt text, links, form labels, headings and ARIA one topic at a time, then hunting down every issue on a final contact page. It is a fast, practical fix for shipping inaccessible HTML.
 
@@ -109,7 +112,7 @@ Scrim 4 is a short aside about not relying on colour alone, using two chat-style
 
 <Screenshot
   src="/img/scrimba/learn-accessible-web-design/text-contrast-skynet-eats-homepage-lesson.webp"
-  alt="Scrimba Learn Accessible Web Design lesson Text contrast paused at 0:17: the preview shows the Skynet Eats homepage with the green word Eats sitting on top of a green landscape illustration and dark green footer links on a dark grey footer, with a small AA and AAA requirements slide in the corner"
+  alt="Learn Accessible Web Design, text contrast lesson: a browser preview shows text blending into the background behind it."
   width={1400}
   height={660}
   caption="Scrim 5 at 0:17, the state you are handed. The green Eats blends into the green illustration behind it, and the footer links are dark green on dark grey. Your job is to bring both up to AAA before Fredrik shows his fix."
@@ -141,7 +144,7 @@ Scrim 16 introduces ARIA with the button-versus-div comparison again, states the
 
 <Screenshot
   src="/img/scrimba/learn-accessible-web-design/aria-toggle-switch-role-solution-lesson.webp"
-  alt="Scrimba Learn Accessible Web Design lesson ARIA at 3:59: the editor shows index.html for the Code Poetry site with a nav list and a div with id toggleTheme carrying role switch, aria-checked false and tabindex 0, and a small preview of the page in the corner"
+  alt="Learn Accessible Web Design, ARIA lesson: a code editor shows a toggle switch with role and state attributes added."
   width={1400}
   height={679}
   caption="Scrim 16 at 3:59, the solution: role switch so assistive tech knows what it is, aria-checked so it can announce the state, and tabindex 0 so the keyboard can reach it. Note the skip link on line 10, which you build later."
@@ -161,7 +164,7 @@ The final challenge is in two parts on a brand new contact page. Part one asks y
 
 <Screenshot
   src="/img/scrimba/learn-accessible-web-design/final-challenge-contact-page-lesson.webp"
-  alt="Scrimba Learn Accessible Web Design lesson Final challenge part 1 at 0:27: the editor shows a CSS comment reading Challenge: Identify all accessibility issues using all your newly acquired knowledge, with six empty dashes to fill in, and the preview shows a Reach Out contact form with faint grey placeholder text, no labels and a button that says Done"
+  alt="Learn Accessible Web Design, final challenge lesson: a preview shows a contact form with faint text and no labels."
   width={1400}
   height={660}
   caption="Scrim 23 at 0:27. The blank dashes are yours to fill. Everything wrong with this page is something you fixed earlier: faint placeholders, an image with no alt, inputs with no labels, a vague button, a div where main should be, a page that starts at h2, and px font sizes."

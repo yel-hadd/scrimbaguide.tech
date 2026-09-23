@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn SQL
+
+<DisclosureNotice />
 
 Gregor Thomson teaches this free SQL course in about 3.8 hours, having you run a vintage car dealership's database and write queries to answer its owner's requests. It is a strong first grounding in SQL: free, short, and heavy on practice, though it stops before schema design or connecting a database to an app.
 
@@ -103,7 +106,7 @@ The OR lesson is the one to pay attention to. Gregor adds `AND condition > 3` to
 
 <Screenshot
   src="/img/scrimba/learn-sql/or-and-precedence-bug-lesson.webp"
-  alt="Scrimba Learn SQL lesson OR paused at 2:42: the editor shows SELECT brand, model, condition, price FROM cars WHERE price < 250000 OR brand = 'Porsche' AND condition > 3, and the Runner below lists cars with condition 1, 2 and 3 that should have been excluded"
+  alt="Learn SQL, OR lesson: code editor beside query results still including rows that should be excluded."
   width={1400}
   height={660}
   caption="The OR lesson at 2:42. The query has AND condition > 3 on the end, but the results still include cars in condition 1, 2 and 3. Gregor fixes it with brackets around the OR a few seconds later."
@@ -125,7 +128,7 @@ Alter table (9:48) is the lesson I would point a skeptic at. Adding a `dealershi
 
 <Screenshot
   src="/img/scrimba/learn-sql/alter-table-not-null-error-lesson.webp"
-  alt="Scrimba Learn SQL lesson Alter table paused at 6:15: the editor shows the ALTER TABLE statements adding a NOT NULL and a foreign key constraint followed by an INSERT with NULL as the dealership_id, and the Runner shows the error null value in column dealership_id of relation cars violates not-null constraint"
+  alt="Learn SQL, Alter table lesson: code editor beside a database error message in the runner panel."
   width={1400}
   height={660}
   caption="Alter table at 6:15. The INSERT at the bottom of the editor passes NULL for dealership_id on purpose, and the Runner prints the not-null constraint error from PGlite. The foreign key violation is demonstrated the same way a minute later."
@@ -135,7 +138,7 @@ Joins get four scrims. A two minute explainer introduces inner, left, right and 
 
 <Screenshot
   src="/img/scrimba/learn-sql/full-join-null-rows-lesson.webp"
-  alt="Scrimba Learn SQL lesson Full join, inner join and drop paused at 5:35: the editor shows SELECT name, role, city, state FROM staff FULL JOIN dealerships ON dealership_id = dealerships.id, and the Runner shows staff rows with null city and state followed by dealership rows with null name and role"
+  alt="Learn SQL, Full join lesson: query results panel showing rows with null values from unmatched tables."
   width={1400}
   height={660}
   caption="The full join at 5:35, scrolled to the bottom of the output: three new hires with no dealership yet (null city and state), then six dealerships with no staff (null name and role). Switching FULL to INNER removes all nine rows."
@@ -155,7 +158,7 @@ The three CASE lessons are the practical payoff. CASE in SELECT turns condition 
 
 <Screenshot
   src="/img/scrimba/learn-sql/case-in-select-condition-labels-lesson.webp"
-  alt="Scrimba Learn SQL lesson CASE in SELECT paused at 3:21: the editor shows a CASE expression with WHEN condition >= 4 THEN 'Excellent', WHEN condition >= 3 THEN 'Fair', WHEN condition >= 1 THEN 'Poor', ELSE 'Wrecked', and the Runner lists cars with their numeric condition next to the matching label"
+  alt="Learn SQL, CASE in SELECT lesson: code editor beside a results table pairing numbers with word labels."
   width={1400}
   height={660}
   caption="CASE in SELECT at 3:21. The CASE block in the editor maps the numeric condition column to a word, and the Runner shows both side by side. The follow-up challenge uses the same shape to compute bonuses per staff member."

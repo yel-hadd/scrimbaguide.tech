@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Data Structures and Algorithms: Binary Search
+
+<DisclosureNotice />
 
 Jonathan Lee Martin's one-hour Pro course takes one algorithm and makes you write it six ways in JavaScript: loops, recursion, tail recursion, array slicing, and two data structures you build yourself, each a challenge before a walkthrough. It rewards practicing one algorithm deeply. Skip it if you want a survey of data structures.
 
@@ -80,7 +83,7 @@ The second scrim is the only slide lesson. Over 22 slides Jonathan walks through
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms-binary-search/binary-search-splitting-strategy-slide-lesson.webp"
-  alt="Slide from the Binary Search lesson in Scrimba's binary search course showing a sorted array of the letters a, d, e, h, m, p, x with indexes 0 to 6 and a yellow arrow pointing at the middle element m"
+  alt="Data Structures and Algorithms: Binary Search, splitting strategy slide: a sorted array with an arrow at the middle element."
   width={1279}
   height={720}
   caption="Lesson 2 at 7:31: the splitting strategy on a seven element array. Jonathan has just shown that the sweeper takes up to 63 lookups on 63 elements while the splitter takes six."
@@ -94,7 +97,7 @@ The constraints for version one are loops and fixed memory. Jonathan's solution 
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms-binary-search/imperative-challenge-start-failing-test-lesson.webp"
-  alt="Scrimba Imperative lesson at the start: the editor shows binary-search.js with a defaultCompare function and a binarySearchWithLoops skeleton that returns -1, the file list includes binary-search.test.js, the dependencies panel lists assert 2.0.0, and the console shows AssertionError: Expected values to be strictly deep-equal"
+  alt="Data Structures and Algorithms: Binary Search, Imperative lesson: the code editor with a failing test in the console."
   width={1400}
   height={660}
   caption="Lesson 3 at 0:00, the state you pause on. The skeleton returns -1, the test file is one click away, and the console shows the failing assertion. Your job is to make the console go quiet before pressing play."
@@ -108,7 +111,7 @@ The best moment is the bug. He saves the file, expects passing tests, and gets `
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms-binary-search/recursion-maximum-call-stack-error-lesson.webp"
-  alt="Scrimba Recursion lesson paused after saving: the editor shows binarySearchWithRecursion with default parameters left = 0 and right = array.length - 1 and a nested ternary that recurses left or right, and the console shows RangeError: Maximum call stack size exceeded at binary-search.js line 35"
+  alt="Data Structures and Algorithms: Binary Search, Recursion lesson: the console shows a stack overflow error after saving."
   width={1400}
   height={660}
   caption="Lesson 4 at 5:57. The recursive version is written but has no base case, so the first save blows the call stack. Jonathan reads the error and adds the guard in the next thirty seconds."
@@ -130,7 +133,7 @@ This is what the course has been building toward. The array splitting code from 
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms-binary-search/array-view-slice-get-challenge-lesson.webp"
-  alt="Scrimba Array View lesson paused at the challenge: the editor shows the finished binarySearchWithArraySplitting function above an exported ArrayView factory with length and toArray implemented and slice and get left as empty arrow functions, and a binarySearchWithArrayView wrapper below"
+  alt="Data Structures and Algorithms: Binary Search, Array View lesson: the code editor showing the challenge's unfinished functions."
   width={1400}
   height={660}
   caption="Lesson 7 at 3:17, the challenge brief. length and toArray are done; slice and get are empty arrow functions you have to fill in without copying the array. The tests for ArrayView live in binary-search.test.js."

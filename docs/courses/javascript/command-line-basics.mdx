@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Command Line Basics
+
+<DisclosureNotice />
 
 Ajo Borgvold teaches this free command line course in 101 minutes across two sections: a hands-on terminal built into Scrimba, then slides once the browser terminal can't run what's taught. You organize a fictional startup's messy file system through seven graded challenges, and it's the right first stop if you have never typed a command.
 
@@ -90,7 +93,7 @@ Then the drills start. "Getting Oriented" teaches `pwd`, `ls`, `cd` and `clear`,
 
 <Screenshot
   src="/img/scrimba/command-line-basics/rmdir-not-empty-error-lesson.webp"
-  alt="Scrimba Command Line Basics lesson on mkdir, rmdir and rm -r paused at 3:02: the editor shows the two-step challenge brief in challenge.md, and the terminal below shows ls listing family_photos_1988 and then rmdir family_photos_1988 failing with rmdir: ENOTEMPTY: directory not empty"
+  alt="Command Line Basics, Creating and Deleting Directories lesson: the terminal shows an error after rmdir fails on a full folder."
   width={1400}
   height={660}
   caption="Lesson 'Creating and Deleting Directories' at 3:02. Ajo runs rmdir on the family_photos_1988 folder first, gets ENOTEMPTY, and only then switches to rm -r. The challenge brief stays open in the editor above the terminal."
@@ -100,7 +103,7 @@ Then the drills start. "Getting Oriented" teaches `pwd`, `ls`, `cd` and `clear`,
 
 <Screenshot
   src="/img/scrimba/command-line-basics/cat-team-members-challenge-lesson.webp"
-  alt="Scrimba Command Line Basics lesson Reading from Files: cat paused at 5:09, with the four-step challenge brief in the editor and the terminal showing cat team_members.txt printing five lines: AB, CEO and creative genius; NN, hard-working intern; IP, visual design; VK, translation services; TC, sound design"
+  alt="Command Line Basics, Reading from Files lesson: the terminal prints a merged team list after the challenge solution runs."
   width={1400}
   height={660}
   caption="Lesson 'Reading from Files: cat' at 5:09, the moment of truth in the challenge solution. The three external people have been appended to team_members.txt with cat and >>, and cat prints the merged team."
@@ -126,7 +129,7 @@ The pipe lesson ties the last three together with `sort team_members.txt | uniq 
 
 <Screenshot
   src="/img/scrimba/command-line-basics/sort-uniq-pipe-slide-lesson.webp"
-  alt="Scrimba Command Line Basics lesson Combining Commands with the Pipe at 2:21: a slide showing a macOS zsh terminal window where cat team_members.txt prints a list with duplicates, sort team_members.txt groups the duplicates together, and sort team_members.txt | uniq, circled in pink, prints the five unique team members"
+  alt="Command Line Basics, Combining Commands with the Pipe lesson: an annotated slide of a real terminal shows duplicates removed."
   width={1400}
   height={660}
   caption="Lesson 'Combining Commands with the Pipe' at 2:21. This is what section two looks like: a screenshot of Ajo's local terminal on a slide, annotated live. The pink circle marks the pipe; the left circle marks the de-duplicated output."

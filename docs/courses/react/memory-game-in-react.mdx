@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Build a Memory Game in React
+
+<DisclosureNotice />
 
 Ajo Borgvold's Pro project course has you build one emoji memory game in React over about 4.4 hours, with a full module on making it work for screen reader and keyboard users. It is the project to pick over a generic React build if accessibility is the skill you came for.
 
@@ -96,7 +99,7 @@ From there the challenges start and do not stop. "Fetch data from API" has you m
 
 <Screenshot
   src="/img/scrimba/memory-game-in-react/fetch-data-from-api-reference-error-lesson.webp"
-  alt="Scrimba Build a Memory Game in React lesson Fetch data from API paused at 4:22: App.jsx shows an async startGame function with a try block fetching from the EmojiHub API and a throw new Error on a bad response, the console below reads ReferenceError: reponse is not defined, and the small preview on the right shows the Memory start screen"
+  alt="Build a Memory Game in React, Fetch data from API lesson: code editor beside a console reference error."
   width={1400}
   height={660}
   caption="4:22 of the first challenge: the console shows ReferenceError: reponse is not defined. Ajo typed reponse on line 18 while narrating the solution and fixes it a few seconds later. The dependencies panel confirms React 18.2."
@@ -106,7 +109,7 @@ The two "Get random emojis" scrims open with "mini challenges" (think, no typing
 
 <Screenshot
   src="/img/scrimba/memory-game-in-react/duplicate-and-shuffle-emojis-lesson.webp"
-  alt="Scrimba Build a Memory Game in React lesson Duplicate and shuffle emojis paused at 5:22: the preview window shows the Memory heading and ten face-up emoji cards in two rows, five pairs (chick, dragon, shamrock, spider, dog) in a shuffled order, with the editor blurred behind it"
+  alt="Build a Memory Game in React, Duplicate and shuffle emojis lesson: preview showing ten face-up emoji cards."
   width={1400}
   height={660}
   caption="End of module 1 at 5:22: ten cards, five pairs, shuffled. They still show their emoji; the face-down question marks come in module 2."
@@ -120,7 +123,7 @@ It opens with the "side note" about re-recorded lessons ("recordings show no mer
 
 <Screenshot
   src="/img/scrimba/memory-game-in-react/conditional-memory-card-styling-lesson.webp"
-  alt="Scrimba Build a Memory Game in React lesson Conditional memory card styling paused at 8:42: the preview window shows the Memory game with eight face-down question-mark cards and a matched pair of goats greyed out, the editor blurred behind"
+  alt="Build a Memory Game in React, Conditional memory card styling lesson: preview showing a greyed-out matched card pair."
   width={1400}
   height={660}
   caption="8:42: a matched pair of goats greyed out with a not-allowed cursor. The next module points out these cards still fire the click handler, and disables them."
@@ -142,7 +145,7 @@ The final challenge closes the accessibility loop. The form reappears after game
 
 <Screenshot
   src="/img/scrimba/memory-game-in-react/game-over-play-again-lesson.webp"
-  alt="Scrimba Build a Memory Game in React lesson Improve accessibility of Form component paused at 7:57: the preview window shows the finished game with a focused box reading You've matched all the memory cards! and a Play again button above ten greyed-out matched emoji cards"
+  alt="Build a Memory Game in React, final lesson: preview showing the game-over screen with a Play again button."
   width={1400}
   height={660}
   caption="7:57 of the last challenge: game over, all ten cards matched and greyed, the GameOver box focused so a screen reader announces it. One Tab moves focus to Play again."

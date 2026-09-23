@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn Express.js
+
+<DisclosureNotice />
 
 Scrimba's free Express course is taught by Tom Chant across about four hours and two projects: Startup Planet, a REST API with query and path parameter filtering, and Spiral Sounds, a SQLite-backed vinyl store with sessions and hashed passwords. It's a solid four hours if you want to understand what a backend framework does, not copy a boilerplate.
 
@@ -95,7 +98,7 @@ Query parameters get an aside and then the module's biggest challenge, "Filterin
 
 <Screenshot
   src="/img/scrimba/learn-expressjs/filtering-by-query-params-lesson.webp"
-  alt="Scrimba Learn Express.js lesson Filtering by Query Params paused at 6:44: the editor shows the challenge comment with three test-case URLs, the first one highlighted, and Scrimba's Network tool on the right shows a GET request to /api with industry, country and has_mvp query params returning the GreenGrid Energy JSON object"
+  alt="Learn Express.js, Filtering by Query Params challenge: code editor beside a network request tool showing a filtered JSON result."
   width={1400}
   height={629}
   caption="Filtering by Query Params at 6:44. The Network tool on the right is Scrimba's own request client, so you test the API without leaving the scrim: the first test case (renewable energy, Germany, has_mvp=true) returns exactly one object, GreenGrid Energy, as the brief said it should."
@@ -113,7 +116,7 @@ The database section is four asides and four challenges. "Setting up the Databas
 
 <Screenshot
   src="/img/scrimba/learn-expressjs/add-search-functionality-lesson.webp"
-  alt="Scrimba Learn Express.js lesson Add Search Functionality paused at 3:21: the editor shows the getProducts controller with a WHERE title LIKE ? OR artist LIKE ? clause and a searchPattern built from percent signs, and the mini browser on the right shows the Spiral Sounds store with the letters ec typed into the search box and three matching records"
+  alt="Learn Express.js, Add Search Functionality lesson: code editor beside a browser preview of the vinyl store's search results."
   width={1400}
   height={629}
   caption="Add Search Functionality at 3:21, the last challenge of module two. Typing 'ec' into the search box narrows the grid live; the controller on the left builds a '%ec%' pattern and pushes it three times for the title, artist and genre placeholders, which Tom admits 'looks super clunky but it is the way to do it.'"
@@ -131,7 +134,7 @@ The order is careful. A `users` table, then a `/register` route, then an aside o
 
 <Screenshot
   src="/img/scrimba/learn-expressjs/login-bcrypt-compare-lesson.webp"
-  alt="Scrimba Learn Express.js lesson Login paused at 7:18: the editor shows the loginUser function with a SELECT * FROM users WHERE username = ? query, a 401 Invalid credentials response and const isValid = await bcrypt.compare(password, user.password), while the mini browser on the right shows the Spiral Sounds store header reading Welcome, Test Account!"
+  alt="Learn Express.js, Login challenge: code editor beside a browser preview showing a signed-in welcome message."
   width={1400}
   height={629}
   caption="Login at 7:18, right after Tom signs in with the test account and the page redirects. The header now reads Welcome, Test Account! because the frontend asked /api/auth/me and the session cookie answered. The bcrypt.compare line on the left is the whole password check."

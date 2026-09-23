@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Intro to Mistral AI
+
+<DisclosureNotice />
 
 Intro to Mistral AI is Scrimba's free, 84-minute course on building with Mistral's models in JavaScript, taught mainly by Per Borgen with Gil Hernandez and Mistral's Sophia Yang. In 25 scrims you build a RAG bot over an employee handbook and a function-calling agent, and it earns its short runtime.
 
@@ -118,7 +121,7 @@ The build starts with chunking. Per imports `RecursiveCharacterTextSplitter` fro
 
 <Screenshot
   src="/img/scrimba/intro-to-mistral-ai/embeddings-challenge-brief-lesson.webp"
-  alt="Scrimba Intro to Mistral AI embeddings challenge paused at 0:49: index.js shows a comment block asking you to write createEmbeddings(chunks) and return an array of objects with content and embedding keys, with mistralai 0.1 and langchain 0.1.28 listed as dependencies"
+  alt="Intro to Mistral AI, embeddings challenge screen: a code editor shows only a comment brief, no code written yet."
   width={1400}
   height={635}
   caption="The embeddings challenge brief at 0:49. Per has deleted his code from the previous scrim: 'yeah, this is Scrimba. You are going to write the code on your own.' Note the dependency versions on the left."
@@ -130,7 +133,7 @@ Retrieval uses a similarity function that Supabase supplies. Per is upfront that
 
 <Screenshot
   src="/img/scrimba/intro-to-mistral-ai/rag-handbook-answer-in-console-lesson.webp"
-  alt="Scrimba Intro to Mistral AI RAG lesson paused at 3:57: index.js shows the four-step flow of input, createEmbedding, retrieveMatches and generateChatResponse, and the console prints a full-sentence answer saying a full-time employee still receives one paid day off when Christmas falls on a Sunday"
+  alt="Intro to Mistral AI, RAG lesson: a code editor beside a console printing a full sentence answer from the handbook bot."
   width={1400}
   height={635}
   caption="The finished RAG bot at 3:57 of the last RAG scrim. The prompt is just 'Handbook context:' plus the five chunks and 'Question:' plus the query, and the console shows the model answering from the handbook."
@@ -144,7 +147,7 @@ The first scrim sends the prompt "Is the transaction T1001 paid?" with a `tools`
 
 <Screenshot
   src="/img/scrimba/intro-to-mistral-ai/function-calling-tool-calls-response-lesson.webp"
-  alt="Scrimba Intro to Mistral AI function calling lesson paused at 3:11: output.js shows the model's response object with model mistral-large-latest, an empty content string, a tool_calls array naming getPaymentStatus with the argument transactionId T1001, and finish_reason tool_calls"
+  alt="Intro to Mistral AI, function calling lesson: a code editor shows the model's raw response object after a tool call."
   width={1400}
   height={635}
   caption="Per pastes the raw response into output.js at 3:11. The two fields the rest of the section is built on are tool_calls and finish_reason: 'tool_calls' means the model wants you to run something and report back."

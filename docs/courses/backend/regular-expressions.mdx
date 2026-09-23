@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn Regular Expressions
+
+<DisclosureNotice />
 
 Learn Regular Expressions is a free, 46-minute Scrimba course on JavaScript regex, recorded by Beau Carnes of freeCodeCamp as 34 short screencasts. There's no project, just one symbol or method per scrim, building from `.test()` to lookaheads and capture groups. If you already write JavaScript and want regex to finally click, it does the job in under an hour.
 
@@ -98,7 +101,7 @@ Beau's definition is the clearest sentence in the course: "A greedy match finds 
 
 <Screenshot
   src="/img/scrimba/learn-regular-expressions/lazy-matching-lesson.webp"
-  alt="Scrimba Learn Regular Expressions lesson Find Characters with Lazy Matching, paused at 3:14: the editor shows let myRegex = /<.*?>/ applied to an h1 string, and the console below prints an array containing only the opening h1 tag"
+  alt="Learn Regular Expressions, lazy matching lesson: a code editor and console show a pattern now matching only the first tag."
   width={1400}
   height={625}
   caption="Lazy matching at 3:14. The question mark has just been added to the pattern and the console now shows only the opening tag; two seconds earlier, without it, the same line printed the entire h1 element."
@@ -114,7 +117,7 @@ The scrim that matters here is "Restrict Possible Usernames," at 2:45 the one pl
 
 <Screenshot
   src="/img/scrimba/learn-regular-expressions/username-validator-lesson.webp"
-  alt="Scrimba Learn Regular Expressions lesson Restrict Possible Usernames, paused at 2:41: a comment block lists the three username rules, and below it the finished pattern userCheck = /^[A-Za-z]{2,}\d*$/ is highlighted in the editor"
+  alt="Learn Regular Expressions, username validator lesson: a code editor shows the finished pattern highlighted below the rules."
   width={1400}
   height={625}
   caption="The username validator at 2:41, complete. The three rules sit in the comment at the top and the finished pattern is selected on line 8. This is the scrim to pause and rewrite yourself with a different set of rules."
@@ -132,7 +135,7 @@ Three scrims on curly-brace quantifiers: `{3,6}` for a range, `{4,}` for a minim
 
 <Screenshot
   src="/img/scrimba/learn-regular-expressions/capture-groups-lesson.webp"
-  alt="Scrimba Learn Regular Expressions lesson Reuse Patterns Using Capture Groups, paused at 4:59: the editor shows repeatRegex = /(\w+)\s\1/ with comments noting it returns true and the array regex regex, regex, and below it the finished reRegex = /^(\d+)\s\1\s\1$/ for matching a number repeated three times"
+  alt="Learn Regular Expressions, capture groups lesson: a code editor shows a warm-up pattern and the finished exercise pattern."
   width={1400}
   height={625}
   caption="Capture groups at 4:59, the end of the longest scrim. Line 2 is the warm-up (a word followed by itself); line 7 is the finished exercise with the anchors that stop it matching four repeats."

@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # CSS Challenges
+
+<DisclosureNotice />
 
 Scrimba's CSS Challenges, taught by Treasure Porth, hands you 25 recreate-this-component briefs and recorded solutions in about 2.6 hours: a gradient button, GitHub's expanding search bar, seven country flags, Instagram's stories menu, and more. It won't teach you CSS, but as a way to pressure-test what you already know, it delivers.
 
@@ -49,7 +52,7 @@ This fits you if you already know flexbox, grid and positioning and want to find
   />
   <Screenshot
     src="/img/scrimba/css-challenges/colorful-button-requirements-slide.webp"
-    alt="Requirements slide from the Colorful Button challenge in Scrimba's CSS Challenges: gradient border at 115 degrees, hover state where the gradient flips horizontally, the button grows and text turns from gray to white, and center the button on the page"
+    alt="CSS Challenges, Colorful Button brief: a slide lists the gradient, hover and centering requirements to build."
     width={1280}
     height={720}
     caption="Every challenge brief has a slide like this one (Colorful Button, 0:56). The requirements are short and testable."
@@ -93,7 +96,7 @@ Then four challenges. Spoiler Revealer hides movie spoilers behind black bars th
 
 <Screenshot
   src="/img/scrimba/css-challenges/colorful-button-solution-hover-lesson.webp"
-  alt="Scrimba CSS Challenges, Solution: Colorful Button paused at 6:06: index.css shows a .button-border wrapper with a 115-degree linear-gradient background, a .button rule with border none and font-family inherit, and hover rules that switch the gradient to 230 degrees and enlarge the padding; the preview shows the Start Coding button with its gradient border"
+  alt="CSS Challenges, Colorful Button solution: the code editor sits beside a preview of the finished gradient button."
   width={1400}
   height={660}
   caption="The finished Colorful Button solution at 6:06. Notice the two hover rules: one on the wrapper to flip the gradient (230deg instead of reversing the color list) and one on the button inside it, plus font-family: inherit, which Treasure explains buttons need because they keep the browser default font."
@@ -105,7 +108,7 @@ Loading Animation 1 introduces `@keyframes` with the smallest possible example: 
 
 <Screenshot
   src="/img/scrimba/css-challenges/loading-animation-1-keyframes-lesson.webp"
-  alt="Scrimba CSS Challenges, Solution: Loading Animation 1 paused at 2:43: index.css shows a .circle rule with animation: pulse infinite alternate 1s and a @keyframes pulse block going from a dark background to a light one at 1.6em, while the preview shows three gray dots centered in a white pane"
+  alt="CSS Challenges, Loading Animation 1 solution: the editor shows a short keyframes block next to the pulsing dots preview."
   width={1400}
   height={660}
   caption="The complete Loading Animation 1 solution at 2:43. The whole thing is one animation line and one keyframes block; the alternate keyword is what turns a snap-back into a pulse."
@@ -135,7 +138,7 @@ The Animated Progress Bar reuses the fake-pause idea from the carousel: the keyf
 
 <Screenshot
   src="/img/scrimba/css-challenges/codepen-tile-solution-lesson.webp"
-  alt="Scrimba CSS Challenges, Solution: Codepen Tile paused at 5:44: index.css shows the :root variables for the Noto Sans font and the card, stats and username colors, plus a body rule that applies them; the preview shows the finished tile with a purple gradient thumbnail, the title Abstract Gradient Project, a cat avatar and the username Scrimsbee McScrimslee"
+  alt="CSS Challenges, CodePen Tile solution: the preview shows the finished tile beside CSS variables in the editor."
   width={1400}
   height={660}
   caption="The finished CodePen tile at 5:44 of its solution. The stats row only appears on hover, so it is not visible here; what you can see is the pattern every challenge shares: colors and the font handed to you as CSS variables at the top of index.css."

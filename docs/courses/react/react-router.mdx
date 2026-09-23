@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn React Router
+
+<DisclosureNotice />
 
 Bob Ziroll teaches Scrimba's dedicated routing course in 9.7 hours and 139 scrims, all of it spent building one app: VanLife, a camper van rental site with three levels of nested routes. It is the most complete routing course on Scrimba, and the most current one, since it covers the data router that React Router 7 is built on.
 
@@ -98,7 +101,7 @@ Then VanLife starts. "VanLife project bootstrapping" is an eight-minute challeng
 
 <Screenshot
   src="/img/scrimba/learn-react-router/vans-page-fetch-in-useeffect-lesson.webp"
-  alt="Scrimba Learn React Router lesson Challenge: Vans Page Part 2, paused at 7:49: Vans.jsx fetches /api/vans inside a useEffect and maps the vans to tiles, while the preview shows the VanLife vans page with Modest Explorer at 60 dollars a day and Beach Bum at 80 dollars a day"
+  alt="Learn React Router, Vans Page challenge: a code editor beside a preview listing van rental cards."
   width={1400}
   height={660}
   caption="The Vans page at 7:49 of the second Vans Page challenge, right after the CSS lands. Note the fetch inside useEffect with an empty dependency array; module 4 replaces this whole block with a loader."
@@ -114,7 +117,7 @@ The sequence is careful. A layout route with `Outlet` fixes the copy-pasted nav 
 
 <Screenshot
   src="/img/scrimba/learn-react-router/host-layout-nested-routes-lesson.webp"
-  alt="Scrimba Learn React Router lesson Creating the Host Layout, paused at 6:15: index.jsx shows a Route for /host rendering HostLayout with child routes for /host, /host/income and /host/reviews, while the preview at /host shows the VanLife nav bar, a second Dashboard Income Reviews nav, and the text Dashboard goes here"
+  alt="Learn React Router, Host Layout lesson: a code editor beside a preview showing the nested host nav bar."
   width={1400}
   height={660}
   caption="The temporary workaround at 6:15 of Creating the Host Layout: a child route repeating the /host path so the dashboard renders inside the HostLayout's Outlet. The next two lessons replace it with relative paths and an index route."
@@ -132,7 +135,7 @@ The last five scrims set up module 4. "Happy Path vs. Sad Path" opens on a "Data
 
 <Screenshot
   src="/img/scrimba/learn-react-router/sad-path-app-crash-typeerror-lesson.webp"
-  alt="Scrimba Learn React Router lesson Happy Path vs Sad Path, paused at 2:08: Vans.jsx still fetches in a useEffect, the preview at /vans is blank, and the console shows TypeError: Cannot read properties of undefined (reading 'map') with a React error boundary suggestion"
+  alt="Learn React Router, Happy Path vs Sad Path: a blank preview beside a console showing a crash error."
   width={1400}
   height={660}
   caption="The deliberate crash at 2:08 of Happy Path vs. Sad Path: the server returns a 400, vans is undefined, and .map throws. Everything from here to the end of module 4 exists to make this screen impossible."
@@ -154,7 +157,7 @@ The actions half starts with a lesson titled "Take: Forms in React are bad," mar
 
 <Screenshot
   src="/img/scrimba/learn-react-router/redirectto-login-action-lesson.webp"
-  alt="Scrimba Learn React Router lesson redirectTo in VanLife, paused at 4:15: Login.jsx shows a loader reading the message search param and an async action that reads formData, calls loginUser, sets loggedin in localStorage and returns redirect(pathname), while the preview shows the VanLife sign-in form and an address bar reading /login?message=You must log in first.&redirectTo=/host/vans/... cut off at the edge"
+  alt="Learn React Router, redirectTo lesson: a code editor beside a sign-in form preview with a redirect message."
   width={1400}
   height={660}
   caption="The end state of module 5 at 4:15 of redirectTo in VanLife. The loader and the action live in the same file as the component, the login message rides in the query string, and after a successful login the action redirects to the page the user was trying to reach, here /host/vans/1/pricing."

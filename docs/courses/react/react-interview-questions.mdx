@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # React Interview Questions
+
+<DisclosureNotice />
 
 React Interview Questions is Cassidy Williams' 41-minute Pro course: nine slide-deck scrims of interview questions with her model answers, plus one coding exercise that converts a class-based counter into a function component with useState. If your interview is a week away and you already know React, it is a well spent lunch break.
 
@@ -101,7 +104,7 @@ The Virtual DOM scrim (also a free preview) asks two questions. The first, what 
 
 <Screenshot
   src="/img/scrimba/react-interview-questions/virtual-dom-vs-real-dom-table-lesson.webp"
-  alt="Scrimba React Interview Questions, The Virtual DOM scrim paused at 1:35: a yellow slide with a two-column table comparing Virtual DOM (can't directly update HTML, acts as a copy of the real DOM, more of a pattern than a technology, synced with react-dom) and the real DOM (directly updates HTML, full repaint on update, an object-based representation of an HTML document)"
+  alt="React Interview Questions, The Virtual DOM lesson: a slide with a two-column table comparing the virtual and real DOM."
   width={1045}
   height={588}
   caption="The comparison table at 1:35 of the Virtual DOM scrim. Cassidy walks the rows, then tells you the one word to lead with in an interview: diffing."
@@ -115,7 +118,7 @@ JSX is the first scrim where Cassidy leaves the slides for the editor. Three que
 
 <Screenshot
   src="/img/scrimba/react-interview-questions/jsx-create-element-without-jsx-lesson.webp"
-  alt="Scrimba React Interview Questions, JSX scrim paused at 3:33: index.js shows const Component = () => React.createElement('div', null, 'Hellllooooo!') rendered with ReactDOM.render, the dependencies panel lists react and react-dom 16.13.1, and the preview shows the text Hellllooooo!"
+  alt="React Interview Questions, JSX lesson: code editor showing a component built without JSX syntax."
   width={1400}
   height={690}
   caption="3:33 of the JSX scrim: the same component with React.createElement instead of JSX, and the preview still rendering. Note react@16.13.1 in the dependencies panel on the left."
@@ -143,7 +146,7 @@ Then, at 4:53: "The last thing I wanted to do is not on a slide." The editor hol
 
 <Screenshot
   src="/img/scrimba/react-interview-questions/convert-class-counter-challenge-lesson.webp"
-  alt="Scrimba React Interview Questions, Miscellaneous questions scrim paused at 4:59: index.js shows a class Counter extends React.Component with this.state count and two buttons that call this.setState to decrement and increment, and the preview on the right shows a minus button, 0, and a plus button"
+  alt="React Interview Questions, Miscellaneous questions lesson: code editor showing a class-based counter component beside its preview."
   width={1400}
   height={690}
   caption="The one coding task, at 4:59: a class-based counter to convert into a function component with useState. Pause here and do it yourself before the solution starts at 5:19."

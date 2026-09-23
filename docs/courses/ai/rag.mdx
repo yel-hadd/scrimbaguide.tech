@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn RAG
+
+<DisclosureNotice />
 
 Learn RAG is Scrimba's Pro course on Retrieval-Augmented Generation: fetching text from your data and feeding it to a language model before it answers. Guil Hernandez teaches it in about 94 minutes and 22 scrims, from embeddings to a movie-recommendation chatbot on Supabase, the fastest route to retrieval if you already call the OpenAI API from JavaScript.
 
@@ -45,7 +48,7 @@ The course has no chapter title cards; every scrim opens straight into a slide o
 <div className="screenshot-grid">
   <Screenshot
     src="/img/scrimba/learn-rag/what-are-embeddings-vector-graph-lesson.webp"
-    alt="Slide from the What are embeddings? lesson in Scrimba's Learn RAG course: a 2D graph with points for cat (4.5, 12.2), feline (4.7, 12.6) and kitten (5.1, 12.1) clustered together, and dog (7.5, 10.5) and man's best friend (7.6, 10.7) plotted nearby"
+    alt="Learn RAG, What are embeddings lesson: a slide showing a 2D scatter graph of word points."
     width={1277}
     height={719}
     caption="Lesson 2 at 3:12: words with similar meanings land close together in vector space. The whole idea of the course on one slide."
@@ -53,7 +56,7 @@ The course has no chapter title cards; every scrim opens straight into a slide o
   />
   <Screenshot
     src="/img/scrimba/learn-rag/solo-project-popchoice-core-requirements.webp"
-    alt="Core Requirements slide from the PopChoice solo project in Scrimba's Learn RAG course: build it from scratch, follow the design, use a vector database and the OpenAI API, use the movies array, next to a phone mockup of the PopChoice app with three questions and a Let's Go button"
+    alt="Learn RAG, PopChoice solo project brief: a slide of requirements next to a phone app mockup."
     width={1277}
     height={720}
     caption="The PopChoice solo project brief at 1:35, with the Figma design on the right."
@@ -101,7 +104,7 @@ The first challenge follows. It is the first of three scrims with Scrimba's "Cha
 
 <Screenshot
   src="/img/scrimba/learn-rag/pair-text-with-embedding-challenge-lesson.webp"
-  alt="Scrimba Learn RAG challenge Pair text with embedding paused at 2:49: the editor shows the challenge brief as a comment and Guil's solution mapping over the input array with an async callback that calls openai.embeddings.create with model text-embedding-ada-002 and builds a data object with content and embedding, while the console below prints objects whose embedding arrays start with numbers like 0.002089147"
+  alt="Learn RAG, Pair text with embedding challenge: code editor beside a console printing embedding results."
   width={1400}
   height={639}
   caption="The first challenge at 2:49, after Guil runs his solution. The console shows the five content-plus-embedding objects."
@@ -139,7 +142,7 @@ On `podcasts.txt`, Guil imports `CharacterTextSplitter`, sets `chunkSize: 150` a
 
 <Screenshot
   src="/img/scrimba/learn-rag/chunking-text-langchain-splitter-lesson.webp"
-  alt="Scrimba Learn RAG lesson Chunking text from documents paused at 5:53: index.js imports CharacterTextSplitter from langchain/text_splitter, fetches podcasts.txt, and constructs the splitter with separator space, chunkSize 150 and chunkOverlap 15 before calling splitter.createDocuments; the sidebar lists langchain@0.0.167 as the only dependency"
+  alt="Learn RAG, Chunking text lesson: a code editor configuring the LangChain text splitter."
   width={1400}
   height={384}
   caption="The splitter configuration at 5:53, just after Guil sets the overlap to 15 characters."
@@ -159,7 +162,7 @@ The fix is to push each assistant reply onto `chatMessages` so the history trave
 
 <Screenshot
   src="/img/scrimba/learn-rag/ai-chatbot-proof-of-concept-reelrecs-lesson.webp"
-  alt="Scrimba Learn RAG lesson AI chatbot proof of concept paused at 4:17, with the preview pane in focus over a blurred editor: the ReelRecs app shows a How can I help? input with a send button and a reply beginning Hi Guil! Given your interest in action movies, I would recommend Expend4bles, followed by Top Gun: Maverick and Blue Beetle"
+  alt="Learn RAG, AI chatbot proof of concept: a chat preview showing the ReelRecs bot's movie reply."
   width={1400}
   height={617}
   caption="The finished ReelRecs chatbot at 4:17, answering from the movies table after Guil tells it his name and that he likes action movies. The reply continues below the fold of the preview pane."

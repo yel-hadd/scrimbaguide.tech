@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn Next.js
+
+<DisclosureNotice />
 
 Scrimba's free Learn Next.js course runs about 8.5 hours: Bob Ziroll teaches the first two sections, Rachel Johnson the third. You build PrintForge, a 3D-model catalog, first with static pages and the App Router, then a SQLite database with search, sort, and pagination. It assumes React already, and six early scrims no longer run inside Scrimba.
 
@@ -42,7 +45,7 @@ Take it once you know React. PrintForge is a site where 3D printing enthusiasts 
 <div className="screenshot-grid">
   <Screenshot
     src="/img/scrimba/learn-nextjs/printforge-what-you-build-card.webp"
-    alt="Slide from the introduction of Scrimba's Learn Next.js course titled PrintForge, showing mobile and desktop mockups of the home page and the 3D models catalog you build"
+    alt="Learn Next.js, course intro: a slide showing mobile and desktop mockups of the PrintForge app."
     width={1377}
     height={775}
     caption="Section 1 intro: PrintForge, the one project the whole course builds."
@@ -96,7 +99,7 @@ From there the PrintForge build is a run of challenges. The home page challenge 
 
 <Screenshot
   src="/img/scrimba/learn-nextjs/printforge-home-page-challenge-lesson.webp"
-  alt="Scrimba Learn Next.js lesson Challenge, PrintForge Home Page paused at 0:09: a slide over the editor shows the Figma design of the home page on mobile and desktop, with the heading Discover what's possible with 3D printing, a Browse Models button and a hero image, while the file explorer on the left lists the app folder, layout.tsx and page.tsx"
+  alt="Learn Next.js, PrintForge Home Page challenge: a Figma mockup slide over the code editor."
   width={1400}
   height={656}
   caption="The challenge brief at 0:09 of the home page scrim: the Figma mockup on a slide, then you write app/page.tsx yourself. The takeaway is that a top-level page.tsx inside app is your home route."
@@ -110,7 +113,7 @@ The first ten scrims are still PrintForge: a categories page challenge, a catego
 
 <Screenshot
   src="/img/scrimba/learn-nextjs/rendering-strategies-ssg-isr-ssr-lesson.webp"
-  alt="Scrimba Learn Next.js lesson Rendering Strategies Intro paused at 6:59: a slide titled Rendering Strategies shows a table with rows for Static Site Generation, Incremental Static Regeneration and Server-side Rendering, columns for when and where each is rendered, and the note depending on your code"
+  alt="Learn Next.js, Rendering Strategies Intro: a slide with a comparison table of three rendering strategies."
   width={1400}
   height={656}
   caption="The summary table at 6:59. Notice that every row says on server: Bob's point is that Next.js renders routes on the server by default and the strategy only changes when."
@@ -130,7 +133,7 @@ The rest of the section adds features one URL parameter at a time. Search reads 
 
 <Screenshot
   src="/img/scrimba/learn-nextjs/final-pagination-challenge-lesson.webp"
-  alt="Scrimba Learn Next.js lesson Final Pagination Challenge paused at 4:49: the editor shows PaginationButton.tsx with usePathname, useRouter and useSearchParams, a handlePageChange function that sets the page param and pushes the URL, and a button rendering label or page; the preview on the right shows the PrintForge catalog at /3d-models?page=12 with pagination buttons for previous, 11, 12, 13 and next, and the Runner logs GET requests"
+  alt="Learn Next.js, Final Pagination challenge: a code editor beside a live preview of paginated catalog buttons."
   width={1400}
   height={656}
   caption="The solution at 4:49 of the final challenge: a label prop turns the first and last buttons into arrows, and the preview shows page 12 of the catalog. The Runner log underneath is the real Next.js dev server responding to each click."

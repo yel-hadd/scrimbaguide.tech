@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Intro to UI Design Fundamentals
+
+<DisclosureNotice />
 
 Gary Simon's free Intro to UI Design Fundamentals runs 70 minutes across 20 scrims, fixing one bad layout at a time with plain CSS. You get seven design principles and five pause-and-fix challenges, no Figma, no JavaScript. It's the fastest way to learn why your CSS-correct pages still look off.
 
@@ -115,7 +118,7 @@ He adds `padding` to the second card and argues for `em` units, which scale with
 
 <Screenshot
   src="/img/scrimba/intro-to-ui-design-fundamentals/white-space-two-cards-lesson.webp"
-  alt="Scrimba Intro to UI Design Fundamentals White Space lesson paused at 4:37: index.css shows .secondary rules with padding 1.9em, an h1 margin-bottom of .5em and a p line-height of 1.5em, and the preview on the right shows two My Title cards, the left one cramped and the right one with even padding and looser line spacing"
+  alt="Intro to UI Design Fundamentals, White Space lesson: two identical cards side by side, one cramped and one evenly spaced."
   width={1400}
   height={635}
   caption="White Space at 4:37. Both cards share the same HTML; only the three rules under the Overwrite CSS comment differ. Gary settled on 1.9em of padding after trying 1em and 1.5em on screen."
@@ -141,7 +144,7 @@ He also flags, for the first time, that a headline that is barely bigger than it
 
 <Screenshot
   src="/img/scrimba/intro-to-ui-design-fundamentals/design-challenge-2-before-lesson.webp"
-  alt="Scrimba Intro to UI Design Fundamentals Design Challenge 2 at 0:14: the preview is enlarged over the blurred editor and shows three bright blue November Rain cards with a circle avatar, the date and title touching and no padding around the text"
+  alt="Intro to UI Design Fundamentals, Design Challenge 2: three bright blue cards with no padding, the starting point to fix."
   width={1400}
   height={635}
   caption="Design Challenge 2 at 0:14, the starting state you are asked to fix. Scrimba enlarges the preview while Gary talks about it, then shrinks it when he returns to the editor."
@@ -149,7 +152,7 @@ He also flags, for the first time, that a headline that is barely bigger than it
 
 <Screenshot
   src="/img/scrimba/intro-to-ui-design-fundamentals/design-challenge-2-after-lesson.webp"
-  alt="Scrimba Intro to UI Design Fundamentals Design Challenge 2 at 6:33: the preview shows the same three cards after Gary's solution, dark grey card backgrounds on a near-black page, 1.5em of padding, an uppercase letter-spaced date in muted grey and a large pale blue November Rain title"
+  alt="Intro to UI Design Fundamentals, Design Challenge 2: the same three cards redesigned with dark backgrounds and even spacing."
   width={1400}
   height={635}
   caption="The same cards at 6:33 after his solution. Note the low contrast of the card against the page (he argues containers do not need much) versus the high contrast of the title, which does."
@@ -185,7 +188,7 @@ His answer is `grid-gap: 2em` (the gutter between grid columns), a content backg
 
 <Screenshot
   src="/img/scrimba/intro-to-ui-design-fundamentals/final-challenge-dashboard-lesson.webp"
-  alt="Scrimba Intro to UI Design Fundamentals The Final Challenge at 5:21: index.css shows the three completed rule sets, body grid-gap 2em, .content background #0044B9 with padding 1.5em, and h1 margin-left 0 with font-size 2.3em, each annotated with the principle it improves, while the preview shows a blue dashboard with a Sales Report card listing earnings, refunds, chargebacks and net income"
+  alt="Intro to UI Design Fundamentals, The Final Challenge: a finished dashboard preview beside its completed CSS rules."
   width={1400}
   height={635}
   caption="The Final Challenge at 5:21, solution complete. Every property in the brief carries a comment naming the principle it fixes, which is the whole course in nine lines of CSS."

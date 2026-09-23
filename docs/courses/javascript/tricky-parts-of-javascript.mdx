@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # The Tricky Parts of JavaScript
+
+<DisclosureNotice />
 
 The Tricky Parts of JavaScript is a one-hour Pro course from Zack Wilson (PortEXE) covering how scope and hoisting behave, the three ways to write a function, and promises through async/await. It skips closures, `this`, and coercion despite the title, but earns an hour of your time if you already write JavaScript and still get surprised by it.
 
@@ -83,7 +86,7 @@ As Zack puts it in lesson 3, "This is how we know that let is being hoisted here
 
 <Screenshot
   src="/img/scrimba/the-tricky-parts-of-javascript/hoisting-temporal-dead-zone-lesson.webp"
-  alt="Scrimba The Tricky Parts of JavaScript, Hoisting lesson paused: the editor shows let char = 'a', an if (true) block that logs char and then declares let char = 'b', and the console reads ReferenceError: Cannot access 'char' before initialization"
+  alt="The Tricky Parts of JavaScript, Hoisting lesson: the console shows a ReferenceError instead of the expected value."
   width={1400}
   height={660}
   caption="Hoisting at 1:35. The inner let is declared after the console.log, yet the log throws instead of printing the outer 'a'. That error is the proof that let declarations are hoisted; Zack names it the temporal dead zone a few seconds later."
@@ -95,7 +98,7 @@ The Scope Challenge is the payoff. Zack pastes 32 lines with six `console.log` c
 
 <Screenshot
   src="/img/scrimba/the-tricky-parts-of-javascript/scope-challenge-results-lesson.webp"
-  alt="Scrimba The Tricky Parts of JavaScript, Scope Challenge paused after running: the editor shows six console.log calls and a var hoisted = true on the last line, and the console prints 1: (empty), 2: banana, 3: 15, 4: carrot, 5: Hello World, then ReferenceError: ten is not defined"
+  alt="The Tricky Parts of JavaScript, Scope Challenge lesson: the console prints six answers after running the code."
   width={1400}
   height={660}
   caption="Scope Challenge at 1:00, just after Zack runs the file. The six answers are on screen; the next three minutes explain each one. Line 32, var hoisted = true, is why the first log prints nothing."
@@ -119,7 +122,7 @@ Fetch is the practical version: `fetch` a todo from JSONPlaceholder, `.then(resp
 
 <Screenshot
   src="/img/scrimba/the-tricky-parts-of-javascript/promise-all-click-me-result-lesson.webp"
-  alt="Scrimba The Tricky Parts of JavaScript, Promise.all lesson paused: the editor shows Promise.all with two fetch calls to jsonplaceholder and a new Promise that resolves 'CLICKED!' on a button click, a small preview pane shows a Click Me! button, and the console prints an array of two todo objects followed by 'CLICKED!'"
+  alt="The Tricky Parts of JavaScript, Promise.all lesson: a Click Me button in the preview and an array in the console."
   width={1400}
   height={660}
   caption="Promise.all at 3:55. Two fetches and one click-driven promise in a single array; the console shows the three results in array order after the button in the preview pane was pressed."
@@ -129,7 +132,7 @@ Async/Await takes the fetch example from two scrims earlier and rewrites it with
 
 <Screenshot
   src="/img/scrimba/the-tricky-parts-of-javascript/promises-challenge-async-await-lesson.webp"
-  alt="Scrimba The Tricky Parts of JavaScript, Promises Challenge paused: the editor shows helloPromise and worldPromise resolving to Hello and World, then a one-line async arrow IIFE that logs await helloPromise + ' ' + await worldPromise, and the console prints Hello World"
+  alt="The Tricky Parts of JavaScript, Promises Challenge lesson: the code editor with an async await one-liner and its console output."
   width={1400}
   height={660}
   caption="Promises Challenge at 3:00, the third of three solutions. One line of async/await replaces the nested .then version from a minute earlier; the console shows Hello World."

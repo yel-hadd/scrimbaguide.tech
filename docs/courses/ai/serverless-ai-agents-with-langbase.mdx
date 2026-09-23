@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Build Serverless AI Agents with Langbase
+
+<DisclosureNotice />
 
 Maham Codes's free Build Serverless AI Agents with Langbase course runs 49 minutes across 13 scrims, and it builds one thing: a support agent that retrieves answers from an uploaded FAQ file using the Langbase SDK in TypeScript. It is a clean, complete RAG loop in under an hour, though everything you learn runs through Langbase's own methods.
 
@@ -98,7 +101,7 @@ Create a Memory with Langbase SDK is the first coding scrim and the first challe
 
 <Screenshot
   src="/img/scrimba/build-serverless-ai-agents-with-langbase/create-memory-challenge-brief-lesson.webp"
-  alt="Scrimba's Create a Memory with Langbase SDK scrim paused at 3:02 in Exercise 1 mode: create-memory.ts shows the challenge as a comment asking for a memory named knowledge-base using memories.create and the openai:text-embedding-3-large model, with SKIP and CHECK SOLUTION buttons in the header and an empty terminal below"
+  alt="Build Serverless AI Agents with Langbase, Create a Memory challenge: a code editor sits above an empty terminal waiting for the run."
   width={1400}
   height={684}
   caption="The first challenge at 3:02. The brief is a comment in create-memory.ts, the header switches to Exercise 1 with a CHECK SOLUTION button, and the terminal waits for your npx tsx run."
@@ -110,7 +113,7 @@ Memory Agents on Langbase is a slide lesson with no code, and it is the best exp
 
 <Screenshot
   src="/img/scrimba/build-serverless-ai-agents-with-langbase/memory-agents-after-document-upload-pipeline-slide.webp"
-  alt="Slide from the Memory Agents on Langbase scrim titled After Document Upload: a hand-drawn flow from Semantic parsing to Chunking to Embedding, with an example vector, then Indexing into a Vector store"
+  alt="Build Serverless AI Agents with Langbase, Memory Agents lesson: a hand-drawn diagram traces data from upload to a vector store."
   width={1280}
   height={720}
   caption="The After Document Upload slide at 0:41: parse, chunk, embed, index. This is the diagram she narrates for the next minute and a half."
@@ -126,7 +129,7 @@ Generate RAG Responses closes the loop. Back in `agents.ts` you add `runAiSuppor
 
 <Screenshot
   src="/img/scrimba/build-serverless-ai-agents-with-langbase/generate-rag-responses-npx-tsx-output-lesson.webp"
-  alt="Scrimba's Generate RAG Responses scrim paused at 5:06: index.ts chains runMemoryAgent and runAiSupportAgent for the query How do I upgrade to individual plan, and the terminal shows the npx tsx index.ts output, a three-step answer built from the uploaded Langbase FAQ"
+  alt="Build Serverless AI Agents with Langbase, Generate RAG Responses lesson: the terminal prints the finished agent's grounded answer."
   width={1400}
   height={684}
   caption="The finished agent at 5:06. index.ts on top is the whole program; the terminal below is the grounded answer to the billing question, assembled from the chunks retrieved from memory."

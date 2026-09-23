@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Intro to Astro
+
+<DisclosureNotice />
 
 James Q Quick teaches this Pro course on Astro, the framework for content sites, in about two hours across 37 scrims. You build one project: a personal portfolio with a header, a projects section, a Markdown blog with dynamic post pages, a contact page, and a Netlify deploy. It is a tight, worthwhile two evenings if you already write HTML, CSS, and basic JavaScript.
 
@@ -94,7 +97,7 @@ The first challenge, "Create the header section," is plain HTML inside `index.as
 
 <Screenshot
   src="/img/scrimba/intro-to-astro/adding-styles-scoped-css-should-be-red-lesson.webp"
-  alt="Scrimba's Adding styles scrim in Intro to Astro paused at 2:21: index.astro has a style block setting p.description to red, and the preview shows the header's description paragraph still black while a paragraph placed directly in index.astro, reading Should be red, is red"
+  alt="Intro to Astro, Adding styles lesson: browser preview showing one red paragraph and one still black despite the same CSS rule."
   width={1400}
   height={684}
   caption="Adding styles at 2:21. The same p.description rule colours the paragraph that lives in index.astro and ignores the one inside the Header component. That is Astro's scoped styling, shown before it is explained."
@@ -114,7 +117,7 @@ This is the section James is most excited about ("one of my absolute favorite fe
 
 <Screenshot
   src="/img/scrimba/intro-to-astro/content-collections-define-collection-zod-schema-lesson.webp"
-  alt="Scrimba's Content collections in Astro scrim paused at 2:10: content.config.ts defines a project collection with a file loader pointing at src/data/projects.json and a Zod schema of title, optional description, image and slug, exported as collections, with the Astra portfolio site in the preview"
+  alt="Intro to Astro, Content collections lesson: code editor showing a schema file beside a preview of the portfolio site."
   width={1400}
   height={684}
   caption="Content collections in Astro at 2:10: the whole content.config.ts. A file loader, a Zod schema, one export, and from here on the projects data is typed everywhere you query it."

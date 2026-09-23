@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn React
+
+<DisclosureNotice />
 
 Scrimba's free, hooks-first React course, taught by Bob Ziroll across about 15 hours and six projects, two of them full capstones. You need working JavaScript going in, but once you have it, this is the strongest free starting point for modern React and the anchor of Scrimba's React track.
 
@@ -108,7 +111,7 @@ Before the AI call comes the core of React: event listeners, props vs state, `us
 
 <Screenshot
   src="/img/scrimba/learn-react/chef-claude-recipe-from-claude-api.webp"
-  alt="Scrimba Learn React lesson Get recipe from the AI chef, paused at 6:59: Main.jsx shows an async getRecipe function awaiting getRecipeFromChefClaude(ingredients) and a form using action={addIngredient}, while the preview on the right shows Chef Claude rendering a raw markdown recipe for Creamy Chicken and Pasta Bake returned by the Claude API"
+  alt="Learn React, Chef Claude lesson: a code editor beside a preview showing an AI recipe rendered as raw markdown."
   width={1400}
   height={660}
   caption="The AI challenge solution at 6:59. The recipe on the right is the real response from the Claude API, still raw markdown ('we're going to format it in a really easy way using a third party package'). Note the form's action={addIngredient}, a React 19 feature, and the @anthropic-ai/sdk dependency in the sidebar."
@@ -126,7 +129,7 @@ Bob's framing: "although we won't necessarily be learning much new content in th
 
 <Screenshot
   src="/img/scrimba/learn-react/tenzies-game-held-dice-lesson.webp"
-  alt="Scrimba Learn React Tenzies capstone intro, paused at 1:35: App.jsx shows useState, useRef and useEffect imports, a gameWon check using dice.every, and generateAllNewDice using nanoid, while the preview shows the Tenzies game with nine held green dice showing 4 and a Roll button"
+  alt="Learn React, Tenzies capstone lesson: a code editor beside a dice game preview with nine dice held on the same number."
   width={1400}
   height={660}
   caption="The finished Tenzies app at 1:35 of the capstone intro, mid-game with nine dice held on 4. The code on the left is the complete App.jsx you build over the next 18 scrims: useState with a lazy initializer, a derived gameWon value, and a useEffect that focuses the button when you win."
@@ -138,7 +141,7 @@ Bob's framing: "although we won't necessarily be learning much new content in th
 
 <Screenshot
   src="/img/scrimba/learn-react/assembly-endgame-hangman-lesson.webp"
-  alt="Scrimba Learn React Assembly: Endgame capstone intro, paused at 0:38: App.jsx shows the AssemblyEndgame component's JSX for the current word, keyboard section and a conditional New Game button, while the preview shows the game with HTML, CSS and JavaScript already eliminated, a partially guessed word, and a color-coded on-screen keyboard"
+  alt="Learn React, Assembly Endgame lesson: a code editor beside a hangman style game with a partly guessed word and keyboard."
   width={1400}
   height={660}
   caption="The finished Assembly: Endgame at 0:38 of the intro, three wrong guesses in: HTML, CSS, and JavaScript are already gone from the languages row. The JSX on the left is the end state of the component you build across the section."

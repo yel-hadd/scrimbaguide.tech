@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Intro to Model Context Protocol (MCP)
+
+<DisclosureNotice />
 
 Maham Codes teaches Intro to Model Context Protocol (MCP) in about 37 minutes across 17 scrims. You build a small weather MCP server in Node.js and TypeScript, with one tool, one resource, and a STDIO transport. It's Pro, and it's the fastest way to get a working MCP server rather than just watch one explained.
 
@@ -100,7 +103,7 @@ Then the recording stops and it is your turn. The brief is written as a comment 
 
 <Screenshot
   src="/img/scrimba/intro-to-model-context-protocol-mcp/weather-tool-challenge-brief-lesson.webp"
-  alt="Scrimba Intro to Model Context Protocol lesson Setting up an MCP server paused at the challenge: the editor shows the trackPackage example tool, the getWeatherByCity helper returning mock data for New York and London, and a commented challenge brief asking for a getWeatherDataByCityName tool"
+  alt="Intro to MCP, Setting up an MCP server lesson: code editor showing an example tool above a coding challenge."
   width={1400}
   height={606}
   caption="The challenge at 6:08. Above the brief is the example tool and the helper you are meant to reuse; below it is the empty space where you write your own server.tool() call before she shows hers."
@@ -112,7 +115,7 @@ Then the recording stops and it is your turn. The brief is written as a comment 
 
 <Screenshot
   src="/img/scrimba/intro-to-model-context-protocol-mcp/running-the-server-terminal-lesson.webp"
-  alt="Scrimba Intro to Model Context Protocol lesson Running the MCP server at 5:27: the built-in terminal shows npx tsx server.ts, then Weather MCP Server Started, Tool: getWeatherDataByCityName, Resource: weather://cities, Supported Cities: New York, London, Server ready"
+  alt="Intro to MCP, Running the MCP server lesson: terminal output showing the server starting successfully."
   width={1400}
   height={393}
   caption="The payoff at 5:27: the server starts inside Scrimba's terminal and prints the tool and resource it registered. The terminal also shows tsx 4.20.3 being installed on the fly."
@@ -136,7 +139,7 @@ Each is 75 to 90 seconds, ends with a quiz question, and carries the line "Expla
 
 <Screenshot
   src="/img/scrimba/intro-to-model-context-protocol-mcp/claude-desktop-config-lesson.webp"
-  alt="Slide from the MCP clients lesson in Scrimba's Intro to Model Context Protocol course showing a Claude Desktop configuration file with an mcpServers entry named weather-mcp that runs npx tsx with the path to server.ts"
+  alt="Intro to MCP, MCP clients lesson: a slide showing a Claude Desktop configuration file."
   width={1378}
   height={775}
   caption="The Claude Desktop config at 2:59: one mcpServers entry that runs npx tsx server.ts. This is the whole integration; the same server also works with Cursor, VS Code, and other hosts, she notes."

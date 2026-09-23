@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn TypeScript
+
+<DisclosureNotice />
 
 Scrimba's free Learn TypeScript course runs about 4.2 hours in three sections. Bob Ziroll teaches TypeScript fundamentals by rewriting a buggy pizza app, then Rachel Johnson converts a React game to TypeScript and builds a typed Express API. It is worth the time if your JavaScript is solid, and it stops short of interfaces, classes and declaration files.
 
@@ -97,7 +100,7 @@ Then comes the ten minute "Intro to Pizza app," the longest scrim in the course.
 
 <Screenshot
   src="/img/scrimba/learn-typescript/pizza-app-typeerror-console-lesson.webp"
-  alt="Scrimba Learn TypeScript lesson Intro to Pizza app, paused at 9:15: index.js shows placeOrder and completeOrder functions and calls to addNewPizza with a cost property, while the console below prints TypeError: Assignment to constant variable three times"
+  alt="Learn TypeScript, Pizza app lesson: the console shows the same runtime error printed three times in a row."
   width={1400}
   height={630}
   caption="9:15 of Intro to Pizza app: the JavaScript version runs and crashes with the TypeError that TypeScript will flag before you run anything. Note cost on line 30 where the menu uses price."
@@ -107,7 +110,7 @@ Then comes the ten minute "Intro to Pizza app," the longest scrim in the course.
 
 <Screenshot
   src="/img/scrimba/learn-typescript/move-code-to-ts-red-squiggles-lesson.webp"
-  alt="Scrimba Learn TypeScript lesson Move code to TS, paused at 0:47: index.ts contains the pizza restaurant code pasted from index.js, with red underlines under orderQueue, pizzaObj, pizzaName, cashInRegister, selectedPizza, nextOrderId and orderId, and red error markers in the scrollbar"
+  alt="Learn TypeScript, Move code to TS lesson: the same file now shows several variables underlined in red."
   width={1400}
   height={630}
   caption="0:47 of Move code to TS: the same code, now in a .ts file, with seven red underlines and no code changed yet. Bob: 'Nothing about using TypeScript here is introducing new bugs, it's just showing me where the bugs already existed.'"
@@ -129,7 +132,7 @@ The rest is one component per scrim: `JSX.Element | null` for the confetti conta
 
 <Screenshot
   src="/img/scrimba/learn-typescript/keyboard-final-challenge-brief-lesson.webp"
-  alt="Scrimba Learn TypeScript lesson The Final Challenge, paused at 0:30: Keyboard.tsx opens with a comment block reading FINAL CHALLENGE, fully type the Keyboard component, with three numbered steps, and the destructured props alphabet, guessedLetters, currentWord, isGameOver and addGuessedLetter are underlined in red; the file tree shows the components folder and tsconfig files"
+  alt="Learn TypeScript, Final Challenge lesson: a comment brief sits above five untyped props underlined in red."
   width={1400}
   height={630}
   caption="0:30 of The Final Challenge: the brief lives in a comment at the top of Keyboard.tsx and the five untyped props are underlined. The solution needs a KeyboardProps type with addGuessedLetter typed as (letter: string) => void."
@@ -145,7 +148,7 @@ The typing progression is the useful part. `req` and `res` start as `any`; you i
 
 <Screenshot
   src="/img/scrimba/learn-typescript/string-query-params-ts2339-error-lesson.webp"
-  alt="Scrimba Learn TypeScript lesson String query params, paused at 2:46: the Runner panel shows npm run start failing with error TS2339, Property toLowerCase does not exist on type string | ParsedQs | (string | ParsedQs)[], pointing at pet.species.toLowerCase() === species.toLowerCase() on line 34 of src/index.ts, while the Network panel on the right shows a GET to localhost:8000/?species=cat returning a JSON list of pets"
+  alt="Learn TypeScript, String query params lesson: the terminal shows a type error next to a successful API request in the network panel."
   width={1400}
   height={630}
   caption="2:46 of String query params: the filter is correct JavaScript, but Express types req.query values as string | ParsedQs | arrays, so the build fails with TS2339. The next scrim fixes it with the Request generic's fourth slot."

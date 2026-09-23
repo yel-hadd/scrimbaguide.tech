@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Introduction to Clean Code
+
+<DisclosureNotice />
 
 Dylan C. Israel's Introduction to Clean Code is a 64-minute Pro course that turns messy JavaScript into readable code through better variable names, smaller functions, and far fewer comments, built from 26 scrims and seven refactoring challenges. It is worth the hour if nobody has ever reviewed your code, thin once you already work with a linter and a team.
 
@@ -99,7 +102,7 @@ The two "Magic Numbers" scrims are the most candid moments in the course. The ex
 
 <Screenshot
   src="/img/scrimba/introduction-to-clean-code/magic-numbers-earth-radius-gravity-metric-lesson.webp"
-  alt="Scrimba's Clean Variables: Magic Numbers scrim paused at 1:26: index.js shows the orbitalPeriod function with the two numbers pulled into const earthRadius = 6367.447 and const gravityMetric = 398600.4418, while a, b and c remain single-letter variables inside getOrbPeriod"
+  alt="Introduction to Clean Code, Magic Numbers lesson: a code editor with two constants newly renamed from raw numbers."
   width={1400}
   height={684}
   caption="Magic Numbers at 1:26, right after both constants get names. The a, b and c in getOrbPeriod are still there; that is the part Dylan admits he struggles to rename when the editor asks him to."
@@ -115,7 +118,7 @@ The functions section then covers three techniques, each followed by a challenge
 
 <Screenshot
   src="/img/scrimba/introduction-to-clean-code/encapsulating-conditionals-get-is-user-primary-active-account-lesson.webp"
-  alt="Scrimba's Clean Functions: Encapsulating Conditionals scrim paused at 3:08: index.js shows getNonPrimaryUsers calling a new getIsUserPrimaryActiveAccount function, which stores isPrimaryAccount and isActive in named constants and returns isActive && isPrimaryAccount"
+  alt="Introduction to Clean Code, Encapsulating Conditionals lesson: a code editor showing the refactored function."
   width={1400}
   height={684}
   caption="Encapsulating Conditionals at 3:08, the finished refactor. The inline check is now a named function with two named booleans and a blank line before the return, the editor setting he recommends turning on."

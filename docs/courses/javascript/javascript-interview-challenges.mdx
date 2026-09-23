@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # JavaScript Interview Challenges
+
+<DisclosureNotice />
 
 Treasure Porth's Pro-only drill pack runs 2.3 hours: 28 short coding challenges of the kind frontend interviewers hand you on a whiteboard, each followed by a worked solution covering string and array methods, objects, and `map`, `filter`, `reduce`, and `sort`. It is a sharp two-week warm-up if you already write JavaScript, not a place to learn it.
 
@@ -88,7 +91,7 @@ Then the classics arrive, lightly disguised. "Definitely Not FizzBuzz" has Per B
 
 <Screenshot
   src="/img/scrimba/javascript-interview-challenges/definitely-not-fizzbuzz-solution-lesson.webp"
-  alt="Scrimba JavaScript Interview Challenges, solution to Definitely Not FizzBuzz paused at 4:01: the editor shows an awardBonuses function with a for loop and if, else if branches testing i % 15, i % 3 and i % 5, and the console below lists employee IDs 84 to 100 with Vacation!, $100,000 bonus! and JACKPOT! prizes"
+  alt="JavaScript Interview Challenges, FizzBuzz solution: a code editor and console list bonus messages for employee IDs."
   width={1400}
   height={660}
   caption="The FizzBuzz solution paused at 4:01. Notice the order of the branches: the i % 15 check comes first, because employee 30 would otherwise be handed a vacation instead of the jackpot. The console output on the bottom is the whole test suite."
@@ -111,7 +114,7 @@ Four challenges. Chef Mario's Recipe Book (remove duplicates from an array) gets
 
 <Screenshot
   src="/img/scrimba/javascript-interview-challenges/chef-mario-pseudocode-plan-lesson.webp"
-  alt="Scrimba JavaScript Interview Challenges, Chef Mario's Recipe Book solution part 2 paused at 1:26: the removeDupesFromArray function body contains only pseudo code comments (create a new object to keep track of duplicates, use filter to loop through each item, look up the item in the lookup table, return true or false) and the console shows the deduplicated egg scramble recipe from part 1"
+  alt="JavaScript Interview Challenges, Chef Mario solution: a code editor shows a function body written as pseudo code only."
   width={1400}
   height={660}
   caption="Chef Mario, solution part 2, paused at 1:26. This is the course's signature move: the function body is nothing but a pseudo code plan before a line of real code is written. The console still shows the result of the part 1 solution."
@@ -135,7 +138,7 @@ Two challenges that use `fetch` against Scrimba's own emoji API, so nothing to s
 
 <Screenshot
   src="/img/scrimba/javascript-interview-challenges/emoji-flower-bed-challenge-lesson.webp"
-  alt="Scrimba JavaScript Interview Challenges, Emoji Flower Bed challenge paused at 0:11: the editor shows the brief as a comment, a fetch call to Scrimba's emoji API, an empty clearTheGarden function, and a forEach that appends each emoji as a list item, while the preview pane on the right shows a green flower bed grid full of camels, bears, pandas, birds, fish and only a few flowers"
+  alt="JavaScript Interview Challenges, Emoji Flower Bed challenge: a preview shows a grid of animal emoji with few flowers."
   width={1400}
   height={660}
   caption="The Emoji Flower Bed brief, paused at 0:11. The preview on the right is the bug you are fixing: the fetch already works, it just renders every animal in the API's nature category. Your job is the empty clearTheGarden function."
@@ -145,7 +148,7 @@ Emoji Slot Machine is the closest thing to a project: request the food category,
 
 <Screenshot
   src="/img/scrimba/javascript-interview-challenges/emoji-slot-machine-solution-lesson.webp"
-  alt="Scrimba JavaScript Interview Challenges, Emoji Slot Machine solution paused at 4:36: the editor shows a fetch chain with then calls for response.json, makeFruitArray, getRandomFruits and a forEach that appends list items with fruit.htmlCode, the console logs nine HTML entity codes, and the preview shows the slot machine with rows of grapes, kiwi and strawberry followed by random lemons, bananas and watermelon"
+  alt="JavaScript Interview Challenges, Emoji Slot Machine solution: a preview shows rows of fruit emoji from an API fetch."
   width={1400}
   height={660}
   caption="The slot machine solution paused at 4:36. The fetch chain works (nine HTML codes in the console) and the random fruit is rendering under the hard-coded rows, which get deleted from index.html a few seconds later."

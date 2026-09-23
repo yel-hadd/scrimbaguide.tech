@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Learn Node.js
+
+<DisclosureNotice />
 
 Tom Chant teaches Scrimba's free Node.js course in about 3.5 hours across two projects: a JSON REST API built with nothing but Node's built-in `http` module, and a small ghost-sightings site with static files, POST handling and server-sent events. No Express, no framework. It's the course to take before you learn one, so you see what the framework hides.
 
@@ -92,7 +95,7 @@ From there the API grows one concept per scrim. "Routing and the req object" add
 
 <Screenshot
   src="/img/scrimba/learn-nodejs/serve-stringified-json-missing-await-lesson.webp"
-  alt="Scrimba Learn Node.js lesson Serve stringified JSON paused at 3:01: server.js shows const destinations = getDataFromDB() without await inside http.createServer, the challenge comments above the if block, and the network panel on the right shows a GET to localhost:8000/api returning an empty object"
+  alt="Learn Node.js, Serve Stringified JSON lesson: the network panel shows an empty response caused by a missing await."
   width={1400}
   height={660}
   caption="Serve stringified JSON at 3:01. The response panel on the right says {} because line 7 is missing its await. Tom writes the bug, reads the error, then fixes it; the runner at the bottom is Scrimba's replacement for your own terminal."
@@ -106,7 +109,7 @@ Query strings take three scrims. The aside shows the honest vanilla way, `new UR
 
 <Screenshot
   src="/img/scrimba/learn-nodejs/filter-by-query-parameters-boolean-string-bug-lesson.webp"
-  alt="Scrimba Learn Node.js lesson Filter by Query Parameters paused at 4:46: getDataByQueryParams.js shows a filter comparing destination.is_open_to_public to is_open_to_public with a console.log above it, the network panel shows a request for continent=asia and is_open_to_public=true returning an empty array, and the runner prints pairs of true true and false true in two different colors"
+  alt="Learn Node.js, Filter by Query Parameters lesson: the terminal highlights a boolean and a string that look equal but are not."
   width={1400}
   height={660}
   caption="Filter by Query Parameters at 4:46. The response is [] even though the data has open destinations in Asia. The runner prints the two values side by side in different colors, which is how Tom spots that one is a boolean and the other a string; JSON.parse fixes it a minute later."
@@ -128,7 +131,7 @@ Data comes next. "Getting the JSON Data" writes `getData()`, which reads `data.j
 
 <Screenshot
   src="/img/scrimba/learn-nodejs/handling-post-upload-sighting-form-lesson.webp"
-  alt="Scrimba Learn Node.js lesson Handling POST part 2 paused at 4:36: story.md in the editor holds a ghost story titled The Ghost in Accounting, and the mini browser on the right shows the From the Other Side site's Add Sighting page with Home, Read and Upload links and a form with Title, Time/Date and Location fields"
+  alt="Learn Node.js, Handling POST lesson: a browser preview shows the sighting upload form beside the story being submitted."
   width={1400}
   height={660}
   caption="Handling POST part 2 at 4:36, just before Tom submits his own test story. The form on the right is the finished frontend you are given; the server code that receives it, sanitizes it and writes it to data.json is what you build."
@@ -138,7 +141,7 @@ Then security. "Aside: Sanitization" explains cross-site scripting and installs 
 
 <Screenshot
   src="/img/scrimba/learn-nodejs/sanitize-input-xss-button-rendered-lesson.webp"
-  alt="Scrimba Learn Node.js lesson sanitizeInput paused at 0:43: story.md in the editor shows a ghost story that begins with a button element whose onclick logs the word hacked, and the mini browser on the right shows the From the Other Side sightings page rendering a card titled The Bathroom Mirror Incident with a real Click me button inside the story text"
+  alt="Learn Node.js, sanitizeInput lesson: an unsanitized story renders a real clickable button inside the sightings page."
   width={1400}
   height={660}
   caption="sanitizeInput at 0:43. The button in story.md has made it through the server and into the sightings page as a working element. Your job for the rest of the scrim is to make sure that never happens again."

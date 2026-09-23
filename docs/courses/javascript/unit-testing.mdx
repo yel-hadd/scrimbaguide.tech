@@ -15,8 +15,11 @@ import CourseSchema from '@site/src/components/CourseSchema';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import Screenshot from '@site/src/components/Screenshot';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 # Introduction to Unit Testing
+
+<DisclosureNotice />
 
 Dylan C. Israel's 86-minute Pro course teaches your first JavaScript unit tests in Jasmine, testing a single `User` class one method at a time across 23 scrims. Eight of the 21 teaching scrims are challenges you write yourself. Worth it if you've never written a test; skip it if you already write tests in Jest or Vitest.
 
@@ -96,7 +99,7 @@ The first challenge asks whether there is a more reliable way to name the group.
 
 <Screenshot
   src="/img/scrimba/introduction-to-unit-testing/our-first-test-jasmine-failure-lesson.webp"
-  alt="Scrimba's Our first test scrim paused at 3:26: main.js shows the User class with the firstName default removed on purpose and a describe block whose test expects model.firstName to be an empty string, while the Jasmine reporter in the preview shows 1 spec, 1 failure, Expected null to be ''"
+  alt="Introduction to Unit Testing, first test lesson: a code editor beside a test reporter turning red on a failed check."
   width={1400}
   height={684}
   caption="Our first test at 3:26. Dylan has just deleted the || '' default from firstName and the Jasmine reporter on the right goes red with Expected null to be ''. The arrange, act, assert comments in the test are the pattern the whole course follows."
@@ -124,7 +127,7 @@ The Spy Challenge is the hardest one in the course. It includes a hint for somet
 
 <Screenshot
   src="/img/scrimba/introduction-to-unit-testing/spy-challenge-brief-lesson.webp"
-  alt="Scrimba's Spy Challenge scrim at 0:01: main.js opens with a comment block brief, use a spy to test getCodeName fully, use spyOn and toHaveBeenCalledWith, and a hint showing spyOn(object, 'key').and.returnValue(value), above an empty describe('get code name') block; the Jasmine reporter reads Incomplete: No specs found"
+  alt="Introduction to Unit Testing, spy challenge lesson: a code editor shows an empty test block and a no specs found reporter."
   width={1400}
   height={684}
   caption="The Spy Challenge brief as the scrim opens. Three numbered lines, a hint for a method the course has not taught yet, and an empty describe block to fill. The reporter on the right says No specs found until you write one."
