@@ -6,7 +6,7 @@ sidebar_label: "DSA: Binary Search"
 description: "Jonathan Lee Martin's 63-minute Pro course from inside: binary search written six ways against a test suite, which scrims are free, and the real time cost."
 keywords: [scrimba binary search, binary search algorithm course, scrimba binary search review, software craftsmanship javascript, jonathan lee martin scrimba, binary search javascript]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,15 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Data Structures and Algorithms: Binary Search
 
-Jonathan Lee Martin's one hour Pro course on a single algorithm, written six different ways in JavaScript. I read the transcript of every scrim and opened the code in the implementation lessons with a Pro account in September 2026; this page is what is actually in the course, including the parts that have aged.
+Jonathan Lee Martin's one-hour Pro course takes one algorithm and makes you write it six ways in JavaScript: loops, recursion, tail recursion, array slicing, and two data structures you build yourself, each a challenge before a walkthrough. It rewards practicing one algorithm deeply. Skip it if you want a survey of data structures.
+
+*Reviewed inside the course with a Pro account, September 2026.*
 
 *This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's catalog data lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-Data Structures and Algorithms: Binary Search is a 63 minute, Advanced, Pro course taught by Jonathan Lee Martin. It has twelve scrims and no modules: two on the idea and big O notation, six where you implement binary search against a small test suite (loops, recursion, tail recursion, array splitting, an "array view" wrapper, and an "array partition" helper), and four short wrap-up clips. Every implementation lesson is a challenge first and a walkthrough second. It assumes you already write JavaScript fluently. If you want to practice writing one algorithm well rather than memorizing twenty, it is a good hour; if you want a survey of data structures, it is the wrong course.
+This fits developers who already write JavaScript fluently and want to practice one algorithm deeply rather than survey many, including anyone prepping for interviews. The catch: the title promises data structures plural, and the course never leaves binary search. Take the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course first for breadth, or come here for depth once you have it.
 
 <CourseCard
   title="Data Structures and Algorithms: Binary Search"
@@ -136,7 +138,7 @@ This is what the course has been building toward. The array splitting code from 
 
 ### Lesson 8. Array Partition (7:00)
 
-The last implementation lifts the index math out entirely. `ArrayPartition(array, pivot)` returns an object with `left()`, `middle()`, and `right()`. With that in place, binary search reads like the phone book description: compare with the middle, recurse into left or right. This is the challenge Jonathan says you may not finish ("If you get stuck for too long, it's okay to move on"). His own solution needs the view's `start` property to recover the real index, which he calls "a bit tainted." I agree, and I also think this is the most honest lesson in the course: he shows the seam instead of hiding it.
+The last implementation lifts the index math out entirely. `ArrayPartition(array, pivot)` returns an object with `left()`, `middle()`, and `right()`. With that in place, binary search reads like the phone book description: compare with the middle, recurse into left or right. This is the challenge Jonathan says you may not finish ("If you get stuck for too long, it's okay to move on"). His own solution needs the view's `start` property to recover the real index, which he calls "a bit tainted." I agree: it's the sharpest lesson in the course because he shows the seam instead of hiding it.
 
 ### Lessons 9 to 12. Wrap Up and the closing clips (6 min)
 
@@ -156,13 +158,17 @@ There are no Solo Projects in this course, so there is nothing else to gate. Pro
 
 ## How long it takes
 
-Sixty three minutes of video, but six of the scrims stop and wait for you. If you actually write each version before watching the solution, budget two to three hours: twenty minutes for the loop version if off by one errors get you, ten each for the recursive ones, and half an hour or more for Array View and Array Partition, which are the two Jonathan warns about. If you only watch, it is an hour, and it will not stick. He says as much.
+Sixty three minutes of video, but six of the scrims stop and wait for you. Write each version yourself before watching the solution and budget two to three hours: twenty minutes for the loop version if off by one errors get you, ten each for the recursive ones, and half an hour or more for Array View and Array Partition, which are the two Jonathan warns about. Only watch, and it is an hour that will not stick. He says as much.
 
 ## Who it's for, and who should skip it
 
 It fits working developers and bootcamp graduates who write JavaScript daily and have never been made to write an algorithm under constraints. It also fits anyone preparing for interviews who wants to be able to talk about the same problem from more than one angle; the six versions give you that vocabulary.
 
 Skip it if you are still learning JavaScript. The course uses default parameters, spread, destructuring, nested ternaries, and ES module exports without explaining any of them. Skip it too if you want breadth: the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course covers the survey this one deliberately avoids. And if you have a CS degree, Jonathan says himself that you "probably won't find this course as helpful."
+
+<AffiliateLink href="https://scrimba.com/data-structures-and-algorithms-binary-search-c01o" variant="button">
+  Start Data Structures and Algorithms: Binary Search on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -197,10 +203,6 @@ Where it is limited: it is one algorithm in one hour, so the title promises more
   { q: "Who teaches it?", a: "Jonathan Lee Martin (@nybblr on Scrimba), who also teaches the Merge Sort course. The three closing clips are by Scrimba staff." },
   { q: "Is there a project or certificate?", a: "There is no project beyond the six implementations. A certificate of completion is listed at the end of the course and is part of Pro." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/data-structures-and-algorithms-binary-search-c01o" variant="button">
-  Try the three free scrims of Binary Search on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Data Structures and Algorithms: Binary Search"

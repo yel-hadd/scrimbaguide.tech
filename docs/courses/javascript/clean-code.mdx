@@ -6,7 +6,7 @@ sidebar_label: "Introduction to Clean Code"
 description: "Dylan Israel's one-hour Pro clean code course reviewed from inside: 26 scrims, seven refactoring challenges, five free previews, and who it is for."
 keywords: [scrimba clean code, introduction to clean code review, clean code course, readable code javascript, dylan israel scrimba, maintainable code course, scrimba clean code review]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Introduction to Clean Code
 
-Dylan C. Israel's one-hour Pro course on making JavaScript readable: better variable names, smaller functions, and far fewer comments. I opened all 26 scrims and read the transcript of every one with a Pro account in September 2026, so this page describes what is in the course, not what the listing promises.
+Dylan C. Israel's Introduction to Clean Code is a 64-minute Pro course that turns messy JavaScript into readable code through better variable names, smaller functions, and far fewer comments, built from 26 scrims and seven refactoring challenges. It is worth the hour if nobody has ever reviewed your code, thin once you already work with a linter and a team.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page does not list it under any career path; it is a standalone skills course.*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Introduction to Clean Code is a 64 minute, intermediate, Pro-only course taught by Dylan C. Israel. It is 26 short scrims in a flat list (no modules), split between explanation and seven small refactoring challenges where you rename, extract, and delete things in a file of a dozen lines. The first five scrims are free previews. There is no project; you leave with a set of habits and one honest final assignment, which is to go back and clean up your own old repositories.
-
-It is worth an hour if you can write working JavaScript but nobody has ever reviewed your code. It is not worth a subscription on its own, and it will feel thin if you already work on a team with code reviews.
+This fits developers who can write working JavaScript but have never had anyone review it, and anyone about to start a first job wondering what a reviewer will flag. The catch: every example stays tiny, so a team that already runs a linter and code reviews will find little new here. Pair it with [Introduction to Unit Testing](/docs/courses/javascript/unit-testing/) once you have working code worth testing.
 
 <CourseCard
   title="Introduction to Clean Code"
@@ -97,7 +95,7 @@ The same scrim introduces his "significant other test": if a variable name would
 
 The first challenge, "Clean Variables Challenge", gives you a one-line function that builds "First M. Last" from an array using userNames[0] and userNames[1][0]. He stops talking at 0:29 and lets you work; there is a hints.md file in the sidebar that he pointedly refuses to open. His solution goes through three stages: named variables, a template string, then array destructuring. His verdict at the end is the line I would put on a poster: "we have a couple more lines of code. That's fine. What we're really going for here is readability."
 
-The two "Magic Numbers" scrims are the most honest moments in the course. The example is an orbital period calculator full of numbers like 6367.4447, and Dylan admits he "had to go back and rewatch a video" to remember what they were. He extracts earthRadius and gravityMetric, then confesses on camera that when his editor asked him to also rename the a, b, and c variables, he could not remember what c represented. The challenge that follows is a single number, 86400000, and the fix is to write it as 60 * 60 * 24 * 1000 so the calculation documents itself.
+The two "Magic Numbers" scrims are the most candid moments in the course. The example is an orbital period calculator full of numbers like 6367.4447, and Dylan admits he "had to go back and rewatch a video" to remember what they were. He extracts earthRadius and gravityMetric, then confesses on camera that when his editor asked him to also rename the a, b, and c variables, he could not remember what c represented. The challenge that follows is a single number, 86400000, and the fix is to write it as 60 * 60 * 24 * 1000 so the calculation documents itself.
 
 <Screenshot
   src="/img/scrimba/introduction-to-clean-code/magic-numbers-earth-radius-gravity-metric-lesson.webp"
@@ -135,7 +133,7 @@ Dylan calls comments "one of the most misunderstood sections" and his position i
 
 ### 5. Final challenge and wrap-up (8 min, 4 scrims)
 
-The "Final Challenge" has no code in it. It is a list: go back to your old projects and clean them up, do the same to your algorithm practice, bring these ideas into code reviews and pair programming, and post before-and-afters in Scrimba's Discord. Dylan says he does the first one himself "about once every year." "What's Next" points at his Introduction to Unit Testing course, Husky git hooks, cspell, the Clean Code book, and the clean-code-javascript repo. The last two scrims are Scrimba's generic Scrimbassador referral pitch and Per Borgen's certificate scrim, not Dylan.
+The "Final Challenge" has no code in it. It is a list: go back to your old projects and clean them up, do the same to your algorithm practice, bring these ideas into code reviews and pair programming, and post before-and-afters in Scrimba's Discord. Dylan says he does the first one himself "about once every year." "What's Next" points at his [Introduction to Unit Testing](/docs/courses/javascript/unit-testing/) course, Husky git hooks, cspell, the Clean Code book, and the clean-code-javascript repo. The last two scrims are Scrimba's generic Scrimbassador referral pitch and Per Borgen's certificate scrim, not Dylan.
 
 ## What a lesson feels like
 
@@ -163,6 +161,10 @@ It fits self-taught developers who have finished a course like [Learn JavaScript
 
 Skip it if you already work with a linter and a review process; the ESLint scrim and the naming rules will be things you do every day. Skip it too if you want depth on architecture or SOLID; he names those ideas (interface segregation gets one sentence) and leaves them for you to look up. Complete beginners should wait until they can write a function and a loop without help, since every lesson assumes you can read the starting code.
 
+<AffiliateLink href="https://scrimba.com/introduction-to-clean-code-c025" variant="button">
+  Start Introduction to Clean Code on Scrimba
+</AffiliateLink>
+
 ## Prerequisites
 
 Enough JavaScript to read a for loop, an if statement, and a class with a few fields. The solutions use template strings and array destructuring, which he explains briefly as he goes. Nothing needs installing; the ESLint homework is optional and happens on your own machine.
@@ -173,7 +175,7 @@ This is a standalone course, not part of a career path. The natural companion is
 
 ## Strengths and limits
 
-What it does well: the before-and-after format makes each rule concrete, the challenges are short enough that you will do them rather than skip them, Dylan is honest about his own unreadable code, and the free previews cover the most useful section.
+What it does well: the before-and-after format makes each rule concrete, the challenges are short enough that you will do them rather than skip them, Dylan calls out his own unreadable code by name, and the free previews cover the most useful section.
 
 Where it is limited: the examples are tiny and never grow into a real file, there is no automated feedback on your solutions, two of the 26 scrims are generic Scrimba promos, the recording is from around 2020 (his job title is already out of date), and an hour is not enough to make any of this a habit without the homework.
 
@@ -188,7 +190,7 @@ Where it is limited: the examples are tiny and never grow into a real file, ther
 <FAQAccordion items={[
   { q: "Is Introduction to Clean Code free on Scrimba?", a: "No, it is a Pro course, but the first five scrims are free previews marked SAMPLE: the introduction, the linters lesson, both Clean Variables lessons, and the first challenge. The remaining 21 scrims and the certificate need a subscription." },
   { q: "How long is the course?", a: "64 minutes of video across 26 short scrims. With the seven challenges, plan on about two hours, plus an afternoon if you do the final challenge of cleaning up one of your old projects." },
-  { q: "What do you actually do in the challenges?", a: "You rename variables and functions, extract conditions into small helper functions, replace magic numbers with named constants, and delete comments that no longer add anything. Each challenge is a single file of a few lines. There is no automated checking; you compare your answer with Dylan's." },
+  { q: "What do you do in the challenges?", a: "You rename variables and functions, extract conditions into small helper functions, replace magic numbers with named constants, and delete comments that no longer add anything. Each challenge is a single file of a few lines. There is no automated checking; you compare your answer with Dylan's." },
   { q: "Is it JavaScript-specific?", a: "The examples are JavaScript (template strings, destructuring, ES classes), but the rules on naming, function size, and comments apply to any language, and the instructor says so in the variables introduction." },
   { q: "Do I need to install anything?", a: "No. Everything runs in Scrimba's browser editor. The linters lesson sets optional homework to add ESLint to one of your own GitHub projects, which you would do on your machine." },
   { q: "Does it have transcripts or captions?", a: "Yes. Every scrim has a timestamped transcript in the player's settings menu, and the course page lists ten subtitle languages." },
@@ -196,10 +198,6 @@ Where it is limited: the examples are tiny and never grow into a real file, ther
   { q: "Is there a project or a certificate?", a: "There is no project. The final challenge is to refactor your own old code. A certificate of completion is listed at the end of the course and requires Pro." },
   { q: "Who is it for?", a: "Self-taught and early-career developers who can write working JavaScript but have never had their code reviewed. Developers already working with linters and code reviews will find little new." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/introduction-to-clean-code-c025" variant="button">
-  Preview Introduction to Clean Code on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Introduction to Clean Code"

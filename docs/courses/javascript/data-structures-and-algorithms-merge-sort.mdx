@@ -6,7 +6,7 @@ sidebar_label: "DSA: Merge Sort"
 description: "Jonathan Lee Martin's 64 minute Pro course from inside: merge sort written six ways against a test suite, five challenges, and what the free samples cover."
 keywords: [scrimba merge sort, merge sort scrimba review, merge sort algorithm course, sorting algorithm javascript, jonathan lee martin scrimba, merge sort javascript, divide and conquer javascript]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Data Structures and Algorithms: Merge Sort
 
-Jonathan Lee Martin's one hour Pro course on a single sorting algorithm, rewritten six ways in JavaScript. I read the transcript of every scrim and opened the code in each implementation lesson with a Pro account in September 2026; this page is what the course actually contains, not the listing rewritten.
+Jonathan Lee Martin's Data Structures and Algorithms: Merge Sort is a 64 minute Pro course that has you write one sorting algorithm seven ways in JavaScript, from a raw imperative version to a queue, a cursor and an ArrayView wrapper, each one graded out loud on readability and cost. It is a tight, well-built hour for anyone who already codes.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's catalog data lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Data Structures and Algorithms: Merge Sort is a 64 minute, Intermediate, Pro course taught by Jonathan Lee Martin. It is a flat list of eleven scrims. One is the intro and one is a ten minute explanation of how merge sort works and why it beats selection sort. Seven are implementation lessons where you rewrite the same algorithm against a small test file, and two are closing clips. Five of the seven implementation lessons are challenges: the recording stops, you write the code, then he shows his version. It is the direct sequel to his [Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/) course and reuses the ArrayView helper from it. If you already write JavaScript comfortably and want to practise writing one algorithm well, it is a good hour. If you want a survey of data structures, this is the wrong course.
+It fits developers who already write JavaScript comfortably and want to practise one algorithm well, not survey other data structures. The catch: it leans on [Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/), whose ArrayView helper arrives here as a finished file you did not write. Finish this one, then move to [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) to put the algorithm under time pressure.
 
 <CourseCard
   title="Data Structures and Algorithms: Merge Sort"
@@ -53,7 +53,7 @@ Data Structures and Algorithms: Merge Sort is a 64 minute, Intermediate, Pro cou
 
 Yes, if you fit the audience Jonathan describes in the first minute: a bootcamp graduate or self-taught developer who is good at building things and feels the gap where a computer science course would have been. The course is not about memorising merge sort. It is about writing it once the textbook way, then refactoring it five more times, each time trading readability against performance and learning a small design pattern along the way. By the end you have written a queue-style merge with `shift`, a cursor data structure with `peek`, `shift` and `length`, and a version that wraps the array in a view so no copies are made.
 
-The caveat is that it is short and narrow on purpose. One algorithm, one test file, no data structures beyond arrays and the two tiny helpers you build. It also leans on the binary search course. The ArrayView helper is dropped in as a finished file with the words "let's just go ahead and use the implementation we wrote in binary search." You can follow without that course, but you will be reading someone else's helper rather than your own.
+It is short and narrow on purpose: one algorithm, one test file, no data structures beyond arrays and the two tiny helpers you build. It also leans on the binary search course. The ArrayView helper is dropped in as a finished file with the words "let's just go ahead and use the implementation we wrote in binary search." You can follow without that course, but you will be reading someone else's helper rather than your own.
 
 Despite the Intermediate label and the "software craftsmanship" framing, the course does teach the concept from zero. Lesson two spends ten minutes sorting a list on paper, counting lookups for selection sort, and building up to merge sort's n log n runtime with diagrams. You do not need to know merge sort before starting. You do need to be fluent in JavaScript.
 
@@ -116,7 +116,7 @@ He drops in `array-view.js` from the binary search course, wraps the input in `A
 
 #### Queue (7:24, challenge)
 
-The target is the merge loop. Treat `left` and `right` as queues: replace the for loop with `array.map`, ignore the mapped element, and use a ternary that calls `left.shift()` or `right.shift()`. The `i`, `j` and `k` counters disappear. He is honest that `shift` moves every remaining element one slot left each call, so "this solution is not as efficient as the previous one. But the conceptual model is great."
+The target is the merge loop. Treat `left` and `right` as queues: replace the for loop with `array.map`, ignore the mapped element, and use a ternary that calls `left.shift()` or `right.shift()`. The `i`, `j` and `k` counters disappear. He names the cost: `shift` moves every remaining element one slot left each call, so "this solution is not as efficient as the previous one. But the conceptual model is great."
 
 <Screenshot
   src="/img/scrimba/data-structures-and-algorithms-merge-sort/queue-map-ternary-shift-lesson.webp"
@@ -166,13 +166,17 @@ There are no Solo Projects in this course, so there is nothing else to gate. Pro
 
 ## How long it takes
 
-The 64 minutes is video runtime, and about 44 of those are the implementation lessons. Five of them stop and wait for you. If you actually write each version before watching the solution, which is the only way this course does anything, plan two to three hours. The imperative version alone can take twenty minutes of edge case debugging if you have not written a merge before, and the cursor lesson takes longer to understand than to type. One sitting of two hours, or two of one hour, is realistic. If you only watch, it is an hour, and you will have learned very little.
+The 64 minutes is video runtime, and about 44 of those are the implementation lessons. Five of them stop and wait for you. Write each version before watching the solution, which is the only way this course does anything, and plan two to three hours. The imperative version alone can take twenty minutes of edge case debugging if you have not written a merge before, and the cursor lesson takes longer to understand than to type. One sitting of two hours, or two of one hour, is realistic. If you only watch, it is an hour, and you will have learned very little.
 
 ## Who it's for, and who should skip it
 
 It fits self-taught and bootcamp trained developers who already ship JavaScript and want the algorithm thinking they skipped, and anyone preparing for interviews who wants to write merge sort from memory rather than recognise it. It is also a good fit if you took [Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/) and liked the format, because this is the same format with a harder combine step.
 
 Skip it if you are still learning JavaScript; the intro says plainly that "if your JavaScript is rusty or dated, you may find it hard to follow along," and the solutions use arrow functions, destructuring, default parameters, and ES module exports without explanation. Skip it too if you want breadth: the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course covers more ground in less depth. And if you have a CS degree, the algorithm will be old news; only the design pattern refactors are new.
+
+<AffiliateLink href="https://scrimba.com/data-structures-and-algorithms-merge-sort-c01b" variant="button">
+  Start Data Structures and Algorithms: Merge Sort on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -206,10 +210,6 @@ Where it is limited: it is one algorithm in one file, and it assumes the binary 
   { q: "Do I need to install anything?", a: "No. Everything runs in Scrimba's browser editor, including the test file and the one dependency, lodash.times, which is added in the Cursor + ArrayView lesson." },
   { q: "Does the course have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/data-structures-and-algorithms-merge-sort-c01b" variant="button">
-  Open Data Structures and Algorithms: Merge Sort on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Data Structures and Algorithms: Merge Sort"

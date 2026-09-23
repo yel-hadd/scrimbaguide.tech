@@ -6,7 +6,7 @@ sidebar_label: "Learn Cybersecurity"
 description: "Reviewed from inside: 5 hours on STRIDE, sessions vs JWTs, XSS, SQL injection, Zod and rate limiting by Rachel Johnson and Jonathan Hill. What Pro gates."
 keywords: [scrimba learn cybersecurity, learn cybersecurity scrimba review, app security course for developers, authentication course scrimba, web security fundamentals, rate limiting course, zod validation course]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Cybersecurity
 
-Scrimba's Pro course on the security work that lands on a working developer's desk: threat modelling, login systems, untrusted input, and traffic limits. I expanded every module and read the transcripts of 36 of its 81 scrims, at least a third of every module, with a Pro account in September 2026. This page is what is actually in there, not the listing rewritten.
+Learn Cybersecurity is Scrimba's 5-hour Pro course on the security work that lands on a working developer's desk. Rachel Johnson teaches threat modelling and authentication; Jonathan Hill has you attack your own registration form with XSS and SQL injection, then build Express rate limiters. It is the most practical five hours on app security in the catalog.
 
-*This page is part of our [JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page does not list it under a path, but Jonathan Hill's teacher card says he created the cybersecurity material in the [Backend Developer Path](/docs/paths/backend-developer-path/), and every code example runs on Node.*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Learn Cybersecurity is a 5 hour, Intermediate, Pro course split between two teachers. Rachel Johnson teaches the first two modules with slides and short reasoning exercises: the STRIDE and OWASP threat models, then the three ways an app can know who you are (sessions, tokens, and "sign in with Google"). Jonathan Hill teaches the last two with real Express code: you run an XSS attack and a SQL injection against a deliberately broken registration form, fix it with Zod, then build rate limiters and a throttle with `express-rate-limit` and `express-slow-down`.
-
-It is application security for people who already build backends, not a cybersecurity career course. There is no network security, no penetration testing tooling, and no certification prep. If you write Node APIs and have never been taught why a cookie should only hold a session ID, or what a 429 status is for, it is the most practical five hours on the subject in the catalog.
+It fits developers who already build Node or Express APIs and want to stop shipping the obvious holes, not people chasing a cybersecurity career or a certification. The catch: the first half is mostly slides and reasoning, with little code until the challenge scrims. Pair it with [Learn Express.js](/docs/courses/javascript/expressjs/) if you have not built an API yet, or take it right after your first one.
 
 <CourseCard
   title="Learn Cybersecurity"
@@ -65,7 +63,7 @@ Most developers learn security from an incident. This course is the cheaper rout
 
 The first half is different in style. Rachel's modules are mostly slides and reasoning: you get a food delivery app called QuickBite, a list of bug reports, and a pause where you classify each one. There is little code until the challenge scrims. If you want to type from minute one, that half will feel slow. If you want to be able to explain in an interview why a JWT is "stateless" and why that is sometimes a bad thing, it is exactly the right depth.
 
-The honest caveat is the name. This is developer-facing app security. It will not make you a security engineer, and it only covers a slice of the OWASP top ten in code (XSS, injection, and denial of service). Rate limiting gets almost as much time as authentication, which tells you what the course cares about most: protecting an API you have already built.
+This is developer-facing app security, not a security-engineer track, and it will not make you one. It covers only a slice of the OWASP top ten in code (XSS, injection, and denial of service). Rate limiting gets almost as much time as authentication, which tells you what the course cares about most: protecting an API you have already built.
 
 ## What you'll learn
 
@@ -160,6 +158,10 @@ It fits developers who have built at least one Express or Node API and want to s
 
 Skip it if you have never built a backend: module 3 assumes you can read an Express route and a TypeScript type, and module 4 assumes middleware order makes sense to you. Skip it too if you want general cybersecurity, ethical hacking, or a security certification track; none of that is here.
 
+<AffiliateLink href="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9" variant="button">
+  View Learn Cybersecurity on Scrimba
+</AffiliateLink>
+
 ## Prerequisites
 
 Scrimba's own list is JavaScript and Node basics plus a grasp of HTTP requests, forms and databases, with no security background required. I would add: comfort with TypeScript syntax (the form project is written in it, though the types are simple), and enough SQL to understand what a semicolon does in a query. [Learn TypeScript](/docs/courses/typescript/learn-typescript/) and [Learn SQL](/docs/courses/backend/sql/) cover both.
@@ -195,10 +197,6 @@ Where it is limited: the first two modules are mostly slides with little code, t
   { q: "Do I need to install anything?", a: "No. The Express servers, the runner, and the terminal all run inside the Scrimba editor. You restart the front end with Ctrl+C and npm run dev in the built-in terminal." },
   { q: "How long does Learn Cybersecurity take?", a: "About 5 hours of video. Plan for 10 to 15 hours with the challenges, server restarts, and time in the Zod and rate-limit docs." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-cybersecurity-c0ggmpl7f9" variant="button">
-  View Learn Cybersecurity on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Learn Cybersecurity"

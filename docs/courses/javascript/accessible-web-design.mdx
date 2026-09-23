@@ -6,7 +6,7 @@ sidebar_label: "Accessible Web Design"
 description: "Fredrik Ridderfalk's 96 minute Pro course reviewed from inside: 27 scrims, one broken drone-delivery site you repair, what Pro gates, and the real time cost."
 keywords: [scrimba accessible web design, learn accessible web design review, scrimba accessibility course, accessible html course, a11y course scrimba, aria basics course, fredrik ridderfalk scrimba]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Accessible Web Design
 
-Scrimba's short accessibility course, taught by Fredrik Ridderfalk in 96 minutes of scrims, most of them challenges on a fictional drone grocery site called Skynet Eats. It has 27 scrims and no modules, so I opened every one and read the transcript of each with a Pro account in September 2026. This page is what is in there, including the parts that are thinner than the listing suggests.
+Fredrik Ridderfalk teaches Scrimba's Learn Accessible Web Design in 96 minutes across 27 scrims, no modules. You repair a broken drone-delivery site called Skynet Eats: fixing contrast, alt text, links, form labels, headings and ARIA one topic at a time, then hunting down every issue on a final contact page. It is a fast, practical fix for shipping inaccessible HTML.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course data does not list it inside a path, though Fredrik's teacher bio says the course "launched through Scrimba's Frontend Developer Path"; I did not check the path page to confirm where it sits today.*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Learn Accessible Web Design is a Pro course of 27 short scrims, 96 minutes in total, rated Intermediate. You take a site with contrast, alt text, link, form, heading and structure problems and fix it one topic at a time, then find and fix every issue on a fresh contact page as a final exam. It covers contrast, alt text, links, labels, landmarks, headings, rem units, ARIA roles and live regions, and skip links. It does not cover screen reader testing or audit tooling. If you write HTML and CSS but have never checked your work for accessibility, it is a fast fix for that gap. If you already know why placeholders are not labels, you will finish it in an hour and learn little.
+This fits developers who write HTML and CSS but have never audited their own markup: it hands you the habits in an afternoon, not just the theory. The catch is depth: screen reader testing and WCAG success criteria by number never come up, so treat it as a foundation rather than the whole subject. Already know why placeholders are not labels? Move straight to [Learn JavaScript](/docs/courses/javascript/learn-javascript/) instead.
 
 <CourseCard
   title="Learn Accessible Web Design"
@@ -69,7 +69,7 @@ Learn Accessible Web Design is a Pro course of 27 short scrims, 96 minutes in to
 
 For most frontend learners, yes, because it is short and the format fits the topic. Accessibility is a list of habits, and habits stick when you practice them, not when you read about them. Nearly every scrim here ends with "pause here and give this a go" and a concrete fix to make on a page you can see in the preview pane. By the end you have made the same kinds of edits eight or nine times, which is enough for them to become reflexes.
 
-The caveat is depth. This is an introduction to writing accessible HTML, not a course on accessibility engineering. Fredrik shows you where the accessibility tree lives in Chrome DevTools and mentions Lighthouse and axe, but you never run a screen reader in the course, never test with a keyboard beyond pressing Tab once, and never look at a WCAG success criterion by number. The ARIA lessons are honest about that: the card-link CSS trick in scrim 7 is "a bit advanced and out of scope for this lesson", and the ARIA scrim is a single toggle switch. Treat it as the foundation it is.
+This is an introduction to writing accessible HTML, not a course on accessibility engineering. Fredrik shows you where the accessibility tree lives in Chrome DevTools and mentions Lighthouse and axe, but you never run a screen reader in the course, never test with a keyboard beyond pressing Tab once, and never look at a WCAG success criterion by number. The ARIA lessons show it: the card-link CSS trick in scrim 7 is "a bit advanced and out of scope for this lesson", and the ARIA scrim is a single toggle switch. Treat it as the foundation it is.
 
 Pricing is the other thing to weigh. The entire course is Pro. Four scrims are free samples, about 16 minutes, and two of them (Aside: Text contrast and Semantic HTML) include a challenge, so you can try the format before paying. Details below.
 
@@ -173,11 +173,11 @@ There are seven issues, and every one maps to an earlier scrim, which is the poi
 
 A scrim here is two to six minutes. Most follow the same shape: a slide or two of explanation, a look at the broken page in the preview pane, a challenge stated out loud and usually written as a comment in the code, a pause, then Fredrik's solution typed live. The instruction is always "pause here and give this a go", never a graded check. I did not find any AI-checked challenges in this course; you compare your answer against his.
 
-The tone is warm and a little silly. The intro sells accessibility as a superpower, the outro ends with a rhyme, and the fictional company is founded by "the pioneer of AI and robotics, Ariana Grande". Fredrik also tells you when something is his preference rather than a rule (the period at the end of alt text, for one), which is more honest than most beginner material. Every scrim has captions, a timestamped transcript panel behind the settings menu, and subtitles in ten languages. The preview pane is a real browser, so you can press Tab in it and watch focus move, which is how the skip link lesson works.
+The tone is warm and a little silly. The intro sells accessibility as a superpower, the outro ends with a rhyme, and the fictional company is founded by "the pioneer of AI and robotics, Ariana Grande". Fredrik also tells you when something is his preference rather than a rule (the period at the end of alt text, for one), which most beginner material skips. Every scrim has captions, a timestamped transcript panel behind the settings menu, and subtitles in ten languages. The preview pane is a real browser, so you can press Tab in it and watch focus move, which is how the skip link lesson works.
 
 ## Free or Pro: exactly what is gated
 
-The course is Pro. Scrimba's page header says Pro, and the structured data on the page says it is not free, even though the page title still reads "Free interactive course" (a leftover, as far as I can tell). Four scrims carry a SAMPLE badge and open without a subscription: the intro, Understanding web accessibility, Aside: Text contrast, and Semantic HTML. Between them that is about 16 minutes, and only Text contrast and Semantic HTML contain a challenge.
+The course is Pro. Scrimba's page header says Pro, and the structured data on the page says it is not free, even though the page title still reads "Free interactive course," a leftover from an earlier listing. Four scrims carry a SAMPLE badge and open without a subscription: the intro, Understanding web accessibility, Aside: Text contrast, and Semantic HTML. Between them that is about 16 minutes, and only Text contrast and Semantic HTML contain a challenge.
 
 Everything else, including the Skynet Eats fixes, the ARIA and live region lessons, the skip link, the final challenge and the certificate, needs Pro. Pro also unlocks the Pro-only channels on Scrimba's Discord (basic access to the Discord community is listed as free on the pricing page) and the career paths. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
 
@@ -192,6 +192,10 @@ The video runtime is 96 minutes. About nineteen scrims contain a challenge, and 
 It fits people who already build pages and want to stop shipping the seven mistakes on that contact page. That includes anyone partway through the [Frontend Developer Path](/docs/paths/frontend-developer-path/), [designers](/docs/for/designers/) who hand off markup, and [career changers](/docs/for/busy-professionals/) preparing for interviews where accessibility comes up, because it gives you the vocabulary (accessibility tree, landmarks, live regions, focus management) to talk about it.
 
 Skip it if you have never written HTML; go through [Learn HTML and CSS](/docs/courses/css/html-and-css/) first, which is what Scrimba's own prerequisite note points to. Also skip it if you have already worked with a screen reader or shipped a component library with ARIA in it; there is nothing here you do not know.
+
+<AffiliateLink href="https://scrimba.com/learn-accessible-web-design-c031" variant="button">
+  Start Learn Accessible Web Design on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -229,10 +233,6 @@ Where it is limited: the whole course is Pro and only 16 minutes of it is previe
   { q: "Does it cover screen reader testing?", a: "Only in passing. The course explains the accessibility tree and mentions Lighthouse and axe, but you never run a screen reader inside it. Fredrik suggests looking up screen reader demos yourself." },
   { q: "Is it part of a path?", a: "Scrimba's course data does not list it inside a path. Fredrik's bio says it launched through the Frontend Developer Path, but I did not verify where it sits on that path today." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-accessible-web-design-c031" variant="button">
-  View Learn Accessible Web Design on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Learn Accessible Web Design"

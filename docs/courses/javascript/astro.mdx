@@ -6,7 +6,7 @@ sidebar_label: "Intro to Astro"
 description: "James Q Quick's Intro to Astro reviewed from inside: 37 scrims in about 2 hours, 18 challenges, a portfolio with a Markdown blog, and what Pro gates."
 keywords: [scrimba intro to astro, intro to astro scrimba review, astro course scrimba, james q quick astro, learn astro framework, astro content collections course, content website framework]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Intro to Astro
 
-Scrimba's Pro course on Astro, the framework for content sites, taught by James Q Quick across about two hours and one project: a personal portfolio with a Markdown blog. I read the transcript of every one of its 37 scrims with a Pro account in September 2026, so this page describes what is actually in the course rather than what the listing says.
+James Q Quick teaches this Pro course on Astro, the framework for content sites, in about two hours across 37 scrims. You build one project: a personal portfolio with a header, a projects section, a Markdown blog with dynamic post pages, a contact page, and a Netlify deploy. It is a tight, worthwhile two evenings if you already write HTML, CSS, and basic JavaScript.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. It is a standalone Pro course; Scrimba's course page does not list it under any career path.*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Intro to Astro is a short, hands-on build: you turn a bare Astro starter into a personal site with a header, a projects section, a blog fed by Markdown files, dynamic pages for each post, a contact page, and a Netlify deploy. Scrimba lists it at 2.1 hours, Intermediate, Pro only. I counted 37 scrims, 18 of them challenges where the recording pauses and you write the code. It teaches the current Astro syntax: `.astro` components with scoped styles, a content collection typed with Zod, `getStaticPaths()` for the blog routes, and no client-side JavaScript at all.
-
-It is a good use of two evenings if you already write HTML, CSS, and basic JavaScript and want a fast portfolio, blog, or docs site. It is not a deep course, and it says so: islands, framework integrations, client-side scripts, and server endpoints are named in the wrap-up as things to learn next.
+It fits you if you want a fast portfolio, blog, or docs site and already write HTML, CSS, and basic JavaScript. The catch: it ships zero client-side JavaScript, so islands, framework integrations, and server endpoints only get named in the wrap-up as next steps. Want an interactive app instead? [Learn React](/docs/courses/react/learn-react/) is the better starting point.
 
 <CourseCard
   title="Intro to Astro"
@@ -59,7 +57,7 @@ Yes, if Astro is on your list and you learn by typing. Eighteen of the 37 scrims
 
 James is a clear teacher with a habit I found useful: he leaves his own slips in. He imports `container` with a lowercase c and gets an error, names a file `HeaderSection` when he meant `SectionHeader` ("do as I say, not as I do"), forgets to mention the post link in one challenge brief and says so ("that's my fault"). You see how a working developer reads an Astro error message and fixes it, which a polished recording would hide.
 
-The caveat is scope. Two hours is enough for components, styling, data, content collections, routing, and deploy, and that is the whole list. There is no interactivity: as James says in the wrap-up, "all the JavaScript that we wrote was only executed on the server, not in the actual browser." If you want React islands, a contact form that sends email, or API routes, this course will point you at them and stop.
+Scope stays tight: two hours covers components, styling, data, content collections, routing, and deploy, and nothing more. There is no interactivity: as James says in the wrap-up, "all the JavaScript that we wrote was only executed on the server, not in the actual browser." Want React islands, a contact form that sends email, or API routes? This course points you at them and stops.
 
 ## What you'll learn
 
@@ -152,6 +150,10 @@ It fits you if you know HTML, CSS, and enough JavaScript to read `array.map()` a
 
 Skip it, for now, if you have never built a webpage: the course assumes you can read HTML and CSS and does not teach them. Do [Learn HTML and CSS](/docs/courses/css/html-and-css/) and [Learn JavaScript](/docs/courses/javascript/learn-javascript/) first. Skip it if what you need is an interactive app; this course ships zero client-side JavaScript on purpose, and [Learn React](/docs/courses/react/learn-react/) or [Learn Next.js](/docs/courses/javascript/nextjs/) is the better tool. And if you already use Astro's content collections and dynamic routes, there is nothing new here; the course stops before islands, SSR, and endpoints.
 
+<AffiliateLink href="https://scrimba.com/intro-to-astro-c00ar0fi5u" variant="button">
+  Try the free Intro to Astro sample scrims
+</AffiliateLink>
+
 ## Prerequisites
 
 HTML, CSS, and basic JavaScript, including `import`, `array.map()`, template literals, and `await`. Scrimba's listing asks for comfort with npm and the command line, but inside the course the runner handles that; you only need a terminal, Git, and a GitHub account if you deploy. No prior Astro, TypeScript, or Zod is assumed.
@@ -187,10 +189,6 @@ Where it is limited: it is Pro only after the first four scrims. It never runs J
   { q: "How long does it take?", a: "About 2 hours of video. Plan four to six hours if you attempt every challenge, plus two to four more to personalize the content and deploy it." },
   { q: "Does it have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed control." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/intro-to-astro-c00ar0fi5u" variant="button">
-  Try the free Intro to Astro sample scrims
-</AffiliateLink>
 
 <CourseSchema
   name="Intro to Astro"

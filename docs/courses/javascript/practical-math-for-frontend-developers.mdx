@@ -6,7 +6,7 @@ sidebar_label: "Practical Math"
 description: "Ryan Gonyon's 65-minute Pro course reviewed from inside: all 15 transcripts read, the roll() function, calc() layouts, Date and reduce, and who can skip it."
 keywords: [scrimba practical math frontend, practical math for frontend developers review, math for frontend developers, css calc course, javascript date object course, javascript reduce tutorial, ryan gonyon scrimba, frontend math course]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Practical Math for Frontend Developers
 
-Scrimba's 65-minute Pro course on the small amount of math a frontend developer reaches for in a normal week, taught by Ryan Gonyon through three tiny apps. It is 15 scrims long, so I opened every one and read the transcript of each with a Pro account in September 2026. This page covers what each scrim teaches, what "math" turns out to mean here, and who should not bother.
+Scrimba's Practical Math for Frontend Developers is a 65-minute Pro course, taught by Ryan Gonyon, built around three tiny apps: a shopping cart, a weekly schedule, and a monthly expense sheet. The math is modest on purpose, mostly `reduce()`, CSS `calc()`, and the `Date` object, with one short detour into the algebra behind a `roll()` function. Skip it if those already come easily; otherwise it is a solid hour.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*Reviewed inside the course with a Pro account, September 2026: all 15 scrims and transcripts read.*
 
 ## Quick answer
 
-Practical Math for Frontend Developers is a short, intermediate Pro course (about 64 minutes of video across 15 scrims, 12 of them core content) in which Ryan Gonyon builds a shopping cart, a weekly schedule, and a monthly expense sheet. The math is deliberately modest: `Math.random()` turned into a reusable `roll(min, max)` function with a few lines of algebra, CSS `calc()` with variables for layouts that fit the viewport, JavaScript's `Date` object and its gotchas, `reduce()` for totals, and a four-minute detour into CSS shapes. There are no coding challenges in the Scrimba sense (no AI-checked scrims, no solo projects); instead Ryan says "pause the video and try it" about twenty times. If you can already write `reduce` and `calc()` without looking them up, skip it. If either of those makes you nervous, it is a pleasant hour.
+This fits developers who still write `for` loops where `reduce()` would do, who have never built a `calc()` layout with variables, or who need fake data for a prototype and have been hard-coding it. The catch: there are no graded challenges, just Ryan saying "pause the video and try it" about twenty times. If you already reach for `reduce()` without thinking, skip ahead to [Learn React](/docs/courses/react/learn-react/), where the same `reduce()` and `map()` patterns reappear in components.
 
 <CourseCard
   title="Practical Math for Frontend Developers"
@@ -59,9 +59,9 @@ Practical Math for Frontend Developers is a short, intermediate Pro course (abou
 
 ## Is it worth your time?
 
-It depends on what you expect the word "math" to mean. The course promises "enough mathematics" to build three apps, and delivers on that narrow promise. What it actually teaches is how to generate believable fake data with `Math.random()`, how to make a header, a scrollable main section and a footer share the viewport with `calc()`, how to walk through a month with `Date`, and how to sum things with `reduce`. Only one scrim contains anything a school would call math: the algebra that turns a number between 0 and 1 into a number between any min and max. Ryan says so himself at the end of that scrim: "If you didn't fully follow all the algebra that got us here, that's totally fine."
+The word "math" is doing a lot of work in the title. The course promises "enough mathematics" to build three apps, and delivers on that narrow promise. What it teaches is how to generate believable fake data with `Math.random()`, how to make a header, a scrollable main section and a footer share the viewport with `calc()`, how to walk through a month with `Date`, and how to sum things with `reduce`. Only one scrim contains anything a school would call math: the algebra that turns a number between 0 and 1 into a number between any min and max. Ryan says so himself at the end of that scrim: "If you didn't fully follow all the algebra that got us here, that's totally fine."
 
-In practice this is a course about the arithmetic inside everyday DOM code, recorded in May 2020 (the `Date` scrim prints that date to the console). The three apps are small and unstyled beyond a light green header. Nothing here touches animation curves, trigonometry, canvas, or anything a game or graphics developer would need. If that is the gap you were hoping to close, this is the wrong course.
+This is a course about the arithmetic inside everyday DOM code, recorded in May 2020 (the `Date` scrim prints that date to the console). The three apps are small and unstyled beyond a light green header. Nothing here touches animation curves, trigonometry, canvas, or anything a game or graphics developer would need. If that is the gap you were hoping to close, this is the wrong course.
 
 What it does well is give you one tool you will reuse. The `roll()` function, once written, appears in every later scrim: for prices, quantities, task names, whether a task is done, rent, utilities, and the number of expenses in a day. By the end you have generated a full month of fake financial data in about thirty lines, which is what you need when a design is ready and the API is not.
 
@@ -176,13 +176,17 @@ It fits self-taught developers who are past the basics of JavaScript but still w
 
 Skip it if you already reach for `reduce` without thinking, know that months are zero-indexed, and have built a viewport-filling layout with `calc()`. You would learn nothing new, and the "math" title will have oversold it. Skip it too if you wanted geometry, easing functions, or anything for canvas or games; none of that is here. Complete beginners should do [Learn JavaScript](/docs/courses/javascript/learn-javascript/) first, since the course assumes arrow functions, template strings, spread, and `getElementById` without explanation.
 
+<AffiliateLink href="https://scrimba.com/practical-math-for-frontend-developers-c02b" variant="button">
+  Start Practical Math for Frontend Developers on Scrimba
+</AffiliateLink>
+
 ## Prerequisites
 
 Comfortable JavaScript basics: functions, arrays, objects, template strings, and the DOM methods `getElementById` and `innerHTML`. Basic CSS, since the layout scrims edit `height`, `padding`, and `display: flex` without explaining them. No math beyond school algebra; the one derivation is on a slide and Ryan says you can skip following it. Nothing to install: every scrim runs in the browser.
 
 ## Where it fits
 
-Scrimba lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). In practice it is a one-evening top-up between [Learn JavaScript](/docs/courses/javascript/learn-javascript/) and the React track: the `reduce` and `map` patterns reappear constantly in [Learn React](/docs/courses/react/learn-react/), and the CSS variables and `calc()` work pairs with [Learn CSS Variables](/docs/courses/css/css-variables/). If the course leaves you wanting real algorithmic depth, [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) is the next step, not this one repeated.
+Scrimba lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). It is a one-evening top-up between [Learn JavaScript](/docs/courses/javascript/learn-javascript/) and the React track: the `reduce` and `map` patterns reappear constantly in [Learn React](/docs/courses/react/learn-react/), and the CSS variables and `calc()` work pairs with [Learn CSS Variables](/docs/courses/css/css-variables/). If the course leaves you wanting real algorithmic depth, [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) is the next step, not this one repeated.
 
 ## Strengths and limits
 
@@ -210,10 +214,6 @@ Where it is limited: the title promises more math than the course contains, ther
   { q: "How long does it take?", a: "64 minutes of video. Plan for two to three hours if you type at each pause prompt and rebuild one of the apps yourself." },
   { q: "Is it up to date?", a: "The recording is from May 2020. Everything it teaches (calc(), CSS variables, Date, reduce) still works unchanged, but the Moment.js mention and the career path pitch in the Congratulations scrim are dated." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/practical-math-for-frontend-developers-c02b" variant="button">
-  See Practical Math for Frontend Developers on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Practical Math for Frontend Developers"

@@ -6,7 +6,7 @@ sidebar_label: "Command Line Basics"
 description: "Ajo Borgvold's free Command Line Basics course from inside: 101 minutes, 24 scrims, seven terminal challenges, and why half of it needs your own terminal."
 keywords: [scrimba command line basics, command line basics scrimba review, cli course for beginners, learn command line scrimba, terminal basics course, free cli course, ajo borgvold]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Command Line Basics
 
-Scrimba's free introduction to the terminal, taught by Ajo Borgvold in 101 minutes across two short sections. I opened every module and read the transcript of every scrim with a Pro account in September 2026, and the most useful thing I can tell you is that the two halves of this course are built differently: the first half is hands-on in Scrimba's terminal, the second half is slides you follow along with on your own machine.
+Ajo Borgvold teaches this free command line course in 101 minutes across two sections: a hands-on terminal built into Scrimba, then slides once the browser terminal can't run what's taught. You organize a fictional startup's messy file system through seven graded challenges, and it's the right first stop if you have never typed a command.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. The course page shows no path badge, but the module list of Scrimba's [Backend Developer Path](/docs/paths/backend-developer-path/) includes a 103 minute "Command Line Interface" module that matches this course.*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Command Line Basics is a free, beginner course of 24 short scrims, none longer than eight minutes. Section one puts a real terminal inside the Scrimba editor and walks you through `pwd`, `ls`, `cd`, `touch`, `rm`, `mkdir`, `echo` and `cat`, with a graded challenge in six of its ten scrims. Section two covers `find`, `grep`, `sed`, `mv`, `cp`, `wc`, `sort`, `uniq` and the pipe, but Scrimba's browser terminal cannot run most of those, so it is slides plus a walkthrough for setting up a terminal on your own computer. The framing is a running joke: you are the unpaid intern at Ajo's geography quiz game startup, tidying up the file system after a chaotic night of brainstorming.
-
-If you have never typed a command, take it. It costs nothing, the first hour is well drilled, and it removes the fear that makes Git and Node courses feel harder than they are. If you already move around a terminal comfortably, you will learn nothing new here.
+It fits complete beginners: section one drills real terminal commands with graded challenges, and by the end of the first 46 minutes the fear that makes [Learn Git and GitHub](/docs/courses/javascript/git-and-github/) feel harder than it is starts to lift. The catch is section two, which drops the Scrimba terminal for slides and only pays off if you set up a terminal on your own machine. Already comfortable moving around a terminal? Skip straight to Git and GitHub.
 
 <CourseCard
   title="Command Line Basics"
@@ -63,7 +61,7 @@ If you have never typed a command, take it. It costs nothing, the first hour is 
 
 For a complete beginner, yes, and mostly because of the first 46 minutes. Ajo hides Scrimba's file sidebar at the start of the first real lesson ("in a command line course, that will basically be cheating") and makes you find every file by typing. Each challenge is a numbered brief in a `challenge.md` file, and the solution walkthrough is where the teaching happens: you watch the wrong command fail, read the error, and see the fix. That loop is the thing most terminal tutorials skip.
 
-The honest caveat is section two. Ajo says it plainly in its intro: "Many of the commands that I'll be teaching you in this section are unfortunately not supported by the shell that we can run in the Scrimba terminal," and that the workaround the team "settled on was to make this section focused on theory rather than practice." There are no challenges in that hour. You get a project zip, setup instructions for Mac and Windows, and slides with screenshots of Ajo's own terminal. If you skip the local setup, the second half is a lecture.
+Section two is the weak half. Ajo says it plainly in its intro: "Many of the commands that I'll be teaching you in this section are unfortunately not supported by the shell that we can run in the Scrimba terminal," and that the workaround the team "settled on was to make this section focused on theory rather than practice." There are no challenges in that hour. You get a project zip, setup instructions for Mac and Windows, and slides with screenshots of Ajo's own terminal. If you skip the local setup, the second half is a lecture.
 
 The course is also limited by design. It is file management: moving around, creating, reading, searching, sorting. There is no shell scripting, no environment variables, no permissions, no package managers. Ajo lists those as reasons the command line matters and then says the focus "will be on file management." Take it as a foundation and nothing more.
 
@@ -158,13 +156,17 @@ It fits people who have never opened a terminal, or who have copied commands fro
 
 Skip it if you already use `grep` and `find` without thinking, or if you want scripting, permissions, SSH or package managers; none of those are here. Also skip section two if you cannot or will not install anything on your machine, because without a local terminal it is an hour of slides.
 
+<AffiliateLink href="https://scrimba.com/command-line-basics-c08b87ogl0" variant="button">
+  Start Command Line Basics for free
+</AffiliateLink>
+
 ## Prerequisites
 
 None. No programming, no prior terminal use, no installs for section one. Section two wants a computer where you can install VS Code and Git (Windows) or open the Terminal app (Mac). Linux users are not addressed in the setup lesson, but any bash or zsh shell works for what is taught.
 
 ## Where it fits
 
-This is a tooling course rather than a language course. It sits before [Learn Git and GitHub](/docs/courses/javascript/git-and-github/) (which lives in the terminal from its third section) and before [Learn Node.js](/docs/courses/javascript/nodejs/), where you start running your own code from a command line. Scrimba's Backend Developer Path lists a Command Line Interface module of the same length, and Ajo's teacher card mentions work on that path, so backend learners are the intended audience. Frontend learners can take it any time; it does not depend on [Learn JavaScript](/docs/courses/javascript/learn-javascript/).
+This is a tooling course rather than a language course. It sits before [Learn Git and GitHub](/docs/courses/javascript/git-and-github/) (which lives in the terminal from its third section) and before [Learn Node.js](/docs/courses/javascript/nodejs/), where you start running your own code from a command line. Scrimba's [Backend Developer Path](/docs/paths/backend-developer-path/) lists a 103 minute "Command Line Interface" module that matches this course, and Ajo's teacher card mentions work on that path, so backend learners are the intended audience. Frontend learners can take it any time; it does not depend on [Learn JavaScript](/docs/courses/javascript/learn-javascript/).
 
 ## Strengths and limits
 
@@ -192,10 +194,6 @@ Where it is limited: section two has no challenges and depends entirely on you s
   { q: "Does it have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages." },
   { q: "How long does it take?", a: "101 minutes of video. Plan on about two hours for section one with the challenges, and three to five hours in total if you do the local setup and run the section two commands yourself." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/command-line-basics-c08b87ogl0" variant="button">
-  Start Command Line Basics for free
-</AffiliateLink>
 
 <CourseSchema
   name="Command Line Basics"

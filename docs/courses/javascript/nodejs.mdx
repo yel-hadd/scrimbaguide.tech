@@ -6,7 +6,7 @@ sidebar_label: "Learn Node.js"
 description: "Tom Chant's free Learn Node.js course from inside: 3.5 hours, 49 scrims, a REST API and a routed site with no framework, and what Pro gates."
 keywords: [scrimba learn nodejs, learn nodejs scrimba review, free nodejs course, node rest api course, tom chant node, scrimba node course 2026]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Node.js
 
-Scrimba's free Node.js course, taught by Tom Chant across about 3.5 hours and two projects, with no Express or any other framework in sight. I opened every module and read the transcript of every scrim but one (48 of 49; the "serve the frontend" scrim would not load after three tries) with a Pro account in September 2026. What follows is what is in the course, not the listing rewritten.
+Tom Chant teaches Scrimba's free Node.js course in about 3.5 hours across two projects: a JSON REST API built with nothing but Node's built-in `http` module, and a small ghost-sightings site with static files, POST handling and server-sent events. No Express, no framework. It's the course to take before you learn one, so you see what the framework hides.
 
-*This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/), the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) and the [Backend Developer Path](/docs/paths/backend-developer-path/).*
+*Reviewed inside the course with a Pro account, September 2026: 48 of 49 scrims (the "serve the frontend" scrim would not load after three tries).*
 
 ## Quick answer
 
-Learn Node.js is a free, intermediate course of about 3.5 hours, split into two projects. In the first you build the Wild Horizons API, a JSON API about strange travel destinations, using only Node's built-in `http` module: routing on `req.url`, status codes, headers, path parameters, query strings and CORS. In the second you build From the Other Side, a small site where people upload ghost sightings, and learn the `fs` and `path` modules, static file serving, POST bodies, input sanitizing with a dependency, event emitters and server-sent events. Everything is vanilla JavaScript on both ends. It assumes you already write JavaScript comfortably (array methods, fetch, async/await) and nothing about servers. If you want to understand what Express is hiding from you before you learn Express, this is the course to take first.
+It fits a frontend developer who has only ever been on the receiving end of an API and wants to know what happens on the other end of `fetch`. The catch: no database, no authentication and no deployment, so treat it as the foundation, not the finish line. Take [Learn Express.js](/docs/courses/javascript/expressjs/) next for the framework and a database built on the same ideas.
 
 <CourseCard
   title="Learn Node.js"
@@ -166,9 +166,13 @@ The 3.5 hours is video runtime. Twenty-five scrims are challenges, and about eig
 
 ## Who it's for, and who should skip it
 
-It fits frontend developers who can write JavaScript and want to know what happens on the other end of `fetch`. It is also a good first backend course for [career changers](/docs/for/busy-professionals/) with limited time, because the scrims are short and nothing needs installing.
+It fits frontend developers who can write JavaScript and are ready to see the server side of the requests they have only ever sent. It is also a good first backend course for [career changers](/docs/for/busy-professionals/) with limited time, because the scrims are short and nothing needs installing.
 
 Skip it if you cannot yet write `filter` and `async/await` without looking them up; do [Learn JavaScript](/docs/courses/javascript/learn-javascript/) first, and possibly [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/). Skip it, for now, if you need a database, authentication or deployment: those live in [Learn Express.js](/docs/courses/javascript/expressjs/) and [Intro to SQL](/docs/courses/backend/sql/). And if you already know Node and just want a framework, go straight to Express or [Intro to NestJS](/docs/courses/javascript/nestjs/).
+
+<AffiliateLink href="https://scrimba.com/learn-nodejs-c00ho9qqh6" variant="button">
+  Start Learn Node.js for free
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -216,10 +220,6 @@ Where it is limited:
   { q: "Which Node version does it teach?", a: "Modern Node: ES module imports with the node: prefix, node:fs/promises, and import.meta.dirname, which Tom notes needs Node 20 or later. One scrim covers the older CommonJS require and __dirname so you can read legacy code." },
   { q: "What should I take after this?", a: "Learn Express.js, which is Tom's course too and adds a framework, a SQLite database and authentication on top of what you learn here." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-nodejs-c00ho9qqh6" variant="button">
-  Start Learn Node.js for free
-</AffiliateLink>
 
 <CourseSchema
   name="Learn Node.js"

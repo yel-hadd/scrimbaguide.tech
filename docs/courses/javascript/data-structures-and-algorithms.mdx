@@ -6,7 +6,7 @@ sidebar_label: "Data Structures and Algorithms"
 description: "Shant Dashjian's DSA course reviewed from inside: 35 scrims in 2.5 hours, 11 test-driven challenges, dinosaur data, and what the free sample covers."
 keywords: [scrimba data structures and algorithms, scrimba dsa course review, data structures and algorithms review, shant dashjian scrimba, technical interview prep, big o notation course, dsa course javascript]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,15 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Data Structures and Algorithms
 
-Scrimba's Pro course on data structures and algorithms, taught by Shant Dashjian in about two and a half hours, with a running story about saving the dinosaurs. I read the transcript of every one of its 35 scrims with a Pro account in September 2026, so this page describes what is in the course rather than what the listing says.
+Shant Dashjian teaches Scrimba's Data Structures and Algorithms course in about two and a half hours, framed as a story about saving the dinosaurs. You build a stack, a queue, a linked list, a binary search tree, merge sort and binary search, then analyze each with Big O. A solid first pass at the theory, thin past the basics.
+
+*Reviewed inside the course with a Pro account, September 2026.*
 
 *This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's catalog data does not list it under a path, but the welcome lesson addresses learners "taking this course as part of Scrimba's backend developer path", and the teacher card says Shant contributes to the [Backend Developer Path](/docs/paths/backend-developer-path/).*
 
 ## Quick answer
 
-Data Structures and Algorithms is a short, code-first introduction to the topic in JavaScript: Big O notation, arrays, strings, bubble sort, merge sort, recursion, linear and binary search, maps, stacks, queues, linked lists, binary search trees, depth-first and breadth-first search, and graphs. Scrimba lists it at 2.5 hours, Advanced, Pro only. I counted 35 scrims, 11 of them titled challenges where you write a function and run `npm test` against a prepared Vitest file, plus nine shorter "do it right now" pauses inside the teaching scrims. Every challenge is framed as a problem for a fictional dinosaur social network. It is a good first pass at the subject for a self-taught developer, and a thin one for anyone who already knows what a hash map is.
+It fits self-taught developers and bootcamp graduates who have never been taught why one solution beats another, not people who already know what a hash map is. The catch: every challenge is framed around a fictional dinosaur social network, and the course stays introductory by design, with no heaps, hash table internals or dynamic programming. Finish it and [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) is the natural next stop for practice volume.
 
 <CourseCard
   title="Data Structures and Algorithms"
@@ -69,7 +71,7 @@ Data Structures and Algorithms is a short, code-first introduction to the topic 
 
 Yes, if you can already write JavaScript functions and loops but have never been taught why one solution is "O(n squared)" and another is "O(n)". This course closes that gap in an afternoon. The Big O lessons come first and every later challenge ends with Shant asking you to write down the time and space complexity of what you just built. By the end you will have implemented a stack, a queue, a linked list node, a binary search tree insert and search, merge sort, binary search, and two graph traversals, and analysed each one.
 
-The honest caveat is depth. The course runs about two and a half hours and Shant calls it "Scrimba's introduction to data structures and algorithms" in the closing scrim. There is no heap, no hash table internals, no dynamic programming, no Dijkstra, and the tree lesson says outright that it covers "a subset of the most important parts". If you are preparing for interviews at companies that ask hard algorithm questions, this is the vocabulary lesson, not the practice. The two narrower courses by Jonathan Lee Martin, [Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/) and [Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/), go deeper on single algorithms.
+Depth is the limit. The course runs about two and a half hours and Shant calls it "Scrimba's introduction to data structures and algorithms" in the closing scrim. There is no heap, no hash table internals, no dynamic programming, no Dijkstra, and the tree lesson says outright that it covers "a subset of the most important parts". If you are preparing for interviews at companies that ask hard algorithm questions, this is the vocabulary lesson, not the practice. The two narrower courses by Jonathan Lee Martin, [Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/) and [Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/), go deeper on single algorithms.
 
 The "Advanced" label is misleading in one direction. The only prerequisite, in Shant's words, is that "you need to know JavaScript, and that's the only prerequisite". The arrays lesson reviews `push`, `pop` and `for...of` on the assumption that you have used them before. If you have finished [Learn JavaScript](/docs/courses/javascript/learn-javascript/), you can follow this.
 
@@ -177,7 +179,11 @@ Two and a half hours is the video runtime. The challenges are where the time goe
 
 It fits self-taught developers and bootcamp graduates who can build things but have never studied the theory, anyone on the [Backend Developer Path](/docs/paths/backend-developer-path/) who wants the interview foundation Shant describes in the welcome, and [CS students](/docs/for/cs-students/) who want to see the textbook material done in JavaScript with tests.
 
-Skip it if you have already taken a university algorithms course or worked through a book like Grokking Algorithms; there is nothing here you do not know. Skip it too if you are still learning JavaScript itself, because the arrays lesson assumes you have used `push`, `pop` and `for` loops before. And skip it if what you actually need is interview practice at volume: the course has eleven problems, and [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) is the better follow-up for that.
+Skip it if you have already taken a university algorithms course or worked through a book like Grokking Algorithms; there is nothing here you do not know. Skip it too if you are still learning JavaScript itself, because the arrays lesson assumes you have used `push`, `pop` and `for` loops before. And skip it if what you need is interview practice at volume: the course has eleven problems, and [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) is the better follow-up for that.
+
+<AffiliateLink href="https://scrimba.com/data-structures-and-algorithms-c0shn6ckdm" variant="button">
+  Try the free Big O sample on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -213,10 +219,6 @@ Where it is limited: two and a half hours cannot cover heaps, hash table interna
   { q: "Do I need to install anything?", a: "No. Each scrim is a Node project running inside Scrimba's browser editor with its own terminal, and the test dependencies are already installed. You type npm test in the terminal Scrimba provides." },
   { q: "How does it differ from the binary search and merge sort courses?", a: "This is the broad introduction: fourteen topics in 2.5 hours. The Binary Search and Merge Sort courses by Jonathan Lee Martin each spend an entire course on one algorithm that this course covers in five to ten minutes." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/data-structures-and-algorithms-c0shn6ckdm" variant="button">
-  Try the free Big O sample on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Data Structures and Algorithms"
