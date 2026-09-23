@@ -138,7 +138,7 @@ The next three algorithms are theory with a parking garage analogy: sliding wind
 
 Throttling closes the module with `express-slow-down`. The final challenge brief reads like a ticket: the system degrades after three requests in ten seconds, so delay request four by one second, five by four, six by nine, and cap everything at seven requests per thirty seconds. The answer is a `delayMs` of `(hits - 3) * (hits - 3) * 1000` next to a limiter set to seven requests per thirty seconds. Part two runs it and finds request eight completing before request seven, because seven was sitting on a sixteen second timer while the limiter filled up. "Delayed requests don't necessarily process in arrival order," Jonathan notes, which is the kind of thing you only learn by running it.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Scrims run two to six minutes. In Rachel's modules the screen is mostly a slide with a diagram, and a markdown or JavaScript file opens only for the challenges; her pattern is to solve scenario one out loud, pause, and walk through "what I would have done" for the rest, with a reminder that your answer does not have to match hers. In Jonathan's modules the editor and a mini browser are open the whole time, and the challenge text sits in a comment above where you type. Saving a file recompiles the back end through the runner; the front end needs a Ctrl+C and `npm run dev` in the terminal, which he reminds you about in a README because you will do it a dozen times.
 
@@ -150,7 +150,7 @@ Three scrims are free previews, marked SAMPLE on the course page: the course int
 
 There are no Solo Projects in this course, so there is no separate Pro-gated project tier: it is simply a Pro course. Pro also unlocks the career paths and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free, so the server itself is not gated. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
 
-## How long it really takes
+## How long it takes
 
 Five hours is video runtime. The reasoning challenges in modules 1 and 2 add ten minutes each if you write your answers down rather than nodding along. Modules 3 and 4 are slower: each challenge needs a server restart and a test run, the Zod and rate-limit docs are open in another tab, and the throttling results are worth re-reading. Budget 10 to 15 hours in total, which is a week at an hour a day or two focused weekends. If you take Jonathan up on his closing suggestion to build a schema for your own form, and to combine a limiter, a throttle and client identification in a project of your own, add another five.
 

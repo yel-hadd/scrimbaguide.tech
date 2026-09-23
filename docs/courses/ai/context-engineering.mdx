@@ -6,7 +6,7 @@ sidebar_label: "Learn Context Engineering"
 description: "Arsala Khan's one-hour Pro course reviewed from inside: 15 scrims on system prompts, trimming by tokens, and AI summaries that stop a chat app forgetting."
 keywords: [scrimba context engineering, learn context engineering scrimba, learn context engineering review, vercel ai sdk context, openrouter tutorial, ai app context window, context window trimming, context summarization, arsala khan scrimba]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Context Engineering
 
-Scrimba's short Pro course on keeping an AI chat app from forgetting or crashing as a conversation grows, taught by Arsala Khan in about an hour. It is a flat list of 15 scrims. I read the transcript of every one of them and opened the code in each, challenge briefs and solutions included, with a Pro account in September 2026. This is what is in there.
+Arsala Khan's Learn Context Engineering is a one-hour Pro course built around a single chat app on the Vercel AI SDK and OpenRouter. You add a system prompt, then trim old messages by token count, then replace them with an AI-written summary so the app stops forgetting. It is small, focused, and worth the hour once your own app has hit the wall it demonstrates.
 
-*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page does not list it under a career path, though the instructor builds the [AI Engineer Path](/docs/paths/ai-engineer-path/) and the material fits there.*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Learn Context Engineering is a one-hour, intermediate, Pro course on three techniques: system prompts, trimming old messages so a request fits the model's context window, and asking the model to summarize older messages instead of dropping them. You work in one small vanilla JavaScript chat app built on the Vercel AI SDK (version 5) and OpenRouter. Six of the 15 scrims stop and hand you a challenge, each with a hints folder. If you already call an LLM from JavaScript and want to know why your app breaks after twenty messages, this is a tight, practical fix. If you have never called a model before, start with [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) instead.
+This fits developers who already call a model from JavaScript and want to know why their chat app breaks once the conversation gets long. The catch: it assumes async/await and at least one live API call already under your belt, so total beginners will feel lost. Never called an LLM from code before? Start with [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) instead; the instructor also builds Scrimba's [AI Engineer Path](/docs/paths/ai-engineer-path/), which this course slots into.
 
 <CourseCard
   title="Learn Context Engineering"
@@ -107,7 +107,7 @@ Then the first mini challenge: add a `system` property to the `streamText` call 
 
 A 78-second Scrimba Docs promo by Tom Chant sits next, then the Context Window Demo. The app now starts with a long preloaded conversation and two counters, one for total messages and one for what is being sent. The code switches from `textStream` to `fullStream` so you can catch error events. You send one message, get the context-length error, and the mini challenge is to send only the last ten messages. The solution is `messages.slice(-10)`.
 
-The Context Window Challenge is where it gets more honest. "AI models don't actually process messages the way humans do. They process tokens," and messages vary wildly in size, so counting messages is the wrong unit. The error message this time is specific: 38,000 tokens requested against a 32,000 limit, 26,000 of them input. Her takeaway is that "the model still needs to keep space for future output," so you trim to around 20,000.
+The Context Window Challenge gets specific. "AI models don't actually process messages the way humans do. They process tokens," and messages vary wildly in size, so counting messages is the wrong unit. The error message this time is specific: 38,000 tokens requested against a 32,000 limit, 26,000 of them input. Her takeaway is that "the model still needs to keep space for future output," so you trim to around 20,000.
 
 Your job is to implement `getTrimmedContext(messages, tokenLimit)`: a `while` loop that shifts off the oldest message and recounts with `calculateTokens` until you are under the limit, always keeping at least one message.
 
@@ -143,7 +143,7 @@ You implement two functions in `summary.js`: `splitForSummary`, which walks from
 
 An 81-second recap of the three techniques, a 56-second scrim on putting the certificate on LinkedIn, and a two-minute pitch from Per Borgen for Scrimba's referral program. None of it is course content, and you can skip all three.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Most scrims are two to six minutes. Arsala talks over slides for the concepts, then switches to the editor with the chat app running in a preview pane on the right. In the newer Scrimba format used here the project is a real Vite app with a `node_modules` folder, a runner tab and a terminal, so the preview is a live page you type into, not a static frame.
 
@@ -157,7 +157,7 @@ This is a Pro course. The first four scrims carry a SAMPLE badge and can be prev
 
 Pro also covers the [AI Engineer Path](/docs/paths/ai-engineer-path/) and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as a free feature, so the server itself is not gated. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
 
-## How long it really takes
+## How long it takes
 
 About an hour of video, but budget two to three hours. The OpenRouter setup happens on another site and takes a few minutes the first time. The mini challenges are quick. The two real challenges (token trimming and the two summary functions) are where the time goes, especially if you use the hints sparingly. Do it in one evening or split it across two.
 
@@ -166,6 +166,10 @@ About an hour of video, but budget two to three hours. The OpenRouter setup happ
 It fits developers who have built at least one AI feature and hit the wall: a chatbot that forgets the brief, a request that fails once the history grows. It also fits anyone partway through the [AI Engineer Path](/docs/paths/ai-engineer-path/) who wants the context piece on its own.
 
 Skip it if you have never called a model from code; the problem will not feel real yet, and the setup assumes you know what an API key and an environment variable are. Also skip it if you want a framework-specific answer. The course uses vanilla JavaScript, and if you are using the AI SDK's React hooks or a chat framework that already manages history, you will translate the ideas rather than copy the code.
+
+<AffiliateLink href="https://scrimba.com/learn-context-engineering-c0u13jhi10" variant="button">
+  Start Learn Context Engineering on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -211,10 +215,6 @@ Where it is limited:
   { q: "Who teaches it?", a: "Arsala Khan, who also builds Scrimba's AI Engineer Path. Tom Chant and Per Borgen each appear in one short housekeeping scrim." },
   { q: "Do I need prior AI experience?", a: "Yes. It assumes you have called a model from code and know JavaScript with async/await. Start with Intro to AI Engineering if not." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-context-engineering-c0u13jhi10" variant="button">
-  View Learn Context Engineering on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Learn Context Engineering"

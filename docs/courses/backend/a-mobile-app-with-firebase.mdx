@@ -6,7 +6,7 @@ sidebar_label: "Firebase Mobile App"
 description: "Rafid Hoda's two-hour Firebase project course reviewed from inside: 38 scrims, a realtime shopping list you install on your phone, and what Pro gates."
 keywords: [scrimba firebase course, build a mobile app with firebase review, rafid hoda firebase, firebase realtime database course, firebase project course, pwa course scrimba]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Build a Mobile App with Firebase
 
-A two-hour Pro project course from Rafid Hoda. You build a shopping list app in plain HTML, CSS and JavaScript, store its items in a Firebase Realtime Database, and end by installing it on your phone's home screen. I read the transcript of every one of its 38 scrims, opened the code in each one, and took the screenshots below with a Pro account in September 2026.
+Rafid Hoda's Build a Mobile App with Firebase is a two-hour Pro project course. You build a shopping list app in plain HTML, CSS and JavaScript, store its items in a Firebase Realtime Database, and finish by installing it on your phone's home screen. It's a tight, well-sequenced two hours if you already write basic JavaScript.
 
-*This page is part of our [Scrimba backend courses](/docs/courses/backend/) catalog. Scrimba's course page does not list it under any career path.*
+*Reviewed inside the course with a Pro account, September 2026: all 38 scrims and transcripts.*
 
 ## Quick answer
 
-Build a Mobile App with Firebase is a short, guided build. There are no modules, just 38 scrims in one long list, most of them two to five minutes. You start with an input field and a button, connect a Firebase Realtime Database in the fourth scrim, and by the halfway point items you type are saved to the cloud and rendered back in real time. The second half adds delete-on-click, mobile styling, a favicon, a web app manifest, and a Netlify deploy. The whole thing is Pro; only the first two scrims are free previews.
-
-It teaches six Firebase functions well (`initializeApp`, `getDatabase`, `ref`, `push`, `onValue`, `remove`) and nothing else about Firebase. No authentication, no Firestore, no hosting, and security rules get a two-minute scrim that ends with "we'll cover this in a future course." If you already write basic JavaScript and want to see data leave the browser for the first time, it is a good two hours. If you want to learn Firebase as a product, it is not that course.
+Build a Mobile App with Firebase suits anyone who has finished a beginner JavaScript course and wants to watch data leave the browser for the first time, the shortest route to that moment in the Scrimba catalog. The catch: everything past the first two scrims sits behind Pro. The same Firebase workflow closes the free [Learn JavaScript](/docs/courses/javascript/learn-javascript/) course, applied to a different app, so if you've already built that course's leads tracker, you've seen most of the Firebase side of this one already.
 
 <CourseCard
   title="Build a Mobile App with Firebase"
@@ -106,7 +104,7 @@ Scrim 10 is the second ten-minute aside, on `onValue`. It uses a separate book-l
   caption="The onValue aside at 8:03. Rafid edits a book title in the Firebase console and the preview shows four books instead of two, because the loop appends without clearing first. Fixing it is the scrim's last challenge."
 />
 
-There is also an honest moment at 9:32 of that scrim, where a note recorded later cuts in: "this is future me talking to you. After recording the scrim, I noticed that at this point I'm actually seeing both books on my side, but you're actually seeing a blank web page." The in-browser preview could not run the Firebase code against his database; you have to paste your own URL to see it work.
+There is a candid moment at 9:32 of that scrim, where a note recorded later cuts in: "this is future me talking to you. After recording the scrim, I noticed that at this point I'm actually seeing both books on my side, but you're actually seeing a blank web page." The in-browser preview could not run the Firebase code against his database; you have to paste your own URL to see it work.
 
 Scrims 11 to 13 bring `onValue` into the shopping list, with three challenges (call `onValue`, log `snapshot.val()`, convert it with `Object.values`), a for loop to render the items, and then "Let's smash the bug," where the list duplicates because the item is both pushed and appended. Rafid's fix ends with the line he uses several times: "Always grab the opportunity to refactor your code."
 
@@ -160,7 +158,7 @@ Scrim 36 is Per Borgen's two-minute pitch for the Scrimbassador referral program
 
 The last scrim is a 53-second note on how to use the certificate.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 A typical scrim is three to five minutes. Rafid narrates over the editor, the app runs in a preview pane on the right, and when a slide is needed (the Firebase console, a concept diagram, a challenge brief) it takes over the screen. Challenges are written as comments in the file. The recording pauses, you type into the same editor, then you press play and he solves it. His solutions are chatty and he names things out loud ("I'm not really sure what I should call it, so I'm just gonna call it hello for now"), which is closer to how people really code than most courses admit.
 
@@ -174,7 +172,7 @@ The course is Pro. Two scrims are marked SAMPLE and open without a subscription:
 
 If you want the same Firebase workflow without paying, the final module of the free [Learn JavaScript](/docs/courses/javascript/learn-javascript/) course applies it to a different app, the leads tracker, with the same teacher in 23 scrims. What this Pro version adds is a second app to build, the delete-on-click lessons, more asides, the solo project and the certificate. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
 
-## How long it really takes
+## How long it takes
 
 Two hours of video, but the challenges are the course, and there are a lot of them. Plan for four to six hours: about three hours to work through the scrims and do every challenge, plus the time to set up your Firebase project, deploy to Netlify and install the app on your phone, which are outside the browser. Two evenings is realistic. The solo project is another two to four hours if you follow the Figma file, more if you attempt the stretch goals.
 
@@ -183,6 +181,10 @@ Two hours of video, but the challenges are the course, and there are a lot of th
 It fits people who have finished a beginner JavaScript course and have never sent data to a server. The moment an item you typed survives a page refresh is the whole point, and this is the shortest route to it in the Scrimba catalog. It also fits anyone who wants the add-to-home-screen trick explained in the simplest possible form: a manifest file and an icon set, nothing more.
 
 Skip it if you have already done the mobile app module in Learn JavaScript and do not want a second run at the same Firebase workflow, because most of the function calls will be familiar. Skip it if you want Firebase authentication, Firestore or deploying on Firebase Hosting; none of those appear. And skip it if you dislike being told to pause: more than half the scrims stop and wait for you.
+
+<AffiliateLink href="https://scrimba.com/build-a-mobile-app-with-firebase-c0g" variant="button">
+  Start Build a Mobile App with Firebase on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -218,10 +220,6 @@ Where it is limited: it is one project and six functions, security rules get two
   { q: "Does it use AI-checked challenges?", a: "Not that I found. The challenges are the classic kind: a comment in the file, a pause, then Rafid's solution." },
   { q: "How long does it take?", a: "Two hours of video. Plan four to six hours with every challenge, the Firebase and Netlify setup, and installing the app on your phone, plus two to four hours more for the solo project." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/build-a-mobile-app-with-firebase-c0g" variant="button">
-  View Build a Mobile App with Firebase on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Build a Mobile App with Firebase"

@@ -6,7 +6,7 @@ sidebar_label: "Vercel AI SDK Agent"
 description: "Mayo Oshin's Pro course from inside: 114 minutes, 23 scrims, a Supabase-backed support bot that picks retrieval or web search, and what Pro gates."
 keywords: [scrimba vercel ai sdk course, build a support agent scrimba review, vercel ai sdk tutorial, mayo oshin scrimba, ai support agent project, vercel ai sdk review]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Build a Support Agent with Vercel AI SDK
 
-Scrimba's Pro project course on shipping a customer support agent with the Vercel AI SDK, taught by Mayo Oshin in just under two hours. I went through it with a Pro account in September 2026 and read the transcript of every one of the 23 scrims, from the free embeddings preview to the certificate reminder at the end. Where I quote Mayo, the words come from those transcripts.
+Build a Support Agent with Vercel AI SDK is Mayo Oshin's Pro project course on Scrimba: 114 minutes across 23 scrims, ending in a Supabase-backed support agent that routes each question to retrieval, web search, or a direct answer. It teaches the Vercel AI SDK v5 API, and it earns two evenings if you already know RAG and function calling.
 
-*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Build a Support Agent with Vercel AI SDK is a short, intermediate, Pro-tier course: 114 minutes of video by Scrimba's count, across 23 scrims, six of them challenges. You embed Scrimba's own help center articles into a Supabase vector store and learn four functions from the Vercel AI SDK: `generateText`, `embed`, `generateObject`, and `tool`. You finish with an Express-served chatbot that decides, per question, whether to search your docs, search the web, or answer directly.
-
-The first six scrims are free previews; the rest need Pro. It assumes you already know what RAG (retrieval augmented generation, where the model answers from documents you fetch for it) and function calling are, and Mayo says so in the intro. If you have done [Learn AI Agents](/docs/courses/ai/ai-agents/) and want one compact, realistic build on a mainstream SDK, this is a good two-evening project.
+It suits developers who already understand RAG (retrieval augmented generation, where the model answers from documents you fetch for it) and function calling, and want one realistic build on a mainstream SDK. The catch is setup: you need your own OpenAI key and a free Supabase project, and the first half hour goes to other browser tabs before any agent code runs. Start with [Learn AI Agents](/docs/courses/ai/ai-agents/) first if tool calling is still new to you.
 
 <CourseCard
   title="Build a Support Agent with Vercel AI SDK"
@@ -166,7 +164,7 @@ Mayo then asks "how do I resolve the error node_modules not found?", which the a
 
 The last three scrims are the platform-wide add-ons Scrimba appends to most courses, and none of them is about the Vercel AI SDK. Scrimba Docs (1:18) is Tom Chant introducing the free reference docs, "a companion to our lessons" with three depth levels. Want to become a Scrimbassador? (1:59) is Per Borgen pitching the referral program. How to Utilize Your Certificate (0:53) tells you to add the certificate to LinkedIn and connect with Per. You can skip all three without missing anything.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Scrims run from under a minute to 13:45; most are three to seven minutes. Because this is a Node course, the layout differs from Scrimba's frontend courses. There is a file explorer on the left, Monaco (the same editor VS Code uses) in the middle, and a Runner/Terminal/Console pane below with an `npm run start` button. Mayo narrates over the finished code, comments and uncomments function calls in `main()`, and presses RUN so you watch the output arrive. There is no live preview until the final lesson, where the browser pane appears on the right.
 
@@ -178,7 +176,7 @@ The first six scrims are marked SAMPLE and open without a subscription: the thre
 
 Pro unlocks the remaining 17 scrims, which is where the Vercel AI SDK itself appears: structured outputs, tool calling, the routing agent, web search, and the finished app. Pro also unlocks the Certificate of Completion listed at the bottom of the table of contents and the Pro-only Discord channels. Scrimba's pricing page lists basic Discord access as free, so the server alone is not a reason to upgrade. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what a subscription includes.
 
-## How long it really takes
+## How long it takes
 
 114 minutes is video runtime. Plan for five to eight hours. The first hour goes on accounts and keys: an OpenAI key with billing enabled, a Supabase project, two SQL snippets pasted into the Supabase editor, and three environment variables in the scrim settings.
 
@@ -189,6 +187,10 @@ Each of the six challenges takes 10 to 25 minutes if you attempt it before watch
 It fits JavaScript developers who already understand what RAG and function calling do and want to see them wired together with a current SDK, in a form they can lift into a real project. It is also a good first look at OpenAI's built-in web search tool, which most agent courses skip.
 
 Skip it, for now, if you have not built anything with an LLM API. Do [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) first, then [Learn AI Agents](/docs/courses/ai/ai-agents/), which teaches the tool-calling loop from scratch. Skip it if you need a framework other than the Vercel AI SDK, or a provider other than OpenAI; nothing here is portable without rewriting the imports. And skip it if you were hoping for a frontend: the chat UI is a static HTML page with no React in it.
+
+<AffiliateLink href="https://scrimba.com/build-a-support-agent-with-vercel-ai-sdk-c0lk05ahir" variant="button">
+  Preview Build a Support Agent with Vercel AI SDK
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -223,10 +225,6 @@ Where it is limited. It depends on two external accounts and a paid API key. It 
   { q: "Are there challenges?", a: "Six of the 23 scrims are challenges, one after each main lesson: vector retrieval, AI SDK basics (a recipe you generate and then embed), structured outputs (a sandwich order schema and a message classifier), tool calling (a grocery price lookup), agentic routing (refactor the classifier to generateObject), and web search retrieval. All six carry Scrimba's Challenge with Instant Feedback icon." },
   { q: "Does it have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/build-a-support-agent-with-vercel-ai-sdk-c0lk05ahir" variant="button">
-  Preview Build a Support Agent with Vercel AI SDK
-</AffiliateLink>
 
 <CourseSchema
   name="Build a Support Agent with Vercel AI SDK"

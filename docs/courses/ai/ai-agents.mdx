@@ -6,7 +6,7 @@ sidebar_label: "Learn AI Agents"
 description: "Bob Ziroll's Learn AI Agents reviewed from every transcript: 117 minutes, 31 scrims, a ReAct loop built by hand, then OpenAI function calling, and what aged."
 keywords: [scrimba learn ai agents, learn ai agents scrimba review, ai agents course scrimba, bob ziroll ai agents, react prompting tutorial, openai function calling agents, llm agents javascript]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,17 +18,15 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn AI Agents
 
-Scrimba's Pro course on LLM agents, taught by Bob Ziroll in 31 scrims and just under two hours. I read the transcript of every scrim, all 31, with a Pro account in September 2026, and checked the code and dependency panel in a sample of them. This page is what is in there, including the parts that have dated.
+Learn AI Agents is Bob Ziroll's Pro course on LLM agents: 31 scrims, just under two hours, where you build the same weather-and-location agent twice, first with a hand-written ReAct loop, then with OpenAI function calling. The loop logic holds up; the SDK and the models it runs on are late 2023.
+
+*Reviewed inside the course with a Pro account, September 2026.*
 
 *This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
 
 ## Quick answer
 
-Learn AI Agents is a short, intermediate, Pro-only course in which you build the same weather-and-location agent twice. An agent, in Bob's definition from the first scrim, is "a computer program or system that's designed to perceive its environment, make decisions, and take actions to achieve a specific goal." First you build one with a ReAct prompt, a system prompt that makes the model write "Thought, Action, PAUSE, Observation" lines, plus a for loop that parses those lines and calls the matching JavaScript function. Then you throw that away and rebuild it with OpenAI's function calling, and finally with a beta SDK helper that runs the loop for you.
-
-There are no modules, just a flat list of 31 scrims, six of them marked as challenges. The first five are free previews. If you want to understand what an agent loop does under the hood, in JavaScript, I have not seen it explained more directly anywhere else on Scrimba. If you want a current framework or a current model, it is not that.
-
-By the end you will be able to write a tool-calling loop from nothing, read an OpenAI `tool_calls` response, and explain why every agent framework has a "max iterations" setting. You will not have a product; the weather tool stays hardcoded the whole way through.
+It fits developers who already call an LLM from JavaScript and want to see what an agent loop is actually doing, not which framework to install. The catch: the code is frozen in November 2023, down to a beta OpenAI helper Bob warns might change "in one or two days." Take [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) first if you have not, then move on to [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/) or [Build Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase/) for a current stack.
 
 <CourseCard
   title="Learn AI Agents"
@@ -65,9 +63,9 @@ By the end you will be able to write a tool-calling loop from nothing, read an O
 
 The thing this course does that most agent tutorials skip is make you build the loop by hand before any SDK does it for you. Bob is explicit about why. In lesson 6 he says the LLM "will tell us what function it wants to call or what action it wants to perform, and then we will write our code in a way that can then actually perform that action."
 
-You then spend nine scrims doing exactly that. You write the system prompt, split the model's reply into lines, find the `Action:` line with a regular expression, look the function up in an `availableFunctions` object, push an `Observation:` message back, and wrap it all in a `for` loop capped at five iterations. When the OpenAI function calling section replaces all of it with a `tool_calls` array and a `finish_reason` check, you understand what the API is saving you from. That is the point of the course and it lands.
+You then spend nine scrims doing exactly that. You write the system prompt, split the model's reply into lines, find the `Action:` line with a regular expression, look the function up in an `availableFunctions` object, push an `Observation:` message back, and wrap it all in a `for` loop capped at five iterations. When the OpenAI function calling section replaces all of it with a `tool_calls` array and a `finish_reason` check, you understand what the API is saving you from. That is the point of the course and it lands. By the end you can write a tool-calling loop from nothing and read an OpenAI `tool_calls` response; you will not have a product, since the weather tool stays hardcoded the whole way through.
 
-The honest caveat is age. The dependency panel shows an `openai` 4.1x SDK throughout (`openai@4.14.2` in the ReAct scrims, `openai@4.19.1` by the UI scrim). The models are `gpt-4`, `gpt-3.5-turbo`, `gpt-3.5-turbo-1106` and `gpt-4-1106-preview`, and in the setup challenge Bob says the 1106 models were "just released" at the time of recording. That puts it in November 2023.
+The code has aged. The dependency panel shows an `openai` 4.1x SDK throughout (`openai@4.14.2` in the ReAct scrims, `openai@4.19.1` by the UI scrim). The models are `gpt-4`, `gpt-3.5-turbo`, `gpt-3.5-turbo-1106` and `gpt-4-1106-preview`, and in the setup challenge Bob says the 1106 models were "just released" at the time of recording. That puts it in November 2023.
 
 The final technique, `openai.beta.chat.completions.runFunctions`, is introduced with the words "this is so new that not only is it still considered in beta with OpenAI's SDK, but it's also not even in their documentation." Bob warns you in the same scrim that "what we just learned here might be changing for all I know in one or two days." He was right. Treat the concepts as current and the exact method names as history you will need to translate.
 
@@ -163,7 +161,7 @@ The Solo Project brief, "AI Travel Agent," is narrated by a different Scrimba vo
 
 "Nice work!" recaps in a little over a minute. Bob's own summary of the ReAct half is the best short description of it: "some fancy prompt engineering that we did on top of a custom loop that we built around our GPT assistant." Three housekeeping scrims follow, voiced by other Scrimba staff: Scrimba Docs, the Scrimbassador referral program, and how to use the certificate.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Scrims run from under a minute to nine, most between three and six. Every one is Bob's voice over a live editor with the console open below and the preview collapsed, since nothing here has a UI until the last build. The slides are few and used for diagrams, not bullet points. Challenges arrive as a numbered comment block in `index.js` ("CHALLENGE: 4. Calling the function, 5. Add an Observation message") plus a spoken pause; the six marked in the table of contents each get a "Challenge" badge on hover. Bob also says more than once that you can skip a challenge and watch, and that asking ChatGPT for help with the regex is fair game.
 
@@ -175,7 +173,7 @@ This is a Pro course. Scrimba's catalog lists it under the Pro tab and its struc
 
 See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what a subscription costs in your region. Scrimba's pricing page lists basic Discord access as free and the Pro-only channels as Pro, so the community itself is not the reason to upgrade; this course and the rest of the AI Engineer Path are.
 
-## How long it really takes
+## How long it takes
 
 117 minutes of video, but the course expects you to type. Plan for four to six hours. That covers the runtime and the six challenges, each a few minutes of real coding if you do them before watching the solution. It also covers the setup cost of an API key and environment variable, and the time you will spend reconciling `runFunctions` and the 1106 models with whatever the OpenAI SDK looks like when you take it. The AI Travel Agent solo project is separate and open-ended; from the brief and the Figma file I would budget a further six to ten hours for a working version.
 
@@ -184,6 +182,10 @@ See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</Affilia
 It fits you if you have already called an LLM from JavaScript, you know what `async`/`await` and array destructuring are, and you want to understand what agent frameworks are doing rather than which one to install. Bob says as much in the setup scrim: "I'm assuming that this is not your first course that you're taking in the AI engineer path."
 
 Skip it, for now, if you have not done [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) or something equivalent; the course moves fast through the OpenAI client and never explains it. Skip it if you need Python; everything here is browser JavaScript. Skip it if you want a current, production-shaped agent stack: the models and the beta helper are late 2023, and the [Vercel AI SDK support agent](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/) or [Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase/) courses are the applied follow-ups.
+
+<AffiliateLink href="https://scrimba.com/learn-ai-agents-c034" variant="button">
+  View Learn AI Agents on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -220,10 +222,6 @@ Where it is limited: the code is late 2023 (an `openai` 4.x SDK, `gpt-3.5-turbo-
   { q: "Does it use Python or a framework like LangChain?", a: "Neither. It is browser JavaScript with the official openai package and nothing else. No LangChain, no Vercel AI SDK, no Python." },
   { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and the course header lists subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-ai-agents-c034" variant="button">
-  View Learn AI Agents on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Learn AI Agents"

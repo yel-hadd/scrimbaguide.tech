@@ -6,7 +6,7 @@ sidebar_label: "Intro to Supabase"
 description: "Jonathan Hill's free Supabase course reviewed from inside: 4.8 hours, 49 scrims, a React sales dashboard with auth, realtime and row level security."
 keywords: [scrimba supabase course, intro to supabase review, jonathan hill supabase, supabase react course, free supabase tutorial, supabase row level security course]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Intro to Supabase
 
-Scrimba's free Supabase course, taught by Jonathan Hill across about 4.8 hours. You connect a React sales dashboard to a real Postgres database, then add sign up, sign in, and permissions. I opened all 49 scrims and read the transcript of every one that has one (46 of them) with a Pro account in September 2026. This is what is inside, not the listing page rewritten.
+Jonathan Hill's free Intro to Supabase runs about 4.8 hours and puts you inside a React sales dashboard: you query a live Postgres database, chart the results in real time, then add sign up, sign in, and row level security policies that lock rows down by account type.
 
-*This page is part of our [Scrimba backend courses](/docs/courses/backend/) catalog. Scrimba's course page does not list it under any career path.*
+*Reviewed inside the course with a Pro account, September 2026: all 49 scrims and the 46 that carry a transcript.*
 
 ## Quick answer
 
-Intro to Supabase is a free, intermediate course in two sections. Persistence (60 minutes, 11 scrims) connects a ready-made React app to a Supabase table, queries it, draws a bar chart, and keeps the chart live with a realtime subscription. Authentication (3.8 hours, 37 scrims) is the real course: routing, a session context, JSON Web Tokens, sign in and sign up, row level security policies, and a database trigger that builds a user profile on sign up. You work in your own Supabase project on its free tier, so what you build is yours at the end.
-
-It suits React developers who have never wired up a backend. It assumes you can write a component, use `useState` and `useEffect`, and have seen a SQL `SELECT`. It is not a Supabase reference: storage, edge functions, OAuth logins, and vector search are mentioned once and never used.
+It suits React developers who have never wired up a backend, not Supabase newcomers who still need to learn hooks and forms. The catch: it's a Postgres course in disguise, with SQL policies and a `plpgsql` trigger by the second half, so pair it with [Learn SQL](/docs/courses/backend/sql/) if your SQL is shaky. Free unlocks the whole thing; only the certificate needs Pro.
 
 <CourseCard
   title="Intro to Supabase"
@@ -88,7 +86,7 @@ The eleven-minute "Supabase project setup" scrim is the one you cannot skip. You
 
 The querying scrims are where the course finds its rhythm. Jonathan writes SQL in Supabase's SQL-to-JavaScript translator, pastes the generated `.from().select().order()` chain into the app, and then hands you the next one. Your challenge in "Query with aggregate function" is to enable aggregate functions in the SQL editor (Supabase disables them by default) and write `sum(value) ... group by name` yourself. "Storing the data in state" adds `useState`, `try/catch`, and `setMetrics(data)`.
 
-"Format data for chart" is the one React-heavy scrim, and Jonathan says at 0:16 that it is "more data manipulation and creating the bar chart than pure Supabase, so feel free to skip if you want." It installs `react-charts@beta` and maps your rows into the `{ primary, secondary }` shape the library wants. Then "Realtime subscription" adds `supabase.channel('deal-changes').on('postgres_changes', ...)` inside the same `useEffect`, and you test it by inserting a row in the Supabase table editor and watching the console. He is honest that the solution just refetches everything on any change: "if you had a really large dataset, this would not be very performant."
+"Format data for chart" is the one React-heavy scrim, and Jonathan says at 0:16 that it is "more data manipulation and creating the bar chart than pure Supabase, so feel free to skip if you want." It installs `react-charts@beta` and maps your rows into the `{ primary, secondary }` shape the library wants. Then "Realtime subscription" adds `supabase.channel('deal-changes').on('postgres_changes', ...)` inside the same `useEffect`, and you test it by inserting a row in the Supabase table editor and watching the console. The solution just refetches everything on any change, and he flags the cost: "if you had a really large dataset, this would not be very performant."
 
 <Screenshot
   src="/img/scrimba/intro-to-supabase/realtime-subscription-challenge-lesson.webp"
@@ -152,7 +150,7 @@ The three "Refactor deals table" scrims replace the broad policy with three narr
 
 The section ends with a "Want to become a Scrimbassador?" referral pitch from Per Borgen and a one-minute certificate scrim. Neither is course content.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Scrims here are longer than in Scrimba's beginner courses: the median is about six minutes and seven of them pass nine. Jonathan talks over slides for the theory, then switches to the editor. About half the scrims end in a written challenge: numbered instructions in a comment, the recording pauses, you type, then you press play and watch his solution. He usually leaves a hint ("you could copy and paste this and modify a few bits") and often admits when he is being generous: "I was gonna get you to try and remember it, but I'm just too nice."
 
@@ -168,7 +166,7 @@ Jonathan also says twice that the Discord is "available to free and pro members,
 
 One cost that is not Scrimba's: you need a Supabase account. Everything the course does fits the free tier, and Jonathan says so up front: "no need to dig out those credit cards."
 
-## How long it really takes
+## How long it takes
 
 The 4.8 hours is video runtime. Plan on 10 to 14 hours. The Persistence section is a two-hour evening if your Supabase account is ready. Authentication is where the time goes. The refactor alone asks you to create a table, write four policies, run a trigger, delete and recreate users, and clear out old rows. Each of those is a trip to the Supabase dashboard with a chance to mistype something. Four or five sittings of two to three hours is realistic, and more if you stop to read the Supabase docs when Jonathan points at them, which he does often.
 
@@ -177,6 +175,10 @@ The 4.8 hours is video runtime. Plan on 10 to 14 hours. The Persistence section 
 It fits React developers who want a first backend without writing a server. It also suits people who took [Learn React](/docs/courses/react/learn-react/) and want their next project to have real users, and anyone who has used Firebase and wants to see the Postgres alternative. [Busy professionals](/docs/for/busy-professionals/) get a bonus: the sections are self-contained and the app is small.
 
 Skip it if you have not written React: the course assumes hooks, context, and forms, and only explains them in passing. Skip it too if you want Supabase's other services (storage, edge functions, OAuth providers, vectors); they get a slide in the introduction and nothing else. And if your goal is to understand Postgres itself, [Learn SQL](/docs/courses/backend/sql/) is the better first stop.
+
+<AffiliateLink href="https://scrimba.com/intro-to-supabase-c0abltfqed" variant="button">
+  Start Intro to Supabase for free
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -223,10 +225,6 @@ Where it is limited:
   { q: "How long does it take?", a: "4.8 hours of video, but plan on 10 to 14 hours because much of the work happens in the Supabase dashboard, where you create tables, write policies, and run SQL yourself." },
   { q: "Does it cover storage, edge functions, or OAuth?", a: "No. They are mentioned on one slide in the introduction. The course covers the database, realtime subscriptions, email-and-password auth, row level security, and triggers." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/intro-to-supabase-c0abltfqed" variant="button">
-  Start Intro to Supabase for free
-</AffiliateLink>
 
 <CourseSchema
   name="Intro to Supabase"

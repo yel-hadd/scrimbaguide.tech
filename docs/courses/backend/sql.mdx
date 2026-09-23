@@ -6,7 +6,7 @@ sidebar_label: "Learn SQL"
 description: "Gregor Thomson's free Learn SQL course reviewed from inside: 3.8 hours, 49 scrims, 62 challenges on a vintage car database, and what needs an account."
 keywords: [scrimba learn sql, learn sql scrimba review, learn sql free, gregor thomson sql, sql for beginners, interactive sql course, scrimba sql course review]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,15 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn SQL
 
-Scrimba's free SQL course, taught by Gregor Thomson across about 3.8 hours, in which you run a vintage car dealership's database and answer its owner's questions with queries. I opened all 49 scrims and read the transcript of every one of them with a Pro account in September 2026. This page describes what is in the course, lesson by lesson, and who it suits.
+Gregor Thomson teaches this free SQL course in about 3.8 hours, having you run a vintage car dealership's database and write queries to answer its owner's requests. It is a strong first grounding in SQL: free, short, and heavy on practice, though it stops before schema design or connecting a database to an app.
+
+*Reviewed inside the course with a Pro account: all 49 scrims opened and every transcript read, September 2026.*
 
 *This page is part of our [Scrimba backend courses](/docs/courses/backend/) catalog. Scrimba's course page lists it under the [Backend Developer Path](/docs/paths/backend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
 ## Quick answer
 
-Learn SQL is a free, beginner-level course in three modules: query a single table, then create and join several tables, then write subqueries and CASE expressions. Every lesson works on the same story: you have been hired by Rodney, CEO of a dealership called Retro Rides, to manage his stock of classic cars. The database runs inside the browser (PGlite, a Postgres build that runs in JavaScript), so there is nothing to install.
-
-It is short, well paced, and heavy on challenges: I counted 62 across 49 scrims. It assumes no prior code, though it moves faster if you have written a little JavaScript. If you want a first, practical grounding in SQL before touching a real backend, this is the course to take. If you already write joins comfortably, it will feel slow until module 3.
+Take it if you have never written SQL, or want a hands-on refresher before touching a real backend: every lesson pauses for a challenge on the same classic-car dealership database, and the browser runs Postgres for you, so there's nothing to install. The catch is scope, not depth: this is the query language only, with no schema design, indexing, transactions, or app integration. If you already write joins and subqueries without thinking, skip ahead to [Intro to Supabase](/docs/courses/backend/supabase/), which puts a hosted Postgres database behind a real app.
 
 <CourseCard
   title="Learn SQL"
@@ -75,7 +75,7 @@ Two things surprised me. First, it goes further than the "free beginner course" 
 
 Second, it is friendlier than it looks. Gregor writes a mistake first and then fixes it. At the start of Challenges 1 he says: "these are gonna be a bit more difficult than the challenges we've completed already, so don't worry if you struggle with these." And every exercise is tied to someone at the dealership asking for something. The story is thin, but it means you always know why you are writing a query.
 
-The honest limit: this is the query language only. Designing a schema, indexing, transactions, performance, and connecting a database to a real app are out of scope. Gregor says so in lesson two: "setting up tables and building a database could be a whole course in itself."
+This is the query language only. Designing a schema, indexing, transactions, performance, and connecting a database to a real app are out of scope. Gregor says so in lesson two: "setting up tables and building a database could be a whole course in itself."
 
 ## What you'll learn
 
@@ -163,7 +163,7 @@ The three CASE lessons are the practical payoff. CASE in SELECT turns condition 
 
 CASE challenges (5:18) closes with two reports: label each dealership as outperforming, meeting targets, underperforming or no sales, then count sales per quarter using `EXTRACT(MONTH FROM sold_date)`. A 46 second recap and Per's one minute "how to use your certificate" scrim finish the course.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Every scrim is the same layout: a file explorer on the left, `query.sql` in the editor, and a Runner pane underneath that prints the result table when you save. There is no browser preview because there is nothing visual to build; the output is always a table or an error. Gregor talks over the recording, types the query, saves, and points at rows in the result.
 
@@ -179,7 +179,7 @@ Two things to know. First, only the intro scrim is marked SAMPLE; every other sc
 
 So for this course alone you do not need to pay. If you want it inside the [Backend Developer Path](/docs/paths/backend-developer-path/) with the certificate at the end, see <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
 
-## How long it really takes
+## How long it takes
 
 The video runs about 3.4 hours (3.8 on the course header). With 62 challenges, most of which you should attempt before watching the answer, budget two to three times that: 8 to 11 hours. That is a week at an hour a day, or two focused weekends.
 
@@ -190,6 +190,10 @@ Module 1 goes fast because each challenge is a small variation on what you just 
 Take it if you have never written SQL, or if you learned it years ago and want to relearn it with your hands. It also suits frontend developers who can build an interface but have never had to ask a database a question, and anyone starting the [Backend Developer Path](/docs/paths/backend-developer-path/) or [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), which both list it. Beginners who can only spare short sessions will like that most scrims stop cleanly after four minutes.
 
 Skip it if you already write multi-table joins and subqueries; module 3 would be a 45 minute refresher and the rest would drag. Skip it too if what you need is database design, indexing, transactions, or how to connect Postgres to an app. None of that is here. [Intro to Supabase](/docs/courses/backend/supabase/) is the course for the last of those.
+
+<AffiliateLink href="https://scrimba.com/learn-sql-c0aviq0aha" variant="button">
+  Start Learn SQL for free
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -240,10 +244,6 @@ Where it is limited:
   { q: "Does it cover advanced database topics?", a: "It covers joins, constraints, ALTER TABLE, subqueries with ANY, ALL and EXISTS, CASE, and a lesson on SQL injection. It does not cover schema design, indexing, transactions, or connecting a database to an application." },
   { q: "Which SQL dialect does it teach?", a: "PostgreSQL. Gregor names MySQL, Microsoft SQL and Oracle as other flavors with the same core syntax, and a few functions used here (SERIAL, TO_CHAR, EXTRACT) are Postgres-specific." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-sql-c0aviq0aha" variant="button">
-  Start Learn SQL for free
-</AffiliateLink>
 
 <CourseSchema
   name="Learn SQL"

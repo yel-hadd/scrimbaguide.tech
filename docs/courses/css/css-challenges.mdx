@@ -6,7 +6,7 @@ toc_max_heading_level: 2
 description: "Treasure Porth's CSS Challenges from inside: 2.6 hours, 25 recreate-this challenges (GitHub, CodePen, Instagram, seven flags), what Pro gates, real time cost."
 keywords: [scrimba css challenges, scrimba css challenges review, css practice challenges, css interview prep, treasure porth css, recreate ui components css, scrimba css course review]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,13 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # CSS Challenges
 
-Scrimba's CSS practice pack, taught by Treasure Porth: 25 challenges, each with a brief and a recorded solution, in about 2.6 hours of video. I opened 43 of its 54 scrims with a Pro account in September 2026 (every challenge brief, most of the solutions, the intro and the outro) and read their transcripts. This is what the course asks of you, what it hands you, and who it suits.
+Scrimba's CSS Challenges, taught by Treasure Porth, hands you 25 recreate-this-component briefs and recorded solutions in about 2.6 hours: a gradient button, GitHub's expanding search bar, seven country flags, Instagram's stories menu, and more. It won't teach you CSS, but as a way to pressure-test what you already know, it delivers.
 
-*This page is part of our [Scrimba CSS courses](/docs/courses/css/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*Reviewed inside the course with a Pro account, September 2026: 43 of its 54 scrims opened (every challenge brief, most solutions, the intro and outro), with transcripts read throughout.*
 
 ## Quick answer
 
-CSS Challenges is a Pro, intermediate-level practice course: 54 short scrims, about 2.6 hours of video, taught by Treasure Porth. There are no lessons in the usual sense. Each of the 25 challenges is a one to three minute brief (an animated example, a requirements slide, some hints) followed by a three to nine minute solution where Treasure builds it. The targets range from a gradient button and GitHub's expanding search bar to seven country flags, a toggle switch, Instagram's stories menu, and GitHub's contributions graph. The first eleven scrims (through Loading Animation 1) are free samples; the remaining 43 need Pro. If you already know flexbox, grid and positioning and want to find out how well you can apply them, this is a good two-week workout. If you are still learning those, it will frustrate you.
+This fits you if you already know flexbox, grid and positioning and want to find out how well you can apply them under a brief. It does not fit you if you are still learning those fundamentals; the challenges assume you can look up a property yourself, and there is no fallback teaching. Do [Learn HTML and CSS](/docs/courses/css/html-and-css/) first if that is where you are, then come back.
 
 <CourseCard
   title="CSS Challenges"
@@ -61,7 +61,7 @@ CSS Challenges is a Pro, intermediate-level practice course: 54 short scrims, ab
 
 Yes, if you bring the CSS. The format gives you what a static tutorial cannot: a target on screen, a starter file with the HTML and a few color variables, and no walkthrough until you have tried. Treasure sets the tone in the welcome scrim: "all of these challenges are open book, so you're free to Google and research whatever you need," and "pixel perfection is a stretch goal." The point is to look at a component, break it into shapes and columns, and build it. After a dozen of these you stop reaching for a reference every time you need to center something or animate a width.
 
-The caveat is that this is not where you learn CSS. The briefs assume you can read a requirement like "the gradient should be a hundred and fifteen degrees" and go look up `linear-gradient` yourself. The solutions explain what Treasure is doing, and they are good at flagging the traps (buttons ignoring the body font, `border-image` not working with rounded corners), but they do not teach flexbox or grid from scratch. Do [Learn HTML and CSS](/docs/courses/css/html-and-css/) or [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) first.
+This is not where you learn CSS. The briefs assume you can read a requirement like "the gradient should be a hundred and fifteen degrees" and go look up `linear-gradient` yourself. The solutions explain what Treasure is doing, and they are good at flagging the traps (buttons ignoring the body font, `border-image` not working with rounded corners), but they do not teach flexbox or grid from scratch. Do [Learn HTML and CSS](/docs/courses/css/html-and-css/) or [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) first.
 
 The second caveat is scope. Everything here is a single component in a mini browser. There is no page layout, no media query beyond a `max-width`, and no accessibility work beyond one hidden label. That is by design. Treasure says so in the CodePen tile brief: "this is one tile that in a real world situation would be part of a gallery of tiles." It means the course sharpens component work, not whole-page responsive design.
 
@@ -89,7 +89,7 @@ Nearly every solution I watched starts with the same flexbox centering, and from
 
 The welcome scrim (3:18) is the most useful three minutes in the course, because it teaches the method. Treasure takes an empty progress bar, an archery target and a playing card and describes each before writing a line: the target is "actually a larger circle with a smaller circle on top with yet a smaller circle on top of that," and the card "I might break it down into columns and rows." She also sets expectations: she provides most of the HTML, the colors and fonts arrive as CSS variables, and "your approach, the way that you solve these challenges will likely be different than my solution, and that's totally okay."
 
-Then four challenges. Spoiler Revealer hides movie spoilers behind black bars that fade on hover ("you have had forty to fifty years to watch these films," she notes); the solution sets background and text to the same variable and adds `transition: all .5s ease-in`. Colorful Button asks for a gradient border at 115 degrees that flips on hover; the solution builds it with a wrapping div, then shows the `border-image` alternative and explains why she avoids it: "it's a little hard to grok if you ask me" and "it isn't compatible with border radius." Expanding Search Bar is modeled on GitHub's and is the one challenge with an accessibility requirement, a visually hidden label copied from the W3C. Treasure calls it "a research challenge, if you will." CodePen Tile adds `object-fit: cover` and a hover-only stats row, and ends with an honest line: "this is a project that seems pretty simple at first but can actually be pretty fiddly."
+Then four challenges. Spoiler Revealer hides movie spoilers behind black bars that fade on hover ("you have had forty to fifty years to watch these films," she notes); the solution sets background and text to the same variable and adds `transition: all .5s ease-in`. Colorful Button asks for a gradient border at 115 degrees that flips on hover; the solution builds it with a wrapping div, then shows the `border-image` alternative and explains why she avoids it: "it's a little hard to grok if you ask me" and "it isn't compatible with border radius." Expanding Search Bar is modeled on GitHub's and is the one challenge with an accessibility requirement, a visually hidden label copied from the W3C. Treasure calls it "a research challenge, if you will." CodePen Tile adds `object-fit: cover` and a hover-only stats row, and ends with a warning: "this is a project that seems pretty simple at first but can actually be pretty fiddly."
 
 <Screenshot
   src="/img/scrimba/css-challenges/colorful-button-solution-hover-lesson.webp"
@@ -141,7 +141,7 @@ The Animated Progress Bar reuses the fake-pause idea from the carousel: the keyf
   caption="The finished CodePen tile at 5:44 of its solution. The stats row only appears on hover, so it is not visible here; what you can see is the pattern every challenge shares: colors and the font handed to you as CSS variables at the top of index.css."
 />
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Each challenge is two scrims. The brief runs one to three minutes: Treasure shows the finished component in the mini browser (often as a looping animation), reads a requirements slide, offers a hint slide you can skip ("if you don't want hints, go ahead and pause"), and points at the starter files. The starter is always the same shape: an `index.html` with the structure already written and an `index.css` with a `:root` block of color variables, sometimes a font, sometimes a `--flag-height` or `--card-height`. Then the scrim stops and you work in the same editor.
 
@@ -155,15 +155,19 @@ The first eleven scrims are free samples: the welcome, Spoiler Revealer, Colorfu
 
 Pro gates the other 43 scrims: Loading Animation 2 onward, which means the archery target, the word carousel, all seven flags, the GitHub profile, the toggle, the cards, the progress bars, the flashcard, the spinner, the Instagram menu, the contributions graph, and the certificate. There are no Solo Projects in this course; the Pro-only content is simply the rest of the challenge list. Pro also unlocks the certificate and the Pro-only Discord channels; basic Discord access is on the free plan according to Scrimba's pricing page. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for your region.
 
-## How long it really takes
+## How long it takes
 
-2.6 hours is the video. The video is mostly Treasure's solutions, and the whole point is to attempt each challenge before watching hers, so budget 20 to 40 minutes of your own work per challenge for the harder ones (Sweden, the toggle, the flashcard, the Instagram menu) and five to ten for the easy flags. That puts the honest total at six to nine hours: two weeks at half an hour a day, or two long weekends. If you only watch the solutions, it is an afternoon, and you will retain little of it.
+2.6 hours is the video. The video is mostly Treasure's solutions, and the whole point is to attempt each challenge before watching hers, so budget 20 to 40 minutes of your own work per challenge for the harder ones (Sweden, the toggle, the flashcard, the Instagram menu) and five to ten for the easy flags. That puts the real total at six to nine hours: two weeks at half an hour a day, or two long weekends. If you only watch the solutions, it is an afternoon, and you will retain little of it.
 
 ## Who it's for, and who should skip it
 
 It fits you if you have finished a CSS teaching course, can center a div without looking it up, and want to find out where your knowledge is thin. It is also good preparation for the "rebuild this component" tasks that show up in front-end interviews, and the GitHub and Instagram challenges are close to that format. People who learned CSS years ago and never used grid, `calc()` or CSS variables will get a compact tour of all three.
 
 Skip it if you are still learning CSS; do [Learn HTML and CSS](/docs/courses/css/html-and-css/) first and come back. Skip it if what you need is responsive page layout, media queries, or design systems; the course is about single components, and [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) covers the page-level work. And skip it if you want graded feedback: there is none here beyond your own eyes and Treasure's solution.
+
+<AffiliateLink href="https://scrimba.com/css-challenges-c02p" variant="button">
+  Try the free CSS Challenges samples on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -200,10 +204,6 @@ Where it is limited: there is no grading or instant feedback, so you are your ow
   { q: "Is it useful for interview prep?", a: "Yes, for the rebuild-this-component style of front-end exercise. The GitHub profile, Instagram stories menu, toggle switch and progress bars are close to what those tasks ask for. It does not cover page layout or responsive design questions." },
   { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/css-challenges-c02p" variant="button">
-  Try the free CSS Challenges samples on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="CSS Challenges"

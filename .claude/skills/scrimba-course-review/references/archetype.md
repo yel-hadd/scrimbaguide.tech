@@ -51,12 +51,12 @@ last_update:
    attributed transcript quote per major module. 2 to 4 `<Screenshot>`s at
    transcript-chosen moments: alt names product + lesson + what is visible,
    caption says what to notice and the timestamp.
-8. `## What a lesson actually feels like`: format, scrim length, challenge
+8. `## What a lesson feels like`: format, scrim length, challenge
    loop, captions/transcript/speed, the instructor's habits with an example.
 9. `## Free or Pro: exactly what is gated`: named Solo Projects, certificate,
    paths, "Pro-only channels on Scrimba's Discord" (basic Discord is free).
    Link `/our-pricing` via `<AffiliateLink>`; never a price.
-10. `## How long it really takes`: runtime x 2 to 3 with the reasoning.
+10. `## How long it takes`: runtime x 2 to 3 with the reasoning.
 11. `## Who it's for, and who should skip it`, closed by the primary CTA:
     `<AffiliateLink href="https://scrimba.com/<slug>-<id>" variant="button">Start
     <course> for free</AffiliateLink>` ("Start <course> on Scrimba" for Pro).

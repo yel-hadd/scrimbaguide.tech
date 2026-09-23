@@ -6,7 +6,7 @@ toc_max_heading_level: 2
 description: "Per Borgen's Learn Flexbox reviewed from inside: 53 minutes, 15 scrims, six pause-and-solve challenges, a responsive navbar, and what Pro actually gates."
 keywords: [scrimba learn flexbox, learn flexbox scrimba review, css flexbox course, per borgen flexbox, flexbox layout tutorial, interactive flexbox course]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Learn Flexbox
 
-A 53 minute Scrimba course on CSS Flexbox, taught by Per Borgen around one example: a navbar with Home, Search and Logout in it. I opened all 15 scrims and read the transcript of every one with a Pro account in September 2026. This page describes what is in them, where the six challenges fall, and who should bother.
+Per Borgen teaches this 53-minute Scrimba course on CSS Flexbox around a single example: a navbar with Home, Search and Logout. Twelve teaching scrims and three wrap-up scrims cover every core property, with six pause-and-solve challenges, a responsive navbar rebuild, and an image grid bonus. It turns Flexbox from guesswork into muscle memory, fast.
 
-*This page is part of our [Scrimba CSS courses](/docs/courses/css/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Learn Flexbox is a short Pro course rated Intermediate. Twelve teaching scrims cover the whole of Flexbox in about 48 minutes, then three short wrap-up scrims add five more. You work on one navbar the entire time, changing a property and watching the three boxes move in the preview pane. Six of the scrims stop and ask you to solve a small task before Per shows his answer. The first four scrims are free previews; the rest need Pro.
-
-Take it if you know basic CSS and Flexbox still feels like guesswork. It will not teach you page layout or CSS Grid, and it is a few years old (Per points you to a Q and A section and a Twitter handle), but the CSS it teaches has not changed.
+Take it if you already know basic CSS and Flexbox still feels like guesswork; skip it if you have never written CSS, or if you already reach for `flex: 1` and `align-items: center` without thinking. The catch is scope: one navbar the whole way through, no page layout, no media query until the very end. Follow it with [Learn CSS Grid](/docs/courses/css/css-grid/) for two-dimensional layouts.
 
 <CourseCard
   title="Learn Flexbox"
@@ -44,9 +42,9 @@ This course has no chapter title cards: every scrim opens straight on the code, 
 
 ## Is it worth your time?
 
-Yes, if Flexbox is the specific gap. The course does one thing that reading a reference cannot: you type `justify-content: space-around` and the three boxes spread out in front of you, then you try `space-between` and see the difference. Per is honest about what is common and what is not. On `flex-direction: column` he says, "I've found that I've used the default direction much more often than the column direction when building websites," and he spends the course time accordingly.
+Yes, if Flexbox is the specific gap. The course does one thing a reference page cannot: you type `justify-content: space-around` and watch the three boxes spread out, then try `space-between` and see the difference. Per names which values he reaches for on the job. On `flex-direction: column` he says, "I've found that I've used the default direction much more often than the column direction when building websites," and the course time follows that pattern.
 
-The caveat is scope. The whole course is one navbar. You never build a page, never combine Flexbox with a grid, and never write a media query until the bonus scrim near the end. That is fine for learning the properties. It is not enough to make you a confident layout developer, and Per says so himself in the final scrim, where he points you to Kevin Powell's [responsive web design course](/docs/courses/css/responsive-web-design/) because, in his words, "there's a lot of nuance" in building professional layouts.
+The caveat is scope. The whole course is one navbar. You never build a page, never combine Flexbox with a grid, and never write a media query until the bonus scrim near the end. That is fine for learning the properties, but it will not make you a confident layout developer. Per says so himself in the final scrim, pointing you to Kevin Powell's [responsive web design course](/docs/courses/css/responsive-web-design/) because, in his words, "there's a lot of nuance" in building professional layouts.
 
 ## What you'll learn
 
@@ -87,7 +85,7 @@ Scrim four, "Positioning items", is the first marked challenge. Per removes `jus
 
 This group has five of the six marked challenges, and it is where the course earns its Intermediate label.
 
-"The flex property" (5:33) gives every item `flex: 1` and shows them share the width equally, then adds a fourth item to prove you do not have to redo any maths. There is a short detour into CSS specificity when `.container > .search` beats `.search`. The pattern Per says he actually uses is one flexing item with fixed-width neighbours: "What I've found to be a more realistic use case is to have one of the items doing all the flexing while the others stay at a fixed width." The challenge is to invert that so Search is fixed and the other two flex.
+"The flex property" (5:33) gives every item `flex: 1` and shows them share the width equally, then adds a fourth item to prove you do not have to redo any maths. There is a short detour into CSS specificity when `.container > .search` beats `.search`. The pattern Per uses on the job is one flexing item with fixed-width neighbours: "What I've found to be a more realistic use case is to have one of the items doing all the flexing while the others stay at a fixed width." The challenge is to invert that so Search is fixed and the other two flex.
 
 "Align items" (4:04) moves to the cross axis. `align-items` defaults to `stretch`, and Per first sets the container to `height: 100%` so you can see it (with a note that this only works because `html` and `body` are also 100% tall). Then comes the trick most people remember from this course: `align-items: center` plus `justify-content: center` puts a single button dead centre of any box.
 
@@ -135,7 +133,7 @@ The challenge here uses `align-self` to drop one item to the bottom, producing w
 
 "Congrats & next steps!" is a two and a half minute pitch for the responsive web design course, with Per saying the examples here "have taught you the basics of CSS Flexbox" and that professional layouts take more. "Want to become a Scrimbassador?" explains Scrimba's referral programme. "How to Utilize Your Certificate" is under a minute on adding the certificate to LinkedIn. None of these teach CSS; skip them if you are short on time.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Every scrim opens on the same three files: `basic.css` (colours and padding you never touch), `index.css` (where you work) and `index.html`. There are no dependencies and nothing to install. The preview is a small floating window over the editor rather than a split pane, and Per drags its edge constantly to show items growing and shrinking. That dragging is most of the teaching, so keep your eyes on the preview window.
 
@@ -151,7 +149,7 @@ The remaining 11 scrims are Pro, and that includes all the material on `flex`, `
 
 Pro also unlocks the career paths and the Pro-only channels on Scrimba's Discord (basic Discord access is free). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region. If you only want this course, the free [Learn HTML and CSS](/docs/courses/css/html-and-css/) covers Flexbox basics in a longer context, and the [practice Flexbox](/docs/practice/practice-flexbox/) page on this site has drills you can do without an account.
 
-## How long it really takes
+## How long it takes
 
 Fifty three minutes of video, six short tasks and one bonus build. Budget two to three hours: one evening if you go straight through, two if you stop to resize the preview and try every value. The flex-grow, shrink and basis scrim is the one to give extra time, because the shorthand only makes sense once you have watched two items fight over the same 400 pixels a few times. There is no project to build afterwards, so nothing pushes the total past three hours.
 
@@ -160,6 +158,10 @@ Fifty three minutes of video, six short tasks and one bonus build. Budget two to
 It fits developers who know basic CSS and want Flexbox to stop being trial and error. It is a good targeted top-up before [Learn React](/docs/courses/react/learn-react/) or any component-based work, where you lay out small pieces constantly. The short scrims suit [busy professionals](/docs/for/busy-professionals/) who can only spare 20 minutes at a time.
 
 Skip it if you have never written CSS (do [Learn HTML and CSS](/docs/courses/css/html-and-css/) first; the About page says the same) or if you already use `flex: 1` and `align-items: center` without thinking. Also skip it if you want the full responsive picture in one course: [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) covers Flexbox inside real page layouts and is what Per himself recommends at the end.
+
+<AffiliateLink href="https://scrimba.com/learn-flexbox-c0k" variant="button">
+  View Learn Flexbox on Scrimba
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -173,7 +175,7 @@ This is a focused skill course on the [Frontend Developer Path](/docs/paths/fron
 
 What it does well: one example carried through every property, so nothing is abstract; six tasks that force you to type the property before you see the answer; a teacher who says which values he uses often and which he does not; and a bonus navbar that ties the whole thing together in 20 lines.
 
-Where it is limited: it is Flexbox alone, with no Grid and no page layout; the tasks are checked by eye, not by any automated feedback; the material dates from an earlier version of Scrimba (Q and A section, Twitter link); and the image grid bonus teaches a pattern Per himself tells you not to use.
+Where it is limited: it is Flexbox alone, with no Grid and no page layout. The tasks are checked by eye, not by any automated feedback. The material dates from an earlier version of Scrimba (Q and A section, Twitter link). And the image grid bonus teaches a pattern Per himself tells you not to use.
 
 ## Related courses and comparisons
 
@@ -195,10 +197,6 @@ Where it is limited: it is Flexbox alone, with no Grid and no page layout; the t
   { q: "Should I learn Flexbox or Grid first?", a: "Either works, and most developers use both. Flexbox suits a row or column of items and Grid suits two-dimensional layouts. Per says in the image grid bonus that grids belong in CSS Grid, so pair this with Learn CSS Grid." },
   { q: "Do I need to know CSS before starting?", a: "Yes. It assumes selectors and the box model, and one scrim leans on specificity. Beginners should do Learn HTML and CSS first, which Scrimba's own course page also recommends." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/learn-flexbox-c0k" variant="button">
-  View Learn Flexbox on Scrimba
-</AffiliateLink>
 
 <CourseSchema
   name="Learn Flexbox"

@@ -6,7 +6,7 @@ sidebar_label: "Intro to Mistral AI"
 description: "Per Borgen's free Mistral course from inside: 84 minutes, 25 scrims, a handbook RAG bot on Supabase, a function-calling agent, and the accounts you need first."
 keywords: [scrimba mistral ai, intro to mistral ai scrimba, intro to mistral ai review, free llm course, mistral function calling, mistral rag supabase, per borgen scrimba]
 last_update:
-  date: 2026-09-20
+  date: 2026-09-22
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -18,15 +18,13 @@ import Screenshot from '@site/src/components/Screenshot';
 
 # Intro to Mistral AI
 
-Scrimba's free, 84-minute course on building with Mistral's models in JavaScript, made together with Mistral and taught mainly by Per Borgen. I opened every one of its 28 entries and read the transcript of all 25 teaching scrims with a Pro account in September 2026. It is short, but it takes you through three real things: chat completions, a retrieval bot over an employee handbook, and a small agent that calls your functions.
+Intro to Mistral AI is Scrimba's free, 84-minute course on building with Mistral's models in JavaScript, taught mainly by Per Borgen with Gil Hernandez and Mistral's Sophia Yang. In 25 scrims you build a RAG bot over an employee handbook and a function-calling agent, and it earns its short runtime.
 
-*This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
+*Reviewed inside the course with a Pro account, September 2026.*
 
 ## Quick answer
 
-Intro to Mistral AI is a free, intermediate course: 84 minutes of video across 25 teaching scrims, plus three generic Scrimba pages at the end. Per Borgen teaches most of it, Gil Hernandez covers the API basics, embeddings and Supabase setup, and Sophia Yang from Mistral opens with a two-minute company intro. You start with chat requests in the Mistral JavaScript client, add streaming and JSON output, and compare the models. Then you chunk a text file with LangChain, embed the chunks with `mistral-embed`, store them in Supabase, and answer questions from them. After that you build an agent loop with function calling, and the last scrim runs Mistral on your own machine with Ollama.
-
-What slows people down is the setup rather than the price. You need a Mistral La Plateforme account with a card on file and a free Supabase project before the RAG section works. The code also pins version 0.1 of Mistral's client, recorded in early 2024, so expect the SDK calls to look different from today's docs.
+It fits developers who already know JavaScript and want a free, hands-on build of a RAG bot and a function-calling agent. The catch is setup, not price: Mistral requires a card on file before it issues an API key, and the RAG section needs a free Supabase project too. From here, [Learn RAG](/docs/courses/ai/rag/) covers retrieval in more depth, and [Learn AI Agents](/docs/courses/ai/ai-agents/) takes the agent loop further.
 
 <CourseCard
   title="Intro to Mistral AI"
@@ -168,7 +166,7 @@ The Ollama scrim is the only one that leaves the browser. You install Ollama, ru
 
 Per's sell is simple: "aside for the cost of the hardware and the electricity, these tokens are completely free," and the data stays on your machine. The recap is 77 seconds. After it come the three generic Scrimba pages, which have no video.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 Scrims run one to six minutes; the longest is Gil's embeddings explainer. Per and Gil talk over a slide for the concept, then switch to the editor and run the code, and you see the API response arrive in the console. Challenges are written into the file as a comment block, the narration says "go ahead and solve this," and the recording sits quiet for a few seconds before the solution starts. You are meant to pause there, write your version, and press play.
 
@@ -180,7 +178,7 @@ Nothing inside the course. All 25 teaching scrims play in full without Pro, ther
 
 Pro is a separate decision. It buys the full [AI Engineer Path](/docs/paths/ai-engineer-path/) this course belongs to, the Pro-only Discord channels (basic Discord access is free), unlimited challenges, and certificates. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what it costs in your region.
 
-## How long it really takes
+## How long it takes
 
 Budget three to five hours, not 84 minutes. The account setup alone (Mistral card and key, Supabase project, pgvector extension, three environment variables, two SQL snippets) is 30 to 60 minutes the first time. The RAG and function-calling challenges are short, but each one is worth writing yourself before watching the solution. The Ollama scrim adds a 4 GB download and a local `npm install`, so do it when you have time and disk space.
 
@@ -189,6 +187,10 @@ Budget three to five hours, not 84 minutes. The account setup alone (Mistral car
 It fits developers with working JavaScript who want to build a RAG bot and a tool-calling agent once, from scratch, before touching a framework. It is also a good way to try Mistral if you have only used OpenAI: the client, the messages array, and the tool schema all rhyme with what you know.
 
 Skip it, for now, if you have never written `async`/`await` or called an API; start with [Learn JavaScript](/docs/courses/javascript/learn-javascript/) or [Learn to Code with AI](/docs/courses/ai/to-code-with-ai/). Also skip it if you will not put a card on file with Mistral, because the course cannot be followed past scrim three without a key. And if you want current SDK syntax rather than the concepts, read Mistral's docs alongside it.
+
+<AffiliateLink href="https://scrimba.com/intro-to-mistral-ai-c035" variant="button">
+  Start Intro to Mistral AI for free
+</AffiliateLink>
 
 ## Prerequisites
 
@@ -223,10 +225,6 @@ Where it is limited: it was recorded in early 2024 and pins Mistral's 0.1 client
   { q: "Are there transcripts and captions?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and adjustable speed." },
   { q: "Are the challenges AI-checked?", a: "No. Challenges are comment blocks in the editor and the recording pauses for you; you compare your console output with Per's. The AI-checked challenge format used in some Scrimba courses is not used here." },
 ]} />
-
-<AffiliateLink href="https://scrimba.com/intro-to-mistral-ai-c035" variant="button">
-  Start Intro to Mistral AI for free
-</AffiliateLink>
 
 <CourseSchema
   name="Intro to Mistral AI"

@@ -109,7 +109,7 @@ That leads into security rules, which Rafid chose to teach inside this module "b
 
 The final stretch rewrites `renderPost` with `createElement` so each post can carry buttons, then adds editing with `updateDoc` (through a browser `prompt()`, which he calls a shortcut) and deletion with `deleteDoc`. Each forces a rules change: `allow write` is split into `create`, `update` and `delete`, and the last two require the signed-in user to be the author. The delete scrim fails with a permissions error first, on purpose, so that rule is the last challenge. "Congrats" reframes what you built as a CRUD app ("you could turn this app into almost any other app") and points at his [Build a Mobile App with Firebase](/docs/courses/backend/a-mobile-app-with-firebase/) course for putting it on a phone.
 
-## What a lesson actually feels like
+## What a lesson feels like
 
 A typical scrim is three to seven minutes; the four longest (adding a document, getDocs, onSnapshot, date filters) run 11 to 21 minutes. Rafid talks over the editor with a slide overlay for the Firebase console and the documentation. The challenge pattern is fixed: he pre-writes any HTML, CSS and plain JavaScript off camera ("I'll see you back in a second"), explains it, shows the documentation page, writes a numbered brief in a comment, and pauses. You paste the docs snippet, adapt it, and press play to compare. Most challenges are five to ten lines; the hardest is finishing the week-filter function.
 
@@ -121,7 +121,7 @@ Four scrims are free samples: the welcome, the authentication intro, the starter
 
 Pro also unlocks the two career paths this course sits in and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free, so the server itself is not gated). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs where you live. My read: on its own this is a thin reason to subscribe. If you are already on the Fullstack path, it is the fastest route in the catalog from a static frontend to an app with logins and live data.
 
-## How long it really takes
+## How long it takes
 
 The 3.4 hours is video runtime. Almost every scrim stops for a challenge, and you should be pasting your own Firebase config and checking your own console between them. Plan on 7 to 10 hours: two or three evenings for authentication, and a weekend for Firestore and rules. Add an hour up front to create a Firebase project and enable email, Google and Firestore in the console, which the course walks through but which you do in your own browser tab.
 
