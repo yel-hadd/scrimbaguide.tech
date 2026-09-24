@@ -7,7 +7,7 @@ description: "Advanced React on Scrimba from inside: 18.8 hours, three teachers,
 keywords: [scrimba advanced react, advanced react review, advanced react course, bob ziroll advanced react, react performance course, react reusability patterns, scrimba advanced react 2026]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -93,7 +93,7 @@ Then comes the Mega Challenge: an "overloaded" Avatar component that renders a p
   alt="Advanced React, Mega Challenge lesson: the preview shows one Avatar component rendering a photo, initials, and an icon."
   width={1400}
   height={625}
-  caption="The Avatar solution at 8:25 of the Mega Challenge: one component, three render paths, and all three showing in the preview. The dependencies panel shows what this module runs on: react 18.2.0 and react-icons 4.4.0."
+  caption="The Avatar solution at 8:25 of the Mega Challenge. The dependencies panel puts this module on react 18.2.0 and react-icons 4.4.0."
 />
 
 The middle of the module is the Menu. Bob explains prop drilling with a diagram and then says something few instructors say: "you might just need to do nothing." When it is a problem, he flattens the menu into compound components, tries `React.Children.map` plus `cloneElement`, shows why that is fragile (wrap a child in a `div` and it breaks), and lands on context. The `useContext()` scrim is one of three free previews. A later "A11y in menu component" scrim, recorded after the rest, adds `role="menu"`, `aria-expanded`, `aria-haspopup`, `aria-controls`, and `useId`, and Bob warns that this code "isn't going to persist into those other recordings."
@@ -105,7 +105,7 @@ The last third builds a headless Toggle (Toggle.Button, Toggle.On, Toggle.Off, T
   alt="Advanced React, Intro to Refs lesson: the preview shows a render counter spiraling out of control in an infinite loop."
   width={1400}
   height={625}
-  caption="Intro to Refs at 2:33: the render counter kept in useState inside a useEffect with no dependencies, and the render count in the preview running away. Bob triggers the maximum update depth error on purpose, then fixes it with useRef."
+  caption="Intro to Refs at 2:33. The counter lives in useState inside a useEffect with no dependency array, so Bob triggers the maximum update depth error on purpose, then fixes it with useRef."
 />
 
 The module ends with the only solo project in the course, Component Library++: a Badge, a Banner, a Card, and a Testimonial, with a Tooltip and a Toast as stretch goals, all from Figma designs. Bob calls it "very similar to what you might do on the job as a React developer." A two-minute "Want to become a Scrimbassador?" clip about the referral program is tacked on after it.
@@ -130,7 +130,7 @@ From there the module is one long build. Route params and `useParams` for the va
   alt="Advanced React, VanLife lesson: the preview shows the van listing page with filter buttons above two van photos."
   width={1400}
   height={625}
-  caption="VanLife at 2:53 of the Links filtering challenge: the type filter comes from the URL, not from state, and the Simple, Luxury, and Rugged buttons are just Links with a query string. The file tree on the left is the whole app at this point, pages and components."
+  caption="At 2:53 of the Links filtering challenge, VanLife's type filter comes from the URL, not from state: the Simple, Luxury, and Rugged buttons are just Links with a query string."
 />
 
 The back half handles the "sad path" (loading and error states with `try`/`catch`/`finally`), a 404 splat route, a login form, protected routes with an `AuthRequired` layout and `Navigate`, and a fake login flow with a `status` state that disables the button while submitting. The "send user to original page" challenge, where you pass `location.pathname` through link state, is one Bob says you should celebrate if you solve on your own. The last six scrims swap Mirage for Cloud Firestore, and he suggests you download the zip and go local from here because the credentials are his. The Outro explains the branching: this is the "career path version," and the standalone course diverges to cover loaders and actions.
@@ -170,7 +170,7 @@ The ten scrims go: create the project and a `sales_deals` table, seed it with na
   alt="Advanced React, Realtime subscription lesson: the preview shows a sales dashboard bar chart next to a running dev server."
   width={1400}
   height={625}
-  caption="The realtime challenge brief at 4:18: fill in the channel name, event type, schema, and table, then insert a row in Supabase and watch the console. Notice the Runner tab: this module runs a real Vite dev server inside Scrimba, unlike Bob's modules."
+  caption="Fill in the channel name, event type, schema, and table, insert a row in Supabase, and watch the console: the realtime challenge brief at 4:18."
 />
 
 ### 5. Authentication (3.8 hrs, 36 scrims): sign-up, JWTs, RLS, and a trigger

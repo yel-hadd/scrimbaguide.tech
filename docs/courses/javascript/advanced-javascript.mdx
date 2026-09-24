@@ -7,7 +7,7 @@ description: "Tom Chant's Pro Advanced JavaScript course reviewed from inside: 9
 keywords: [scrimba advanced javascript, advanced javascript scrimba review, advanced javascript course, tom chant javascript, javascript generators course, async javascript course, scrimba pro javascript course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -130,7 +130,7 @@ Then Tom takes over with code. You fetch a random dog image twice, first with `.
   alt="Advanced JavaScript, Callback Hell lesson: code editor showing deeply nested callback functions."
   width={1400}
   height={660}
-  caption="Callback Hell at 5:17. Three fake async steps chained the old way, each callback nested inside the previous one, with the console proving the order and the one-second delays. Tom calls the shape 'the pyramid of doom' and rewrites it with promises in the next scrim."
+  caption="Callback Hell at 5:17: the console proves the delays fire in order, in the shape Tom calls 'the pyramid of doom'."
 />
 
 The Callback Hell scrim is the best-taught lesson I opened. You get three functions that fake an upload, a process, and a notify step with `setTimeout`, and the challenge is to chain them with callbacks. Tom warns you that "you are going to come up against the gotcha here," and the gotcha is real: pass `processFile(notifyUser)` directly and it runs immediately, so the steps print out of order. A `hint.md` file in the project explains the fix. Then he does something I like: "Now normally, I tell you to keep working until a challenge is completed. In this case, I will say don't spend too long on it if you get really stuck. This is the old way."
@@ -164,7 +164,7 @@ The middle of the module is inheritance, meaning one object taking properties an
   alt="Advanced JavaScript, Super Challenge Game Characters: code editor showing an empty class with a challenge comment."
   width={1400}
   height={660}
-  caption="Game Characters at 1:08. The whole brief lives in comments inside the empty classes: a Character base class with a private #health field, static counters, getters and setters, then Hero and Villain subclasses. Test calls with expected output sit at the bottom of the file."
+  caption="At 1:08 of Game Characters, the Character, Hero and Villain classes are still just comments, the whole brief written before a line of code exists."
 />
 
 Static methods, private fields, and getters and setters finish the teaching. The Private Fields scrim locks a `#destination` property so it cannot be changed from outside the class, and notes that Scrimba's console hides private fields where Chrome's would show them. Tom also explains the old underscore convention and why the `#` syntax is better: it enforces the rule instead of just signaling it.
@@ -199,7 +199,7 @@ Recursion is four scrims, and Tom warns that "recursion gets harder from here on
   alt="Advanced JavaScript, Debouncing and Generators Super Challenge: code editor mid-fix on a generator function."
   width={1400}
   height={660}
-  caption="The Debouncing and Generators super challenge at 4:16, just after the first real bug is fixed: the generator was using return instead of yield. More bugs follow, including a result.done check and an off-by-one in the section counter."
+  caption="The Debouncing and Generators super challenge at 4:16, just after the first bug: a generator using return instead of yield."
 />
 
 The Debouncing and Generators super challenge is a debug challenge rather than a build: a cafe site that should load ten content sections from `apiData.js` as you scroll, with the loading debounced, and does not. You have to fix it. Tom's walkthrough works through several fixes, and his commentary on one of them is a good lesson in itself. The generator's `.next()` returns "an object with a promise in it and a boolean in it," so `if (!result)` never fires and you have to check `result.done`. Then there is an off-by-one where the counter increments before the lookup, which he admits "I didn't notice at first either."

@@ -7,7 +7,7 @@ description: "Rachel Johnson's 75 minute Tailwind project reviewed from inside: 
 keywords: [scrimba tailwind product card, build a product card tailwind review, tailwind css project, rachel johnson tailwind, scrimba tailwind tutorial, tailwind config object]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -97,7 +97,7 @@ Then you do it yourself. The Adding custom colours scrim gives you three tasks i
   alt="Build a Product Card with Tailwind CSS, Adding custom colours challenge: code editor with a task list beside an unstyled preview."
   width={1400}
   height={660}
-  caption="The Adding custom colours challenge at 0:43. The brief is the three numbered comments at the top of the file, the hex codes are on the slide thumbnail bottom left, and the preview is still completely unstyled. This is the state you work from before pressing play."
+  caption="At 0:43 of the Adding custom colours challenge, the brief is three numbered comments at the top of the file, and the hex codes you need sit on the slide thumbnail, bottom left."
 />
 
 Fonts follow the same pattern. The aside overrides `sans` with Bebas Neue and adds a new `slab` family, and explains that the array you type is the same font stack you would write in CSS. Then the project scrim has you override `sans` with Josefin Sans and add a `title` family for Playfair Display SC, and apply `font-title` to the heading and subtitle. The max width aside tries `max-w-72`, `max-w-96`, `max-w-lg` and `max-w-4xl` on a demo card so you can see the container stop growing. Rachel's reason for caring is practical: "Nowadays, there are monitors that are super super wide so we have to account for that."
@@ -115,7 +115,7 @@ The gradient aside teaches the three-class recipe (`bg-gradient-to-b`, `from-`, 
   alt="Build a Product Card with Tailwind CSS, Styling the buttons lesson: code editor beside a preview of the orange gradient Add to Cart button."
   width={1400}
   height={660}
-  caption="Styling the buttons at 5:30, just after the flex row gets its vertical margin. Read the button's class list in the editor: that one line is the whole lesson. The features list under it is still unstyled, which is the next task."
+  caption="Styling the buttons, 5:30 in and just after the flex row gets its vertical margin: the whole lesson is that one line, the button's class list in the editor."
 />
 
 The lists aside is the one I would point a Tailwind skeptic at. "By default, Tailwind removes all the expected styling we're used to with vanilla CSS," so the demo's ingredients and recipe steps look like paragraphs until you add `list-disc` and `list-decimal`, then `ml-5 pl-3` to pull the markers inside the box, then `marker:text-green-400` to colour the bullets. It has three mini challenges. Styling the features section applies all of it to the card's five-item feature list, with orange markers and a medium-weight span at the start of each item.
@@ -129,7 +129,7 @@ The grid aside is short and shows why people like Tailwind: `grid grid-cols-3 gr
   alt="Build a Product Card with Tailwind CSS, Mobile and desktop views lesson: code editor beside a two-column preview of the product card."
   width={1400}
   height={660}
-  caption="Mobile and desktop views at 4:18, after the save. The five md: classes on the main element are what turned the stacked card into this two-column layout. Drag the preview narrower and it stacks again."
+  caption="Mobile and desktop views at 4:18, after the save: five md: classes on the main element turn the stacked card into this two-column layout, and dragging the preview narrower stacks it again."
 />
 
 Background images get an aside of their own because the config object comes back: you register `mobile` and `desktop` image paths under `backgroundImage`, then use `bg-mobile md:bg-desktop`, plus `bg-no-repeat`, `bg-right-top` and `bg-fixed` to control placement. The project version adds the two subtle patterns the client supplied, pinned to the bottom of the card.

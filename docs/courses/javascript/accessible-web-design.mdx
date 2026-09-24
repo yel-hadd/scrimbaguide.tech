@@ -7,7 +7,7 @@ description: "Fredrik Ridderfalk's 96 minute Pro course reviewed from inside: 27
 keywords: [scrimba accessible web design, learn accessible web design review, scrimba accessibility course, accessible html course, a11y course scrimba, aria basics course, fredrik ridderfalk scrimba]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -117,7 +117,7 @@ Scrim 4 is a short aside about not relying on colour alone, using two chat-style
   alt="Learn Accessible Web Design, text contrast lesson: a browser preview shows text blending into the background behind it."
   width={1400}
   height={660}
-  caption="Scrim 5 at 0:17, the state you are handed. The green Eats blends into the green illustration behind it, and the footer links are dark green on dark grey. Your job is to bring both up to AAA before Fredrik shows his fix."
+  caption="At 0:17 of Scrim 5, the green Eats and its background sit at the same contrast, and the footer links pair dark green on dark grey, both short of AAA until Fredrik's fix."
 />
 
 His solution is worth watching even if you solved it. Recolouring the word fails (black and white both clash somewhere over the image), so he shows two layout fixes: `display: block` to push the word onto its own line, or shrinking the hero image. The About section is harder because the text sits on a background photo. That becomes a second challenge: look up `background-blend-mode`, then layer a white `rgba` colour over the image with `lighten`. It is the one CSS property here most people will not have met.
@@ -149,7 +149,7 @@ Scrim 16 introduces ARIA with the button-versus-div comparison again, states the
   alt="Learn Accessible Web Design, ARIA lesson: a code editor shows a toggle switch with role and state attributes added."
   width={1400}
   height={679}
-  caption="Scrim 16 at 3:59, the solution: role switch so assistive tech knows what it is, aria-checked so it can announce the state, and tabindex 0 so the keyboard can reach it. Note the skip link on line 10, which you build later."
+  caption="At 3:59 of Scrim 16, the role attribute names what the control is, aria-checked announces its state, and tabindex 0 gets it to the keyboard."
 />
 
 Scrim 17 is the most advanced lesson. On a contact form, Fredrik explains `aria-live` (off, polite, assertive) and has you add `aria-live="polite"` to a success message so a screen reader announces it without the user hunting for it. A second challenge moves keyboard focus to the home link after submit with `.focus()`, which the course calls programmatic focus management. Scrim 18 shows a warning that only appears on `mouseover`, points out that touch and screen reader users never see it, and replaces the event listener with a message in the page flow that toggles `opacity` rather than `display`.
@@ -169,7 +169,7 @@ The final challenge is in two parts on a brand new contact page. Part one asks y
   alt="Learn Accessible Web Design, final challenge lesson: a preview shows a contact form with faint text and no labels."
   width={1400}
   height={660}
-  caption="Scrim 23 at 0:27. The blank dashes are yours to fill. Everything wrong with this page is something you fixed earlier: faint placeholders, an image with no alt, inputs with no labels, a vague button, a div where main should be, a page that starts at h2, and px font sizes."
+  caption="Scrim 23 at 0:27. The blank dashes are yours to fill, and every fault on this page repeats a mistake fixed earlier in the course."
 />
 
 There are seven issues, and every one maps to an earlier scrim, which is the point. The last three scrims are a two minute Scrimbassador referral ad voiced by Per Borgen, a one minute outro that ends in a rhyme, and Per's standard certificate clip. Only 25 of the 27 scrims are Fredrik's.

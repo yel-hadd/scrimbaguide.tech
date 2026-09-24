@@ -7,7 +7,7 @@ description: "Shant Dashjian's DSA course reviewed from inside: 35 scrims in 2.5
 keywords: [scrimba data structures and algorithms, scrimba dsa course review, data structures and algorithms review, shant dashjian scrimba, technical interview prep, big o notation course, dsa course javascript]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -108,7 +108,7 @@ Arrays explains why index access is O(1) (contiguous memory, address arithmetic)
   alt="Data Structures and Algorithms, Dinosaur Age Range challenge: a markdown file listing four numbered tasks."
   width={1400}
   height={660}
-  caption="The Dinosaur Age Range challenge at 1:52. Every challenge in the course has this four-task shape: plain-English steps first, then code, then npm test against a prepared test file, then a Big O analysis. The file list on the left shows getAgeRange.test.js waiting for you."
+  caption="At 1:52 of the Dinosaur Age Range challenge, this is the shape every later challenge repeats: plain English steps, then code, then npm test against getAgeRange.test.js, then a Big O writeup."
 />
 
 The brief lives in a `challenge.md` file with examples, constraints and tasks, and the function file has a comment template for your plain-English steps and two blank lines for time and space complexity. Shant's teaching move is to solve the problem by hand first: "A great way to write an algorithm and then convert it to code is to first solve it as a human." He scans the eight ages out loud, updating the maximum, before writing a single line. Strings adds immutability, `split` and `join`, and a two-pointer reverse. Challenge: Palindromes, which Shant calls "the most involved challenge you've seen so far in the course", has you filter an array of dinosaur usernames like `TREXerT` and comes with a `hints.md` file for the stuck.
@@ -128,7 +128,7 @@ Maps is where the course starts paying off. Shant introduces JavaScript's `Map` 
   alt="Data Structures and Algorithms, Tag Sum Lottery challenge: code editor showing the finished solution using a Map."
   width={1400}
   height={660}
-  caption="Tag Sum Lottery at 5:26. The numbered steps in the comment are written before the code, and the inner loop of the starting version is gone: one pass, one Map, O(n). This is the pattern the course wants you to leave with."
+  caption="Tag Sum Lottery at 5:26. The inner loop from the starting version is gone: one pass, one Map, O(n), the pattern this course wants you to leave with."
 />
 
 Stacks and Queues each end in a challenge to implement the class (push, pop, peek, size, isEmpty; enqueue, dequeue, peek, size, isEmpty) with a thrown error on empty. The brief spells out the exact error message the tests expect. Challenge: Expression Validation is the balanced-brackets problem with a twist ("Dinosaurs, on the other hand, use angle brackets"), and Shant flags it as the point where "we are raising the bar of difficulty". Challenge: First Unique Dinosaur Age combines the queue you just wrote with a frequency map. A one-minute Learning Tip: Visualize closes the block with advice to draw linked lists and trees "piece by piece, whether using pen and paper or some electronic alternative".
@@ -157,7 +157,7 @@ Graphs is terminology (vertex, edge, degree, directed, weighted, cycle, path) an
   alt="Data Structures and Algorithms, Are They Connected challenge: a slide showing two separate graph clusters."
   width={1400}
   height={660}
-  caption="Are They Connected? at 0:00. The question is whether there is a path from Eddie to Sam (yes, through Vinnie) and from Eddie to Amber (no). The Eddie, Brie, Tim, Vinnie loop is the cycle you have to guard against with a visited set."
+  caption="Eddie reaches Sam through Vinnie, but not Amber, in 'Are They Connected?' at 0:00; the Eddie, Brie, Tim, Vinnie loop is exactly the cycle a visited set has to catch."
 />
 
 Are They Connected? is the final challenge and, in Shant's words, "perhaps the most challenging problem you have seen in this course". You reuse DFS on a graph that may contain cycles, so you need a `Set` of visited vertices, and the answer is O(V + E). The Congratulations scrim resolves the story honestly: "Unfortunately, the giant asteroid still fell in the Gulf of Mexico right on time." The last two scrims are Scrimba's standard certificate and Scrimbassador clips, voiced by Per Borgen rather than Shant.

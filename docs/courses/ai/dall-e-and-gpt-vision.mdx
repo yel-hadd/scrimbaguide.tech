@@ -7,7 +7,7 @@ description: "Guil Hernandez's one-hour Pro course from inside: 15 scrims, DALL-
 keywords: [scrimba dall-e course, dall-e gpt vision scrimba review, gpt vision tutorial scrimba, dall-e image generation, multimodal ai course, guil hernandez ai]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -94,7 +94,7 @@ The two minute introduction is a slide deck. Guil explains why you would generat
   alt="Intro to Dall-E and GPT Vision, Editing images lesson: the code editor showing an image-edit API call before it runs."
   width={1400}
   height={660}
-  caption="5:15 in Editing images, just before Guil runs it. The whole inpainting request is 15 lines: image and mask come in through fetch, the prompt describes the finished building, and response_format is b64_json at 256 by 256 so the result can be embedded in the mini browser without crashing it."
+  caption="Editing images at 5:15. The inpainting request is 15 lines, and response_format stays b64_json at 256 by 256 so the result embeds in the mini browser without crashing it."
 />
 
 "Image variations" (4:26) calls `openai.images.createVariation` on a bike photo, then on Guil's own portrait ("it's like looking into an AI generated mirror") and his dog Joey. Again DALL-E 2 only, square PNG under 4 MB.
@@ -108,7 +108,7 @@ The challenge brief (2:17) hands you a form with a movie title input, an art sty
   alt="Intro to Dall-E and GPT Vision, FilmFusion challenge lesson: the code editor showing the project brief as a comment."
   width={1400}
   height={635}
-  caption="1:15 in the challenge brief. Everything you need is in the comment; the form listener already prevents the default submit. The dependency panel shows the one package the whole course uses."
+  caption="At 1:15 of the challenge brief, the form listener already prevents the default submit, and the dependency panel lists the one package the whole course uses."
 />
 
 The solution (6:33, not the 2:17 the table of contents shows) builds the prompt as a template literal, `An imaginative poster inspired by the movie "${movieTitle.value.trim()}" rendered in the ${artStyles.value} art style`, passes it to `generatePoster(prompt)`, and drops the returned URL into an `img`. Guil tests with Back to the Future in Art Deco and admits the poster text "reads as sort of gibberish," which the prompting scrim warned about. The stretch goals become a status line and a `try`/`catch` around the request.
@@ -131,7 +131,7 @@ The solution (6:33, not the 2:17 the table of contents shows) builds the prompt 
   alt="Intro to Dall-E and GPT Vision, GPT-4 with Vision lesson: the code editor, console answer and a photo of an egg."
   width={1400}
   height={635}
-  caption="4:56 in Vision Part 1. Left: the two-part content array. Bottom: the model's first answer in the console. Right: the egg photo the model is describing."
+  caption="The content array in view at 4:56 of Vision Part 1 has one object for text and one for image_url, the shape GPT-4 Vision requests use."
 />
 
 The model name is the problem. Guil names it in the transcript as "GPT four vision preview," and that is the model the scrim requests. OpenAI no longer serves that model, so you will need to change the string to a current vision-capable model before any of this scrim's requests return. The request shape itself (text plus image_url in one content array) is still how the API works.

@@ -7,7 +7,7 @@ description: "Zack Wilson's hour-long Pro course reviewed from inside: 18 scrims
 keywords: [scrimba tricky parts of javascript, tricky parts of javascript review, javascript hoisting course, javascript scope course, javascript promises course, portexe javascript, scrimba javascript review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -89,7 +89,7 @@ As Zack puts it in lesson 3, "This is how we know that let is being hoisted here
   alt="The Tricky Parts of JavaScript, Hoisting lesson: the console shows a ReferenceError instead of the expected value."
   width={1400}
   height={660}
-  caption="Hoisting at 1:35. The inner let is declared after the console.log, yet the log throws instead of printing the outer 'a'. That error is the proof that let declarations are hoisted; Zack names it the temporal dead zone a few seconds later."
+  caption="At 1:35 of Hoisting, the inner let is declared after the console.log, yet the log throws instead of printing the outer 'a'."
 />
 
 Global Scope covers top-level variables, overriding them locally, and setting properties on `window` from inside a function. Block Scope shows that `let` and `const` are trapped inside curly braces and `var` is not, then flips an `if (true)` to `if (false)` to show `var x` is still hoisted (as `undefined`) even when the block never runs.
@@ -101,7 +101,7 @@ The Scope Challenge is the payoff. Zack pastes 32 lines with six `console.log` c
   alt="The Tricky Parts of JavaScript, Scope Challenge lesson: the console prints six answers after running the code."
   width={1400}
   height={660}
-  caption="Scope Challenge at 1:00, just after Zack runs the file. The six answers are on screen; the next three minutes explain each one. Line 32, var hoisted = true, is why the first log prints nothing."
+  caption="Just after Zack runs the Scope Challenge file at 1:00, line 32, var hoisted = true, is why the first log prints nothing."
 />
 
 ### 2. Functions (19 min, 6 scrims)

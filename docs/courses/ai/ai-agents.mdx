@@ -7,7 +7,7 @@ description: "Bob Ziroll's Learn AI Agents reviewed from every transcript: 117 m
 keywords: [scrimba learn ai agents, learn ai agents scrimba review, ai agents course scrimba, bob ziroll ai agents, react prompting tutorial, openai function calling agents, llm agents javascript]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -111,7 +111,7 @@ Parts 5 to 7 are the parsing. Part 5 notices that the model separates its lines 
   alt="Learn AI Agents, ReAct Agent part 7: code editor and console panel showing the parsed function call."
   width={1400}
   height={660}
-  caption="Part 7 at 4:04, just after the challenge: the regex has pulled getLocation and null out of the model's text and availableFunctions[action](actionArg) is about to call the stub. The console shows the raw match array."
+  caption="By 4:04, Part 7's regex has pulled getLocation and null out of the model's text, and availableFunctions[action](actionArg) is about to call the stub with them."
 />
 
 The challenges are real pauses: "So I'll give you a chance now to pause and work on this challenge," then the solution. Bob is candid that this is not glamorous work. At the end of part 7: "the way that we're parsing these strings does feel a bit tedious. This is going to lead us very soon into learning about OpenAI functions and we'll see how we can offload what kind of feels like a hacky way around figuring out what function to call to OpenAI."
@@ -123,7 +123,7 @@ Part 8, "Housekeeping", hoists `messages` out of the call so it can be pushed to
   alt="Learn AI Agents, ReAct Agent part 9: the console lists each loop iteration next to the code editor."
   width={1400}
   height={660}
-  caption="Part 9 at 4:40, the run for 'What is the current weather in my location?': iterations 2 and 3 are in frame; iteration 1, which called getLocation, has scrolled off the top. Iteration 2 calls getCurrentWeather with the city it just learned, iteration 3 answers. This is the whole course in one console."
+  caption="ReAct Agent Part 9 at 4:40. Iteration 2 calls getCurrentWeather with the city iteration 1 just found, iteration 3 answers: the whole ReAct loop in one console."
 />
 
 ### 3. OpenAI functions agent (41 min, 9 scrims)
@@ -158,7 +158,7 @@ Function calling is OpenAI's built-in version of what you just hand-rolled: you 
   alt="Learn AI Agents, Adding UI lesson: a chat window preview beside the code editor showing the agent's reply."
   width={1400}
   height={660}
-  caption="The proof-of-concept UI at 3:20 of the last build scrim. Note the dependency panel: openai@4.19.1, up from the 4.14.2 visible in the two ReAct screenshots above, and the runFunctions call that replaced the hand-written loop."
+  caption="At 3:20 of Adding UI to agent, the dependency panel reads openai@4.19.1, up from the 4.14.2 shown in the two ReAct screenshots earlier in this review."
 />
 
 The Solo Project brief, "AI Travel Agent," is narrated by a different Scrimba voice than Bob's and comes with a Figma file. The app is a form for travelers, origin, destination, dates and budget, then a results page with dates, weather, flights and a hotel. The brief is explicit that "you can just use the OpenAI API to create hallucinated flight and hotel data," booking buttons only `console.log`, and the one real integration is a weather API. Stretch goals include activity ideas that differ for a single traveler, a couple or a family, a shareable trip page, and AI-generated images.

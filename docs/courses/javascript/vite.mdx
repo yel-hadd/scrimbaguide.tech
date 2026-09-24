@@ -7,7 +7,7 @@ description: "Shant Dashjian's free Intro to Vite reviewed from inside: 39 minut
 keywords: [scrimba intro to vite, intro to vite review, vite scrimba, free vite course, vite build tool course, vite dev server, shant dashjian vite]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -96,7 +96,7 @@ The scaffolded `package.json` pins `react` and `react-dom` at `^19.0.0` and `vit
   alt="Intro to Vite, Create your first React project lesson: terminal showing the dev server running."
   width={1400}
   height={660}
-  caption="Paused at 2:17, right after npm run dev. The terminal banner shows the version the course was recorded on (Vite 6.2.6), and the mini browser is Scrimba's stand-in for localhost:5173. Every later scrim starts from this project."
+  caption="At 2:17 of Create your first React project with Vite, the terminal banner reads Vite 6.2.6 and the mini browser stands in for localhost:5173, the project every later scrim builds on."
 />
 
 "Experience fast development" is the first challenge and the longest scrim at six minutes. It opens on a blank directory again: "This is Scrimba and here we learn by doing. So let's start off with a challenge to get your hands on the keyboard." You redo the scaffold yourself, from `npm create vite@latest` to a running dev server.
@@ -116,7 +116,7 @@ You run `npm run build` and read the output: `dist/assets/react-CHdo91hT.svg` ha
   alt="Intro to Vite, Handle static assets lesson: code editor beside a terminal showing the production build output."
   width={1400}
   height={660}
-  caption="Paused at 1:26. The two import lines at the top are the whole lesson: the relative import from src/assets gets a hashed filename in the build output below, the absolute /vite.svg import from public does not."
+  caption="The two import lines at the top of Handle static assets, paused at 1:26, are the whole lesson: the src/assets import comes back with a hashed filename, the public one does not."
 />
 
 "Use environment variables" covers `import.meta.env`, the object Vite exposes for settings that change between machines. It has built-in constants (`BASE_URL`, `MODE`, `DEV`, `PROD`, `SSR`), and your own variables go in a `.env` file with a `VITE_` prefix so they reach the browser. Shant adds `VITE_GREETING=howdy` and renders it.
@@ -128,7 +128,7 @@ The challenge is to put an IP lookup API URL in an environment variable and use 
   alt="Intro to Vite, Use environment variables challenge: code editor showing fetch code with a gap to fill in."
   width={1400}
   height={660}
-  caption="Paused at 3:03, the moment the challenge is handed over. The useEffect and the fetch are written for you; your job is the .env entry and the import.meta.env line that replaces the question mark."
+  caption="At 3:03 of Use environment variables, the useEffect and the fetch are written for you; your job is the .env entry and the import.meta.env line that replaces the question mark."
 />
 
 The one minute "Using Scrimba's built-in environment variables" scrim is a side note. `.env` files are for your own machine. If you build scrims on Scrimba later, the gear menu has an "edit environment" option that stores keys centrally instead. Skip it if you never plan to publish scrims.
@@ -158,7 +158,7 @@ Shant frames that as the real lesson: "Being able to read and follow online docu
   alt="Intro to Vite, Extend with plugins lesson: terminal showing a QR code printed after starting the dev server."
   width={1400}
   height={660}
-  caption="Paused at 1:55. The dev script now reads vite --host (the plugin needs it) and the terminal has printed the QR code. In the sandbox it goes nowhere; on your own machine it opens the dev server on your phone."
+  caption="Extend with plugins' dev script now reads vite --host at 1:55, which the plugin needs. The sandbox can't reach a phone, but the same setup opens the dev server on yours from your own machine."
 />
 
 ### 5. Extra lesson and wrap-up (7 min, 4 scrims)

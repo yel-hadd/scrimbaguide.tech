@@ -7,7 +7,7 @@ description: "Gary Simon's free Intro to UI Design Fundamentals reviewed from in
 keywords: [scrimba ui design fundamentals, intro to ui design fundamentals review, gary simon ui design, free ui design course, ui design for developers, scrimba ui design course review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -114,7 +114,7 @@ He adds `padding` to the second card and argues for `em` units, which scale with
   alt="Intro to UI Design Fundamentals, White Space lesson: two identical cards side by side, one cramped and one evenly spaced."
   width={1400}
   height={635}
-  caption="White Space at 4:37. Both cards share the same HTML; only the three rules under the Overwrite CSS comment differ. Gary settled on 1.9em of padding after trying 1em and 1.5em on screen."
+  caption="The Overwrite CSS comment holds the only three rules that differ between these otherwise identical cards, 4:37 into White Space; Gary settled on 1.9em of padding after trying 1em and 1.5em on screen."
 />
 
 "Alignment" (3:06) uses a trick I liked. A hidden column overlay in the CSS has its opacity flipped from 0 to 1, and suddenly you can see that a logo, a headline, a paragraph, and a button sit on three different left edges. "You need to think of every element that is in your user interface as having a series of rows and columns", as he puts it. The fix is uncommenting one block of CSS.
@@ -148,7 +148,7 @@ He also flags, for the first time, that a headline that is barely bigger than it
   alt="Intro to UI Design Fundamentals, Design Challenge 2: the same three cards redesigned with dark backgrounds and even spacing."
   width={1400}
   height={635}
-  caption="The same cards at 6:33 after his solution. Note the low contrast of the card against the page (he argues containers do not need much) versus the high contrast of the title, which does."
+  caption="The same cards at 6:33 after his solution: the card stays low contrast against the page, since Gary argues containers do not need much, while the title carries the high contrast instead."
 />
 
 His solution is worth knowing because it contains the course's best rule about contrast. The container gets `width: 90%` for breathing room, the cards get a dark grey background and `padding: 1.5em`, the date is shrunk, uppercased and letter spaced, and the title grows to 1.8em in pale blue. The rule: "you want a lot of contrast on important elements that a person has to interact with or use or read", but a container "can have very little contrast, and it would still look good."

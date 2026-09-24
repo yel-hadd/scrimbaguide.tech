@@ -7,7 +7,7 @@ description: "Per Borgen's Learn CSS Grid reviewed from inside: 63 minutes, 17 s
 keywords: [scrimba learn css grid, learn css grid scrimba review, css grid course, per borgen css grid, css grid layout tutorial, interactive css grid, css grid review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -82,7 +82,7 @@ He also tells you, in the first minute, to edit the CSS in the running scrim "so
   alt="Learn CSS Grid, Your First Grid lesson: the code editor and a preview of colored numbered grid cells."
   width={1400}
   height={635}
-  caption="Lesson 2 at 2:27. Per has just deleted a column and added a 200px row; the preview on the right reflows to two columns and three rows. The whole grid is the five lines inside the style tag."
+  caption="Your First Grid at 2:27, mid-edit. Per has just deleted a column and added a 200px row, and the preview already reflows to two columns and three rows."
 />
 
 "Fraction units and repeat" (3:38) moves the CSS out of the HTML into `index.css` and replaces the pixel values with `fr`. The `fr` unit is a fraction of the free space in the container. Three `1fr` columns share the width equally; change the middle one to `2fr` and the grid "has split the entire width into four fraction units", so the middle column is always twice as wide. `repeat(3, 1fr)` follows, then the `grid-template` shorthand with rows before columns. Per remembers the order by "drawing an L": down the rows first, then right across the columns.
@@ -96,7 +96,7 @@ The payoff comes when he switches to `repeat(12, 1fr)`. The `-1` versions keep w
   alt="Learn CSS Grid, Positioning Items lesson: the preview shows a red menu block spanning two rows beside the header."
   width={1400}
   height={635}
-  caption="Lesson 4 at 6:01, the moment grid-row: 1 / 3 pulls the menu up beside the header. Everything else on the page is positioned with -1, so the layout would survive changing repeat(12, 1fr) to any other count."
+  caption="At 6:01 of Positioning Items, grid-row: 1 / 3 has just landed. Everything else on the page is positioned with -1, so the layout would survive changing repeat(12, 1fr) to any other count."
 />
 
 "Template areas" (4:48) closes the section with `grid-template-areas`, a property that lets you draw the layout as strings of letters. The header row is twelve `h`s, the middle row is one `m` and eleven `c`s, and the footer is twelve `f`s. Per's argument for it is prototyping speed: "just as easy as that, we have changed layout without having to fiddle around with the values in the item classes." He also breaks it on purpose, making a non-rectangular area to show that "you have to use rectangles".
@@ -106,7 +106,7 @@ The payoff comes when he switches to `repeat(12, 1fr)`. The `-1` versions keep w
   alt="Learn CSS Grid, Template Areas lesson: the preview shows a layout with header and footer inset from the corners."
   width={1400}
   height={635}
-  caption="Lesson 5 at 3:56. The dots in the template strings are blank cells, so the header and footer no longer touch the corners. Per calls it a 'weird experimental layout', which is the point: you get there by editing three strings."
+  caption="Template areas at 3:56. The dots in the template strings mark blank cells, and Per calls the result a 'weird experimental layout,' proof that three edited strings is all it takes."
 />
 
 After these five scrims you can build a fixed page layout three ways: with line numbers, with spans, and with template areas. You cannot yet make it respond to the window size. That is section two.

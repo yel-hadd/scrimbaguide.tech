@@ -7,7 +7,7 @@ description: "DonTheDeveloper's free Intro to NestJS from inside: 83 minutes, 22
 keywords: [scrimba nestjs, intro to nestjs scrimba, intro to nestjs review, free nestjs course, nestjs vs express, typescript node framework, donthedeveloper nestjs]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -98,7 +98,7 @@ The 22 scrim durations add up to 87 minutes when summed one by one. Scrimba's he
   alt="Intro to NestJS, Modules & Decorators lesson: code editor beside a terminal running the CLI generate commands."
   width={1400}
   height={630}
-  caption="Modules & Decorators at 1:20. The terminal shows the two CLI generate commands and the files they created; the module file above already imports the controller because the CLI wired it in. This is a real Nest project running in the browser, not a mock."
+  caption="At 1:20 of Modules & Decorators, the module file above already imports the controller: generating both with the CLI wired that import in for you."
 />
 
 ### 2. Controllers (19 min, 5 scrims)
@@ -116,7 +116,7 @@ Then he ships a bug. The DTO import points at the wrong folder, the curl respons
   alt="Intro to NestJS, Controller (POST) challenge: code editor showing a numbered task list above the existing GET routes."
   width={1400}
   height={630}
-  caption="Controller (POST) at 4:11. The three numbered comments are the challenge brief you work from; the routes above them are the ones you already wrote. Don resets the file to this state before handing over, then solves it on camera after 4:33."
+  caption="Controller (POST) at 4:11. Don resets the file to this state before handing it to you, then solves the challenge on camera after 4:33."
 />
 
 "Controller (PUT)" and "Controller (DELETE)" are shorter, at 2:42 and 3:15. PUT adds `@Put(':id')` with a second `UpdateProfileDto`. DELETE adds `@Delete(':id')` with `@HttpCode(HttpStatus.NO_CONTENT)`, so a successful delete returns 204 and no body. Each has a challenge.
@@ -134,7 +134,7 @@ The solution is short: `{ id: randomUUID(), ...createProfileDto }`, push, return
   alt="Intro to NestJS, Service (Create Profile) lesson: code editor beside a network tab showing a new profile in the API response."
   width={1400}
   height={630}
-  caption="Service (Create Profile) at 8:29, after both bugs are fixed. The create() method on top is the entire solution; the network tab underneath is Scrimba's built-in request tool showing the GET /profiles response with the fourth profile, Kai, that the bash script just created."
+  caption="Service (Create Profile) at 8:29, after both bugs are fixed. The network tab shows the new profile, Kai, in the GET /profiles response, proof the create() method works end to end."
 />
 
 "Update Profile" (5:16) and "Remove Profile" (3:54) finish the CRUD set (create, read, update, delete) with their own challenges.
@@ -148,7 +148,7 @@ An exception filter is the layer in Nest that catches whatever your code throws 
   alt="Intro to NestJS, Exception Filters lesson: code editor beside a network tab showing a 404 response with a custom message."
   width={1400}
   height={630}
-  caption="Exception Filters at 6:05. Notice the controller's findOne has no try/catch; the NotFoundException thrown inside the service is what produced the 404 body in the network tab, custom message included. That is the bubbling-up behavior the lesson is named for."
+  caption="At 6:05 of Exception Filters, the controller's findOne has no try/catch, yet the NotFoundException thrown inside the service bubbles up on its own, the behavior this lesson is named for."
 />
 
 "Exception Filters - Challenges" (4:23) is the practice Don promises at the end of the previous scrim, and it carries a challenge icon.

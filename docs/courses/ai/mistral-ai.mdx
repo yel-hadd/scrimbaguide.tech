@@ -7,7 +7,7 @@ description: "Per Borgen's free Mistral course from inside: 84 minutes, 25 scrim
 keywords: [scrimba mistral ai, intro to mistral ai scrimba, intro to mistral ai review, free llm course, mistral function calling, mistral rag supabase, per borgen scrimba]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -109,7 +109,7 @@ The build starts with chunking. Per imports `RecursiveCharacterTextSplitter` fro
   alt="Intro to Mistral AI, embeddings challenge screen: a code editor shows only a comment brief, no code written yet."
   width={1400}
   height={635}
-  caption="The embeddings challenge brief at 0:49. Per has deleted his code from the previous scrim: 'yeah, this is Scrimba. You are going to write the code on your own.' Note the dependency versions on the left."
+  caption="At 0:49 of the embeddings challenge brief, Per has deleted his own code from the previous scrim: 'yeah, this is Scrimba. You are going to write the code on your own.'"
 />
 
 Gil returns for two Supabase scrims: what a vector database is, and a click-by-click setup of a free Supabase project with the pgvector extension, ending with two more environment variables. One quirk: the editor in those two scrims still shows OpenAI code from another course (`text-embedding-ada-002`), which is unrelated to the walkthrough. Per then creates the `handbook_docs` table with a SQL snippet (the embedding column is a 1024-dimension vector, matching `mistral-embed`) and uploads everything with a single `supabase.from('handbook_docs').insert(data)`.
@@ -121,7 +121,7 @@ Retrieval uses a similarity function that Supabase supplies. Per is upfront that
   alt="Intro to Mistral AI, RAG lesson: a code editor beside a console printing a full sentence answer from the handbook bot."
   width={1400}
   height={635}
-  caption="The finished RAG bot at 3:57 of the last RAG scrim. The prompt is just 'Handbook context:' plus the five chunks and 'Question:' plus the query, and the console shows the model answering from the handbook."
+  caption="The finished RAG bot's prompt at 3:57 of the last RAG scrim is just 'Handbook context:' plus the five chunks and 'Question:' plus the query."
 />
 
 ### 4. Function calling: from a tool schema to an agent loop (17 min, 6 scrims)
@@ -144,7 +144,7 @@ The first scrim sends the prompt "Is the transaction T1001 paid?" with a `tools`
   alt="Intro to Mistral AI, function calling lesson: a code editor shows the model's raw response object after a tool call."
   width={1400}
   height={635}
-  caption="Per pastes the raw response into output.js at 3:11. The two fields the rest of the section is built on are tool_calls and finish_reason: 'tool_calls' means the model wants you to run something and report back."
+  caption="Per pastes the reply into output.js at 3:11. The two fields the section builds on are tool_calls and finish_reason: 'tool_calls' means the model wants you to run something and report back."
 />
 
 The next five scrims each add one piece, and each is a challenge:

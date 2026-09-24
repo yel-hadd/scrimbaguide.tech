@@ -7,7 +7,7 @@ description: "Bob Ziroll's 80 minute Pro course on React class components, revie
 keywords: [scrimba class components react, learn class components in react review, react class components course, bob ziroll class components, legacy react, react lifecycle methods, scrimba react course review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -98,7 +98,7 @@ The challenge scrim converts a counter with plus and minus buttons from `useStat
   alt="Learn Class Components in React, counter challenge: the preview shows a counter with minus and plus buttons."
   width={1400}
   height={660}
-  caption="The counter challenge at 0:18. Every challenge in the course looks like this: a numbered brief in a comment, the working hooks version below it, and the recording paused until you convert it. Note react@17.0.2 in the dependencies panel."
+  caption="The counter challenge at 0:18: a numbered brief in a comment, the working hooks version below it, and the recording paused until you convert it."
 />
 
 "Constructor method in class components" is the longest scrim at nearly eight minutes and the one to rewatch if you maintain older code. Bob shows the older syntax from before class fields existed: a `constructor()`, a `super()` call, `this.state = {...}`, and the line that fixes the undefined `this` without arrow functions, `this.toggleGoOut = this.toggleGoOut.bind(this)`. He refuses to go down the rabbit hole: "I'm going to teach you the quick solution to this, but I'm also gonna recommend that you not be too terribly concerned about why this works." A two minute challenge has you convert the counter back to constructor syntax.
@@ -116,7 +116,7 @@ A short slide intro explains mounting, updating, and unmounting, and names the m
   alt="Learn Class Components in React, componentDidMount lesson: the console lists render order and the preview shows a character name."
   width={1400}
   height={660}
-  caption="The componentDidMount challenge solved at 5:16. The console order (render, componentDidMount, render) is the point of the lesson: the second render comes from setState after the fetch resolves, and componentDidMount does not run again."
+  caption="At 5:16, the componentDidMount challenge is solved: the second render fires from setState once the fetch resolves, and componentDidMount itself never runs again."
 />
 
 "componentDidUpdate part 1" takes a form Bob "stole" from another lesson and saves its state to localStorage on every change, then repopulates it on refresh. Part 2 is the lesson I would show anyone who thinks they understand `componentDidUpdate`. The counter now drives which Star Wars character to fetch, and putting the fetch inside `componentDidUpdate` sends the app into an infinite loop, on screen, with the console filling up. The fix is the `prevState` argument: only fetch when `prevState.count !== this.state.count`. Bob is candid about the example: "you either need an app that's relatively complex and large in scope, or you have to use an example that's relatively contrived."
@@ -126,7 +126,7 @@ A short slide intro explains mounting, updating, and unmounting, and names the m
   alt="Learn Class Components in React, componentDidUpdate lesson: the console repeats a log line during an infinite update loop."
   width={1400}
   height={660}
-  caption="The infinite loop at 2:28. setState inside componentDidUpdate triggers another update, which calls setState again. Bob lets it run for a moment before commenting the line out and introducing prevState."
+  caption="setState inside componentDidUpdate keeps triggering another update, the infinite loop at 2:28, until Bob comments the line out and introduces prevState."
 />
 
 "componentWillUnmount" reuses a window width tracker with a `resize` listener. Toggling the component off and resizing produces React's "can't perform a React state update on an unmounted component" warning, and the fix is `removeEventListener` in `componentWillUnmount`. "Other Lifecycle Methods" is a three minute slide tour of `shouldComponentUpdate`, `getDerivedStateFromProps`, and `getSnapshotBeforeUpdate`, each with a link to the React docs and a reason he is not teaching it.

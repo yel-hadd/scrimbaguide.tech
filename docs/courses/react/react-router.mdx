@@ -7,7 +7,7 @@ description: "Bob Ziroll's React Router 6 course from inside: 9.7 hours, 139 scr
 keywords: [scrimba react router, learn react router scrimba review, react router v6 course, bob ziroll react router, react routing tutorial, scrimba react router review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -79,7 +79,7 @@ Then VanLife starts. "VanLife project bootstrapping" is an eight-minute challeng
   alt="Learn React Router, Vans Page challenge: a code editor beside a preview listing van rental cards."
   width={1400}
   height={660}
-  caption="The Vans page at 7:49 of the second Vans Page challenge, right after the CSS lands. Note the fetch inside useEffect with an empty dependency array; module 4 replaces this whole block with a loader."
+  caption="A useEffect with an empty dependency array holds this fetch, 7:49 into the second Vans Page challenge, the exact block module 4 later replaces with a loader."
 />
 
 The module closes with route params (`/vans/:id` and `useParams`), a two-part challenge where Bob deletes his own code and makes you rebuild it, and a markdown quiz. Last comes an "A11y Update" recorded after the fact, where he turns on a screen reader to show why a card wrapped in a `Link` needs an `aria-label`. He is upfront that the accessibility fixes "are not going to persist in the code" later on.
@@ -104,7 +104,7 @@ The sequence is careful. A layout route with `Outlet` fixes the copy-pasted nav 
   alt="Learn React Router, Host Layout lesson: a code editor beside a preview showing the nested host nav bar."
   width={1400}
   height={660}
-  caption="The temporary workaround at 6:15 of Creating the Host Layout: a child route repeating the /host path so the dashboard renders inside the HostLayout's Outlet. The next two lessons replace it with relative paths and an index route."
+  caption="The temporary workaround at 6:15 of Creating the Host Layout: a child route repeating the /host path so the dashboard renders inside the HostLayout's Outlet."
 />
 
 The host vans list is an "Optional Side Quest," one of the few optional challenges Bob sets ("If you didn't do this challenge, I know for a fact that it wasn't too hard for you"). Outlet context is taught by sending you to the React Router docs first. "I'm not going to teach you how to do this before I ask you to try and do it." The module ends with a second Netlify redeploy.
@@ -122,7 +122,7 @@ The last five scrims set up module 4. "Happy Path vs. Sad Path" opens on a "Data
   alt="Learn React Router, Happy Path vs Sad Path: a blank preview beside a console showing a crash error."
   width={1400}
   height={660}
-  caption="The deliberate crash at 2:08 of Happy Path vs. Sad Path: the server returns a 400, vans is undefined, and .map throws. Everything from here to the end of module 4 exists to make this screen impossible."
+  caption="A 400 from the server leaves vans undefined, so .map throws: the deliberate crash at 2:08 of Happy Path vs. Sad Path, the one screen every fix through the end of module 4 exists to prevent."
 />
 
 ### 4. Loaders and Errors (42 min, 13 scrims)
@@ -162,7 +162,7 @@ The actions half starts with a lesson titled "Take: Forms in React are bad," mar
   alt="Learn React Router, redirectTo lesson: a code editor beside a sign-in form preview with a redirect message."
   width={1400}
   height={660}
-  caption="The end state of module 5 at 4:15 of redirectTo in VanLife. The loader and the action live in the same file as the component, the login message rides in the query string, and after a successful login the action redirects to the page the user was trying to reach, here /host/vans/1/pricing."
+  caption="After a successful login, the action redirects you to the page you were trying to reach, here /host/vans/1/pricing: that's redirectTo in VanLife at 4:15, with the loader and action in the same file as the component."
 />
 
 The module's final challenge, "redirectTo in VanLife," is the one where Bob "took the training wheels off." You pass the request through every `requireAuth` call, build the `redirectTo` param from `new URL(request.url).pathname`, and read it back in the action.

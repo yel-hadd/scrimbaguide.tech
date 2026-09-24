@@ -7,7 +7,7 @@ description: "Treasure Porth's free Learn Python course reviewed from every tran
 keywords: [scrimba learn python, learn python scrimba review, learn python free, treasure porth python, python for beginners, interactive python course, scrimba python course 2026]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -103,7 +103,7 @@ The expense-split challenge is the module's real test. The file opens with the f
   alt="Learn Python, PayUp expense split challenge: code editor beside a terminal printing the split totals."
   width={1400}
   height={625}
-  caption="The expense split solution at 3:57. Two things to notice: the service charge prints as $15 because the summary still uses the raw percentage instead of the new total (Treasure spots it and fixes it), and the per-person amount has fourteen decimal places. The next scrim, on formatting floats inside f-strings, exists to fix that."
+  caption="The expense split solution at 3:57. The service charge prints as $15 because the summary still uses the raw percentage instead of the new total, a bug Treasure spots on camera and fixes."
 />
 
 She lets the second bug stand on purpose: "if you're thinking that displaying a number followed by a dozen decimal points is not the way to go, you are exactly correct. We're going to fix that very soon." The fix is `:.2f` inside the braces. "Finishing Touches" then moves the welcome line to the top of the file and adds `.strip("%")` to the service-charge prompt, so typing "20%" no longer crashes the app.
@@ -119,7 +119,7 @@ The longest module and the one where the course starts to feel like programming.
   alt="Learn Python, module 2 intro: a terminal running the finished Jargon Jumble word game."
   width={1400}
   height={625}
-  caption="The finished word game at 1:09 of the module 2 intro, after typing quit in round 4. The commentary line under the score changes with how badly you did. This is the state you build toward over the next twenty scrims."
+  caption="The module 2 intro ends at 1:09 with quit typed in round 4. The commentary line under the score matches how badly you did, and building that state takes the next twenty scrims."
 />
 
 The first six scrims exist to scramble one word. Lists get two scrims: one to make them (a skills list, a years list, an "about me" list of emojis), one to index them, including the `-1` shortcut for the last item. `list("listen")` splits a word into letters, and the challenge is an anagram check with `sorted()`. Then the `random` module, where Treasure is careful to show that `random.shuffle()` changes a list in place while `sorted()` hands back a copy.
@@ -139,7 +139,7 @@ The game loop challenge is a good example of the course's style. The brief is th
   alt="Learn Python, Add Game Loop lesson: a code editor beside a terminal showing a round-counter bug."
   width={1400}
   height={625}
-  caption="The game loop solution at 1:44, with the bug on screen: the loop works but the round counter never moves, so a second Round 1 follows the correct guess. The fix (round_num += 1 at the bottom of the loop) comes a few seconds later."
+  caption="The game loop solution at 1:44 catches the bug still live: a correct guess prints Round 1 twice, and the fix, round_num += 1 at the bottom of the loop, comes a few seconds later."
 />
 
 She also flags the next problem before you hit it: "random choice picks randomly each round with no awareness of what it's already picked. We're gonna fix that a little bit later." That fix is "Avoid Repeat Words", which adds a `used` list and an inner `while (word, hint) in used:` loop. It ends with the one real warning in the module: this pattern hangs forever if the word bank is not bigger than the number of rounds. "Track the Score" adds a welcome screen, `score += 1` on a correct guess, and an `if`/`elif`/`else` chain of end-of-game commentary.
@@ -155,7 +155,7 @@ The intro opens with a scene rather than a slide: a karaoke night where "some be
   alt="Learn Python, module 3 intro: a terminal running the finished Sing Out karaoke queue app."
   width={1400}
   height={612}
-  caption="The finished karaoke queue at 1:25 of the module 3 intro. The host has typed apple where a position number was expected; the app answers with Please enter a number and carries on. Building that resilience is what the last third of the module is about."
+  caption="At 1:25 of the module 3 intro, the host types apple where a position number is expected, and the app answers with Please enter a number and carries on, the resilience its last third builds toward."
 />
 
 Functions take three scrims and nearly twenty minutes. The first defines `roll_dice()` with `random.randint()` and nests functions inside a `play_game()`; the challenge is a coffee run for six coworkers. "Function Parameters" explains the difference between a parameter and an argument, then local and global scope, and has you turn the module 2 scrambler into a reusable `scramble(word)` function. "Return Values" uses a pizza-ordering example with `math.ceil()`, which makes `math` the second module the course imports, and ends with a `full_name()` function whose test output is "Welcome, Per Borgen".
