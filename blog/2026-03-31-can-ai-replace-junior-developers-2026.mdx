@@ -16,35 +16,11 @@ last_update:
 
 {/* HN submission: "BLS splits software developers (+17%) vs computer programmers (declining), most doom posts merge them. Klarna's AI support scale-back is a cautionary tale for 'replace the team' narratives." */}
 
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
-<DocFaqSchema
-  questions={[
-    {
-      q: "Can AI replace junior developers?",
-      a: "Not as a blanket outcome. U.S. Bureau of Labor Statistics projections show software developer employment growing quickly through 2033, while the narrower computer programmer occupation is projected to shrink. AI changes tasks and hiring bar, it does not uniformly erase junior software engineering roles."
-    },
-    {
-      q: "Will AI replace developers in 2026?",
-      a: "Some repetitive coding and support workflows are being automated or assisted by AI, but employer demand for people who can ship, review, and maintain software remains strong in official projections for software developers. The more accurate question is which skills juniors need when AI handles boilerplate."
-    },
-    {
-      q: "Why do headlines say coding jobs are collapsing?",
-      a: "Many viral charts combine different occupational categories or confuse 'programmer' titles with 'software developer' roles tracked separately by BLS. Software developers and related roles are projected to grow; computer programmers are a smaller, distinct category with projected declines."
-    },
-    {
-      q: "What skills should juniors prioritize if AI writes code?",
-      a: "Architecture, debugging, code review, testing, security basics, and shipping real features matter more when AI generates syntax. AI engineering, integrating models, RAG, and agents into apps, is a differentiator; Scrimba's AI Engineer Path focuses on building with AI rather than competing with autocomplete."
-    },
-    {
-      q: "Is learning to code still worth it?",
-      a: "If you want to build software products, yes, but treat fundamentals plus judgment as the goal, not memorizing syntax. Interactive practice still matters because employers pay for outcomes and maintenance, not chat transcripts."
-    }
-  ]}
-/>
 
 # Can AI Replace Junior Developers? What the Data Actually Says (2026)
 
@@ -158,6 +134,31 @@ If you learn on Scrimba from Europe, Asia, or Africa, you still want **portfolio
 ## Verdict
 
 **Can AI replace junior developers?** It can replace **some tasks** and **some hiring profiles**, especially juniors who only paste outputs. It does not erase the **software developer** occupation in BLS projections; it **reshapes** what "junior" means. The honest plan is fundamentals + shipping + **AI-era skills**, the same combination Scrimba emphasizes in its [AI course catalog](/docs/courses/ai/).
+
+## Frequently Asked Questions
+
+<FAQAccordion items={[
+    {
+      q: "Can AI replace junior developers?",
+      a: "Not as a blanket outcome. U.S. Bureau of Labor Statistics projections show software developer employment growing quickly through 2033, while the narrower computer programmer occupation is projected to shrink. AI changes tasks and hiring bar, it does not uniformly erase junior software engineering roles."
+    },
+    {
+      q: "Will AI replace developers in 2026?",
+      a: "Some repetitive coding and support workflows are being automated or assisted by AI, but employer demand for people who can ship, review, and maintain software remains strong in official projections for software developers. The more accurate question is which skills juniors need when AI handles boilerplate."
+    },
+    {
+      q: "Why do headlines say coding jobs are collapsing?",
+      a: "Many viral charts combine different occupational categories or confuse 'programmer' titles with 'software developer' roles tracked separately by BLS. Software developers and related roles are projected to grow; computer programmers are a smaller, distinct category with projected declines."
+    },
+    {
+      q: "What skills should juniors prioritize if AI writes code?",
+      a: "Architecture, debugging, code review, testing, security basics, and shipping real features matter more when AI generates syntax. AI engineering, integrating models, RAG, and agents into apps, is a differentiator; Scrimba's AI Engineer Path focuses on building with AI rather than competing with autocomplete."
+    },
+    {
+      q: "Is learning to code still worth it?",
+      a: "If you want to build software products, yes, but treat fundamentals plus judgment as the goal, not memorizing syntax. Interactive practice still matters because employers pay for outcomes and maintenance, not chat transcripts."
+    }
+]} />
 
 <PricingCTA
   title="Build with AI, don’t wait to be outpaced by it"

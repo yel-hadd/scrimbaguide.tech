@@ -14,36 +14,12 @@ last_update:
   author: Yassine El Haddad
 ---
 
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 import HowToSchema from '@site/src/components/HowToSchema';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
-<DocFaqSchema
-  questions={[
-    {
-      q: "How do you get your first developer job in 2026?",
-      a: "Build three non-tutorial portfolio projects, polish GitHub and LinkedIn, tailor resumes with ATS-friendly keywords, apply to 5–10 well-researched roles per week, practice technical and behavioral interviews, and network consistently. Execution over months beats one perfect weekend."
-    },
-    {
-      q: "How many jobs should a junior developer apply to per week?",
-      a: "Aim for roughly 5–10 quality applications weekly, customized resumes or cover notes, correct titles, and links to relevant projects. Mass applying with identical resumes often yields worse conversion than fewer targeted applications."
-    },
-    {
-      q: "What is ATS and why does it matter?",
-      a: "Applicant Tracking Systems parse resumes before humans see them. If your headline and skills section omit exact phrases from the job post (for example React and TypeScript), you can be filtered out even with strong projects."
-    },
-    {
-      q: "Do I need a degree to get hired?",
-      a: "Not for every employer. Many teams hire on portfolio and interviews. Some large companies or regulated industries still prefer degrees. See our developer job without degree guide for data and nuance."
-    },
-    {
-      q: "Is this guide only for Scrimba students?",
-      a: "No, this is a general playbook that works regardless of which courses you used. If you learned on Scrimba, its career paths include Getting Hired modules and interview courses you can lean on, but every step here applies to self-taught and bootcamp learners too."
-    }
-  ]}
-/>
 
 # How to Get Your First Developer Job in 2026
 
@@ -201,6 +177,31 @@ Learning hours and calendar months interact. See [how long to learn web developm
 ## Closing
 
 **How to get hired as a developer** in 2026 is **portfolio + keywords + reps + network**, repeated until one team converts. There is no secret handshake, only **visible proof** and **consistent volume** with feedback loops.
+
+## Frequently Asked Questions
+
+<FAQAccordion items={[
+    {
+      q: "How do you get your first developer job in 2026?",
+      a: "Build three non-tutorial portfolio projects, polish GitHub and LinkedIn, tailor resumes with ATS-friendly keywords, apply to 5–10 well-researched roles per week, practice technical and behavioral interviews, and network consistently. Execution over months beats one perfect weekend."
+    },
+    {
+      q: "How many jobs should a junior developer apply to per week?",
+      a: "Aim for roughly 5–10 quality applications weekly, customized resumes or cover notes, correct titles, and links to relevant projects. Mass applying with identical resumes often yields worse conversion than fewer targeted applications."
+    },
+    {
+      q: "What is ATS and why does it matter?",
+      a: "Applicant Tracking Systems parse resumes before humans see them. If your headline and skills section omit exact phrases from the job post (for example React and TypeScript), you can be filtered out even with strong projects."
+    },
+    {
+      q: "Do I need a degree to get hired?",
+      a: "Not for every employer. Many teams hire on portfolio and interviews. Some large companies or regulated industries still prefer degrees. See our developer job without degree guide for data and nuance."
+    },
+    {
+      q: "Is this guide only for Scrimba students?",
+      a: "No, this is a general playbook that works regardless of which courses you used. If you learned on Scrimba, its career paths include Getting Hired modules and interview courses you can lean on, but every step here applies to self-taught and bootcamp learners too."
+    }
+]} />
 
 <PricingCTA
   title="Stack proof, then stack offers"

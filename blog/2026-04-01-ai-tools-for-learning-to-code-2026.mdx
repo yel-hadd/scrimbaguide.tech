@@ -14,11 +14,10 @@ last_update:
   author: Yassine El Haddad
 ---
 
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
-
 
 # Best AI Tools for Learning to Code in 2026
 
@@ -28,30 +27,6 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 {/* truncate */}
 
-<DocFaqSchema
-  questions={[
-    {
-      q: "What are AI tools for learning to code?",
-      a: "AI coding tools are software assistants that autocomplete, generate, or explain code. For learners, they can accelerate progress, or create dependency that prevents real skill development, depending on how they're used."
-    },
-    {
-      q: "Should beginners use GitHub Copilot?",
-      a: "In the first weeks of fundamentals, Copilot often hurts more than it helps: it completes code before you have typed enough to form mental models. After you can build small apps without full-file autocompletion, Copilot can speed up boilerplate if you still write and understand the core logic yourself."
-    },
-    {
-      q: "Is ChatGPT good for learning programming?",
-      a: "Yes for explanations, diagrams, and debugging hints when you paste errors, if you treat answers as tutoring, not copy-paste solutions. No if you paste generated code into exercises without tracing every line."
-    },
-    {
-      q: "How is Scrimba different from AI coding assistants?",
-      a: "Scrimba uses a forced-typing interactive video format: you pause and write code in the browser. That structure builds muscle memory and error literacy that pure autocompletion skips, it is a complementary antidote to early-stage dependency on generated code."
-    },
-    {
-      q: "When should I start using Cursor for learning?",
-      a: "After you have shipped portfolio projects you could mostly explain without AI. Then AI-first editors become accelerators because you can evaluate suggestions against a mental model. Before that, they risk the same dependency pattern as Copilot, often faster."
-    }
-  ]}
-/>
 
 If you are also curious how AI changes **junior hiring**, read [Can AI Replace Junior Developers?](/blog/can-ai-replace-junior-developers-2026/) after this, different question, overlapping skills story.
 
@@ -137,6 +112,31 @@ You can use **ChatGPT** beside Scrimba for questions, and still keep **Scrimba**
 - **Early fundamentals:** minimize autocompletion; maximize **typed practice** and **error reading**.
 - **Mid learning:** ChatGPT for concepts; Copilot for **boring** code you understand.
 - **Post-portfolio:** Cursor/Copilot as **accelerators**, not **crutches**.
+
+## Frequently Asked Questions
+
+<FAQAccordion items={[
+    {
+      q: "What are AI tools for learning to code?",
+      a: "AI coding tools are software assistants that autocomplete, generate, or explain code. For learners, they can accelerate progress, or create dependency that prevents real skill development, depending on how they're used."
+    },
+    {
+      q: "Should beginners use GitHub Copilot?",
+      a: "In the first weeks of fundamentals, Copilot often hurts more than it helps: it completes code before you have typed enough to form mental models. After you can build small apps without full-file autocompletion, Copilot can speed up boilerplate if you still write and understand the core logic yourself."
+    },
+    {
+      q: "Is ChatGPT good for learning programming?",
+      a: "Yes for explanations, diagrams, and debugging hints when you paste errors, if you treat answers as tutoring, not copy-paste solutions. No if you paste generated code into exercises without tracing every line."
+    },
+    {
+      q: "How is Scrimba different from AI coding assistants?",
+      a: "Scrimba uses a forced-typing interactive video format: you pause and write code in the browser. That structure builds muscle memory and error literacy that pure autocompletion skips, it is a complementary antidote to early-stage dependency on generated code."
+    },
+    {
+      q: "When should I start using Cursor for learning?",
+      a: "After you have shipped portfolio projects you could mostly explain without AI. Then AI-first editors become accelerators because you can evaluate suggestions against a mental model. Before that, they risk the same dependency pattern as Copilot, often faster."
+    }
+]} />
 
 <PricingCTA
   title="Learn with structure, use AI with intent"

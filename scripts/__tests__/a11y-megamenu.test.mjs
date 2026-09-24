@@ -7,7 +7,10 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import { AxeBuilder } from '@axe-core/playwright';
 
-const PORT = parseInt(process.env.PORT || '3001', 10);
+// Distinct per suite: node --test runs these files concurrently, and sharing a
+// port with a11y-search made whichever suite started second fail to bind and
+// cascade every one of its tests into a false failure.
+const PORT = parseInt(process.env.PORT || '3002', 10);
 const BASE_URL = process.env.BASE_URL || `http://127.0.0.1:${PORT}`;
 const ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const BUILD_DIR = path.join(ROOT, 'build');

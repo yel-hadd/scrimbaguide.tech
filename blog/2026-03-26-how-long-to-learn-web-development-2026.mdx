@@ -14,37 +14,13 @@ last_update:
   author: Yassine El Haddad
 ---
 
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 import HowToSchema from '@site/src/components/HowToSchema';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import LearningTimeCalculator from '@site/src/components/LearningTimeCalculator';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
-<DocFaqSchema
-  questions={[
-    {
-      q: "How long does it take to learn web development?",
-      a: "If you mean job-ready frontend skills, a structured path is roughly 80–120 hours of coursework plus 30–50 hours of portfolio projects. At 10 hours per week that is about 12–17 weeks of learning, plus typically 4–8 weeks of focused job search, often 4–6 months total for motivated beginners using a full-time-pace part-time schedule."
-    },
-    {
-      q: "How long to become a web developer in 2026?",
-      a: "In 2026, employers still expect HTML, CSS, JavaScript, a modern framework (usually React), Git, and 2–3 portfolio projects. With Scrimba’s Frontend Developer Path (~81.6 hours) plus ~40 hours of projects (~122 hours), 10 hours per week lands near three months of study before interviews."
-    },
-    {
-      q: "Can I learn web development while working full time?",
-      a: "Yes. Progress scales with weekly hours: 5 hours per week roughly doubles calendar time versus 10 hours per week. Consistency beats bursts, five focused hours weekly for a year beats quitting after an intense month."
-    },
-    {
-      q: "Do I need a bootcamp or degree to hit these timelines?",
-      a: "No. Self-paced platforms with structured paths can match bootcamp breadth if you complete solo projects and practice explaining your code. Degrees help for some employers; many junior roles prioritize GitHub and interview performance."
-    },
-    {
-      q: "What counts as job-ready?",
-      a: "Job-ready means you can build a small full frontend app from a written spec (routing, state, API calls, forms), debug without copying every line from a tutorial, and discuss your trade-offs in an interview, not that you have memorized every API."
-    }
-  ]}
-/>
 
 # How Long Does It Take to Learn Web Development in 2026?
 
@@ -169,6 +145,31 @@ Timeline articles stop early; hiring does not. When coursework and projects are 
 ## Bottom line
 
 **How long does it take to learn web development?** For many people, **~120–150 hours** of focused learning and projects gets you to “can build and explain a React app.” **Calendar months** depend on weekly hours; **10 hours/week** often means **roughly 4–5 months** including search.
+
+## Frequently Asked Questions
+
+<FAQAccordion items={[
+    {
+      q: "How long does it take to learn web development?",
+      a: "If you mean job-ready frontend skills, a structured path is roughly 80–120 hours of coursework plus 30–50 hours of portfolio projects. At 10 hours per week that is about 12–17 weeks of learning, plus typically 4–8 weeks of focused job search, often 4–6 months total for motivated beginners using a full-time-pace part-time schedule."
+    },
+    {
+      q: "How long to become a web developer in 2026?",
+      a: "In 2026, employers still expect HTML, CSS, JavaScript, a modern framework (usually React), Git, and 2–3 portfolio projects. With Scrimba’s Frontend Developer Path (~81.6 hours) plus ~40 hours of projects (~122 hours), 10 hours per week lands near three months of study before interviews."
+    },
+    {
+      q: "Can I learn web development while working full time?",
+      a: "Yes. Progress scales with weekly hours: 5 hours per week roughly doubles calendar time versus 10 hours per week. Consistency beats bursts, five focused hours weekly for a year beats quitting after an intense month."
+    },
+    {
+      q: "Do I need a bootcamp or degree to hit these timelines?",
+      a: "No. Self-paced platforms with structured paths can match bootcamp breadth if you complete solo projects and practice explaining your code. Degrees help for some employers; many junior roles prioritize GitHub and interview performance."
+    },
+    {
+      q: "What counts as job-ready?",
+      a: "Job-ready means you can build a small full frontend app from a written spec (routing, state, API calls, forms), debug without copying every line from a tutorial, and discuss your trade-offs in an interview, not that you have memorized every API."
+    }
+]} />
 
 <PricingCTA
   title="Plan your months, not just your weekends"

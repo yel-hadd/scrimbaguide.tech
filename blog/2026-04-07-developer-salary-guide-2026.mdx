@@ -14,35 +14,11 @@ last_update:
   author: Yassine El Haddad
 ---
 
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
-<DocFaqSchema
-  questions={[
-    {
-      q: "What is a realistic developer salary in 2026?",
-      a: "Published medians vary by country, seniority, and specialty. In the United States, recent BLS releases keep software developer median pay in the low-$130k range, while entry-level web developers are often quoted in smaller bands in survey data. Use medians as anchors, not guarantees."
-    },
-    {
-      q: "What is an entry-level web developer salary in 2026?",
-      a: "Survey and aggregator data commonly place US entry-level web developer compensation in a wide band depending on city and company tier. Stack Overflow’s Developer Survey reports global and regional salary breakdowns by role; Levels.fyi emphasizes offer data for tech employers. Always cross-check with local job posts."
-    },
-    {
-      q: "Do TypeScript and AI skills increase pay?",
-      a: "Stack Overflow’s survey historically shows pay differences correlated with languages and role types; TypeScript is often associated with higher reported salaries than JavaScript-only respondents in the same survey year. AI-specialized engineering roles frequently appear at the top of offer-based aggregators like Levels.fyi, but sample bias matters."
-    },
-    {
-      q: "How much does it cost to become a developer compared to salary upside?",
-      a: "Coding bootcamps often land around $10,000–$20,000; four-year degrees can range from roughly $40,000–$120,000+ all-in depending on residency and institution. Self-serve platforms like Scrimba Pro are dramatically cheaper monthly, but outcomes still depend on projects, interviewing skill, and geography."
-    },
-    {
-      q: "Is a computer science degree required for top salaries?",
-      a: "No, many high-paying employers hire by proof of skill. Degrees still help in some markets and for certain visa or enterprise hiring pipelines. The strongest general strategy is demonstrable shipping: repos, production apps, and clear write-ups."
-    }
-  ]}
-/>
 
 # Developer Salary Guide 2026: Real Ranges, Skill Premiums, and Training ROI
 
@@ -164,6 +140,31 @@ Suppose Scrimba Pro costs a **low monthly subscription** while you keep a day jo
 ## Where Scrimba fits (without pretending it is a degree)
 
 Scrimba is best understood as **high-repetition interactive practice** with a **low monthly price** compared with bootcamps. It can be a primary path or a **skills gap** filler after a degree. Compare platforms in [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/) if you are price-sensitive.
+
+## Frequently Asked Questions
+
+<FAQAccordion items={[
+    {
+      q: "What is a realistic developer salary in 2026?",
+      a: "Published medians vary by country, seniority, and specialty. In the United States, recent BLS releases keep software developer median pay in the low-$130k range, while entry-level web developers are often quoted in smaller bands in survey data. Use medians as anchors, not guarantees."
+    },
+    {
+      q: "What is an entry-level web developer salary in 2026?",
+      a: "Survey and aggregator data commonly place US entry-level web developer compensation in a wide band depending on city and company tier. Stack Overflow’s Developer Survey reports global and regional salary breakdowns by role; Levels.fyi emphasizes offer data for tech employers. Always cross-check with local job posts."
+    },
+    {
+      q: "Do TypeScript and AI skills increase pay?",
+      a: "Stack Overflow’s survey historically shows pay differences correlated with languages and role types; TypeScript is often associated with higher reported salaries than JavaScript-only respondents in the same survey year. AI-specialized engineering roles frequently appear at the top of offer-based aggregators like Levels.fyi, but sample bias matters."
+    },
+    {
+      q: "How much does it cost to become a developer compared to salary upside?",
+      a: "Coding bootcamps often land around $10,000–$20,000; four-year degrees can range from roughly $40,000–$120,000+ all-in depending on residency and institution. Self-serve platforms like Scrimba Pro are dramatically cheaper monthly, but outcomes still depend on projects, interviewing skill, and geography."
+    },
+    {
+      q: "Is a computer science degree required for top salaries?",
+      a: "No, many high-paying employers hire by proof of skill. Degrees still help in some markets and for certain visa or enterprise hiring pipelines. The strongest general strategy is demonstrable shipping: repos, production apps, and clear write-ups."
+    }
+]} />
 
 <PricingCTA
   title="Keep training costs small while you build proof"
