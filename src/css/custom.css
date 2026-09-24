@@ -6,6 +6,29 @@
 /* Fonts are loaded via <link rel="preconnect"/stylesheet> in docusaurus.config.ts
  * headTags (non-blocking), not a render-blocking @import here. */
 
+
+/* Metric-matched fallback, sitting between Plus Jakarta Sans and the system
+   stack. Lighthouse measured CLS 0.191 on a path page and 0.138 on a
+   comparison page, and the layout-shifts trace blamed the gstatic woff2 for
+   0.1603 of it: the fallback painted first, then the webfont swapped in at a
+   different width and reflowed the block below. That never showed up in
+   manual checks because a warm font cache has no swap to shift on.
+
+   Rather than drop to font-display: optional, which would cost the brand font
+   on a slow first paint, this scales a local Arial to Plus Jakarta Sans's own
+   metrics so the swap is dimensionally a no-op. Measured in-browser at 16px:
+   Plus Jakarta Sans renders 107.10% of Arial's width, with ascent 1.0625em
+   and descent 0.25em. The overrides are those ratios divided by size-adjust,
+   because they resolve against the already-adjusted em. */
+@font-face {
+  font-family: 'Plus Jakarta Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 107.10%;
+  ascent-override: 99.21%;
+  descent-override: 23.34%;
+  line-gap-override: 0%;
+}
+
 :root {
   --ifm-color-primary: #5b3fd9;
   --ifm-color-primary-dark: #4c31c8;
@@ -16,7 +39,7 @@
   --ifm-color-primary-lighter: #7b65e3;
   --ifm-color-primary-lightest: #9d8cec;
   --ifm-code-font-size: 95%;
-  --ifm-font-family-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --ifm-font-family-base: 'Plus Jakarta Sans', 'Plus Jakarta Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   --ifm-heading-font-family: 'Sora', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   --sg-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
   --sg-green: #2ecc71;
