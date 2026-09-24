@@ -42,12 +42,49 @@ const SCRIMBA_PRICE_LEAK = [
   // it shipped a live $30/mo figure into the bootcamp calculator once already.
   /(?:const|let|var)\s+\w*scrimba\w*\s*(?::\s*number\s*)?=\s*\d/i,
 ];
+// ── Image text ceilings ─────────────────────────────────────────────
+// Nothing enforced these before, so both drifted: alts reached 514 chars and
+// captions welded three or four ideas together. Re-establishing them by hand
+// costs a full audit pass, so they are gates now.
+//
+// 150 for alt is Nielsen Norman Group's guideline (Cionca and Kohler,
+// 22 Nov 2024). It is NOT the folklore "125 character limit", which has no
+// basis: WCAG deliberately declines to set one, and the number traces to old
+// JAWS builds that chunked long alt rather than truncating it. Applies to
+// every alt, not just <Screenshot>: ScrimPoster and bare <img> use the same
+// alt-plus-figcaption pattern.
+const ALT_MAX = 150;
+// Captions run longer than alts by design, since they carry the verdict and
+// the m:ss provenance. 250 is the backstop, not the target; the house rule is
+// one idea in about 180.
+const CAPTION_MAX = 250;
+
 const violations = [];
 
 for (const dir of SCAN_DIRS) {
   for (const file of walk(path.join(ROOT, dir))) {
     const rel = path.relative(ROOT, file);
     const lines = fs.readFileSync(file, 'utf8').split('\n');
+    const body = lines.join('\n');
+
+    for (const m of body.matchAll(/alt="((?:[^"\\]|\\.)*)"/g)) {
+      if (m[1].length > ALT_MAX) {
+        const n = body.slice(0, m.index).split('\n').length;
+        violations.push(`${rel}:${n} alt is ${m[1].length} chars (max ${ALT_MAX}): ${m[1].slice(0, 80)}...`);
+      }
+    }
+    for (const m of body.matchAll(/caption="((?:[^"\\]|\\.)*)"/g)) {
+      const c = m[1];
+      const n = body.slice(0, m.index).split('\n').length;
+      if (c.length > CAPTION_MAX) {
+        violations.push(`${rel}:${n} caption is ${c.length} chars (max ${CAPTION_MAX}): ${c.slice(0, 80)}...`);
+      }
+      // A third idea bolted on is the failure this rule exists to stop.
+      if (/\b(?:Note|Notice) (?:the|that|how)\b|\bThe next scrim\b/.test(c)) {
+        violations.push(`${rel}:${n} caption carries a Note/Notice/next-scrim clause (move it into the prose): ${c.slice(0, 80)}...`);
+      }
+    }
+
     lines.forEach((line, i) => {
       const n = i + 1;
       if (line.includes('—')) violations.push(`${rel}:${n} em-dash (—): ${line.trim().slice(0, 100)}`);
@@ -64,4 +101,4 @@ if (violations.length) {
   for (const v of violations) console.error('  ' + v);
   process.exit(1);
 }
-console.log('Content guardrails passed: no em-dashes, Scrimba price leaks, or stale Backend hours.');
+console.log('Content guardrails passed: no em-dashes, Scrimba price leaks, stale Backend hours, or over-long alt/caption text.');
