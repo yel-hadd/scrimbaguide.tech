@@ -17,7 +17,7 @@
  * Regen: node scripts/generate-social-cards.mjs --force
  */
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, unlinkSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
@@ -298,6 +298,16 @@ for (const file of blogFiles) {
   } catch (err) {
     console.error(`  Failed to convert ${cardSlug}: ${err.message}`);
     generated++;
+  }
+
+  // The SVG is an intermediate for rsvg-convert, never referenced by any page:
+  // only the PNG is. static/ is copied verbatim into the Pages artifact, so
+  // leaving these behind shipped 96 dead files (about 310 KB) on every deploy.
+  // They are gitignored, which is why they stayed invisible.
+  try {
+    if (existsSync(svgPath)) unlinkSync(svgPath);
+  } catch (err) {
+    console.error(`  Could not remove intermediate ${cardSlug}.svg: ${err.message}`);
   }
 }
 

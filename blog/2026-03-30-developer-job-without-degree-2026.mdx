@@ -14,35 +14,11 @@ last_update:
   author: Yassine El Haddad
 ---
 
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
-<DocFaqSchema
-  questions={[
-    {
-      q: "Can you get a developer job without a degree in 2026?",
-      a: "Yes, many companies hire junior developers based on portfolio, interviews, and culture fit. A CS degree still opens some doors (certain big tech pipelines, regulated industries, international visa routes), but it is not required for every role."
-    },
-    {
-      q: "How do most developers actually learn to code?",
-      a: "In Stack Overflow’s 2025 Developer Survey, only about 49% of developers learned to code through formal education, and the resources developers rely on most are online: technical documentation, tutorials, and videos. A majority still hold a degree, but self-directed learning is now the dominant way people actually pick up the skills."
-    },
-    {
-      q: "Do employers care about degrees for entry-level developers?",
-      a: "It depends on the employer. Startups and agencies often prioritize shipped work and speed. Some enterprise and FAANG-style pipelines still filter on degrees or strong CS fundamentals. Research each company instead of assuming one rule."
-    },
-    {
-      q: "What matters more than a degree for juniors?",
-      a: "Proof you can build: GitHub history, deployed projects, clear README files, and the ability to explain trade-offs in interviews. Consistent job search execution and networking matter as much as raw skill."
-    },
-    {
-      q: "How does Scrimba help if you do not have a degree?",
-      a: "Scrimba’s career paths are job-focused and include modules like Getting Hired that cover resumes, LinkedIn, and application strategy, the same surface area non-degree candidates must nail to compete."
-    }
-  ]}
-/>
 
 # Developer Job Without a Degree in 2026
 
@@ -139,6 +115,31 @@ Visa categories differ by country; **some** routes score **formal education**. I
 ## Bottom line
 
 **Can you get a programming job without a degree?** Yes, **Stack Overflow’s 2025 data** shows **most developers** learn through online resources and self-teaching, not a single CS-degree conveyor belt. **Your portfolio and interview performance** are the universal levers; **some employers** still want degrees for their own filters.
+
+## Frequently Asked Questions
+
+<FAQAccordion items={[
+    {
+      q: "Can you get a developer job without a degree in 2026?",
+      a: "Yes, many companies hire junior developers based on portfolio, interviews, and culture fit. A CS degree still opens some doors (certain big tech pipelines, regulated industries, international visa routes), but it is not required for every role."
+    },
+    {
+      q: "How do most developers actually learn to code?",
+      a: "In Stack Overflow’s 2025 Developer Survey, only about 49% of developers learned to code through formal education, and the resources developers rely on most are online: technical documentation, tutorials, and videos. A majority still hold a degree, but self-directed learning is now the dominant way people actually pick up the skills."
+    },
+    {
+      q: "Do employers care about degrees for entry-level developers?",
+      a: "It depends on the employer. Startups and agencies often prioritize shipped work and speed. Some enterprise and FAANG-style pipelines still filter on degrees or strong CS fundamentals. Research each company instead of assuming one rule."
+    },
+    {
+      q: "What matters more than a degree for juniors?",
+      a: "Proof you can build: GitHub history, deployed projects, clear README files, and the ability to explain trade-offs in interviews. Consistent job search execution and networking matter as much as raw skill."
+    },
+    {
+      q: "How does Scrimba help if you do not have a degree?",
+      a: "Scrimba’s career paths are job-focused and include modules like Getting Hired that cover resumes, LinkedIn, and application strategy, the same surface area non-degree candidates must nail to compete."
+    }
+]} />
 
 <PricingCTA
   title="Build the proof employers scroll for"

@@ -6,7 +6,7 @@ sidebar_label: "Learn Node.js"
 description: "Tom Chant's free Learn Node.js course from inside: 3.5 hours, 49 scrims, a REST API and a routed site with no framework, and what Pro gates."
 keywords: [scrimba learn nodejs, learn nodejs scrimba review, free nodejs course, node rest api course, tom chant node, scrimba node course 2026]
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -88,7 +88,7 @@ From there the API grows one concept per scrim. "Routing and the req object" add
   alt="Learn Node.js, Serve Stringified JSON lesson: the network panel shows an empty response caused by a missing await."
   width={1400}
   height={660}
-  caption="Serve stringified JSON at 3:01. The response panel on the right says {} because line 7 is missing its await. Tom writes the bug, reads the error, then fixes it; the runner at the bottom is Scrimba's replacement for your own terminal."
+  caption="Serve Stringified JSON at 3:01: an await left off line 7, the first of the two errors most learners hit here."
 />
 
 "Adding Content-Type" sets `res.setHeader('Content-Type', 'application/json')` and `res.statusCode = 200` (a property, not a method, which he stresses twice). "Route Not Found" adds the 404 branch, and Tom notes that "if you come from front end dev it's quite nice to be the person giving out the four zero four rather than receiving it." "Add Path Parameters" is the first big challenge: `startsWith`, `split('/').pop()`, `filter`, `toLowerCase`, with a hint file if you need it.
@@ -102,7 +102,7 @@ Query strings take three scrims. The aside shows the honest vanilla way, `new UR
   alt="Learn Node.js, Filter by Query Parameters lesson: the terminal highlights a boolean and a string that look equal but are not."
   width={1400}
   height={660}
-  caption="Filter by Query Parameters at 4:46. The response is [] even though the data has open destinations in Asia. The runner prints the two values side by side in different colors, which is how Tom spots that one is a boolean and the other a string; JSON.parse fixes it a minute later."
+  caption="Filter by Query Parameters at 4:46. The response comes back empty even though Asia has open destinations in the data, and JSON.parse fixes it a minute later."
 />
 
 The module ends with "CORS", a slide-driven explanation of same-origin policy and the two `Access-Control-Allow-*` headers you add to `sendJSONResponse`, with the caveat that "working here in Scrimba it's not gonna make any difference," and a wrap-up that suggests stretch goals (friendlier errors, POST support, keyword search). The last scrim, "Learning in public", is a generic Per Borgen talk about commenting on Reddit that appears in several Scrimba courses.
@@ -133,7 +133,7 @@ Data comes next. "Getting the JSON Data" writes `getData()`, which reads `data.j
   alt="Learn Node.js, Handling POST lesson: a browser preview shows the sighting upload form beside the story being submitted."
   width={1400}
   height={660}
-  caption="Handling POST part 2 at 4:36, just before Tom submits his own test story. The form on the right is the finished frontend you are given; the server code that receives it, sanitizes it and writes it to data.json is what you build."
+  caption="At 4:36 of Handling POST part 2, the addNewSighting function on the left reads the existing data, pushes in the new sighting, and writes the file back with fs.writeFile."
 />
 
 Then security. "Aside: Sanitization" explains cross-site scripting and installs the `sanitize-html` package, the course's only runtime dependency, showing how it strips `<script>` and `<style>` by default and how `allowedTags` and `allowedAttributes` narrow it further. "sanitizeInput" is the payoff: Tom uploads a story containing a `<button onclick="console.log('hacked')">`, the Read page renders a clickable button, and the challenge is to write a utility that iterates over the submitted object and sanitizes every string value, allowing only `<b>`. He calls it "your last challenge" and gives no walkthrough until after.
@@ -143,7 +143,7 @@ Then security. "Aside: Sanitization" explains cross-site scripting and installs 
   alt="Learn Node.js, sanitizeInput lesson: an unsanitized story renders a real clickable button inside the sightings page."
   width={1400}
   height={660}
-  caption="sanitizeInput at 0:43. The button in story.md has made it through the server and into the sightings page as a working element. Your job for the rest of the scrim is to make sure that never happens again."
+  caption="sanitizeInput at 0:43. The button came from story.md, and the rest of the scrim is yours: write the utility that keeps it from happening again."
 />
 
 The last section is events. "Aside: EventEmitter" builds a tiny emitter that fires an `emailRequest` event for a customer called Meryl Sheep, then "Add an Event Emitter" has you register a `sightingAdded` listener that logs an alert for ghost hunters in the sighting's location ("really, there's just four lines of code"). "Aside: Server-Sent Events" explains one-way streaming with a fake weather app: `Content-Type: text/event-stream`, `Cache-Control: no-cache`, `Connection: keep-alive`, `res.write` with a `data:` line ending in two newlines, and `new EventSource()` on the frontend. The "Server-Sent Events Challenge" applies it to a news ticker of made-up ghost headlines at `/api/news` ("this is the last challenge, so make it count. I might have promised you the last challenge before").

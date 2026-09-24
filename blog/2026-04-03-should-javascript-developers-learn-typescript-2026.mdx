@@ -14,35 +14,11 @@ last_update:
   author: Yassine El Haddad
 ---
 
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
-<DocFaqSchema
-  questions={[
-    {
-      q: "Should I learn TypeScript in 2026?",
-      a: "Yes, if you want mainstream frontend or fullstack roles, most new React and Node codebases use TypeScript. Learn it after you can build a React app in plain JavaScript so types sit on top of understanding, not confusion."
-    },
-    {
-      q: "Is TypeScript worth learning if I only know a little JavaScript?",
-      a: "Not immediately. TypeScript is a superset of JavaScript; weak JS fundamentals make types feel like magic syntax. Solidify variables, functions, async, and DOM or React basics first."
-    },
-    {
-      q: "Is TypeScript growing compared to JavaScript?",
-      a: "Yes. In GitHub’s 2025 State of the Octoverse, TypeScript became the most-used language on GitHub for the first time, overtaking Python and JavaScript after adding over a million contributors year over year, as enterprises adopt typed frontends and agent-assisted coding."
-    },
-    {
-      q: "Do TypeScript jobs pay more than JavaScript-only jobs?",
-      a: "Aggregated salary data often shows a premium for TypeScript mentions, commonly cited ranges around $8k–$12k USD median difference in broad developer surveys and job-board aggregates, though geography and seniority dominate any single number."
-    },
-    {
-      q: "Where should I learn TypeScript on Scrimba?",
-      a: "After Learn JavaScript and Learn React, take the Learn TypeScript course. For a full walkthrough of exercises and milestones, use the dedicated how-to article linked from this guide."
-    }
-  ]}
-/>
 
 # Should JavaScript Developers Learn TypeScript in 2026?
 
@@ -128,6 +104,31 @@ Some mature codebases **intentionally** stay `.js` for velocity or legacy reason
 ## Bottom line
 
 **Should you learn TypeScript in 2026?** **Yes**, for most **React-oriented** careers, **GitHub’s growth stats** and **job-post patterns** point that direction, and **salary aggregates** usually reward typed stacks. **Timing matters**: **JavaScript first**, **TypeScript second**.
+
+## Frequently Asked Questions
+
+<FAQAccordion items={[
+    {
+      q: "Should I learn TypeScript in 2026?",
+      a: "Yes, if you want mainstream frontend or fullstack roles, most new React and Node codebases use TypeScript. Learn it after you can build a React app in plain JavaScript so types sit on top of understanding, not confusion."
+    },
+    {
+      q: "Is TypeScript worth learning if I only know a little JavaScript?",
+      a: "Not immediately. TypeScript is a superset of JavaScript; weak JS fundamentals make types feel like magic syntax. Solidify variables, functions, async, and DOM or React basics first."
+    },
+    {
+      q: "Is TypeScript growing compared to JavaScript?",
+      a: "Yes. In GitHub’s 2025 State of the Octoverse, TypeScript became the most-used language on GitHub for the first time, overtaking Python and JavaScript after adding over a million contributors year over year, as enterprises adopt typed frontends and agent-assisted coding."
+    },
+    {
+      q: "Do TypeScript jobs pay more than JavaScript-only jobs?",
+      a: "Aggregated salary data often shows a premium for TypeScript mentions, commonly cited ranges around $8k–$12k USD median difference in broad developer surveys and job-board aggregates, though geography and seniority dominate any single number."
+    },
+    {
+      q: "Where should I learn TypeScript on Scrimba?",
+      a: "After Learn JavaScript and Learn React, take the Learn TypeScript course. For a full walkthrough of exercises and milestones, use the dedicated how-to article linked from this guide."
+    }
+]} />
 
 <PricingCTA
   title="Add types after you can ship in JS"

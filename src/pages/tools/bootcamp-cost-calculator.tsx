@@ -62,10 +62,14 @@ export default function BootcampCalculator(): React.ReactElement {
               },
               {
                 '@type': 'Question',
-                name: 'Does the bootcamp cost comparison include lost income?',
+                // Must match the visible <h3> and its paragraph verbatim. The
+                // question used to read "Does the bootcamp cost comparison
+                // include lost income?" and the answer paraphrased the page,
+                // which is markup asserting content no reader sees.
+                name: 'Does this include the cost of not working?',
                 acceptedAnswer: {
                   '@type': 'Answer',
-                  text: 'No, and it is usually the largest number in the comparison. A six-month full-time bootcamp can cost a half-year of salary on top of tuition. Part-time and self-paced study avoids most of that.',
+                  text: 'No, and it is usually the biggest number in the comparison. A six-month full-time bootcamp can cost a half-year of salary on top of tuition. Part-time and self-paced options avoid most of that.',
                 },
               },
             ],

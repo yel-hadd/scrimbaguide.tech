@@ -182,6 +182,7 @@ function SearchPageContent() {
                   key={f}
                   onClick={() => handleCategoryChange(f)}
                   disabled={count === 0}
+                  aria-pressed={active}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',

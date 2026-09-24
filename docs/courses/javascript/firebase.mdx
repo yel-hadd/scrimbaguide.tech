@@ -7,7 +7,7 @@ description: "Rafid Hoda's Pro Firebase course reviewed from inside: 3.4 hours, 
 keywords: [scrimba learn firebase, learn firebase scrimba review, firebase course scrimba, rafid hoda firebase, firestore course, firebase security rules course, backend as a service course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -95,7 +95,7 @@ That realtime scrim also contains the best bug in the course. The first live pos
   alt="Learn Firebase, onSnapshot lesson: a code editor beside a console showing a type error message."
   width={1400}
   height={684}
-  caption="onSnapshot at 5:24. The post was written (the ID line proves it) and the listener fired before the server timestamp existed, so toDate is called on null. Rafid invites you to pause and work it out before he does."
+  caption="onSnapshot at 5:24. The post was written (the ID line proves it) and the listener fired before the server timestamp existed, so toDate is called on null."
 />
 
 That leads into security rules, which Rafid chose to teach inside this module "because it is intimately connected with the code that we're writing." He warns that "Security rules can be one of those things that are a bit scary in the beginning," then keeps them small. Because the console is shown as slides, rules are written in a `rules.txt` file in the scrim and pasted into Firebase. You start by setting everything to `false` and watching "Missing or insufficient permissions" appear, then allow reads and writes only when `request.auth != null`. "Only show users their own posts" pairs a `where("uid", "==", user.uid)` query with a read rule comparing `request.auth.uid` to `resource.data.uid`, and "Custom functions in Security Rules" extracts those checks into `isSignedIn()` and `userIsAuthorOfPost()`.
@@ -105,7 +105,7 @@ That leads into security rules, which Rafid chose to teach inside this module "b
   alt="Learn Firebase, Security Rules lesson: a rules file beside a console showing a permission denied error."
   width={1400}
   height={684}
-  caption="The first security rules scrim at 4:07. With every rule set to false the app cannot even read its own posts, which is the point: you lock the door first, then let signed-in users back in."
+  caption="At 4:07 of the first security rules scrim, every rule is set to false, so the app cannot even read its own posts. That is the point: you lock the door first, then let signed-in users back in."
 />
 
 "Order posts by date" adds `orderBy("createdAt", "desc")` and hits a second real error: the compound query needs a composite index, which Rafid creates by following the link in the error message. "Add date filters" is the longest scrim in the course at 21 minutes and builds today, week, month and all buttons from date-range queries. It is mostly plain JavaScript date arithmetic, and Rafid says so: "This is a lot of code and we're way into the scrim now. So please don't worry if you're not understanding every part of this." He admits the four near-identical fetch functions could be refactored and kept them separate because "when you're teaching, you gotta strike that delicate balance."

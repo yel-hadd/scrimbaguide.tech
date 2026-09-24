@@ -123,6 +123,12 @@ export default function SearchBar(): React.ReactElement {
     };
   }, [query, doSearch]);
 
+  // The dialog is aria-modal, so focus must not leave it. Without this a single
+  // Shift+Tab from the input landed on a footer link behind the overlay,
+  // leaving a keyboard or screen-reader user navigating a page the dialog
+  // claims is inert. axe cannot catch this: it is a behavioural trap, not markup.
+  const modalRef = useRef<HTMLDivElement>(null);
+
   const openSearch = useCallback(() => {
     setOpen(true);
     setQuery('');
@@ -152,7 +158,7 @@ export default function SearchBar(): React.ReactElement {
     const params = new URLSearchParams();
     params.set('q', query);
     if (activeFilter !== 'All') params.set('category', activeFilter);
-    const url = `/search?${params.toString()}`;
+    const url = `/search/?${params.toString()}`;
     setOpen(false);
     setQuery('');
     setResults(null);
@@ -190,6 +196,27 @@ export default function SearchBar(): React.ReactElement {
       case 'Escape':
         closeSearch();
         break;
+      case 'Tab': {
+        const root = modalRef.current;
+        if (!root) break;
+        const focusable = Array.from(
+          root.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        ).filter((el) => el.offsetParent !== null);
+        if (!focusable.length) break;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement as HTMLElement | null;
+        if (e.shiftKey && (active === first || !root.contains(active))) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && active === last) {
+          e.preventDefault();
+          first.focus();
+        }
+        break;
+      }
     }
   }, [flatItems, highlightIdx, grouped, navigate, closeSearch]);
 
@@ -218,7 +245,7 @@ export default function SearchBar(): React.ReactElement {
 
   const modal = open && createPortal(
     <div className="sg-search-overlay" onClick={closeSearch}>
-      <div className="sg-search-modal" role="dialog" aria-modal="true" aria-label="Search" onClick={(e) => e.stopPropagation()}>
+      <div ref={modalRef} className="sg-search-modal" role="dialog" aria-modal="true" aria-label="Search" onClick={(e) => e.stopPropagation()} onKeyDown={handleKeyDown}>
         <div className="sg-search-header">
           <svg className="sg-search-header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8" />
@@ -258,6 +285,9 @@ export default function SearchBar(): React.ReactElement {
                   className={'sg-search-filter' + (activeFilter === f ? ' sg-search-filter--active' : '') + (count === 0 ? ' sg-search-filter--empty' : '')}
                   onClick={() => { setActiveFilter(f); setHighlightIdx(-1); }}
                   disabled={count === 0}
+                  // The active chip was marked by a CSS class only, so a screen
+                  // reader announced nothing about which filter is applied.
+                  aria-pressed={activeFilter === f}
                 >
                   {f}{count > 0 ? ` (${count})` : ''}
                 </button>
@@ -282,7 +312,7 @@ export default function SearchBar(): React.ReactElement {
           <div id="sg-search-listbox" role="listbox">
           {!loading && filtered.map((group, gi) => (
             <div key={group.label} className="sg-search-group" role="group" aria-labelledby={`sg-search-group-${gi}`}>
-              <h2 className="sg-search-group-label" id={`sg-search-group-${gi}`}>{group.label}</h2>
+              <h2 className="sg-search-group-label" id={`sg-search-group-${gi}`} role="presentation">{group.label}</h2>
               {group.results.map((result, ri) => {
                 const flatIdx = flatItems.findIndex((f) => f.gi === gi && f.ri === ri);
                 const hl = flatIdx === highlightIdx;
@@ -328,9 +358,14 @@ export default function SearchBar(): React.ReactElement {
                     </div>
                     <div className="sg-search-result-info">
                       <div className="sg-search-result-title">{result.document.t}</div>
-                      {result.document.b && (
-                        <div className="sg-search-result-path">{result.document.b.slice(result.document.b[0] === 'Courses' ? 2 : 1).join(' / ')}</div>
-                      )}
+                      {(() => {
+                        // b is an array, so a truthiness check passes for [] and for
+                        // slices that empty it; gate on the joined string instead.
+                        const crumb = (result.document.b ?? [])
+                          .slice(result.document.b?.[0] === 'Courses' ? 2 : 1)
+                          .join(' / ');
+                        return crumb ? <div className="sg-search-result-path">{crumb}</div> : null;
+                      })()}
                     </div>
                   </Link>
                 );

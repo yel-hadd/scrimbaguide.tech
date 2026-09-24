@@ -7,7 +7,7 @@ description: "Per Borgen's Learn Flexbox reviewed from inside: 53 minutes, 15 sc
 keywords: [scrimba learn flexbox, learn flexbox scrimba review, css flexbox course, per borgen flexbox, flexbox layout tutorial, interactive flexbox course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -81,7 +81,7 @@ Scrim three is `justify-content`, which positions items along the main axis. Per
   alt="Learn Flexbox, Justify Content lesson: the preview shows navbar links spaced evenly across a yellow bar."
   width={1400}
   height={660}
-  caption="Justify Content at 1:49. All six values sit in a comment under the rule; Per has just asked you to swap in space-between and space-evenly and compare. The preview on the right is where you see the answer."
+  caption="Justify Content at 1:49. All six values sit in a comment under the rule, and Per has just asked you to swap in space-between and space-evenly yourself."
 />
 
 Scrim four, "Positioning items", is the first marked challenge. Per removes `justify-content` and shows that `margin-left: auto` on the Logout item pushes it to the far right on its own. His reason for teaching it: the justify-content values "are nice and handy, but they don't always do what you want them to do." The task is to send Home to the left when everything else is pushed right (answer: `margin-right: auto`).
@@ -99,7 +99,7 @@ This group has five of the six marked challenges, and it is where the course ear
   alt="Learn Flexbox, Align items lesson: the preview shows a close button centred inside a bordered box."
   width={1400}
   height={660}
-  caption="Align items at 2:26. Two lines, align-items: center and justify-content: center, and the X button sits in the middle of the container no matter how you resize it. Per calls it a trick that often comes in handy."
+  caption="At 2:26 of Align items, align-items: center and justify-content: center are the two lines doing the work, a trick Per says comes in handy often."
 />
 
 The challenge here uses `align-self` to drop one item to the bottom, producing what Per calls "kind of a diagonal navbar" and admits nobody would want. That is typical of the course. The tasks exist to make you type the property; nobody would ship the result.
@@ -115,7 +115,7 @@ The challenge here uses `align-self` to drop one item to the bottom, producing w
   alt="Learn Flexbox, Flex grow, shrink, basis challenge: the preview shows a two-item navbar sharing space evenly."
   width={1400}
   height={660}
-  caption="Flex grow, shrink, basis at 7:50, the challenge brief. Both items are flex: 1 1 200px. Your job is to make Logout grow ten times faster than Home once the container passes 400px, which means changing one number."
+  caption="'Flex grow, shrink, basis' at 7:50, the challenge brief: make Logout grow ten times faster than Home once the container passes 400px, by changing just one number."
 />
 
 "Order" (3:09) finishes the core. Items default to `order: 0`; anything above goes to the end, anything below goes to the front. The challenge is to reverse three items using one positive and one negative value. Per closes with "You've completed the main section of this Flexbox course," so treat this as the real end.
@@ -129,7 +129,7 @@ The challenge here uses `align-self` to drop one item to the bottom, producing w
   alt="Learn Flexbox, Responsive Navbar bonus lesson: the preview shows the navbar links stacked vertically for mobile."
   width={1400}
   height={660}
-  caption="Bonus: Responsive Navbar at 4:58. The 400px media query is in place and order: 1 has just moved Search to the bottom of the stack. This is the finished navbar and the closest thing to a project in the course."
+  caption="This is the closest thing to a project in the course, and at 4:58 of Bonus: Responsive Navbar, order: 1 has just moved Search to the bottom of the stack."
 />
 
 "Bonus: Creating a Flexbox image grid" (6:01) is, by Per's own account, a scrim borrowed from his CSS Grid course. Twelve photos get `flex: 1 1 150px` (or `250px` for the "big" ones) with `object-fit: cover`, and they reflow as you resize. He is upfront that this is the wrong tool: "I actually do recommend you to create image grids in the CSS Grid as that is made for two dimensional layouts, while Flexbox is mainly one dimensional." Watch it for the `flex-basis` practice, then do [Learn CSS Grid](/docs/courses/css/css-grid/).

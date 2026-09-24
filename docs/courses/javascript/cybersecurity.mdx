@@ -7,7 +7,7 @@ description: "Reviewed from inside: 5 hours on STRIDE, sessions vs JWTs, XSS, SQ
 keywords: [scrimba learn cybersecurity, learn cybersecurity scrimba review, app security course for developers, authentication course scrimba, web security fundamentals, rate limiting course, zod validation course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -115,7 +115,7 @@ Three attacks come first. Cross-Site Scripting is two scrims: a demo where an `<
   alt="Learn Cybersecurity, SQL Injection lesson: the signup form preview shows a malicious payload and a signup counter dropped to zero."
   width={1400}
   height={684}
-  caption="SQL Injection part 2 at 3:53, seconds after Jonathan submits the payload. The signup counter above the form has gone to zero. Nothing is really deleted (the app hard-codes the drop), but you typed the attack yourself."
+  caption="SQL Injection part 2 at 3:53, seconds after Jonathan submits it. This is the attack you typed yourself, not a slide about parameterised queries."
 />
 
 Then a short Zod course inside the course, seven scrims in a separate mini project. The Star Wars challenge is representative: import Zod, write a `characterSchema` with a string name and a number episode, validate `{ name: "Luke Skywalker", episode: 4 }`, then break it with `"4"` to see the ZodError. Jonathan's recurring metaphor is a machine you calibrate with a schema and feed data through. From there you `npm install zod` in the form project, write a `validate(schema)` middleware factory (the challenge is remembering `schema.safeParse(req.body)`), mount it on a new endpoint, render its 400 errors in the form, and build the register schema out field by field until the final challenge: a name of 2 to 50 characters with a regex, an optional bio of up to 500, and a trim.
@@ -133,7 +133,7 @@ Fixed Window Counter is ten scrims of building with `express-rate-limit`. The fi
   alt="Learn Cybersecurity, rate limiter lesson: the terminal shows repeated requests getting blocked with a 429 error."
   width={1400}
   height={684}
-  caption="Create the limiter at 5:08. Five requests succeed, then every one after returns 429 until the one-minute window resets. The remainingRequests property with optional chaining is the challenge's last step."
+  caption="The remainingRequests property, read with optional chaining, is the last step in Create the limiter at 5:08, right where the rate limit kicks in."
 />
 
 The next three algorithms are theory with a parking garage analogy: sliding window log, sliding window counter, and token bucket. Token bucket then becomes a terminal game (`token_bucket_game.js`) where each round is one second, you type how many requests to send, and you finish the `TokenBucket` class yourself across several challenges. Leaky bucket gets the shortest treatment, and Jonathan's summary is the one to remember: "token bucket as here are tokens, spend them whenever you want, and this leaky bucket as get in line. I'll process you at my pace."

@@ -7,7 +7,7 @@ description: "Rachel Johnson's free Learn Vue reviewed from inside every scrim: 
 keywords: [scrimba learn vue, learn vue scrimba review, rachel johnson vue course, free vue course, vue 3 course for beginners, vue vs react]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -75,7 +75,7 @@ Code starts in "Your First Vue App." You add the unpkg script tag, wrap the body
   alt="Learn Vue, Your First Solo Vue App challenge: a code editor with a numbered brief above a static 404 page."
   width={1400}
   height={684}
-  caption="Your First Solo Vue App at 1:15. The brief is a five-step comment under a static 404 page; hint.md in the tab bar holds the syntax if you get stuck. Rachel walks through her own solution from 1:36."
+  caption="Your First Solo Vue App's five-step brief runs at 1:15, and Rachel's own solution runs from 1:36."
 />
 
 "Installing Vue Locally" runs `npm create vue@latest` inside Scrimba's terminal, walks through the prompts, and ends with `npm run dev` showing the starter page in the preview. She warns about the `@latest`: without it, "npm might actually resolve to a cached or outdated version." "Using create vue" is a 90 second challenge to do the same yourself, and "Vue Project Anatomy" tours the generated folders: `src/assets`, `src/components`, `App.vue` ("the heart of your application"), `main.js`, `index.html`, and `vite.config.js`, where she deletes the Vue DevTools plugin for now.
@@ -97,7 +97,7 @@ Scrims 9 to 13 cover reactivity and template syntax. "Vue Reactivity Basics" is 
   alt="Learn Vue, Reactivity and Template Syntax lesson: a code editor and preview of a Vue Facts page with three cards."
   width={1400}
   height={684}
-  caption="The project scrim at 5:14, the three facts now coming from the facts array by index. Rachel admits the copy-paste is clumsy ('hold your horses') and defers v-for to a section that does not exist yet."
+  caption="By 5:14 of the project scrim, the three facts come from the facts array by index. Rachel admits the copy-paste is clumsy ('hold your horses') and defers v-for to a section that does not exist yet."
 />
 
 "Attribute Binding" shows why `href="{{ href }}"` fails (the browser gets the literal braces) and introduces `v-bind:href`, your first directive. "v-bind - Booleans Attributes and Shorthands" disables a Share button with `:disabled="isButtonDisabled"`, then teaches the `:` shorthand and the same-name shorthand where `:href="href"` becomes just `:href`. "PROJECT - Reactivity and Template Syntax" has the section's hardest challenge: build a `facts` ref holding an array of three objects with `adjective` and `description` keys, then render `{{ facts[0].adjective }}` and so on by hand. Rachel frames it as "a combination of your existing JavaScript knowledge and Vue."

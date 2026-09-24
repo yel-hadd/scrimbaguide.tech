@@ -6,6 +6,29 @@
 /* Fonts are loaded via <link rel="preconnect"/stylesheet> in docusaurus.config.ts
  * headTags (non-blocking), not a render-blocking @import here. */
 
+
+/* Metric-matched fallback, sitting between Plus Jakarta Sans and the system
+   stack. Lighthouse measured CLS 0.191 on a path page and 0.138 on a
+   comparison page, and the layout-shifts trace blamed the gstatic woff2 for
+   0.1603 of it: the fallback painted first, then the webfont swapped in at a
+   different width and reflowed the block below. That never showed up in
+   manual checks because a warm font cache has no swap to shift on.
+
+   Rather than drop to font-display: optional, which would cost the brand font
+   on a slow first paint, this scales a local Arial to Plus Jakarta Sans's own
+   metrics so the swap is dimensionally a no-op. Measured in-browser at 16px:
+   Plus Jakarta Sans renders 107.10% of Arial's width, with ascent 1.0625em
+   and descent 0.25em. The overrides are those ratios divided by size-adjust,
+   because they resolve against the already-adjusted em. */
+@font-face {
+  font-family: 'Plus Jakarta Fallback';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 107.10%;
+  ascent-override: 99.21%;
+  descent-override: 23.34%;
+  line-gap-override: 0%;
+}
+
 :root {
   --ifm-color-primary: #5b3fd9;
   --ifm-color-primary-dark: #4c31c8;
@@ -16,7 +39,7 @@
   --ifm-color-primary-lighter: #7b65e3;
   --ifm-color-primary-lightest: #9d8cec;
   --ifm-code-font-size: 95%;
-  --ifm-font-family-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --ifm-font-family-base: 'Plus Jakarta Sans', 'Plus Jakarta Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   --ifm-heading-font-family: 'Sora', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   --sg-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
   --sg-green: #2ecc71;
@@ -4591,18 +4614,38 @@ html[data-theme='dark'] .curriculum__index {
   background: #16191f;
 }
 
+/* The caption block is a hierarchy problem, not a contrast one. Every colour
+   here already passes AA against the page background in both themes (light:
+   body 7.56:1, caption 9.07:1, source 5.72:1). What was failing is the
+   contrast BETWEEN the three roles: caption vs body prose sat at 1.20:1 in
+   light and 1.26:1 in dark, so the only thing marking a caption as a caption
+   was a 14% size drop. Caption vs source note was worse in dark, 1.16:1 and
+   about 1px of size apart, so the two read as one run-on block. The fixes are
+   weight, style and a rule, none of which shrink in dark mode the way a grey
+   delta does. Colours are deliberately unchanged: dropping the source note a
+   step would fail AA at 3.06:1, which the comment below already recorded. */
 .screenshot figcaption {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  margin-top: 0.5rem;
+  gap: 0.35rem;
+  /* Tighter to the image, and a rule in the image's own border colour, so the
+     caption continues the frame instead of floating into the next paragraph. */
+  margin-top: 0.4rem;
+  padding-left: 0.65rem;
+  border-left: 2px solid var(--ifm-color-emphasis-300);
   font-size: 0.86rem;
   line-height: 1.45;
   color: var(--ifm-color-emphasis-800);
 }
 
+.screenshot__caption {
+  font-weight: 600;
+}
+
 .screenshot__source {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.4;
   color: var(--ifm-color-emphasis-700); /* 5.7:1 on white; 600 was 3.1:1 */
 }
 

@@ -7,7 +7,7 @@ description: "Mayo Oshin's Pro course from inside: 114 minutes, 23 scrims, a Sup
 keywords: [scrimba vercel ai sdk course, build a support agent scrimba review, vercel ai sdk tutorial, mayo oshin scrimba, ai support agent project, vercel ai sdk review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -120,7 +120,7 @@ Tool Calling is the longest lesson in the group at nearly ten minutes. It builds
   alt="Build a Support Agent with Vercel AI SDK, tool-calling challenge: code editor showing a commented exercise brief and price table."
   width={1400}
   height={660}
-  caption="The tool-calling challenge at 0:30. The whole brief is a comment block in index.js, with a fake price table instead of a database and three exercises you uncomment one at a time. Note the purple dot on the scrubber marking where the recording pauses for you."
+  caption="The tool-calling challenge at 0:30. The prices are fake, a stand-in for the database the priceLookup tool would otherwise query."
 />
 
 The tool-calling challenge mirrors the lesson exactly. You write a `priceLookup` tool over a five-item grocery table, then a `deliveryEta` tool, then add `stopWhen(stepCountIs(3))` to get a summary ("The total cost for eggs is three point two nine dollars ... the estimated delivery time to the address is twenty six minutes"). Each of the three parts has TODO comments where you fill in the Zod schema and the `execute` body.
@@ -161,7 +161,7 @@ Complete Customer Support AI Agent is a six-minute tour rather than a build. Eve
   alt="Build a Support Agent with Vercel AI SDK, finished agent lesson: code editor beside a live chatbot preview answering a support question with sources."
   width={1400}
   height={660}
-  caption="The finished app at 0:57: the Discord question is routed to the knowledge base tool, three chunks come back, and View Sources shows the markdown article and its 0.7275 similarity. The Express route on the left is the entire backend."
+  caption="At 0:57 of the finished app, the Discord question routes to the knowledge base tool: three chunks come back, and View Sources shows the markdown article and its 0.7275 similarity."
 />
 
 Mayo then asks "how do I resolve the error node_modules not found?", which the agent sends to web search instead. He walks through the architecture slide: does this need retrieval, and if so, is it real-time information or something in the vector store? His closing advice is to swap in your own documents or a different use case entirely. The Outro recaps the five things you built and suggests a stretch goal: "refactor the final project for your use case ... maybe you wanna build your own travel agent."

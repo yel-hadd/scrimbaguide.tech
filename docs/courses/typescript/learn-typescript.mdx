@@ -7,7 +7,7 @@ description: "Scrimba's free Learn TypeScript from inside: 4.2 hours, Bob Ziroll
 keywords: [scrimba learn typescript, learn typescript scrimba review, learn typescript free, bob ziroll typescript, rachel johnson scrimba, typescript react express course, interactive typescript course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -87,7 +87,7 @@ Then comes the ten minute "Intro to Pizza app," the longest scrim in the course.
   alt="Learn TypeScript, Pizza app lesson: the console shows the same runtime error printed three times in a row."
   width={1400}
   height={630}
-  caption="9:15 of Intro to Pizza app: the JavaScript version runs and crashes with the TypeError that TypeScript will flag before you run anything. Note cost on line 30 where the menu uses price."
+  caption="9:15 of Intro to Pizza app: this is the JavaScript crash that TypeScript would have caught before you ever ran the code."
 />
 
 "Move code to TS" is where the course turns. There is a Scrimba quirk here: instead of renaming the file, Bob has you create a new `index.ts` and paste the code across, because of how TypeScript runs inside the editor. The squiggles appear at once. He asks you to hover each one, and adds a caveat that matters for the whole course: the IntelliSense popups "are not something that Scrimba records into the Scrim," so you have to hover yourself to see the messages.
@@ -97,7 +97,7 @@ Then comes the ten minute "Intro to Pizza app," the longest scrim in the course.
   alt="Learn TypeScript, Move code to TS lesson: the same file now shows several variables underlined in red."
   width={1400}
   height={630}
-  caption="0:47 of Move code to TS: the same code, now in a .ts file, with seven red underlines and no code changed yet. Bob: 'Nothing about using TypeScript here is introducing new bugs, it's just showing me where the bugs already existed.'"
+  caption="Bob's verdict at 0:47 of Move code to TS: 'Nothing about using TypeScript here is introducing new bugs, it's just showing me where the bugs already existed.'"
 />
 
 "Defensive coding" introduces the idea Bob returns to all section: the happy path versus the sad path. "TypeScript forces us to take a step back and consider the sad path," he says, and the fix for "object is possibly undefined" is an `if (!selectedPizza)` guard with an early return. Only then does he admit the compiler has hit its limit and the string-for-number bug is still in there, which is the cue for the actual syntax lessons.
@@ -128,7 +128,7 @@ The rest is one component per scrim: `JSX.Element | null` for the confetti conta
   alt="Learn TypeScript, Final Challenge lesson: a comment brief sits above five untyped props underlined in red."
   width={1400}
   height={630}
-  caption="0:30 of The Final Challenge: the brief lives in a comment at the top of Keyboard.tsx and the five untyped props are underlined. The solution needs a KeyboardProps type with addGuessedLetter typed as (letter: string) => void."
+  caption="The Final Challenge's solution, at 0:30, needs a KeyboardProps type with addGuessedLetter typed as (letter: string) => void."
 />
 
 ### 3. TypeScript in Express (73 min, 24 scrims): a typed pet shelter API
@@ -153,7 +153,7 @@ The typing progression is the useful part. `req` and `res` start as `any`; you i
   alt="Learn TypeScript, String query params lesson: the terminal shows a type error next to a successful API request in the network panel."
   width={1400}
   height={630}
-  caption="2:46 of String query params: the filter is correct JavaScript, but Express types req.query values as string | ParsedQs | arrays, so the build fails with TS2339. The next scrim fixes it with the Request generic's fourth slot."
+  caption="At 2:46 of String query params, the filter is correct JavaScript; Express just types req.query as string | ParsedQs | arrays, so TypeScript fails the build with TS2339."
 />
 
 Boolean and number query params follow (they arrive as strings and need converting), then a refactor into `routes/` and `controllers/` with a typed `Router`, and two middleware scrims that introduce `NextFunction`: a `validateNumericId` guard that returns a 400, then "Your own middleware" as a final challenge. The outro suggests connecting a real database or building a frontend against the typed API as next steps; neither is in the course.

@@ -7,7 +7,7 @@ description: "Ajo Borgvold's free Command Line Basics course from inside: 101 mi
 keywords: [scrimba command line basics, command line basics scrimba review, cli course for beginners, learn command line scrimba, terminal basics course, free cli course, ajo borgvold]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -88,7 +88,7 @@ Then the drills start. "Getting Oriented" teaches `pwd`, `ls`, `cd` and `clear`,
   alt="Command Line Basics, Creating and Deleting Directories lesson: the terminal shows an error after rmdir fails on a full folder."
   width={1400}
   height={660}
-  caption="Lesson 'Creating and Deleting Directories' at 3:02. Ajo runs rmdir on the family_photos_1988 folder first, gets ENOTEMPTY, and only then switches to rm -r. The challenge brief stays open in the editor above the terminal."
+  caption="Creating and Deleting Directories at 3:02. Ajo runs rmdir on the family_photos_1988 folder first, hits ENOTEMPTY, then switches to rm -r."
 />
 
 "Writing to Files" is the longest scrim at seven minutes and has two challenges: a warm-up with `echo 'Hello, name!'`, then creating an `about_the_game` folder, writing a team file with `>` and appending yourself to it with `>>`. Ajo also flags a Scrimba quirk here: "there is an issue in the Scrimba IDE" where `echo` creating a new file "does not always work as expected," so you `touch` the file first. "Reading from Files" introduces `cat` (with a dog-versus-cat mnemonic that Ajo admits may not land), and its challenge chains everything: read a file, append it to another with a relative path, print the result, delete the original.
@@ -98,7 +98,7 @@ Then the drills start. "Getting Oriented" teaches `pwd`, `ls`, `cd` and `clear`,
   alt="Command Line Basics, Reading from Files lesson: the terminal prints a merged team list after the challenge solution runs."
   width={1400}
   height={660}
-  caption="Lesson 'Reading from Files: cat' at 5:09, the moment of truth in the challenge solution. The three external people have been appended to team_members.txt with cat and >>, and cat prints the merged team."
+  caption="At 5:09 of 'Reading from Files: cat', three external people are appended to team_members.txt with cat and >>."
 />
 
 The section closes with a short outro (you are named employee of the month) and a two minute Scrimbassador promo from Per Borgen that has nothing to do with the terminal. One line in the outro explains the shape of the course: "At the time of recording this scrim, section two of this course is still in the making." Section two was added later, and it shows.
@@ -133,7 +133,7 @@ The pipe lesson ties the last three together with `sort team_members.txt | uniq 
   alt="Command Line Basics, Combining Commands with the Pipe lesson: an annotated slide of a real terminal shows duplicates removed."
   width={1400}
   height={660}
-  caption="Lesson 'Combining Commands with the Pipe' at 2:21. This is what section two looks like: a screenshot of Ajo's local terminal on a slide, annotated live. The pink circle marks the pipe; the left circle marks the de-duplicated output."
+  caption="A pink circle at 2:21 of Combining Commands with the Pipe marks the pipe itself, the seam between sort and uniq the lesson is built around."
 />
 
 The outro recaps every command and the five options used across the section (`r`, `n`, `g`, `I`, `l`), and the course ends with a generic 53 second scrim on how to use the certificate.

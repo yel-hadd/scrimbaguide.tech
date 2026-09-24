@@ -7,7 +7,7 @@ description: "Jonathan Lee Martin's 64 minute Pro course from inside: merge sort
 keywords: [scrimba merge sort, merge sort scrimba review, merge sort algorithm course, sorting algorithm javascript, jonathan lee martin scrimba, merge sort javascript, divide and conquer javascript]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -90,7 +90,7 @@ The recursion bottoms out at one element lists, which are sorted by definition. 
   alt="Data Structures and Algorithms: Merge Sort, recursion lesson: a tree diagram splitting a list down to single elements."
   width={1279}
   height={720}
-  caption="The Merge Sort lesson at 6:34: the moment the recursion finds its first list that is sorted by definition, the single element [2] highlighted in yellow. Everything above it is still waiting to be merged."
+  caption="The Merge Sort lesson at 6:34. The recursion has just bottomed out at a one-element list, the [2] highlighted in yellow, with everything above it still waiting to merge."
 />
 
 ### 2. Seven implementations, five of them challenges (44 min, 7 scrims)
@@ -106,7 +106,7 @@ The starting file is a `mergesort(array, start = 0, end = array.length, compare 
   alt="Data Structures and Algorithms: Merge Sort, imperative lesson: a test runner popup shows one failing test over the editor."
   width={1400}
   height={660}
-  caption="Imperative, paused at 2:03. The test runner shows the one failing test (expected [1, 2], got [2, 1]) right before Jonathan says to pause the lesson and make it pass. This is what every implementation lesson starts from."
+  caption="Imperative, paused at 2:03, right where Jonathan says to pause and make the test pass: expected [1, 2], got [2, 1]. Every implementation lesson starts here."
 />
 
 #### Array Splitting (4:55, challenge)
@@ -126,7 +126,7 @@ The target is the merge loop. Treat `left` and `right` as queues: replace the fo
   alt="Data Structures and Algorithms: Merge Sort, queue lesson: a code editor shows a short merge step using map and a ternary."
   width={1400}
   height={660}
-  caption="Queue, paused at 6:22, just before he saves. The for loop and the i, j and k counters from the first version are gone; the whole combine step is array.map and a ternary over shift(). The file list on the left shows merge-sort.test.js and the assert dependency."
+  caption="Queue, paused at 6:22, just before he saves. Gone completely from the imperative version: the for loop, and the i, j and k counters it needed."
 />
 
 #### Cursor (7:15, challenge)
@@ -146,7 +146,7 @@ The last one turns on the previous six. Define `split(array, mid)`, `merge(left,
   alt="Data Structures and Algorithms: Merge Sort, simple lesson: a code editor shows the final merge sort file with tests green."
   width={1400}
   height={660}
-  caption="Simple, paused at 6:21 with the tests green. mergesortSimple is five lines: a base case, a destructured split, and a merge of two recursive calls. The clever parts (Cursor, ArrayView, lodash.times) are pushed down into merge and the wrapper."
+  caption="The clever parts from Cursor, ArrayView and lodash.times are pushed down into merge and the wrapper by the time Simple pauses at 6:21, leaving mergesortSimple just to call them."
 />
 
 ### 3. Wrap up and the certificate clip (3 min, 2 scrims)

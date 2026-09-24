@@ -23,4 +23,4 @@ Scrimba Guide is run by Yassine El Haddad. You can find him here:
 * [LinkedIn](https://www.linkedin.com/in/yassine-el-haddad/)
 * [GitHub](https://github.com/yel-hadd)
 
-Looking for Scrimba's own community? [Join the Scrimba Discord](https://scrimba.com/discord?via=u42d4986).
+Looking for Scrimba's own community? <a href="https://scrimba.com/discord" rel="nofollow noopener noreferrer" target="_blank">Join the Scrimba Discord</a>.

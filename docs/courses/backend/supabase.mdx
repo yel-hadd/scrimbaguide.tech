@@ -7,7 +7,7 @@ description: "Jonathan Hill's free Supabase course reviewed from inside: 4.8 hou
 keywords: [scrimba supabase course, intro to supabase review, jonathan hill supabase, supabase react course, free supabase tutorial, supabase row level security course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -88,7 +88,7 @@ The querying scrims are where the course finds its rhythm. Jonathan writes SQL i
   alt="Intro to Supabase, Realtime subscription challenge: a code editor with a fill-in-the-blank brief beside a live bar chart preview."
   width={1400}
   height={660}
-  caption="The realtime challenge at 2:56. The brief is the numbered comment at the top, the blanks in the channel() call are yours to fill, and the bar chart from the previous scrim is already running in the preview. This is the shape of most challenges in the course."
+  caption="The realtime challenge at 2:56, the last of the querying scrims: everything from here runs against your own Supabase project, not the instructor's."
 />
 
 The last three scrims (the new deal form, inserting data, and a 37-second recap) have no transcript, which is unusual for Scrimba. From the code, the form uses React 19's `useActionState`, and the insert is one line: `supabase.from('sales_deals').insert(newDeal)`.
@@ -123,7 +123,7 @@ The refactor is the course's best stretch, and it is eleven scrims long. "Databa
   alt="Intro to Supabase, Trigger lesson: a slide diagram of three database tables connected by foreign key lines."
   width={1400}
   height={788}
-  caption="The schema the refactor builds, shown again at 9:08 of the Trigger scrim. user_profiles.id points at auth.users.id, and sales_deals.user_id points at user_profiles.id, which is what lets a policy ask who owns a row."
+  caption="At 9:08 of the Trigger scrim, user_profiles.id points at auth.users.id, and sales_deals.user_id points at user_profiles.id, which is what lets a policy ask who owns a row."
 />
 
 "Trigger" is the longest scrim at 11:35. You write `create function public.handle_new_user() returns trigger language plpgsql security definer`, insert `new.id`, `new.raw_user_meta_data ->> 'name'`, and the account type into `user_profiles`. Then you `create trigger on_auth_user_created after insert on auth.users`. The challenge blanks out the names and the JSON extraction for you to fill in. After that you paste the whole thing into your SQL editor, delete your test users, and sign up "Pam" as an admin and "Dwight" as a rep to prove the profile row appears.
@@ -133,7 +133,7 @@ The refactor is the course's best stretch, and it is eleven scrims long. "Databa
   alt="Intro to Supabase, Trigger challenge: a code editor with a partly blanked SQL function beside a sign-up form preview."
   width={1400}
   height={660}
-  caption="The trigger challenge at 8:06. Jonathan has removed the function name, the target table and columns, and the account_type extraction; the sign-up form in the preview already has the Admin and Sales Rep radio buttons from the previous scrim."
+  caption="The trigger challenge at 8:06. Jonathan blanks the function name, the table, the columns and the account_type extraction, so filling it in is the whole point of the scrim."
 />
 
 The three "Refactor deals table" scrims replace the broad policy with three narrow ones. Because Supabase policies are additive ("combined with an or"), the old allow-everything policy has to go. The rep policy checks `auth.uid() = user_id` and `EXISTS (select 1 from user_profiles where id = auth.uid() and account_type = 'rep')`; your challenge is the admin version.
@@ -143,7 +143,7 @@ The three "Refactor deals table" scrims replace the broad policy with three narr
   alt="Intro to Supabase, Refactor deals table lesson: a code editor with a finished SQL policy written in a scratch file."
   width={1400}
   height={660}
-  caption="The finished rep policy at 7:20, written out in a scratch policy.sql file before you copy it into the Supabase policy editor. The extended_family example above it is how Jonathan explains EXISTS and SELECT 1 first."
+  caption="At 7:20, the rep policy is ready to paste into the Supabase policy editor. The extended_family example above it is how Jonathan first explains EXISTS and SELECT 1."
 />
 
 "Update new deal form, part 1" then tests it live: signed in as Dwight the rep, adding a deal for someone else fails with "Failed to add deal," and Jonathan says at 10:20, "So the RLS is working."

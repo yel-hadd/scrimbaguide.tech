@@ -7,7 +7,7 @@ description: "Kevin Powell's 15-hour Pro CSS course reviewed from inside: 175 sc
 keywords: [scrimba responsive web design, learn responsive web design review, kevin powell css course, responsive css course, learn css scrimba, kevin powell scrimba review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -94,7 +94,7 @@ This is the longest module and the one the course is named after. It opens with 
   alt="Learn Responsive Web Design, The problem with ems lesson: browser preview showing a bulleted list rendered larger than the heading above it."
   width={1400}
   height={560}
-  caption="The problem with ems, paused at 1:33. The body is 10px, the section is 2em, the list is 1.5em and the items are 1.5em again, so the list items end up bigger than the heading. Kevin's conclusion two minutes later: use rem for font size, em for padding and margin."
+  caption="The problem with ems, paused at 1:33. The chain runs body 10px, section 2em, list 1.5em, items 1.5em again; Kevin's fix two minutes later is rem for font size, em for padding and margin."
 />
 
 Flexbox arrives as a tool, not a topic. You build a two-row column layout, then make it stack with a `flex-direction: column` media query, then build a header with a navigation and make that responsive at a 675-pixel breakpoint. His advice in that lesson is to attempt it and fail first: "I want you to make mistakes. Because making mistakes is how you're going to learn."
@@ -135,7 +135,7 @@ Grid gets the same one-property-per-scrim treatment. `display: grid`, `grid-temp
   alt="Learn Responsive Web Design, auto-fit and auto-fill lesson: browser preview showing a grid of project cards reflowing into columns."
   width={1400}
   height={590}
-  caption="auto-fit and auto-fill, paused at 1:58. One line, grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)), and the cards reflow from one column to four as the preview widens. His words at that moment: 'I don't have a media query in here. It's just magically working.'"
+  caption="Kevin's verdict at 1:58 of the auto-fit and auto-fill lesson: 'I don't have a media query in here. It's just magically working.' One line: grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))."
 />
 
 Two "Putting grid to use" lessons rebuild the blog article component from module 2 with grid instead of flexbox and negative margins, and the module ends there with no wrap-up scrim. One slip to know about: in the `minmax()` lesson he calls it "exclusive to Flexbox" when he means grid.
@@ -160,7 +160,7 @@ The navigation is where positioning finally appears. He has held it back on purp
   alt="Learn Responsive Web Design, mobile navigation lesson: browser preview showing a full-screen menu with centered links."
   width={1400}
   height={590}
-  caption="Setting up our navigation for small screens with positioning, paused at 5:18. The nav is position: fixed with top, right, bottom and left at 0, and the magenta border is a debugging aid he removes later. The next scrim adds the JavaScript that opens and closes it."
+  caption="Setting up our navigation for small screens with positioning at 5:18. The magenta border is Kevin's debugging aid, not part of the design, and he removes it later."
 />
 
 That next scrim is the only JavaScript in the course: a `script.js` with two `querySelector` calls and a click listener that removes a `navigation-open` class. He is clear it is a taste, not a lesson, and the first time it works he says "Doing JavaScript is literally like magic." The remaining scrims add the open button, the large-screen nav, the about and contact pages, box shadows on images, `::before` and `::after` pseudo-elements for decorative yellow lines, and a form styled for two screen sizes. The loose-ends lesson keeps one of his own mistakes in, a subtitle that inherited the wrong color, because "it's an important type of thing that you run into." The last scrim is a three-minute send-off: "Most people don't finish courses ... This was six courses."

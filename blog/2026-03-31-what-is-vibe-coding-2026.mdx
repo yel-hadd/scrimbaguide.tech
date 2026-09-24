@@ -14,39 +14,11 @@ last_update:
   author: Yassine El Haddad
 ---
 
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
-<DocFaqSchema
-  questions={[
-    {
-      q: "What is vibe coding?",
-      a: "Vibe coding is a programming approach where a developer describes what they want to an AI assistant, Cursor, ChatGPT, Claude, GitHub Copilot, and the AI generates the implementation. The developer focuses on intent and direction, not syntax. Collins Dictionary named it Word of the Year for 2025; the term is associated with Andrej Karpathy’s February 2025 post on X (Twitter)."
-    },
-    {
-      q: "Who coined vibe coding?",
-      a: "The phrase is widely credited to Andrej Karpathy in February 2025 on X (formerly Twitter). Collins Dictionary highlighted the term as its Word of the Year for 2025, reflecting mainstream adoption of AI-assisted building."
-    },
-    {
-      q: "What is vibe coding hell?",
-      a: "Vibe coding hell is the moment an AI-generated codebase breaks in production and the builder cannot debug it because they never built a mental model of the logic. Common triggers include async mistakes, null access, stale React state, and type coercion bugs."
-    },
-    {
-      q: "Is vibe coding bad for learning?",
-      a: "Not automatically. It accelerates prototyping and lowers the barrier to shipping. It becomes harmful when it replaces understanding, especially for maintenance, security, and performance. The goal is vibe coding with fundamentals, not instead of them."
-    },
-    {
-      q: "How do I learn JavaScript if I mostly vibe code?",
-      a: "Use short interactive drills that force you to type and predict behavior, not just accept completions. Scrimba’s Learn JavaScript course is free and designed around in-browser practice, which builds the debugging muscle memory AI tools skip."
-    },
-    {
-      q: "Can vibe coders use Scrimba?",
-      a: "Yes, Scrimba is well-suited for vibe coders who want to backfill JavaScript and React fundamentals. The scrim format forces you to type and predict code rather than accepting AI completions, which directly builds the debugging skills that vibe coding skips. The Frontend Developer Path (81.6 hours) covers JavaScript fundamentals and React from scratch and requires a Pro subscription."
-    }
-  ]}
-/>
 
 # What Is Vibe Coding? Collins WOTY 2025 Explained (and When It Breaks)
 
@@ -183,6 +155,35 @@ That does not remove the engineering obligation. It raises the bar for **review*
 5. **Document** the invariants you actually relied on.
 
 That is how you keep speed **without** surrendering ownership.
+
+## Frequently Asked Questions
+
+<FAQAccordion items={[
+    {
+      q: "What is vibe coding?",
+      a: "Vibe coding is a programming approach where a developer describes what they want to an AI assistant, Cursor, ChatGPT, Claude, GitHub Copilot, and the AI generates the implementation. The developer focuses on intent and direction, not syntax. Collins Dictionary named it Word of the Year for 2025; the term is associated with Andrej Karpathy’s February 2025 post on X (Twitter)."
+    },
+    {
+      q: "Who coined vibe coding?",
+      a: "The phrase is widely credited to Andrej Karpathy in February 2025 on X (formerly Twitter). Collins Dictionary highlighted the term as its Word of the Year for 2025, reflecting mainstream adoption of AI-assisted building."
+    },
+    {
+      q: "What is vibe coding hell?",
+      a: "Vibe coding hell is the moment an AI-generated codebase breaks in production and the builder cannot debug it because they never built a mental model of the logic. Common triggers include async mistakes, null access, stale React state, and type coercion bugs."
+    },
+    {
+      q: "Is vibe coding bad for learning?",
+      a: "Not automatically. It accelerates prototyping and lowers the barrier to shipping. It becomes harmful when it replaces understanding, especially for maintenance, security, and performance. The goal is vibe coding with fundamentals, not instead of them."
+    },
+    {
+      q: "How do I learn JavaScript if I mostly vibe code?",
+      a: "Use short interactive drills that force you to type and predict behavior, not just accept completions. Scrimba’s Learn JavaScript course is free and designed around in-browser practice, which builds the debugging muscle memory AI tools skip."
+    },
+    {
+      q: "Can vibe coders use Scrimba?",
+      a: "Yes, Scrimba is well-suited for vibe coders who want to backfill JavaScript and React fundamentals. The scrim format forces you to type and predict code rather than accepting AI completions, which directly builds the debugging skills that vibe coding skips. The Frontend Developer Path (81.6 hours) covers JavaScript fundamentals and React from scratch and requires a Pro subscription."
+    }
+]} />
 
 <PricingCTA
   title="Turn prototypes into maintainable skills"

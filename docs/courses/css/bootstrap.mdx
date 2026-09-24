@@ -7,7 +7,7 @@ description: "Neil Rowe's 56 minute Bootstrap 4 course reviewed from inside: 13 
 keywords: [scrimba learn bootstrap, learn bootstrap scrimba review, bootstrap 4 course, neil rowe bootstrap, bootstrap scrimba tutorial, learn bootstrap interactive, scrimba bootstrap review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -101,7 +101,7 @@ Then he codes the one that matters live. Four `col-6` boxes make a two by two gr
   alt="Learn Bootstrap, Responsive Grid Systems lesson: a code editor beside a preview of four boxes in a grid."
   width={1400}
   height={660}
-  caption="6:45 of the grid lesson, mid-edit. Line 20 has the col-sm-6 col-md-3 combination, lines 21 to 23 are still col-6, and the preview is still two by two because it has not been refreshed yet. This is the moment to pause and copy the class yourself before Neil does it."
+  caption="The grid lesson at 6:45, mid-edit. Line 20 has col-sm-6 col-md-3 so far, which is the natural place to pause and type the rest yourself before Neil does."
 />
 
 Responsive Navbars (6:27) is, in Neil's words, "the kitchen sink of nav bars." It starts from a bare `nav` and adds `navbar`, `navbar-brand`, `navbar-light bg-light`, and a `navbar-nav` list with `nav-link` items. Then comes the collapse, the part that hides the links behind a burger icon on small screens. A `collapse navbar-collapse` wrapper goes around the links. A `navbar-toggler` button is wired to it with `data-toggle` and `data-target`. Then `navbar-expand-lg` makes the menu horizontal above the large breakpoint and a burger below it.
@@ -113,7 +113,7 @@ The last three minutes are polish. Neil swaps the button text for `navbar-toggle
   alt="Learn Bootstrap, Responsive Navbars lesson: a preview window showing a navbar collapsed behind a burger icon."
   width={1400}
   height={660}
-  caption="5:33 of the navbar lesson, just after the navbar-toggler-icon class goes in. Scrimba dims the editor when the recording focuses the preview; at this narrow width the four links have collapsed behind the burger."
+  caption="At 5:33 of Responsive Navbars, just after the navbar-toggler-icon swap, Scrimba dims the editor when the recording turns to the preview."
 />
 
 Modals (5:33) starts from a `btn btn-primary` trigger and an empty `div.modal`. A modal is the dialog box that pops over the page and dims everything behind it. Neil nests `modal-dialog` and `modal-content`, wires the button with `data-toggle="modal"` and `data-target="#myModal"`, and adds `fade` for the animation. Then he fills in `modal-header`, `modal-title`, `modal-body`, and a `modal-footer` whose Cancel button uses `data-dismiss`.
@@ -133,7 +133,7 @@ Cards (5:08) is the one I would rewrite if I ran the course. It opens on a finis
   alt="Learn Bootstrap, Cards lesson: a preview card with a broken image icon where the photo should load."
   width={1400}
   height={660}
-  caption="The Cards lesson at 0:00, before Neil clears the file. The img src on line 16 points at placeimg.com, a placeholder service that shut down, so the preview shows the alt text where the header photo used to load. Swap in any other image URL and the rest of the card works."
+  caption="Cards at 0:00. placeimg.com, the header photo's host, no longer exists, so swap in any image URL and the rest of the lesson still works."
 />
 
 List Groups (5:44) starts from a `list-group` div full of anchor tags with `list-group-item`. Neil layers on `list-group-item-action` for the gray hover state and `active` for the current page ("you should only really have one active at a time"). The useful part is the Notifications row. A `span` holding the number 3 becomes `badge badge-primary`, then `badge-pill` to round it. Neil pushes it to the right edge with `d-flex justify-content-between align-items-center` on the item.

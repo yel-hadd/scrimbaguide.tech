@@ -7,7 +7,7 @@ description: "Ryan Gonyon's 65-minute Pro course reviewed from inside: all 15 tr
 keywords: [scrimba practical math frontend, practical math for frontend developers review, math for frontend developers, css calc course, javascript date object course, javascript reduce tutorial, ryan gonyon scrimba, frontend math course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -99,7 +99,7 @@ The two-minute intro sets the tone: "the course where we attempt to answer the a
   alt="Practical Math for Frontend Developers, CSS layout lesson: the preview shows a page with its footer pushed off screen."
   width={1400}
   height={660}
-  caption="Scrim 2 at 0:59. The first attempt, height: 100vh on main, and the footer has vanished below the fold in the preview. The next two minutes subtract the header and footer with calc() and then move the numbers into variables."
+  caption="App Layout and CSS calc() Introduction at 0:59. This one broken layout is why the lesson reaches for calc() at all."
 />
 
 "Your roll() Function" is the longest scrim in the course at almost ten minutes and the only one with slides. Ryan wants a function that takes a `min` and a `max` and returns a number greater than or equal to the min and less than the max. He derives it on a slide, first for a six-sided die (`1 <= n < 7`, subtract 1 from each side, divide by 6, and you have the `0 <= r < 1` shape that `Math.random()` gives you), then in general, which lands on `r * (max - min) + min`. "Don't worry, it's nothing too complicated," he says at 1:22, "but if you want, this might be a good time to pull out a pen and paper and work alongside me." A third parameter, a float flag, decides whether to `Math.floor()` the result. The back half uses the function to generate a fake user with a name picked by index, an age between 12 and 64, and a height rounded with `toFixed(1)`, with a pause prompt before each one.
@@ -109,7 +109,7 @@ The two-minute intro sets the tone: "the course where we attempt to answer the a
   alt="Practical Math for Frontend Developers, dice roll formula lesson: a slide walks through the algebra behind rolling a die."
   width={1046}
   height={588}
-  caption="Scrim 3 at 2:23. The only slide-driven algebra in the course: three steps from a six-sided die to the shape Math.random() returns. The general min and max version follows the same steps two minutes later."
+  caption="At 2:23 of Your roll() Function, this is the only slide-driven algebra in the course, and the general min-max version follows these same three steps two minutes later."
 />
 
 ### 2. Shopping cart (10 min, 3 scrims)
@@ -123,7 +123,7 @@ The two-minute intro sets the tone: "the course where we attempt to answer the a
   alt="Practical Math for Frontend Developers, Shopping Cart lesson: the console shows a reduce bug concatenating prices as text."
   width={1400}
   height={660}
-  caption="Scrim 5 at 1:29. The accumulator is a string: 0 + '9.08' + '7.30' becomes 09.087.30 in the console. Ryan fixes it with parseFloat in the next ten seconds, then discovers he forgot to multiply by the count."
+  caption="Calculate Total / Apply Tax Rate at 1:29. The accumulator is a string here: 0 + '9.08' + '7.30' comes out as 09.087.30 in the console, fixed with parseFloat a few seconds later."
 />
 
 The 93-second "Bonus Challenge" adds a random weight in ounces to each product, widens the layout to four columns, and totals the weight with the same `reduce` line, price swapped for weight. It is labelled a challenge but works like the other scrims: a prompt to pause, then the solution.
@@ -149,7 +149,7 @@ The 93-second "Bonus Challenge" adds a random weight in ounces to each product, 
   alt="Practical Math for Frontend Developers, expense sheet lesson: the preview shows a finished calendar grid with a budget summary bar."
   width={1400}
   height={660}
-  caption="Scrim 12 at 7:43, the finished expense sheet. Every number on the right came from roll(): the income, the rent, how many expenses each day has, and their amounts. The editor shows the reduce that turns the month array into the grid."
+  caption="At 7:43 of Generate, Display, and Track Expenses, every number on screen, the income, the rent, the expense count, and each amount, came from roll()."
 />
 
 The scrim also carries the closest thing the course has to a thesis, at 5:08: "One thing I'd like to point out, that I hope has kind of been a theme throughout this course, is looking at your code like it's a math problem." Put your variables at the top, he says, the way you would list the givens in a word problem.

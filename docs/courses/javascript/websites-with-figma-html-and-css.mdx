@@ -7,7 +7,7 @@ description: "Gary Simon's Pro design-to-code course reviewed from inside: 3.6 h
 keywords: [scrimba figma html css, build websites with figma html and css review, design to code course, figma to html css, gary simon scrimba, build websites figma scrimba review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -98,7 +98,7 @@ The card itself takes three scrims. The HTML wraps the whole card in an `a` tag 
   alt="Build Websites with Figma, HTML, and CSS, Simple Card Finishing Up lesson: code editor beside a preview of the finished mobile card."
   width={1400}
   height={660}
-  caption="Simple Card, Finishing Up, paused at 4:49. The mobile card on the right already matches the Figma file; the 550px media query being written on the left is what turns it into two columns on wider screens."
+  caption="At 4:49 of Simple Card, Finishing Up, the 550px media query on the left is what switches the layout to two columns with display: flex on wider screens, the mobile card already matching the Figma file."
 />
 
 The module ends with a one minute guest scrim from Per Borgen on deploying to Netlify, with links to a drag-and-drop route and a GitHub route. All of this module except that deploy scrim is marked SAMPLE, so you can try it without Pro.
@@ -131,7 +131,7 @@ The CSS lessons introduce a CSS variable for the brand blue, a gradient backgrou
   alt="Build Websites with Figma, HTML, and CSS, dashboard JavaScript lesson: code editor beside a preview of the sidebar slid open."
   width={1400}
   height={660}
-  caption="The only JavaScript in module 3, paused at 3:13. Thirteen lines: grab three elements, set a transform on click. The sidebar on the right has just slid in over the dashboard."
+  caption="Module 3's only JavaScript, paused at 3:13, is thirteen lines: grab three elements, then set the transform on click."
 />
 
 The JavaScript scrim is under four minutes and is the whole module's interactivity: hide the nav with `translateX(-100%)`, add a transition, then set the transform on click. The desktop lesson ends with a lesson in specificity, because the inline style set by JavaScript survives a resize and overrides the media query. Gary shows both fixes, an `!important` flag or a resize listener, and explains why the problem exists rather than hand-waving it.
@@ -164,7 +164,7 @@ The hero lesson stacks a drone image over a blurred copy of itself, then the ani
   alt="Build Websites with Figma, HTML, and CSS, Styling the Photo Gallery lesson: code editor beside a preview of a staggered drone photo grid."
   width={1400}
   height={660}
-  caption="Styling the Photo Gallery, paused at 5:26. The three quoted strings on the left are the grid, dots marking empty cells; the five photos on the right have just snapped into that shape after each image got its grid-area."
+  caption="Styling the Photo Gallery at 5:26: three quoted strings on the left are the grid, dots for empty cells, and the five photos on the right have just snapped into place after each got its grid-area."
 />
 
 The gallery lesson is the one I would show someone who thinks grid is hard. Three strings of letters and dots describe the layout, five `nth-of-type` rules assign each image a letter, and the pictures fall into place. The quote section uses the same `::before` overlay trick from module 2 for the stadium photo at 17 percent opacity, and a `cite::before` with a 1em `border-bottom` for the dash. The desktop lesson finishes with flex columns for the form and a negative margin to pull the gallery up over the quote. A z-index bug on the drone surfaces in Gary's final mobile check, and he fixes it on camera.

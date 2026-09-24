@@ -7,7 +7,7 @@ description: "Inside Scrimba's 30 minute Pro course on OpenAI's Assistants API: 
 keywords: [scrimba openai assistants api review, openai assistants tutorial, assistants api javascript, guil hernandez scrimba, openai threads runs messages, scrimba ai course review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -87,7 +87,7 @@ The project is five files: `config.js`, `index.html`, `index.css`, `index.js`, a
   alt="Learn OpenAI's Assistants API, Running Assistants lesson: a code editor showing a chatbot's message reply pasted in as a comment."
   width={1400}
   height={617}
-  caption="4:28 of Running Assistants. Guil pastes the console output into the file so you can read the message object: the assistant's reply (it recommends Barbie and The Menu, both from movies.txt) sits at index 0 of the data array, the user's question at index 1. Note the created_at timestamps from November 2023 and the [source] annotations he removes in the next scrim."
+  caption="Running Assistants at 4:28. The newest message sits at index 0, and the reply names Barbie and The Menu, both straight out of movies.txt, so retrieval is doing the work."
 />
 
 "Bring it all together" (8:50) is the longest scrim and the one that teaches you something the docs did not. Guil wires the calls to a form: create a message from the input, create a run, list messages, put the newest one on the page. It fails. The reply is the user's own question echoed back, because the run has not finished when the messages are read. "This is where the Assistants API and threads currently gets a bit weird," he says at 3:45.
@@ -97,7 +97,7 @@ The project is five files: `config.js`, `index.html`, `index.css`, `index.js`, a
   alt="Learn OpenAI's Assistants API, Bring it all together lesson: a chatbot preview echoing the user's own question back as the answer."
   width={1400}
   height={617}
-  caption="3:44 of Bring it all together: the first bug. The page reads the thread before the run finishes, so the newest message is still the user's question. This is the moment the run lifecycle stops being a diagram."
+  caption="Bring it all together hits its first bug at 3:44, because the page reads the thread before the run finishes: the run lifecycle stops being a diagram right here."
 />
 
 The fix is a polling loop: retrieve the run, wait 1.5 seconds, check again, until the status is `completed`. Guil admits he improvised it: "the OpenAI API docs doesn't exactly provide any snippets or even tips about polling for updates, but I did manage to put together some code that works for our app." He then adds run-level instructions to strip the `[source]` annotations, keep answers short, and refuse off-topic questions. The final demo asks for a follow-up ("which ones are great for children?"), an ambiguous query ("the movie with the actress from Her"), a memory check ("do you remember my name?"), an off-topic question about the sun, and finally "something that gives an adrenaline rush."
@@ -107,7 +107,7 @@ The fix is a polling loop: retrieve the run, wait 1.5 seconds, check again, unti
   alt="Learn OpenAI's Assistants API, Bring it all together lesson: the finished chatbot preview recommending a movie."
   width={1400}
   height={617}
-  caption="8:41, the finished app. Short reply, no annotations, and the recommendation comes from movies.txt. Everything you see was done with about 50 lines of index.js."
+  caption="About 50 lines of index.js produce the finished ReelRecs demo at 8:41, with the recommendation still tracing back to movies.txt."
 />
 
 ### 3. Wrap-up and house scrims (4 min, 3 scrims)

@@ -7,7 +7,7 @@ description: "Tom Chant's free Express.js course reviewed from inside: 4 hours, 
 keywords: [scrimba learn express, learn express.js scrimba review, express.js course scrimba, tom chant express course, free backend course, node express api course, express session bcrypt course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -85,7 +85,7 @@ Query parameters get an aside and then the module's biggest challenge, "Filterin
   alt="Learn Express.js, Filtering by Query Params challenge: code editor beside a network request tool showing a filtered JSON result."
   width={1400}
   height={629}
-  caption="Filtering by Query Params at 6:44. The Network tool on the right is Scrimba's own request client, so you test the API without leaving the scrim: the first test case (renewable energy, Germany, has_mvp=true) returns exactly one object, GreenGrid Energy, as the brief said it should."
+  caption="At 6:44 of Filtering by Query Params, the first test case (renewable energy in Germany, has_mvp=true) returns exactly one object, GreenGrid Energy, tested live in Scrimba's own request client."
 />
 
 Path parameters follow (an aside and two build scrims), then `express.Router()` and "Modularise The Code," which move the routes into their own file, a catch-all 404 for "Route Not Found," and CORS via the `cors` package. Two short scrims close the module, one of which is a pitch for Scrimba's affiliate program that you can skip.
@@ -112,7 +112,7 @@ The database section is four asides and four challenges. "Setting up the Databas
   alt="Learn Express.js, Add Search Functionality lesson: code editor beside a browser preview of the vinyl store's search results."
   width={1400}
   height={629}
-  caption="Add Search Functionality at 3:21, the last challenge of module two. Typing 'ec' into the search box narrows the grid live; the controller on the left builds a '%ec%' pattern and pushes it three times for the title, artist and genre placeholders, which Tom admits 'looks super clunky but it is the way to do it.'"
+  caption="Add Search Functionality at 3:21. The controller pushes the same '%ec%' pattern three times, once per placeholder, the clunky-looking shape Tom says is simply how it's done."
 />
 
 The last challenge, search with partial matching across title, artist, and genre, is the one Tom calls "perhaps the trickiest challenge," and he says outright that the generous hint file is there because "this is an express course more than a SQL course." If your SQL is weak, [Intro to SQL](/docs/courses/backend/sql/) before this module would help.
@@ -139,7 +139,7 @@ The order is careful. A `users` table, then a `/register` route, then an aside o
   alt="Learn Express.js, Login challenge: code editor beside a browser preview showing a signed-in welcome message."
   width={1400}
   height={629}
-  caption="Login at 7:18, right after Tom signs in with the test account and the page redirects. The header now reads Welcome, Test Account! because the frontend asked /api/auth/me and the session cookie answered. The bcrypt.compare line on the left is the whole password check."
+  caption="The session cookie answers /api/auth/me and updates the header, right after Tom signs in with the test account in Login at 7:18; the bcrypt.compare line on the left is the entire password check."
 />
 
 Logout is left to you ("it's gonna be a big challenge just for you"). Then the cart: a `cart_table`, adding to it, the cart count, and three consecutive "Cart Page Challenge" scrims. The module ends with an aside on protected routes and a challenge to write a `requireAuth` middleware that checks `req.session.userId`, returns a 401 if it is missing, and is mounted on every cart route. The outro suggests stretch goals (a payment gateway sandbox, a better frontend) and, more usefully, "go ahead and build your own project with Express from scratch. That is how you will consolidate the knowledge you got from this course."

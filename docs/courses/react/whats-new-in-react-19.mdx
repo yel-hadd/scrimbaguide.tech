@@ -7,7 +7,7 @@ description: "Bob Ziroll's free React 19 catch-up from inside: 69 minutes, 15 sc
 keywords: [scrimba react 19, whats new react 19, whats new in react 19 review, react 19 features, bob ziroll react 19, react use api, useactionstate scrimba, scrimba react 19 course review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -89,7 +89,7 @@ Part 1 is a guided reading of the code and the bug: click Products and then Abou
   alt="What's New in React 19, useTransition lesson: the preview shows a Loading message while a slow tab switch is pending."
   width={1400}
   height={660}
-  caption="4:19 of useTransition (2): the Products tab has just been clicked and isPending is true, so the preview shows Loading... instead of the 1,500-item list. The dependency panel on the left still says react@18.3.1 for these two scrims."
+  caption="At 4:19 of useTransition (2), isPending flips true the moment Products is clicked, well before the 1,500-item list is ready."
 />
 
 ### 2. React Compiler and form actions (12 min, 3 scrims)
@@ -109,7 +109,7 @@ Part 2 fixes the `(prevState, formData)` signature, returns the new name instead
   alt="What's New in React 19, useActionState Part 2 challenge: a comment brief asks for a loading message during the action."
   width={1400}
   height={660}
-  caption="2:10 of useActionState() Part 2: the challenge brief is a comment block in the editor, and the isPending value on line 7 is the only hint you get. Note the useActionState import: this is the React 19 release candidate."
+  caption="The only hint in this useActionState() Part 2 challenge, at 2:10, is the isPending value already sitting on line 7 of the file."
 />
 
 Part 3 is where the pattern earns its keep. Bob turns the state from a bare string into an object with `name` and `error` keys, then sets two more challenges. The first is to move the caught error message from the console into the UI; the second is to keep the previous name when returning the error (the trap is returning `{ error }` alone and losing `state.name`). The finished action returns `{ name: newName, error: null }` on success and `{ error, name: prevState.name }` on failure, and the error paragraph renders from `state.error`. By the end of this part you have deleted every `useState` call from the component, and Bob does a "sanity check" recap of exactly what went away.
@@ -119,7 +119,7 @@ Part 3 is where the pattern earns its keep. Bob turns the state from a bare stri
   alt="What's New in React 19, useActionState Part 3 lesson: the form shows a red error message after a failed update."
   width={1400}
   height={660}
-  caption="About 6:15 of useActionState() Part 3: typing the word error into the form makes the fake database throw, and the message now renders in the UI instead of the console. The highlighted username is Bob's own selection in the recording."
+  caption="useActionState() Part 3, about 6:15: typing the word error makes the fake database throw, and the failure now renders in the UI instead of the console."
 />
 
 ### 4. useOptimistic and useFormStatus (10 min, 2 scrims)
@@ -139,7 +139,7 @@ refs as props is under three minutes and has no runnable demo (Bob does not crea
   alt="What's New in React 19, use() lesson: the preview is blank and the console shows a Suspense related client error."
   width={1400}
   height={660}
-  caption="6:00 of use(): the component has suspended with nothing to catch it, so the preview is blank and the console shows the cryptic client-components error. The Suspense boundary comes 20 seconds later, and the uncached-promise warning after that."
+  caption="The exact failure at 6:00 of use() stops the demo cold: 'async/await is not yet supported in Client Components'."
 />
 
 The metadata scrim shows a `BlogPost` component rendering `<title>`, `<meta>` and `<link>` tags inside an `<article>`, which React 19 hoists into the document head; Bob proves it with a dev tools screenshot he took before recording rather than a live demo. The one minute conclusion sends people who found it hard back to [Learn React](/docs/courses/react/learn-react/) (which he was "just about to start rerecording from scratch" at the time, and has since) and people who want more to [Advanced React](/docs/courses/react/advanced-react/).

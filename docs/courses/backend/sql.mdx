@@ -7,7 +7,7 @@ description: "Gregor Thomson's free Learn SQL course reviewed from inside: 3.8 h
 keywords: [scrimba learn sql, learn sql scrimba review, learn sql free, gregor thomson sql, sql for beginners, interactive sql course, scrimba sql course review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-09-24
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -93,7 +93,7 @@ The OR lesson is the one to pay attention to. Gregor adds `AND condition > 3` to
   alt="Learn SQL, OR lesson: code editor beside query results still including rows that should be excluded."
   width={1400}
   height={660}
-  caption="The OR lesson at 2:42. The query has AND condition > 3 on the end, but the results still include cars in condition 1, 2 and 3. Gregor fixes it with brackets around the OR a few seconds later."
+  caption="The OR lesson at 2:42. AND condition > 3 changes nothing on its own, because AND binds tighter than OR without brackets around it."
 />
 
 The same lesson ends with a rule I had not seen stated so plainly in a beginner course: "we'll use equals for strings and numbers, and we'll use is for boolean or null values." Then come two scrims of harder challenges, then `ORDER BY`, `LIMIT`, and the aggregates, functions that turn a whole column into one number (`COUNT`, `SUM`, `MAX`, `MIN`, `AVG`, plus `FLOOR` and `CEIL` to tidy up decimals), `GROUP BY`, and `HAVING`. The HAVING challenge asks for a count, a max and a min per year, filtered to years with more than one sale and ordered by the count, which is a real report.
@@ -124,7 +124,7 @@ Alter table (9:48) is the lesson I would point a skeptic at. Adding a `dealershi
   alt="Learn SQL, Alter table lesson: code editor beside a database error message in the runner panel."
   width={1400}
   height={660}
-  caption="Alter table at 6:15. The INSERT at the bottom of the editor passes NULL for dealership_id on purpose, and the Runner prints the not-null constraint error from PGlite. The foreign key violation is demonstrated the same way a minute later."
+  caption="At 6:15, Alter table's INSERT deliberately passes NULL for dealership_id, and the Runner prints PGlite's not-null constraint error in response."
 />
 
 Joins get four scrims. A two minute explainer introduces inner, left, right and full joins ("this meme might help you visualize how the different joins work", over the usual Venn diagram), then Left and Right Join (8:50) works through them on `sold_cars` and `cars`, covering table aliases and why you must write `cars.id` when both tables have an `id`. Full join, inner join and drop (11:18) first has you drop a NOT NULL constraint so that some staff have no dealership, because otherwise a full join and an inner join would return the same rows. The challenge in that scrim is to fire a salesperson called Frankie Fender: drop a constraint, null out his sales, delete his row.
@@ -134,7 +134,7 @@ Joins get four scrims. A two minute explainer introduces inner, left, right and 
   alt="Learn SQL, Full join lesson: query results panel showing rows with null values from unmatched tables."
   width={1400}
   height={660}
-  caption="The full join at 5:35, scrolled to the bottom of the output: three new hires with no dealership yet (null city and state), then six dealerships with no staff (null name and role). Switching FULL to INNER removes all nine rows."
+  caption="The full join at 5:35: three new hires have null city and state, six dealerships have null name and role, and switching FULL to INNER removes all nine rows."
 />
 
 Aggregates (7:04) is three challenges in a row combining joins with GROUP BY: average price per dealership, total sales per salesperson, unsold cars per dealership including dealerships with none. That last one needs `WHERE sold IS NOT TRUE` rather than `sold IS FALSE`, and Gregor explains why in one line: "this has to do with something called three value logic in SQL, which considers null as neither true nor false." Joining multiple tables (7:59) chains three joins to pull the car, the seller, the city and a formatted sale date (`TO_CHAR`) into one result, then hands you two harder reports to build alone.
@@ -163,7 +163,7 @@ The three CASE lessons are the practical payoff. CASE in SELECT turns condition 
   alt="Learn SQL, CASE in SELECT lesson: code editor beside a results table pairing numbers with word labels."
   width={1400}
   height={660}
-  caption="CASE in SELECT at 3:21. The CASE block in the editor maps the numeric condition column to a word, and the Runner shows both side by side. The follow-up challenge uses the same shape to compute bonuses per staff member."
+  caption="CASE in SELECT at 3:21. The CASE block in the editor maps the numeric condition column to a word, and the Runner shows both side by side."
 />
 
 CASE challenges (5:18) closes with two reports: label each dealership as outperforming, meeting targets, underperforming or no sales, then count sales per quarter using `EXTRACT(MONTH FROM sold_date)`. A 46 second recap and Per's one minute "how to use your certificate" scrim finish the course.
