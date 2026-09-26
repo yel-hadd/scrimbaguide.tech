@@ -1,6 +1,7 @@
 import React from 'react';
 import { AFFILIATE_PARAM, MONETISED_HOSTS } from '@site/src/constants';
 import { affiliateDestination } from '@site/src/utils/affiliateDestination';
+import { contentGroup } from '@site/src/utils/contentGroup';
 
 declare global {
   interface Window {
@@ -23,6 +24,7 @@ export function trackAffiliateClick({
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
   const destination = affiliateDestination(url);
   window.gtag('event', 'affiliate_link_clicked', {
+    content_group: contentGroup(window.location.pathname),
     cta_type: ctaType,
     destination_type: destination.type,
     destination_slug: destination.slug,
