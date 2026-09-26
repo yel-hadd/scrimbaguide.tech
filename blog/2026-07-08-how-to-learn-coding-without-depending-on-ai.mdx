@@ -9,12 +9,11 @@ image: /img/blog/how-to-learn-coding-without-depending-on-ai.png
 image_alt: "How to learn to code with AI without getting dependent on it, on using AI as a tutor not a crutch, Scrimba Guide Blog"
 date: 2026-07-08
 last_update:
-  date: 2026-09-20
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import PricingCTA from '@site/src/components/PricingCTA';
 
@@ -23,7 +22,7 @@ import PricingCTA from '@site/src/components/PricingCTA';
 
 <DisclosureNotice />
 
-**The way to learn coding without becoming dependent on AI is to make the tool explain, never letting it produce. Set that as your default and dependency never gets a foothold, because the skill you would otherwise hand to the tool stays in your own hands.** This is a prevention guide for the beginner who can already ship something with ChatGPT or Copilot and quietly suspects the tool is doing the learning. If you are already past that point and cannot debug anything you did not prompt, that is a repair rather than prevention, and I walk through it in [going from vibe coder to real developer](/blog/vibe-coder-to-real-developer-2026/).
+**The way to learn coding without becoming dependent on AI is to make the tool explain, never letting it produce. Set that as your default and dependency never gets a foothold, because the skill you would otherwise hand to the tool stays in your own hands.** This is a prevention guide for the beginner who can already ship something with ChatGPT or Copilot and quietly suspects the tool is doing the learning. If you are already past that point and cannot debug anything you did not prompt, that is a repair job, not prevention, and the rest of this guide still gives you the drills to close the gap.
 
 {/* truncate */}
 
@@ -113,15 +112,45 @@ Whether AI writes the code was never the problem. The problem is whether you can
 
 Even experts misjudge this. A METR randomized controlled trial published in July 2025 (arXiv:2507.09089) found that 16 experienced open-source developers, working in large repositories they already knew well, took 19% longer to finish tasks when allowed to use early-2025 AI tools (Cursor Pro with Claude 3.5 and 3.7 Sonnet), even though they estimated the tools had made them about 20% faster. It was a narrow study, experienced people in code they knew, and the tooling has moved since. The lasting point is not "AI is slow." It is that the people best equipped to judge AI output were still off by roughly 40 points about their own speed, so a beginner who cannot read the output at all is flying blind. Let AI drive boilerplate you have hand-written many times and can verify instantly. Keep it away from the concept you are still trying to learn.
 
+There is one ban worth keeping outside the six rules: close AI entirely, not just for writing, while you fix a race condition, decide which piece of code owns a value it shares with others, or touch a language feature for the first time. Those are the three moments a fluent-sounding wrong answer costs you the most, because you do not yet have the judgment to catch it.
+
 ## Practice where you literally cannot copy-paste
 
 The fastest way to enforce all six rules at once is to practice somewhere copy-paste does not help you. The format does the discipline so you do not have to.
 
 Reading and changing code in an environment where the answer is not one paste away forces the exact loop the method is built on: you type, you run, you get it wrong, you read your way back to right. A blank editor with ChatGPT open in the next tab is the opposite, because it makes the crutch the path of least resistance. This is also why passive video falls short. Watching someone else type builds recognition, and recognition collapses the moment you face a blank file (more on that gap in [why interactive practice beats coding videos](/blog/scrimba-vs-youtube-coding/) and [why no-setup practice beats heavy tutorials](/blog/scrimba-instant-practice-no-setup/)).
 
-Scrimba is built around editing the instructor's code directly in the browser and running it, which is the method turned into a product: you cannot watch your way through it, you have to write. Its own AI feature respects the same rule: the EXPLAIN button in a lesson hands your highlighted code to [Scrimba Explain](/blog/scrimba-explain-review/), which explains it as a narrated video and never writes the answer for you. Its JavaScript and frontend courses are free to start, so you can find out whether forced-typing practice suits you before paying anything. If it clicks and you want the full sequence, the [frontend developer path](/docs/paths/frontend-developer-path/) runs on that format the whole way through, and Scrimba Pro is a low monthly subscription (see current [Scrimba pricing](/docs/pricing/)).
+Scrimba is built around editing the instructor's code directly in the browser and running it, which is the method turned into a product: you cannot watch your way through it, you have to write. Its own AI feature respects the same rule: the EXPLAIN button in a lesson hands your highlighted code to [Scrimba Explain](/blog/scrimba-explain-review/), which explains it as a narrated video and never writes the answer for you. [Learn JavaScript](/docs/courses/javascript/learn-javascript/) is free and shows the mechanism at full scale: Per Borgen's 9.4-hour course stops the recording well over a hundred times and makes you write the fix yourself before it shows its own, across builds that include a blackjack game and a Chrome extension. Find out there whether forced-typing practice suits you before paying anything. If it clicks and you want the full sequence, the [frontend developer path](/docs/paths/frontend-developer-path/) runs on that format for all 81.6 hours, 13 modules and 1,493 lessons, and Scrimba Pro is a low monthly subscription (see current [Scrimba pricing](/docs/pricing/)).
 
 I point there because the argument of this whole piece is that you keep the skill by doing the work yourself, and a format where you physically edit and run the code is that rule enforced by design instead of by willpower. (More on what sets the format apart in [what makes Scrimba different](/blog/what-makes-scrimba-different/).)
+
+## Can you explain these without AI? Run this check first
+
+Run this before the 30-day plan below, because it tells you which day one project to build. Six spots are where the crutch hides best, and each one has its own tell in production.
+
+| Topic | Ask yourself | If you can't, you'll see it as |
+| --- | --- | --- |
+| async/await + Promises | What is the code waiting on, and what runs before it finishes? | Random UI order, double submits, flaky tests |
+| Closures | Which variable does this inner function still remember after the outer one returns? | Stale counters, wrong callback values, small memory leaks |
+| undefined vs null + optional chaining | Why is this property missing instead of set to something? | White screens, "cannot read property of undefined" |
+| Array mutation vs new arrays | Did I change the array in place, or build a new one? | React skips the re-render and devtools show nothing wrong |
+| React state + batching | Where does this value actually live? | State fights, effect loops, a form that behaves differently on every load |
+| TypeScript errors | What is this error stopping me from shipping? | `any` everywhere, and type-checked bugs you shipped anyway |
+
+If you hesitate on more than two rows, do not start the 30-day plan yet. Fix the matching gap first with the courses below, then run the plan to prove it stuck.
+
+## Map each gap to a Scrimba course
+
+One free course, one Pro supplement, and one more free course cover five of the six gaps above; the closures gap needs a course this guide has not linked yet, because the obvious pick skips it.
+
+| Gap | Course | Module that fixes it |
+| --- | --- | --- |
+| async/await + Promises | [The Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript/) | Its "Promises, fetch, Promise.all, async/await" module: 22 minutes of Zack Wilson rewriting the same fetch call three ways and making you predict what `Promise.all` logs before he runs it |
+| Closures | [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), not the two above | [Learn JavaScript](/docs/courses/javascript/learn-javascript/) never reaches closures, and Zack Wilson's own outro in Tricky Parts names closures as "what to learn next," not what his course teaches. Advanced JavaScript is the one on this site that does |
+| undefined vs null + TypeScript errors | [Learn TypeScript](/docs/courses/typescript/learn-typescript/) | Its "TypeScript Fundamentals" module: Bob Ziroll fixes "object is possibly undefined" with an `if` guard before he teaches the syntax for it, then makes you write the guard yourself |
+| Array mutation + React state | [Learn React](/docs/courses/react/learn-react/) | Its "React State" module, 5.2 hours across 57 lessons: you change one piece of state and watch the preview re-render beside your code, so the mutation bug that a static tutorial hides becomes visible the moment you cause it |
+
+[The Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript/) runs 59 minutes across 20 lessons on Scrimba's own count and needs Pro. [Learn JavaScript](/docs/courses/javascript/learn-javascript/), [Learn React](/docs/courses/react/learn-react/) and [Learn TypeScript](/docs/courses/typescript/learn-typescript/) are all free.
 
 ## A 30-day plan to keep your raw coding skill while you use AI
 
@@ -135,7 +164,7 @@ Week 3: add the quiz loop and a no-AI day. Have the AI generate bugs for you to 
 
 Week 4: ship one project start to finish with AI closed, then write a short post-mortem and ask the AI to critique the finished result. If you can build it without the tool, you own the skill. If you cannot, you have found exactly which concept you offloaded, and that is your next week.
 
-The trap throughout is the comfortable feeling of progress that comes from reading working code, the same feeling that keeps people stuck in [tutorial hell](/blog/how-to-escape-tutorial-hell-2026/). Real progress feels worse, because it is the friction of producing something yourself and getting it wrong. So here is the concrete first move, and you can make it in the next ten minutes. Open your most recent project, pick one function you supposedly wrote this month, delete it, and rewrite it from a blank file with every AI tool closed. Whether that feels easy or impossible is the only honest measure of how much you have been learning, and either answer tells you what to do next.
+The trap throughout is the comfortable feeling of progress that comes from reading working code, the same feeling that keeps people stuck in [tutorial hell](/docs/how-it-works/tutorial-hell/). Real progress feels worse, because it is the friction of producing something yourself and getting it wrong. So here is the concrete first move, and you can make it in the next ten minutes. Open your most recent project, pick one function you supposedly wrote this month, delete it, and rewrite it from a blank file with every AI tool closed. Whether that feels easy or impossible is the only honest measure of how much you have been learning, and either answer tells you what to do next.
 
 ## Frequently asked questions
 

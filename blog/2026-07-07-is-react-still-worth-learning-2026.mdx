@@ -9,13 +9,14 @@ image: /img/blog/is-react-still-worth-learning-2026.png
 image_alt: "Is React still worth learning in 2026, on the modern React stack and the 2026 jobs data, Scrimba Guide Blog"
 date: 2026-07-07
 last_update:
-  date: 2026-09-22
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import PricingCTA from '@site/src/components/PricingCTA';
+import AffiliateLink from '@site/src/components/AffiliateLink';
 
 <DocFaqSchema
   questions={[
@@ -50,15 +51,15 @@ import PricingCTA from '@site/src/components/PricingCTA';
 
 <DisclosureNotice />
 
-**Yes, React is still worth learning in 2026, and the jobs data is not close. The qualifier that matters is which React: the version worth your months is React 19 with hooks and the App Router, not the class-component React most older free tutorials still teach.** If you are about to spend a summer on it and you are scared of picking something that is already obsolete, the framework is a safe bet. The tutorial you pick is what decides whether you learn 2026 React or 2021 React.
+**Yes, React is still worth learning in 2026, and the jobs data is not close. The qualifier that matters is which React: the version worth your months is React 19 with hooks and the App Router, not the class-component React most older free tutorials still teach.** Pick the wrong tutorial and you learn 2021 React. Pick the right one and you learn the React that gets interviews.
 
 {/* truncate */}
 
-## Short answer: yes, but not the React you learned in 2022
+## Is React still worth learning in 2026?
 
-Yes. React is still the safest single thing a frontend beginner can learn in 2026, because it has more open roles and more learning material than any other UI library, and its hiring demand has held flat while newer frameworks trade small slices of attention. The qualifier is the whole article: the React that gets you hired is not the React a three-year-old playlist teaches.
+Yes. React is still the safest single thing a frontend beginner can learn in 2026: it has more open roles and more learning material than any other UI library, and its hiring demand has held flat while newer frameworks trade small slices of attention. The React that gets you hired is not the React a three-year-old playlist teaches, and that gap is the real subject of this article.
 
-As of June 2026, the most recent Stack Overflow survey, the 2025 edition, puts React at 44.7% usage, behind only Node.js at 48.7%. Node.js is a runtime, not a UI framework, so it sits on top of a combined list of web technologies. Among the UI frameworks, React leads by a wide margin, ahead of Angular at 18.2% and Vue at 17.6%. That is the latest published data, since Stack Overflow only opened its 2026 survey on June 23, 2026, so there are no 2026 numbers yet. If your real question is whether a junior can still get hired in this market at all, I answer that one in [the junior developer job market in 2026](/blog/junior-developer-job-market-2026/) and will not re-argue it here. The door is open. This piece is about what to walk through it with.
+As of June 2026, the most recent Stack Overflow survey, the 2025 edition, puts React at 44.7% usage, behind only Node.js at 48.7%. Node.js is a runtime, not a UI framework, so it sits on top of a combined list of web technologies. Among the UI frameworks, React leads by a wide margin, ahead of Angular at 18.2% and Vue at 17.6%. That is the latest published data: Stack Overflow only opened its 2026 survey on June 23, 2026, so there are no 2026 numbers yet. Whether a junior can still get hired in this market at all is a separate question, and I answer it in [the 2026 junior developer job market](/blog/junior-developer-job-market-2026/). The door is open. This piece is about what to walk through it with.
 
 ## What the 2026 jobs data actually shows
 
@@ -76,31 +77,31 @@ It happened with hooks. When function components and hooks arrived in 2019, a wa
 
 The stack worth learning in 2026 is React 19, function components with hooks, and increasingly Next.js with the App Router. React 19 shipped as stable on December 5, 2024, bringing Actions, the useActionState and useOptimistic hooks, the use() API, and stable Server Components, according to the official react.dev release post. These are not fringe features. As of June 2026, about 48% of daily React users in the State of React 2025 survey are already on React 19, with another 41% or so still on React 18, so the version you should learn is the one most working React developers have already moved to.
 
-On the framework side, as of June 2026 the App Router, which renders Server Components by default, is the way new Next.js apps are built, while the older Pages Router is no longer the path Next.js recommends for new projects. That guidance is Next.js's own rather than a survey headline. One practical note before you panic-buy a Next.js course: the App Router builds on React you should already know, so it is the last layer, not the first. Most of the 2026 stack is also written in TypeScript now, which is why I tell React learners to pick up [TypeScript alongside JavaScript](/blog/should-javascript-developers-learn-typescript-2026/) rather than treating it as a separate later project.
+On the framework side, as of June 2026 the App Router, which renders Server Components by default, is the way new Next.js apps are built, while the older Pages Router is no longer the path Next.js recommends for new projects. That guidance is Next.js's own, not a survey headline. One practical note before you buy a Next.js course: the App Router builds on React you should already know, so it is the last layer, not the first. Most of the 2026 stack is also written in TypeScript, so learn [TypeScript alongside JavaScript](/blog/best-typescript-courses/) rather than saving it for later.
 
-## The honest catch: Server Components split working developers
+## Do I need to learn React Server Components in 2026?
 
 Server Components are the most divisive part of modern React, and that split is the single best reason not to start there. As of June 2026, Server Components and Server Functions land as the third and fourth most-disliked new features in the State of React 2025 survey. Not the single most disliked, but high enough that two of the marquee additions to modern React are openly unpopular with the developers using them.
 
-The friction is real and specific. As of June 2026, the most-cited pain point developers raise about Server Components is Context API incompatibility, the top issue in that survey at 59 mentions, because patterns that worked fine in client-side React break or need rethinking on the server. And adoption is still early: as of June 2026, fewer than half of developers have tried React Server Components in new projects, roughly 45% by one reading of the survey. Keep the source in scope, though. The State of React 2025 numbers come from a Devographics survey of 3,760 respondents collected between November 2025 and January 2026, with a sample that skews toward more plugged-in developers, so the real-world tried-it rate across all developers is probably lower than what the survey shows.
+The friction is real and specific. As of June 2026, the most-cited pain point developers raise about Server Components is Context API incompatibility, the top issue in that survey at 59 mentions, because patterns that worked fine in client-side React break or need rethinking on the server. And adoption is still early: as of June 2026, fewer than half of developers have tried React Server Components in new projects, roughly 45% by one reading of the survey. The State of React 2025 numbers come from a Devographics survey of 3,760 respondents collected between November 2025 and January 2026, with a sample that skews toward more plugged-in developers, so the real-world tried-it rate across all developers is probably lower than what the survey shows.
 
-Here is my actual opinion, since the data leaves room for one. Server Components are the right long-term direction for React, and the wrong starting point for a beginner. They solve problems you only feel once you have shipped a client-side app and watched it get slow. Start with them and you are learning the cure for a pain you have never had, on the least-loved, least-stable corner of the API. Learn client-side React 19 first. Add Server Components when you reach Next.js and they have a problem to solve.
+My take: Server Components are the right long-term direction for React and the wrong starting point for a beginner. They solve problems you only feel once you have shipped a client-side app and watched it get slow. Start with them and you are learning the cure for a pain you have never had, on the least-loved, least-stable corner of the API. Learn client-side React 19 first. Add Server Components when you reach Next.js and they have a problem to solve.
 
 ## Who should still learn React in 2026 (and who shouldn't)
 
 [Learn React](/docs/courses/react/learn-react/) if you want a frontend or fullstack web job, want to fish in the largest hiring pool, or know you will end up in Next.js. That covers most people reading a "should I learn React" post, and for them the answer is a clean yes. React is one skill inside a broader frontend toolkit, so once it clicks, widen out using the rest of the [frontend developer skills for 2026](/blog/frontend-developer-skills-2026/) rather than collecting React APIs in isolation.
 
-There are people who should not start with React, and it is worth being honest about them. If you have not learned JavaScript yet, React will feel like memorizing magic words, because React is JavaScript and assumes you can already write it. Learn the language first, then the library. If you are aiming at pure backend or data work, React is optional and you can skip it for now. And if all you need is a small static marketing site, React is more machinery than the job calls for. For everyone whose target job description has the word React in it, which is most frontend and fullstack postings, the [React course catalog](/docs/courses/react/) is the thing to point yourself at.
+Some readers should skip React for now. If you have not learned JavaScript yet, React will feel like memorizing magic words, because React is JavaScript and assumes you can already write it: learn the language first, then the library. If you are aiming at pure backend or data work, React is optional. And if all you need is a small static marketing site, React is more machinery than the job calls for. For everyone whose target job description has the word React in it, which is most frontend and fullstack postings, the [React course catalog](/docs/courses/react/) is the thing to point yourself at.
 
 ## How to learn modern React in 2026 without drowning
 
 Learn it in order: solid JavaScript first, then client-side React 19 with hooks, then a real project, then Next.js and the App Router last. The order is the difference between modern React feeling learnable and feeling like drowning, because each layer assumes the one before it.
 
-The drowning usually comes from the source, not the subject. A random YouTube playlist from 2021 teaches class components, lifecycle methods, and patterns React itself now steers you away from, and a beginner cannot tell which parts have expired. You end up learning two Reacts at once, the dated one in the video and the current one in the docs, and blaming yourself for the confusion. I get into why unsequenced video falls down for this specifically in [Scrimba versus YouTube for learning to code](/blog/scrimba-vs-youtube-coding/). The fix is a path where someone has already removed the 2021 detours and put the lessons in an order that builds.
+The drowning usually comes from the source, not the subject. A random YouTube playlist from 2021 teaches class components, lifecycle methods, and patterns React itself now steers you away from, and a beginner cannot tell which parts have expired. You end up learning two Reacts at once, the dated one in the video and the current one in the docs, and blame yourself for the confusion. [Scrimba versus YouTube for learning to code](/blog/scrimba-vs-youtube-coding/) covers why unsequenced video fails at exactly this. The fix is a path where someone has already removed the 2021 detours and put the lessons in an order that builds.
 
-That is also why I point React learners toward editing real code over watching it. Scrimba teaches React by having you change and run actual components in the browser from the first lesson, which is the same loop you will use on the job: read a component, edit it, see what breaks, fix it. Its JavaScript and React intros are free to start, so you can find out whether the interactive format clicks before paying anything. If it does, Scrimba Pro is a low monthly subscription (see current [Scrimba pricing](/docs/pricing/)), and the [frontend developer path](/docs/paths/frontend-developer-path/) sequences React in with the JavaScript, TypeScript, and project work around it.
+I reviewed [Scrimba's Learn React course](/docs/courses/react/learn-react/) with a Pro account this year. Bob Ziroll teaches it hooks-first across about 15 hours and six projects, and two of the six are worth a portfolio slot on their own: Chef Claude, a recipe app that calls Anthropic's Claude API, and Assembly: Endgame, a hangman game with two accessibility passes. You edit his code directly in the browser and watch the component re-render next to it, the same loop you use on the job: read a component, change it, see what breaks, fix it. Every section and both capstones are free, so the interactive format costs you nothing to test. If it clicks, <AffiliateLink href="https://scrimba.com/frontend-path-c0j">the Frontend Developer Path</AffiliateLink> sequences that same React course into an 81.6-hour, MDN-endorsed track through HTML, CSS, JavaScript, TypeScript, and React (see current [Scrimba pricing](/docs/pricing/) for the path).
 
-For the exact module order I would follow, from JavaScript fundamentals through React 19, I lay the whole sequence out in [the Scrimba React learning path](/blog/scrimba-react-learning-path/) so you are not guessing what comes next.
+The exact module order to follow, from JavaScript fundamentals through React 19, is laid out in [the Scrimba React learning path](/blog/scrimba-react-learning-path/), so you are not guessing what comes next.
 
 ## React vs Vue, Svelte, and Angular in 2026
 

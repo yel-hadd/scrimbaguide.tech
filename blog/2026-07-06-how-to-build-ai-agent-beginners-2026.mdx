@@ -9,7 +9,7 @@ image: /img/blog/how-to-build-ai-agent-beginners-2026.png
 image_alt: "How to build your first AI agent in 2026 with JavaScript, plus MCP and context engineering explained, Scrimba Guide Blog"
 date: 2026-07-06
 last_update:
-  date: 2026-07-06
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
@@ -102,7 +102,7 @@ MCP is a shared standard for telling a model what tools and data it can use, so 
 
 The timeline is what makes it worth your attention rather than a passing acronym. Anthropic introduced the Model Context Protocol and open-sourced it on November 25, 2024, as an open standard for connecting models to tools and data. In March 2025 OpenAI adopted MCP, with Sam Altman saying support would roll out across OpenAI's products. Google followed in April 2025, with DeepMind CEO Demis Hassabis confirming Gemini would support MCP. Within about five months of launch, MCP had backing from all three major model vendors, which almost never happens that fast with a new standard.
 
-Here is the honest part most explainers skip: you do not need MCP for your first agent. The build below uses one inline tool, defined right in your own code, and that is the right place to start. MCP earns its keep later, when you want the same tool reused across different models or exposed to other people's agents without rewriting the glue each time. When you reach that point, the [Intro to Model Context Protocol course](/docs/courses/ai/model-context-protocol-mcp/) walks through exposing a tool over the protocol rather than hard-wiring it.
+You do not need MCP for your first agent. The build below uses one inline tool, defined right in your own code, and that is the right place to start. MCP earns its keep later, when you want the same tool reused across different models or exposed to other people's agents without rewriting the glue each time. I reviewed Scrimba's [Intro to Model Context Protocol course](/docs/courses/ai/model-context-protocol-mcp/) scrim by scrim with a Pro account: Maham Codes teaches it in 17 scrims over about 37 minutes, and you build a weather MCP server in Node.js and TypeScript with one tool, one resource, and a STDIO transport, the exact step past the inline tool below.
 
 ## What context engineering actually means
 
@@ -110,7 +110,7 @@ Context engineering is deciding what information and tools to put in front of th
 
 That said, the problem it points at is real, and two of the companies pushing the term define it usefully. LangChain's working definition is "building dynamic systems to provide the right information and tools in the right format such that the LLM can plausibly accomplish the task" (The rise of context engineering, June 2025). Anthropic frames it as "the set of strategies for curating and maintaining the optimal set of tokens (information) during LLM inference" (Effective context engineering for AI agents, September 2025), which is a fancier name for the old question of what you put in the context window and when.
 
-The reason it matters more for agents than for plain prompts is the loop. A prompt is one input you write once and tune by hand. An agent accumulates context as it runs: your question, the tool calls, every result those calls returned, and its own intermediate reasoning. By the tenth step the window can be full of stale tool output that crowds out the thing the model needs to answer well. Context engineering is the work of keeping that window useful while the agent runs, and the [Learn Context Engineering course](/docs/courses/ai/context-engineering/) is built around exactly that token-budget problem.
+The reason it matters more for agents than for plain prompts is the loop. A prompt is one input you write once and tune by hand. An agent accumulates context as it runs: your question, the tool calls, every result those calls returned, and its own intermediate reasoning. By the tenth step the window can be full of stale tool output that crowds out the thing the model needs to answer well. Scrimba's [Learn Context Engineering course](/docs/courses/ai/context-engineering/), reviewed here in full, is built around exactly that token-budget problem: Arsala Khan's one-hour course over 15 scrims has you add a system prompt to one chat app, then trim old messages by token count, then replace them with an AI-written summary once the app starts forgetting.
 
 ## What you need before you build your first agent
 
@@ -180,9 +180,9 @@ The fixes map directly onto the definitions above. Cap the steps, which the exam
 
 Once you have felt where the toy version strains, the forgetting, the runaway loops, the pain of wiring each new tool by hand, the next move is to learn the upgrades in the order a real project needs them: retrieval so the agent can pull from your own documents, MCP so tools are reusable instead of hard-wired, and a deploy so it runs somewhere other than your terminal.
 
-That is the gap a guided sequence closes. Scrimba's AI Engineer Path runs about 11.4 hours, taught entirely in JavaScript and TypeScript (no PyTorch), covering agents, RAG, MCP, the Vercel AI SDK, embeddings, and a Cloudflare Workers deploy, with the MCP and Context Engineering modules added recently. I broke down the full module list and who it suits in the [AI Engineer Path review](/blog/scrimba-ai-engineer-path-guide/), and there is a free intro scrim with Tom Chant so you can test the edit-the-code format before paying anything. If it clicks, Pro is a low monthly subscription (see current [Scrimba pricing](/docs/pricing/)).
+That is the gap a guided sequence closes. Scrimba's [AI Engineer Path](/docs/paths/ai-engineer-path/) runs about 11.4 hours across nine modules, taught entirely in JavaScript and TypeScript (no PyTorch): you build a ReAct agent by hand, run retrieval over your own data, and deploy a Node app to Render, with MCP and Context Engineering added as their own modules recently. I broke down the full module list and who it suits in the [AI Engineer Path review](/blog/scrimba-ai-engineer-path-guide/), and there is a free intro scrim with Tom Chant so you can test the edit-the-code format before paying anything. If it clicks, Pro is a low monthly subscription (see current [Scrimba pricing](/docs/pricing/)).
 
-I point you there for one reason: the path teaches MCP and context engineering as the named answers to the exact failures your forty-line agent just hit, in roughly the sequence a real build follows. For the deeper why-JavaScript argument, [how to learn AI engineering on Scrimba](/blog/learn-ai-engineering-scrimba/) covers the same ground from the curriculum side.
+I point you there for one reason: the path teaches MCP and context engineering as the named answers to the exact failures your forty-line agent just hit, in roughly the sequence a real build follows. For the deeper why-JavaScript argument, [Scrimba's AI courses](/docs/courses/ai/) covers the same ground from the curriculum side.
 
 ## Common beginner mistakes when building AI agents
 
@@ -204,7 +204,7 @@ So here is the concrete next step, and you can finish it today. Build the weathe
 
 **What is the difference between an AI agent and a single prompt?** A single prompt sends one input and gets one answer back. An agent can take actions between the question and the answer. Anthropic defines agents as systems where the model directs its own steps and tool use, as opposed to workflows where the code path is fixed in advance. The loop that lets the model decide its next step is what makes it an agent.
 
-**How long does it take to learn to build AI agents?** A first working agent takes an afternoon. Getting reliable agents that handle retrieval, multiple tools, and deployment takes longer. Scrimba's AI Engineer Path covers that ground in 11.4 hours of interactive lessons, taught in JavaScript and TypeScript, which is a realistic estimate for the full on-ramp rather than the toy version.
+**How long does it take to learn to build AI agents?** A first working agent takes an afternoon. Getting reliable agents that handle retrieval, multiple tools, and deployment takes longer. Scrimba's [AI Engineer Path](/docs/paths/ai-engineer-path/) covers that ground in 11.4 hours of interactive lessons, taught in JavaScript and TypeScript, which is a realistic estimate for the full on-ramp rather than the toy version.
 
 <PricingCTA
   title="Go past the toy agent"

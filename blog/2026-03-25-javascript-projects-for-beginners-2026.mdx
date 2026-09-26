@@ -10,7 +10,7 @@ image_alt: "JavaScript Projects for Beginners 2026, Scrimba Guide Blog"
 hideFooterPricingCta: false
 date: 2026-03-25
 last_update:
-  date: 2026-05-28
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
@@ -49,7 +49,9 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 <DisclosureNotice />
 
-**Beginner JavaScript projects** are small applications, todo lists, timers, quiz flows, API readers, that force you to type logic, handle edge cases, and deploy something public. In 2026 they still beat passive courses because they train **recall** under uncertainty: blank files, real errors, and users (even if the only user is you on mobile). This list ranks **learning value** (debugging depth, shipping habits, API literacy) rather than “easiest first.”
+Beginner JavaScript projects, todo lists, timers, quiz flows, API readers, teach more than tutorials because you type the logic, hit the edge cases, and deploy something real. The 20 below are ranked by what they train, state, fetch, deploy discipline, so a portfolio site outranks a calculator even though the calculator is simpler to build.
+
+*The Scrimba specifics below (module names, scrim counts, instructors) come from our own course reviews, each written after going through the course inside a Pro account. Full sourcing is in `data/courses.json` and the linked review pages.*
 
 {/* truncate */}
 
@@ -57,7 +59,7 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
   name="JavaScript projects for beginners (2026), ranked by learning value"
   description="Twenty project ideas that prioritize debugging practice, deployment, and API literacy over novelty."
   items={[
-    { name: 'Portfolio site', description: 'Shipping, storytelling, accessibility, deploy pipeline.', url: '/blog/web-development-roadmap-2026' },
+    { name: 'Portfolio site', description: 'Shipping, storytelling, accessibility, deploy pipeline.', url: '/blog/how-long-to-learn-web-development-2026/' },
     { name: 'Expense tracker', description: 'CRUD, validation, persistence, reporting basics.', url: '/docs/courses/javascript/learn-javascript' },
     { name: 'Weather app (fetch API)', description: 'Async UI, loading and error states, env keys.', url: '/docs/courses/javascript/learn-javascript' },
     { name: 'To-do list app', description: 'State transitions, filtering, local storage patterns.', url: '/docs/courses/javascript/learn-javascript' },
@@ -80,17 +82,17 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
   ]}
 />
 
-Use it alongside [/docs/courses/javascript/](/docs/courses/javascript/) and [/docs/courses/react/](/docs/courses/react/) on this site, and our [escape tutorial hell](/blog/how-to-escape-tutorial-hell-2026/) playbook when projects stall.
+Use it alongside [/docs/courses/javascript/](/docs/courses/javascript/) and [/docs/courses/react/](/docs/courses/react/) on this site, and our [escape tutorial hell](/docs/how-it-works/tutorial-hell/) playbook when projects stall.
 
-## How we ranked “learning value”
+## How we ranked "learning value"
 
-Higher rank means more **transfer** to job tasks: persistence, async UX, security instincts, deploy discipline. “Beginner” and “intermediate” tags describe **complexity**, not quality, an intermediate build with a narrow scope is still valid.
+Higher rank means more transfer to job tasks: persistence, async UX, security instincts, deploy discipline. "Beginner" and "intermediate" describe complexity, not quality. A narrow, well-scoped intermediate build still counts.
 
 ## Master table (all 20 projects)
 
 | Rank | Project | What it teaches | Difficulty | Scrimba-aligned starting point |
 | ---: | --- | --- | --- | --- |
-| 1 | Portfolio site | Deploy pipeline, content hierarchy, performance basics | Beginner | Path capstones + [deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/) |
+| 1 | Portfolio site | Deploy pipeline, content hierarchy, performance basics | Beginner | [Frontend Developer Path](/docs/paths/frontend-developer-path/) capstones + [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/) |
 | 2 | Expense tracker | CRUD, validation, totals, persistence | Intermediate | [Learn JavaScript](/docs/courses/javascript/learn-javascript/) projects lane |
 | 3 | Weather app | `fetch`, loading/error UI, env vars | Beginner | Vanilla fetch drills in [Learn JavaScript](/docs/courses/javascript/learn-javascript/) |
 | 4 | To-do list | State, filters, localStorage | Beginner | Classic path milestone |
@@ -102,7 +104,7 @@ Higher rank means more **transfer** to job tasks: persistence, async UX, securit
 | 10 | Image search (Unsplash) | Keys, quotas, query UX | Intermediate | API + images |
 | 11 | Recipe finder | Nested data, filters | Intermediate | JSON transforms |
 | 12 | URL shortener | IDs, collisions, optional serverless | Intermediate | Backend-light variant OK |
-| 13 | Mini social feed | Lists, optimistic UI | Intermediate | [React challenges](/docs/courses/react/react-challenges/) |
+| 13 | Mini social feed | Lists, optimistic UI | Intermediate | [React Challenges](/docs/courses/react/react-challenges/) |
 | 14 | Typing speed test | Keyboard events, timing | Beginner | Input handling |
 | 15 | Budgeting tool | Forms, categories, exports | Intermediate | Data entry UX |
 | 16 | Password generator | Randomness, clipboard | Beginner | Crypto `getRandomValues` |
@@ -111,48 +113,50 @@ Higher rank means more **transfer** to job tasks: persistence, async UX, securit
 | 19 | Random quote generator | `fetch`, retries | Beginner | Smallest useful API app |
 | 20 | Drum machine | Audio timing | Intermediate | Media APIs |
 
-## Group A, Pure JavaScript (no framework)
+## Group A, pure JavaScript (no framework)
 
-These belong early if you still pause on **events**, **DOM updates**, and **`async/await`**.
+Build these first if you still pause on events, DOM updates, and `async/await`.
 
-- **Calculator**: forces you to handle bad input and reset state without React masking data flow.
-- **Random quote generator**: minimal surface area, perfect for fetch-and-render repetition.
-- **Typing speed test**: excellent for timer literacy and focus edge cases.
+- **Calculator**: forces you to handle bad input and reset state without React masking the data flow. [Learn JavaScript](/docs/courses/javascript/learn-javascript/)'s blackjack game module runs the same muscle for 2.7 hours across 55 scrims, holding card state and betting logic by hand before you ever meet `useState`.
+- **Random quote generator**: minimal surface area, good for fetch-and-render repetition.
+- **Typing speed test**: timer literacy and focus edge cases.
 - **Password generator**: a practical Web Crypto or `getRandomValues` introduction.
-- **Color palette generator**: teaches HSL/RGB intuition and contrast thinking for real UIs.
+- **Color palette generator**: HSL and RGB intuition and contrast thinking for real UIs.
 - **Drum machine**: makes timing bugs obvious, and it is fun if you like tactile feedback loops.
 
-Anchor your reading with [Learn JavaScript](/docs/courses/javascript/learn-javascript/) and keep one tab open to [how to escape tutorial hell](/blog/how-to-escape-tutorial-hell-2026/) when you want to peek at solutions.
+Anchor your reading with [Learn JavaScript](/docs/courses/javascript/learn-javascript/), Per Borgen's free 9.4-hour course, and keep [how to escape tutorial hell](/docs/how-it-works/tutorial-hell/) open when you want to peek at a solution without copying it.
 
 ## Group B, React projects (after JS clicks)
 
-Move here when you can scaffold **createRoot**, **useState**, and **useEffect** purposefully, not by muscle memory from a video alone.
+Move here once you can scaffold `createRoot`, `useState`, and `useEffect` on purpose, not from muscle memory left over from a video.
 
 - **To-do list (React version)**: still the best state-lifting teaching tool.
-- **Flashcard app**: great for component boundaries (card, deck, session summary).
-- **Quiz app**: practice controlled flows and derived state.
-- **Mini social feed**: teaches list rendering, keys, and empty states that feel social.
-- **Markdown previewer**: pairs React with sanitized-HTML habits.
+- **Flashcard app**: good for component boundaries (card, deck, session summary). [Learn React](/docs/courses/react/learn-react/)'s Tenzies capstone builds a similar boundary problem, a `Die` component feeding a parent's win check, in 19 scrims.
+- **Quiz app**: practice controlled flows and derived state. The same course's Assembly: Endgame capstone (28 scrims) is a hangman clone that tracks guessed letters, disables the keyboard on game over, and picks a new word on reset, the closest Scrimba analog to a quiz engine.
+- **Mini social feed**: list rendering, keys, and empty states that feel social.
+- **Markdown previewer**: pairs React with sanitized-HTML habits. [Dylan C. Israel's Markdown course](/docs/courses/javascript/markdown/) covers the syntax itself in 26 scrims if you need the reference before wiring up a renderer.
 
-Deep links: [Learn React](/docs/courses/react/learn-react/), [React Router](/docs/courses/react/react-router/), and the guided [movie search app](/docs/courses/react/a-react-project-movie-search-app/) write-up.
+Deep links: [Learn React](/docs/courses/react/learn-react/), taught by Bob Ziroll across six projects and about 15 hours, [React Router](/docs/courses/react/react-router/), and the [Movie Search App](/docs/courses/react/a-react-project-movie-search-app/) project write-up.
 
 ## Group C, API and integration projects
 
-These builds still need **vanilla fetch** clarity even if the UI is React, debugging networks is a career skill.
+These still need vanilla `fetch` clarity even when the UI is React. Debugging a network request is a career-long skill.
 
-- **Weather app**: the classic loading / success / failure triad.
-- **GitHub profile viewer**: pagination and schema drift (API fields change).
+- **Weather app**: the classic loading, success, failure triad.
+- **GitHub profile viewer**: pagination and schema drift (API fields change on you).
 - **Image search**: rate limits and lazy loading stress your layout skills.
-- **Recipe finder**: nested attributes train defensive rendering (`?.` patterns).
-- **URL shortener**: even a mock-persistence version teaches ID design, and a tiny serverless function is a bonus.
+- **Recipe finder**: nested attributes train defensive rendering with `?.` patterns. [Learn React](/docs/courses/react/learn-react/)'s own recipe app, the Chef Claude project inside the React State module, does exactly this: 58 scrims that end by wiring a form to the Claude API and rendering whatever comes back.
+- **URL shortener**: even a mock-persistence version teaches ID design, and a small serverless function is a bonus.
 
-## Making Scrimba course projects “yours”
+James Q Quick's [Movie Search App](/docs/courses/react/a-react-project-movie-search-app/) project is the closest single Scrimba build to this whole group: 13 scrims fetching from The Movie Database API, handling loading and empty states, and rendering a results grid.
 
-Scrimba paths already include interactive versions of **movie search**, **color tools**, **games**, and **React** apps. The hiring mistake is submitting **unchanged** coursework.
+## Making Scrimba course projects "yours"
 
-**Upgrade path:** fork mentally, not literally, re-theme, add **one data source**, add **one analytics or a11y feature**, and rewrite the README as if you were handing off to a teammate.
+Scrimba's courses already include working versions of a movie search app, a recipe finder, dice and word games, and several React builds. Submitting one of them unchanged is the hiring mistake: a reviewer who has seen the course recognizes the layout in ten seconds.
 
-If you want the full interactive library, open <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986&utm_source=scrimbaguide&utm_medium=blog&utm_campaign=javascript-projects-for-beginners-2026&utm_content=inline">Scrimba Pro pricing</AffiliateLink>.
+Fork the idea, not the file. Re-theme it, add one real data source of your own, add one feature the course never asked for (an analytics event, a keyboard shortcut, a contrast fix), and rewrite the README as if you were handing the repo to a teammate who has never seen the course.
+
+Scrimba's paths bundle these projects with the surrounding curriculum; see <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what that costs where you live.
 
 ## Suggested 4-week rotation (10–12 hours/week)
 
@@ -174,15 +178,16 @@ If you want the full interactive library, open <AffiliateLink href="https://scri
 
 ## Tie-ins across this site
 
-- Roadmap timing: [Web development roadmap 2026](/blog/web-development-roadmap-2026/)
-- Career context: [Is web development worth it in 2026?](/blog/is-web-development-worth-it-2026/)
+- Roadmap timing: [How long it takes to learn web development](/blog/how-long-to-learn-web-development-2026/)
+- Career context: [Is software engineering dead in 2026?](/blog/is-software-engineering-dead-2026/)
 - Format comparison: [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/)
 
 ## Bottom line
 
-Pick from the **master table**, finish **one vertical slice** per sitting, and **deploy** early. Twenty builds are **training**; three customized builds are **signal**. Scrims can accelerate typing. <AffiliateLink href="https://scrimba.com/home?pricing&via=u42d4986&utm_source=scrimbaguide&utm_medium=blog&utm_campaign=javascript-projects-for-beginners-2026&utm_content=inline">Start on Scrimba</AffiliateLink> when you want interactive structure.
+Pick one project from the master table, finish it in a single vertical slice per sitting, and deploy it before you move on. Twenty small builds are training. Three customized ones, with a README and a live URL, are the signal a hiring manager actually reads.
 
 <PricingCTA
   title="Want guided versions of these builds?"
-  subtitle="Scrimba paths include interactive projects, customize them so your GitHub tells your story, not the instructor’s."
+  subtitle="Scrimba's courses include projects like these with a written brief and a recorded solution. Customize them so your GitHub tells your story, not the instructor's."
+  ctaType="free"
 />

@@ -10,7 +10,7 @@ keywords: [what is context engineering, context engineering vs prompt engineerin
 hideFooterPricingCta: true
 date: 2026-07-23
 last_update:
-  date: 2026-07-23
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
@@ -22,7 +22,9 @@ import PricingCTA from '@site/src/components/PricingCTA';
 
 <DisclosureNotice />
 
-Context engineering is the practice of deciding what information an AI model sees before it writes a single line of code: the files, docs, examples, rules, and tools you load into its context window. It is the skill that quietly absorbed prompt engineering over the past year. My honest take, after using these tools daily as an engineer who learned to code the self-taught route through 42 Network: the name is new and a little buzzy, but the job underneath it is real, and it happens to be good news for self-taught developers, because it rewards understanding a codebase over memorizing clever phrasing.
+Context engineering is deciding what an AI model sees before it answers: which files, docs, examples, rules, and tools go into its context window. It replaced prompt engineering as the load-bearing skill of 2026 because today's models already parse plain requests well; what most fail on is missing information, not bad wording.
+
+I use these tools daily as an engineer who learned to code the self-taught route through 42 Network, and here's the verdict: the name is new and a little buzzy, but the job underneath it is real. It's good news for self-taught developers too, since it rewards understanding a codebase over memorizing clever phrasing.
 
 {/* truncate */}
 
@@ -42,7 +44,7 @@ A widely shared 2026 write-up on DEV, "Context Engineering: The Skill Replacing 
 
 The framing is not just blog chatter. Anthropic's 2026 Agentic Coding Trends Report named context engineering "the load-bearing skill of 2026." The same report says teams that keep well-maintained context files see roughly 40% fewer errors and about 55% faster task completion. It also puts hard limits on the hype: around 60% of developer work now involves AI assistance, yet only 0 to 20% of tasks are fully delegated to agents. A human still frames the problem and curates the context.
 
-The independent numbers point the same way. The Stack Overflow 2025 Developer Survey, released in July 2025, found that about 84% of developers use or plan to use AI tools, but the single most common frustration, cited by roughly 66%, was AI solutions that are "almost right, but not quite." Trust in the accuracy of AI output actually fell year over year. That gap between "almost right" and right is usually a context gap: the model did not know a constraint, a convention, or a file that only lived in your head. Treat the exact percentages as directional rather than precise, since one comes from a tooling vendor and surveys move around, but the direction is consistent across sources.
+The independent numbers point the same way. The Stack Overflow 2025 Developer Survey, released in July 2025, found that about 84% of developers use or plan to use AI tools, but the single most common frustration, cited by roughly 66%, was AI solutions that are "almost right, but not quite." Trust in the accuracy of AI output fell year over year. That gap between "almost right" and right is usually a context gap: the model did not know a constraint, a convention, or a file that only lived in your head. Treat the exact percentages as directional rather than precise, since one comes from a tooling vendor and surveys move around, but the direction is consistent across sources.
 
 ## The five things a context engineer actually does
 
@@ -64,16 +66,16 @@ Anthropic's own January 2026 research on code comprehension made the same point 
 
 You do not need a CS degree or an enterprise course to learn this. A sensible order looks like this:
 
-1. **Get the web fundamentals solid.** Build a few things by hand first. Scrimba's interactive [frontend developer path](/docs/paths/frontend-developer-path/) is a reasonable route if you want structure, since you write code in the lesson rather than watch someone else.
-2. **Build one small AI app end to end.** Call a model from JavaScript, ground it with your own data, ship it. That single project teaches you what a context window actually is by making you hit its limits. The [AI Engineer Path](/docs/paths/ai-engineer-path/) sequences this, and its curriculum already includes context engineering and MCP as topics.
+1. **Get the web fundamentals solid.** Build a few things by hand first. Scrimba's MDN-endorsed [frontend developer path](/docs/paths/frontend-developer-path/) runs 81.6 hours across 13 modules, and you write the code in the lesson instead of watching someone else.
+2. **Build one small AI app end to end.** Call a model from JavaScript, ground it with your own data, ship it. That single project teaches you what a context window is by making you hit its limits. Scrimba's [AI Engineer Path](/docs/paths/ai-engineer-path/) runs 11.4 hours across nine modules and already folds context engineering and MCP into the sequence.
 3. **Practice writing context files on a real project.** Add a `CLAUDE.md`, watch how the agent behaves with and without it, and iterate. This is the cheapest, fastest way to build the instinct.
-4. **Take a focused course when you hit the wall.** Once an app starts forgetting things, Scrimba's hour-long [Learn Context Engineering](/docs/courses/ai/context-engineering/) course tackles that specific problem with mainstream tooling. It is niche and short, and it assumes you already build AI apps, so come to it after step two, not before.
+4. **Take a focused course when you hit the wall.** Once an app starts forgetting things, Arsala Khan's hour-long [Learn Context Engineering](/docs/courses/ai/context-engineering/) course (15 scrims) builds one chat app on the Vercel AI SDK and OpenRouter: add a system prompt, trim old messages by token count, then replace them with an AI summary so the app stops forgetting. It assumes you already build AI apps, so come to it after step two, not before.
 
 If you are a JavaScript developer weighing whether to specialize here, the guide on [becoming an AI engineer as a JS developer](/blog/how-to-become-ai-engineer-javascript-developer/) walks through the wider transition. Not sure where you fit, use the free [path finder](/tools/which-scrimba-path/) to get a starting point.
 
 ## Is it just a buzzword, or a skill worth building your 2026 around?
 
-Both, honestly. The term is partly marketing. The core practices, a clear README, a good spec, choosing the right files to share, predate the label by years, and plenty of experienced developers were "context engineering" long before anyone called it that. The specific tools will also drift, since this field changes monthly, so do not tie your identity to any one config format or MCP server.
+Both. The term is partly marketing. The core practices, a clear README, a good spec, choosing the right files to share, predate the label by years, and plenty of experienced developers were "context engineering" long before anyone called it that. The specific tools will also drift, since this field changes monthly, so do not tie your identity to any one config format or MCP server.
 
 But the underlying job is real and it is not going away. When 84% of developers use or plan to use AI tools and their number one complaint is output that is "almost right," the skill that closes that gap is worth having. My advice for a self-taught developer in 2026: don't chase the buzzword, build the foundation. Learn to code well, ship one AI app, get fluent at telling a model what it needs to know. Do that and you are a context engineer, whether or not you put the phrase on your resume.
 
@@ -98,7 +100,7 @@ But the underlying job is real and it is not going away. When 84% of developers 
 
 <PricingCTA
   title="Learn the skills behind context engineering"
-  subtitle="Scrimba's interactive AI Engineer Path teaches you to build real LLM apps, with context engineering and MCP in the curriculum. Try the free AI courses first to test the format."
-  ctaType="pro"
-  riskReversal={true}
+  subtitle="Scrimba's free AI courses teach the fundamentals; the AI Engineer Path builds on them with context engineering and MCP in the curriculum."
+  ctaType="free"
+  location="blog-context-engineering-final"
 />

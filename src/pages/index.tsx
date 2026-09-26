@@ -462,10 +462,10 @@ function BlogSection() {
             <p>What works, what does not, and who Scrimba is actually for.</p>
           </div>
         </Link>
-        <Link to="/blog/is-scrimba-worth-it" className="card-link">
+        <Link to="/docs/pricing/pro-vs-free/" className="card-link">
           <div className="section-card blog-card">
-            <p className="section-card__meta blog-card__read">8 min read</p>
-            <h3>Is Scrimba Worth It?</h3>
+            <p className="section-card__meta">Pricing guide</p>
+            <h3>Is Scrimba Free? Pro vs Free</h3>
             <p>When Pro is worth it, and when free is enough for your goal.</p>
           </div>
         </Link>

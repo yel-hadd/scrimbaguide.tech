@@ -10,7 +10,7 @@ keywords: [scrimba explain mcp, scrimba explain claude code, pr explainer github
 hideFooterPricingCta: true
 date: 2026-09-20
 last_update:
-  date: 2026-09-24
+  date: 2026-09-26
   author: Ayoub El Haddad
 ---
 
@@ -26,7 +26,7 @@ import HowToSchema from '@site/src/components/HowToSchema';
 
 <DisclosureNotice />
 
-**Scrimba Explain exposes two MCP endpoints. Claude Code connects to either with one command or one JSON file, reads your repository, and streams a narrated video lesson into Scrimba. Drafts cost nothing until someone opens and claims the link.** I ran both endpoints against a public Anthropic repo and a merged pull request, and this post is what came back, including the parts that went wrong.
+**Scrimba Explain exposes two MCP endpoints: one for your own agent session, one for pull requests. Claude Code connects to either with one command or one JSON file, reads your repository or diff, and streams a narrated video lesson into Scrimba. Drafts cost nothing until someone opens and claims the link.** I ran both endpoints against a public Anthropic repo and a merged pull request, and this post is what came back, including the parts that went wrong.
 
 {/* truncate */}
 
@@ -137,7 +137,7 @@ The quiz is two card slides plus an answers slide. The MCP contract has no inter
 
 The quota applies when a signed-in Scrimba user opens the link and claims the draft (<AffiliateLink href="https://docs.scrimba.com/explain/limits-and-plans">docs.scrimba.com/explain/limits-and-plans</AffiliateLink>). Your agent can make twenty drafts and you pay for none of them until one is claimed. Images generate on first open and narration on claim plus first view, so an unclaimed draft is only text sitting on Scrimba's servers.
 
-For me the link opened on a "Claim this explainer to watch it" screen, and within about ten seconds it moved on to the playing explainer without a click. Being signed in seems to be enough.
+For me the link opened on a "Claim this explainer to watch it" screen, and within about ten seconds it moved on to the playing explainer without a click. Being signed in is enough.
 
 A free account gets 10 claims for life and Pro gets 100 a month, so the agent route is where the Pro quota starts to matter. Details are on <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's pricing page</AffiliateLink>.
 
@@ -175,7 +175,7 @@ Two things I could not find stated anywhere: how long an unclaimed draft is kept
 
 A PR description is enough when the diff is small and the reviewer already knows the subsystem. The explainer earned its seven minutes on PR 485 because the change only makes sense once you understand how the Slack bridge trusts session metadata, and the diff does not say that.
 
-The same applies to onboarding: the agent loop explainer above is a file a new hire would otherwise read cold. If you want to understand how the agent loop you just watched is built, the [AI Agents course](/docs/courses/ai/ai-agents/) and the [Model Context Protocol course](/docs/courses/ai/model-context-protocol-mcp/) cover the same loop and the protocol these endpoints use.
+The same applies to onboarding: the agent loop explainer above is a file a new hire would otherwise read cold. Scrimba's [Learn AI Agents](/docs/courses/ai/ai-agents/) has Bob Ziroll walk you through building that same decide-call-observe loop by hand, 31 scrims before OpenAI function calling replaces the regex you just wrote. [Intro to Model Context Protocol](/docs/courses/ai/model-context-protocol-mcp/) has Maham Codes build the kind of tool-and-resource server these two endpoints extend, one weather tool, one resource, in 17 scrims.
 
 After this post you can add the server, make one draft of a branch you understand, check it against the code, and decide whether a claim is worth one of your ten.
 
