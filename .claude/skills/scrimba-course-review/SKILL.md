@@ -41,9 +41,15 @@ step reads; the page is written from those files, not from memory.
    title cards where they exist. Output: a facts file (`references/facts-file.md`
    has the shape).
 3. **Diff.** Compare the facts file against the baseline checklist and
-   `data/courses.json`. Catalog numbers that differ get fixed in the JSON
-   (re-scrape the one URL with `scraper/scrape.py --urls`, or edit the entry
-   and say so in the commit), then mirrored into the page's component props.
+   `data/courses.json`. Catalog numbers that differ: re-scrape
+   (`scraper/scrape.py --urls <file> --output output`, which merges into
+   the existing index) and run
+   `make generate-data`; never hand-edit `data/courses.json`. Path
+   membership comes only from `data/path-membership.json` (never state
+   membership from the course page or a module name); other facts the
+   scraper gets wrong (projects) go in `data/course-overrides.json` with a
+   `_why`. Then mirror them into the
+   page's component props.
    Prose claims that differ get corrected in the page.
 4. **Draft** the page to the archetype in `references/archetype.md`, keeping
    the existing page's facts (not its hedges). Load `copywriting`,

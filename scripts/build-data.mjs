@@ -8,7 +8,7 @@
  *   data/topics.json        – topic metadata with course lists
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -23,7 +23,11 @@ mkdirSync(DATA, { recursive: true });
 const raw = JSON.parse(readFileSync(join(OUTPUT, 'index.json'), 'utf8'));
 
 // ── Separate by type ────────────────────────────────────────────
-const coursesRaw = raw.filter(r => r.type === 'course');
+// A course URL is one path segment ending in Scrimba's course id
+// (/learn-react-c0e...). Blog articles (May 2026), user profiles (/u0...) and
+// explain-* pages were all swept into the catalog by looser rules.
+const COURSE_PATH = /^\/[a-z][a-z0-9-]*-c0[a-z0-9]+\/?$/;
+const coursesRaw = raw.filter(r => r.type === 'course' && COURSE_PATH.test(new URL(r.url).pathname));
 const helpRaw    = raw.filter(r => r.type === 'help');
 const topicsRaw  = raw.filter(r => r.type === 'topic');
 const marketingRaw = raw.filter(r => r.type === 'marketing');
@@ -129,14 +133,14 @@ const PATHS = {
     level: 'Beginner',
     access: 'Pro',
   },
-  'the-backend-developer-path-c0tbi0l98f': {
+  'backend-path-c0tbi0l98f': {
     name: 'Backend Developer Path',
     slug: 'backend-developer-path',
     duration: '36.2 hrs',
     level: 'Intermediate',
     access: 'Pro',
   },
-  'the-ai-engineer-path-c02v': {
+  'ai-engineer-path-c02v': {
     name: 'AI Engineer Path',
     slug: 'ai-engineer-path',
     duration: '11.4 hrs',
@@ -146,6 +150,12 @@ const PATHS = {
 };
 
 const PATH_SLUGS = new Set(Object.keys(PATHS));
+
+const COURSE_DIRS = readdirSync(join(ROOT, 'docs', 'courses'), { withFileTypes: true })
+  .filter(d => d.isDirectory())
+  .map(d => d.name);
+const PATH_MEMBERSHIP = JSON.parse(readFileSync(join(DATA, 'path-membership.json'), 'utf8')).paths;
+
 
 // ── Extract instructor ───────────────────────────────────────────
 // Prefer the JSON-LD "Instructor:" line the scraper writes into the body
@@ -290,7 +300,7 @@ function parseCourse(item) {
   if (frontmatter.course_access) access = frontmatter.course_access;
 
   const topics = assignTopics(slug, item.title);
-  const category = primaryCategory(topics);
+  let category = primaryCategory(topics);
   const instructor =
     frontmatter.instructor_name || extractInstructorFromBody(body) || extractInstructor(item.title);
   const instructorUrl = frontmatter.instructor_url || '';
@@ -305,32 +315,11 @@ function parseCourse(item) {
   const description = extractDescription(frontmatter, body, item.title);
   const projects = extractProjects(body);
 
-  const pathMembership = [];
-  const titleLower = item.title.toLowerCase();
-  const slugLower = slug.toLowerCase();
-  if (titleLower.includes('react') || slugLower.includes('react')) {
-    pathMembership.push('frontend-developer-path');
-    pathMembership.push('fullstack-developer-path');
-  }
-  if (titleLower.includes('javascript') || titleLower.includes('js') || slugLower.includes('javascript')) {
-    pathMembership.push('frontend-developer-path');
-    pathMembership.push('fullstack-developer-path');
-  }
-  if (titleLower.includes('css') || titleLower.includes('html') || slugLower.includes('css') || slugLower.includes('html')) {
-    pathMembership.push('frontend-developer-path');
-    pathMembership.push('fullstack-developer-path');
-  }
-  if (titleLower.includes('node') || titleLower.includes('express') || titleLower.includes('sql') || titleLower.includes('backend') || slugLower.includes('backend') || slugLower.includes('nestjs')) {
-    pathMembership.push('backend-developer-path');
-    pathMembership.push('fullstack-developer-path');
-  }
-  if (titleLower.includes('ai') || titleLower.includes('openai') || titleLower.includes('langchain') || titleLower.includes('rag') || slugLower.includes('ai')) {
-    pathMembership.push('ai-engineer-path');
-  }
-  if (titleLower.includes('typescript') || slugLower.includes('typescript')) {
-    pathMembership.push('fullstack-developer-path');
-    pathMembership.push('backend-developer-path');
-  }
+  // Verified on the live paths (data/path-membership.json); never guessed from
+  // the title, which once put Learn Node.js in the Frontend path.
+  const pathMembership = Object.entries(PATH_MEMBERSHIP)
+    .filter(([, p]) => p.courses.includes(slug))
+    .map(([key]) => key);
 
   let docSlug = slug
     .replace(/^(learn-|intro-to-|introduction-to-|build-|the-|tutorial-)/, '')
@@ -341,6 +330,14 @@ function parseCourse(item) {
 
   if (docSlug === category) {
     docSlug = `learn-${docSlug}`;
+  }
+
+  // category doubles as the docs/courses/<category>/ folder, so a reviewed
+  // course takes the folder its page lives in; the title heuristic only covers
+  // courses without a page (Scrimba's retitled pages once moved five courses).
+  for (const cand of [docSlug, `learn-${docSlug}`]) {
+    const dir = COURSE_DIRS.find(d => existsSync(join(ROOT, 'docs', 'courses', d, `${cand}.mdx`)));
+    if (dir) { category = dir; docSlug = cand; break; }
   }
 
   return {
@@ -376,7 +373,24 @@ function parseCourse(item) {
 }
 
 // ── Build courses ───────────────────────────────────────────────
-const courses = coursesRaw.map(parseCourse);
+// Hand-verified facts the heuristics above get wrong (category, topics,
+// projects) live in data/course-overrides.json, keyed by
+// scrimbaSlug. Never patch data/courses.json by hand: `make generate` rebuilds
+// it from output/ and would silently drop the fix.
+const OVERRIDES_FILE = join(DATA, 'course-overrides.json');
+const overrides = existsSync(OVERRIDES_FILE)
+  ? JSON.parse(readFileSync(OVERRIDES_FILE, 'utf8')).courses ?? {}
+  : {};
+const courses = coursesRaw.map(parseCourse).map(c => {
+  const o = overrides[c.scrimbaSlug];
+  if (!o) return c;
+  const fields = Object.fromEntries(Object.entries(o).filter(([k]) => !k.startsWith("_")));
+  return { ...c, ...fields };
+});
+const unusedOverrides = Object.keys(overrides).filter(s => !courses.some(c => c.scrimbaSlug === s));
+if (unusedOverrides.length) {
+  console.warn(`⚠ course-overrides.json has entries for courses not in this scrape: ${unusedOverrides.join(', ')}`);
+}
 
 // Add related courses (same category, different difficulty)
 for (const course of courses) {
@@ -452,18 +466,22 @@ const helpArticles = helpRaw
   .map(categorizeHelp);
 
 // ── Write output ────────────────────────────────────────────────
+// A partial scrape (e.g. `--urls` with course pages only) has no help or topic
+// pages; keep the existing files instead of overwriting them with empty lists.
 writeFileSync(join(DATA, 'courses.json'), JSON.stringify(courses, null, 2));
-writeFileSync(join(DATA, 'help-articles.json'), JSON.stringify(helpArticles, null, 2));
-writeFileSync(join(DATA, 'topics.json'), JSON.stringify(topicMeta, null, 2));
+if (helpArticles.length) writeFileSync(join(DATA, 'help-articles.json'), JSON.stringify(helpArticles, null, 2));
+else console.warn('⚠ no help articles in this scrape; kept data/help-articles.json');
+if (topicMeta.length) writeFileSync(join(DATA, 'topics.json'), JSON.stringify(topicMeta, null, 2));
+else console.warn('⚠ no topic pages in this scrape; kept data/topics.json');
 
 console.log(`✓ Wrote ${courses.length} courses to data/courses.json`);
 console.log(`  - Paths: ${courses.filter(c => c.isPath).length}`);
 console.log(`  - Free: ${courses.filter(c => c.access === 'Free').length}`);
 console.log(`  - Pro: ${courses.filter(c => c.access === 'Pro').length}`);
 console.log(`  - Categories: ${[...new Set(courses.map(c => c.category))].join(', ')}`);
-console.log(`✓ Wrote ${helpArticles.length} help articles to data/help-articles.json`);
+if (helpArticles.length) console.log(`✓ Wrote ${helpArticles.length} help articles to data/help-articles.json`);
 console.log(`  - billing: ${helpArticles.filter(h => h.category === 'billing').length}`);
 console.log(`  - certificates: ${helpArticles.filter(h => h.category === 'certificates').length}`);
 console.log(`  - discord-community: ${helpArticles.filter(h => h.category === 'discord-community').length}`);
 console.log(`  - platform-issues: ${helpArticles.filter(h => h.category === 'platform-issues').length}`);
-console.log(`✓ Wrote ${topicMeta.length} topics to data/topics.json`);
+if (topicMeta.length) console.log(`✓ Wrote ${topicMeta.length} topics to data/topics.json`);
