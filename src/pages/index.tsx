@@ -45,6 +45,10 @@ function HeroSection() {
             Start by editing a real lesson in your browser. Then use this guide to pick a path,
             see what Pro actually costs, and decide whether it is worth it for how you learn.
           </p>
+          <p className="hero-section__provenance">
+            This guide comes from reviewing {totalCoursesLabel} Scrimba courses and all 4 paths
+            with a Pro account.
+          </p>
           <div className="hero-buttons" role="group" aria-label="Primary actions">
             <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-hero-primary">
               Open a real lesson (2 min, no signup)
