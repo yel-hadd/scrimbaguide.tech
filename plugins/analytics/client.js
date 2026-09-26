@@ -18,7 +18,6 @@ export function onRouteDidUpdate({ location, previousLocation }) {
   setTimeout(() => {
     if (typeof window.gtag !== 'function') return;
     const group = contentGroup(location.pathname);
-    window.gtag('set', 'page_path', location.pathname + location.search + location.hash);
     window.gtag('event', 'page_view', { content_group: group });
   });
 }

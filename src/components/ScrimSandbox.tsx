@@ -1,5 +1,6 @@
 import React, { useCallback, useId, useRef, useState } from 'react';
 import { Highlight, themes } from 'prism-react-renderer';
+import { contentGroup } from '@site/src/utils/contentGroup';
 
 /**
  * ScrimSandbox: a tiny, real, in-browser code editor that mirrors Scrimba's
@@ -27,7 +28,7 @@ const STARTER_SOURCE = `<h1>Edit me, then hit Run</h1>
 function trackRun(): void {
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
   window.gtag('event', 'scrim_sandbox_run', {
-    page_location: window.location.href,
+    content_group: contentGroup(window.location.pathname),
   });
 }
 

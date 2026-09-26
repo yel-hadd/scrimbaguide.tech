@@ -3,8 +3,24 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { affiliateDestination } from '../../src/utils/affiliateDestination.ts';
+import { readFileSync } from 'node:fs';
 
 const require = createRequire(import.meta.url);
+
+/** Same algorithm as src/utils/contentGroup.ts (plain Node cannot import its JSON without an attribute). */
+const RULES = JSON.parse(readFileSync(new URL('../../src/utils/contentGroupRules.json', import.meta.url), 'utf8'));
+const tsSource = readFileSync(new URL('../../src/utils/contentGroup.ts', import.meta.url), 'utf8');
+function contentGroupTs(pathname) {
+  const path = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  for (const [pattern, group] of RULES) if (new RegExp(pattern).test(path)) return group;
+  return 'other';
+}
+
+test('contentGroup.ts keeps the matcher the head script inlines', () => {
+  assert.match(tsSource, /import RULES from '\.\/contentGroupRules\.json'/);
+  assert.match(tsSource, /new RegExp\(pattern\)\.test\(path\)/);
+  assert.match(tsSource, /return 'other'/);
+});
 
 function headScript() {
   const prev = process.env.NODE_ENV;
@@ -69,6 +85,8 @@ test('the first page_view is sent explicitly, after config, with content_group',
   const pv = calls.findIndex((c) => c[0] === 'event' && c[1] === 'page_view');
   assert.ok(pv > calls.indexOf(config));
   assert.equal(calls[pv][2].content_group, 'path');
+  assert.equal(calls.filter((c) => c[0] === 'event' && c[1] === 'page_view').length, 1);
+  assert.ok(!calls.some((c) => c[0] === 'set' && c[1]?.content_group));
 });
 
 test('content_group labels the first page_view', () => {
@@ -98,6 +116,7 @@ test('content_group labels the first page_view', () => {
   };
   for (const [pathname, group] of Object.entries(cases)) {
     assert.equal(runHead({ pathname }).group, group, pathname);
+    assert.equal(contentGroupTs(pathname), group, `contentGroup.ts ${pathname}`);
   }
 });
 

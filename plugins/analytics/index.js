@@ -4,11 +4,14 @@
  *   1. set Consent Mode v2 defaults (denied in the EEA, UK and Switzerland,
  *      analytics granted elsewhere; ads storage denied everywhere) and
  *      replay a stored banner choice before anything is measured;
- *   2. label the first page_view with `content_group` (it goes out from
- *      `config`, before React runs, so a client module cannot label it).
- *      It rides at event scope on every page_view and custom event: tested
- *      against real gtag.js, a `set` value never reached the hits and a
- *      config value stuck to the landing page after SPA navigation;
+ *   2. send the first page_view itself, after `config` with
+ *      `send_page_view:false`, labelled with `content_group` (it goes out
+ *      before React runs, so a client module cannot label it). Keep
+ *      send_page_view:false or the landing page is counted twice.
+ *      content_group rides at event scope on page_view and on every custom
+ *      event (the trackers add it): tested against real gtag.js, a `set`
+ *      value never reached the hits and a config value stuck to the landing
+ *      page after SPA navigation. Enhanced-measurement events carry none;
  *   3. load gtag.js only on the production hostname. Elsewhere `gtag` still
  *      queues into an inert `dataLayer`, which keeps local tests inspectable
  *      without sending localhost hits.
