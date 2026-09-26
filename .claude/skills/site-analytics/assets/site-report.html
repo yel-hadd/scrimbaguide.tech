@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site Report</title>
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --surface-2: #f0eee8;
+    --text: #1d1b22;
+    --muted: #5d5a66;
+    --border: #dedad0;
+    --accent: #5b3fd9;
+    --accent-soft: #ebe6ff;
+    --line-2: #0f7b6c;
+    --ok: #1d7a3a;
+    --ok-bg: #e3f4e8;
+    --watch: #8a5a00;
+    --watch-bg: #fff2d6;
+    --act: #b42318;
+    --act-bg: #fde8e6;
+    --up: #1d7a3a;
+    --down: #b42318;
+    --radius: 10px;
+    --gutter: 16px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141318;
+      --surface: #1d1c23;
+      --surface-2: #26252d;
+      --text: #ecebf0;
+      --muted: #a4a1ad;
+      --border: #34323c;
+      --accent: #a894ff;
+      --accent-soft: #2c2645;
+      --line-2: #4fd1b5;
+      --ok: #6fd48f;
+      --ok-bg: #173323;
+      --watch: #f2c35b;
+      --watch-bg: #3a2e12;
+      --act: #ff8a7a;
+      --act-bg: #3d1a17;
+      --up: #6fd48f;
+      --down: #ff8a7a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141318;
+    --surface: #1d1c23;
+    --surface-2: #26252d;
+    --text: #ecebf0;
+    --muted: #a4a1ad;
+    --border: #34323c;
+    --accent: #a894ff;
+    --accent-soft: #2c2645;
+    --line-2: #4fd1b5;
+    --ok: #6fd48f;
+    --ok-bg: #173323;
+    --watch: #f2c35b;
+    --watch-bg: #3a2e12;
+    --act: #ff8a7a;
+    --act-bg: #3d1a17;
+    --up: #6fd48f;
+    --down: #ff8a7a;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px var(--gutter) 48px; }
+  h1 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 6px; }
+  h2 { font-size: 1.1rem; margin: 0 0 10px; }
+  p { margin: 0 0 8px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 0.85rem; }
+  section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin: 0 0 16px; min-width: 0; }
+  header.top { margin: 0 0 16px; }
+  .headline { font-size: 1.05rem; margin: 8px 0; }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface-2); color: var(--muted); white-space: nowrap; }
+  .badge.ok { background: var(--ok-bg); color: var(--ok); border-color: transparent; }
+  .badge.watch { background: var(--watch-bg); color: var(--watch); border-color: transparent; }
+  .badge.act { background: var(--act-bg); color: var(--act); border-color: transparent; }
+  .warn { background: var(--watch-bg); color: var(--text); border-left: 4px solid var(--watch); padding: 8px 12px; border-radius: 6px; margin: 6px 0; font-size: 0.9rem; }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .tile { background: var(--surface-2); border-radius: 8px; padding: 12px; min-width: 0; }
+  .tile .label { font-size: 0.8rem; color: var(--muted); }
+  .tile .value { font-size: 1.5rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+  .tile .delta { font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+  .delta.up { color: var(--up); }
+  .delta.down { color: var(--down); }
+  .tile .sub { font-size: 0.8rem; color: var(--muted); }
+
+  .spark-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .spark svg { width: 100%; height: 64px; display: block; }
+  .spark .cap { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); }
+
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.route { word-break: break-all; min-width: 140px; }
+  tr.dim td { color: var(--muted); }
+
+  .findings { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .findings li { border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+  .findings .t { font-weight: 650; }
+  .findings dl { display: grid; grid-template-columns: max-content 1fr; gap: 2px 10px; margin: 6px 0 0; font-size: 0.9rem; }
+  .findings dt { color: var(--muted); }
+  .findings dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline li { display: grid; grid-template-columns: 92px 12px 1fr; gap: 8px; align-items: start; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  .timeline .dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; background: var(--muted); }
+  .timeline li.system { opacity: 0.55; }
+  .empty { color: var(--muted); font-style: italic; font-size: 0.9rem; }
+  footer { color: var(--muted); font-size: 0.8rem; text-align: center; margin-top: 24px; }
+
+  @media (max-width: 520px) {
+    h1 { font-size: 1.3rem; }
+    .tile .value { font-size: 1.3rem; }
+    .timeline li { grid-template-columns: 80px 12px 1fr; }
+  }
+</style>
+</head>
+<body>
+<main id="app">
+  <p class="muted">Loading report...</p>
+</main>
+
+<!-- render_report.py injects the money-stripped snapshot and the narrative here. -->
+<script type="application/json" id="data">{}</script>
+
+<script>
+(function () {
+  'use strict';
+
+  var raw = {};
+  try {
+    raw = JSON.parse(document.getElementById('data').textContent || '{}') || {};
+  } catch (e) {
+    raw = {};
+  }
+  var snap = raw.snapshot || raw;
+  var nar = raw.narrative || snap.narrative || {
+    headline: raw.headline, findings: raw.findings, decisions: raw.decisions
+  };
+
+  /* Keys that must never render, even if a stripped file slips through. */
+  var MONEY = /(_usd$|^balances$|^transactions$|^new_transactions$|^payouts$|^new_payout$|^refund_flags$|^money$|^raw_excerpt$)/;
+  function scrub(o) {
+    if (Array.isArray(o)) return o.map(scrub);
+    if (o && typeof o === 'object') {
+      var out = {};
+      Object.keys(o).forEach(function (k) { if (!MONEY.test(k)) out[k] = scrub(o[k]); });
+      return out;
+    }
+    return o;
+  }
+  snap = scrub(snap);
+
+  var app = document.getElementById('app');
+  app.textContent = '';
+
+  /* ---------- helpers ---------- */
+  function el(tag, attrs, children) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      if (k === 'text') n.textContent = attrs[k];
+      else if (k === 'cls') n.className = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    });
+    (children || []).forEach(function (c) {
+      if (c == null) return;
+      n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    });
+    return n;
+  }
+  function get(o, path) {
+    return path.split('.').reduce(function (a, k) { return a == null ? undefined : a[k]; }, o);
+  }
+  function isNum(v) { return typeof v === 'number' && isFinite(v); }
+  function fmt(v, digits) {
+    if (!isNum(v)) return v == null ? 'n/a' : String(v);
+    return v.toLocaleString('en-US', { maximumFractionDigits: digits == null ? 0 : digits });
+  }
+  function rate(v) { return isNum(v) ? fmt(v, 1) : 'too few sessions'; }
+  function ratio(v) { return isNum(v) ? fmt(v, 2) : 'n/a'; }
+  function pct(cur, prev) {
+    if (!isNum(cur) || !isNum(prev) || prev === 0) return null;
+    return (cur - prev) / prev * 100;
+  }
+  function section(title, note) {
+    var s = el('section', null, [el('h2', { text: title })]);
+    if (note) s.appendChild(el('p', { cls: 'muted small', text: note }));
+    app.appendChild(s);
+    return s;
+  }
+  function empty(s, why) { s.appendChild(el('p', { cls: 'empty', text: why })); }
+  function table(s, cols, rows) {
+    var thead = el('tr', null, cols.map(function (c) {
+      return el('th', { cls: c.num ? 'num' : '', text: c.label });
+    }));
+    var body = rows.map(function (r) {
+      var tr = el('tr', r.__cls ? { cls: r.__cls } : null, cols.map(function (c) {
+        var v = c.get(r);
+        return el('td', { cls: c.num ? 'num' : (c.route ? 'route' : ''), text: v == null ? '' : String(v) });
+      }));
+      return tr;
+    });
+    s.appendChild(el('div', { cls: 'table-wrap' }, [
+      el('table', null, [el('thead', null, [thead]), el('tbody', null, body)])
+    ]));
+  }
+  function statusCls(st) {
+    if (st === 'ok') return 'ok';
+    if (st === 'partial' || st === 'stale' || st === 'not_collected') return 'watch';
+    if (st === 'error') return 'act';
+    return '';
+  }
+
+  /* ---------- header ---------- */
+  var ga = get(snap, 'windows.ga4') || {};
+  var gsc = get(snap, 'windows.gsc') || {};
+  var head = el('header', { cls: 'top' }, [
+    el('h1', { text: 'Site Report' }),
+    el('p', { cls: 'muted small', text:
+      'GA4 ' + (ga.start || '?') + ' to ' + (ga.end || '?') +
+      ' · GSC ' + (gsc.start || '?') + ' to ' + (gsc.end || '?') +
+      ' · generated ' + (snap.generated_at || 'n/a') + ' · America/Los_Angeles · humans only' })
+  ]);
+  if (nar && nar.headline) head.appendChild(el('p', { cls: 'headline', text: nar.headline }));
+  var badges = el('div', { cls: 'badges' });
+  var sources = snap.sources || {};
+  Object.keys(sources).forEach(function (k) {
+    var st = (sources[k] && sources[k].status) || 'n/a';
+    badges.appendChild(el('span', { cls: 'badge ' + statusCls(st), text: k + ': ' + st }));
+  });
+  head.appendChild(badges);
+  app.appendChild(head);
+
+  /* ---------- epoch warnings ---------- */
+  var warns = snap.epoch_warnings || [];
+  if (warns.length) {
+    var ws = section('Epoch warnings', 'Comparisons across these dates are not like for like.');
+    warns.forEach(function (w) { ws.appendChild(el('div', { cls: 'warn', text: w.text || w.key })); });
+  }
+
+  /* ---------- decisions and findings (first: they are the point) ---------- */
+  var decisions = (nar && nar.decisions) || [];
+  if (decisions.length) {
+    var ds = section('Decisions for you');
+    var ul = el('ul', { cls: 'findings' });
+    decisions.slice(0, 3).forEach(function (d) {
+      var sev = String(d.severity || '').toUpperCase();
+      var t = el('div', { cls: 't' }, [
+        sev ? el('span', { cls: 'badge ' + (sev === 'ACT' ? 'act' : sev === 'WATCH' ? 'watch' : 'ok'), text: sev }) : null,
+        ' ' + (d.question || '')
+      ]);
+      var dl = el('dl');
+      [['Evidence', d.evidence], ['If yes', d.if_yes], ['If no', d.if_no]].forEach(function (p) {
+        if (p[1]) { dl.appendChild(el('dt', { text: p[0] })); dl.appendChild(el('dd', { text: p[1] })); }
+      });
+      ul.appendChild(el('li', null, [t, dl]));
+    });
+    ds.appendChild(ul);
+  }
+
+  var findings = (nar && nar.findings) || [];
+  var fs = section('Findings');
+  if (!findings.length) empty(fs, 'No narrative findings in this report.');
+  else {
+    var fl = el('ul', { cls: 'findings' });
+    findings.slice(0, 5).forEach(function (f) {
+      var dl = el('dl');
+      [['Evidence', f.evidence], ['Action', f.action], ['Re-check', f.recheck_on]].forEach(function (p) {
+        if (p[1]) { dl.appendChild(el('dt', { text: p[0] })); dl.appendChild(el('dd', { text: p[1] })); }
+      });
+      fl.appendChild(el('li', null, [el('div', { cls: 't', text: f.title || '' }), dl]));
+    });
+    fs.appendChild(fl);
+  }
+
+  /* ---------- KPI tiles ---------- */
+  var cur = get(snap, 'site.cur');
+  var prev = get(snap, 'site.prev') || {};
+  var ks = section('Last ' + (ga.days || 28) + ' days vs the previous period');
+  if (!cur) empty(ks, 'GA4 data unavailable in this snapshot.');
+  else {
+    var tiles = el('div', { cls: 'tiles' });
+    function tile(label, v, pv, sub, digits) {
+      var d = pct(v, pv);
+      var t = el('div', { cls: 'tile' }, [
+        el('div', { cls: 'label', text: label }),
+        el('div', { cls: 'value', text: digits ? rate(v) : fmt(v) })
+      ]);
+      if (d !== null) t.appendChild(el('div', { cls: 'delta ' + (d >= 0 ? 'up' : 'down'),
+        text: (d >= 0 ? '+' : '') + fmt(d, 0) + '% vs ' + fmt(pv, digits || 0) }));
+      if (sub) t.appendChild(el('div', { cls: 'sub', text: sub }));
+      tiles.appendChild(t);
+    }
+    tile('Human sessions', cur.sessions, prev.sessions);
+    tile('Engaged sessions', cur.engaged_sessions, prev.engaged_sessions);
+    var split = (isNum(cur.aff_scrimba) || isNum(cur.aff_udemy))
+      ? 'Scrimba ' + fmt(cur.aff_scrimba) + ' / Udemy ' + fmt(cur.aff_udemy)
+      : 'Scrimba / Udemy split unavailable for this window';
+    tile('Affiliate clicks', cur.aff_clicks, prev.aff_clicks, split);
+    tile('Clicks per 100 sessions', cur.aff_per_100, prev.aff_per_100, null, 1);
+    ks.appendChild(tiles);
+  }
+
+  /* ---------- sparklines ---------- */
+  var daily = snap.daily || [];
+  var ss = section('Daily trend');
+  if (daily.length < 2) empty(ss, 'Not enough daily rows.');
+  else {
+    daily = daily.slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; }).slice(-28);
+    var wrap = el('div', { cls: 'spark-wrap' });
+    function spark(label, key, color) {
+      var vals = daily.map(function (d) { return isNum(d[key]) ? d[key] : 0; });
+      var max = Math.max.apply(null, vals.concat([1]));
+      var w = 280, h = 60, step = w / (vals.length - 1);
+      var pts = vals.map(function (v, i) {
+        return (i * step).toFixed(1) + ',' + (h - 4 - (v / max) * (h - 8)).toFixed(1);
+      }).join(' ');
+      var ns = 'http://www.w3.org/2000/svg';
+      var svg = document.createElementNS(ns, 'svg');
+      svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+      svg.setAttribute('preserveAspectRatio', 'none');
+      svg.setAttribute('role', 'img');
+      svg.setAttribute('aria-label', label + ', last ' + vals.length + ' days, max ' + max);
+      var pl = document.createElementNS(ns, 'polyline');
+      pl.setAttribute('points', pts);
+      pl.setAttribute('fill', 'none');
+      pl.style.stroke = color;
+      pl.setAttribute('stroke-width', '2');
+      pl.setAttribute('vector-effect', 'non-scaling-stroke');
+      pl.setAttribute('stroke-linejoin', 'round');
+      svg.appendChild(pl);
+      var total = vals.reduce(function (a, b) { return a + b; }, 0);
+      wrap.appendChild(el('div', { cls: 'spark' }, [
+        el('div', { cls: 'cap' }, [el('span', { text: label }), el('span', { text: 'total ' + fmt(total) + ', peak ' + fmt(max) })]),
+        svg,
+        el('div', { cls: 'cap' }, [el('span', { text: daily[0].date }), el('span', { text: daily[daily.length - 1].date })])
+      ]));
+    }
+    spark('Sessions', 'sessions', 'var(--accent)');
+    spark('Affiliate clicks', 'aff_clicks', 'var(--line-2)');
+    ss.appendChild(wrap);
+  }
+
+  /* ---------- channels and AI ---------- */
+  var cs = section('Channels', 'Business channels computed from source and medium. Rates need 30 sessions.');
+  var ch = snap.channels;
+  if (!ch || !ch.length) empty(cs, ch === null ? 'GA4 source failed for this section.' : 'No rows.');
+  else table(cs, [
+    { label: 'Channel', get: function (r) { return r.channel; } },
+    { label: 'Sessions', num: true, get: function (r) { return fmt(r.sessions); } },
+    { label: 'Prev', num: true, get: function (r) { return fmt(r.prev_sessions); } },
+    { label: 'Aff clicks', num: true, get: function (r) { return fmt(r.aff_clicks); } },
+    { label: 'Per 100', num: true, get: function (r) { return rate(r.aff_per_100); } }
+  ], ch);
+
+  var ai = snap.ai_sources;
+  var as = section('AI assistants', 'Matched by the AI source regex. Copilot is listed on its own and kept out of AI rates.');
+  if (!ai || !ai.length) empty(as, ai === null ? 'GA4 source failed for this section.' : 'No AI sessions in the window.');
+  else {
+    var aiRows = ai.slice().sort(function (a, b) { return (a.is_copilot ? 1 : 0) - (b.is_copilot ? 1 : 0) || (b.sessions || 0) - (a.sessions || 0); });
+    table(as, [
+      { label: 'Source', get: function (r) { return r.source + (r.is_copilot ? ' (Copilot)' : ''); } },
+      { label: 'Sessions', num: true, get: function (r) { return fmt(r.sessions); } },
+      { label: 'Engaged', num: true, get: function (r) { return fmt(r.engaged_sessions); } },
+      { label: 'Aff clicks', num: true, get: function (r) { return fmt(r.aff_clicks); } },
+      { label: 'Top landing', route: true, get: function (r) { return r.top_landings && r.top_landings[0] ? r.top_landings[0].route : ''; } }
+    ], aiRows);
+  }
+
+  /* ---------- content groups ---------- */
+  var cg = snap.content_groups;
+  var gs = section('Content groups');
+  if (!cg || !cg.length) empty(gs, 'No rows.');
+  else table(gs, [
+    { label: 'Group', get: function (r) { return r.group; } },
+    { label: 'Views', num: true, get: function (r) { return fmt(r.views); } },
+    { label: 'Sessions', num: true, get: function (r) { return fmt(r.sessions); } },
+    { label: 'Aff clicks', num: true, get: function (r) { return fmt(r.aff_clicks); } },
+    { label: 'Per 100', num: true, get: function (r) { return rate(r.aff_per_100); } }
+  ], cg.slice().sort(function (a, b) { return (b.aff_clicks || 0) - (a.aff_clicks || 0); }));
+
+  /* ---------- pages that earn ---------- */
+  var pages = (snap.pages || []).filter(function (p) { return p.ga4 && p.ga4.aff_clicks > 0; })
+    .sort(function (a, b) { return b.ga4.aff_clicks - a.ga4.aff_clicks; }).slice(0, 10);
+  var ps = section('Pages that earn', 'Landing pages ranked by affiliate clicks.');
+  if (!pages.length) empty(ps, 'No landing page with affiliate clicks in the window.');
+  else table(ps, [
+    { label: 'Page', route: true, get: function (r) { return r.route + (r.money_page ? ' *' : ''); } },
+    { label: 'Sessions', num: true, get: function (r) { return fmt(r.ga4.sessions); } },
+    { label: 'Aff clicks', num: true, get: function (r) { return fmt(r.ga4.aff_clicks); } },
+    { label: 'Per 100', num: true, get: function (r) { return rate(r.ga4.aff_per_100); } },
+    { label: 'GSC clicks', num: true, get: function (r) { return r.gsc ? fmt(r.gsc.clicks) : ''; } }
+  ], pages);
+  if (pages.length) ps.appendChild(el('p', { cls: 'muted small', text: '* money page' }));
+
+  /* ---------- leaks ---------- */
+  var leaks = snap.leaks;
+  var ls = section('Leaks', 'Pages with 30+ sessions converting under half the site median, or losing search or outbound traffic.');
+  if (!leaks || !leaks.length) empty(ls, leaks === null ? 'Source failed for this section.' : 'No leaks above the thresholds.');
+  else table(ls, [
+    { label: 'Page', route: true, get: function (r) { return r.route; } },
+    { label: 'Reason', get: function (r) { return String(r.reason || '').replace(/_/g, ' '); } },
+    { label: 'Sessions', num: true, get: function (r) { return fmt(r.sessions); } },
+    { label: 'Per 100', num: true, get: function (r) { return rate(r.aff_per_100); } },
+    { label: 'Median', num: true, get: function (r) { return rate(r.site_median_aff_per_100); } },
+    { label: 'Leaks to', get: function (r) { return r.top_leak_domain || ''; } }
+  ], leaks.slice(0, 10));
+
+  /* ---------- placements ---------- */
+  var today = (snap.generated_at || '').slice(0, 10);
+  var pls = section('CTA placements', 'Clicks per 1,000 views of the page that carries the CTA.');
+  if (!today || today < '2026-10-24') empty(pls, 'Too early: placement data starts 2026-09-26 and needs 28 days (from 2026-10-24).');
+  else if (!snap.placements || !snap.placements.length) empty(pls, 'No placement rows.');
+  else table(pls, [
+    { label: 'Page', route: true, get: function (r) { return r.route; } },
+    { label: 'CTA type', get: function (r) { return r.cta_type; } },
+    { label: 'Location', get: function (r) { return r.cta_location; } },
+    { label: 'Clicks', num: true, get: function (r) { return fmt(r.clicks); } },
+    { label: 'Views', num: true, get: function (r) { return fmt(r.carrier_views); } },
+    { label: 'Per 1,000', num: true, get: function (r) { return isNum(r.per_1000_views) ? fmt(r.per_1000_views, 1) : 'too few views'; } }
+  ], snap.placements.slice(0, 15));
+
+  /* ---------- search terms ---------- */
+  var st = (snap.search_terms || []).filter(function (t) { return t.outcome === 'no-results'; });
+  var sts = section('Searches with no results', 'What readers looked for and did not find: content ideas.');
+  if (!st.length) empty(sts, 'None in the window.');
+  else table(sts, [
+    { label: 'Term', get: function (r) { return r.term; } },
+    { label: 'Count', num: true, get: function (r) { return fmt(r.count); } },
+    { label: 'UI', get: function (r) { return r.ui; } }
+  ], st.slice(0, 15));
+
+  /* ---------- index ---------- */
+  var idx = get(snap, 'health.index');
+  var is = section('Index state');
+  if (!idx) empty(is, 'No URL Inspection file.');
+  else {
+    is.appendChild(el('p', { cls: 'muted small', text: 'URL Inspection as of ' + (idx.as_of || 'n/a') }));
+    var counts = idx.counts || {};
+    table(is, [
+      { label: 'Status', get: function (r) { return r.k.replace(/_/g, ' '); } },
+      { label: 'URLs', num: true, get: function (r) { return fmt(r.v); } }
+    ], Object.keys(counts).map(function (k) { return { k: k, v: counts[k] }; }));
+    var mni = idx.money_not_indexed || [];
+    if (mni.length) {
+      is.appendChild(el('div', { cls: 'warn', text: 'Money pages not indexed: ' + mni.join(', ') }));
+    }
+  }
+
+  /* ---------- funnel ratios ---------- */
+  var rs = section('Funnel ratios', 'Ratios only. Scrimbassadors visitors per GA4 Scrimba click is expected at 1 or more; under 0.8 means links lose ?via=. Udemy under 0.7 means broken or unmonetized links.');
+  var rrows = [
+    { k: 'Scrimbassadors visitors per GA4 click', v: get(snap, 'affiliate.reconciliation.scrimba.ratio'), lo: 0.8 },
+    { k: 'impact.com clicks per GA4 Udemy click', v: get(snap, 'affiliate.reconciliation.udemy.ratio'), lo: 0.7 },
+    { k: 'EM Scrimba clicks per affiliate event', v: get(snap, 'health.reconciliation.ratio'), hi: 1.25 }
+  ];
+  table(rs, [
+    { label: 'Ratio', get: function (r) { return r.k; } },
+    { label: 'Value', num: true, get: function (r) { return ratio(r.v); } },
+    { label: 'Status', get: function (r) {
+      if (!isNum(r.v)) return 'not collected';
+      if (r.lo != null) return r.v < r.lo ? 'ACT' : 'OK';
+      return r.v > r.hi ? 'WATCH' : 'OK';
+    } }
+  ], rrows);
+
+  /* ---------- annotations timeline ---------- */
+  var ann = (snap.annotations || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+  var ts = section('Annotations', 'What changed and when, from GA4.');
+  if (!ann.length) empty(ts, 'No annotations.');
+  else {
+    var COLORS = { BLUE: '#3b82f6', PURPLE: '#8b5cf6', GREEN: '#22a05b', RED: '#e5484d', CYAN: '#06b6d4', BROWN: '#a16207', ORANGE: '#f97316' };
+    var tl = el('ul', { cls: 'timeline' });
+    ann.slice(0, 40).forEach(function (a) {
+      var dot = el('span', { cls: 'dot' });
+      if (COLORS[a.color]) dot.style.background = COLORS[a.color];
+      tl.appendChild(el('li', a.system ? { cls: 'system' } : null, [
+        el('span', { cls: 'muted', text: a.date || '' }),
+        dot,
+        el('span', null, [el('strong', { text: a.title || '' }), a.description ? el('div', { cls: 'muted small', text: a.description }) : null])
+      ]));
+    });
+    ts.appendChild(tl);
+  }
+
+  var um = get(snap, 'health.unannotated_merges') || [];
+  if (um.length) {
+    ts.appendChild(el('div', { cls: 'warn', text: um.length + ' merged change(s) without an annotation: run /site-health to plan them.' }));
+  }
+
+  app.appendChild(el('footer', { text: 'Private report. Humans filter on every GA4 number. The GA4 collection "Scrimba Guide Business" is the primary dashboard.' }));
+})();
+</script>
+</body>
+</html>
