@@ -1,46 +1,36 @@
 /**
  * Scrimba platform facts derived from data/courses.json.
- * Run `make generate-data` after scraping to refresh.
+ *
+ * The numbers come from data/catalog-facts.json, which scripts/derive-catalog.mjs
+ * computes from courses.json (build-data.mjs runs it after `make generate-data`).
+ * Importing the full courses.json here put the whole catalog into every chunk
+ * that shows a count, so only the derived facts reach the client.
  */
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const courses = require('../../data/courses.json') as Array<{
-  category: string;
-  access: string;
-  isPath: boolean;
-  duration?: string;
-  pathInfo?: { name: string; slug: string; duration: string; level: string };
-}>;
+const facts = require('../../data/catalog-facts.json') as {
+  totalCourses: number;
+  freeCount: number;
+  proCount: number;
+  pathCount: number;
+  categoryCounts: Record<string, number>;
+  pathDurations: Record<string, { name: string; duration: string; level: string }>;
+  totalContentHours: number;
+};
 
-const nonPaths = courses.filter((c) => !c.isPath);
-const paths = courses.filter((c) => c.isPath);
-
-export const totalCourses = courses.length;
-export const freeCount = courses.filter((c) => c.access === 'Free').length;
-export const proCount = courses.filter((c) => c.access === 'Pro').length;
-export const pathCount = paths.length;
+export const totalCourses = facts.totalCourses;
+export const freeCount = facts.freeCount;
+export const proCount = facts.proCount;
+export const pathCount = facts.pathCount;
 
 /** Course count by category (excluding paths) */
-export const categoryCounts: Record<string, number> = {};
-for (const c of nonPaths) {
-  const cat = c.category || 'other';
-  categoryCounts[cat] = (categoryCounts[cat] ?? 0) + 1;
-}
+export const categoryCounts: Record<string, number> = facts.categoryCounts;
 
 /** Path info: slug -> { name, duration, level } */
 export const pathDurations: Record<
   string,
   { name: string; duration: string; level: string }
-> = {};
-for (const p of paths) {
-  if (p.pathInfo) {
-    pathDurations[p.pathInfo.slug] = {
-      name: p.pathInfo.name,
-      duration: p.pathInfo.duration,
-      level: p.pathInfo.level,
-    };
-  }
-}
+> = facts.pathDurations;
 
 /**
  * Total hours of educational content across individual courses (paths excluded,
@@ -48,10 +38,7 @@ for (const p of paths) {
  * like "9.8 hrs"; we pull the leading number. Courses without a duration count
  * as zero, so this is a conservative floor, not an exact figure.
  */
-export const totalContentHours = nonPaths.reduce((sum, c) => {
-  const match = /([\d.]+)/.exec(c.duration ?? '');
-  return sum + (match ? parseFloat(match[1]) : 0);
-}, 0);
+export const totalContentHours = facts.totalContentHours;
 
 /** Conservative label, floored to the nearest 50, e.g. "450+ hrs". */
 export const totalContentHoursLabel = `${Math.floor(totalContentHours / 50) * 50}+ hrs`;
