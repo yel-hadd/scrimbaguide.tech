@@ -89,7 +89,7 @@ The banner shows to visitors whose browser time zone is European (a proxy; it in
 | Google service account key (Search Console, GA4 Data and Admin API, Indexing API) | `secrets/gsc-service-account.json` (gitignored), a copy in `~/use-apify/indexer/`, and the GitHub secret `GSC_SERVICE_ACCOUNT_JSON`. Rotate all three together |
 | GA4 roles | The service account is Editor (annotations, custom dimensions). Your own Google accounts manage users and settings |
 | GA4 in Chrome | Use URLs with `?authuser=<your personal Google account>`; the default profile goes to a corporate SSO |
-| Indexing API quota | 200 URLs a day per Google Cloud project, shared with use-apify.com. The tools cap themselves at 100 a day |
+| Indexing API quota | 200 URLs a day per Google Cloud project, shared with use-apify.com. `indexing.py` budgets the full 200 per Pacific day and stops at the first quota error |
 | Scrimba Pro, Scrimbassadors, impact.com | Your browser sessions. Claude never types passwords; if a sign-in appears, it stops and tells you |
 
 ## What Claude does, and what stays with you

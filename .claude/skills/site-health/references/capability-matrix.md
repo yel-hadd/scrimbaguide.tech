@@ -10,7 +10,7 @@ What the site can do for itself, where each capability runs, and what always wai
 | 4 | Custom dimension registry | `ga4admin.py dims check` / `dims create --yes` | check is read-only; create is a GA4 write | check weekly | always for create (limited slots, no backfill); never in a routine |
 | 5 | GA4 annotations for merged PRs | site-ops `plan` → main session `apply` | additive GA4 write, one approval per routine | post-merge, weekly sweep | editing or deleting any annotation; approving the step 9 backfill list |
 | 6 | Tracking epochs | `tracking.json`; ops PR only on a date mismatch | repo PR | on tracking merges | merging |
-| 7 | Indexing API (best-effort; Google documents it only for JobPosting and BroadcastEvent) | site-ops plan → main `indexing.py submit --send` | external write, 100 or fewer per LA day, shared with use-apify, stops on the first 429 | post-merge, weekly | more than 100/day or any sitemap-wide resubmission |
+| 7 | Indexing API (best-effort; Google documents it only for JobPosting and BroadcastEvent) | site-ops plan → main `indexing.py submit --send` | external write, up to 200 per LA day (Google's quota), shared with use-apify, stops on the first 429 | post-merge, weekly | more than 200/day or any sitemap-wide resubmission |
 | 8 | URL Inspection | `indexing.py inspect` | read (2,000/day) | pending weekly, full monthly, 10-21 to 11-04 re-check | none |
 | 9 | Deploy and live-route check | site-ops (`gh run list`, HEAD, sitemap) | read | post-merge, weekly | rerun, revert or rollback |
 | 10 | Catalog drift | scratch scrape + env build-data + `catalog-diff.mjs` | read; overrides-only PR | monthly | regenerate / `generate:data`; merge; prose changes |
