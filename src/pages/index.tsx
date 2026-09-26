@@ -136,6 +136,10 @@ function ScrimExplainerSection() {
             </AffiliateLink>{' '}
             with no signup.
           </p>
+          <p>
+            For the full rundown of what&apos;s inside Scrimba and how it works, see our{' '}
+            <Link to="/docs/intro/">platform overview</Link>.
+          </p>
         </div>
         <ScrimSandbox />
       </div>
