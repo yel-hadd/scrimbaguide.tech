@@ -205,6 +205,14 @@ const config: Config = {
           blogSidebarCount: 'ALL',
           blogSidebarTitle: 'All Blog Posts',
           postsPerPage: 10,
+          // Feeds BlogListPage's `${blogTitle}, Page N of M` pagination title and
+          // the plain "Blog" head description Lighthouse and GSC were flagging on
+          // /blog/. Must never contain "Scrimba Guide": the site template appends
+          // " | Scrimba Guide" to every page title. The feed title stays separate
+          // (feedOptions.title below) and does not change.
+          blogTitle: 'Scrimba Course Reviews',
+          blogDescription:
+            "Scrimba course and path reviews from inside a Pro account: what's free, what to take first, and how Scrimba compares to Udemy, Codecademy, and freeCodeCamp.",
           feedOptions: {
             type: ['rss', 'atom'],
             title: 'Scrimba Guide Blog',
