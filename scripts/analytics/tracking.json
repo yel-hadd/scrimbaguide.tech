@@ -30,6 +30,7 @@
     {"key": "affiliate_key_event", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["keyEvents"], "effect": "affiliate_link_clicked became the only key event"},
     {"key": "udemy_affiliate", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["affiliate_link_clicked"], "effect": "PR #110: Udemy clicks move from EM click (udemy.com) into affiliate_link_clicked (trk.udemy.com)"},
     {"key": "analytics_step5", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["contentGroup", "customEvent:cta_type", "customEvent:destination_type", "customEvent:destination_slug", "searchTerm", "customEvent:advisor_*", "hostName"], "effect": "content_group, CTA params, search event, advisor rename, hostname guard"},
-    {"key": "consent_v2", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["*"], "effect": "banner + Consent Mode v2, EEA/UK default denied; observed EU/UK drops"}
+    {"key": "consent_v2", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["*"], "effect": "banner + Consent Mode v2, EEA/UK default denied; observed EU/UK drops"},
+    {"key": "navbar_demo_cta_tracked", "date": "2026-09-28", "status": "live", "compare": "never-across", "fields": ["eventName", "keyEvents", "customEvent:cta_type", "customEvent:cta_location"], "effect": "TRK-01: the navbar 'Try Scrimba for free' demo item now fires affiliate_link_clicked (cta_type navbar, cta_location navbar-demo or navbar-drawer-demo); it was untracked before. A measurement step, never a lift"}
   ]
 }

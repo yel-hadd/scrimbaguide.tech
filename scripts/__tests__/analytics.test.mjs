@@ -4,6 +4,7 @@ import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { affiliateDestination } from '../../src/utils/affiliateDestination.ts';
 import { isMoneyPagePath } from '../../src/utils/moneyPagePaths.ts';
+import { navbarCtaPayload } from '../../src/utils/navbarCtaPayload.ts';
 import { readFileSync } from 'node:fs';
 
 const require = createRequire(import.meta.url);
@@ -161,4 +162,31 @@ test('route-cases.json fixture: contentGroup() and isMoneyPagePath() match the P
     assert.equal(contentGroupTs(route), content_group, `contentGroup ${route}`);
     assert.equal(isMoneyPagePath(route), money_page, `isMoneyPagePath ${route}`);
   }
+});
+
+test('navbarCtaPayload: desktop bar and mobile drawer get their own cta_location', () => {
+  const item = { href: 'https://scrimba.com/s0v687325e?via=u42d4986', label: 'Try Scrimba for free' };
+  assert.deepEqual(navbarCtaPayload(item, false), {
+    url: item.href,
+    ctaType: 'navbar',
+    location: 'navbar-demo',
+    linkText: 'Try Scrimba for free',
+  });
+  assert.deepEqual(navbarCtaPayload(item, true), {
+    url: item.href,
+    ctaType: 'navbar',
+    location: 'navbar-drawer-demo',
+    linkText: 'Try Scrimba for free',
+  });
+  assert.deepEqual(affiliateDestination(item.href), { type: 'demo', slug: 's0v687325e' });
+});
+
+test('the navbar demo CTA uses the tracked custom item type', () => {
+  const config = readFileSync(new URL('../../docusaurus.config.ts', import.meta.url), 'utf8');
+  assert.match(config, /type: 'custom-affiliateCta',\s*\n\s*href: DEMO_SCRIM_URL_AFFILIATE,/);
+  const types = readFileSync(new URL('../../src/theme/NavbarItem/ComponentTypes.tsx', import.meta.url), 'utf8');
+  assert.match(types, /'custom-affiliateCta': AffiliateCtaNavbarItem/);
+  // Delegates to the stock item so the markup is unchanged, and keeps the drawer's own onClick.
+  assert.match(types, /<DefaultNavbarItem \{\.\.\.props\} onClick=\{handleClick\} \/>/);
+  assert.match(types, /onClick\?\.\(e\)/);
 });
