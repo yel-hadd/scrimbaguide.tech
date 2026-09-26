@@ -1,0 +1,231 @@
+name: Quality
+
+# Pull-request gate: build, unit and a11y tests, visual harness, built-metadata
+# invariants and Lighthouse CI on the static build. deploy.yml is separate and
+# untouched; nothing here deploys.
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, labeled]
+
+permissions:
+  contents: read
+
+# A push cancels the previous run for the same PR. A label event gets its own
+# group so it never cancels a running gate.
+concurrency:
+  group: quality-${{ github.event.pull_request.number }}-${{ github.event.action == 'labeled' && github.event.label.name || 'push' }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    # A label event only needs to start the visual-diff job below.
+    if: github.event.action != 'labeled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install librsvg (for social card generation)
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
+
+      - name: Generate social card images
+        run: npm run generate:social-cards -- --force
+
+      # prebuild runs check:content and check:schema.
+      - name: Build website
+        id: build
+        run: npm run build
+
+      # Every check below runs once the build exists, even if an earlier
+      # check failed, so one PR run reports every regression at once.
+      - name: llms.txt tests
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npm run test:llms
+
+      - name: Search tests
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npm run test:search
+
+      - name: Install Playwright Chromium
+        id: playwright
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npx playwright install --with-deps chromium
+
+      - name: Accessibility tests
+        if: ${{ !cancelled() && steps.playwright.outcome == 'success' }}
+        run: npm run test:a11y
+
+      - name: Serve build on :3100
+        id: serve
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: |
+          nohup npx docusaurus serve --port 3100 --host 127.0.0.1 --no-open > serve.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -sf http://127.0.0.1:3100/ > /dev/null; then
+              echo "Serving after ${i}s"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "::error::docusaurus serve did not answer on :3100 within 60s"
+          cat serve.log
+          exit 1
+
+      - name: Visual and interaction harness
+        if: ${{ !cancelled() && steps.serve.outcome == 'success' && steps.playwright.outcome == 'success' }}
+        run: npm run test:visual
+
+      - name: Built metadata invariants
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: node scripts/check-built-metadata.mjs
+
+      # LHCI serves ./build itself (staticDistDir), independent of :3100.
+      - name: Lighthouse CI (mobile)
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npm run lhci
+
+      - name: Lighthouse CI (desktop)
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npm run lhci
+        env:
+          LHCI_FORM_FACTOR: desktop
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: quality-results
+          path: |
+            .lighthouseci/
+            .visual/
+            serve.log
+          if-no-files-found: ignore
+          retention-days: 14
+
+  # Optional: add the `visual-diff` label to a PR to build origin/main as well
+  # and pixel-diff the two with the PR's own harness. Report only: a visual PR
+  # is expected to differ, so this job never fails on a diff.
+  visual-diff:
+    if: >-
+      (github.event.action == 'labeled' && github.event.label.name == 'visual-diff') ||
+      (github.event.action != 'labeled' && contains(github.event.pull_request.labels.*.name, 'visual-diff'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out PR head
+        uses: actions/checkout@v7
+        with:
+          path: head
+
+      - name: Check out main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          path: base
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            head/package-lock.json
+            base/package-lock.json
+
+      - name: Install system packages
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin imagemagick
+
+      - name: Build main
+        working-directory: base
+        run: |
+          npm ci
+          npm run generate:social-cards -- --force
+          npm run build
+
+      - name: Build PR head
+        working-directory: head
+        run: |
+          npm ci
+          npm run generate:social-cards -- --force
+          npm run build
+
+      - name: Install Playwright Chromium
+        working-directory: head
+        run: npx playwright install --with-deps chromium
+
+      - name: Serve main on :3100 and head on :3101
+        run: |
+          (cd base && nohup npx docusaurus serve --port 3100 --host 127.0.0.1 --no-open > ../serve-base.log 2>&1 &)
+          (cd head && nohup npx docusaurus serve --port 3101 --host 127.0.0.1 --no-open > ../serve-head.log 2>&1 &)
+          for port in 3100 3101; do
+            for i in $(seq 1 60); do
+              curl -sf "http://127.0.0.1:${port}/" > /dev/null && break
+              if [ "$i" = 60 ]; then
+                echo "::error::nothing answered on :${port}"
+                cat serve-base.log serve-head.log
+                exit 1
+              fi
+              sleep 1
+            done
+          done
+
+      # Both captures use the PR's harness so only the site differs. Hard
+      # failures are reported by the quality job, not here.
+      - name: Capture both builds
+        working-directory: head
+        run: |
+          node scripts/visual/matrix.mjs --base http://localhost:3100 --out ../shots/base || true
+          node scripts/visual/matrix.mjs --base http://localhost:3101 --out ../shots/head || true
+
+      - name: Pixel diff
+        run: |
+          mkdir -p shots/diff
+          changed=0; total=0
+          {
+            echo "## Visual diff (main vs PR head)"
+            echo
+            echo "| Capture | Differing pixels |"
+            echo "|---|---|"
+          } >> "$GITHUB_STEP_SUMMARY"
+          for head_png in shots/head/*.png; do
+            [ -e "$head_png" ] || continue
+            name=$(basename "$head_png")
+            base_png="shots/base/$name"
+            total=$((total + 1))
+            if [ ! -e "$base_png" ]; then
+              echo "| $name | new capture |" >> "$GITHUB_STEP_SUMMARY"
+              changed=$((changed + 1))
+              continue
+            fi
+            ae=$(compare -metric AE "$base_png" "$head_png" "shots/diff/$name" 2>&1 >/dev/null || true)
+            if [ "$ae" != "0" ]; then
+              echo "| $name | $ae |" >> "$GITHUB_STEP_SUMMARY"
+              changed=$((changed + 1))
+            else
+              rm -f "shots/diff/$name"
+            fi
+          done
+          echo >> "$GITHUB_STEP_SUMMARY"
+          echo "$changed of $total captures differ." >> "$GITHUB_STEP_SUMMARY"
+          echo "$changed of $total captures differ."
+
+      - name: Upload captures and diffs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: visual-diff
+          path: |
+            shots/
+            serve-*.log
+          if-no-files-found: ignore
+          retention-days: 14
