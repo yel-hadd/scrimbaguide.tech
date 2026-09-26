@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """GA4 Admin API helper: annotations (candidates/plan/apply/list) and custom
-dimensions (check/create). REST via google-auth AuthorizedSession, no
+dimensions and metrics (check/create; `dims` covers both). REST via google-auth AuthorizedSession, no
 googleapiclient.
 
 Never edits or deletes an annotation. `apply` and `dims create` are the only
@@ -518,6 +518,33 @@ def dims_create(missing, yes=False, sess=None):
     return created
 
 
+def metrics_check(sess=None):
+    """Like dims_check, for tracking.json `custom_metrics`."""
+    sess = sess or gapi.session(gapi.EDIT)
+    url = f'https://analyticsadmin.googleapis.com/v1beta/{T["property"]}/customMetrics'
+    resp = gapi.call(sess, 'GET', url)
+    remote = {m.get('parameterName') for m in resp.get('customMetrics', [])}
+    wanted = {m['parameter'] for m in T.get('custom_metrics', [])}
+    return sorted(wanted - remote), sorted(remote - wanted)
+
+
+def metrics_create(missing, yes=False, sess=None):
+    if not yes:
+        return None
+    sess = sess or gapi.session(gapi.EDIT)
+    url = f'https://analyticsadmin.googleapis.com/v1beta/{T["property"]}/customMetrics'
+    by_param = {m['parameter']: m for m in T.get('custom_metrics', [])}
+    created = []
+    for param in missing:
+        m = by_param.get(param)
+        if not m:
+            continue
+        body = {'parameterName': param, 'displayName': m['display'],
+                'measurementUnit': m.get('unit', 'STANDARD'), 'scope': 'EVENT'}
+        created.append(gapi.call(sess, 'POST', url, body))
+    return created
+
+
 # ------------------------------------------------------------------- CLI --
 
 def main(argv=None):
@@ -605,14 +632,18 @@ def main(argv=None):
     elif args.cmd == 'dims':
         if args.dims_cmd == 'check':
             missing, extra = dims_check()
-            print(json.dumps({'missing': missing, 'extra': extra}, indent=1))
-            return 0 if not missing else 3
+            m_missing, m_extra = metrics_check()
+            print(json.dumps({'missing': missing, 'extra': extra,
+                              'missing_metrics': m_missing, 'extra_metrics': m_extra}, indent=1))
+            return 0 if not (missing or m_missing) else 3
         if args.dims_cmd == 'create':
             missing, _ = dims_check()
+            m_missing, _ = metrics_check()
             if not args.yes:
-                print(json.dumps({'would_create': missing}, indent=1))
+                print(json.dumps({'would_create': missing, 'would_create_metrics': m_missing}, indent=1))
                 return 2
-            result = dims_create(missing, yes=args.yes)
+            result = {'dimensions': dims_create(missing, yes=args.yes),
+                      'metrics': metrics_create(m_missing, yes=args.yes)}
             print(json.dumps(result, indent=1, default=str))
             return 0
     ap.print_help()

@@ -15,7 +15,8 @@
  *   3. load gtag.js only on the production hostname. Elsewhere `gtag` still
  *      queues into an inert `dataLayer`, which keeps local tests inspectable
  *      without sending localhost hits.
- * The client module sends SPA page_views with the same content_group.
+ * The client module sends SPA page_views with the same content_group, and
+ * the web_vitals RUM events behind the same hostname check.
  */
 
 const path = require('node:path');
@@ -74,3 +75,4 @@ module.exports = function analyticsPlugin() {
 };
 
 module.exports.CONSENT_STORAGE_KEY = CONSENT_STORAGE_KEY;
+module.exports.SITE_HOSTNAME = SITE_HOSTNAME;

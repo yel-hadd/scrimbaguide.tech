@@ -21,7 +21,13 @@
     {"parameter": "advisor_answer", "display": "Advisor Answer", "registered": "2026-09-26"},
     {"parameter": "recommended_path", "display": "Recommended Path", "registered": "2026-09-26"},
     {"parameter": "search_outcome", "display": "Search Outcome", "registered": "2026-09-26"},
-    {"parameter": "search_ui", "display": "Search UI", "registered": "2026-09-26"}
+    {"parameter": "search_ui", "display": "Search UI", "registered": "2026-09-26"},
+    {"parameter": "metric_name", "display": "Web Vitals Metric", "registered": null},
+    {"parameter": "metric_rating", "display": "Web Vitals Rating", "registered": null},
+    {"parameter": "debug_target", "display": "Web Vitals Target", "registered": null}
+  ],
+  "custom_metrics": [
+    {"parameter": "metric_value", "display": "Web Vitals Value", "unit": "STANDARD", "registered": null}
   ],
   "epochs": [
     {"key": "property_created", "date": "2026-02-06", "status": "live", "compare": "note", "effect": "GA4 data starts"},
@@ -30,6 +36,7 @@
     {"key": "affiliate_key_event", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["keyEvents"], "effect": "affiliate_link_clicked became the only key event"},
     {"key": "udemy_affiliate", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["affiliate_link_clicked"], "effect": "PR #110: Udemy clicks move from EM click (udemy.com) into affiliate_link_clicked (trk.udemy.com)"},
     {"key": "analytics_step5", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["contentGroup", "customEvent:cta_type", "customEvent:destination_type", "customEvent:destination_slug", "searchTerm", "customEvent:advisor_*", "hostName"], "effect": "content_group, CTA params, search event, advisor rename, hostname guard"},
-    {"key": "consent_v2", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["*"], "effect": "banner + Consent Mode v2, EEA/UK default denied; observed EU/UK drops"}
+    {"key": "consent_v2", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["*"], "effect": "banner + Consent Mode v2, EEA/UK default denied; observed EU/UK drops"},
+    {"key": "web_vitals_rum", "date": null, "status": "pending", "compare": "never-across", "fields": ["eventCount", "web_vitals", "customEvent:metric_name", "customEvent:metric_rating", "customEvent:debug_target", "customEvent:metric_value"], "effect": "web_vitals RUM event (LCP, INP, CLS, FCP, TTFB) on production; total eventCount rises, sessions do not (25-minute guard); set date to the deploy day and registered dates when the dims and metric are created"}
   ]
 }

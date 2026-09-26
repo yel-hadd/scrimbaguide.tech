@@ -5,7 +5,7 @@ Property `properties/523469938`, stream `G-03WS2KR7EX`, time zone America/Los_An
 ## Where events come from
 
 - `plugins/analytics/index.js` emits one `<head>` script: Consent Mode v2 defaults (denied for the EEA, UK and Switzerland plus EU outer regions until the banner's Accept; analytics granted elsewhere; ad storage denied everywhere), a replay of the stored banner choice (`localStorage` key `sg-consent`), then `config` with `send_page_view:false` and the first `page_view` labelled with `content_group`. gtag.js loads only when `location.hostname` is `scrimbaguide.tech`.
-- `plugins/analytics/client.js` sends SPA `page_view` on route change, with `content_group`.
+- `plugins/analytics/client.js` sends SPA `page_view` on route change, with `content_group`. On `scrimbaguide.tech` only, after the load event, it also lazy-loads the `web-vitals` attribution build (exact pin in `package.json`, its own chunk) and sends `web_vitals` (below).
 - `content_group` rides at event scope on `page_view`, `affiliate_link_clicked`, `search`, every `path_advisor_*` event and `scrim_sandbox_run`. It is never set through `config` or `set`. Enhanced Measurement events (`click`, `scroll`, `session_start`, `first_visit`, `user_engagement`) carry none.
 - `content_group` values come from `src/utils/contentGroupRules.json` (first match wins, path tested with a trailing slash): `home`, `blog-index`, `blog`, `course-hub`, `course`, `path`, `pricing`, `comparison`, `how-it-works`, `practice`, `roadmap`, `guide`, `faq-help`, else `other`. In reports it is the built-in `contentGroup` dimension.
 
@@ -22,9 +22,10 @@ Property `properties/523469938`, stream `G-03WS2KR7EX`, time zone America/Los_An
 | `path_advisor_guide_click` | + `recommended_path`, `link` (`primary`, `secondary`) | click to our path guide | same |
 | `path_advisor_scrimba_click` | + `type` (`free`, `pro`) | click on the result's Scrimba button; the same click also sends `affiliate_link_clicked` with `cta_type` `path-advisor` | same |
 | `scrim_sandbox_run` | `content_group` | Run in the homepage sandbox | `src/components/ScrimSandbox.tsx` |
+| `web_vitals` | `metric_name` (`LCP`, `INP`, `CLS`, `FCP`, `TTFB`), `metric_value`, `metric_rating` (`good`, `needs-improvement`, `poor`), `metric_id`, `debug_target` (when web-vitals names an element), `content_group`, `page_location` | once per metric per page load, as web-vitals reports it (LCP, FCP, TTFB early; CLS and INP when the tab is hidden) | `plugins/analytics/client.js`, `src/utils/webVitalsParams.ts` |
 | `click` (Enhanced Measurement) | built-in `linkUrl`, `linkDomain`, `outbound` | any outbound link | GA4 automatic |
 
-`secondary_path`, `cta_emphasis`, `link`, `type` and `event_category` are not registered as dimensions. `faq_open`, `sticky_dismiss` and `faq_question` were designed but not shipped. Before 2026-09-26 the advisor sent `step`/`field`/`value` (a string in `value`, which GA4 reserves for numbers); those rows read `(not set)` for the new dimensions.
+`secondary_path`, `cta_emphasis`, `link`, `type`, `event_category` and `metric_id` are not registered as dimensions. `faq_open`, `sticky_dismiss` and `faq_question` were designed but not shipped. Before 2026-09-26 the advisor sent `step`/`field`/`value` (a string in `value`, which GA4 reserves for numbers); those rows read `(not set)` for the new dimensions.
 
 ### `cta_type` (closed list)
 
@@ -51,9 +52,19 @@ From `src/utils/affiliateDestination.ts`. `destination_slug` is the first path s
 
 Scrimba clicks are every `destination_type` except `udemy`.
 
+### `web_vitals` (field Core Web Vitals)
+
+No CrUX data exists for this origin, so this event is the only field source. Rules:
+
+- `metric_value` is an integer: milliseconds for LCP, INP, FCP and TTFB; CLS x 1000 (0.103 is 103). It is the custom metric `customEvent:metric_value` (sum). Average for one metric = sum / `eventCount` with `metric_name` filtered. GA4 has no percentiles: read p75 as the share of `metric_rating = good` (Core Web Vitals pass when 75% or more are good), or in BigQuery.
+- Metrics belong to the landing page, the way CrUX counts them (no soft-navigation reporting). `page_location` is the landing URL and `content_group` the landing page's group, even when CLS or INP is sent after SPA navigation. INP covers every interaction in the document's life, later SPA routes included.
+- `debug_target`: LCP element selector (or the image URL when there is no element), INP interaction target, CLS largest-shift source; cut to 100 characters. Absent for FCP and TTFB.
+- A report is dropped when more than 25 minutes have passed since the last `page_view`, so a late CLS or INP never opens a session past GA4's 30-minute timeout. Pages left before the load event report nothing (a slight bias toward pages that finished loading).
+- Consent Mode applies as it does to every event; the EEA/UK/CH denied default means modelled or missing rows there.
+
 ## Custom dimensions
 
-Eleven event-scoped dimensions, all registered 2026-09-26 (listed with dates in `tracking.json` `custom_dimensions`): `cta_location`, `cta_type`, `destination_type`, `destination_slug`, `link_text`, `advisor_step`, `advisor_field`, `advisor_answer`, `recommended_path`, `search_outcome`, `search_ui`. Query them as `customEvent:<parameter>`. No backfill: nothing before 2026-09-26. `search_term` and `content_group` are built in (`searchTerm`, `contentGroup`). No custom metrics. `python3 scripts/analytics/ga4admin.py dims check` compares the registry with GA4 (exit 3 when some are missing).
+Eleven event-scoped dimensions registered 2026-09-26: `cta_location`, `cta_type`, `destination_type`, `destination_slug`, `link_text`, `advisor_step`, `advisor_field`, `advisor_answer`, `recommended_path`, `search_outcome`, `search_ui`. Three more for `web_vitals`: `metric_name`, `metric_rating`, `debug_target` (dates in `tracking.json` `custom_dimensions`; `null` until created). Query them as `customEvent:<parameter>`. No backfill: nothing before each registration date. `search_term` and `content_group` are built in (`searchTerm`, `contentGroup`). One event-scoped custom metric, `metric_value` (unit STANDARD, `tracking.json` `custom_metrics`). `python3 scripts/analytics/ga4admin.py dims check` compares both registries with GA4 (exit 3 when a dimension or metric is missing); `dims create --yes` creates both (owner approval).
 
 The property also has the custom channel group "Business channels" (`sessionCustomChannelGroup:15847375853`). Do not use it as a table dimension (bug below).
 
@@ -84,7 +95,7 @@ The regex is `tracking.json` `ai_source_regex`, matched on `sessionSource` (`PAR
 
 ## Epochs
 
-Listed in `tracking.json` `epochs` and copied into every snapshot; `snapshot.epoch_warnings` names the ones a window crosses. As of 2026-09-26 all are live: `page_view_dedupe` (2026-09-25, page views before 19:00 PT inflated), `cta_location`, `affiliate_key_event`, `udemy_affiliate`, `analytics_step5` and `consent_v2` (all 2026-09-26). `consent_v2` lowers observed EEA/UK numbers from its date; never "recover" them by removing the banner. A tracking PR adds its own epoch and dimensions to `tracking.json` in the same PR.
+Listed in `tracking.json` `epochs` and copied into every snapshot; `snapshot.epoch_warnings` names the ones a window crosses. As of 2026-09-26 all are live: `page_view_dedupe` (2026-09-25, page views before 19:00 PT inflated), `cta_location`, `affiliate_key_event`, `udemy_affiliate`, `analytics_step5` and `consent_v2` (all 2026-09-26). `consent_v2` lowers observed EEA/UK numbers from its date; never "recover" them by removing the banner. `web_vitals_rum` is pending until its deploy day is set: from then, total `eventCount` includes four or five `web_vitals` events per page load (sessions and affiliate rates are unaffected). A tracking PR adds its own epoch and dimensions to `tracking.json` in the same PR.
 
 ## Known GA4 bugs and limits
 
