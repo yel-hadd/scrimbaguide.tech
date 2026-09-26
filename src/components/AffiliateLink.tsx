@@ -93,13 +93,18 @@ export default function AffiliateLink({
   /* Every monetised destination must carry rel="nofollow" (FTC disclosure is
      separate; this is the Google paid-link requirement). Add new merchants here. */
   const isMonetised = MONETISED_HOSTS.some((host) => url.includes(host));
-  const rel = isMonetised ? 'nofollow noopener noreferrer' : 'noopener noreferrer';
+  /* Monetised links keep the referrer and send the full page URL (owner
+     decision 2026-09-26), so the Scrimbassadors dashboard can tie a signup to
+     the page that sent it; nofollow stays for Google. */
+  const rel = isMonetised ? 'nofollow noopener' : 'noopener noreferrer';
+  const referrerPolicy = isMonetised ? 'no-referrer-when-downgrade' : undefined;
 
   return (
     <a
       href={url}
       target="_blank"
       rel={rel}
+      referrerPolicy={referrerPolicy}
       className={`${baseClass} ${variantClass} ${className}`.trim()}
       onClick={handleClick}
     >

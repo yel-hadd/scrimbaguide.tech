@@ -31,6 +31,6 @@ What the site can do for itself, where each capability runs, and what always wai
 ## Notes
 
 - `/daily-post` stays manual, local, one PR per run, and is never auto-merged. `/site-health` does not start it; it only reports a stale `content/daily-*` PR.
-- Approval for rows 5 and 7: until the owner approves `references/settings-proposal.md`, the main session asks in chat before each write (see SKILL.md). A subagent never runs either write.
+- Approval for rows 5 and 7: `.claude/settings.json` (adopted 2026-09-26) makes each write an `ask` permission prompt in the main session. A subagent never runs either write.
 - Rows 15 to 18 never put money into a committed file, PR, annotation, memory entry or Artifact, with or without `--money`.
-- Open owner decisions carried as due items: the Internal Traffic filter activation (row 3), the refund-window wording (7 days on the site and Scrimba's pricing page, 14 days in Scrimba's help centre), and whether `AffiliateLink` should keep `rel="noreferrer"` (it hides our pages from the Scrimbassadors Referrer column; row 16).
+- Owner decisions taken 2026-09-26: permission rules adopted; the site states Scrimba's pricing-page 7-day guarantee (its help centre says 14 days); monetised links send the page URL as referrer; no Internal Traffic filter (the owner has no static IP).

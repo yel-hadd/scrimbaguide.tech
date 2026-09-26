@@ -73,7 +73,8 @@ export default function ComparisonTable({
               href={competitorUrl}
               target="_blank"
               // A tracked competitor link is a paid link too (Google requires nofollow).
-              rel={MONETISED_HOSTS.some((h) => competitorUrl.includes(h)) ? 'nofollow noopener noreferrer' : 'noopener noreferrer'}
+              rel={MONETISED_HOSTS.some((h) => competitorUrl.includes(h)) ? 'nofollow noopener' : 'noopener noreferrer'}
+              referrerPolicy={MONETISED_HOSTS.some((h) => competitorUrl.includes(h)) ? 'no-referrer-when-downgrade' : undefined}
               className="comparison-table__secondary-cta"
               onClick={() => {
                 if (MONETISED_HOSTS.some((h) => competitorUrl.includes(h))) {

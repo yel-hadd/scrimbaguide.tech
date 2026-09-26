@@ -84,7 +84,7 @@ The regex is `tracking.json` `ai_source_regex`, matched on `sessionSource` (`PAR
 
 ## Epochs
 
-Listed in `tracking.json` `epochs` and copied into every snapshot; `snapshot.epoch_warnings` names the ones a window crosses. As of 2026-09-26 all are live except `internal_traffic_filter` (pending, owner step): `page_view_dedupe` (2026-09-25, page views before 19:00 PT inflated), `cta_location`, `affiliate_key_event`, `udemy_affiliate`, `analytics_step5` and `consent_v2` (all 2026-09-26). `consent_v2` lowers observed EEA/UK numbers from its date; never "recover" them by removing the banner. A tracking PR adds its own epoch and dimensions to `tracking.json` in the same PR.
+Listed in `tracking.json` `epochs` and copied into every snapshot; `snapshot.epoch_warnings` names the ones a window crosses. As of 2026-09-26 all are live: `page_view_dedupe` (2026-09-25, page views before 19:00 PT inflated), `cta_location`, `affiliate_key_event`, `udemy_affiliate`, `analytics_step5` and `consent_v2` (all 2026-09-26). `consent_v2` lowers observed EEA/UK numbers from its date; never "recover" them by removing the banner. A tracking PR adds its own epoch and dimensions to `tracking.json` in the same PR.
 
 ## Known GA4 bugs and limits
 

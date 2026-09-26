@@ -37,7 +37,7 @@ GSC has no MCP: it comes from the snapshot (`pages[].gsc`, `pages[].top_queries`
 8. Dates are America/Los_Angeles. GA4 windows end yesterday; GSC windows end today minus 3 days.
 9. If any `sources.<x>.status` is not `ok`, say which and what it means (`partial` lists `missing_dimensions`; `stale` means a reading older than 10 days; `not_collected` means nobody has captured it yet). A `null` section is "no data", never zero.
 10. Clicks are the metric. See the money rule above.
-11. Scrimbassadors has one referral id and no sub-IDs, and our links open with `rel=noreferrer`, so Scrimba never sees our pages as the referrer. Per-page attribution comes only from GA4. `affiliate.reconciliation.landing_join` is not computed yet and is always `null`; the approximate per-page join is manual (recipe 9). Scrimba's visitor count includes `?via=` traffic that did not come from the site.
+11. Scrimbassadors has one referral id and no sub-IDs, and before 2026-09-26 our links opened with `rel=noreferrer`, so older rows never show our pages as the referrer. Since 2026-09-26 monetised links send the full page URL as the referrer (`referrerPolicy=no-referrer-when-downgrade`, owner decision), so new Scrimbassadors Visitors/Subscribers rows can show the scrimbaguide.tech page in the Referrer column; rows before that date show none. Otherwise per-page attribution comes from GA4. `affiliate.reconciliation.landing_join` is not computed yet and is always `null`; the approximate per-page join is manual (recipe 9). Scrimba's visitor count includes `?via=` traffic that did not come from the site.
 
 ## Before/after procedure
 

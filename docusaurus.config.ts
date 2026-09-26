@@ -589,7 +589,9 @@ const config: Config = {
           label: 'Try Scrimba for free',
           position: 'right',
           className: 'navbar-cta',
-          rel: 'nofollow noopener noreferrer',
+          rel: 'nofollow noopener',
+          // Send the page URL so Scrimbassadors can attribute the signup (see AffiliateLink).
+          referrerPolicy: 'no-referrer-when-downgrade',
           'aria-label': 'Try Scrimba for free, opens a real interactive lesson in a new tab',
         },
       ],

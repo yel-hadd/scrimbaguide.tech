@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "ask": [
+      "Bash(gh pr merge:*)",
+      "Bash(python3 scripts/analytics/ga4admin.py annotations apply:*)",
+      "Bash(python3 scripts/analytics/ga4admin.py dims create:*)",
+      "Bash(python3 scripts/analytics/indexing.py submit:*)",
+      "Bash(npm run generate:data:*)",
+      "Bash(make generate:*)",
+      "Bash(make pipeline:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push --force-with-lease:*)",
+      "Bash(git push origin main:*)",
+      "Bash(git push origin HEAD:main:*)",
+      "Bash(npm install:*)",
+      "Bash(npm i:*)"
+    ]
+  }
+}
