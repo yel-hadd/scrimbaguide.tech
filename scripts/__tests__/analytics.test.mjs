@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { affiliateDestination } from '../../src/utils/affiliateDestination.ts';
+import { isMoneyPagePath } from '../../src/utils/moneyPagePaths.ts';
 import { readFileSync } from 'node:fs';
 
 const require = createRequire(import.meta.url);
@@ -145,5 +146,19 @@ test('affiliateDestination classifies Scrimba, Udemy and docs URLs', () => {
   ];
   for (const [url, type, slug] of cases) {
     assert.deepEqual(affiliateDestination(url), { type, slug }, url);
+  }
+});
+
+/**
+ * Parity fixture shared with scripts/analytics/tests/test_inventory.py: the
+ * Python port of contentGroup()/isMoneyPagePath() (scripts/analytics/inventory.py)
+ * must classify every one of these real routes exactly like the TS source.
+ */
+test('route-cases.json fixture: contentGroup() and isMoneyPagePath() match the Python port', () => {
+  const cases = JSON.parse(readFileSync(new URL('./fixtures/route-cases.json', import.meta.url), 'utf8'));
+  assert.ok(cases.length >= 30, 'fixture should carry a real spread of routes');
+  for (const { route, content_group, money_page } of cases) {
+    assert.equal(contentGroupTs(route), content_group, `contentGroup ${route}`);
+    assert.equal(isMoneyPagePath(route), money_page, `isMoneyPagePath ${route}`);
   }
 });

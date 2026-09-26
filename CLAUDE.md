@@ -11,6 +11,10 @@ scrimbaguide.tech is a first-hand review site for Scrimba courses and paths (Doc
     npm run check:content                               # content gate, also the prebuild step
     node scripts/audit-course-links.mjs --file <path>   # unlinked course names and raw scrimba.com URLs
     node --test scripts/__tests__/<file>.test.mjs
+    npm run snapshot                                    # GA4 + GSC snapshot to .seo-cache/ (needs secrets/gsc-service-account.json)
+    npm run test:analytics                              # Python and Node tests for scripts/analytics
+    /site-analytics                                     # traffic, conversion, SEO and affiliate questions; monthly Site Report
+    /site-health                                        # ops routines: weekly, monthly, post-merge <PR#>
 
 Everything else is in `package.json` and the `Makefile`. Local social-card builds need `rsvg-convert` (librsvg2-bin).
 
@@ -46,7 +50,9 @@ Everything else is in `package.json` and the `Makefile`. Local social-card build
 
 - GA4 runs from `plugins/analytics`: Consent Mode v2 defaults (denied in the EEA, UK and Switzerland until the banner's Accept), the hostname guard, and `content_group` from `src/utils/contentGroupRules.json`. Never re-add the preset `gtag` option or a consent plugin. A new top-level route family gets a rule there and a case in `scripts/__tests__/analytics.test.mjs`.
 - `affiliate_link_clicked` carries `cta_type` (the format: CTA components pass `ctaType`, inline links fall back to `inline-<variant>`), `cta_location` (the placement: the `location` prop), and `destination_type` / `destination_slug` (parsed from the URL). A new CTA component passes its own `ctaType`; a monetised link that keeps its own markup calls `trackAffiliateClick`. On money pages every `<AffiliateLink>` gets a `location`.
-- A new event parameter needs its GA4 custom dimension registered the day it ships (GA4 does not backfill), plus a GA4 annotation.
+- A new event parameter needs its GA4 custom dimension registered the day it ships (GA4 does not backfill). A PR that changes tracking adds or updates its epoch and its dimensions in `scripts/analytics/tracking.json` in the same PR.
+- A PR that could move a metric carries an `analytics-note: <title>` line in its body (`analytics-note: skip` opts out). GA4 annotations are created only through `scripts/analytics/ga4admin.py`; Claude never edits or deletes one. Rules: `.claude/skills/site-analytics/references/annotation-rules.md`.
+- Money figures stay in `secrets/ops` and chat, never in a committed file, PR, annotation or memory (the repo is public). Agents never run `npm run generate:data`.
 
 ## Voice
 

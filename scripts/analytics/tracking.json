@@ -1,0 +1,36 @@
+{
+  "property": "properties/523469938",
+  "measurement_id": "G-03WS2KR7EX",
+  "gsc_site": "sc-domain:scrimbaguide.tech",
+  "hostname": "scrimbaguide.tech",
+  "timezone": "America/Los_Angeles",
+  "property_created": "2026-02-06",
+  "bot_countries": ["Singapore", "China", "(not set)"],
+  "ai_source_regex": "chatgpt|openai|claude\\.ai|perplexity|gemini|copilot|deepseek|grok|you\\.com|phind",
+  "copilot_regex": "copilot",
+  "key_events": ["affiliate_link_clicked"],
+  "min_sessions": 30,
+  "custom_dimensions": [
+    {"parameter": "cta_location", "display": "CTA Location", "registered": "2026-09-26"},
+    {"parameter": "cta_type", "display": "CTA Type", "registered": "2026-09-26"},
+    {"parameter": "destination_type", "display": "Destination Type", "registered": "2026-09-26"},
+    {"parameter": "destination_slug", "display": "Destination Slug", "registered": "2026-09-26"},
+    {"parameter": "link_text", "display": "Link Text", "registered": "2026-09-26"},
+    {"parameter": "advisor_step", "display": "Advisor Step", "registered": "2026-09-26"},
+    {"parameter": "advisor_field", "display": "Advisor Field", "registered": "2026-09-26"},
+    {"parameter": "advisor_answer", "display": "Advisor Answer", "registered": "2026-09-26"},
+    {"parameter": "recommended_path", "display": "Recommended Path", "registered": "2026-09-26"},
+    {"parameter": "search_outcome", "display": "Search Outcome", "registered": "2026-09-26"},
+    {"parameter": "search_ui", "display": "Search UI", "registered": "2026-09-26"}
+  ],
+  "epochs": [
+    {"key": "property_created", "date": "2026-02-06", "status": "live", "compare": "note", "effect": "GA4 data starts"},
+    {"key": "page_view_dedupe", "date": "2026-09-25", "status": "live", "compare": "never-across", "fields": ["page_view", "screenPageViews"], "effect": "EM history-change page views OFF at 2026-09-26T02:00:26Z (09-25 19:00 PT); earlier page_view inflated"},
+    {"key": "cta_location", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["customEvent:cta_location"], "effect": "registered, no backfill"},
+    {"key": "affiliate_key_event", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["keyEvents"], "effect": "affiliate_link_clicked became the only key event"},
+    {"key": "udemy_affiliate", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["affiliate_link_clicked"], "effect": "PR #110: Udemy clicks move from EM click (udemy.com) into affiliate_link_clicked (trk.udemy.com)"},
+    {"key": "analytics_step5", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["contentGroup", "customEvent:cta_type", "customEvent:destination_type", "customEvent:destination_slug", "searchTerm", "customEvent:advisor_*", "hostName"], "effect": "content_group, CTA params, search event, advisor rename, hostname guard"},
+    {"key": "consent_v2", "date": "2026-09-26", "status": "live", "compare": "never-across", "fields": ["*"], "effect": "banner + Consent Mode v2, EEA/UK default denied; observed EU/UK drops"},
+    {"key": "internal_traffic_filter", "date": null, "status": "pending", "compare": "note", "fields": ["*"], "effect": "Internal Traffic filter Testing -> Active"}
+  ]
+}

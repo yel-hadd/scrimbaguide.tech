@@ -109,6 +109,14 @@ test-a11y: ## Build site and run axe-core accessibility tests
 	npm run build
 	npm run test:a11y
 
+.PHONY: test-analytics
+test-analytics: ## Run the analytics data-layer tests (Python + Node), no network
+	npm run test:analytics
+
+.PHONY: snapshot
+snapshot: ## Pull the GA4 + GSC analytics snapshot into .seo-cache/
+	npm run snapshot
+
 # ── Full pipeline ────────────────────────────────────────────────
 
 .PHONY: pipeline

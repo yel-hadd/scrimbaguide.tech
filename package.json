@@ -23,7 +23,9 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "check:content": "node scripts/check-content.mjs",
     "prebuild": "npm run check:content && npm run check:schema",
-    "check:schema": "node scripts/check-schema-visible.mjs"
+    "check:schema": "node scripts/check-schema-visible.mjs",
+    "snapshot": "python3 scripts/analytics/snapshot.py",
+    "test:analytics": "python3 -m unittest discover -s scripts/analytics/tests -t scripts/analytics && node --test scripts/__tests__/analytics.test.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",
