@@ -22,7 +22,7 @@ function tmpJson(value) {
   return file;
 }
 
-const entry = (id, harness = 'matrix') => ({ id, harness, reason: 'test' });
+const entry = (id, harness = 'matrix', extra = {}) => ({ id, harness, issue: 'A11Y-04', reason: 'test', ...extra });
 
 test('strips Docusaurus CSS-module hashes but keeps BEM names', () => {
   assert.equal(normalizeClass('tag_zVej'), 'tag');
@@ -31,6 +31,21 @@ test('strips Docusaurus CSS-module hashes but keeps BEM names', () => {
   assert.equal(normalizeClass('code-preview__frame'), 'code-preview__frame');
   assert.equal(normalizeClass('footer__link-item'), 'footer__link-item');
   assert.equal(normalizeSelector('a.tag_zVej.tagRegular_sFm0'), 'a.tag.tagRegular');
+});
+
+test('strips hashes that contain an underscore', () => {
+  assert.equal(normalizeClass('details_b_Ee'), 'details');
+  assert.equal(normalizeClass('codeLine_lJS_'), 'codeLine');
+  assert.equal(normalizeClass('breadcrumbsContainer_Z_bl'), 'breadcrumbsContainer');
+  assert.equal(normalizeClass('sidebarItem__DBe'), 'sidebarItem');
+  assert.equal(normalizeClass('item_a-9_'), 'item');
+});
+
+test('leaves BEM elements alone, including three-letter ones', () => {
+  for (const c of ['lightbox__next', 'lightbox__bar', 'lightbox__nav', 'footer__col', 'cta__sub', 'menu__list-item', 'button--lg']) {
+    assert.equal(normalizeClass(c), c);
+  }
+  assert.equal(normalizeSelector('div.lightbox__bar button.lightbox__nav--next'), 'div.lightbox__bar button.lightbox__nav--next');
 });
 
 test('a finding that is not listed fails the run', () => {
@@ -57,6 +72,16 @@ test('a subset run never reports stale entries', () => {
   const r = compareFindings({ findings: [], known: [entry('focus-ring:a.gone')], harness: 'matrix', fullRun: false });
   assert.equal(r.ok, true);
   assert.equal(r.stale.length, 0);
+});
+
+test('a volatile entry allowlists its finding but is never stale', () => {
+  const known = [entry('overlap:a.x | a.y', 'matrix', { volatile: true })];
+  const gone = compareFindings({ findings: [], known, harness: 'matrix', fullRun: true });
+  assert.equal(gone.ok, true);
+  assert.equal(gone.stale.length, 0);
+  const seen = compareFindings({ findings: groupFindings([{ id: 'overlap:a.x | a.y', where: '/blog/' }]), known, harness: 'matrix', fullRun: true });
+  assert.equal(seen.ok, true);
+  assert.equal(seen.listed.length, 1);
 });
 
 test('entries of the other harness are ignored', () => {
@@ -90,8 +115,12 @@ test('report returns 1 on failure and 0 on success', () => {
 });
 
 test('known-issues validation rejects entries without harness, reason or with duplicates', () => {
-  assert.throws(() => loadKnownIssues(tmpJson({ entries: [{ id: 'x', reason: 'r' }] })), /harness/);
-  assert.throws(() => loadKnownIssues(tmpJson({ entries: [{ id: 'x', harness: 'matrix' }] })), /reason/);
+  assert.throws(() => loadKnownIssues(tmpJson({ entries: [{ id: 'x', issue: 'A11Y-04', reason: 'r' }] })), /harness/);
+  assert.throws(() => loadKnownIssues(tmpJson({ entries: [{ id: 'x', harness: 'matrix', issue: 'A11Y-04' }] })), /reason/);
+  assert.throws(() => loadKnownIssues(tmpJson({ entries: [{ id: 'x', harness: 'matrix', reason: 'r' }] })), /issue/);
+  assert.throws(() => loadKnownIssues(tmpJson({ entries: [entry('x', 'matrix', { issue: 'new, untriaged' })] })), /issue/);
+  assert.throws(() => loadKnownIssues(tmpJson({ entries: [entry('x', 'matrix', { volatile: 'yes' })] })), /volatile/);
+  assert.equal(loadKnownIssues(tmpJson({ entries: [entry('x', 'matrix', { issue: 'untriaged' })] })).length, 1);
   assert.throws(() => loadKnownIssues(tmpJson({ entries: [entry('x'), entry('x')] })), /duplicate/);
 });
 

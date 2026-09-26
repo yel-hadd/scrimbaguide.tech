@@ -15,12 +15,26 @@ import fs from 'node:fs';
 
 /**
  * Docusaurus CSS-module classes carry a build hash suffix (`tag_zVej`,
- * `searchQueryInput_Nydd`). Strip it so ids survive unrelated CSS edits.
+ * `searchQueryInput_Nydd`, `details_b_Ee`). Strip it so ids survive unrelated
+ * CSS edits.
+ *
+ * The suffix is `_` plus four base64url characters, so the hash itself can
+ * hold `_` or `-` (`codeLine_lJS_`, `breadcrumbsContainer_Z_bl`). A hash that
+ * starts with `_` gives `local__abc`, which looks like a BEM element
+ * (`lightbox__bar`), so that shape is stripped only when the local part is a
+ * plain camelCase CSS-module name and the three characters are not all
+ * lowercase letters (`sidebarItem__DBe` yes, `lightbox__nav` no). About 7% of
+ * such hashes are all lowercase and keep their suffix: an id that changes
+ * after an unrelated CSS edit is one of those.
  */
 export function normalizeClass(cls) {
-  // `[local]_[contenthash:base64:4]`: one underscore, four chars. BEM `__`
-  // elements (`lightbox__next`) are left alone.
-  return cls.replace(/(?<=[A-Za-z0-9])_[A-Za-z0-9-]{4}$/, '');
+  const m = /^(.*[A-Za-z0-9])_([A-Za-z0-9_-]{4})$/.exec(cls);
+  if (!m) return cls;
+  const [, local, hash] = m;
+  if (local.includes('_')) return cls;
+  if (hash[0] !== '_') return local;
+  if (/^[a-z][A-Za-z0-9]*$/.test(local) && !/^_[a-z]{3}$/.test(hash)) return local;
+  return cls;
 }
 
 /** Normalize every class token inside a CSS selector string. */
@@ -28,6 +42,15 @@ export function normalizeSelector(selector) {
   return selector.replace(/\.([A-Za-z_][\w-]*)/g, (_, c) => '.' + normalizeClass(c));
 }
 
+const ISSUE_RE = /^(?:[A-Z0-9]+-\d+|untriaged)$/;
+
+/**
+ * Entry fields: id, harness ("matrix" | "interactions"), issue (an ISSUES id
+ * or "untriaged", with a reason that says what to check), reason, and
+ * optional volatile: true for a finding that depends on content order (which
+ * posts sit on /blog/ page 1), not on CSS. A volatile entry still allowlists
+ * the finding but is never reported stale.
+ */
 export function loadKnownIssues(file) {
   const raw = JSON.parse(fs.readFileSync(file, 'utf8'));
   const entries = Array.isArray(raw) ? raw : raw.entries;
@@ -40,6 +63,12 @@ export function loadKnownIssues(file) {
     }
     if (typeof e.reason !== 'string' || !e.reason.trim()) {
       throw new Error(`${file}: entry ${e.id} needs a "reason"`);
+    }
+    if (typeof e.issue !== 'string' || !ISSUE_RE.test(e.issue)) {
+      throw new Error(`${file}: entry ${e.id} needs "issue": an ISSUES id (A11Y-04) or "untriaged"`);
+    }
+    if (e.volatile !== undefined && typeof e.volatile !== 'boolean') {
+      throw new Error(`${file}: entry ${e.id}: "volatile" must be true or false`);
     }
     const key = `${e.harness}|${e.id}`;
     if (seen.has(key)) throw new Error(`${file}: duplicate entry ${e.id} (${e.harness})`);
@@ -72,7 +101,7 @@ export function compareFindings({ findings, known, harness, fullRun }) {
   const foundIds = new Set(findings.map((f) => f.id));
   const unlisted = findings.filter((f) => !knownIds.has(f.id));
   const listed = findings.filter((f) => knownIds.has(f.id));
-  const stale = fullRun ? mine.filter((e) => !foundIds.has(e.id)) : [];
+  const stale = fullRun ? mine.filter((e) => !e.volatile && !foundIds.has(e.id)) : [];
   return { unlisted, listed, stale, ok: unlisted.length === 0 && stale.length === 0 };
 }
 

@@ -1,5 +1,5 @@
 {
-  "_readme": "Ratchet for scripts/visual/{matrix,interactions}.mjs. A finding not listed here fails npm run test:visual; so does an entry that no longer reproduces on a full run (remove it in the PR that fixes it). Add an entry only with a reason and an ISSUES id.",
+  "_readme": "Ratchet for scripts/visual/{matrix,interactions}.mjs. A finding not listed here fails npm run test:visual; so does an entry that no longer reproduces on a full run (remove it in the PR that fixes it). Add an entry only with a reason and an \"issue\": an ISSUES id, or \"untriaged\" with a reason that says what to check. \"volatile\": true marks a finding that depends on content order (which posts sit on /blog/ page 1), not CSS: it is allowlisted but never reported stale.",
   "entries": [
     {
       "id": "focus-ring:a.cta-link.cta-link--card",
@@ -100,19 +100,21 @@
     {
       "id": "focus-ring:div.markdown video",
       "harness": "matrix",
-      "issue": "new, untriaged",
+      "issue": "untriaged",
       "reason": "Seeded from the 2026-09-26 run: Native video element shows no outline change on keyboard focus at touch viewports (/blog/scrimba-explain-review/). Triage: CSS reset or harness limit."
     },
     {
       "id": "overlap:a.cta-link.cta-link--text | a.tag.tagRegular",
       "harness": "matrix",
-      "issue": "new, untriaged",
+      "volatile": true,
+      "issue": "untriaged",
       "reason": "Seeded from the 2026-09-26 run: Blog list at 360 and 390: the text CTA line box overlaps a tag pill by about 10px vertically (/blog/). Check the capture before fixing."
     },
     {
       "id": "overlap:div.col.text--right a | div.markdown a",
       "harness": "matrix",
-      "issue": "new, untriaged",
+      "volatile": true,
+      "issue": "untriaged",
       "reason": "Seeded from the 2026-09-26 run: Blog list at 360: the Read more link overlaps the last excerpt link by 8px vertically (/blog/). Check the capture before fixing."
     }
   ]
