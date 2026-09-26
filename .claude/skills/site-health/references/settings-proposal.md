@@ -1,6 +1,6 @@
 # Proposal: `.claude/settings.json` permission rules (owner decision D1)
 
-**Status: awaiting the owner. Not applied.** `.claude/settings.json` does not exist in the repo, and nothing in `/site-health` depends on it. Only the owner creates it, by copying the block below (edited as they like) into `.claude/settings.json` or into their own `.claude/settings.local.json`.
+**Status: adopted by the owner on 2026-09-26** as `.claude/settings.json`, with the prefix form for the Indexing rule (`Bash(python3 scripts/analytics/indexing.py submit:*)`, so dry runs prompt too). Change the rules there, not here.
 
 ## Why
 
@@ -35,6 +35,6 @@
 - `npm ci` is not listed; consider adding `"Bash(npm ci:*)"` to `deny`, since `make install` and CI are the only places it belongs.
 - After approval, verify once: run `/site-health post-merge <PR#>` and confirm each `ask` surfaces a single prompt to the owner in the main session. Subagents never run gated commands.
 
-## Until then
+## Before adoption
 
-The main session shows the plan and asks in chat before `annotations apply --yes` and `indexing.py submit --send`, unless the owner authorized the run in the current conversation. See SKILL.md, "Approval without a settings file".
+The main session asked in chat before each external write. Since adoption the permission prompt is the approval (SKILL.md, "Approval").

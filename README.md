@@ -98,20 +98,20 @@ The banner shows to visitors whose browser time zone is European (a proxy; it in
 |---|---|
 | Write and review pages, open PRs, run gates | Merge PRs (unless you authorize a run to merge) |
 | Pull GA4, Search Console and Scrimbassadors numbers; read scrimba.com with your Pro account | Change GA4 settings: filters, key events, channel groups, retention, roles |
-| Plan annotations and Indexing submissions, and apply them after your yes | Create GA4 custom dimensions outside a tracking PR |
+| Plan annotations and Indexing submissions, and apply them after your permission prompt | Create GA4 custom dimensions outside a tracking PR |
 | Open small fix PRs (links, slugs, epoch dates, catalog overrides) | Anything in account, billing or payout settings on any site |
 | Create impact.com links when you ask, in your signed-in session | Rotate keys; Cloudflare or other infrastructure; removing the consent banner |
 
-## Open decisions (as of 2026-09-26)
+## Decisions taken (2026-09-26)
 
-1. **Permission rules file.** `.claude/skills/site-health/references/settings-proposal.md` proposes a `.claude/settings.json` that asks before merges and external writes and blocks force-pushes and `npm install`. Until you approve it, the skills ask you in chat.
-2. **Refund window.** Scrimba's pricing page says "Full 7-day guarantee"; its help centre says refunds are available within 14 days. The site says 7 days. Ask Scrimba which is current.
-3. **Referrer on affiliate links.** Links carry `rel="noreferrer"`, so the Scrimbassadors "Referrer" column never shows scrimbaguide.tech. Dropping it would let Scrimba show which of our pages sent a subscriber, at the cost of sending the page address to Scrimba and Udemy.
-4. **Internal Traffic filter.** The GA4 filter for your IP (rule "Owner") is in Testing. From 2026-09-28, check that its test dimension matches only your own visits, then set it to Active. It permanently excludes matching data.
+1. **Permission rules.** `.claude/settings.json` asks before merges, GA4 annotation writes, custom-dimension creation, Indexing API submissions and catalog regeneration, and blocks force-pushes, pushes to `main` and `npm install`.
+2. **Refund window.** The site states the 7-day money-back guarantee from Scrimba's pricing page. Scrimba's help centre says 14 days; if Scrimba changes the pricing page, update the pricing pages and `PricingCTA`.
+3. **Referrer on affiliate links.** Monetised links send the page address (`referrerPolicy=no-referrer-when-downgrade`, still `nofollow`), so from 2026-09-26 the Scrimbassadors Referrer column can show which of our pages sent a visitor. The privacy policy says so.
+4. **No Internal Traffic filter.** Your IP is not static, so your own visits stay in GA4; the "Owner" IP rule in GA4 is unused.
 
 ## Dated follow-ups
 
-- **2026-09-28:** new custom dimensions are queryable in standard reports; check the placement and destination reports fill in. Check the Internal Traffic test dimension.
+- **2026-09-28:** new custom dimensions are queryable in standard reports; check the placement and destination reports fill in.
 - **2026-10-03:** re-baseline after the tracking release: localhost hits, click reconciliation, "(not set)" share of `cta_type` and `content_group`.
 - **2026-10-21 to 2026-11-04:** Search Console re-check of "crawled, not indexed" pages against the 2026-09-23 baseline (148 indexed, 61 crawled not indexed).
 - **From 2026-10-24:** CTA placement analysis (four weeks of `cta_location` data).

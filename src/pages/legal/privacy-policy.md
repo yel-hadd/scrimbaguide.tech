@@ -31,7 +31,7 @@ We use Google Consent Mode v2.
 
 We use Google Analytics 4 to understand traffic: which pages people read, where they come from, and which links they click. We show no ads, and advertising storage, ad user data and ad personalization are denied in every region.
 
-Links to Scrimba and Udemy are affiliate links. They carry our affiliate id, and once you arrive, Scrimba or Udemy may set their own cookies under their own privacy policies.
+Links to Scrimba and Udemy are affiliate links. They carry our affiliate id, and they pass the address of the page you clicked from, so Scrimba and Udemy can see which of our guides sent you. Once you arrive, they may set their own cookies under their own privacy policies.
 
 ## CCPA Privacy Rights (Do Not Sell My Personal Information)
 
