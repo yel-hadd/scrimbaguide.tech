@@ -28,7 +28,7 @@ Property `properties/523469938`, stream `G-03WS2KR7EX`, time zone America/Los_An
 
 ### `cta_type` (closed list)
 
-`sticky`, `pricing-cta`, `course-card`, `verdict-box`, `comparison-table`, `scrim-poster`, `code-preview`, `lightbox`, `path-advisor`, `calculator`, `navbar` (from 2026-09-28: the navbar "Try Scrimba for free" demo item, via `src/theme/NavbarItem/ComponentTypes.tsx`), and the fallback `inline-<variant>` for plain MDX links (`inline-text`, `inline-button`, `inline-card`). Wrapping components pass their own `ctaType`; `(not set)` should never appear.
+`sticky`, `pricing-cta`, `course-card`, `verdict-box`, `comparison-table`, `scrim-poster`, `code-preview`, `lightbox`, `path-advisor`, `calculator`, `navbar` (from the deploy date of the `navbar_demo_cta_tracked` epoch in `tracking.json`: the navbar "Try Scrimba for free" demo item, via `src/theme/NavbarItem/ComponentTypes.tsx`), and the fallback `inline-<variant>` for plain MDX links (`inline-text`, `inline-button`, `inline-card`). Wrapping components pass their own `ctaType`; `(not set)` should never appear.
 
 `cta_location` is free-form (about 180 values, prefixes such as `inline-`, `roundup-table-`, `sources-`, `rating-`). The navbar demo item sends `navbar-demo` (desktop bar) or `navbar-drawer-demo` (mobile drawer). Inline links without `location` stay `(not set)` by design; money pages (`src/utils/moneyPagePaths.ts`) set it on every link.
 
@@ -84,7 +84,7 @@ The regex is `tracking.json` `ai_source_regex`, matched on `sessionSource` (`PAR
 
 ## Epochs
 
-Listed in `tracking.json` `epochs` and copied into every snapshot; `snapshot.epoch_warnings` names the ones a window crosses. As of 2026-09-26 all are live: `page_view_dedupe` (2026-09-25, page views before 19:00 PT inflated), `cta_location`, `affiliate_key_event`, `udemy_affiliate`, `analytics_step5` and `consent_v2` (all 2026-09-26). `navbar_demo_cta_tracked` (2026-09-28) adds the navbar demo item's clicks to `affiliate_link_clicked` and key events: a measurement step, never a lift. `consent_v2` lowers observed EEA/UK numbers from its date; never "recover" them by removing the banner. A tracking PR adds its own epoch and dimensions to `tracking.json` in the same PR.
+Listed in `tracking.json` `epochs` and copied into every snapshot; `snapshot.epoch_warnings` names the ones a window crosses. As of 2026-09-26 all are live: `page_view_dedupe` (2026-09-25, page views before 19:00 PT inflated), `cta_location`, `affiliate_key_event`, `udemy_affiliate`, `analytics_step5` and `consent_v2` (all 2026-09-26). `navbar_demo_cta_tracked` is not in that list: it ships as `status: "pending"` with no date, and its date is set in `tracking.json` (and here) to the deploy day, LA time, once the PR deploys. From that date it adds the navbar demo item's clicks to `affiliate_link_clicked` and key events: a measurement step, never a lift. `consent_v2` lowers observed EEA/UK numbers from its date; never "recover" them by removing the banner. A tracking PR adds its own epoch and dimensions to `tracking.json` in the same PR.
 
 ## Known GA4 bugs and limits
 
