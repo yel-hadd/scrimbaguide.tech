@@ -1,3 +1,4 @@
+// ejected from @docusaurus/theme-classic 3.9.2; re-diff on upgrade
 /**
  * Swizzled BlogPostPage: renders the desktop sticky CTA (money pages only) after
  * the post body. The end-of-post conversion CTA is authored per post in MDX.
