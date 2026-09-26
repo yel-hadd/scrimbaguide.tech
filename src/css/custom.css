@@ -4435,6 +4435,19 @@ html[data-theme='dark'] .curriculum__index {
   }
 }
 
+/* Print: the hero and scroll reveals rely on animation state that a print
+   render never resolves, so printed copies can come out blank. Freeze both
+   to their settled end state. The on-screen reveal is unchanged. */
+@media print {
+  .homepage main > .home-section,
+  .homepage .hero-section__copy > *,
+  .homepage .hero-section__media {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* ---------------------------------------------------------------------------
    CodePreview: editable CSS drill with a sandboxed live result
    (src/components/CodePreview.tsx, used on /docs/practice/ layout drills)
