@@ -212,7 +212,7 @@ export default function ImageLightbox({
           {item.source ? <span className="lightbox__source">{item.source}</span> : null}
           <span className="lightbox__next">
             {isScrimba ? (
-              <AffiliateLink href={nextStep.href} location={nextStep.location}>
+              <AffiliateLink ctaType="lightbox" href={nextStep.href} location={nextStep.location}>
                 {nextStep.label}
               </AffiliateLink>
             ) : (

@@ -165,7 +165,7 @@ export default function BootcampCalculator(): React.ReactElement {
                   </>
                 )}
               </div>
-              <AffiliateLink href="https://scrimba.com/our-pricing" variant="button">
+              <AffiliateLink href="https://scrimba.com/our-pricing" variant="button" ctaType="calculator" location="calculator-result">
                 Claim 20% off Pro
               </AffiliateLink>
             </div>

@@ -71,7 +71,7 @@ export default function VerdictBox({
       )}
 
       <div className="verdict-box__cta">
-        <AffiliateLink href={ctaHref} variant="button" location={location}>
+        <AffiliateLink ctaType="verdict-box" href={ctaHref} variant="button" location={location}>
           {ctaText}
         </AffiliateLink>
       </div>

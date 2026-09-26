@@ -40,6 +40,13 @@ Everything else is in `package.json` and the `Makefile`. Local social-card build
 - Exception: `scrimba.com/explain` and `scrimba.com/explain/*` are plain links without `via`; embed explainers with `<ExplainerEmbed>` (scrimba-explain skill).
 - Affiliate links point at a course, a path, the demo scrim or `/our-pricing`: pages where a reader can start. Scrimba's blog and articles are plain links, if linked at all.
 - Never quote a Scrimba price; link `https://scrimba.com/our-pricing`. The discount travels with the link; the code never appears as text.
+- Every Udemy link is an impact.com tracking link (`https://trk.udemy.com/<code>`) inside `<AffiliateLink>` or `ComparisonTable competitorUrl`, never a plain udemy.com URL. Reuse the existing code for that course (`git grep trk.udemy.com`); a course without one gets a new link from the impact.com dashboard (owner's Chrome session).
+
+## Analytics
+
+- GA4 runs from `plugins/analytics`: Consent Mode v2 defaults (denied in the EEA, UK and Switzerland until the banner's Accept), the hostname guard, and `content_group` from `src/utils/contentGroupRules.json`. Never re-add the preset `gtag` option or a consent plugin. A new top-level route family gets a rule there and a case in `scripts/__tests__/analytics.test.mjs`.
+- `affiliate_link_clicked` carries `cta_type` (the format: CTA components pass `ctaType`, inline links fall back to `inline-<variant>`), `cta_location` (the placement: the `location` prop), and `destination_type` / `destination_slug` (parsed from the URL). A new CTA component passes its own `ctaType`; a monetised link that keeps its own markup calls `trackAffiliateClick`. On money pages every `<AffiliateLink>` gets a `location`.
+- A new event parameter needs its GA4 custom dimension registered the day it ships (GA4 does not backfill), plus a GA4 annotation.
 
 ## Voice
 

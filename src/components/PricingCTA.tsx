@@ -59,6 +59,7 @@ export default function PricingCTA({
         )}
       </div>
       <AffiliateLink
+        ctaType="pricing-cta"
         href={href}
         variant="button"
         className="pricing-cta__button"

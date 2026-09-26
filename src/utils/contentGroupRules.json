@@ -1,0 +1,17 @@
+[
+  ["^/$", "home"],
+  ["^/blog/(page/\\d+/)?$", "blog-index"],
+  ["^/blog/(page|tags|authors|archive)/", "blog-index"],
+  ["^/blog/", "blog"],
+  ["^/docs/courses/([^/]+/)?$", "course-hub"],
+  ["^/docs/courses/[^/]+/[^/]+/", "course"],
+  ["^/docs/(learn-react|learn-nextjs)/", "course"],
+  ["^/docs/paths/", "path"],
+  ["^/docs/pricing/", "pricing"],
+  ["^/docs/comparisons/", "comparison"],
+  ["^/docs/how-it-works/", "how-it-works"],
+  ["^/docs/practice/", "practice"],
+  ["^/roadmaps/", "roadmap"],
+  ["^/docs/(for/|intro/$)", "guide"],
+  ["^/docs/(faq|help)/", "faq-help"]
+]

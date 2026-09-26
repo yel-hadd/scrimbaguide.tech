@@ -1,0 +1,45 @@
+.banner {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 300;
+  max-width: 420px;
+  width: calc(100% - 32px);
+  padding: 16px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 18%);
+}
+
+.text {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* Equal weight on purpose: declining must be as easy as accepting. */
+.button {
+  min-height: 40px;
+  padding: 0 18px;
+  border: 1px solid var(--ifm-color-primary);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ifm-color-primary);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: var(--ifm-color-primary);
+  color: var(--ifm-background-surface-color);
+}

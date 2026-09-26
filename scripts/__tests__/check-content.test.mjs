@@ -47,3 +47,19 @@ test('checkDescriptionLength returns null for files with no frontmatter or no de
   const content = `---\ntitle: Foo\n---\n\nBody.`;
   assert.equal(checkDescriptionLength('docs/foo.mdx', content), null);
 });
+
+test('routeOf maps docs and blog files to routes', async () => {
+  const { routeOf } = await import('../check-content.mjs');
+  assert.equal(routeOf('docs/pricing/pro-vs-free.mdx', '---\ntitle: x\n---\n'), '/docs/pricing/pro-vs-free/');
+  assert.equal(routeOf('docs/paths/index.mdx', '---\ntitle: x\n---\n'), '/docs/paths/');
+  assert.equal(routeOf('docs/courses/01-react/learn-react.mdx', ''), '/docs/courses/react/learn-react/');
+  assert.equal(routeOf('blog/2026-01-02-scrimba-review.mdx', '---\nslug: scrimba-review\n---\n'), '/blog/scrimba-review/');
+  assert.equal(routeOf('blog/2026-01-02-x.mdx', '---\ntitle: x\n---\n'), null);
+});
+
+test('unplacedAffiliateLinks warns only on money pages', async () => {
+  const { unplacedAffiliateLinks } = await import('../check-content.mjs');
+  const body = '---\ntitle: x\n---\n<AffiliateLink href="https://scrimba.com/x">a</AffiliateLink>\n<AffiliateLink location="p" href="https://scrimba.com/y">b</AffiliateLink>';
+  assert.equal(unplacedAffiliateLinks('docs/pricing/pro-vs-free.mdx', body).length, 1);
+  assert.equal(unplacedAffiliateLinks('docs/faq/index.mdx', body).length, 0);
+});

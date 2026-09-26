@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useHistory } from '@docusaurus/router';
 import Link from '@docusaurus/Link';
+import { trackSearch, SEARCH_SETTLE_MS } from '@site/src/utils/trackSearch';
 import { searchByWorker } from '@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker';
 
 const PER_GROUP_LIMIT = 4;
@@ -123,6 +124,13 @@ export default function SearchBar(): React.ReactElement {
     };
   }, [query, doSearch]);
 
+  // Count a query as a search once the reader stops typing.
+  useEffect(() => {
+    if (loading || results === null) return undefined;
+    const t = setTimeout(() => trackSearch(query, results.length, 'modal'), SEARCH_SETTLE_MS);
+    return () => clearTimeout(t);
+  }, [query, results, loading]);
+
   // The dialog is aria-modal, so focus must not leave it. Without this a single
   // Shift+Tab from the input landed on a footer link behind the overlay,
   // leaving a keyboard or screen-reader user navigating a page the dialog
@@ -149,10 +157,11 @@ export default function SearchBar(): React.ReactElement {
   }, []);
 
   const navigate = useCallback((result: SearchResult) => {
+    trackSearch(query, results?.length ?? 1, 'modal');
     const url = hitUrl(result.document);
     closeSearch();
     history.push(url);
-  }, [closeSearch, history]);
+  }, [closeSearch, history, query, results]);
 
   const handleSeeAll = useCallback(() => {
     const params = new URLSearchParams();
