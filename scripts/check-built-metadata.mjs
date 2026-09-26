@@ -282,9 +282,14 @@ export function compareToAllowlist(findings, allowlistEntries) {
 
 function parseArgs(argv) {
   const args = { build: path.join(ROOT, 'build'), allowlist: DEFAULT_ALLOWLIST, write: false };
+  const value = (i, flag) => {
+    const v = argv[i + 1];
+    if (v === undefined || v.startsWith('--')) throw new Error(`Missing value for ${flag}`);
+    return v;
+  };
   for (let i = 0; i < argv.length; i += 1) {
-    if (argv[i] === '--build') args.build = path.resolve(argv[++i]);
-    else if (argv[i] === '--allowlist') args.allowlist = path.resolve(argv[++i]);
+    if (argv[i] === '--build') args.build = path.resolve(value(i++, '--build'));
+    else if (argv[i] === '--allowlist') args.allowlist = path.resolve(value(i++, '--allowlist'));
     else if (argv[i] === '--write-allowlist') args.write = true;
     else throw new Error(`Unknown argument: ${argv[i]}`);
   }
