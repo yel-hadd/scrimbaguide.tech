@@ -10,7 +10,7 @@ keywords: [scrimba explain button, scrimba explain this scrim, scrimba explain i
 hideFooterPricingCta: true
 date: 2026-09-20
 last_update:
-  date: 2026-09-20
+  date: 2026-09-26
   author: Ayoub El Haddad
 ---
 
@@ -26,9 +26,11 @@ import HowToSchema from '@site/src/components/HowToSchema';
 
 <DisclosureNotice />
 
-**Every Scrimba lesson you can open has an EXPLAIN button in its header. Press it while paused, type a question, and Scrimba builds a short narrated video from that exact lesson: its files, the code you highlighted and what the teacher has said so far. It costs one explainer from your allowance (10 for life on a free account, 100 a month on Pro), and the result stays attached to the lesson.**
+**Every Scrimba lesson has an EXPLAIN button in its header. Pause, type a question, and Scrimba builds a short narrated video from that lesson: its files, your highlighted code, and the teacher's narration to that point. It costs one explainer from your allowance, 10 for life on Free or 100 a month on Pro, and stays attached to the lesson.**
 
-I pressed it once, on the "Chunking text from documents" lesson in Learn RAG, with a deliberately picky prompt. This post is what got sent, what came back, and the three moments in a course where I think it earns its cost.
+*Tested with a Pro account on the "Chunking text from documents" lesson in [Learn RAG](/docs/courses/ai/rag/), Guil Hernandez's 94-minute course on retrieval-augmented generation, September 2026.*
+
+I pressed the button once, with a deliberately picky prompt, to see what it sends and what it builds. Here is what got sent, what came back, and the three moments in a course where it earns its cost.
 
 {/* truncate */}
 
@@ -60,7 +62,7 @@ Clicking it pauses the scrim and opens a small dialog with the same title. It ha
   caption="The button is easy to miss. It sits in the header at the top right, past the lesson timer."
 />
 
-You need to be signed in, and the button is hidden on scrims locked for your plan, according to Scrimba's <AffiliateLink href="https://docs.scrimba.com/explain/scrims" location="explain-scrims-where">Explain in scrims page</AffiliateLink>. Learn RAG is a Pro course, so on a free account you would test this on a free lesson instead.
+You need to be signed in, and the button is hidden on scrims locked for your plan, according to Scrimba's <AffiliateLink href="https://docs.scrimba.com/explain/scrims" location="explain-scrims-where">Explain in scrims page</AffiliateLink>. [Learn RAG](/docs/courses/ai/rag/) is a Pro course, so on a free account you would test this on a free lesson instead.
 
 ## What gets sent
 
@@ -85,7 +87,7 @@ Two of those five change how you should use it. Narration stops at your pause po
 
 ## The worked example: the Learn RAG chunking lesson
 
-Learn RAG is Scrimba's short course on retrieval-augmented generation, which means feeding a language model the right pieces of your own documents before it answers ([course notes](/docs/courses/ai/rag/)). The "Chunking text from documents" lesson is 9:36 long. It splits a `podcasts.txt` file with LangChain's `RecursiveCharacterTextSplitter`, using `chunkSize: 150` and `chunkOverlap: 15`, and gets 78 chunks.
+[Learn RAG](/docs/courses/ai/rag/) runs one flat list of 22 scrims that end in a solo project called PopChoice, which embeds three quiz answers and searches a Supabase vector store for the closest-matching movie. The "Chunking text from documents" lesson sits well into the course, at 9:36 long, the longest scrim in the course. It splits a `podcasts.txt` file with LangChain's `RecursiveCharacterTextSplitter`, using `chunkSize: 150` and `chunkOverlap: 15`, and gets 78 chunks.
 
 I paused at 9:29, so the whole narration was in context, and highlighted the four lines that build the splitter. Then I typed a long prompt on purpose. I wanted to see whether the button treats the question as a hint or as a spec:
 

@@ -1,7 +1,7 @@
 ---
 slug: projects-youll-build-on-scrimba
 title: "10 Projects You'll Build on Scrimba (2026)"
-description: "Showcase of real projects you build during Scrimba courses and career paths. Games, apps, portfolios, AI tools, and more."
+description: "10 real Scrimba projects: VanLife, Quizzical, Tenzies, an AI support agent, and more, with the module and hours each one takes."
 authors: [scrimbaguide]
 tags: [guide, courses]
 keywords: [scrimba projects, scrimba portfolio projects, what you build on scrimba]
@@ -10,11 +10,10 @@ image_alt: "10 Projects You'll Build on Scrimba (2026), Scrimba Guide Blog"
 hideFooterPricingCta: true
 date: 2026-01-26
 last_update:
-  date: 2026-05-28
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
@@ -23,81 +22,63 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 <DisclosureNotice />
 
-Career paths include APIs, React apps, databases, and fullstack capstones, the list below shows representative projects so you know what you will ship.
+Scrimba's Career Paths and Pro courses have you ship 10 portfolio-ready builds: a React Router rental site, two React capstone games, an AI support agent and a translation app, three vanilla-JS API projects, and two CSS layout builds. Below is what each one actually is, which course or path module it closes, and how long it takes.
 
-The biggest problem with most tutorials is that you just watch someone else code. You nod along, but when you open a blank text editor, you freeze.
+Most tutorials have you watch someone else type. Scrimba stops you every few minutes and makes you write the code yourself, so the project at the end of a module is code you wrote, not code you copied.
 
-Scrimba solves this by forcing you to build. Here are 10 real projects you will build in the Career Paths that you can put on your portfolio immediately.
+*Facts below come from the reviews on this site, each one written after going through the course inside a Pro account, plus module hours and lesson counts from Scrimba's own course pages.*
 
 {/* truncate */}
 
-## Who This Is For
+## The "big three" capstones
 
-You are picking a path and want concrete examples of what you will ship before you enroll.
+These are the flagship builds. Each one takes several hours and holds up as a portfolio piece on its own.
 
+### 1. VanLife (React Router capstone)
 
-## The "Big Three" Capstones
+[Advanced React](/docs/courses/react/advanced-react/) closes its Routing module with VanLife, an Airbnb-style rental site for camper vans: ten-plus routes, three levels of nested navigation, search params, protected routes, and a mock API you later swap for Firestore. Bob Ziroll calls it "the most involved project that I have created for any React course." The module runs 6.4 hours across 86 scrims, and the later Supabase module goes further into the backend, with row-level security policies and a Postgres trigger you write yourself.
 
-These are the flagship projects that take several hours to complete.
+### 2. Quizzical (trivia app)
 
-### 1. VanLife (React Router Capstone)
-*   **Course:** [Advanced React](/docs/courses/react/advanced-react/)
-*   **What it is:** An Airbnb-style rental platform for camper vans.
-*   **Tech Stack:** React Router (v6 patterns, which carry into the v7 release), Loaders, Actions, Nested Routes, Firebase.
-*   **Why it impresses:** It handles complex, real-world routing scenarios like protected routes (login required), search query parameters, and data fetching errors.
+[Learn React](/docs/courses/react/learn-react/) gates Quizzical, a trivia quiz app, behind Pro: it's the second Solo Project, sitting right after the Assembly: Endgame capstone. Like the course's other solo project, the Digital Business Card, it ships with a design file and a written spec and no walkthrough, so it works like a take-home test of what you just learned rather than another guided build.
 
-### 2. Quizzical (Trivia App)
-*   **Course:** [Learn React](/docs/courses/react/)
-*   **What it is:** A dynamic trivia quiz that fetches questions from the Open Trivia Database API.
-*   **Tech Stack:** React, `useEffect`, API Fetching, Conditional Rendering.
-*   **Why it impresses:** It handles "game state" perfectly, checking answers, tallying scores, and resetting the game, which is the core logic of most business apps (State -> Action -> New State).
+### 3. Tenzies (dice game)
 
-### 3. Tenzies (Dice Game)
-*   **Course:** [Learn React](/docs/courses/react/)
-*   **What it is:** A fast-paced dice rolling game where you freeze dice to match numbers.
-*   **Tech Stack:** React State, Side Effects.
-*   **Why it impresses:** It's addictive and heavily interactive. It proves you understand how to manage many pieces of changing state simultaneously.
+[Learn React](/docs/courses/react/learn-react/) ends its first capstone section with Tenzies: roll ten dice, hold the ones you want, keep rolling until all ten match. You build a `Die` component, generate ten random dice, hold and reset state, then add lazy state initialization and two accessibility passes, including moving focus to the winning button with a ref. It's 86 minutes across 19 scrims, and confetti drops from `react-confetti` when you win.
 
-## The AI Projects (New for 2026)
+## The AI projects (new for 2026)
 
-### 4. AI Support Agent
-*   **Course:** [Build a Support Agent](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/)
-*   **What it is:** A customer support chatbot that can answer questions based on a specific knowledge base.
-*   **Tech:** Vercel AI SDK, OpenAI API, RAG (Retrieval Augmented Generation).
+### 4. AI support agent
 
-### 5. Translator App
-*   **Course:** [Intro to AI Engineering](/docs/courses/ai/ai-engineering/)
-*   **What it is:** A text translation app that detects language and context (e.g., "translate 'bank' in the context of a river vs money").
-*   **Tech:** the latest LLM APIs, Prompt Engineering.
+[Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/) is Mayo Oshin's Pro project course: 114 minutes across 23 scrims, ending in a Supabase-backed agent that classifies each question and routes it to retrieval, web search, or a direct answer. The Vercel AI SDK swaps in for a raw OpenAI client so you can change model providers without rewriting the app, and the longest scrim, Agentic Retrieval Routing, is where the classifier and the fallback logic come together.
 
-## The "Pure JavaScript" Classics
+### 5. Translator app
 
-### 6. Movie Search App
-*   **Course:** [Working with APIs](/docs/courses/javascript/)
-*   **What it is:** A dashboard to find movies, view posters, and read plots.
-*   **Tech:** Async/Await, Fetch API, DOM Manipulation.
+[Intro to AI Engineering](/docs/courses/ai/ai-engineering/) closes with PollyGlot, a translation app briefed by Per Borgen: type English text, pick a language, guess the translation yourself, then check it. Arsala Khan hands you a blank CSS file, a blank JavaScript file, and a near-empty HTML file, so you write the API call and the UI from scratch. The course itself is 2.5 hours across 36 scrims building Gift Genie, the gift-suggestion app that teaches streaming, tool calling, and a Node backend before PollyGlot.
 
-### 7. Color Scheme Generator
-*   **Course:** [Working with APIs](/docs/courses/javascript/)
-*   **What it is:** A designer tool that generates matching color palettes from a seed color.
-*   **Tech:** REST APIs, Clipboard API integration.
+## The "pure JavaScript" classics
 
-### 8. Mobile Restaurant Ordering App
-*   **Course:** [Essential JavaScript](/docs/courses/javascript/)
-*   **What it is:** An "UberEats" style menu where you add items to a cart and calculate totals.
-*   **Tech:** vanilla JS (no framework!), Event Listeners, Data Attributes.
+### 6. Movie search app
 
-## Design & Layout Projects
+A vanilla-JS search form that calls an API and renders the results (posters, plots, no framework) is the kind of build the [Frontend Developer Path](/docs/paths/frontend-developer-path/)'s Working with APIs module trains: 7.6 hours across 96 lessons on `async`/`await`, `fetch`, and REST shapes. If you want the React version of the same idea instead, [Build a React Project: Movie Search App](/docs/courses/react/a-react-project-movie-search-app/) builds it in 56 minutes across 13 scrims against The Movie Database API.
+
+### 7. Color scheme generator
+
+A palette tool that fetches colors from a public API and copies a hex code to your clipboard is another vanilla-JS rep from that same [Working with APIs module](/docs/paths/frontend-developer-path/): fetch, render JSON, and this time the Clipboard API too.
+
+### 8. Mobile restaurant ordering app
+
+An UberEats-style menu, add items to a cart, calculate a total with event listeners and data attributes, sits in the range of what the path's [Essential JavaScript module](/docs/paths/frontend-developer-path/) covers: 10.6 hours across 121 lessons on closures, array methods, and the patterns React assumes you already know.
+
+## Design and layout projects
 
 ### 9. Learning Journal
-*   **Course:** [Responsive Design](/docs/courses/css/)
-*   **What it is:** A multi-page blog layout.
-*   **Tech:** CSS Grid, Flexbox, Media Queries (Mobile-First workflow).
+
+The [Frontend Developer Path](/docs/paths/frontend-developer-path/)'s Responsive Design module closes with "Solo Project: Learning Journal," a multi-page blog layout you deploy yourself, the kind of mobile-first, breakpoint-driven build the module trains. It's a path-only project: the standalone [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) course, taught by Kevin Powell across 15 hours, ends in a different build, a three-page company site with a slide-out mobile menu.
 
 ### 10. Digital Business Card
-*   **Course:** [Learn React](/docs/courses/react/)
-*   **What it is:** Your first React component!
-*   **Tech:** Static React Components, Styling.
+
+[Learn React](/docs/courses/react/learn-react/) opens with this one: your first React component, styled from a design file, closing the Static Pages section (2.4 hours, 29 scrims) before the course moves on to data-driven props and state.
 
 ## Frequently Asked Questions
 
@@ -114,6 +95,7 @@ These are the flagship projects that take several hours to complete.
 - [Junior Developer Job Market 2026](/blog/junior-developer-job-market-2026/), why projects matter more than ever
 
 <PricingCTA 
+  ctaType="free"
   title="Start building now" 
   subtitle="Stop watching. Start coding. Build these 10 projects and fill up your GitHub."
 />

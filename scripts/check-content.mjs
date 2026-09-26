@@ -7,6 +7,7 @@
  *      sits directly next to a Scrimba plan (its own price), not one that merely
  *      shares a comparison line with "Scrimba Pro".
  *   3. No reappearance of the stale Backend path duration (30.1 hrs -> 36.2 hrs).
+ *   4. Frontmatter `description` is 160 characters or fewer (draft: true pages skip).
  *
  * Usage: node scripts/check-content.mjs
  */
@@ -59,46 +60,98 @@ const ALT_MAX = 150;
 // one idea in about 180.
 const CAPTION_MAX = 250;
 
-const violations = [];
+// ── Frontmatter description length ──────────────────────────────────
+// A description this site can't fit into a SERP snippet gets truncated by
+// Google, which usually clips the sentence that was supposed to earn the
+// click. 160 is the conventional safe width; draft pages aren't live yet
+// so they don't have to meet it.
+const DESCRIPTION_MAX = 160;
 
-for (const dir of SCAN_DIRS) {
-  for (const file of walk(path.join(ROOT, dir))) {
-    const rel = path.relative(ROOT, file);
-    const lines = fs.readFileSync(file, 'utf8').split('\n');
-    const body = lines.join('\n');
+// Pulls the leading `---\n...\n---` frontmatter block off an .md/.mdx file.
+// Returns null when the file has no frontmatter (components, non-doc pages).
+export function extractFrontmatter(content) {
+  const m = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  return m ? m[1] : null;
+}
 
-    for (const m of body.matchAll(/alt="((?:[^"\\]|\\.)*)"/g)) {
-      if (m[1].length > ALT_MAX) {
-        const n = body.slice(0, m.index).split('\n').length;
-        violations.push(`${rel}:${n} alt is ${m[1].length} chars (max ${ALT_MAX}): ${m[1].slice(0, 80)}...`);
-      }
-    }
-    for (const m of body.matchAll(/caption="((?:[^"\\]|\\.)*)"/g)) {
-      const c = m[1];
-      const n = body.slice(0, m.index).split('\n').length;
-      if (c.length > CAPTION_MAX) {
-        violations.push(`${rel}:${n} caption is ${c.length} chars (max ${CAPTION_MAX}): ${c.slice(0, 80)}...`);
-      }
-      // A third idea bolted on is the failure this rule exists to stop.
-      if (/\b(?:Note|Notice) (?:the|that|how)\b|\bThe next scrim\b/.test(c)) {
-        violations.push(`${rel}:${n} caption carries a Note/Notice/next-scrim clause (move it into the prose): ${c.slice(0, 80)}...`);
-      }
-    }
-
-    lines.forEach((line, i) => {
-      const n = i + 1;
-      if (line.includes('—')) violations.push(`${rel}:${n} em-dash (—): ${line.trim().slice(0, 100)}`);
-      if (SCRIMBA_PRICE_LEAK.some((re) => re.test(line))) {
-        violations.push(`${rel}:${n} possible exact Scrimba price (link to /our-pricing instead): ${line.trim().slice(0, 100)}`);
-      }
-      if (/\b(?:30\.1|39\.4)\b/.test(line)) violations.push(`${rel}:${n} stale Backend hours (should be 36.2 as of 2026-08): ${line.trim().slice(0, 100)}`);
-    });
+// Reads a single `key: value` field out of a frontmatter block, stripping
+// a wrapping quote pair (single or double) if present. Returns null when
+// the key is absent.
+export function readFrontmatterField(frontmatter, key) {
+  const re = new RegExp(`^${key}:\\s*(.+)\\s*$`, 'm');
+  const m = frontmatter.match(re);
+  if (!m) return null;
+  let value = m[1].trim();
+  if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+    value = value.slice(1, -1);
   }
+  return value;
 }
 
-if (violations.length) {
-  console.error(`Content guardrail failed (${violations.length} issue(s)):`);
-  for (const v of violations) console.error('  ' + v);
-  process.exit(1);
+// Checks one file's frontmatter `description` against DESCRIPTION_MAX.
+// Skips files with no frontmatter, no description, or `draft: true`.
+// Returns a violation string, or null when the page passes (or isn't in scope).
+export function checkDescriptionLength(rel, content) {
+  const frontmatter = extractFrontmatter(content);
+  if (!frontmatter) return null;
+  if (readFrontmatterField(frontmatter, 'draft') === 'true') return null;
+  const description = readFrontmatterField(frontmatter, 'description');
+  if (description === null) return null;
+  if (description.length > DESCRIPTION_MAX) {
+    return `${rel}:1 description is ${description.length} chars (max ${DESCRIPTION_MAX}): ${description.slice(0, 80)}...`;
+  }
+  return null;
 }
-console.log('Content guardrails passed: no em-dashes, Scrimba price leaks, stale Backend hours, or over-long alt/caption text.');
+
+function main() {
+  const violations = [];
+
+  for (const dir of SCAN_DIRS) {
+    for (const file of walk(path.join(ROOT, dir))) {
+      const rel = path.relative(ROOT, file);
+      const lines = fs.readFileSync(file, 'utf8').split('\n');
+      const body = lines.join('\n');
+
+      const descriptionViolation = checkDescriptionLength(rel, body);
+      if (descriptionViolation) violations.push(descriptionViolation);
+
+      for (const m of body.matchAll(/alt="((?:[^"\\]|\\.)*)"/g)) {
+        if (m[1].length > ALT_MAX) {
+          const n = body.slice(0, m.index).split('\n').length;
+          violations.push(`${rel}:${n} alt is ${m[1].length} chars (max ${ALT_MAX}): ${m[1].slice(0, 80)}...`);
+        }
+      }
+      for (const m of body.matchAll(/caption="((?:[^"\\]|\\.)*)"/g)) {
+        const c = m[1];
+        const n = body.slice(0, m.index).split('\n').length;
+        if (c.length > CAPTION_MAX) {
+          violations.push(`${rel}:${n} caption is ${c.length} chars (max ${CAPTION_MAX}): ${c.slice(0, 80)}...`);
+        }
+        // A third idea bolted on is the failure this rule exists to stop.
+        if (/\b(?:Note|Notice) (?:the|that|how)\b|\bThe next scrim\b/.test(c)) {
+          violations.push(`${rel}:${n} caption carries a Note/Notice/next-scrim clause (move it into the prose): ${c.slice(0, 80)}...`);
+        }
+      }
+
+      lines.forEach((line, i) => {
+        const n = i + 1;
+        if (line.includes('—')) violations.push(`${rel}:${n} em-dash (—): ${line.trim().slice(0, 100)}`);
+        if (SCRIMBA_PRICE_LEAK.some((re) => re.test(line))) {
+          violations.push(`${rel}:${n} possible exact Scrimba price (link to /our-pricing instead): ${line.trim().slice(0, 100)}`);
+        }
+        if (/\b(?:30\.1|39\.4)\b/.test(line)) violations.push(`${rel}:${n} stale Backend hours (should be 36.2 as of 2026-08): ${line.trim().slice(0, 100)}`);
+      });
+    }
+  }
+
+  if (violations.length) {
+    console.error(`Content guardrail failed (${violations.length} issue(s)):`);
+    for (const v of violations) console.error('  ' + v);
+    process.exit(1);
+  }
+  console.log('Content guardrails passed: no em-dashes, Scrimba price leaks, stale Backend hours, over-long alt/caption text, or over-long descriptions.');
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
+}

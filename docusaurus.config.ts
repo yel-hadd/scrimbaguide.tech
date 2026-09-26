@@ -54,6 +54,20 @@ const SITEMAP_EXCLUDED_PATHS = new Set<string>([
   // Cannibalization fix (2026-09-20): merged into /docs/pricing/pro-vs-free.
   '/docs/how-it-works/is-scrimba-free',
   '/docs/practice/react-portfolio-project-ideas',
+  // Blog health consolidation (2026-09-26): merged into stronger pages, now
+  // redirect stubs (canonical = the `to` targets in the redirects above).
+  '/blog/is-scrimba-worth-it',
+  '/blog/how-to-learn-typescript-scrimba',
+  '/blog/should-javascript-developers-learn-typescript-2026',
+  '/blog/typescript-for-beginners-scrimba',
+  '/blog/career-change-to-coding-2026',
+  '/blog/developer-salary-guide-2026',
+  '/blog/how-to-escape-tutorial-hell-2026',
+  '/blog/is-web-development-worth-it-2026',
+  '/blog/learn-ai-engineering-scrimba',
+  '/blog/scrimba-frontend-vs-fullstack-path',
+  '/blog/vibe-coder-to-real-developer-2026',
+  '/blog/web-development-roadmap-2026',
 ]);
 
 /**
@@ -346,7 +360,7 @@ const config: Config = {
           // into pillars (tutorial hell, vibe coding, get hired).
           {
             from: '/blog/escape-tutorial-hell-scrimba',
-            to: '/blog/how-to-escape-tutorial-hell-2026/',
+            to: '/docs/how-it-works/tutorial-hell/',
           },
           {
             from: '/blog/vibe-coding-guide',
@@ -427,6 +441,20 @@ const config: Config = {
           { from: '/docs/learn-nextjs/routing', to: '/docs/learn-nextjs/' },
           { from: '/docs/learn-nextjs/rendering', to: '/docs/learn-nextjs/' },
           { from: '/docs/learn-nextjs/data-fetching', to: '/docs/learn-nextjs/' },
+          // Blog health consolidation (2026-09-26): thin or cannibalizing posts
+          // merged into stronger pages, now redirect stubs.
+          { from: '/blog/is-scrimba-worth-it', to: '/blog/scrimba-review/' },
+          { from: '/blog/how-to-learn-typescript-scrimba', to: '/blog/best-typescript-courses/' },
+          { from: '/blog/should-javascript-developers-learn-typescript-2026', to: '/blog/best-typescript-courses/' },
+          { from: '/blog/typescript-for-beginners-scrimba', to: '/docs/courses/typescript/' },
+          { from: '/blog/career-change-to-coding-2026', to: '/blog/best-scrimba-courses-career-changers/' },
+          { from: '/blog/developer-salary-guide-2026', to: '/blog/developer-specialization-job-market-2026/' },
+          { from: '/blog/how-to-escape-tutorial-hell-2026', to: '/docs/how-it-works/tutorial-hell/' },
+          { from: '/blog/is-web-development-worth-it-2026', to: '/blog/is-software-engineering-dead-2026/' },
+          { from: '/blog/learn-ai-engineering-scrimba', to: '/docs/courses/ai/' },
+          { from: '/blog/scrimba-frontend-vs-fullstack-path', to: '/docs/paths/' },
+          { from: '/blog/vibe-coder-to-real-developer-2026', to: '/blog/how-to-learn-coding-without-depending-on-ai/' },
+          { from: '/blog/web-development-roadmap-2026', to: '/blog/how-long-to-learn-web-development-2026/' },
           ...courseRedirects,
         ],
       },

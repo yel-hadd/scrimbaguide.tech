@@ -41,11 +41,12 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'What Is Scrimba Explain? (tested)', href: '/blog/scrimba-explain-review', type: 'blog' },
     { title: 'The Explain Button Inside Lessons', href: '/blog/scrimba-explain-inside-courses', type: 'blog' },
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Scrimba Explain vs NotebookLM', href: '/blog/scrimba-explain-vs-notebooklm-video-overviews', type: 'blog' },
   ],
   '/docs/how-it-works/how-scrims-work': [
     { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
     { title: 'How to Use Scrimba', href: '/docs/how-it-works/using-scrimba', type: 'doc' },
-    { title: 'Escape Tutorial Hell', href: '/blog/how-to-escape-tutorial-hell-2026', type: 'blog' },
+    { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
   ],
   '/docs/how-it-works/using-scrimba': [
     { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
@@ -61,6 +62,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba Explain Guide', href: '/docs/how-it-works/scrimba-explain', type: 'doc' },
     { title: 'The Explain Button Inside Lessons', href: '/blog/scrimba-explain-inside-courses', type: 'blog' },
     { title: 'How to Prompt Scrimba Explain', href: '/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles', type: 'blog' },
+    { title: 'Claude Code PR Explainers', href: '/blog/scrimba-explain-claude-code-pr-explainers', type: 'blog' },
   ],
   '/blog/how-to-learn-devops-2026': [
     { title: 'Scrimba Backend Path Review', href: '/blog/scrimba-backend-path-review', type: 'blog' },
@@ -75,7 +77,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
   ],
   '/blog/which-coding-path-to-learn-2026': [
-    { title: 'Frontend vs Fullstack Path', href: '/blog/scrimba-frontend-vs-fullstack-path', type: 'blog' },
+    { title: 'Scrimba Learning Paths', href: '/docs/paths/', type: 'doc' },
     { title: 'Scrimba Path Finder', href: '/tools/which-scrimba-path/', type: 'doc' },
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
   ],
@@ -96,7 +98,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   ],
   '/blog/how-to-get-better-at-reading-code-2026': [
     { title: 'Scrimba vs ChatGPT', href: '/blog/scrimba-vs-chatgpt-learn-to-code', type: 'blog' },
-    { title: 'From Vibe Coder to Real Developer', href: '/blog/vibe-coder-to-real-developer-2026', type: 'blog' },
+    { title: 'How to Learn Coding Without Depending on AI', href: '/blog/how-to-learn-coding-without-depending-on-ai', type: 'blog' },
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
   '/blog/best-interactive-coding-platforms-2026': [
@@ -113,7 +115,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   // --- Week 27 batch (2026-06/07) ---
   '/blog/do-you-need-to-learn-to-code-if-ai-writes-it': [
     { title: 'Can AI Replace Junior Developers?', href: '/blog/can-ai-replace-junior-developers-2026', type: 'blog' },
-    { title: 'From Vibe Coder to Real Developer', href: '/blog/vibe-coder-to-real-developer-2026', type: 'blog' },
+    { title: 'How to Learn Coding Without Depending on AI', href: '/blog/how-to-learn-coding-without-depending-on-ai', type: 'blog' },
     { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
   ],
   '/blog/is-software-engineering-dead-2026': [
@@ -122,7 +124,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
   '/blog/learn-to-code-summer-2026': [
-    { title: 'Web Development Roadmap 2026', href: '/blog/web-development-roadmap-2026', type: 'blog' },
+    { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
     { title: 'How Long to Learn Web Dev', href: '/blog/how-long-to-learn-web-development-2026', type: 'blog' },
     { title: 'Scrimba Study Plan', href: '/docs/paths/study-plan', type: 'doc' },
   ],
@@ -137,7 +139,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
   ],
   '/blog/how-to-build-ai-agent-beginners-2026': [
-    { title: 'Learn AI Engineering on Scrimba', href: '/blog/learn-ai-engineering-scrimba', type: 'blog' },
+    { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
     { title: 'AI Tools Every Developer Should Know', href: '/blog/ai-tools-every-developer-should-know-2026', type: 'blog' },
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
   ],
@@ -147,31 +149,26 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
   '/blog/how-to-learn-coding-without-depending-on-ai': [
-    { title: 'Escape Tutorial Hell in 2026', href: '/blog/how-to-escape-tutorial-hell-2026', type: 'blog' },
+    { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
     { title: 'AI Tools for Learning to Code', href: '/blog/ai-tools-for-learning-to-code-2026', type: 'blog' },
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
   '/blog/how-to-become-ai-engineer-javascript-developer': [
     { title: 'Scrimba AI Engineer Path Guide', href: '/blog/scrimba-ai-engineer-path-guide', type: 'blog' },
-    { title: 'Should JS Devs Learn TypeScript?', href: '/blog/should-javascript-developers-learn-typescript-2026', type: 'blog' },
+    { title: 'Best TypeScript Courses', href: '/blog/best-typescript-courses', type: 'blog' },
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
   ],
   '/blog/developer-specialization-job-market-2026': [
-    { title: 'Developer Salary Guide 2026', href: '/blog/developer-salary-guide-2026', type: 'blog' },
-    { title: 'Frontend vs Fullstack Path', href: '/blog/scrimba-frontend-vs-fullstack-path', type: 'blog' },
+    { title: 'Which Coding Path to Learn', href: '/blog/which-coding-path-to-learn-2026', type: 'blog' },
+    { title: 'Scrimba Learning Paths', href: '/docs/paths/', type: 'doc' },
     { title: 'Which Scrimba Path Fits You?', href: '/tools/which-scrimba-path/', type: 'doc' },
   ],
 
   // --- Blog Posts: Money Pages ---
   '/blog/scrimba-review': [
-    { title: 'Is Scrimba Worth It?', href: '/blog/is-scrimba-worth-it', type: 'blog' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
     { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
-  ],
-  '/blog/is-scrimba-worth-it': [
-    { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
-    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
-    { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
   ],
   '/blog/why-i-keep-renewing-scrimba-pro': [
     { title: 'Scrimba vs Bootcamps Cost', href: '/docs/pricing/scrimba-vs-bootcamps', type: 'doc' },
@@ -179,16 +176,6 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba Discount Codes', href: '/blog/scrimba-discount-codes-2026', type: 'blog' },
   ],
   // --- Blog Posts: Guides ---
-  '/blog/career-change-to-coding-2026': [
-    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
-    { title: '6-Month Study Plan', href: '/docs/paths/study-plan', type: 'doc' },
-    { title: 'Success Stories', href: '/blog/scrimba-success-stories', type: 'blog' },
-  ],
-  '/blog/how-to-escape-tutorial-hell-2026': [
-    { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
-    { title: 'Scrimba vs YouTube', href: '/docs/comparisons/scrimba-vs-youtube', type: 'comparison' },
-    { title: 'Build a Coding Habit', href: '/blog/build-coding-habit-scrimba', type: 'blog' },
-  ],
   '/blog/best-free-scrimba-courses': [
     { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Scrimba for Beginners', href: '/docs/for/beginners', type: 'doc' },
@@ -197,7 +184,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
 
   // --- Blog: new comparison posts ---
   '/blog/best-typescript-courses': [
-    { title: 'Should JS Devs Learn TypeScript?', href: '/blog/should-javascript-developers-learn-typescript-2026', type: 'blog' },
+    { title: 'TypeScript Courses Hub', href: '/docs/courses/typescript/', type: 'doc' },
     { title: 'Learn TypeScript (course)', href: '/docs/courses/typescript/learn-typescript', type: 'doc' },
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
@@ -217,20 +204,20 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
     { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
     { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
-    { title: 'Frontend vs Fullstack', href: '/blog/scrimba-frontend-vs-fullstack-path', type: 'blog' },
+    { title: 'Which Coding Path to Learn', href: '/blog/which-coding-path-to-learn-2026', type: 'blog' },
   ],
   '/docs/paths/frontend-developer-path': [
-    { title: 'Fullstack vs Frontend Path', href: '/blog/scrimba-frontend-vs-fullstack-path', type: 'blog' },
+    { title: 'Scrimba Learning Paths', href: '/docs/paths/', type: 'doc' },
     { title: 'Study Plan', href: '/docs/paths/study-plan', type: 'doc' },
-    { title: 'Career Change Guide', href: '/blog/career-change-to-coding-2026', type: 'blog' },
+    { title: 'Best Scrimba Courses for Career Changers', href: '/blog/best-scrimba-courses-career-changers', type: 'blog' },
   ],
   '/docs/paths/fullstack-developer-path': [
-    { title: 'Frontend vs Fullstack Path', href: '/blog/scrimba-frontend-vs-fullstack-path', type: 'blog' },
+    { title: 'Scrimba Learning Paths', href: '/docs/paths/', type: 'doc' },
     { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
   ],
   '/docs/paths/ai-engineer-path': [
-    { title: 'Learn AI Engineering', href: '/blog/learn-ai-engineering-scrimba', type: 'blog' },
+    { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
     { title: 'AI Tools for Developers', href: '/blog/ai-tools-every-developer-should-know-2026', type: 'blog' },
     { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
   ],
@@ -245,6 +232,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Learn Python', href: '/docs/courses/python/learn-python', type: 'doc' },
     { title: 'Best Python Courses for Beginners', href: '/docs/courses/python/best-python-courses-for-beginners', type: 'doc' },
     { title: 'Scrimba vs freeCodeCamp', href: '/docs/comparisons/scrimba-vs-freecodecamp', type: 'comparison' },
+    { title: 'Best Udemy Python Courses', href: '/blog/best-udemy-python-courses', type: 'blog' },
   ],
   '/docs/courses/python/learn-python': [
     { title: 'Best Python Courses for Beginners', href: '/docs/courses/python/best-python-courses-for-beginners', type: 'doc' },
@@ -264,12 +252,12 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   '/docs/courses/ai/rag': [
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
     { title: 'Learn AI Agents', href: '/docs/courses/ai/ai-agents', type: 'doc' },
-    { title: 'Learn AI Engineering', href: '/blog/learn-ai-engineering-scrimba', type: 'blog' },
+    { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
   ],
   '/docs/courses/ai/ai-engineering': [
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
     { title: 'Prompt Engineering', href: '/docs/courses/ai/prompt-engineering-for-web-developers', type: 'doc' },
-    { title: 'Learn AI Engineering', href: '/blog/learn-ai-engineering-scrimba', type: 'blog' },
+    { title: 'Best AI Engineering Courses', href: '/blog/best-ai-engineering-courses', type: 'blog' },
   ],
   '/docs/courses/ai/prompt-engineering-for-web-developers': [
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
@@ -296,13 +284,13 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   '/docs/courses/typescript/learn-typescript': [
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
     { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
-    { title: 'Should JS Devs Learn TypeScript?', href: '/blog/should-javascript-developers-learn-typescript-2026', type: 'blog' },
+    { title: 'Best TypeScript Courses', href: '/blog/best-typescript-courses', type: 'blog' },
   ],
 
   // --- Docs: Comparisons ---
   '/docs/comparisons/scrimba-vs-udemy': [
     { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
-    { title: 'Is Scrimba Worth It?', href: '/blog/is-scrimba-worth-it', type: 'blog' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
     { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
   ],
   '/docs/comparisons/scrimba-vs-codecademy': [
@@ -378,6 +366,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Learn CSS Grid', href: '/docs/practice/practice-css-grid', type: 'doc' },
     { title: 'Learn Flexbox', href: '/docs/practice/practice-flexbox', type: 'doc' },
     { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Best CSS Courses 2026', href: '/blog/best-css-courses-2026', type: 'blog' },
   ],
   '/docs/for/marketers': [
     { title: 'Learn HTML & CSS', href: '/docs/courses/css/html-and-css', type: 'doc' },
@@ -440,16 +429,178 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
     { title: 'Best Free Scrimba Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
   ],
-  '/blog/typescript-for-beginners-scrimba': [
-    { title: 'Should JS Devs Learn TypeScript?', href: '/blog/should-javascript-developers-learn-typescript-2026', type: 'blog' },
-    { title: 'How to Learn TypeScript on Scrimba', href: '/blog/how-to-learn-typescript-scrimba', type: 'blog' },
-    { title: 'Learn TypeScript Free Course', href: '/docs/courses/typescript/learn-typescript', type: 'doc' },
-    { title: 'TypeScript Courses', href: '/docs/courses/typescript/', type: 'doc' },
-  ],
   '/blog/developer-job-without-degree-2026': [
     { title: 'Junior Developer Job Market 2026', href: '/blog/junior-developer-job-market-2026', type: 'blog' },
     { title: 'How to Get Your First Dev Job', href: '/blog/how-to-get-first-developer-job-2026', type: 'blog' },
-    { title: 'Developer Salary Guide 2026', href: '/blog/developer-salary-guide-2026', type: 'blog' },
+    { title: 'Developer Specialization Job Market 2026', href: '/blog/developer-specialization-job-market-2026', type: 'blog' },
+  ],
+
+  // --- Blog health consolidation (2026-09-26): entries for published posts that had none ---
+  '/blog/ai-tools-every-developer-should-know-2026': [
+    { title: 'AI Tools for Learning to Code', href: '/blog/ai-tools-for-learning-to-code-2026', type: 'blog' },
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
+  ],
+  '/blog/ai-tools-for-learning-to-code-2026': [
+    { title: 'AI Tools Every Developer Should Know', href: '/blog/ai-tools-every-developer-should-know-2026', type: 'blog' },
+    { title: 'How to Learn Coding Without Depending on AI', href: '/blog/how-to-learn-coding-without-depending-on-ai', type: 'blog' },
+    { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
+  ],
+  '/blog/best-coding-bootcamp-alternatives-2026': [
+    { title: 'Coding Bootcamps Closing in 2026', href: '/blog/coding-bootcamps-closing-2026', type: 'blog' },
+    { title: 'Scrimba vs Bootcamps Cost', href: '/docs/pricing/scrimba-vs-bootcamps', type: 'doc' },
+    { title: 'Bootcamp Cost Calculator', href: '/tools/bootcamp-cost-calculator/', type: 'doc' },
+    { title: 'Best Udemy Coding Courses', href: '/blog/best-udemy-coding-courses', type: 'blog' },
+  ],
+  '/blog/best-scrimba-courses-career-changers': [
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: '6-Month Study Plan', href: '/docs/paths/study-plan', type: 'doc' },
+    { title: 'Is Software Engineering Dead in 2026?', href: '/blog/is-software-engineering-dead-2026', type: 'blog' },
+  ],
+  '/blog/best-udemy-ai-courses': [
+    { title: 'Best AI Engineering Courses', href: '/blog/best-ai-engineering-courses', type: 'blog' },
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
+  ],
+  '/blog/best-udemy-javascript-courses': [
+    { title: 'JavaScript Courses (Scrimba)', href: '/docs/courses/javascript/', type: 'doc' },
+    { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
+    { title: 'Scrimba Learning Paths', href: '/docs/paths/', type: 'doc' },
+  ],
+  '/blog/best-udemy-python-courses': [
+    { title: 'Python Courses (Scrimba)', href: '/docs/courses/python/', type: 'doc' },
+    { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+  ],
+  '/blog/best-udemy-react-courses': [
+    { title: 'React Courses (Scrimba)', href: '/docs/courses/react/', type: 'doc' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Best Udemy JavaScript Courses', href: '/blog/best-udemy-javascript-courses', type: 'blog' },
+  ],
+  '/blog/best-udemy-web-development-courses': [
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
+    { title: 'JavaScript Courses (Scrimba)', href: '/docs/courses/javascript/', type: 'doc' },
+  ],
+  '/blog/build-coding-habit-scrimba': [
+    { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
+    { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
+    { title: 'Why I Keep Renewing Scrimba Pro', href: '/blog/why-i-keep-renewing-scrimba-pro', type: 'blog' },
+  ],
+  '/blog/can-ai-replace-junior-developers-2026': [
+    { title: 'Junior Developer Job Market 2026', href: '/blog/junior-developer-job-market-2026', type: 'blog' },
+    { title: 'Is Software Engineering Dead in 2026?', href: '/blog/is-software-engineering-dead-2026', type: 'blog' },
+    { title: 'Do You Need to Learn to Code if AI Writes It?', href: '/blog/do-you-need-to-learn-to-code-if-ai-writes-it', type: 'blog' },
+  ],
+  '/blog/complete-guide-scrimba-certificates': [
+    { title: 'Scrimba vs Coursera', href: '/docs/comparisons/scrimba-vs-coursera', type: 'comparison' },
+    { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
+    { title: 'Scrimba for CS Students', href: '/docs/for/cs-students', type: 'doc' },
+  ],
+  '/blog/frontend-developer-skills-2026': [
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Frontend Interview Prep', href: '/blog/frontend-interview-prep-scrimba', type: 'blog' },
+    { title: 'Best Udemy Web Development Courses', href: '/blog/best-udemy-web-development-courses', type: 'blog' },
+  ],
+  '/blog/frontend-interview-prep-scrimba': [
+    { title: 'Frontend Developer Skills 2026', href: '/blog/frontend-developer-skills-2026', type: 'blog' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Portfolio Projects That Get You Hired', href: '/blog/portfolio-projects-get-hired-2026', type: 'blog' },
+  ],
+  '/blog/how-long-to-learn-web-development-2026': [
+    { title: 'Learn to Code This Summer', href: '/blog/learn-to-code-summer-2026', type: 'blog' },
+    { title: 'Scrimba Study Plan', href: '/docs/paths/study-plan', type: 'doc' },
+    { title: 'Cost to Become a Developer 2026', href: '/blog/cost-to-become-a-developer-2026', type: 'blog' },
+  ],
+  '/blog/how-to-get-first-developer-job-2026': [
+    { title: 'How to Get Coding Experience Without a Job', href: '/blog/how-to-get-coding-experience-without-a-job-2026', type: 'blog' },
+    { title: 'Junior Developer Job Market 2026', href: '/blog/junior-developer-job-market-2026', type: 'blog' },
+    { title: 'Portfolio Projects That Get You Hired', href: '/blog/portfolio-projects-get-hired-2026', type: 'blog' },
+  ],
+  '/blog/javascript-projects-for-beginners-2026': [
+    { title: 'Learn JavaScript (course)', href: '/docs/courses/javascript/learn-javascript', type: 'doc' },
+    { title: 'How Long to Learn Web Development', href: '/blog/how-long-to-learn-web-development-2026', type: 'blog' },
+    { title: 'Best Udemy JavaScript Courses', href: '/blog/best-udemy-javascript-courses', type: 'blog' },
+  ],
+  '/blog/junior-developer-job-market-2026': [
+    { title: 'Can AI Replace Junior Developers?', href: '/blog/can-ai-replace-junior-developers-2026', type: 'blog' },
+    { title: 'How to Get Your First Dev Job', href: '/blog/how-to-get-first-developer-job-2026', type: 'blog' },
+    { title: 'Developer Specialization Job Market 2026', href: '/blog/developer-specialization-job-market-2026', type: 'blog' },
+  ],
+  '/blog/portfolio-projects-get-hired-2026': [
+    { title: 'How to Get Coding Experience Without a Job', href: '/blog/how-to-get-coding-experience-without-a-job-2026', type: 'blog' },
+    { title: 'How to Get Your First Dev Job', href: '/blog/how-to-get-first-developer-job-2026', type: 'blog' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+  ],
+  '/blog/projects-youll-build-on-scrimba': [
+    { title: 'JavaScript Projects for Beginners 2026', href: '/blog/javascript-projects-for-beginners-2026', type: 'blog' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
+  ],
+  '/blog/scrimba-ai-engineer-path-guide': [
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
+    { title: 'Best AI Engineering Courses', href: '/blog/best-ai-engineering-courses', type: 'blog' },
+  ],
+  '/blog/scrimba-backend-path-review': [
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Scrimba vs Boot.dev', href: '/docs/comparisons/scrimba-vs-boot-dev', type: 'comparison' },
+  ],
+  '/blog/scrimba-discount-codes-2026': [
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free', type: 'doc' },
+    { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
+  ],
+  '/blog/scrimba-for-teams': [
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+  ],
+  '/blog/scrimba-fullstack-path-reviews': [
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Scrimba Learning Paths', href: '/docs/paths/', type: 'doc' },
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+  ],
+  '/blog/scrimba-instant-practice-no-setup': [
+    { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
+    { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
+    { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
+  ],
+  '/blog/scrimba-neurodivergent-learners': [
+    { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
+    { title: 'Scrimba for Beginners', href: '/docs/for/beginners', type: 'doc' },
+    { title: 'Build a Coding Habit', href: '/blog/build-coding-habit-scrimba', type: 'blog' },
+  ],
+  '/blog/scrimba-react-learning-path': [
+    { title: 'React Courses (Scrimba)', href: '/docs/courses/react/', type: 'doc' },
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Best Udemy React Courses', href: '/blog/best-udemy-react-courses', type: 'blog' },
+  ],
+  '/blog/scrimba-roadmap-whats-coming': [
+    { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
+    { title: 'What Makes Scrimba Different', href: '/blog/what-makes-scrimba-different', type: 'blog' },
+    { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
+  ],
+  '/blog/scrimba-success-stories': [
+    { title: 'Best Scrimba Courses for Career Changers', href: '/blog/best-scrimba-courses-career-changers', type: 'blog' },
+    { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
+    { title: 'Build a Coding Habit', href: '/blog/build-coding-habit-scrimba', type: 'blog' },
+  ],
+  '/blog/scrimba-vs-coding-bootcamps-cost': [
+    { title: 'Scrimba vs Bootcamps Cost (doc)', href: '/docs/pricing/scrimba-vs-bootcamps', type: 'doc' },
+    { title: 'Best Bootcamp Alternatives 2026', href: '/blog/best-coding-bootcamp-alternatives-2026', type: 'blog' },
+    { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
+  ],
+  '/blog/scrimba-vs-youtube-coding': [
+    { title: 'Scrimba vs YouTube', href: '/docs/comparisons/scrimba-vs-youtube', type: 'comparison' },
+    { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
+    { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
+  ],
+  '/blog/what-is-vibe-coding-2026': [
+    { title: 'How to Learn Coding Without Depending on AI', href: '/blog/how-to-learn-coding-without-depending-on-ai', type: 'blog' },
+    { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
+    { title: 'Do You Need to Learn to Code if AI Writes It?', href: '/blog/do-you-need-to-learn-to-code-if-ai-writes-it', type: 'blog' },
   ],
 };
 
@@ -478,6 +629,7 @@ const sectionFallbacks: Record<string, RelatedGuide[]> = {
     { title: 'JavaScript Courses', href: '/docs/courses/javascript/', type: 'doc' },
     { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path/', type: 'doc' },
     { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Best Next.js Courses', href: '/blog/best-nextjs-courses', type: 'blog' },
   ],
   '/blog/best-udemy-coding-courses': [
     { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
@@ -602,7 +754,7 @@ function resolveRelatedGuides(slug: string): RelatedGuide[] {
     return [
       { title: 'All Learning Paths', href: '/docs/paths/', type: 'doc' },
       { title: 'Study Plan', href: '/docs/paths/study-plan', type: 'doc' },
-      { title: 'Is Scrimba Worth It?', href: '/blog/is-scrimba-worth-it', type: 'blog' },
+      { title: 'Scrimba Review', href: '/blog/scrimba-review', type: 'blog' },
     ];
   }
   

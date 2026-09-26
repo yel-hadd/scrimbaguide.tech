@@ -1,21 +1,20 @@
 ---
 slug: best-free-scrimba-courses
 title: "Best Free Scrimba Courses in 2026, Ranked"
-description: "All 24 free Scrimba courses ranked by recency and depth, with real durations and instructors, plus a flag on the ones showing their age."
+description: "24 free Scrimba courses ranked by what to take first, with real hours and instructors, plus which ones quietly moved behind Pro."
 authors: [scrimbaguide]
 tags: [courses, guide]
-keywords: [free scrimba courses, scrimba free courses, best free coding courses, scrimba no subscription]
+keywords: [free scrimba courses, scrimba free courses, best free coding courses, scrimba no subscription, is scrimba free]
 image: /img/blog/best-free-scrimba-courses.png
 image_alt: "Best Free Scrimba Courses in 2026 (And the Ones That Are Dated) | Scrimba Guide Blog"
 hideFooterPricingCta: true
 date: 2026-01-06
 last_update:
-  date: 2026-09-22
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
-import CourseCard from '@site/src/components/CourseCard';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
@@ -26,176 +25,138 @@ import { freeCount } from '@site/src/utils/scrimbaFacts';
 
 <DisclosureNotice />
 
-Scrimba has roughly {freeCount} fully free courses you can take without a subscription, and they range from genuinely excellent (Bob Ziroll's 15-hour Learn React is still the best free React course I know of) to noticeably dated. This is the catalog-reviewer's honest take: which ones to start with, which ones to skip, and what they cost in time.
+Scrimba has {freeCount} fully free courses, no credit card and no trial clock. Start with [Learn React](/docs/courses/react/learn-react/) if you already know JavaScript, or [Learn JavaScript](/docs/courses/javascript/learn-javascript/) if you don't. Both are current, both are free, and together they cover more ground than most paid beginner bootcamps.
 
-**Quick answer:** Start with **Learn React** (15.1 hrs, Bob Ziroll) or **[Learn JavaScript](/docs/courses/javascript/learn-javascript/)** (9.4 hrs, Per Borgen). They're the two strongest free courses on the platform and they're current. Avoid the **Bootstrap 4** course (CSS practice has moved on) and treat the **Space Travel Website** and **Imba** courses as curiosities, not learning paths.
-
-*Last reviewed: May 2026. Free course availability changes. Verify on the <AffiliateLink href="https://scrimba.com/allcourses">Scrimba course catalog</AffiliateLink>.*
+*Reviewed with a Pro account from inside Scrimba's catalog, September 2026, cross-checked against `data/courses.json`. The catalog moves, so a course listed free here can shift behind Pro later; this guide is updated when that happens, but check a course's own page above before you commit.*
 
 ## Who this is for
 
-Anyone trying Scrimba without paying: budget-conscious learners, people who want to validate the format before subscribing, students supplementing The Odin Project or freeCodeCamp.
+Anyone trying Scrimba without paying: budget-conscious learners, people validating the format before subscribing, students supplementing [freeCodeCamp](https://www.freecodecamp.org/) or [The Odin Project](https://www.theodinproject.com/).
 
 {/* truncate */}
-
-These are full courses, not previews. You don't need a credit card. The list below is sorted by what I'd actually recommend taking first.
 
 <ItemListSchema
   name="Best Free Scrimba Courses"
   description="The free Scrimba courses ranked by what to take first, with real durations and instructors."
   items={[
-    { name: "Learn React", description: "Free 15.1-hour course with Bob Ziroll, 357 lessons and two capstone projects." },
-    { name: "Learn JavaScript", url: "/docs/courses/javascript/learn-javascript", description: "Free 9.4-hour beginner course with Per Borgen, 140+ challenges and three small projects." },
-    { name: "Learn HTML and CSS", description: "Free 5.7-hour fundamentals course with Per Borgen plus five deployable projects." },
-    { name: "Learn TypeScript", description: "Free 4.2-hour course with Bob Ziroll, 79 lessons covering types, interfaces and React and Express integration." },
-    { name: "Learn CSS Grid", description: "Free 63-minute focused course with Per Borgen on CSS Grid." },
+    { name: "Learn React", url: "/docs/courses/react/learn-react/", description: "Free 15.1-hour course with Bob Ziroll, 358 lessons and two capstone projects." },
+    { name: "Learn JavaScript", url: "/docs/courses/javascript/learn-javascript/", description: "Free 9.4-hour beginner course with Per Borgen, 238 lessons and four built projects." },
+    { name: "Learn HTML and CSS", url: "/docs/courses/css/html-and-css/", description: "Free 5.7-hour fundamentals course with Per Borgen plus five deployable sites." },
+    { name: "Learn TypeScript", url: "/docs/courses/typescript/learn-typescript/", description: "Free 4.2-hour course with Bob Ziroll and Rachel Johnson, 79 lessons covering fundamentals, then typed React and typed Express." },
+    { name: "Learn Node.js", url: "/docs/courses/javascript/nodejs/", description: "Free 3.5-hour course with Tom Chant, a REST API and a small site built with no framework." },
   ]}
 />
 
-## The two free courses worth your time first
+## Which free Scrimba course should I take first?
 
-### 1. Learn React (the strongest free course on the platform)
+Take [Learn React](/docs/courses/react/learn-react/) if you already know basic JavaScript, and [Learn JavaScript](/docs/courses/javascript/learn-javascript/) if you don't. Those two cover more real building than anything else free on the platform, and neither has dated.
 
-<CourseCard
-  title="Learn React"
-  duration="15.1 hrs"
-  difficulty="Intermediate"
-  access="Free"
-  lessons={357}
-  instructor="Bob Ziroll"
-  href="https://scrimba.com/learn-react-c0e?via=u42d4986"
-  description="The free course people actually link to on Reddit when someone asks how to learn React. 357 lessons, two capstone projects, Bob Ziroll is one of the better instructors in the JS world."
-/>
+### 1. Learn React
 
-Ziroll is a known commodity in the JS teaching world (his older Frontend Bootcamp on freeCodeCamp's YouTube has tens of millions of views; see [his FCC playlist](https://www.youtube.com/@Freecodecamp)) and the course feels like it. It's the gold-standard free React course on Scrimba and probably the single most cited free React course in 2026 recommendations.
+15.1 hours, 358 lessons across six modules, taught by Bob Ziroll: <AffiliateLink href="https://scrimba.com/learn-react-c0e">Learn React</AffiliateLink> is free and it's the platform's flagship course.
+
+Bob Ziroll builds from static pages to state to side effects across six modules, then closes with two capstones you actually ship: Tenzies and Assembly: Endgame. The same course is mirrored as a free video on [freeCodeCamp's YouTube channel](https://www.freecodecamp.org/news/learn-react-2024/).
+
+Six modules and two shipped projects is real depth for a free course. Most platforms hold their flagship framework course back for paying users; Scrimba doesn't. If you already write basic JavaScript, start here instead of repeating fundamentals you don't need.
 
 ### 2. Learn JavaScript
 
-<CourseCard
-  title="Learn JavaScript"
-  duration="9.4 hrs"
-  difficulty="Beginner"
-  access="Free"
-  modules={9}
-  instructor="Per Borgen"
-  href="https://scrimba.com/learn-javascript-c0v?via=u42d4986"
-  description="Per Borgen is Scrimba's CEO and a competent teacher. 140+ challenges, three small projects (game, browser extension, mobile app)."
-/>
+[Learn JavaScript](/docs/courses/javascript/learn-javascript/) is free, 9.4 hours, 238 lessons across eight modules, taught by Per Borgen, Scrimba's CEO. The pace is friendlier than Ziroll's React course, which makes it the right pick if JavaScript itself is new to you. You build a passenger counter, a blackjack game, a Chrome extension, and a mobile app before the course ends, then move straight into [Learn React](/docs/courses/react/learn-react/) once it's done.
 
-Solid beginner course. The pace is friendlier than Ziroll's React course, which makes it the better choice if JavaScript itself is new to you. Take this first if you don't already know JS.
+## Strong free courses to take after the first two
 
-## Strong free courses, take after the first two
+Three more free courses are worth your time before you touch Pro. None needs its own card: pick the row that matches the gap you actually have.
 
-### 3. Learn HTML and CSS
+| Course | Hours | Lessons | Instructor | What you build |
+|---|---|---|---|---|
+| [Learn HTML and CSS](/docs/courses/css/html-and-css/) | 5.7 hrs | 121 | Per Borgen | Five deployed sites (a Google clone, a digital business card, a space exploration page, a birthday site), then a sixth site you build alone |
+| [Learn TypeScript](/docs/courses/typescript/learn-typescript/) | 4.2 hrs | 79 | Bob Ziroll & Rachel Johnson | Fundamentals, then TypeScript inside React, then inside Express |
+| [Learn Node.js](/docs/courses/javascript/nodejs/) | 3.5 hrs | 53 | Tom Chant | A JSON REST API on Node's built-in `http` module, no Express, plus a small site with static files and server-sent events |
 
-<CourseCard
-  title="Learn HTML and CSS"
-  duration="5.7 hrs"
-  difficulty="Beginner"
-  access="Free"
-  instructor="Per Borgen"
-  href="https://scrimba.com/learn-html-and-css-c0p?via=u42d4986"
-  description="Fundamentals plus five deployable projects. Reasonable starting point for absolute beginners, though MDN's own docs cover the same ground for free with more depth."
-/>
+Per Borgen has you deploy five real sites, then hands you a skeleton for a sixth and steps back. It's the strongest starting point on the platform for someone who has never written a line of code.
 
-### 4. Learn TypeScript
+Take TypeScript once you've used JavaScript on something real. Ziroll teaches the fundamentals, then Rachel Johnson moves into typed React and typed Express in under four and a half hours total, so you see the payoff in two frameworks, not just in isolation.
 
-<CourseCard
-  title="Learn TypeScript"
-  duration="4.2 hrs"
-  difficulty="Intermediate"
-  access="Free"
-  lessons={79}
-  instructor="Bob Ziroll"
-  href="https://scrimba.com/learn-typescript-c03c?via=u42d4986"
-  description="Types, interfaces, React and Express integration. Ziroll again. Take this after you've used JavaScript on a real project."
-/>
+Tom Chant teaches Node with no framework at all: you see what `http` gives you before anything hides it. Take [Learn Express.js](/docs/courses/javascript/expressjs/) right after, also free, for the framework built on the same ideas.
 
-> **Worth flagging:** the {freeCount} free courses include the platform's flagship React and TypeScript courses (Bob Ziroll) and its flagship JavaScript course (Per Borgen). That's not the case on most paid platforms, where the headline product is gated. If you want to feel the format before reading further, the <AffiliateLink href="https://scrimba.com/s0v687325e">public demo scrim</AffiliateLink> needs no signup. For the structural comparison to a bootcamp, see [Scrimba vs coding bootcamps](/docs/pricing/scrimba-vs-bootcamps/).
+The {freeCount} free courses on Scrimba include the platform's flagship React course (Bob Ziroll) and its flagship JavaScript course (Per Borgen). That's rare: most paid platforms gate the headline product. Feel the format first with the <AffiliateLink href="https://scrimba.com/s0v687325e">public demo scrim</AffiliateLink>, no signup required. For the structural comparison to a bootcamp, see <a href="/docs/pricing/scrimba-vs-bootcamps/">Scrimba vs coding bootcamps</a>.
 
-### 5. Learn CSS Grid
+## Other free courses worth knowing about
 
-<CourseCard
-  title="Learn CSS Grid"
-  duration="63 min"
-  difficulty="Intermediate"
-  access="Free"
-  instructor="Per Borgen"
-  href="https://scrimba.com/learn-css-grid-c02k?via=u42d4986"
-  description="One-hour focused course on a specific topic. Still relevant; CSS Grid is the same in 2026 as it was when this was filmed."
-/>
+Scrimba's free tier now reaches past frontend. These are full courses, not previews, and each links to our from-inside review:
 
-## Useful but narrow free courses
+| Course | Hours | Instructor | What you build |
+|---|---|---|---|
+| [Learn Python](/docs/courses/python/learn-python/) | 4.1 hrs | Treasure Porth | Three terminal apps: an expense splitter, a word-scramble game, a karaoke queue manager |
+| [Learn SQL](/docs/courses/backend/sql/) | 3.8 hrs | Gregor Thomson | 62 challenges querying a vintage car dealership's database |
+| [Learn Express.js](/docs/courses/javascript/expressjs/) | 4.0 hrs | Tom Chant | A REST API, then a SQLite-backed vinyl store with sessions and hashed passwords |
+| [Intro to Supabase](/docs/courses/backend/supabase/) | 4.8 hrs | Jonathan Hill | A React sales dashboard with a live Postgres query, realtime charts, and row-level security |
+| [Learn Next.js](/docs/courses/javascript/nextjs/) | 8.5 hrs | Bob Ziroll & Rachel Johnson | A 3D-model catalog site (PrintForge) with the App Router and a SQLite database |
+| [Learn Vue](/docs/courses/javascript/vue/) | 96 min | Rachel Johnson | A Vue Facts app built from single-file components |
+| [Intro to NestJS](/docs/courses/javascript/nestjs/) | 83 min | DonTheDeveloper | A DevMatch profile API on NestJS 11 |
+| [Learn to Code with AI](/docs/courses/ai/to-code-with-ai/) | 4.5 hrs | Guil Hernandez | Prompting and pairing with an AI coding assistant on real tasks |
 
-| Course | Duration | Why |
+If you only want one of these, take [Learn Node.js](/docs/courses/javascript/nodejs/) or [Learn SQL](/docs/courses/backend/sql/) first: both are short, free, and give you a backend fact React and JavaScript alone won't.
+
+## Small, useful free courses
+
+Under two hours each, good for a specific gap rather than a learning path:
+
+| Course | Duration | Why it's worth an hour |
 |---|---|---|
-| <AffiliateLink href="https://scrimba.com/intro-to-mistral-ai-c035">Intro to Mistral AI</AffiliateLink> | 84 min | Quick intro to an LLM API. Useful as a sample of the AI catalog. |
-| <AffiliateLink href="https://scrimba.com/learn/openaiassistants">OpenAI Assistants API</AffiliateLink> | 30 min | Worth checking that Assistants API hasn't been deprecated in OpenAI's current docs before relying on it. |
-| <AffiliateLink href="https://scrimba.com/learn-class-components-in-react-c0h">Learn React Class Components</AffiliateLink> | 80 min | Mostly historical now (modern React is hooks). Skip unless you're maintaining a legacy codebase. |
-| <AffiliateLink href="https://scrimba.com/build-a-product-card-with-tailwind-c07sjqf1ak">Build a Product Card with Tailwind</AffiliateLink> | 75 min | Tiny project course. Fine for an hour. |
-| <AffiliateLink href="https://scrimba.com/deploying-with-netlify-c013">Deploying with Netlify</AffiliateLink> | 23 min | Useful pointer; deployment hasn't changed much. |
-| <AffiliateLink href="https://scrimba.com/learn-markdown-c01j">Learn Markdown</AffiliateLink> | 37 min | Quick utility skill. |
-| <AffiliateLink href="https://scrimba.com/css-challenges-c02p">CSS Challenges</AffiliateLink> | 2.6 hrs | Practice rather than instruction. |
-| <AffiliateLink href="https://scrimba.com/build-and-deploy-your-portfolio-c012">Build and Deploy Your Portfolio</AffiliateLink> | 2.4 hrs | Decent end-to-end portfolio walkthrough. |
+| [Command Line Basics](/docs/courses/javascript/command-line-basics/) | 1.7 hrs | Navigation, file operations, and git from a terminal, before you need any of it under pressure |
+| [Intro to UI Design Fundamentals](/docs/courses/css/ui-design-fundamentals/) | 1.2 hrs | Layout, color, and type principles for developers who never studied design |
+| [What's New in React 19](/docs/courses/react/whats-new-in-react-19/) | 1.2 hrs | The Actions API and the new hooks, for anyone who learned React before 19 |
+| [Intro to Mistral AI](/docs/courses/ai/mistral-ai/) | 1.4 hrs | A working sample of Scrimba's AI catalog through one model's API |
+| [Intro to Vite](/docs/courses/javascript/vite/) | 39 min | What the build tool under most modern React and Vue projects actually does |
+| [Learn Regular Expressions](/docs/courses/backend/regular-expressions/) | 46 min | Pattern matching taught by freeCodeCamp's own instructor |
+| [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/) | 23 min | Push a static site live in one sitting |
+| [Build Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase/) | 50 min | A serverless agent pattern, useful as a sample of the AI catalog |
 
-## The free courses that are showing their age
+## Free courses that are showing their age
 
-Be honest with yourself about these. They were good when filmed; they aren't where modern practice lives.
+Be clear-eyed about these. They were solid when filmed. They aren't where current practice lives.
 
-- **<AffiliateLink href="https://scrimba.com/learn-bootstrap-c0o">Learn Bootstrap (Bootstrap 4)</AffiliateLink>** (55 min). Bootstrap 5 has been out for years and most new projects use Tailwind or component libraries. Skip unless you're maintaining a Bootstrap 4 codebase.
-- **<AffiliateLink href="https://scrimba.com/build-a-space-travel-website-c014">Build a Space Travel Website</AffiliateLink>** (6.8 hrs). The duration looks impressive but it's an older project course. Take the modern Learn React and Learn JavaScript instead.
-- **<AffiliateLink href="https://scrimba.com/learn-imba-c01h">Learn Imba</AffiliateLink>** (2.9 hrs). Imba is a niche language created by Scrimba's co-founder Sindre Aarsaether. Genuinely interesting but you should not be learning Imba in 2026 unless you specifically want to.
+- [Build a Space Travel Website](/docs/courses/javascript/a-space-travel-website/) (6.8 hrs, Kevin Powell). The 68-lesson runtime looks substantial, but it's an older project course. [Learn React](/docs/courses/react/learn-react/) and [Learn JavaScript](/docs/courses/javascript/learn-javascript/) teach the same skills with current tooling.
+- [Learn Imba](/docs/courses/javascript/imba/) (2.9 hrs, Nathan Manousos). Imba is a niche language built by Scrimba co-founder Sindre Aarsæther. Interesting on its own terms, not something to learn as your first language in 2026.
 
-There's nothing wrong with these existing as free archives. Just don't let the duration trick you into thinking they're the strongest free option.
+Two courses moved the other way since we last checked: [Learn Bootstrap](/docs/courses/css/bootstrap/) and [Learn CSS Grid](/docs/courses/css/css-grid/) are both Pro now, not free. If you bookmarked them as free picks, that bookmark is stale.
 
 ## What requires Pro
 
-The big sequenced products are all behind the subscription:
+The sequenced products all sit behind the subscription:
 
 - All four career paths ([Frontend](/docs/paths/frontend-developer-path/), [Fullstack](/docs/paths/fullstack-developer-path/), [Backend](/docs/paths/backend-developer-path/), [AI Engineer](/docs/paths/ai-engineer-path/))
 - [Advanced React](/docs/courses/react/advanced-react/), React Router, [React Challenges](/docs/courses/react/react-challenges/)
-- Node.js, Express, NestJS
+- [Learn CSS Grid](/docs/courses/css/css-grid/) and [Learn Bootstrap](/docs/courses/css/bootstrap/), both moved from free to Pro
 - Interview prep courses
-- Most of the AI catalog beyond the intro courses
+- Most of the AI catalog beyond the intro courses listed above
 
-See [Pro vs free](/docs/pricing/pro-vs-free/) for the full breakdown. If you're still in school, check the [student discount](/docs/pricing/student-discount/) before you pay full price for any of it.
+See [Pro vs free](/docs/pricing/pro-vs-free/) for the full breakdown. Check the [student discount](/docs/pricing/student-discount/) before paying full price for any of it.
 
 ## How to use the free tier well
 
-1. Pick one course (Learn React if you know JS, Learn JavaScript if you don't).
-2. Block 90 minutes a day on your calendar for two weeks.
-3. Don't open a second course until you've finished the first. Resist the urge to sample everything.
-4. After two weeks of consistent showing-up, decide on Pro from a position of evidence.
+Pick one course. [Learn React](/docs/courses/react/learn-react/) if you already know JavaScript, [Learn JavaScript](/docs/courses/javascript/learn-javascript/) if you don't. Block 90 minutes a day for two weeks and don't open a second course until the first one is finished. Sampling five courses for twenty minutes each teaches you less than finishing one.
 
-If you make it through Learn React and want the rest of the Frontend path, that's the moment Pro starts paying back. If you didn't make it through Learn React, no subscription will fix that. See [is Scrimba worth it](/blog/is-scrimba-worth-it/) for the full ROI argument.
+After two weeks of consistent progress, you'll know whether the format works for you. That's the moment to decide on Pro, from evidence instead of a guess. If you make it through [Learn React](/docs/courses/react/learn-react/) and want the rest of the [Frontend Developer Path](/docs/paths/frontend-developer-path/), that's when Pro starts paying back. If two weeks of free lessons didn't stick, no subscription fixes that. See [Scrimba Review 2026](/blog/scrimba-review/) for the full case.
 
 ## Free alternatives outside Scrimba
 
-If even the free Scrimba courses don't click, the credible all-free alternatives are:
+If even the free Scrimba courses don't click, the credible all-free alternatives are [freeCodeCamp](https://www.freecodecamp.org/) (text plus full YouTube courses, including Ziroll's own), [The Odin Project](https://www.theodinproject.com/) (an open-source curriculum with a strong community), [MDN Web Docs](https://developer.mozilla.org/) for HTML, CSS and JS reference, and [JavaScript.info](https://javascript.info/) for depth on the language itself. MDN [names Scrimba as its recommended course partner](https://developer.mozilla.org/en-US/blog/mdn-scrimba-partnership/) for the same reason: the Frontend path lines up with MDN's own curriculum.
 
-- [freeCodeCamp](https://www.freecodecamp.org/) (text + projects, also has many YouTube full courses including from Bob Ziroll himself)
-- [The Odin Project](https://www.theodinproject.com/) (open-source curriculum, strong community)
-- [MDN Web Docs](https://developer.mozilla.org/) for HTML/CSS/JS reference
-- [JavaScript.info](https://javascript.info/) for deep JS
-
-See [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/) and [Scrimba vs The Odin Project](/docs/comparisons/scrimba-vs-odin-project/) for the side-by-side.
-
-## Sources
-
-- <AffiliateLink href="https://scrimba.com/allcourses">Scrimba's all-courses page</AffiliateLink> - the live list, since free availability changes.
-- [freeCodeCamp YouTube channel](https://www.youtube.com/@Freecodecamp) - Bob Ziroll has full free courses there too.
-- [MDN partners with Scrimba](https://developer.mozilla.org/en-US/blog/mdn-scrimba-partnership/) - context for why the React/Frontend material is taken seriously.
-
-## Frequently asked questions
-
-<FAQAccordion items={[
-  { q: "Which free Scrimba course should I start with?", a: "Learn React if you already know basic JavaScript. Learn JavaScript first if you don't. Those are the two strongest free courses on the platform." },
-  { q: "Are the free courses really free?", a: "Yes. No credit card, no trial. The free courses are permanently free, though Scrimba occasionally rotates which ones are free. Check the all-courses page for the current list." },
-  { q: "Are the free courses up to date?", a: "The headline ones (Learn React, Learn JavaScript, Learn HTML and CSS, Learn TypeScript) are current. A handful of older free courses (Bootstrap 4, Imba, Space Travel) are dated and shouldn't be your starting point." },
-  { q: "Do free courses give certificates?", a: "No. Certificates only come from completing a Pro-tier career path. See our certificate guide for what the certificate actually does." }
-]} />
+See <a href="/docs/comparisons/scrimba-vs-freecodecamp/">Scrimba vs freeCodeCamp</a> and <a href="/docs/comparisons/scrimba-vs-odin-project/">Scrimba vs The Odin Project</a> for the side-by-side.
 
 <PricingCTA
   title="Enjoyed the free courses?"
   subtitle="Unlock career paths, advanced courses, and the Discord community with Pro."
+  ctaType="free"
 />
+
+## Frequently asked questions
+
+<FAQAccordion items={[
+  { q: "Which free Scrimba course should I start with?", a: "Learn React if you already know basic JavaScript. Learn JavaScript first if you don't. Those are the two strongest free courses on the platform, and both are current." },
+  { q: "Are the free courses really free?", a: "Yes, no credit card and no trial clock. But which courses are free changes: Learn Bootstrap and Learn CSS Grid were free in past versions of this guide and moved to Pro. Check Scrimba's all-courses page for the current list." },
+  { q: "Are the free courses up to date?", a: "Learn React, Learn JavaScript, Learn HTML and CSS, and Learn TypeScript are current. Build a Space Travel Website and Learn Imba are older and shouldn't be your starting point." },
+  { q: "Do free courses give certificates?", a: "No. A certificate, for a course or a path, is a Pro feature. Finish a free course on Free and you get the lessons, not the certificate; upgrade to Pro to unlock it." }
+]} />

@@ -10,7 +10,7 @@ keywords: [how to get better at reading code, how to read code faster, reading c
 hideFooterPricingCta: true
 date: 2026-07-23
 last_update:
-  date: 2026-07-23
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
@@ -22,7 +22,9 @@ import PricingCTA from '@site/src/components/PricingCTA';
 
 <DisclosureNotice />
 
-**The fastest way to get better at reading code is to read more of it on purpose: in small pieces, out loud, and forcing yourself to predict what each line does before you run it.** In 2026 that has quietly become the highest-leverage skill a self-taught developer can build, because AI writes the first draft now and your real job is to verify it. My honest take, as an engineer who learned the hard way through 42 Network rather than by prompting: most beginners are drilling the half of the job the machine already does, and skipping the half interviewers now test for.
+**The fastest way to get better at reading code is to read more of it on purpose: small pieces, out loud, predicting what each line does before you run it.** AI writes the first draft now, so your job is verifying it, which makes reading the highest-leverage skill a self-taught developer can build in 2026. Most beginners still drill the half of the job the machine already does and skip the half interviewers now test.
+
+*I learned to code through 42 Network, a project-based school with no lectures, so this is written from the same seat as the readers who skip roadmaps and build.*
 
 {/* truncate */}
 
@@ -73,19 +75,19 @@ The format you learn in decides whether you build the reading muscle or the watc
 
 This is where an interactive format has a structural edge. When you learn by editing the instructor's code directly in the browser and running it, you cannot skim; you have to read the existing lines well enough to change them and see what breaks. That is reading practice disguised as a lesson, which is why I keep pointing beginners toward hands-on platforms over long lecture playlists (I compare the trade-offs in [best interactive coding platforms for 2026](/blog/best-interactive-coding-platforms-2026/) and in [Scrimba versus learning to code with ChatGPT](/blog/scrimba-vs-chatgpt-learn-to-code/)).
 
-Scrimba is built on exactly this loop, and its JavaScript and frontend courses are free to start, so you can test whether editing-in-place suits how you read before paying anything. If it clicks, the [frontend developer path](/docs/paths/frontend-developer-path/) runs on that format end to end and the [JavaScript courses](/docs/courses/javascript/) give you dozens of small, unfamiliar snippets to trace. Not sure where you'd fit? Try the [path finder](/tools/which-scrimba-path/) first. Current [pricing is here](/docs/pricing/) if you want to compare the subscription against a bootcamp.
+Scrimba is built on exactly this loop, and [Learn JavaScript](/docs/courses/javascript/learn-javascript/) is the clearest example: module 4 alone is 2.7 hours and 55 scrims building a blackjack game, and nearly every one of those scrims stops mid-recording and hands you the editor before it shows the solution. You cannot pass that module by watching. It is free, so testing whether editing-in-place suits how you read costs nothing. If it clicks, the [frontend developer path](/docs/paths/frontend-developer-path/) runs the same loop across 1,493 scrims and 13 modules, MDN-endorsed, ending in a portfolio and a 73-scrim interview-prep module. Not sure where you'd fit? Try the [path finder](/tools/which-scrimba-path/) first. Current [pricing is here](/docs/pricing/) if you want to compare the subscription against a bootcamp.
 
-## Where reading practice falls short (the honest caveats)
+## Where reading practice falls short
 
-Reading practice has real limits, and pretending otherwise would make you worse, not better. Reading fluency does not replace writing fluency: you still have to build things from scratch to internalize how the pieces connect, and a reader who never ships is just a slower critic. If you have already slid into pasting AI output you cannot explain, this article is prevention, and the repair is a different job I walk through in [going from vibe coder to real developer](/blog/vibe-coder-to-real-developer-2026/).
+Reading fluency does not replace writing fluency. You still have to build things from scratch to internalize how the pieces connect, and a reader who never ships is just a slower critic. If you have already slid into pasting AI output you cannot explain, this article is prevention, and the repair is a different job I walk through in [how to learn coding without depending on AI](/blog/how-to-learn-coding-without-depending-on-ai/).
 
-Two more honest limits. Reading small snippets does not teach you to navigate a large unfamiliar codebase, which is its own skill you only build on real projects. And the research here is early: Anthropic's January 2026 trial covered 52 people learning one library, and the Stack Overflow figures are self-reported. Treat them as a strong signal, not settled proof. The direction, though, is consistent across every source: generation is getting cheaper and verification more valuable.
+Reading small snippets also will not teach you to navigate a large unfamiliar codebase; that is its own skill, built only on real projects. And the research behind this piece is early: Anthropic's January 2026 trial covered 52 people learning one library, and the Stack Overflow figures are self-reported. Read them as a strong signal, not settled proof. The direction is consistent across every source anyway: generation keeps getting cheaper, and verification keeps getting more valuable.
 
 ## Your 30-day plan to build the reading muscle
 
 Spend 30 days making reading a daily rep, and by the end you will trace unfamiliar code without panic. Keep it small and consistent; ten focused minutes beats a weekend binge you never repeat.
 
-Week 1: predict before you run. Take one short function a day you did not write, guess its output from the signature, then run it and diff your guess against reality. Week 2: add the review checklist. Have AI generate one small function daily and review it against the six questions above before you accept a line. Week 3: read one open-source pull request a day and write a one-sentence summary of each changed file before reading the author's description. Week 4: reverse the interview. Grab a 50-line snippet you have never seen and explain it out loud, line by line, as if a hiring manager were listening, because soon one will be.
+Week 1: predict before you run. Take one short function a day you did not write, guess its output from the signature, then run it and diff your guess against reality. Week 2: add the review checklist. Have AI generate one small function daily and review it against the six questions above before you accept a line. Week 3: read one open-source pull request a day and write a one-sentence summary of each changed file before reading the author's description. Week 4: reverse the interview. Grab a 50-line snippet you have never seen and explain it out loud, line by line, as if a hiring manager were listening, because soon one will be. [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) is built for exactly this rep: Treasure Porth hands you 28 short problems and stops before every solution, so you talk through your reasoning first the same way you would in a real interview.
 
 ## Why reading code is your edge in an AI-saturated job market
 
@@ -113,6 +115,5 @@ The signals line up. Screens test comprehension over recall. Experienced develop
 <PricingCTA
   title="Practice reading code, not just watching it"
   subtitle="Scrimba makes you edit the instructor's code in the browser, so you have to read every line before you can change it."
-  ctaType="pro"
-  riskReversal={true}
+  ctaType="free"
 />

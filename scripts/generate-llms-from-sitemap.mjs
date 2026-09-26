@@ -141,10 +141,6 @@ const PAGE_ANNOTATIONS = {
     title: 'Scrimba Review 2026: Is It Worth It?',
     description: 'In-depth independent review covering the scrim format, course quality, pricing, career outcomes, and who Scrimba is actually for.',
   },
-  '/blog/is-scrimba-worth-it': {
-    title: 'Is Scrimba Worth It in 2026? Honest Assessment',
-    description: 'Evidence-based assessment of Scrimba Pro value, when the subscription pays off and when free alternatives are sufficient.',
-  },
   '/blog/scrimba-vs-coding-bootcamps-cost': {
     title: 'Scrimba vs Coding Bootcamps: Full Cost Analysis (2026)',
     description: 'Total cost comparison between a Scrimba Pro subscription and coding bootcamps, ROI, outcomes, and time commitment.',

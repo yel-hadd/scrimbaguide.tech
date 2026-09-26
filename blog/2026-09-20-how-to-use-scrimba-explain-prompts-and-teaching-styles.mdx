@@ -10,7 +10,7 @@ keywords: [how to use scrimba explain, scrimba explain prompts, scrimba explain 
 hideFooterPricingCta: true
 date: 2026-09-20
 last_update:
-  date: 2026-09-24
+  date: 2026-09-26
   author: Ayoub El Haddad
 ---
 
@@ -68,7 +68,7 @@ Teaching styles are a web-only picker that changes both the writing and the voic
 Explain how retrieval-augmented generation (RAG) works, for a JavaScript developer who has called an LLM API once and wants to build a chatbot that answers questions from their own docs. Cover why you cannot paste every doc into the prompt, chunking, embeddings, similarity search, and how the retrieved chunks end up in the prompt. Include one pipeline diagram slide with the ingest path and the query path, one JavaScript code slide that embeds a query and runs a cosine-similarity search over an in-memory array (JavaScript, not Python), and finish with a quiz.
 ```
 
-RAG (retrieval-augmented generation) is the pattern where you search your own documents for relevant chunks and paste only those into the prompt. Scrimba teaches it in the [Learn RAG](/docs/courses/ai/rag/) course, which is why I picked it: I could check the output against a curriculum I had already read.
+RAG (retrieval-augmented generation) is the pattern where you search your own documents for relevant chunks and paste only those into the prompt. Guil Hernandez teaches it in [Learn RAG](/docs/courses/ai/rag/), 22 scrims and 94 minutes that end in a movie-recommendation chatbot on a Supabase vector store. I picked this topic because I had already read that curriculum and could check Explain's output against it.
 
 <Screenshot
   src="/img/blog/how-to-use-scrimba-explain-prompts-and-teaching-styles/explain-composer-teaching-style-menu.webp"
@@ -112,7 +112,7 @@ Professor promises "Maximum depth, down to the bytes". At this prompt length it 
 
 The composer accepts code files, Markdown, READMEs, logs, PDFs, images and Jupyter notebooks. Drag a file onto the box, use the paperclip, or paste a large block of text and Explain converts it into an attachment (<AffiliateLink href="https://docs.scrimba.com/explain/attaching-documents">docs.scrimba.com/explain/attaching-documents</AffiliateLink>). The docs state no size or file count limit, and they say nothing about how uploads are stored.
 
-I attached a 98-line Markdown file I had written about the MCP lifecycle and transports. MCP (Model Context Protocol) is the standard that lets an AI agent call tools on a server, and it has its own [Scrimba course](/docs/courses/ai/model-context-protocol-mcp/). The prompt:
+I attached a 98-line Markdown file I had written about the MCP lifecycle and transports. MCP (Model Context Protocol) is the standard that lets an AI agent call tools on a server. Maham Codes teaches it in [Intro to Model Context Protocol (MCP)](/docs/courses/ai/model-context-protocol-mcp/), 17 scrims where you build a weather MCP server in Node.js and TypeScript over a STDIO transport, the same transport my attachment covered. The prompt:
 
 ```text
 Explain this document for a Node.js developer who wants to build their first MCP server. Focus on what a server offers (tools, resources, prompts), the stdio transport, and the initialize handshake. Include one sequence-diagram slide of the three-message handshake between client and server, one short TypeScript slide showing a minimal tool registered with the MCP SDK, and finish with a quiz.
@@ -133,7 +133,7 @@ So an attachment does two things. It grounds the explainer in your text instead 
 
 ## Playlists as a mini curriculum
 
-Toggle the playlist icon next to the visibility picker and Explain plans a series of explainers on one topic, then builds them lesson by lesson (<AffiliateLink href="https://docs.scrimba.com/explain/playlists">docs.scrimba.com/explain/playlists</AffiliateLink>). Each lesson gets its own URL, and the playlist inherits whatever style and visibility you chose. I asked for three lessons on context engineering, the subject of Scrimba's [Learn Context Engineering](/docs/courses/ai/context-engineering/) course.
+Toggle the playlist icon next to the visibility picker and Explain plans a series of explainers on one topic, then builds them lesson by lesson (<AffiliateLink href="https://docs.scrimba.com/explain/playlists">docs.scrimba.com/explain/playlists</AffiliateLink>). Each lesson gets its own URL, and the playlist inherits whatever style and visibility you chose. I asked for three lessons on context engineering, the subject of Arsala Khan's [Learn Context Engineering](/docs/courses/ai/context-engineering/), a one-hour, 15-scrim course that trims and summarises a chat app's message history on the Vercel AI SDK.
 
 ```text
 Context engineering for AI agents, for a developer who has built one chatbot and is now adding tools and memory. Three lessons, each under 2 minutes. Lesson 1: what actually goes into the context window on every call (system prompt, message history, tool schemas, tool results) and why it fills up faster than you expect; include one diagram slide. Lesson 2: retrieval versus long context, when to fetch a few relevant chunks and when to send everything. Lesson 3: managing memory and tool results, summarising old history, truncating large tool output, and keeping state outside the window. Use short JavaScript examples where code helps, and end lesson 3 with a quiz.
@@ -174,7 +174,7 @@ Per and Tom are Scrimba's founder and one of its teachers. Among the styles, TLD
 
 ## Portrait output and the mobile toggle
 
-The cog menu on your own explainer has a Vertical view toggle, next to Show captions and Show watermark. I saw it in the menu and did not test what it does to the slides, so treat it as a portrait option to try rather than a feature I can vouch for. Scrimba's mobile app is not released; there is a waitlist, and the docs say your web explainers will appear in it at launch (<AffiliateLink href="https://docs.scrimba.com/explain/mobile-app">docs.scrimba.com/explain/mobile-app</AffiliateLink>). Until then a phone gets the web player.
+The cog menu on your own explainer has a Vertical view toggle, next to Show captions and Show watermark, for reformatting slides to portrait. Scrimba's mobile app is not released; there is a waitlist, and the docs say your web explainers will appear in it at launch (<AffiliateLink href="https://docs.scrimba.com/explain/mobile-app">docs.scrimba.com/explain/mobile-app</AffiliateLink>). Until then a phone gets the web player.
 
 ## Prompts that waste your quota
 
@@ -186,7 +186,7 @@ With 10 explainers on a free account, the expensive mistakes are the ones that m
 - Chaining follow-ups instead of writing the follow-up question into the original prompt.
 - Regenerating to fix one slide or a mispronounced word. Redo slide and Regenerate narration are free.
 
-If you are working through Scrimba's AI courses, the [AI Engineer path](/docs/paths/ai-engineer-path/) and the [AI Engineering](/docs/courses/ai/ai-engineering/) and [AI Agents](/docs/courses/ai/ai-agents/) courses are the places where these prompts pay off: use an explainer on the one lesson you failed to follow, with the course's own variable names in the audience sentence.
+If you are working through Scrimba's [AI Engineer path](/docs/paths/ai-engineer-path/), this is where these prompts pay off: get stuck in Arsala Khan's 36-scrim [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) (the Gift Genie build) or Bob Ziroll's 31-scrim [Learn AI Agents](/docs/courses/ai/ai-agents/) (the hand-written ReAct loop), and run an explainer on the one lesson you failed to follow, with the course's own variable names in the audience sentence.
 
 <PricingCTA
   title="Ten free explainers is enough to learn the prompt shape"

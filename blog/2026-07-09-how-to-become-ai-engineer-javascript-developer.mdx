@@ -9,13 +9,12 @@ image: /img/blog/how-to-become-ai-engineer-javascript-developer.png
 image_alt: "How to become an AI engineer as a JavaScript developer in 2026, a JS-first applied roadmap, Scrimba Guide Blog"
 date: 2026-07-09
 last_update:
-  date: 2026-07-09
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
 import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import HowToSchema from '@site/src/components/HowToSchema';
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import PricingCTA from '@site/src/components/PricingCTA';
 
@@ -93,7 +92,7 @@ Yes, if you are aiming at applied and integration roles. The AI engineering work
 
 Here is the opinion I will defend for the rest of this post: most "how to become an AI engineer" advice is Python-gatekeeping written by people who have never shipped an LLM feature. They tell you to spend a year on Python, NumPy, and the math behind backpropagation before you are allowed to begin. For a research-engineer role, that is fair. For the applied jobs that make up most of the openings, it is the wrong order, and it talks capable web developers out of a field they are already most of the way into.
 
-The line that matters runs between two kinds of work. Research and training roles build and improve the models. Applied and integration roles use them. If you can deploy a React app and authenticate against a REST API, you are closer to the second kind of job than to a junior frontend one. I will draw the Python line explicitly later in this post, because pretending it never matters would be the same dishonesty pointed the other way.
+The line that matters runs between two kinds of work. Research and training roles build and improve the models. Applied and integration roles use them. If you can deploy a React app and authenticate against a REST API, you are closer to the second kind of job than to a junior frontend one. Python still matters on one side of that line, and the section below draws it exactly.
 
 ## What an AI engineer actually does (and why JavaScript covers most of it)
 
@@ -103,17 +102,17 @@ Look at what is missing from that list: training a model from scratch, designing
 
 ## Why 2026 is the year the JavaScript AI stack caught up
 
-The short reason is that the tools a JS developer needs to build with models now exist as first-class JavaScript libraries, not Python ports. Two years ago, the honest answer to "can I do AI in JavaScript" was "sort of, with friction." That stopped being true in 2025.
+The short reason is that the tools a JS developer needs to build with models now exist as first-class JavaScript libraries, not Python ports. Two years ago, building AI features in JavaScript meant fighting missing SDKs and half-finished ports at every step. That friction is gone as of 2025.
 
 Three things closed the gap. Anthropic open-sourced the Model Context Protocol in November 2024, and it became a cross-vendor standard through 2025 (OpenAI adopted it in March, Google in April), so there is now one way to connect tools and data to models instead of a different adapter per vendor. Vercel shipped AI SDK 5, its TypeScript AI toolkit, on July 31, 2025, and the Vercel AI SDK is now the standard way to stream model output into a React, Next, or Node interface. And OpenAI and Anthropic both ship official TypeScript SDKs, so calling a frontier model from JavaScript is a documented, supported path rather than a community workaround.
 
-The language data points the same direction. By GitHub's Octoverse 2025 (October 28, 2025), TypeScript is the most-used language on GitHub by contributor count, with Python second and JavaScript third (Python had overtaken JavaScript back in 2024). On Stack Overflow's separate 2025 survey, JavaScript was still the most-used language at 66% of all respondents, with Python at 57.9% of all respondents (54.8% of professional developers). Read together, those say one thing: the stack most web products ship in is JavaScript and TypeScript, and that is where AI features get built and deployed. If you have been weighing whether to commit to TypeScript, the AI tooling is one more reason it pays off, and I make the fuller case in [should JavaScript developers learn TypeScript in 2026](/blog/should-javascript-developers-learn-typescript-2026/).
+The language data points the same direction. By GitHub's Octoverse 2025 (October 28, 2025), TypeScript is the most-used language on GitHub by contributor count, with Python second and JavaScript third (Python had overtaken JavaScript back in 2024). On Stack Overflow's separate 2025 survey, JavaScript was still the most-used language at 66% of all respondents, with Python at 57.9% of all respondents (54.8% of professional developers). Read together, those say one thing: the stack most web products ship in is JavaScript and TypeScript, and that is where AI features get built and deployed. If you have been weighing whether to commit to TypeScript, the AI tooling is one more reason it pays off, and I make the fuller case in [best TypeScript courses in 2026](/blog/best-typescript-courses/).
 
 ## The 2026 AI engineer job market, in real numbers
 
-Demand is real and the pay is high: LinkedIn ranked AI engineer the number one fastest-growing job in the US on its Jobs on the Rise list two years running, in both 2025 and 2026 (LinkedIn Jobs on the Rise, January 2026). The salary numbers below carry the usual caveat that self-reported data skews upward. And my read of the job boards is that this demand is not confined to dedicated AI titles: AI skills increasingly show up in ordinary software descriptions too. The requirement is leaking into roles that are not branded as AI jobs at all.
+Demand is real and the pay is high: LinkedIn ranked AI engineer the number one fastest-growing job in the US on its Jobs on the Rise list two years running, in both 2025 and 2026 (LinkedIn Jobs on the Rise, January 2026). The salary numbers below lean on self-reported data, which skews upward, so read them as a band rather than a floor. The demand is not confined to dedicated AI titles either: AI skills now show up in ordinary software job descriptions, leaking into roles that are not branded as AI jobs at all.
 
-On compensation, Levels.fyi puts the median AI engineer total compensation near $154,000 as of mid-2026, with the broader ML/AI software-engineer category around $243,000, and frontier labs far above that. Their data is self-reported and leans toward higher-paying employers, so treat it as a band, not a floor. PwC's 2026 Global AI Jobs Barometer found a 62% wage premium for workers with AI skills, up from 57% a year earlier. For how those numbers sit against general developer pay, I keep [a developer salary guide for 2026](/blog/developer-salary-guide-2026/) with the wider bands.
+On compensation, Levels.fyi puts the median AI engineer total compensation near $154,000 as of mid-2026, with the broader ML/AI software-engineer category around $243,000, and frontier labs far above that. Their data is self-reported and leans toward higher-paying employers, so treat it as a band, not a floor. PwC's 2026 Global AI Jobs Barometer found a 62% wage premium for workers with AI skills, up from 57% a year earlier. For how those numbers sit against general developer pay, I keep [the developer specialization job market guide](/blog/developer-specialization-job-market-2026/) with the wider bands.
 
 The figure to internalize is the premium rather than any single salary. The same web developer skills, plus the ability to ship AI features, command measurably more, and the gap is widening year over year.
 
@@ -129,14 +128,14 @@ Build one small thing at each stage instead of collecting tutorials. The order m
 
 1. Call a model and get structured output. Use the official OpenAI or Anthropic TypeScript SDK to send a prompt and get back JSON your code can trust. Until the output is parseable every time, nothing downstream is reliable, so this is where to spend your first week.
 2. Stream the response into a UI. Wire the model into a React or Node interface with the Vercel AI SDK so tokens appear as they generate. This is ordinary client and server work pointed at a model endpoint, and it is the part you will find easiest.
-3. Add retrieval, also called RAG. Embed your own documents, store the vectors in a database, and query them per request so the model answers from your data. Most of this is data plumbing you already understand, with embeddings as the one new concept.
-4. Build a tool-using agent. Give the model functions it can call, run the loop where it picks one, and handle the retries and dead ends. This is the moment an LLM stops generating text and starts taking actions, and it is where the real engineering begins.
-5. Standardize tool access with MCP. Expose your tools and data through the Model Context Protocol so any compatible model can reach them without custom glue per integration. Learning the standard now means your agents are not locked to one vendor.
+3. Add retrieval, also called RAG. Embed your own documents, store the vectors in a database, and query them per request so the model answers from your data. It is data plumbing with one new concept, embeddings. Scrimba's [Learn RAG](/docs/courses/ai/rag/) course builds exactly this in 22 scrims, ending in a similarity-search project against Supabase.
+4. Build a tool-using agent. Give the model functions it can call, run the loop where it picks one, and handle the retries and dead ends. This is the moment an LLM stops generating text and starts taking actions. Scrimba's [Learn AI Agents](/docs/courses/ai/ai-agents/) course builds a ReAct agent by hand across nine parts and 31 scrims before adding an OpenAI functions agent on top.
+5. Standardize tool access with MCP. Expose your tools and data through the Model Context Protocol so any compatible model can reach them without custom glue per integration. Scrimba's [Intro to MCP](/docs/courses/ai/model-context-protocol-mcp/) course covers servers, tools, resources, transports, and trust boundaries in 17 scrims.
 6. Deploy and manage context. Ship to a live URL, control what you send the model each step to keep cost and reliability sane, and add simple checks so you catch wrong output before a user does. Keeping it dependable once real traffic hits it is what actually pays, and that work outlasts any single model.
 
-If assembling this yourself sounds like a lot of sequencing, that is the honest tradeoff, and I get to the pre-ordered version of this exact list at the end.
+Assembling this yourself works, and plenty of disciplined developers do it. It costs hours of sequencing instead of money. The pre-ordered version of this exact list is at the end of this post.
 
-## When you actually do need Python (the honest line)
+## When you actually need Python
 
 You need Python when the job is to build or change models, not use them. Research-engineer roles at frontier labs, fine-tuning and training pipelines, novel architecture work, and most ML-heavy data teams assume Python, the math under it, and tools like PyTorch. Interviews at those companies test things a short applied course never covers, and no amount of JavaScript substitutes for that.
 
@@ -148,15 +147,15 @@ So the rule is short. Applied and integration roles: JavaScript is enough to get
 
 What gets you the interview is a small set of working projects, not a certificate. Employers on the applied side want to see you ship the three gaps as real apps, so a good starter portfolio is three projects, each deployed to a live URL.
 
-Build a retrieval app over documents you actually have, your notes, a codebase, a product manual, anything where the model answering from your data clearly beats it guessing. Build a tool-using agent that calls at least one real external API and handles that call failing without crashing. Build something that exposes a tool through MCP, so you can speak to the standard now reshaping how models reach data. Then write an honest paragraph on each about where it broke and what you did, because the failure write-up is what separates someone who followed a tutorial from someone who understands the system. For the broader principle that shipped projects beat credentials, see [the portfolio projects that get you hired](/blog/portfolio-projects-get-hired-2026/).
+Build a retrieval app over documents you actually have, your notes, a codebase, a product manual, anything where the model answering from your data clearly beats it guessing. Build a tool-using agent that calls at least one real external API and handles that call failing without crashing. Build something that exposes a tool through MCP, so you can speak to the standard now reshaping how models reach data. Then write a paragraph on each project about where it broke and what you fixed. That failure write-up is what separates someone who followed a tutorial from someone who understands the system. For the broader principle that shipped projects beat credentials, see [the portfolio projects that get you hired](/blog/portfolio-projects-get-hired-2026/).
 
 ## Self-assemble vs the structured version of what you just built by hand
 
 You can assemble all of this for free, and plenty of disciplined people do. The official SDK docs, Vercel's AI SDK guides, the MCP specification, and the free intro material from the model vendors cover every skill on the roadmap. The cost is paid in hours rather than money: the time you spend sequencing it yourself, hitting dead ends, and never quite knowing whether the order you chose is the order that matters.
 
-A structured path trades a low monthly subscription for that sequencing. Scrimba's AI Engineer Path runs about 11.4 hours, JavaScript and TypeScript throughout, with no PyTorch. It teaches you to wire LLMs, agents, RAG, and MCP into apps you already ship, in roughly the order this roadmap lists, which is the order a real project is built in. The free intro lessons let you test the edit-the-instructor's-code format before paying anything (current [Scrimba pricing](/docs/pricing/), and what is free, are spelled out there).
+A structured path trades a low monthly subscription for that sequencing. Scrimba's [AI Engineer Path](/docs/paths/ai-engineer-path/) runs 11.4 hours across nine modules, JavaScript and TypeScript throughout, no PyTorch. Per Borgen leads the path, Tom Chant teaches the [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) module, and Arsala Khan teaches Open-Source Models and Context Engineering. It wires LLMs, agents, RAG, and MCP into apps you already ship, in roughly the order this roadmap lists, which is the order a real project gets built in. The free intro lessons let you test the edit-the-instructor's-code format before paying anything (current [Scrimba pricing](/docs/pricing/), and what is free, are spelled out there).
 
-For the module-by-module breakdown of that path, including what it skips, I keep an [honest review of the AI Engineer Path](/docs/paths/ai-engineer-path/). If you want the exact course order to follow, [how to learn AI engineering on Scrimba](/blog/learn-ai-engineering-scrimba/) and the [complete AI Engineer Path guide](/blog/scrimba-ai-engineer-path-guide/) go course by course. This post is the why and the roadmap. Those two are the what and the how. If you are still weighing that path against other options, [the best AI engineering courses of 2026](/blog/best-ai-engineering-courses/) lines it up against the alternatives.
+For the module-by-module breakdown, including what it skips, I keep a full review of the [AI Engineer Path](/docs/paths/ai-engineer-path/). If you want the exact course order to follow, [Scrimba's AI courses](/docs/courses/ai/) and the [complete AI Engineer Path guide](/blog/scrimba-ai-engineer-path-guide/) go course by course. This post is the why and the roadmap. Those two are the what and the how. If you are still weighing that path against other options, [the best AI engineering courses of 2026](/blog/best-ai-engineering-courses/) lines it up against the alternatives.
 
 Either way, the action this week is the same. Pick one project from the list above, the retrieval app is the easiest place to start, and get it answering from your own documents by Sunday. You will learn more from one shipped feature than from another month of deciding whether you are allowed to begin.
 

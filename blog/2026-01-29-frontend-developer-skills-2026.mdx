@@ -1,7 +1,7 @@
 ---
 slug: frontend-developer-skills-2026
 title: "The Frontend Developer Skill Set You Need in 2026"
-description: "What skills do frontend developers actually need in 2026? From React and TypeScript to AI tools and server components, a practical guide based on real job data."
+description: "The frontend skills that matter in 2026, mapped to the exact Scrimba Frontend Path module that teaches each one, hours and lesson counts included."
 authors: [scrimbaguide]
 tags: [career, guide]
 keywords: [frontend developer skills 2026, what to learn frontend 2026, frontend roadmap 2026, frontend developer career]
@@ -10,11 +10,10 @@ image_alt: "The Frontend Developer Skill Set You Need in 2026, Scrimba Guide Blo
 hideFooterPricingCta: true
 date: 2026-01-29
 last_update:
-  date: 2026-05-28
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
-import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
@@ -23,133 +22,64 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 <DisclosureNotice />
 
-The frontend landscape has shifted significantly. Client-side-only React knowledge is no longer enough. Employers now expect full-stack awareness, TypeScript proficiency, and AI tool literacy as baseline skills.
+Frontend developers need JavaScript fundamentals, React (props, state, hooks), accessible HTML, Git and pull requests, working API calls, and TypeScript on the side. Scrimba's [Frontend Developer Path](/docs/paths/frontend-developer-path/) teaches all but TypeScript in one 81.6-hour track, module by module. Here is which module covers which skill, so you can tell what you already have and what to fill in.
 
-Here's what actually matters in 2026, based on job postings, developer surveys, and industry trends.
+*Reviewed inside the path with a Pro account, September 2026: all 13 modules expanded.*
 
 {/* truncate */}
 
-## Who This Is For
+## Which skills does the Frontend Developer Path actually teach?
 
-You are planning a frontend job search and want a skills checklist aligned with what teams still test in interviews.
+Eight of them, across eight of its thirteen modules. The table below is pulled straight from our [Frontend Developer Path review](/docs/paths/frontend-developer-path/), which lists the hours and lesson counts for every module.
 
-## The Non-Negotiable Skills
+| Skill | Path module | Hours | Lessons |
+|---|---|---|---|
+| JavaScript basics: variables, functions, the DOM | Making websites interactive | 9.6 hrs | 144 |
+| Closures, array methods, deeper JS patterns | Essential JavaScript concepts | 10.6 hrs | 121 |
+| Accessibility: ARIA, keyboard nav, screen readers | Accessible development | 95 min | 23 |
+| Git branching, pull requests, merge conflicts | Code reviews | 22 min | 4 (GitHub Desktop, seven scrims) |
+| Fetch, async/await, REST APIs | Working with APIs | 7.6 hrs | 96 |
+| React components, props, state | React basics (Bob Ziroll) | 15.3 hrs | 157 |
+| Hooks, context, routing | [Advanced React](/docs/courses/react/advanced-react/) (Bob Ziroll) | 13.2 hrs | 125 |
+| Portfolio, GitHub profile, LinkedIn, interview drills | Getting hired | 5.1 hrs | 73 |
 
-These are the skills that appear in nearly every frontend job posting in 2026.
+That is 63.4 of the path's 81.6 hours. The rest goes to HTML, CSS, responsive design and UI design, which the path also covers but which this guide treats as prerequisites rather than 2026-specific skills.
 
-### 1. JavaScript (Deep Understanding)
+## Do you need JavaScript fundamentals before React?
 
-This hasn't changed. Strong JavaScript fundamentals remain the foundation of everything else. You need to understand closures, the event loop, promises, async/await, and ES6+ features at a level where you can explain them in an interview.
+Yes, and skipping this step is the single most common reason people stall on React. "Making websites interactive" (9.6 hours, 144 lessons) gets you variables, functions and DOM manipulation. "Essential JavaScript concepts" (10.6 hours, 121 lessons) goes further: closures, array methods and the patterns React assumes you already know, like destructuring and spread. If you cannot explain a closure in an interview, more React tutorials will not fix that. Go back to this module first.
 
-Scrimba covers this thoroughly in both the free [Learn JavaScript](/docs/courses/javascript/) course and the career paths' [Essential JavaScript Concepts](/docs/courses/javascript/advanced-javascript/) modules.
+## Do frontend developers need TypeScript?
 
-### 2. TypeScript
+Not from the path. It is not in there. Scrimba teaches TypeScript in one standalone course, [Learn TypeScript](/docs/courses/typescript/) with Bob Ziroll: 4.2 hours, 79 lessons, free, covering types, interfaces, generics basics, and TypeScript inside React and Express. It sits alongside the path, not inside it; the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) is the one that folds it in. Take it once you can write a React component from memory. See [Scrimba TypeScript Course](/docs/courses/typescript/) if you are still deciding whether to bother.
 
-TypeScript has become the default language for professional frontend work. The shift is driven by full-stack frameworks (Next.js, Remix) that share types between server and client, and by large codebases where type safety prevents entire categories of bugs.
+## How much accessibility do you actually need to know?
 
-If you haven't started yet, see our guide: [Why TypeScript is Essential in 2026](/blog/typescript-for-beginners-scrimba/).
+Enough to pass a code review, not a WCAG audit. "Accessible development" is short, 95 minutes across 23 lessons, and covers ARIA attributes, keyboard navigation and screen reader basics. That is deliberately light. It will not make you an accessibility specialist, but it covers what shows up in ordinary frontend job specs and in ordinary code review comments. Pair it with real practice: run a screen reader against your own project once before you call a feature done.
 
-### 3. React (Including Server Components)
+## Do you need to know Git, or just React?
 
-React leads the frontend framework market by a wide margin. If you are weighing whether to commit, we cover [whether React is still worth learning in 2026 and which version to focus on](/blog/is-react-still-worth-learning-2026/). But "knowing React" in 2026 means more than `useState` and `useEffect`. You need to understand:
+Both, and most self-taught developers underrate Git until their first pull request gets rejected. The path's "Code reviews" module is misleadingly named. It is not code review, it is branching and pull requests with GitHub Desktop: seven scrims on issues, branches, merge conflicts and SSH keys. Twenty-two minutes, but the workflow it teaches is what every team actually uses day to day.
 
-- **React Server Components (RSCs)**: Components that render on the server and send HTML to the client with zero JavaScript. This is the default in Next.js App Router.
-- **Server Actions**: Functions that run on the server, called directly from client components.
-- **Suspense and streaming**: Loading states and progressive rendering patterns.
+## Is React alone enough to get hired?
 
-Scrimba's [React courses](/docs/courses/react/) cover fundamentals through advanced patterns, including [React 19 features](/docs/courses/react/whats-new-in-react-19/).
+No. Companies want components, props, state and hooks, and they want you to have shipped something with them, not just followed along. React basics (15.3 hours, 157 lessons) and [Advanced React](/docs/courses/react/advanced-react/) (13.2 hours, 125 lessons) are both taught by Bob Ziroll and together make up more than a third of the path's total hours. React basics covers components, props and state. The advanced module moves into hooks, context and routing, the level interviewers actually probe. Working with APIs (7.6 hours, 96 lessons) sits between the two skill sets: fetch, async/await and REST shapes are what turns a static React component into an app that talks to a real backend.
 
-### 4. A Meta-Framework (Next.js)
+## What actually gets you hired after the skills are done?
 
-Solo React apps (created with Vite or Create React App) are increasingly rare in production. Most new projects start with a meta-framework like **Next.js**, Remix, or Astro. These handle routing, data fetching, server-side rendering, and deployment automatically.
+Portfolio depth and how you talk through your code, not a certificate. The path's "Getting hired" module (5.1 hours, 73 lessons) is built around this: portfolio review, GitHub profile, LinkedIn positioning and interview drills. Our [Frontend Developer Path review](/docs/paths/frontend-developer-path/#does-the-certificate-matter-for-hiring) goes through why the certificate itself is not the credential that moves hiring managers.
 
-Next.js is the most in-demand. Scrimba covers it in the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) and the [standalone Next.js course](/docs/courses/javascript/nextjs/).
+## Where to start if you are mapping this out
 
-### 5. CSS (Modern Patterns)
+Start with the [2026 Frontend Roadmap](/roadmaps/frontend-roadmap-2026/) if you want the step order laid out visually, then use the [Frontend Developer Path](/docs/paths/frontend-developer-path/) as the course track and this page's table as your checklist against it.
 
-Flexbox and Grid are table stakes. In 2026, employers also expect:
-- **Tailwind CSS**, the dominant utility-first framework
-- **CSS custom properties** (variables) for theming
-- **Container queries** and modern responsive design patterns
-- **CSS animations** for polished user experiences
-
-Scrimba's [CSS courses](/docs/courses/css/) cover everything from [Tailwind](/docs/courses/css/tailwind-css/) to [Grid](/docs/courses/css/css-grid/) and [animations](/docs/courses/css/css-animations/).
-
-## The Differentiators
-
-These skills separate candidates who get hired from those who don't.
-
-### 6. AI Tool Proficiency
-
-Most developers now use at least one AI coding tool. GitHub Copilot and Cursor are the most popular. Employers increasingly expect developers to use these tools effectively, not just for autocomplete, but for:
-- Debugging and code review
-- Generating boilerplate
-- Writing tests
-- Refactoring complex code
-
-The developers who thrive aren't those who blindly accept AI suggestions, but those who can **evaluate and improve** AI-generated code. This requires strong fundamentals (see skills 1-4).
-
-Scrimba has a dedicated [AI courses catalog](/docs/courses/ai/) and the [AI Engineer Path](/docs/paths/ai-engineer-path/) if you want to go deeper into building AI-powered applications.
-
-### 7. Testing
-
-Testing is increasingly expected, even for frontend roles. The basics to know:
-- **Unit testing** with Vitest or Jest
-- **Component testing** with React Testing Library
-- **End-to-end testing** awareness (Playwright, Cypress)
-
-Scrimba covers this in the [Unit Testing course](/docs/courses/javascript/unit-testing/).
-
-### 8. Git and Collaboration
-
-Every team uses Git. You need to understand branching, pull requests, merge conflicts, and code review workflows. Scrimba's [Git and GitHub course](/docs/courses/javascript/git-and-github/) covers the essentials.
-
-### 9. Accessibility (a11y)
-
-Web accessibility is both a legal requirement in many jurisdictions and a growing area of hiring focus. Understanding ARIA attributes, semantic HTML, keyboard navigation, and the WCAG 2.2 guidelines makes you a more valuable candidate.
-
-Scrimba includes an [Accessible Web Design](/docs/courses/javascript/accessible-web-design/) module in the Frontend Path.
-
-## The Emerging Skills
-
-These aren't required yet, but awareness gives you an edge.
-
-### 10. Edge Computing and Performance
-
-Edge platforms (Cloudflare Workers, Vercel Edge Functions) move computation closer to users for faster responses. Understanding when and how to use edge computing is becoming strategically important, especially for global applications.
-
-### 11. WebAssembly
-
-WebAssembly enables high-performance computing in the browser, 3D graphics, video processing, and complex calculations that JavaScript handles slowly. It's not mainstream for most frontend work yet, but awareness of when it's the right tool matters.
-
-### 12. The "Product Engineer" Mindset
-
-Companies increasingly seek developers who can articulate the *business impact* of technical decisions. Framing your work in terms of user outcomes, performance metrics, and business value sets you apart from "just a coder."
-
-## How Scrimba Covers These Skills
-
-Scrimba's career paths are designed to build these skills progressively:
-
-| Skill | Where on Scrimba |
-|---|---|
-| JavaScript fundamentals | [Frontend Path](/docs/paths/frontend-developer-path/) (Modules 3, 6) |
-| React (basics + advanced) | [Frontend Path](/docs/paths/frontend-developer-path/) (Modules 11-12) |
-| TypeScript | [Fullstack Path](/docs/paths/fullstack-developer-path/) |
-| Next.js | [Fullstack Path](/docs/paths/fullstack-developer-path/) |
-| CSS (Tailwind, Grid, Flexbox) | [CSS courses](/docs/courses/css/) |
-| AI engineering | [AI Engineer Path](/docs/paths/ai-engineer-path/) |
-| Git & GitHub | [Git course](/docs/courses/javascript/git-and-github/) |
-| Testing | [Unit Testing course](/docs/courses/javascript/unit-testing/) |
-| Accessibility | [Accessible Web Design](/docs/courses/javascript/accessible-web-design/) |
-| Interview prep | [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/) |
-
-<PricingCTA />
+<PricingCTA ctaType="free" />
 
 ## Frequently asked questions
 
 <FAQAccordion items={[
-  { q: "Is knowing React enough to get a frontend job in 2026?", a: "Not on its own. This guide notes that solo React apps built with Vite or Create React App are increasingly rare in production, and that knowing React now means understanding Server Components, Server Actions, and Suspense. Most new projects start on a meta-framework like Next.js, so employers expect that awareness too." },
-  { q: "Do frontend developers really need TypeScript now?", a: "This guide lists it as a non-negotiable skill. TypeScript has become the default language for professional frontend work, driven by full-stack frameworks like Next.js and Remix that share types between server and client, and by large codebases where type safety prevents entire categories of bugs." },
-  { q: "How much AI tool proficiency do employers expect?", a: "More than autocomplete. The guide points out that most developers now use a tool like GitHub Copilot or Cursor, and employers increasingly expect effective use for debugging, generating boilerplate, writing tests, and refactoring. The candidates who stand out can evaluate and improve AI-generated code, which relies on the strong fundamentals covered earlier in the article." },
-  { q: "Which CSS skills matter most for frontend roles?", a: "Flexbox and Grid are treated as table stakes here. Beyond those, the guide flags Tailwind CSS as the dominant utility-first framework, plus CSS custom properties for theming, container queries for modern responsive design, and CSS animations for polished user experiences." },
+  { q: "What frontend skills do employers actually test for in 2026?", a: "JavaScript fundamentals, React (components, props, state, hooks), Git and pull requests, and basic accessibility. Scrimba's Frontend Developer Path teaches all four across its Making websites interactive, Essential JavaScript concepts, React basics, Advanced React, Accessible development and Code reviews modules." },
+  { q: "Is TypeScript part of the Scrimba Frontend Path?", a: "No. TypeScript lives in its own free course, Learn TypeScript with Bob Ziroll (4.2 hours, 79 lessons). The Fullstack Developer Path includes it directly; the Frontend Path does not." },
+  { q: "How many hours does it take to learn React on Scrimba?", a: "28.5 hours across React basics (15.3 hours, 157 lessons) and Advanced React (13.2 hours, 125 lessons), both taught by Bob Ziroll inside the Frontend Developer Path." },
+  { q: "Does the Frontend Path teach Git?", a: "Yes, in the Code reviews module: 22 minutes, seven scrims on branching, pull requests and merge conflicts using GitHub Desktop." },
 ]} />

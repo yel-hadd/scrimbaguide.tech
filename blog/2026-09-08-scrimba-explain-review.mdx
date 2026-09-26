@@ -10,7 +10,7 @@ keywords: [scrimba explain, what is scrimba explain, scrimba explain review, scr
 hideFooterPricingCta: true
 date: 2026-09-08
 last_update:
-  date: 2026-09-20
+  date: 2026-09-26
   author: Ayoub El Haddad
 ---
 
@@ -34,6 +34,8 @@ There is a kind of stuck that no course fixes. You have read the syntax three ti
 Scrimba's own documentation uses that exact reader as its example prompt: *"I understand the syntax, it's the 'why' I'm missing."* Another one: *"why does a closure still see a variable after the function returned? I know Python but not JS, show me a diagram."* Neither of those is a beginner. Both are people mid-way through learning something, which is where most of us spend most of our time.
 
 That is who this tool is for first. Everything else it does is downstream of that.
+
+*Tested on the web, in the Chrome extension and in Claude Code through MCP with a free Scrimba account, September 2026. The screen recordings below are mine.*
 
 ## How Scrimba Explain works
 
@@ -212,7 +214,7 @@ You hit the extension icon on a dense technical article. There is no popup: the 
 
 A long reference page became a one-minute walkthrough: what a promise is, a diff that turns nested callbacks into a promise chain, the async/await version with the code view highlighting each line as it is narrated, running several promises at once, and wrapping an old callback API. The on-screen pointer does the talking-through. Scrimba's own demo of the extension also draws mermaid diagrams.
 
-Per pitches this for articles you *"kind of don't have the patience or the energy to go through"* right now, rather than ones you cannot understand. That is an honest description of most evenings.
+Per pitches this for articles you *"kind of don't have the patience or the energy to go through"* right now, rather than ones you cannot understand. Most evenings, that is the actual problem.
 
 Many explainers end with a quiz. Summaries, tasks on your own code and the TLDR style skip it. Scrimba's docs say page explainers from the extension skip it too, though the closing quiz in their own extension demo suggests that rule is not firm. When it is there, it is a small detail doing heavy lifting. The failure mode of every explanation tool is that watching feels like learning. A question at the end is the cheapest possible defence against that.
 
@@ -230,7 +232,7 @@ Two steps: create a free Scrimba account, then install the plugin in your coding
 
 The "free during open beta" line from the launch is gone. The <AffiliateLink href="https://docs.scrimba.com/explain/limits-and-plans" location="explain-limits">limits page</AffiliateLink> now gives a **free account 10 explainers for life** (they do not renew) and a **Pro account 100 a month**. Follow-up questions and Go deeper each spend one. Drafts made from ChatGPT or a coding agent are free until you open the link and claim them, and redoing, regenerating or exporting an existing explainer costs nothing. The launch numbers were 20,000 explainers on 13 August; by 20 September the hub listed 150 Featured, 516 Community and 191 Playlist entries in its public tabs.
 
-Worth being direct about why the free tier exists: it is an acquisition funnel. Per says so himself at the end of the Chrome extension video, that it is free but you need an account on scrimba.com, *"which is a learning platform that we are building"*. Ten lifetime explainers is enough to find out whether the format works for you and not enough to study with. Whether the 100 a month tips you into Pro depends on everything else Pro includes, which our [Pro vs Free breakdown](/docs/pricing/pro-vs-free/) covers, and the [reference page on Explain](/docs/how-it-works/scrimba-explain/) has the full limits table.
+The free tier is an acquisition funnel, and Per says so himself at the end of the Chrome extension video: it is free but you need an account on scrimba.com, *"which is a learning platform that we are building"*. Ten lifetime explainers is enough to find out whether the format works for you and not enough to study with. Whether the 100 a month tips you into Pro depends on everything else Pro includes, which our [Pro vs Free breakdown](/docs/pricing/pro-vs-free/) covers, and the [reference page on Explain](/docs/how-it-works/scrimba-explain/) has the full limits table.
 
 ## The EXPLAIN button inside Scrimba lessons
 
@@ -244,7 +246,7 @@ There is a fifth entry point the launch coverage skipped and I nearly missed: an
   caption="The EXPLAIN button sits in the scrim header. Highlight a line first and the explainer focuses on it."
 />
 
-One naming quirk will save you a confused search. In ChatGPT's plugin directory the same product is listed as **Explain Video Generator**, not Scrimba Explain.
+One naming quirk will save you a confused search. In ChatGPT's plugin directory the same product is listed as **Explain Video Generator**, not Scrimba Explain. I stepped through exactly what one of these lesson explainers produces, slide by slide, on a [Learn RAG](/docs/courses/ai/rag/) lesson, in [a full walkthrough of the EXPLAIN button](/blog/scrimba-explain-inside-courses/).
 
 ## The limits of Scrimba Explain
 
@@ -258,7 +260,7 @@ Ten explainers for life, on the free account, is a trial rather than an allowanc
 
 ### It answers questions but does not plan your learning
 
-Scrimba never pitches Explain as a course. The limit is subtler than that: it answers questions you already know to ask. It cannot tell you what you do not know, and it never makes you write anything. Those are the jobs the [Frontend](/docs/paths/frontend-developer-path/) and [Fullstack](/docs/paths/fullstack-developer-path/) paths do, and this does not overlap with them.
+Scrimba never pitches Explain as a course. The limit is subtler than that: it answers questions you already know to ask. It cannot tell you what you do not know, and it never makes you write anything. Those are the jobs the 81.6-hour, 13-module [Frontend path](/docs/paths/frontend-developer-path/) and the 108.4-hour, 20-module [Fullstack path](/docs/paths/fullstack-developer-path/) do instead, building toward a portfolio project rather than a quiz. Explain does not overlap with either.
 
 ## The bottom line
 
@@ -267,6 +269,8 @@ If you are learning, this is the closest thing I have used to a tutor you can in
 If you are junior and drowning in a codebase, the MCP integration is the strongest thing here, and few people ever see it because those explainers are private by default.
 
 Whether it helps depends on a habit the tool cannot enforce. Use it on something you have already wrestled with and it works like a tutor. Use it to skip the wrestling and you start leaning on it, the kind of reliance behind the 20% of developers in the Stack Overflow 2025 survey who report less confidence in their own problem-solving. I use it. I just use it second.
+
+If you already lean on NotebookLM for narrated video summaries of your own documents, see [how Explain compares to NotebookLM Video Overviews for learning code](/blog/scrimba-explain-vs-notebooklm-video-overviews/).
 
 ## References
 

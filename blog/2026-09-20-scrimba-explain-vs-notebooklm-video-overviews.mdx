@@ -10,7 +10,7 @@ keywords: [scrimba explain vs notebooklm, notebooklm video overview alternative,
 hideFooterPricingCta: true
 date: 2026-09-20
 last_update:
-  date: 2026-09-20
+  date: 2026-09-26
   author: Ayoub El Haddad
 ---
 
@@ -27,9 +27,9 @@ import ItemListSchema from '@site/src/components/ItemListSchema';
 
 <DisclosureNotice />
 
-**Scrimba Explain turns a typed question into a narrated video with code, diff and diagram slides, ending in a quiz when you ask for one, and it runs from a prompt, a Chrome tab or a coding agent. NotebookLM Video Overviews turn the documents you have already collected in a notebook into a narrated slideshow. For understanding a concept or a piece of code, Explain is the better fit. For a video summary of your own PDFs, lecture notes or a folder of docs, NotebookLM is the one to reach for.**
+**Scrimba Explain turns a typed question into a narrated video with code, diagram and quiz slides in about ten seconds. NotebookLM Video Overviews turn documents already sitting in a notebook into a narrated slideshow that can take over 30 minutes. Pick Explain for a coding concept or a piece of code, NotebookLM for a video summary of your own PDFs or notes.**
 
-One caveat before the table. The Scrimba side of this comparison is first-hand: I generated the explainers, read the transcripts and took the quizzes. The NotebookLM side is not. Google's NotebookLM sat behind a corporate sign-in on the machine I had, so every NotebookLM claim below comes from Google's own help pages and blog posts, each linked where it appears. Anything Google does not document is marked as unverified rather than guessed.
+I generated every Explain result in this comparison myself, on a Pro account: the explainers, the transcripts, the quizzes. NotebookLM sat behind a corporate sign-in on the machine I had, so its side of the table comes from Google's own help pages and blog posts, linked where it appears, and anything Google does not document is marked unverified.
 
 {/* truncate */}
 
@@ -110,7 +110,7 @@ Speed. The context window explainer was playable about ten seconds after I press
 
 The quiz. Every one of my explainers ended with a quiz slide, usually headed "Test your knowledge" (one Professor run called it "Your turn", and one playlist lesson "Test your strategy"): one question, three or four answers, gold for a first try. NotebookLM has quizzes, but as a separate Studio item, not inside the video. For retention that matters, because the question arrives while the explanation is still in your head.
 
-Your repository. Explain has an MCP endpoint (MCP is the open protocol coding agents use to call outside tools) that lets Claude Code or Codex write a lesson about the branch you are reading. Google documents nothing like this for Video Overviews. If you want the [MCP course](/docs/courses/ai/model-context-protocol-mcp/) view of how that works, Scrimba teaches the protocol itself.
+Your repository. Explain has an MCP endpoint (MCP is the open protocol coding agents use to call outside tools) that lets Claude Code or Codex write a lesson about the branch you are reading. Google documents nothing like this for Video Overviews. Scrimba also teaches the protocol itself: Maham Codes's [Intro to MCP](/docs/courses/ai/model-context-protocol-mcp/) is 17 scrims in which you build a weather MCP server in Node.js and TypeScript, the same connective tissue Explain's endpoint runs on.
 
 Embedding and Public sharing. Explain gives you an iframe embed and a Public community feed. That default cuts both ways, which the sharing row in the table shows, but it means a good explainer can be dropped into a README or a blog post.
 
@@ -151,7 +151,7 @@ You cannot type that prompt into an empty notebook. Video Overviews need at leas
 
 The output would be a narrated slideshow drawing on the sources you added. Whether it would contain a JavaScript slide is the open question, and Google does not answer it. A diagram is plausible if one of your sources contains one. A quiz inside the video is not something Google documents; you would generate the quiz separately in Studio. And you would wait: minutes at best, more than thirty at worst.
 
-So the honest version of "same prompt, both tools" is that the prompt only fits one of them. NotebookLM's steering prompt shapes a summary of what you gave it. Explain's prompt is the whole input.
+"Same prompt, both tools" only works for one of them. NotebookLM's steering prompt shapes a summary of what you already gave it. Explain's prompt is the whole input.
 
 <Screenshot
   src="/img/blog/scrimba-explain-vs-notebooklm-video-overviews/explain-composer-teaching-style-menu.webp"
@@ -168,7 +168,7 @@ Pick Scrimba Explain if you are learning to code and the thing you are stuck on 
 
 Pick NotebookLM Video Overviews if your material already exists as documents and you want a video summary of it. Students with a folder of lecture PDFs are the obvious case, along with anyone learning in a language Scrimba does not cover. The free plan's three a day is generous for that use.
 
-Use both if you are working through Scrimba's AI courses. The [RAG course](/docs/courses/ai/rag/) and the [context engineering course](/docs/courses/ai/context-engineering/) explain the retrieval and context window ideas behind both products; NotebookLM is a retrieval system over your notebook, and Explain's in lesson button is a snapshot of the scrim you paused. The [AI agents course](/docs/courses/ai/ai-agents/) and [AI engineering course](/docs/courses/ai/ai-engineering/) cover the calling side, and the [AI Engineer Path](/docs/paths/ai-engineer-path/) strings them together.
+Use both if you are working through Scrimba's AI courses. Guil Hernandez's [Learn RAG](/docs/courses/ai/rag/), 22 scrims that build a Supabase-backed movie chatbot, is the retrieval idea NotebookLM runs on every time it answers from your notebook. Arsala Khan's [Learn Context Engineering](/docs/courses/ai/context-engineering/), 15 scrims spent trimming a chat app's message history by token count, is the same problem Explain's own context window explainer (above) walks through. Bob Ziroll's [Learn AI Agents](/docs/courses/ai/ai-agents/) and Arsala Khan's [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) cover the calling side, and the 11.4-hour [AI Engineer Path](/docs/paths/ai-engineer-path/) strings all of it together.
 
 Whichever you choose, both vendors say the same thing about accuracy. Scrimba prints "Explain is AI and can make mistakes" under every player. Google says Video Overviews "may contain inaccuracies or audio glitches" ([help page](https://support.google.com/notebooklm/answer/16454555)). My context window explainer was correct but incomplete, which is the usual shape of the problem.
 

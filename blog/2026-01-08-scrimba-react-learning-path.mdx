@@ -1,7 +1,7 @@
 ---
 slug: scrimba-react-learning-path
 title: "Scrimba React Learning Path: Week-by-Week Study Guide (2026)"
-description: "A structured week-by-week plan for learning React on Scrimba. From Learn React (free) through Advanced React, Router, and interview prep."
+description: "The right order for Scrimba's React courses: Learn React free, then one routing course (not both), then Challenges. Hours, projects, and what to skip."
 authors: [scrimbaguide]
 tags: [guide, courses]
 keywords: [scrimba react path, learn react plan, scrimba react guide, react learning path, bob ziroll]
@@ -10,13 +10,12 @@ image_alt: "Scrimba React Learning Path: Week-by-Week Study Guide (2026), Scrimb
 hideFooterPricingCta: true
 date: 2026-01-08
 last_update:
-  date: 2026-09-22
+  date: 2026-09-26
   author: Yassine El Haddad
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import PricingCTA from '@site/src/components/PricingCTA';
-import ComparisonTable from '@site/src/components/ComparisonTable';
 import FAQAccordion from '@site/src/components/FAQAccordion';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
@@ -24,131 +23,72 @@ import DisclosureNotice from '@site/src/components/DisclosureNotice';
 
 <DisclosureNotice />
 
-Best order: Learn React (free) → Advanced React → Router → Interview prep. 8 weeks at 1–2 hrs/day. React is one of Scrimba's strongest topics with ~10 courses.
-
-## Who This Is For
-
-Learners planning their React journey on Scrimba: those overwhelmed by course choices, or anyone wanting a structured week-by-week path.
-
-React is one of Scrimba's strongest topics, with **~10 courses** and over 50 hours of content. It's widely considered one of the best interactive platforms to learn React because you fix code directly in the video player. However, with so many courses, it can be confusing to know which order to take them in. This guide maps out the optimal path to go from "Hello World" to "Hired".
+Start with [Learn React](/docs/courses/react/learn-react/) free, about 15 hours with Bob Ziroll. Next, pick one routing course, not both: [Advanced React](/docs/courses/react/advanced-react/)'s Routing module covers the same ground as the standalone [React Router](/docs/courses/react/react-router/) course. Add [React Challenges](/docs/courses/react/react-challenges/) to drill it, then close with interview prep or the React 19 update. Total: roughly 35 hours.
 
 {/* truncate */}
 
-## The Recommended React Learning Order
+Every hour, module and project below comes from our own reviews, each written after going through the course with a Pro account.
 
-We've structured this into an 8-week plan, assuming you study ~1-2 hours a day.
+## Who this path is for
 
-### Weeks 1-2: Learn React (Free)
+You already write JavaScript, you have not touched React yet, and you want one order to follow instead of guessing at Scrimba's ~10 React courses. If you are still shaky on `map`, `filter`, object destructuring or promises, take [Learn JavaScript](/docs/courses/javascript/learn-javascript/) first. React's state hooks lean on all four.
 
-**Duration:** 15.1 hours | **Instructor:** Bob Ziroll | **Cost:** $0
+## What order should you take Scrimba's React courses in?
 
-Start here. This is Scrimba's flagship free course and it is widely regarded as one of the best free React resources on the web. Bob Ziroll takes you through modern React concepts without the fluff.
+Four courses, in this order, cover a working React developer's basics:
 
-**What you'll learn:**
-- Static pages vs React components
-- Props, State, and Conditional Rendering
-- `useEffect` and side effects
-- Forms and inputs in React
-- Fetching data from APIs
+1. **[Learn React](/docs/courses/react/learn-react/)** (free, 15.1 hours) for hooks fundamentals.
+2. **[Advanced React](/docs/courses/react/advanced-react/)** (Pro, 18.8 hours) for reusability patterns, routing, performance, Supabase persistence, auth, and a TypeScript conversion.
+3. **[React Challenges](/docs/courses/react/react-challenges/)** (Pro, 9.8 hours) to practice without a walkthrough running.
+4. **[React Interview Questions](/docs/courses/react/react-interview-questions/)** (Pro, 41 minutes) or **[What's New in React 19?](/docs/courses/react/whats-new-in-react-19/)** (free, 69 minutes), depending on whether an interview or the latest APIs come first.
 
-**What you'll build:**
-- **TenZs Game**: A dice rolling game.
-- **Quizzical**: A trivia app that pulls data from an API.
-- **Meme Generator**: An interactive meme creator.
+### Weeks 1 to 2: Learn React
 
-<AffiliateLink href="https://scrimba.com/learn-react-c0e?via=u42d4986" variant="button">Start Learn React (Free)</AffiliateLink>
+Bob Ziroll's free course runs 15.1 hours across six modules and three real builds: a Chef Claude recipe app that calls Anthropic's Claude API, then two capstones, Tenzies (a dice game) and Assembly: Endgame (a hangman variant where each wrong guess wipes a programming language off the board). Section three, React State, is the long one at 5.2 hours and 58 scrims; that's where props and JSX turn into forms, `useState`, and the Chef Claude fetch call. It's labeled Intermediate and means it: expect the pace to bite there if hooks are new to you.
 
----
+<AffiliateLink href="https://scrimba.com/learn-react-c0e" variant="button">Start Learn React (Free)</AffiliateLink>
 
-### Weeks 3-4: Advanced React (Pro)
+### Weeks 3 to 5: Advanced React, not both routing courses
 
-**Duration:** 18.8 hours | **Instructor:** Bob Ziroll | **Cost:** Pro
+[Advanced React](/docs/courses/react/advanced-react/) runs 18.8 hours across six modules: Reusability (5 hours, building a menu component three different ways until it lands on custom hooks), Routing (6.4 hours, the VanLife camper-van rental app), Performance, Persistence with Supabase, Authentication, and a TypeScript conversion. Its own review page says it straight: the Routing module is "the career-path version of Scrimba's standalone React Router course, so if you already took that, you will be repeating about six hours." Take this course for the full six-module spread and skip the standalone Router course. Take Router on its own only if you want routing in isolation and do not plan to buy the bigger course.
 
-After the basics, this massive course bridges the gap between a beginner and a professional. It focuses on writing clean, reusable, and performant code.
+### Week 6: React Challenges
 
-**Key Topics:**
-- **Reusability**: Children props, Higher Order Components (HOCs), and Render Props.
-- **Context API**: Managing global state without prop drilling.
-- **Custom Hooks**: Extracting logic into your own hooks.
-- **Router (Intro)**: Basic routing concepts.
-- **Performance**: `React.memo`, `useMemo`, and `useCallback`.
+Daniel Rose's 9.8-hour course hands you 40 broken or half-built apps, from a synth keyboard to a Game Boy game to a spaceship blaster, each with a written brief and his recorded solution. Only 2.7 of the 9.8 hours are the briefs themselves; the rest is Daniel solving each one, which he tells you to skim if you weren't stuck. The value is the minutes you spend stuck before you press play, not the walkthrough.
 
-<AffiliateLink href="https://scrimba.com/advanced-react-c02h?via=u42d4986" variant="button">View Advanced React</AffiliateLink>
+### Week 7: interview prep or the React 19 update
 
----
+Pick based on your immediate goal. Cassidy Williams' [React Interview Questions](/docs/courses/react/react-interview-questions/) is 41 minutes: nine scrims of questions with her model answers plus one coding exercise, converting a class-based counter into a function component with `useState`. It drills talking through concepts, not live coding, so pair it with [React Challenges](/docs/courses/react/react-challenges/) if your interviews include a coding round. [What's New in React 19?](/docs/courses/react/whats-new-in-react-19/) is free and 69 minutes: Bob rebuilds one username form four times with the `action` prop, `useActionState`, `useOptimistic`, and `useFormStatus`. Take it if you already write hooks-based React and want the React 19 changes in working code.
 
-### Weeks 5-6: React Router 6 (Pro)
+## How long does the whole path take?
 
-**Duration:** 9.7 hours | **Instructor:** Bob Ziroll | **Cost:** Pro
+| Course | Hours | Access | Instructor |
+|---|---|---|---|
+| [Learn React](/docs/courses/react/learn-react/) | 15.1 | Free | Bob Ziroll |
+| [Advanced React](/docs/courses/react/advanced-react/) | 18.8 | Pro | Bob Ziroll (mostly) |
+| [React Challenges](/docs/courses/react/react-challenges/) | 9.8 | Pro | Daniel Rose |
+| [React Interview Questions](/docs/courses/react/react-interview-questions/) | 0.7 | Pro | Cassidy Williams |
 
-Single Page Applications (SPAs) need routing. This course covers the industry-standard `react-router-dom` library in depth.
-
-**What you'll master:**
-- Dynamic routes (`/products/:id`)
-- Nested routes / Layout components
-- Protected routes (requiring login)
-- Loaders and Actions (new in Router 6.4+)
-- Handling 404s and errors
-
-**Capstone Project:** **#VanLife**, A fully functional rental platform for vans, complete with filtering, host dashboard, and authentication flows.
-
----
-
-### Week 7: React Challenges & Practice (Pro)
-
-**Duration:** 9.8 hours | **Instructor:** Bob Ziroll
-
-You can't learn just by watching. This course throws **40 coding challenges** at you. They range from simple "fix this bug" tasks to complex logic problems.
-
-**Examples:**
-- Fix the broken `useEffect` dependency array
-- Implement a dark mode toggle
-- Optimize a slow-rendering list
-
----
-
-### Week 8: Specialization & Interview Prep
-
-Choose your final sprint based on your immediate goals:
-
-#### Option A: The "Job Hunter" Track
-Take the **[React Interview Questions](/docs/courses/react/react-interview-questions/)** course. It breaks down common technical interview questions like "What is the Virtual DOM?" and "Explain the React lifecycle".
-
-#### Option B: The "Bleeding Edge" Track
-Take **React 19 Tutorial** (Free). Learn about Server Components, Actions, and the `use` hook. Ideal if you're applying to startups using Next.js.
-
-#### Option C: The "Architect" Track
-Take **Build Reusable React Components**. Learn about compound components and advanced design patterns.
-
-## Summary Checklist
-
-| Course | Duration | Goal |
-|---|---|---|
-| [Learn React](/docs/courses/react/learn-react/) | 15h | Master the basics (Free) |
-| [Advanced React](/docs/courses/react/advanced-react/) | 13h | Professional patterns |
-| [React Router](/docs/courses/react/react-router/) | 10h | Build multi-page apps |
-| [React Challenges](/docs/courses/react/react-challenges/) | 10h | Practice & Debugging |
+[Learn React](/docs/courses/react/learn-react/), [Advanced React](/docs/courses/react/advanced-react/), and Challenges alone run about 44 hours. At an hour a day, that's six to seven weeks; at two hours, half that.
 
 ## Frequently Asked Questions
 
 <FAQAccordion items={[
-  { q: "Is the free Learn React course enough to get a job?", a: "It's an excellent start, but likely not enough on its own for most mid-level roles. Most employers expect knowledge of Routing, advanced hooks, and state management (Context/Redux) which are covered in the Pro courses." },
-  { q: "Does Scrimba teach Redux?", a: "Scrimba focuses heavily on the Context API and modern React hooks, which have largely replaced Redux for many applications. However, understanding the patterns in the Advanced course will make learning Redux (or Zustand/Jotai) very easy." },
-  { q: "What about Next.js?", a: "Scrimba has a dedicated Learn Next.js course, worth taking after you finish this React path. Don't rush into Next.js before mastering React fundamentals. See [the best Next.js courses of 2026](/blog/best-nextjs-courses/) for how it compares to other options." },
-  { q: "How much does the Pro plan cost?", a: "Check [Scrimba Pricing](/docs/pricing/) for current rates, plans vary by billing cycle and location-based pricing." }
+  { q: "Is the free Learn React course enough to get a job?", a: "It gets you hooks, state, and one API-driven build, not enough on its own for most mid-level roles. Routing and a state-management pattern beyond useState, both in Advanced React, are what most job listings expect next." },
+  { q: "Do I need both Advanced React and React Router?", a: "No. Advanced React's Routing module teaches React Router 6 in the same VanLife app the standalone course uses, about six hours of overlap. Take the standalone course only if you want routing alone and skip Advanced React entirely." },
+  { q: "Does Scrimba teach Redux?", a: "No. Advanced React teaches the Context API and custom hooks instead, which cover most of what Redux solved. The patterns transfer if you need Redux or Zustand later." },
+  { q: "What about Next.js?", a: "Scrimba has a separate Learn Next.js course. Finish this React path first; Next.js assumes React fundamentals it does not re-teach. See our [Next.js courses roundup](/blog/best-nextjs-courses/) for how it compares to alternatives." },
+  { q: "How much does Scrimba Pro cost?", a: "Check [Scrimba Pricing](/docs/pricing/) for current rates; plans vary by billing cycle and region." }
 ]} />
 
-## Choose This If
-
-**Choose this guide if:** You're learning React on Scrimba and want a clear week-by-week order. Start free with Learn React; add Pro courses when ready.
-
-## Related Resources
+## Related resources
 
 - [Frontend Developer Path](/docs/paths/frontend-developer-path/)
 - [Best Scrimba React Courses](/docs/courses/react/)
-- [Review: Is Scrimba Worth It?](/blog/is-scrimba-worth-it/)
+- [Scrimba Review 2026](/blog/scrimba-review/)
 
-<PricingCTA 
-  title="Ready to master React?" 
-  subtitle="Start with the free course today, no credit card required."
+<PricingCTA
+  title="Ready to start the React path?"
+  subtitle="Learn React is free, no credit card required."
+  ctaType="free"
 />
