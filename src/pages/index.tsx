@@ -521,7 +521,7 @@ function FinalCtaSection() {
 }
 
 const BASE_URL = 'https://scrimbaguide.tech';
-const HOME_PAGE_TITLE = 'Is Scrimba Worth It? Paths, Pricing & Review (2026)';
+const HOME_PAGE_TITLE = 'Scrimba Paths, Pricing & Comparisons';
 const HOME_DESC =
   "Scrimba reviewed from inside a Pro account: four career paths compared, what's free versus Pro, and Scrimba against Codecademy, Udemy, and freeCodeCamp.";
 // Note: site-level Organization + WebSite + SearchAction JSON-LD is injected globally
