@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback, useId } from 'react';
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
 import {
@@ -49,6 +49,7 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const panelId = useId();
   const { pathname } = useLocation();
 
   // Highlight the trigger when the current page lives under one of its items, so
@@ -172,7 +173,7 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
         type="button"
         className={`navbar__link mega-menu__toggle clean-btn${isActive ? ' navbar__link--active' : ''}`}
         aria-expanded={isOpen}
-        aria-haspopup="true"
+        aria-controls={isOpen ? panelId : undefined}
         onClick={handleToggleClick}
         onKeyDown={handleKeyDown}
       >
@@ -180,6 +181,7 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
       </button>
       {isOpen && (
         <div
+          id={panelId}
           className="mega-menu__panel"
           aria-label={`${label} menu`}
           onMouseEnter={cancelCloseTimer}
