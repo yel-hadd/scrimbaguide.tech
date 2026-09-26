@@ -8,7 +8,7 @@ keywords: [scrimbaguide privacy policy]
 
 **Last Updated: 2026-09-26**
 
-> **In plain English:** we do not sell your data. We use Google Analytics to understand which guides help readers. If you are in the EU, EEA, UK or Switzerland, analytics cookies stay off until you accept them in the cookie banner; you can change your choice any time from "Cookie settings" in the footer. We may show Google ads. You can opt out of personalized advertising through Google's [Ads Settings](https://www.google.com/settings/ads) and manage cookies through your browser. If you are in the EU, UK, or California, you have additional rights covered below. The legal text below is the binding version.
+> **In plain English:** we do not sell your data. We use Google Analytics to understand which guides help readers. If you are in the EU, EEA, UK or Switzerland, analytics cookies stay off until you accept them in the cookie banner; you can change your choice any time from "Cookie settings" in the footer. We show no ads and set no advertising cookies. You can also manage cookies through your browser. If you are in the EU, UK, or California, you have additional rights covered below. The legal text below is the binding version.
 
 At Scrimba Guide, accessible from https://scrimbaguide.tech, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Scrimba Guide and how we use it.
 
@@ -27,12 +27,11 @@ We use Google Consent Mode v2.
 - **Other regions:** analytics storage is on by default; advertising storage is off.
 - **Your choice** is stored in your browser (`sg-consent` in local storage) and can be changed at any time from "Cookie settings" in the site footer. Declining is as easy as accepting.
 
-## Google AdSense & Analytics
+## Google Analytics and affiliate links
 
-We may use Google AdSense to serve ads and Google Analytics to understand traffic.
-- Google uses cookies to serve ads based on a user's prior visits to your website or other websites.
-- Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet.
-- Users may opt out of personalized advertising by visiting [Ads Settings](https://www.google.com/settings/ads).
+We use Google Analytics 4 to understand traffic: which pages people read, where they come from, and which links they click. We show no ads, and advertising storage, ad user data and ad personalization are denied in every region.
+
+Links to Scrimba and Udemy are affiliate links. They carry our affiliate id, and once you arrive, Scrimba or Udemy may set their own cookies under their own privacy policies.
 
 ## CCPA Privacy Rights (Do Not Sell My Personal Information)
 

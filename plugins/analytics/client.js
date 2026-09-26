@@ -17,8 +17,9 @@ export function onRouteDidUpdate({ location, previousLocation }) {
   // The document title updates a tick later (facebook/docusaurus#7420).
   setTimeout(() => {
     if (typeof window.gtag !== 'function') return;
-    window.gtag('set', { content_group: contentGroup(location.pathname) });
+    const group = contentGroup(location.pathname);
+    window.gtag('set', { content_group: group });
     window.gtag('set', 'page_path', location.pathname + location.search + location.hash);
-    window.gtag('event', 'page_view');
+    window.gtag('event', 'page_view', { content_group: group });
   });
 }

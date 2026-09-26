@@ -103,14 +103,49 @@ export function checkDescriptionLength(rel, content) {
   return null;
 }
 
+/** Mirrors src/utils/moneyPagePaths.ts (this script runs on plain Node, which cannot import .ts). */
+export function isMoneyPagePath(route) {
+  return (
+    route.includes('/pricing/') ||
+    route.startsWith('/docs/paths/') ||
+    /^\/docs\/comparisons\/scrimba-vs-[^/]+\/?$/.test(route) ||
+    route === '/blog/scrimba-review/'
+  );
+}
+
+/** Route of a docs or blog file (numeric prefixes stripped, frontmatter slug wins), or null. */
+export function routeOf(rel, body) {
+  const fm = body.startsWith('---') ? body.slice(3, body.indexOf('\n---', 3)) : '';
+  const slug = (fm.match(/^slug:\s*["']?([^"'\n]+)/m) || [])[1]?.trim();
+  if (rel.startsWith('blog/')) return slug ? `/blog/${slug.replace(/^\/|\/$/g, '')}/` : null;
+  if (!rel.startsWith('docs/')) return null;
+  if (slug) return slug.startsWith('/') ? `/docs${slug.replace(/\/$/, '')}/` : null;
+  const p = rel.slice(5).replace(/\.mdx?$/, '').split('/').map((x) => x.replace(/^\d+-/, '')).join('/');
+  return `/docs/${p.replace(/(^|\/)index$/, '')}/`.replace(/\/\/$/, '/');
+}
+
+/** Money-page AffiliateLinks without a `location` (warn only: cta_type still covers them). */
+export function unplacedAffiliateLinks(rel, body) {
+  const route = routeOf(rel, body);
+  if (!route || !isMoneyPagePath(route)) return [];
+  const out = [];
+  for (const m of body.matchAll(/<AffiliateLink\b[^>]*>/g)) {
+    if (!/\blocation=/.test(m[0])) out.push(`${rel}:${body.slice(0, m.index).split('\n').length} AffiliateLink on a money page has no location=`);
+  }
+  return out;
+}
+
 function main() {
   const violations = [];
+  const warnings = [];
 
   for (const dir of SCAN_DIRS) {
     for (const file of walk(path.join(ROOT, dir))) {
       const rel = path.relative(ROOT, file);
       const lines = fs.readFileSync(file, 'utf8').split('\n');
       const body = lines.join('\n');
+
+      warnings.push(...unplacedAffiliateLinks(rel, body));
 
       const descriptionViolation = checkDescriptionLength(rel, body);
       if (descriptionViolation) violations.push(descriptionViolation);
@@ -159,6 +194,11 @@ function main() {
     for (const s of [...p.courses, ...p.partial]) {
       if (!slugs.has(s)) violations.push(`data/path-membership.json: ${key} lists ${s}, which is not in data/courses.json (slug renamed? re-verify)`);
     }
+  }
+
+  if (warnings.length) {
+    console.warn(`Content warnings (${warnings.length}, not blocking):`);
+    for (const w of warnings) console.warn('  ' + w);
   }
 
   if (violations.length) {

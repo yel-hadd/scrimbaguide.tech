@@ -42,7 +42,7 @@ interface AffiliateLinkProps {
   location?: string;
   /** GA `cta_type`: the CTA format, from a closed list (`sticky`, `pricing-cta`,
    *  `course-card`, `verdict-box`, `comparison-table`, `scrim-poster`,
-   *  `code-preview`, `lightbox`, `path-advisor`). Wrapping components set it;
+   *  `code-preview`, `lightbox`, `path-advisor`, `calculator`). Wrapping components set it;
    *  inline MDX links fall back to `inline-<variant>`. */
   ctaType?: string;
 }

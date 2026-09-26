@@ -27,7 +27,8 @@ export function affiliateDestination(href: string): { type: DestinationType; slu
     return { type: 'other', slug: '' };
   }
   const host = url.hostname.replace(/^www\./, '');
-  const slug = url.pathname.split('/').filter(Boolean)[0] ?? '';
+  const segments = url.pathname.split('/').filter(Boolean);
+  const slug = segments[0] ?? '';
 
   if (host === 'udemy.com' || host.endsWith('.udemy.com')) return { type: 'udemy', slug };
   if (host === 'docs.scrimba.com') return { type: 'docs', slug };
@@ -38,6 +39,8 @@ export function affiliateDestination(href: string): { type: DestinationType; slu
   if (slug === '' || slug === 'home') return { type: 'home', slug: slug || 'home' };
   if (SCRIMBA_ID.test(slug)) return { type: /-path-/.test(slug) ? 'path' : 'course', slug };
   if (slug.startsWith('@') || /^u0[a-z0-9]+$/i.test(slug)) return { type: 'instructor', slug };
+  /* Legacy course URLs: scrimba.com/learn/<course>/... */
+  if (slug === 'learn' && segments[1]) return { type: 'course', slug: segments[1] };
   if (slug === 'allcourses' || slug === 'learn' || slug === 'topics') return { type: 'catalog', slug };
   return { type: 'other', slug };
 }

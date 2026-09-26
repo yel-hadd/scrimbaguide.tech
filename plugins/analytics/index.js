@@ -5,7 +5,9 @@
  *      analytics granted elsewhere; ads storage denied everywhere) and
  *      replay a stored banner choice before anything is measured;
  *   2. label the first page_view with `content_group` (it goes out from
- *      `config`, before React runs, so a client module cannot label it);
+ *      `config`, before React runs, so a client module cannot label it).
+ *      It is set at `set` scope, not as a config parameter: config wins
+ *      over set, which would pin every later event to the landing group;
  *   3. load gtag.js only on the production hostname. Elsewhere `gtag` still
  *      queues into an inert `dataLayer`, which keeps local tests inspectable
  *      without sending localhost hits.
@@ -22,6 +24,8 @@ const CONSENT_REGIONS = [
   'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE',
   'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE',
   'IS', 'LI', 'NO', 'GB', 'CH',
+  // EU outermost regions and Aland geolocate under their own codes.
+  'RE', 'GP', 'MQ', 'GF', 'YT', 'MF', 'AX',
 ];
 
 function headScript(rules) {
@@ -36,8 +40,9 @@ if(c==='granted'||c==='denied'){gtag('consent','update',{analytics_storage:c});}
 var rules=${JSON.stringify(rules)},p=location.pathname,cg='other';
 if(p.charAt(p.length-1)!=='/'){p+='/';}
 for(var i=0;i<rules.length;i++){if(new RegExp(rules[i][0]).test(p)){cg=rules[i][1];break;}}
+gtag('set',{content_group:cg});
 gtag('js',new Date());
-gtag('config','${MEASUREMENT_ID}',{content_group:cg});
+gtag('config','${MEASUREMENT_ID}');
 if(location.hostname!=='${SITE_HOSTNAME}'){return;}
 var s=document.createElement('script');s.async=true;
 s.src='https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}';

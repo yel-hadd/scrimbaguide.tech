@@ -29,7 +29,8 @@ function runHead({ hostname = 'scrimbaguide.tech', pathname = '/', stored = null
   window.window = window;
   vm.runInNewContext(`with (window) { ${headScript()} }`, { window, Date, RegExp, JSON });
   const calls = window.dataLayer.map((args) => Array.from(args));
-  return { calls, appended, config: calls.find((c) => c[0] === 'config') };
+  const set = calls.find((c) => c[0] === 'set' && c[1].content_group);
+  return { calls, appended, config: calls.find((c) => c[0] === 'config'), group: set?.[1].content_group, setIndex: calls.indexOf(set) };
 }
 
 test('consent defaults: denied in the EEA/UK/CH, analytics granted elsewhere, ads denied everywhere', () => {
@@ -37,7 +38,7 @@ test('consent defaults: denied in the EEA/UK/CH, analytics granted elsewhere, ad
   const defaults = calls.filter((c) => c[0] === 'consent' && c[1] === 'default');
   assert.equal(defaults.length, 2);
   assert.equal(defaults[0][2].analytics_storage, 'denied');
-  assert.ok(defaults[0][2].region.includes('DE') && defaults[0][2].region.includes('GB'));
+  for (const cc of ['DE', 'GB', 'CH', 'CY', 'RE', 'AX']) assert.ok(defaults[0][2].region.includes(cc), cc);
   assert.equal(defaults[1][2].analytics_storage, 'granted');
   assert.equal(defaults[1][2].region, undefined);
   for (const d of defaults) assert.equal(d[2].ad_storage, 'denied');
@@ -59,6 +60,12 @@ test('hostname guard: gtag.js loads only on the production host', () => {
   assert.match(runHead().appended[0].src, /gtag\/js\?id=G-03WS2KR7EX/);
   assert.equal(runHead({ hostname: 'localhost' }).appended.length, 0);
   assert.equal(runHead({ hostname: 'yel-hadd.github.io' }).appended.length, 0);
+});
+
+test('content_group is set before config, never as a config parameter', () => {
+  const { calls, config, setIndex } = runHead({ pathname: '/docs/paths/' });
+  assert.ok(setIndex > -1 && setIndex < calls.indexOf(config));
+  assert.equal(config[2], undefined);
 });
 
 test('content_group labels the first page_view', () => {
@@ -87,7 +94,7 @@ test('content_group labels the first page_view', () => {
     '/docs/paths': 'path',
   };
   for (const [pathname, group] of Object.entries(cases)) {
-    assert.equal(runHead({ pathname }).config[2].content_group, group, pathname);
+    assert.equal(runHead({ pathname }).group, group, pathname);
   }
 });
 
@@ -108,6 +115,9 @@ test('affiliateDestination classifies Scrimba, Udemy and docs URLs', () => {
     ['https://scrimba.com/u0abc', 'instructor', 'u0abc'],
     ['https://scrimba.com/@bobziroll', 'instructor', '@bobziroll'],
     ['https://scrimba.com/allcourses', 'catalog', 'allcourses'],
+    ['https://scrimba.com/learn/htmlcss?via=x', 'course', 'htmlcss'],
+    ['https://scrimba.com/learn/learnreact/intro-to-react-c0e', 'course', 'learnreact'],
+    ['https://scrimba.com/learn', 'catalog', 'learn'],
     ['https://scrimba.com/articles/some-post', 'other', 'articles'],
     ['not a url', 'other', ''],
   ];
