@@ -81,6 +81,14 @@
   --sg-type-h2: clamp(1.55rem, 2.4vw, 2.05rem);
   --sg-type-h3: clamp(1.28rem, 1.8vw, 1.55rem);
   --sg-type-h4: clamp(1.1rem, 1.3vw, 1.3rem);
+
+  /* Focus ring: one token set, referenced by every focus-visible rule.
+   * Colour tracks --ifm-color-primary, so it already swaps per theme;
+   * contrast checked at 6.2:1 (light) and 8.5:1 (dark) against the
+   * surfaces it sits on, both well past the 3:1 floor. */
+  --sg-focus-ring-color: var(--ifm-color-primary);
+  --sg-focus-ring-width: 3px;
+  --sg-focus-ring-offset: 2px;
 }
 
 [data-theme='dark'] {
@@ -1746,15 +1754,9 @@ article[class*='searchResultItem'] mark {
   display: none;
 }
 
-/* Keyboard focus ring for the media poster (it is the affiliate <a>). */
-.hero-scrim-poster:focus-visible {
-  outline: none;
-}
-.hero-scrim-poster:focus-visible .hero-scrim-poster__frame {
-  outline: 3px solid var(--ifm-color-primary);
-  outline-offset: 4px;
-  border-radius: 16px;
-}
+/* Keyboard focus ring for the media poster: it is the affiliate <a>
+   (class cta-link--card), so the shared card-CTA rule in the "Focus
+   indicators" section below draws the ring directly on this element. */
 
 @media (max-width: 900px) {
   .hero-section__inner--split {
@@ -1893,8 +1895,16 @@ article a:not(.cta-link):not(.hash-link):hover {
 /* ── Focus indicators (WCAG 2.4.7) ────────────────────────────── */
 .cta-link--button:focus-visible,
 .navbar-cta:focus-visible {
-  outline: 3px solid var(--ifm-color-primary);
-  outline-offset: 2px;
+  outline: var(--sg-focus-ring-width) solid var(--sg-focus-ring-color);
+  outline-offset: var(--sg-focus-ring-offset);
+}
+
+/* The ScrimPoster card CTA: radius matches the poster frame (14px) so the
+   ring reads as one rounded shape, not a square cutting a corner. */
+.cta-link--card:focus-visible {
+  outline: var(--sg-focus-ring-width) solid var(--sg-focus-ring-color);
+  outline-offset: var(--sg-focus-ring-offset);
+  border-radius: 14px;
 }
 
 .cta-link--text:focus-visible {

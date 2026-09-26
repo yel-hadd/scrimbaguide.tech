@@ -68,6 +68,7 @@ export default function SearchBar(): React.ReactElement {
   const [activeFilter, setActiveFilter] = useState<string>('All');
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const pillRef = useRef<HTMLButtonElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const rawGrouped = useMemo(() => {
@@ -147,13 +148,21 @@ export default function SearchBar(): React.ReactElement {
     setTimeout(() => inputRef.current?.focus(), 50);
   }, []);
 
-  const closeSearch = useCallback(() => {
+  // restoreFocus only applies to a dismissal that leaves the reader on the
+  // same page (Escape, backdrop, close button): the search pill is where
+  // focus was before the dialog opened, and it is what a keyboard user
+  // expects next. navigate() and handleSeeAll() move to a new route, where
+  // Docusaurus's own route focus management must win instead.
+  const closeSearch = useCallback((opts?: { restoreFocus?: boolean }) => {
     setOpen(false);
     setQuery('');
     setResults(null);
     setHighlightIdx(-1);
     setActiveFilter('All');
     document.body.style.overflow = '';
+    if (opts?.restoreFocus) {
+      setTimeout(() => pillRef.current?.focus(), 0);
+    }
   }, []);
 
   const navigate = useCallback((result: SearchResult) => {
@@ -203,7 +212,7 @@ export default function SearchBar(): React.ReactElement {
         }
         break;
       case 'Escape':
-        closeSearch();
+        closeSearch({ restoreFocus: true });
         break;
       case 'Tab': {
         const root = modalRef.current;
@@ -235,14 +244,14 @@ export default function SearchBar(): React.ReactElement {
         e.preventDefault();
         if (!open) openSearch();
       }
-      if (e.key === 'Escape' && open) closeSearch();
+      if (e.key === 'Escape' && open) closeSearch({ restoreFocus: true });
     };
     document.addEventListener('keydown', handler);
     return () => document.removeEventListener('keydown', handler);
   }, [open, openSearch, closeSearch]);
 
   const pill = (
-    <button className="sg-search-pill" onClick={openSearch} aria-label="Search guides & blog">
+    <button ref={pillRef} className="sg-search-pill" onClick={openSearch} aria-label="Search guides & blog">
       <svg className="sg-search-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8" />
         <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -253,7 +262,7 @@ export default function SearchBar(): React.ReactElement {
   );
 
   const modal = open && createPortal(
-    <div className="sg-search-overlay" onClick={closeSearch}>
+    <div className="sg-search-overlay" onClick={() => closeSearch({ restoreFocus: true })}>
       <div ref={modalRef} className="sg-search-modal" role="dialog" aria-modal="true" aria-label="Search" onClick={(e) => e.stopPropagation()} onKeyDown={handleKeyDown}>
         <div className="sg-search-header">
           <svg className="sg-search-header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -277,7 +286,7 @@ export default function SearchBar(): React.ReactElement {
           />
           <button
             className="sg-search-clear"
-            onClick={closeSearch}
+            onClick={() => closeSearch({ restoreFocus: true })}
             aria-label="Close search"
           >
             &times;

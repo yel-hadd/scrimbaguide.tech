@@ -174,6 +174,12 @@ for (const theme of ['light', 'dark']) {
     await page.keyboard.press('Escape');
     await page.waitForSelector('.sg-search-overlay', { state: 'detached', timeout: 2000 });
     await assertNoAxeViolations(page, `post-escape (${theme})`);
+    // Escape is a same-page dismissal: focus must return to the search pill,
+    // not fall through to <body>.
+    const focusedOnPill = await page.evaluate(
+      () => document.activeElement?.classList.contains('sg-search-pill') ?? false,
+    );
+    assert.equal(focusedOnPill, true, `Escape (${theme}): focus did not return to .sg-search-pill`);
   });
 
   test(`7. close modal via × button — ${theme}`, async (t) => {
@@ -182,6 +188,26 @@ for (const theme of ['light', 'dark']) {
     await page.click('.sg-search-clear');
     await page.waitForSelector('.sg-search-overlay', { state: 'detached', timeout: 2000 });
     await assertNoAxeViolations(page, `post-close-button (${theme})`);
+    const focusedOnPill = await page.evaluate(
+      () => document.activeElement?.classList.contains('sg-search-pill') ?? false,
+    );
+    assert.equal(focusedOnPill, true, `close button (${theme}): focus did not return to .sg-search-pill`);
+  });
+
+  test(`9. See all does not restore focus to the pill — ${theme}`, async (t) => {
+    const page = await pageInTheme(t, theme);
+    await openSearch(page);
+    const input = page.locator('.sg-search-input');
+    await input.fill('react');
+    await page.waitForSelector('.sg-search-result', { timeout: 5000 });
+    await page.click('.sg-search-footer-link', { timeout: 3000 });
+    await page.waitForFunction("window.location.pathname.startsWith('/search')", { timeout: 5000 });
+    // Route navigation must win here: the search pill on the new page is a
+    // different element, so it must not be the one holding focus.
+    const focusedOnPill = await page.evaluate(
+      () => document.activeElement?.classList.contains('sg-search-pill') ?? false,
+    );
+    assert.equal(focusedOnPill, false, `See all (${theme}): focus was forced back onto the pill instead of route focus management`);
   });
 
   test(`8. See all navigates to /search page — ${theme}`, async (t) => {

@@ -43,3 +43,11 @@
   background: var(--ifm-color-primary);
   color: var(--ifm-background-surface-color);
 }
+
+/* Colour inversion alone does not survive a screen-reader pass or a
+   monochrome display: focus-visible also gets a ring, on top of the
+   hover/focus inversion above. */
+.button:focus-visible {
+  outline: var(--sg-focus-ring-width) solid var(--sg-focus-ring-color);
+  outline-offset: var(--sg-focus-ring-offset);
+}
