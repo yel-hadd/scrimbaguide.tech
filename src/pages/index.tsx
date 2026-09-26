@@ -59,9 +59,12 @@ function HeroSection() {
           <p className="hero-section__cta-note">
             No signup, nothing to install. A real lesson opens in your browser in about 30 seconds.
           </p>
+          {/* Trustpilot rating re-checked live 2026-09-26: TrustScore 4.2/5, 77
+              reviews, at https://www.trustpilot.com/review/www.scrimba.com
+              (was 4.3/5; the site had drifted since the last check). */}
           <ul className="hero-section__proof" aria-label="Trust signals">
             <li>
-              <strong>4.3/5</strong> on{' '}
+              <strong>4.2/5</strong> on{' '}
               <a
                 href="https://www.trustpilot.com/review/www.scrimba.com"
                 target="_blank"
