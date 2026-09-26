@@ -14,8 +14,15 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const OUTPUT = join(ROOT, 'output');
-const DATA = join(ROOT, 'data');
+// CATALOG_OUTPUT_DIR / CATALOG_DATA_DIR let the catalog-drift recipe run the
+// pipeline against a scratch scrape without touching the real data/ (see
+// .claude/skills/site-health/references/routines.md). OVERRIDES stays
+// pinned to ROOT/data: course-overrides.json and path-membership.json are
+// hand-maintained facts, never drift-scraped, and a drift run must still
+// read the real ones.
+const OUTPUT = process.env.CATALOG_OUTPUT_DIR || join(ROOT, 'output');
+const DATA = process.env.CATALOG_DATA_DIR || join(ROOT, 'data');
+const OVERRIDES = join(ROOT, 'data');
 
 mkdirSync(DATA, { recursive: true });
 
@@ -154,7 +161,7 @@ const PATH_SLUGS = new Set(Object.keys(PATHS));
 const COURSE_DIRS = readdirSync(join(ROOT, 'docs', 'courses'), { withFileTypes: true })
   .filter(d => d.isDirectory())
   .map(d => d.name);
-const PATH_MEMBERSHIP = JSON.parse(readFileSync(join(DATA, 'path-membership.json'), 'utf8')).paths;
+const PATH_MEMBERSHIP = JSON.parse(readFileSync(join(OVERRIDES, 'path-membership.json'), 'utf8')).paths;
 
 
 // ── Extract instructor ───────────────────────────────────────────
@@ -377,7 +384,7 @@ function parseCourse(item) {
 // projects) live in data/course-overrides.json, keyed by
 // scrimbaSlug. Never patch data/courses.json by hand: `make generate` rebuilds
 // it from output/ and would silently drop the fix.
-const OVERRIDES_FILE = join(DATA, 'course-overrides.json');
+const OVERRIDES_FILE = join(OVERRIDES, 'course-overrides.json');
 const overrides = existsSync(OVERRIDES_FILE)
   ? JSON.parse(readFileSync(OVERRIDES_FILE, 'utf8')).courses ?? {}
   : {};
