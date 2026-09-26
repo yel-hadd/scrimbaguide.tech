@@ -316,8 +316,18 @@ def strip_money(reading, money_flag=None):
     return out
 
 
+_FULL_INSPECT_RE = re.compile(r'inspect-\d{4}-\d{2}-\d{2}\.json$')
+
+
 def newest_inspect_files():
-    files = sorted(glob.glob(os.path.join(ROOT, 'secrets', 'inspect-*.json')))
+    """The two newest FULL `--sitemap` inspection files (never a partial
+    `--pending`/`--urls` run, named `inspect-pending-*.json`), so the
+    monthly indexed-count diff always compares two full sitemap
+    inspections, not a partial run against a full one."""
+    files = sorted(
+        fp for fp in glob.glob(os.path.join(ROOT, 'secrets', 'inspect-*.json'))
+        if _FULL_INSPECT_RE.search(os.path.basename(fp))
+    )
     if not files:
         return None, None
     return (files[-1], files[-2] if len(files) > 1 else None)

@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+import tempfile
 import unittest
 from datetime import date
 from unittest import mock
@@ -9,6 +10,26 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import gapi  # noqa: E402
 import snapshot  # noqa: E402
+
+
+class TestNewestInspectFiles(unittest.TestCase):
+    def test_ignores_partial_pending_files(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            secrets = os.path.join(tmp, 'secrets')
+            os.makedirs(secrets)
+            for name in (
+                'inspect-2026-09-10.json',
+                'inspect-2026-09-17.json',
+                'inspect-pending-2026-09-24.json',  # newer, but partial: must not win
+            ):
+                with open(os.path.join(secrets, name), 'w') as f:
+                    f.write('[]')
+
+            with mock.patch.object(snapshot, 'ROOT', tmp):
+                newest, prev = snapshot.newest_inspect_files()
+
+        self.assertEqual(os.path.basename(newest), 'inspect-2026-09-17.json')
+        self.assertEqual(os.path.basename(prev), 'inspect-2026-09-10.json')
 
 
 class TestWindows(unittest.TestCase):
