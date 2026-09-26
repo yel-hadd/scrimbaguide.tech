@@ -211,10 +211,16 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Study Plan', href: '/docs/paths/study-plan', type: 'doc' },
     { title: 'Best Scrimba Courses for Career Changers', href: '/blog/best-scrimba-courses-career-changers', type: 'blog' },
   ],
+  '/docs/paths/backend-developer-path': [
+    { title: 'Scrimba Learning Paths', href: '/docs/paths/', type: 'doc' },
+    { title: 'Intro to DevOps', href: '/docs/courses/javascript/devops', type: 'doc' },
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+  ],
   '/docs/paths/fullstack-developer-path': [
     { title: 'Scrimba Learning Paths', href: '/docs/paths/', type: 'doc' },
     { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Testing in React', href: '/docs/courses/react/testing-in-react', type: 'doc' },
   ],
   '/docs/paths/ai-engineer-path': [
     { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
@@ -428,6 +434,42 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
     { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
     { title: 'Best Free Scrimba Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
+  ],
+  '/docs/courses/javascript/devops': [
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+    { title: 'Learn Express.js', href: '/docs/courses/javascript/expressjs', type: 'doc' },
+    { title: 'Learn Node.js', href: '/docs/courses/javascript/nodejs', type: 'doc' },
+    { title: 'JavaScript Courses', href: '/docs/courses/javascript/', type: 'doc' },
+  ],
+  '/docs/courses/javascript/expressjs': [
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+    { title: 'Learn Node.js', href: '/docs/courses/javascript/nodejs', type: 'doc' },
+    { title: 'Intro to DevOps', href: '/docs/courses/javascript/devops', type: 'doc' },
+    { title: 'JavaScript Courses', href: '/docs/courses/javascript/', type: 'doc' },
+  ],
+  '/docs/courses/javascript/nodejs': [
+    { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+    { title: 'Learn Express.js', href: '/docs/courses/javascript/expressjs', type: 'doc' },
+    { title: 'Intro to DevOps', href: '/docs/courses/javascript/devops', type: 'doc' },
+    { title: 'JavaScript Courses', href: '/docs/courses/javascript/', type: 'doc' },
+  ],
+  '/docs/courses/react/testing-in-react': [
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Learn React', href: '/docs/courses/react/learn-react', type: 'doc' },
+    { title: 'Advanced React', href: '/docs/courses/react/advanced-react', type: 'doc' },
+    { title: 'React Courses', href: '/docs/courses/react/', type: 'doc' },
+  ],
+  '/docs/courses/react/learn-react': [
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Advanced React', href: '/docs/courses/react/advanced-react', type: 'doc' },
+    { title: 'Testing in React', href: '/docs/courses/react/testing-in-react', type: 'doc' },
+    { title: 'React Courses', href: '/docs/courses/react/', type: 'doc' },
+  ],
+  '/docs/courses/react/advanced-react': [
+    { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Learn React Router', href: '/docs/courses/react/react-router', type: 'doc' },
+    { title: 'Testing in React', href: '/docs/courses/react/testing-in-react', type: 'doc' },
+    { title: 'React Courses', href: '/docs/courses/react/', type: 'doc' },
   ],
   '/blog/developer-job-without-degree-2026': [
     { title: 'Junior Developer Job Market 2026', href: '/blog/junior-developer-job-market-2026', type: 'blog' },
