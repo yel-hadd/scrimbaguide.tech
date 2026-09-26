@@ -15,6 +15,7 @@ import {
   topLevelTypes,
   isBlogListRoute,
   routeFromFile,
+  breadcrumbFacts,
 } from '../check-built-metadata.mjs';
 
 const ORIGIN = 'https://scrimbaguide.tech';
@@ -29,6 +30,7 @@ function html({
   h1 = 1,
   jsonLd = [],
   extraHead = '',
+  body = '',
 } = {}) {
   const head = [
     title === null ? '' : `<title>${title}</title>`,
@@ -40,7 +42,7 @@ function html({
     ...jsonLd.map((block) => `<script type="application/ld+json">${typeof block === 'string' ? block : JSON.stringify(block)}</script>`),
     extraHead,
   ].join('');
-  return `<!doctype html><html><head>${head}</head><body>${'<h1>Heading</h1>'.repeat(h1)}</body></html>`;
+  return `<!doctype html><html><head>${head}</head><body>${body}${'<h1>Heading</h1>'.repeat(h1)}</body></html>`;
 }
 
 const rules = (route, doc) => checkPage(route, extractPage(doc)).hard.map((f) => f.rule).sort();
@@ -117,6 +119,54 @@ test('list pages reject top-level post schema but allow BlogPosting nested under
   assert.deepEqual(rules('/blog/', html({ jsonLd: [{ '@type': ['ItemList', 'Thing'] }] })), ['list-page-schema']);
   // The same schema on a post page is fine.
   assert.deepEqual(rules('/blog/scrimba-review/', html({ jsonLd: [{ '@type': 'Review' }] })), []);
+});
+
+const crumbList = (url = `${ORIGIN}/blog/post/`) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  '@id': `${url}#breadcrumb`,
+  itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: `${ORIGIN}/` }],
+});
+const docsNav = '<nav class="theme-doc-breadcrumbs breadcrumbsContainer_x" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a href="/">Home</a></li></ul></nav>';
+const blogNav = '<nav class="blog-post-breadcrumbs container_y" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a href="/blog/">Blog</a></li></ul></nav>';
+
+test('one BreadcrumbList is fine; a second one anywhere fails', () => {
+  assert.deepEqual(rules('/blog/post/', html({ jsonLd: [crumbList()], body: blogNav })), []);
+  assert.deepEqual(rules('/blog/post/', html({ jsonLd: [crumbList(), crumbList()] })), ['breadcrumblist-count']);
+  assert.deepEqual(rules('/docs/a/', html({ jsonLd: [crumbList(), { '@graph': [crumbList()] }] })), ['breadcrumblist-count']);
+});
+
+test('a breadcrumb property may reference the BreadcrumbList by @id, never restate it', () => {
+  const byRef = { '@type': 'WebPage', breadcrumb: { '@id': `${ORIGIN}/blog/post/#breadcrumb` } };
+  assert.deepEqual(rules('/blog/post/', html({ jsonLd: [crumbList(), byRef] })), []);
+  const inlineList = { '@type': 'WebPage', breadcrumb: crumbList() };
+  assert.deepEqual(rules('/blog/post/', html({ jsonLd: [inlineList] })), []);
+  assert.deepEqual(rules('/blog/post/', html({ jsonLd: [crumbList(), inlineList] })), [
+    'breadcrumb-property-duplicate',
+    'breadcrumblist-count',
+  ]);
+  const text = { '@type': 'WebPage', breadcrumb: 'Home > Blog > Post' };
+  assert.deepEqual(rules('/blog/post/', html({ jsonLd: [text] })), []);
+  assert.deepEqual(rules('/blog/post/', html({ jsonLd: [crumbList(), text] })), ['breadcrumb-property-duplicate']);
+});
+
+test('breadcrumbFacts counts nodes and inline properties across blocks', () => {
+  assert.deepEqual(breadcrumbFacts([crumbList(), { '@graph': [{ '@type': 'WebPage', breadcrumb: crumbList() }] }]), {
+    listNodes: 2,
+    inlineProps: 1,
+    inlineLists: 1,
+  });
+});
+
+test('at most one visible breadcrumbs nav, and none on blog list pages', () => {
+  assert.deepEqual(rules('/docs/a/', html({ body: docsNav })), []);
+  assert.deepEqual(rules('/docs/a/', html({ body: docsNav + blogNav })), ['breadcrumb-nav-count']);
+  const bareNav = '<nav><ul class="breadcrumbs"></ul></nav>';
+  assert.deepEqual(rules('/docs/a/', html({ body: docsNav + bareNav })), ['breadcrumb-nav-count']);
+  // Other navs (pagination, TOC) do not count.
+  assert.deepEqual(rules('/docs/a/', html({ body: `${docsNav}<nav aria-label="Blog post page navigation"></nav>` })), []);
+  assert.deepEqual(rules('/blog/', html({ body: blogNav })), ['list-page-breadcrumbs']);
+  assert.deepEqual(rules('/blog/tags/career/', html({ body: blogNav })), ['list-page-breadcrumbs']);
 });
 
 test('topLevelTypes reads root objects, arrays and @graph members only', () => {

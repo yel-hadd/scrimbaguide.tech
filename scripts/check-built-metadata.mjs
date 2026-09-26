@@ -20,6 +20,16 @@
  *          /blog/tags/**. "Top level" means a script block's root object
  *          or a member of its @graph; a BlogPosting nested under
  *          Blog.blogPost (stock BlogListPageStructuredData) is allowed.
+ *   hard   breadcrumblist-count: at most one BreadcrumbList node per page,
+ *          counted anywhere in any JSON-LD block (top level, @graph or
+ *          nested). Docs get the stock one; blog posts get ours.
+ *   hard   breadcrumb-property-duplicate: a `breadcrumb` property that is
+ *          not a bare {"@id"} reference, on a page that has another
+ *          breadcrumb trail (a BreadcrumbList node or a second property).
+ *   hard   breadcrumb-nav-count: at most one visible breadcrumbs <nav>
+ *          (nav.theme-doc-breadcrumbs, nav[aria-label=Breadcrumbs] or a
+ *          nav holding ul.breadcrumbs).
+ *   hard   list-page-breadcrumbs: no breadcrumbs <nav> on blog list routes.
  *   advisory title-over-60 (printed, never fails, never allowlisted)
  *
  * Ratchet: hard findings are compared with the allowlist
@@ -93,6 +103,48 @@ export function allTypeNodes(parsed) {
   return out;
 }
 
+/**
+ * Breadcrumb facts across a page's parsed JSON-LD blocks.
+ *   listNodes    BreadcrumbList nodes anywhere in the tree
+ *   inlineProps  `breadcrumb` properties whose value is not a bare {"@id"} ref
+ *   inlineLists  the subset of inlineProps whose value is itself a BreadcrumbList
+ */
+export function breadcrumbFacts(blocks) {
+  const facts = { listNodes: 0, inlineProps: 0, inlineLists: 0 };
+  const isReference = (value) =>
+    value && typeof value === 'object' && !Array.isArray(value) && Object.keys(value).length === 1 && '@id' in value;
+  for (const block of blocks) {
+    facts.listNodes += allTypeNodes(block).filter((types) => types.includes('BreadcrumbList')).length;
+    const visit = (node) => {
+      if (Array.isArray(node)) {
+        node.forEach(visit);
+        return;
+      }
+      if (!node || typeof node !== 'object') return;
+      if ('breadcrumb' in node && !isReference(node.breadcrumb)) {
+        facts.inlineProps += 1;
+        if (typesOf(node.breadcrumb).includes('BreadcrumbList')) facts.inlineLists += 1;
+      }
+      for (const value of Object.values(node)) visit(value);
+    };
+    visit(block);
+  }
+  return facts;
+}
+
+/** Visible breadcrumb trails: distinct <nav> elements that are breadcrumbs. */
+export function countBreadcrumbNavs($) {
+  const navs = new Set();
+  $('nav').each((_, el) => {
+    const cls = ` ${el.attribs?.class ?? ''} `;
+    const label = (el.attribs?.['aria-label'] ?? '').trim().toLowerCase();
+    if (cls.includes(' theme-doc-breadcrumbs ') || label === 'breadcrumbs' || $(el).find('ul.breadcrumbs').length > 0) {
+      navs.add(el);
+    }
+  });
+  return navs.size;
+}
+
 /** Pull the facts the checks need out of one HTML document. */
 export function extractPage(html) {
   const $ = load(html);
@@ -126,6 +178,7 @@ export function extractPage(html) {
       .toArray()
       .map((el) => el.attribs.href ?? ''),
     h1Count: $('h1').length,
+    breadcrumbNavCount: countBreadcrumbNavs($),
     jsonLd,
   };
 }
@@ -190,6 +243,16 @@ export function checkPage(route, page) {
   });
   if (faqNodes > 1) add('faqpage-count', `${faqNodes} FAQPage nodes`);
   if (forbidden.size) add('list-page-schema', [...forbidden].sort().join(', '));
+
+  const crumbs = breadcrumbFacts(page.jsonLd.filter((block) => block.ok).map((block) => block.value));
+  if (crumbs.listNodes > 1) add('breadcrumblist-count', `${crumbs.listNodes} BreadcrumbList nodes`);
+  const trails = crumbs.listNodes + crumbs.inlineProps - crumbs.inlineLists;
+  if (crumbs.inlineProps > 0 && trails > 1) {
+    add('breadcrumb-property-duplicate', `${crumbs.inlineProps} inline breadcrumb properties, ${trails} trails`);
+  }
+  const navCount = page.breadcrumbNavCount ?? 0;
+  if (navCount > 1) add('breadcrumb-nav-count', `${navCount} breadcrumb <nav> elements`);
+  if (isBlogListRoute(route) && navCount > 0) add('list-page-breadcrumbs', `${navCount} breadcrumb <nav> elements`);
 
   return { hard, advisory };
 }
