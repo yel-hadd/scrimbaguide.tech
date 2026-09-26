@@ -136,8 +136,12 @@ def classify_url(url: str) -> str | None:
         return "topic"
     if path in MARKETING_SLUGS:
         return "marketing"
-    if re.match(r"^/[a-z]", path):
+    # Courses live at one path segment (/learn-react-c0...); /blog/*, /explain/*
+    # and other nested sections are not courses and once leaked into the catalog.
+    if re.fullmatch(r"/[a-z][^/]*", path):
         return "course"
+    if path.count("/") > 1:
+        return None
     return "marketing"
 
 
@@ -926,6 +930,13 @@ def main() -> None:
     index: list[dict] = []
     for page in pages.values():
         index.append(save_page(page, output_dir))
+    # A --urls run scrapes a subset: merge it into the existing index instead
+    # of replacing it, or `make generate-data` would drop every other page.
+    if args.urls and index_path.exists():
+        fresh = {e["url"] for e in index}
+        kept = [e for e in json.loads(index_path.read_text()) if e["url"] not in fresh]
+        index.extend(kept)
+        logger.info("--urls: merged %d fresh entries into %d kept ones", len(fresh), len(kept))
     index.sort(key=lambda x: x["url"])
     index_path.write_text(
         json.dumps(index, indent=2, ensure_ascii=False), encoding="utf-8"

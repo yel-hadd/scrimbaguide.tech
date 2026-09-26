@@ -144,12 +144,29 @@ function main() {
     }
   }
 
+  // The catalog is generated (scraper output + data/course-overrides.json);
+  // a non-course URL in it means a bad scrape or a hand edit.
+  const catalog = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'courses.json'), 'utf8'));
+  for (const c of catalog) {
+    if (!/^https:\/\/scrimba\.com\/[a-z][a-z0-9-]*-c0[a-z0-9]+$/.test(c.scrimbaUrl || '')) {
+      violations.push(`data/courses.json: "${c.cleanName}" has a non-course URL ${c.scrimbaUrl} (regenerate with make generate-data)`);
+    }
+  }
+  // A slug Scrimba renamed would silently drop a course from its path.
+  const slugs = new Set(catalog.map(c => c.scrimbaSlug));
+  const membership = JSON.parse(fs.readFileSync(path.join(ROOT, 'data', 'path-membership.json'), 'utf8')).paths;
+  for (const [key, p] of Object.entries(membership)) {
+    for (const s of [...p.courses, ...p.partial]) {
+      if (!slugs.has(s)) violations.push(`data/path-membership.json: ${key} lists ${s}, which is not in data/courses.json (slug renamed? re-verify)`);
+    }
+  }
+
   if (violations.length) {
     console.error(`Content guardrail failed (${violations.length} issue(s)):`);
     for (const v of violations) console.error('  ' + v);
     process.exit(1);
   }
-  console.log('Content guardrails passed: no em-dashes, Scrimba price leaks, stale Backend hours, over-long alt/caption text, or over-long descriptions.');
+  console.log('Content guardrails passed: no em-dashes, Scrimba price leaks, stale Backend hours, over-long alt/caption text, over-long descriptions, or non-course catalog URLs.');
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

@@ -57,7 +57,7 @@ const PATHS = {
     aliases: ['Fullstack Developer Career Path', 'Fullstack Developer Path', 'Full-Stack Developer Path', 'Fullstack Career Path', 'Fullstack Path', 'Full-Stack Path'] },
   'ai-engineer-path': { file: 'docs/paths/ai-engineer-path.mdx', url: '/docs/paths/ai-engineer-path/',
     aliases: ['AI Engineer Career Path', 'AI Engineer Path', 'AI Engineering Path'] },
-  'backend-developer-path': { file: 'docs/paths/backend-developer-path.mdx', url: '/docs/paths/backend-developer-path/',
+  'backend-path': { file: 'docs/paths/backend-developer-path.mdx', url: '/docs/paths/backend-developer-path/',
     aliases: ['Backend Developer Career Path', 'Backend Developer Path', 'Back-End Developer Path', 'Backend Career Path', 'Backend Path'] },
 };
 const EXTRA_ALIASES = {
