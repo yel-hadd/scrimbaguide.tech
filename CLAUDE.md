@@ -11,6 +11,7 @@ scrimbaguide.tech is a first-hand review site for Scrimba courses and paths (Doc
     npm run check:content                               # content gate, also the prebuild step
     node scripts/audit-course-links.mjs --file <path>   # unlinked course names and raw scrimba.com URLs
     node --test scripts/__tests__/<file>.test.mjs
+    npm run check:metadata                              # head/JSON-LD invariants on build/; ratchet in scripts/check-built-metadata.known-issues.json
     npm run snapshot                                    # GA4 + GSC snapshot to .seo-cache/ (needs secrets/gsc-service-account.json)
     npm run test:analytics                              # Python and Node tests for scripts/analytics
     /site-analytics                                     # traffic, conversion, SEO and affiliate questions; monthly Site Report
