@@ -1,5 +1,6 @@
 import React, { useId } from 'react';
 import AffiliateLink from './AffiliateLink';
+import { MONETISED_HOSTS } from '@site/src/constants';
 
 interface ComparisonRow {
   feature: string;
@@ -68,7 +69,13 @@ export default function ComparisonTable({
             </AffiliateLink>
           )}
           {competitorUrl && (
-            <a href={competitorUrl} target="_blank" rel="noopener noreferrer" className="comparison-table__secondary-cta">
+            <a
+              href={competitorUrl}
+              target="_blank"
+              // A tracked competitor link is a paid link too (Google requires nofollow).
+              rel={MONETISED_HOSTS.some((h) => competitorUrl.includes(h)) ? 'nofollow noopener noreferrer' : 'noopener noreferrer'}
+              className="comparison-table__secondary-cta"
+            >
               Visit {competitorName}
               <span className="sr-only"> (opens in a new tab)</span>
             </a>
