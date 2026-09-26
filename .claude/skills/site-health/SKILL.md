@@ -40,7 +40,7 @@ The repo is public. Money figures (sales, commission, balances, payouts, earning
      python3 scripts/analytics/ga4admin.py annotations apply --file secrets/ops/annotations-plan.json --yes
      python3 scripts/analytics/indexing.py submit --urls secrets/ops/indexing-plan.txt --send
      ```
-     `submit` stops at the first `QuotaExceeded` and logs the rest `deferred`; the next run retries them. More than 100 URLs in a day, or a sitemap-wide resubmission, needs the owner's explicit number.
+     `submit` stops at the first `QuotaExceeded` and logs the rest `deferred`; the next run retries them. More than 200 URLs in a day (Google's quota, shared with use-apify), or a sitemap-wide resubmission, needs the owner's explicit number.
    - Confirm against reality: `python3 scripts/analytics/ga4admin.py annotations list` shows the new rows; `tail -n 20 secrets/indexing-log.tsv` shows today's LA date; `gh pr list --author @me --state open` shows any PR the agent listed. A mismatch goes in the note as ACT.
    - Declined or failed: leave the plan file, mark the check WATCH, and do not advance the matching `last_*` value.
 5. **Owner-assisted captures** (monthly, or when the owner asks). The main session has the full Chrome tools and the owner is present. Take the Chrome lock (`references/routines.md`).

@@ -36,6 +36,9 @@ T = gapi.TRACKING
 HOST = T['hostname']
 LEDGER_PATH = os.path.join(ROOT, 'secrets', 'indexing-log.tsv')
 INSPECT_DIR = os.path.join(ROOT, 'secrets')
+# Google's default publish quota: 200 per day per GCP project (developers.google.com/search/apis/indexing-api/v3/quota-pricing),
+# shared with use-apify. Stopping on the first 429 covers whatever use-apify already spent.
+DAILY_QUOTA = 200
 DEDUPE_DAYS = 7
 PENDING_MIN_AGE_DAYS = 2
 USER_AGENT = 'scrimbaguide-indexing/1.0 (+https://scrimbaguide.tech)'
@@ -252,7 +255,7 @@ def _sent_count(today):
     return count
 
 
-def submit(urls, max_urls=100, force=False, send=False, today=None, opener=urlopen, sess=None):
+def submit(urls, max_urls=DAILY_QUOTA, force=False, send=False, today=None, opener=urlopen, sess=None):
     """Dry run unless `send`. Returns a plan dict; with `send` it also POSTs
     and appends to the ledger.
 
@@ -356,7 +359,7 @@ def main(argv=None):
     grp2.add_argument('--urls')
     grp2.add_argument('--changed')
     p_submit.add_argument('--ref', default='origin/main')
-    p_submit.add_argument('--max', type=int, default=100)
+    p_submit.add_argument('--max', type=int, default=DAILY_QUOTA)
     p_submit.add_argument('--force', action='store_true')
     p_submit.add_argument('--send', action='store_true')
 

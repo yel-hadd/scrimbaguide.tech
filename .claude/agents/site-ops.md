@@ -116,8 +116,8 @@ python3 scripts/analytics/ga4admin.py annotations plan --prs 115,116 > secrets/o
 python3 scripts/analytics/ga4admin.py annotations plan --since-merged <YYYY-MM-DD> > secrets/ops/annotations-plan.json
 python3 scripts/analytics/ga4admin.py dims check
 python3 scripts/analytics/indexing.py changed --since <REF>
-python3 scripts/analytics/indexing.py submit --changed <REF> [--max 100]
-python3 scripts/analytics/indexing.py submit --urls <file> [--max 100]
+python3 scripts/analytics/indexing.py submit --changed <REF> [--max 200]
+python3 scripts/analytics/indexing.py submit --urls <file> [--max 200]
 python3 scripts/analytics/indexing.py inspect --pending | --sitemap | --urls <file>
 python3 scripts/analytics/links.py --outbound --internal
 node scripts/catalog-diff.mjs data/courses.json .seo-cache/drift/data/courses.json
