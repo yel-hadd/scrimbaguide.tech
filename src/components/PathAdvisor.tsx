@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useCallback, useEffect, useRef, useId } from 'react';
 import Link from '@docusaurus/Link';
 import AffiliateLink from '@site/src/components/AffiliateLink';
+import { contentGroup } from '@site/src/utils/contentGroup';
 import { DEMO_SCRIM_URL } from '@site/src/constants';
 import {
   computePathRecommendation,
@@ -28,7 +29,11 @@ function trackAdvisorEvent(
   params?: Record<string, string | number | undefined>,
 ): void {
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
-  const payload: Record<string, string | number> = { event_category: 'path_advisor', ...params };
+  const payload: Record<string, string | number> = {
+    event_category: 'path_advisor',
+    content_group: contentGroup(window.location.pathname),
+    ...params,
+  };
   Object.keys(payload).forEach((k) => {
     if (payload[k] === undefined) delete payload[k];
   });

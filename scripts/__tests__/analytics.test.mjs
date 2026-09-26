@@ -3,8 +3,24 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { affiliateDestination } from '../../src/utils/affiliateDestination.ts';
+import { readFileSync } from 'node:fs';
 
 const require = createRequire(import.meta.url);
+
+/** Same algorithm as src/utils/contentGroup.ts (plain Node cannot import its JSON without an attribute). */
+const RULES = JSON.parse(readFileSync(new URL('../../src/utils/contentGroupRules.json', import.meta.url), 'utf8'));
+const tsSource = readFileSync(new URL('../../src/utils/contentGroup.ts', import.meta.url), 'utf8');
+function contentGroupTs(pathname) {
+  const path = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  for (const [pattern, group] of RULES) if (new RegExp(pattern).test(path)) return group;
+  return 'other';
+}
+
+test('contentGroup.ts keeps the matcher the head script inlines', () => {
+  assert.match(tsSource, /import RULES from '\.\/contentGroupRules\.json'/);
+  assert.match(tsSource, /new RegExp\(pattern\)\.test\(path\)/);
+  assert.match(tsSource, /return 'other'/);
+});
 
 function headScript() {
   const prev = process.env.NODE_ENV;
@@ -29,8 +45,9 @@ function runHead({ hostname = 'scrimbaguide.tech', pathname = '/', stored = null
   window.window = window;
   vm.runInNewContext(`with (window) { ${headScript()} }`, { window, Date, RegExp, JSON });
   const calls = window.dataLayer.map((args) => Array.from(args));
-  const set = calls.find((c) => c[0] === 'set' && c[1].content_group);
-  return { calls, appended, config: calls.find((c) => c[0] === 'config'), group: set?.[1].content_group, setIndex: calls.indexOf(set) };
+  const config = calls.find((c) => c[0] === 'config');
+  const pv = calls.find((c) => c[0] === 'event' && c[1] === 'page_view');
+  return { calls, appended, config, group: pv?.[2]?.content_group };
 }
 
 test('consent defaults: denied in the EEA/UK/CH, analytics granted elsewhere, ads denied everywhere', () => {
@@ -62,10 +79,14 @@ test('hostname guard: gtag.js loads only on the production host', () => {
   assert.equal(runHead({ hostname: 'yel-hadd.github.io' }).appended.length, 0);
 });
 
-test('content_group is set before config, never as a config parameter', () => {
-  const { calls, config, setIndex } = runHead({ pathname: '/docs/paths/' });
-  assert.ok(setIndex > -1 && setIndex < calls.indexOf(config));
-  assert.equal(config[2], undefined);
+test('the first page_view is sent explicitly, after config, with content_group', () => {
+  const { calls, config } = runHead({ pathname: '/docs/paths/' });
+  assert.equal(config[2].send_page_view, false);
+  const pv = calls.findIndex((c) => c[0] === 'event' && c[1] === 'page_view');
+  assert.ok(pv > calls.indexOf(config));
+  assert.equal(calls[pv][2].content_group, 'path');
+  assert.equal(calls.filter((c) => c[0] === 'event' && c[1] === 'page_view').length, 1);
+  assert.ok(!calls.some((c) => c[0] === 'set' && c[1]?.content_group));
 });
 
 test('content_group labels the first page_view', () => {
@@ -95,6 +116,7 @@ test('content_group labels the first page_view', () => {
   };
   for (const [pathname, group] of Object.entries(cases)) {
     assert.equal(runHead({ pathname }).group, group, pathname);
+    assert.equal(contentGroupTs(pathname), group, `contentGroup.ts ${pathname}`);
   }
 });
 

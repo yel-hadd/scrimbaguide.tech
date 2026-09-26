@@ -4,10 +4,14 @@
  *   1. set Consent Mode v2 defaults (denied in the EEA, UK and Switzerland,
  *      analytics granted elsewhere; ads storage denied everywhere) and
  *      replay a stored banner choice before anything is measured;
- *   2. label the first page_view with `content_group` (it goes out from
- *      `config`, before React runs, so a client module cannot label it).
- *      It is set at `set` scope, not as a config parameter: config wins
- *      over set, which would pin every later event to the landing group;
+ *   2. send the first page_view itself, after `config` with
+ *      `send_page_view:false`, labelled with `content_group` (it goes out
+ *      before React runs, so a client module cannot label it). Keep
+ *      send_page_view:false or the landing page is counted twice.
+ *      content_group rides at event scope on page_view and on every custom
+ *      event (the trackers add it): tested against real gtag.js, a `set`
+ *      value never reached the hits and a config value stuck to the landing
+ *      page after SPA navigation. Enhanced-measurement events carry none;
  *   3. load gtag.js only on the production hostname. Elsewhere `gtag` still
  *      queues into an inert `dataLayer`, which keeps local tests inspectable
  *      without sending localhost hits.
@@ -40,9 +44,9 @@ if(c==='granted'||c==='denied'){gtag('consent','update',{analytics_storage:c});}
 var rules=${JSON.stringify(rules)},p=location.pathname,cg='other';
 if(p.charAt(p.length-1)!=='/'){p+='/';}
 for(var i=0;i<rules.length;i++){if(new RegExp(rules[i][0]).test(p)){cg=rules[i][1];break;}}
-gtag('set',{content_group:cg});
 gtag('js',new Date());
-gtag('config','${MEASUREMENT_ID}');
+gtag('config','${MEASUREMENT_ID}',{send_page_view:false});
+gtag('event','page_view',{content_group:cg});
 if(location.hostname!=='${SITE_HOSTNAME}'){return;}
 var s=document.createElement('script');s.async=true;
 s.src='https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}';

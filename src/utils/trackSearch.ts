@@ -4,6 +4,8 @@
  * `search_outcome` separates the searches that found nothing, which are the
  * content gaps.
  */
+import { contentGroup } from './contentGroup';
+
 let lastTracked = '';
 
 export function trackSearch(term: string, resultCount: number, ui: 'modal' | 'page'): void {
@@ -12,6 +14,7 @@ export function trackSearch(term: string, resultCount: number, ui: 'modal' | 'pa
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
   lastTracked = searchTerm;
   window.gtag('event', 'search', {
+    content_group: contentGroup(window.location.pathname),
     search_term: searchTerm,
     search_outcome: resultCount > 0 ? 'results' : 'no-results',
     search_ui: ui,

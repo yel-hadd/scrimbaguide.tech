@@ -1,7 +1,7 @@
 /**
  * SPA page_views, adapted from @docusaurus/plugin-google-gtag's client module.
- * `set` carries the new content_group onto every later event on the page
- * (affiliate clicks, search), not just this page_view.
+ * content_group travels at event scope (see plugins/analytics/index.js);
+ * AffiliateLink and trackSearch add it to their own events.
  */
 import { contentGroup } from '../../src/utils/contentGroup';
 
@@ -18,8 +18,6 @@ export function onRouteDidUpdate({ location, previousLocation }) {
   setTimeout(() => {
     if (typeof window.gtag !== 'function') return;
     const group = contentGroup(location.pathname);
-    window.gtag('set', { content_group: group });
-    window.gtag('set', 'page_path', location.pathname + location.search + location.hash);
     window.gtag('event', 'page_view', { content_group: group });
   });
 }
