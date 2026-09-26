@@ -1,10 +1,34 @@
 import React from 'react';
 import { AFFILIATE_PARAM, MONETISED_HOSTS } from '@site/src/constants';
+import { affiliateDestination } from '@site/src/utils/affiliateDestination';
 
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
   }
+}
+
+/** Sends `affiliate_link_clicked`. Exported for monetised links that keep their own markup. */
+export function trackAffiliateClick({
+  url,
+  ctaType,
+  location,
+  linkText,
+}: {
+  url: string;
+  ctaType: string;
+  location?: string;
+  linkText: string;
+}): void {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
+  const destination = affiliateDestination(url);
+  window.gtag('event', 'affiliate_link_clicked', {
+    cta_type: ctaType,
+    destination_type: destination.type,
+    destination_slug: destination.slug,
+    link_text: linkText,
+    ...(location && { cta_location: location }),
+  });
 }
 
 interface AffiliateLinkProps {
@@ -16,6 +40,11 @@ interface AffiliateLinkProps {
   /** Optional placement label, e.g. "hero-primary", "verdict-box", "final-cta". Sent
    *  to GA as `cta_location` so per-placement conversion can be compared. */
   location?: string;
+  /** GA `cta_type`: the CTA format, from a closed list (`sticky`, `pricing-cta`,
+   *  `course-card`, `verdict-box`, `comparison-table`, `scrim-poster`,
+   *  `code-preview`, `lightbox`, `path-advisor`). Wrapping components set it;
+   *  inline MDX links fall back to `inline-<variant>`. */
+  ctaType?: string;
 }
 
 export default function AffiliateLink({
@@ -25,6 +54,7 @@ export default function AffiliateLink({
   variant = 'text',
   onClick,
   location,
+  ctaType,
 }: AffiliateLinkProps): React.ReactElement {
   /* Scrimba links get the `via=` param appended. Other monetised merchants
      (e.g. Udemy via Impact) arrive already tracked in the href, so they are
@@ -41,16 +71,12 @@ export default function AffiliateLink({
   const variantClass = `${baseClass}--${variant}`;
 
   const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
-    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
-      const slug = window.location.pathname.replace(/^\/blog\//, '').replace(/\/$/, '');
-      window.gtag('event', 'affiliate_link_clicked', {
-        post_slug: slug || window.location.pathname,
-        destination_url: url,
-        link_text: typeof children === 'string' ? children : 'affiliate_link',
-        page_location: window.location.href,
-        ...(location && { cta_location: location }),
-      });
-    }
+    trackAffiliateClick({
+      url,
+      ctaType: ctaType ?? `inline-${variant}`,
+      location,
+      linkText: typeof children === 'string' ? children : 'affiliate_link',
+    });
     onClick?.(e);
   };
 

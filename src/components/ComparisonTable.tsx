@@ -1,5 +1,5 @@
 import React, { useId } from 'react';
-import AffiliateLink from './AffiliateLink';
+import AffiliateLink, { trackAffiliateClick } from './AffiliateLink';
 import { MONETISED_HOSTS } from '@site/src/constants';
 
 interface ComparisonRow {
@@ -64,7 +64,7 @@ export default function ComparisonTable({
       {(!hideCta || competitorUrl) && (
         <div className="comparison-table__cta-row">
           {!hideCta && (
-            <AffiliateLink href={scrimbaUrl} variant="button" location="comparison-table">
+            <AffiliateLink ctaType="comparison-table" href={scrimbaUrl} variant="button" location="comparison-table">
               Claim 20% off Pro
             </AffiliateLink>
           )}
@@ -75,6 +75,16 @@ export default function ComparisonTable({
               // A tracked competitor link is a paid link too (Google requires nofollow).
               rel={MONETISED_HOSTS.some((h) => competitorUrl.includes(h)) ? 'nofollow noopener noreferrer' : 'noopener noreferrer'}
               className="comparison-table__secondary-cta"
+              onClick={() => {
+                if (MONETISED_HOSTS.some((h) => competitorUrl.includes(h))) {
+                  trackAffiliateClick({
+                    url: competitorUrl,
+                    ctaType: 'comparison-table',
+                    location: 'comparison-table-competitor',
+                    linkText: `Visit ${competitorName}`,
+                  });
+                }
+              }}
             >
               Visit {competitorName}
               <span className="sr-only"> (opens in a new tab)</span>

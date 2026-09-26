@@ -249,24 +249,7 @@ const config: Config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-        gtag: {
-          trackingID: 'G-03WS2KR7EX',
-        },
       } satisfies Preset.Options,
-    ],
-    [
-      'docusaurus-plugin-cookie-consent',
-      {
-        cookieName: 'scrimbaguide-consent',
-        consentMode: true,
-        links: [
-          {
-            title: 'Privacy Policy',
-            url: 'https://scrimbaguide.tech/legal/privacy-policy',
-            openInNewTab: true,
-          },
-        ],
-      },
     ],
   ],
 
@@ -276,6 +259,8 @@ const config: Config = {
 
   plugins: [
     './plugins/normalize-canonical-urls',
+    // GA4 with Consent Mode v2, hostname guard and content_group (replaces the preset gtag option).
+    './plugins/analytics',
     [
       '@docusaurus/plugin-client-redirects',
       {
@@ -636,6 +621,9 @@ const config: Config = {
             { label: 'Affiliate Disclosure', to: '/legal/affiliate-disclosure/' },
             { label: 'Privacy Policy', to: '/legal/privacy-policy/' },
             { label: 'Terms of Service', to: '/legal/terms-of-service/' },
+            {
+              html: '<button type="button" class="footer__link-item sg-cookie-settings">Cookie settings</button>',
+            },
           ],
         },
       ],

@@ -4925,3 +4925,18 @@ html[data-theme='dark'] .curriculum__index {
 .lightbox__nav svg {
   display: block;
 }
+
+/* Footer "Cookie settings" is a <button> (it reopens the consent banner), styled as a footer link. */
+.footer__link-item.sg-cookie-settings {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ifm-footer-link-color);
+  font: inherit;
+  cursor: pointer;
+}
+
+.footer__link-item.sg-cookie-settings:hover {
+  color: var(--ifm-footer-link-hover-color);
+  text-decoration: underline;
+}

@@ -45,6 +45,7 @@ export default function ScrimPoster({
 }: ScrimPosterProps): React.ReactElement {
   return (
     <AffiliateLink
+      ctaType="scrim-poster"
       href={href}
       variant="card"
       className={`hero-scrim-poster ${className}`.trim()}

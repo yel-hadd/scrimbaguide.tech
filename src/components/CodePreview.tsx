@@ -115,7 +115,7 @@ export default function CodePreview({
         <p className="code-preview__cta">
           This drill is ours, not Scrimba's, and the box above only renders CSS. To practise the same
           properties in a full editor with the course's own challenges, open{' '}
-          <AffiliateLink href={scrimbaUrl} location={location ?? 'code-preview'}>
+          <AffiliateLink ctaType="code-preview" href={scrimbaUrl} location={location ?? 'code-preview'}>
             {scrimbaLabel} on Scrimba
           </AffiliateLink>
           {scrimbaAccess === 'Pro' && ' (Pro course; the free tier includes other CSS courses)'}

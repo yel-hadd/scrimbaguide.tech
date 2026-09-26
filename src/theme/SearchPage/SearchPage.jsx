@@ -17,6 +17,7 @@ import LoadingRing from "@easyops-cn/docusaurus-search-local/dist/client/client/
 import { concatDocumentPath } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/concatDocumentPath";
 import { Mark, searchContextByPaths, useAllContextsWithNoSearchContext, } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/proxiedGenerated";
 import styles from "./SearchPage.module.css";
+import { trackSearch, SEARCH_SETTLE_MS } from "@site/src/utils/trackSearch";
 import { normalizeContextByPath } from "@easyops-cn/docusaurus-search-local/dist/client/client/utils/normalizeContextByPath";
 
 const CATEGORIES = ['All', 'Courses', 'Blog', 'Docs'];
@@ -78,6 +79,12 @@ function SearchPageContent() {
         // `updateSearchPath` should not be in the deps,
         // otherwise will cause call stack overflow.
     }, [searchQuery, versionUrl, searchContext]);
+    useEffect(() => {
+        if (!searchQuery || searchResults === undefined)
+            return undefined;
+        const t = setTimeout(() => trackSearch(searchQuery, searchResults.length, "page"), SEARCH_SETTLE_MS);
+        return () => clearTimeout(t);
+    }, [searchQuery, searchResults]);
     const handleSearchInputChange = useCallback((e) => {
         setSearchQuery(e.target.value);
     }, []);

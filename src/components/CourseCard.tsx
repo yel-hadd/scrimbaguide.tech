@@ -71,7 +71,7 @@ export default function CourseCard({
         <p className="course-card__instructor">
           <span className="course-card__instructor-label">Taught by</span>{' '}
           {instructorUrl ? (
-            <AffiliateLink href={instructorUrl} location={`${ctaLocation}-instructor`}>
+            <AffiliateLink ctaType="course-card" href={instructorUrl} location={`${ctaLocation}-instructor`}>
               <strong className="course-card__instructor-name">{instructor}</strong>
             </AffiliateLink>
           ) : (
@@ -92,6 +92,7 @@ export default function CourseCard({
       </div>
 
       <AffiliateLink
+        ctaType="course-card"
         href={href}
         variant="button"
         className="course-card__cta"

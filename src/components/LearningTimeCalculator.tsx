@@ -180,6 +180,7 @@ export default function LearningTimeCalculator(): React.ReactElement {
 
         <div className="ltc-cta">
           <AffiliateLink
+            ctaType="calculator"
             href={`https://scrimba.com/home?pricing&via=u42d4986&utm_source=scrimbaguide&utm_medium=calculator&utm_campaign=learning-time-calculator&utm_content=${selectedPath}`}
             variant="button"
             className="ltc-cta-btn"

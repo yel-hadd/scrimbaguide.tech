@@ -183,7 +183,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
     if (result && !completionTracked.current) {
       completionTracked.current = true;
       trackAdvisorEvent('path_advisor_complete', {
-        primary_path: result.primary,
+        recommended_path: result.primary,
         secondary_path: result.secondary ?? '',
         cta_emphasis: result.ctaEmphasis,
       });
@@ -203,25 +203,25 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
     }
     setInteracted(true);
     setExperience(v);
-    trackAdvisorEvent('path_advisor_step', { step: 1, field: 'experience', value: v });
+    trackAdvisorEvent('path_advisor_step', { advisor_step: 1, advisor_field: 'experience', advisor_answer: v });
     setStep(1);
   };
 
   const onSelectGoal = (v: Goal) => {
     setGoal(v);
-    trackAdvisorEvent('path_advisor_step', { step: 2, field: 'goal', value: v });
+    trackAdvisorEvent('path_advisor_step', { advisor_step: 2, advisor_field: 'goal', advisor_answer: v });
     setStep(2);
   };
 
   const onSelectHours = (v: Hours) => {
     setHours(v);
-    trackAdvisorEvent('path_advisor_step', { step: 3, field: 'hours', value: v });
+    trackAdvisorEvent('path_advisor_step', { advisor_step: 3, advisor_field: 'hours', advisor_answer: v });
     setStep(3);
   };
 
   const onSelectSituation = (v: Situation) => {
     setSituation(v);
-    trackAdvisorEvent('path_advisor_step', { step: 4, field: 'situation', value: v });
+    trackAdvisorEvent('path_advisor_step', { advisor_step: 4, advisor_field: 'situation', advisor_answer: v });
     setStep(4);
   };
 
@@ -331,13 +331,14 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
               className="button button--secondary path-advisor__cta-guide"
               to={PATHS[result.primary].doc}
               onClick={() =>
-                trackAdvisorEvent('path_advisor_guide_click', { path: result.primary, link: 'primary' })
+                trackAdvisorEvent('path_advisor_guide_click', { recommended_path: result.primary, link: 'primary' })
               }
             >
               Open {shortPathLabels[result.primary]} guide
             </Link>
             {result.ctaEmphasis === 'free' ? (
               <AffiliateLink
+                ctaType="path-advisor"
                 href={DEMO_SCRIM_URL}
                 variant="button"
                 className="button button--primary"
@@ -348,6 +349,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
               </AffiliateLink>
             ) : (
               <AffiliateLink
+                ctaType="path-advisor"
                 href="https://scrimba.com/home?pricing&via=u42d4986"
                 variant="button"
                 className="button button--primary"
@@ -366,7 +368,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
               <Link
                 to={PATHS[result.secondary].doc}
                 onClick={() =>
-                  trackAdvisorEvent('path_advisor_guide_click', { path: result.secondary ?? '', link: 'secondary' })
+                  trackAdvisorEvent('path_advisor_guide_click', { recommended_path: result.secondary ?? '', link: 'secondary' })
                 }
               >
                 Open guide
