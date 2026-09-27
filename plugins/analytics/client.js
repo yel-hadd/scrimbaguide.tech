@@ -47,9 +47,14 @@ function startWebVitals() {
       const report = (metric) => {
         if (typeof window.gtag !== 'function') return;
         if (Date.now() - lastPageViewAt > WEB_VITALS_SESSION_GUARD_MS) return;
+        // A bfcache restore is a new page load in CrUX terms: its metrics
+        // belong to the URL the visitor returned to, not the landing URL.
+        const restored = metric.navigationType === 'back-forward-cache';
+        const href = restored ? window.location.href : landingHref;
+        const group = restored ? contentGroup(window.location.pathname) : landingGroup;
         window.gtag('event', 'web_vitals', {
-          ...webVitalsParams(metric, landingGroup),
-          page_location: landingHref,
+          ...webVitalsParams(metric, group),
+          page_location: href,
         });
       };
       onCLS(report);

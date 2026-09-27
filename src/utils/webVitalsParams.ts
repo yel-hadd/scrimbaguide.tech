@@ -23,6 +23,7 @@ export interface VitalsMetric {
   value: number;
   rating: string;
   id: string;
+  navigationType?: string;
   attribution?: {
     target?: string;
     url?: string;
