@@ -512,7 +512,7 @@ function FinalCtaSection() {
 const BASE_URL = 'https://scrimbaguide.tech';
 const HOME_PAGE_TITLE = 'Is Scrimba Worth It? Paths, Pricing & Review (2026)';
 const HOME_DESC =
-  'A practical guide to Scrimba. Four career paths broken down, real pricing, side-by-side with Codecademy, Udemy, and freeCodeCamp. For developers picking a platform on substance, not slogans.';
+  "Scrimba reviewed from inside a Pro account: four career paths compared, what's free versus Pro, and Scrimba against Codecademy, Udemy, and freeCodeCamp.";
 // Note: site-level Organization + WebSite + SearchAction JSON-LD is injected globally
 // via headTags in docusaurus.config.ts. Do not redefine it here or the homepage would
 // emit duplicate nodes for @id #organization / #website.
@@ -527,12 +527,12 @@ export default function Home(): React.ReactElement {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={homeTitleFull} />
         <meta property="og:description" content={HOME_DESC} />
-        <meta property="og:url" content={BASE_URL} />
+        <meta property="og:url" content={`${BASE_URL}/`} />
         <meta property="og:image" content={`${BASE_URL}/img/social-card.png`} />
         <meta property="og:site_name" content={siteConfig.title} />
-        <link rel="canonical" href={BASE_URL} />
+        <link rel="canonical" href={`${BASE_URL}/`} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={BASE_URL} />
+        <meta name="twitter:url" content={`${BASE_URL}/`} />
         <meta name="twitter:title" content={homeTitleFull} />
         <meta name="twitter:description" content={HOME_DESC} />
         <meta name="twitter:image" content={`${BASE_URL}/img/social-card.png`} />
