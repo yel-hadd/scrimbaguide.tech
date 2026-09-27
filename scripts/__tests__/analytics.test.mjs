@@ -4,6 +4,7 @@ import vm from 'node:vm';
 import { createRequire } from 'node:module';
 import { affiliateDestination } from '../../src/utils/affiliateDestination.ts';
 import { isMoneyPagePath } from '../../src/utils/moneyPagePaths.ts';
+import { webVitalsParams, WEB_VITALS_SESSION_GUARD_MS } from '../../src/utils/webVitalsParams.ts';
 import { navbarCtaPayload } from '../../src/utils/navbarCtaPayload.ts';
 import { readFileSync } from 'node:fs';
 
@@ -162,6 +163,53 @@ test('route-cases.json fixture: contentGroup() and isMoneyPagePath() match the P
     assert.equal(contentGroupTs(route), content_group, `contentGroup ${route}`);
     assert.equal(isMoneyPagePath(route), money_page, `isMoneyPagePath ${route}`);
   }
+});
+
+test('webVitalsParams: integer ms, CLS x1000, the blamed element per metric', () => {
+  const lcp = webVitalsParams(
+    { name: 'LCP', value: 2512.4, rating: 'needs-improvement', id: 'v5-1', attribution: { target: 'main>img.hero', url: 'https://x/a.png' } },
+    'course',
+  );
+  assert.deepEqual(lcp, {
+    metric_name: 'LCP', metric_value: 2512, metric_rating: 'needs-improvement', metric_id: 'v5-1',
+    content_group: 'course', debug_target: 'main>img.hero',
+  });
+  assert.equal(webVitalsParams({ name: 'LCP', value: 1, rating: 'good', id: 'a', attribution: { url: 'https://x/a.png' } }, 'home').debug_target, 'https://x/a.png');
+  const cls = webVitalsParams({ name: 'CLS', value: 0.1034, rating: 'needs-improvement', id: 'b', attribution: { largestShiftTarget: 'div.navbar' } }, 'blog');
+  assert.equal(cls.metric_value, 103);
+  assert.equal(cls.debug_target, 'div.navbar');
+  const inp = webVitalsParams({ name: 'INP', value: 88, rating: 'good', id: 'c', attribution: { interactionTarget: 'button#x' } }, 'home');
+  assert.equal(inp.debug_target, 'button#x');
+  const ttfb = webVitalsParams({ name: 'TTFB', value: 301.6, rating: 'good', id: 'd', attribution: {} }, 'home');
+  assert.equal(ttfb.metric_value, 302);
+  assert.ok(!('debug_target' in ttfb), 'no empty debug_target');
+  const long = webVitalsParams({ name: 'INP', value: 1, rating: 'good', id: 'e', attribution: { interactionTarget: 'a'.repeat(300) } }, 'home');
+  assert.equal(long.debug_target.length, 100);
+  assert.ok(WEB_VITALS_SESSION_GUARD_MS < 30 * 60 * 1000, 'guard stays under the GA4 session timeout');
+});
+
+test('web vitals: production hostname only, lazy after load, exact package pin, registry', () => {
+  const client = readFileSync(new URL('../../plugins/analytics/client.js', import.meta.url), 'utf8');
+  const prev = process.env.NODE_ENV;
+  process.env.NODE_ENV = 'production';
+  const { SITE_HOSTNAME } = require('../../plugins/analytics/index.js');
+  process.env.NODE_ENV = prev;
+  assert.equal(SITE_HOSTNAME, 'scrimbaguide.tech');
+  assert.ok(client.includes(`const SITE_HOSTNAME = '${SITE_HOSTNAME}';`), 'client.js hostname matches index.js');
+  assert.match(client, /window\.location\.hostname === SITE_HOSTNAME/);
+  assert.match(client, /ExecutionEnvironment\.canUseDOM/);
+  assert.match(client, /addEventListener\('load'/);
+  // Dynamic import only: a static import would put web-vitals into main.js.
+  assert.match(client, /import\(\/\* webpackChunkName: "web-vitals" \*\/ 'web-vitals\/attribution'\)/);
+  assert.doesNotMatch(client, /^import .*web-vitals/m);
+  assert.doesNotMatch(client, /gtag\('consent'/, 'web vitals never touch consent state');
+  const pkg = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
+  assert.match(pkg.dependencies['web-vitals'], /^\d+\.\d+\.\d+$/, 'web-vitals is pinned to an exact version');
+  const tracking = JSON.parse(readFileSync(new URL('../analytics/tracking.json', import.meta.url), 'utf8'));
+  const dims = tracking.custom_dimensions.map((d) => d.parameter);
+  for (const p of ['metric_name', 'metric_rating', 'debug_target']) assert.ok(dims.includes(p), p);
+  assert.deepEqual(tracking.custom_metrics.map((m) => m.parameter), ['metric_value']);
+  assert.ok(tracking.epochs.some((e) => e.key === 'web_vitals_rum'));
 });
 
 test('navbarCtaPayload: desktop bar and mobile drawer get their own cta_location', () => {

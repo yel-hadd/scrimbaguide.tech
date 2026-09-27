@@ -372,6 +372,34 @@ class TestDimsGating(unittest.TestCase):
         self.assertNotIn('cta_location', missing)
         self.assertEqual(extra, ['legacy_dim'])
 
+    def test_metrics_create_without_yes_makes_no_call(self):
+        with mock.patch('gapi.call') as mock_call:
+            result = ga4admin.metrics_create(['metric_value'], yes=False, sess=object())
+        mock_call.assert_not_called()
+        self.assertIsNone(result)
+
+    def test_metrics_check_reads_custom_metrics(self):
+        with mock.patch('gapi.call', return_value={'customMetrics': [{'parameterName': 'old_metric'}]}) as mock_call:
+            missing, extra = ga4admin.metrics_check(sess=object())
+        self.assertTrue(mock_call.call_args[0][2].endswith('/customMetrics'))
+        self.assertIn('metric_value', missing)
+        self.assertEqual(extra, ['old_metric'])
+
+    def test_metrics_create_posts_event_scope_with_unit(self):
+        with mock.patch('gapi.call', return_value={'name': 'x'}) as mock_call:
+            ga4admin.metrics_create(['metric_value', 'not_in_registry'], yes=True, sess=object())
+        self.assertEqual(mock_call.call_count, 1)
+        body = mock_call.call_args[0][3]
+        self.assertEqual(body['parameterName'], 'metric_value')
+        self.assertEqual(body['scope'], 'EVENT')
+        self.assertEqual(body['measurementUnit'], 'STANDARD')
+
+    def test_web_vitals_registry_entries(self):
+        dims = {d['parameter'] for d in ga4admin.T['custom_dimensions']}
+        self.assertTrue({'metric_name', 'metric_rating', 'debug_target'} <= dims)
+        self.assertNotIn('metric_id', dims)
+        self.assertLessEqual(len(dims), 50)
+
 
 if __name__ == '__main__':
     unittest.main()
