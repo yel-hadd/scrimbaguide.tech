@@ -93,6 +93,8 @@ Research-mode pages carry nothing in the first screen. `ScrimPoster` uses existi
 
 `npm run check:content` (em-dashes, Scrimba prices, stale Backend hours), `npm run typecheck`, the link audit on touched files, and `make build` when links changed (broken links fail the build).
 
+A change to CSS, layout or an interactive component also runs `npm run test:visual` against a served build (`npx docusaurus serve --port 3100`): a new finding is fixed or added to `scripts/visual/known-issues.json` with a reason, and a fixed one leaves that file in the same PR.
+
 ## Skills
 
 - `scrimba-course-review`: course leaves, hubs and path pages, and any voice/CTA rewrite of a docs page (loads `scrimba-browsing`).

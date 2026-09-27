@@ -15,6 +15,7 @@
     "test:llms": "node --test scripts/__tests__/generate-llms-from-sitemap.test.mjs",
     "test:search": "node --test scripts/__tests__/search-modal.test.mjs",
     "test:a11y": "node --test scripts/__tests__/*a11y*.test.mjs",
+    "test:visual": "node --test scripts/__tests__/visual-ratchet.test.mjs && node scripts/visual/matrix.mjs; m=$?; node scripts/visual/interactions.mjs; i=$?; [ $m -eq 0 ] && [ $i -eq 0 ]",
     "generate": "npm run generate:data && npm run generate:social-cards",
     "assert-sitemap-url": "node scripts/assert-sitemap-url.mjs",
     "submit-indexnow": "node scripts/submit-indexnow.mjs",
