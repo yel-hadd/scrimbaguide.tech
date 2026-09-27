@@ -585,6 +585,9 @@ const config: Config = {
         {
           // Same interactive demo scrim as the homepage hero CTA. Uses the shared
           // constant because navbar hrefs do not route through <AffiliateLink>.
+          // The custom type (src/theme/NavbarItem/ComponentTypes.tsx) renders the
+          // stock item and sends affiliate_link_clicked (cta_type "navbar").
+          type: 'custom-affiliateCta',
           href: DEMO_SCRIM_URL_AFFILIATE,
           label: 'Try Scrimba for free',
           position: 'right',
