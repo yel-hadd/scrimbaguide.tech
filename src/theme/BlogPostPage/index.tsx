@@ -1,3 +1,4 @@
+// ejected from @docusaurus/theme-classic 3.9.2; re-diff on upgrade
 /**
  * Swizzled BlogPostPage: renders breadcrumbs (Home > Blog > title, with the
  * post's only BreadcrumbList) above the post, and the desktop sticky CTA

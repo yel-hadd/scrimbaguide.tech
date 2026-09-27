@@ -1,3 +1,4 @@
+// ejected from @docusaurus/theme-classic 3.9.2; re-diff on upgrade
 import React, {useEffect} from 'react';
 import clsx from 'clsx';
 import {
