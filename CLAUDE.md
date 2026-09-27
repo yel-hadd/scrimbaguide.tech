@@ -79,6 +79,7 @@ One primary CTA where intent peaks, at most one secondary, at least two prose pa
 
 | Page type | Primary | Secondary |
 |---|---|---|
+| Homepage | Hero start unit: the demo-scrim button plus the hero `ScrimPoster` to the same demo scrim, counted as one | Pro button in the pricing block. The closing block may repeat the primary's destination as its only counted CTA, at least three sections below the secondary |
 | Course leaf | start button closing "Who it's for" | `CourseCard` in the opening |
 | Course hub | free-start button to the first course, end of "Where to start" | `PricingCTA ctaType="free"` at the end |
 | Path page | path `CourseCard` after the verdict | `ScrimPoster` (free sample lesson) in the opening |
