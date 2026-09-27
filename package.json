@@ -37,9 +37,7 @@
     "@docusaurus/preset-classic": "3.9.2",
     "@easyops-cn/docusaurus-search-local": "^0.53.0",
     "@mdx-js/react": "^3.0.0",
-    "@signalwire/docusaurus-plugin-llms-txt": "^1.2.2",
     "clsx": "^2.0.0",
-    "docusaurus-plugin-generate-llms-txt": "github:din0s/docusaurus-plugin-llms-txt",
     "lucide-react": "^1.18.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
@@ -54,7 +52,6 @@
     "@lhci/cli": "0.15.1",
     "@playwright/test": "^1.58.2",
     "axe-core": "^4.11.1",
-    "puppeteer-core": "^24.37.5",
     "typescript": "~5.6.2"
   },
   "browserslist": {
@@ -71,5 +68,10 @@
   },
   "engines": {
     "node": ">=20.0"
+  },
+  "overrides": {
+    "serialize-javascript": "7.1.2",
+    "tmp": "0.2.7",
+    "uuid": "11.1.1"
   }
 }
