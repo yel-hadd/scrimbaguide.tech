@@ -48,6 +48,23 @@ Run steps 7 and 8 (the Chrome readings) first, so the snapshot's reconciliation 
 9. **Consent live check.** `curl -s https://scrimbaguide.tech/ | grep -cE "consent[\"'],[\"']default"` must print 1 or more; 0 is ACT (the live HTML is minified with double quotes, `consent","default"`, so the check accepts either quote style). For the 4 weeks after `consent_v2` (until 2026-10-24), note the EEA/UK session share in `watch[]`.
 10. **Stale PRs and worktrees.** `gh pr list --state open --json number,title,headRefName,createdAt`: open `content/daily-*` or `ops/*` PRs older than 7 days are WATCH. `git worktree list`: an `ops-*` worktree whose branch has merged is proposed for removal in `watch[]`; never remove it.
 11. **Due items.** List every `state.due[]` item with `done: false` and `from` on or before today as `due: <id> (<what>)` in `watch[]`. Do not analyse them.
+12. **Live Lighthouse.** Lab data from this machine: 3 mobile runs each of `/` and `/docs/pricing/` on the live site, medians appended to `secrets/ops/lighthouse-live.jsonl`. `npx -y lighthouse@12.6.1` runs from the npx cache and installs nothing in the repo; the version is pinned to match `npm run lhci` (@lhci/cli 0.15.1), so never float it; Chrome is `/usr/bin/google-chrome`. Run nothing else heavy meanwhile (no build, no `/daily-post`), since machine load moves the perf score.
+   ```
+   D=.seo-cache/lighthouse/$(TZ=America/Los_Angeles date +%F); mkdir -p $D
+   for p in / /docs/pricing/; do s=$(echo "$p" | sed 's#^/##; s#/$##; s#/#__#g; s/^$/home/'); for i in 1 2 3; do
+     npx -y lighthouse@12.6.1 "https://scrimbaguide.tech$p" --output=json --output-path=$D/${s}__run$i.json --chrome-path=/usr/bin/google-chrome --chrome-flags="--headless=new --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --quiet
+   done; done
+   node -e '
+   const fs=require("fs"),d=process.argv[1],med=a=>{a=[...a].sort((x,y)=>x-y);const m=a.length>>1;return a.length%2?a[m]:(a[m-1]+a[m])/2};
+   const pages={};
+   for(const f of fs.readdirSync(d).filter(f=>/__run\d+\.json$/.test(f))){const r=JSON.parse(fs.readFileSync(d+"/"+f));if(r.categories.performance.score==null)continue;(pages[new URL(r.requestedUrl).pathname]??=[]).push(r)}
+   const out={date:process.argv[2],form_factor:"mobile",pages:{}};
+   for(const[p,rs]of Object.entries(pages)){const c=k=>med(rs.map(r=>r.categories[k].score)),n=k=>Math.round(med(rs.map(r=>r.audits[k].numericValue)));
+   out.pages[p]={runs:rs.length,perf:c("performance"),a11y:c("accessibility"),bp:c("best-practices"),seo:c("seo"),lcp_ms:n("largest-contentful-paint"),tbt_ms:n("total-blocking-time"),cls:+med(rs.map(r=>r.audits["cumulative-layout-shift"].numericValue)).toFixed(3)}}
+   console.log(JSON.stringify(out))' "$D" "$(TZ=America/Los_Angeles date +%F)" >> secrets/ops/lighthouse-live.jsonl
+   ```
+   Compare the new line with the previous one, page by page (`lighthouse.live` in the table). The first line is the baseline and is OK. A page with fewer than 3 runs is WATCH "lighthouse runs failed". Live best practices sits below 1.0 for reasons outside the build (CDN 503s on prefetched chunks), so only a drop from the previous line counts. For a before/after comparison of two builds, use `bash scripts/visual/lh-ab.sh` (interleaved), never two of these lines.
+13. **Field Core Web Vitals.** Run the "web_vitals field read" recipe (15 in `.claude/skills/site-analytics/references/recipes.md`) over the last 28 days, starting no earlier than 2026-09-28. Apply `web_vitals.field` from the table to LCP, INP and CLS on `mobile` and `desktop`; FCP and TTFB are reported, never judged. A metric and device under 30 sessions is `skipped (too few sessions)`. Put the good shares in the note.
 
 ### Thresholds
 
@@ -66,6 +83,8 @@ Run steps 7 and 8 (the Chrome readings) first, so the snapshot's reconciliation 
 | `affiliate.scrimbassadors` | visitors per GA4 Scrimba click | 0.8 or more | reading older than 10 days | below 0.8, or parse failed |
 | `affiliate.impact` | impact clicks per GA4 Udemy click | 0.7 or more | below 0.7 | n/a |
 | `consent.live` | consent default in live HTML | present | n/a | missing |
+| `lighthouse.live` | weekly step 12, per page vs the previous line | perf down 0.10 or less, a11y/BP/SEO not down | perf down more than 0.10, or a11y, BP or SEO down at all | n/a |
+| `web_vitals.field` | recipe 15, LCP/INP/CLS per device, 30 sessions or more | 75% or more `good` | below 75% `good` | n/a |
 | `index.money_pages` (monthly) | money page not indexed | none | n/a | any |
 | `index.count` (monthly) | indexed count vs previous inspect | down 5 or fewer | down more than 5 | n/a |
 | `links.outbound` (monthly) | non-2xx outbound | none | redirect to a new slug | any non-2xx |

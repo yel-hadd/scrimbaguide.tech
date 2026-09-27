@@ -12,6 +12,10 @@ scrimbaguide.tech is a first-hand review site for Scrimba courses and paths (Doc
     node scripts/audit-course-links.mjs --file <path>   # unlinked course names and raw scrimba.com URLs
     node --test scripts/__tests__/<file>.test.mjs
     npm run check:metadata                              # head/JSON-LD invariants on build/; ratchet in scripts/check-built-metadata.known-issues.json
+    npm run test:visual                                 # layout matrix + interactions against a served build on :3100 (VISUAL_BASE_URL overrides)
+    npm run lhci                                        # Lighthouse CI on build/, mobile; LHCI_FORM_FACTOR=desktop for desktop
+    node scripts/visual/diff-builds.mjs <base> <head>   # full-HTML, head, llms/sitemap and JS/CSS byte diff of two builds
+    bash scripts/visual/lh-ab.sh <path> <urlA> <urlB>   # interleaved Lighthouse A/B; the only basis for a perf claim
     npm run snapshot                                    # GA4 + GSC snapshot to .seo-cache/ (needs secrets/gsc-service-account.json)
     npm run test:analytics                              # Python and Node tests for scripts/analytics
     /site-analytics                                     # traffic, conversion, SEO and affiliate questions; monthly Site Report
@@ -103,3 +107,4 @@ A change to CSS, layout or an interactive component also runs `npm run test:visu
 - `scrimba-course-review`: course leaves, hubs and path pages, and any voice/CTA rewrite of a docs page (loads `scrimba-browsing`).
 - `scrimba-browsing`: anything that needs a fact or screenshot from inside Scrimba.
 - `scrimba-explain`: creating, grading or embedding explainers.
+- `frontend-verify`: any PR touching `src/css`, `src/components`, `src/theme`, `src/pages`, config head/metadata, fonts or dependencies, and any performance claim.

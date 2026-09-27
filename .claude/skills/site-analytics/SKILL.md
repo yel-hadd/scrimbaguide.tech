@@ -68,7 +68,7 @@ Sonnet runs the queries, drill-downs and recipe checks. Opus writes the synthesi
 
 ## References
 
-- `references/recipes.md`: 14 recipes. Each names the snapshot field to read first, then the exact `run_report` body for the drill-down.
+- `references/recipes.md`: 15 recipes. Each names the snapshot field to read first, then the exact `run_report` body for the drill-down.
 - `references/ga4-schema.md`: events as shipped, parameters, the closed `cta_type` list, `destination_type` values, the key event, the Humans filter JSON, the AI regex, the AI-classifier gap, known GA4 bugs and API gotchas.
 - `references/report-template.md`: the weekly note (used by `/site-health`), the monthly narrative JSON and what the Site Report shows.
 - `references/annotation-rules.md`: what qualifies, `KIND_RULES`, the format, colors, the `analytics-note:` PR line, grouping, and the `ga4admin.py` commands.
