@@ -68,6 +68,8 @@ const SITEMAP_EXCLUDED_PATHS = new Set<string>([
   '/blog/scrimba-frontend-vs-fullstack-path',
   '/blog/vibe-coder-to-real-developer-2026',
   '/blog/web-development-roadmap-2026',
+  // YouTube comparison consolidation (2026-09-27): merged into the docs leaf.
+  '/blog/scrimba-vs-youtube-coding',
 ]);
 
 /**
@@ -448,6 +450,9 @@ const config: Config = {
           { from: '/blog/scrimba-frontend-vs-fullstack-path', to: '/docs/paths/' },
           { from: '/blog/vibe-coder-to-real-developer-2026', to: '/blog/how-to-learn-coding-without-depending-on-ai/' },
           { from: '/blog/web-development-roadmap-2026', to: '/blog/how-long-to-learn-web-development-2026/' },
+          // YouTube comparison consolidation (2026-09-27): one owner for
+          // "scrimba vs youtube", the docs comparison leaf.
+          { from: '/blog/scrimba-vs-youtube-coding', to: '/docs/comparisons/scrimba-vs-youtube/' },
           ...courseRedirects,
         ],
       },
