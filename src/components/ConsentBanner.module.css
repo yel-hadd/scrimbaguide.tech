@@ -2,7 +2,7 @@
   position: fixed;
   left: 16px;
   bottom: 16px;
-  z-index: 300;
+  z-index: var(--sg-z-overlay);
   max-width: 420px;
   width: calc(100% - 32px);
   padding: 16px;
@@ -27,7 +27,7 @@
 
 /* Equal weight on purpose: declining must be as easy as accepting. */
 .button {
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 18px;
   border: 1px solid var(--ifm-color-primary);
   border-radius: 8px;
@@ -42,4 +42,12 @@
 .button:focus-visible {
   background: var(--ifm-color-primary);
   color: var(--ifm-background-surface-color);
+}
+
+/* Colour inversion alone does not survive a screen-reader pass or a
+   monochrome display: focus-visible also gets a ring, on top of the
+   hover/focus inversion above. */
+.button:focus-visible {
+  outline: var(--sg-focus-ring-width) solid var(--sg-focus-ring-color);
+  outline-offset: var(--sg-focus-ring-offset);
 }

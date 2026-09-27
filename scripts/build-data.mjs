@@ -6,11 +6,13 @@
  *   data/courses.json      – enriched course objects with topic, free/pro, path membership
  *   data/help-articles.json – categorized FAQ content
  *   data/topics.json        – topic metadata with course lists
+ *   data/catalog-facts.json, data/catalog-lite.json – client-side subsets, via scripts/derive-catalog.mjs
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { writeDerivedCatalog } from './derive-catalog.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -492,3 +494,9 @@ console.log(`  - certificates: ${helpArticles.filter(h => h.category === 'certif
 console.log(`  - discord-community: ${helpArticles.filter(h => h.category === 'discord-community').length}`);
 console.log(`  - platform-issues: ${helpArticles.filter(h => h.category === 'platform-issues').length}`);
 if (topicMeta.length) console.log(`✓ Wrote ${topicMeta.length} topics to data/topics.json`);
+
+// The client bundle reads these small derived files, never courses.json itself.
+// Derive them from the file just written (not the in-memory objects) so they
+// match what the check:content staleness gate re-derives from disk.
+writeDerivedCatalog(DATA);
+console.log('✓ Wrote data/catalog-facts.json and data/catalog-lite.json');
