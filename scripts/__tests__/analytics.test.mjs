@@ -130,7 +130,7 @@ test('affiliateDestination classifies Scrimba, Udemy and docs URLs', () => {
     ['https://scrimba.com/frontend-path-c0j?via=u42d4986', 'path', 'frontend-path-c0j'],
     ['https://scrimba.com/backend-path-c0tbi0l98f', 'path', 'backend-path-c0tbi0l98f'],
     ['https://scrimba.com/our-pricing?via=u42d4986', 'pricing', 'our-pricing'],
-    ['https://scrimba.com/home?pricing&via=u42d4986', 'pricing', 'home'],
+    ['https://scrimba.com/home?pricing&via=u42d4986', 'pricing', 'home'], // legacy Pro CTA target, before pro_cta_our_pricing
     ['https://scrimba.com/home?via=u42d4986', 'home', 'home'],
     ['https://scrimba.com/?via=u42d4986', 'home', 'home'],
     ['https://scrimba.com/s0v687325e?via=u42d4986', 'demo', 's0v687325e'],

@@ -355,7 +355,7 @@ export default function PathAdvisor({ embedded = true }: PathAdvisorProps): Reac
             ) : (
               <AffiliateLink
                 ctaType="path-advisor"
-                href="https://scrimba.com/home?pricing&via=u42d4986"
+                href="https://scrimba.com/our-pricing?via=u42d4986"
                 variant="button"
                 className="button button--primary"
                 location="path-advisor-result-pro"
