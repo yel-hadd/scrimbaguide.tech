@@ -1,10 +1,11 @@
 ---
-title: "Scrimba vs YouTube"
+title: "Scrimba vs YouTube for Learning to Code"
 sidebar_label: "vs YouTube"
 description: "Why paid Scrimba can beat free YouTube tutorials for actually learning to code, with a direct format comparison of Net Ninja vs Bob Ziroll's React courses."
-keywords: [scrimba vs youtube, youtube tutorials vs scrimba, tutorial hell, net ninja vs scrimba, bob ziroll react, learn coding youtube, best way to learn to code]
+keywords: [scrimba vs youtube, scrimba vs youtube tutorials, youtube tutorials vs scrimba, youtube vs paid coding course, tutorial hell, net ninja vs scrimba, bob ziroll react, learn coding youtube, best way to learn to code]
+reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-09-27
 ---
 
 import ComparisonTable from '@site/src/components/ComparisonTable';
@@ -13,7 +14,8 @@ import FAQAccordion from '@site/src/components/FAQAccordion';
 import VerdictBox from '@site/src/components/VerdictBox';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
 import AffiliateLink from '@site/src/components/AffiliateLink';
-import { totalCoursesLabel } from '@site/src/utils/scrimbaFacts';
+import Provenance from '@site/src/components/Provenance';
+import { totalCoursesLabel, freeCount } from '@site/src/utils/scrimbaFacts';
 
 # Scrimba vs YouTube
 
@@ -24,6 +26,8 @@ YouTube is free and covers more code than any other platform, but it rewards wat
 You have watched Fireship, Net Ninja, Web Dev Simplified, Traversy, and JavaScript Mastery. You can talk about React. You still cannot open a blank editor and ship a small app.
 
 YouTube wins on price, breadth, and the 5-minute "how do I X?" lookup. It is weak at one job: getting you to stop watching and start typing. Scrimba's format exists for that job. Use each for what it does well, instead of picking one as your religion.
+
+<Provenance subject="platform" date={frontMatter.reviewed} detail="compared against the YouTube channels named below" />
 
 ## The three decisions you are making
 
@@ -105,10 +109,19 @@ Watch Bob's freeCodeCamp version for 30 minutes. Notice how many times you nodde
   ]}
 />
 
+## The setup tax YouTube adds
+
+On YouTube, learning happens in two tabs. You watch a few minutes, pause, switch to your editor, try to copy what you saw, get confused, switch back, and rewind to find the timestamp. Most of those steps are logistics. After enough rounds you stop typing and just watch.
+
+Every new tutorial can also mean a new project folder, different dependencies and environment variables that do not match your machine. A beginner can lose the first 30 minutes to "npm not found" before writing a line of the lesson.
+
+Scrimba skips that step because every lesson already runs in the browser. Per Borgen's free [Learn JavaScript](/docs/courses/javascript/learn-javascript/) course runs about 9.4 hours across eight modules, and you build a passenger counter, a blackjack game and a Chrome extension without installing anything. Verdict: if setup is where your YouTube sessions die, the in-browser editor removes the excuse.
+
 ## Where YouTube clearly wins
 
 - **Price.** Zero. No regional pricing, no annual decision, no card.
 - **Short-form lookup.** "How do I center a div with flexbox in 2026" gets a 4-minute answer from Kevin Powell faster than any structured course can deliver. YouTube is the developer's reference manual. The gap has narrowed since [Scrimba Explain](/docs/how-it-works/scrimba-explain/) arrived: a question typed into it comes back as a short narrated video, and the EXPLAIN button inside a lesson answers about the code in front of you, but the free account gets only 10 of those for life.
+- **Sampling a new topic.** Not sure whether you want Rust, Go or Svelte? A few 10-minute overviews cost nothing and tell you whether to go deeper.
 - **Breadth of niche topics.** Vintage frameworks, exotic stacks, conference talks, library deep dives, build-your-own-database streams. Scrimba's catalog is focused on web and AI. YouTube covers everything.
 - **Choosing your teacher.** If [Fireship](/docs/comparisons/scrimba-vs-fireship/)'s pace works for your brain and Web Dev Simplified does not, YouTube lets you optimize for voice in a way curated platforms cannot.
 
@@ -126,11 +139,17 @@ If you are already employed and you need to upskill on one specific topic, YouTu
 
 Most learners who escape tutorial hell end up doing the same thing.
 
-1. **Scrimba is the spine.** [Frontend path](/docs/paths/frontend-developer-path/), [Fullstack](/docs/paths/fullstack-developer-path/), or [AI Engineer](/docs/paths/ai-engineer-path/), depending on goal. This is the calendar you keep.
+1. **Scrimba is the spine.** [Frontend path](/docs/paths/frontend-developer-path/), [Fullstack](/docs/paths/fullstack-developer-path/), or [AI Engineer](/docs/paths/ai-engineer-path/), depending on goal. This is the calendar you keep. If you only want to test the format, [Learn React](/docs/courses/react/learn-react/) is free: about 15 hours across six modules, ending in two capstones, Tenzies and Assembly: Endgame.
 2. **YouTube is the spice.** Fireship for the weekly news hit. Kevin Powell when CSS confuses you. Theo or Primeagen if you like opinions. A specific Web Dev Simplified video when you hit a wall on one concept.
 3. **Build outside both.** The point of either is to leave both. Ship something in a blank repo, with no tutorial open in another tab.
 
 If your YouTube tab count is climbing and your GitHub commit count is not, that is the signal to flip the ratio.
+
+## The cost question
+
+The case for YouTube is that it costs nothing. The hidden cost is time. Without a sequence or an editor in the lesson, you spend hours choosing the next video, setting up projects and rewatching sections you only recognized. Scrimba also runs about {freeCount} free interactive courses, so you can test whether the format sticks for you before paying anything. The [free course list](/blog/best-free-scrimba-courses/) shows what is included, and [Scrimba pricing](/docs/pricing/) covers what Pro adds.
+
+Verdict: start free on both, and pay only once the free Scrimba courses have shown you the format works.
 
 ## Bottom line
 
@@ -162,6 +181,7 @@ If your YouTube tab count is climbing and your GitHub commit count is not, that 
 <FAQAccordion items={[
   { q: "Why pay for Scrimba when YouTube is free?", a: "YouTube wins on price and breadth, but its passive default leads most beginners into tutorial hell. Scrimba puts the editor inside the lesson so the default action becomes typing instead of watching. For beginners, that format change usually matters more than the price difference." },
   { q: "Is YouTube enough to learn to code?", a: "For disciplined learners who set up their own projects and force themselves to build alongside videos, yes. Most beginners get stuck with strong recognition memory and weak recall, which is the textbook tutorial hell pattern." },
+  { q: "Can I learn to code entirely for free on YouTube?", a: `You can cover a lot, but you assemble your own curriculum and handle every project setup yourself. Scrimba also runs about ${freeCount} free interactive courses if you want structure without paying.` },
   { q: "Net Ninja vs Scrimba for React?", a: "Same modern React, two formats. Net Ninja's YouTube playlist is free and self-directed. Bob Ziroll's Scrimba course is interactive with 170+ challenges and 6 projects built inside the lesson." },
   { q: "Which YouTubers pair well with Scrimba?", a: "Fireship for weekly awareness, Kevin Powell for CSS, Web Dev Simplified for single-topic deep dives, Traversy Media for project tutorials, Net Ninja for long playlists, JavaScript Mastery for portfolio builds." },
   { q: "Can I just watch Bob Ziroll's React course on freeCodeCamp YouTube instead of paying Scrimba?", a: "Yes, the same content is there as a 16-hour video. You lose the interactive editor, the 170+ challenges and quizzes, and the per-scrim transcript. The free Scrimba version also comes with basic Discord access; only the two Solo Projects, the certificate and the Pro-only Discord channels need Pro. If you can stay disciplined through 16 hours of YouTube and code along in your own editor, you do not need to pay. Most learners benefit from the format change." },

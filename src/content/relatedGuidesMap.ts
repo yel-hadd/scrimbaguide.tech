@@ -103,7 +103,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
   ],
   '/blog/best-interactive-coding-platforms-2026': [
     { title: 'Scrimba vs ChatGPT', href: '/blog/scrimba-vs-chatgpt-learn-to-code', type: 'blog' },
-    { title: 'Scrimba vs YouTube', href: '/blog/scrimba-vs-youtube-coding', type: 'blog' },
+    { title: 'Scrimba vs YouTube', href: '/docs/comparisons/scrimba-vs-youtube', type: 'comparison' },
     { title: 'Scrimba Comparisons', href: '/docs/comparisons/', type: 'comparison' },
   ],
   '/blog/best-css-courses-2026': [
@@ -633,11 +633,6 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba vs Bootcamps Cost (doc)', href: '/docs/pricing/scrimba-vs-bootcamps', type: 'doc' },
     { title: 'Best Bootcamp Alternatives 2026', href: '/blog/best-coding-bootcamp-alternatives-2026', type: 'blog' },
     { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
-  ],
-  '/blog/scrimba-vs-youtube-coding': [
-    { title: 'Scrimba vs YouTube', href: '/docs/comparisons/scrimba-vs-youtube', type: 'comparison' },
-    { title: 'Best Free Courses', href: '/blog/best-free-scrimba-courses', type: 'blog' },
-    { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
   ],
   '/blog/what-is-vibe-coding-2026': [
     { title: 'How to Learn Coding Without Depending on AI', href: '/blog/how-to-learn-coding-without-depending-on-ai', type: 'blog' },
