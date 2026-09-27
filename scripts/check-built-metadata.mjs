@@ -30,6 +30,10 @@
  *          (nav.theme-doc-breadcrumbs, nav[aria-label=Breadcrumbs] or a
  *          nav holding ul.breadcrumbs).
  *   hard   list-page-breadcrumbs: no breadcrumbs <nav> on blog list routes.
+ *   hard   blogposting-author-mismatch: on a blog post page, the author
+ *          names of every top-level BlogPosting, and the article:author
+ *          meta tags, must equal the visible byline (the post header's
+ *          .avatar__name entries), in order.
  *   advisory title-over-60 (printed, never fails, never allowlisted)
  *
  * Ratchet: hard findings are compared with the allowlist
@@ -179,8 +183,33 @@ export function extractPage(html) {
       .map((el) => el.attribs.href ?? ''),
     h1Count: $('h1').length,
     breadcrumbNavCount: countBreadcrumbNavs($),
+    articleAuthors: metaContents('property', 'article:author'),
+    bylineNames: $('article')
+      .first()
+      .find('header .avatar__name')
+      .toArray()
+      .map((el) => $(el).text().replace(/\s+/g, ' ').trim())
+      .filter(Boolean),
     jsonLd,
   };
+}
+
+/** Author names of each top-level BlogPosting node, one array per node. */
+export function blogPostingAuthorNames(parsed) {
+  const roots = Array.isArray(parsed) ? parsed : [parsed];
+  const nodes = [];
+  for (const root of roots) {
+    if (!root || typeof root !== 'object') continue;
+    nodes.push(root);
+    if (Array.isArray(root['@graph'])) nodes.push(...root['@graph']);
+  }
+  return nodes
+    .filter((node) => typesOf(node).includes('BlogPosting'))
+    .map((node) => {
+      const author = node.author;
+      const list = Array.isArray(author) ? author : author ? [author] : [];
+      return list.map((a) => (typeof a === 'string' ? a : String(a?.name ?? ''))).map((n) => n.trim());
+    });
 }
 
 /** Indexable = not noindex and not a client-redirect stub. */
@@ -253,6 +282,21 @@ export function checkPage(route, page) {
   const navCount = page.breadcrumbNavCount ?? 0;
   if (navCount > 1) add('breadcrumb-nav-count', `${navCount} breadcrumb <nav> elements`);
   if (isBlogListRoute(route) && navCount > 0) add('list-page-breadcrumbs', `${navCount} breadcrumb <nav> elements`);
+
+  const byline = page.bylineNames ?? [];
+  if (/^\/blog\//.test(route) && !isBlogListRoute(route) && byline.length > 0) {
+    const same = (names) => names.length === byline.length && names.every((name, i) => name === byline[i]);
+    const postings = page.jsonLd.filter((block) => block.ok).flatMap((block) => blogPostingAuthorNames(block.value));
+    for (const names of postings) {
+      if (!same(names)) {
+        add('blogposting-author-mismatch', `BlogPosting author ${JSON.stringify(names)} vs byline ${JSON.stringify(byline)}`);
+      }
+    }
+    const metaAuthors = (page.articleAuthors ?? []).map((a) => a.trim());
+    if (postings.length > 0 && !same(metaAuthors)) {
+      add('blogposting-author-mismatch', `article:author ${JSON.stringify(metaAuthors)} vs byline ${JSON.stringify(byline)}`);
+    }
+  }
 
   return { hard, advisory };
 }
