@@ -63,7 +63,7 @@ function DocSeoHead(): React.ReactElement {
   return (
     <>
       <Head>
-        {/* og:title and twitter:title are set by DocItem/Metadata with the properly truncated seoTitle */}
+        {/* title and og:title are set by the stock DocItem/Metadata (theme-common PageMetadata) */}
         <meta property="og:type" content="article" />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
