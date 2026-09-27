@@ -524,18 +524,6 @@ export default function Home(): React.ReactElement {
   return (
     <Layout title={HOME_PAGE_TITLE} description={HOME_DESC} wrapperClassName="homepage">
       <Head>
-        {/* Hero LCP image (home-hero-poster). Preloaded because under throttle it
-            is the largest paint on the page and otherwise starts its fetch only
-            after React hydrates and renders the ScrimPoster img (see
-            phase3/p0-spike.md finding 1). Same URL and no srcset on the img, so
-            this cannot trigger a second download. */}
-        <link
-          rel="preload"
-          as="image"
-          href="/img/scrimba-lesson-preview.webp"
-          type="image/webp"
-          fetchPriority="high"
-        />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={homeTitleFull} />
         <meta property="og:description" content={HOME_DESC} />
