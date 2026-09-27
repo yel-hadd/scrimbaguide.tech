@@ -4950,3 +4950,34 @@ html[data-theme='dark'] .curriculum__index {
   color: var(--ifm-footer-link-hover-color);
   text-decoration: underline;
 }
+
+/* ── Touch targets (WCAG 2.5.8) ───────────────────────────────────
+   Coarse pointers only, so mouse/trackpad sizing is untouched.
+   Measured on the frozen build: a.navbar__brand 40x32,
+   button.sg-search-pill 36x36 (collapsed, <=996px), every
+   a.footer__link-item 32px tall, button.footer__link-item.sg-cookie-
+   settings 27px tall. Widening the footer rows is an intended,
+   visible diff on touch viewports; nothing here changes desktop. */
+@media (pointer: coarse) {
+  .navbar__brand {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .sg-search-pill {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Also matches button.footer__link-item.sg-cookie-settings, which
+     always carries this class alongside its own. min-width keeps the
+     narrower links (Paths, FAQ, Blog) at the 44px floor without
+     moving the left-aligned text. */
+  .footer__link-item {
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding-block: 0.375rem;
+  }
+}

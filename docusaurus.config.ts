@@ -565,6 +565,11 @@ const config: Config = {
       logo: {
         alt: 'Scrimba Guide logo',
         src: 'img/logo.svg',
+        // Rendered size measured on the frozen build (img rendered 32x32);
+        // reserving it holds the layout so the logo stops causing a scroll-pass
+        // shift (0.06-0.3 recorded on mobile/tablet before this fix).
+        width: 32,
+        height: 32,
       },
       items: [
         // Top level = the decision funnel: pick a path or course, check the
