@@ -557,10 +557,10 @@ const config: Config = {
       logo: {
         alt: 'Scrimba Guide logo',
         src: 'img/logo.svg',
-        // Rendered size measured on the frozen build (a.navbar__brand, 40x32);
+        // Rendered size measured on the frozen build (img rendered 32x32);
         // reserving it holds the layout so the logo stops causing a scroll-pass
         // shift (0.06-0.3 recorded on mobile/tablet before this fix).
-        width: 40,
+        width: 32,
         height: 32,
       },
       items: [

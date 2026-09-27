@@ -4960,18 +4960,14 @@ html[data-theme='dark'] .curriculum__index {
   }
 
   /* Also matches button.footer__link-item.sg-cookie-settings, which
-     always carries this class alongside its own. */
+     always carries this class alongside its own. min-width keeps the
+     narrower links (Paths, FAQ, Blog) at the 44px floor without
+     moving the left-aligned text. */
   .footer__link-item {
     display: inline-flex;
     align-items: center;
+    min-width: 44px;
     min-height: 44px;
     padding-block: 0.375rem;
-  }
-
-  /* The link's own margin already stacks with .footer__item's; pull
-     it back so rows do not double that space on top of the target
-     growth above. */
-  .footer__item {
-    margin-block: -0.375rem;
   }
 }
