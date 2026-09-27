@@ -48,11 +48,11 @@ Run steps 7 and 8 (the Chrome readings) first, so the snapshot's reconciliation 
 9. **Consent live check.** `curl -s https://scrimbaguide.tech/ | grep -cE "consent[\"'],[\"']default"` must print 1 or more; 0 is ACT (the live HTML is minified with double quotes, `consent","default"`, so the check accepts either quote style). For the 4 weeks after `consent_v2` (until 2026-10-24), note the EEA/UK session share in `watch[]`.
 10. **Stale PRs and worktrees.** `gh pr list --state open --json number,title,headRefName,createdAt`: open `content/daily-*` or `ops/*` PRs older than 7 days are WATCH. `git worktree list`: an `ops-*` worktree whose branch has merged is proposed for removal in `watch[]`; never remove it.
 11. **Due items.** List every `state.due[]` item with `done: false` and `from` on or before today as `due: <id> (<what>)` in `watch[]`. Do not analyse them.
-12. **Live Lighthouse.** Lab data from this machine: 3 mobile runs each of `/` and `/docs/pricing/` on the live site, medians appended to `secrets/ops/lighthouse-live.jsonl`. `npx -y lighthouse@12` runs from the npx cache and installs nothing in the repo; Chrome is `/usr/bin/google-chrome`. Run nothing else heavy meanwhile (no build, no `/daily-post`), since machine load moves the perf score.
+12. **Live Lighthouse.** Lab data from this machine: 3 mobile runs each of `/` and `/docs/pricing/` on the live site, medians appended to `secrets/ops/lighthouse-live.jsonl`. `npx -y lighthouse@12.6.1` runs from the npx cache and installs nothing in the repo; the version is pinned to match `npm run lhci` (@lhci/cli 0.15.1), so never float it; Chrome is `/usr/bin/google-chrome`. Run nothing else heavy meanwhile (no build, no `/daily-post`), since machine load moves the perf score.
    ```
    D=.seo-cache/lighthouse/$(TZ=America/Los_Angeles date +%F); mkdir -p $D
    for p in / /docs/pricing/; do s=$(echo "$p" | sed 's#^/##; s#/$##; s#/#__#g; s/^$/home/'); for i in 1 2 3; do
-     npx -y lighthouse@12 "https://scrimbaguide.tech$p" --output=json --output-path=$D/${s}__run$i.json --chrome-path=/usr/bin/google-chrome --chrome-flags="--headless=new --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --quiet
+     npx -y lighthouse@12.6.1 "https://scrimbaguide.tech$p" --output=json --output-path=$D/${s}__run$i.json --chrome-path=/usr/bin/google-chrome --chrome-flags="--headless=new --no-sandbox" --only-categories=performance,accessibility,best-practices,seo --quiet
    done; done
    node -e '
    const fs=require("fs"),d=process.argv[1],med=a=>{a=[...a].sort((x,y)=>x-y);const m=a.length>>1;return a.length%2?a[m]:(a[m-1]+a[m])/2};

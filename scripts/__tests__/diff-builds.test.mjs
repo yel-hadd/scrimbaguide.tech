@@ -6,7 +6,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { diffBuilds, normalizeHtml, headFacts, diffHead, formatSummary } from '../visual/diff-builds.mjs';
+import { diffBuilds, listPages, normalizeHtml, headFacts, diffHead, formatSummary } from '../visual/diff-builds.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const BASE = path.join(HERE, 'fixtures', 'diff-builds', 'base');
@@ -19,6 +19,19 @@ test('normalizeHtml hides js and css asset hashes only', () => {
     normalizeHtml(html),
     '<script src="/assets/js/__HASH__"></script><link href="/assets/css/__HASH__"><img src="/img/a.png">',
   );
+});
+
+test('listPages keeps every *.html outside assets/', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'diff-builds-'));
+  try {
+    for (const f of ['index.html', 'docs/x/index.html', '404.html', 'downloads/a.html', 'assets/js/skip.html']) {
+      fs.mkdirSync(path.dirname(path.join(dir, f)), { recursive: true });
+      fs.writeFileSync(path.join(dir, f), '<html></html>');
+    }
+    assert.deepEqual([...listPages(dir).keys()].sort(), ['/', '/404.html', '/docs/x/', '/downloads/a.html']);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test('JSON-LD hash ignores key order but not content', () => {

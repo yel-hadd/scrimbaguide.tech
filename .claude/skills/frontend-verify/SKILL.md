@@ -46,7 +46,7 @@ Working files live in `W=/home/toor/sg-work/<program>/` (builds, captures, Light
 
 ## Traps
 
-- **Theme forcing.** Setting `data-theme` on `<html>` leaves React inline styles in the old theme and fabricated two "confirmed defects" on 2026-09-23. Seed `localStorage.theme` before `goto`, then reload.
+- **Theme forcing.** Setting `data-theme` on `<html>` leaves React inline styles in the old theme and fabricated two "confirmed defects" on 2026-09-23. `goto` the page, set `localStorage.theme`, then `goto` again (or seed it with `addInitScript`).
 - **axe over overlays.** axe scores text in a fixed drawer or modal against what is behind it: the mobile sidebar read 1.42:1 on the hero gradient, but its real background is white (5.72:1). Walk the computed background and look at a clipped viewport screenshot before changing a colour.
 - **pkill -f matches its own shell.** `pkill -f "docusaurus serve"` run through a shell kills that shell, whose command line contains the pattern. Kill by the saved PID.
 - **Missing social cards.** `static/img/blog/*.png` is gitignored; a fresh checkout without them serves 404 og:images and Lighthouse best practices drops to 0.96. Generate them (`npm run generate:social-cards`, needs `rsvg-convert`) before building.

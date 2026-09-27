@@ -13,8 +13,8 @@
 # Prints the median performance score, LCP, FCP, TBT, CLS and the most frequent
 # LCP element per side. Raw JSON goes to $LH_AB_OUT (default: a new mktemp dir;
 # set it under /home/toor/sg-work/<program>/ to keep the runs past a reboot).
-# Needs Chrome at $CHROME_PATH (default /usr/bin/google-chrome); lighthouse@12
-# comes from npx, nothing is installed in the repo.
+# Needs Chrome at $CHROME_PATH (default /usr/bin/google-chrome); lighthouse@12.6.1
+# (the version the pinned @lhci/cli 0.15.1 runs) comes from npx, nothing is installed in the repo.
 set -euo pipefail
 
 usage="usage: lh-ab.sh <path> <baseUrlA> <baseUrlB> [runs=6]"
@@ -36,7 +36,7 @@ for i in $(seq 1 "$RUNS"); do
     base="${!side}"
     out="$OUT/${side}-run${i}.json"
     echo "== round $i/$RUNS side $side: ${base%/}${PAGE}"
-    npx -y lighthouse@12 "${base%/}${PAGE}" \
+    npx -y lighthouse@12.6.1 "${base%/}${PAGE}" \
       --output=json --output-path="$out" \
       --chrome-path="$CHROME_PATH" \
       --chrome-flags="--headless=new --no-sandbox" \

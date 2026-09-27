@@ -5,7 +5,7 @@
  *   node scripts/visual/diff-builds.mjs <baseBuildDir> <headBuildDir> [--json out.json]
  *
  * Reports four things, with up to 20 examples per category:
- *   V2  full HTML of every index.html, with /assets/(js|css)/ hashes normalized,
+ *   V2  full HTML of every *.html page, with /assets/(js|css)/ hashes normalized,
  *       plus pages only in one build
  *   V3  per-page head: <title>, meta name/property, canonical, and each JSON-LD
  *       block as its @types and a stable hash (keys sorted before hashing)
@@ -26,7 +26,11 @@ import { topLevelTypes, routeFromFile } from '../check-built-metadata.mjs';
 export const MAX_EXAMPLES = 20;
 export const EQUALITY_FILES = ['llms.txt', 'llms-full.txt', 'sitemap.xml'];
 
-/** Routes of every index.html in a build, mapped to the file path. */
+/**
+ * Every *.html in a build outside assets/, mapped to the file path. An
+ * index.html maps to its route (`/docs/x/`); any other page (404.html,
+ * downloads/*.html) maps to its own path (`/404.html`).
+ */
 export function listPages(buildDir) {
   const pages = new Map();
   const walk = (dir) => {
@@ -36,6 +40,8 @@ export function listPages(buildDir) {
         if (entry.name !== 'assets') walk(full);
       } else if (entry.name === 'index.html') {
         pages.set(routeFromFile(buildDir, full), full);
+      } else if (entry.name.endsWith('.html')) {
+        pages.set(`/${path.relative(buildDir, full).split(path.sep).join('/')}`, full);
       }
     }
   };
@@ -195,7 +201,7 @@ export function diffBuilds(baseDir, headDir) {
 }
 
 const clip = (s, n = 120) => (s.length > n ? `${s.slice(0, n)}...` : s);
-const fmtBytes = (n) => `${(n / 1024 / 1024).toFixed(2)} MB (${n.toLocaleString('en-US')} B)`;
+const fmtBytes = (n) => `${(n / 1e6).toFixed(2)} MB (${n.toLocaleString('en-US')} B)`;
 const fmtDelta = (n) => `${n >= 0 ? '+' : ''}${n.toLocaleString('en-US')} B`;
 
 /** Human summary with up to MAX_EXAMPLES examples per category. */
