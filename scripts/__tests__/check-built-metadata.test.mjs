@@ -235,3 +235,43 @@ test('checkBuild walks a build directory and skips stubs and noindex pages', () 
     fs.rmSync(dir, { recursive: true, force: true });
   }
 });
+
+const byline = (...names) =>
+  `<article><header><h1>Post</h1>${names
+    .map((n) => `<div class="avatar"><div class="avatar__intro"><div class="avatar__name"><a href="${ORIGIN}/about/"><span>${n}</span></a></div></div></div>`)
+    .join('')}</header></article>`;
+const posting = (author) => ({ '@context': 'https://schema.org', '@type': 'BlogPosting', headline: 'Post', author });
+const person = (name) => ({ '@type': 'Person', name, url: `${ORIGIN}/about/` });
+const articleAuthor = (...names) => names.map((n) => `<meta property="article:author" content="${n}">`).join('');
+// h1: 0 because the byline fixture carries the page's one <h1>.
+const postPage = ({ names, jsonAuthor, metaNames = names }) =>
+  html({ h1: 0, body: byline(...names), jsonLd: [posting(jsonAuthor)], extraHead: articleAuthor(...metaNames) });
+
+test('BlogPosting author and article:author must match the visible byline', () => {
+  assert.deepEqual(rules('/blog/post/', postPage({ names: ['Ayoub El Haddad'], jsonAuthor: person('Ayoub El Haddad') })), []);
+  // The pre-fix bug: every post credited the site owner whatever the byline said.
+  assert.deepEqual(
+    rules('/blog/post/', postPage({ names: ['Ayoub El Haddad'], jsonAuthor: person('Yassine El Haddad'), metaNames: ['Yassine El Haddad'] })),
+    ['blogposting-author-mismatch', 'blogposting-author-mismatch'],
+  );
+  assert.deepEqual(
+    rules('/blog/post/', postPage({ names: ['Ayoub El Haddad'], jsonAuthor: person('Ayoub El Haddad'), metaNames: [`${ORIGIN}/about/`] })),
+    ['blogposting-author-mismatch'],
+  );
+});
+
+test('several authors are an array in byline order, one article:author each', () => {
+  const both = ['Yassine El Haddad', 'Ayoub El Haddad'];
+  assert.deepEqual(rules('/blog/post/', postPage({ names: both, jsonAuthor: both.map(person) })), []);
+  assert.deepEqual(
+    rules('/blog/post/', postPage({ names: both, jsonAuthor: person('Yassine El Haddad') })),
+    ['blogposting-author-mismatch'],
+  );
+});
+
+test('author check only runs on blog post pages with a byline', () => {
+  const docs = html({ h1: 0, body: byline('Ayoub El Haddad'), jsonLd: [posting(person('Yassine El Haddad'))] });
+  assert.deepEqual(rules('/docs/page/', docs), []);
+  const noByline = html({ jsonLd: [posting(person('Yassine El Haddad'))] });
+  assert.deepEqual(rules('/blog/post/', noByline), []);
+});
