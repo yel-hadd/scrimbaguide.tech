@@ -35,7 +35,7 @@
 
 - **Student discount:** available with a valid academic email. See https://scrimbaguide.tech/docs/pricing/student-discount
 - **GitHub Student Developer Pack:** 1 free month of Pro for eligible students
-- **Affiliate link:** https://scrimba.com/home?pricing&via=u42d4986 applies a partner discount (typically 20% off Pro) automatically at checkout. Verify the final price before paying.
+- **Affiliate link:** https://scrimba.com/our-pricing?via=u42d4986 applies a partner discount (typically 20% off Pro) automatically at checkout. Verify the final price before paying.
 
 ## Refund policy
 Seven-day money-back guarantee on first purchase. Full details: https://scrimbaguide.tech/docs/pricing/refund-policy

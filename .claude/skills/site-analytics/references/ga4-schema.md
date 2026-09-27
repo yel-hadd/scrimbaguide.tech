@@ -42,7 +42,7 @@ From `src/utils/affiliateDestination.ts`. `destination_slug` is the first path s
 | `udemy` | host `udemy.com` or any subdomain (`trk.udemy.com`) |
 | `docs` | host `docs.scrimba.com` |
 | `demo` | scrimba.com slug `s0v687325e` |
-| `pricing` | slug contains `pricing`, or the query contains `pricing` (`/home?pricing`) |
+| `pricing` | slug contains `pricing` (`/our-pricing`), or the query contains `pricing` (legacy `/home?pricing`) |
 | `home` | empty slug or `home` |
 | `path` / `course` | slug ends in `-c0<id>`; `path` when it contains `-path-` |
 | `instructor` | slug starts with `@` or matches `u0<id>` |
@@ -51,6 +51,8 @@ From `src/utils/affiliateDestination.ts`. `destination_slug` is the first path s
 | `other` | anything else, including non-Scrimba hosts |
 
 Scrimba clicks are every `destination_type` except `udemy`.
+
+Pro CTAs linked `scrimba.com/home?pricing` (slug `home`) until the `pro_cta_our_pricing` epoch in `tracking.json`; from its date they link `scrimba.com/our-pricing` (slug `our-pricing`). Both are `destination_type = pricing`, so group pricing clicks by type, never by slug, across that date.
 
 ### `web_vitals` (field Core Web Vitals)
 

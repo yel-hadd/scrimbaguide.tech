@@ -24,7 +24,7 @@ export const DEMO_SCRIM_URL = 'https://scrimba.com/s0v687325e';
 export const DEMO_SCRIM_URL_AFFILIATE = `${DEMO_SCRIM_URL}?${AFFILIATE_PARAM}`;
 
 /** Scrimba Pro pricing page with the affiliate param inlined. */
-export const PRO_AFFILIATE_URL = `https://scrimba.com/home?pricing&${AFFILIATE_PARAM}`;
+export const PRO_AFFILIATE_URL = `https://scrimba.com/our-pricing?${AFFILIATE_PARAM}`;
 
 /**
  * Hosts whose outbound links are monetised and therefore must carry

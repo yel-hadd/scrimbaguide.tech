@@ -146,7 +146,7 @@ Note: there is no `practice/index` hub. Consider creating one canonical `/docs/p
 
 ### Copy constraints applied
 - No em-dashes anywhere.
-- Never quote exact Scrimba prices; link `https://scrimba.com/our-pricing` (note: several pages currently link `scrimba.com/home?pricing` which is acceptable as the affiliate pricing entry, but never inline a dollar figure). The `for/busy-professionals` FAQ says "the cost per month is low" which is fine; do not let any page state a number.
+- Never quote exact Scrimba prices; link `https://scrimba.com/our-pricing` (never inline a dollar figure; `scrimba.com/home?pricing` was retired as the Pro CTA target on 2026-09-27). The `for/busy-professionals` FAQ says "the cost per month is low" which is fine; do not let any page state a number.
 - Maintain independent-reviewer voice; do not imply course completion/graduation (note: `how-it-works/learning-speed` and others correctly say "many Scrimba graduates" about learners, not the author, which is fine).
 - All scrimba.com links via `<AffiliateLink>` (the `?via=u42d4986` tag is already present throughout). The concept-stub pages use raw markdown `[...](https://scrimba.com/...?via=...)` links rather than the `<AffiliateLink>` component in several spots (e.g. the inline "Interactive Lesson" links in `learn-react/*` and `learn-nextjs/*`). If any of those pages are kept rather than redirected, route them through `<AffiliateLink>` so `rel="nofollow"` is applied consistently.
 
