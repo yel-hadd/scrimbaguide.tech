@@ -164,6 +164,11 @@ test('deriveLite keeps only the fields the related-guides fallback reads', () =>
 test('scrimbaFacts.ts exports the same values from catalog-facts.json as the old code did from courses.json', () => {
   const mod = loadTsModule('src/utils/scrimbaFacts.ts', { [FACTS_FILE]: readJson(FACTS_FILE) });
   const legacy = legacyScrimbaFacts(courses);
+  // Computed in scrimbaFacts.ts from pathDurations (homepage FAQ range, #141), not stored in catalog-facts.json.
+  const pathHours = Object.values(legacy.pathDurations)
+    .map((p) => parseFloat(/([\d.]+)/.exec(p.duration)?.[1] ?? '0'))
+    .filter((n) => n > 0);
+  legacy.pathDurationHoursRange = { min: Math.floor(Math.min(...pathHours)), max: Math.floor(Math.max(...pathHours)) };
   assert.deepStrictEqual(Object.keys(mod).sort(), Object.keys(legacy).sort());
   for (const [k, v] of Object.entries(legacy)) assert.deepStrictEqual(mod[k], v, k);
 });
