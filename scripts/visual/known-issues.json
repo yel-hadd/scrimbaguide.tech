@@ -1,0 +1,121 @@
+{
+  "_readme": "Ratchet for scripts/visual/{matrix,interactions}.mjs. A finding not listed here fails npm run test:visual; so does an entry that no longer reproduces on a full run (remove it in the PR that fixes it). Add an entry only with a reason and an \"issue\": an ISSUES id, or \"untriaged\" with a reason that says what to check. \"volatile\": true marks a finding that depends on content order (which posts sit on /blog/ page 1), not CSS: it is allowlisted but never reported stale.",
+  "entries": [
+    {
+      "id": "focus-ring:a.cta-link.cta-link--card",
+      "harness": "matrix",
+      "issue": "A11Y-02",
+      "reason": "Seeded from the 2026-09-26 run: AffiliateLink variant=\"card\" has no :focus-visible rule; outline and box-shadow do not change on focus (/, /docs/paths/ai-engineer-path/)."
+    },
+    {
+      "id": "tap-target:a.navbar__brand",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Navbar logo link is 40x32 on touch viewports (every page)."
+    },
+    {
+      "id": "tap-target:button.sg-search-pill",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Mobile search button is 36x36 (every page)."
+    },
+    {
+      "id": "tap-target:a.footer__link-item",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Footer links are 32 to 33px tall on touch viewports (every page)."
+    },
+    {
+      "id": "tap-target:button.footer__link-item.sg-cookie-settings",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Footer Cookie settings button is 27 to 28px tall (every page)."
+    },
+    {
+      "id": "tap-target:a.breadcrumbs__link",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Docs breadcrumb links are 35px tall (stock Docusaurus breadcrumbs, 11 pages)."
+    },
+    {
+      "id": "tap-target:a.tag.tagRegular",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Blog tag pills are 28 to 36px tall (blog list and posts)."
+    },
+    {
+      "id": "tap-target:div.avatar__name a",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Blog author name link is 18px tall (blog list and posts)."
+    },
+    {
+      "id": "tap-target:div.col.text--right a",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Blog list Read more link is 40px tall (/blog/, /blog/page/2/)."
+    },
+    {
+      "id": "tap-target:h2.title a",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Blog list post title links are 31px tall at 768 (/blog/, /blog/page/2/)."
+    },
+    {
+      "id": "tap-target:a.cta-link.cta-link--text",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Standalone text CTA links are 21px tall (/, /docs/pricing/student-discount/, LTC blog post)."
+    },
+    {
+      "id": "tap-target:div.theme-doc-markdown.markdown a",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Docs links that fill a whole list item are 21px tall (8 docs pages); running-text links are exempt."
+    },
+    {
+      "id": "tap-target:div.markdown a",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Blog post link that fills a whole list item is 21px tall at 768 (/blog/how-long-to-learn-web-development-2026/)."
+    },
+    {
+      "id": "tap-target:div.path-landing a",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Paths hub link list items are 21px tall (/docs/paths/)."
+    },
+    {
+      "id": "tap-target:a.button.button--primary",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: Tools hub primary buttons are 35px tall on touch viewports (/tools/)."
+    },
+    {
+      "id": "tap-target:button.code-preview__reset",
+      "harness": "matrix",
+      "issue": "A11Y-04",
+      "reason": "Seeded from the 2026-09-26 run: CodePreview Reset button is 60x31 at 768 (/docs/practice/practice-flexbox/)."
+    },
+    {
+      "id": "focus-ring:div.markdown video",
+      "harness": "matrix",
+      "issue": "untriaged",
+      "reason": "Seeded from the 2026-09-26 run: Native video element shows no outline change on keyboard focus at touch viewports (/blog/scrimba-explain-review/). Triage: CSS reset or harness limit."
+    },
+    {
+      "id": "overlap:a.cta-link.cta-link--text | a.tag.tagRegular",
+      "harness": "matrix",
+      "volatile": true,
+      "issue": "untriaged",
+      "reason": "Seeded from the 2026-09-26 run: Blog list at 360 and 390: the text CTA line box overlaps a tag pill by about 10px vertically (/blog/). Check the capture before fixing."
+    },
+    {
+      "id": "overlap:div.col.text--right a | div.markdown a",
+      "harness": "matrix",
+      "volatile": true,
+      "issue": "untriaged",
+      "reason": "Seeded from the 2026-09-26 run: Blog list at 360: the Read more link overlaps the last excerpt link by 8px vertically (/blog/). Check the capture before fixing."
+    }
+  ]
+}

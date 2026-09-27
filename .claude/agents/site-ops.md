@@ -124,7 +124,7 @@ node scripts/catalog-diff.mjs data/courses.json .seo-cache/drift/data/courses.js
 ```
 
 - `annotations plan` exits 4 when a PR could not be read (the reason is on stderr) and still prints the rows; record the reason in `errors[]`. If you edit a `create` row's title or description, keep it at 60 characters or fewer for the title and free of money; `apply` re-validates.
-- `dims check` exits 3 when a registered dimension is missing.
+- `dims check` exits 3 when a registered dimension or custom metric is missing (`missing` or `missing_metrics` is non-empty).
 - `indexing.py submit` without `--send` is a dry run that prints JSON (`budget`, `deduped`, `plan`, `to_send`, `deferred`). Write the `to_send[].url` values, one absolute URL per line, to `secrets/ops/indexing-plan.txt`:
   `python3 scripts/analytics/indexing.py submit --changed <REF> | python3 -c "import json,sys;print('\n'.join(r['url'] for r in json.load(sys.stdin)['to_send']))" > secrets/ops/indexing-plan.txt`
   An empty file means plan `null`; `deferred` (over budget) goes in `watch[]`. Never pass `--send`.

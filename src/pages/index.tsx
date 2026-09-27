@@ -14,6 +14,7 @@ import {
   freeCountLabel,
   categoryCounts,
   pathDurations,
+  pathDurationHoursRange,
   totalContentHoursLabel,
 } from '../utils/scrimbaFacts';
 import { DEMO_SCRIM_URL, PRO_AFFILIATE_URL } from '../constants';
@@ -29,7 +30,7 @@ function stripForFaqSchema(text: string): string {
 function HeroSection() {
   const stats = [
     { value: totalCoursesLabel, label: 'Courses tracked' },
-    { value: freeCountLabel, label: 'Free, no signup' },
+    { value: freeCountLabel, label: 'Free, no card' },
     { value: '4', label: 'Career paths' },
     { value: totalContentHoursLabel, label: 'Hours of content' },
   ];
@@ -43,6 +44,10 @@ function HeroSection() {
           <p className="hero-section__lead">
             Start by editing a real lesson in your browser. Then use this guide to pick a path,
             see what Pro actually costs, and decide whether it is worth it for how you learn.
+          </p>
+          <p className="hero-section__provenance">
+            This guide comes from reviewing {totalCoursesLabel} Scrimba courses and all 4 paths
+            with a Pro account.
           </p>
           <div className="hero-buttons" role="group" aria-label="Primary actions">
             <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-hero-primary">
@@ -58,10 +63,12 @@ function HeroSection() {
           <p className="hero-section__cta-note">
             No signup, nothing to install. A real lesson opens in your browser in about 30 seconds.
           </p>
+          {/* Trustpilot rating re-checked live 2026-09-26: TrustScore 4.2/5, 77
+              reviews, at https://www.trustpilot.com/review/www.scrimba.com
+              (was 4.3/5; the site had drifted since the last check). */}
           <ul className="hero-section__proof" aria-label="Trust signals">
-            <li>Scrimba has <strong>2M+ learners</strong></li>
             <li>
-              <strong>4.3/5</strong> on{' '}
+              <strong>4.2/5</strong> on{' '}
               <a
                 href="https://www.trustpilot.com/review/www.scrimba.com"
                 target="_blank"
@@ -70,7 +77,7 @@ function HeroSection() {
                 Trustpilot
               </a>
             </li>
-            <li>Frontend path built with <strong>Mozilla MDN</strong></li>
+            <li><strong>MDN</strong> reviewed the Frontend path</li>
           </ul>
           <AffiliateDisclosureClient className="hero-section__trust" />
         </div>
@@ -129,6 +136,10 @@ function ScrimExplainerSection() {
             </AffiliateLink>{' '}
             with no signup.
           </p>
+          <p>
+            For the full rundown of what&apos;s inside Scrimba and how it works, see our{' '}
+            <Link to="/docs/intro/">platform overview</Link>.
+          </p>
         </div>
         <ScrimSandbox />
       </div>
@@ -138,7 +149,7 @@ function ScrimExplainerSection() {
 
 const PATH_DESCRIPTIONS: Record<string, string> = {
   'frontend-developer-path':
-    'From zero to frontend. HTML, CSS, JavaScript, React, and the job-search module. Co-created with Mozilla MDN.',
+    'From zero to frontend. HTML, CSS, JavaScript, React, and the job-search module. MDN reviewed and recommends it.',
   'fullstack-developer-path':
     'The widest track. Frontend plus backend, databases, TypeScript, Next.js, and AI engineering.',
   'backend-developer-path':
@@ -384,11 +395,11 @@ function FAQPreviewSection() {
     },
     {
       q: 'Is Scrimba good for beginners?',
-      a: 'Yes, especially for complete beginners aiming at web development. The Frontend path starts from zero (HTML, CSS, JavaScript) and was built with Mozilla MDN. The pause-and-edit format keeps you typing code instead of passively watching, which is where most beginners stall. It is a weaker fit if you want languages outside the JavaScript and Python world.',
+      a: 'Yes, especially for complete beginners aiming at web development. The Frontend path starts from zero (HTML, CSS, JavaScript), and MDN reviewed and recommends it. The pause-and-edit format keeps you typing code instead of passively watching, which is where most beginners stall. It is a weaker fit if you want languages outside the JavaScript and Python world.',
     },
     {
       q: 'How long does Scrimba take to complete?',
-      a: 'It depends on the path and your pace. The four career paths range from roughly 11 to 108 hours of content. At five hours a week, a shorter path takes a couple of months and the longest closer to half a year. It is self-paced, with no cohort or deadlines, so you set the schedule.',
+      a: `It depends on the path and your pace. The four career paths range from roughly ${pathDurationHoursRange.min} to ${pathDurationHoursRange.max} hours of content. At five hours a week, a shorter path takes a couple of months and the longest closer to half a year. It is self-paced, with no cohort or deadlines, so you set the schedule.`,
     },
     {
       q: 'How does Scrimba compare to a coding bootcamp?',
@@ -493,12 +504,12 @@ function FinalCtaSection() {
         <ScrimbaBlocksArt className="home-final-cta__mark" />
         <h2>One last thing. Open a scrim before you decide anything.</h2>
         <p>
-          Reading about an interactive learning format is the wrong way to evaluate it. The
-          right way takes thirty seconds.
+          Reading about an interactive format won&apos;t tell you if it fits you. Two minutes
+          in the editor will.
         </p>
         <div className="home-pricing__buttons">
           <AffiliateLink href={DEMO_SCRIM_URL} variant="button" location="home-final-cta">
-            Open a 30-second scrim
+            Open a real scrim (2 min)
           </AffiliateLink>
           <Link to="/docs/paths/" className="cta-link cta-link--button home-pricing__outline-btn">
             Or compare the four paths
@@ -510,9 +521,9 @@ function FinalCtaSection() {
 }
 
 const BASE_URL = 'https://scrimbaguide.tech';
-const HOME_PAGE_TITLE = 'Is Scrimba Worth It? Paths, Pricing & Review (2026)';
+const HOME_PAGE_TITLE = 'Scrimba Paths, Pricing & Comparisons';
 const HOME_DESC =
-  'A practical guide to Scrimba. Four career paths broken down, real pricing, side-by-side with Codecademy, Udemy, and freeCodeCamp. For developers picking a platform on substance, not slogans.';
+  "Scrimba reviewed from inside a Pro account: four career paths compared, what's free versus Pro, and Scrimba against Codecademy, Udemy, and freeCodeCamp.";
 // Note: site-level Organization + WebSite + SearchAction JSON-LD is injected globally
 // via headTags in docusaurus.config.ts. Do not redefine it here or the homepage would
 // emit duplicate nodes for @id #organization / #website.
@@ -527,12 +538,12 @@ export default function Home(): React.ReactElement {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={homeTitleFull} />
         <meta property="og:description" content={HOME_DESC} />
-        <meta property="og:url" content={BASE_URL} />
+        <meta property="og:url" content={`${BASE_URL}/`} />
         <meta property="og:image" content={`${BASE_URL}/img/social-card.png`} />
         <meta property="og:site_name" content={siteConfig.title} />
-        <link rel="canonical" href={BASE_URL} />
+        <link rel="canonical" href={`${BASE_URL}/`} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={BASE_URL} />
+        <meta name="twitter:url" content={`${BASE_URL}/`} />
         <meta name="twitter:title" content={homeTitleFull} />
         <meta name="twitter:description" content={HOME_DESC} />
         <meta name="twitter:image" content={`${BASE_URL}/img/social-card.png`} />

@@ -8,11 +8,11 @@
  *   LHCI_FORM_FACTOR=desktop npm run lhci     # desktop preset
  *
  * Assertions:
- *   - accessibility, SEO and best practices are errors at 1.0. Best practices
- *     is asserted here only because this is the local static build; the live
- *     site scores 0.96 for reasons outside the build and is never asserted.
- *   - /blog/ SEO is held at 0.92 (the "Read more" link-text audit) until the
- *     blog-list metadata PR raises it to 1.0.
+ *   - accessibility, SEO and best practices are errors at 1.0 on every page
+ *     (/blog/ reached SEO 1.0 with #125). Best practices is asserted here only
+ *     because this is the local static build; the live site scores 0.96 for
+ *     reasons outside the build (CDN 503s on prefetched chunks) and is never
+ *     asserted.
  *   - LCP, TBT and CLS are warnings on the median of the runs. The numbers
  *     below are placeholders at the Core Web Vitals "good" boundaries. After
  *     14 days of CI runs, replace them with this runner's own week-one medians
@@ -45,14 +45,10 @@ const BUDGETS = {
   cls: 0.1,
 };
 
-// Every URL except the blog index. LHCI tests the pattern against the full
-// http://localhost:<port>/... URL.
-const ALL_BUT_BLOG_INDEX = '^https?://[^/]+/(?!blog/$).*$';
-const BLOG_INDEX = '^https?://[^/]+/blog/$';
-
-const shared = {
+const assertions = {
   'categories:accessibility': ['error', { minScore: 1 }],
   'categories:best-practices': ['error', { minScore: 1 }],
+  'categories:seo': ['error', { minScore: 1 }],
   'largest-contentful-paint': ['warn', { maxNumericValue: BUDGETS.lcpMs }],
   'total-blocking-time': ['warn', { maxNumericValue: BUDGETS.tbtMs }],
   'cumulative-layout-shift': ['warn', { maxNumericValue: BUDGETS.cls }],
@@ -73,24 +69,8 @@ module.exports = {
       },
     },
     assert: {
-      assertMatrix: [
-        {
-          matchingUrlPattern: ALL_BUT_BLOG_INDEX,
-          aggregationMethod: 'median',
-          assertions: {
-            ...shared,
-            'categories:seo': ['error', { minScore: 1 }],
-          },
-        },
-        {
-          matchingUrlPattern: BLOG_INDEX,
-          aggregationMethod: 'median',
-          assertions: {
-            ...shared,
-            'categories:seo': ['error', { minScore: 0.92 }],
-          },
-        },
-      ],
+      aggregationMethod: 'median',
+      assertions,
     },
     upload: {
       target: 'filesystem',

@@ -7,24 +7,36 @@ keywords: [scrimba backend course, scrimba sql, scrimba supabase, scrimba fireba
 slug: /courses/backend
 hideGlobalPricingCta: true
 last_update:
-  date: 2026-09-24
+  date: 2026-09-26
 ---
 
 import PricingCTA from '@site/src/components/PricingCTA';
 import Screenshot from '@site/src/components/Screenshot';
 import AffiliateLink from '@site/src/components/AffiliateLink';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import ItemListSchema from '@site/src/components/ItemListSchema';
 import Link from '@docusaurus/Link';
 
 # Scrimba Backend Courses
 
 <DisclosureNotice />
 
+<ItemListSchema
+  name="Scrimba Backend Courses"
+  description="Every Scrimba backend course: SQL, regular expressions, Supabase, and Firebase."
+  items={[
+    { name: "Learn SQL", url: "/docs/courses/backend/sql/" },
+    { name: "Learn Regular Expressions", url: "/docs/courses/backend/regular-expressions/" },
+    { name: "Intro to Supabase", url: "/docs/courses/backend/supabase/" },
+    { name: "Build a Mobile App with Firebase", url: "/docs/courses/backend/a-mobile-app-with-firebase/" },
+  ]}
+/>
+
 Scrimba's backend catalog is four courses, from a 46-minute regex crash course to the 4.8-hour Supabase build, and every one of them runs on JavaScript and TypeScript. That means a frontend developer can add databases, auth, and persistence without switching languages. Start with the free [Learn SQL](/docs/courses/backend/sql/).
 
 ## Where to start
 
-Database literacy is what separates copy-paste developers from people who can debug a slow query, and it pays off whether you later use raw SQL, Supabase, or Firebase. [Learn SQL](/docs/courses/backend/sql/) (3.8 hrs) is free, runs Postgres in the browser, and is the strongest first step into this hub.
+Database literacy is what separates copy-paste developers from people who can debug a slow query, and it pays off whether you later use raw SQL, Supabase, or Firebase. [Learn SQL](/docs/courses/backend/sql/) (3.8 hrs) is free, runs Postgres in the browser, and is the strongest first step into this hub. Considering the full Backend path instead? Read our [hands-on review of it](/blog/scrimba-backend-path-review/).
 
 <AffiliateLink href="https://scrimba.com/learn-sql-c0aviq0aha" variant="button" location="backend-hub-start">Start Learn SQL for free</AffiliateLink>
 

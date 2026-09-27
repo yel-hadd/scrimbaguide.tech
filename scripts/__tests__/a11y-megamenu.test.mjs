@@ -220,20 +220,35 @@ for (const theme of ['light', 'dark']) {
     
     const ariaExpanded = await toggle.getAttribute('aria-expanded');
     assert.equal(ariaExpanded, 'false', 'aria-expanded should be false initially');
-    
-    // The component emits "true", which ARIA 1.1 defines as equivalent to
-    // "menu". The panel is a disclosure containing a list of links, not a
-    // role=menu widget with menuitem children, so "true" is the honest value;
-    // asserting "menu" would imply keyboard semantics the panel does not
-    // implement (roving arrow focus, Home/End).
+
+    // aria-haspopup is dropped: it was declared without the role=menu/menuitem
+    // structure it implies, which is exactly what components.md flagged. The
+    // toggle is a plain disclosure button, so aria-expanded is enough.
     const ariaHasPopup = await toggle.getAttribute('aria-haspopup');
-    assert.equal(ariaHasPopup, 'true', 'aria-haspopup should be "true"');
-    
+    assert.equal(ariaHasPopup, null, 'aria-haspopup should not be present');
+
+    // aria-controls must not reference an element that does not exist yet:
+    // the panel only mounts when open, so aria-controls is absent until then.
+    const ariaControlsBefore = await toggle.getAttribute('aria-controls');
+    assert.equal(ariaControlsBefore, null, 'aria-controls should be absent while closed');
+
     await toggle.click();
     await page.waitForTimeout(200);
-    
+
     const ariaExpandedAfter = await toggle.getAttribute('aria-expanded');
     assert.equal(ariaExpandedAfter, 'true', 'aria-expanded should be true when open');
+
+    const ariaControlsAfter = await toggle.getAttribute('aria-controls');
+    assert.ok(ariaControlsAfter, 'aria-controls should be set while open');
+    // React's useId can emit colons, which are not valid unescaped in a "#id"
+    // CSS selector, so match by attribute instead.
+    const panel = page.locator(`[id="${ariaControlsAfter}"]`);
+    await assert.doesNotReject(
+      panel.waitFor({ state: 'attached', timeout: 1000 }),
+      'aria-controls should point at the rendered panel',
+    );
+    const panelClass = await panel.getAttribute('class');
+    assert.ok(panelClass?.includes('mega-menu__panel'), 'aria-controls target should be the panel');
   });
 
   test(`10. icons rendered in panel — ${theme}`, async (t) => {

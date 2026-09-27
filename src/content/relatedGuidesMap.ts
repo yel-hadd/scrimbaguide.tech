@@ -644,6 +644,11 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
     { title: 'Do You Need to Learn to Code if AI Writes It?', href: '/blog/do-you-need-to-learn-to-code-if-ai-writes-it', type: 'blog' },
   ],
+  '/docs/changelog/': [
+    { title: "Scrimba Roadmap: What's Coming", href: '/blog/scrimba-roadmap-whats-coming/', type: 'blog' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba FAQ', href: '/docs/faq/', type: 'doc' },
+  ],
 };
 
 const sectionFallbacks: Record<string, RelatedGuide[]> = {
@@ -683,10 +688,28 @@ const sectionFallbacks: Record<string, RelatedGuide[]> = {
     { title: 'All Courses', href: '/docs/courses/', type: 'doc' },
     { title: 'Frontend Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
   ],
+  '/docs/help/': [
+    { title: 'Scrimba FAQ', href: '/docs/faq/', type: 'doc' },
+    { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
+    { title: 'Scrimba Review', href: '/blog/scrimba-review/', type: 'blog' },
+  ],
+  '/docs/how-it-works/': [
+    { title: 'Scrimba FAQ', href: '/docs/faq/', type: 'doc' },
+    { title: 'Scrimba Review', href: '/blog/scrimba-review/', type: 'blog' },
+    { title: 'Who Scrimba Is For', href: '/docs/for/', type: 'doc' },
+  ],
+  '/docs/for/': [
+    { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path/', type: 'doc' },
+    { title: 'Is Scrimba Free? Pro vs Free', href: '/docs/pricing/pro-vs-free/', type: 'doc' },
+    { title: 'Scrimba Review', href: '/blog/scrimba-review/', type: 'blog' },
+  ],
 };
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const catalog = require('../../data/courses.json') as Array<{
+// data/catalog-lite.json is derived from courses.json by scripts/derive-catalog.mjs
+// and holds only the fields read below, so the full catalog stays out of the
+// DocItem and BlogPost chunks.
+const catalog = require('../../data/catalog-lite.json') as Array<{
   cleanName: string;
   docSlug: string;
   category: string;

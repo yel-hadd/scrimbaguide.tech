@@ -43,7 +43,7 @@ Run `/site-health post-merge <PR number>`. It watches the deploy, checks the cha
 | `/daily-post [topic]` | One researched post or refresh, as a PR | When you want content |
 | `npm run snapshot` | Pulls GA4 + Search Console into `.seo-cache/analytics-snapshot.json` | The skills run it for you |
 | `python3 scripts/analytics/ga4admin.py annotations plan --prs <n>` | Shows the annotation a PR would get | Before applying by hand |
-| `python3 scripts/analytics/ga4admin.py dims check` | Confirms every tracked parameter has a GA4 custom dimension | After tracking changes |
+| `python3 scripts/analytics/ga4admin.py dims check` | Confirms every tracked parameter has a GA4 custom dimension or custom metric | After tracking changes |
 | `python3 scripts/analytics/indexing.py submit --changed <sha>` | Dry run of an Indexing API submission (`--send` to send) | Rarely by hand |
 | `make dev` / `make build` | Local preview / production build | Development |
 
