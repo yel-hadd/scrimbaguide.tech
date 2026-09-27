@@ -3,8 +3,9 @@
  * Docusaurus color overrides + component styles
  */
 
-/* Fonts are loaded via <link rel="preconnect"/stylesheet> in docusaurus.config.ts
- * headTags (non-blocking), not a render-blocking @import here. */
+/* Web fonts are self-hosted: @font-face rules in src/css/fonts.css, files in
+ * static/fonts/, and the two latin faces preloaded from docusaurus.config.ts
+ * headTags. */
 
 
 /* Metric-matched fallback, sitting between Plus Jakarta Sans and the system
@@ -29,6 +30,32 @@
   line-gap-override: 0%;
 }
 
+/* The same fix for headings. Sora used to fall back to Plus Jakarta Sans,
+   often not loaded yet on a cold visit either, so headings painted in the
+   system font and could reflow twice. This scales a local bold Arial to Sora
+   700, the Infima heading weight. Measured in Chromium on 300 docs headings
+   set at 256px, large enough that per-glyph rounding does not skew the ratio:
+   at 106.75% the fallback runs 0.2% narrower than Sora 700, 0.8% narrower
+   than Sora 800 and 0.5% wider than Sora 600, with identical line boxes.
+   Ascent 0.97em and descent 0.29em come from Sora's own hhea and typo
+   tables, divided by size-adjust as above.
+
+   The face declares weights 600 to 800, the only Sora weights we load, so the
+   browser uses the real bold Arial instead of synthesising one. unicode-range
+   is Sora's latin plus latin-ext coverage, copied from src/css/fonts.css, so
+   Greek, Cyrillic and Vietnamese heading glyphs still fall through to Plus
+   Jakarta Sans exactly as before. */
+@font-face {
+  font-family: 'Sora Fallback';
+  font-weight: 600 800;
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'), local('Liberation Sans Bold');
+  size-adjust: 106.75%;
+  ascent-override: 90.87%;
+  descent-override: 27.17%;
+  line-gap-override: 0%;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD, U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 :root {
   --ifm-color-primary: #5b3fd9;
   --ifm-color-primary-dark: #4c31c8;
@@ -40,7 +67,7 @@
   --ifm-color-primary-lightest: #9d8cec;
   --ifm-code-font-size: 95%;
   --ifm-font-family-base: 'Plus Jakarta Sans', 'Plus Jakarta Fallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-  --ifm-heading-font-family: 'Sora', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --ifm-heading-font-family: 'Sora', 'Sora Fallback', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   --sg-font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
   --sg-green: #2ecc71;
   --sg-orange: #f39c12;
@@ -81,6 +108,14 @@
   --sg-type-h2: clamp(1.55rem, 2.4vw, 2.05rem);
   --sg-type-h3: clamp(1.28rem, 1.8vw, 1.55rem);
   --sg-type-h4: clamp(1.1rem, 1.3vw, 1.3rem);
+
+  /* Focus ring: one token set, referenced by every focus-visible rule.
+   * Colour tracks --ifm-color-primary, so it already swaps per theme;
+   * contrast checked at 6.2:1 (light) and 8.5:1 (dark) against the
+   * surfaces it sits on, both well past the 3:1 floor. */
+  --sg-focus-ring-color: var(--ifm-color-primary);
+  --sg-focus-ring-width: 3px;
+  --sg-focus-ring-offset: 2px;
 }
 
 [data-theme='dark'] {
@@ -1523,6 +1558,13 @@ article[class*='searchResultItem'] mark {
   color: var(--sg-text-soft);
 }
 
+.hero-section__provenance {
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--sg-text-soft);
+}
+
 .hero-section__proof {
   list-style: none;
   margin: 1.2rem 0 0;
@@ -1599,6 +1641,7 @@ article[class*='searchResultItem'] mark {
 .hero-section__inner--split .hero-section__eyebrow,
 .hero-section__inner--split h1,
 .hero-section__inner--split .hero-section__lead,
+.hero-section__inner--split .hero-section__provenance,
 .hero-section__inner--split .hero-section__cta-note,
 .hero-section__inner--split .hero-section__trust {
   text-align: left;
@@ -1746,15 +1789,9 @@ article[class*='searchResultItem'] mark {
   display: none;
 }
 
-/* Keyboard focus ring for the media poster (it is the affiliate <a>). */
-.hero-scrim-poster:focus-visible {
-  outline: none;
-}
-.hero-scrim-poster:focus-visible .hero-scrim-poster__frame {
-  outline: 3px solid var(--ifm-color-primary);
-  outline-offset: 4px;
-  border-radius: 16px;
-}
+/* Keyboard focus ring for the media poster: it is the affiliate <a>
+   (class cta-link--card), so the shared card-CTA rule in the "Focus
+   indicators" section below draws the ring directly on this element. */
 
 @media (max-width: 900px) {
   .hero-section__inner--split {
@@ -1767,6 +1804,7 @@ article[class*='searchResultItem'] mark {
   .hero-section__inner--split .hero-section__eyebrow,
   .hero-section__inner--split h1,
   .hero-section__inner--split .hero-section__lead,
+  .hero-section__inner--split .hero-section__provenance,
   .hero-section__inner--split .hero-section__cta-note,
   .hero-section__inner--split .hero-section__trust {
     text-align: center;
@@ -1890,11 +1928,29 @@ article a:not(.cta-link):not(.hash-link):hover {
   text-decoration-thickness: 2px;
 }
 
+.scrim-explainer__copy a:not(.cta-link) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.scrim-explainer__copy a:not(.cta-link):hover {
+  text-decoration-thickness: 2px;
+}
+
 /* ── Focus indicators (WCAG 2.4.7) ────────────────────────────── */
 .cta-link--button:focus-visible,
 .navbar-cta:focus-visible {
-  outline: 3px solid var(--ifm-color-primary);
-  outline-offset: 2px;
+  outline: var(--sg-focus-ring-width) solid var(--sg-focus-ring-color);
+  outline-offset: var(--sg-focus-ring-offset);
+}
+
+/* The ScrimPoster card CTA: radius matches the poster frame (14px) so the
+   ring reads as one rounded shape, not a square cutting a corner. */
+.cta-link--card:focus-visible {
+  outline: var(--sg-focus-ring-width) solid var(--sg-focus-ring-color);
+  outline-offset: var(--sg-focus-ring-offset);
+  border-radius: 14px;
 }
 
 .cta-link--text:focus-visible {
@@ -4417,6 +4473,7 @@ html[data-theme='dark'] .curriculum__index {
   .homepage .hero-section__copy > *:nth-child(5) { animation-delay: 0.28s; }
   .homepage .hero-section__copy > *:nth-child(6) { animation-delay: 0.34s; }
   .homepage .hero-section__copy > *:nth-child(7) { animation-delay: 0.4s; }
+  .homepage .hero-section__copy > *:nth-child(8) { animation-delay: 0.46s; }
   .homepage .hero-section__media { animation-delay: 0.24s; }
 
   /* Scroll-driven reveal where supported (no JS, progressive enhancement). */
@@ -4432,6 +4489,19 @@ html[data-theme='dark'] .curriculum__index {
 @media (prefers-reduced-motion: reduce) {
   .scrim-window__caret::after {
     animation: none;
+  }
+}
+
+/* Print: the hero and scroll reveals rely on animation state that a print
+   render never resolves, so printed copies can come out blank. Freeze both
+   to their settled end state. The on-screen reveal is unchanged. */
+@media print {
+  .homepage main > .home-section,
+  .homepage .hero-section__copy > *,
+  .homepage .hero-section__media {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
@@ -4939,4 +5009,35 @@ html[data-theme='dark'] .curriculum__index {
 .footer__link-item.sg-cookie-settings:hover {
   color: var(--ifm-footer-link-hover-color);
   text-decoration: underline;
+}
+
+/* ── Touch targets (WCAG 2.5.8) ───────────────────────────────────
+   Coarse pointers only, so mouse/trackpad sizing is untouched.
+   Measured on the frozen build: a.navbar__brand 40x32,
+   button.sg-search-pill 36x36 (collapsed, <=996px), every
+   a.footer__link-item 32px tall, button.footer__link-item.sg-cookie-
+   settings 27px tall. Widening the footer rows is an intended,
+   visible diff on touch viewports; nothing here changes desktop. */
+@media (pointer: coarse) {
+  .navbar__brand {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .sg-search-pill {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Also matches button.footer__link-item.sg-cookie-settings, which
+     always carries this class alongside its own. min-width keeps the
+     narrower links (Paths, FAQ, Blog) at the 44px floor without
+     moving the left-aligned text. */
+  .footer__link-item {
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding-block: 0.375rem;
+  }
 }

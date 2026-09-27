@@ -46,3 +46,16 @@ export const totalContentHoursLabel = `${Math.floor(totalContentHours / 50) * 50
 /** Human-readable count string, e.g. "87+" or "19" */
 export const totalCoursesLabel = `${totalCourses}+`;
 export const freeCountLabel = `${freeCount}+`;
+
+/**
+ * Floor(min) and floor(max) path duration in hours, derived from pathInfo.duration
+ * across the four career paths (e.g. 11 to 108). Used so the homepage FAQ's hour
+ * range tracks the catalog instead of being hardcoded.
+ */
+const pathDurationHours = Object.values(pathDurations)
+  .map((p) => parseFloat(/([\d.]+)/.exec(p.duration)?.[1] ?? '0'))
+  .filter((n) => n > 0);
+export const pathDurationHoursRange = {
+  min: Math.floor(Math.min(...pathDurationHours)),
+  max: Math.floor(Math.max(...pathDurationHours)),
+};

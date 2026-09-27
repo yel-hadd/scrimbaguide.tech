@@ -1,6 +1,9 @@
+// ejected from @docusaurus/theme-classic 3.9.2; re-diff on upgrade
 /**
- * Swizzled BlogPostPage: renders the desktop sticky CTA (money pages only) after
- * the post body. The end-of-post conversion CTA is authored per post in MDX.
+ * Swizzled BlogPostPage: renders breadcrumbs (Home > Blog > title, with the
+ * post's only BreadcrumbList) above the post, and the desktop sticky CTA
+ * (money pages only) after the post body. The end-of-post conversion CTA is
+ * authored per post in MDX.
  */
 import React, { type ReactNode } from 'react';
 import clsx from 'clsx';
@@ -14,6 +17,7 @@ import BlogPostPageMetadata from '@theme/BlogPostPage/Metadata';
 import TOC from '@theme/TOC';
 import ContentVisibility from '@theme/ContentVisibility';
 import DesktopStickyCTA from '@site/src/components/DesktopStickyCTA';
+import BlogPostBreadcrumbs from '@site/src/components/BlogPostBreadcrumbs';
 
 function BlogPostPageContent({
   sidebar,
@@ -23,7 +27,7 @@ function BlogPostPageContent({
   children: ReactNode;
 }): React.ReactElement {
   const { metadata, toc } = useBlogPost();
-  const { nextItem, prevItem, frontMatter } = metadata;
+  const { nextItem, prevItem, frontMatter, title, permalink } = metadata;
   const {
     hide_table_of_contents: hideTableOfContents,
     toc_min_heading_level: tocMinHeadingLevel,
@@ -44,6 +48,8 @@ function BlogPostPageContent({
       }
     >
       <ContentVisibility metadata={metadata} />
+
+      <BlogPostBreadcrumbs title={title} permalink={permalink} />
 
       <BlogPostItem>{children}</BlogPostItem>
 

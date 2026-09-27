@@ -23,7 +23,22 @@ function violationsSummary(violations) {
   }).join('\n');
 }
 
+// Scrolls the full page height before running axe. A 1280x900 viewport never
+// reveals below-the-fold content on its own, and axe only inspects what is
+// laid out and visible at scan time — a link-in-text-block or color-contrast
+// problem past the fold can pass here and still fail for a real visitor.
+async function scrollFullPage(page) {
+  await page.evaluate(async () => {
+    for (let y = 0; y < document.body.scrollHeight; y += 600) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 50));
+    }
+    window.scrollTo(0, 0);
+  });
+}
+
 async function assertNoAxeViolations(page, label) {
+  await scrollFullPage(page);
   const results = await new AxeBuilder({ page }).analyze();
   const violations = results.violations.filter(
     (v) => v.impact === 'critical' || v.impact === 'serious',
