@@ -194,6 +194,20 @@ for (const theme of ['light', 'dark']) {
     assert.equal(focusedOnPill, true, `close button (${theme}): focus did not return to .sg-search-pill`);
   });
 
+  test(`7b. close modal via backdrop click — ${theme}`, async (t) => {
+    const page = await pageInTheme(t, theme);
+    await openSearch(page);
+    // A corner of the overlay outside the modal card; the modal itself
+    // stops propagation, so this only hits the backdrop's own onClick.
+    await page.mouse.click(5, 5);
+    await page.waitForSelector('.sg-search-overlay', { state: 'detached', timeout: 2000 });
+    await assertNoAxeViolations(page, `post-backdrop-click (${theme})`);
+    const focusedOnPill = await page.evaluate(
+      () => document.activeElement?.classList.contains('sg-search-pill') ?? false,
+    );
+    assert.equal(focusedOnPill, true, `backdrop click (${theme}): focus did not return to .sg-search-pill`);
+  });
+
   test(`9. See all does not restore focus to the pill — ${theme}`, async (t) => {
     const page = await pageInTheme(t, theme);
     await openSearch(page);
@@ -202,8 +216,9 @@ for (const theme of ['light', 'dark']) {
     await page.waitForSelector('.sg-search-result', { timeout: 5000 });
     await page.click('.sg-search-footer-link', { timeout: 3000 });
     await page.waitForFunction("window.location.pathname.startsWith('/search')", { timeout: 5000 });
-    // Route navigation must win here: the search pill on the new page is a
-    // different element, so it must not be the one holding focus.
+    // handleSeeAll() does not call closeSearch({ restoreFocus: true }), so
+    // nothing here schedules a focus move onto the pill; route focus
+    // management on the /search page owns focus instead.
     const focusedOnPill = await page.evaluate(
       () => document.activeElement?.classList.contains('sg-search-pill') ?? false,
     );

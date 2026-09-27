@@ -69,6 +69,7 @@ export default function SearchBar(): React.ReactElement {
 
   const inputRef = useRef<HTMLInputElement>(null);
   const pillRef = useRef<HTMLButtonElement>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const rawGrouped = useMemo(() => {
@@ -139,6 +140,7 @@ export default function SearchBar(): React.ReactElement {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const openSearch = useCallback(() => {
+    returnFocusRef.current = document.activeElement as HTMLElement | null;
     setOpen(true);
     setQuery('');
     setResults(null);
@@ -149,10 +151,13 @@ export default function SearchBar(): React.ReactElement {
   }, []);
 
   // restoreFocus only applies to a dismissal that leaves the reader on the
-  // same page (Escape, backdrop, close button): the search pill is where
-  // focus was before the dialog opened, and it is what a keyboard user
-  // expects next. navigate() and handleSeeAll() move to a new route, where
-  // Docusaurus's own route focus management must win instead.
+  // same page (Escape, backdrop, close button). The Ctrl/Cmd+K shortcut can
+  // open the dialog from any focused element, not just the pill, so we send
+  // focus back to whatever had it before openSearch() ran, falling back to
+  // the pill when that element is gone (e.g. unmounted behind a route
+  // change) or was never anything more specific than the body. navigate()
+  // and handleSeeAll() move to a new route, where Docusaurus's own route
+  // focus management must win instead.
   const closeSearch = useCallback((opts?: { restoreFocus?: boolean }) => {
     setOpen(false);
     setQuery('');
@@ -161,7 +166,10 @@ export default function SearchBar(): React.ReactElement {
     setActiveFilter('All');
     document.body.style.overflow = '';
     if (opts?.restoreFocus) {
-      setTimeout(() => pillRef.current?.focus(), 0);
+      setTimeout(() => {
+        const el = returnFocusRef.current;
+        (el && el.isConnected && el !== document.body ? el : pillRef.current)?.focus();
+      }, 0);
     }
   }, []);
 
