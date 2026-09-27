@@ -205,6 +205,14 @@ const config: Config = {
           blogSidebarCount: 'ALL',
           blogSidebarTitle: 'All Blog Posts',
           postsPerPage: 10,
+          // Feeds BlogListPage's `${blogTitle}, Page N of M` pagination title and
+          // the plain "Blog" head description Lighthouse and GSC were flagging on
+          // /blog/. Must never contain "Scrimba Guide": the site template appends
+          // " | Scrimba Guide" to every page title. The feed title stays separate
+          // (feedOptions.title below) and does not change.
+          blogTitle: 'Scrimba Course Reviews',
+          blogDescription:
+            "Scrimba course and path reviews from inside a Pro account: what's free, what to take first, and how Scrimba compares to Udemy, Codecademy, and freeCodeCamp.",
           feedOptions: {
             type: ['rss', 'atom'],
             title: 'Scrimba Guide Blog',
@@ -247,7 +255,7 @@ const config: Config = {
           },
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: ['./src/css/fonts.css', './src/css/custom.css'],
         },
       } satisfies Preset.Options,
     ],
@@ -522,21 +530,29 @@ const config: Config = {
       tagName: 'link',
       attributes: { rel: 'preconnect', href: 'https://scrimba.com' },
     },
-    // Fonts: preconnect + non-blocking stylesheet beats the render-blocking
-    // @import that used to live at the top of custom.css.
+    // Fonts are self-hosted (src/css/fonts.css, static/fonts/). Preload only
+    // the two latin faces every page paints with: body text and headings.
+    // Other subsets and JetBrains Mono load on demand through unicode-range.
+    // Font preloads are CORS requests even on our own origin, so crossorigin
+    // is required or the browser fetches each file twice.
     {
       tagName: 'link',
-      attributes: { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    },
-    {
-      tagName: 'link',
-      attributes: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
+      attributes: {
+        rel: 'preload',
+        href: '/fonts/plus-jakarta-sans/latin.woff2',
+        as: 'font',
+        type: 'font/woff2',
+        crossorigin: 'anonymous',
+      },
     },
     {
       tagName: 'link',
       attributes: {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap',
+        rel: 'preload',
+        href: '/fonts/sora/latin.woff2',
+        as: 'font',
+        type: 'font/woff2',
+        crossorigin: 'anonymous',
       },
     },
   ],
@@ -557,6 +573,11 @@ const config: Config = {
       logo: {
         alt: 'Scrimba Guide logo',
         src: 'img/logo.svg',
+        // Rendered size measured on the frozen build (img rendered 32x32);
+        // reserving it holds the layout so the logo stops causing a scroll-pass
+        // shift (0.06-0.3 recorded on mobile/tablet before this fix).
+        width: 32,
+        height: 32,
       },
       items: [
         // Top level = the decision funnel: pick a path or course, check the
@@ -585,6 +606,9 @@ const config: Config = {
         {
           // Same interactive demo scrim as the homepage hero CTA. Uses the shared
           // constant because navbar hrefs do not route through <AffiliateLink>.
+          // The custom type (src/theme/NavbarItem/ComponentTypes.tsx) renders the
+          // stock item and sends affiliate_link_clicked (cta_type "navbar").
+          type: 'custom-affiliateCta',
           href: DEMO_SCRIM_URL_AFFILIATE,
           label: 'Try Scrimba for free',
           position: 'right',

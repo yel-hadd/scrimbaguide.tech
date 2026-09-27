@@ -1,3 +1,4 @@
+// ejected from @docusaurus/theme-classic 3.9.2; re-diff on upgrade
 import React from 'react';
 import Link from '@docusaurus/Link';
 import {PageMetadata} from '@docusaurus/theme-common';

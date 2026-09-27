@@ -11,6 +11,7 @@ scrimbaguide.tech is a first-hand review site for Scrimba courses and paths (Doc
     npm run check:content                               # content gate, also the prebuild step
     node scripts/audit-course-links.mjs --file <path>   # unlinked course names and raw scrimba.com URLs
     node --test scripts/__tests__/<file>.test.mjs
+    npm run check:metadata                              # head/JSON-LD invariants on build/; ratchet in scripts/check-built-metadata.known-issues.json
     npm run snapshot                                    # GA4 + GSC snapshot to .seo-cache/ (needs secrets/gsc-service-account.json)
     npm run test:analytics                              # Python and Node tests for scripts/analytics
     /site-analytics                                     # traffic, conversion, SEO and affiliate questions; monthly Site Report
@@ -21,7 +22,7 @@ Everything else is in `package.json` and the `Makefile`. Local social-card build
 ## Architecture you cannot see at a glance
 
 - Every page is hand-authored MDX: edit `docs/**`, `blog/**`, `src/pages/**` directly. Page generation was retired on purpose.
-- Catalog facts flow `scraper/scrape.py` -> `output/` -> `scripts/build-data.mjs` -> `data/courses.json` -> `CourseCard`, `CourseCurriculum`, `src/utils/scrimbaFacts.ts`. `data/courses.json` is generated: never edit it by hand. Stale numbers: re-scrape (`make scrape`, or `.venv/bin/python scraper/scrape.py --urls <file> --output output`, which merges into the existing index) then `make generate-data`. Path membership comes only from `data/path-membership.json` (verified inside Scrimba by lesson-title matching; re-verify when a path changes). A course's `category` is the `docs/courses/<folder>/` its page lives in. Other facts the scraper gets wrong (projects) go in `data/course-overrides.json`, verified on the live page. Then copy changed numbers into component props. The four path durations are hardcoded in the `PATHS` table in `build-data.mjs`.
+- Catalog facts flow `scraper/scrape.py` -> `output/` -> `scripts/build-data.mjs` -> `data/courses.json` -> `CourseCard`, `CourseCurriculum`, `src/utils/scrimbaFacts.ts`. `data/courses.json` is generated: never edit it by hand. Stale numbers: re-scrape (`make scrape`, or `.venv/bin/python scraper/scrape.py --urls <file> --output output`, which merges into the existing index) then `make generate-data`. Path membership comes only from `data/path-membership.json` (verified inside Scrimba by lesson-title matching; re-verify when a path changes). A course's `category` is the `docs/courses/<folder>/` its page lives in. Other facts the scraper gets wrong (projects) go in `data/course-overrides.json`, verified on the live page. Then copy changed numbers into component props. The four path durations are hardcoded in the `PATHS` table in `build-data.mjs`. Client code never imports `courses.json`: `scrimbaFacts.ts` reads `data/catalog-facts.json` and `relatedGuidesMap.ts` reads `data/catalog-lite.json`, both generated from it by `scripts/derive-catalog.mjs` (pure, run by `build-data.mjs`, checked by `check:content`); never edit them by hand.
 - `src/content/relatedGuidesMap.ts` owns the auto-mounted "Related guides" block, keyed by route. Update it when you add or move a page. Prose mentions are still links (see Links).
 - `src/utils/moneyPagePaths.ts` is the only list of money pages (they get the desktop sticky CTA). Read it; never restate it.
 - `src/theme/DocItem/Layout` auto-injects a `PricingCTA` at the end of every doc except `/docs/pricing/*`, `/docs/courses/*` and comparison leaves. A page that authors its own end CTA sets `hideGlobalPricingCta: true`.
@@ -34,6 +35,7 @@ Everything else is in `package.json` and the `Makefile`. Local social-card build
 - Sitemap exclusions go in `SITEMAP_EXCLUDED_PATHS` / `SITEMAP_EXCLUDED_DOC_ALIASES`, priority in `sitemapPriority()` (both in `docusaurus.config.ts`).
 - Consolidate with a redirect (inline in the config, or `data/course-redirects.json` for courses) plus a `draft: true` stub. Pages are merged, never deleted; URLs and slugs never change without a redirect.
 - Blog JSON-LD components (`ReviewSchema`, `HowToSchema`, `ItemListSchema`) sit below `{/* truncate */}`, or they duplicate onto every list page.
+- Breadcrumbs: docs get the stock Docusaurus trail and BreadcrumbList; blog posts get `BlogPostBreadcrumbs` from the swizzled `BlogPostPage`. Never add a second trail or a `breadcrumb` property that restates it (`check:metadata` fails on more than one).
 - `<FAQAccordion>` emits the page's only FAQPage schema. A page that also uses `DocFaqSchema` passes `emitSchema={false}`.
 - Frontmatter `description` is 160 characters or fewer; set `last_update.date` to today on every page whose content you change.
 - A red post-deploy step usually means a sitemap or canonical regression, not a build failure.
@@ -77,6 +79,7 @@ One primary CTA where intent peaks, at most one secondary, at least two prose pa
 
 | Page type | Primary | Secondary |
 |---|---|---|
+| Homepage | Hero start unit: the demo-scrim button plus the hero `ScrimPoster` to the same demo scrim, counted as one | Pro button in the pricing block. The closing block may repeat the primary's destination as its only counted CTA, at least three sections below the secondary |
 | Course leaf | start button closing "Who it's for" | `CourseCard` in the opening |
 | Course hub | free-start button to the first course, end of "Where to start" | `PricingCTA ctaType="free"` at the end |
 | Path page | path `CourseCard` after the verdict | `ScrimPoster` (free sample lesson) in the opening |
@@ -92,6 +95,8 @@ Research-mode pages carry nothing in the first screen. `ScrimPoster` uses existi
 ## Gates before a commit
 
 `npm run check:content` (em-dashes, Scrimba prices, stale Backend hours), `npm run typecheck`, the link audit on touched files, and `make build` when links changed (broken links fail the build).
+
+A change to CSS, layout or an interactive component also runs `npm run test:visual` against a served build (`npx docusaurus serve --port 3100`): a new finding is fixed or added to `scripts/visual/known-issues.json` with a reason, and a fixed one leaves that file in the same PR.
 
 ## Skills
 
