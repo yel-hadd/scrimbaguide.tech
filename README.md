@@ -51,7 +51,7 @@ Run `/site-health post-merge <PR number>`. It watches the deploy, checks the cha
 
 **Always use the Humans view.** Bots from Singapore, China and "(not set)" inflate raw GA4 traffic. In the collection's reports and anywhere else in GA4, turn on the saved comparison **Humans** (Explorations use the segment **Humans**). The snapshot and `/site-analytics` apply the same filter for you.
 
-**The one key event is `affiliate_link_clicked`.** It fires on every Scrimba and Udemy link rendered through `<AffiliateLink>` (all in-page CTAs; the navbar "Try Scrimba for free" button is not tracked as a key event) and carries:
+**The one key event is `affiliate_link_clicked`.** It fires on every Scrimba and Udemy link rendered through `<AffiliateLink>` (all in-page CTAs) and on the navbar "Try Scrimba for free" button (`cta_type` navbar, since 2026-09-27, #126) and carries:
 - `cta_type`: the format (`pricing-cta`, `course-card`, `sticky`, `inline-text`, and so on);
 - `cta_location`: the exact placement on the page;
 - `destination_type` / `destination_slug`: where the click goes (course, path, pricing, demo, udemy, ...);
