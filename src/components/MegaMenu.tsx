@@ -183,7 +183,6 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
         <div
           id={panelId}
           className="mega-menu__panel"
-          aria-label={`${label} menu`}
           onMouseEnter={cancelCloseTimer}
           onMouseLeave={handleMouseLeave}
         >
