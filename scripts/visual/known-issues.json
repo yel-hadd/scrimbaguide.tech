@@ -2,36 +2,6 @@
   "_readme": "Ratchet for scripts/visual/{matrix,interactions}.mjs. A finding not listed here fails npm run test:visual; so does an entry that no longer reproduces on a full run (remove it in the PR that fixes it). Add an entry only with a reason and an \"issue\": an ISSUES id, or \"untriaged\" with a reason that says what to check. \"volatile\": true marks a finding that depends on content order (which posts sit on /blog/ page 1), not CSS: it is allowlisted but never reported stale.",
   "entries": [
     {
-      "id": "focus-ring:a.cta-link.cta-link--card",
-      "harness": "matrix",
-      "issue": "A11Y-02",
-      "reason": "Seeded from the 2026-09-26 run: AffiliateLink variant=\"card\" has no :focus-visible rule; outline and box-shadow do not change on focus (/, /docs/paths/ai-engineer-path/)."
-    },
-    {
-      "id": "tap-target:a.navbar__brand",
-      "harness": "matrix",
-      "issue": "A11Y-04",
-      "reason": "Seeded from the 2026-09-26 run: Navbar logo link is 40x32 on touch viewports (every page)."
-    },
-    {
-      "id": "tap-target:button.sg-search-pill",
-      "harness": "matrix",
-      "issue": "A11Y-04",
-      "reason": "Seeded from the 2026-09-26 run: Mobile search button is 36x36 (every page)."
-    },
-    {
-      "id": "tap-target:a.footer__link-item",
-      "harness": "matrix",
-      "issue": "A11Y-04",
-      "reason": "Seeded from the 2026-09-26 run: Footer links are 32 to 33px tall on touch viewports (every page)."
-    },
-    {
-      "id": "tap-target:button.footer__link-item.sg-cookie-settings",
-      "harness": "matrix",
-      "issue": "A11Y-04",
-      "reason": "Seeded from the 2026-09-26 run: Footer Cookie settings button is 27 to 28px tall (every page)."
-    },
-    {
       "id": "tap-target:a.breadcrumbs__link",
       "harness": "matrix",
       "issue": "A11Y-04",
