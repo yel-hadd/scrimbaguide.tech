@@ -644,7 +644,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
     { title: 'Do You Need to Learn to Code if AI Writes It?', href: '/blog/do-you-need-to-learn-to-code-if-ai-writes-it', type: 'blog' },
   ],
-  '/changelog': [
+  '/docs/changelog/': [
     { title: "Scrimba Roadmap: What's Coming", href: '/blog/scrimba-roadmap-whats-coming/', type: 'blog' },
     { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
     { title: 'Scrimba FAQ', href: '/docs/faq/', type: 'doc' },
@@ -696,7 +696,7 @@ const sectionFallbacks: Record<string, RelatedGuide[]> = {
   '/docs/how-it-works/': [
     { title: 'Scrimba FAQ', href: '/docs/faq/', type: 'doc' },
     { title: 'Scrimba Review', href: '/blog/scrimba-review/', type: 'blog' },
-    { title: 'Who Scrimba Is For', href: '/for/', type: 'doc' },
+    { title: 'Who Scrimba Is For', href: '/docs/for/', type: 'doc' },
   ],
   '/docs/for/': [
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path/', type: 'doc' },
