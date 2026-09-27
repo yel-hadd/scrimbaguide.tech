@@ -35,6 +35,7 @@ Everything else is in `package.json` and the `Makefile`. Local social-card build
 - Sitemap exclusions go in `SITEMAP_EXCLUDED_PATHS` / `SITEMAP_EXCLUDED_DOC_ALIASES`, priority in `sitemapPriority()` (both in `docusaurus.config.ts`).
 - Consolidate with a redirect (inline in the config, or `data/course-redirects.json` for courses) plus a `draft: true` stub. Pages are merged, never deleted; URLs and slugs never change without a redirect.
 - Blog JSON-LD components (`ReviewSchema`, `HowToSchema`, `ItemListSchema`) sit below `{/* truncate */}`, or they duplicate onto every list page.
+- Breadcrumbs: docs get the stock Docusaurus trail and BreadcrumbList; blog posts get `BlogPostBreadcrumbs` from the swizzled `BlogPostPage`. Never add a second trail or a `breadcrumb` property that restates it (`check:metadata` fails on more than one).
 - `<FAQAccordion>` emits the page's only FAQPage schema. A page that also uses `DocFaqSchema` passes `emitSchema={false}`.
 - Frontmatter `description` is 160 characters or fewer; set `last_update.date` to today on every page whose content you change.
 - A red post-deploy step usually means a sitemap or canonical regression, not a build failure.
