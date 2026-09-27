@@ -109,6 +109,10 @@ test-a11y: ## Build site and run axe-core accessibility tests
 	npm run build
 	npm run test:a11y
 
+.PHONY: test-catalog
+test-catalog: ## Run the catalog-derivation tests (no build needed)
+	npm run test:catalog
+
 .PHONY: test-analytics
 test-analytics: ## Run the analytics data-layer tests (Python + Node), no network
 	npm run test:analytics

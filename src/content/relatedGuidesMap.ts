@@ -706,7 +706,10 @@ const sectionFallbacks: Record<string, RelatedGuide[]> = {
 };
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const catalog = require('../../data/courses.json') as Array<{
+// data/catalog-lite.json is derived from courses.json by scripts/derive-catalog.mjs
+// and holds only the fields read below, so the full catalog stays out of the
+// DocItem and BlogPost chunks.
+const catalog = require('../../data/catalog-lite.json') as Array<{
   cleanName: string;
   docSlug: string;
   category: string;

@@ -14,6 +14,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { staleCatalogFiles } from './derive-catalog.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SCAN_DIRS = ['docs', 'blog', 'src/pages', 'src/components', 'src/content'];
@@ -196,6 +197,12 @@ function main() {
     }
   }
 
+  // The client reads derived subsets of the catalog; a stale one would show
+  // old counts or related-guide links after a re-scrape.
+  for (const file of staleCatalogFiles(path.join(ROOT, 'data'))) {
+    violations.push(`data/${file} is stale against data/courses.json (run node scripts/derive-catalog.mjs; never hand-edit it)`);
+  }
+
   if (warnings.length) {
     console.warn(`Content warnings (${warnings.length}, not blocking):`);
     for (const w of warnings) console.warn('  ' + w);
@@ -206,7 +213,7 @@ function main() {
     for (const v of violations) console.error('  ' + v);
     process.exit(1);
   }
-  console.log('Content guardrails passed: no em-dashes, Scrimba price leaks, stale Backend hours, over-long alt/caption text, over-long descriptions, or non-course catalog URLs.');
+  console.log('Content guardrails passed: no em-dashes, Scrimba price leaks, stale Backend hours, over-long alt/caption text, over-long descriptions, non-course catalog URLs, or stale derived catalog files.');
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
