@@ -110,8 +110,10 @@
 
 /* ── Breakpoints in use ───────────────────────────────────────────
  * 996px is Docusaurus/Infima's own tablet breakpoint (.col stacks, the
- * sidebar hides) and is not redefined here. Below it, page-specific rules
- * step down again at 900px, 860px, 768px, 700px, 640px, 600px, 576px and
+ * sidebar hides) and is not redefined here; a few rules use its edges
+ * (995px, 997px) directly. Above it, the navbar tightens in two tiers:
+ * 997px-1150px and 1150.02px-1199px. Below it, page-specific rules
+ * step down again at 900px, 860px, 768px, 700px, 640px (641px min-width), 600px, 576px and
  * 480px as individual components need it. These are literal widths at each
  * call site, not custom properties: a shared --sg-bp-* token would not
  * change behavior (media queries cannot read CSS custom properties) and
