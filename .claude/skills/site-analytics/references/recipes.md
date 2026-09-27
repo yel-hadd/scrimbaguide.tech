@@ -403,3 +403,36 @@ Drill-down:
 ```
 
 Funnel: start, step 1 to 4 (`advisor_step`), complete, then scrimba_click or guide_click. Advisor events before 2026-09-26 carry the old `step`/`value` params and show `(not set)` for `advisor_step`. The advisor's Scrimba buttons also send `affiliate_link_clicked` with `cta_type` `path-advisor`; count clicks from that event, not from `path_advisor_scrimba_click`, when comparing with other CTAs.
+
+## 15. web_vitals field read
+
+Field Core Web Vitals from the `web_vitals` RUM event (`ga4-schema.md`, "`web_vitals`"). The snapshot does not carry it; query GA4. Epoch `web_vitals_rum` (2026-09-27): no rows before it, and the three dimensions and the metric were registered that day, so windows start on 2026-09-28, the first full LA day, or later.
+
+Field names, checked against the property on 2026-09-27: dimensions `customEvent:metric_name`, `customEvent:metric_rating`; metrics `customEvent:metric_value` (the sum of the event-scoped custom metric) and `averageCustomEvent:metric_value` (its average per event). `metric_value` is milliseconds for LCP, INP, FCP and TTFB, and CLS x 1000.
+
+Good share per metric and device (add `contentGroup` to `dimensions` for a per-template split):
+
+```json
+{
+  "property_id": "523469938",
+  "date_ranges": [{"start_date": "2026-09-28", "end_date": "yesterday"}],
+  "dimensions": ["customEvent:metric_name", "customEvent:metric_rating", "deviceCategory"],
+  "metrics": ["eventCount"],
+  "dimension_filter": {"and_group": {"expressions": [
+    {"not_expression": {"filter": {"field_name": "country", "in_list_filter": {"values": ["Singapore", "China", "(not set)"]}}}},
+    {"filter": {"field_name": "hostName", "string_filter": {"match_type": "EXACT", "value": "scrimbaguide.tech"}}},
+    {"filter": {"field_name": "eventName", "string_filter": {"match_type": "EXACT", "value": "web_vitals"}}}
+  ]}},
+  "limit": 1000
+}
+```
+
+Sessions (the floor) and the average per metric and device: the same body with `"dimensions": ["customEvent:metric_name", "deviceCategory"]` and `"metrics": ["sessions", "eventCount", "customEvent:metric_value", "averageCustomEvent:metric_value"]`. The `eventName` filter narrows `sessions` to sessions that sent `web_vitals`, which is the denominator wanted here.
+
+Reading it:
+
+- Good share = `eventCount` with `metric_rating = good` / all `eventCount`, per `metric_name` and `deviceCategory`. A share of good at 75% or more is the Core Web Vitals pass line for that metric (it is the p75 test: GA4 has no percentiles). The site passes when LCP, INP and CLS all pass; FCP and TTFB are diagnostics.
+- Judge a metric and device only at 30 or more sessions; below that, say "too few sessions".
+- Average = `customEvent:metric_value` / `eventCount` (equal to `averageCustomEvent:metric_value`). Quote it beside the good share, never instead of it: one slow outlier moves the average.
+- For the element behind a poor LCP, INP or CLS, add `customEvent:debug_target` to the first body with a `metric_rating` filter `poor`.
+- INP and CLS arrive when the tab is hidden, so they have fewer events than LCP; compare shares, not counts.

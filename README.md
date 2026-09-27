@@ -118,6 +118,27 @@ The banner shows to visitors whose browser time zone is European (a proxy; it in
 
 `/site-health` keeps these in `secrets/ops/site-health-state.json` and lists the ones that are due.
 
+## Quality checks and page speed
+
+**On every pull request** the **Quality** workflow (`.github/workflows/quality.yml`) runs typecheck, the production build, unit, llms.txt, search and accessibility tests, the visual harness, the built-metadata checks and Lighthouse (mobile and desktop). A red check means a new problem, or a known one that is now fixed and must come off its allowlist in the same PR. Each run holds a GitHub Actions runner for up to an hour. When Actions cannot run it (minutes or quota used up, an outage), run the same checks locally in the repo, on the PR's branch:
+
+```bash
+npm run typecheck
+node --test scripts/__tests__/home-cta-inventory.test.mjs scripts/__tests__/check-built-metadata.test.mjs
+npm run generate:social-cards        # needs rsvg-convert (librsvg2-bin)
+npm run build
+npm run test:llms && npm run test:search && npm run test:a11y
+npx docusaurus serve --port 3100 --host 127.0.0.1 --no-open   # second terminal, leave it running
+npm run test:visual                  # layout matrix and interactions; captures in visual-results/
+npm run check:metadata
+npm run lhci                         # mobile; accessibility, best practices and SEO must be 100
+LHCI_FORM_FACTOR=desktop npm run lhci
+```
+
+The first local run needs the Playwright browser once: `npx playwright install chromium`. Claude verifies frontend PRs with the `frontend-verify` skill, which adds a before/after diff of the whole build and interleaved Lighthouse runs for any speed claim.
+
+**Real-visitor speed (`web_vitals`).** Since 2026-09-27 the live site sends a `web_vitals` event from visitors' browsers, once per metric per page load: LCP (main content shown), INP (response to clicks and taps), CLS (layout jumps), plus FCP and TTFB as diagnostics. Each event carries the metric, its value and Google's rating (`good`, `needs-improvement`, `poor`). Google's lab tools cannot replace it: this site has too little traffic for Chrome's public field data. A metric passes when 75% or more of its events are `good`. To see it: ask `/site-analytics` about Core Web Vitals, read the weekly `/site-health` note (it adds the good shares and a live Lighthouse reading of `/` and `/docs/pricing/`), or in GA4 build an Exploration on event `web_vitals` with the dimensions **Web Vitals Metric** and **Web Vitals Rating** and the Humans segment. Data starts 2026-09-28.
+
 ## Troubleshooting
 
 - **The deploy is red.** A failed post-deploy step usually means a sitemap or canonical regression, not a broken build. Check the `indexnow` job log; fix forward with a PR, or revert.

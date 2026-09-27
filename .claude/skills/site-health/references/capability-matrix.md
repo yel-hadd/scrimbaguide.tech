@@ -27,6 +27,8 @@ What the site can do for itself, where each capability runs, and what always wai
 | 21 | /daily-post preflight | daily-post skill step 1 (shell) | read | each run | running /daily-post and merging its PR |
 | 22 | Memory, experiments, Site Report | main session only | write memory / publish privately | monthly | none |
 | 23 | Key rotation, GCP quotas, Cloudflare/bot edge, GA4 roles | none | none | none | always the owner |
+| 24 | Live Lighthouse (lab) | site-ops `npx -y lighthouse@12`, no install | read; writes `secrets/ops/lighthouse-live.jsonl` and `.seo-cache/lighthouse/` | weekly | none |
+| 25 | Field Core Web Vitals (`web_vitals` RUM) | site-ops analytics-mcp read | read | weekly | none |
 
 ## Notes
 
