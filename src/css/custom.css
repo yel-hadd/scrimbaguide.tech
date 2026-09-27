@@ -205,35 +205,6 @@ body {
   color: var(--sg-text-soft);
 }
 
-/* Accessibility: hide headings that exist only for structure */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.testimonial-card p {
-  margin: 0 0 0.5rem;
-  font-style: italic;
-}
-
-.testimonial-card footer {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: var(--sg-text-muted);
-}
-
-.testimonial-card cite {
-  font-style: normal;
-  font-weight: 600;
-}
-
 /* ── Affiliate link styles ─────────────────────────────────────── */
 .cta-link {
   text-decoration: none;
@@ -1251,25 +1222,8 @@ article[class*='searchResultItem'] mark {
   margin: 0;
 }
 
-.mdx-widget-center-cta--spaced-top {
-  margin-top: 2rem;
-}
-
 .mdx-widget-center-cta--spaced-bottom {
   margin-bottom: 2rem;
-}
-
-.mdx-widget-note {
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-  color: var(--sg-text-soft);
-}
-
-.mdx-widget-panel {
-  padding: 1rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 8px;
-  background-color: var(--ifm-background-surface-color);
 }
 
 /* ── Pricing CTA ───────────────────────────────────────────────── */
@@ -1897,24 +1851,6 @@ article[class*='searchResultItem'] mark {
   line-height: 1.5;
 }
 
-/* ── Module table ──────────────────────────────────────────────── */
-.module-table {
-  width: 100%;
-  margin: 1.5rem 0;
-}
-
-.module-table th,
-.module-table td {
-  padding: 0.6rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
-}
-
-.module-table th {
-  font-weight: 700;
-  background: var(--ifm-color-emphasis-100);
-}
-
 /* ── Link distinction (WCAG 1.4.1) ────────────────────────────── */
 .theme-doc-markdown a:not(.cta-link):not(.hash-link),
 article a:not(.cta-link):not(.hash-link):not(header *) {
@@ -2019,6 +1955,7 @@ article a:not(.cta-link):not(.hash-link):hover {
 }
 
 /* ── Visually hidden utility (sr-only) ────────────────────────── */
+.visually-hidden,
 .sr-only {
   position: absolute;
   width: 1px;
@@ -2248,13 +2185,6 @@ article a:not(.cta-link):not(.hash-link):hover {
   [data-theme='dark'] .trust-bar__item:nth-child(odd) {
     border-right-color: rgba(184, 165, 255, 0.18);
   }
-}
-
-/* Unused after homepage flow rewrite; keep for future reuse. */
-.home-steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1rem;
 }
 
 .home-faq-grid {
@@ -2513,69 +2443,6 @@ article a:not(.cta-link):not(.hash-link):hover {
   line-height: 1.5;
 }
 
-/* ── Mobile Sticky CTA ────────────────────────────────────────── */
-.sticky-footer-cta {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--ifm-background-surface-color);
-  border-top: 1px solid var(--ifm-color-emphasis-300);
-  padding: 1rem;
-  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
-  z-index: 100;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-  animation: slideUp 0.3s ease-out;
-}
-
-@keyframes slideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
-}
-
-.sticky-footer-cta__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 600px;
-  margin: 0 auto;
-  gap: 1rem;
-}
-
-.sticky-footer-cta__text {
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.sticky-footer-cta__button {
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-}
-
-.sticky-footer-cta__close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  line-height: 1;
-  cursor: pointer;
-  color: var(--sg-text-soft);
-  padding: 0 0.5rem;
-  min-width: 44px;
-  min-height: 44px;
-}
-
-.sticky-footer-cta__close:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-@media (min-width: 996px) {
-  .sticky-footer-cta {
-    display: none;
-  }
-}
-
 /* ── Desktop / tablet floating CTA (docs + money blog posts) ─── */
 .desktop-sticky-cta {
   position: fixed;
@@ -2673,51 +2540,6 @@ html.has-sticky-cta .thin-scrollbar:has(> .table-of-contents) {
   .desktop-sticky-cta {
     animation: none;
   }
-}
-
-/* ── Visual Proof Placeholder ─────────────────────────────────── */
-.visual-proof-placeholder {
-  margin: 2rem 0;
-}
-
-.visual-proof-placeholder__box {
-  background: var(--ifm-color-emphasis-100);
-  border: 2px dashed var(--ifm-color-emphasis-300);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.visual-proof-placeholder__content {
-  text-align: center;
-  padding: 1rem;
-}
-
-.visual-proof-placeholder__icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.visual-proof-placeholder__text {
-  font-weight: 600;
-  margin: 0;
-}
-
-.visual-proof-placeholder__subtext {
-  font-size: 0.85rem;
-  color: var(--sg-text-soft);
-  margin: 0.25rem 0 0;
-  font-style: italic;
-}
-
-.visual-proof-placeholder__caption {
-  text-align: center;
-  font-size: 0.9rem;
-  color: var(--sg-text-soft);
-  margin-top: 0.5rem;
 }
 
 /* ── Related Guides ───────────────────────────────────────────── */
@@ -2898,19 +2720,6 @@ a[href$="/tags"]:hover {
 .task-list-item > input[type="checkbox"] {
   /* Ensure checkboxes have accessible name via aria-label (added via JS) */
   margin-right: 0.5rem;
-}
-
-/* Screenreader-only utility class */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 /* ── Prism code token contrast fixes (WCAG 2.1 AA) ────────────── */
