@@ -108,6 +108,31 @@
   --sg-type-h2: clamp(1.55rem, 2.4vw, 2.05rem);
   --sg-type-h3: clamp(1.28rem, 1.8vw, 1.55rem);
   --sg-type-h4: clamp(1.1rem, 1.3vw, 1.3rem);
+  /* Homepage hero and section headings scale differently from the shared
+   * --sg-type-h1/h2 ladder above, so they get their own named tokens instead
+   * of magic clamp() values repeated at each call site. */
+  --sg-type-hero-h1: clamp(2.1rem, 5.2vw, 3.7rem);
+  --sg-type-hero-h1-generic: clamp(1.85rem, 5vw, 3.4rem);
+  --sg-type-home-h2: clamp(1.6rem, 2.6vw, 2.3rem);
+
+  /* Corner radii used across cards, buttons and panels. Naming only: each
+   * token keeps the pixel value it already had at every call site. */
+  --sg-radius-sm: 8px;
+  --sg-radius-md: 12px;
+  --sg-radius-lg: 14px;
+
+  /* Stacking order, low to high. Naming only: each token keeps the z-index
+   * value it already had at every call site.
+   *   sticky     the desktop sticky CTA, above normal content
+   *   dropdown   navbar dropdowns and the mega-menu panel
+   *   overlay    the consent banner, above dropdowns, below modals
+   *   modal      the screenshot lightbox
+   *   modal-top  the search overlay, above the lightbox */
+  --sg-z-sticky: 90;
+  --sg-z-dropdown: 100;
+  --sg-z-overlay: 300;
+  --sg-z-modal: 1000;
+  --sg-z-modal-top: 1050;
 
   /* Focus ring: one token set, referenced by every focus-visible rule.
    * Colour tracks --ifm-color-primary, so it already swaps per theme;
@@ -117,6 +142,17 @@
   --sg-focus-ring-width: 3px;
   --sg-focus-ring-offset: 2px;
 }
+
+/* ── Breakpoints in use ───────────────────────────────────────────
+ * 996px is Docusaurus/Infima's own tablet breakpoint (.col stacks, the
+ * sidebar hides) and is not redefined here; a few rules use its edges
+ * (995px, 997px) directly. Above it, the navbar tightens in two tiers:
+ * 997px-1150px and 1150.02px-1199px. Below it, page-specific rules
+ * step down again at 900px, 860px, 768px, 700px, 640px (641px min-width), 600px, 576px and
+ * 480px as individual components need it. These are literal widths at each
+ * call site, not custom properties: a shared --sg-bp-* token would not
+ * change behavior (media queries cannot read CSS custom properties) and
+ * would just be one more name to keep in sync with the literal. */
 
 [data-theme='dark'] {
   --ifm-color-primary: #b8a5ff;
@@ -236,7 +272,7 @@ body {
   background: var(--sg-btn-bg);
   color: var(--sg-text-on-primary);
   border: 1px solid transparent;
-  border-radius: 8px;
+  border-radius: var(--sg-radius-sm);
   font-weight: 700;
   font-size: 1rem;
   text-align: center;
@@ -395,7 +431,7 @@ textarea {
   visibility: hidden;
   transform: translateY(-4px);
   transition: opacity 0.15s, transform 0.15s, visibility 0.15s;
-  z-index: 100;
+  z-index: var(--sg-z-dropdown);
 }
 
 .mega-menu--open .mega-menu__panel {
@@ -419,7 +455,7 @@ textarea {
   gap: 0.85rem;
   padding: 0.85rem 1rem;
   text-decoration: none !important;
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   transition: background 0.15s;
 }
 
@@ -431,7 +467,7 @@ textarea {
   flex-shrink: 0;
   width: 2.25rem;
   height: 2.25rem;
-  border-radius: 8px;
+  border-radius: var(--sg-radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -530,7 +566,7 @@ textarea {
 .sg-search-overlay {
   position: fixed;
   inset: 0;
-  z-index: 1050;
+  z-index: var(--sg-z-modal-top);
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -549,7 +585,7 @@ textarea {
   flex-direction: column;
   background: var(--ifm-background-surface-color);
   border: 1px solid var(--sg-home-border);
-  border-radius: 14px;
+  border-radius: var(--sg-radius-lg);
   box-shadow: var(--sg-card-shadow-strong, 0 8px 32px rgba(0,0,0,0.18));
   overflow: hidden;
   animation: sgSearchFadeIn 0.12s ease;
@@ -929,7 +965,7 @@ textarea {
   height: 3rem;
   padding: 0 1rem;
   font-size: 1.05rem;
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   border: 1.5px solid var(--sg-home-border-strong);
   background: var(--ifm-background-surface-color);
   color: var(--sg-text);
@@ -949,7 +985,7 @@ article[class*='searchResultItem'] {
   padding: 1rem 1.1rem;
   margin: 0.85rem 0;
   border: 1px solid var(--sg-home-border);
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   background: var(--ifm-background-surface-color);
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
@@ -1060,7 +1096,7 @@ article[class*='searchResultItem'] mark {
 /* ── Course card ───────────────────────────────────────────────── */
 .course-card {
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   padding: 1.5rem;
   margin: 1.5rem 0;
   background: var(--ifm-background-surface-color);
@@ -1229,7 +1265,7 @@ article[class*='searchResultItem'] mark {
 /* ── Pricing CTA ───────────────────────────────────────────────── */
 .pricing-cta {
   border: 2px solid var(--ifm-color-primary);
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   padding: 2rem;
   margin: 2rem 0;
   text-align: center;
@@ -1299,7 +1335,7 @@ article[class*='searchResultItem'] mark {
 
 .faq-accordion__item {
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
+  border-radius: var(--sg-radius-sm);
   margin-bottom: 0.5rem;
   overflow: hidden;
 }
@@ -1405,7 +1441,7 @@ article[class*='searchResultItem'] mark {
 }
 
 .hero-section h1 {
-  font-size: clamp(1.85rem, 5vw, 3.4rem);
+  font-size: var(--sg-type-hero-h1-generic);
   line-height: 1.15;
   letter-spacing: -0.01em;
   margin: 0 0 1.1rem;
@@ -1623,7 +1659,7 @@ article[class*='searchResultItem'] mark {
 .hero-scrim-poster__frame {
   position: relative;
   display: block;
-  border-radius: 14px;
+  border-radius: var(--sg-radius-lg);
   filter: drop-shadow(0 20px 44px rgba(20, 12, 50, 0.26));
   transition: transform 0.22s ease;
 }
@@ -1721,7 +1757,7 @@ article[class*='searchResultItem'] mark {
   margin: 1.75rem auto 2rem;
 }
 .scrim-poster--inline .hero-scrim-poster__img {
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   border: 1px solid var(--ifm-color-emphasis-300);
 }
 .scrim-poster--inline .hero-scrim-poster__play {
@@ -1825,7 +1861,7 @@ article[class*='searchResultItem'] mark {
 
 .section-card {
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   padding: 1.5rem;
   transition: box-shadow 0.2s, border-color 0.2s;
   background: var(--ifm-background-surface-color);
@@ -1988,7 +2024,7 @@ article a:not(.cta-link):not(.hash-link):hover {
 
 .home-section--shaded {
   background: var(--ifm-color-emphasis-100);
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
 }
 
 .home-section__subtitle {
@@ -2210,7 +2246,7 @@ article a:not(.cta-link):not(.hash-link):hover {
 
 .home-final-cta {
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 14px;
+  border-radius: var(--sg-radius-lg);
   padding: 2rem 1.5rem;
   text-align: center;
   background: linear-gradient(135deg, var(--sg-accent-softer), transparent);
@@ -2283,7 +2319,7 @@ article a:not(.cta-link):not(.hash-link):hover {
 .compare-card__verdict {
   margin-top: 0.65rem !important;
   padding: 0.55rem 0.7rem;
-  border-radius: 8px;
+  border-radius: var(--sg-radius-sm);
   background: var(--sg-accent-softer);
   color: var(--sg-text-muted) !important;
   font-size: 0.82rem;
@@ -2298,7 +2334,7 @@ article a:not(.cta-link):not(.hash-link):hover {
 /* ── Verdict Box ──────────────────────────────────────────────── */
 .verdict-box {
   border: 2px solid var(--ifm-color-primary);
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   padding: 1.5rem;
   margin: 2rem 0;
   background: linear-gradient(135deg, var(--sg-accent-softer), var(--sg-accent-soft));
@@ -2346,7 +2382,7 @@ article a:not(.cta-link):not(.hash-link):hover {
 
 .verdict-box__list {
   padding: 1rem 1.1rem;
-  border-radius: 8px;
+  border-radius: var(--sg-radius-sm);
   border: 1px solid var(--ifm-color-emphasis-200);
   background: var(--ifm-background-surface-color);
 }
@@ -2431,7 +2467,7 @@ article a:not(.cta-link):not(.hash-link):hover {
   color: var(--sg-text-muted);
   background: var(--ifm-color-emphasis-100);
   padding: 0.75rem 1rem;
-  border-radius: 8px;
+  border-radius: var(--sg-radius-sm);
   margin: 1.5rem 0;
   border-left: 3px solid var(--ifm-color-emphasis-400);
 }
@@ -2449,7 +2485,7 @@ article a:not(.cta-link):not(.hash-link):hover {
   right: 1.25rem;
   /* Sits above the Docusaurus back-to-top button (48px at bottom ~1.3rem) */
   bottom: 5.5rem;
-  z-index: 90;
+  z-index: var(--sg-z-sticky);
   max-width: 220px;
   animation: desktopCtaFade 0.35s ease-out;
 }
@@ -2476,9 +2512,17 @@ html.has-sticky-cta .thin-scrollbar:has(> .table-of-contents) {
   position: relative;
   background: var(--ifm-background-surface-color);
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   padding: 1rem 1.25rem 1rem 1rem;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* The literal shadow above reads fine on the light surface it was tuned on,
+ * but the same rgba is nearly invisible against the dark theme's dark
+ * surface. Swap to the shared dark card shadow there instead of tuning a
+ * one-off value. */
+[data-theme='dark'] .desktop-sticky-cta__card {
+  box-shadow: var(--sg-card-shadow-strong);
 }
 
 .theme-doc-markdown .desktop-sticky-cta__title,
@@ -2603,7 +2647,7 @@ html.has-sticky-cta .thin-scrollbar:has(> .table-of-contents) {
   padding: 1.25rem 1.5rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-left: 4px solid var(--ifm-color-primary);
-  border-radius: 8px;
+  border-radius: var(--sg-radius-sm);
   background: var(--ifm-background-surface-color);
   color: inherit;
   text-decoration: none !important;
@@ -2653,7 +2697,7 @@ html.has-sticky-cta .thin-scrollbar:has(> .table-of-contents) {
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 8px;
+  border-radius: var(--sg-radius-sm);
   background: transparent;
   text-decoration: none !important;
   transition: all 0.15s ease;
@@ -2831,7 +2875,7 @@ article table:focus,
 /* ── Blog list post cards (reader experience) ─────────────────── */
 .blog-list-page article.margin-bottom--xl {
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 14px;
+  border-radius: var(--sg-radius-lg);
   padding: 1rem 1.1rem;
   background: var(--ifm-background-surface-color);
   box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
@@ -2946,7 +2990,7 @@ article table:focus,
   }
 
   .blog-list-page article.margin-bottom--xl {
-    border-radius: 12px;
+    border-radius: var(--sg-radius-md);
     padding: 0.85rem;
   }
 
@@ -2979,7 +3023,7 @@ article table:focus,
   aspect-ratio: 1200 / 630;
   max-height: 420px;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   box-shadow: var(--sg-card-shadow);
 }
 
@@ -3034,7 +3078,7 @@ article table:focus,
   width: 100%;
   padding: 0.55rem;
   border: 1px solid var(--ifm-color-emphasis-400);
-  border-radius: 8px;
+  border-radius: var(--sg-radius-sm);
   background: var(--ifm-background-color);
   color: var(--ifm-font-color-base);
   font-family: inherit;
@@ -3182,7 +3226,7 @@ article table:focus,
 .path-advisor__card {
   position: relative;
   padding: 1.3rem 1.3rem 1.1rem 1.5rem;
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   background: var(--ifm-background-color);
   border: 1px solid var(--ifm-color-emphasis-200);
   animation: path-advisor-fade-slide-in 180ms ease-out;
@@ -3510,7 +3554,7 @@ article table:focus,
   .path-advisor {
     margin: 1.5rem 0 2rem;
     padding: 1.2rem 0.95rem 1.15rem;
-    border-radius: 14px;
+    border-radius: var(--sg-radius-lg);
   }
 
   .path-advisor__header {
@@ -3594,7 +3638,7 @@ article table:focus,
 /* ── Course curriculum (module breakdown) ─────────────────────────── */
 .curriculum {
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   padding: 1.25rem 1.5rem 1.5rem;
   margin: 1.5rem 0;
   background: var(--ifm-background-surface-color);
@@ -3781,7 +3825,7 @@ html[data-theme='dark'] .curriculum__index {
 /* ── Homepage headings ──────────────────────────────────────────── */
 .homepage .home-section > h2,
 .homepage .scrim-explainer h2 {
-  font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+  font-size: var(--sg-type-home-h2);
   line-height: 1.16;
   letter-spacing: -0.022em;
   color: var(--sg-home-ink);
@@ -3825,7 +3869,7 @@ html[data-theme='dark'] .curriculum__index {
 }
 
 .homepage .hero-section h1 {
-  font-size: clamp(2.1rem, 5.2vw, 3.7rem);
+  font-size: var(--sg-type-hero-h1);
   letter-spacing: -0.025em;
 }
 
@@ -3965,7 +4009,7 @@ html[data-theme='dark'] .curriculum__index {
 /* The editor stays dark in both themes — that's how a code editor reads. */
 .scrim-window {
   position: relative;
-  border-radius: 14px;
+  border-radius: var(--sg-radius-lg);
   overflow: hidden;
   background: #1b1430;
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -4453,7 +4497,7 @@ html[data-theme='dark'] .curriculum__index {
   max-width: 720px;
   height: auto;
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
+  border-radius: var(--sg-radius-sm);
   background: #fff;
 }
 
@@ -4537,7 +4581,7 @@ html[data-theme='dark'] .curriculum__index {
   position: relative;
   aspect-ratio: 16 / 9;
   width: 100%;
-  border-radius: 12px;
+  border-radius: var(--sg-radius-md);
   overflow: hidden;
   border: 1px solid var(--ifm-color-emphasis-300);
   background: #16191f;
@@ -4604,7 +4648,7 @@ html[data-theme='dark'] .curriculum__index {
 .lightbox {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: var(--sg-z-modal);
   display: flex;
   align-items: center;
   justify-content: center;
