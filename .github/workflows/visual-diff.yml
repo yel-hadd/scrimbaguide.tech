@@ -1,0 +1,150 @@
+name: Visual diff
+
+# Optional: add the `visual-diff` label to a PR to build origin/main as well
+# and pixel-diff the two with the PR's own harness. Report only: a visual PR
+# is expected to differ, so this job never fails on a diff. Kept apart from
+# quality.yml so a label event never posts a skipped quality check.
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened, labeled]
+
+permissions:
+  contents: read
+
+# A label event for any other label gets its own group, so it never cancels
+# a running diff.
+concurrency:
+  group: visual-diff-${{ github.event.pull_request.number }}-${{ github.event.action == 'labeled' && github.event.label.name || 'push' }}
+  cancel-in-progress: true
+
+jobs:
+  visual-diff:
+    if: >-
+      (github.event.action == 'labeled' && github.event.label.name == 'visual-diff') ||
+      (github.event.action != 'labeled' && contains(github.event.pull_request.labels.*.name, 'visual-diff'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out PR head
+        uses: actions/checkout@v7
+        with:
+          path: head
+
+      - name: Check out main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          path: base
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            head/package-lock.json
+            base/package-lock.json
+
+      - name: Install system packages
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin imagemagick
+
+      - name: Build main
+        working-directory: base
+        run: |
+          npm ci
+          npm run generate:social-cards -- --force
+          npm run build
+
+      - name: Build PR head
+        working-directory: head
+        run: |
+          npm ci
+          npm run generate:social-cards -- --force
+          npm run build
+
+      - name: Install Playwright Chromium
+        working-directory: head
+        run: npx playwright install --with-deps chromium
+
+      - name: Serve main on :3100 and head on :3101
+        run: |
+          (cd base && nohup npx docusaurus serve --port 3100 --host 127.0.0.1 --no-open > ../serve-base.log 2>&1 &)
+          (cd head && nohup npx docusaurus serve --port 3101 --host 127.0.0.1 --no-open > ../serve-head.log 2>&1 &)
+          for port in 3100 3101; do
+            for i in $(seq 1 60); do
+              curl -sf "http://127.0.0.1:${port}/" > /dev/null && break
+              if [ "$i" = 60 ]; then
+                echo "::error::nothing answered on :${port}"
+                cat serve-base.log serve-head.log
+                exit 1
+              fi
+              sleep 1
+            done
+          done
+
+      # Both captures use the PR's harness so only the site differs. Hard
+      # failures are reported by the quality job, not here.
+      - name: Capture both builds
+        working-directory: head
+        run: |
+          node scripts/visual/matrix.mjs --base http://localhost:3100 --out ../shots/base || true
+          node scripts/visual/matrix.mjs --base http://localhost:3101 --out ../shots/head || true
+
+      - name: Pixel diff
+        run: |
+          mkdir -p shots/diff
+          changed=0; total=0
+          {
+            echo "## Visual diff (main vs PR head)"
+            echo
+            echo "| Capture | Differing pixels |"
+            echo "|---|---|"
+          } >> "$GITHUB_STEP_SUMMARY"
+          for head_png in shots/head/*.png; do
+            [ -e "$head_png" ] || continue
+            name=$(basename "$head_png")
+            base_png="shots/base/$name"
+            total=$((total + 1))
+            if [ ! -e "$base_png" ]; then
+              echo "| $name | new capture |" >> "$GITHUB_STEP_SUMMARY"
+              changed=$((changed + 1))
+              continue
+            fi
+            # IM6 compare refuses images of different sizes, and a fullPage
+            # capture changes size whenever the page height changes.
+            bd=$(identify -format '%wx%h' "$base_png"); hd=$(identify -format '%wx%h' "$head_png")
+            if [ "$bd" != "$hd" ]; then
+              echo "| $name | size changed $bd -> $hd |" >> "$GITHUB_STEP_SUMMARY"
+              changed=$((changed + 1))
+              continue
+            fi
+            ae=$(compare -metric AE "$base_png" "$head_png" "shots/diff/$name" 2>&1 >/dev/null || true)
+            if [ "$ae" != "0" ]; then
+              echo "| $name | $ae |" >> "$GITHUB_STEP_SUMMARY"
+              changed=$((changed + 1))
+            else
+              rm -f "shots/diff/$name"
+            fi
+          done
+          echo >> "$GITHUB_STEP_SUMMARY"
+          echo "$changed of $total captures differ." >> "$GITHUB_STEP_SUMMARY"
+          echo "$changed of $total captures differ."
+          # The captures above end in `|| true`; zero captures means the
+          # harness failed, not that nothing changed.
+          if [ "$total" -eq 0 ]; then
+            echo "::error::no head captures were produced; see the capture step log"
+            exit 1
+          fi
+
+      - name: Upload captures and diffs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: visual-diff
+          path: |
+            shots/
+            serve-*.log
+          if-no-files-found: ignore
+          retention-days: 14

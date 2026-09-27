@@ -1,0 +1,121 @@
+name: Quality
+
+# Pull-request gate: typecheck, build, unit and a11y tests, visual harness,
+# built-metadata invariants and Lighthouse CI on the static build. deploy.yml
+# is separate and untouched; nothing here deploys. The optional pixel diff
+# against main is visual-diff.yml.
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+# A push cancels the previous run for the same PR. The label-triggered
+# visual diff lives in visual-diff.yml, so a label event never posts a
+# skipped (and therefore green) quality check here.
+concurrency:
+  group: quality-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      # Pure unit tests: no build needed.
+      - name: Metadata and CTA inventory unit tests
+        run: node --test scripts/__tests__/home-cta-inventory.test.mjs scripts/__tests__/check-built-metadata.test.mjs
+
+      - name: Install librsvg (for social card generation)
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin
+
+      - name: Generate social card images
+        run: npm run generate:social-cards -- --force
+
+      # prebuild runs check:content and check:schema.
+      - name: Build website
+        id: build
+        run: npm run build
+
+      # Every check below runs once the build exists, even if an earlier
+      # check failed, so one PR run reports every regression at once.
+      - name: llms.txt tests
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npm run test:llms
+
+      - name: Search tests
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npm run test:search
+
+      - name: Install Playwright Chromium
+        id: playwright
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npx playwright install --with-deps chromium
+
+      - name: Accessibility tests
+        if: ${{ !cancelled() && steps.playwright.outcome == 'success' }}
+        run: npm run test:a11y
+
+      - name: Serve build on :3100
+        id: serve
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: |
+          nohup npx docusaurus serve --port 3100 --host 127.0.0.1 --no-open > serve.log 2>&1 &
+          for i in $(seq 1 60); do
+            if curl -sf http://127.0.0.1:3100/ > /dev/null; then
+              echo "Serving after ${i}s"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "::error::docusaurus serve did not answer on :3100 within 60s"
+          cat serve.log
+          exit 1
+
+      - name: Visual and interaction harness
+        if: ${{ !cancelled() && steps.serve.outcome == 'success' && steps.playwright.outcome == 'success' }}
+        run: npm run test:visual
+
+      - name: Built metadata invariants
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: node scripts/check-built-metadata.mjs
+
+      # LHCI serves ./build itself (staticDistDir), independent of :3100.
+      - name: Lighthouse CI (mobile)
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npm run lhci
+
+      - name: Lighthouse CI (desktop)
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: npm run lhci
+        env:
+          LHCI_FORM_FACTOR: desktop
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: quality-results
+          path: |
+            .lighthouseci/
+            visual-results/
+            serve.log
+          if-no-files-found: ignore
+          retention-days: 14
