@@ -36,7 +36,7 @@ const LOCK = `Chrome lock: before your first Chrome call, conditionally acquire 
 // Recurring news streams live on one learner hub each (year-free slug, newest-first dated log) instead of one post per event.
 // hub-new may only seed a route from this list; the two existing files are grown in place.
 const HUBS = [
-  { stream: 'React releases, deprecations and upgrade errors', route: '/blog/react-updates-for-learners/', slug: 'react-updates-for-learners', file: null },
+  { stream: 'React releases, deprecations and upgrade errors', route: '/blog/react-updates-for-learners/', slug: 'react-updates-for-learners', file: 'blog/2026-09-28-react-updates-for-learners.mdx' },
   { stream: 'Next.js releases, Turbopack/upgrade errors, one-paragraph security notes', route: '/blog/nextjs-updates-for-learners/', slug: 'nextjs-updates-for-learners', file: null },
   { stream: 'AI coding tools and model launches from a learner view', route: '/blog/ai-tools-for-learning-to-code-2026/', file: 'blog/2026-04-01-ai-tools-for-learning-to-code-2026.mdx' },
   { stream: 'Junior developer hiring, layoffs and developer-survey data', route: '/blog/junior-developer-job-market-2026/', file: 'blog/2026-01-31-junior-developer-job-market-2026.mdx' },

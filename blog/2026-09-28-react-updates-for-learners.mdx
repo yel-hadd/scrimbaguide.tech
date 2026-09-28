@@ -1,0 +1,86 @@
+---
+slug: react-updates-for-learners
+title: "React Updates in 2026: Does React 19.3 Change What You're Learning?"
+description: "React 19.3 shipped 2026-09-09 as a minor, non-breaking release. What it means for your React course, which version to install, and the react-dom mismatch fix."
+authors: [scrimbaguide]
+tags: [react, frontend, beginners]
+keywords: [react 19.3, react 19.3 release notes, which react version should i install 2026, latest react version, is my react 19 course still up to date, react and react-dom must have the exact same version, react versions]
+image: /img/blog/react-updates-for-learners.png
+image_alt: "React updates for learners: does React 19.3 change what your course teaches, Scrimba Guide Blog"
+date: 2026-09-28
+last_update:
+  date: 2026-09-28
+  author: Yassine El Haddad
+---
+
+import PricingCTA from '@site/src/components/PricingCTA';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+
+# React Updates in 2026: Does React 19.3 Change What You're Learning?
+
+<DisclosureNotice />
+
+**React 19.3.0 shipped 2026-09-09 and npm has tagged it `latest` since. It is a minor release that adds features and removes nothing, so a React 19 course still teaches current React.** Install whatever `npm create vite@latest` gives you, which resolves to 19.3.0, and keep `react` and `react-dom` on the exact same version.
+
+{/* truncate */}
+
+## Current state as of 2026-09-28
+
+| | Status | Source |
+|---|---|---|
+| Latest stable | `react` 19.3.0 and `react-dom` 19.3.0, released 2026-09-09. Earlier backport patches for older lines (19.2.8, 19.1.9, 19.0.8) shipped on 2026-07-21. | [react.dev/blog: React 19.3](https://react.dev/blog/2026/09/09/react-19-3), [GitHub releases](https://github.com/facebook/react/releases) (marked Latest), npm `dist-tags.latest` = 19.3.0 |
+| What a beginner should install | Whatever a scaffold gives you. The `create-vite` 9.2.1 React template pins `react` and `react-dom` to `^19.2.8`, which resolves to 19.3.0 on install. react.dev's own app-creation guide leads with a framework: Next.js (`npx create-next-app@latest`), React Router v7 (`npx create-react-router@latest`) or Expo, and lists Vite, Parcel and Rsbuild for starting from scratch. Create React App does not appear on that page. | [create-vite@9.2.1 template package.json](https://cdn.jsdelivr.net/npm/create-vite@9.2.1/template-react/package.json), [react.dev/learn/creating-a-react-app](https://react.dev/learn/creating-a-react-app) |
+| Does a typical React 19 course still match | Yes. 19.3 is additive. Hooks, components, props, state, effects, forms and actions all work the same way a React 19 course recorded them. What a course taped before 2026-09-09 won't show you: the now-stable `<ViewTransition>`, `addTransitionType`, Fragment refs, `use(browser())` and Trusted Types support. | [react.dev/blog: React 19.3](https://react.dev/blog/2026/09/09/react-19-3) |
+
+Verdict: nothing here forces a course swap. Treat 19.3 as a chapter you add on top of what you already have, not a reason to start over.
+
+## Does React 19.3 change what you're learning?
+
+No, not the fundamentals. Everything new in 19.3 sits on top of the React you already know, according to the official release post:
+
+- **`<ViewTransition>`** animates elements through the browser's View Transition API: entering, exiting, updating in place, or sharing a named element between two spots. It only animates updates you mark as Transitions, through `startTransition`, a Suspense reveal, or `useDeferredValue`.
+- **`addTransitionType`** lets you tag a state update so the same Transition can trigger a different animation, called from inside `startTransition`.
+- **Fragment refs** let you put a `ref` on a `<Fragment>` and get back a `FragmentInstance` with methods to manage focus, listen for events across its children, and connect an `IntersectionObserver` or `ResizeObserver` to the whole group.
+- **`use(browser())`** opts a component out of server rendering, so it only ever runs in the browser.
+- **Trusted Types support** lets React pass Trusted Types objects straight through instead of coercing them, which matters for apps running the Trusted Types browser API.
+- **Server Components can now render Context** imported straight from a `'use client'` module, no separate Provider wrapper needed.
+
+Verdict: all six belong after the basics. None of them replaces a lesson a beginner course teaches; they extend what you can do once hooks, state and effects are already comfortable. One behavior change you can actually run into: in Strict Mode, React now double-invokes Effects during hydration too, matching what it already did on the client, and it warns when you call `use` inside a conditional.
+
+## What to do
+
+1. **Check what you have.** Run `npm ls react react-dom` in any project and read the two version numbers.
+2. **Starting a new project?** Run `npm create vite@latest my-app -- --template react` (or a framework command from react.dev, such as `npx create-next-app@latest`), then `npm install`. You'll land on 19.3.0 or later.
+3. **Upgrading an existing 19.x project?** Run `npm install react@19.3.0 react-dom@19.3.0`. Always bump both together, to the same version.
+4. **Mid-course on a pinned version?** If your course project pins React 18.3 or a React 19 release candidate, finish the course on that pinned version first. Don't upgrade in the middle of a lesson; a version change can shift behavior the instructor's recording doesn't show.
+5. **Leave canary and experimental builds alone.** npm currently tags `canary` at `19.3.0-canary-d083ec1d-20260922` and there's a separate `experimental` tag. Both are pre-release builds for testing, not a newer stable release, and course code won't expect them.
+
+### Fix: "Incompatible React versions: The react and react-dom packages must have the exact same version"
+
+The exact string, from the shipped `react-dom` 19.3.0 build: `Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:` followed by the two versions it found.
+
+**Cause:** your `react` and `react-dom` packages resolved to two different builds. This isn't limited to stable releases: a react.dev tracking issue opened 2025-11-19 hit this exact error when its ViewTransition sandbox examples loaded `react` at `19.3.0-canary-0972e239-20251118` against `react-dom` at `19.3.0-canary-fb2177c1-20251114`, the same base version but different canary build IDs.
+
+**Fix:**
+- Pin both packages to one exact version: `npm install react@19.3.0 react-dom@19.3.0`.
+- Check for duplicates: `npm ls react react-dom`. If it shows two copies, delete `node_modules` and your lockfile and reinstall.
+- In a browser sandbox like CodeSandbox or StackBlitz, set both dependency versions by hand to the same value; sandboxes don't always resolve semver ranges the way a local install does.
+
+This is a version mismatch, not a bug in your code.
+
+## Refreshing your React after 19.3
+
+If you want a refresher rather than a rebuild, [Learn React](/docs/courses/react/learn-react/) is Scrimba's free, hooks-first course: Bob Ziroll teaches 358 lessons across six modules that end in two capstones, Tenzies and Assembly: Endgame. I reviewed it with a Pro account in September 2026 and confirmed those numbers against the live course page the same day. If it clicks, <AffiliateLink location="tofu-bridge-direct" href="https://scrimba.com/learn-react-c0e">start Learn React free</AffiliateLink>.
+
+## Update log
+
+### 2026-09-09: React 19.3.0 released
+
+React 19.3.0 shipped as the new `latest` on npm, per the [official release post](https://react.dev/blog/2026/09/09/react-19-3) and the [GitHub release](https://github.com/facebook/react/releases). It stabilizes `<ViewTransition>` and Fragment refs, adds `addTransitionType`, `use(browser())`, and Trusted Types support, and lets Server Components render Context from `'use client'` modules. The post lists no breaking changes. Learner verdict: safe to install, nothing to unlearn.
+
+## Bottom line
+
+Keep learning with your React 19 course. Install whatever version a scaffold like Vite or Next.js gives you, which is 19.3.0 or newer as of 2026-09-28. Keep `react` and `react-dom` pinned to the same exact version, always. Add `<ViewTransition>` once the fundamentals, components, hooks, state and effects, are solid, not before. If React demand is still on your mind at a career level rather than a version level, [Is React still worth learning in 2026?](/blog/is-react-still-worth-learning-2026/) covers the jobs data. This page gets a new dated entry every time React ships a release worth knowing about.
+
+<PricingCTA ctaType="free" />
