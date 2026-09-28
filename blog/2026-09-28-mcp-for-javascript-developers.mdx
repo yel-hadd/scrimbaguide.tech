@@ -1,0 +1,113 @@
+---
+slug: mcp-for-javascript-developers
+title: "MCP explained for JavaScript developers (after the 2026-07-28 spec)"
+description: "MCP for JavaScript developers who know APIs: hosts, clients, servers, tools and a minimal Node server, plus what the 2026-07-28 stateless spec changed."
+authors: [scrimbaguide]
+tags: [ai, javascript, typescript]
+keywords: [mcp explained for javascript developers, what is mcp model context protocol for javascript developers, how to build an mcp server in node.js, mcp server typescript example 2026, mcp tools vs resources vs prompts, mcp 2026-07-28 spec changes, is mcp stateless now, "@modelcontextprotocol/sdk vs @modelcontextprotocol/server", mcp typescript sdk v2 migration, is an old mcp tutorial still valid, mcp stdio vs streamable http]
+image: /img/blog/mcp-for-javascript-developers.png
+image_alt: "MCP host, client and server architecture, and a minimal Node.js MCP server, after the 2026-07-28 spec revision"
+date: 2026-09-28
+last_update:
+  date: 2026-09-28
+  author: Yassine El Haddad
+---
+
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import PricingCTA from '@site/src/components/PricingCTA';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+
+# MCP explained for JavaScript developers (after the 2026-07-28 spec)
+
+<DisclosureNotice />
+
+**MCP is a JSON-RPC 2.0 standard that lets an AI app (the host) call your code through a server exposing tools, resources and prompts, a typed API the model discovers at runtime. The [2026-07-28 revision](https://modelcontextprotocol.io/specification/2026-07-28/changelog) made it stateless: no `initialize` handshake, no sessions. If you know APIs, the model and a STDIO server still hold; new code uses SDK v2.**
+
+{/* truncate */}
+
+## What changed on 2026-07-28
+
+If you have not met MCP at all yet, [How to build your first AI agent](/blog/how-to-build-ai-agent-beginners-2026/) already covers the plain-English version and the November 2024 launch history; this post assumes that part and goes straight to building a server and to what changed on 2026-07-28.
+
+On [2026-07-28](https://blog.modelcontextprotocol.io/posts/2026-07-28/), the MCP maintainers shipped a new [specification revision](https://modelcontextprotocol.io/specification/2026-07-28/changelog), the first since 2025-11-25. Their own framing: MCP moved from "a bidirectional stateful protocol into a request/response stateless protocol," something they call one of the most requested changes from developers chasing better reliability and scale.
+
+| Before (2025-11-25) | After (2026-07-28) | Does a beginner notice? |
+|---|---|---|
+| `initialize` / `initialized` handshake opens every connection | Removed. Every request carries `protocolVersion` and `clientCapabilities` in `_meta`; servers must implement `server/discover` | No, if you use an SDK. The SDK builds the `_meta` block for you |
+| Streamable HTTP sessions tracked by an `Mcp-Session-Id` header | Removed. Cross-call state uses server-minted handles passed back as ordinary tool arguments | Only if you wrote your own session logic by hand |
+| Server-initiated requests (elicitation, sampling, roots) block on an open stream | Multi Round-Trip Requests: a result comes back as `resultType: "input_required"`, and the client retries with the answer | No, unless your tool needs mid-call user input |
+| `GET` endpoint plus `resources/subscribe` for change notifications | A single `subscriptions/listen` stream, opt-in per notification type | Only if you subscribe to live updates |
+| Streamable HTTP POSTs were unlabeled JSON bodies | POSTs require `Mcp-Method` and `Mcp-Name` headers; list results carry `ttlMs` and `cacheScope` | No, this is plumbing for gateways and caches |
+| Roots, Sampling, Logging, the legacy HTTP+SSE transport, and Dynamic Client Registration were active | All deprecated, with at least a twelve-month support window; log to `stderr` on stdio instead of using the Logging feature | Only if your server used one of these |
+| Resource-not-found returned error `-32002` | Now `-32602` (Invalid Params), matching plain JSON-RPC | No |
+
+One line on auth, since it is easy to over-read: the spec also tightens OAuth issuer validation (RFC 9207) and nudges Dynamic Client Registration toward Client ID Metadata Documents. That is a server-operator concern, not something a learner writing a local STDIO server needs to touch.
+
+## Does this change what you're learning?
+
+Verdict: no. Map MCP onto the client-server API you already know instead of learning it from zero. An MCP **host** is the AI app doing the talking (Claude Code, Claude Desktop, VS Code), and it spins up one MCP **client** per server it connects to. Your **server** is the program that answers. The data layer is [JSON-RPC 2.0](https://www.jsonrpc.org/) over a transport: STDIO for a local process, Streamable HTTP for a remote one. A **tool** is an action, close to a POST. A **resource** is read-only data, close to a GET. A **prompt** is a reusable template. The client discovers what a server offers by calling `tools/list`, then invokes one with `tools/call`, per [MCP's architecture docs](https://modelcontextprotocol.io/docs/learn/architecture). That mental model is exactly the same before and after 2026-07-28. What changed is the wiring underneath a couple of those pieces, and an SDK handles almost all of it for you.
+
+So, does a course or tutorial built before the new spec still apply? Yes, for the concepts and for a local STDIO server. What differs is the SDK version. The [TypeScript SDK v2](https://ts.sdk.modelcontextprotocol.io/v2/migration/upgrade-to-v2.html) shipped alongside the spec, published as `@modelcontextprotocol/server` 2.0.0 on 2026-07-27 (2.1.0 followed on 2026-09-23, the latest release as of 2026-09-28 per the npm registry). It replaced the monolithic `@modelcontextprotocol/sdk` package, whose v1 line is still getting patches too, most recently on 2026-09-23. The SDK's own [roadmap](https://raw.githubusercontent.com/modelcontextprotocol/typescript-sdk/main/ROADMAP.md) says plainly that "the v1.x branch continues to receive bug fixes and security updates for at least six months after the v2 release," so a v1 tutorial is not stale, just on an older package.
+
+v2 needs Node.js 20+ and `zod ^4.2.0`, and it drops the old variadic call in favour of a config object: `server.tool(name, description, schema, handler)` becomes `server.registerTool(name, { description, inputSchema }, handler)`. That is the one line that actually changes in most tutorials.
+
+And here is the detail that resolves the "is my old tutorial dead" worry completely. The SDK's own page on [supporting the 2026-07-28 revision](https://ts.sdk.modelcontextprotocol.io/v2/migration/support-2026-07-28) says "nothing in v2 puts a 2026-07-28 byte on the wire by default: a hand-constructed `Client` / `Server` / `McpServer` keeps speaking the 2025-era protocol it was written for." Plain `server.connect(new StdioServerTransport())` keeps talking the older wire format unless you opt into the new one with `serveStdio()` on stdio or `createMcpHandler()` over HTTP. So a server written the "old" way still works with today's hosts. The stateless wire format is something you choose, not something that broke under you.
+
+## What to do: build a minimal MCP server in Node.js
+
+1. `mkdir mcp-server && cd mcp-server && npm init -y`, then set `"type": "module"` in `package.json`.
+2. `npm install @modelcontextprotocol/server zod` (v2 requires `zod ^4.2.0`).
+3. Write `server.ts`:
+
+```typescript
+import { McpServer } from '@modelcontextprotocol/server';
+import { StdioServerTransport } from '@modelcontextprotocol/server/stdio';
+import * as z from 'zod/v4';
+
+const server = new McpServer({ name: 'greeting-server', version: '1.0.0' });
+
+server.registerTool(
+  'greet',
+  {
+    description: 'Greet someone by name',
+    inputSchema: z.object({ name: z.string() }),
+  },
+  async ({ name }) => ({
+    content: [{ type: 'text', text: `Hello, ${name}!` }],
+  })
+);
+
+async function main() {
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+}
+
+main();
+```
+
+This is the SDK's own minimal example, kept exactly as published. It speaks the 2025-era wire format by default; opting into the 2026-07-28 format on stdio means swapping the last two lines for the SDK's `serveStdio(() => buildServer())` helper, whose exact import path you should copy from the [migration docs](https://ts.sdk.modelcontextprotocol.io/v2/migration/support-2026-07-28) rather than guess, since the SDK's package layout changed with the 2026-07-28 spec update.
+
+4. Log with `console.error`, never `console.log`, once your server does real work over stdio. Standard output is the protocol channel; anything you write to it corrupts the JSON-RPC stream.
+5. Run it with `npx tsx server.ts`, then test it with `npx @modelcontextprotocol/inspector@latest`, pointing it at your server command.
+6. Moving an existing v1 project: run `npx @modelcontextprotocol/codemod@latest v1-to-v2 .` at the package root. The codemod rewrites the SDK surface (imports, `tool()` to `registerTool()`) for you; it does not adopt the 2026-07-28 wire format, which stays a manual, opt-in step per the migration guide above.
+
+## How do I learn MCP hands-on?
+
+I reviewed all 17 scrims of Scrimba's [Intro to Model Context Protocol (MCP)](/docs/courses/ai/model-context-protocol-mcp/) course with a Pro account: Maham Codes builds a weather MCP server in Node.js and TypeScript with one tool, one resource, a STDIO transport and three coding challenges. It pins `@modelcontextprotocol/sdk` 1.15 and the v1 `server.tool()` call, so the only line you would change for v2 is that call becoming `registerTool()`. Everything else, including the "log to stderr, not stdout" lesson, carries over. Start with the <AffiliateLink location="tofu-bridge-direct" href="https://scrimba.com/intro-to-model-context-protocol-mcp-c0sake4uir">free sample lessons</AffiliateLink> for a guided version of the build above.
+
+## Bottom line
+
+Learn the model once, host, client, server, tools, resources, prompts, JSON-RPC over STDIO or HTTP. That does not change. Write new servers on SDK v2 with `registerTool()` and `zod ^4.2`. An older STDIO tutorial, including one pinned to SDK v1, is still a perfectly good place to start; it keeps working with today's hosts because the new wire format is opt-in, not automatic. Next step: build the six-step server above, then run it through the Inspector before you wire it into a host.
+
+<FAQAccordion items={[
+  { q: "Is MCP stateless now?", a: "Yes, as of the 2026-07-28 specification revision. The initialize handshake and Streamable HTTP sessions are gone; every request carries its own protocol version and capabilities, so a server needs no shared connection state to answer it." },
+  { q: "Do I need TypeScript for MCP?", a: "No. Plain JavaScript works fine; you just lose the compile-time checks. The official SDK is written in TypeScript and documented in TypeScript, which is why most examples, including the one above, use it, but nothing in the protocol requires it." },
+]} />
+
+<PricingCTA
+  ctaType="free"
+  title="Build your first MCP server with a guided course"
+  subtitle="Scrimba's free intro scrims let you try the edit-the-code format before you pay for anything."
+  location="blog-mcp-javascript-final"
+/>
