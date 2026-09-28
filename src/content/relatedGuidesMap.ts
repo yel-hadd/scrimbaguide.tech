@@ -226,6 +226,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
     { title: 'AI Tools for Developers', href: '/blog/ai-tools-every-developer-should-know-2026', type: 'blog' },
     { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
+    { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
   ],
 
   // --- Docs: AI course leaves → funnel into the AI Engineer Path money page ---
@@ -603,6 +604,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
     { title: 'Scrimba Learning Paths', href: '/docs/paths/', type: 'doc' },
     { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+    { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
   ],
   '/blog/scrimba-instant-practice-no-setup': [
     { title: 'How Scrims Work', href: '/docs/how-it-works/how-scrims-work', type: 'doc' },
