@@ -147,6 +147,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Scrimba React Learning Path', href: '/blog/scrimba-react-learning-path', type: 'blog' },
     { title: 'Frontend Developer Skills 2026', href: '/blog/frontend-developer-skills-2026', type: 'blog' },
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'React Updates for Learners', href: '/blog/react-updates-for-learners', type: 'blog' },
   ],
   '/blog/how-to-learn-coding-without-depending-on-ai': [
     { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
@@ -474,6 +475,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Advanced React', href: '/docs/courses/react/advanced-react', type: 'doc' },
     { title: 'Testing in React', href: '/docs/courses/react/testing-in-react', type: 'doc' },
     { title: 'React Courses', href: '/docs/courses/react/', type: 'doc' },
+    { title: 'React Updates for Learners', href: '/blog/react-updates-for-learners', type: 'blog' },
   ],
   '/docs/courses/react/advanced-react': [
     { title: 'Fullstack Developer Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
@@ -663,6 +665,14 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: '5 Portfolio Projects That Get You Hired', href: '/blog/portfolio-projects-get-hired-2026', type: 'blog' },
     { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
     { title: 'Which Developer Specialization Has the Best Job Market', href: '/blog/developer-specialization-job-market-2026', type: 'blog' },
+  ],
+
+  // --- 2026-09-28: React updates hub ---
+  '/blog/react-updates-for-learners': [
+    { title: 'Learn React (course)', href: '/docs/courses/react/learn-react/', type: 'doc' },
+    { title: 'React Courses (Scrimba)', href: '/docs/courses/react/', type: 'doc' },
+    { title: "What's New in React 19?", href: '/docs/courses/react/whats-new-in-react-19/', type: 'doc' },
+    { title: 'Is React Still Worth Learning in 2026?', href: '/blog/is-react-still-worth-learning-2026/', type: 'blog' },
   ],
 };
 
