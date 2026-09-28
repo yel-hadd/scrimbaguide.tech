@@ -227,6 +227,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'AI Tools for Developers', href: '/blog/ai-tools-every-developer-should-know-2026', type: 'blog' },
     { title: 'Fullstack Path', href: '/docs/paths/fullstack-developer-path', type: 'doc' },
     { title: 'Scrimba Review 2026', href: '/blog/scrimba-review', type: 'blog' },
+    { title: 'MCP for JavaScript Developers', href: '/blog/mcp-for-javascript-developers', type: 'blog' },
   ],
 
   // --- Docs: AI course leaves → funnel into the AI Engineer Path money page ---
@@ -280,6 +281,13 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
     { title: 'Learn AI Agents', href: '/docs/courses/ai/ai-agents', type: 'doc' },
     { title: 'Context Engineering', href: '/docs/courses/ai/context-engineering', type: 'doc' },
+    { title: 'MCP for JavaScript Developers', href: '/blog/mcp-for-javascript-developers', type: 'blog' },
+  ],
+  '/blog/mcp-for-javascript-developers': [
+    { title: 'Intro to Model Context Protocol (MCP)', href: '/docs/courses/ai/model-context-protocol-mcp', type: 'doc' },
+    { title: 'AI Engineer Path', href: '/docs/paths/ai-engineer-path', type: 'doc' },
+    { title: 'Scrimba AI Courses', href: '/docs/courses/ai/', type: 'doc' },
+    { title: 'How to Build Your First AI Agent', href: '/blog/how-to-build-ai-agent-beginners-2026', type: 'blog' },
   ],
 
   // --- Docs: TypeScript → link both fullstack AND frontend paths ---
