@@ -129,7 +129,13 @@ const dropped = all.map(c => ({ c, why: dropWhy(c) })).filter(x => x.why)
 if (dropped.length) log(`dropped ${dropped.length}: ${dropped.map(x => `${x.c.topic} [${x.why}]`).join('; ')}`)
 const candidates = all.filter(c => !dropWhy(c))
 log(`${candidates.length} candidates from ${found.filter(Boolean).length} lenses; ${followups.length} follow-ups; ${drift.length ? `${drift.length} catalog drift rows` : 'no catalog drift reported'}`)
-const base = { date: A.date, window: WIN, chrome: CHROME, drift, followups, snapshot_generated_at: A.snapshot_generated_at || null }
+// Radar: every dated candidate that survived the filters, soonest deadline first, so each run shows what is coming even
+// when it picks something else. An upcoming event must be published 2 days before it starts; a past one within 14 (spike), 45 (months) or 90 days.
+const radar = candidates.filter(c => ISO.test(c.event_date || ''))
+  .map(c => ({ topic: c.topic, target_query: c.target_query, event_date: c.event_date, shelf_life: c.shelf_life, shape: c.shape, relevance: c.relevance, primary_source: c.primary_source || '',
+    publish_by: c.event_date > A.date ? iso(new Date(new Date(`${c.event_date}T00:00:00Z`).getTime() - 2 * 86400000)) : iso(new Date(new Date(`${c.event_date}T00:00:00Z`).getTime() + ({ spike: 14, months: 45 }[c.shelf_life] || 90) * 86400000)) }))
+  .sort((x, y) => x.publish_by.localeCompare(y.publish_by)).slice(0, 10)
+const base = { date: A.date, window: WIN, chrome: CHROME, drift, followups, radar, snapshot_generated_at: A.snapshot_generated_at || null }
 if (!candidates.length) return { outcome: 'skip', reason: 'no candidates found', ...base }
 
 // ---------------- SHORTLIST → TRENDS ----------------
