@@ -1,0 +1,115 @@
+---
+slug: hacktoberfest-2026-first-pull-request
+title: "Hacktoberfest 2026: How to Make Your First Pull Request (Now That PRs Don't Count)"
+description: "Hacktoberfest 2026 stopped counting pull requests. Here is how to make your first open source PR anyway: find an issue, fork, branch, push, and answer review."
+authors: [scrimbaguide]
+tags: [guide, beginners, career, projects]
+keywords: [hacktoberfest 2026, hacktoberfest 2026 rules, does hacktoberfest 2026 count pull requests, hacktoberfest 2026 changes, how to make your first pull request on github, how to contribute to open source for beginners, good first issue github beginner, first open source contribution step by step, hacktoberfest 2026 t-shirt, can i use ai for open source pull requests]
+image: /img/blog/hacktoberfest-2026-first-pull-request.png
+image_alt: "How to make your first pull request for Hacktoberfest 2026, now that pull requests don't count, Scrimba Guide Blog"
+date: 2026-09-28
+last_update:
+  date: 2026-09-28
+  author: Yassine El Haddad
+---
+
+import PricingCTA from '@site/src/components/PricingCTA';
+import AffiliateLink from '@site/src/components/AffiliateLink';
+import FAQAccordion from '@site/src/components/FAQAccordion';
+import DisclosureNotice from '@site/src/components/DisclosureNotice';
+
+# Hacktoberfest 2026: how to make your first pull request
+
+<DisclosureNotice />
+
+Hacktoberfest 2026 no longer counts pull requests; organizers announced this on 2026-08-19. You can still make your first pull request in October: find a repo with a good-first-issue label, read its contributing guide, fork it, branch, commit, push, open the PR against the original repo, and answer review yourself.
+
+{/* truncate */}
+
+## What changed on 2026-08-19
+
+For most of its history, Hacktoberfest meant one thing: open four pull requests in October and get a T-shirt. On [2026-08-19, MLH and DEV announced a rewrite](https://blog.mlh.com/hacktoberfest-2026-ai-belongs-to-everyone-3jl8): "This year, we're not counting PRs. Hacktoberfest is focused on giving everyone the tools and knowledge to learn, experiment, and build with open artificial intelligence." DigitalOcean presents the event, and MLH and DEV run it with them.
+
+The [official FAQ](https://hacktoberfest.com/questions/) gives the reason in one sentence: "With the rise of AI tools making low-effort PRs trivial to generate, open-source maintainers faced unprecedented floods of noise, spam, and burnout." Counting PRs had become a target maintainers had to defend, not a signal of useful work.
+
+| | Recent years, through 2025 | Hacktoberfest 2026 |
+|---|---|---|
+| What counts | Four merged/valid pull requests | Nothing is counted; no PR quota |
+| Reward | A limited-edition T-shirt for finishers | In-person Fest swag (organizer discretion); online Swag Envelope for milestones, "more details soon" |
+| Format | Any repo, any time in October, tracked online | 300+ in-person Fests (Hack Day or Meet Up, up to 12 hours) plus an online program |
+| Theme | General open source | "AI belongs to everyone," open source AI and open-weight models |
+
+As of 2026-09-28, the [Fests page](https://hacktoberfest.com/fests/) has not published specific Fest dates or the Swag Envelope's milestone list; both are searchable by city once organizers post them, and the event window is described only as "October 2026," not a fixed October 1 to 31 range.
+
+## Does this change what you're learning?
+
+No. The Git and GitHub skills you'd practice for a Hacktoberfest PR (forking, branching, opening a pull request, responding to review) are the same skills whether or not anyone is counting them. The FAQ makes the same point from the other direction: "Open source runs 365 days a year, and you can get started anytime," and links a beginner's guide, [OpenSauced's Open Source 101](https://dev.to/opensauced/open-source-101-a-beginners-guide-to-getting-started-37fb), for exactly this reason.
+
+What changed is the incentive. When four PRs earned a T-shirt, volume was rational. With no quota and no shirt for it, the only reason left to open a pull request is that it actually helps the project and teaches you something. That makes one careful, disclosed, reviewed PR worth more than the ten you might have rushed out during Hacktoberfest 2025, not less.
+
+## What to do
+
+**0. Install Git.** Get it from [git-scm.com](https://git-scm.com/) (the latest stable release is 2.55.0 as of 2026-09-28). Set your identity once, from any terminal:
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+**1. Do a practice run first.** [firstcontributions/first-contributions](https://github.com/firstcontributions/first-contributions) exists for exactly one reason: to take your first pull request. It has 56.1k stars as of 2026-09-28 and a script it walks you through, ending with your name added to a contributors file. Do this before touching a real project. There's nothing to break.
+
+**2. Find a real repo with beginner-friendly work.** Browse [GitHub's good-first-issue topic](https://github.com/topics/good-first-issue): 2,860 public repositories carry it as of 2026-09-28, filterable by language (JavaScript 516, Python 501, TypeScript 363). Inside a repo, filter its Issues tab by the "good first issue" label, and check when the last pull request there was actually merged. A repo with no merges in months is a repo where your PR will sit unread.
+
+**3. Read before you write.** Open the README and CONTRIBUTING.md. Comment on the issue saying you'd like to take it, and wait for a maintainer to assign or acknowledge it before you start.
+
+**4. Fork, branch, commit, push.** [GitHub's own contributing guide](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project) lays out the sequence: fork the repo from its page, then on your machine,
+
+```
+git clone https://github.com/YOUR-USERNAME/REPO
+cd REPO
+git switch -c fix-typo-in-readme
+```
+
+(`git checkout -b fix-typo-in-readme` works the same way on an older Git install.) Make your change, then
+
+```
+git add <file>
+git commit -m "Fix typo in README install step"
+git push -u origin fix-typo-in-readme
+```
+
+**5. Open the pull request.** Back on your fork on GitHub, click Contribute, then Open a pull request. Write a title and a short reason the change helps, and link the issue it closes ("Fixes #123").
+
+**6. Answer review yourself.** A maintainer will likely ask for a change. Push a follow-up commit to the same branch; it appears on the same pull request automatically.
+
+## Why first pull requests get closed
+
+There's no single error message here, just a short list of habits that get PRs closed without a merge:
+
+- **No issue, no claim.** Opening a PR for unassigned or unrequested work duplicates someone else's effort or misses what the maintainer actually wants.
+- **Ignoring CONTRIBUTING.md.** Every project that has one wrote it because contributors kept getting the basics wrong.
+- **Drive-by cosmetic changes.** Reformatting a file you didn't otherwise touch adds review noise for no benefit.
+- **Huge diffs from a first-time contributor.** Small is reviewable; 40 changed files from someone with no history on the repo is not.
+- **Undisclosed AI output.** [ESLint's AI contribution policy](https://eslint.org/docs/latest/contribute/ai-policy) is a useful example of where this is heading across open source: "If you use AI to generate an issue or a pull request, you must clearly disclose this in your submission." Undisclosed AI-generated issues or PRs "may be closed without review," AI-generated PRs are only considered for issues the maintainers have explicitly marked `accepted`, and the policy is blunt about review: "Please do not feed maintainer comments back into an AI to generate responses." Maintainers expect a human on the other end of the conversation.
+
+The fix for all five is the same: pick a real, acknowledged issue, keep the change small, disclose any AI assistance, and understand every line you're submitting well enough to defend it in review.
+
+## If you want to learn Git properly first
+
+If forking, branching and resolving a merge conflict felt new to you, not just new in this repo, [Learn Git and GitHub](/docs/courses/javascript/git-and-github/) is Scrimba's course for exactly that gap. From our review of the course: its Collaboration section walks through a two-account pull request, code review and merge conflict workflow, the same review and conflict-resolution skills you just used, and the first four scrims (about 14 minutes) are free before the rest moves to Pro. <AffiliateLink location="tofu-bridge-direct" href="https://scrimba.com/learn-git-and-github-c0eh4kd7df">Watch the free sample lessons</AffiliateLink> to see if the format fits before you commit to Pro. If the terminal itself is new territory, [Command Line Basics](/docs/courses/javascript/command-line-basics/) is worth doing first.
+
+## Bottom line
+
+Hacktoberfest 2026 will not reward your pull request with a T-shirt for showing up four times. That's a fair trade. A pull request you open because it helps a real project, that you can explain line by line, is worth more to your GitHub history and to the maintainer reading it than ten rushed ones ever were. Do a practice run on first-contributions today, then find a real good-first-issue repo once October opens. If you want the in-person version, check [hacktoberfest.com/fests/](https://hacktoberfest.com/fests/) for one near you.
+
+Next step: open first-contributions right now and make the practice PR. It takes about ten minutes and it's the same workflow you'll use for real.
+
+<PricingCTA ctaType="free" />
+
+<FAQAccordion items={[
+  { q: "Does Hacktoberfest 2026 still count pull requests?", a: "No. MLH and DEV announced on 2026-08-19 that pull requests are no longer counted. The event now centers on in-person Fests and an online program built around open source AI." },
+  { q: "Do I still get a T-shirt for Hacktoberfest 2026?", a: "Only at in-person Fests, at the local organizer's discretion and while supplies last. Online participants are not eligible for a T-shirt; a Swag Envelope for online milestones ships 30 to 60 days after the event, with details still to come as of 2026-09-28." },
+  { q: "Who can take part in Hacktoberfest 2026?", a: "Anyone 13 or older worldwide, subject to U.S. export controls and embargo restrictions." },
+  { q: "Can I use AI to write my first pull request?", a: "Check the repository's own policy first; more projects are adopting rules like ESLint's, which requires disclosing AI use and only reviews AI-generated PRs against issues a maintainer has explicitly marked accepted." },
+  { q: "Where do I find beginner-friendly repos to contribute to?", a: "GitHub's good-first-issue topic page lists thousands of repos filterable by language, or start with firstcontributions/first-contributions, a repo built specifically to be your first pull request." },
+]} />
