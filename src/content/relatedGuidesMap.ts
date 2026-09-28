@@ -162,6 +162,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Which Coding Path to Learn', href: '/blog/which-coding-path-to-learn-2026', type: 'blog' },
     { title: 'Scrimba Learning Paths', href: '/docs/paths/', type: 'doc' },
     { title: 'Which Scrimba Path Fits You?', href: '/tools/which-scrimba-path/', type: 'doc' },
+    { title: 'Hacktoberfest 2026: Your First Pull Request', href: '/blog/hacktoberfest-2026-first-pull-request', type: 'blog' },
   ],
 
   // --- Blog Posts: Money Pages ---
@@ -574,6 +575,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'How to Get Coding Experience Without a Job', href: '/blog/how-to-get-coding-experience-without-a-job-2026', type: 'blog' },
     { title: 'How to Get Your First Dev Job', href: '/blog/how-to-get-first-developer-job-2026', type: 'blog' },
     { title: 'Frontend Developer Path', href: '/docs/paths/frontend-developer-path', type: 'doc' },
+    { title: 'Hacktoberfest 2026: Your First Pull Request', href: '/blog/hacktoberfest-2026-first-pull-request', type: 'blog' },
   ],
   '/blog/projects-youll-build-on-scrimba': [
     { title: 'JavaScript Projects for Beginners 2026', href: '/blog/javascript-projects-for-beginners-2026', type: 'blog' },
@@ -645,6 +647,14 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: "Scrimba Roadmap: What's Coming", href: '/blog/scrimba-roadmap-whats-coming/', type: 'blog' },
     { title: 'Scrimba Pricing', href: '/docs/pricing/', type: 'doc' },
     { title: 'Scrimba FAQ', href: '/docs/faq/', type: 'doc' },
+  ],
+
+  // --- 2026-09-28 ---
+  '/blog/hacktoberfest-2026-first-pull-request': [
+    { title: 'Learn Git and GitHub', href: '/docs/courses/javascript/git-and-github/', type: 'doc' },
+    { title: '5 Portfolio Projects That Get You Hired', href: '/blog/portfolio-projects-get-hired-2026', type: 'blog' },
+    { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
+    { title: 'Which Developer Specialization Has the Best Job Market', href: '/blog/developer-specialization-job-market-2026', type: 'blog' },
   ],
 };
 
