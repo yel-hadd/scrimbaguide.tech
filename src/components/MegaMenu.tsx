@@ -44,9 +44,16 @@ interface MegaMenuProps {
 }
 
 const CLOSE_DELAY = 200;
+// A toggle click this soon after a hover-open is the same gesture, not a close.
+const HOVER_CLICK_WINDOW = 1000;
 
 export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClose }: MegaMenuProps) {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  // Set when hovering opened the panel. The click that usually follows the
+  // hover must not toggle it shut again: with hover-to-open, a mouse user who
+  // moves to the toggle and clicks would otherwise see the panel flash open
+  // and close (how much depends on whether React re-rendered in between).
+  const hoverOpenedAt = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelId = useId();
@@ -77,6 +84,7 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
   const handleMouseEnter = useCallback(() => {
     cancelCloseTimer();
     if (!isOpen) {
+      hoverOpenedAt.current = Date.now();
       onToggle();
     }
   }, [isOpen, onToggle, cancelCloseTimer]);
@@ -89,8 +97,19 @@ export default function MegaMenu({ label, items, isOpen, menuId, onToggle, onClo
 
   const handleToggleClick = useCallback(() => {
     cancelCloseTimer();
+    if (Date.now() - hoverOpenedAt.current < HOVER_CLICK_WINDOW) {
+      // Keep the hover-opened panel open; a later click closes it.
+      hoverOpenedAt.current = 0;
+      if (!isOpen) onToggle();
+      return;
+    }
     onToggle();
-  }, [onToggle, cancelCloseTimer]);
+  }, [isOpen, onToggle, cancelCloseTimer]);
+
+  // Any close (outside click, Escape, link, mouse leave) ends the hover state.
+  useEffect(() => {
+    if (!isOpen) hoverOpenedAt.current = 0;
+  }, [isOpen]);
 
   const handleLinkClick = useCallback(() => {
     cancelCloseTimer();
