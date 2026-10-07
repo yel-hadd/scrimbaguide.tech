@@ -7,7 +7,7 @@ description: "Dylan Israel's one-hour Pro clean code course reviewed from inside
 keywords: [scrimba clean code, introduction to clean code review, clean code course, readable code javascript, dylan israel scrimba, maintainable code course, scrimba clean code review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-24
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,8 +27,7 @@ Dylan C. Israel's Introduction to Clean Code is a 64-minute Pro course that turn
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
-
+## Should you take an hour of renames from Dylan Israel?
 This fits developers who can write working JavaScript but have never had anyone review it, and anyone about to start a first job wondering what a reviewer will flag. The catch: every example stays tiny, so a team that already runs a linter and code reviews will find little new here. Pair it with [Introduction to Unit Testing](/docs/courses/javascript/unit-testing/) once you have working code worth testing.
 
 <CourseCard
@@ -43,16 +42,16 @@ This fits developers who can write working JavaScript but have never had anyone 
   description="A one-hour intro to readable JavaScript: naming, small functions, and when a comment is worth writing, with seven refactoring challenges."
 />
 
-## Is it worth your time?
-
+## One idea, searchable, readable and understandable, in 26 scrims
 The course has one idea, stated in the first scrim and repeated at the top of every section: code should be "searchable, readable, and understandable." Everything else is a technique in service of that. Dylan's argument for why you should care is blunt. "Ninety percent of your job is reading code, believe it or not," he says in the introduction, and he credits testing, clean code, and the SOLID principles with doubling his income early in his career.
 
 The advice itself is the standard set from Robert Martin's Clean Code book, which Dylan recommends in the last scrim: meaningful names, small functions, no magic numbers, delete commented-out code. What the course adds is the format. You see a bad file, you get 30 seconds to fix it yourself, then you watch him fix it and explain each rename. If nobody has ever reviewed your code, that is the part you cannot get from the book.
 
-The limit is depth. The examples are tiny, sometimes two lines, and the whole thing runs shorter than a lunch break. Dylan says as much in the comments challenge: "they're a little silly because it's a challenge." If you want practice at scale, the course points you back to your own projects.
+The main limit is depth. The examples are tiny, sometimes two lines, and never grow into a real file, so the whole thing runs shorter than a lunch break. Dylan says as much in the comments challenge: "they're a little silly because it's a challenge." If you want practice at scale, the course points you back to your own projects.
 
-## What you'll learn
+Two of the 26 scrims are generic Scrimba promos, there is no automated feedback on your solutions, and the recording is from around 2020 (his job title is already out of date). Against that, the challenges are short enough that you will do them rather than skip them, and Dylan calls out his own unreadable code by name. Verdict: worth an hour if nobody has reviewed your code yet, not enough on its own to make any of it a habit without the homework.
 
+## Five sections from linters to the final challenge
 <CourseCurriculum
   modules={[
     { name: 'Introduction and linters', duration: '7 min', lessons: 2 },
@@ -65,8 +64,7 @@ The limit is depth. The examples are tiny, sometimes two lines, and the whole th
 
 Scrimba lists this course as a single flat list of scrims with no modules, so the five groups above are mine, following the section intros Dylan records ("the variables introduction", "the clean code functions introduction", and so on). I counted 26 scrims adding up to about 65 minutes of video; Scrimba's listing says 27 lessons and 64 minutes, and the extra lesson in its count appears to be the certificate item at the end of the list.
 
-## Inside the course, module by module
-
+## Linters, variables, functions, comments, then your own old repos
 ### 1. Introduction and linters (7 min, 2 scrims)
 
 <Screenshot
@@ -139,28 +137,23 @@ Dylan calls comments "one of the most misunderstood sections" and his position i
 
 The "Final Challenge" has no code in it. It is a list: go back to your old projects and clean them up, do the same to your algorithm practice, bring these ideas into code reviews and pair programming, and post before-and-afters in Scrimba's Discord. Dylan says he does the first one himself "about once every year." "What's Next" points at his [Introduction to Unit Testing](/docs/courses/javascript/unit-testing/) course, Husky git hooks, cspell, the Clean Code book, and the clean-code-javascript repo. The last two scrims are Scrimba's generic Scrimbassador referral pitch and Per Borgen's certificate scrim, not Dylan.
 
-## What a lesson feels like
-
+## Bad file, 30 seconds, fix: how the format works and what it costs in time
 Most scrims are two to four minutes and open on a file of 5 to 20 lines with a comment naming the exercise at the top. Dylan talks over the editor, renames things, and the code updates as he types. There is no live preview to speak of; the index.html is a shell, and the point is always the code, not output. Some scrims open on a slide deck (the intro, both section intros, the linters lesson, the good-comments recap, and the wrap-up).
 
-The challenges follow a fixed pattern. He describes the file, says something like "that's all I'm gonna give you," pauses for a beat, then asks "were you able to do it?" and solves it. There are no automated checks and no AI feedback; you compare your renames with his and he repeatedly says yours may differ. Every scrim has a full timestamped transcript in the player's settings menu, and the course page lists ten subtitle languages.
+The challenges follow a fixed pattern. He describes the file, says something like "that's all I'm gonna give you," pauses for a beat, then asks "were you able to do it?" and solves it. There are no automated checks and no AI feedback; you compare your renames with his and he repeatedly says yours may differ. The transcript is in the player's settings menu.
 
 The tone is loose. He jokes about his ex-girlfriend and his spelling, and he leaves his own fumbles in, like the Magic Numbers moment where he cannot remember what c stood for. If you prefer a tight script, a few minutes of the hour are chat.
-
-## Free or Pro: exactly what is gated
-
-The course is Pro, but the first five scrims carry a SAMPLE badge and open without a subscription: the introduction, the linters lesson, both Clean Variables lessons, and the first variables challenge. That is 16 minutes and one real challenge, enough to know whether you like Dylan's style before paying.
-
-Everything from "Clean Variables & Clean Properties (Challenge)" onwards, which is 21 of the 26 scrims and all six remaining challenges, needs Pro, as does the certificate of completion at the end of the list. There are no solo projects in this course and nothing to download. Pro also includes the career paths and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free, so the server itself is not gated. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
-
-## How long it takes
 
 The video is 64 minutes and the seven challenges are small, so plan about 90 minutes if you pause and attempt each one, or two hours if you also add ESLint to a project as the linters scrim asks. That is the low end of the usual two to three times runtime, because every exercise is a single short file.
 
 The final challenge is where the time goes. Cleaning up one old repository properly is an afternoon, and that is where the habits form. Budget a weekend if you intend to do it.
 
-## Who it's for, and who should skip it
+## Five SAMPLE scrims free, 21 behind Pro
+The course is Pro, but the first five scrims carry a SAMPLE badge and open without a subscription: the introduction, the linters lesson, both Clean Variables lessons, and the first variables challenge. That is 16 minutes and one real challenge, and the free previews cover the most useful section. Enough to know whether you like Dylan's style before paying.
 
+Everything from "Clean Variables & Clean Properties (Challenge)" onwards, which is 21 of the 26 scrims and all six remaining challenges, needs Pro, as does the certificate of completion at the end of the list. There are no solo projects in this course and nothing to download. Pro also includes the career paths and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free, so the server itself is not gated. <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's pricing page</AffiliateLink> has the plans.
+
+## Who has never had their code reviewed
 It fits self-taught developers who have finished a course like [Learn JavaScript](/docs/courses/javascript/learn-javascript/), have a few projects on GitHub, and have never had anyone read their code, and anyone about to start a first job and wondering what reviewers will flag. The examples are JavaScript, but the rules carry over to other languages, and Dylan says so in the variables intro.
 
 Skip it if you already work with a linter and a review process; the ESLint scrim and the naming rules will be things you do every day. Skip it too if you want depth on architecture or SOLID; he names those ideas (interface segregation gets one sentence) and leaves them for you to look up. Complete beginners should wait until they can write a function and a loop without help, since every lesson assumes you can read the starting code.
@@ -169,27 +162,16 @@ Skip it if you already work with a linter and a review process; the ESLint scrim
   Start Introduction to Clean Code on Scrimba
 </AffiliateLink>
 
-## Prerequisites
-
+## The JavaScript to bring, and what to pair with it
 Enough JavaScript to read a for loop, an if statement, and a class with a few fields. The solutions use template strings and array destructuring, which he explains briefly as he goes. Nothing needs installing; the ESLint homework is optional and happens on your own machine.
 
-## Where it fits
+The natural companion is [Introduction to Unit Testing](/docs/courses/javascript/unit-testing/), which Dylan trails in the last scrim and which picks up the "testable and automatable" thread he leaves open. The git-hooks and linting advice in the wrap-up pairs with [Learn Git and GitHub](/docs/courses/javascript/git-and-github/). Take it after [Learn JavaScript](/docs/courses/javascript/learn-javascript/) or [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), once you have code of your own to apply it to.
 
-This is a standalone course, not part of a career path. The natural companion is [Introduction to Unit Testing](/docs/courses/javascript/unit-testing/), which Dylan trails in the last scrim and which picks up the "testable and automatable" thread he leaves open. The git-hooks and linting advice in the wrap-up pairs with [Learn Git and GitHub](/docs/courses/javascript/git-and-github/). Take it after [Learn JavaScript](/docs/courses/javascript/learn-javascript/) or [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), once you have code of your own to apply it to.
-
-## Strengths and limits
-
-What it does well: the before-and-after format makes each rule concrete, the challenges are short enough that you will do them rather than skip them, Dylan calls out his own unreadable code by name, and the free previews cover the most useful section.
-
-Where it is limited: the examples are tiny and never grow into a real file, there is no automated feedback on your solutions, two of the 26 scrims are generic Scrimba promos, the recording is from around 2020 (his job title is already out of date), and an hour is not enough to make any of this a habit without the homework.
-
-## Related courses and comparisons
-
-- [Introduction to Unit Testing](/docs/courses/javascript/unit-testing/), the natural companion, same instructor
-- [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/), more career-skills material from Dylan Israel
-- [Learn Git and GitHub](/docs/courses/javascript/git-and-github/), for the version-control habits the comments section assumes
-- [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), to deepen the JavaScript the examples use
-- [All JavaScript courses](/docs/courses/javascript/), the full category hub
+- [Introduction to Unit Testing](/docs/courses/javascript/unit-testing/), which Dylan trails in the last scrim, once you have working code worth testing
+- [Frontend Interview Tips](/docs/courses/javascript/frontend-interview-tips/), more career-skills material from Dylan, for the first-job side of the reviewer question
+- [Learn Git and GitHub](/docs/courses/javascript/git-and-github/), for the git-hooks and linting advice in the wrap-up
+- [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), to deepen the classes and destructuring the solutions lean on
+- [All JavaScript courses](/docs/courses/javascript/), for the courses that give you code of your own to clean up
 
 <FAQAccordion items={[
   { q: "Is Introduction to Clean Code free on Scrimba?", a: "No, it is a Pro course, but the first five scrims are free previews marked SAMPLE: the introduction, the linters lesson, both Clean Variables lessons, and the first challenge. The remaining 21 scrims and the certificate need a subscription." },

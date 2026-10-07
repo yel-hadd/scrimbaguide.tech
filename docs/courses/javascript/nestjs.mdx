@@ -7,7 +7,7 @@ description: "DonTheDeveloper's free Intro to NestJS from inside: 83 minutes, 22
 keywords: [scrimba nestjs, intro to nestjs scrimba, intro to nestjs review, free nestjs course, nestjs vs express, typescript node framework, donthedeveloper nestjs]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Scrimba's free Intro to NestJS is an 83-minute, 22-scrim course from DonTheDevel
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## DevMatch: a dating-app profile API that teaches Nest in 12 checked challenges
 
 Intro to NestJS fits developers who've already built an Express API and want a fast tour of a structured, TypeScript-first framework: modules, controllers, services, DTOs, pipes, and guards, with 12 checked challenges. The catch is scope: no databases, authentication, or tests, just the DevMatch profile API in 83 minutes. Start with [Learn Express.js](/docs/courses/javascript/expressjs/) first if you haven't built a Node API yet.
 
@@ -54,21 +54,9 @@ Intro to NestJS fits developers who've already built an Express API and want a f
   />
 </div>
 
-## Is it worth your time?
+## Six topic groups, 22 scrims, and durations that sum to 87 minutes
 
-Yes, if you meet the prerequisite. The whole course is one project, and every lesson adds one Nest concept in the order you would meet them on a real backend: module, controller, routes, service, then error handling and validation. Nothing is abstract. When decorators show up (the `@Something()` annotations Nest uses to attach behaviour to classes and methods), they show up on a controller the CLI just generated, and Don explains them in one sentence: "They're basically higher order functions."
-
-By the outro you have a working REST API. It returns 404s with custom messages, rejects ids that are not UUIDs, and has a guard on the delete route.
-
-Scope and level are the two limits. Scope: the data lives in an array in the service. Don says in the outro to "try the TypeORM or Prisma guides in the docs to persist profiles instead of using an in memory array," and he keeps authentication out on purpose: "I wanted to avoid diving deep into authorization in this course and just focus on the fundamentals of Nest."
-
-Level: the second scrim tells you plainly to have "familiarity with building personal projects with Express" and to "think of this as the next step after you build a few basic Express apps." If you have never written a route handler, the pace will lose you by lesson five.
-
-One more thing matters for a course this short: the challenges are real. Twelve scrims stop and hand you a numbered brief (the GET All Profiles lesson does it twice). The longest lesson, Service: Create Profile at 9 minutes, is mostly you working, then Don debugging two bugs he wrote on purpose.
-
-## What you'll learn
-
-Scrimba presents this course as a flat list with no module headers. The groupings below are mine, made by topic so the curriculum bar has something to show. The scrim counts and durations come from the expanded table of contents in September 2026.
+Scrimba presents this course as a flat list with no module headers. The groupings below are mine, made by topic so the curriculum bar has something to show. I took the scrim counts and durations from the expanded table of contents in September 2026.
 
 <CourseCurriculum
   modules={[
@@ -83,7 +71,7 @@ Scrimba presents this course as a flat list with no module headers. The grouping
 
 The 22 scrim durations add up to 87 minutes when summed one by one. Scrimba's header says 83 min and its structured data says 1 hour 24 minutes, so the difference is rounding on their side, not a missing lesson. The 22 lessons figure matches Scrimba's own count exactly; I re-expanded the table of contents for this pass and got the same 22.
 
-## Inside the course, module by module
+## From a generated controller to a guard on the delete route
 
 ### 1. Getting started (10 min, 4 scrims)
 
@@ -169,25 +157,35 @@ The outro recaps what you built ("that's miles beyond the typical Hello Express 
 
 His last piece of advice is the same one Scrimba gives everywhere: "take one of your Express apps and convert that over to Nest. Just whatever you do, don't get trapped in tutorial hell." A one minute "How to Utilize Your Certificate" scrim and the Certificate of Completion close it out.
 
-## What a lesson feels like
+## Runner, terminal and network tab: bash scripts for POST and three to four hours
 
 These scrims run from under a minute to nine minutes; most are three to five. The IDE is Scrimba's newer workspace with a file tree and a Monaco editor. The bottom drawer has four tabs. Runner shows the Nest dev server output, including compile errors. Terminal and Console are what you expect. Network is a small request tool with a method dropdown, URL bar, and Send button. Don works in all four, and so will you. The challenges expect you to run `bash post.sh` in the terminal and then confirm the result with a GET in the network tab.
 
-Challenges arrive as numbered comments in the file, the recording pauses, and you edit the same project. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed.
+Challenges arrive as numbered comments in the file, the recording pauses, and you edit the same project. Captions, a timestamped transcript, ten subtitle languages and playback speed come with every scrim.
 
 Don's delivery is direct and a little conversational ("Alright. Let's go ahead and jump into the service file"). He has one habit worth knowing about: he tests everything, finds bugs on camera, and treats the runner panel as the first place to look. If you skip his testing steps you will miss half of what the course teaches.
-
-## Free or Pro: exactly what is gated
-
-All 22 scrims, all 12 challenges, and the project are free. There are no Solo Project (PRO) items in this course; the challenges are inline and open to everyone. What Pro adds is the Certificate of Completion at the end of the list, the [Backend Developer Path](/docs/paths/backend-developer-path/) this course belongs to, and the Pro-only channels on Scrimba's Discord. Basic Discord access is listed as free on Scrimba's pricing page, so the server itself is not gated. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
-
-## How long it takes
 
 The 83 minutes is video. With 12 challenges that each need you to write a route or service method and test it with curl, plan for two to three times that: three to four hours, comfortably one afternoon or two evenings. The Create Profile and Exception Filters lessons are the ones to leave time for.
 
 If you follow the outro's advice and convert one of your Express apps to Nest afterwards, that is where the real hours go. It is also the part that makes the course stick.
 
-## Who it's for, and who should skip it
+## A short, free tour that stops before databases and authentication
+
+Yes, if you meet the prerequisite. The whole course is one project, and every lesson adds one Nest concept in the order you would meet them on a real backend: module, controller, routes, service, then error handling and validation. Nothing is abstract. When decorators show up (the `@Something()` annotations Nest uses to attach behaviour to classes and methods), they show up on a controller the CLI just generated, and Don explains them in one sentence: "They're basically higher order functions."
+
+By the outro you have a working REST API. It returns 404s with custom messages, rejects ids that are not UUIDs, and has a guard on the delete route.
+
+Scope and level are the two limits. Scope: the data lives in an array in the service. Don says in the outro to "try the TypeORM or Prisma guides in the docs to persist profiles instead of using an in memory array," and he keeps authentication out on purpose: "I wanted to avoid diving deep into authorization in this course and just focus on the fundamentals of Nest."
+
+Level: the second scrim tells you plainly to have "familiarity with building personal projects with Express" and to "think of this as the next step after you build a few basic Express apps." If you have never written a route handler, the pace will lose you by lesson five.
+
+One more thing matters for a course this short: the challenges are real. Twelve scrims stop and hand you a numbered brief (the GET All Profiles lesson does it twice). The longest lesson, Service: Create Profile at 9 minutes, is mostly you working, then Don debugging two bugs he wrote on purpose.
+
+It also costs nothing. All 22 scrims, all 12 challenges and the project are free, and there are no Solo Project (PRO) items. What Pro adds is the Certificate of Completion at the end of the list, the [Backend Developer Path](/docs/paths/backend-developer-path/) this course belongs to, and the Pro-only channels on Scrimba's Discord. Basic Discord access is listed as free on Scrimba's pricing page, so the server itself is not gated. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if the certificate or the path matters to you.
+
+The rest of the ledger: Don debugs on camera with the runner, which teaches the workflow as much as the framework, and the CLI is used the way you would use it on the job. Against it, guards get one sketch lesson, and non-GET routes are tested with bash scripts because Scrimba's network tool only supported GET when the course was recorded.
+
+## Developers with an Express API behind them, and who should start with Node
 
 It fits developers who have built an Express API or two and are curious whether a structured, TypeScript-first framework is for them. It also fits anyone on the [Backend Developer Path](/docs/paths/backend-developer-path/) who wants a short, complete tour of Nest's building blocks before reading the official docs. Career changers who worry that "another Express CRUD app" will not stand out will appreciate that Don raises that exact point in the first lesson.
 
@@ -197,28 +195,18 @@ Skip it if you have not done Node yet; start with [Learn Node.js](/docs/courses/
   Start Intro to NestJS for free
 </AffiliateLink>
 
-## Prerequisites
+## Express behind you, TypeORM and Passport ahead
 
 Node fundamentals and an Express project of your own. TypeScript helps but is not required. Don says "we won't be diving that deep into TypeScript, and you'll still be able to learn how to use Nest," though Scrimba's course page recommends [Learn TypeScript](/docs/courses/typescript/learn-typescript/) first.
 
 You do not need to install anything; the project runs in the browser. If you rebuild it locally, the second scrim says you need Node 20 or newer, and the project's `package.json` pins NestJS 11 and TypeScript 5.7.
 
-## Where it fits
-
 Intro to NestJS sits at the structured end of Scrimba's backend options, after [Learn Node.js](/docs/courses/javascript/nodejs/) and [Learn Express.js](/docs/courses/javascript/expressjs/). Scrimba's teacher card credits Don with contributing to the [Backend Developer Path](/docs/paths/backend-developer-path/), where this course lives; it is not part of the [Frontend Developer Path](/docs/paths/frontend-developer-path/) or the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). The natural pair for it is [Learn TypeScript](/docs/courses/typescript/learn-typescript/), since Nest leans on TypeScript classes and decorators throughout.
 
-## Strengths and limits
-
-What it does well: it is free and short. Every lesson adds one Nest concept to a single real project, and the CLI is used the way you would use it on the job. The 12 challenges make you write and test each route yourself, and Don debugs on camera with the runner, which teaches the workflow as much as the framework.
-
-Where it is limited: the data is an in-memory array. Authentication and databases are named as next steps but not covered, guards get one sketch lesson, and non-GET routes are tested with bash scripts because Scrimba's network tool only supported GET when the course was recorded.
-
-## Related courses and comparisons
-
-- [All JavaScript courses](/docs/courses/javascript/), the category this course belongs to
-- [Learn Node.js](/docs/courses/javascript/nodejs/), the prerequisite
+- [All JavaScript courses](/docs/courses/javascript/), to see what else sits beside a backend framework tour
+- [Learn Node.js](/docs/courses/javascript/nodejs/), the prerequisite for the Node 20 setup the second scrim assumes
 - [Learn Express.js](/docs/courses/javascript/expressjs/), the lighter, unopinionated alternative and the thing Nest runs on top of
-- [Learn TypeScript](/docs/courses/typescript/learn-typescript/), the language the framework assumes
+- [Learn TypeScript](/docs/courses/typescript/learn-typescript/), the language behind the classes and decorators DevMatch leans on
 - [Learn Next.js](/docs/courses/javascript/nextjs/), fullstack JavaScript on the frontend side
 - [Backend Developer Path](/docs/paths/backend-developer-path/), where this course is sequenced
 
@@ -228,12 +216,10 @@ Where it is limited: the data is an in-memory array. Authentication and database
   { q: "What do you build in the course?", a: "The profiles feature of DevMatch, a dating app for developers: a NestJS module, a controller with GET, POST, PUT, and DELETE routes, a service holding an in-memory array of profiles, DTOs, 404 handling with NotFoundException, ParseUUIDPipe on every id parameter, a validation-pipe challenge, and a guard on the delete route." },
   { q: "Do I need to know Node or Express first?", a: "Yes. The second lesson says to treat this as the next step after building a few basic Express apps. Take Learn Node.js and Learn Express.js first if you have not." },
   { q: "Do I need TypeScript?", a: "It helps, and Scrimba recommends its Learn TypeScript course first, but Don says the course does not go deep into TypeScript and you can follow with JavaScript knowledge. Decorators and classes are explained as they appear." },
-  { q: "Do I need to install anything?", a: "No. The Nest project runs inside Scrimba's browser IDE with a terminal, a runner, and a network tab. If you rebuild it locally you need Node 20 or newer; the project uses NestJS 11 and TypeScript 5.7." },
   { q: "How are the challenges tested?", a: "GET requests use Scrimba's built-in network tab. POST, PUT, and DELETE are sent with small bash scripts (bash post.sh and so on) that run curl from the terminal, because the network tool only supported GET when the course was recorded." },
   { q: "How long does Intro to NestJS take?", a: "83 minutes of video, but plan for three to four hours with the 12 challenges, or one afternoon. Converting one of your own Express apps to Nest afterwards, as the outro suggests, takes longer and is worth it." },
   { q: "Does the course cover databases or authentication?", a: "No. Profiles live in an array in the service. The outro points you to TypeORM or Prisma for persistence and to Passport for authentication, and the guards lesson is an introduction only." },
   { q: "Where should errors be thrown, the service or the controller?", a: "The course shows both. Exception Filters throws NotFoundException from the service and lets it bubble up; Handling exceptions in the controller shows the try/catch version in the controller. Don's advice for a first app is to throw the HTTP exception in the service and keep it simple." },
-  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
 ]} />
 
 <CourseSchema

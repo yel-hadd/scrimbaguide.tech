@@ -7,7 +7,7 @@ description: "Tom Chant's free Express.js course reviewed from inside: 4 hours, 
 keywords: [scrimba learn express, learn express.js scrimba review, express.js course scrimba, tom chant express course, free backend course, node express api course, express session bcrypt course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Scrimba's free Express course is taught by Tom Chant across about four hours and
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## Do you need Node first, and what does the listing promise that the lessons skip?
 
 Take it if you write comfortable JavaScript (array methods, fetch, async/await); in Tom's own words you need no prior Node or Express. The one catch is that scrimba.com's own listing promises a few features the lessons do not teach. If you want Node fundamentals first, [Learn Node.js](/docs/courses/javascript/nodejs/) is the natural prerequisite.
 
@@ -43,13 +43,7 @@ Take it if you write comfortable JavaScript (array methods, fetch, async/await);
   description="Build a REST API and a database-backed vinyl store with sessions, bcrypt, and protected routes, in Express 4 and 5."
 />
 
-## Is it worth your time?
-
-Yes, with one caveat about the listing. The teaching is the good kind of slow: every new idea gets an "Aside" scrim that explains it on slides, then a challenge that makes you use it in the project, then Tom's solution. Middleware, the thing that makes Express confusing to newcomers, gets an eight minute aside of its own before you write `app.use(express.static('public'))`, and by the time you get there you know why that one line works. The challenges are not token exercises either. "Filtering by Query Params" hands you three test cases and says "quite a big challenge, so take all of the time you need," and the database and login challenges come with a `hint.md` file because, as Tom says, "there is a lot of new syntax here" and he does not expect you to remember it by heart.
-
-The course page on scrimba.com promises things the course does not contain. The "What you'll build" text lists task queues, real-time notifications with Server-Sent Events, file uploads, and Event Emitters. None of those appears in any of the 58 scrims. What you get is routing, middleware, static files, SQLite, sessions, hashing, validation, and protected routes: a solid syllabus, but not where SSE or uploads live. The Authentication module has an "Outro (new)" scrim and the course was modified in May 2026, so the listing may describe a longer version that was planned or trimmed.
-
-## What you'll learn
+## Startup Planet, Spiral Sounds and 58 scrims in three modules
 
 <CourseCurriculum
   modules={[
@@ -59,9 +53,9 @@ The course page on scrimba.com promises things the course does not contain. The 
   ]}
 />
 
-Lesson counts are the scrims I counted in each expanded module in September 2026: 58, 32 of them marked as challenges, plus two certificate items at the end, which is the 60 the course listing and its structured data report. Scrimba's own module headers say 10, 8, and 15; those match the number of challenge icons per module, not the number of scrims. You build Startup Planet, a JSON API with query and path parameter filtering, and then Spiral Sounds, a record shop with an Express server, a SQLite database, a genre dropdown and search, and full sign up, log in, log out, cart, and protected routes using express-session and bcryptjs.
+I counted 58 scrims, 32 of them marked as challenges, plus two certificate items at the end, which is the 60 the course listing and its structured data report. Scrimba's own module headers say 10, 8, and 15; those match the number of challenge icons per module, not the number of scrims. You build Startup Planet, a JSON API with query and path parameter filtering, and then Spiral Sounds, a record shop with an Express server, a SQLite database, a genre dropdown and search, and full sign up, log in, log out, cart, and protected routes using express-session and bcryptjs.
 
-## Inside the course, module by module
+## From `express.static` to a `requireAuth` middleware and Dungeon Dice Duel
 
 ### 1. Build an Express API (69 min, 18 scrims)
 
@@ -146,25 +140,31 @@ Logout is left to you ("it's gonna be a big challenge just for you"). Then the c
 
 The final scrim is the solo project brief, Dungeon Dice Duel, presented by Jonathan Hill rather than Tom. It is a dice battle game with a written frontend and a `diceGameEngine.js` already supplied; your job is the Express side, in three "epics": endpoints with hard-coded data, then a SQLite database that also records game "runs," then register, log in, and log out so each player's stats are stored. The spec lives in a linked Notion document. It is about five minutes of video and a good many hours of work.
 
-## What a lesson feels like
+## Aside, challenge, solution: 10 to 12 hours for four hours of video
 
 Scrims run from one to eight minutes, most between three and six. Concept scrims are titled "Aside:" and play as slides with Tom narrating; build scrims open on the editor with a `/* Challenge: */` comment block at the top of the file, the recording stops, and you write into the same file. The scrubber shows small markers where the challenges sit, so you can see how much is you and how much is him. There is a Runner pane for `node server.js`, a Terminal for `npm` commands, and two things I had not used before: a Network tool for firing requests at your API and reading the JSON, and a mini browser for the Spiral Sounds frontend. You never leave the tab.
 
-Every scrim has captions, a timestamped transcript panel (settings menu), subtitles in ten languages, and speed controls. Tom's tone is dry and a little self-deprecating ("okay, I am exaggerating with this GIF"). The harder challenges get a "congratulations if you did" afterwards rather than a pretence that everyone sailed through, and he solves challenges in front of you with his own reasoning, not just the answer, which is where the "favor simplicity" advice and the "don't give clues away" security point come from.
-
-## Free or Pro: exactly what is gated
-
-All three modules, all 58 scrims, and every challenge are free. Only the first scrim carries a SAMPLE badge, and nothing in the table of contents is marked PRO. I could not test what a free account sees on the Dungeon Dice Duel solo project scrim, since I was logged in as Pro, but unlike Scrimba's [Learn JavaScript](/docs/courses/javascript/learn-javascript/) course, where the solo projects are labelled "Solo Project (PRO)", this one carries no such label.
-
-What Pro does gate is the certificate of completion at the end of the course, the two career paths this course sits in, and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as a free feature). If you want the certificate on a CV, or you plan to work through the Backend or Fullstack path in order, see <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what that costs where you live. If you just want to learn Express, you do not need to pay.
-
-## How long it takes
+Tom's tone is dry and a little self-deprecating ("okay, I am exaggerating with this GIF"). The harder challenges get a "congratulations if you did" afterwards rather than a pretence that everyone sailed through, and he solves challenges in front of you with his own reasoning, not just the answer, which is where the "favor simplicity" advice and the "don't give clues away" security point come from.
 
 Four hours of video is a misleading number here because 32 of the 58 scrims are challenges, and several of them (query filtering, the database table, search, login, the cart pages) will take you longer than the scrim itself. Budget two and a half to three times the runtime: 10 to 12 hours, which is a week at an hour and a half a day or two focused weekends. The Authentication module alone is two hours of video and will take five or six.
 
 The solo project is on top of that. Three epics with a database and auth is a full weekend if you are new to backend, longer if you attempt the stretch goal of rendering stats on the frontend without any frontend code provided.
 
-## Who it's for, and who should skip it
+## A free course whose listing promises SSE and uploads it never teaches
+
+Yes, with one caveat about the listing. The teaching is the good kind of slow: every new idea gets an "Aside" scrim that explains it on slides, then a challenge that makes you use it in the project, then Tom's solution. Middleware, the thing that makes Express confusing to newcomers, gets an eight minute aside of its own before you write `app.use(express.static('public'))`, and by the time you get there you know why that one line works. The challenges are not token exercises either. "Filtering by Query Params" hands you three test cases and says "quite a big challenge, so take all of the time you need," and the database and login challenges come with a `hint.md` file because, as Tom says, "there is a lot of new syntax here" and he does not expect you to remember it by heart.
+
+The course page on scrimba.com promises things the course does not contain. The "What you'll build" text lists task queues, real-time notifications with Server-Sent Events, file uploads, and Event Emitters. None of those appears in any of the 58 scrims. What you get is routing, middleware, static files, SQLite, sessions, hashing, validation, and protected routes: a solid syllabus, but not where SSE or uploads live. The Authentication module has an "Outro (new)" scrim and the course was modified in May 2026, so the listing may describe a longer version that was planned or trimmed.
+
+The other limits are smaller. The two projects sit on different Express majors (5.1 for Startup Planet, 4.21 for Spiral Sounds), which none of the scrims I opened remarks on. SQL is assumed more than taught. Deployment is never covered, so you finish with an app that only runs in Scrimba's sandbox. The solo project's spec lives in an external Notion document rather than in the scrim.
+
+Nothing about learning Express here costs money. All three modules, all 58 scrims, and every challenge are free. Only the first scrim carries a SAMPLE badge, and nothing in the table of contents is marked PRO. I could not test what a free account sees on the Dungeon Dice Duel solo project scrim, since I was logged in as Pro, but unlike Scrimba's [Learn JavaScript](/docs/courses/javascript/learn-javascript/) course, where the solo projects are labelled "Solo Project (PRO)", this one carries no such label.
+
+What Pro does gate is the certificate of completion at the end of the course, the two career paths this course sits in, and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as a free feature). If you want the certificate on a CV, or you plan to work through the Backend or Fullstack path in order, the <AffiliateLink href="https://scrimba.com/our-pricing">plans page</AffiliateLink> lists what that costs where you live. If you just want to learn Express, you do not need to pay.
+
+It is a free, challenge-heavy Express course, as long as you ignore the listing's feature list.
+
+## Building an Express backend here, or not being ready yet
 
 It fits frontend developers who want to see the other side of `fetch`, self-taught JavaScript developers who have only ever used a backend as a service, and anyone on the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) or [Backend Developer Path](/docs/paths/backend-developer-path/) who wants a framework they will actually meet at work. The course is also a good fit if you learn by reading code, because the finished Spiral Sounds project (controllers, routes, middleware, db folders) is a clean small example of how an Express app is laid out.
 
@@ -174,27 +174,17 @@ Skip it if your JavaScript is not yet solid; the intro is explicit that you shou
   Start Learn Express.js for free
 </AffiliateLink>
 
-## Prerequisites
+## JavaScript and a little SQL first, and where Node.js and security fit around it
 
 JavaScript, including array methods, promises, and async/await. Tom says in the first scrim that you need no Node or Express knowledge and the course starts "from the ground up," and that is accurate: `npm init` is explained. The course page on scrimba.com nevertheless recommends some Node experience, and I would agree that [Learn Node.js](/docs/courses/javascript/nodejs/) first makes module one much faster. SQL is the other quiet prerequisite: you write `CREATE TABLE`, `INSERT`, `SELECT DISTINCT`, parameterised `WHERE` clauses and `LIKE` patterns, and the hint files assume you have at least seen them. Nothing needs installing; the terminal, runner, and mini browser are inside the scrim.
 
-## Where it fits
-
 Learn Express.js is the backend framework step in two of Scrimba's paths, Backend and Fullstack, and the practical sequel to [Learn Node.js](/docs/courses/javascript/nodejs/), which is Tom's course too. It is the natural place to go after [Learn JavaScript](/docs/courses/javascript/learn-javascript/) and [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/) if you want to build APIs rather than interfaces, and [Intro to SQL](/docs/courses/backend/sql/) pairs with its second and third modules. After it, [Learn Cybersecurity](/docs/courses/javascript/cybersecurity/) is the obvious way to harden the auth you just built.
 
-## Strengths and limits
-
-What it does well: the aside-then-challenge rhythm makes middleware and sessions feel inevitable rather than magic; the challenges are real and sometimes deliberately under-specified; you test your API inside the scrim with a request tool and a mini browser; the auth module covers validation, hashing, sessions, and route protection in the right order and explains the security reasoning; and everything, including the solo project brief, is free.
-
-Where it is limited: the course listing promises SSE, uploads, task queues, and Event Emitters that are not in the lessons; the two projects sit on different Express majors (5.1 for Startup Planet, 4.21 for Spiral Sounds), which none of the scrims I opened remarks on; SQL is assumed more than taught; deployment is never covered, so you finish with an app that only runs in Scrimba's sandbox; and the solo project's spec lives in an external Notion document rather than in the scrim.
-
-## Related courses and comparisons
-
-- [All JavaScript courses](/docs/courses/javascript/), the full category
-- [Learn Node.js](/docs/courses/javascript/nodejs/), the recommended prerequisite
-- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language foundation
-- [Intro to SQL](/docs/courses/backend/sql/), for the database half of the course
-- [Learn Cybersecurity](/docs/courses/javascript/cybersecurity/), to secure what you build
+- [All JavaScript courses](/docs/courses/javascript/), if you want to see what else sits around a backend framework course
+- [Learn Node.js](/docs/courses/javascript/nodejs/), the recommended prerequisite that makes module one faster
+- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language foundation the auth module assumes
+- [Intro to SQL](/docs/courses/backend/sql/), for the `CREATE TABLE` and SELECT work in modules two and three
+- [Learn Cybersecurity](/docs/courses/javascript/cybersecurity/), to harden the login you build for Spiral Sounds
 - [Learn Firebase](/docs/courses/javascript/firebase/), an alternative when you want a backend without writing one
 - [Scrimba vs Boot.dev](/docs/comparisons/scrimba-vs-boot-dev/), if you are comparing backend-focused platforms
 

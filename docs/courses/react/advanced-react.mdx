@@ -7,7 +7,7 @@ description: "Advanced React on Scrimba from inside: 18.8 hours, three teachers,
 keywords: [scrimba advanced react, advanced react review, advanced react course, bob ziroll advanced react, react performance course, react reusability patterns, scrimba advanced react 2026]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-24
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -29,7 +29,7 @@ Scrimba's Pro follow-up to Learn React: about 18.8 hours across six modules, mos
 
 *This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba's course page lists it under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
-## Quick answer
+## Three React courses stapled together: who should start at Reusability?
 
 It fits you if you have finished [Learn React](/docs/courses/react/learn-react/) or built a couple of hooks-based apps and want to see what production React looks like. The one catch: it is three courses stapled together under one banner, with three teachers and a jump from React 18.2 in the browser editor to React 19 in a Vite project. If you finish it and want more TypeScript, go to [Learn TypeScript](/docs/courses/typescript/learn-typescript/) rather than repeat the last module.
 
@@ -46,7 +46,7 @@ It fits you if you have finished [Learn React](/docs/courses/react/learn-react/)
   description="Reusability patterns, React Router 6, performance, then Supabase persistence and auth and a TypeScript conversion, for people who already know the React basics."
 />
 
-## Is it worth your time?
+## Five hours of compound components, 86 scrims of VanLife and a hand-written trigger
 
 Yes. The Reusability module alone is the reason to take it. Bob builds a menu component the naive way first, with props for everything, then spends five hours showing why that breaks and rebuilding it with compound components, context, a headless Toggle, render props, and finally custom hooks.
 
@@ -56,7 +56,9 @@ The second reason is VanLife. Bob calls it "the most involved project that I hav
 
 The course is a patchwork. Bob's intro still says "this course is divided into three main sections," and his Course Outro sits at the end of module 3. Persistence, Authentication, and TypeScript were appended later with different teachers, different tooling (React 19 and a real Vite project instead of React 18.2 in the browser editor), and a different project each. It works, but it does not feel like one course. The Routing module is also the career-path version of Scrimba's standalone [React Router](/docs/courses/react/react-router/) course, so if you already took that, you will be repeating about six hours.
 
-## What you'll learn
+The Performance module tells you not to optimize before measuring. A few Supabase scrims lack transcripts, the TypeScript module is short and borrowed, and the Routing module skips the newer data APIs that the standalone course covers.
+
+## Six modules and 240 scrims, from a component library to TypeScript
 
 <CourseCurriculum
   modules={[
@@ -71,7 +73,7 @@ The course is a patchwork. Bob's intro still says "this course is divided into t
 
 Lesson counts are the scrims I counted in each expanded module in September 2026 (module 4 is spelled "Persistance" in Scrimba's listing, so I kept it). Scrimba's own module headers show 59, 53, 13, 6, 21, and 20, because they leave out intros, recaps, quizzes, asides, and the solo project. The course listing's 240 counts every scrim plus the 56-second certificate clip after module 6, which is the number I match.
 
-## Inside the course, module by module
+## Reusability, VanLife routing, memo, Supabase auth and a retyped Assembly: Endgame
 
 ### 1. Reusability (5 hrs, 68 scrims): a component library
 
@@ -183,23 +185,21 @@ The middle is the teaching I did not expect: two scrims on JSON Web Tokens with 
 
 The instructor, Rachel, opens with "welcome to the next section of the Learn TypeScript course," which is where this module comes from. You scaffold a fresh Vite project with the React plus TypeScript template, copy Assembly: Endgame (the hangman game from Learn React) into it, install `clsx` and `react-confetti`, and type it file by file. A three-scrim vanilla TypeScript refresher, then `useState<string[]>([])`, `JSX.Element` and `JSX.Element | null` return types, inline prop objects, custom prop types, imported types, and typed function props. The named challenges are AriaLiveStatus, WordLetters, and a final one that types the whole Keyboard component. It is a decent bridge if you have never typed a React component, and thin if you have.
 
-## What a lesson feels like
+## Bob deletes his own work and makes you rebuild it
 
 Bob's scrims run from under two minutes to nearly twelve, most between three and seven, and a large share of the ones I read contain a challenge: he writes the brief as comments in the file or on a slide, tells you to pause, and then solves it. His signature is deleting his own work and making you rebuild it. "Instead of building a whole separate app to have you get practice with this, I'm actually just going to delete what we've done and have you do it from scratch," he says in the useParams scrim, and he does it again in Performance. He also breaks things on purpose (the className spread, the infinite render loop, a server hard-coded to return 400s) and keeps the "magic snap" for CSS so the React stays in focus.
 
-Jonathan's scrims are often longer, seven to eleven minutes, and lean on numbered challenge lists with hints ("You may need a Google for that"). Because the Supabase modules run a real dev server, you save with Cmd+S and watch the terminal instead of refreshing a mini browser. Rachel's TypeScript scrims are short and brisk, two to three minutes each. Nearly every scrim has captions and a timestamped transcript under the settings menu, plus subtitles in ten languages and speed controls.
-
-## Free or Pro: exactly what is gated
-
-This is a Pro course. Only three scrims are marked SAMPLE and open without a subscription: the course intro, the Button props review challenge, and `useContext()`. Everything else, including all 86 Routing scrims, the Supabase modules, the Component Library++ solo project, and the certificate, needs Pro. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what that costs in your region.
-
-The Discord is not part of the gate. Jonathan says in his intro that "this Discord is available to free and pro members," and Scrimba's pricing page lists basic Discord access under the free plan; Pro adds Pro-only channels. Bob points to the "today I did" and "I built this" channels for sharing VanLife and the component library.
-
-## How long it takes
+Jonathan's scrims are often longer, seven to eleven minutes, and lean on numbered challenge lists with hints ("You may need a Google for that"). Because the Supabase modules run a real dev server, you save with Cmd+S and watch the terminal instead of refreshing a mini browser. Rachel's TypeScript scrims are short and brisk, two to three minutes each.
 
 18.8 hours is video runtime. Bob's challenges are frequent and he expects you to redo the ones you failed, VanLife alone is 86 scrims of typing, and the Supabase modules add account setup, table creation, and SQL you paste into a dashboard. Plan for 40 to 55 hours, or seven to ten weeks at an hour a day. The Component Library++ solo project from the Figma files is another 8 to 15 hours if you do all four components and the stretch goals.
 
-## Who it's for, and who should skip it
+## Three free scrims, then Pro for VanLife, Supabase and the solo project
+
+This is a Pro course. Only three scrims are marked SAMPLE and open without a subscription: the course intro, the Button props review challenge, and `useContext()`. Everything else, including all 86 Routing scrims, the Supabase modules, the Component Library++ solo project, and the certificate, needs Pro. The <AffiliateLink href="https://scrimba.com/our-pricing">pricing page</AffiliateLink> lists what Pro includes.
+
+The Discord is not part of the gate. Jonathan says in his intro that "this Discord is available to free and pro members," and Scrimba's pricing page lists basic Discord access under the free plan; Pro adds Pro-only channels. Bob points to the "today I did" and "I built this" channels for sharing VanLife and the component library.
+
+## Who is ready for Bob's Button challenge, and who should skip a module
 
 It fits you if you are comfortable with hooks, `map`, destructuring, and `async`/`await`, and you want the patterns that make components reusable, a routed multi-page app you can deploy, and a first backend-as-a-service integration with real auth. It is the natural next step after Learn React on the [Frontend Developer Path](/docs/paths/frontend-developer-path/).
 
@@ -209,39 +209,18 @@ Skip it, for now, if the Button challenge in scrim two would take you more than 
   View Advanced React on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## What Learn React must have taught you, and which courses plug the gaps
 
 Hooks-based React to the level of Learn React: components, props, `useState`, `useEffect`, fetching data, and conditional rendering. Bob's intro slide also lists HTML, CSS, and vanilla JavaScript, and the course leans on `filter`, `map`, optional chaining, and promises. For the Supabase modules you need a free Supabase account and about ten minutes of setup; for the Firestore scrims at the end of Routing, a Firebase account. Nothing needs to be installed locally unless you choose to take VanLife out of Scrimba, which Bob recommends once Firebase credentials come in.
 
-## Where it fits
+The obvious place for Advanced React on its two paths is right after [Learn React](/docs/courses/react/learn-react/). The Supabase modules pair with [Intro to Supabase](/docs/courses/backend/supabase/), and in the Firestore scrims Bob assumes the path has already shown you Firebase, so [Learn Firebase](/docs/courses/javascript/firebase/) and [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/) are worth a look first.
 
-Scrimba's course page lists Advanced React under the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), and the obvious place for it is right after [Learn React](/docs/courses/react/learn-react/). The Supabase modules pair with [Intro to Supabase](/docs/courses/backend/supabase/), and in the Firestore scrims Bob assumes the path has already shown you Firebase, so [Learn Firebase](/docs/courses/javascript/firebase/) and [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/) are worth a look first. If you finish it and want more TypeScript, go to [Learn TypeScript](/docs/courses/typescript/learn-typescript/) rather than repeating module 6.
-
-## Strengths and limits
-
-What it does well:
-
-- The Reusability module is a real education in why patterns exist, not just what they are.
-- VanLife is a complete, deployed app with nested routing that most courses never reach.
-- The Performance module tells you not to optimize before measuring.
-- The Supabase modules teach JWTs, RLS, and a trigger, which goes further into the backend than the other React courses here.
-
-Where it is limited:
-
-- It is three courses stapled together, with two intros, an outro in the middle, three teachers, and a jump from React 18.2 in the browser editor to React 19 in a Vite project.
-- The Routing module repeats the standalone React Router course while skipping its newer data APIs.
-- The TypeScript module is short and borrowed.
-- A few Supabase scrims lack transcripts.
-- The whole thing is Pro-only with just three preview scrims.
-
-## Related courses and comparisons
-
-- [Learn React](/docs/courses/react/learn-react/), the prerequisite
+- [Learn React](/docs/courses/react/learn-react/), the prerequisite, and the course whose basics Bob's first challenge assumes
 - [React Router](/docs/courses/react/react-router/), the standalone version of module 2
-- [React Challenges](/docs/courses/react/react-challenges/), to drill what you learn
-- [Intro to Supabase](/docs/courses/backend/supabase/), the backend behind modules 4 and 5
+- [React Challenges](/docs/courses/react/react-challenges/), to drill the patterns from module 1 on small problems
+- [Intro to Supabase](/docs/courses/backend/supabase/), the standalone backend course behind the dashboard and auth modules
 - [Learn TypeScript](/docs/courses/typescript/learn-typescript/), where module 6 comes from
-- [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials/), how it stacks up
+- [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials/), how it stacks up against the other React options
 
 <FAQAccordion items={[
   { q: "Is Advanced React free on Scrimba?", a: "No. It is a Pro course. Only three scrims are free samples: the intro, the Button props review challenge, and the useContext() lesson. The rest, including the VanLife project, the Supabase modules, the solo project, and the certificate, needs a Pro subscription." },

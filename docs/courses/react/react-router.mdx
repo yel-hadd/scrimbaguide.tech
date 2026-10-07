@@ -7,7 +7,7 @@ description: "Bob Ziroll's React Router 6 course from inside: 9.7 hours, 139 scr
 keywords: [scrimba react router, learn react router scrimba review, react router v6 course, bob ziroll react router, react routing tutorial, scrimba react router review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Bob Ziroll teaches Scrimba's dedicated routing course in 9.7 hours and 139 scrim
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## VanLife routing for React developers who do not already own Advanced React
 
 It fits you if you already have a solid foundation in React, the bar Bob sets before you start; finishing [Learn React](/docs/courses/react/learn-react/) clears it. The one catch is overlap: if you already own [Advanced React](/docs/courses/react/advanced-react/), you already have most of this material as its routing module. Once you finish, [React Challenges](/docs/courses/react/react-challenges/) is where to drill routing in practice.
 
@@ -43,7 +43,7 @@ It fits you if you already have a solid foundation in React, the bar Bob sets be
   description="React Router 6 from the first route to loaders, actions, protected routes, and deferred data, built into one VanLife app across 139 scrims."
 />
 
-## Is it worth your time?
+## Does feeling the pain before the loader fix justify 139 scrims?
 
 Yes, if you build React apps and your navigation still means swapping components with state. React Router is the routing library almost every React codebase without a framework uses, and version 6.4 changed how data loading works. Bob teaches both halves: the classic `BrowserRouter` with `Routes`, `Link`, and `Outlet` first, then `createBrowserRouter` with loaders, actions, `redirect`, and `defer`. That order is the right one, because you feel the pain the data APIs fix before you learn them. He builds up a loading state and an error state by hand in module 3, breaks the app on purpose, and then deletes most of that code in module 4.
 
@@ -51,7 +51,9 @@ The code is mildly dated. The scrims pin `react-router-dom` 6.4.3 and 6.4.4 with
 
 This course started life as the routing module of [Advanced React](/docs/courses/react/advanced-react/). Bob twice refers to "the full advanced React course," and in the NavLink lesson he says render props are something "you have already learned about" if you are taking it there. If you own [Advanced React](/docs/courses/react/advanced-react/), you own most of this one. If you want routing on its own, this is the cheaper way in.
 
-## What you'll learn
+Limits beyond the dated `defer()`: authentication is faked with localStorage from start to finish, and the CSS is pasted in for you. The course duplicates the routing module of [Advanced React](/docs/courses/react/advanced-react/). On the plus side, it carries one app across all 139 scrims, and it ships two short accessibility updates.
+
+## 139 scrims across six modules, and the counts that differ
 
 <CourseCurriculum
   modules={[
@@ -66,7 +68,7 @@ This course started life as the routing module of [Advanced React](/docs/courses
 
 Lesson counts are the scrims I counted in each expanded module in September 2026, including quizzes and two "Note from the future" updates. They also include two short Scrimba promo scrims, a Bootcamp ad after module 1 and a Scrimbassador ad after module 4. Scrimba's own module headers show 11, 19, 13, 2, 5, and 0, because they count only a subset of the scrims. The course listing and its structured data say 139 lessons, which matches my total.
 
-## Inside the course, module by module
+## VanLife module by module, from BrowserRouter to Cloud Firestore
 
 ### 1. Introduction to React Router (87 min, 20 scrims)
 
@@ -173,7 +175,7 @@ Loaders cost you something: the page waits until the data arrives. A weather dem
 
 "Placeholders are gone!" swaps in finished dashboard, income, and reviews pages (the graphs are static images, and Bob says so). The last six scrims move the data from Mirage JS to Cloud Firestore: creating the Firebase project, a collection reference, and rewriting `getVans`, `getVan`, and `getHostVans`. Bob recommends downloading the project and doing this part locally. "Final loose ends" is candid that without real auth, anyone can change a host van URL and see another host's van.
 
-## What a lesson feels like
+## Toy app first, VanLife second: the rhythm behind 20 to 30 hours
 
 Most scrims are three to five minutes. Bob narrates over the editor with the VanLife preview docked on the right, and challenges arrive as a numbered comment block in the file: "Pause now and work on this challenge" is the cue. There are four quizzes, each a markdown file you type answers into. Bob is explicit that "I do expect that you pause the screencast just like we do with any other challenge and physically type your answer down."
 
@@ -181,17 +183,15 @@ The rhythm is teach-on-a-toy-app, then apply-on-VanLife. Search params, `createB
 
 Bob's voice is patient and a little self-deprecating ("I've said the word router too many times for it to make sense anymore"). Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, playback speed, and "Download as Zip" for the project.
 
-## Free or Pro: exactly what is gated
+9.7 hours is video runtime. Every module has multi-part challenges, and modules 5 and 6 each ask you to re-implement something on VanLife after seeing it on a demo app. Plan for 20 to 30 hours: three to five weeks at an hour a day. The Actions and Protected Routes module alone is 2.7 hours of video and will take most people a full week. If you do the Netlify deploys and the Firebase migration locally, add another three to five hours for account setup and the local install.
+
+## Five SAMPLE scrims, then 134 Pro ones
 
 The first five scrims are marked SAMPLE and open without a subscription: the intro, the multi-page versus single-page explainer, the `BrowserRouter` setup, `Routes`, and the first challenge. Everything from "Route, path, & element" onward is Pro, which is the other 134 scrims, VanLife included. There are no Solo Projects in this course; the whole thing is a build-along with challenges.
 
-Pro also unlocks the certificate at the end and the Pro-only Discord channels. Bob points you to the Scrimba Discord in the outro; Scrimba's pricing page lists basic Discord access under the free plan, so the server itself is not a Pro perk. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs where you are.
+Pro also unlocks the certificate at the end and the Pro-only Discord channels. Bob points you to the Scrimba Discord in the outro; Scrimba's pricing page lists basic Discord access under the free plan, so the server itself is not a Pro perk. The <AffiliateLink href="https://scrimba.com/our-pricing">plans page</AffiliateLink> lists the rest.
 
-## How long it takes
-
-9.7 hours is video runtime. Every module has multi-part challenges, and modules 5 and 6 each ask you to re-implement something on VanLife after seeing it on a demo app. Plan for 20 to 30 hours: three to five weeks at an hour a day. The Actions and Protected Routes module alone is 2.7 hours of video and will take most people a full week. If you do the Netlify deploys and the Firebase migration locally, add another three to five hours for account setup and the local install.
-
-## Who it's for, and who should skip it
+## Skip it if React is new, you own Advanced React, or you live in Next.js
 
 It fits you if you are comfortable with hooks-based React, have built at least one app that fetches data, and want routing done the way React Router 6.4 and 7 expect. It is also the clearest explanation I have seen of why loaders exist, because you build the alternative first.
 
@@ -201,37 +201,17 @@ Skip it, for now, if React itself is new. Bob says in the first minute that "thi
   Preview Learn React Router on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## Learn React before, React 19 form actions after
 
 Solid React: components, props, `useState`, `useEffect`, and fetching data in an effect, since that is the code you will be replacing. Comfort with `async`/`await` and promises matters more here than in most React courses; loaders and actions are async functions, and the deferred data module depends on understanding that an un-awaited async call is a promise. Render props appear twice (`NavLink` and `Await`) and are only briefly explained. For the last module you will want a free Firebase account and a local Node install.
 
-## Where it fits
+Take it straight after [Learn React](/docs/courses/react/learn-react/), whose Chef Claude and Meme Generator projects fetch in `useEffect` the way VanLife does in module 1. The course stands alone. The Netlify and Firebase lessons overlap the standalone [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/) and [Learn Firebase](/docs/courses/javascript/firebase/) courses, and the form-actions lessons pair well with [What's New in React 19](/docs/courses/react/whats-new-in-react-19/), where Bob covers React's own form actions.
 
-Take it straight after [Learn React](/docs/courses/react/learn-react/), whose Chef Claude and Meme Generator projects fetch in `useEffect` the way VanLife does in module 1. This course stands alone; it is not part of either career path. The Netlify and Firebase lessons overlap the standalone [Deploying with Netlify](/docs/courses/javascript/deploying-with-netlify/) and [Learn Firebase](/docs/courses/javascript/firebase/) courses, and the form-actions lessons pair well with [What's New in React 19](/docs/courses/react/whats-new-in-react-19/), where Bob covers React's own form actions.
-
-## Strengths and limits
-
-What it does well:
-
-- One app carried across all 139 scrims, with three levels of nested layouts you build.
-- The classic router taught before the data router, so the improvement is felt rather than asserted.
-- Two short accessibility updates.
-- A steady challenge loop, with demo-app rehearsals before each VanLife task.
-
-Where it is limited:
-
-- Authentication is faked with localStorage from start to finish.
-- The CSS is pasted in for you.
-- The code is pinned to React Router 6.4, so `defer()` and the per-loader auth checks look dated next to v7.
-- It duplicates the routing module of [Advanced React](/docs/courses/react/advanced-react/).
-
-## Related courses and comparisons
-
-- [Learn React](/docs/courses/react/learn-react/), the prerequisite
-- [Advanced React](/docs/courses/react/advanced-react/), which includes most of this as one module
-- [React Challenges](/docs/courses/react/react-challenges/), to drill routing in practice
-- [What's New in React 19](/docs/courses/react/whats-new-in-react-19/), for React's own form actions
-- [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials/), how it stacks up
+- [Learn React](/docs/courses/react/learn-react/), whose projects fetch in `useEffect`, the code you replace in module 4
+- [Advanced React](/docs/courses/react/advanced-react/), which already includes most of this as its routing module, so check it before buying both
+- [React Challenges](/docs/courses/react/react-challenges/), to drill routing once VanLife is done
+- [What's New in React 19](/docs/courses/react/whats-new-in-react-19/), where Bob covers React's own form actions, the cousin of the router actions here
+- [Best React courses compared](/docs/courses/react/best-react-courses-and-tutorials/), for how a routing-only course compares with the broader React options
 
 <FAQAccordion items={[
   { q: "Is Learn React Router free on Scrimba?", a: "No. The first five scrims (a few minutes each) are free previews; the remaining 134, including the whole VanLife build, need a Pro subscription. There are no Solo Projects, so nothing beyond the sample scrims is separately gated." },
@@ -240,7 +220,6 @@ Where it is limited:
   { q: "Do I need this if I'm taking Advanced React?", a: "Probably not. Bob refers to 'the full advanced React course' inside these lessons, and Advanced React contains most of this material as its routing module. Buy this standalone course when routing is the only thing you need." },
   { q: "Does it cover authentication?", a: "Only enough to demonstrate protected routes. The login checks one hard-coded user in the mock server and stores a loggedin flag in localStorage. Bob says up front that real authentication is out of scope, and the outro suggests adding it yourself as a next step." },
   { q: "Do I need to install anything?", a: "Not for the routing lessons; everything runs in the Scrimba editor. The Netlify deploy lessons need a GitHub account and GitHub Desktop, and the final Firebase module is meant to be done locally after downloading the project as a zip and running npm install." },
-  { q: "How long does Learn React Router take?", a: "About 9.7 hours of video. With the challenges and the repeat-on-VanLife structure, plan for 20 to 30 hours, or three to five weeks at an hour a day." },
   { q: "Who teaches it?", a: "Bob Ziroll, who also teaches Learn React, Advanced React, and What's New in React 19 on Scrimba. This course was originally recorded as the routing section of Advanced React." },
   { q: "Are there transcripts and subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages. The transcripts are how I reviewed 64 of the 139 scrims for this page." },
 ]} />

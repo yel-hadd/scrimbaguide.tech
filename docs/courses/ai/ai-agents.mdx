@@ -7,7 +7,7 @@ description: "Bob Ziroll's Learn AI Agents reviewed from every transcript: 117 m
 keywords: [scrimba learn ai agents, learn ai agents scrimba review, ai agents course scrimba, bob ziroll ai agents, react prompting tutorial, openai function calling agents, llm agents javascript]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-24
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -29,7 +29,7 @@ Learn AI Agents is Bob Ziroll's Pro course on LLM agents: 31 scrims, just under 
 
 *This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba's course page lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
 
-## Quick answer
+## Building a ReAct loop by hand, and what is frozen in 2023
 
 It fits developers who already call an LLM from JavaScript and want to see what an agent loop is actually doing, not which framework to install. The catch: the code is frozen in November 2023, down to a beta OpenAI helper Bob warns might change "in one or two days." Take [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) first if you have not, then move on to [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/) or [Build Serverless AI Agents with Langbase](/docs/courses/ai/serverless-ai-agents-with-langbase/) for a current stack.
 
@@ -45,11 +45,13 @@ It fits developers who already call an LLM from JavaScript and want to see what 
   description="Build an LLM agent from scratch with a ReAct prompt and a loop, then rebuild it with OpenAI function calling."
 />
 
-## Is it worth your time?
+## Why writing the loop yourself is the point, and what the 2023 code costs
 
 The thing this course does that most agent tutorials skip is make you build the loop by hand before any SDK does it for you. Bob is explicit about why. In lesson 6 he says the LLM "will tell us what function it wants to call or what action it wants to perform, and then we will write our code in a way that can then actually perform that action."
 
 You then spend nine scrims doing exactly that. You write the system prompt, split the model's reply into lines, find the `Action:` line with a regular expression, look the function up in an `availableFunctions` object, push an `Observation:` message back, and wrap it all in a `for` loop capped at five iterations. When the OpenAI function calling section replaces all of it with a `tool_calls` array and a `finish_reason` check, you understand what the API is saving you from. That is the point of the course and it lands. By the end you can write a tool-calling loop from nothing and read an OpenAI `tool_calls` response; you will not have a product, since the weather tool stays hardcoded the whole way through.
+
+The challenges sit where the work is (parsing, calling, the stop condition), Bob debugs on camera and says when something is hacky, and at under two hours nothing is padded. The limits: there is no error handling beyond one thrown error, no streaming and no framework, and the solo project asks for a full front end the course never taught, so the jump from the last scrim to the brief is a big one.
 
 The code has aged. The dependency panel shows an `openai` 4.1x SDK throughout (`openai@4.14.2` in the ReAct scrims, `openai@4.19.1` by the UI scrim). The models are `gpt-4`, `gpt-3.5-turbo`, `gpt-3.5-turbo-1106` and `gpt-4-1106-preview`, and in the setup challenge Bob says the 1106 models were "just released" at the time of recording. That puts it in November 2023.
 
@@ -57,7 +59,7 @@ The final technique, `openai.beta.chat.completions.runFunctions`, is introduced 
 
 The second caveat is scope. `getCurrentWeather` returns a hardcoded forecast for the whole course, and Bob edits the numbers by hand to show the answers change. `getLocation` starts hardcoded too, then in the "Adding arguments" scrim becomes a real call to an IP lookup service, which Bob demonstrates by switching his VPN between Salt Lake City, New York and Denver. That is the only real tool in the course. There is no weather API and no framework, so you finish with a pattern, not a product.
 
-## What you'll learn
+## Why the minutes disagree across four groups and 31 scrims
 
 Scrimba presents this course as one flat list of 31 scrims with no module headers. The grouping below is mine, by topic, so the durations can be compared.
 
@@ -71,9 +73,9 @@ Scrimba presents this course as one flat list of 31 scrims with no module header
   ]}
 />
 
-Lesson counts are the `toc-scrim-item` rows I counted in the expanded table of contents in September 2026, and the durations are the per-scrim times added up. My sum is 121 minutes against the 117 minutes in the page header and the `PT1H57M12S` in its structured data. One wrap-up scrim is listed at 3:11 but its transcript ends at 1:15, which accounts for about half the gap. Scrimba's own listing and structured data say 31 lessons, so on this course the numbers agree.
+Lesson counts are the `toc-scrim-item` rows in the expanded table of contents, and the durations are the per-scrim times added up. My sum is 121 minutes against the 117 minutes in the page header and the `PT1H57M12S` in its structured data. One wrap-up scrim is listed at 3:11 but its transcript ends at 1:15, which accounts for about half the gap. Scrimba's own listing and structured data say 31 lessons, so on this course the numbers agree.
 
-## Inside the course, scrim by scrim
+## One weather agent, built twice: a ReAct prompt, then `tool_calls`
 
 ### 1. Intro and prompt engineering recap (18 min, 5 scrims)
 
@@ -165,23 +167,21 @@ The Solo Project brief, "AI Travel Agent," is narrated by a different Scrimba vo
 
 "Nice work!" recaps in a little over a minute. Bob's own summary of the ReAct half is the best short description of it: "some fancy prompt engineering that we did on top of a custom loop that we built around our GPT assistant." Three housekeeping scrims follow, voiced by other Scrimba staff: Scrimba Docs, the Scrimbassador referral program, and how to use the certificate.
 
-## What a lesson feels like
+## Six challenges, an OpenAI key and four to six hours at the keyboard
 
 Scrims run from under a minute to nine, most between three and six. Every one is Bob's voice over a live editor with the console open below and the preview collapsed, since nothing here has a UI until the last build. The slides are few and used for diagrams, not bullet points. Challenges arrive as a numbered comment block in `index.js` ("CHALLENGE: 4. Calling the function, 5. Add an Observation message") plus a spoken pause; the six marked in the table of contents each get a "Challenge" badge on hover. Bob also says more than once that you can skip a challenge and watch, and that asking ChatGPT for help with the regex is fair game.
 
-You need your own OpenAI key in a Scrimba environment variable to run anything, and every run costs money on your account, which Bob mentions when he caps the loop. Without a key you can still watch and read the code. All scrims have captions, a timestamped transcript under the settings menu, and subtitles in ten languages per the course header. Bob's manner is dry and self-aware. When the SDK update makes his loop redundant he says "let's just rip the band aid right off," and he ends with an unprompted speech about how quickly things change and why you should check the GitHub README rather than trust the course.
-
-## Free or Pro: exactly what is gated
-
-This is a Pro course. Scrimba's catalog lists it under the Pro tab and its structured data says `isAccessibleForFree: false`. The first five scrims (the intro, both prompt engineering scrims, "Zooming Out" and "Agent Setup") carry the SAMPLE badge and play without a subscription. Everything from "Introduction to ReAct prompting" onward, including all six challenges, the AI Travel Agent solo project, and the certificate of completion, needs Pro.
-
-See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what a subscription costs in your region. Scrimba's pricing page lists basic Discord access as free and the Pro-only channels as Pro, so the community itself is not the reason to upgrade; this course and the rest of the AI Engineer Path are.
-
-## How long it takes
+You need your own OpenAI key in a Scrimba environment variable to run anything, and every run costs money on your account, which Bob mentions when he caps the loop. Without a key you can still watch and read the code. Captions, a timestamped transcript and ten subtitle languages are all there. Bob's manner is dry and self-aware. When the SDK update makes his loop redundant he says "let's just rip the band aid right off," and he ends with an unprompted speech about how quickly things change and why you should check the GitHub README rather than trust the course.
 
 117 minutes of video, but the course expects you to type. Plan for four to six hours. That covers the runtime and the six challenges, each a few minutes of real coding if you do them before watching the solution. It also covers the setup cost of an API key and environment variable, and the time you will spend reconciling `runFunctions` and the 1106 models with whatever the OpenAI SDK looks like when you take it. The AI Travel Agent solo project is separate and open-ended; from the brief and the Figma file I would budget a further six to ten hours for a working version.
 
-## Who it's for, and who should skip it
+## Five free scrims, then Pro for the ReAct build and the solo project
+
+This is a Pro course. Scrimba's catalog lists it under the Pro tab and its structured data says `isAccessibleForFree: false`. The first five scrims (the intro, both prompt engineering scrims, "Zooming Out" and "Agent Setup") carry the SAMPLE badge and play without a subscription. Everything from "Introduction to ReAct prompting" onward, including all six challenges, the AI Travel Agent solo project, and the certificate of completion, needs Pro.
+
+Pro is billed through <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's plans</AffiliateLink>. Scrimba's pricing page lists basic Discord access as free and the Pro-only channels as Pro, so the community itself is not the reason to upgrade; this course and the rest of the AI Engineer Path are.
+
+## Skip it if you need Python, skipped the OpenAI client, or want a current stack
 
 It fits you if you have already called an LLM from JavaScript, you know what `async`/`await` and array destructuring are, and you want to understand what agent frameworks are doing rather than which one to install. Bob says as much in the setup scrim: "I'm assuming that this is not your first course that you're taking in the AI engineer path."
 
@@ -191,21 +191,11 @@ Skip it, for now, if you have not done [Intro to AI Engineering](/docs/courses/a
   View Learn AI Agents on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## Before it: Intro to AI Engineering. After it: MCP, RAG and a current agent stack
 
 Comfortable JavaScript (destructuring, regex basics, `async`/`await`, ES modules), a working knowledge of the OpenAI chat completions API, an OpenAI account with an API key and a little credit on it, and Scrimba's environment variable feature (the setup scrim links to a post explaining it). Prompt engineering basics help; the course's two recap scrims assume you have seen them before.
 
-## Where it fits
-
 It sits in the [AI Engineer Path](/docs/paths/ai-engineer-path/). The natural order on this site is [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) first, then this course to understand the loop, then one of the tooling-specific agent courses to build something real. The [Model Context Protocol](/docs/courses/ai/model-context-protocol-mcp/) course is the closest conceptual neighbor, since MCP standardizes the "tools" this course hand-rolls, and [Learn RAG](/docs/courses/ai/rag/) covers the retrieval step an agent would call as one of those tools.
-
-## Strengths and limits
-
-What it does well: it builds the agent loop by hand before automating it, so the `tool_calls` API makes sense when it arrives; the challenges are placed where the work is (parsing, calling, the stop condition); Bob debugs on camera and says when something is hacky; and at under two hours it does not pad.
-
-Where it is limited: the code is late 2023 (an `openai` 4.x SDK, `gpt-3.5-turbo-1106`, a beta `runFunctions` helper that Bob himself warns may vanish). The weather tool is a hardcoded stub and the location tool is a bare IP lookup, and there is no error handling beyond one thrown error, no streaming, and no framework. The solo project asks for a full front end the course never taught, so the jump from the last scrim to the brief is a big one.
-
-## Related courses and comparisons
 
 - [Intro to AI Engineering](/docs/courses/ai/ai-engineering/), the prerequisite fundamentals
 - [Prompt Engineering for Web Developers](/docs/courses/ai/prompt-engineering-for-web-developers/), the course Bob's recap scrims summarize

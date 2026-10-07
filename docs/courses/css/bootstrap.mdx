@@ -7,7 +7,7 @@ description: "Neil Rowe's 56 minute Bootstrap 4 course reviewed from inside: 13 
 keywords: [scrimba learn bootstrap, learn bootstrap scrimba review, bootstrap 4 course, neil rowe bootstrap, bootstrap scrimba tutorial, learn bootstrap interactive, scrimba bootstrap review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Scrimba's Learn Bootstrap is a 56 minute tour of Bootstrap 4 by Neil Rowe: 13 sc
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## A Bootstrap 4 primer for inherited codebases, not for new work
 
 It's a fast, Pro-gated primer on Bootstrap 4 classes, best for anyone who already has a Bootstrap codebase to read or extend. The catch: it teaches the January 2018 release with jQuery and Popper, and Bootstrap 5 renamed several of the classes it uses. For a framework worth learning today, start with [Tailwind](/docs/courses/css/tailwind-css/) instead.
 
@@ -43,7 +43,7 @@ It's a fast, Pro-gated primer on Bootstrap 4 classes, best for anyone who alread
   description="Ten short screencasts on Bootstrap 4: the twelve column grid, collapsing navbars, modals, forms, cards, and the rest of the component set."
 />
 
-## Is it worth your time?
+## Neil's class-by-class refresh against a framework two versions old
 
 For the right person, yes, and the right person is narrow. You have a Bootstrap codebase in front of you, or a team or job listing that expects it, and you want the vocabulary fast. Neil is good at that job. Each lesson starts from an empty page or a prebuilt example, adds one class at a time, and refreshes the preview after each one. You see exactly what `navbar-expand-lg` or `list-group-flush` changes.
 
@@ -53,7 +53,9 @@ The problem is age. The course was recorded for Bootstrap 4.0.0 and links that e
 
 And because there are no challenges, the interactive part is entirely on you. Neil says it himself in the intro: "you can literally just pause the video, edit the code, play around with it, and then go right back to the video." Do that in every lesson and the course is worth an afternoon. Only watch, and you have watched a YouTube playlist inside a code editor.
 
-## What you'll learn
+Limits beyond the version: nothing checks that you learned anything, the accessibility attributes are shrugged off, and the placeholder image in the Cards lesson no longer loads, with nobody having swapped the URL. The grid lesson's six prebuilt examples do make a good reference file to download.
+
+## Thirteen flat scrims, no modules and no challenges
 
 The course has no modules; Scrimba lists all 13 scrims flat. The grouping below is mine, so you can see how the time is spread.
 
@@ -70,7 +72,7 @@ I counted 13 scrims in the table of contents, which sum to 56 minutes and 32 sec
 
 By the end you can read a Bootstrap 4 template and know what each class does. You will lay out a page on the grid, collapse a navbar behind a burger icon, open a modal, style a form and a table, and wire up a dropdown. You will not have built anything you can show, because the course never asks you to.
 
-## Inside the course, scrim by scrim
+## Grid, navbars and modals first, forms and tables after
 
 ### 1. Intro, grid, navbars, and modals (23 min, 4 scrims)
 
@@ -160,7 +162,7 @@ After it come three Scrimba house scrims. Two of them have ids outside the ~00 t
 
 "Want to become a Scrimbassador?" (1:59) is the affiliate program. "How to Utilize Your Certificate" (0:56) is the generic certificate scrim that closes most Scrimba courses.
 
-## What a lesson feels like
+## Pause, retype, resize: the only practice the course offers
 
 Every lesson is one `index.html` with Bootstrap, jQuery, and Popper linked from CDNs in the head. A floating preview window sits beside the code, and Neil resizes it by hand to show the breakpoints. He types nearly everything, narrates the class he is about to add, refreshes, and points at what changed.
 
@@ -168,19 +170,17 @@ Neil's lessons run from 2:51 to 7:42, and there is no "your turn" anywhere: no c
 
 Neil's delivery is unpolished in a likeable way. "Um" and "sort of" are left in, the transcript renders "modal" as "model" more than once, and he numbers the lessons out loud ("this is episode seven") even though Scrimba's list does not. He moves quickly enough that pausing to type along is the only way to keep up.
 
-## Free or Pro: exactly what is gated
-
-The four SAMPLE scrims play without a subscription: the introduction, Responsive Grid Systems, Responsive Navbars, and Modals. That is 23 minutes and the best material in the course. The remaining six lessons (Forms, List Groups, Cards, Tables, Alerts, Navigation Options), the three wrap-up scrims, and the certificate of completion need Pro.
-
-There are no solo projects to gate because there are none in the course. Scrimba's pricing page lists basic Discord access as free and the Pro-only channels as Pro; see <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what is included in your region.
-
-## How long it takes
-
 Runtime is 56 minutes. If you pause each lesson, retype the classes into the editor, and resize the preview yourself to check the breakpoints, plan on two to two and a half hours. The grid, navbar, and forms lessons are the ones worth slowing down for.
 
 Watching straight through takes an hour and teaches you the names of things and not much else. Budget a further hour if you are going to apply it to Bootstrap 5, because you will be looking up the renamed classes as you go.
 
-## Who it's for, and who should skip it
+## The four SAMPLE scrims are the best 23 minutes
+
+The four SAMPLE scrims play without a subscription: the introduction, Responsive Grid Systems, Responsive Navbars, and Modals. That is 23 minutes and the best material in the course. The remaining six lessons (Forms, List Groups, Cards, Tables, Alerts, Navigation Options), the three wrap-up scrims, and the certificate of completion need Pro.
+
+There are no solo projects to gate because there are none in the course. Scrimba's pricing page lists basic Discord access as free and the Pro-only channels as Pro; the <AffiliateLink href="https://scrimba.com/our-pricing">plans page</AffiliateLink> lists the rest.
+
+## Skip it if you are on Bootstrap 5 or your CSS is shaky
 
 It fits you if you already write HTML and CSS and need to become useful in a Bootstrap 4 project quickly: an inherited site or a company template. It also works as a preview of what a component framework does before you commit to learning one, and the free sample scrims cover that on their own.
 
@@ -190,28 +190,18 @@ Skip it if you are picking a framework for new work. [Tailwind](/docs/courses/cs
   Watch the free sample scrims of Learn Bootstrap
 </AffiliateLink>
 
-## Prerequisites
+## CSS first, then Flexbox, Grid or Tailwind instead
 
 Working HTML and enough CSS to know what a margin, a block element, and a media query are. Neil explains the input's block behavior in the Forms lesson but assumes the rest. No JavaScript is written anywhere in the course, though jQuery and Popper are loaded for the navbar collapse and the modal. Nothing to install: every lesson runs in the browser.
 
-## Where it fits
+This is a standalone course, and [Learn HTML and CSS](/docs/courses/css/html-and-css/), the CSS course that is on the Frontend and Fullstack paths, does not depend on it. Its natural neighbor is [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), the course Per pitches in the outro and the one that teaches what Bootstrap's grid is doing for you. If you finish this and want the grid without the framework, [Learn Flexbox](/docs/courses/css/flexbox/) and [Learn CSS Grid](/docs/courses/css/css-grid/) are the next hour.
 
-This is a standalone course. It is not on any Scrimba career path, and [Learn HTML and CSS](/docs/courses/css/html-and-css/), the CSS course that is on the Frontend and Fullstack paths, does not depend on it. Its natural neighbor is [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), the course Per pitches in the outro and the one that teaches what Bootstrap's grid is doing for you. If you finish this and want the grid without the framework, [Learn Flexbox](/docs/courses/css/flexbox/) and [Learn CSS Grid](/docs/courses/css/css-grid/) are the next hour.
-
-## Strengths and limits
-
-What it does well: the sample scrims are free and they are the best ones. Neil builds each component class by class with a refresh after every change, so cause and effect are always visible. The grid lesson's six prebuilt examples make a good reference file to download. The whole thing fits in an afternoon.
-
-Where it is limited: it teaches Bootstrap 4.0.0 with jQuery, two major versions of thinking behind current Bootstrap. There are no challenges, so nothing checks that you learned anything. The accessibility attributes are shrugged off. The placeholder image in the Cards lesson no longer loads, and nobody has swapped the URL.
-
-## Related courses and comparisons
-
-- [All Scrimba CSS courses](/docs/courses/css/), the full CSS category hub
-- [Learn Tailwind CSS](/docs/courses/css/tailwind-css/), the more current styling skill
-- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), CSS layout from the ground up
-- [Learn Flexbox](/docs/courses/css/flexbox/) and [Learn CSS Grid](/docs/courses/css/css-grid/), the native layout tools
-- [Learn HTML and CSS](/docs/courses/css/html-and-css/), if you need the fundamentals first
-- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are weighing platforms
+- [All Scrimba CSS courses](/docs/courses/css/), if Bootstrap turns out to be the wrong tool and you want to see the other CSS options
+- [Learn Tailwind CSS](/docs/courses/css/tailwind-css/), the framework to pick for new work instead of Bootstrap 4
+- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), what Bootstrap's grid is doing underneath
+- [Learn Flexbox](/docs/courses/css/flexbox/) and [Learn CSS Grid](/docs/courses/css/css-grid/), the grid without the framework
+- [Learn HTML and CSS](/docs/courses/css/html-and-css/), for the CSS this course never explains
+- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are weighing a free tutorial site against watching Neil
 
 <FAQAccordion items={[
   { q: "Is Learn Bootstrap free on Scrimba?", a: "Partly. Four scrims are marked SAMPLE and play without a subscription: the introduction, Responsive Grid Systems, Responsive Navbars, and Modals, about 23 minutes in total. The other six lessons, the wrap-up scrims, and the certificate need Scrimba Pro." },

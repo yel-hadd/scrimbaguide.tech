@@ -7,7 +7,7 @@ description: "Per Borgen's 29 minute Learn CSS Variables reviewed from inside ev
 keywords: [scrimba learn css variables, learn css variables review, css custom properties course, per borgen css variables, css variables tutorial, scrimba css top-up, css variables scrimba review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Per Borgen's Learn CSS Variables is a 29 minute Scrimba course that teaches CSS 
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## Only the three minute intro is free, whatever Scrimba's page title says
 
 It fits anyone who writes CSS and still copies hex values around, or has seen `var(--something)` in someone else's code and never set one up. The catch is Pro: Scrimba's own page title still calls it a "free course", but only the three minute intro plays without a subscription. Finish it, then move on to [Learn CSS Grid](/docs/courses/css/css-grid/) or [Learn Flexbox](/docs/courses/css/flexbox/) for layout, or see these variables become theme tokens in [Learn Tailwind CSS](/docs/courses/css/tailwind-css/).
 
@@ -43,13 +43,7 @@ It fits anyone who writes CSS and still copies hex values around, or has seen `v
   description="Eight short scrims on CSS custom properties: declaring, scoping, theming, changing them with JavaScript, and using them in media queries, with four checked exercises."
 />
 
-## Is it worth your time?
-
-For the topic, yes. Custom properties are the feature that turns a stylesheet full of repeated hex codes into something you can change in one place. This course teaches them in the order you will use them: global first, then scoped, then themed, then driven by JavaScript and media queries. Per's pitch in the intro is the whole argument: "the obvious benefit here is that now you can simply update this value here, and these two will be automatically updated."
-
-Two caveats before you start. The recordings are from February 2018 (Scrimba's own lesson data dates them), so the transcript panel is empty on six of the eight lessons and the CC button does nothing there. If you rely on captions, that matters. And it is a Pro course despite the page title still calling it a "free course": only the three minute intro is marked SAMPLE. It is a small standalone bonus, not a reason to subscribe on its own.
-
-## What you'll learn
+## Why the count reads 29, 12 or eight, for 32 minutes of eleven scrims
 
 <CourseCurriculum
   modules={[
@@ -60,9 +54,9 @@ Two caveats before you start. The recordings are from February 2018 (Scrimba's o
   summary="11 scrims plus a certificate item, grouped editorially (the course itself has no modules)"
 />
 
-My count is 11 scrims totalling 32 minutes. Scrimba's header says 29 minutes, which is the eight lessons plus the one minute congratulations clip. The course description says "eight interactive screencasts". The catalog data this site uses says 12 lessons, which includes the certificate item at the bottom of the list. The course has no modules, so the grouping above is mine.
+I counted 11 scrims totalling 32 minutes. Scrimba's header says 29 minutes, which is the eight lessons plus the one minute congratulations clip. The course description says "eight interactive screencasts". The catalog data this site uses says 12 lessons, which includes the certificate item at the bottom of the list. The course has no modules, so the grouping above is mine.
 
-## Inside the course, module by module
+## The --red variable on :root, then a media query that rewrites the grid
 
 ### 1. Declaring, using and scoping variables (14 min, 4 scrims)
 
@@ -105,7 +99,7 @@ The intro (3:08, the free sample) is a slide deck, not code. Per shows the same 
 
 A one minute "Congratulations" slide ("Keep up the great work!"), a two minute pitch for the Scrimbassador referral program, and a one minute "How to Utilize Your Certificate" clip suggesting you link the certificate from your resume and LinkedIn. These three are newer recordings with transcripts, and the last two appear at the end of most Scrimba courses. The certificate item sits below them.
 
-## What a lesson feels like
+## Per talks over the editor: four checked exercises and six silent lessons
 
 Every lesson is the same screen: the file explorer on the left, `index.css` in the editor, and the portfolio page in the preview pane on the right. Per talks over the editor, types, and the preview updates as he goes. The changes are small enough to follow in real time, which is the format working as intended.
 
@@ -121,19 +115,28 @@ The exercises are where the age of the recordings shows in an interesting way. I
 
 Transcripts are the weak spot. The intro, "Your first variable", and the two wrap-up clips have a timestamped transcript panel and captions; "Overriding", "Local variables", "Theming", "JavaScript", "Responsiveness" and "Inheritance" have neither, even with captions switched on. Playback speed and font size settings work everywhere.
 
-## Free or Pro: exactly what is gated
-
-Only the intro is free. It is the one scrim marked SAMPLE, and opening any other lesson without a subscription shows "Only available to subscribers." So Pro gates the eight teaching lessons, the four checked exercises, and the certificate. There is no solo project.
-
-Scrimba's page title still reads "Learn CSS variables in this free course", which is stale; the header badge and the structured data both say Pro. Pro also includes the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
-
-## How long it takes
-
 The 29 minutes is video runtime. With four exercises that each take a minute or two, and a couple of pauses to poke at the preview, budget 45 to 75 minutes for one sitting. That is two to two and a half times the runtime, which is the low end for a Scrimba course because the exercises are small. If you also want to try the theming and media query tricks on a stylesheet of your own afterwards, which is the point, give it a second hour.
 
-## Who it's for, and who should skip it
+## A good half hour on one feature, with 2018 recordings and a Pro gate
 
-It fits anyone who writes CSS and still copies hex values around, or who has seen `var(--something)` in someone else's code and never set one up. It also suits people mid-way through the [Frontend Developer Path](/docs/paths/frontend-developer-path/) who want the concept before Tailwind and the framework courses assume it.
+For the topic, yes. Custom properties are the feature that turns a stylesheet full of repeated hex codes into something you can change in one place. This course teaches them in the order you will use them: global first, then scoped, then themed, then driven by JavaScript and media queries. Per's pitch in the intro is the whole argument: "the obvious benefit here is that now you can simply update this value here, and these two will be automatically updated."
+
+Two caveats. The recordings are from February 2018 (Scrimba's own lesson data dates them), so the transcript panel is empty on six of the eight lessons and the CC button does nothing there. If you rely on captions, that matters. And it is a Pro course despite that "free course" title. It is a small standalone bonus, not a reason to subscribe on its own, and the 2018 code means nothing new on `@property`, fallback values in `var()` or design-token naming.
+
+Only the intro is free. Opening any other lesson without a subscription shows "Only available to subscribers.", so Pro gates the eight teaching lessons, the four checked exercises and the certificate. There is no solo project. Scrimba's page title still reads "Learn CSS variables in this free course"; the header badge and the structured data both say Pro. Pro also includes the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free). What Pro costs is on <AffiliateLink href="https://scrimba.com/our-pricing">the pricing page</AffiliateLink>.
+
+What the half hour gets right:
+
+- One page, one file, eight small changes in the right order.
+- The theming and media query lessons show the two patterns you will reuse most.
+- The inheritance lesson explains the bug you would otherwise hit on your own.
+- The four exercises now check your answer.
+
+What it gets wrong: six of the eight lessons have no transcript or captions, the exercise briefs are spoken only, and the Pro gate sits on half an hour about one feature.
+
+## Copying hex values around, or already fluent in custom properties?
+
+It fits anyone who writes CSS and still copies hex values around, or has seen `var(--something)` in someone else's code and never set one up. It also suits people mid-way through the [Frontend Developer Path](/docs/paths/frontend-developer-path/) who want the concept before Tailwind and the framework courses assume it.
 
 Skip it if you already use custom properties for theming and responsive tweaks; the inheritance lesson is the only part likely to teach you something. Skip it too if you are still learning CSS fundamentals: [Learn HTML and CSS](/docs/courses/css/html-and-css/) comes first, and the grid lesson here assumes you know what `grid-template-columns` does.
 
@@ -141,37 +144,17 @@ Skip it if you already use custom properties for theming and responsive tweaks; 
   View Learn CSS Variables on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## Working CSS first, Grid and Tailwind after
 
 Working CSS: selectors, the cascade, and the box model. The responsiveness lesson uses a CSS grid and a media query without explaining either. The JavaScript lesson uses `querySelector` and one style method; you can follow it with no JavaScript, but it will make more sense after the first modules of [Learn JavaScript](/docs/courses/javascript/learn-javascript/).
 
-## Where it fits
+It sits in no career path: it is a half hour top-up, not a milestone. The natural neighbours are [Learn CSS Grid](/docs/courses/css/css-grid/) and [Learn Flexbox](/docs/courses/css/flexbox/) for layout, and [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) for the media query side. If you come here from [Learn Tailwind CSS](/docs/courses/css/tailwind-css/), this is what Tailwind's theme tokens compile down to.
 
-This course is not part of any Scrimba career path. It is a half hour top-up, not a milestone. The natural neighbours are [Learn CSS Grid](/docs/courses/css/css-grid/) and [Learn Flexbox](/docs/courses/css/flexbox/) for layout, and [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) for the media query side. If you come here from [Learn Tailwind CSS](/docs/courses/css/tailwind-css/), this is what Tailwind's theme tokens compile down to.
-
-## Strengths and limits
-
-What it does well:
-
-- One page, one file, eight small changes in the right order.
-- The theming and media query lessons show the two patterns you will reuse most.
-- The inheritance lesson explains the bug you would otherwise hit on your own.
-- The four exercises now check your answer.
-
-Where it is limited:
-
-- Six of the eight lessons have no transcript or captions.
-- The recordings are from 2018. The code uses `var` and id selectors, and there is no mention of `@property`, fallback values in `var()`, or design-token naming.
-- The exercise briefs are spoken only.
-- It is Pro-gated for what is, in the end, half an hour on one feature.
-
-## Related courses and comparisons
-
-- [All Scrimba CSS courses](/docs/courses/css/), the full CSS category hub
-- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), the comprehensive CSS course
-- [Learn HTML and CSS](/docs/courses/css/html-and-css/), the free foundation
-- [Learn CSS Grid](/docs/courses/css/css-grid/) and [Learn Flexbox](/docs/courses/css/flexbox/), other focused CSS top-ups
-- [Learn CSS Animations](/docs/courses/css/css-animations/), for adding motion
+- [All Scrimba CSS courses](/docs/courses/css/), if you want to pick the next CSS top-up from the full list
+- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), for the media query side the responsiveness lesson only touches
+- [Learn HTML and CSS](/docs/courses/css/html-and-css/), the free foundation if `grid-template-columns` is new to you
+- [Learn CSS Grid](/docs/courses/css/css-grid/) and [Learn Flexbox](/docs/courses/css/flexbox/), for the layout the portfolio page assumes
+- [Learn CSS Animations](/docs/courses/css/css-animations/), for adding motion once the page is themed
 - [Learn Tailwind CSS](/docs/courses/css/tailwind-css/), where these variables become theme tokens
 
 <FAQAccordion items={[

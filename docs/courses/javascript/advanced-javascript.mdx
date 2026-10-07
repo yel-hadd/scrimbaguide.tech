@@ -7,7 +7,7 @@ description: "Tom Chant's Pro Advanced JavaScript course reviewed from inside: 9
 keywords: [scrimba advanced javascript, advanced javascript scrimba review, advanced javascript course, tom chant javascript, javascript generators course, async javascript course, scrimba pro javascript course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Tom Chant's Pro follow-up to [Learn JavaScript](/docs/courses/javascript/learn-j
 
 <Provenance subject="course" date={frontMatter.reviewed} detail="65 of the 156 scrims opened, at least a third of every module, transcripts read in full" />
 
-## Quick answer
+## Writing JavaScript without being able to explain the event loop or `this`
 
 Take it if you can already write JavaScript but could not explain the event loop, `this`, prototypes, or why a generator uses `yield`. Bob Ziroll guests for the API theory in module four, and Tom says in the first minute that "the concepts are broken down into bite sized chunks and we'll be working a lot in the console" rather than one big project. The catch: only the first five scrims are free.
 
@@ -54,7 +54,7 @@ Take it if you can already write JavaScript but could not explain the event loop
   />
 </div>
 
-## Is it worth your time?
+## 80 challenge scrims, three advanced modules and no portfolio project
 
 Yes, if you are in the specific spot it targets. Tom describes it in the intro as "designed to take you from the intermediate level where you probably are right now to an advanced level." That is an accurate description of who gets the most from it: someone who has finished [Learn JavaScript](/docs/courses/javascript/learn-javascript/) or equivalent, can build a small app, and keeps hitting concepts they copy without understanding. The course puts each of those concepts in a short scrim, has you write it, and moves on.
 
@@ -64,7 +64,7 @@ The second is that the intermediate label fits modules one to three and five. Fo
 
 This is vanilla JavaScript in the console with occasional DOM work: no frameworks, no TypeScript, no build tools, and no project you can put in a portfolio. That is the point of the course, and Tom says so in the intro. If what you want is another app to build, look elsewhere.
 
-## What you'll learn
+## 156 scrims in nine console-first modules
 
 <CourseCurriculum
   modules={[
@@ -82,7 +82,7 @@ This is vanilla JavaScript in the console with occasional DOM work: no framework
 
 Lesson counts are the scrims I counted in each expanded module in September 2026: 156 total (155, plus a one-minute certificate scrim after module nine). I re-expanded the table of contents for this review and the counts held. Scrimba's numbers measure different things. The "0/14" style figure in each module header is the number of challenges in that module: 94 across the course, matching the 80 of 156 scrims that carry a challenge icon (14 scrims carry two). The course listing and its structured data say 207 lessons, which counts the clips inside scrims rather than the scrims you click. When other pages on this site quote 207, that is Scrimba's number.
 
-## Inside the course, module by module
+## The ternary operator through to the recursion super challenge
 
 ### 1. Advanced Foundations (86 min, 22 scrims)
 
@@ -206,27 +206,25 @@ The Debouncing and Generators super challenge is a debug challenge rather than a
 
 The Super Challenge Recursion is the hardest single scrim in the course, at eight and a half minutes. You write a function that walks a nested company object and returns every employee with a given ID. The stretch goal is to do it without a global results array, and Tom shows why that matters: with a global array, a second call returns the first call's results too. The fix uses the spread operator to merge each recursive call's array into the current one. A `hint.md` file covers both versions, and Tom says using it "is absolutely fine."
 
-## What a lesson feels like
+## Console under the editor, hint.md files and a 0:00 quirk
 
 A typical scrim is two to six minutes. Most modules open with a one-minute intro over a title slide, then go straight into a file in the editor. Tom types the code, hits save, and reads the console, which sits under the editor rather than in a separate preview pane, because most of the course has no UI to look at. A handful of lessons (the throttling and debouncing ones, the super challenges with cards or a cafe page) do have an HTML page in the preview.
 
 Challenges are written as comments in the file. The scrim pauses on a marker in the scrubber, you write the code in the same editor, and you press play to see Tom's solution. Super challenges get a longer brief and, in the first three modules, a separate solution scrim so you can attempt the problem without the answer sitting at the end of the same recording. Several also hide the list of expected concepts on the next slide, so you can try blind and check afterwards. Some challenges come with a `hint.md` file in the project.
 
-Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages. The transcript is what I used to read the course and to pick the moments in the screenshots above. Tom's voice is dry British humor over a fairly fast pace. He speed-types repetitive code ("I'll just speed type the next two functions"), warns you before the hard parts, and states difficulty plainly, which reads as reassuring rather than off-putting. He is also good at saying when not to persist, as in the callback hell scrim.
+I read the course through the transcript panel and used it to pick the moments in the screenshots above. Tom's voice is dry British humor over a fairly fast pace. He speed-types repetitive code ("I'll just speed type the next two functions"), warns you before the hard parts, and states difficulty plainly, which reads as reassuring rather than off-putting. He is also good at saying when not to persist, as in the callback hell scrim.
 
 One quirk I noticed: a few scrims (Taking APIs to the Next Level, API requests: the body, Inheritance with classes Challenge, Closures Part 2, IIFEs) show a duration of 0:00 in the table of contents. They are real lessons. IIFEs, for example, is three and a half minutes when you open it. The module durations Scrimba prints appear not to include them, so the true runtime is slightly over 9.8 hours.
 
-## Free or Pro: exactly what is gated
-
 This is a Pro course. The free part is the first five scrims of module one, marked SAMPLE in the table of contents: the course intro, the module intro, two scrims on the ternary operator, and the Ternary Operator Challenge. That is about 15 minutes, and it is enough to judge the teaching style but not the level. Everything from Switch Statements onward is behind the subscription.
 
-Unlike Scrimba's free courses, there are no separately gated Solo Projects; the super challenges are ordinary scrims inside the modules. The certificate of completion (with a one-minute "How to Utilize Your Certificate" scrim) requires Pro, as do the career paths that draw on parts of this course and the Pro-only channels on Scrimba's Discord. The Discord itself is not a Pro perk: Scrimba's pricing page lists basic Discord access as free, and Tom's course outro points everyone to the "Today I Did" channel there. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+Unlike Scrimba's free courses, there are no separately gated Solo Projects; the super challenges are ordinary scrims inside the modules. The certificate of completion (with a one-minute "How to Utilize Your Certificate" scrim) requires Pro, as do the career paths that draw on parts of this course and the Pro-only channels on Scrimba's Discord. The Discord itself is not a Pro perk: Scrimba's pricing page lists basic Discord access as free, and Tom's course outro points everyone to the "Today I Did" channel there. Plans are on <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's pricing page</AffiliateLink>.
 
-## How long it takes
+## 20 to 30 hours for 94 challenges, and the weeks that run long
 
 The 9.8 hours is video runtime. With 94 challenges, several of them ten-minute debugging or class-design problems, budget two to three times that: 20 to 30 hours. At an hour a day that is four to six weeks, and the split is uneven. Modules one to three should move quickly because most of the material is consolidation. Modules four, seven, and nine each deserve a full week, and if generators and currying are new to you, plan to rewatch. Tom says outright that "unless you've studied some advanced JavaScript concepts before, you're going to find some of this course difficult," and I would take him at his word.
 
-## Who it's for, and who should skip it
+## The intermediate-to-advanced jump, or just one concept?
 
 It fits developers who finished [Learn JavaScript](/docs/courses/javascript/learn-javascript/) (or equivalent) and want to understand the language rather than pattern-match it. By the end you should be able to read a promise chain, explain why a `let` throws before its line, write a class with private fields, and pick `map` or `forEach` on purpose. It is also a sensible stop before or alongside [Learn React](/docs/courses/react/learn-react/), since the array methods, spread, destructuring, and async sections are exactly what React code assumes. If you are interviewing, the closures, `this`, prototype, and event loop scrims cover the questions that come up most; pair it with [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/).
 
@@ -236,29 +234,23 @@ Skip it if you are a complete beginner (do [Learn JavaScript](/docs/courses/java
   Try the free sample scrims of Advanced JavaScript
 </AffiliateLink>
 
-## Prerequisites
+## The JavaScript to know going in, and where this course sits
 
 Comfortable JavaScript: variables, functions, arrays, objects, and basic DOM work. The course does not reteach them, and the first module already assumes you can read an if/else and refactor it. HTML and CSS matter only in the handful of lessons with a page in the preview. You do not need to know promises, classes, or any of the module titles going in. Tom says "we'll be taking it from the very basics" for each concept, and that held up in the scrims I read: every hard idea starts with a small, contrived example before the real one.
 
-## Where it fits
-
 The [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) both draw on part of Advanced JavaScript rather than embedding the whole course, and so does the [Backend Developer Path](/docs/paths/backend-developer-path/). That matches Tom's own note that only a few scrims overlap with the path. Within the JavaScript catalog it is the depth course: [Learn JavaScript](/docs/courses/javascript/learn-javascript/) gets you building, this one explains what you built, and [Learn React](/docs/courses/react/learn-react/) or [Learn Node.js](/docs/courses/javascript/nodejs/) is the usual next step. The async module in particular is the best preparation in the catalog for [Learn Express.js](/docs/courses/javascript/expressjs/), where you are on the other side of the request.
 
-## Strengths and limits
+- [All JavaScript courses](/docs/courses/javascript/), to see which other JavaScript course fits if the nine modules are too much
+- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the free prerequisite for module one's conditionals and refactors
+- [The Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript/), a shorter top-up if you are only missing one or two concepts
+- [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/), to drill the closures, `this` and event loop scrims in interview form
+- [Learn React](/docs/courses/react/learn-react/), the usual next step, since React assumes the array methods and async you just practised
+- [Learn Node.js](/docs/courses/javascript/nodejs/) and [Learn Express.js](/docs/courses/javascript/expressjs/), if you want to use module four's API theory on the server side
+- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are weighing a Pro course here against a free one elsewhere
 
-What it does well: it is challenge-first (80 of 156 scrims), every module has a clear concept order, and the super challenges are the closest thing to real problems in the JavaScript catalog. Tom names what is hard up front, and the transcript panel makes the theory-heavy scrims easy to revisit.
+## Super challenges: what they give you and what the console format costs
 
-Where it is limited: there is no project to show for it, and the intermediate label fits modules one to three and five but not four, seven, and nine. The console-only format means some lessons are visually dull, and a referral-program scrim sits in the middle of the async module. A few table-of-contents entries display 0:00, so the real runtime is slightly longer than advertised.
-
-## Related courses and comparisons
-
-- [All JavaScript courses](/docs/courses/javascript/), the full category hub
-- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the free prerequisite
-- [The Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript/), a shorter top-up on gotchas
-- [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/), to drill what you learn
-- [Learn React](/docs/courses/react/learn-react/), the usual next step on the frontend track
-- [Learn Node.js](/docs/courses/javascript/nodejs/) and [Learn Express.js](/docs/courses/javascript/expressjs/), if you want to use the async module on a server
-- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are choosing a platform
+The super challenges are the closest thing to real problems in the JavaScript catalog, and Tom names what is hard up front. The console-only format makes some lessons visually dull, and a referral-program scrim sits in the middle of the async module.
 
 <FAQAccordion items={[
   { q: "Is Advanced JavaScript free on Scrimba?", a: "No. It is a Pro course. The first five scrims of module one (through the Ternary Operator Challenge) are marked SAMPLE and free; everything after that needs a subscription. The earlier Learn JavaScript course is free." },
@@ -267,7 +259,6 @@ Where it is limited: there is no project to show for it, and the intermediate la
   { q: "What do you build in the course?", a: "Nothing you would put in a portfolio. Tom says in the intro that the course does not build one big project and works mostly in the console. The closest things to builds are the super challenges: a stock ticker, a contact search, a real estate card list, an async image loader, a library-software refactor, game character classes, a debounced infinite-scroll cafe page, and a recursive employee search." },
   { q: "How many challenges are there?", a: "Scrimba's module headers add up to 94, and that matches the challenge icons in the table of contents. 80 of the 156 scrims carry at least one; 14 scrims contain two. Each module except Working with Objects and Collections & Symbols ends in a super challenge." },
   { q: "How advanced is it really?", a: "Modules one to three are intermediate consolidation. Modules four (async), seven (classes, inheritance, private fields), and nine (closures, recursion, currying, debouncing, generators) are advanced, and Tom warns you about that in the intros." },
-  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
   { q: "Do I need to install anything?", a: "No. Everything runs in Scrimba's browser editor. There are no npm packages or build tools in the course; it is vanilla JavaScript with the occasional HTML page in the preview pane. The dog API in module four is reached through a Scrimba proxy so the lessons keep working if the real endpoint changes." },
   { q: "How long does Advanced JavaScript take?", a: "9.8 hours of video, but with 94 challenges plan for 20 to 30 hours, or four to six weeks at an hour a day. The second half takes longer than the first." },
   { q: "Does it overlap with the Frontend Developer Path?", a: "A little. Tom says a few scrims appear in both, most likely in the Advanced Foundations, Asynchronous JavaScript, and Creating Custom Objects modules, and suggests rewatching them as a refresher." },

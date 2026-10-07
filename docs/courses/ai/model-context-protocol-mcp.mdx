@@ -7,7 +7,7 @@ description: "Maham Codes's 37 minute Pro course on MCP, reviewed from inside: 1
 keywords: [scrimba mcp course, scrimba mcp course review, model context protocol scrimba, mcp tutorial, build mcp server typescript, connect ai to tools, maham codes scrimba]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Maham Codes teaches Intro to Model Context Protocol (MCP) in about 37 minutes ac
 
 <Provenance subject="course" date={frontMatter.reviewed} detail="all 17 scrims and transcripts" />
 
-## Quick answer
+## Should you build an MCP server in one sitting?
 
 This fits developers who already build with an LLM API in JavaScript or TypeScript and want a working MCP server by the end of an afternoon. The catch: the MCP Inspector and Claude Desktop parts are shown on slides, not built in the browser, and the third MCP building block, prompts, is explained but never coded. If you have never called an AI model from code, start with [Intro to AI Engineering](/docs/courses/ai/ai-engineering/) instead; this course will feel abstract without that foundation.
 
@@ -43,15 +43,7 @@ This fits developers who already build with an LLM API in JavaScript or TypeScri
   description="A short build-along on MCP: what it is, then a weather MCP server in TypeScript with a tool, a resource, and a STDIO transport."
 />
 
-## Is it worth your time?
-
-Yes, if MCP is a gap you need to close quickly. The whole thing is shorter than a lunch break. By scrim 7 you have a server that starts, prints the tool and resource it registered, and says "Server ready!" in Scrimba's built-in terminal, a small working build rather than a slide deck.
-
-The server is tiny on purpose: two hardcoded cities, no real API. The MCP Inspector and Claude Desktop parts are shown on slides and screen recordings, so you watch them rather than do them in the browser. And the third MCP building block, prompts, is explained but never coded. Maham says it outright in lesson 7: "prompts are optional." If you want a deeper tool-using build, [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/) goes much further.
-
-One thing that surprised me: four of the 17 scrims are not Maham's. They are short AI-generated explainers with a quiz at the end, added by Scrimba in September 2026. More on those below.
-
-## What you'll learn
+## Why the header says 37 minutes for 17 scrims in four groups
 
 Scrimba lists this course as a flat list of 17 scrims with no modules. The four groups below are mine, so you can see how the time is spent.
 
@@ -64,9 +56,9 @@ Scrimba lists this course as a flat list of 17 scrims with no modules. The four 
   ]}
 />
 
-I counted 17 scrims, about 47 minutes in total, which now matches Scrimba's own listing of 17 lessons. The header's 37 minute runtime predates the four AI explainers and the housekeeping scrims (feedback form, Scrimba Docs, the Scrimbassador pitch, and the certificate note) added later, so the duration no longer matches what you see inside.
+The 17 scrims add up to about 47 minutes, matching Scrimba's own listing of 17 lessons. The header's 37 minute runtime predates the four AI explainers and the housekeeping scrims (feedback form, Scrimba Docs, the Scrimbassador pitch, and the certificate note) added later, so the duration no longer matches what you see inside.
 
-## Inside the course, module by module
+## "USB C for AI" to a weather server running in Scrimba's terminal
 
 ### 1. What MCP is and how it is built (13 min, 4 scrims)
 
@@ -150,23 +142,35 @@ Each is 75 to 90 seconds, ends with a quiz question, and carries the line "Expla
 
 Maham's "Wrap Up" restates the course in two and a half minutes and lists what you can now do: explain MCP, build a server with tools and resources, connect it to a client, and debug it with Inspector. The remaining three scrims are not about MCP. Tom Chant introduces Scrimba Docs, Per Borgen pitches the Scrimbassador referral program, and a 53 second note tells you how to use the certificate on LinkedIn.
 
-## What a lesson feels like
+## Slides for the ideas, a paused recording for each of three challenges
 
 There are two kinds of scrim here. The concept lessons (intro, importance, core concepts, transports, clients, wrap up) are narrated slide decks with the occasional screen recording, and there is no code to touch. The three build lessons open a real editor and terminal. Maham types in `server.ts`, and when the challenge comes, the recording pauses with the brief as a comment in the file. You write in the same editor, then press play to watch her version. Those three scrims carry Scrimba's "Challenge with Instant Feedback" icon, which means an AI check of your solution is available.
 
-Every scrim has captions and a timestamped transcript in the settings menu, with subtitles in ten languages. Maham's delivery is brisk and scripted, closer to a documentation walkthrough than Per Borgen's chatty style, and precise about details such as the `console.error` point above. If you learn by reading, the transcript panel lets you skim a lesson in a minute.
+Maham's delivery is brisk and scripted, closer to a documentation walkthrough than Per Borgen's chatty style, and precise about details such as the `console.error` point above. If you learn by reading, the transcript panel lets you skim a lesson in a minute.
 
-## Free or Pro: exactly what is gated
+Scrimba says 37 minutes; the 17 scrims add up to about 47. Budget one and a half to two hours to do it properly. The three challenges will take most people ten to fifteen minutes each if they type rather than watch, and the explainer quizzes add a few minutes. Add another hour if you want to run the server on your own machine and connect it to Claude Desktop or Cursor. It is a one-sitting course.
+
+## Four free scrims cover all the concepts and the first challenge
 
 The course is Pro. Four scrims are marked SAMPLE and open without a subscription: the first three concept lessons plus the first build lesson, "Setting up an MCP server and defining tools." That is the whole conceptual part plus the first challenge, so you can try it for free and decide from there.
 
-Everything after that is Pro: registering the resource, running the server, transports, the explainers, the clients lesson, the wrap up, and the certificate of completion. Pro also unlocks the rest of the AI catalog. It adds the Pro-only channels on Scrimba's Discord too (the pricing page lists basic Discord access as free). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs where you live.
+Everything after that is Pro: registering the resource, running the server, transports, the explainers, the clients lesson, the wrap up, and the certificate of completion. Pro also unlocks the rest of the AI catalog. It adds the Pro-only channels on Scrimba's Discord too (the pricing page lists basic Discord access as free). The <AffiliateLink href="https://scrimba.com/our-pricing">plans page</AffiliateLink> shows what Pro costs where you live.
 
-## How long it takes
+## A toy server, a real afternoon: what the build leaves out
 
-Scrimba says 37 minutes; the 17 scrims add up to about 47. Budget one and a half to two hours to do it properly. The three challenges will take most people ten to fifteen minutes each if they type rather than watch, and the explainer quizzes add a few minutes. Add another hour if you want to run the server on your own machine and connect it to Claude Desktop or Cursor. The course shows that part but does not let you do it in the browser. It is a one-sitting course.
+Yes, if MCP is a gap you need to close quickly. The whole thing is shorter than a lunch break. By scrim 7 you have a server that starts, prints the tool and resource it registered, and says "Server ready!" in Scrimba's built-in terminal, a small working build rather than a slide deck. Explaining resources versus tools as GET versus POST sticks, and the small practical points (why to log with `console.error`) are what you only learn by building.
 
-## Who it's for, and who should skip it
+The limits are real, and each one is a reason to treat this as a first step:
+
+- The server is tiny on purpose: two hardcoded cities, no real API.
+- The MCP Inspector and Claude Desktop parts are shown on slides and screen recordings, so you watch them rather than do them in the browser.
+- The third MCP building block, prompts, is explained but never coded. Maham says it outright in lesson 7: "prompts are optional." If you want a deeper tool-using build, [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/) goes much further.
+- Four of the 17 scrims are not Maham's. They are short AI-generated explainers with a quiz at the end, added by Scrimba in September 2026, in a different voice and pointing at a newer spec than her lessons.
+- The MCP SDK version pinned in the course will drift.
+
+Worth an afternoon, as long as you want the server and not the production story.
+
+## Building this now, or waiting for MCP to feel real
 
 It fits JavaScript or TypeScript developers who already build with an LLM API and want to expose their own tools to Claude, Cursor, or another MCP host. It also works as a quick briefing for people on the [AI Engineer Path](/docs/paths/ai-engineer-path/) who want to know what MCP is before they meet it in a bigger project.
 
@@ -176,39 +180,18 @@ Skip it if you have never called a model from code; the problem MCP solves will 
   Start Intro to Model Context Protocol (MCP) on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## Before MCP, and what to take next
 
 Comfortable JavaScript and enough TypeScript to read a typed function signature. The course uses `async`/`await`, ES modules, and npm without explaining them, and no MCP experience is assumed. If TypeScript is the gap, [Learn TypeScript](/docs/courses/typescript/learn-typescript/) covers it; [Learn Node.js](/docs/courses/javascript/nodejs/) helps with the npm and terminal side.
 
-## Where it fits
-
 This is a standalone course, not a step in a path. It pairs with [Learn AI Agents](/docs/courses/ai/ai-agents/), which teaches how a model decides to call a tool. This course teaches how to package tools so any host can call them. [Learn Context Engineering](/docs/courses/ai/context-engineering/) covers the other half of "context," what you put in the prompt.
 
-## Strengths and limits
-
-What it does well:
-
-- Explains resources versus tools with a comparison (GET versus POST) that sticks.
-- Gets you to a running server in three short lessons, with a challenge in each.
-- Covers small practical things, such as why to log with `console.error`.
-- The Inspector and Claude Desktop demos show the finished loop end to end.
-
-Where it is limited:
-
-- The server is a toy with two hardcoded cities.
-- Prompts and the HTTP transport are described but never coded.
-- The client demos are watch-only.
-- The four AI explainers are a different voice and reference a newer spec than the main lessons.
-- The MCP SDK version pinned in the course will drift.
-
-## Related courses and comparisons
-
-- [All AI courses on Scrimba](/docs/courses/ai/), the category hub
-- [Learn AI Agents](/docs/courses/ai/ai-agents/), where tool calling is taught from the model's side
-- [Intro to AI Engineering](/docs/courses/ai/ai-engineering/), the fundamentals to take first
-- [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/), a fuller tool-using build
+- [All AI courses on Scrimba](/docs/courses/ai/), if you want to see what else sits beside MCP before choosing a next step
+- [Learn AI Agents](/docs/courses/ai/ai-agents/), where tool calling is taught from the model's side, the other end of what you just built
+- [Intro to AI Engineering](/docs/courses/ai/ai-engineering/), the model-from-code basics to take first if MCP felt abstract
+- [Build a Support Agent with Vercel AI SDK](/docs/courses/ai/a-support-agent-with-vercel-ai-sdk/), a fuller tool-using build than the two-city weather server
 - [Learn Context Engineering](/docs/courses/ai/context-engineering/), the prompt side of context
-- [AI Engineer Path](/docs/paths/ai-engineer-path/), if you want the whole track
+- [AI Engineer Path](/docs/paths/ai-engineer-path/), if you want MCP as one step in a whole track
 
 <FAQAccordion items={[
   { q: "Is the Scrimba MCP course free?", a: "No, it is a Pro course. Four scrims are free samples: the Introduction, Intro to MCP and its importance, Core MCP concepts and architecture, and Setting up an MCP server and defining tools. The rest, including the certificate, needs Pro." },

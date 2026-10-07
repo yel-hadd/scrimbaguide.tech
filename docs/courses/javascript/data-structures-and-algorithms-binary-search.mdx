@@ -7,7 +7,7 @@ description: "Jonathan Lee Martin's 63-minute Pro course from inside: binary sea
 keywords: [scrimba binary search, binary search algorithm course, scrimba binary search review, software craftsmanship javascript, jonathan lee martin scrimba, binary search javascript]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -29,7 +29,7 @@ Jonathan Lee Martin's one-hour Pro course takes one algorithm and makes you writ
 
 *This page is part of our [Scrimba JavaScript courses](/docs/courses/javascript/) catalog. Scrimba's catalog data does not list it under a career path.*
 
-## Quick answer
+## One algorithm, six rewrites: depth over the survey the title promises
 
 This fits developers who already write JavaScript fluently and want to practice one algorithm deeply rather than survey many, including anyone prepping for interviews. The catch: the title promises data structures plural, and the course never leaves binary search. Take the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course first for breadth, or come here for depth once you have it.
 
@@ -45,13 +45,15 @@ This fits developers who already write JavaScript fluently and want to practice 
   description="Binary search implemented six ways in JavaScript against a test suite, each version a design lesson."
 />
 
-## Is it worth your time?
+## Writing binary search against a test suite until you can feel the trade-offs
 
 Yes, if you are the person it was made for. Jonathan says who that is in the first minute: developers who came through a bootcamp or self-teaching, "who are already great craftsmen and want to step up their software design by thinking algorithmically, but you don't have a background in CS." The course then does one thing well. You write binary search, run the tests, watch his version, and repeat with a new constraint each time. By the sixth version you have written the same algorithm with loops, recursion, and two small data structures you built yourself, and you can feel which one you would want to maintain.
 
+On the plus side: the bugs happen on screen and get read out loud, and the array view and partition lessons teach a design idea (inject a data structure instead of rewriting the algorithm) that applies far beyond binary search. On the minus side: the code comments and narration in the implementation lessons call the loop and recursive versions O(n), right after lesson 2 has carefully derived O(log n). It is a slip, but it will confuse anyone meeting big O for the first time.
+
 The catch is the shape. Twelve scrims, 63 minutes, one algorithm. There are no data structures in the sense the title suggests, and the course never leaves binary search. It was recorded as a free preview of a longer algorithms course Jonathan planned to release; the intro and the wrap-up both say so, and both point to a feedback form for that course. On Scrimba today it is a Pro course, and the sibling [Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/) course is the closest thing to the follow-up.
 
-## What you'll learn
+## 15 minutes of big O, 43 of challenges and 6 of clips in twelve scrims
 
 <CourseCurriculum
   summary="12 scrims, no modules; grouping below is mine"
@@ -62,9 +64,9 @@ The catch is the shape. Twelve scrims, 63 minutes, one algorithm. There are no d
   ]}
 />
 
-Scrimba presents the course as one flat list of twelve scrims plus a certificate item, and its structured data says 13 lessons; the three groups above are my own reading order, and the 63 minutes in the course header is the sum of the twelve scrims.
+Scrimba lists twelve scrims plus a certificate item, and its structured data says 13 lessons; the three groups above are my own reading order, and the 63 minutes in the course header is the sum of the twelve scrims.
 
-## Inside the course, lesson by lesson
+## Imperative, recursion, tail recursion, slice, ArrayView and ArrayPartition
 
 ### Lessons 1 and 2. Course Overview and Binary Search (15 min)
 
@@ -147,23 +149,21 @@ The last implementation lifts the index math out entirely. `ArrayPartition(array
 
 The wrap-up is two minutes and contains the thesis: "the point of deriving all these solutions isn't to say that the last one is the best. In fact, with a little tidying, I'm a big fan of our first solution too." Then a one minute congratulations clip from a Scrimba team member, a two minute Scrimbassador referral pitch from Per Borgen, and a one minute clip on adding the certificate to LinkedIn. None of the three belongs to the course, and you can skip them.
 
-## What a lesson feels like
+## Pause, write, watch the console go quiet: two to three hours for 63 minutes
 
 Six of the twelve scrims follow the same loop. Jonathan states the constraints for the new version, writes the skeleton and updates the export, saves so you can see the failing test, and says "pause this lesson." You write the code in the same editor, save, and watch the console. When it goes quiet, you press play and he writes his version, usually in a different style from yours, which is the point. There are no AI-checked challenges here; the test suite is the checker.
 
-Scrims run six to eight minutes, longer than Scrimba's beginner courses, and the talking is dense. Captions and the full transcript panel are there, and playback speed is adjustable. One detail to know: the editor shows the scrim's final state until you scrub, so opening a lesson at 0:00 can already show the finished code. Seek to the start of the challenge before you pause and write.
+Scrims run six to eight minutes, longer than Scrimba's beginner courses, and the talking is dense. Captions and a transcript panel come with every scrim. One detail to know: the editor shows the scrim's final state until you scrub, so opening a lesson at 0:00 can already show the finished code. Seek to the start of the challenge before you pause and write.
 
-## Free or Pro: exactly what is gated
+The 63 minutes of video hide six scrims that stop and wait for you. Write each version yourself before watching the solution and budget two to three hours: twenty minutes for the loop version if off by one errors get you, ten each for the recursive ones, and half an hour or more for Array View and Array Partition, which are the two Jonathan warns about. Only watch, and it is an hour that will not stick. He says as much.
+
+## 24 free minutes cover the explanation and the first full challenge
 
 The course is Pro. Three scrims are marked SAMPLE and open without a subscription: Course Overview, Binary Search, and Imperative. That is 24 minutes, and it includes the whole conceptual explanation plus the first full challenge with the test suite, so you can find out whether the format suits you before paying. The remaining nine scrims (the five other implementations, the wrap-up, and the closing clips) and the certificate are Pro.
 
-There are no Solo Projects in this course, so there is nothing else to gate. Pro also unlocks the career paths Scrimba lists this course under and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+There are no Solo Projects in this course, so there is nothing else to gate. Pro also unlocks the career paths and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free. <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's plans page</AffiliateLink> covers Pro.
 
-## How long it takes
-
-Sixty three minutes of video, but six of the scrims stop and wait for you. Write each version yourself before watching the solution and budget two to three hours: twenty minutes for the loop version if off by one errors get you, ten each for the recursive ones, and half an hour or more for Array View and Array Partition, which are the two Jonathan warns about. Only watch, and it is an hour that will not stick. He says as much.
-
-## Who it's for, and who should skip it
+## Bootcamp grads who never wrote an algorithm under constraints; skip it with a CS degree
 
 It fits working developers and bootcamp graduates who write JavaScript daily and have never been made to write an algorithm under constraints. It also fits anyone preparing for interviews who wants to be able to talk about the same problem from more than one angle; the six versions give you that vocabulary.
 
@@ -173,26 +173,16 @@ Skip it if you are still learning JavaScript. The course uses default parameters
   Start Data Structures and Algorithms: Binary Search on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## Fluent JavaScript first; Merge Sort and the broad DSA course around it
 
 Fluent JavaScript, ideally with some exposure to functional style: arrow functions, `const`, spread, and array destructuring all appear in the first three code lessons. You do not need to know binary search in advance; lesson 2 explains it from a blank array. You do not install anything. The test suite runs in the browser through the `assert` package listed in the scrim's dependencies.
 
-## Where it fits
+It pairs with the same instructor's [Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/) course, which uses the same challenge-then-solution format on a sorting algorithm. Take the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course first if you want the vocabulary, since that one is part of the [Backend Developer Path](/docs/paths/backend-developer-path/), and [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) afterwards if the goal is interviews.
 
-Scrimba's catalog data does not put the course on any career path. It pairs with the same instructor's [Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/) course, which uses the same challenge-then-solution format on a sorting algorithm. Take the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course first if you want the vocabulary, since that one is part of the [Backend Developer Path](/docs/paths/backend-developer-path/), and [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) afterwards if the goal is interviews.
-
-## Strengths and limits
-
-What it does well: every implementation is a real challenge with a test suite, the bugs happen on screen and get read out loud, the array view and partition lessons teach a design idea (inject a data structure instead of rewriting the algorithm) that applies far beyond binary search, and the three free scrims are enough to judge the format.
-
-Where it is limited: it is one algorithm in one hour, so the title promises more than it delivers. The code comments and the narration in the implementation lessons describe the loop and recursive versions as O(n), right after lesson 2 has carefully derived O(log n); it is a slip, but it will confuse anyone meeting big O for the first time. The intro and wrap-up still talk about the course as a free preview of a bigger course "coming out later this year," which dates it. And the last three scrims are Scrimba marketing, not teaching.
-
-## Related courses and comparisons
-
-- [All JavaScript courses](/docs/courses/javascript/), the category hub
-- [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/), the broad foundation to take first
+- [All JavaScript courses](/docs/courses/javascript/), for the language courses this one assumes you already finished
+- [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/), the survey of structures this course never reaches
 - [Data Structures and Algorithms: Merge Sort](/docs/courses/javascript/data-structures-and-algorithms-merge-sort/), the sibling course, same instructor and format
-- [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/), for broader interview practice
+- [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/), once you can explain one problem from six angles
 - [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), if the functional syntax here felt unfamiliar
 
 <FAQAccordion items={[

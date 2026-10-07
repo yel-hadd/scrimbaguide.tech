@@ -7,7 +7,7 @@ description: "Ajo Borgvold's free Command Line Basics course from inside: 101 mi
 keywords: [scrimba command line basics, command line basics scrimba review, cli course for beginners, learn command line scrimba, terminal basics course, free cli course, ajo borgvold]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Ajo Borgvold teaches this free command line course in 101 minutes across two sec
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## Can 46 minutes of real terminal drills cure the fear?
 
 It fits complete beginners: section one drills real terminal commands with graded challenges, and by the end of the first 46 minutes the fear that makes [Learn Git and GitHub](/docs/courses/javascript/git-and-github/) feel harder than it is starts to lift. The catch is section two, which drops the Scrimba terminal for slides and only pays off if you set up a terminal on your own machine. Already comfortable moving around a terminal? Skip straight to Git and GitHub.
 
@@ -43,15 +43,7 @@ It fits complete beginners: section one drills real terminal commands with grade
   description="Navigate, create, read and write files in a real terminal, then learn the search, replace, move and sort commands that make the command line worth using."
 />
 
-## Is it worth your time?
-
-For a complete beginner, yes, and mostly because of the first 46 minutes. Ajo hides Scrimba's file sidebar at the start of the first real lesson ("in a command line course, that will basically be cheating") and makes you find every file by typing. Each challenge is a numbered brief in a `challenge.md` file, and the solution walkthrough is where the teaching happens: you watch the wrong command fail, read the error, and see the fix. That loop is the thing most terminal tutorials skip.
-
-Section two is the weak half. Ajo says it plainly in its intro: "Many of the commands that I'll be teaching you in this section are unfortunately not supported by the shell that we can run in the Scrimba terminal," and that the workaround the team "settled on was to make this section focused on theory rather than practice." There are no challenges in that hour. You get a project zip, setup instructions for Mac and Windows, and slides with screenshots of Ajo's own terminal. If you skip the local setup, the second half is a lecture.
-
-The course is also limited by design. It is file management: moving around, creating, reading, searching, sorting. There is no shell scripting, no environment variables, no permissions, no package managers. Ajo lists those as reasons the command line matters and then says the focus "will be on file management." Take it as a foundation and nothing more.
-
-## What you'll learn
+## Two sections, 24 scrims, and a certificate scrim outside both
 
 <CourseCurriculum
   modules={[
@@ -60,9 +52,9 @@ The course is also limited by design. It is file management: moving around, crea
   ]}
 />
 
-Lesson counts are the scrims I counted in each expanded module, plus a 56 second "How to Utilize Your Certificate" scrim that sits outside both, for 24 in total. Scrimba's own figures measure something else: the module headers read "0/7" and "0/5", which is the number of challenge checkpoints in each section (the small badge next to a scrim's duration shows a "Challenge" tooltip), and the course's structured data says 26 lessons.
+I counted the scrims in each expanded module, plus a 56 second "How to Utilize Your Certificate" scrim that sits outside both, for 24 in total. Scrimba's own figures measure something else: the module headers read "0/7" and "0/5", which is the number of challenge checkpoints in each section (the small badge next to a scrim's duration shows a "Challenge" tooltip), and the course's structured data says 26 lessons.
 
-## Inside the course, module by module
+## Typing with the file sidebar hidden, then an hour of slides
 
 ### 1. Command Line Fundamentals (46 min, 10 scrims)
 
@@ -138,23 +130,31 @@ The pipe lesson ties the last three together with `sort team_members.txt | uniq 
 
 The outro recaps every command and the five options used across the section (`r`, `n`, `g`, `I`, `l`), and the course ends with a generic 53 second scrim on how to use the certificate.
 
-## What a lesson feels like
+## Type your own commands, press play, then run `ls` to check: three to five hours
 
 In section one, a scrim is two to seven minutes of Ajo talking over a live Scrimba terminal, with the brief in a `challenge.md` tab above it. When the recording reaches the challenge, you type your own commands in the same terminal, then press play and watch the solution. Ajo's solutions always verify: after every `rm`, `touch` or `mkdir` you run `ls` because "the terminal does not provide us with any kind of user message to tell us how this went." That habit is the best thing you take away from the course.
 
-Section two scrims are slides. Ajo draws on them (circles, underlines) and pastes in screenshots from a Mac terminal. There is a Scrimba terminal in the project, but nothing in these lessons asks you to use it. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages.
+Section two scrims are slides. Ajo draws on them (circles, underlines) and pastes in screenshots from a Mac terminal. There is a Scrimba terminal in the project, but nothing in these lessons asks you to use it.
 
 The voice is warm and a little goofy. The uncle who keeps borrowing the laptop, the CEO who is "terrible with names" and writes your initials as NN, the "moment of truth" before every `cat`. If that grates, the transcript panel lets you skim.
 
-## Free or Pro: exactly what is gated
-
-The whole course is free: both sections, all seven challenges, the downloadable project and the transcripts. There are no Solo Projects and no Pro-only scrims. The only gated item is the certificate of completion at the end, which is a Pro feature across Scrimba. Scrimba's pricing page lists basic access to the Discord community as free and the Pro-only channels as Pro, so the Discord itself is not gated either. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if the certificate matters to you.
-
-## How long it takes
-
 The runtime is 101 minutes. Section one has seven challenges and you should stop and type for each one, so budget about two hours for it. Section two takes as long as the local setup takes: on a Mac, ten minutes; on Windows with VS Code and Git to install, maybe half an hour, plus the hour of slides and however long you spend running the commands on the downloaded project yourself. Call it three to five hours total across two or three sittings, or an evening and a morning.
 
-## Who it's for, and who should skip it
+## A free foundation that stops at file management
+
+For a complete beginner, yes, and mostly because of the first 46 minutes. Ajo hides Scrimba's file sidebar at the start of the first real lesson ("in a command line course, that will basically be cheating") and makes you find every file by typing. Each challenge is a numbered brief in a `challenge.md` file, and the solution walkthrough is where the teaching happens: you watch the wrong command fail, read the error, and see the fix. That loop is the thing most terminal tutorials skip.
+
+Section two is the weak half. Ajo says it plainly in its intro: "Many of the commands that I'll be teaching you in this section are unfortunately not supported by the shell that we can run in the Scrimba terminal," and that the workaround the team "settled on was to make this section focused on theory rather than practice." There are no challenges in that hour. You get a project zip, setup instructions for Mac and Windows, and slides with screenshots of Ajo's own terminal. If you skip the local setup, the second half is a lecture.
+
+The course is also limited by design. It is file management: moving around, creating, reading, searching, sorting. There is no shell scripting, no environment variables, no permissions, no package managers. Ajo lists those as reasons the command line matters and then says the focus "will be on file management." Take it as a foundation and nothing more.
+
+The `echo` bug in Scrimba's IDE is still worked around rather than fixed, and one of the ten scrims in section one is a promo for the referral program. Against that, the challenges build one file tree across the whole section so nothing is abstract, and the local setup lesson is the clearest Mac-and-Windows terminal setup I have seen in a beginner course.
+
+The whole course is free: both sections, all seven challenges, the downloadable project and the transcripts. The only gated item is the certificate of completion, a Pro feature across Scrimba, and the Pro-only Discord channels (basic Discord access is free). If the certificate matters, the <AffiliateLink href="https://scrimba.com/our-pricing">plans page</AffiliateLink> lists what Pro costs where you live.
+
+Take the first 46 minutes seriously and the second hour as optional.
+
+## Opening a terminal here, or skipping to Git
 
 It fits people who have never opened a terminal, or who have copied commands from tutorials without knowing what `cd ..` does. That includes most [beginners](/docs/for/beginners/) and a fair share of [CS students](/docs/for/cs-students/) who learned theory before tooling. It is a sensible warm-up before [Learn Git and GitHub](/docs/courses/javascript/git-and-github/), whose local sections assume you can navigate a terminal.
 
@@ -164,28 +164,18 @@ Skip it if you already use `grep` and `find` without thinking, or if you want sc
   Start Command Line Basics for free
 </AffiliateLink>
 
-## Prerequisites
+## No prerequisites, and where Git, Node.js and the backend path pick up
 
 None. No programming, no prior terminal use, no installs for section one. Section two wants a computer where you can install VS Code and Git (Windows) or open the Terminal app (Mac). Linux users are not addressed in the setup lesson, but any bash or zsh shell works for what is taught.
 
-## Where it fits
-
 This is a tooling course rather than a language course. It sits before [Learn Git and GitHub](/docs/courses/javascript/git-and-github/) (which lives in the terminal from its third section) and before [Learn Node.js](/docs/courses/javascript/nodejs/), where you start running your own code from a command line. The [Backend Developer Path](/docs/paths/backend-developer-path/) draws on part of this course for its own 103 minute "Command Line Interface" module, and Ajo's teacher card mentions work on that path, so backend learners are the intended audience. Frontend learners can take it any time; it does not depend on [Learn JavaScript](/docs/courses/javascript/learn-javascript/).
 
-## Strengths and limits
-
-What it does well: section one drills the basics in a real terminal with verification after every step, the challenges build one file tree across the whole section so nothing is abstract, the errors are shown on purpose, and the local setup lesson is the clearest Mac-and-Windows terminal setup I have seen in a beginner course.
-
-Where it is limited: section two has no challenges and depends entirely on you setting up locally, the scope stops at file management, the `echo` bug in Scrimba's IDE is still worked around rather than fixed, and one of the ten scrims in section one is a promo for the referral program.
-
-## Related courses and comparisons
-
-- [Learn Git and GitHub](/docs/courses/javascript/git-and-github/), the natural next step
-- [Learn Node.js](/docs/courses/javascript/nodejs/), where terminal fluency starts to matter
-- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language foundation
+- [Learn Git and GitHub](/docs/courses/javascript/git-and-github/), the natural next step once `cd` and `ls` stop feeling risky
+- [Learn Node.js](/docs/courses/javascript/nodejs/), where you start running your own code from the terminal
+- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language foundation this course does not depend on
 - [Backend Developer Path](/docs/paths/backend-developer-path/), which draws on part of this course for its own module
-- [All JavaScript courses](/docs/courses/javascript/), the full category hub
-- [Scrimba for beginners](/docs/for/beginners/), if you are just starting out
+- [All JavaScript courses](/docs/courses/javascript/), for what else sits beside a tooling course
+- [Scrimba for beginners](/docs/for/beginners/), if the terminal is your first week of coding
 
 <FAQAccordion items={[
   { q: "Is Command Line Basics free on Scrimba?", a: "Yes. Both sections, all seven challenges and the downloadable project are free with no card required. The only Pro item is the certificate of completion." },

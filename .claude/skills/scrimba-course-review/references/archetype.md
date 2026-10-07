@@ -25,53 +25,69 @@ last_update:
 `CourseCard`, `CourseCurriculum`, `CourseSchema`, `FAQAccordion`,
 `AffiliateLink`, `Screenshot` from `@site/src/components/...`.
 
-### Body, in order
+### Body
 
-1. `# <Course>` then one paragraph of 40 to 60 words that answers: what it is,
-   who teaches it, runtime, what you build, and the verdict in one clause.
-   Then the provenance line: `*Reviewed inside the course with a Pro account,
-   <Month Year>.*` No other method statement anywhere on the page.
-2. `## Quick answer`: two or three sentences. Who it is for, the one catch,
-   and the natural next course (internal link). It never repeats the
-   opening's facts (instructor, runtime, module count).
-3. `<CourseCard title duration difficulty access modules instructor instructorUrl href description />`.
-   `duration`, `difficulty`, `access` and `modules` are copied from the course's
-   entry in `data/courses.json` (same strings), so the card and the site-wide
-   counts in `scrimbaFacts.ts` never disagree. This is the page's secondary CTA.
-4. Chapter title-card grid, only where chapters have title cards:
-   `<div className="screenshot-grid">` with `<Screenshot ... source="" />` on
-   all but the last card. Where a course has none, say nothing about it.
-5. `## Is it worth your time?`: three or four short paragraphs, the trade-offs,
-   each ending on a verdict.
-6. `## What you'll learn`: `<CourseCurriculum modules={[{ name, duration, lessons }]} />`
-   with module names and durations from `data/courses.json` and `lessons`
-   counted from the expanded TOC, then one line saying which count is used.
-7. `## Inside the course, module by module`: `### <n>. <Module> (<runtime>,
-   <n> scrims)` per module, lesson-level sequence, concept order, at least one
-   attributed transcript quote per major module. 2 to 4 `<Screenshot>`s at
-   transcript-chosen moments: alt names product + lesson + what is visible,
-   caption says what to notice and the timestamp.
-8. `## What a lesson feels like`: format, scrim length, challenge
-   loop, captions/transcript/speed, the instructor's habits with an example.
-9. `## Free or Pro: exactly what is gated`: named Solo Projects, certificate,
-   paths, "Pro-only channels on Scrimba's Discord" (basic Discord is free).
-   Link `/our-pricing` via `<AffiliateLink>`; never a price.
-10. `## How long it takes`: runtime x 2 to 3 with the reasoning.
-11. `## Who it's for, and who should skip it`, closed by the primary CTA:
-    `<AffiliateLink href="https://scrimba.com/<slug>-<id>" variant="button">Start
-    <course> for free</AffiliateLink>` ("Start <course> on Scrimba" for Pro).
-12. `## Prerequisites`, `## Where it fits` (paths + prerequisite chain, internal
-    links), `## Strengths and limits` (one paragraph each, examples from
-    inside; no separate pros/cons list that repeats it).
-13. `## Related courses and comparisons`: bullet list with a reason per link.
-14. `<FAQAccordion items={[...]} />`: 6 to 9 first-hand answers (free?,
-    beginners?, who teaches?, what you build?, transcripts?, how long?, install
-    needs?, prerequisite?).
-15. `<CourseSchema ... />` with `timeRequired` as ISO 8601, `modules` from
-    the curriculum, `access` Free or Pro.
+A leaf is built from the course, not from a skeleton. Until October 2026 all 70
+leaves shared the same eleven H2s in the same order, and Google indexed 19 of 73
+of them as near-duplicates ("crawled, currently not indexed"). The roles below
+are required; their headings, order and grouping are not.
 
-No button, PricingCTA or poster after the FAQ; `DocItem/Layout` adds no
-automatic CTA under `/docs/courses/`.
+Fixed frame (same on every leaf):
+
+1. `# <Course>`, `<DisclosureNotice />`, the 40 to 60 word opening (what it is,
+   who teaches it, runtime, what you build, the verdict in one clause), then
+   `<Provenance subject="course" date={frontMatter.reviewed} />`.
+2. The first section answers "should I take it?" in two or three sentences
+   (who it is for, the one catch, the next course) and is followed by
+   `<CourseCard title duration difficulty access modules instructor instructorUrl href description />`
+   (values copied from `data/courses.json`; the page's secondary CTA), then the
+   chapter title-card grid where chapters have title cards.
+3. The page ends with `<FAQAccordion items={[...]} />` (6 to 9 first-hand
+   answers that add a detail the body does not repeat word for word) and
+   `<CourseSchema ... />`. No button, PricingCTA or poster after the FAQ.
+
+Roles every leaf covers, in the order that suits the course:
+
+- **Verdict and trade-offs**: worth it or not, each trade-off ending on a
+  verdict, with strengths and limits folded in (no separate "Strengths and
+  limits" section that restates it).
+- **Curriculum**: `<CourseCurriculum modules={[{ name, duration, lessons }]} />`
+  with module names and durations from `data/courses.json`, then one line
+  saying which lesson count is used.
+- **Walkthrough**: `### ` per module (or per group of scrims), lesson-level
+  sequence, at least one attributed transcript quote per major module, 2 to 4
+  `<Screenshot>`s. Usually the longest section.
+- **The lesson experience**: format, scrim length, the challenge loop, the
+  instructor's habits with an example. Time to finish (runtime x 2 to 3 with
+  the reasoning) can live here or in the verdict.
+- **Free or Pro**: what is gated, with `/our-pricing` through
+  `<AffiliateLink>`; never a price. When nothing inside the course is gated,
+  two or three sentences inside another section are enough.
+- **Audience**, closed by the primary CTA:
+  `<AffiliateLink href="https://scrimba.com/<slug>-<id>" variant="button">Start
+  <course> for free</AffiliateLink>` ("Start <course> on Scrimba" for Pro).
+- **Before and after**: prerequisites and where it fits (paths, the course
+  before and after) in one section, then a short related list where every
+  bullet gives a reason specific to this course (never "the full category
+  hub").
+
+Headings:
+
+- Every H2 names this course's content: a project, a tool, a number, an
+  instructor habit, or the reader's question in this course's terms
+  ("Five CHALLENGE.md tasks in a real Node sandbox", "Is 39 minutes enough to
+  stop treating Vite as magic?"). Never a generic label: "Quick answer",
+  "Is it worth your time?", "What you'll learn", "What a lesson feels like",
+  "How long it takes", "Prerequisites", "Where it fits",
+  "Strengths and limits", "Related courses and comparisons",
+  "Free or Pro: exactly what is gated", "Who it's for, and who should skip it".
+- No H2 string may appear on more than two leaves.
+  `scripts/check-heading-uniqueness.mjs` (part of `npm run check:content`)
+  enforces both rules.
+- Lead with what is distinctive. A course whose best material is its project
+  can put the walkthrough before the verdict; a course with a big Free/Pro
+  catch can surface it in the first section.
+- Seven to ten H2s. Merge a section that would be two sentences.
 
 ## Course hub (docs/courses/<category>/index.mdx)
 

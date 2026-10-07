@@ -7,7 +7,7 @@ description: "Jad Khalili's Learn CSS Animations reviewed from inside every scri
 keywords: [scrimba learn css animations, learn css animations review, css animations course, css transitions tutorial, jad khalili css, interactive css animation course, scrimba css course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Learn CSS Animations is Jad Khalili's two-hour Scrimba course on CSS transitions
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## Fast motion syntax for people who already write CSS, minus reduced motion
 
 It fits anyone who can already write CSS and wants the motion syntax fast, not the deeper craft of animation. The catch is age: a full lesson still covers browser prefixes nobody needs in 2026, and there's nothing on `prefers-reduced-motion` or animation performance. Finish it and the natural next step is [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), the course Scrimba's own closing video recommends.
 
@@ -43,13 +43,15 @@ It fits anyone who can already write CSS and wants the motion syntax fast, not t
   description="Transitions, keyframe animations, and transforms in two hours, with a mini challenge in most scrims and three real-world challenges."
 />
 
-## Is it worth your time?
+## Do 27 mini challenges build enough muscle memory for transitions and keyframes?
 
 Yes, if you already write CSS and have never sat down with animations properly. The course is narrow on purpose. Jad says in the welcome video that the early challenges "may seem a little bit easy and kind of remedial, but that's what they're kind of intended to do. They're meant to build some muscle memory." That is an accurate description of the whole thing: you type `transition: all 0.5s ease` and `animation: grow 2s ease-out 0s 4 alternate` enough times that you stop looking them up.
 
 It is dated: the prefixes lesson talks about Internet Explorer 7 and 8 and tells you to add `-o-` for Opera. Nobody needs that in 2026, and the course does not mention `prefers-reduced-motion`, `will-change`, the Web Animations API, or which properties are cheap to animate. Treat this as a fast on-ramp to the syntax, not a guide to motion design. Two hours of video, three or four hours of doing, and you have the vocabulary.
 
-## What you'll learn
+The mini challenge in nearly every scrim, the three written challenge briefs, the fill-mode and delay explanations, and the cubic-bezier lesson are the best parts, and it never wanders. The preview is collapsed for most of the course, so you see less of the result than you might expect. The brief on the logo challenge is loose enough that you cannot be sure you got it right. And "Alright. Let's move on." gets tiring by scrim twenty.
+
+## 27 scrims in six sections, and why Scrimba says 28
 
 <CourseCurriculum
   summary="6 sections (editorial grouping), 27 scrims"
@@ -65,7 +67,7 @@ It is dated: the prefixes lesson talks about Internet Explorer 7 and 8 and tells
 
 Scrimba shows this course as one flat list of 27 scrims with no module headers, so the six sections above are my grouping, following the four topic sections Jad lays out in the welcome video plus the intro and the wrap-up. The durations are the per-scrim times from the table of contents added up. Scrimba's listing says 28 lessons, which is the 27 scrims plus the certificate row at the bottom of the list.
 
-## Inside the course, module by module
+## The hover menu through to the skewed four-bar logo
 
 ### 1. Welcome and the Scrimba workspace (7 min, 2 scrims)
 
@@ -149,25 +151,23 @@ Jad calls this section "quite unorganized" in the welcome video, and it is three
 
 Three short Scrimba-standard scrims: a congratulations video from Leanne that recommends Kevin Powell's [Responsive Web Design](/docs/courses/css/responsive-web-design/) course as the next step. Then come a pitch for the Scrimbassador referral programme from Per Borgen and a one minute "How to Utilize Your Certificate" scrim. Nothing to learn here, but the certificate row sits below them.
 
-## What a lesson feels like
+## Type the mini challenge, press play, hear "Alright. Let's move on."
 
 A typical scrim is three to six minutes. Jad talks over the editor, types a property, then opens the preview to show the effect. Nearly every teaching scrim ends with a mini challenge; the two demo scrims that open the transitions and animations sections are the exceptions. Jad states the spec out loud ("modify this transition so that it only targets the font size, has a one second delay, takes 0.5 seconds to run through, and has an ease-in timing function") and says "Good luck." The recording pauses for a few seconds before he solves it. You are expected to stop, type into the same editor, and press play when you are done.
 
 The three real-world challenges are different. The brief is a written comment at the bottom of the HTML file, the starter project is already styled, and your job is the animation layer only. These scrims run 5 to 9 minutes including the solution.
 
-Jad's delivery is plain and a little repetitive ("Alright. Let's move on." closes almost every scrim). He explains things once and moves on, which suits a syntax course. Every scrim has captions, a timestamped transcript, and subtitles in ten languages. The table of contents marks the scrims that contain a challenge with a small icon, the same one Scrimba labels "Challenge with Instant Feedback" on other course pages; I did not submit solutions to check how that feedback behaves here.
-
-## Free or Pro: exactly what is gated
-
-The course is Pro. The first four scrims are marked SAMPLE and open without a subscription: the welcome, the workspace tour, "What are Transitions?", and "Adding Transitions." That is enough to see Jad's style and one full mini challenge before paying.
-
-Everything from "Customizing Transitions" onwards (23 scrims, including all three real-world challenges) needs Pro, and so does the certificate. There are no Solo Projects in this course; the challenges are all inside the scrims. Pro also covers the Pro-only channels on Scrimba's Discord (basic Discord access is free, according to the pricing page). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
-
-## How long it takes
+Jad's delivery is plain and a little repetitive ("Alright. Let's move on." closes almost every scrim). He explains things once and moves on, which suits a syntax course. The table of contents marks the scrims that contain a challenge with a small icon, the same one Scrimba labels "Challenge with Instant Feedback" on other course pages; I did not submit solutions to check how that feedback behaves here.
 
 Two hours of video. The mini challenges are 30 seconds to a minute each if you already know the answer, and two or three minutes if you have to think. The real-world challenges take ten to twenty minutes each if you experiment with the values as Jad asks. Budget four to six hours in total, or two evenings. If you already know transitions and only want animations and transforms, skip to "Animations in Action" and you are down to about three hours.
 
-## Who it's for, and who should skip it
+## Four free samples, then Pro from Customizing Transitions
+
+The course is Pro. The first four scrims are marked SAMPLE and open without a subscription: the welcome, the workspace tour, "What are Transitions?", and "Adding Transitions." That is enough to see Jad's style and one full mini challenge before paying.
+
+Everything from "Customizing Transitions" onwards (23 scrims, including all three real-world challenges) needs Pro, and so does the certificate. There are no Solo Projects in this course; the challenges are all inside the scrims. Pro also covers the Pro-only channels on Scrimba's Discord (basic Discord access is free, according to the pricing page). The <AffiliateLink href="https://scrimba.com/our-pricing">pricing page</AffiliateLink> covers the Pro side.
+
+## Typing through the animation syntax, or already having it
 
 It fits people who can write CSS but have only ever copied an animation from a blog post. That includes anyone on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) who wants some motion in a portfolio project. The mini-challenge rhythm works well if you learn by typing.
 
@@ -177,28 +177,18 @@ Skip it if you are still learning selectors and the box model; do [Learn HTML an
   Start Learn CSS Animations on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## The CSS you need first, and what Responsive Web Design picks up
 
 Basic HTML and CSS: selectors, classes, and how a stylesheet links to a page. Jad's own prerequisites note says "a basic understanding of HTML and CSS." No JavaScript is used anywhere in the course. Nothing to install; everything runs in the browser.
 
-## Where it fits
+The natural order is [Learn HTML and CSS](/docs/courses/css/html-and-css/), then this, then [Responsive Web Design](/docs/courses/css/responsive-web-design/), which the closing video itself recommends and which revisits transitions and animations inside real layouts. The CSS variables lesson overlaps with the free [CSS Variables](/docs/courses/css/css-variables/) course, and the challenge format is a good warm-up for [CSS Challenges](/docs/courses/css/css-challenges/).
 
-This course is not part of any Scrimba career path. The natural order is [Learn HTML and CSS](/docs/courses/css/html-and-css/), then this, then [Responsive Web Design](/docs/courses/css/responsive-web-design/), which the closing video itself recommends and which revisits transitions and animations inside real layouts. The CSS variables lesson overlaps with the free [CSS Variables](/docs/courses/css/css-variables/) course, and the challenge format is a good warm-up for [CSS Challenges](/docs/courses/css/css-challenges/).
-
-## Strengths and limits
-
-What it does well: the mini challenge in nearly every scrim, the three written challenge briefs, the fill-mode and delay explanations in the animations section, and the cubic-bezier lesson. It is short, and it never wanders.
-
-Where it is limited: it is old. The prefixes lesson is out of date, and there is nothing on reduced motion, performance, or which properties to animate. The preview is collapsed for most of the course, so you see less of the result than you might expect. The brief on the logo challenge is loose enough that you cannot be sure you got it right. And "Alright. Let's move on." gets tiring by scrim twenty.
-
-## Related courses and comparisons
-
-- [All Scrimba CSS courses](/docs/courses/css/), the full CSS category hub
-- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), the deeper CSS course the closing video recommends
-- [Learn CSS Variables](/docs/courses/css/css-variables/), the free course that expands the variables lesson
-- [CSS Challenges](/docs/courses/css/css-challenges/), more drills in the same challenge format
-- [Learn UI Design](/docs/courses/css/ui-design/), for the design judgement this course does not cover
-- [Intro to UI Design Fundamentals](/docs/courses/css/ui-design-fundamentals/), the free design taster
+- [All Scrimba CSS courses](/docs/courses/css/), for the CSS courses that sit around the animation syntax
+- [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), where transitions and animations appear again inside real layouts
+- [Learn CSS Variables](/docs/courses/css/css-variables/), the free course that expands this course's variables lesson
+- [CSS Challenges](/docs/courses/css/css-challenges/), more drills in the same pause-and-type challenge format
+- [Learn UI Design](/docs/courses/css/ui-design/), for the design judgement about what to animate, which this course skips
+- [Intro to UI Design Fundamentals](/docs/courses/css/ui-design-fundamentals/), the free design taster if you want to judge motion before adding it
 
 <FAQAccordion items={[
   { q: "Is Learn CSS Animations free on Scrimba?", a: "No. It is a Pro course. The first four scrims (the welcome, the workspace tour, What are Transitions?, and Adding Transitions) are free samples; the other 23 scrims and the certificate need a subscription." },

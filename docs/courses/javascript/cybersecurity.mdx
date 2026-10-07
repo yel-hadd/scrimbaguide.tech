@@ -7,7 +7,7 @@ description: "Reviewed from inside: 5 hours on STRIDE, sessions vs JWTs, XSS, SQ
 keywords: [scrimba learn cybersecurity, learn cybersecurity scrimba review, app security course for developers, authentication course scrimba, web security fundamentals, rate limiting course, zod validation course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Learn Cybersecurity is Scrimba's 5-hour Pro course on the security work that lan
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## Attack your own signup form first: app security for developers who already ship APIs
 
 It fits developers who already build Node or Express APIs and want to stop shipping the obvious holes, not people chasing a cybersecurity career or a certification. The catch: the first half is mostly slides and reasoning, with little code until the challenge scrims. Pair it with [Learn Express.js](/docs/courses/javascript/expressjs/) if you have not built an API yet, or take it right after your first one.
 
@@ -43,15 +43,7 @@ It fits developers who already build Node or Express APIs and want to stop shipp
   description="Threat modelling, authentication models, input validation with Zod, and rate limiting, taught in Node by Rachel Johnson and Jonathan Hill."
 />
 
-## Is it worth your time?
-
-Most developers learn security from an incident. This course is the cheaper route, and the reason it works is that it makes you do the attack before the defence. In the input safety module you paste an `<img onerror>` payload into a name field and watch the page pop a fake "data breach" alert. Two scrims later you type `'); DROP TABLE users; --` into an email field and the runner terminal prints "Disaster dropping users table" while the user counter at the top of the form drops to zero. Nothing real is deleted, but you have now written a SQL injection, and that memory sticks better than a slide about parameterised queries.
-
-The first half is different in style. Rachel's modules are mostly slides and reasoning: you get a food delivery app called QuickBite, a list of bug reports, and a pause where you classify each one. There is little code until the challenge scrims. If you want to type from minute one, that half will feel slow. If you want to be able to explain in an interview why a JWT is "stateless" and why that is sometimes a bad thing, it is exactly the right depth.
-
-This is developer-facing app security, not a security-engineer track, and it will not make you one. It covers only a slice of the OWASP top ten in code (XSS, injection, and denial of service). Rate limiting gets almost as much time as authentication, which tells you what the course cares about most: protecting an API you have already built.
-
-## What you'll learn
+## Scrimba's headers say 3, 4, 12 and 12; the course has 81 scrims in four modules
 
 <CourseCurriculum
   modules={[
@@ -62,9 +54,9 @@ This is developer-facing app security, not a security-engineer track, and it wil
   ]}
 />
 
-Lesson counts are the scrims I counted in each expanded module in September 2026, 81 in total plus two course-level scrims (a Scrimbassador pitch and a certificate explainer) that make up the 83 lessons Scrimba's structured data reports. The module headers on the course page show much smaller figures (3, 4, 12 and 12), which appear to count the chapters inside each module rather than the scrims you click.
+I counted the scrims in each expanded module in September 2026, 81 in total plus two course-level scrims (a Scrimbassador pitch and a certificate explainer) that make up the 83 lessons Scrimba's structured data reports. The module headers on the course page show much smaller figures (3, 4, 12 and 12), which appear to count the chapters inside each module rather than the scrims you click.
 
-## Inside the course, module by module
+## QuickBite threat slides, then a drop-table you typed yourself
 
 ### 1. Think Like a Security-Minded Developer (30 min, 10 scrims)
 
@@ -140,23 +132,29 @@ The next three algorithms are theory with a parking garage analogy: sliding wind
 
 Throttling closes the module with `express-slow-down`. The final challenge brief reads like a ticket: the system degrades after three requests in ten seconds, so delay request four by one second, five by four, six by nine, and cap everything at seven requests per thirty seconds. The answer is a `delayMs` of `(hits - 3) * (hits - 3) * 1000` next to a limiter set to seven requests per thirty seconds. Part two runs it and finds request eight completing before request seven, because seven was sitting on a sixteen second timer while the limiter filled up. "Delayed requests don't necessarily process in arrival order," Jonathan notes, which is the kind of thing you only learn by running it.
 
-## What a lesson feels like
+## Slides from Rachel, a live editor from Jonathan, and 10 to 15 hours
 
 Scrims run two to six minutes. In Rachel's modules the screen is mostly a slide with a diagram, and a markdown or JavaScript file opens only for the challenges; her pattern is to solve scenario one out loud, pause, and walk through "what I would have done" for the rest, with a reminder that your answer does not have to match hers. In Jonathan's modules the editor and a mini browser are open the whole time, and the challenge text sits in a comment above where you type. Saving a file recompiles the back end through the runner; the front end needs a Ctrl+C and `npm run dev` in the terminal, which he reminds you about in a README because you will do it a dozen times.
 
-Every scrim has a timestamped transcript and captions, with subtitles in ten languages. I saw no "Challenge with Instant Feedback" icons in the table of contents, so the challenges are the classic kind: pause, code, resume and compare. Both teachers point you at external docs (OWASP, the Zod docs, the two npm packages) rather than spelling every argument out, which is realistic and occasionally frustrating.
-
-## Free or Pro: exactly what is gated
-
-Three scrims are free previews, marked SAMPLE on the course page: the course introduction, The STRIDE Threat Model, and Potential Threat Modelling. Everything after that, 78 scrims across all four modules, needs Pro. So does the certificate of completion at the end.
-
-There are no Solo Projects in this course, so there is no separate Pro-gated project tier: it is simply a Pro course. Pro also unlocks the career paths and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free, so the server itself is not gated. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
-
-## How long it takes
+Transcripts, captions and ten subtitle languages come with every scrim. I saw no "Challenge with Instant Feedback" icons in the table of contents, so the challenges are the classic kind: pause, code, resume and compare. Both teachers point you at external docs (OWASP, the Zod docs, the two npm packages) rather than spelling every argument out, which is realistic and occasionally frustrating.
 
 Five hours is video runtime. The reasoning challenges in modules 1 and 2 add ten minutes each if you write your answers down rather than nodding along. Modules 3 and 4 are slower: each challenge needs a server restart and a test run, the Zod and rate-limit docs are open in another tab, and the throttling results are worth re-reading. Budget 10 to 15 hours in total, which is a week at an hour a day or two focused weekends. If you take Jonathan up on his closing suggestion to build a schema for your own form, and to combine a limiter, a throttle and client identification in a project of your own, add another five.
 
-## Who it's for, and who should skip it
+## The most practical five hours on app security, with a slow first half and 78 Pro scrims
+
+Most developers learn security from an incident. This course is the cheaper route, and the reason it works is that it makes you do the attack before the defence. In the input safety module you paste an `<img onerror>` payload into a name field and watch the page pop a fake "data breach" alert. Two scrims later you type `'); DROP TABLE users; --` into an email field and the runner terminal prints "Disaster dropping users table" while the user counter at the top of the form drops to zero. Nothing real is deleted, but you have now written a SQL injection, and that memory sticks better than a slide about parameterised queries.
+
+The first half is different in style. Rachel's modules are mostly slides and reasoning: you get a food delivery app called QuickBite, a list of bug reports, and a pause where you classify each one. There is little code until the challenge scrims. If you want to type from minute one, that half will feel slow. If you want to be able to explain in an interview why a JWT is "stateless" and why that is sometimes a bad thing, it is exactly the right depth.
+
+This is developer-facing app security, not a security-engineer track, and it will not make you one. It covers only a slice of the OWASP top ten in code (XSS, injection, and denial of service). Rate limiting gets almost as much time as authentication, which tells you what the course cares about most: protecting an API you have already built.
+
+Pro gates almost all of it. Three scrims are free previews, marked SAMPLE on the course page: the course introduction, The STRIDE Threat Model and Potential Threat Modelling. The other 78 scrims across all four modules and the certificate need Pro. There are no Solo Projects, so there is no separate gated project tier. Pro also unlocks the career paths and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+
+What earns the time: you perform the XSS and SQL injection attacks yourself before defending against them, the identity module gives you language for sessions versus tokens versus OAuth that most tutorials skip, the Zod section is a compact, reusable validation course, and the rate limiting module ends with a challenge whose output surprises you in a realistic way.
+
+What does not: only three OWASP categories get code, there is no deployment or infrastructure security at all, and the leftover "BKS 2.3 v2" scrim title suggests the module has not had a final polish.
+
+## Developers with one Express API behind them, and who wants ethical hacking instead
 
 It fits developers who have built at least one Express or Node API and want to stop shipping the obvious holes. It is a good follow-on from [Learn Express.js](/docs/courses/javascript/expressjs/) and [Learn Node.js](/docs/courses/javascript/nodejs/), and anyone on the [Backend Developer Path](/docs/paths/backend-developer-path/) will recognise the stack. The identity module is also useful on its own for front end developers who consume JWTs without knowing what is inside them.
 
@@ -166,27 +164,17 @@ Skip it if you have never built a backend: module 3 assumes you can read an Expr
   View Learn Cybersecurity on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## Node, TypeScript and a little SQL, then managed auth
 
 Scrimba's own list is JavaScript and Node basics plus a grasp of HTTP requests, forms and databases, with no security background required. I would add: comfort with TypeScript syntax (the form project is written in it, though the types are simple), and enough SQL to understand what a semicolon does in a query. [Learn TypeScript](/docs/courses/typescript/learn-typescript/) and [Learn SQL](/docs/courses/backend/sql/) cover both.
 
-## Where it fits
-
 This course is part of the [Backend Developer Path](/docs/paths/backend-developer-path/), and the code assumes the Express you learn there. Take it after your first API and before you deploy anything with real users. The identity module is worth revisiting when you start [Intro to Supabase](/docs/courses/backend/supabase/) or [Learn Firebase](/docs/courses/javascript/firebase/), because both hand you a delegated auth flow and this course explains what they are doing for you.
 
-## Strengths and limits
-
-What it does well: you perform the XSS and SQL injection attacks yourself before defending against them, the identity module gives you language for sessions versus tokens versus OAuth that most tutorials skip, the Zod section is a compact, reusable validation course, and the rate limiting module ends with a challenge whose output surprises you in a realistic way.
-
-Where it is limited: the first two modules are mostly slides with little code, the OWASP top ten is covered in code for only three categories, there is no deployment or infrastructure security at all, and the leftover "BKS 2.3 v2" scrim title suggests the module has not had a final polish.
-
-## Related courses and comparisons
-
-- [Learn Express.js](/docs/courses/javascript/expressjs/), where the auth and validation code applies directly
-- [Learn Node.js](/docs/courses/javascript/nodejs/), the backend foundation
-- [Learn Firebase](/docs/courses/javascript/firebase/) and [Intro to Supabase](/docs/courses/backend/supabase/), for managed auth after you understand it
+- [Learn Express.js](/docs/courses/javascript/expressjs/), where the validation middleware and rate limiters apply directly
+- [Learn Node.js](/docs/courses/javascript/nodejs/), the backend foundation modules 3 and 4 assume
+- [Learn Firebase](/docs/courses/javascript/firebase/) and [Intro to Supabase](/docs/courses/backend/supabase/), for managed auth once you know what sessions, JWTs and OAuth are doing
 - [Learn TypeScript](/docs/courses/typescript/learn-typescript/), if the form project's syntax is new
-- [All JavaScript courses](/docs/courses/javascript/), the full category hub
+- [All JavaScript courses](/docs/courses/javascript/), for the language-side courses around this backend one
 - [Scrimba vs Boot.dev](/docs/comparisons/scrimba-vs-boot-dev/), if you are weighing backend-focused platforms
 
 <FAQAccordion items={[
@@ -197,8 +185,6 @@ Where it is limited: the first two modules are mostly slides with little code, t
   { q: "What versions does it use?", a: "The form project's package.json pins Express 4.18, Zod 4.3, and TypeScript 5.3. The rate limiting project uses express-rate-limit and express-slow-down." },
   { q: "Do I need backend experience?", a: "Yes. The last two modules assume you can read an Express route, understand middleware order, and follow simple TypeScript types. Scrimba lists JavaScript and Node basics plus HTTP, forms, and databases as prerequisites." },
   { q: "Are the challenges checked by AI?", a: "Not that I saw. The table of contents shows no Challenge with Instant Feedback icons. Each challenge pauses the scrim, you write your answer or code, and the teacher walks through a possible solution when you resume." },
-  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has a timestamped transcript panel and captions, with subtitles in ten languages." },
-  { q: "Do I need to install anything?", a: "No. The Express servers, the runner, and the terminal all run inside the Scrimba editor. You restart the front end with Ctrl+C and npm run dev in the built-in terminal." },
   { q: "How long does Learn Cybersecurity take?", a: "About 5 hours of video. Plan for 10 to 15 hours with the challenges, server restarts, and time in the Zod and rate-limit docs." },
 ]} />
 
