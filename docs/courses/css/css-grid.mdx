@@ -7,7 +7,7 @@ description: "Per Borgen's Learn CSS Grid reviewed from inside: 63 minutes, 17 s
 keywords: [scrimba learn css grid, learn css grid scrimba review, css grid course, per borgen css grid, css grid layout tutorial, interactive css grid, css grid review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Per Borgen's Learn CSS Grid is an hour-long, 17-scrim Pro course that takes you 
 
 <Provenance subject="course" date={frontMatter.reviewed} detail="all 17 scrims and their transcripts" />
 
-## Quick answer
+## Can grid click in an evening with a course this old?
 
 Take it if you know basic CSS and want grid to click in an evening. It runs as a five-scrim layout section, a three-scrim responsive section, five bonus scrims and a wrap-up with the Pro solo project; the first three scrims are free samples. It is not a full CSS education and does not pretend to be.
 
@@ -43,17 +43,7 @@ Take it if you know basic CSS and want grid to click in an evening. It runs as a
   description="One hour on CSS Grid, taught by building a 12-column page layout and a responsive image grid, ending in a BBC News clone solo project."
 />
 
-## Is it worth your time?
-
-Grid is the CSS feature the scrim format was made for. You change `grid-template-columns` from `100px auto 100px` to `repeat(12, 1fr)` and the preview on the right reflows before Per has finished the sentence. By the end of the fourth scrim you have a header, sidebar, content area, and footer sitting on a 12-column grid. You also understand why `grid-column: 1 / -1` is the trick that survives you changing the column count later. That is a lot of working knowledge for 23 minutes of video.
-
-The caveat is age. This is one of Scrimba's oldest courses and it shows. The intro compares grid to Bootstrap 3.3.7 (with jQuery loaded in the head), and Per says browser support "is climbing quickly" as if that were still in question. Every lesson uses `grid-gap` rather than the `gap` shorthand browsers have accepted for years.
-
-None of that makes the teaching wrong, because grid itself has barely moved. `grid-gap` still works, and everything Per shows you still renders. But subgrid, container queries, and `aspect-ratio` are nowhere in sight, and there is no Pro-era polish such as AI-checked challenges.
-
-The other thing to know before you pay: the course page still says "For free, of course" in its About text and "14 interactive screencasts" in its description. Both are leftovers. The header says Pro, the structured data says it is not free and counts 20 lessons, and I count 17 timed scrims. Three of them (the intro, "Your first grid", and "Fraction units and repeat") are marked SAMPLE and open without a subscription, so you can try 11 minutes of it before deciding.
-
-## What you'll learn
+## 12 columns to a BBC News clone, across seventeen scrims
 
 <CourseCurriculum
   summary="4 sections (my grouping, from Per's own section transitions) · 17 scrims plus the certificate"
@@ -67,7 +57,7 @@ The other thing to know before you pay: the course page still says "For free, of
 
 Scrimba renders this course as one flat list of 18 items with no module headers, so the four sections above are mine. Per says "you have finished the first section" at the end of "Template areas", opens "Auto-fit and minmax" with "welcome to the second section", and calls "Named Lines" a "bonus screencast". The 17 scrims are the timed items I counted in the table of contents in September 2026; the 18th is an untimed "How to Utilize Your Certificate" clip. Scrimba's structured data says 20 lessons, and other pages on this site that quote 20 are using Scrimba's number.
 
-## Inside the course, section by section
+## Building layouts one scrim at a time, from `1 / -1` to the solo project
 
 ### 1. Your first grids and a website layout (23 min, 5 scrims)
 
@@ -152,31 +142,43 @@ The course then closes with a "Congrats" scrim (2:12), a slide deck starting on 
 
 One thing I could not find: the About text promises "article layouts with CSS Grid" in the bonus section. There is no article-layout lesson in the current table of contents. The article grid is the solo project, and you build it yourself.
 
-## What a lesson feels like
+## Pause and change the values: a one-hour video or a three-hour course
 
 Scrims run from two to under seven minutes. The layout is Per's editor on the left and a live preview on the right. He types, the preview updates, and he narrates in the present tense ("boom, there the menu item jumped up to the top row").
 
 None of the 17 scrims has a numbered-comment challenge brief, and I saw no Challenge with Instant Feedback markers in the table of contents. Instead, the first-section scrims end with an instruction to pause and edit: change the values, move the menu, add a row. The later scrims mostly stop asking (the alignment scrim ends with "feel free to play around with this yourself"), but the same move works in every one of them. If you do not do it, the course is a one-hour video. If you do, it is closer to three.
 
-Every coding scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages. Three slide-based clips at the end (the solo project pitch, the project brief, and the Congrats slides) did not load a transcript panel for me; the Scrimbassador clip did. Per's delivery is quick and a little clipped, with the occasional transcript casualty ("previous screen cost" for "screencast").
+Three slide-based clips at the end (the solo project pitch, the project brief, and the Congrats slides) did not load a transcript panel for me; the Scrimbassador clip did, and the coding scrims have transcripts. Per's delivery is quick and a little clipped, with the occasional transcript casualty ("previous screen cost" for "screencast").
 
 He does not write bugs on purpose the way he does in [Learn JavaScript](/docs/courses/javascript/learn-javascript/). He does break layouts deliberately, though: a non-rectangular template area, an unboxed named area. You see what the error looks like before you make it yourself.
-
-## Free or Pro: exactly what is gated
-
-The course is listed as Pro, and the JSON-LD on its page says it is not accessible for free. Three scrims carry a SAMPLE badge and open without a subscription: "Intro to the CSS Grid course", "Your first grid", and "Fraction units and repeat", about 11 minutes in total. The remaining 14 scrims, from "Positioning items" onward, need Pro.
-
-Within the Pro course, the one item Scrimba labels separately is "Solo Project (PRO) - BBC News Clone": starter files, a design in the slides, no solution. Pro also unlocks the certificate. Scrimba's Discord server is open on the free plan (the pricing page lists basic Discord access as free); Pro adds the Pro-only channels. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
-
-My read: do the three free scrims first. If the format works for you and you are going to take other Pro courses anyway, this hour is an easy add. Paying for Pro to get this course alone would be hard to justify. The free [Learn HTML and CSS](/docs/courses/css/html-and-css/) covers the basics, and [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) includes grid inside a much longer course.
-
-## How long it takes
 
 The 63 minutes is video runtime. Because the exercises are "pause and change the values" rather than graded challenges, the multiplier depends on you. Watching straight through with a few edits takes about 90 minutes.
 
 Doing what Per asks at the end of the early scrims, and the equivalent in the later ones, brings it to two to three hours over two or three sittings. Those exercises include rebuilding the menu on the right, spanning the big images, and renaming the lines. The BBC News clone is the real test. It will take most people another one to two hours from the starter files, longer if you want it to match the design closely.
 
-## Who it's for, and who should skip it
+## Bootstrap 3.3.7, `grid-gap` and leftover About text: what the age costs
+
+Grid is the CSS feature the scrim format was made for. You change `grid-template-columns` from `100px auto 100px` to `repeat(12, 1fr)` and the preview on the right reflows before Per has finished the sentence. By the end of the fourth scrim you have a header, sidebar, content area, and footer sitting on a 12-column grid. You also understand why `grid-column: 1 / -1` is the trick that survives you changing the column count later. That is a lot of working knowledge for 23 minutes of video.
+
+The caveat is age. This is one of Scrimba's oldest courses and it shows. The intro compares grid to Bootstrap 3.3.7 (with jQuery loaded in the head), and Per says browser support "is climbing quickly" as if that were still in question. Every lesson uses `grid-gap` rather than the `gap` shorthand browsers have accepted for years.
+
+None of that makes the teaching wrong, because grid itself has barely moved. `grid-gap` still works, and everything Per shows you still renders. But subgrid, container queries, and `aspect-ratio` are nowhere in sight, and there is no Pro-era polish such as AI-checked challenges.
+
+The other thing to know before you pay: the course page still says "For free, of course" in its About text and "14 interactive screencasts" in its description. Both are leftovers. The header says Pro, the structured data says it is not free and counts 20 lessons, and I count 17 timed scrims. Three of them (the intro, "Your first grid", and "Fraction units and repeat") are marked SAMPLE and open without a subscription, so you can try 11 minutes of it before deciding.
+
+Beyond those catches, the image grid lesson explains auto-placement and `dense` better than most written references, and the auto-fit vs. auto-fill scrim settles a question people argue about in two minutes. There are no graded challenges, only "pause and try".
+
+A good evening of grid, with a dated surface.
+
+## Three free scrims, 14 Pro, and a solo project with no solution
+
+The course is listed as Pro, and the JSON-LD on its page says it is not accessible for free. Three scrims carry a SAMPLE badge and open without a subscription: "Intro to the CSS Grid course", "Your first grid", and "Fraction units and repeat", about 11 minutes in total. The remaining 14 scrims, from "Positioning items" onward, need Pro.
+
+Within the Pro course, the one item Scrimba labels separately is "Solo Project (PRO) - BBC News Clone": starter files, a design in the slides, no solution. Pro also unlocks the certificate. Scrimba's Discord server is open on the free plan (the pricing page lists basic Discord access as free); Pro adds the Pro-only channels. The <AffiliateLink href="https://scrimba.com/our-pricing">plans page</AffiliateLink> lists what Pro costs where you live.
+
+My read: do the three free scrims first. If the format works for you and you are going to take other Pro courses anyway, this hour is an easy add. Paying for Pro to get this course alone would be hard to justify. The free [Learn HTML and CSS](/docs/courses/css/html-and-css/) covers the basics, and [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/) includes grid inside a much longer course.
+
+## An evening on grid, or CSS basics first?
 
 It fits developers who already write CSS and want grid to make sense fast: people who have copied `grid-template-columns` from Stack Overflow without knowing why `1 / -1` works. It also fits anyone on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) who wants a short, low-stakes course between the bigger ones.
 
@@ -186,27 +188,17 @@ Skip it, for now, if your CSS basics are shaky. It assumes you know selectors, c
   Try the free sample scrims of Learn CSS Grid
 </AffiliateLink>
 
-## Prerequisites
+## Before grid, and the flexbox and responsive courses around it
 
 Basic HTML and CSS: selectors, classes, the box model, and simple media queries. Flexbox helps for the last bonus scrim, where Per drops a flex container inside a grid cell, but he does not stop to explain it. No JavaScript is used anywhere in the course.
 
-## Where it fits
+It is a short, standalone skill course. Its pair is [Learn Flexbox](/docs/courses/css/flexbox/): grid for two-dimensional layout, flexbox for one direction, and the "Grid vs. Flexbox" scrim is where Per draws the line. If you take [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), you will meet grid again in a broader context. This course works either as a warm-up for it or as a quick refresher after it.
 
-This is a short, standalone skill course, not attached to a Scrimba career path. Its pair is [Learn Flexbox](/docs/courses/css/flexbox/): grid for two-dimensional layout, flexbox for one direction, and the "Grid vs. Flexbox" scrim is where Per draws the line. If you take [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), you will meet grid again in a broader context. This course works either as a warm-up for it or as a quick refresher after it.
-
-## Strengths and limits
-
-What it does well: it teaches grid by building layouts rather than listing properties. The 12-column layout and the `-1` line trick arrive by lesson four. The image grid lesson explains auto-placement and `dense` better than most written references, and the auto-fit vs. auto-fill scrim settles a question people argue about in two minutes.
-
-Where it is limited: it is old, and the Bootstrap 3 comparison, the `grid-gap` property, and the browser-support line make that visible. There are no graded or AI-checked challenges, only "pause and try". The promised article-layout lesson is not in the table of contents. And the one project with a spec, the BBC News clone, is Pro-only with no solution walkthrough.
-
-## Related courses and comparisons
-
-- [All Scrimba CSS courses](/docs/courses/css/), the full CSS category hub
-- [Learn Flexbox](/docs/courses/css/flexbox/), the companion one-dimensional layout course
+- [All Scrimba CSS courses](/docs/courses/css/), for the rest of the CSS shelf around this one-skill course
+- [Learn Flexbox](/docs/courses/css/flexbox/), the one-dimensional half of the grid-versus-flexbox line Per draws
 - [Learn Responsive Web Design](/docs/courses/css/responsive-web-design/), which covers grid inside a deeper course
-- [Learn HTML and CSS](/docs/courses/css/html-and-css/), the free foundation to do first
-- [CSS Challenges](/docs/courses/css/css-challenges/), to practise what you learn
+- [Learn HTML and CSS](/docs/courses/css/html-and-css/), the free foundation if the media-query talk lost you
+- [CSS Challenges](/docs/courses/css/css-challenges/), graded practice, which this course lacks
 - [Practice CSS Grid](/docs/practice/practice-css-grid/), our own drills on the same properties
 
 <FAQAccordion items={[

@@ -7,7 +7,7 @@ description: "Gregor Thomson's free Learn SQL course reviewed from inside: 3.8 h
 keywords: [scrimba learn sql, learn sql scrimba review, learn sql free, gregor thomson sql, sql for beginners, interactive sql course, scrimba sql course review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-24
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -29,7 +29,7 @@ Gregor Thomson teaches this free SQL course in about 3.8 hours, having you run a
 
 *This page is part of our [Scrimba backend courses](/docs/courses/backend/) catalog. Scrimba's course page lists it under the [Backend Developer Path](/docs/paths/backend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
-## Quick answer
+## Run a vintage car dealership's database: free SQL that stops at the query language
 
 Take it if you have never written SQL, or want a hands-on refresher before touching a real backend: every lesson pauses for a challenge on the same classic-car dealership database, and the browser runs Postgres for you, so there's nothing to install. The catch is scope, not depth: this is the query language only, with no schema design, indexing, transactions, or app integration. If you already write joins and subqueries without thinking, skip ahead to [Intro to Supabase](/docs/courses/backend/supabase/), which puts a hosted Postgres database behind a real app.
 
@@ -45,17 +45,7 @@ Take it if you have never written SQL, or want a hands-on refresher before touch
   description="A free, beginner SQL course: queries, joins, subqueries and CASE, all practiced on a classic car dealership's database in the browser."
 />
 
-## Is it worth your time?
-
-Yes, if SQL is new to you. The whole course is free, the runtime is under four hours, and almost every scrim stops at least once and hands you a query to write. That is the right way to learn a language whose entire difficulty is in the details: which table comes first in a join, what happens when a value is null, where the brackets go in a WHERE clause.
-
-Two things surprised me. First, it goes further than the "free beginner course" label suggests. Module 2 has you writing CREATE TABLE statements with primary and foreign keys, adding constraints to an existing table, and reading the error Postgres throws when a constraint is violated. Module 3 covers subqueries with ANY, ALL and EXISTS, then CASE inside SELECT, WHERE and UPDATE. Those are the topics that separate "I can select rows" from "I can answer a question with SQL".
-
-Second, it is friendlier than it looks. Gregor writes a mistake first and then fixes it. At the start of Challenges 1 he says: "these are gonna be a bit more difficult than the challenges we've completed already, so don't worry if you struggle with these." And every exercise is tied to someone at the dealership asking for something. The story is thin, but it means you always know why you are writing a query.
-
-This is the query language only. Designing a schema, indexing, transactions, performance, and connecting a database to a real app are out of scope. Gregor says so in lesson two: "setting up tables and building a database could be a whole course in itself."
-
-## What you'll learn
+## Three modules, 49 scrims, and Scrimba's headers of 33, 17 and 11
 
 <CourseCurriculum
   modules={[
@@ -65,9 +55,9 @@ This is the query language only. Designing a schema, indexing, transactions, per
   ]}
 />
 
-Lesson counts are the scrims I counted in each expanded module in September 2026. Scrimba's module headers say 33, 17 and 11, and its listing says 50 lessons; the header numbers match the number of challenges per module (I tallied 33, 17 and 12 challenge markers), not the number of scrims you click through. The module durations add up to about 3.4 hours of video, while the course header rounds to 3.8.
+I counted the scrims in each expanded module in September 2026. Scrimba's module headers say 33, 17 and 11, and its listing says 50 lessons; the header numbers match the number of challenges per module (I tallied 33, 17 and 12 challenge markers), not the number of scrims you click through. The module durations add up to about 3.4 hours of video, while the course header rounds to 3.8.
 
-## Inside the course, module by module
+## From SELECT * on 41 cars to CASE inside an UPDATE
 
 ### 1. Fundamentals of SQL (92 min, 27 scrims)
 
@@ -168,29 +158,33 @@ The three CASE lessons are the practical payoff. CASE in SELECT turns condition 
 
 CASE challenges (5:18) closes with two reports: label each dealership as outperforming, meeting targets, underperforming or no sales, then count sales per quarter using `EXTRACT(MONTH FROM sold_date)`. A 46 second recap and Per's one minute "how to use your certificate" scrim finish the course.
 
-## What a lesson feels like
+## A query.sql file, a Runner pane and 8 to 11 hours of challenges
 
 Every scrim is the same layout: a file explorer on the left, `query.sql` in the editor, and a Runner pane underneath that prints the result table when you save. There is no browser preview because there is nothing visual to build; the output is always a table or an error. Gregor talks over the recording, types the query, saves, and points at rows in the result.
 
 A challenge looks like a comment block at the top of `query.sql` describing what Rodney or Penny wants. The recording pauses, you write the query below the comment, save, and check the table. Then you press play and Gregor writes his version. He puts every clause on its own indented line, which is a habit worth copying. Scrims run from 36 seconds to 11 minutes; most in module 1 are under four, most in modules 2 and 3 are seven to eleven because they hold two or three challenges each.
 
-Captions and a timestamped transcript panel are available under the settings menu, with subtitles in ten languages. The transcript is accurate enough that I could follow the entire course from it. I did not see any of the AI-checked "Challenge with Instant Feedback" markers that some newer Scrimba courses carry; the challenges here are the classic kind, where you compare your output with his.
-
-## Free or Pro: exactly what is gated
-
-The course is free. All three modules, all 49 scrims and all 62 challenges open on a free account. There are no "Solo Project (PRO)" items in this course.
-
-Two things to know. First, only the intro scrim is marked SAMPLE; every other scrim shows "Only available to signed in users" until you create a free account. Second, the Certificate of Completion at the end of the table of contents is a Pro feature, as it is across Scrimba. Pro also unlocks the career paths this course belongs to and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free.
-
-So for this course alone you do not need to pay. If you want it inside the [Backend Developer Path](/docs/paths/backend-developer-path/) with the certificate at the end, see <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
-
-## How long it takes
+Captions, a timestamped transcript panel and ten subtitle languages sit under the settings menu. The transcript is accurate enough that I could follow the entire course from it. I did not see any of the AI-checked "Challenge with Instant Feedback" markers that some newer Scrimba courses carry; the challenges here are the classic kind, where you compare your output with his.
 
 The video runs about 3.4 hours (3.8 on the course header). With 62 challenges, most of which you should attempt before watching the answer, budget two to three times that: 8 to 11 hours. That is a week at an hour a day, or two focused weekends.
 
 Module 1 goes fast because each challenge is a small variation on what you just watched. Modules 2 and 3 are where the time goes. The Alter table, Full join and Aggregates scrims each need more than their runtime just to think through which table goes on the left, and the ANY and EXISTS challenges are the kind you rewrite twice. If you are new to programming altogether, add a couple of hours for the JavaScript wiring in `index.js`, which Gregor explains but does not dwell on.
 
-## Who it's for, and who should skip it
+## Free all the way, with challenges you check by eye
+
+Yes, if SQL is new to you. The whole course is free, the runtime is under four hours, and almost every scrim stops at least once and hands you a query to write. That is the right way to learn a language whose entire difficulty is in the details: which table comes first in a join, what happens when a value is null, where the brackets go in a WHERE clause.
+
+Two things surprised me. First, it goes further than the "free beginner course" label suggests. Module 2 has you writing CREATE TABLE statements with primary and foreign keys, adding constraints to an existing table, and reading the error Postgres throws when a constraint is violated. Module 3 covers subqueries with ANY, ALL and EXISTS, then CASE inside SELECT, WHERE and UPDATE. Those are the topics that separate "I can select rows" from "I can answer a question with SQL".
+
+Second, it is friendlier than it looks. Gregor writes a mistake first and then fixes it. At the start of Challenges 1 he says: "these are gonna be a bit more difficult than the challenges we've completed already, so don't worry if you struggle with these." And every exercise is tied to someone at the dealership asking for something. The story is thin, but it means you always know why you are writing a query.
+
+This is the query language only. Designing a schema, indexing, transactions, performance, and connecting a database to a real app are out of scope. Gregor says so in lesson two: "setting up tables and building a database could be a whole course in itself."
+
+The course is free. All three modules, all 49 scrims and all 62 challenges open on a free account, and there are no "Solo Project (PRO)" items. Only the intro scrim is marked SAMPLE; every other scrim shows "Only available to signed in users" until you create a free account. The Certificate of Completion at the end is Pro, as it is across Scrimba. Pro also unlocks the career paths this course belongs to and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free. For this course alone you do not need to pay. If you want it inside the [Backend Developer Path](/docs/paths/backend-developer-path/) with the certificate at the end, see <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink>.
+
+What earns the time: every one of the 62 challenges is tied to a request from someone at the dealership, Gregor writes the bug before the fix, and the Postgres error messages are shown rather than hidden. What costs you: the challenges are checked by eye against Gregor's output, not automatically, the SQL injection lesson references a chapter that is not in this course, and the JavaScript runner is a small hurdle for non-programmers. The story characters (Rodney, Penny, Frankie Fender) are a matter of taste, though I found them harmless.
+
+## Anyone who has never written SQL, and who already writes joins
 
 Take it if you have never written SQL, or if you learned it years ago and want to relearn it with your hands. It also suits frontend developers who can build an interface but have never had to ask a database a question, and anyone starting the [Backend Developer Path](/docs/paths/backend-developer-path/) or [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), which both list it. Beginners who can only spare short sessions will like that most scrims stop cleanly after four minutes.
 
@@ -200,41 +194,19 @@ Skip it if you already write multi-table joins and subqueries; module 3 would be
   Start Learn SQL for free
 </AffiliateLink>
 
-## Prerequisites
+## Supabase is the next step, and no SQL is needed first
 
 None are required. The course page says it helps to have read or written a bit of code, and I agree: the `index.js` file that runs your queries is JavaScript, and in module 2 you add three lines to it yourself. If you have done [Learn JavaScript](/docs/courses/javascript/learn-javascript/) you will not notice; if you have never coded, follow along by copying and it will still work.
 
 You need a free Scrimba account for everything past the intro and a browser. You do not need database software or a terminal.
 
-## Where it fits
-
 Learn SQL is listed on both the [Backend Developer Path](/docs/paths/backend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). The natural next step is [Intro to Supabase](/docs/courses/backend/supabase/), which puts a hosted Postgres database behind a React app and where the joins and constraints from module 2 stop being exercises. [Learn Node.js](/docs/courses/javascript/nodejs/) and [Learn Express.js](/docs/courses/javascript/expressjs/) are the server side that eventually sends these queries.
 
-## Strengths and limits
-
-What it does well:
-
-- It is free and short.
-- Every one of the 62 challenges is tied to a request from someone at the dealership, so you know what the query is for.
-- Gregor writes the bug before the fix.
-- The error messages from Postgres are shown rather than hidden.
-- Modules 2 and 3 reach joins, constraints, subqueries and CASE.
-
-Where it is limited:
-
-- The challenges are checked by eye against Gregor's output, not automatically.
-- The SQL injection lesson references a chapter that is not in this course.
-- The JavaScript runner is a small hurdle for non-programmers.
-- There is no schema design, indexing, transactions, or app integration.
-- The story characters (Rodney, Penny, Frankie Fender) are a matter of taste, though I found them harmless.
-
-## Related courses and comparisons
-
-- [All Scrimba backend courses](/docs/courses/backend/), the full category hub
+- [All Scrimba backend courses](/docs/courses/backend/), for the other backend skills a query-language-only course leaves out
 - [Intro to Supabase](/docs/courses/backend/supabase/), to put SQL to work behind a real app
-- [Build a Mobile App with Firebase](/docs/courses/backend/a-mobile-app-with-firebase/), a different backend approach
+- [Build a Mobile App with Firebase](/docs/courses/backend/a-mobile-app-with-firebase/), a different backend approach that skips SQL
 - [Learn Regular Expressions](/docs/courses/backend/regular-expressions/), another short, free backend skill
-- [Learn Node.js](/docs/courses/javascript/nodejs/) and [Learn Express.js](/docs/courses/javascript/expressjs/), the server side to pair with this
+- [Learn Node.js](/docs/courses/javascript/nodejs/) and [Learn Express.js](/docs/courses/javascript/expressjs/), the server side that eventually sends these queries
 - [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are choosing a platform
 
 <FAQAccordion items={[
@@ -243,7 +215,6 @@ Where it is limited:
   { q: "What do you build in the course?", a: "You do not build an app. You manage the database of Retro Rides, a fictional classic car dealership: one cars table in module 1, then dealerships, staff and sold_cars tables that you create, populate, alter and join in modules 2 and 3." },
   { q: "Do I need to install anything?", a: "No. The database is PGlite, a version of Postgres that runs in JavaScript inside the scrim. You edit query.sql, save, and a Runner pane prints the result table." },
   { q: "Is it good for complete beginners?", a: "Yes. It is rated Beginner and assumes no SQL. It helps to have seen a little code, because the queries are run by a small JavaScript file you edit three times in module 2, but Gregor shows exactly what to add." },
-  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel in the settings menu, and subtitles in ten languages." },
   { q: "Are the challenges checked automatically?", a: "No. You write the query, look at the output table, then watch Gregor's solution. I did not find any of the AI-checked Challenge with Instant Feedback markers that some newer Scrimba courses have." },
   { q: "How long does Learn SQL take?", a: "About 3.4 hours of video, but plan for 8 to 11 hours including the 62 challenges. That is roughly a week at an hour a day." },
   { q: "Does it cover advanced database topics?", a: "It covers joins, constraints, ALTER TABLE, subqueries with ANY, ALL and EXISTS, CASE, and a lesson on SQL injection. It does not cover schema design, indexing, transactions, or connecting a database to an application." },

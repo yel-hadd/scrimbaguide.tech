@@ -7,7 +7,7 @@ description: "Per Borgen's free Learn JavaScript course reviewed from inside: 9.
 keywords: [scrimba learn javascript, learn javascript scrimba review, free javascript course, per borgen javascript, interactive javascript course, scrimba javascript course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-24
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,8 +27,7 @@ Per Borgen teaches Scrimba's free flagship JavaScript course: about 9.4 hours ac
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
-
+## Is Scrimba's free beginner JavaScript course the right first course?
 Take it if you have never programmed: nothing is assumed, and most challenges stop the recording so you write the code yourself (Rafid Hoda teaches one guest section). The one catch is that the three Solo Projects are Pro-only. Finish it, then move on to [Learn React](/docs/courses/react/learn-react/).
 
 <CourseCard
@@ -43,16 +42,14 @@ Take it if you have never programmed: nothing is assumed, and most challenges st
   description="Beginner JavaScript taught through 140+ challenges, building a counter, a blackjack game, a Chrome extension, and a mobile app."
 />
 
-## Is it worth your time?
-
+## 140 challenges, one loop, and a free price tag
 It is free, so the only cost is time, and the format earns it. JavaScript is a language you learn by typing, and the course is designed around that: a two to four minute explanation, then a scrim that stops and says "go ahead and give this one a shot, and then of course return back to the screencast when you want to see my solution." That loop repeats well over a hundred times. You cannot get through the course by watching.
 
 "Free flagship" does not mean "the only course you need." This is foundations. It teaches variables, functions, the DOM, conditionals, arrays, objects, loops, localStorage, and a first taste of a database, and it stops before async patterns, promises, classes, and the harder language internals. You finish able to build small apps from scratch, not able to reason about every corner of the language; that depth is what [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/) is for.
 
-Three of the practice modules end in a "Solo Project" marked PRO. The course itself is free; those three projects are not.
+The limits: it is foundations only and stops short of async and object-oriented JavaScript, and the in-browser format means you set up your own environment late. The mobile app section is a guest module whose Firebase setup steps will age faster than the rest. What offsets that is the loop itself. Six of the challenges now check your answer with AI, Per writes bugs on purpose and fixes them out loud, and the transcript panel makes it usable if you learn better by reading. Verdict: the right first course, and the three Solo Projects are the only paid part.
 
-## What you'll learn
-
+## Eight modules, four real projects and three practice stops
 <CourseCurriculum
   modules={[
     { name: 'Build a Passenger Counter App', duration: '82 min', lessons: 30 },
@@ -68,8 +65,7 @@ Three of the practice modules end in a "Solo Project" marked PRO. The course its
 
 Lesson counts are the scrims I counted in each expanded module in September 2026. Scrimba's own figures differ in both directions: the module headers show slightly fewer (they exclude intro and wrap-up scrims), while the course listing and its structured data say 238 lessons, which counts the clips inside scrims rather than the scrims you click. When other pages on this site quote 238, that is Scrimba's number.
 
-## Inside the course, module by module
-
+## Passenger counter, blackjack, Chrome extension, mobile app
 ### 1. Build a Passenger Counter App (82 min, 30 scrims)
 
 <Screenshot
@@ -165,26 +161,21 @@ A guest section taught by Rafid Hoda, not Per. You take the leads tracker and sw
 
 The course closes with a one minute "How to utilize your certificate" scrim and the certificate of completion.
 
-## What a lesson feels like
+## Writing bugs on purpose: Per's teaching voice and a 20 to 30 hour pace
+A typical scrim is two to four minutes. Per talks over a live editor, types the code, runs it, and the preview on the right updates. When a scrim is a challenge, the brief is written as numbered comments in the file, the recording pauses, and you type into the same editor. Then you press play and he solves it. The transcript panel is in the settings menu ("Show Transcript"), and you can change playback speed and font size.
 
-A typical scrim is two to four minutes. Per talks over a live editor, types the code, runs it, and the preview on the right updates. When a scrim is a challenge, the brief is written as numbered comments in the file, the recording pauses, and you type into the same editor. Then you press play and he solves it. Every scrim has captions and a full transcript panel (settings menu, "Show Transcript"), with subtitles in ten languages, and you can change playback speed and font size.
+The teaching voice is warm to the point of being corny, and I mean that as a compliment for a first course. The first variable lesson opens with "today is actually a really important day in your life because you're going to write your first lines of JavaScript," and the calculator challenge ends with "if you found it a bit too hard, now that you've seen the solution, just go back and try it again." Per also does something few beginner instructors do: he writes bugs on purpose, runs them, and reads the error out loud before fixing them. You see "cannot access myAge before initialization" in lesson three. That habit alone is worth the time.
 
-The teaching voice is warm to the point of being corny, and I mean that as a compliment for a first course. The first variable lesson opens with "today is actually a really important day in your life because you're going to write your first lines of JavaScript," and the calculator challenge ends with "if you found it a bit too hard, now that you've seen the solution, just go back and try it again." Per also does something few beginner instructors do: he writes bugs on purpose, runs them, and reads the error out loud before fixing them. You see "cannot access myAge before initialization" in lesson three. That habit alone is worth the price of admission, which is zero.
+With the 9.4 hours of video and 140+ challenges, most people should budget two to three times that: 20 to 30 hours spread over three to six weeks at an hour a day. The blackjack and Chrome extension modules are each 2.7 hours of video and will each take a full week at that pace. If you do the solo projects properly (from the Figma file, with stretch goals), add another five to ten hours.
 
-## Free or Pro: exactly what is gated
-
-The eight modules, all 190-odd scrims, every challenge, and the deploys are free. You do not need a card or a subscription to finish the course.
+## Everything free except three Solo Projects
+The eight modules, all 190-odd scrims, every challenge, and the deploys are free, and finishing the course needs no card.
 
 What is Pro is the three Solo Projects, one at the end of each Practice Time module: a basketball scoreboard, a password generator, and a unit converter. Each comes with a Figma design file, a written spec, and stretch goals (for the scoreboard: a "new game" reset, highlighting the leading team, a period counter). Per is explicit that the stretch goals use concepts he has not taught yet and are "only for those of you who find these requirements to be a bit boring." Pro also unlocks the certificate, the career paths this course belongs to, and the Pro-only channels on Scrimba's Discord (the pricing page lists "basic access to Discord community" as a free feature, so the server itself is not gated).
 
-My read: the solo projects are the point where you find out whether you can build without the instructor, so they matter more than their 10 minutes of video suggests. If you are only ever going to take this one course, stay free and build the scoreboard on your own from the description above. If you plan to continue into the [Frontend Developer Path](/docs/paths/frontend-developer-path/), the projects come with it. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+My read: the solo projects are the point where you find out whether you can build without the instructor, so they matter more than their 10 minutes of video suggests. If you are only ever going to take this one course, stay free and build the scoreboard on your own from the description above. If you plan to continue into the [Frontend Developer Path](/docs/paths/frontend-developer-path/), the projects come with it. <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's pricing page</AffiliateLink> lists the plans.
 
-## How long it takes
-
-The 9.4 hours is video runtime. With 140+ challenges, most people should budget two to three times that: 20 to 30 hours spread over three to six weeks at an hour a day. The blackjack and Chrome extension modules are each 2.7 hours of video and will each take a full week at that pace. If you do the solo projects properly (from the Figma file, with stretch goals), add another five to ten hours.
-
-## Who it's for, and who should skip it
-
+## Starting from zero here, or skipping ahead
 It fits complete beginners who want to learn JavaScript by building rather than reading, and anyone who needs the JS foundation before starting React. It is the anchor course for the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), and a good fit for [beginners](/docs/for/beginners/) and [career changers](/docs/for/busy-professionals/) who can only spare an hour a day, because the scrims are short enough to stop anywhere.
 
 Skip it if you already write JavaScript comfortably: go straight to [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/) or the React track. Also skip it if you specifically want modern tooling from day one; the course stays in the browser until module three and never touches npm, bundlers, or async code.
@@ -193,27 +184,16 @@ Skip it if you already write JavaScript comfortably: go straight to [Advanced Ja
   Start Learn JavaScript for free
 </AffiliateLink>
 
-## Prerequisites
-
+## Nothing to bring, and the two paths this course anchors
 None. The first HTML tag you need is explained when it appears. The course does assume you can follow along in English or one of the nine other subtitle languages, and that you are willing to type every challenge rather than watch it.
 
-## Where it fits
+It is the foundation for two paths: the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). It is the practical prerequisite for [Learn React](/docs/courses/react/learn-react/), which assumes the JavaScript this course teaches. The Chrome extension module is also the best preparation in the catalog for [Learn Node.js](/docs/courses/javascript/nodejs/), because it is where you first think about data that outlives the page.
 
-Learn JavaScript is the foundation for two paths: the [Frontend Developer Path](/docs/paths/frontend-developer-path/) and the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/). It is the practical prerequisite for [Learn React](/docs/courses/react/learn-react/), which assumes the JavaScript this course teaches. The Chrome extension module is also the best preparation in the catalog for [Learn Node.js](/docs/courses/javascript/nodejs/), because it is where you first think about data that outlives the page.
-
-## Strengths and limits
-
-What it does well: it is free, it teaches by building four real projects, the challenges keep you typing (and six of them now check your answer with AI), Per writes bugs on purpose and fixes them out loud, and the transcript panel makes it usable if you learn better by reading.
-
-Where it is limited: it is foundations only and stops short of async and object-oriented JavaScript, the three solo projects that test independence are Pro, the in-browser format means you set up your own environment late, and the mobile app section is a guest module whose Firebase setup steps will age faster than the rest.
-
-## Related courses and comparisons
-
-- [All JavaScript courses](/docs/courses/javascript/), the full category this course anchors
-- [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), the deeper follow-up
-- [The Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript/), a short top-up on gotchas
-- [Learn React](/docs/courses/react/learn-react/), the usual next step
-- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/) and [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy/), if you are choosing a platform
+- [All JavaScript courses](/docs/courses/javascript/), for the rest of the track after this foundation
+- [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), for the async patterns, promises and classes this course stops before
+- [The Tricky Parts of JavaScript](/docs/courses/javascript/tricky-parts-of-javascript/), a short top-up on the corners of the language this course skips
+- [Learn React](/docs/courses/react/learn-react/), which assumes the JavaScript from the blackjack and Chrome extension modules
+- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/) and [Scrimba vs Codecademy](/docs/comparisons/scrimba-vs-codecademy/), if you are weighing this free flagship against other free options
 
 <FAQAccordion items={[
   { q: "Is Learn JavaScript free on Scrimba?", a: "Yes. All eight modules, every challenge, and the deploys are free with no card required. The only Pro pieces are the three Solo Projects at the end of the Practice Time modules and the certificate." },

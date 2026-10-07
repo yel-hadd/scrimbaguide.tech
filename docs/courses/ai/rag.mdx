@@ -7,7 +7,7 @@ description: "Guil Hernandez's Pro RAG course reviewed from inside: 94 minutes, 
 keywords: [scrimba learn rag, learn rag scrimba review, rag course scrimba, retrieval augmented generation tutorial, embeddings vector store, supabase pgvector course, guil hernandez rag]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-23
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -29,7 +29,7 @@ Learn RAG is Scrimba's Pro course on Retrieval-Augmented Generation: fetching te
 
 *This page is part of our [Scrimba AI courses](/docs/courses/ai/) catalog. Scrimba lists it under the [AI Engineer Path](/docs/paths/ai-engineer-path/).*
 
-## Quick answer
+## Know enough OpenAI and async JavaScript to build a RAG pipeline?
 
 Take it if you already call the OpenAI chat API from JavaScript: it is the most direct route to the retrieval half of that job. The course is Pro-only, in one flat list, with three AI-checked challenges and a Pro solo project called PopChoice at the end. If you have never sent a chat completion from code, start with [Intro to AI Engineering](/docs/courses/ai/ai-engineering/).
 
@@ -66,7 +66,7 @@ The course has no chapter title cards; every scrim opens straight into a slide o
   />
 </div>
 
-## Is it worth your time?
+## Little theory, one SQL function and a pinned old codebase
 
 Yes, if you fit the prerequisites, and they are real. Guil says it in the intro: he assumes you know JavaScript and asynchronous code and have already used the OpenAI chat completions API. By the fifth scrim you are writing an `async` callback inside `map` and wrapping it in `Promise.all`. Nobody explains what a promise is.
 
@@ -74,7 +74,7 @@ What I liked is how little theory sits between you and a working pipeline. One s
 
 The code is old. The scrims pin `openai@4.11.1` and `langchain@0.0.167`, and the models are `text-embedding-ada-002` and `gpt-4`. A 44-second scrim after "Vector databases" has a Scrimba staffer "popping in from the future" because the Supabase package "has been superseded and deprecated." The fix is a right-click and "upgrade package," and he warns you will need to do that in each scrim. The RAG pattern itself is unchanged.
 
-## What you'll learn
+## Embeddings to PopChoice: 22 scrims in five groups
 
 Scrimba presents this course as one flat list of 22 scrims with no modules. The groupings below are mine, made from the titles and transcripts; durations are the sum of the scrims in each group.
 
@@ -90,7 +90,7 @@ Scrimba presents this course as one flat list of 22 scrims with no modules. The 
 
 I counted 22 scrims plus a certificate entry in September 2026. Scrimba's header says 94 minutes and its structured data says 23 lessons; the listed durations add up to about 98 minutes. When other pages on this site say 1.6 hours or 23 lessons, that is Scrimba's number.
 
-## Inside the course, section by section
+## Embeddings, Supabase, chunking and the ReelRecs chatbot
 
 ### 1. Embeddings (21 min, 5 scrims)
 
@@ -178,23 +178,19 @@ Any framework is allowed, "including React," or plain JavaScript. Stretch goals 
 
 The remaining four scrims are housekeeping and none is by Guil. Two are pitches: Scrimba's free docs site and Per Borgen's Scrimbassador referral program. The other two are the "You made it to the finish line!" recap and the standard "How to Utilize Your Certificate" scrim. You can skip all four without missing anything about RAG.
 
-## What a lesson feels like
+## Slide videos, a small project per scrim and a weekend of work
 
 Scrims run from 44 seconds to just under ten minutes. Four are slide videos with no files; the rest open on a small project: `config.js` for the API clients, `index.js` for the lesson code, and a data file. Guil talks over the editor, runs the code, and reads the console, which is where most of the teaching happens. Scrims autoplay when opened, so have a finger on pause if you want to read the code first.
 
-Challenges are written as comments in the file. Every scrim has captions, a timestamped transcript under the settings menu, and subtitles in ten languages. Guil's voice is calm and unhurried; "before I send you running off for the hills with this mathematical beast" tells you the tone.
-
-## Free or Pro: exactly what is gated
+Challenges are written as comments in the file. Guil's voice is calm and unhurried; "before I send you running off for the hills with this mathematical beast" tells you the tone.
 
 The first five scrims (intro through the first challenge, about 21 minutes) carry a SAMPLE badge and can be previewed without a subscription. Everything from "Vector databases" onward needs Pro. That covers the Supabase setup, similarity search, chunking, the two later challenges, the ReelRecs chatbot, the PopChoice project with its Figma file and hints, and the certificate.
 
-Pro also covers the [AI Engineer Path](/docs/paths/ai-engineer-path/) this course sits in and the Pro-only channels on Scrimba's Discord; basic Discord access is listed as free. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
-
-## How long it takes
+Pro also covers the [AI Engineer Path](/docs/paths/ai-engineer-path/) this course sits in and the Pro-only channels on Scrimba's Discord; basic Discord access is listed as free. Pro pricing is on <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's pricing page</AffiliateLink>.
 
 The 94 minutes is video runtime. Budget three to four hours: the challenges take longer than their scrims, the Supabase setup happens on another site, and you will be upgrading the deprecated package in each scrim. PopChoice done properly from the Figma file adds four to eight hours. Call it a weekend for the course and a second one for the project.
 
-## Who it's for, and who should skip it
+## Who should build ReelRecs and who needs Python or Pinecone
 
 It fits JavaScript developers who already call the OpenAI chat API and now need the retrieval side, such as documentation assistants and support bots. It is also the course to take if you want pgvector on Supabase specifically.
 
@@ -204,28 +200,24 @@ Skip it, for now, if `async`/`await` and `Promise.all` are shaky, or if you have
   View Learn RAG on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## Bring OpenAI and async JavaScript; RAG sits on the AI path
 
 Comfortable JavaScript including asynchronous code, and prior experience with the OpenAI API and chat completions. No prior knowledge of embeddings, vector databases, SQL, or Supabase is assumed. You will need an OpenAI API key with billing enabled and a free Supabase account.
 
-## Where it fits
-
 This is the retrieval course on the [AI Engineer Path](/docs/paths/ai-engineer-path/), between the fundamentals and the agent work. The history handling in the last lesson leads into [Learn Context Engineering](/docs/courses/ai/context-engineering/), and grounded retrieval is what makes the tools in [Learn AI Agents](/docs/courses/ai/ai-agents/) trustworthy. For the concepts in written form, Scrimba's docs have a free <AffiliateLink href="https://docs.scrimba.com/how-ai-works/rag" location="companion-docs">RAG chapter</AffiliateLink>.
 
-## Strengths and limits
+- [All AI courses](/docs/courses/ai/), to compare RAG with the other LLM courses before you commit
+- [Intro to AI Engineering](/docs/courses/ai/ai-engineering/), the fundamentals to take first, since this course skips the chat completions basics
+- [Intro to Mistral AI](/docs/courses/ai/mistral-ai/), a free course that touches on RAG if you want a taste before paying
+- [Learn AI Agents](/docs/courses/ai/ai-agents/), where the retrieval you build here becomes a tool the agent can trust
+- [Learn Context Engineering](/docs/courses/ai/context-engineering/), the follow-up on what goes in the prompt, picking up the history handling from ReelRecs
+- [AI Engineer Path](/docs/paths/ai-engineer-path/), the path this course is sequenced into, between the fundamentals and agents
 
-What it does well: a complete RAG pipeline in under two hours of video. The similarity-search lesson shows both the hits and the false match, so you understand thresholds. The chunking lesson gives concrete numbers (50 vs 47 vs 78 chunks) rather than hand-waving. The challenges are AI-checked, and the solo project is a real portfolio piece with a design file.
+## What the course proves in under two hours, and where it stops
 
-Where it is limited: the scrims pin `openai@4.11.1` and `langchain@0.0.167`, so package and model names need translating to current ones. It covers one vector store and one embedding provider, and it stops at a proof of concept with in-memory chat history.
+It delivers a complete RAG pipeline in under two hours of video. The similarity-search lesson shows both the hits and the false match, so you understand thresholds. The chunking lesson gives concrete numbers (50 vs 47 vs 78 chunks) rather than hand-waving. The challenges are AI-checked, and the solo project is a real portfolio piece with a design file.
 
-## Related courses and comparisons
-
-- [All AI courses](/docs/courses/ai/), the category this course belongs to
-- [Intro to AI Engineering](/docs/courses/ai/ai-engineering/), the fundamentals to take first
-- [Intro to Mistral AI](/docs/courses/ai/mistral-ai/), a free course that touches on RAG
-- [Learn AI Agents](/docs/courses/ai/ai-agents/), where grounded retrieval makes agents reliable
-- [Learn Context Engineering](/docs/courses/ai/context-engineering/), the follow-up on what goes in the prompt
-- [AI Engineer Path](/docs/paths/ai-engineer-path/), the path this course is sequenced into
+The limit is scope: one vector store, one embedding provider, and a proof of concept with in-memory chat history.
 
 <FAQAccordion items={[
   { q: "Is Learn RAG free on Scrimba?", a: "No. It is a Pro course. The first five scrims (about 21 minutes, up to and including the first challenge) are marked SAMPLE and can be previewed; the Supabase setup, similarity search, chunking, the chatbot, the PopChoice solo project, and the certificate need a subscription." },

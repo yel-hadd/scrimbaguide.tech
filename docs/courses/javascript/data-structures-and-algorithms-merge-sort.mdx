@@ -7,7 +7,7 @@ description: "Jonathan Lee Martin's 64 minute Pro course from inside: merge sort
 keywords: [scrimba merge sort, merge sort scrimba review, merge sort algorithm course, sorting algorithm javascript, jonathan lee martin scrimba, merge sort javascript, divide and conquer javascript]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Jonathan Lee Martin's Data Structures and Algorithms: Merge Sort is a 64 minute 
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## Want to write one algorithm seven ways?
 
 It fits developers who already write JavaScript comfortably and want to practise one algorithm well, not survey other data structures. The catch: it leans on [Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/), whose ArrayView helper arrives here as a finished file you did not write. Finish this one, then move to [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) to put the algorithm under time pressure.
 
@@ -43,7 +43,7 @@ It fits developers who already write JavaScript comfortably and want to practise
   description="Merge sort written six ways in JavaScript against a test suite, from an imperative version to queues, cursors, and an ArrayView, each a design lesson."
 />
 
-## Is it worth your time?
+## Refactoring merge sort for readability against speed
 
 Yes, if you fit the audience Jonathan describes in the first minute: a bootcamp graduate or self-taught developer who is good at building things and feels the gap where a computer science course would have been. The course is not about memorising merge sort. It is about writing it once the textbook way, then refactoring it five more times, each time trading readability against performance and learning a small design pattern along the way. By the end you have written a queue-style merge with `shift`, a cursor data structure with `peek`, `shift` and `length`, and a version that wraps the array in a view so no copies are made.
 
@@ -51,7 +51,7 @@ It is short and narrow on purpose: one algorithm, one test file, no data structu
 
 Despite the Intermediate label and the "software craftsmanship" framing, the course does teach the concept from zero. Lesson two spends ten minutes sorting a list on paper, counting lookups for selection sort, and building up to merge sort's n log n runtime with diagrams. You do not need to know merge sort before starting. You do need to be fluent in JavaScript.
 
-## What you'll learn
+## Explanation, seven versions and a wrap up in eleven scrims
 
 <CourseCurriculum
   summary="11 scrims, no modules; grouping below is mine"
@@ -64,7 +64,7 @@ Despite the Intermediate label and the "software craftsmanship" framing, the cou
 
 Scrimba presents the course as one flat list of eleven scrims plus a certificate item, and its catalog data counts 12 lessons. The three groups above are my own reading order, and the 64 minutes in the course header is the sum of the eleven scrims. The listing says "six different merge sort algorithms" while the wrap-up says "you've written merge sort seven times". There are seven named functions in the final file, two of which are one line wrappers that add the ArrayView, so both numbers are defensible.
 
-## Inside the course, module by module
+## Sorting on paper to the final split, merge and mergesortSimple
 
 ### 1. Intro and the merge sort explanation (17 min, 2 scrims)
 
@@ -153,25 +153,23 @@ The last one turns on the previous six. Define `split(array, mid)`, `merge(left,
 
 Two minutes of Jonathan restating the lesson: "personally, I think splitting the code into smaller functions did a lot more for our code than some of the design patterns that we tried." He asks for feedback through a linked form and points to his site and YouTube channel. Then the generic one minute "How to Utilize Your Certificate" clip that closes most Scrimba courses (add it to LinkedIn, connect with the speaker), followed by the certificate item itself.
 
-## What a lesson feels like
+## Red and green tests, cumulative challenges and a self-grading instructor
 
 Each implementation scrim is four to nine minutes. Jonathan talks over the editor without hurrying, names the constraint, writes the empty signature, and stops. You edit `merge-sort.js` in the same editor, save, and watch the test file go red or green. When you press play again, his solution types itself out over yours, usually starting from the previous lesson's code ("this might feel a bit like cheating, but I'm actually gonna just start with our solution from the previous implementation"). The browser preview only ever shows the test runner's pass and fail counts, so the output you care about is a green tick next to "sorts an array".
 
-Two things make the format work here. First, the challenges are cumulative, so the code you wrote in lesson three is the code you refactor in lesson four. Second, he grades his own solutions out loud. Every version gets a verdict on readability and on runtime, and two of them are explicitly called worse than what came before. Captions, a timestamped transcript panel, and subtitles in ten languages are available on every scrim, and playback speed is adjustable.
+Two things make the format work here. First, the challenges are cumulative, so the code you wrote in lesson three is the code you refactor in lesson four. Second, he grades his own solutions out loud. Every version gets a verdict on readability and on runtime, and two of them are explicitly called worse than what came before.
 
 The conceptual lesson is different: it is slides, not code, with the arrows and recursion tree drawn on screen while he narrates. It is the one scrim I would watch rather than skim.
 
-## Free or Pro: exactly what is gated
-
 The course is Pro. Two scrims are marked SAMPLE and open without a subscription: the intro and the ten minute merge sort explanation. That is 17 minutes and covers the whole conceptual lesson, so a free account can learn how merge sort works and why it is n log n. It cannot open any of the seven implementation lessons, the test file, or the wrap up.
 
-There are no Solo Projects in this course, so there is nothing else to gate. Pro also unlocks the certificate, the career paths Scrimba lists this course under, and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region.
+There are no Solo Projects in this course, so there is nothing else to gate. Pro also unlocks the certificate, the career paths Scrimba lists this course under, and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free. Plans are on <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's pricing page</AffiliateLink>.
 
-## How long it takes
+## Two to three hours if you write each version first
 
 The 64 minutes is video runtime, and about 44 of those are the implementation lessons. Five of them stop and wait for you. Write each version before watching the solution, which is the only way this course does anything, and plan two to three hours. The imperative version alone can take twenty minutes of edge case debugging if you have not written a merge before, and the cursor lesson takes longer to understand than to type. One sitting of two hours, or two of one hour, is realistic. If you only watch, it is an hour, and you will have learned very little.
 
-## Who it's for, and who should skip it
+## Writing merge sort from memory, or skipping it
 
 It fits self-taught and bootcamp trained developers who already ship JavaScript and want the algorithm thinking they skipped, and anyone preparing for interviews who wants to write merge sort from memory rather than recognise it. It is also a good fit if you took [Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/) and liked the format, because this is the same format with a harder combine step.
 
@@ -181,26 +179,20 @@ Skip it if you are still learning JavaScript; the intro says plainly that "if yo
   Start Data Structures and Algorithms: Merge Sort on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## What the course assumes and where it sits in Jonathan's series
 
 Fluent JavaScript, including recursion, `slice`, `map`, `shift`, and arrow functions. The binary search course is not required but is assumed: the intro calls this "a follow-up," the ArrayView helper arrives pre-written from it, and the analysis of runtime picks up where that course's big O explanation left off. Nothing to install; the test suite and the one lodash dependency run in the browser.
 
-## Where it fits
+This is the second course in Jonathan Lee Martin's algorithm series on Scrimba, after [Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/). The intro and the wrap up both call it a series with "more on the way," but Scrimba's catalog data lists only these two courses under his name as of September 2026. It sits on no career path itself. The natural order is the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course for coverage, since that one is part of the [Backend Developer Path](/docs/paths/backend-developer-path/), then Binary Search, then this, then [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) to apply it under time pressure.
 
-This is the second course in Jonathan Lee Martin's algorithm series on Scrimba, after [Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/). The intro and the wrap up both call it a series with "more on the way," but Scrimba's catalog data lists only these two courses under his name as of September 2026. Scrimba's catalog data does not put this course on any career path. The natural order is the broad [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) course for coverage, since that one is part of the [Backend Developer Path](/docs/paths/backend-developer-path/), then Binary Search, then this, then [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/) to apply it under time pressure.
+- [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/), the broad foundation, for the other data structures this course skips
+- [Data Structures and Algorithms: Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/), the first course in this series, where the ArrayView helper you receive was written
+- [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/), to put merge sort under time pressure
+- [All JavaScript courses](/docs/courses/javascript/), if one algorithm is narrower than you want
 
-## Strengths and limits
+## The final lesson's conclusion, and what the course leaves out
 
-What it does well: the conceptual lesson is a model of how to explain a recursive algorithm, and the challenges are real and cumulative. Every solution is judged out loud on both readability and cost, and the final lesson undercuts the fancy patterns with the plain advice to extract small functions.
-
-Where it is limited: it is one algorithm in one file, and it assumes the binary search course more than the listing admits. Only two of eleven scrims are free, the course dates from December 2020, and the certificate clip is a generic Scrimba insert rather than part of the course.
-
-## Related courses and comparisons
-
-- [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/), the broad foundation to take first
-- [Data Structures and Algorithms: Binary Search](/docs/courses/javascript/data-structures-and-algorithms-binary-search/), the first course in this series, same instructor and format
-- [JavaScript Interview Challenges](/docs/courses/javascript/javascript-interview-challenges/), for broader interview practice
-- [All JavaScript courses](/docs/courses/javascript/), the full category
+The conceptual lesson is a model of how to explain a recursive algorithm, and the final lesson undercuts the fancy patterns with the plain advice to extract small functions. The limits: one algorithm in one file, more reliance on the binary search course than the listing admits, a December 2020 recording date, and a certificate clip that is a generic Scrimba insert.
 
 <FAQAccordion items={[
   { q: "Is the Merge Sort course free on Scrimba?", a: "No. It is a Pro course. Two scrims are marked SAMPLE and open free: the six minute intro and the ten minute explanation of how merge sort works. The seven implementation lessons, the wrap up, and the certificate need a subscription." },
@@ -211,7 +203,6 @@ Where it is limited: it is one algorithm in one file, and it assumes the binary 
   { q: "Who teaches it?", a: "Jonathan Lee Martin (@nybblr on Scrimba), who introduces himself as a web educator, author, and speaker." },
   { q: "How long does it take?", a: "64 minutes of video. If you write each of the five challenges before watching the solution, plan two to three hours." },
   { q: "Do I need to install anything?", a: "No. Everything runs in Scrimba's browser editor, including the test file and the one dependency, lodash.times, which is added in the Cursor + ArrayView lesson." },
-  { q: "Does the course have transcripts?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
 ]} />
 
 <CourseSchema

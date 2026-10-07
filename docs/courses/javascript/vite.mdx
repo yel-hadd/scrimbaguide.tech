@@ -7,7 +7,7 @@ description: "Shant Dashjian's free Intro to Vite reviewed from inside: 39 minut
 keywords: [scrimba intro to vite, intro to vite review, vite scrimba, free vite course, vite build tool course, vite dev server, shant dashjian vite]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-24
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Intro to Vite is Scrimba's free, 39-minute course on the build tool behind most 
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## Does `npm run dev` stop being magic in 39 minutes?
 
 Take it if you already use React or Vue and treat `npm run dev`, `dist/`, and `vite.config.js` as magic: by the end you can scaffold a React app, explain why a saved edit shows up without a reload, and add a plugin from its docs. Skip it if you have never written a React component, since the course is rated Intermediate and never explains one.
 
@@ -54,15 +54,7 @@ Take it if you already use React or Vue and treat `npm run dev`, `dist/`, and `v
   />
 </div>
 
-## Is it worth your time?
-
-Yes, for a narrower audience than the listing suggests: people who already use a framework and want to understand the tool underneath it. It is not a place to learn React. The app is Vite's own boilerplate, and the React you write is a header and a footer. It is not a deep dive into bundlers either, although the optional last lesson is a decent four minute version of one.
-
-What sold me is that the course shows rather than tells. Shant's pitch in the Welcome scrim is about the seconds you lose waiting for a slow dev server: "if this takes three more seconds every single time, that quickly adds up to tons of wasted time, losing focus and dropping productivity. This is what Vite solves." Two scrims later you see it. You add a component, press save, and the header appears while the counter in the preview still reads three.
-
-That is hot module replacement (HMR), and it lands better as something you watched than as a paragraph in the docs. The limit is scope. You leave knowing how to use Vite. You do not leave knowing how to tune it or debug a broken build, and a 39 minute course could not teach that anyway.
-
-## What you'll learn
+## 14 scrims in five groups, and why the lesson count says 19
 
 The course has no modules; Scrimba's page shows one flat list of 14 scrims. The grouping below is mine, so the bars mean something.
 
@@ -77,9 +69,9 @@ The course has no modules; Scrimba's page shows one flat list of 14 scrims. The 
   ]}
 />
 
-I counted 14 scrims in the table of contents in September 2026, about 41 minutes in total. Drop the two generic Scrimba scrims at the end (the Scrimbassador pitch and the certificate tip) and you get the 39 minutes the course header shows. Scrimba's structured data says 19 lessons. That number counts clips inside scrims rather than the scrims you click, and it is the number other pages on this site quote.
+I counted 14 scrims in the table of contents, about 41 minutes in total. Drop the two generic Scrimba scrims at the end (the Scrimbassador pitch and the certificate tip) and you get the 39 minutes the course header shows. Scrimba's structured data says 19 lessons. That number counts clips inside scrims rather than the scrims you click, and it is the number other pages on this site quote.
 
-## Inside the course, scrim by scrim
+## The counter that survives a saved edit, then the SVGR plugin
 
 ### 1. Getting started (12 min, 3 scrims)
 
@@ -171,29 +163,35 @@ Shant contrasts older dev servers, which "eagerly crawl and build your entire ap
 
 The Outro is 51 seconds of recap. Then two house scrims, "Want to become a Scrimbassador?" (the referral program) and "How to Utilize Your Certificate," and the Certificate of Completion item.
 
-## What a lesson feels like
+## Five CHALLENGE.md tasks in a real Node sandbox
 
 Most scrims run two to five minutes, and the pattern holds throughout. Shant states the concept, then does it in the terminal or editor with the mini browser docked on the right. He either sets a challenge or recaps and hands off ("In the next lesson, we'll learn how to..."). Challenges are announced out loud ("Go ahead and do that right now"), written up in a `CHALLENGE.md` tab, and solved on screen afterwards.
 
 There are five of them. You rescaffold the project and add a footer, import and build a static asset, wire an environment variable into a fetch, find the build output option in the Vite docs, and read plugin docs to add SVGR. None are AI-checked; there are no "Challenge with Instant Feedback" icons in this course's table of contents.
 
-The project is a real Node process in Scrimba's sandbox, so you type actual npm commands and wait actual seconds for installs. That makes the "fast" claim easier to judge than a slide would. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in several languages, and speed control. Shant is upbeat to the point of "Super duper" and "You now have the power, Vite power." I found it more endearing than not.
+The project is a real Node process in Scrimba's sandbox, so you type actual npm commands and wait actual seconds for installs. That makes the "fast" claim easier to judge than a slide would.
 
-## Free or Pro: exactly what is gated
-
-Nothing inside the course. All 14 scrims are free, and most carry the SAMPLE badge, which means they play without an account. There are no Solo Projects, so there is no Pro-only material to hit.
-
-Pro gates the Certificate of Completion at the end, the career paths, and the Pro-only channels on Scrimba's Discord. The Discord server itself is not gated. Scrimba's pricing page lists basic Discord access under the free plan, and Shant points you there in the Welcome scrim.
-
-For a 39 minute elective there is no reason to upgrade. Look at <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> only if you want the certificate or you are already on a path. Our [Pro vs free](/docs/pricing/pro-vs-free/) page has the full split.
-
-## How long it takes
+Shant is upbeat to the point of "Super duper" and "You now have the power, Vite power." I found it more endearing than not.
 
 39 minutes of video; budget 75 minutes to two hours. The scaffold and `npm install` steps run for real. Three of the five challenges (the env variable fetch, the build output option, and the SVGR plugin) send you into external docs, and that reading is where the extra time goes.
 
 If you follow along on your own machine instead of the sandbox, add time for installing Node and your first `npm create vite@latest`. It is one sitting. Doing it twice, once in the browser and once locally, fills a second hour well.
 
-## Who it's for, and who should skip it
+## Verdict: a narrow audience, a free course, and no React teaching
+
+Yes, for a narrower audience than the listing suggests: people who already use a framework and want to understand the tool underneath it. It is not a place to learn React. The app is Vite's own boilerplate, and the React you write is a header and a footer. It is not a deep dive into bundlers either, although the optional last lesson is a decent four minute version of one.
+
+What sold me is that the course shows rather than tells. Shant's pitch in the Welcome scrim is about the seconds you lose waiting for a slow dev server: "if this takes three more seconds every single time, that quickly adds up to tons of wasted time, losing focus and dropping productivity. This is what Vite solves." Two scrims later you see it. You add a component, press save, and the header appears while the counter in the preview still reads three.
+
+That is hot module replacement (HMR), and it lands better as something you watched than as a paragraph in the docs. The limit is scope. You leave knowing how to use Vite. You do not leave knowing how to tune it or debug a broken build, and a 39 minute course could not teach that anyway.
+
+The static assets and plugins scrims fix two things most people get wrong, and the optional internals lesson is a compact, accurate account of esbuild, Rollup, native ESM, and Rolldown. The course is flat with no chapters, and two of the 14 scrims are generic Scrimba material rather than Vite.
+
+Nothing inside the course is gated. All 14 scrims are free, and most carry the SAMPLE badge, which means they play without an account. Pro gates the Certificate of Completion, the career paths, and the Pro-only Discord channels (basic Discord access is free, and Shant points you there in the Welcome scrim). For a 39 minute elective there is no reason to upgrade; the <AffiliateLink href="https://scrimba.com/our-pricing">plans page</AffiliateLink> matters only if you want the certificate or are already on a path. Our [Pro vs free](/docs/pricing/pro-vs-free/) page has the full split.
+
+Free and short, it suits a framework user who treats the dev server as magic.
+
+## Learning Vite here, or skipping it
 
 It fits developers who have started a React or Vue project from a template and want to understand the dev server, the `dist` folder, and `vite.config.js`. It also fits anyone about to move a project off webpack or Create React App who wants the mental model first. If you did [Learn React](/docs/courses/react/learn-react/) and skipped its "Local Setup w/ Vite" scrim, this is the longer version.
 
@@ -203,26 +201,16 @@ Skip it if you want configuration depth, custom plugins, server-side rendering (
   Start Intro to Vite for free
 </AffiliateLink>
 
-## Prerequisites
+## A first framework project in, and the courses to take around it
 
 Comfort with a terminal (`node`, `npm`, running scripts), and enough JavaScript and React to read a component with `useState` and `useEffect`. [Learn JavaScript](/docs/courses/javascript/learn-javascript/) plus the first sections of [Learn React](/docs/courses/react/learn-react/) is more than enough. Nothing to install if you stay in the browser; Node.js 20 or newer and npm if you follow along locally.
 
-## Where it fits
-
 The natural time to take it is right after your first framework course, when you have a project and are curious what `npm run dev` does. It pairs with [Learn React](/docs/courses/react/learn-react/), [Learn Vue](/docs/courses/javascript/vue/), and [Learn TypeScript](/docs/courses/typescript/learn-typescript/); the TypeScript scrim here is the bridge. If the extra lesson's bundler talk was the part you liked, [Learn Astro](/docs/courses/javascript/astro/) is another tooling-first course in the same category.
 
-## Strengths and limits
-
-Strengths: it is free and short, and the real Node sandbox makes the speed claims visible instead of asserted. The static assets and plugins scrims fix two things most people get wrong. The optional internals lesson is a compact, accurate account of esbuild, Rollup, native ESM, and Rolldown.
-
-Limits: the course is flat with no chapters, and the React content is minimal by design. Two of the 14 scrims are generic Scrimba material rather than Vite.
-
-## Related courses and comparisons
-
-- [All JavaScript courses](/docs/courses/javascript/), the category this course belongs to
-- [Learn React](/docs/courses/react/learn-react/), the framework the course scaffolds
+- [All JavaScript courses](/docs/courses/javascript/), for the tooling and framework courses around this one
+- [Learn React](/docs/courses/react/learn-react/), the framework the course scaffolds, and the place to learn the component code it skips
 - [Learn Vue](/docs/courses/javascript/vue/), Evan You's other project, which also defaults to Vite
-- [Learn TypeScript](/docs/courses/typescript/learn-typescript/), if the TypeScript scrim left you wanting more
+- [Learn TypeScript](/docs/courses/typescript/learn-typescript/), if the `main.tsx` rename left you wanting more
 - [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language underneath it all
 
 <FAQAccordion items={[

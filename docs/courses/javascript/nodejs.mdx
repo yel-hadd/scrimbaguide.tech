@@ -6,7 +6,7 @@ sidebar_label: "Learn Node.js"
 description: "Tom Chant's free Learn Node.js course from inside: 3.5 hours, 49 scrims, a REST API and a routed site with no framework, and what Pro gates."
 keywords: [scrimba learn nodejs, learn nodejs scrimba review, free nodejs course, node rest api course, tom chant node, scrimba node course 2026]
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -25,7 +25,7 @@ Tom Chant teaches Scrimba's free Node.js course in about 3.5 hours across two pr
 
 *Reviewed inside the course with a Pro account, September 2026: 48 of 49 scrims (the "serve the frontend" scrim would not load after three tries).*
 
-## Quick answer
+## What happens on the other end of `fetch`?
 
 It fits a frontend developer who has only ever been on the receiving end of an API and wants to know what happens on the other end of `fetch`. The catch: no database, no authentication and no deployment, so treat it as the foundation, not the finish line. Take [Learn Express.js](/docs/courses/javascript/expressjs/) next for the framework and a database built on the same ideas.
 
@@ -41,7 +41,7 @@ It fits a frontend developer who has only ever been on the receiving end of an A
   description="Backend fundamentals with no framework: build a REST API and a routed site with Node's http, fs, path and events modules."
 />
 
-## Is it worth your time?
+## Writing the routing Express hides, and the solo project that never arrived
 
 Yes, if you are a frontend developer who has only ever been on the receiving end of an API. Tom's argument for learning bare Node before a framework is the one that convinced me: "Imagine as a front end equivalent, imagine knowing jQuery without knowing JavaScript," he says in the intro. The course delivers on that. By the end of the first project you have written, by hand, the routing, status codes, headers and query-string parsing that Express does for you in one line, and you know why it does them.
 
@@ -49,7 +49,7 @@ The format suits the subject. Scrimba's editor has a runner, a terminal, a netwo
 
 One thing to know before you start: Scrimba's About text promises a third build, a "gold speculation app" solo project. It is not in the table of contents. Tom mentions in the first project's wrap-up that projects were being released iteratively, so it may still arrive, but as of September 2026 the course is the two projects below.
 
-## What you'll learn
+## Two projects: the Wild Horizons API and From the Other Side
 
 <CourseCurriculum
   modules={[
@@ -60,7 +60,7 @@ One thing to know before you start: Scrimba's About text promises a third build,
 
 Lesson counts are the scrims I counted in each expanded module in September 2026. The course intro (4:19) and the one-minute certificate scrim sit outside the modules and are not included. Scrimba's own module headers say 0/15 for both, and its listing data says 53 lessons; when another page on this site quotes 53, that is Scrimba's number. Twenty-five of the 47 module scrims carry the small ghost icon Scrimba uses to mark a challenge.
 
-## Inside the course, module by module
+## From a hand-built REST API to server-sent events and nodemon
 
 ### Course intro (4:19, 1 scrim)
 
@@ -150,23 +150,19 @@ The last section is events. "Aside: EventEmitter" builds a tiny emitter that fir
 
 Two closing scrims: "Intro to Nodemon" turns off Scrimba's runner to show what life is like locally, installs nodemon as a dev dependency, and adds an `npm run dev` script; "outro" lists loose ends (unhandled `/api/xyz` routes, methods other than GET and POST, UUIDs for new sightings). A one-minute "How to Utilize Your Certificate" scrim from Per Borgen sits after the module.
 
-## What a lesson feels like
+## A runner that restarts on save, Tom's dry jokes and seven to ten hours
 
 A typical scrim is two to six minutes, and only one passes eight. Tom talks over a live editor with a runner panel at the bottom (it restarts the server every time you save) and, depending on the project, a network tool or a mini browser on the right. When a scrim is a challenge, the brief is a comment block in the file, often with a `hint.md` next to it, and the recording pauses for you to write code in the same editor. Then you press play and he types his solution, usually with a bug or two he fixes out loud.
 
-The voice is dry English humour: a running tennis joke about servers ("it's not as good as Serena"), a demo object of type cattle named Jack Nicholson, and a fake two billion dollar funding round to motivate the security section. It works because the jokes are short and the explanations are not. Every scrim has captions, a transcript panel under the settings menu, and subtitles in ten languages.
-
-## Free or Pro: exactly what is gated
+The voice is dry English humour: a running tennis joke about servers ("it's not as good as Serena"), a demo object of type cattle named Jack Nicholson, and a fake two billion dollar funding round to motivate the security section. It works because the jokes are short and the explanations are not.
 
 All 49 scrims, both projects and every challenge are free, and nothing in the table of contents is marked as a Pro solo project. Three scrims (the intro, "The package.json file" and "Aside: The HTTP module") carry a SAMPLE badge, which only matters for the catalog preview; you do not need a card to finish the course.
 
-What Pro adds is the certificate of completion at the end of the list, the two career paths this course belongs to (Backend and Fullstack), and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free). The solo project mentioned in the course description does not exist in the table of contents yet, so there is nothing else to unlock. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you want the path structure around it.
-
-## How long it takes
+What Pro adds is the certificate of completion at the end of the list, the two career paths this course belongs to (Backend and Fullstack), and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free). The solo project mentioned in the course description does not exist in the table of contents yet, so there is nothing else to unlock. If you want the path structure around it, <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's pricing page</AffiliateLink> has the plans.
 
 The 3.5 hours is video runtime. Twenty-five scrims are challenges, and about eight of them are real work (the two refactors, path parameters, query-parameter filtering, `serveStatic`, `addNewSighting`, `sanitizeInput`, the SSE ticker). Budget seven to ten hours in total: a comfortable week at an hour a day, or two focused weekend sessions. If you have never written a server before, the second project will take longer than its runtime suggests, because the `fs` and `path` asides are dense and worth pausing.
 
-## Who it's for, and who should skip it
+## Starting on the server side, or needing a database now
 
 It fits frontend developers who can write JavaScript and are ready to see the server side of the requests they have only ever sent. It is also a good first backend course for [career changers](/docs/for/busy-professionals/) with limited time, because the scrims are short and nothing needs installing.
 
@@ -176,39 +172,33 @@ Skip it if you cannot yet write `filter` and `async/await` without looking them 
   Start Learn Node.js for free
 </AffiliateLink>
 
-## Prerequisites
+## Before bare Node, and where it leads
 
 Solid JavaScript: array methods (`map`, `filter`, `reduce`), objects and destructuring, `fetch`, promises and `async/await`. Tom says the [Frontend Developer Path](/docs/paths/frontend-developer-path/) "or something similar" is the ideal starting point. No Node, no backend experience and no frameworks are assumed. Nothing needs installing; the runner, terminal, network tool and mini browser are inside the scrim.
 
-## Where it fits
-
 Learn Node.js is the first backend course in two paths: the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) and the [Backend Developer Path](/docs/paths/backend-developer-path/); it is not part of the [Frontend Developer Path](/docs/paths/frontend-developer-path/). It is the direct prerequisite for [Learn Express.js](/docs/courses/javascript/expressjs/), also taught by Tom, which rebuilds the same ideas (routing, query parameters, JSON responses) with the framework and then adds a database and sessions. The sanitization scrims are a preview of [Learn Cybersecurity](/docs/courses/javascript/cybersecurity/).
 
-## Strengths and limits
+- [All JavaScript courses](/docs/courses/javascript/), for the courses that cover the database and auth this one skips
+- [Learn Express.js](/docs/courses/javascript/expressjs/), the direct next step, by the same instructor, rebuilding this routing with the framework
+- [Intro to NestJS](/docs/courses/javascript/nestjs/), if Express feels too loose after writing routes by hand
+- [Learn Next.js](/docs/courses/javascript/nextjs/), for React on top of the server basics you learn here
+- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), if `filter` and `async/await` still need a lookup
+- [Backend Developer Path](/docs/paths/backend-developer-path/), for the whole sequence where this course is the first backend step
 
-What it does well:
+## The asides on fs and path: what they are worth, and what is missing
 
-- It teaches the HTTP request and response cycle by making you write it.
+Strengths:
+
 - The two projects are small enough to finish.
 - The challenges escalate sensibly, from one-line conditions to writing whole utility modules.
 - The asides on `path`, `fs`, ES modules versus CommonJS and `import.meta.dirname` will save you real confusion in other people's code.
 
-Where it is limited:
+Limits:
 
-- There is no database, auth or deployment.
 - The mock database and JSON-file storage are stand-ins you will replace in the next course.
 - The solo project promised in the description is missing.
 - Two scrims ("Learning in public" and "Want to become a Scrimbassador?") are Scrimba promos rather than lessons.
 - The second project's frontend is handed to you, so you never wire a real form yourself.
-
-## Related courses and comparisons
-
-- [All JavaScript courses](/docs/courses/javascript/), the full category
-- [Learn Express.js](/docs/courses/javascript/expressjs/), the direct next step
-- [Intro to NestJS](/docs/courses/javascript/nestjs/), a more structured framework
-- [Learn Next.js](/docs/courses/javascript/nextjs/), fullstack React on top of Node
-- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the prerequisite
-- [Backend Developer Path](/docs/paths/backend-developer-path/), if you want the whole sequence
 
 <FAQAccordion items={[
   { q: "Is Learn Node.js free on Scrimba?", a: "Yes. All 49 scrims, both projects and every challenge are free with no card required. Pro adds the certificate, the career paths and the Pro-only Discord channels; there is no Pro-gated solo project in the table of contents." },
@@ -216,11 +206,9 @@ Where it is limited:
   { q: "What do you build in the course?", a: "The Wild Horizons API, a JSON REST API over a dataset of unusual travel destinations with path and query-parameter filtering, and From the Other Side, a site where users upload ghost sightings, with static file serving, a POST endpoint that writes to a JSON file, input sanitizing, an event emitter and a server-sent-events news ticker." },
   { q: "Does it use Express?", a: "No. The whole course uses Node's built-in http, fs, path and events modules and ES module imports. Tom explains what Express abstracts away, and Learn Express.js is the follow-up course." },
   { q: "Do I need to install anything?", a: "No. Scrimba's editor has a runner that restarts your server on save, a terminal, a network tool for sending requests and a mini browser. The last scrim shows how nodemon does the runner's job on your own machine." },
-  { q: "Does the course have transcripts or subtitles?", a: "Yes. Every scrim has captions, a timestamped transcript panel under the settings menu, and subtitles in ten languages." },
   { q: "Are there AI-checked challenges?", a: "Twenty-five scrims carry Scrimba's challenge icon in the table of contents, the same icon it uses for AI-checked challenges elsewhere, but none of the transcripts mention AI feedback. In practice every challenge has a written brief and usually a hint.md file, you write your solution, then press play and compare it with Tom's." },
   { q: "How long does Learn Node.js take?", a: "3.5 hours of video. With the challenges, plan on seven to ten hours, or about a week at an hour a day." },
   { q: "Which Node version does it teach?", a: "Modern Node: ES module imports with the node: prefix, node:fs/promises, and import.meta.dirname, which Tom notes needs Node 20 or later. One scrim covers the older CommonJS require and __dirname so you can read legacy code." },
-  { q: "What should I take after this?", a: "Learn Express.js, which is Tom's course too and adds a framework, a SQLite database and authentication on top of what you learn here." },
 ]} />
 
 <CourseSchema

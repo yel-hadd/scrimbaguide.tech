@@ -7,7 +7,7 @@ description: "Beau Carnes' free regex course reviewed from inside: 46 minutes, 3
 keywords: [scrimba regex course, learn regular expressions scrimba review, regex javascript course, freecodecamp regex, beau carnes regex, free regex tutorial, review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Learn Regular Expressions is a free, 46-minute Scrimba course on JavaScript rege
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## Copying regex off the internet: does Beau's course fix that?
 
 This one fits anyone who writes JavaScript and has been copying regex patterns off the internet without understanding them. The catch: both scrims that call themselves challenges are solved by Beau within seconds, so nothing here tests you. Follow it with [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/) to see regex used in a real search feature, or with freeCodeCamp's own regex challenges if you want practice with feedback.
 
@@ -43,13 +43,7 @@ This one fits anyone who writes JavaScript and has been copying regex patterns o
   description="freeCodeCamp's regex curriculum as short Scrimba screencasts: test, match, flags, character classes, quantifiers, anchors, lookaheads, and capture groups."
 />
 
-## Is it worth your time?
-
-Yes, for a narrow reason. Regex is a skill you use for ten minutes at a time, a few times a month, and it is easy to go years without learning it properly. This course takes that gap and closes it in under an hour. Each scrim teaches one symbol or one method, shows it on a short string, and runs the code so you see the result in the console. By the end you can read a pattern like `^[A-Za-z]{2,}\d*$` and say what each piece does, which is the whole point.
-
-These are freeCodeCamp screencasts on the Scrimba player, not a native Scrimba course, and it shows in one way: Beau types and explains, but he never stops the recording and hands you the keyboard. The two scrims with "challenge" in the transcript are solved by him within seconds. You can still pause any scrim, edit the code, and re-run it, and you should, because that is the only way the details stick.
-
-## What you'll learn
+## Seven groups from `.test()` to capture groups, across 36 scrims
 
 Scrimba shows this course as a single flat list with no modules, so the seven groups below are my own, drawn from the order the concepts appear in.
 
@@ -66,9 +60,9 @@ Scrimba shows this course as a single flat list with no modules, so the seven gr
   ]}
 />
 
-I counted 36 scrims in the table of contents: 34 freeCodeCamp screencasts (the number the course description also uses) plus two short Scrimba house scrims at the end. Scrimba's structured data says 37 lessons, and the header says 46 minutes; my scrim durations add up to 47 minutes, of which 44 are regex teaching.
+The table of contents lists 36 scrims: 34 freeCodeCamp screencasts (the number the course description also uses) plus two short Scrimba house scrims at the end. Scrimba's structured data says 37 lessons, and the header says 46 minutes; my scrim durations add up to 47 minutes, of which 44 are regex teaching.
 
-## Inside the course, module by module
+## The symbols in the order Beau types them
 
 ### 1. First patterns: test, match, or, and flags (7 min, 7 scrims)
 
@@ -149,25 +143,29 @@ The outro is 17 seconds: congratulations, a pointer to a freeCodeCamp YouTube pl
 
 Two scrims Scrimba appends to most of its courses, both voiced by Per Borgen rather than Beau: a two minute pitch for the referral program and a short note on adding the certificate to LinkedIn. Neither has anything to do with regex. Skip both.
 
-## What a lesson feels like
+## Beau never hands you the keyboard, so pause before he runs the pattern
 
 Every regex scrim has the same two files, `index.html` and `index.js`, no dependencies, and the console panel across the bottom of the editor instead of a browser preview. Beau opens with the concept in one or two sentences, types the pattern into a prepared example, runs it, and reads the console output. Median length is about a minute. The longest four (lazy matching, usernames, lookaheads, capture groups) run from two and three quarter to five minutes, and those are the ones that reward a second viewing.
 
-Because the recording never pauses for you, the learning loop is up to you. What worked for me: pause when Beau has written the pattern but before he runs it, change the test string in the editor, re-run, and see if the result is what you predicted. The Scrimba player supports this on every scrim, and it turns a watch-only course into something closer to a drill. Captions, a timestamped transcript panel, playback speed, and subtitles in ten languages are all there.
+Because the recording never pauses for you, the learning loop is up to you. What worked for me: pause when Beau has written the pattern but before he runs it, change the test string in the editor, re-run, and see if the result is what you predicted. The Scrimba player supports this on every scrim, and it turns a watch-only course into something closer to a drill.
 
 Beau's delivery is plain and unhurried. He says "so" a lot, corrects himself in the open ("uh, oh, I need a parenthesis here"), and does not pad. For a subject this dense, that is what you want.
 
-## Free or Pro: exactly what is gated
+The runtime is 46 minutes. There are no challenge stops to multiply that by, so watching straight through is a one-sitting job. Budget 90 minutes to two hours if you pause to edit and re-run the examples, which you should. Expect to come back to the lookahead and capture group scrims once more when you need them for real, because those are the two that do not stick on a single pass.
 
-Nothing in this course is gated. All 36 scrims are free (the first one also carries Scrimba's SAMPLE badge). I looked for Solo Project items and the instant-feedback challenge icon that Scrimba's own courses use, and this list has neither.
+## Verdict: a free hour of explanations with nothing to test you
 
-Pro is relevant only around the edges: the certificate of completion and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free). If you only want the regex, stay on the free plan. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you want the certificate.
+Yes, for a narrow reason. Regex is a skill you use for ten minutes at a time, a few times a month, and it is easy to go years without learning it properly. This course closes that gap in under an hour. Each scrim teaches one symbol or one method, shows it on a short string, and runs the code so you see the result in the console. By the end you can read a pattern like `^[A-Za-z]{2,}\d*$` and say what each piece does, which is the whole point.
 
-## How long it takes
+These are freeCodeCamp screencasts on the Scrimba player, not a native Scrimba course, and it shows in one way: both scrims with "challenge" in the transcript are solved by Beau within seconds, so nothing here tests you. What it does well is the rest. Every concept lands on a real string with the console output visible, the order builds from `.test()` to lookaheads without skipping steps, and the greedy versus lazy explanation is the best short version of that idea I have heard.
 
-The runtime is 46 minutes. Unlike Scrimba's own courses, there are no challenge stops to multiply that by, so watching straight through is a one-sitting job. Budget 90 minutes to two hours if you pause to edit and re-run the examples, which you should. Then expect to come back to the lookahead and capture group scrims once more when you need them for real, because those are the two that do not stick on a single pass.
+The limits are plain. There is no project and no output beyond console logs, one scrim title is wrong, the two Scrimba house scrims at the end are filler, and it stops at JavaScript, so named groups, lookbehinds, and the `RegExp` constructor never come up.
 
-## Who it's for, and who should skip it
+Nothing is gated. All 36 scrims are free (the first one also carries Scrimba's SAMPLE badge), and the list has no Solo Project items or instant-feedback challenge icons. Pro matters only around the edges: the certificate of completion and the Pro-only Discord channels (the pricing page lists basic Discord access as free). If you want the certificate, the <AffiliateLink href="https://scrimba.com/our-pricing">plans page</AffiliateLink> shows what Pro costs where you live.
+
+Take it for the explanations, and bring your own practice.
+
+## Watching this, or needing practice problems instead
 
 It fits anyone who writes JavaScript and has been avoiding regex, and people partway through a [backend](/docs/paths/backend-developer-path/) or [full-stack](/docs/paths/fullstack-developer-path/) track who want the skill without a detour. It is also a decent refresher before a job interview where string manipulation might come up.
 
@@ -177,28 +175,18 @@ Skip it if you have never written JavaScript; every example is a JS string and a
   Start Learn Regular Expressions for free
 </AffiliateLink>
 
-## Prerequisites
+## Basic JavaScript first, Advanced JavaScript's search feature next
 
 Basic JavaScript: variables, strings, and calling a method on a string. No prior regex knowledge. Nothing to install; the whole course runs in the browser with two files.
 
-## Where it fits
+It sits outside the career paths. Take it after [Learn JavaScript](/docs/courses/javascript/learn-javascript/), and before the regex section of [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), where Tom Chant assumes you can already read a pattern and moves on to using one in a search feature.
 
-This course is not part of any Scrimba career path. Take it after [Learn JavaScript](/docs/courses/javascript/learn-javascript/), and before the regex section of [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), where Tom Chant assumes you can already read a pattern and moves on to using one in a search feature.
-
-## Strengths and limits
-
-What it does well: one concept per scrim, always shown on a real string with the console output visible; a sensible order that builds from `.test()` to lookaheads without skipping steps; the greedy versus lazy explanation is the best short version of that idea I have heard; and it is free with no gating at all.
-
-Where it is limited: Beau solves both "challenges" himself, so nothing tests you; there is no project and no output beyond console logs; one scrim title is wrong; the two Scrimba house scrims at the end are filler; and it stops at JavaScript, so named groups, lookbehinds, and the `RegExp` constructor never come up.
-
-## Related courses and comparisons
-
-- [All Scrimba backend courses](/docs/courses/backend/), the full category hub
+- [All Scrimba backend courses](/docs/courses/backend/), for the backend courses that sit next to a skill this small
 - [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the free course to take first if the examples here look unfamiliar
 - [Advanced JavaScript](/docs/courses/javascript/advanced-javascript/), which uses regex in a real search feature
-- [Learn SQL](/docs/courses/backend/sql/), another short, free backend skill
-- [Intro to Supabase](/docs/courses/backend/supabase/), a backend project course
-- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are weighing the two sources directly
+- [Learn SQL](/docs/courses/backend/sql/), another short, free backend skill you can finish in a sitting
+- [Intro to Supabase](/docs/courses/backend/supabase/), a backend project course if you want to build something after the patterns
+- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), since these screencasts come from freeCodeCamp
 
 <FAQAccordion items={[
   { q: "Is Learn Regular Expressions free on Scrimba?", a: "Yes, all of it. I found no Pro-gated scrims, no Solo Projects, and no locked lessons in the table of contents. Pro only matters for the certificate." },

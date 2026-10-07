@@ -7,7 +7,7 @@ description: "Shant Dashjian's Testing in React reviewed from inside: 56 minutes
 keywords: [scrimba testing in react, testing in react review, vitest react course, react testing library scrimba, shant dashjian testing, scrimba testing course 2026]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -29,7 +29,7 @@ Scrimba's Pro course on testing React apps: 56 minutes, Shant Dashjian, 12 flat 
 
 *This page is part of our [Scrimba React courses](/docs/courses/react/) catalog. Scrimba lists it as a full member of the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/).*
 
-## Quick answer
+## Vitest, Testing Library and MSW on the Meme Generator: who should take it
 
 Take it if you already write React components and want your first real exposure to Vitest, React Testing Library, and mocking with MSW, on an app you did not have to build yourself. Skip it if you are not yet comfortable writing React components and using async/await; Shant says outright that no testing background is needed, but the pace still moves fast. From here the natural next stop on the path is [Learn Next.js](/docs/courses/javascript/nextjs/) or whichever backend course you have not taken yet.
 
@@ -45,7 +45,7 @@ Take it if you already write React components and want your first real exposure 
   description="Vitest, React Testing Library, and Mock Service Worker, taught by writing a real test suite for the Meme Generator app from Learn React."
 />
 
-## Is it worth your time?
+## Does watching a test fail in red justify an hour on React testing?
 
 For the length, yes. Twelve scrims is not much, and the course does not pad itself with theory before it gets you typing. The second scrim is a straight recap of the app you are about to test: "if you've already taken Scrimba's React course, you should be very familiar with this fun app," Shant says, and reusing the Meme Generator means lesson one is already inside a real component tree instead of a toy example.
 
@@ -53,7 +53,7 @@ The teaching move I liked most is in the accessibility lesson. Shant writes `exp
 
 The limit is scope. Mocking gets two scrims, coverage gets one, and "Types of testing" is a single closing lecture. If you want depth on any one of those (MSW's request handlers, coverage thresholds in CI, integration versus end-to-end testing), this course gives you the vocabulary and stops. It is a foundation, not a reference.
 
-## What you'll learn
+## Why test through the accessibility TDD lesson: 12 scrims
 
 The course has no modules; Scrimba's own page is one flat list of 12 scrims. The grouping below is mine, built around what each stretch actually teaches.
 
@@ -71,7 +71,7 @@ The course has no modules; Scrimba's own page is one flat list of 12 scrims. The
 
 I counted 12 scrims in the table of contents in September 2026, which matches the 12 lessons in our own catalog and the roughly 56 minutes the course header shows; nothing here needed correcting against Scrimba's listing.
 
-## Inside the course, scrim by scrim
+## Testing the Meme Generator, mocking its API with MSW and reading coverage
 
 ### 1. Why test, and what you will test (11 min, 3 scrims)
 
@@ -120,19 +120,17 @@ Where the earlier tests only check what renders, this one simulates a click and 
 
 "Types of testing" and "Congratulations!" close the course, followed by the Certificate of Completion for Pro members.
 
-## What a lesson feels like
+## Watch mode in the terminal, and pass/fail as the main character
 
-Every scrim I opened follows the same shape: Shant states what the test should check, types it live with the terminal running Vitest in watch mode below the editor, and saves to trigger an instant rerun. Several of the twelve are marked as challenges, delivered the way other Scrimba courses handle them, a brief inside the file or a `challenge.md` tab, then his own solution. There is no mini-browser preview panel doing the heavy lifting here the way there is in a UI-building course; the terminal's pass/fail output is the main character. Every scrim I opened had captions, a timestamped transcript under the settings menu, and subtitles in ten languages.
-
-## Free or Pro: exactly what is gated
-
-This is a Pro course, and unlike some of Scrimba's other Shant Dashjian courses ([Intro to Vite](/docs/courses/javascript/vite/), for one), none of the twelve scrims carried a visible SAMPLE badge on the course page when I checked. Pro also gates the Certificate of Completion at the end and the Pro-only channels on Scrimba's Discord; the Discord server itself is open to free members too. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what a subscription costs in your region, and our [Pro vs free](/docs/pricing/pro-vs-free/) page for the full split.
-
-## How long it takes
+Every scrim I opened follows the same shape: Shant states what the test should check, types it live with the terminal running Vitest in watch mode below the editor, and saves to trigger an instant rerun. Several of the twelve are marked as challenges, delivered the way other Scrimba courses handle them, a brief inside the file or a `challenge.md` tab, then his own solution. There is no mini-browser preview panel doing the heavy lifting here the way there is in a UI-building course; the terminal's pass/fail output is the main character.
 
 56 minutes of video; budget 90 minutes to two hours for one sitting once you include the challenge scrims and re-running the suite after each fix. Nothing here needs an external account or a slow install, since the project is already scaffolded with Vitest configured, so the extra time goes into typing and watching tests fail before they pass, not into setup.
 
-## Who it's for, and who should skip it
+## No SAMPLE badges: all 12 scrims need Pro
+
+This is a Pro course, and unlike some of Scrimba's other Shant Dashjian courses ([Intro to Vite](/docs/courses/javascript/vite/), for one), none of the twelve scrims carried a visible SAMPLE badge on the course page when I checked. Pro also gates the Certificate of Completion at the end and the Pro-only channels on Scrimba's Discord; the Discord server itself is open to free members too. The <AffiliateLink href="https://scrimba.com/our-pricing">pricing page</AffiliateLink> lists what a subscription includes, and our [Pro vs free](/docs/pricing/pro-vs-free/) page for the full split.
+
+## Writing a first Vitest suite here, or needing React first
 
 It fits developers who can already build a React component and want their first guided pass at Vitest, React Testing Library, and MSW, especially anyone working through the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), where this course is a required stop. It also fits anyone who took [Learn React](/docs/courses/react/learn-react/) and wants to see the Meme Generator tested rather than just built.
 
@@ -142,26 +140,16 @@ Skip it if you want deep coverage of any single tool. MSW gets two scrims, code 
   Start Testing in React on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## Before the first test, and how the Fullstack Developer Path places it
 
 React fundamentals and intermediate JavaScript (callbacks, `async`/`await`) going in; Scrimba's own course page also lists HTML, web accessibility concepts, running code from a terminal, and comfort with npm and Vite. No prior testing experience is assumed. [Learn React](/docs/courses/react/learn-react/) and [Advanced React](/docs/courses/react/advanced-react/) cover the React side.
 
-## Where it fits
-
 Testing in React is a full member of the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) (verified against Scrimba's own path curriculum, not just the course listing). It is not part of the [Frontend Developer Path](/docs/paths/frontend-developer-path/). The natural lead-in is [Learn React](/docs/courses/react/learn-react/), since the app under test is the Meme Generator built there; [Advanced React](/docs/courses/react/advanced-react/) is worth taking first too if you want more practice before adding tests on top.
 
-## Strengths and limits
-
-What it does well: it is short and hands-on, the Meme Generator app means lesson one is already inside real components, and the accessibility scrim is a genuine, if brief, demonstration of test-driven development rather than a definition of it.
-
-Where it is limited: mocking and coverage each get only a scrim or two, there is no end-to-end testing tool in sight, and at 56 minutes this is an introduction you will likely want to supplement once you are writing tests for your own projects.
-
-## Related courses and comparisons
-
-- [Learn React](/docs/courses/react/learn-react/), where the Meme Generator app comes from
-- [Advanced React](/docs/courses/react/advanced-react/), for more React before you add tests
+- [Learn React](/docs/courses/react/learn-react/), where the Meme Generator app under test is built
+- [Advanced React](/docs/courses/react/advanced-react/), for more React practice before you layer tests on top
 - [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), where this course is a required stop
-- [All React courses](/docs/courses/react/), the category this course belongs to
+- [All React courses](/docs/courses/react/), for the other React courses if testing leaves you wanting a different angle
 
 <FAQAccordion items={[
   { q: "Is Testing in React free on Scrimba?", a: "No. It is a Pro course, and none of its 12 scrims carried a visible free-sample badge on the course page when checked in September 2026. Pro also gates the Certificate of Completion." },

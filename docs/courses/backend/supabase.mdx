@@ -7,7 +7,7 @@ description: "Jonathan Hill's free Supabase course reviewed from inside: 4.8 hou
 keywords: [scrimba supabase course, intro to supabase review, jonathan hill supabase, supabase react course, free supabase tutorial, supabase row level security course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-24
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Jonathan Hill's free Intro to Supabase runs about 4.8 hours and puts you inside 
 
 <Provenance subject="course" date={frontMatter.reviewed} detail="all 49 scrims and the 46 that carry a transcript" />
 
-## Quick answer
+## A Postgres course in disguise: who a free Supabase dashboard build fits
 
 It suits React developers who have never wired up a backend, not Supabase newcomers who still need to learn hooks and forms. The catch: it's a Postgres course in disguise, with SQL policies and a `plpgsql` trigger by the second half, so pair it with [Learn SQL](/docs/courses/backend/sql/) if your SQL is shaky. Free unlocks the whole thing; only the certificate needs Pro.
 
@@ -43,15 +43,17 @@ It suits React developers who have never wired up a backend, not Supabase newcom
   description="A free, project-based course building a React sales dashboard on Supabase: queries, realtime updates, auth, row level security, and a database trigger."
 />
 
-## Is it worth your time?
+## Closing the `/dashboard` hole in two layers: why it earns the hours
 
 Yes, if you are a React developer who stalls the moment an app needs data that survives a refresh. The course is short, free, and built around one app that grows in a sensible order. By the end you can create a table, query it from React, and keep a chart in sync with the database. You can also sign users up and in, and lock rows down with policies that live in the database rather than in your JavaScript.
 
 The part that earned my respect is the second half. Most Supabase tutorials stop at "auth works." This one keeps going: it shows you that a logged-out visitor can still type `/dashboard` and pull data, explains why, and then fixes it in two layers (a protected route in React and row level security in Postgres). It then hits a real design problem, storing a user's account type somewhere a user cannot edit, and solves it with a separate profiles table and a trigger. That is the kind of thing you normally learn by getting it wrong in production.
 
+Also working for it: it is free, it runs against your own database rather than a sandbox, and the JWT explanation is the clearest I have seen at this level. Also against it: the chart library is a beta package and the course never leaves the happy path of email-and-password auth.
+
 Two caveats. First, the course is a Postgres course in disguise: you will read SQL, write `EXISTS` subqueries in policies, and paste a `plpgsql` function into the SQL editor. Jonathan warns you about this and says it is fine not to understand every line, but if SQL scares you, do [Learn SQL](/docs/courses/backend/sql/) first. Second, most of the React is written for you. The router, the context provider, and the form markup arrive ready-made, and you fill in the Supabase calls. If you want to practise React, this is not the place.
 
-## What you'll learn
+## Persistence in an hour, authentication in 3.8 hours
 
 <CourseCurriculum
   modules={[
@@ -60,9 +62,9 @@ Two caveats. First, the course is a Postgres course in disguise: you will read S
   ]}
 />
 
-Lesson counts are the scrims I counted in each expanded section in September 2026, plus one course-level "How to utilize your certificate" scrim, for 49 in total. Scrimba's section headers show 6 and 21, which skip intros, recaps, and theory scrims, and its listing says 57 lessons, which counts the clips inside scrims rather than the scrims you click.
+Lesson counts are the scrims in each expanded section, plus one course-level "How to utilize your certificate" scrim, for 49 in total. Scrimba's section headers show 6 and 21, which skip intros, recaps, and theory scrims, and its listing says 57 lessons, which counts the clips inside scrims rather than the scrims you click.
 
-## Inside the course, module by module
+## From a realtime sales chart to row level security and a profiles trigger
 
 ### 1. Persistence (60 min, 11 scrims)
 
@@ -154,7 +156,7 @@ The three "Refactor deals table" scrims replace the broad policy with three narr
 
 The section ends with a "Want to become a Scrimbassador?" referral pitch from Per Borgen and a one-minute certificate scrim. Neither is course content.
 
-## What a lesson feels like
+## Dry British humour, dashboard clicking and 10 to 14 hours of sittings
 
 Scrims here are longer than in Scrimba's beginner courses: the median is about six minutes and seven of them pass nine. Jonathan talks over slides for the theory, then switches to the editor. About half the scrims end in a written challenge: numbered instructions in a comment, the recording pauses, you type, then you press play and watch his solution. He usually leaves a hint ("you could copy and paste this and modify a few bits") and often admits when he is being generous: "I was gonna get you to try and remember it, but I'm just too nice."
 
@@ -162,19 +164,15 @@ A lot of the work happens outside the editor. You will spend real time in the Su
 
 The voice is dry British humour. He names the company "Paper Like a Boss," seeds the table with characters from The Office, and promises in the first minute that "Supa excited" is "the first and last supa joke you will hear from me." He also stops to correct himself, as in "Update new deal form, part 1," where he spends a minute untangling his own use of "ID" versus "user ID" and apologises for the confusion. Every scrim I opened has captions and a transcript panel, except the three noted above, which have neither.
 
-## Free or Pro: exactly what is gated
-
 The whole course is free: both sections, all 49 scrims, and every challenge. There are no Solo Projects marked PRO in this course, so there is nothing inside it that a free account cannot open. The one thing behind Pro is the certificate of completion at the end of the table of contents.
 
-Jonathan also says twice that the Discord is "available to free and pro members," which matches Scrimba's pricing page: basic Discord access is free, and only the Pro-only channels are gated. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you want the certificate or the career paths around this course.
+Jonathan also says twice that the Discord is "available to free and pro members," which matches Scrimba's pricing page: basic Discord access is free, and only the Pro-only channels are gated. The certificate and the career paths around this course sit on <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's plans page</AffiliateLink>.
 
 One cost that is not Scrimba's: you need a Supabase account. Everything the course does fits the free tier, and Jonathan says so up front: "no need to dig out those credit cards."
 
-## How long it takes
+The 4.8 hours is video runtime, so plan on 10 to 14 hours. The Persistence section is a two-hour evening if your Supabase account is ready. Authentication is where the time goes. The refactor alone asks you to create a table, write four policies, run a trigger, delete and recreate users, and clear out old rows. Each of those is a trip to the Supabase dashboard with a chance to mistype something. Four or five sittings of two to three hours is realistic, and more if you stop to read the Supabase docs when Jonathan points at them, which he does often.
 
-The 4.8 hours is video runtime. Plan on 10 to 14 hours. The Persistence section is a two-hour evening if your Supabase account is ready. Authentication is where the time goes. The refactor alone asks you to create a table, write four policies, run a trigger, delete and recreate users, and clear out old rows. Each of those is a trip to the Supabase dashboard with a chance to mistype something. Four or five sittings of two to three hours is realistic, and more if you stop to read the Supabase docs when Jonathan points at them, which he does often.
-
-## Who it's for, and who should skip it
+## A first backend for React developers; skip it for storage or edge functions
 
 It fits React developers who want a first backend without writing a server. It also suits people who took [Learn React](/docs/courses/react/learn-react/) and want their next project to have real users, and anyone who has used Firebase and wants to see the Postgres alternative. [Busy professionals](/docs/for/busy-professionals/) get a bonus: the sections are self-contained and the app is small.
 
@@ -184,39 +182,18 @@ Skip it if you have not written React: the course assumes hooks, context, and fo
   Start Intro to Supabase for free
 </AffiliateLink>
 
-## Prerequisites
+## React and some SQL beforehand, Router, React 19 and Learn SQL around it
 
 Working React (components, `useState`, `useEffect`, forms) and comfortable JavaScript (`async/await`, destructuring, `map`, `find`, `filter`). Basic SQL helps a lot from the Authentication section onward: you will write `GROUP BY`, `INNER JOIN`, and an `EXISTS` subquery. You also need a free Supabase account, and the course expects you to set environment variables in Scrimba, which it explains.
 
-## Where it fits
+It sits in no career path, and fits naturally after [Learn React](/docs/courses/react/learn-react/). The routing and context sections are easier if you have seen [React Router](/docs/courses/react/react-router/) or [Advanced React](/docs/courses/react/advanced-react/), both of which Jonathan links to from his slides. The forms use `useActionState`, so [What's new in React 19](/docs/courses/react/whats-new-in-react-19/) is a useful companion. For the database side, [Learn SQL](/docs/courses/backend/sql/) is the prerequisite it quietly assumes.
 
-Scrimba does not place this course in a career path. It sits naturally after [Learn React](/docs/courses/react/learn-react/). The routing and context sections are easier if you have seen [React Router](/docs/courses/react/react-router/) or [Advanced React](/docs/courses/react/advanced-react/), both of which Jonathan links to from his slides. The forms use `useActionState`, so [What's new in React 19](/docs/courses/react/whats-new-in-react-19/) is a useful companion. For the database side, [Learn SQL](/docs/courses/backend/sql/) is the prerequisite it quietly assumes.
-
-## Strengths and limits
-
-What it does well:
-
-- It is free, and it runs against your own database rather than a sandbox.
-- It teaches row level security by first showing the hole and then closing it.
-- The JWT explanation is the clearest I have seen in a course at this level.
-- The refactor teaches a real schema design lesson (profiles table plus trigger) instead of hand-waving it.
-
-Where it is limited:
-
-- The React is mostly done for you.
-- A lot of the work is clicking through the Supabase dashboard, where nothing checks your result.
-- Three scrims have no transcript.
-- The chart library is a beta package.
-- The course never leaves the happy path of email-and-password auth.
-
-## Related courses and comparisons
-
-- [All Scrimba backend courses](/docs/courses/backend/), the full category hub
-- [Learn React](/docs/courses/react/learn-react/), the prerequisite for the frontend half
-- [Learn SQL](/docs/courses/backend/sql/), the database language under Supabase
+- [All Scrimba backend courses](/docs/courses/backend/), for the other database and server courses once Supabase's auth model makes sense
+- [Learn React](/docs/courses/react/learn-react/), because the hooks, context and forms here are written for you
+- [Learn SQL](/docs/courses/backend/sql/), for the `EXISTS` policies and the `plpgsql` trigger
 - [Build a Mobile App with Firebase](/docs/courses/backend/a-mobile-app-with-firebase/), the other backend-as-a-service in the catalog
-- [Intro to Vite](/docs/courses/javascript/vite/), the build tool this project uses
-- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are choosing a platform
+- [Intro to Vite](/docs/courses/javascript/vite/), the build tool behind the dashboard project
+- [Scrimba vs freeCodeCamp](/docs/comparisons/scrimba-vs-freecodecamp/), if you are weighing where to take free backend material
 
 <FAQAccordion items={[
   { q: "Is Intro to Supabase free on Scrimba?", a: "Yes. All 49 scrims and every challenge are free, and there are no Pro-only Solo Projects in this course. Only the certificate of completion needs Pro." },

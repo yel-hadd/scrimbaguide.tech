@@ -7,7 +7,7 @@ description: "Rafid Hoda's Pro Firebase course reviewed from inside: 3.4 hours, 
 keywords: [scrimba learn firebase, learn firebase scrimba review, firebase course scrimba, rafid hoda firebase, firestore course, firebase security rules course, backend as a service course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Rafid Hoda teaches Scrimba's Pro course on Firebase, Google's hosted backend, in
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## Moody: logins, live data and security rules, with a part two that never shipped
 
 Learn Firebase fits developers who already write JavaScript and want logins and a database without running a server. It is not a backend fundamentals course: it needs your own Firebase project to follow along, and the "part two" promised in the intro (image uploads, hosting, a social app) never arrived. Next, [Build a Mobile App with Firebase](/docs/courses/backend/a-mobile-app-with-firebase/) puts the same skills on a phone.
 
@@ -43,15 +43,7 @@ Learn Firebase fits developers who already write JavaScript and want logins and 
   description="Add Google and email login, a realtime Firestore database and security rules to a plain HTML, CSS and JavaScript app, one documented feature at a time."
 />
 
-## Is it worth your time?
-
-If your problem is "I can build a frontend but every idea I have needs accounts and saved data," this course solves it in an afternoon or two. Rafid's opening pitch is exactly that: "How do you make an app with features like sign in, a database, and uploading files without writing any backend code? Answer. Firebase." The course delivers on the first two of those three.
-
-Rafid pitches this at the intermediate frontend developer in the first minute, and explains why: "If you're a beginner, then this is way too advanced for you. And if you're an advanced programmer, then you don't really need me." He is right on both counts. The starter code is written for you, and the challenges are mostly "read this documentation page, then make it work in our app."
-
-The caveats are real, though. You are learning one vendor's product, not how backends work. The Firebase console screens are shown as slides, so parts of the course are "click here in Google's dashboard" rather than coding. And the intro describes a two-part course; three years on (the Firebase console dates visible in the scrims show it was recorded in September 2023), only part one exists, and the last scrim is titled "Credits - End of PART 1."
-
-## What you'll learn
+## Why Scrimba's listing says 40 when two modules hold 15 and 23 scrims
 
 <CourseCurriculum
   modules={[
@@ -60,9 +52,9 @@ The caveats are real, though. You are learning one vendor's product, not how bac
   ]}
 />
 
-Lesson counts are the scrims I counted in each expanded module in September 2026, including the intros, a two-minute Scrimba referral ad in module one, and the congratulations and credits scrims at the end of module two. Scrimba's listing says 40 lessons, which adds the one-minute "How to utilize your certificate" scrim that sits outside both modules; the module headers themselves show "0/0" and no count at all.
+I counted the scrims in each expanded module in September 2026, including the intros, a two-minute Scrimba referral ad in module one, and the congratulations and credits scrims at the end of module two. Scrimba's listing says 40 lessons, which adds the one-minute "How to utilize your certificate" scrim that sits outside both modules; the module headers themselves show "0/0" and no count at all.
 
-## Inside the course, module by module
+## An exposed API key, fixed by a rule that lets only the author delete
 
 ### 1. Authentication (62 min, 15 scrims)
 
@@ -112,23 +104,29 @@ That leads into security rules, which Rafid chose to teach inside this module "b
 
 The final stretch rewrites `renderPost` with `createElement` so each post can carry buttons, then adds editing with `updateDoc` (through a browser `prompt()`, which he calls a shortcut) and deletion with `deleteDoc`. Each forces a rules change: `allow write` is split into `create`, `update` and `delete`, and the last two require the signed-in user to be the author. The delete scrim fails with a permissions error first, on purpose, so that rule is the last challenge. "Congrats" reframes what you built as a CRUD app ("you could turn this app into almost any other app") and points at his [Build a Mobile App with Firebase](/docs/courses/backend/a-mobile-app-with-firebase/) course for putting it on a phone.
 
-## What a lesson feels like
+## Documentation, then a challenge: paste your own config and budget 7 to 10 hours
 
 Rafid calls it "a reference course" rather than a classic Scrimba course: each scrim covers one Firebase feature, shows the relevant documentation page, then stops so you wire it into the app yourself. A typical scrim is three to seven minutes; the four longest (adding a document, getDocs, onSnapshot, date filters) run 11 to 21 minutes. Rafid talks over the editor with a slide overlay for the Firebase console and the documentation. The challenge pattern is fixed: he pre-writes any HTML, CSS and plain JavaScript off camera ("I'll see you back in a second"), explains it, shows the documentation page, writes a numbered brief in a comment, and pauses. You paste the docs snippet, adapt it, and press play to compare. Most challenges are five to ten lines; the hardest is finishing the week-filter function.
 
-There are no AI-checked challenges and no Solo Projects; the Moody app is the project, built continuously. Every scrim has captions, a timestamped transcript panel, and subtitles in ten languages. The tone is warm and a little goofy (Justin Bieber and Shahrukh Khan are the test users). Rafid leaves his mistakes in rather than editing them out, from a forgotten semicolon in a rules file to `postsRef is not defined` during the filter scrim.
-
-## Free or Pro: exactly what is gated
-
-Four scrims are free samples: the welcome, the authentication intro, the starter-code tour, and Firebase setup. That is enough to see the format and the finished app, but not to write a single line of Firebase code. Every scrim from "Important note about challenges" onward, all of Cloud Firestore and security rules, and the certificate are Pro. There are no separately gated Solo Projects because the course has none.
-
-Pro also unlocks Scrimba's career paths and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free, so the server itself is not gated), though this course does not sit on any of them. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs where you live. My read: on its own this is a thin reason to subscribe. If you are already on the Fullstack path, it is the fastest route in the catalog from a static frontend to an app with logins and live data.
-
-## How long it takes
+There are no AI-checked challenges and no Solo Projects; the Moody app is the project, built continuously. Captions, a timestamped transcript and ten subtitle languages come with every scrim. The tone is warm and a little goofy (Justin Bieber and Shahrukh Khan are the test users). Rafid leaves his mistakes in rather than editing them out, from a forgotten semicolon in a rules file to `postsRef is not defined` during the filter scrim.
 
 The 3.4 hours is video runtime. Almost every scrim stops for a challenge, and you should be pasting your own Firebase config and checking your own console between them. Plan on 7 to 10 hours: two or three evenings for authentication, and a weekend for Firestore and rules. Add an hour up front to create a Firebase project and enable email, Google and Firestore in the console, which the course walks through but which you do in your own browser tab.
 
-## Who it's for, and who should skip it
+## A fast route from static frontend to accounts, and a thin reason to subscribe
+
+If your problem is "I can build a frontend but every idea I have needs accounts and saved data," this course solves it in an afternoon or two. Rafid's opening pitch is exactly that: "How do you make an app with features like sign in, a database, and uploading files without writing any backend code? Answer. Firebase." The course delivers on the first two of those three.
+
+Rafid pitches this at the intermediate frontend developer in the first minute, and explains why: "If you're a beginner, then this is way too advanced for you. And if you're an advanced programmer, then you don't really need me." He is right on both counts. The starter code is written for you, and the challenges are mostly "read this documentation page, then make it work in our app."
+
+The caveats are real, though. You are learning one vendor's product, not how backends work. The Firebase console screens are shown as slides, so parts of the course are "click here in Google's dashboard" rather than coding. And the intro describes a two-part course; three years on (the Firebase console dates visible in the scrims show it was recorded in September 2023), only part one exists, and the last scrim is titled "Credits - End of PART 1."
+
+Four scrims are free samples: the welcome, the authentication intro, the starter-code tour and Firebase setup. That shows you the format and the finished app, but not a single line of Firebase code. Every scrim from "Important note about challenges" onward, all of Cloud Firestore and security rules, and the certificate are Pro. There are no separately gated Solo Projects because the course has none. Pro also unlocks Scrimba's career paths and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free), though this course sits on none of them. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs where you live. My read: on its own this is a thin reason to subscribe. If you are already on the Fullstack path, it is the fastest route in the catalog from a static frontend to an app with logins and live data.
+
+What earns the time: one app carries the whole course, so every feature has an obvious reason to exist. The documentation-first challenges teach you to read Firebase's docs rather than memorize the course. Security rules sit next to the code they protect, and the "Greta Thunberg" moment makes them concrete. Rafid leaves the real errors in (null timestamps, missing indexes, permission denials) and fixes them on camera.
+
+What costs you: the console cannot run inside Scrimba, so you juggle two windows and paste your own config for every challenge, and the date-filter scrim is long and repetitive by the instructor's own admission.
+
+## Frontend developers who want accounts this month, and who needs backend basics
 
 It fits frontend developers who have finished [Learn JavaScript](/docs/courses/javascript/learn-javascript/) or equivalent, are comfortable with promises and async/await, and want to ship an app with accounts and saved data this month. It is also a sensible next step after [Build a Mobile App with Firebase](/docs/courses/backend/a-mobile-app-with-firebase/), which uses the older Realtime Database; this course is the Firestore and auth counterpart.
 
@@ -138,27 +136,17 @@ Skip it if you want to understand servers, HTTP or SQL; take [Learn Node.js](/do
   Start Learn Firebase on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## Promises first, then a backend course
 
 Solid JavaScript, including DOM manipulation, template strings, array methods and promises. The course uses `.then`/`.catch` for auth and `async`/`await` with try/catch for Firestore, and never explains either. You also need a Google account to create a Firebase project, and you should be prepared to work in the Firebase console alongside Scrimba, since the course cannot embed it.
 
-## Where it fits
+It sits on no career path, but it suits a frontend developer on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) or [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) who wants the first taste of storing data somewhere other than localStorage and deciding who is allowed to read it. If you later want the backend that Firebase hides, [Learn Node.js](/docs/courses/javascript/nodejs/) and [Learn Express.js](/docs/courses/javascript/expressjs/) are the complementary route.
 
-Scrimba's catalog data does not put Learn Firebase on any career path. It still suits a frontend developer on the [Frontend Developer Path](/docs/paths/frontend-developer-path/) or [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) who wants the first taste of storing data somewhere other than localStorage and deciding who is allowed to read it. If you later want the backend that Firebase hides, [Learn Node.js](/docs/courses/javascript/nodejs/) and [Learn Express.js](/docs/courses/javascript/expressjs/) are the complementary route.
-
-## Strengths and limits
-
-What it does well: one app carries the whole course, so every feature has an obvious reason to exist; the documentation-first challenges teach you to read Firebase's docs rather than memorize the course; security rules are taught next to the code they protect, and the "Greta Thunberg" moment makes the need for them concrete; Rafid leaves in the real errors (null timestamps, missing indexes, permission denials) and fixes them on camera.
-
-Where it is limited: it teaches Firebase specifically, not backend concepts; the console cannot run inside Scrimba, so you juggle two windows and must paste your own config for every challenge; the promised part two (file uploads, hosting, a social app) never shipped, so uploading files is mentioned in the intro but not taught; the date-filter scrim is long and repetitive by the instructor's own admission; and the whole thing is Pro apart from four intro scrims.
-
-## Related courses and comparisons
-
-- [All JavaScript courses](/docs/courses/javascript/), the category this course belongs to
+- [All JavaScript courses](/docs/courses/javascript/), for the language-side courses to take before a Firebase project needs promises
 - [Build a Mobile App with Firebase](/docs/courses/backend/a-mobile-app-with-firebase/), Rafid's shorter Realtime Database project
 - [Intro to Supabase](/docs/courses/backend/supabase/), the open-source alternative with SQL underneath
 - [Learn Node.js](/docs/courses/javascript/nodejs/) and [Learn Express.js](/docs/courses/javascript/expressjs/), if you want real backend fundamentals
-- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language foundation
+- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language foundation for the `.then` and `async`/`await` the course never explains
 - [Learn React](/docs/courses/react/learn-react/), a common frontend to pair with Firebase
 - [Scrimba vs Boot.dev](/docs/comparisons/scrimba-vs-boot-dev/), if you are weighing backend-focused platforms
 

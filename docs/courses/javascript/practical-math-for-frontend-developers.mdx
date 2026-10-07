@@ -7,7 +7,7 @@ description: "Ryan Gonyon's 65-minute Pro course reviewed from inside: all 15 tr
 keywords: [scrimba practical math frontend, practical math for frontend developers review, math for frontend developers, css calc course, javascript date object course, javascript reduce tutorial, ryan gonyon scrimba, frontend math course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Scrimba's Practical Math for Frontend Developers is a 65-minute Pro course, taug
 
 <Provenance subject="course" date={frontMatter.reviewed} detail="all 15 scrims and transcripts read" />
 
-## Quick answer
+## Who still writes `for` loops where `reduce()` would do
 
 This fits developers who still write `for` loops where `reduce()` would do, who have never built a `calc()` layout with variables, or who need fake data for a prototype and have been hard-coding it. The catch: there are no graded challenges, just Ryan saying "pause the video and try it" about twenty times. If you already reach for `reduce()` without thinking, skip ahead to [Learn React](/docs/courses/react/learn-react/), where the same `reduce()` and `map()` patterns reappear in components.
 
@@ -43,7 +43,7 @@ This fits developers who still write `for` loops where `reduce()` would do, who 
   description="Random data with a roll() function, calc() layouts, the Date object, and reduce(), taught through a shopping cart, a weekly schedule, and an expense sheet."
 />
 
-## Is it worth your time?
+## One reusable roll() function, and one scrim of actual math
 
 The word "math" is doing a lot of work in the title. The course promises "enough mathematics" to build three apps, and delivers on that narrow promise. What it teaches is how to generate believable fake data with `Math.random()`, how to make a header, a scrollable main section and a footer share the viewport with `calc()`, how to walk through a month with `Date`, and how to sum things with `reduce`. Only one scrim contains anything a school would call math: the algebra that turns a number between 0 and 1 into a number between any min and max. Ryan says so himself at the end of that scrim: "If you didn't fully follow all the algebra that got us here, that's totally fine."
 
@@ -51,7 +51,9 @@ This is a course about the arithmetic inside everyday DOM code, recorded in May 
 
 What it does well is give you one tool you will reuse. The `roll()` function, once written, appears in every later scrim: for prices, quantities, task names, whether a task is done, rent, utilities, and the number of expenses in a day. By the end you have generated a full month of fake financial data in about thirty lines, which is what you need when a design is ready and the API is not.
 
-## What you'll learn
+The limits beyond the title: there are no graded challenges or solo projects, the apps are unstyled and stay in one HTML file each, and the 2020 recording shows in a Moment.js reference and an old career path pitch. The `calc()` with variables pattern is taught properly, including the order-of-operations trap.
+
+## Three apps in 15 scrims, and 64 minutes against 65
 
 Scrimba shows this course as a flat list of 15 scrims with no module headers. The four groups below are mine, following the three apps Ryan announces in the intro, with the three closing house scrims counted separately. Durations are the sums of the scrim lengths in the table of contents.
 
@@ -68,7 +70,7 @@ Scrimba shows this course as a flat list of 15 scrims with no module headers. Th
 
 Scrimba's header says 65 minutes and its listing rounds that to 1.1 hours; the 15 scrims I counted add up to 63:52, and the structured data on the course page says 16 lessons, which I could not reconcile with anything visible in the table of contents (one scrim index, `~02`, is missing from the sequence, so a lesson may have been removed).
 
-## Inside the course, module by module
+## A shopping cart, a weekly schedule and a monthly expense sheet
 
 ### 1. Intro, calc() layout, and the roll() function (17 min, 3 scrims)
 
@@ -158,23 +160,21 @@ The scrim also carries the closest thing the course has to a thesis, at 5:08: "O
 
 "That's all Folks" is Ryan's one-minute recap and a pointer to his Discord and social links in the scrim's HTML. "Congratulations" is a Scrimba house scrim in which Leanne pitches the [Frontend Developer Path](/docs/paths/frontend-developer-path/); the figures she quotes (around seventy hours, a Pac-Man game, a Netflix clone) describe the path as it was in 2020, not the current one. "How to Utilize Your Certificate" is Per Borgen's standard 53-second reminder to add the certificate to LinkedIn.
 
-## What a lesson feels like
+## About twenty "pause the video" prompts and a two-to-three-hour evening
 
 A scrim here is four to eight minutes of Ryan typing in the editor with the preview and console open, no slides except in the `roll()` lesson and the two bookends. He narrates every keystroke, runs the code, and lets the wrong output sit on screen for a few seconds before fixing it. The "challenge" format is informal: he says "pause the video and try that yourself," you pause, you type into the same editor, you press play to compare. There is no checker and nothing marks your attempt right or wrong. I counted around twenty of these prompts across the twelve core scrims, most of them in the `roll()` and weekly schedule lessons.
 
 Captions and a full timestamped transcript are available from the settings menu, with subtitles in ten languages, and playback speed is adjustable. The transcripts are auto-generated and occasionally comic (Ryan's surname becomes "Gagnon," and `roll` is often "role"), which matters if you plan to read instead of listen.
 
-## Free or Pro: exactly what is gated
+The video is 64 minutes. Because the prompts are short and every solution follows within seconds, most people will finish in two to three hours: about ninety minutes if you pause and type at each prompt, closer to three hours if you rebuild the three apps in your own editor afterwards, which is the only way the `calc()` and `Date` habits will stick. It fits in a single evening, or in three lunch breaks at one app per sitting.
+
+## Three free scrims cover calc() and the algebra
 
 This is a Pro course. The first three scrims (the intro, the `calc()` layout lesson, and the `roll()` function) are marked SAMPLE and play without a subscription, which is about 17 minutes and, usefully, the part with the algebra. The other twelve scrims, the three apps, and the certificate of completion need Pro. There are no Solo Projects and no AI-checked challenges in this course, so nothing inside it is gated at a finer level than "the rest of the scrims."
 
-Pro also covers the career paths, none of which include this course, and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free, so the server itself is not gated). See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> for what Pro costs in your region. If you already have Pro, the course is included; I would not subscribe for this course alone.
+Pro also covers the career paths, none of which include this course, and the Pro-only channels on Scrimba's Discord (the pricing page lists basic Discord access as free, so the server itself is not gated). The <AffiliateLink href="https://scrimba.com/our-pricing">plans page</AffiliateLink> lists the rest. If you already have Pro, the course is included; I would not subscribe for this course alone.
 
-## How long it takes
-
-The video is 64 minutes. Because the prompts are short and every solution follows within seconds, most people will finish in two to three hours: about ninety minutes if you pause and type at each prompt, closer to three hours if you rebuild the three apps in your own editor afterwards, which is the only way the `calc()` and `Date` habits will stick. It fits in a single evening, or in three lunch breaks at one app per sitting.
-
-## Who it's for, and who should skip it
+## Wanted geometry, or already reaching for reduce? Skip it
 
 It fits self-taught developers who are past the basics of JavaScript but still write `for` loops where a `map` or `reduce` would do, who have never used CSS `calc()` with variables, or who have never had to construct dates by hand. It also fits anyone who needs fake data for a prototype and has been hard-coding it.
 
@@ -184,28 +184,18 @@ Skip it if you already reach for `reduce` without thinking, know that months are
   Start Practical Math for Frontend Developers on Scrimba
 </AffiliateLink>
 
-## Prerequisites
+## Learn JavaScript before, React or CSS Variables after
 
 Comfortable JavaScript basics: functions, arrays, objects, template strings, and the DOM methods `getElementById` and `innerHTML`. Basic CSS, since the layout scrims edit `height`, `padding`, and `display: flex` without explaining them. No math beyond school algebra; the one derivation is on a slide and Ryan says you can skip following it. Nothing to install: every scrim runs in the browser.
 
-## Where it fits
+It is a one-evening top-up between [Learn JavaScript](/docs/courses/javascript/learn-javascript/) and the React track: the `reduce` and `map` patterns reappear constantly in [Learn React](/docs/courses/react/learn-react/), and the CSS variables and `calc()` work pairs with [Learn CSS Variables](/docs/courses/css/css-variables/). If the course leaves you wanting real algorithmic depth, [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) is the next step, not this one repeated.
 
-Scrimba does not list it under any career path; it is a standalone course. It is a one-evening top-up between [Learn JavaScript](/docs/courses/javascript/learn-javascript/) and the React track: the `reduce` and `map` patterns reappear constantly in [Learn React](/docs/courses/react/learn-react/), and the CSS variables and `calc()` work pairs with [Learn CSS Variables](/docs/courses/css/css-variables/). If the course leaves you wanting real algorithmic depth, [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/) is the next step, not this one repeated.
-
-## Strengths and limits
-
-What it does well: the `roll()` function is a reusable tool you will keep, Ryan lets bugs happen on screen and fixes them one edit at a time, the three apps are small enough to finish in one sitting, and the `calc()` with variables pattern is taught properly, including the order-of-operations trap.
-
-Where it is limited: the title promises more math than the course contains, there are no graded challenges or solo projects, the apps are unstyled and stay in one HTML file each, the recording dates from 2020 (Moment.js reference, a 2020 career path pitch), and the auto-generated transcript mangles a few key words.
-
-## Related courses and comparisons
-
-- [All JavaScript courses](/docs/courses/javascript/), the category this course sits in
-- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), the language prerequisite
-- [Learn CSS Variables](/docs/courses/css/css-variables/), more on the `:root` variables the layouts depend on
-- [Build Websites with Figma, HTML, and CSS](/docs/courses/javascript/websites-with-figma-html-and-css/), more applied frontend layout work
-- [Learn React](/docs/courses/react/learn-react/), where the `map` and `reduce` habits reappear in components
-- [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/), if you wanted the mathematical side of programming
+- [All JavaScript courses](/docs/courses/javascript/), for what to take if this hour was too light
+- [Learn JavaScript](/docs/courses/javascript/learn-javascript/), for the arrow functions, template strings and spread this course assumes
+- [Learn CSS Variables](/docs/courses/css/css-variables/), the `:root` variables the three layouts depend on, in full
+- [Build Websites with Figma, HTML, and CSS](/docs/courses/javascript/websites-with-figma-html-and-css/), more layout practice after the `calc()` header-main-footer lesson
+- [Learn React](/docs/courses/react/learn-react/), the `map` and `reduce` habits reappear in components
+- [Data Structures and Algorithms](/docs/courses/javascript/data-structures-and-algorithms/), if the title made you hope for real algorithmic math
 
 <FAQAccordion items={[
   { q: "Is Practical Math for Frontend Developers free on Scrimba?", a: "No. It is a Pro course. The first three scrims (intro, the calc() layout lesson, and the roll() function) are free samples, about 17 minutes in total; the remaining twelve scrims and the certificate need a Pro subscription." },

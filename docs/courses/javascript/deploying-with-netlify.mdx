@@ -7,7 +7,7 @@ description: "Treasure Porth's free 23-minute Netlify course reviewed from insid
 keywords: [scrimba deploying with netlify, deploying with netlify review, deploy to netlify course, netlify drag and drop deploy, git deploy netlify, netlify continuous deployment tutorial, free deployment course]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 ---
 
 import CourseCard from '@site/src/components/CourseCard';
@@ -27,7 +27,7 @@ Treasure Porth's free Deploying with Netlify runs 23 minutes across ten scrims a
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## Netlify Drop or GitHub deploys: which finished project is this for?
 
 Deploying with Netlify fits anyone who has finished a project and never put it online: drag-and-drop through Netlify Drop for plain sites and built projects, or continuous deployment from a GitHub repo with deploy previews on pull requests. The catch is skill level, not content: if you already push to GitHub and know what `npm run build` does, there is nothing new here. Pair it with [Build and Deploy Your Portfolio](/docs/courses/javascript/and-deploy-your-portfolio/) if you need something to deploy first.
 
@@ -43,13 +43,15 @@ Deploying with Netlify fits anyone who has finished a project and never put it o
   description="Two ways to deploy to Netlify, drag-and-drop and Git-based, for plain sites and for React, Vue, and Next.js projects with a build step."
 />
 
-## Is it worth your time?
+## A first live URL by scrim two, in a choose-your-own-adventure
 
 Yes, if you fit the target reader: you have built something and it only exists on your laptop or inside a scrim. Deployment is the step beginners put off because it sounds like infrastructure, and this course makes it feel like uploading a file. The first live URL arrives at about the one-minute mark of the second scrim, which is the whole pitch of the course.
 
 Two things to know before you start. First, this is a screen recording of Treasure clicking through Netlify, GitHub Desktop, and VS Code, narrated over slides. The scrim editor sits underneath, but you do not type in it, and there are no challenges. Second, the course is "organized as a choose your own adventure," as Treasure says at 0:47 of the intro. She expects you to jump to the one scrim that matches your project rather than watch all ten. Read the section below, find your case, and go there.
 
-## What you'll learn
+It is free, it covers the scrim-download case that other deployment tutorials ignore, and the auto-detection demo for Next.js is a reassuring answer to "what do I configure." The Git workflow is GitHub Desktop only, the React sample uses React 16 and webpack and looks dated next to current Scrimba React courses, and the course stops at deploy previews. Scrimba's structured data dates the course to September 2022, so expect some Netlify buttons to have moved since the slides were recorded; I did not re-check every screen against the current dashboard.
+
+## Two routes in ten scrims: Netlify Drop and continuous deployment
 
 The course is a flat list of ten scrims with no module headers on Scrimba. The grouping below is mine, following the two sections Treasure announces in the intro, and the scrim counts and durations come from the expanded table of contents.
 
@@ -65,7 +67,7 @@ The course is a flat list of ten scrims with no module headers on Scrimba. The g
 
 Scrimba's listing says 23 minutes and its structured data says 10 lessons; the eight Netlify scrims add up to 23:03, and the two closing scrims by Per Borgen (a referral-program pitch and a certificate tip) bring the total to just under 26 minutes.
 
-## Inside the course, module by module
+## Drop a folder, then wire a repo, a Vite app and a Next.js project to Netlify
 
 ### 1. Intro and Netlify sign-up (3 min, 1 scrim)
 
@@ -154,21 +156,17 @@ Scrim 8, "Netlify's Deploy Preview," is the one part of the course that goes bey
 
 The last two scrims are not about Netlify and are voiced by Per Borgen, not Treasure. One pitches Scrimba's referral program, the other is a one-minute tip on adding your certificate to LinkedIn and your resume. They appear at the end of many Scrimba courses. Skip them unless either topic interests you.
 
-## What a lesson feels like
+## Slides and screen recordings, with the real work in your own terminal
 
-Every Netlify scrim is a narrated slide deck with screen recordings of Netlify, GitHub Desktop, VS Code, and a terminal embedded in the slides. Scrimba's editor and file explorer sit beneath the slide, and the row counter project and the React sample are loaded there so you can download them, but there is nothing to type and no "your turn" pause. The scrubber, captions, and full transcript panel all work as in any scrim, with subtitles in ten languages, and I found the transcript panel the fastest way to find a specific step again.
+Every Netlify scrim is a narrated slide deck with screen recordings of Netlify, GitHub Desktop, VS Code, and a terminal embedded in the slides. Scrimba's editor and file explorer sit beneath the slide, and the row counter project and the React sample are loaded there so you can download them, but there is nothing to type and no "your turn" pause. The scrubber, captions, and full transcript panel all work as in any scrim, and I found the transcript panel the fastest way to find a specific step again.
 
 Treasure's narration is direct and unhurried. She states prerequisites at the top of each scrim that needs them, and she repeats them rather than assuming you watched the previous one, which fits the skip-around structure. The slides are clickable: the Netlify logo goes to the drop page, the Vite and Next.js commands go to their documentation, and there are links to VS Code and a Node install guide for people who lack them. Expect to leave the scrim and do the steps in your own browser and terminal; the course is a guide to a workflow that happens outside Scrimba.
 
-## Free or Pro: exactly what is gated
-
-All ten scrims are free and the first one is marked SAMPLE, so you can start without an account. There are no Solo Projects and no challenges in this course, so there is nothing inside it for Pro to gate. The one Pro item is the certificate of completion at the end, which Scrimba only issues to Pro members. Pro also unlocks the career paths and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free, so the server itself is not a Pro perk. For a 23-minute course, none of that changes the decision. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you are weighing Pro for other reasons.
-
-## How long it takes
+All ten scrims are free and the first one is marked SAMPLE, so you can start without an account. There are no Solo Projects and no challenges in this course, so there is nothing inside it for Pro to gate. The one Pro item is the certificate of completion at the end, which Scrimba only issues to Pro members. Pro also unlocks the career paths and the Pro-only channels on Scrimba's Discord; the pricing page lists basic Discord access as free, so the server itself is not a Pro perk. For a 23-minute course, none of that changes the decision. The <AffiliateLink href="https://scrimba.com/our-pricing">pricing page</AffiliateLink> is for anyone weighing Pro for other reasons.
 
 Watching everything takes 26 minutes. Doing it takes longer, because the work happens in Netlify, GitHub, and your terminal rather than in the scrim. For a plain HTML/CSS/JS site with drag-and-drop, budget 30 to 45 minutes including signing up for Netlify. For continuous deployment of a project with a build step, budget one to two hours if you already have Node, an editor, and GitHub Desktop installed, and a good part of an afternoon if you have to install them first. Treat the deploy preview scrim as optional until you work on a team.
 
-## Who it's for, and who should skip it
+## Deploying a first project here, or already pushing to GitHub
 
 It fits anyone who has finished a project on Scrimba or on their own machine and has never put it online. It is a natural follow-on to [Learn HTML and CSS](/docs/courses/css/html-and-css/), [Learn JavaScript](/docs/courses/javascript/learn-javascript/), and the portfolio and space travel projects, and it is the fastest way to get a real URL for a portfolio or a job application. It also suits Scrimba React learners who want to deploy a scrim project, since scrim 4 handles that exact case.
 
@@ -178,28 +176,18 @@ Skip it if you already deploy from GitHub with any host. There is nothing here y
   Start Deploying with Netlify for free
 </AffiliateLink>
 
-## Prerequisites
+## Assumptions of each route, and where the deploy step fits after a project course
 
 For drag-and-drop with a plain site: a project folder and a free Netlify account. For projects with a build step: VS Code or another editor, Node and npm, and comfort running two or three commands in a terminal. For continuous deployment: a GitHub account and GitHub Desktop, since that is what the course uses. For the deploy preview scrim: branches and pull requests. If Git is new to you, [Learn Git and GitHub](/docs/courses/javascript/git-and-github/) covers what this course assumes.
 
-## Where it fits
+It works as a finishing step after any project course, and Scrimba's beginner courses already lean on it: the passenger counter in [Learn JavaScript](/docs/courses/javascript/learn-javascript/) deploys to Netlify at the end of its first module. Take it the day you finish a project you want to show someone, then come back for the continuous deployment half once you are using GitHub.
 
-This course is not part of any Scrimba career path. It works as a finishing step after any project course, and Scrimba's beginner courses already lean on it: the passenger counter in [Learn JavaScript](/docs/courses/javascript/learn-javascript/) deploys to Netlify at the end of its first module. Take it the day you finish a project you want to show someone, then come back for the continuous deployment half once you are using GitHub.
-
-## Strengths and limits
-
-What it does well: it is free, it gets a first site online in the second scrim, it covers the scrim-download case that other deployment tutorials ignore, it is structured so you only watch the scrim you need, and the auto-detection demo for Next.js is a reassuring answer to "what do I configure."
-
-Where it is limited: there is nothing to practice inside Scrimba, the Git workflow is GitHub Desktop only, the React sample uses React 16 and webpack and looks dated next to current Scrimba React courses, and the course stops at deploy previews without covering domains, environment variables, serverless functions, or what to do when a build fails. Scrimba's structured data dates the course to September 2022, so expect some Netlify buttons to have moved since the slides were recorded; I did not re-check every screen against the current dashboard.
-
-## Related courses and comparisons
-
-- [All JavaScript courses](/docs/courses/javascript/), the full category
-- [Build and Deploy Your Portfolio](/docs/courses/javascript/and-deploy-your-portfolio/), a project that ends with a deploy
-- [Build a Multi-Page Website with HTML and CSS](/docs/courses/javascript/a-space-travel-website/), a site worth deploying
+- [All JavaScript courses](/docs/courses/javascript/), if you want to see what else is on offer once the site is live
+- [Build and Deploy Your Portfolio](/docs/courses/javascript/and-deploy-your-portfolio/), a project that ends with a deploy, if you need a site to put online first
+- [Build a Multi-Page Website with HTML and CSS](/docs/courses/javascript/a-space-travel-website/), a multi-page site worth putting on a URL
 - [Learn Git and GitHub](/docs/courses/javascript/git-and-github/), the Git the continuous deployment half assumes
 - [Intro to Vite](/docs/courses/javascript/vite/) and [Learn Next.js](/docs/courses/javascript/nextjs/), the scaffolding tools that appear in scrims 3 and 7
-- [Scrimba for beginners](/docs/for/beginners/), if you are just starting out
+- [Scrimba for beginners](/docs/for/beginners/), for the beginner audience this deploy step suits
 
 <FAQAccordion items={[
   { q: "Is Deploying with Netlify free on Scrimba?", a: "Yes. All ten scrims are free and the first is a SAMPLE lesson you can watch without an account. There are no Pro-gated lessons or projects inside it; only the certificate at the end requires Pro." },

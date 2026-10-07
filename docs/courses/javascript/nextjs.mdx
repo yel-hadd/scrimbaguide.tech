@@ -6,7 +6,7 @@ description: "Learn Next.js on Scrimba from inside: 8.5 hours, 123 scrims, two t
 keywords: [scrimba learn nextjs, learn nextjs scrimba review, free nextjs course, bob ziroll nextjs, rachel johnson scrimba, nextjs after react, scrimba nextjs review]
 reviewed: 2026-09
 last_update:
-  date: 2026-09-26
+  date: 2026-10-07
 toc_max_heading_level: 2
 ---
 
@@ -27,7 +27,7 @@ Scrimba's free Learn Next.js course runs about 8.5 hours: Bob Ziroll teaches the
 
 <Provenance subject="course" date={frontMatter.reviewed} />
 
-## Quick answer
+## A free PrintForge build for React developers, with six early scrims that no longer run
 
 Take it once you know React. PrintForge is a site where 3D printing enthusiasts browse models, and the second half drives search, sort and pagination from the URL. Plan to do six early challenges in a local editor, since those no longer run inside Scrimba.
 
@@ -44,15 +44,15 @@ Take it once you know React. PrintForge is a site where 3D printing enthusiasts 
   description="App Router routing, layouts, rendering strategies, and a SQLite data layer, built into one PrintForge project on Next 15."
 />
 
-## Is it worth your time?
+## A real `next dev` server in the scrim, a Bug Alert, and a teacher swap at section 3
 
 Yes, with two caveats. The format fits Next.js unusually well because a real `next dev` server runs inside the scrim: the Runner pane at the bottom prints `GET /3d-models?page=12 200 in 52ms` as you click through the preview, so you see server rendering happen instead of being told about it. The course is also built around one codebase. Bob says in the intro that he "decided to really hone in on one project and build it completely from scratch from beginning all the way to the end," and by the last scrim PrintForge has a `lib/` data layer, thirteen components, and a `printforge.db` file. That is closer to a real app than most free courses get.
 
-The first caveat is the "Bug Alert!" scrim, 48 seconds long, that appears second in the table of contents. Tom Chant explains that "a change to a service provided to Scrimba by a third party means that currently what Bob shows does not work in Scrims," and puts a red box around six scrims, from "A Minimal Next.js Setup" through "Running create-next-app." His advice is to watch them and "take the code offline and do the challenges in your local IDE." Once the course switches to Scrimba's Runner, at scrim nine, everything runs again. It is a real gap, and the course has not been re-recorded around it.
+The first caveat is the "Bug Alert!" scrim, 48 seconds long, that appears second in the table of contents. Tom Chant explains that "a change to a service provided to Scrimba by a third party means that currently what Bob shows does not work in Scrims," and puts a red box around six scrims, from "A Minimal Next.js Setup" through "Running create-next-app." His advice is to watch them and "take the code offline and do the challenges in your local IDE." Once the course switches to Scrimba's Runner, at scrim nine, everything runs again. It is a real gap, and the course has not been re-recorded around it. Two more limits: the section 2 description on Scrimba's own page is wrong, and the outro promises another section, so treat the current scope as version one.
 
-The second is continuity. Bob teaches sections 1 and 2, then Rachel Johnson opens section 3 with "if we haven't met yet, I'm Rachel, and I'll be your instructor for the rest of the course." She rebuilds PrintForge from a finished HTML mockup with slightly different folder names, so the project you finish is not the one you started. Her section is the best material in the course, but if you expected 8.5 hours of Bob, adjust.
+The second is continuity. Bob teaches sections 1 and 2, then Rachel Johnson opens section 3 with "if we haven't met yet, I'm Rachel, and I'll be your instructor for the rest of the course." She rebuilds PrintForge from a finished HTML mockup with slightly different folder names, so the project you finish is not the one you started. Her section is the best material in the course, but if you expected 8.5 hours of Bob, adjust. Also in its favour: the versions are recent (Next 15.2.4, React 19), and both teachers are clear about what they are skipping and why.
 
-## What you'll learn
+## 123 scrims in three sections, and why Scrimba says 127
 
 <CourseCurriculum
   modules={[
@@ -62,9 +62,9 @@ The second is continuity. Bob teaches sections 1 and 2, then Rachel Johnson open
   ]}
 />
 
-Lesson counts are the scrims I counted in each expanded section in September 2026, 123 in total plus a one minute "How to Utilize Your Certificate" scrim that sits outside the sections. Scrimba's own figures differ: the section headers show 16, 16, and 64 (they leave out intros, asides, recaps, and the bug alert), while the course listing and its structured data say 127 lessons. Where other pages on this site quote 127, that is Scrimba's number. Eighty of the 123 scrims carry the "Challenge with Instant Feedback" icon, meaning an AI checks your code when you submit.
+Lesson counts are the scrims in each expanded section, 123 in total plus a one minute "How to Utilize Your Certificate" scrim that sits outside the sections. Scrimba's own figures differ: the section headers show 16, 16, and 64 (they leave out intros, asides, recaps, and the bug alert), while the course listing and its structured data say 127 lessons. Where other pages on this site quote 127, that is Scrimba's number. Eighty of the 123 scrims carry the "Challenge with Instant Feedback" icon, meaning an AI checks your code when you submit.
 
-## Inside the course, section by section
+## PrintForge: from static pages to SQLite search, sort and pagination
 
 ### 1. Build a Next.js App (2 hrs, 27 scrims)
 
@@ -143,23 +143,19 @@ The rest of the section adds features one URL parameter at a time. Search reads 
 
 The final challenge is typical of her style. The brief is a markdown file in the project, she describes the target ("two arrows back takes us to the first page, two arrows forward takes us to the last page, and the middle buttons show the current page and its two closest neighbors"), and then: "It would be interesting to see how you go about it. Afterwards, I'll walk you through how I would do it." Fifty-four of the 71 scrims are AI-checked challenges. The outro recaps nine parts and ends with "in the next section, we will build on top of this foundation," so the course is still growing.
 
-## What a lesson feels like
+## Reading the Runner log: 80 AI-checked challenges, free end to end, 20 to 25 hours
 
 Bob's scrims run two to ten minutes and mix slides with live editing; Rachel's are shorter and almost all code, usually one function or one component per scrim. In both, a challenge is a comment block or a markdown file in the project plus a pause in the recording. You write the code, save, watch the preview and the Runner log, then resume to see the walkthrough. Eighty scrims have AI feedback on your submission.
 
-The preview pane is a real Next.js app served on port 3000 inside the scrim, which is the difference from a React course: you watch the Runner compile, see the request log, and in section 2 you run the production build yourself in a terminal. Every scrim has captions, a timestamped transcript under the settings menu, subtitles in ten languages, and playback speed. Both teachers point you outward when you get stuck. Bob suggests the Discord or "open up ChatGPT or your AI of choice and ask questions to it. It turns out it's very good at explaining these different concepts."
-
-## Free or Pro: exactly what is gated
+The preview pane is a real Next.js app served on port 3000 inside the scrim, which is the difference from a React course: you watch the Runner compile, see the request log, and in section 2 you run the production build yourself in a terminal. Captions, a transcript and ten subtitle languages come with every scrim. Both teachers point you outward when you get stuck. Bob suggests the Discord or "open up ChatGPT or your AI of choice and ask questions to it. It turns out it's very good at explaining these different concepts."
 
 The whole course is free: all three sections, every challenge, and the AI feedback on them. There are no "Solo Project (PRO)" items in this course's table of contents, which makes it unusual among Scrimba's flagship courses. Only the introduction carries the SAMPLE badge, but every other scrim opened for me without a wall, and the catalog lists the course under Free.
 
-Pro gates the certificate (the one minute "How to Utilize Your Certificate" scrim sits outside the sections), the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) this course belongs to, and the Pro-only Discord help channels. Bob is precise about the last one in the intro: "although these specific help channels are dedicated for Scrimba Pro members, there are many other community channels in the Scrimba Discord server that you could ask questions in." Scrimba's pricing page lists basic Discord access as free, so the server alone is not a reason to upgrade. See <AffiliateLink href="https://scrimba.com/our-pricing">current plans</AffiliateLink> if you want the path structure around the course.
+Pro gates the certificate (the one minute "How to Utilize Your Certificate" scrim sits outside the sections), the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/) this course belongs to, and the Pro-only Discord help channels. Bob is precise about the last one in the intro: "although these specific help channels are dedicated for Scrimba Pro members, there are many other community channels in the Scrimba Discord server that you could ask questions in." Scrimba's pricing page lists basic Discord access as free, so the server alone is not a reason to upgrade. The path structure around the course is on <AffiliateLink href="https://scrimba.com/our-pricing">Scrimba's plans page</AffiliateLink>.
 
-## How long it takes
+The 8.5 hours is video runtime. With 80 AI-checked challenges, a build-and-inspect exercise in section 2, and a 71 scrim data section where nearly every lesson asks you to type, plan for 20 to 25 hours: three to four weeks at an hour a day. Add two or three hours if you do the six broken scrims properly in a local editor, which means installing Node and running `create-next-app` yourself. Section 3 alone is 3.9 hours of video and took the largest share of my time because each scrim ends with a save-and-check loop.
 
-8.5 hours is video runtime. With 80 AI-checked challenges, a build-and-inspect exercise in section 2, and a 71 scrim data section where nearly every lesson asks you to type, plan for 20 to 25 hours: three to four weeks at an hour a day. Add two or three hours if you do the six broken scrims properly in a local editor, which means installing Node and running `create-next-app` yourself. Section 3 alone is 3.9 hours of video and took the largest share of my time because each scrim ends with a save-and-check loop.
-
-## Who it's for, and who should skip it
+## Take it after Learn React; skip it for server actions, auth or deployment
 
 It fits you if you have finished [Learn React](/docs/courses/react/learn-react/) or the equivalent and want to ship multi-page apps rendered on the server with real data. It is also a good fit if you learn best by extending one codebase rather than starting a new toy project every module; PrintForge is the only project in sections 1 and 3.
 
@@ -169,28 +165,18 @@ Skip it, for now, if you have not written React. Next.js is a framework on top o
   Start Learn Next.js for free
 </AffiliateLink>
 
-## Prerequisites
+## Before it: React, TypeScript and Tailwind. After it: SQL, Node or Express
 
 Working React: components, props, hooks, and `async`/`await`. Enough TypeScript to read a typed function signature; Bob keeps the types in a dedicated file so they do not become the focus. Enough Tailwind to recognize utility classes, or a willingness to ignore them. For section 3, basic SQL helps but is taught as you go: `WHERE`, `ORDER BY`, `LIMIT`, `OFFSET`, and `COUNT()` each get their own scrim. Nothing to install unless you choose to do the six early challenges locally.
 
-## Where it fits
+It is part of the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), not the [Frontend Developer Path](/docs/paths/frontend-developer-path/). In the fullstack path it is the Next.js module, sitting after the React, Node, Express, SQL, and TypeScript blocks, and it is the bridge from frontend React into fullstack work. Do [Learn React](/docs/courses/react/learn-react/) first. If section 3's SQL was the part you liked, [Learn SQL](/docs/courses/backend/sql/) goes deeper. If you would rather build the server yourself, [Learn Express.js](/docs/courses/javascript/expressjs/) and [Learn Node.js](/docs/courses/javascript/nodejs/) are the alternatives. For the type annotations you will see throughout, [Learn TypeScript](/docs/courses/typescript/learn-typescript/). If you are comparing this against courses outside Scrimba, [the best Next.js courses of 2026](/blog/best-nextjs-courses/) rounds up the other options worth a look.
 
-Learn Next.js is part of the [Fullstack Developer Path](/docs/paths/fullstack-developer-path/), not the [Frontend Developer Path](/docs/paths/frontend-developer-path/). In the fullstack path it is the Next.js module, sitting after the React, Node, Express, SQL, and TypeScript blocks, and it is the bridge from frontend React into fullstack work. Do [Learn React](/docs/courses/react/learn-react/) first. If section 3's SQL was the part you liked, [Learn SQL](/docs/courses/backend/sql/) goes deeper. If you would rather build the server yourself, [Learn Express.js](/docs/courses/javascript/expressjs/) and [Learn Node.js](/docs/courses/javascript/nodejs/) are the alternatives. For the type annotations you will see throughout, [Learn TypeScript](/docs/courses/typescript/learn-typescript/). If you are comparing this against courses outside Scrimba, [the best Next.js courses of 2026](/blog/best-nextjs-courses/) rounds up the other options worth a look.
-
-## Strengths and limits
-
-What it does well: it is free with no Pro-gated projects, a real Next.js dev server runs inside the scrims from the Runner onward, the versions are recent (Next 15.2.4, React 19), section 3 builds a data layer with search, sort, pagination, loading states, and URL validation, and both teachers are clear about what they are skipping and why.
-
-Where it is limited: six early scrims error inside Scrimba and have not been re-recorded, the teacher and the project structure change at section 3, the section 2 description on Scrimba's own page is wrong, and there is no coverage of server actions, auth, or deploying to a host. The outro promises another section, so treat the current scope as version one.
-
-## Related courses and comparisons
-
-- [Learn React](/docs/courses/react/learn-react/), the prerequisite
-- [Advanced React](/docs/courses/react/advanced-react/), deeper React patterns
-- [Learn Node.js](/docs/courses/javascript/nodejs/), backend fundamentals for fullstack work
-- [Learn Express.js](/docs/courses/javascript/expressjs/), a lighter server alternative
+- [Learn React](/docs/courses/react/learn-react/), because the first challenge already assumes you can write a component
+- [Advanced React](/docs/courses/react/advanced-react/), for the React patterns beneath the App Router
+- [Learn Node.js](/docs/courses/javascript/nodejs/), if you would rather build the server PrintForge hides
+- [Learn Express.js](/docs/courses/javascript/expressjs/), a lighter route to server code than a framework
 - [Learn SQL](/docs/courses/backend/sql/), for the queries section 3 introduces
-- [Next.js roadmap](/docs/learn-nextjs/), the free study plan around this course
+- [Next.js roadmap](/docs/learn-nextjs/), the study plan that outlines the local setup the six broken scrims cover
 
 <FAQAccordion items={[
   { q: "Is Learn Next.js free on Scrimba?", a: "Yes. All three sections, all 123 scrims, and the AI feedback on the 80 challenge scrims are free. There are no Pro-only solo projects in this course. Pro is needed only for the certificate, the career paths, and the Pro-only Discord channels." },
