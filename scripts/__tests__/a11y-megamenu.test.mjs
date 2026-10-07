@@ -60,10 +60,14 @@ test.before(async () => {
   if (process.env.BASE_URL) {
     await waitForServer(BASE_URL, SERVE_TIMEOUT);
   } else {
-    serverProcess = spawn('npx', ['docusaurus', 'serve', '--port', String(PORT), '--host', '127.0.0.1'], {
+    // The docusaurus binary directly, in its own process group: killing an `npx`
+    // wrapper leaves the real server running with our pipes open, and the
+    // test process then never exits (CI hung to its 60-minute timeout).
+    serverProcess = spawn(path.join(ROOT, 'node_modules', '.bin', 'docusaurus'), ['serve', '--port', String(PORT), '--host', '127.0.0.1'], {
       cwd: ROOT,
       stdio: 'pipe',
       env: { ...process.env },
+      detached: true,
     });
 
     let serverOutput = '';
@@ -97,7 +101,10 @@ test.before(async () => {
 test.after(async () => {
   if (browser) await browser.close();
   if (serverProcess) {
-    serverProcess.kill();
+    try { process.kill(-serverProcess.pid, 'SIGTERM'); } catch { serverProcess.kill(); }
+    serverProcess.stdout?.destroy();
+    serverProcess.stderr?.destroy();
+    serverProcess.unref();
     await new Promise((r) => setTimeout(r, 500));
   }
 });
