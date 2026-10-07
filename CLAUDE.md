@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-scrimbaguide.tech is a first-hand review site for Scrimba courses and paths (Docusaurus 3, React 19, TypeScript), deployed to GitHub Pages on push to `main`. The docs and blog are the product; revenue is Scrimba affiliate clicks.
+scrimbaguide.tech is a first-hand review site for Scrimba courses and paths (Docusaurus 3, React 19, TypeScript), served by Cloudflare Workers static assets (`wrangler.jsonc`, `build/` only, no Worker script) and deployed on push to `main`; GitHub Pages still receives the same build as the rollback origin. The docs and blog are the product; revenue is Scrimba affiliate clicks.
 
 ## Commands
 
@@ -37,7 +37,7 @@ Everything else is in `package.json` and the `Makefile`. Local social-card build
 
 - `trailingSlash: true`. Every canonical, og:url, JSON-LD URL, internal link and llms.txt entry ends in `/`.
 - Sitemap exclusions go in `SITEMAP_EXCLUDED_PATHS` / `SITEMAP_EXCLUDED_DOC_ALIASES`, priority in `sitemapPriority()` (both in `docusaurus.config.ts`).
-- Consolidate with a redirect (inline in the config, or `data/course-redirects.json` for courses) plus a `draft: true` stub. Pages are merged, never deleted; URLs and slugs never change without a redirect.
+- Consolidate with a redirect (inline in the config, or `data/course-redirects.json` for courses) plus a `draft: true` stub. Pages are merged, never deleted; URLs and slugs never change without a redirect. `npm run build` turns every redirect stub into a real 301 in `build/_redirects` (`scripts/cloudflare/build-redirects.mjs`, 2,000-line Cloudflare limit) and 301s every slashless URL to its `/` form; response headers live in `static/_headers`.
 - Blog JSON-LD components (`ReviewSchema`, `HowToSchema`, `ItemListSchema`) sit below `{/* truncate */}`, or they duplicate onto every list page.
 - Breadcrumbs: docs get the stock Docusaurus trail and BreadcrumbList; blog posts get `BlogPostBreadcrumbs` from the swizzled `BlogPostPage`. Never add a second trail or a `breadcrumb` property that restates it (`check:metadata` fails on more than one).
 - `<FAQAccordion>` emits the page's only FAQPage schema. A page that also uses `DocFaqSchema` passes `emitSchema={false}`.
