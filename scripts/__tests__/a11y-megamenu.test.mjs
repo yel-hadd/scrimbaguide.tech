@@ -148,6 +148,25 @@ for (const theme of ['light', 'dark']) {
     await assertNoAxeViolations(page, `Resources menu open (${theme})`);
   });
 
+  test(`5b. hover then click keeps the menu open — ${theme}`, async (t) => {
+    const page = await pageInTheme(t, theme);
+    await page.goto(BASE_URL + '/', { waitUntil: 'networkidle' });
+    const toggle = page.locator('.mega-menu__toggle:has-text("Resources")');
+    // A person hovers, React re-renders, then they click. Before the fix the
+    // click toggled the hover-opened panel shut.
+    await toggle.hover();
+    await page.waitForSelector('.mega-menu--open', { timeout: 5000 });
+    await page.waitForTimeout(300);
+    await toggle.click();
+    await page.waitForTimeout(300);
+    assert.ok(await isMegaMenuOpen(page, 'Resources'), 'Hover then click should leave the menu open');
+    // Well after the hover, a click still closes it.
+    await page.waitForTimeout(1000);
+    await toggle.click();
+    await page.waitForTimeout(300);
+    assert.ok(!(await isMegaMenuOpen(page, 'Resources')), 'A later click should close the menu');
+  });
+
   test(`5. click outside closes menu — ${theme}`, async (t) => {
     const page = await pageInTheme(t, theme);
     await page.goto(BASE_URL + '/', { waitUntil: 'networkidle' });
