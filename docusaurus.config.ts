@@ -275,6 +275,8 @@ const config: Config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
+          // The docs root has no page of its own; Google found /docs/ as a 404.
+          { from: '/docs', to: '/docs/intro/' },
           {
             from: '/blog/scrimba-vs-odin-project',
             to: '/docs/comparisons/scrimba-vs-odin-project',

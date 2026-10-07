@@ -4,6 +4,10 @@ name: Quality
 # built-metadata invariants and Lighthouse CI on the static build. deploy.yml
 # is separate and untouched; nothing here deploys. The optional pixel diff
 # against main is visual-diff.yml.
+#
+# One job builds the site; the browser checks then run in parallel on that
+# same build (a11y, visual harness, Lighthouse mobile and desktop), so the
+# wall clock is the build plus the slowest check, not the sum.
 
 on:
   pull_request:
@@ -22,9 +26,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  quality:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
 
@@ -64,18 +68,70 @@ jobs:
         if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: npm run test:search
 
-      - name: Install Playwright Chromium
-        id: playwright
+      - name: Built metadata invariants
         if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: node scripts/check-built-metadata.mjs
+
+      - name: Upload build
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: build
+          path: build
+          include-hidden-files: true
+          retention-days: 3
+
+  a11y:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: build
+          path: build
+
+      - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
       - name: Accessibility tests
-        if: ${{ !cancelled() && steps.playwright.outcome == 'success' }}
+        timeout-minutes: 10
         run: npm run test:a11y
 
+  visual:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: build
+          path: build
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
       - name: Serve build on :3100
-        id: serve
-        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: |
           nohup npx docusaurus serve --port 3100 --host 127.0.0.1 --no-open > serve.log 2>&1 &
           for i in $(seq 1 60); do
@@ -90,32 +146,66 @@ jobs:
           exit 1
 
       - name: Visual and interaction harness
-        if: ${{ !cancelled() && steps.serve.outcome == 'success' && steps.playwright.outcome == 'success' }}
         run: npm run test:visual
-
-      - name: Built metadata invariants
-        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
-        run: node scripts/check-built-metadata.mjs
-
-      # LHCI serves ./build itself (staticDistDir), independent of :3100.
-      - name: Lighthouse CI (mobile)
-        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
-        run: npm run lhci
-
-      - name: Lighthouse CI (desktop)
-        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
-        run: npm run lhci
-        env:
-          LHCI_FORM_FACTOR: desktop
 
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: quality-results
+          name: visual-results
           path: |
-            .lighthouseci/
             visual-results/
             serve.log
           if-no-files-found: ignore
           retention-days: 14
+
+  # LHCI serves ./build itself (staticDistDir).
+  lighthouse:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        form_factor: [mobile, desktop]
+    name: lighthouse (${{ matrix.form_factor }})
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: build
+          path: build
+
+      - name: Lighthouse CI (${{ matrix.form_factor }})
+        run: npm run lhci
+        env:
+          LHCI_FORM_FACTOR: ${{ matrix.form_factor }}
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-${{ matrix.form_factor }}
+          path: .lighthouseci/
+          if-no-files-found: ignore
+          retention-days: 14
+
+  # One status that summarises the run.
+  quality:
+    if: always()
+    needs: [build, a11y, visual, lighthouse]
+    runs-on: ubuntu-latest
+    steps:
+      - name: All checks passed
+        run: |
+          echo 'build=${{ needs.build.result }} a11y=${{ needs.a11y.result }} visual=${{ needs.visual.result }} lighthouse=${{ needs.lighthouse.result }}'
+          [ '${{ needs.build.result }}' = success ] && [ '${{ needs.a11y.result }}' = success ] && [ '${{ needs.visual.result }}' = success ] && [ '${{ needs.lighthouse.result }}' = success ]

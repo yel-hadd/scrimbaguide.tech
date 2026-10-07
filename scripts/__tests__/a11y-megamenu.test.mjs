@@ -60,10 +60,14 @@ test.before(async () => {
   if (process.env.BASE_URL) {
     await waitForServer(BASE_URL, SERVE_TIMEOUT);
   } else {
-    serverProcess = spawn('npx', ['docusaurus', 'serve', '--port', String(PORT), '--host', '127.0.0.1'], {
+    // The docusaurus binary directly, in its own process group: killing an `npx`
+    // wrapper leaves the real server running with our pipes open, and the
+    // test process then never exits (CI hung to its 60-minute timeout).
+    serverProcess = spawn(path.join(ROOT, 'node_modules', '.bin', 'docusaurus'), ['serve', '--port', String(PORT), '--host', '127.0.0.1'], {
       cwd: ROOT,
       stdio: 'pipe',
       env: { ...process.env },
+      detached: true,
     });
 
     let serverOutput = '';
@@ -97,7 +101,10 @@ test.before(async () => {
 test.after(async () => {
   if (browser) await browser.close();
   if (serverProcess) {
-    serverProcess.kill();
+    try { process.kill(-serverProcess.pid, 'SIGTERM'); } catch { serverProcess.kill(); }
+    serverProcess.stdout?.destroy();
+    serverProcess.stderr?.destroy();
+    serverProcess.unref();
     await new Promise((r) => setTimeout(r, 500));
   }
 });
@@ -114,7 +121,8 @@ async function pageInTheme(t, colorScheme, viewport = { width: 1280, height: 800
 async function openMegaMenu(page, label) {
   const toggle = page.locator(`.mega-menu__toggle:has-text("${label}")`);
   await toggle.click();
-  await page.waitForSelector('.mega-menu--open', { timeout: 2000 });
+  // 5 s, not 2: the CI runner is slower than a laptop (flaked 2026-10-07).
+  await page.waitForSelector('.mega-menu--open', { timeout: 5000 });
 }
 
 async function isMegaMenuOpen(page, label) {
@@ -287,7 +295,8 @@ for (const theme of ['light', 'dark']) {
     
     const toggle = page.locator('.mega-menu__toggle').first();
     await toggle.click();
-    await page.waitForTimeout(200);
+    // Wait for the open state instead of a fixed 200 ms (flaked on CI).
+    await page.waitForSelector('.mega-menu--open', { timeout: 5000 }).catch(() => {});
     
     const isOpen = await isMegaMenuOpen(page, await toggle.textContent());
     assert.ok(isOpen, 'Menu should open at 1000px');

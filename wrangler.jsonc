@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  // Static site only: no Worker script, Cloudflare serves build/ directly.
+  // build/_redirects comes from scripts/cloudflare/build-redirects.mjs (run by `npm run build`);
+  // build/_headers is copied from static/_headers.
+  "name": "scrimbaguide",
+  "compatibility_date": "2026-10-07",
+  "assets": {
+    "directory": "./build",
+    // Folder index files are served at /route/; matches trailingSlash: true.
+    "html_handling": "auto-trailing-slash",
+    // Serve build/404.html with a real 404 status.
+    "not_found_handling": "404-page"
+  },
+  // A zone route on the proxied apex: switching hosts needs no DNS change, and
+  // deleting the route falls straight back to the GitHub Pages origin.
+  // www is redirected to the apex by a Cloudflare Redirect Rule, not served here.
+  "routes": [{ "pattern": "scrimbaguide.tech/*", "zone_name": "scrimbaguide.tech" }],
+  // No second public copy of the site on *.workers.dev or preview URLs.
+  "workers_dev": false,
+  "preview_urls": false
+}
