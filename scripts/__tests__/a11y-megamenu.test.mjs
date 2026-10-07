@@ -121,7 +121,8 @@ async function pageInTheme(t, colorScheme, viewport = { width: 1280, height: 800
 async function openMegaMenu(page, label) {
   const toggle = page.locator(`.mega-menu__toggle:has-text("${label}")`);
   await toggle.click();
-  await page.waitForSelector('.mega-menu--open', { timeout: 2000 });
+  // 5 s, not 2: the CI runner is slower than a laptop (flaked 2026-10-07).
+  await page.waitForSelector('.mega-menu--open', { timeout: 5000 });
 }
 
 async function isMegaMenuOpen(page, label) {
@@ -294,7 +295,8 @@ for (const theme of ['light', 'dark']) {
     
     const toggle = page.locator('.mega-menu__toggle').first();
     await toggle.click();
-    await page.waitForTimeout(200);
+    // Wait for the open state instead of a fixed 200 ms (flaked on CI).
+    await page.waitForSelector('.mega-menu--open', { timeout: 5000 }).catch(() => {});
     
     const isOpen = await isMegaMenuOpen(page, await toggle.textContent());
     assert.ok(isOpen, 'Menu should open at 1000px');
