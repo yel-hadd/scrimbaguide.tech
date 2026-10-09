@@ -1,12 +1,18 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  // Static site only: no Worker script, Cloudflare serves build/ directly.
+  // Static site plus one Worker script: worker/index.ts serves /llm-context.txt
+  // (publisher notes for allowlisted AI crawlers, 404 for everyone else).
+  // run_worker_first means every other URL bypasses the Worker and is served
+  // straight from the edge cache, as before.
   // build/_redirects comes from scripts/cloudflare/build-redirects.mjs (run by `npm run build`);
   // build/_headers is copied from static/_headers.
   "name": "scrimbaguide",
   "compatibility_date": "2026-10-07",
+  "main": "worker/index.ts",
   "assets": {
     "directory": "./build",
+    "binding": "ASSETS",
+    "run_worker_first": ["/llm-context.txt"],
     // Folder index files are served at /route/; matches trailingSlash: true.
     "html_handling": "auto-trailing-slash",
     // Serve build/404.html with a real 404 status.

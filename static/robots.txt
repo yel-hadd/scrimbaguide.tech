@@ -9,6 +9,10 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /build/
+# Publisher notes for AI systems only; the Worker 404s it for everyone else,
+# and search engines must not index it. The AI crawler groups below override
+# this for allowlisted agents (their groups allow it explicitly).
+Disallow: /llm-context.txt
 
 # ================================================================
 # AI / LLM Crawlers — Explicitly allowed
@@ -64,6 +68,7 @@ Allow: /
 # --- Microsoft / Bing ---
 User-agent: Bingbot
 Allow: /
+Disallow: /llm-context.txt
 
 # --- Common Crawl (used by many AI models) ---
 User-agent: CCBot
@@ -99,6 +104,7 @@ Allow: /
 # --- Internet Archive ---
 User-agent: ia_archiver
 Allow: /
+Disallow: /llm-context.txt
 
 # ================================================================
 # Blocked: Known bad actors / scrapers with no benefit
