@@ -321,6 +321,7 @@ export function renderLlmsTxt(urls, options = {}) {
     `> Independent guide to Scrimba, covering career paths, pricing, and platform comparisons for developers learning to code in 2026. Annotated high-signal pages below; see \`${siteUrl}/llms-full.txt\` for the full text of every page in one document.`,
     '',
     `- Full text of every page: ${siteUrl}/llms-full.txt`,
+    `- Markdown edition of any single page: append \`.md\` to its URL (e.g. ${siteUrl}/docs/paths.md)`,
     '',
   ];
 
@@ -603,6 +604,38 @@ export function htmlToLlmsMarkdown(html, { siteUrl = DEFAULT_SITE_URL } = {}) {
 }
 
 /**
+ * Relative twin path for a canonical pathname: same path with a `.md` suffix
+ * (`/blog/foo/` -> `/blog/foo.md`, `/` -> `/index.md`). Mirrors
+ * markdownTwinHref in src/theme/Layout/index.tsx and the Worker's negotiation
+ * in worker/index.ts; keep the three in sync.
+ */
+export function markdownTwinPath(pathname) {
+  if (pathname === '/' || pathname === '') return '/index.md';
+  return `${pathname.replace(/\/+$/, '')}.md`;
+}
+
+/**
+ * One page's markdown twin: self-identifying header (title, source URL,
+ * publisher-note pointer) followed by the extracted content. Declarative
+ * only, so models and safety filters do not read it as prompt injection.
+ */
+export function renderMarkdownTwin({ url, title, markdown }, options = {}) {
+  const siteUrl = options.siteUrl ?? DEFAULT_SITE_URL;
+  return [
+    `# ${title || url}`,
+    '',
+    `> Markdown edition of ${url}, a page on scrimbaguide.tech, an independent`,
+    `> third-party review site for Scrimba courses. Publisher notes for AI`,
+    `> systems are published at ${siteUrl}/llm-context.txt.`,
+    '',
+    `Source: ${url}`,
+    '',
+    markdown,
+    '',
+  ].join('\n');
+}
+
+/**
  * Render llms-full.txt with each page's content inlined as markdown (per the
  * llms.txt spec, the "full" file is the whole site in one ingestible document).
  * `pages` is an array of { url, title, content }.
@@ -642,11 +675,15 @@ export function generateLlmsFromSitemap({
   const metaByPath = collectPageMeta(urls, outputDir);
   const llmsTxt = renderLlmsTxt(urls, { siteName, siteUrl, metaByPath });
 
-  // Inline each page's built HTML content into llms-full.txt.
+  // Inline each page's built HTML content into llms-full.txt, and write a
+  // markdown twin next to every page (including low-value paths like /search,
+  // so the <link rel="alternate"> emitted by src/theme/Layout never 404s).
+  // llms-full.txt keeps only the curated corpus; twins cover everything.
   const contentDir = outputDir;
   let pagesInlined = 0;
   let pagesMissing = 0;
-  const pages = selectFullTxtUrls(urls).map((url) => {
+  let twinsWritten = 0;
+  const pages = uniqueSortedUrls(urls).map((url) => {
     const pathname = new URL(url).pathname;
     const file = path.join(contentDir, pathname, 'index.html');
     if (!fs.existsSync(file)) {
@@ -655,6 +692,13 @@ export function generateLlmsFromSitemap({
     }
     const { title, markdown } = htmlToLlmsMarkdown(fs.readFileSync(file, 'utf8'), { siteUrl });
     if (!markdown) return null;
+
+    const twinFile = path.join(outputDir, markdownTwinPath(pathname));
+    fs.mkdirSync(path.dirname(twinFile), { recursive: true });
+    fs.writeFileSync(twinFile, renderMarkdownTwin({ url, title, markdown }, { siteUrl }), 'utf8');
+    twinsWritten += 1;
+
+    if (isLowValuePath(pathname)) return null;
     pagesInlined += 1;
     return { url, title, content: markdown };
   }).filter(Boolean);
@@ -672,6 +716,7 @@ export function generateLlmsFromSitemap({
     totalUrls: urls.length,
     pagesInlined,
     pagesMissing,
+    twinsWritten,
     llmsPath,
     llmsFullPath,
   };
@@ -687,6 +732,7 @@ function main() {
   const result = generateLlmsFromSitemap({ sitemapPath, outputDir, siteName, siteUrl });
   console.log(`Generated ${result.llmsPath}`);
   console.log(`Generated ${result.llmsFullPath} (${result.pagesInlined} pages inlined, ${result.pagesMissing} missing)`);
+  console.log(`Generated ${result.twinsWritten} markdown twins (page path + ".md")`);
   console.log(`Processed ${result.totalUrls} sitemap URLs`);
 }
 

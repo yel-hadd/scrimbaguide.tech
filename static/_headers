@@ -17,3 +17,9 @@
 
 /blog/atom.xml
   X-Robots-Tag: noindex
+
+# Markdown twins (page path + .md) are machine-facing alternates of the HTML
+# canonical pages; the Worker adds the same tag when serving them via
+# Accept: text/markdown negotiation.
+/*.md
+  X-Robots-Tag: noindex, nofollow

@@ -1,9 +1,11 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Static site plus one Worker script: worker/index.ts serves /llm-context.txt
-  // (publisher notes for allowlisted AI crawlers, 404 for everyone else).
-  // run_worker_first means every other URL bypasses the Worker and is served
-  // straight from the edge cache, as before.
+  // (publisher notes for allowlisted AI crawlers, 404 for everyone else) and
+  // negotiates markdown twins on `Accept: text/markdown` for HTML routes.
+  // run_worker_first lists only /llm-context.txt and the HTML route families:
+  // CSS, JS, fonts, images and the .md twins themselves bypass the Worker and
+  // are served straight from the edge cache, as before.
   // build/_redirects comes from scripts/cloudflare/build-redirects.mjs (run by `npm run build`);
   // build/_headers is copied from static/_headers.
   "name": "scrimbaguide",
@@ -12,7 +14,27 @@
   "assets": {
     "directory": "./build",
     "binding": "ASSETS",
-    "run_worker_first": ["/llm-context.txt"],
+    "run_worker_first": [
+      "/llm-context.txt",
+      "/",
+      "/index.html",
+      "/about",
+      "/blog",
+      "/blog/*",
+      "/contact",
+      "/docs",
+      "/docs/*",
+      "/downloads",
+      "/downloads/*",
+      "/legal",
+      "/legal/*",
+      "/roadmaps",
+      "/roadmaps/*",
+      "/search",
+      "/search/*",
+      "/tools",
+      "/tools/*",
+    ],
     // Folder index files are served at /route/; matches trailingSlash: true.
     "html_handling": "auto-trailing-slash",
     // Serve build/404.html with a real 404 status.

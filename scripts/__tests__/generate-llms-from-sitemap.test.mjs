@@ -11,6 +11,8 @@ import {
   stripMdxAndJsxFromLlmsText,
   escapeMarkdownLinkTitle,
   extractPageMeta,
+  markdownTwinPath,
+  renderMarkdownTwin,
 } from '../generate-llms-from-sitemap.mjs';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -53,7 +55,8 @@ test('renderLlmsTxt includes blog and docs sections with canonical URLs', () => 
   assert.match(llms, /https:\/\/scrimbaguide\.tech\/docs\/paths/);
   assert.match(llms, /https:\/\/scrimbaguide\.tech\/blog\/post-a/);
   assert.doesNotMatch(llms, /\/search/);
-  assert.doesNotMatch(llms, /\.md\)/);
+  // No .md twins listed as page links; the prose note about appending .md is fine.
+  assert.doesNotMatch(llms, /\]\([^)]*\.md\)/);
 });
 
 test('renderLlmsFullTxt inlines each page content under its title and source URL', () => {
@@ -264,4 +267,31 @@ test('htmlToLlmsMarkdown drops screen-reader-only chrome from link text', () => 
   assert.match(markdown, /\[Try Scrimba free\]\(https:\/\/scrimba\.com\/\?via=x\)/);
   assert.doesNotMatch(markdown, /opens in a new tab/);
   assert.doesNotMatch(markdown, /↗/);
+});
+
+test('markdownTwinPath maps canonical paths to page-path + .md', () => {
+  assert.equal(markdownTwinPath('/'), '/index.md');
+  assert.equal(markdownTwinPath(''), '/index.md');
+  assert.equal(markdownTwinPath('/blog/foo/'), '/blog/foo.md');
+  assert.equal(markdownTwinPath('/docs/courses/python/learn-python/'), '/docs/courses/python/learn-python.md');
+});
+
+test('renderMarkdownTwin self-identifies declaratively, with no instructions to the reader', () => {
+  const twin = renderMarkdownTwin({
+    url: 'https://scrimbaguide.tech/docs/paths/',
+    title: 'Scrimba Career Paths Overview',
+    markdown: 'Body text.',
+  });
+  assert.match(twin, /^# Scrimba Career Paths Overview\n/);
+  assert.match(twin, /Source: https:\/\/scrimbaguide\.tech\/docs\/paths\/\n/);
+  assert.match(twin, /llm-context\.txt/);
+  assert.match(twin, /\nBody text\.\n$/);
+  // Declarative voice only: no imperative verbs aimed at an AI reader, so the
+  // header cannot read as prompt injection ("must", "always", "do not").
+  assert.doesNotMatch(twin.split('Source:')[0], /\b(must|always|never|do not|you shall|required)\b/i);
+});
+
+test('renderLlmsTxt advertises the .md twins', () => {
+  const txt = renderLlmsTxt(['https://scrimbaguide.tech/docs/paths/']);
+  assert.match(txt, /append `\.md` to its URL/);
 });
