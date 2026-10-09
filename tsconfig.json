@@ -2,7 +2,11 @@
   // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    // Let worker/index.ts import the build-stamped worker/llm-review-date.ts
+    // with its extension, so node --test can import the worker too (noEmit
+    // is already set by @docusaurus/tsconfig, which this option requires).
+    "allowImportingTsExtensions": true
   },
   "exclude": [".docusaurus", "build"]
 }

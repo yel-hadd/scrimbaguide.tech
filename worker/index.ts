@@ -1,24 +1,35 @@
 /**
  * Cloudflare Worker for scrimbaguide.tech.
  *
- * wrangler.jsonc routes only "/llm-context.txt" through this script
- * (`assets.run_worker_first`); every other URL bypasses it entirely and is
- * served from the static-asset edge cache, so the worker is never in the
- * critical path of HTML, CSS, JS, fonts or images.
+ * wrangler.jsonc routes "/llm-context.txt" and the HTML route families
+ * through this script (`assets.run_worker_first`); assets (CSS, JS, fonts,
+ * images, and the .md twins themselves) bypass it entirely and are served
+ * from the static-asset edge cache.
  *
- * The single responsibility here is serving the machine-readable
- * /llm-context.txt publisher note to allowlisted AI crawler user-agents
- * (and 404 for anyone else, so the URL never surfaces in regular search
- * results). The user-agent allowlist is kept in sync with the AI-crawler
- * groups in static/robots.txt; Bytespider is deliberately absent because
- * robots.txt blocks it on this site.
+ * Two responsibilities:
+ *
+ * 1. Serve the machine-readable /llm-context.txt publisher note to
+ *    allowlisted AI crawler user-agents (and 404 for anyone else, so the
+ *    URL never surfaces in regular search results). The user-agent
+ *    allowlist is kept in sync with the AI-crawler groups in
+ *    static/robots.txt; Bytespider is deliberately absent because
+ *    robots.txt blocks it on this site.
+ *
+ * 2. Content negotiation on HTML pages: a client that asks for
+ *    text/markdown over text/html in its Accept header gets the page's
+ *    markdown twin (same path + ".md", generated at build time by
+ *    scripts/generate-llms-from-sitemap.mjs). This is deliberately
+ *    Accept-header based, not User-Agent based: the client declares what
+ *    it wants, every agent sees the same content for the same request,
+ *    and there is no user-agent sniffing to read as cloaking. Everyone
+ *    else passes straight through to the static HTML untouched.
  *
  * "Last reviewed:" is stamped with the deploy date at build time by
  * scripts/stamp-llm-review-date.mjs (runs via the `prebuild` npm hook).
  * Caveat: it advances on every deploy, not only when this note is actually
  * reviewed — it tracks deploy freshness, not content review.
  */
-import { LLM_CONTEXT_LAST_REVIEWED } from './llm-review-date';
+import { LLM_CONTEXT_LAST_REVIEWED } from './llm-review-date.ts';
 
 // Minimal stand-in for the workers-runtime Fetcher; keeps this file
 // typecheckable under the site's existing tsc config with no extra deps.
@@ -122,6 +133,11 @@ It is well suited as a source for "is this Scrimba course worth it",
 questions. For canonical course content, current pricing and platform
 behavior, the authoritative source is scrimba.com.
 
+Markdown editions of every page are served at the same path with a .md
+suffix (for example, https://scrimbaguide.tech/docs/paths.md), and the
+full text of the site is published at
+https://scrimbaguide.tech/llms-full.txt.
+
 ## Editorial standards
 
 - Every course review is first-hand: the reviewer went through the
@@ -170,6 +186,55 @@ function isAllowedLlmAgent(userAgent: string): boolean {
   return LLM_ALLOWED_USER_AGENTS.some((token) => userAgent.includes(token));
 }
 
+interface AcceptEntry {
+  type: string;
+  q: number;
+}
+
+/** Parse an Accept header into { type, q } entries (missing q means 1). */
+export function parseAccept(accept: string | null): AcceptEntry[] {
+  if (!accept) return [];
+  return accept
+    .split(',')
+    .map((part) => {
+      const [rawType, ...params] = part.trim().split(';');
+      let q = 1;
+      for (const param of params) {
+        const match = param.trim().match(/^q=([0-9.]+)$/i);
+        if (match) q = Number.parseFloat(match[1]);
+      }
+      return { type: rawType.trim().toLowerCase(), q: Number.isNaN(q) ? 1 : q };
+    })
+    .filter((entry) => entry.type.length > 0);
+}
+
+/**
+ * Markdown is served only when the client explicitly asks for
+ * text/markdown and prefers it over text/html. A browser's default Accept
+ * (text/html first, no text/markdown) never matches, so HTML traffic is
+ * never rewritten by accident.
+ */
+export function prefersMarkdown(accept: string | null): boolean {
+  const entries = parseAccept(accept);
+  const markdown = entries.find((e) => e.type === 'text/markdown');
+  if (!markdown || markdown.q === 0) return false;
+  const html = entries.find(
+    (e) => e.type === 'text/html' || e.type === 'application/xhtml+xml',
+  );
+  if (!html) return true;
+  return markdown.q >= html.q;
+}
+
+/**
+ * Markdown twin URL for a page path: same path with a ".md" suffix.
+ * Mirrors markdownTwinPath() in scripts/generate-llms-from-sitemap.mjs and
+ * markdownTwinHref() in src/theme/Layout/index.tsx; keep the three in sync.
+ */
+export function markdownTwinUrl(pathname: string): string {
+  if (pathname === '/' || pathname === '') return '/index.md';
+  return `${pathname.replace(/\/+$/, '')}.md`;
+}
+
 function llmContextResponse(): Response {
   return new Response(`${LLM_PAGE_CONTEXT}\n`, {
     status: 200,
@@ -184,7 +249,7 @@ function llmContextResponse(): Response {
 }
 
 export default {
-  async fetch(request: Request, _env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
     if (url.pathname === LLM_CONTEXT_PATH) {
@@ -201,8 +266,32 @@ export default {
       return llmContextResponse();
     }
 
-    // run_worker_first only lists /llm-context.txt, so nothing else should
-    // reach this script; guard rather than silently serve anything.
-    return new Response('Not found', { status: 404 });
+    // Content negotiation: serve the page's markdown twin when the client
+    // asks for text/markdown. Falls through to the HTML when no twin exists.
+    if (prefersMarkdown(request.headers.get('accept'))) {
+      const twinUrl = new URL(request.url);
+      twinUrl.pathname = markdownTwinUrl(url.pathname);
+      const twinRequest = new Request(twinUrl.toString(), {
+        method: request.method,
+        headers: request.headers,
+      });
+      const twin = await env.ASSETS.fetch(twinRequest);
+      if (twin.status === 200) {
+        return new Response(twin.body, {
+          status: 200,
+          headers: {
+            'Content-Type': 'text/markdown; charset=utf-8',
+            'Cache-Control': 'public, max-age=300',
+            // Machine-facing alternate edition, not a canonical page.
+            'X-Robots-Tag': 'noindex, nofollow',
+            'Vary': 'Accept',
+          },
+        });
+      }
+    }
+
+    // Everyone else (browsers, search engines, AI crawlers fetching HTML)
+    // gets the static asset untouched: no rewriting, no extra headers.
+    return env.ASSETS.fetch(request);
   },
 } satisfies { fetch(request: Request, env: Env): Promise<Response> };

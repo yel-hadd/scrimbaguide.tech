@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-scrimbaguide.tech is a first-hand review site for Scrimba courses and paths (Docusaurus 3, React 19, TypeScript), served by Cloudflare Workers static assets (`wrangler.jsonc`) plus one Worker script (`worker/index.ts`) that serves `/llm-context.txt` publisher notes to allowlisted AI crawlers (404 for everyone else; `run_worker_first` keeps every other URL off the Worker), and deployed on push to `main`; GitHub Pages still receives the same build as the rollback origin. The docs and blog are the product; revenue is Scrimba affiliate clicks.
+scrimbaguide.tech is a first-hand review site for Scrimba courses and paths (Docusaurus 3, React 19, TypeScript), served by Cloudflare Workers static assets (`wrangler.jsonc`) plus one Worker script (`worker/index.ts`) that serves `/llm-context.txt` publisher notes to allowlisted AI crawlers (404 for everyone else) and serves a page's markdown twin (same path + `.md`, written by `generate-llms-from-sitemap.mjs`) on `Accept: text/markdown` (never per User-Agent; that is cloaking). `run_worker_first` lists only `/llm-context.txt` and the HTML route families; assets, including the `.md` twins themselves, bypass the Worker, and deployed on push to `main`; GitHub Pages still receives the same build as the rollback origin. The docs and blog are the product; revenue is Scrimba affiliate clicks.
 
 ## Commands
 
