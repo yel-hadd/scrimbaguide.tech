@@ -248,6 +248,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Best Python Courses for Beginners', href: '/docs/courses/python/best-python-courses-for-beginners', type: 'doc' },
     { title: 'Python Course Catalog', href: '/docs/courses/python/', type: 'doc' },
     { title: 'For Beginners', href: '/docs/for/beginners', type: 'doc' },
+    { title: 'Which Python Version to Install', href: '/blog/what-version-of-python-to-install', type: 'blog' },
   ],
   '/docs/courses/python/best-python-courses-for-beginners': [
     { title: 'Learn Python', href: '/docs/courses/python/learn-python', type: 'doc' },
@@ -525,6 +526,7 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: 'Python Courses (Scrimba)', href: '/docs/courses/python/', type: 'doc' },
     { title: 'Scrimba vs Udemy', href: '/docs/comparisons/scrimba-vs-udemy', type: 'comparison' },
     { title: 'Backend Developer Path', href: '/docs/paths/backend-developer-path', type: 'doc' },
+    { title: 'Which Python Version to Install', href: '/blog/what-version-of-python-to-install', type: 'blog' },
   ],
   '/blog/best-udemy-react-courses': [
     { title: 'React Courses (Scrimba)', href: '/docs/courses/react/', type: 'doc' },
@@ -665,6 +667,14 @@ export const relatedGuidesMap: Record<string, RelatedGuide[]> = {
     { title: '5 Portfolio Projects That Get You Hired', href: '/blog/portfolio-projects-get-hired-2026', type: 'blog' },
     { title: 'Escaping Tutorial Hell', href: '/docs/how-it-works/tutorial-hell', type: 'doc' },
     { title: 'Which Developer Specialization Has the Best Job Market', href: '/blog/developer-specialization-job-market-2026', type: 'blog' },
+  ],
+
+  // --- 2026-10-09 ---
+  '/blog/what-version-of-python-to-install': [
+    { title: 'Learn Python (course)', href: '/docs/courses/python/learn-python/', type: 'doc' },
+    { title: 'Best Python Courses for Beginners', href: '/docs/courses/python/best-python-courses-for-beginners/', type: 'doc' },
+    { title: 'Best Udemy Python Courses', href: '/blog/best-udemy-python-courses/', type: 'blog' },
+    { title: 'Python Courses (Scrimba)', href: '/docs/courses/python/', type: 'doc' },
   ],
 
   // --- 2026-09-28: React updates hub ---
