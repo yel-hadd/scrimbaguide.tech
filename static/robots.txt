@@ -9,6 +9,10 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /build/
+# Publisher notes for AI systems only; the Worker 404s it for everyone else,
+# and search engines must not index it. The AI crawler groups below override
+# this for allowlisted agents (their groups allow it explicitly).
+Disallow: /llm-context.txt
 
 # ================================================================
 # AI / LLM Crawlers — Explicitly allowed
@@ -64,6 +68,7 @@ Allow: /
 # --- Microsoft / Bing ---
 User-agent: Bingbot
 Allow: /
+Disallow: /llm-context.txt
 
 # --- Common Crawl (used by many AI models) ---
 User-agent: CCBot
@@ -96,9 +101,40 @@ Allow: /
 User-agent: Diffbot
 Allow: /
 
+# --- Additional AI agents (allowlist sync, reviewed October 2026) ---
+# Keeps robots.txt in sync with the /llm-context.txt Worker allowlist.
+# One group: every agent below is allowed site-wide, same as the groups above.
+User-agent: Perplexity-User
+User-agent: Google-CloudVertexBot
+User-agent: Gemini-Deep-Research
+User-agent: Google-NotebookLM
+User-agent: Meta-WebIndexer
+User-agent: Meta-ExternalFetcher
+User-agent: Applebot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: Cohere-Training-Data-Crawler
+User-agent: Kagi-Fetcher
+User-agent: ImageSiftBot
+User-agent: TimpiBot
+User-agent: PanguBot
+User-agent: DeepSeekBot
+User-agent: ChatGLM-Spider
+User-agent: iAskSpider
+User-agent: YandexAdditionalBot
+User-agent: ICC-Crawler
+User-agent: SBUIntuitionsBot
+User-agent: CotoYogi
+User-agent: NaverBot
+User-agent: Yeti
+User-agent: WrtnBot
+User-agent: LinerBot
+Allow: /
+
 # --- Internet Archive ---
 User-agent: ia_archiver
 Allow: /
+Disallow: /llm-context.txt
 
 # ================================================================
 # Blocked: Known bad actors / scrapers with no benefit
