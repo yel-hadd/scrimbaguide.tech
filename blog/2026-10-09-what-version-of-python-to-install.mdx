@@ -14,40 +14,15 @@ last_update:
 ---
 
 import AffiliateLink from '@site/src/components/AffiliateLink';
-import DocFaqSchema from '@site/src/components/DocFaqSchema';
 import DisclosureNotice from '@site/src/components/DisclosureNotice';
+import FAQAccordion from '@site/src/components/FAQAccordion';
 import PricingCTA from '@site/src/components/PricingCTA';
-
-<DocFaqSchema
-  questions={[
-    {
-      q: "What version of Python should I install?",
-      a: "As of 2026-10-09, install the newest 3.14.x from python.org, which is Python 3.14.8. Python 3.15.0 final is scheduled to land on 2026-10-09, and once it appears on the downloads page it is just as good a choice for learning. Anything from 3.12 upward runs every beginner tutorial unchanged."
-    },
-    {
-      q: "Is Python 3.15 good for beginners?",
-      a: "Yes. Python 3.15 changes none of the syntax a beginner learns in a course, and its error messages got friendlier, including hints like suggesting .upper() when you type toUpperCase() from JavaScript. The only day-one caution is that some third-party libraries need a few weeks to ship wheels for a brand-new version."
-    },
-    {
-      q: "Will Python 3.14 tutorials still work on 3.15?",
-      a: "Yes. Everything a beginner course teaches, variables, loops, functions, f-strings, dictionaries, works identically on 3.12, 3.13, 3.14 and 3.15. The differences between 3.12 and 3.15 live in things beginners have not reached yet, like the internal garbage collector or the new lazy import keyword."
-    },
-    {
-      q: "Should I update my Python version?",
-      a: "If you are a beginner with no old projects, update whenever you install. If you maintain a project, upgrade it before its version loses security support. Python 3.10 reached end of life on 2026-10-01, so 3.10 projects are the ones that actually need attention now, not because 3.15 arrived."
-    },
-    {
-      q: "Is Python 3.10 still safe to use?",
-      a: "No, not for anything new. Python 3.10 received its final release, 3.10.22, on 2026-10-01 and is now end-of-life per the official downloads page, so it gets no security fixes. Old scripts on 3.10 will keep running, but a new install should start at 3.14 or 3.15."
-    }
-  ]}
-/>
 
 # What version of Python should you install? 3.14 vs 3.15 for new learners
 
 <DisclosureNotice />
 
-**Install the newest 3.14.x today: as of 2026-10-09 that is Python 3.14.8, released 2026-09-30. Python 3.15.0 final is scheduled to land the same day after a one-week slip, and either one is fine for learning. Check what you already have with `python --version`, and ignore any tutorial panic about 3.15 breaking beginner code.**
+**Install the newest 3.14.x today: as of 2026-10-09 that is Python 3.14.8, released 2026-09-30. Python 3.15.0 final is scheduled to land today, 2026-10-09, after a one-week slip, and either one is fine for learning. Check what you already have with `python --version`, and ignore any tutorial panic about 3.15 breaking beginner code.**
 
 {/* truncate */}
 
@@ -120,7 +95,7 @@ Beginners with no old projects can skip this section entirely. It exists because
 
 ## Where to learn Python right now
 
-If the version question was really the question "should I start learning Python this week," the answer is yes, and the course matters more than the interpreter. I went through [Scrimba's Learn Python course](/docs/courses/python/learn-python/) from the transcripts: Treasure Porth rebuilt it in August 2026, and it runs about 4.1 hours across three modules where you build three terminal apps, an expense splitter, a word game and a karaoke queue, with 50 of the 61 scrims ending in a challenge you solve before she does. Starting this month, October 2026, means starting on the current stable Python line from lesson one. If you want to try the format first, <AffiliateLink location="tofu-bridge-direct" href="https://scrimba.com/learn-python-c03">the Learn Python course</AffiliateLink> is free to start, and our [guide to the best Python courses for beginners](/docs/courses/python/best-python-courses-for-beginners/) compares it with Udemy options like [our top-rated Python picks there](/blog/best-udemy-python-courses/).
+If the version question was really the question "should I start learning Python this week," the answer is yes, and the course matters more than the interpreter. I went through [Scrimba's Learn Python course](/docs/courses/python/learn-python/) from the transcripts: Treasure Porth rebuilt it in August 2026, and it runs about 4.1 hours across three modules where you build three terminal apps, an expense splitter, a word game and a karaoke queue, with 50 of the 61 scrims ending in a challenge you solve before she does. Starting this month, October 2026, means starting on the current stable Python line from lesson one. If you want to try the format first, <AffiliateLink location="tofu-bridge-direct" href="https://scrimba.com/learn-python-c03">the Learn Python course</AffiliateLink> is free, every module, challenge and project, and our [guide to the best Python courses for beginners](/docs/courses/python/best-python-courses-for-beginners/) compares it with Udemy options like [our top-rated Python picks there](/blog/best-udemy-python-courses/).
 
 ## Bottom line
 
@@ -134,12 +109,10 @@ Install Python 3.14.8 today or 3.15.0 once it appears on python.org, whichever y
 
 ## Frequently asked questions
 
-**What version of Python should I install?** As of 2026-10-09, install the newest 3.14.x from python.org, which is Python 3.14.8. Python 3.15.0 final is scheduled to land on 2026-10-09, and once it appears on the downloads page it is just as good a choice for learning. Anything from 3.12 upward runs every beginner tutorial unchanged.
-
-**Is Python 3.15 good for beginners?** Yes. Python 3.15 changes none of the syntax a beginner learns in a course, and its error messages got friendlier, including hints like suggesting .upper() when you type toUpperCase() from JavaScript. The only day-one caution is that some third-party libraries need a few weeks to ship wheels for a brand-new version.
-
-**Will Python 3.14 tutorials still work on 3.15?** Yes. Everything a beginner course teaches, variables, loops, functions, f-strings, dictionaries, works identically on 3.12, 3.13, 3.14 and 3.15. The differences between 3.12 and 3.15 live in things beginners have not reached yet, like the internal garbage collector or the new lazy import keyword.
-
-**Should I update my Python version?** If you are a beginner with no old projects, update whenever you install. If you maintain a project, upgrade it before its version loses security support. Python 3.10 reached end of life on 2026-10-01, so 3.10 projects are the ones that actually need attention now, not because 3.15 arrived.
-
-**Is Python 3.10 still safe to use?** No, not for anything new. Python 3.10 received its final release, 3.10.22, on 2026-10-01 and is now end-of-life per the official downloads page, so it gets no security fixes. Old scripts on 3.10 will keep running, but a new install should start at 3.14 or 3.15.
+<FAQAccordion items={[
+  { q: "What version of Python should I install?", a: "As of 2026-10-09, install the newest 3.14.x from python.org, which is Python 3.14.8. Python 3.15.0 final is scheduled to land on 2026-10-09, and once it appears on the downloads page it is just as good a choice for learning. Anything from 3.12 upward runs every beginner tutorial unchanged." },
+  { q: "Is Python 3.15 good for beginners?", a: "Yes. Python 3.15 changes none of the syntax a beginner learns in a course, and its error messages got friendlier, including hints like suggesting .upper() when you type toUpperCase() from JavaScript. The only day-one caution is that some third-party libraries need a few weeks to ship wheels for a brand-new version." },
+  { q: "Will Python 3.14 tutorials still work on 3.15?", a: "Yes. Everything a beginner course teaches, variables, loops, functions, f-strings, dictionaries, works identically on 3.12, 3.13, 3.14 and 3.15. The differences between 3.12 and 3.15 live in things beginners have not reached yet, like the internal garbage collector or the new lazy import keyword." },
+  { q: "Should I update my Python version?", a: "If you are a beginner with no old projects, update whenever you install. If you maintain a project, upgrade it before its version loses security support. Python 3.10 reached end of life on 2026-10-01, so 3.10 projects are the ones that actually need attention now, not because 3.15 arrived." },
+  { q: "Is Python 3.10 still safe to use?", a: "No, not for anything new. Python 3.10 received its final release, 3.10.22, on 2026-10-01 and is now end-of-life per the official downloads page, so it gets no security fixes. Old scripts on 3.10 will keep running, but a new install should start at 3.14 or 3.15." }
+]} />
