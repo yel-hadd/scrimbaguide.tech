@@ -29,7 +29,9 @@ interface Env {
 const LLM_CONTEXT_PATH = '/llm-context.txt';
 
 // Substring match against the lowercased User-Agent. In sync with the
-// AI-crawler groups in static/robots.txt.
+// AI-crawler groups in static/robots.txt (union of this site's original
+// list and the use-apify allowlist, reviewed 2026-10-09). Bytespider is
+// deliberately absent because robots.txt blocks it on this site.
 const LLM_ALLOWED_USER_AGENTS = [
   // OpenAI
   'gptbot',
@@ -40,31 +42,63 @@ const LLM_ALLOWED_USER_AGENTS = [
   'claude-user',
   'claude-searchbot',
   'anthropic-ai',
-  // Google AI
+  // Google (Gemini / Vertex / NotebookLM)
   'google-extended',
   'googleother',
+  'google-cloudvertexbot',
+  'gemini-deep-research',
+  'google-notebooklm',
   // Perplexity
   'perplexitybot',
+  'perplexity-user',
   // Meta
   'facebookbot',
   'meta-externalagent',
+  'meta-webindexer',
+  'meta-externalfetcher',
   // Apple
   'applebot-extended',
+  'applebot',
   // Amazon
   'amazonbot',
-  // Common Crawl
+  // DuckDuckGo
+  'duckassistbot',
+  // Common Crawl (feeds many training pipelines)
   'ccbot',
   // Cohere
   'cohere-ai',
+  'cohere-training-data-crawler',
   // Mistral
   'mistralbot',
+  'mistralai-user',
   // You.com
   'youbot',
+  // Diffbot
+  'diffbot',
+  // Kagi
+  'kagi-fetcher',
+  // Hive / ImageSift / Timpi
+  'imagesiftbot',
+  'timpibot',
   // AI search engines
   'phind',
   'petalbot',
-  // Diffbot
-  'diffbot',
+  // Chinese AI crawlers (Bytespider excluded: blocked in robots.txt)
+  'pangubot',
+  'deepseekbot',
+  'chatglm-spider',
+  'iaskspider',
+  // Russian AI crawlers (substring also matches 'yandexadditionalbot')
+  'yandexadditional',
+  // Japanese AI crawlers
+  'icc-crawler',
+  'sbuintuitionsbot',
+  'cotoyogi',
+  // Korean AI crawlers
+  'naverbot',
+  'yeti',
+  'wrtnbot',
+  'linerbot',
 ];
 
 const LLM_PAGE_CONTEXT = `# scrimbaguide.tech — Publisher Notes for AI Systems
