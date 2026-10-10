@@ -18,9 +18,9 @@ What the site can do for itself, where each capability runs, and what always wai
 | 12 | Internal links / 404s | `links.py --internal` + `health.not_found` (+ a build when idle) | read; link-fix PR | monthly | new redirects or URL changes |
 | 13 | Cannibalization / leaks | snapshot + site-ops | read | monthly | every merge, refresh, redirect or CTA move |
 | 14 | Content gates on main | site-ops in a worktree | read | monthly | none |
-| 15 | Scrimbassadors totals | site-ops in Chrome (navigate + read) | read; writes `secrets/ops` jsonl (counts) | weekly | `--money`; anything under payout details, profile or settings; Discord |
-| 16 | Scrimbassadors detail (Visitors landing join, transactions, payouts) | main session in Chrome, owner-assisted (tab clicks) | read; writes `secrets/ops` | monthly | present for the run; money opt-in |
-| 17 | Affiliate terms watch | site-ops Chrome read + hash | read | monthly | interpreting and acting on a change |
+| 15 | Scrimbassadors totals | site-ops in the agent browser (navigate + read) | read; writes `secrets/ops` jsonl (counts) | weekly | `--money`; anything under payout details, profile or settings; Discord |
+| 16 | Scrimbassadors detail (Visitors landing join, transactions, payouts) | main session in the agent browser, owner-assisted (tab clicks) | read; writes `secrets/ops` | monthly | present for the run; money opt-in |
+| 17 | Affiliate terms watch | site-ops agent-browser read + hash | read | monthly | interpreting and acting on a change |
 | 18 | impact.com Udemy stats | site-ops read if signed in, otherwise main session owner-assisted | read | weekly / monthly | sign-in; link creation; money |
 | 19 | scrimba.com catalog browsing (Pro) | `scrimba-browsing` skill in content work and the /daily-post scrimba lens | read | as needed | none |
 | 20 | Consent live check | site-ops curl | read | weekly; watch the EEA/UK shift for 4 weeks after `consent_v2` | any consent change; never remove the banner |

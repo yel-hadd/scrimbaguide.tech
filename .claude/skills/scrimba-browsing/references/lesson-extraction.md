@@ -22,10 +22,9 @@ const lines = []; for (let i = 0; i < leaves.length; i += 2) lines.push(leaves[i
 lines;                                                // ["0:00 Your very first exposure…", "0:05 …"]
 ```
 
-Return an **array of lines**, not one long string: the extension truncates long
-string results and redacts anything that looks like a secret or a query string
-(you will see `[BLOCKED: …]`). Redacted lines are things you must not publish
-anyway (API keys, tracking URLs), so just skip them.
+Return an **array of lines**, not one long string: it keeps the result
+readable and stops you scooping up things you must not publish anyway (API
+keys, tracking URLs), which nothing redacts for you in this stack.
 
 The language menu ("ENGLISH") lists the subtitle languages; "10 languages" in
 `<op-stats>` refers to these. If you need the visible UI for a screenshot, open
@@ -48,8 +47,9 @@ monaco.editor.getModels()[0].getValue().split('\n');                            
 ```
 
 Dependencies (e.g. `react@16.13.1`) are listed under "DEPENDENCIES" in the
-explorer; read them with `get_page_text` or `find "dependencies list"`. This is
-how you state truthfully which React/Node version a course teaches.
+explorer; read them with `browser_snapshot` or `browser_find "dependencies
+list"`. This is how you state truthfully which React/Node version a course
+teaches.
 
 Note the editor state is the scrim's **final** state until you scrub the
 scrubber; content at `0:00` may already show the finished code.

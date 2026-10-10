@@ -61,7 +61,7 @@ One rule, stated in full in `references/affiliate-and-cta-rules.md`: embed expla
 ## References
 
 - `references/prompt-templates.md`: per-use-case templates with the filled prompts from the best runs and what each produced.
-- `references/rubric.md`: the six-axis rubric, pass thresholds, and the Chrome step-and-capture verification procedure.
+- `references/rubric.md`: the six-axis rubric, pass thresholds, and the agent-browser step-and-capture verification procedure.
 - `references/dimensions-and-visuals.md`: slide types, how to request each, stage sizes, vertical view, art styles, export and embed sizes, tile behaviour.
 - `references/mcp-authoring-contract.md`: what the MCP contract demands (OPML shape, narration limits, code and diff widths, animation canvas, image prompts, pacing) plus the per-invocation Claude Code recipe.
 - `references/entry-points.md`: web composer, in-lesson EXPLAIN, Chrome extension, ChatGPT/Codex, Claude Code MCP, PR endpoint and CI action, playlists, attachments, languages, Go deeper and follow-ups.

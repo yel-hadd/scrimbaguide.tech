@@ -13,7 +13,7 @@ Six ways to make an explainer. Pick by what the lesson must be grounded in and w
 
 ## Web composer (https://scrimba.com/explain?via=u42d4986)
 
-- The composer is a contenteditable (`.op-md-editor`); the paperclip opens a native file picker. Drop a file onto the editor (or a synthetic `drop` with a DataTransfer from `javascript_tool`) to get a chip with an X. Long pastes become attachments.
+- The composer is a contenteditable (`.op-md-editor`); the paperclip opens a native file picker. Drop a file onto the editor (or a synthetic `drop` with a DataTransfer from `browser_evaluate`) to get a chip with an X. Long pastes become attachments.
 - Style chevron on the Explain button: Explain, Standard, Per, Tom, LOL, Professor, TLDR. The choice persists across page loads, so read it before every submit.
 - Playlist toggle `op-button.playlist-toggle` does not persist. Visibility select starts on Public each time.
 - A 1:20 explainer was playable about 10 s after submit; a 3-lesson playlist finished in under 40 s.

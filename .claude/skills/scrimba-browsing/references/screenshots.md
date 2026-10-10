@@ -11,8 +11,8 @@
   time). Two to four lesson moments per page is plenty.
 - Before any capture: captions off (gear menu → "Show Captions"), the play
   button hidden (`ide-branch-fab`), and the mouse moved out of the frame
-  (`computer` → `hover` at (5, 700)). The cursor is otherwise baked into the
-  image.
+  (`browser_run_code_unsafe` with `await page.mouse.move(5, 700)`). The cursor
+  is otherwise baked into the image.
 - Never publish licensed media that appears in slides (the HTML & CSS welcome
   card carries a Peacock-watermarked *The Office* GIF). Skip the slide.
 - **Look at every image before it goes into a page.** Build a contact sheet
@@ -41,10 +41,13 @@ Recipe: open the chapter's first scrim, wait for `slide-widget svg`, then
 document.querySelectorAll('ide-branch-fab').forEach(e => e.style.display = 'none'); // big play button
 ```
 
-move the mouse away, and `computer` → `zoom` with `region: [261, 71, 1306, 659]`
-(the player at the default 1920×905 viewport; re-measure with the SVG's
-bounding rect if the window differs), `save_to_disk: true`. If a caption sliver
-remains at the bottom, trim ~36 px when converting.
+move the mouse away, and capture the stage: measure the slide SVG's rect first
+(`browser_evaluate`: `JSON.stringify(document.querySelector('slide-widget svg').getBoundingClientRect())`),
+then clip to exactly that rect with `browser_run_code_unsafe`:
+`await page.screenshot({ path: '<file>.png', clip: { x: <rect.x>, y: <rect.y>, width: <rect.width>, height: <rect.height> } })`.
+Do not reuse the old extension's pixel coordinates (`[261, 71, …]`): they were
+measured in a 1568-px-wide capture frame that no longer exists. If a caption
+sliver remains at the bottom, trim ~36 px when converting.
 
 If a slide embeds a GIF or photo over the title, you can hide only the large
 `<image>` nodes and keep the text:
@@ -62,17 +65,23 @@ is also a path and you hide the whole slide. If the result looks wrong (an
 empty frame), do not use it.
 
 Video-style intro scrims autoplay and advance their slide deck. Seek back to
-the start (click the scrubber at x≈40, then pause) before capturing.
+the start (click the scrubber at its far-left end, then pause) before capturing.
 
 ## Lesson moments: seek, pause, capture
 
-The scrubber runs along y≈725 from x≈30 to x≈1410 in the 1568-wide screenshot
-frame, so `x = 30 + 1380 * (t / duration)`; duration is in `<ide-header>` as
-`m:ss / m:ss`. Click it, `wait` 2–4 s, click play/pause at (17, 725), then
-`computer` → `screenshot` with `save_to_disk: true` (full scale, never `scale`
-< 1 for a saved image). Clicking inside the preview pane while paused shows a
-"re-run" overlay, so seek again rather than interacting with the preview. The
-caption line in the shot should match the caption you write.
+Measure before seeking; do not trust remembered coordinates. The old
+extension's scrubber numbers (y≈725, x from ~30 to ~1410, play/pause at
+(17, 725)) were read off a 1568-px-wide capture frame and do not carry over.
+At the 1920×905 viewport, locate the scrubber and play/pause control with
+`browser_evaluate` on their `getBoundingClientRect()` (the scrubber is the bar
+in the player bar at the bottom; duration is in `<ide-header>` as `m:ss /
+m:ss`), then seek with `browser_run_code_unsafe`:
+`await page.mouse.click(x_start + (x_end - x_start) * (t / duration), y_scrubber)`.
+`browser_wait_for` 2–4 s, click play/pause at its measured position the same
+way, then `browser_take_screenshot` with a `filename` (full scale, never a
+downscaled image for a saved shot). Clicking inside the preview pane while
+paused shows a "re-run" overlay, so seek again rather than interacting with the
+preview. The caption line in the shot should match the caption you write.
 
 ## Files, sizes, naming, alt text
 
@@ -80,8 +89,10 @@ caption line in the shot should match the caption you write.
   `learn-javascript/calculator-challenge-string-concatenation-bug.webp`,
   `learn-react/chapter-05-tenzies-title-card.webp`.
 - Convert with cwebp: lesson shots `cwebp -q 82 -resize 1400 0 in.jpg -o out.webp`;
-  title cards keep their 1279×720 (`-crop 0 0 1279 684` to drop a caption
-  sliver). Keep under ~150 KB; grainy gradient cards land near that.
+  title cards keep their native capture size (the clip is the slide SVG's own
+  rect; crop a caption sliver with `-crop` values measured off the saved PNG —
+  the old `-crop 0 0 1279 684` belonged to the 1568-px frame and no longer
+  applies). Keep under ~150 KB; grainy gradient cards land near that.
 - Crops (a finished project inside the preview pane) use `-crop x y w h` with
   coordinates read off the saved PNG; re-check the crop in the contact sheet.
 - Mount with `<Screenshot>` (`src/components/Screenshot.tsx`): `src`, `alt`,

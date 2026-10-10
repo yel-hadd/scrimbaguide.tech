@@ -28,7 +28,7 @@ The repo is public. Money figures (sales, commission, balances, payouts, earning
 2. **Preflight** (main session, shell):
    - `test -f secrets/gsc-service-account.json` (never print it). Missing: stop.
    - `git fetch origin`, and note `git rev-parse origin/main`.
-   - Chrome: call `mcp__claude-in-chrome__tabs_context_mcp` (load it with ToolSearch first). Not connected: pass `chrome: false`, and every Chrome check becomes `skipped`.
+   - Chrome: call `mcp__agent-browser__browser_tabs` (`action: "list"`). Not connected (agent-browser server not approved or down): pass `chrome: false`, and every Chrome check becomes `skipped`.
    - `.venv/bin/python` exists (monthly catalog drift only). Missing: drift is `skipped (no .venv)`; the fix is `python3 -m venv .venv && .venv/bin/pip install -r scraper/requirements.txt`, owner's call.
    - Chrome lock: `cat .seo-cache/chrome.lock 2>/dev/null`. Held by `/daily-post` and under an hour old: pass `chrome: false` with reason `daily-post running`.
    - A running build: `pgrep -f "docusaurus (build|start)"`. Tell the agent, so it opens no PR that needs a build.
@@ -43,7 +43,7 @@ The repo is public. Money figures (sales, commission, balances, payouts, earning
      `submit` stops at the first `QuotaExceeded` and logs the rest `deferred`; the next run retries them. More than 200 URLs in a day (Google's quota, shared with use-apify), or a sitemap-wide resubmission, needs the owner's explicit number.
    - Confirm against reality: `python3 scripts/analytics/ga4admin.py annotations list` shows the new rows; `tail -n 20 secrets/indexing-log.tsv` shows today's LA date; `gh pr list --author @me --state open` shows any PR the agent listed. A mismatch goes in the note as ACT.
    - Declined or failed: leave the plan file, mark the check WATCH, and do not advance the matching `last_*` value.
-5. **Owner-assisted captures** (monthly, or when the owner asks). The main session has the full Chrome tools and the owner is present. Take the Chrome lock (`references/routines.md`).
+5. **Owner-assisted captures** (monthly, or when the owner asks). The main session has the full agent-browser toolset and the owner is present. Take the Chrome lock (`references/routines.md`).
    - **Scrimbassadors detail.** Load `https://scrimba.com/u42d4986:affiliate`, click only the tab label (Visitors, Transactions, Payouts), wait about 5 seconds, confirm the table header matches the tab (the reader can return the previous tab's table), then scroll to lazy-load rows (about 50 per scroll).
      - Visitors: write `[{date, landing_page, country}]` for the month to `secrets/ops/scrimbassadors-visitors-YYYY-MM.json`. No other columns.
      - Transactions: count new rows and refunded or disputed flags since the last reading. Never open a Stripe invoice link.
