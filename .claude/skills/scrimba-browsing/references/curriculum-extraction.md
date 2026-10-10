@@ -20,15 +20,15 @@ Facts that matter:
   Instant Feedback" (an AI-checked challenge scrim). Items named
   "Solo Project (PRO) - …" are the Pro-gated pieces inside free courses.
 - On plain course pages (e.g. `learn-javascript-c0v`) a JS `.click()` on
-  `toc-item-head` does **not** toggle the group; use `find` to get refs for the
-  module header rows and click them with `computer` (one click each, a second
-  click collapses again). Path pages did respond to JS clicks.
+  `toc-item-head` does **not** toggle the group; use `browser_find` to locate
+  the module header rows and click each with `browser_click` (one click each, a
+  second click collapses again). Path pages did respond to JS clicks.
 - `<toc-items>` is sometimes wrapped in a `<div>`, so `:scope > toc-items` misses
   it; select the first `toc-items` whose `closest('toc-group')` is the group.
 - Durations render lazily: items far below the viewport show no `m:ss` until
   scrolled into view. Before reading, `scrollIntoView` every 6th item without a
-  duration with ~250 ms pauses (long loops time out the JS tool at 45 s; do it
-  in batches).
+  duration with ~250 ms pauses, in batches across several `browser_evaluate`
+  calls rather than one long loop.
 - Each `toc-scrim-item` has `data-id="<courseId>/toc/~<index>"`; the lesson URL
   is `/<course-slug-or-id>/~<index>`.
 
@@ -65,8 +65,9 @@ Item text looks like `"Write your first JavaScript variable 4:32"` or
 `"Welcome to the Fullstack Path SAMPLE 2:01"`; split the trailing `m:ss` for
 duration. Module text looks like `"Build a Blackjack Game 0/45 2.7 hrs"`.
 
-The course description ("About" section) is the `<article>`; `get_page_text`
-returns it cleanly, including the learning-objectives list.
+The course description ("About" section) is the `<article>`;
+`browser_evaluate` returning `document.querySelector('article').innerText`
+gets it cleanly, including the learning-objectives list.
 
 ## Catalog page (`/courses`)
 

@@ -104,6 +104,7 @@ A change to CSS, layout or an interactive component also runs `npm run test:visu
 
 ## Skills
 
+- `agent-browser`: the undetected browser stack (Patchright Chrome on the owner's logged-in profile, `mcp__agent-browser__*` tools) behind every skill that browses with the owner's sessions. Load it before opening a tab; never use a generic `mcp__playwright__*` server.
 - `scrimba-course-review`: course leaves, hubs and path pages, and any voice/CTA rewrite of a docs page (loads `scrimba-browsing`).
 - `scrimba-browsing`: anything that needs a fact or screenshot from inside Scrimba.
 - `scrimba-explain`: creating, grading or embedding explainers.

@@ -4,7 +4,7 @@ Three routines: `post-merge <PR#...>`, `weekly` (Mondays) and `monthly` (first M
 
 ## Chrome lock
 
-`/daily-post` and site-ops share one Chrome. Take the lock before the first Chrome call:
+`/daily-post` and site-ops share the one agent browser (the `agent-browser` skill). Take the lock before the first browser call:
 
 ```
 f=.seo-cache/chrome.lock; if [ -e $f ] && [ $(( $(date +%s)-$(stat -c %Y $f) )) -lt 3600 ]; then echo HELD; else echo "site-ops $(date -Is)" > $f; fi
@@ -33,7 +33,7 @@ Run once per merged PR, or once for a list.
 
 ## weekly (Monday)
 
-Run steps 7 and 8 (the Chrome readings) first, so the snapshot's reconciliation includes the new reading; number order is only for reference.
+Run steps 7 and 8 (the browser readings) first, so the snapshot's reconciliation includes the new reading; number order is only for reference.
 
 1. **Snapshot.** `python3 scripts/analytics/snapshot.py` (add `--money` only if the run has it). Read `.seo-cache/analytics-snapshot.json` and `.seo-cache/summary.txt`. A `sources.*.status` other than `ok` goes in `watch[]` with its reason.
 2. **Tracking health.** Apply the thresholds table below to `health.*`.
@@ -41,7 +41,7 @@ Run steps 7 and 8 (the Chrome readings) first, so the snapshot's reconciliation 
 4. **Indexing.** `python3 scripts/analytics/indexing.py submit --changed <last_postmerge_sha>` (dry run; deferred rows from the ledger are retried first by the CLI, whether or not they are in this run's changed list). Write its `to_send[].url` values, one per line, to `secrets/ops/indexing-plan.txt` (one-liner in the agent file, section 5). Empty list: plan `null`. Then `python3 scripts/analytics/indexing.py inspect --pending` (writes a partial `secrets/inspect-pending-YYYY-MM-DD.json`, kept apart from a full `--sitemap` run so the monthly diff never compares a partial file against a full one) and compare its verdicts with `health.index`: a submitted URL still not indexed after 14 days goes in `watch[]`.
 5. **Deploys.** `gh run list --workflow deploy.yml --branch main --created ">=<7 days ago>" --json conclusion,databaseId,headSha`. On any failure, `gh run view <id> --json jobs` for per-job results. Map to `deploy.main` with the table's green/indexnow/build rules.
 6. **Custom dimensions.** `python3 scripts/analytics/ga4admin.py dims check`. Exit 3 (a missing dimension or custom metric: `missing` or `missing_metrics` non-empty) is `dims.check` ACT for the owner (`dims create --yes` is never run in a routine).
-7. **Scrimbassadors totals** (Chrome; navigate and read only; counts only). Take the lock. Open a new tab, navigate to `https://scrimba.com/u42d4986:affiliate`, `get_page_text` up to 3 times a few seconds apart until Visitors, Signups and Subs parse. Append one line to `secrets/ops/scrimbassadors.jsonl` (format in the agent file). Close the tab. On parse failure: no line, check `affiliate.scrimbassadors` ACT "needs owner-assisted capture" with a raw excerpt. After the snapshot, read its reconciliation:
+7. **Scrimbassadors totals** (agent browser; navigate and read only; counts only). Take the lock. Open a new tab (`browser_tabs` `action: new`), `browser_navigate` to `https://scrimba.com/u42d4986:affiliate`, read with `browser_snapshot` (or `browser_evaluate` on `innerText`) up to 3 times a few seconds apart until Visitors, Signups and Subs parse. Append one line to `secrets/ops/scrimbassadors.jsonl` (format in the agent file). Close the tab. On parse failure: no line, check `affiliate.scrimbassadors` ACT "needs owner-assisted capture" with a raw excerpt. After the snapshot, read its reconciliation:
    - `affiliate.reconciliation.scrimba.ratio` below 0.8: ACT (our clicks may be losing `?via=`; run `links.py --outbound` now).
    - last reading older than 10 days: WATCH.
 8. **impact.com** (Udemy brand). Only if the session is already signed in: navigate to the performance report for the last 30 days and read clicks, then append to `secrets/ops/impact.jsonl`. On a login page: `skipped (needs owner)`. `affiliate.reconciliation.udemy.ratio` below 0.7: WATCH.
@@ -106,6 +106,6 @@ A value "after step 5" means windows starting on or after 2026-09-26. For earlie
    Merge in any `.seo-cache/drift-*.json` that `/daily-post` left. `.venv` missing: `catalog.drift` is `skipped (no .venv)`. A `possible_swap` row (instructor or title changed at the same slug) is always a decision. Proven value drift: one overrides-only PR (`data/course-overrides.json`), saying regeneration is the owner's step. Otherwise report.
 3. **Links.** `python3 scripts/analytics/links.py --outbound --internal`. Non-2xx is ACT, then a fix PR where the type is allowed (slug rename, internal link, trailing slash, `relatedGuidesMap.ts`).
 4. **Content gates on origin/main,** in a throwaway worktree (`ops-gates-<date>`, `node_modules` symlinked): `npm run check:content`, `npm run typecheck`, and `node scripts/audit-course-links.mjs` over all pages. Report failures; fix only allowed types. Propose the worktree's removal in `watch[]`.
-5. **Terms watch** (Chrome, lock held; do it in the same Chrome pass as weekly step 7, before that step appends its line). `get_page_text` on `https://scrimba.com/affiliate` and `https://scrimba.com/scrimbassadors`; normalize whitespace (`' '.join(text.split())`); SHA-256 each. Put both hashes in this run's `scrimbassadors.jsonl` line (`terms_sha256`). A hash different from the last non-null reading is ACT with a short diff excerpt; never interpret the new terms.
+5. **Terms watch** (agent browser, lock held; do it in the same browser pass as weekly step 7, before that step appends its line). Read `https://scrimba.com/affiliate` and `https://scrimba.com/scrimbassadors` (`browser_evaluate` on `innerText`); normalize whitespace (`' '.join(text.split())`); SHA-256 each. Put both hashes in this run's `scrimbassadors.jsonl` line (`terms_sha256`). A hash different from the last non-null reading is ACT with a short diff excerpt; never interpret the new terms.
 6. **Cannibalization and leaks.** From the snapshot's `cannibalization` and `leaks`, at most 3 proposals as decisions. Check `.seo-cache/redirects.json` first so nothing proposes merging a page that is already a redirect source. No edits.
 7. **Hand-back.** Add a decision telling the main session to run the owner-assisted captures (skill step 5) and `/site-analytics monthly`.

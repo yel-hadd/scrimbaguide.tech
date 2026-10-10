@@ -11,8 +11,8 @@
   time). Two to four lesson moments per page is plenty.
 - Before any capture: captions off (gear menu → "Show Captions"), the play
   button hidden (`ide-branch-fab`), and the mouse moved out of the frame
-  (`computer` → `hover` at (5, 700)). The cursor is otherwise baked into the
-  image.
+  (`browser_run_code_unsafe` with `await page.mouse.move(5, 700)`). The cursor
+  is otherwise baked into the image.
 - Never publish licensed media that appears in slides (the HTML & CSS welcome
   card carries a Peacock-watermarked *The Office* GIF). Skip the slide.
 - **Look at every image before it goes into a page.** Build a contact sheet
@@ -41,10 +41,11 @@ Recipe: open the chapter's first scrim, wait for `slide-widget svg`, then
 document.querySelectorAll('ide-branch-fab').forEach(e => e.style.display = 'none'); // big play button
 ```
 
-move the mouse away, and `computer` → `zoom` with `region: [261, 71, 1306, 659]`
-(the player at the default 1920×905 viewport; re-measure with the SVG's
-bounding rect if the window differs), `save_to_disk: true`. If a caption sliver
-remains at the bottom, trim ~36 px when converting.
+move the mouse away, and capture the stage with `browser_run_code_unsafe`:
+`await page.screenshot({ path: '<file>.png', clip: { x: 261, y: 71, width: 1045, height: 588 } })`
+(the player at the 1920×905 viewport after `browser_resize`; re-measure with
+the SVG's bounding rect if the window differs). If a caption sliver remains at
+the bottom, trim ~36 px when converting.
 
 If a slide embeds a GIF or photo over the title, you can hide only the large
 `<image>` nodes and keep the text:
@@ -66,11 +67,12 @@ the start (click the scrubber at x≈40, then pause) before capturing.
 
 ## Lesson moments: seek, pause, capture
 
-The scrubber runs along y≈725 from x≈30 to x≈1410 in the 1568-wide screenshot
+The scrubber runs along y≈725 from x≈30 to x≈1410 in the 1920-wide viewport
 frame, so `x = 30 + 1380 * (t / duration)`; duration is in `<ide-header>` as
-`m:ss / m:ss`. Click it, `wait` 2–4 s, click play/pause at (17, 725), then
-`computer` → `screenshot` with `save_to_disk: true` (full scale, never `scale`
-< 1 for a saved image). Clicking inside the preview pane while paused shows a
+`m:ss / m:ss`. Seek with `browser_run_code_unsafe` (`page.mouse.click(x, 725)`),
+`browser_wait_for` 2–4 s, click play/pause at (17, 725) the same way, then
+`browser_take_screenshot` with a `filename` (full scale, never a downscaled
+image for a saved shot). Clicking inside the preview pane while paused shows a
 "re-run" overlay, so seek again rather than interacting with the preview. The
 caption line in the shot should match the caption you write.
 

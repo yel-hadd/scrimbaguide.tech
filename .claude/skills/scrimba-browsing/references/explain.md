@@ -12,7 +12,8 @@ What this browsing skill still needs to know:
   the composer defaults to Public).
 - Explainer pages (`/explain/guide<id>`) auto-play. Pause immediately with
   `document.querySelectorAll('video').forEach(v => v.pause())`. The narration is
-  rendered as prose in `<article>`; `get_page_text` returns the headed sections.
+  rendered as prose in `<article>`; read it with `browser_evaluate` returning
+  the article's `innerText` (headed sections included).
 - Generating an explainer spends the user's allowance and publishes under their
   name. Never create one unless the user asked for it in this session.
 - Explainer links never carry `?via=` (see the affiliate rules in the
