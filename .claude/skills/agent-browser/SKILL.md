@@ -22,6 +22,24 @@ If a generic `mcp__playwright__*` server is also connected, never use it: it is
 stock Playwright with a fresh profile (detectable, logged out). The agent
 browser is always `mcp__agent-browser__*`.
 
+## Stack wiring (what makes it undetected, and how to check)
+
+The MCP server runs stock `@playwright/mcp` from `/home/toor/node_modules`;
+it is only undetected because `playwright` and `playwright-core` in that
+directory are **symlinks to `patchright` / `patchright-core`** (the stock
+copies sit beside them as `*.stock`). Any `npm install` under `/home/toor`
+that reinstalls playwright can silently replace the symlinks and drop the
+whole stack back to detectable stock Playwright. Before the first browse
+after such an install, verify:
+
+```
+ls -l /home/toor/node_modules/playwright-core   # must show -> patchright-core
+```
+
+and on any page, `browser_evaluate` `() => navigator.webdriver` must return
+`false`. If it returns `true`, stop: the stack is stock, sites will start
+challenging it, and the symlink must be restored before browsing.
+
 ## Tool map (Claude in Chrome → agent browser)
 
 | Then | Now |
@@ -69,10 +87,12 @@ browser is always `mcp__agent-browser__*`.
    absolute path in `/home/toor/sg-work/`). Captures come from CDP, so a
    background tab usually captures fine; if one comes back blank, select the tab
    first (`browser_tabs action: select`).
-7. **Viewport before pixel recipes.** The screenshot frame equals the viewport.
-   The scrimba-browsing coordinate recipes assume 1920×905: call
-   `browser_resize {width: 1920, height: 905}` before using them, and re-measure
-   rects with `browser_evaluate` if the window differs.
+7. **Viewport before pixel recipes.** The screenshot frame equals the viewport
+   exactly (no device-pixel-ratio scaling like the old extension's 1568-px
+   frame). Set it with `browser_resize {width: 1920, height: 905}` and measure
+   every rect and coordinate fresh with `browser_evaluate`
+   (`getBoundingClientRect()`); coordinates remembered from the old extension
+   frame do not carry over.
 8. **Logged out of Scrimba** (SIGN IN shows, a paywall appears on a Pro lesson):
    stop and tell the owner. Re-login is the owner's step (about 30 seconds,
    `node /home/toor/sg-work/agent-browser/login.mjs` opens the browser and waits);
